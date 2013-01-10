@@ -27,7 +27,7 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWIS
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 POSSIBILITY OF SUCH DAMAGE.
 
-*/
+ */
 
 
 import java.io.OutputStream;
@@ -46,323 +46,390 @@ import org.hl7.fhir.utilities.xml.*;
 import org.json.JSONWriter;
 
 public abstract class JsonComposerBase extends XmlBase {
-  
-  protected JSONWriter json;
-  private boolean htmlPretty;
-  
-  public void compose(OutputStream stream, Resource resource) throws Exception {
-    OutputStreamWriter osw = new OutputStreamWriter(stream, "UTF-8");
-    JSONWriter writer = new JSONWriter(osw);
-    // writer.setPretty(pretty);
-    writer.object();
-    compose(writer, resource);
-    writer.endObject();
-    osw.flush();
-  }
-  
-  public void compose(OutputStream stream, AtomFeed feed) throws Exception {
-    OutputStreamWriter osw = new OutputStreamWriter(stream, "UTF-8");
-    JSONWriter writer = new JSONWriter(osw);
-    // writer.setPretty(pretty);
-    writer.object();
-    compose(writer, feed);
-    writer.endObject();
-    osw.flush();
-  }
-  
-  public void compose(JSONWriter writer, Resource resource) throws Exception {
-    json = writer;
-    composeResource(resource);
-  }
 
-  public void compose(JSONWriter writer, AtomFeed feed) throws Exception {
-    json = writer;
-    composeFeed(feed);
-  }
+	protected JSONWriter json;
+	private boolean htmlPretty;
 
-  private void composeFeed(AtomFeed feed) throws Exception {
-    prop("title", feed.getTitle());
-    if (feed.getUpdated() != null)
-      prop("updated", dateToXml(feed.getUpdated()));
-    prop("id", feed.getId());
+	public void compose(OutputStream stream, Resource resource) throws Exception {
+		OutputStreamWriter osw = new OutputStreamWriter(stream, "UTF-8");
+		JSONWriter writer = new JSONWriter(osw);
+		// writer.setPretty(pretty);
+		writer.object();
+		compose(writer, resource);
+		writer.endObject();
+		osw.flush();
+	}
 
-    if (feed.getLink() != null) {
-      openArray("links");
-      json.object();
-      prop("rel", "self");
-      prop("href", feed.getLink());
-      json.endObject();
-      closeArray();
-    }
-    if (feed.getEntryList().size() > 0) {
-      openArray("entries");
-      for (AtomEntry e : feed.getEntryList())
-        composeEntry(e);
-      closeArray();
-    }
-  }
+	public void compose(OutputStream stream, AtomFeed feed) throws Exception {
+		OutputStreamWriter osw = new OutputStreamWriter(stream, "UTF-8");
+		JSONWriter writer = new JSONWriter(osw);
+		// writer.setPretty(pretty);
+		writer.object();
+		compose(writer, feed);
+		writer.endObject();
+		osw.flush();
+	}
 
-  private void composeEntry(AtomEntry e) throws Exception {
-    json.object();
-    prop("title", e.getTitle());
-    prop("id", e.getId());
-    prop("versionId", e.getVersionId());
-    if (e.getLink() != null) {
-      openArray("links");
-      json.object();
-      prop("rel", "self");
-      prop("href", e.getLink());
-      json.endObject();
-      closeArray();
-    }
+	public void compose(JSONWriter writer, Resource resource) throws Exception {
+		json = writer;
+		composeResource(resource);
+	}
 
-    if (e.getUpdated() != null)
-      prop("updated", dateToXml(e.getUpdated()));
-    if (e.getPublished() != null) 
-      prop("published", dateToXml(e.getPublished()));
+	public void compose(JSONWriter writer, AtomFeed feed) throws Exception {
+		json = writer;
+		composeFeed(feed);
+	}
 
-    openArray("authors");
-    json.object();
-    prop("name", e.getAuthorName());
-    prop("uri", e.getAuthorUri());
-    json.endObject();
-    closeArray();
+	private void composeFeed(AtomFeed feed) throws Exception {
+		prop("title", feed.getTitle());
+		if (feed.getUpdated() != null)
+			prop("updated", dateToXml(feed.getUpdated()));
+		prop("id", feed.getId());
 
-    if (e.getCategory() != null) {
-      openArray("categories");
-      json.object();
-      prop("term", e.getCategory());
-      prop("scheme", "http://hl7.org/fhir/resource-types");
-      json.endObject();
-      closeArray();
-    }
+		if (feed.getLink() != null) {
+			openArray("links");
+			json.object();
+			prop("rel", "self");
+			prop("href", feed.getLink());
+			json.endObject();
+			closeArray();
+		}
+		if (feed.getEntryList().size() > 0) {
+			openArray("entries");
+			for (AtomEntry e : feed.getEntryList())
+				composeEntry(e);
+			closeArray();
+		}
+	}
 
-    open("content");
-    composeResource(e.getResource());
-    close();
-    composeXhtml("summary", e.getSummary());
-    json.endObject();  
-    
-  }
+	private void composeEntry(AtomEntry e) throws Exception {
+		json.object();
+		prop("title", e.getTitle());
+		prop("id", e.getId());
+		prop("versionId", e.getVersionId());
+		if (e.getLink() != null) {
+			openArray("links");
+			json.object();
+			prop("rel", "self");
+			prop("href", e.getLink());
+			json.endObject();
+			closeArray();
+		}
 
-  protected abstract void composeResource(Resource resource) throws Exception;
-  
-  protected void composeElementAttributes(Element element) throws Exception {
-    if (element.getXmlId() != null) 
-      prop("_id", element.getXmlId());
-  }
+		if (e.getUpdated() != null)
+			prop("updated", dateToXml(e.getUpdated()));
+		if (e.getPublished() != null) 
+			prop("published", dateToXml(e.getPublished()));
 
-  private void prop(String name, String value) throws Exception {
-    if (name != null)
-      json.key(name);
-    json.value(value);
-  }
+		openArray("authors");
+		json.object();
+		prop("name", e.getAuthorName());
+		prop("uri", e.getAuthorUri());
+		json.endObject();
+		closeArray();
 
-  protected void composeTypeAttributes(Type type) throws Exception {
-    composeElementAttributes(type);
-  }
-    
-  protected void composeString(String name, String value) throws Exception {
-    if (value != null)
-      prop(name, value);
-  }
-  protected void composeURI(String name, java.net.URI value) throws Exception {
-    if (value != null)
-      prop(name, value.toString());
-  }
-  
-  protected void composeBigDecimal(String name, BigDecimal value) throws Exception {
-    if (value != null)
-      prop(name, value.toString());
-  }
-  
+		if (e.getCategory() != null) {
+			openArray("categories");
+			json.object();
+			prop("term", e.getCategory());
+			prop("scheme", "http://hl7.org/fhir/resource-types");
+			json.endObject();
+			closeArray();
+		}
 
-  protected void composeInt(String name, java.lang.Integer value) throws Exception {
-    if (value != null)
-      prop(name, value.toString());
-  }
+		open("content");
+		composeResource(e.getResource());
+		close();
+		composeXhtml("summary", e.getSummary());
+		json.endObject();  
 
-  protected void composeBool(String name, java.lang.Boolean value) throws Exception {
-    if (value != null)
-      prop(name, value.toString());
-  }
-  
-  protected void composeXhtml(String name, XhtmlNode html) throws Exception {
-    XhtmlComposer comp = new XhtmlComposer();
-    comp.setPretty(htmlPretty);
-    prop(name, comp.compose(html));
-  }
-  
-  protected void composeBytes(String name, byte[] content) throws Exception {
-    if (content != null) {
-      byte[] encodeBase64 = Base64.encodeBase64(content);
-      composeString(name, new String(encodeBase64));
-    }
-  }  
+	}
 
-  protected void composeBase64Binary(String name, Base64Binary value) throws Exception {
-    if (value != null) {
-      open(name);
-      composeTypeAttributes(value);
-      composeBytes("value", value.getValue());
-      close();
-    }
-  }
-  
-  protected void composeId(String name, Id value) throws Exception {
-    if (value != null) {
-      open(name);
-      composeTypeAttributes(value);
-      prop("value", value.getValue());
-      close();
-    }
-  }
-  
-  protected void composeCode(String name, Code value) throws Exception {
-    if (value != null) {
-      open(name);
-      composeTypeAttributes(value);
-      prop("value", value.getValue());
-      close();
-    }
-  }
-  
-  protected void composeOid(String name, Oid value) throws Exception {
-    if (value != null) {
-      open(name);
-      composeTypeAttributes(value);
-      prop("value", value.getValue());
-      close();
-    }
-  }
-  
-  protected void composeUuid(String name, Uuid value) throws Exception {
-    if (value != null) {
-      open(name);
-      composeTypeAttributes(value);
-      prop("value", value.getValue());
-      close();
-    }
-  }
-  
-  protected void composeSid(String name, Sid value) throws Exception {
-    if (value != null) {
-      open(name);
-      composeTypeAttributes(value);
-      prop("value", value.getValue().toString());
-      close();
-    }
-  }
+	protected abstract void composeResource(Resource resource) throws Exception;
 
-  protected void composeUri(String name, Uri value) throws Exception {
-    if (value != null) {
-      open(name);
-      composeTypeAttributes(value);
-      prop("value", value.getValue().toString());
-      close();
-    }
-  }
+	protected void composeElementAttributes(Element element) throws Exception {
+		if (element.getXmlId() != null) 
+			prop("_id", element.getXmlId());
+	}
 
-  protected void composeUri(String name, java.net.URI value) throws Exception {
-    composeURI(name, value);
-  }
+	private void prop(String name, String value) throws Exception {
+		if (name != null)
+			json.key(name);
+		json.value(value);
+	}
+
+	protected void composeTypeAttributes(Type type) throws Exception {
+		composeElementAttributes(type);
+	}
+
+	protected void composeStringSimple(String name, String value) throws Exception {
+		if (value != null)
+			prop(name, value);
+	}
+
+	protected void composeStringSimple(String name, String_ value) throws Exception {
+		if (value != null)
+			composeStringSimple(name, value.getValue());
+	}
+
+	protected void composeStringSimple(String name, Code value) throws Exception {
+		if (value != null)
+			prop(name, value.getValue());
+	}
+
+	 protected void composeString(String name, String value) throws Exception {
+		if (value != null)
+			prop(name, value);
+	}
+	protected void composeURI(String name, java.net.URI value) throws Exception {
+		if (value != null)
+			prop(name, value.toString());
+	}
+
+	protected void composeBigDecimal(String name, BigDecimal value) throws Exception {
+		if (value != null)
+			prop(name, value.toString());
+	}
 
 
-  protected void composeDecimal(String name, Decimal value) throws Exception {
-    if (value != null) {
-      open(name);
-      composeTypeAttributes(value);
-      prop("value", value.getValue().toString());
-      close();
-    }
-  }
-  
-  protected void composeString_(String name, String_ value) throws Exception {
-    if (value != null) {
-      open(name);
-      composeTypeAttributes(value);
-      prop("value", value.getValue());
-      close();
-    }
-  }
-  
-  protected void composeBoolean(String name, Boolean value) throws Exception {
-    if (value != null) {
-      open(name);
-      composeTypeAttributes(value);
-      prop("value", value.toString());
-      close();
-    }
-  }
-  
-  protected void composeBoolean(String name, java.lang.Boolean value) throws Exception {
-    if (value != null) {
-      open(name);
-      prop("value", value.toString());
-      close();
-    }
-  }
-  
-  protected void composeInstant(String name, Instant value) throws Exception {
-    if (value != null) {
-      open(name);
-      composeTypeAttributes(value);
-      prop("value", dateToXml(value.getValue()));
-      close();
-    }
-  }
-  
-  protected void composeInteger(String name, Integer value) throws Exception {
-    if (value != null) {
-      open(name);
-      composeTypeAttributes(value);
-      prop("value", java.lang.Integer.toString(value.getValue()));
-      close();
-    }
-  }
-  
-  protected void composeDate(String name, java.util.Calendar value) throws Exception {
-	  if (value != null) {
-	      prop(name, dateToXml(value));
-	  }
-  }
-	  
-  protected void composeDate(String name, Date value) throws Exception {
-    if (value != null) {
-      open(name);
-      composeTypeAttributes(value);
-      prop("value", value.getValue());
-      close();
-    }
-  }
-  
-  protected void composeDateTime(String name, DateTime value) throws Exception {
-    if (value != null) {
-      open(name);
-      composeTypeAttributes(value);
-      prop("value", value.getValue());
-      close();
-    }
-  }
-  
-  protected void open(String name) throws Exception {
-    if (name != null) 
-      json.key(name);
-    json.object();
-  }
-  
-  protected void close() throws Exception {
-    json.endObject();
-  }
-  
-  protected void openArray(String name) throws Exception {
-    if (name != null) 
-      json.key(name);
-    json.array();
-  }
-  
-  protected void closeArray() throws Exception {
-    json.endArray();
-  }
-  
+	protected void composeBigDecimalSimple(String name, Decimal value) throws Exception {
+		if (value != null)
+			composeBigDecimal(name, value.getValue());
+	}
+
+
+	protected void composeInt(String name, java.lang.Integer value) throws Exception {
+		if (value != null)
+			prop(name, value.toString());
+	}
+
+	protected void composeIntSimple(String name, Integer value) throws Exception {
+		if (value != null)
+			composeInt(name, value.getValue());
+	}
+
+	protected void composeBool(String name, java.lang.Boolean value) throws Exception {
+		if (value != null)
+			prop(name, value.toString());
+	}
+
+	protected void composeXhtmlSimple(String name, XhtmlNode html) throws Exception {
+		composeXhtml(name, html);
+	}
+	
+	protected void composeXhtml(String name, XhtmlNode html) throws Exception {
+		XhtmlComposer comp = new XhtmlComposer();
+		comp.setPretty(htmlPretty);
+		prop(name, comp.compose(html));
+	}
+
+	protected void composeBytes(String name, byte[] content) throws Exception {
+		if (content != null) {
+			byte[] encodeBase64 = Base64.encodeBase64(content);
+			composeString(name, new String(encodeBase64));
+		}
+	}  
+
+	protected void composeBytesSimple(String name, Base64Binary content) throws Exception {
+		if (content != null) {
+			byte[] encodeBase64 = Base64.encodeBase64(content.getValue());
+			composeString(name, new String(encodeBase64));
+		}
+	}  
+
+	protected void composeBase64Binary(String name, Base64Binary value) throws Exception {
+		if (value != null) {
+			open(name);
+			composeTypeAttributes(value);
+			composeBytes("value", value.getValue());
+			close();
+		}
+	}
+
+	protected void composeId(String name, Id value) throws Exception {
+		if (value != null) {
+			open(name);
+			composeTypeAttributes(value);
+			prop("value", value.getValue());
+			close();
+		}
+	}
+
+	protected void composeCode(String name, Code value) throws Exception {
+		if (value != null) {
+			open(name);
+			composeTypeAttributes(value);
+			prop("value", value.getValue());
+			close();
+		}
+	}
+
+	protected void composeOid(String name, Oid value) throws Exception {
+		if (value != null) {
+			open(name);
+			composeTypeAttributes(value);
+			prop("value", value.getValue());
+			close();
+		}
+	}
+
+	protected void composeUuid(String name, Uuid value) throws Exception {
+		if (value != null) {
+			open(name);
+			composeTypeAttributes(value);
+			prop("value", value.getValue());
+			close();
+		}
+	}
+
+	protected void composeSid(String name, Sid value) throws Exception {
+		if (value != null) {
+			open(name);
+			composeTypeAttributes(value);
+			prop("value", value.getValue().toString());
+			close();
+		}
+	}
+
+	protected void composeUriSimple(String name, Uri value) throws Exception {
+		if (value != null) {
+			prop(name, value.getValue().toString());
+		}
+	}
+
+	protected void composeUri(String name, Uri value) throws Exception {
+		if (value != null) {
+			open(name);
+			composeTypeAttributes(value);
+			prop("value", value.getValue().toString());
+			close();
+		}
+	}
+
+	protected void composeUri(String name, java.net.URI value) throws Exception {
+		composeURI(name, value);
+	}
+
+
+	protected void composeDecimal(String name, Decimal value) throws Exception {
+		if (value != null) {
+			open(name);
+			composeTypeAttributes(value);
+			prop("value", value.getValue().toString());
+			close();
+		}
+	}
+
+	protected void composeString_(String name, String_ value) throws Exception {
+		if (value != null) {
+			open(name);
+			composeTypeAttributes(value);
+			prop("value", value.getValue());
+			close();
+		}
+	}
+
+	protected void composeBoolean(String name, Boolean value) throws Exception {
+		if (value != null) {
+			open(name);
+			composeTypeAttributes(value);
+			prop("value", value.toString());
+			close();
+		}
+	}
+
+	protected void composeBooleanSimple(String name, Boolean value) throws Exception {
+		if (value != null) {
+			prop("value", value.toString());
+		}
+	}
+
+	protected void composeBoolean(String name, java.lang.Boolean value) throws Exception {
+		if (value != null) {
+			open(name);
+			prop("value", value.toString());
+			close();
+		}
+	}
+
+	protected void composeInstant(String name, Instant value) throws Exception {
+		if (value != null) {
+			open(name);
+			composeTypeAttributes(value);
+			prop("value", dateToXml(value.getValue()));
+			close();
+		}
+	}
+
+	protected void composeInteger(String name, Integer value) throws Exception {
+		if (value != null) {
+			open(name);
+			composeTypeAttributes(value);
+			prop("value", java.lang.Integer.toString(value.getValue()));
+			close();
+		}
+	}
+
+	protected void composeDate(String name, java.util.Calendar value) throws Exception {
+		if (value != null) {
+			prop(name, dateToXml(value));
+		}
+	}
+
+	protected void composeDate(String name, Date value) throws Exception {
+		if (value != null) {
+			open(name);
+			composeTypeAttributes(value);
+			prop("value", value.getValue());
+			close();
+		}
+	}
+
+	protected void composeDateSimple(String name, Date value) throws Exception {
+		if (value != null) {
+			prop(name, value.getValue());
+		}
+	}
+
+	protected void composeDateSimple(String name, Instant value) throws Exception {
+		if (value != null) {
+			composeDate(name, value.getValue());
+		}
+	}
+
+	protected void composeDateTime(String name, DateTime value) throws Exception {
+		if (value != null) {
+			open(name);
+			composeTypeAttributes(value);
+			prop("value", value.getValue());
+			close();
+		}
+	}
+
+	protected void composeDateTimeSimple(String name, DateTime value) throws Exception {
+		if (value != null) {
+			prop(name, value.getValue());
+		}
+	}
+
+	protected void open(String name) throws Exception {
+		if (name != null) 
+			json.key(name);
+		json.object();
+	}
+
+	protected void close() throws Exception {
+		json.endObject();
+	}
+
+	protected void openArray(String name) throws Exception {
+		if (name != null) 
+			json.key(name);
+		json.array();
+	}
+
+	protected void closeArray() throws Exception {
+		json.endArray();
+	}
+
 }

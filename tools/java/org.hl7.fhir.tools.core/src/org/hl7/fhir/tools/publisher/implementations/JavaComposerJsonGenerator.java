@@ -74,7 +74,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     start(version, genDate);
     
     for (ElementDefn n : definitions.getInfrastructure().values()) {
-      generate(n, false, false, true);
+      generate(n, false, false);
     }
     
     for (ElementDefn n : definitions.getTypes().values()) {
@@ -83,7 +83,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
         for (TypeRef td : definitions.getKnownTypes()) {
           if (td.getName().equals(n.getName()) && td.hasParams()) {
             for (String pt : td.getParams()) {
-              genGeneric(n, n.getName()+"<"+upFirst(pt)+">", pt, false);
+              genGeneric(n, n.getName()+"<"+upFirst(pt)+">", pt);
               regt.append("    else if (type instanceof "+n.getName()+" && (("+n.getName()+"<Ordered>) type).getType().equals(\""+upFirst(pt)+"\"))\r\n");
               regt.append("      compose"+n.getName()+"_"+upFirst(pt)+"(prefix+\""+n.getName()+"_"+upFirst(pt)+"\", ("+n.getName()+"<"+upFirst(pt)+">) type);\r\n");
 //              regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"_"+upFirst(pt)+"\"))\r\n      return true;\r\n");
@@ -91,25 +91,25 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
           }
         }
       } else {
-        generate(n, true, false, false);
+        generate(n, true, false);
         regt.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
 //        regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
       }
     }
 
     for (DefinedCode n : definitions.getConstraints().values()) {
-      generateConstraint(n, true, false, false);
+      generateConstraint(n, true, false);
       regt.append("    else if (type instanceof "+n.getCode()+")\r\n       compose"+n.getCode()+"(prefix+\""+n.getCode()+"\", ("+n.getCode()+") type);\r\n");
 //      regn.append("    if (xpp.getName().equals(prefix+\""+n.getCode()+"\"))\r\n      return true;\r\n");
     }
     for (ElementDefn n : definitions.getStructures().values()) {
-      generate(n, true, false, false);
+      generate(n, true, false);
       regt.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
 //      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }
     
     for (ResourceDefn n : definitions.getResources().values()) {
-      generate(n.getRoot(), false, true, true);
+      generate(n.getRoot(), false, true);
       String nn = javaClassName(n.getName());
       reg.append("    else if (resource instanceof "+nn+")\r\n      compose"+nn+"(\""+n.getName()+"\", ("+nn+")resource);\r\n");
 //      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
@@ -156,7 +156,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     write("\r\n");
   }
 
-  private void genGeneric(ElementDefn n, String tn, String pt, boolean listsAreWrapped) throws Exception {
+  private void genGeneric(ElementDefn n, String tn, String pt) throws Exception {
     typeNames.clear();
     typeNameStrings.clear();
     enums.clear();
@@ -170,15 +170,15 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
 //    write("  protected "+tn+" parse"+tn.replace("<", "_").replace(">", "")+"(XmlPullParser xpp) throws Exception {\r\n");
     context = n.getName();
 
-    genInner(n, true, false, listsAreWrapped);
+    genInner(n, true, false);
     
     for (ElementDefn e : strucs) {
-      genInner(e, true, false, listsAreWrapped);
+      genInner(e, true, false);
     }
 
   }
 
-  private void generate(ElementDefn n, boolean hasDataAbsentReason, boolean contentsHaveDataAbsentReason, boolean listsAreWrapped) throws Exception {
+  private void generate(ElementDefn n, boolean hasId, boolean contentsHaveId) throws Exception {
     typeNames.clear();
     typeNameStrings.clear();
     enums.clear();
@@ -190,15 +190,15 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     }
     context = nn;
 
-    genInner(n, hasDataAbsentReason, contentsHaveDataAbsentReason, listsAreWrapped);
+    genInner(n, hasId, contentsHaveId);
     
     for (ElementDefn e : strucs) {
-      genInner(e, hasDataAbsentReason, contentsHaveDataAbsentReason, listsAreWrapped);
+      genInner(e, hasId, contentsHaveId);
     }
 
   }
 
-  private void generateConstraint(DefinedCode cd, boolean hasDataAbsentReason, boolean contentsHaveDataAbsentReason, boolean listsAreWrapped) throws Exception {
+  private void generateConstraint(DefinedCode cd, boolean hasId, boolean contentsHaveId) throws Exception {
     typeNames.clear();
     typeNameStrings.clear();
     enums.clear();
@@ -212,26 +212,26 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
         scanNestedTypes(n, n.getName(), e);
     }
 
-    genInner(n, hasDataAbsentReason, contentsHaveDataAbsentReason, listsAreWrapped);
+    genInner(n, hasId, contentsHaveId);
     
     for (ElementDefn e : strucs) {
-      genInner(e, hasDataAbsentReason, contentsHaveDataAbsentReason, listsAreWrapped);
+      genInner(e, hasId, contentsHaveId);
     }
 
   }
 
-  private void genInner(ElementDefn n, boolean hasDataAbsentReason, boolean contentsHaveDataAbsentReason, boolean listsAreWrapped) throws IOException, Exception {
+  private void genInner(ElementDefn n, boolean hasId, boolean contentsHaveId) throws IOException, Exception {
     String tn = typeNames.containsKey(n) ? typeNames.get(n) : javaClassName(n.getName());
     
     write("  private void compose"+upFirst(tn).replace(".", "").replace("<", "_").replace(">", "")+"(String name, "+tn+" element) throws Exception {\r\n");
     write("    if (element != null) {\r\n");
     write("      open(name);\r\n");
-    if (hasDataAbsentReason && !tn.contains("."))
+    if (hasId && !tn.contains("."))
       write("      composeTypeAttributes(element);\r\n");
     else
       write("      composeElementAttributes(element);\r\n");
     for (ElementDefn e : n.getElements()) 
-      genElement(n, e, contentsHaveDataAbsentReason, listsAreWrapped);
+      genElement(n, e, contentsHaveId);
     write("      close();\r\n");
     write("    }\r\n");    
     write("  }\r\n\r\n");    
@@ -245,7 +245,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     return tn.substring(tn.indexOf('.')+1);
   }
 
-  private void genElement(ElementDefn root, ElementDefn e, boolean contentsHaveDataAbsentReason, boolean listsAreWrapped) throws Exception {
+  private void genElement(ElementDefn root, ElementDefn e, boolean contentsHaveId) throws Exception {
     String name = e.getName();
     if (name.endsWith("[x]") || name.equals("[type]")) {
       String en = name.endsWith("[x]") ? name.replace("[x]", "") : "value";
@@ -255,7 +255,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
       String comp = null;
       String en = null;
       BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
-      String tn = typeName(root, e, !contentsHaveDataAbsentReason, false);
+      String tn = typeName(root, e, !contentsHaveId, false);
       if (e.typeCode().equals("code") && cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
         en = typeNames.get(e); // getCodeListType(cd.getBinding());
         comp = null;
@@ -283,9 +283,11 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
         } else
           comp = "compose"+upFirst(leaf(tn)).replace(".", "");
       }
+      if (!contentsHaveId && typeIsSimple(e)) 
+        comp = comp+"Simple";
       
       if (name.equals("extension")) {
-        String s = contentsHaveDataAbsentReason ? "Extensions" : "Extension"; 
+        String s = contentsHaveId ? "Extensions" : "Extension"; 
         write("      if (element.get"+s+"().size() > 0) {\r\n");
         write("        openArray(\"extension\");\r\n");
         write("        for (Extension e : element.get"+s+"()) \r\n");
@@ -293,7 +295,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
         write("        closeArray();\r\n");
         write("      };\r\n");
       } else if (e.unbounded()) {
-        tn = typeName(root, e, !contentsHaveDataAbsentReason, true);
+        tn = typeName(root, e, false, true);
         if (tn.contains("Resource(")) {
           comp = "composeResourceReference";
           tn = "ResourceReference";
@@ -327,29 +329,38 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     return tn.substring(0, i)+"_"+upFirst(tn.substring(i+1).replace(")", ""));
   }
 
+  private boolean typeIsSimple(ElementDefn e) {
+    String t = e.typeCode();
+    return definitions.getPrimitives().containsKey(t);
+  }
+
   private String typeName(ElementDefn root, ElementDefn elem, boolean usePrimitive, boolean formal) throws Exception {
     String t = elem.typeCode();
     if (usePrimitive && definitions.getPrimitives().containsKey(t)) {
-//      if (t.equals("boolean"))
-//        return formal ? "boolean" : "java.lang.Boolean";
-//      else if (t.equals("integer"))
-//        return "int";
-//      else if (t.equals("decimal"))
-//        return formal ? "BigDecimal" : "BigDecimal";
-//      else if (t.equals("base64Binary"))
-//        return formal ? "byte[]" : "bytes";
-//      else if (t.equals("instant"))
-//        return formal ? "java.util.Calendar" : "Date";
-//      else if (t.equals("uri"))
-//        return formal ? "java.net.URI" : "Uri";
-//      else 
-//        return "String";
-      if (t.equals("idref"))
+      if (t.equals("boolean"))
+        return formal ? "boolean" : "java.lang.Boolean";
+      else if (t.equals("integer"))
+        return "int";
+      else if (t.equals("decimal"))
+        return formal ? "BigDecimal" : "BigDecimal";
+      else if (t.equals("base64Binary"))
+        return formal ? "byte[]" : "bytes";
+      else if (t.equals("instant"))
+        return formal ? "java.util.Calendar" : "Date";
+      else if (t.equals("uri"))
+        return formal ? "java.net.URI" : "Uri";
+      else if (t.equals("dateTime"))
+        return "DateTime";
+      else if (t.equals("date"))
+        return "Date";
+      else 
         return "String";
-      else if (t.equals("string"))
-        return "String_";
-      else
-        return upFirst(t);
+//      if (t.equals("idref"))
+//        return "String";
+//      else if (t.equals("string"))
+//        return "String_";
+//      else
+//        return upFirst(t);
     } else if (elem.usesCompositeType()) { 
       if (typeNames.containsKey(elem) && typeNames.get(elem) != null)
         return typeNames.get(elem);
