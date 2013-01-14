@@ -7,4 +7,8 @@ public class EFhirClientException extends Exception {
 		super(string);
 	}
 
+	public EFhirClientException(Exception e) {
+		super(e);
+	}
+
 }

@@ -131,6 +131,13 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			}
 		}
 
+		if (clss == JavaGenClass.Resource) {
+		  write("  @Override\r\n");
+		  write("  public ResourceType getResourceType() {\r\n");
+		  write("    return ResourceType."+root.getName()+";\r\n");
+		  write("   }\r\n");
+		  write("\r\n"); 
+		}
 		write("\r\n");
 		write("}\r\n");
 		write("\r\n");

@@ -1,5 +1,6 @@
 package org.hl7.fhir.instance.client;
 
+import java.net.URI;
 import java.util.HashMap;
 
 import org.hl7.fhir.instance.model.Resource;
@@ -12,7 +13,7 @@ public class FHIRClientManager {
 	public void RegisterServer(String baseUrl, FHIRClient server) throws EFhirClientException {
 		if (servers.containsKey(baseUrl))
 			throw new EFhirClientException("Duplicate Server Id");
-		servers.add(baseUrl, server);
+		servers.put(baseUrl, server);
 	}
 	
 	public FHIRClient resolveServer(ResourceReference ref) {
@@ -21,6 +22,11 @@ public class FHIRClientManager {
 	}
 	
 	public Resource getResource(ResourceReference ref) {
+		return null;
+		// todo		
+	}
+
+	public Resource getResource(URI ref) {
 		return null;
 		// todo		
 	}

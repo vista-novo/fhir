@@ -26,13 +26,13 @@ public interface FHIRClient {
 	public Resource vread(ResourceType type, String id, String versionid) throws EFhirClientException; 
 	
     // Update an existing resource by its id (or create it if it is new)
-	public void update(ResourceType type, String id, Resource resource) throws EFhirClientException;
+	public Resource update(String id, Resource resource) throws EFhirClientException;
 	
 	// Delete a resource
 	public void delete(ResourceType type, String id) throws EFhirClientException; 
 
-	// Create a new resource with a server assigned id
-	public String create(ResourceType type, Resource resource) throws EFhirClientException;
+	// Create a new resource with a server assigned id. return the id the server assigned
+	public String create(Resource resource) throws EFhirClientException;
 	
 	// Retrieve the update history for a resource, for a resource type, for all resources. LastUpdate can be null for all of these
 	public AtomFeed history(Calendar lastUpdate, ResourceType type, String id) throws EFhirClientException;

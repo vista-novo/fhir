@@ -30,7 +30,7 @@ POSSIBILITY OF SUCH DAMAGE.
 
 import java.util.*;
 
-public class Resource extends Element {
+public abstract class Resource extends Element {
 	
 	/**
 	 * Extensions
@@ -54,5 +54,5 @@ public class Resource extends Element {
 		return extensions;
 	}
 	
-	
+	public abstract ResourceType getResourceType();
 }

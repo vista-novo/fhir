@@ -30,9 +30,12 @@ POSSIBILITY OF SUCH DAMAGE.
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -98,6 +101,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
 
     JavaFactoryGenerator jFactoryGen = new JavaFactoryGenerator(new FileOutputStream(javaDir+"ResourceFactory.java"));
     
+    generateResourceTypeEnum();
     for (String n : definitions.getResources().keySet()) {
       ResourceDefn root = definitions.getResourceByName(n); 
       JavaResourceGenerator jrg = new JavaResourceGenerator(new FileOutputStream(javaDir+javaClassName(root.getName())+".java"));
@@ -106,6 +110,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
       jFactoryGen.registerResource(n,  root.getName());
     }
 
+    generateResourceTypeEnum();
     for (ResourceDefn resource : definitions.getFutureResources().values()) {
       ElementDefn e = new ElementDefn();
       e.setName(resource.getName());
@@ -172,6 +177,30 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     jComposerGen.close();
     jParserGen.close();
     jFactoryGen.close();
+  }
+
+  private void generateResourceTypeEnum() throws Exception {
+
+    OutputStreamWriter output = new OutputStreamWriter(new FileOutputStream(javaDir+"ResourceType.java")); 
+    output.write("package org.hl7.fhir.instance.model;\r\n");
+    output.write("\r\n");
+    output.write("public enum ResourceType {\r\n");
+    boolean first = true;
+    for (String n : definitions.getResources().keySet()) {
+      if (!first)
+        output.write(",\r\n");
+      output.write("    "+n);
+      first = false;
+    }
+
+    for (String n : definitions.getFutureResources().keySet()) {
+      output.write(",\r\n    "+n);
+    }
+    output.write(";\r\n");
+    output.write("\r\n");
+    output.write("}\r\n");
+    output.close();
+
   }
 
   private String javaClassName(String name) {
