@@ -100,7 +100,7 @@ namespace HL7.Fhir.Instance.Model
             if (TryParse(value, out result))
                 return result;
             else
-                throw new FhirValueFormatException("Not an correctly formatted dateTime value");
+                throw new FhirValueFormatException("Not a correctly formatted dateTime value");
         }
 
         public override string ValidateData()
