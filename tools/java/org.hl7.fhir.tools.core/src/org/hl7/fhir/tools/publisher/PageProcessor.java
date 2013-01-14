@@ -599,11 +599,19 @@ public class PageProcessor implements Logger  {
       throw new Exception("Unable to find code list '"+mode+"'");
     if (bs.getCodes().size() == 0)
       throw new Exception("Code list '"+mode+"' is empty/not defined");
+    boolean hasComments = false;
+    for (DefinedCode c : bs.getCodes())
+      hasComments = hasComments || c.hasComment();
+    
     StringBuilder b = new StringBuilder();
     b.append("<h3>"+bs.getDescription()+"</h3>\r\n");
     b.append("<table class=\"codes\">\r\n");
-    for (DefinedCode c : bs.getCodes())
-        b.append(" <tr><td>"+c.getCode()+"</td><td>"+c.getDefinition()+"</td></tr>\r\n");
+    for (DefinedCode c : bs.getCodes()) {
+      if (hasComments)
+        b.append(" <tr><td>"+c.getCode()+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td><td>"+Utilities.escapeXml(c.getComment())+"</td></tr>\r\n");
+      else
+        b.append(" <tr><td>"+c.getCode()+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>\r\n");
+    }
     b.append("</table>\r\n");
     return b.toString();
   }
