@@ -364,7 +364,13 @@ public class SourceParser {
 
 		SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(
 				spreadsheet), spreadsheet.getName(), definitions, src, logger);
-		ResourceDefn root = sparser.parseResource();
+		ResourceDefn root;
+		try {
+		  root = sparser.parseResource();
+		} catch (Exception e) {
+		  throw new Exception("Error Parsing Resource "+n+": "+e.getMessage(), e);
+		}
+
 		root.setSandbox(sandbox);
 		for (EventDefn e : sparser.getEvents())
 			processEvent(e, root.getRoot());

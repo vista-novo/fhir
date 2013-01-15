@@ -208,13 +208,13 @@ public class SpreadsheetParser {
 	
 	
 	public ResourceDefn parseResource() throws Exception {
-		isProfile = false;
-		ResourceDefn root = parseCommonTypeColumns();
+	  isProfile = false;
+	  ResourceDefn root = parseCommonTypeColumns();
 
-		readEvents(xls.getSheets().get("Events"));
-		readExamples(root, xls.getSheets().get("Examples"));
-    readSearchParams(root, xls.getSheets().get("Search"));
-    readProfiles(root, xls.getSheets().get("Profiles"));
+	  readEvents(xls.getSheets().get("Events"));
+	  readExamples(root, xls.getSheets().get("Examples"));
+	  readSearchParams(root, xls.getSheets().get("Search"));
+	  readProfiles(root, xls.getSheets().get("Profiles"));
 
 		return root;
 	}
