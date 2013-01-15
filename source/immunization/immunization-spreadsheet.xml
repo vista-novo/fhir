@@ -9,6 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
+  <LastSaved>2013-01-15T19:24:46Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -148,7 +149,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">An administered immunization</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
-    <Cell ss:Index="13" ss:StyleID="Default"/>
+    <Cell ss:Index="13" ss:StyleID="Default"><Data ss:Type="String">SubstanceAdministration</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
@@ -163,7 +164,7 @@
     <Cell><Data ss:Type="String">Who this immunization was adminstered to</Data></Cell>
     <Cell ss:StyleID="s112"/>
     <Cell ss:Index="11" ss:StyleID="Default"/>
-    <Cell ss:Index="13" ss:StyleID="Default"/>
+    <Cell ss:Index="13" ss:StyleID="Default"><Data ss:Type="String">.partipication[ttypeCode=].role</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
@@ -244,7 +245,7 @@
     <Cell ss:Index="13" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:Index="17" ss:StyleID="s112"><Data ss:Type="String">ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/consumable/manfacturedProduct/manufacuturerOrganization/nama</Data></Cell>
+    <Cell ss:Index="17" ss:StyleID="s112"><Data ss:Type="String">ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/consumable/manfacturedProduct/manufacuturerOrganization/name</Data></Cell>
     <Cell ss:StyleID="s112"><Data ss:Type="String">Drug Manufacturer, Section 13.08</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -500,6 +501,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>2</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
