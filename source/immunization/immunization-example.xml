@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Immunization xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\immunization.xsd">
+
+  <subject>
+    <type>Patient</type>
+    <id>a23</id>
+  </subject>
+  <type>
+    <coding>
+      <system>http://medicare.gov.au/vaccines</system>
+      <code>AAD</code>
+    </coding>
+  </type>
+  <date>2013-01-10</date>
+  <reported>false</reported>
+  <doseSequence>2</doseSequence>
+  <refusal>
+    <date>2013-01-10</date>
+    <reason>
+      <text>slightly ill. Parent didn't believe that this was a good idea this week. Try again next week.</text>
+    </reason>
+  </refusal>
+  <text>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">Authored on 8-Nov 2011 by Grahame Grieve. Content extracted from ISO-21090</div>
+  </text>
+</Immunization>
