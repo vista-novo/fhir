@@ -128,8 +128,8 @@ that do not require URL parameters, but these may be used if necessary.
 </p>
 <h2>HTTP Status Codes</h2>
 <p>
-This specification makes some rules about the use of specific HTTP status codes 
-in some particular circumstances where the status codes must map to particular 
+This specification makes rules about the use of specific HTTP status codes 
+in particular circumstances where the status codes must map to particular 
 states correctly, and only where the correct status code is not obvious. 
 Other HTTP status codes may be used for other states as appropriate.
 Note that some security layers may issue redirects which should not be interpreted
@@ -261,7 +261,7 @@ deletion the server should return 204 (No Content). If the server refuses to del
 that type on principle, then it should return the status code 
 405 method not allowed. If the server refuses to delete a resource because of reasons specific 
 to that resource, such as referential integrity, it should return the status code 409 Conflict.
-If the resource cannot be deleted because it does not existe on the server, the server must return 404 (Not found).
+If the resource cannot be deleted because it does not exist on the server, the server must return 404 (Not found).
 Performing this operation on a resource that is already deleted has no effect, and should return 204.
 Resources may be undeleted by PUTting an update to them subsequent to the deletion. 
 </p>
@@ -433,7 +433,7 @@ The updates list can be restricted to a limited period by specifying a $last par
 This only includes resources that have changed at or after the given date. Servers must ensure that if a client uses the feed.updated 
 date from the last response as the value of the $last parameter, it will not miss any updates. Clients should be aware that 
 due to timing imprecision, they may receive notifications of a resource update on the boundary instant more than once. Servers are 
-not required to support a a precision finer than by second. Additional parameters can be used to filter the updates list using the search parameters defined by the resource type.
+not required to support a precision finer than by second. Additional parameters can be used to filter the updates list using the search parameters defined by the resource type.
 </p>
 
 <a name="validate"> </a>

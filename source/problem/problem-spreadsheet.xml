@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:15:30Z</Created>
-  <LastSaved>2012-09-16T18:21:40Z</LastSaved>
+  <LastSaved>2013-01-15T03:04:43Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,6 @@
   <WindowWidth>9570</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6195</WindowTopY>
-  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -67,7 +66,7 @@
   <Style ss:ID="s68">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s115">
+  <Style ss:ID="s69">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders>
@@ -77,12 +76,12 @@
     ss:Bold="1"/>
    <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s124">
+  <Style ss:ID="s70">
    <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="24" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="27" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="197.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="1"/>
@@ -121,11 +120,36 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String"> detailed information about problems or diagnoses</Data></Cell>
     <Cell><Data ss:Type="String">Use to record detailed information about problems or diagnoses recognised by a clinician. There are many uses including: recording a Diagnosis during an Encounter; populating a Problem List or a Summary Statement, such as a Discharge Summary</Data></Cell>
+    <Cell ss:Index="14"><Data ss:Type="String">* Age is questionable, you might well need a range of Age or even (in practice)&#10;&#10;a text like &quot;in their teens&quot;. =&gt; new ballot comment.&#10;&#10;* Todo: discuss the applicability of assessing stages&#10;&#10;* Change the description: it is circular</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="90">
+    <Cell><Data ss:Type="String">Problem.subject</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Patient)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Subject of this problem</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="90">
+    <Cell><Data ss:Type="String">Problem.encounter</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Encounter)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Encounter during which the problem was first asserted</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="90">
+    <Cell><Data ss:Type="String">Problem.asserter</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Agent/Patient)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Person who asserts this problem</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">Problem.dateAsserted</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">date</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">when the first detected/suspected/entered</Data></Cell>
+    <Cell><Data ss:Type="String">Estimated or actual date the problem/diagnosis was first detected/suspected</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Problem.code</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">ProblemDiaganosisCode</Data></Cell>
     <Cell><Data ss:Type="String">Identification of the problem or diagnosis</Data></Cell>
@@ -134,6 +158,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Problem.category</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">ProblemCategory</Data></Cell>
     <Cell><Data ss:Type="String">E.g. finding | problem | diagnosis | concern</Data></Cell>
@@ -175,13 +200,6 @@
     <Cell ss:Index="8"><Data ss:Type="String">estimated or actual date, or age</Data></Cell>
     <Cell><Data ss:Type="String">Estimated or actual date the problem/diagnosis began, in the opinion of the clinician</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Age is generally used when the patient reports an age at which the problem began to occur</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Problem.dateFound</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">date</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">when the first detected/suspect/entered</Data></Cell>
-    <Cell><Data ss:Type="String">Estimated or actual date the problem/diagnosis was first detected/suspected</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">Problem.abatement[x]</Data></Cell>
@@ -231,7 +249,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Problem.evidence.details</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource(Any)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">supporting information found elsewhere</Data></Cell>
@@ -239,7 +257,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Problem.location</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">up</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">anatomical location, if relevant</Data></Cell>
     <Cell><Data ss:Type="String">The anatomical location where this problem/diagnosis manifests itself</Data></Cell>
@@ -305,11 +323,17 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-3</HorizontalResolution>
+    <VerticalResolution>-3</VerticalResolution>
+   </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>3</ActiveCol>
-     <RangeSelection>C4</RangeSelection>
+     <ActiveRow>2</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -451,7 +475,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">onset</Data></Cell>
-    <Cell><Data ss:Type="String">when the problem started</Data></Cell>
+    <Cell><Data ss:Type="String">when the problem started (if started on a date)</Data></Cell>
     <Cell><Data ss:Type="String">date</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
    </Row>
@@ -484,8 +508,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>6</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -499,25 +522,25 @@
    <Column ss:AutoFitWidth="0" ss:Width="146.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="55.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="143.25"/>
-   <Row ss:Height="30">
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Name</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Description</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Identity</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Filename</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">In Book</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Name</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Identity</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Filename</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Type</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">In Book</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">General</Data></Cell>
     <Cell><Data ss:Type="String">General Problem Example</Data></Cell>
-    <Cell ss:StyleID="s124"><Data ss:Type="String">example</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">example</Data></Cell>
     <Cell><Data ss:Type="String">problem-example.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">2nd Case</Data></Cell>
     <Cell><Data ss:Type="String">2nd Example</Data></Cell>
-    <Cell ss:StyleID="s124"><Data ss:Type="String">example2</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">example2</Data></Cell>
     <Cell><Data ss:Type="String">problem-example2.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
    </Row>
@@ -528,7 +551,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Selected/>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>

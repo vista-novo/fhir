@@ -16,7 +16,7 @@ and multipleBirthInd (SubjectofCare).
 
 Ballot note: The Person resource is the minimal set of information to carry about a person 
 regardless of their role: the type of activity that a person is playing (patient, next of kin, provider, 
-employees etc). As such is it is suitable for Person registries that keep track of Persons regardless 
+employee, etc.). As such is it is suitable for Person registries that keep track of Persons regardless 
 of their role. The Person resource is referred to for person details for a variety of resources 
 that represent a particular role, such as SubjectofCare (a.k.a Patient), Provider, and Agent (a
 person acting on behalf of an organisation). Very few attributes are common to any role and

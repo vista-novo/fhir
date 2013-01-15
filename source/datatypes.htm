@@ -319,7 +319,7 @@ the meaning of the code by an application that is not aware of the <i>system</i>
 </p>
 <p>
 In some cases, the <i>system</i> may not be known - only the code is known. 
-In this case, no useful processing of the code may be performed 
+In this case, no useful processing of the code may be performed unless
 the system can be safely inferred by the context. 
 This practice should be avoided where possible in order to future-proof implementations, as 
 information sharing in a wider context is very likely to arise eventually, and codes cannot
@@ -431,7 +431,7 @@ in the definitions of the underlying codes. The ordering of Codings within a Cod
 <p>
 Whether or not <i>coding</i> elements are present, the <i>text</i> 
 is a human language representation of the concept as seen/selected/uttered by the user 
-who entered the data, and/or which represents the intended meaning of the user or concept. 
+who entered the data, and/or that represents the intended meaning of the user or concept. 
 Very often the <i>text</i> is the same as a <i>display</i> of one of the codings. One of the codings 
 may be flagged as the primary - the code that the user actually chose directly. 
 If present, the value of the primary element is an <a href="xml.htm#id">xml:id</a> that must match 
@@ -907,7 +907,7 @@ between family name and given names depends on culture and context of use.
 <ul>
  <li>HumanName.text = vCard "FN" field</li>
  <li>HumanName.use = use of the vCard "TYPE" parameter</li>
- <li>HumanName.family, .given, .prefix, .suffix = parts of vCard "N" field. Note that there is no FHIR equivalent for the poorly defined "additional" name field. In FHIR, given names in "middle" names.</li>
+ <li>HumanName.family, .given, .prefix, .suffix = parts of vCard "N" field. Note that there is no FHIR equivalent for the poorly defined "additional" name field. In FHIR, given names go in "middle" names.</li>
  <li>The vCard nickname corresponds to a name with the use "nickname"</li>
 </ul>
 </div>

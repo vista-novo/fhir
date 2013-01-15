@@ -18,7 +18,7 @@ Notes:
  </li>
  <li>Messaging conformance rules:
   <ul class="dense">
-   <li>The interpretation of request and resource depends on the mode. If the mode is sender, 
+   <li>The interpretation of request and response depends on the mode. If the mode is sender, 
    then request specifies what the application sends, and response specifies what it accepts. 
    If the mode is "receiver", then this is reversed</li>
    <li>If a request or response is not specified for an event, then no rules are made for it</li>

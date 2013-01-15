@@ -305,7 +305,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">DocumentAttestationMode</Data></Cell>
-    <Cell><Data ss:Type="String">Personal | professional | legal | official</Data></Cell>
+    <Cell><Data ss:Type="String">personal | professional | legal | official</Data></Cell>
     <Cell><Data ss:Type="String">The type of attestation the authenticator offers</Data></Cell>
     <Cell><Data ss:Type="String">Indicates the level of officialness of the attestation.</Data></Cell>
     <Cell ss:StyleID="Default"/>

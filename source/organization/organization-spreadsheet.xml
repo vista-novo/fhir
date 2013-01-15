@@ -201,7 +201,7 @@
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Formal certifications that convey authority</Data></Cell>
     <Cell><Data ss:Type="String">The qualifications/certifications an organization has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles the organization may play in a healthcare environment</Data></Cell>
-    <Cell><Data ss:Type="String">For many organizations in healthcare, it is necessary to track the qualifications an organization has - formal.</Data></Cell>
+    <Cell><Data ss:Type="String">For many organizations in healthcare, it is necessary to track the qualifications an organization has</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">.plays[Role](classCode='QUAL')</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">1) Not sure if qualified &amp; accredited are the same.  2) Could potentially propose a new classCode. We wonder if Accreditation is in the 80%. Accreditation is not part of the current PA domain, it was in Personnel Management but this has been retracted. The PM version also had many more attributes, so is this Accreditation good enough? We (current participants) do not use it. We decide to keep it, to see what happens in ballot </Data></Cell>
    </Row>
@@ -347,12 +347,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>7</TopRowVisible>
+   <TopRowVisible>5</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>14</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

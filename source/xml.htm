@@ -24,7 +24,7 @@ A resource is an entity that:
  <li>Has a known identity by which it can be addressed</li>
  <li>identifies itself as one of the resource types defined in this specification</li>
  <li>contains a set of structured data items as described by the resource definition</li>
- <li>contains an human readable XHTML representation of the content of the resource</li>
+ <li>contains a human readable XHTML representation of the content of the resource</li>
  <li>may change over time</li>
 </ul>
 <p>
@@ -103,7 +103,7 @@ content, but are delegated to the infrastructure:
 <table class="grid">
   <tr><th>Metadata Item</th><th>Type</th><th>Usage</th></tr>
   <tr><td>Logical Id</td> <td><a href="datatypes.htm#id">id</a></td> <td>The identity of the resource. 
-    Resources always have a known identity except in the case where a new resource is being submitted to a server to assign a resource to it. Resource identification is <a href="#Resource">discussed further below</a></td></tr>
+    Resources always have a known identity except in the case where a new resource is being submitted to a server that is expected to assign an identity to it. Resource identification is <a href="#Resource">discussed further below</a></td></tr>
   <tr><td>Version Id</td><td><a href="datatypes.htm#id">id</a></td><td>Changed each time the content of the resource changes. Can be referenced in a resource reference (<a href="#Resource">see below</a>). Can be used to ensure that updates are based on the latest version of the resource. 
   <br/>The version can be globally unique, or scoped by the Logical Id. Since version ids must be unique, they are generally either a serially incrementing id scoped by the logical id, or a uuid, though neither of these approaches is required</td></tr>
   <tr><td>Last Modified Date</td><td><a href="datatypes.htm#dateTime">dateTime</a></td><td>Changed each time the content of the resource changes. Can be used by a system or a human to judge the currency of the resource content.</td></tr>
@@ -376,7 +376,7 @@ declare whether they will do so in their conformance statements using the<span l
 </p>
 <p>
 Note that the version of FHIR supported is a mandatory element in the
-applications conformance profile.
+applications' conformance profile.
 </p>
 
 <h2>XML Schema and Schematron</h2>

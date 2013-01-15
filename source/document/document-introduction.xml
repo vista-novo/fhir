@@ -13,7 +13,7 @@ to be conformant to "FHIR documents".
 <p>
 All documents have the same structure: a <a href="atom.htm">bundle</a> that has a <i>Document</i> resource (see below) 
 first, followed by a series of other resources referenced from the <i>Document</i> 
-header which provides guidance on how they fit together. The bundle gathers all the content
+header that provides guidance on how they fit together. The bundle gathers all the content
 of the document into a single XML document which may be signed and managed as required. The resources
 include both human and computer readable portions.
 </p>
@@ -29,7 +29,7 @@ may also be included in the bundle if the document originator chooses to.
 <a href="profile.htm">Document profiles</a> can make additional rules about which resources
 must be included in the bundle along with the resources that are directly referenced in the Document resource. 
 In addition, Document Profiles can specify what sections a document contains and what the 
-constraints on their contents are. Applications should consider publishing <a href="conformance.htm">conformance 
+constraints on those contents are. Applications should consider publishing <a href="conformance.htm">conformance 
 statements</a> that identify particular documents they support.
 </p>
 <a name="bundle"> </a>

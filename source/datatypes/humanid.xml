@@ -20,7 +20,6 @@
   <WindowWidth>25155</WindowWidth>
   <WindowTopX>3120</WindowTopX>
   <WindowTopY>3285</WindowTopY>
-  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -80,16 +79,16 @@
   <Style ss:ID="s69">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s86" ss:Parent="s62">
-   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+  <Style ss:ID="s72" ss:Parent="s62">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s125" ss:Parent="s62">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  <Style ss:ID="s73" ss:Parent="s62">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
    <Interior/>
@@ -181,7 +180,7 @@
     <Cell><Data ss:Type="String">HumanId.assigner</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource(Organization)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Organisation that issued id (maybe just text)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Organisation that issued id (may be just text)</Data></Cell>
     <Cell><Data ss:Type="String">Organisation that issued/manages the identifier</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">The reference may be just a text description of the assigner</Data></Cell>
    </Row>
@@ -199,11 +198,12 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -385,17 +385,17 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s125"><Data ss:Type="String">usual</Data></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">the identifier recommended for display and use in real-world interactions</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s72"><Data ss:Type="String">usual</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">the identifier recommended for display and use in real-world interactions</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s125"><Data ss:Type="String">official</Data></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">the identifier considered to be most trusted for the identification of this item</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s72"><Data ss:Type="String">official</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">the identifier considered to be most trusted for the identification of this item</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s125"><Data ss:Type="String">temp</Data></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">A temporary identifier</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s72"><Data ss:Type="String">temp</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">A temporary identifier</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -404,11 +404,10 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Selected/>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>13</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
