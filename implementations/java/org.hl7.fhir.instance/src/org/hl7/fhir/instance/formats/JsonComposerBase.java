@@ -333,14 +333,14 @@ public abstract class JsonComposerBase extends XmlBase {
 		if (value != null) {
 			open(name);
 			composeTypeAttributes(value);
-			prop("value", value.toString());
+			prop("value", java.lang.Boolean.toString(value.getValue()));
 			close();
 		}
 	}
 
 	protected void composeBooleanSimple(String name, Boolean value) throws Exception {
 		if (value != null) {
-			prop("value", value.toString());
+			prop("value", java.lang.Boolean.toString(value.getValue()));
 		}
 	}
 
