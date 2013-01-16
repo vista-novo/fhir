@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Agent xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/agent.xsd">
+<Provider xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/provider.xsd">
 
   <person>
     <type>Person</type>
@@ -36,6 +36,6 @@
       <p>Dr Adam Careful is a Referring Provider for Acme Hospital from 1-Jan 2012 to 31-Mar 2012</p>
     </div>
   </text>
-</Agent>
+</Provider>
 
 

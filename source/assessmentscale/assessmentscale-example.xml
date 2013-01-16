@@ -8,7 +8,7 @@ For simplicitly, this example uses BMI as the assessment scale
     <id>25bd34</id>
   </subject>
   <performer>
-    <type>Agent</type>
+    <type>Provider</type>
     <id>example</id>
   </performer>
   <time>2012-05-23T07:43:00</time>

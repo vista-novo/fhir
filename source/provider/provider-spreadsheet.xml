@@ -7,19 +7,19 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Hugh Glover</LastAuthor>
+  <LastAuthor>Ewout Kramer</LastAuthor>
   <Created>2012-03-19T11:25:18Z</Created>
-  <LastSaved>2012-12-01T00:17:05Z</LastSaved>
+  <LastSaved>2013-01-15T23:13:16Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>12330</WindowHeight>
-  <WindowWidth>25440</WindowWidth>
+  <WindowHeight>12336</WindowHeight>
+  <WindowWidth>23256</WindowWidth>
   <WindowTopX>480</WindowTopX>
-  <WindowTopY>90</WindowTopY>
+  <WindowTopY>96</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -70,13 +70,14 @@
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="12" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="33.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.60000000000002"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="33.6"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="33" ss:Span="1"/>
    <Column ss:Index="5" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="120"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="102"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.60000000000002"
+    ss:Span="1"/>
+   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.4"
     ss:Span="1"/>
    <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
@@ -97,7 +98,7 @@
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Agent</Data></Cell>
+    <Cell><Data ss:Type="String">Provider</Data></Cell>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
@@ -109,17 +110,17 @@
     <Cell><Data ss:Type="String">PRD (as one example)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Agent.person</Data></Cell>
+    <Cell><Data ss:Type="String">Provider.person</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">Resource(Person)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">The person who is the agent</Data></Cell>
-    <Cell><Data ss:Type="String">The person who acts as the agent</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">The person who is the provider</Data></Cell>
+    <Cell><Data ss:Type="String">The person who acts as the provider</Data></Cell>
     <Cell><Data ss:Type="String">Need to be able to track the person who represents the organisation separately</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">PRD-2</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Agent.organization</Data></Cell>
+    <Cell><Data ss:Type="String">Provider.organization</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">Resource(Organization)</Data></Cell>
@@ -129,27 +130,27 @@
     <Cell ss:Index="12"><Data ss:Type="String">PRD-10 (-&gt; 14)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Agent.role</Data></Cell>
+    <Cell><Data ss:Type="String">Provider.role</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">AgentRole</Data></Cell>
-    <Cell><Data ss:Type="String">A role the agent has</Data></Cell>
+    <Cell><Data ss:Type="String">ProviderRole</Data></Cell>
+    <Cell><Data ss:Type="String">A role the provider has</Data></Cell>
     <Cell><Data ss:Type="String">The way in which the person represents the organisation - what role do they have?</Data></Cell>
-    <Cell><Data ss:Type="String">Need to know what authority the agent has - what can they do?</Data></Cell>
-    <Cell><Data ss:Type="String">A person may have more than one role. At least one role is required - why have an agent who isn't actually an agent?</Data></Cell>
+    <Cell><Data ss:Type="String">Need to know what authority the provider has - what can they do?</Data></Cell>
+    <Cell><Data ss:Type="String">A person may have more than one role. At least one role is required - why have a provider who isn't actually an provider?</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">PRD-1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Agent.specialty</Data></Cell>
+    <Cell><Data ss:Type="String">Provider.specialty</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">AgentSpecialty</Data></Cell>
+    <Cell><Data ss:Type="String">ProviderSpecialty</Data></Cell>
     <Cell><Data ss:Type="String">Specific specialty associated with the agency</Data></Cell>
     <Cell><Data ss:Type="String">Represents a specific specialty within the healthcare facility under which the agent acts</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
-    <Cell><Data ss:Type="String">Agent.period</Data></Cell>
+    <Cell><Data ss:Type="String">Provider.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Period</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">The period for which this agency applies (date only)</Data></Cell>
@@ -158,7 +159,7 @@
     <Cell ss:Index="12"><Data ss:Type="String">PRD-8/9</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Agent.identifier</Data></Cell>
+    <Cell><Data ss:Type="String">Provider.identifier</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">HumanId</Data></Cell>
@@ -169,7 +170,7 @@
     <Cell ss:Index="12"><Data ss:Type="String">PRD-7</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Agent.address</Data></Cell>
+    <Cell><Data ss:Type="String">Provider.address</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Address</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">An address that applies for the person as this agent</Data></Cell>
@@ -179,7 +180,7 @@
     <Cell><Data ss:Type="String">What about place? (PRD-4)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="150">
-    <Cell><Data ss:Type="String">Agent.contact</Data></Cell>
+    <Cell><Data ss:Type="String">Provider.contact</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Contact</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">A contact that applies for the person as this agent</Data></Cell>
@@ -188,13 +189,13 @@
     <Cell ss:Index="12"><Data ss:Type="String">PRD-5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Agent.extension</Data></Cell>
+    <Cell><Data ss:Type="String">Provider.extension</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Extension</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">See Extensions</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Agent.text</Data></Cell>
+    <Cell><Data ss:Type="String">Provider.text</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Narrative</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Text summary of the agent, for human interpretation</Data></Cell>
@@ -208,11 +209,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <TopRowVisible>6</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>16</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -248,8 +250,8 @@
  <Worksheet ss:Name="Search">
   <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="94.5"/>
-   <Column ss:AutoFitWidth="0" ss:Width="408.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="94.8"/>
+   <Column ss:AutoFitWidth="0" ss:Width="408.59999999999997"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
@@ -291,11 +293,11 @@
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="72"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="235.5"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="52.5"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="84.75"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="120.75"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="222.75"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="235.79999999999998"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="52.8"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="84.600000000000009"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="120.60000000000001"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="222.60000000000002"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
@@ -305,12 +307,12 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">AgentRole</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">ProviderRole</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">The role a person plays representing an organization</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">AgentSpecialty</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">ProviderSpecialty</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Specific specialty associated with the agency</Data></Cell>
     <Cell><Data ss:Type="String">unbound</Data></Cell>
    </Row>
@@ -325,8 +327,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

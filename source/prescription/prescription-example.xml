@@ -25,7 +25,7 @@
   </patient>
 
   <prescriber>
-    <type>Agent</type>
+    <type>Provider</type>
     <id>example</id>
   </prescriber>
 

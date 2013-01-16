@@ -5,7 +5,7 @@
 Notes:
 </h2>
   <ul>
-    <li>Any person can represent the same organization in multiple different ways. This may be represented as a single agent resource with multiple role codes, or multiple agent resources. Which is correct depends on whether the combined roles share other attributes, such as identifiers and time periods.</li>
+    <li>Any person can represent the same organization in multiple different ways. This may be represented as a single provider resource with multiple role codes, or multiple provider resources. Which is correct depends on whether the combined roles share other attributes, such as identifiers and time periods.</li>
     <li>The person and organization references are mandatory, and so must be a full resource reference by identifier.</li>
   </ul>
 </div>

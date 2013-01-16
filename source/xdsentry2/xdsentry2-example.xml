@@ -81,7 +81,7 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
   </authenticator>
 
     <author>
-      <type>Agent</type>
+      <type>Provider</type>
       <id>xds-author-1</id>
     </author>
     <author>
@@ -96,7 +96,7 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
       </party>      
     </attester>-->
     <author>
-      <type>Agent</type>
+      <type>Provider</type>
       <id>example</id>
     </author>
     <event>

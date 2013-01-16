@@ -159,7 +159,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Agent|Person|Organization)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Provider|Person|Organization)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Who made the rResponse</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>

@@ -318,7 +318,7 @@
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Resource(Agent)</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Resource(Provider)</Data></Cell>
     <Cell ss:StyleID="s70"/>
     <Cell><Data ss:Type="String">Vaccine Ordering Provider Name</Data></Cell>
     <Cell ss:StyleID="s510"><Data ss:Type="String">Clinician who ordered the vaccine</Data></Cell>
@@ -334,7 +334,7 @@
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Resource(Agent)</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Resource(Provider)</Data></Cell>
     <Cell ss:StyleID="s70"/>
     <Cell><Data ss:Type="String">Vaccine Administering Provider Name</Data></Cell>
     <Cell ss:StyleID="s510"><Data ss:Type="String">Clinician that administered the vaccine</Data></Cell>

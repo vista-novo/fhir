@@ -137,7 +137,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Problem.asserter</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Agent|Patient)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Provider|Patient)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Person who asserts this problem</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">

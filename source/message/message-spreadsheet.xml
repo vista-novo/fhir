@@ -320,7 +320,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="195">
     <Cell><Data ss:Type="String">Message.enterer</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Resource(Agent)</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Resource(Provider)</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">The source of the data entry</Data></Cell>
     <Cell><Data ss:Type="String">The person or device that performed the data entry leading to this Message. Where there is more than one candidate, pick the most proximal to the Message. Can provide other enterers in extensions</Data></Cell>
     <Cell><Data ss:Type="String">Need to know for audit/traceback requirements and possibly for authorization.</Data></Cell>
@@ -331,7 +331,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="210">
     <Cell><Data ss:Type="String">Message.author</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Resource(Agent)</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Resource(Provider)</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">The source of the decision</Data></Cell>
     <Cell><Data ss:Type="String">The logical author of the message - the person or device that decided the described event should happen. Where there is more than one candidate, pick the most proximal to the Message. Can provide other authors in extensions</Data></Cell>
     <Cell><Data ss:Type="String">Need to know for audit/traceback requirements and possibly for authorization.</Data></Cell>
@@ -351,7 +351,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="405">
     <Cell><Data ss:Type="String">Message.responsible</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Resource(Agent|Organization)</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Resource(Provider|Organization)</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Final responsibility for event</Data></Cell>
     <Cell><Data ss:Type="String">The person or organization that accepts overall responsibility for the contents of the Message. The implication is that the message event happened under the policies of the responsible party</Data></Cell>
     <Cell><Data ss:Type="String">Need to know for audit/traceback requirements and possibly for authorization.</Data></Cell>

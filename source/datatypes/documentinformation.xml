@@ -206,7 +206,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Agent)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Provider)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">The source of the data entry</Data></Cell>
     <Cell><Data ss:Type="String">The person or device that performed the data entry leading to this document. Where there is more than one candidate, pick the most proximal to the document creation or capture on a per-section basis. </Data></Cell>
@@ -271,7 +271,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Person|Agent)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Person|Provider)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Who/what authored the final document</Data></Cell>
     <Cell><Data ss:Type="String">Identifies who is responsible for the information in the document.  (Not necessarily who typed it in.)</Data></Cell>
@@ -335,7 +335,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Person|Agent|Organization)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Person|Provider|Organization)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Who attested the document</Data></Cell>
     <Cell><Data ss:Type="String">Who attested the document in the specified way</Data></Cell>
@@ -351,7 +351,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Agent|Organization)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Provider|Organization)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Expected to receive a copy </Data></Cell>
     <Cell><Data ss:Type="String">Identifies the people and organisations for whom the document is intended</Data></Cell>

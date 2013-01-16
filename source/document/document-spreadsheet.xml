@@ -136,7 +136,7 @@
    <Row ss:Height="135">
     <Cell><Data ss:Type="String">!Document.enterer</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Agent)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Provider)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">The source of the data entry</Data></Cell>
     <Cell><Data ss:Type="String">The person or device that performed the data entry leading to this document. Where there is more than one candidate, pick the most proximal to the document creation or capture on a per-section basis. </Data></Cell>
     <Cell><Data ss:Type="String">Identifies who is responsible for the entry of the data.</Data></Cell>
@@ -203,7 +203,7 @@
    <Row ss:Height="135">
     <Cell><Data ss:Type="String">!Document.section.author</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Agent)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Provider)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Who/what authored the section</Data></Cell>
     <Cell><Data ss:Type="String">Identifies who is responsible for the information in the section.  (Not necessarily who typed it in.)</Data></Cell>
     <Cell><Data ss:Type="String">Identifies who is responsible for the content.</Data></Cell>
@@ -212,7 +212,7 @@
    <Row ss:Height="135">
     <Cell><Data ss:Type="String">!Document.section.enterer</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Agent)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Provider)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">The source of the data entry</Data></Cell>
     <Cell><Data ss:Type="String">The person or device that performed the data entry leading to this section. Where there is more than one candidate, pick the most proximal to the document creation. </Data></Cell>
     <Cell><Data ss:Type="String">Identifies who is responsible for the entry of the data.</Data></Cell>
