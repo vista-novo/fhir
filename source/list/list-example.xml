@@ -6,8 +6,8 @@
     to know this is to hunt down the place it is used 
     and find out -->
   <source>
-    <type>Person</type>
-    <id>grahame</id>
+    <type>Patient</type>
+    <id>example</id>
   </source>
   <date>2012-11-25T22:17:00+11:00</date>
   <entry>

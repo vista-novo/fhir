@@ -3,28 +3,11 @@
 
   <link>
     <type>Patient</type>
-    <id>a23</id>
+    <id>pat1</id>
   </link>
 
   <active>true</active>
-	
-  <subject>
-    <type>Person</type>
-    <id>pat2</id>
-    <display>Donald D Duck, Male, 3-April 1951</display>
-  </subject> 
-  <provider>
-    <type>Organization</type>
-    <id>1</id>  
-    <display>ACME Healthcare, Inc</display>
-  </provider> 
   <identifier>
-   <!--
-    <type>
-      <system>http://hl7.org/fhir/sid/v2-0203</system>
-      <code>MR</code>
-    </type>
--->
     <use>usual</use>
     <label>MRN</label>
     <identifier>
@@ -32,6 +15,26 @@
       <id>123456</id>
     </identifier>
   </identifier>
+
+  <details>
+    <name>
+      <use>official</use>
+       <family>Donald</family>
+       <given>Duck</given>
+       <given>D</given>
+    </name>
+    <gender>
+      <system>http://hl7.org/fhir/sid/v2-0001</system>
+      <code>M</code>
+      <display>Male</display>
+    </gender>
+  </details>
+
+  <provider>
+    <type>Organization</type>
+    <id>1</id>  
+    <display>ACME Healthcare, Inc</display>
+  </provider> 
 
   <text>
     <status>generated</status>

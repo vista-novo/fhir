@@ -181,7 +181,7 @@ Is a result with multiple organisms and sensitivities without separate OBX�s  
         <issued>2005-10-24T10:48:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -280,7 +280,7 @@ OBX5- SNOMED result
         <issued>2006-01-23T08:36:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -368,7 +368,7 @@ OBX3- test to be LOINC�d
         <issued>2006-02-03T03:20:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -533,7 +533,7 @@ OBX3 does not have the antibiotic to be LOINC�d but OBX5 has antibiotic and se
         <issued>2005-06-30T13:42:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -614,7 +614,7 @@ Comments-   OBR 24 populated
         <issued>2005-11-07T23:38:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -693,7 +693,7 @@ OBX|16|ST|TOB^TOBRAMYCIN^^|1|<=1|||SS|||F||1|200511091026|M3^CEN     MICROBIOL|3
         <issued>2005-11-03T00:00:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -779,7 +779,7 @@ OBX|8|ST|TOB^TOBRAMYCIN^^|3|2|||SS|||F||3|200511091000|M3^CEN     MICROBIOL|2605
         <issued>2005-11-22T11:31:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -838,7 +838,7 @@ NTE|2|L|Giardia antigen detected.
         <issued>2005-11-22T07:55:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -901,7 +901,7 @@ NTE|7|L|is suspected.
         <issued>2005-11-22T17:19:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -961,7 +961,7 @@ NTE|3|L|**Verified by repeat analysis**
         <issued>2005-11-22T10:57:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1025,7 +1025,7 @@ OBX|2|NM|21612-7^REPORTED PATIENT AGE^2.16.840.1.113883.6.1||20|d^Days^2.16.840.
         <issued>2005-11-22T23:23:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1082,7 +1082,7 @@ NTE|1|L|POSITIVE
         <issued>2005-11-22T23:27:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1139,7 +1139,7 @@ NTE|1|L|POSITIVE
         <issued>2005-11-22T23:23:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1197,7 +1197,7 @@ NTE|1|L|POSITIVE
         <issued>2005-11-23T09:01:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1261,7 +1261,7 @@ NTE|4|L|      endocervical specimens only.
         <issued>2005-11-23T09:29:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1320,7 +1320,7 @@ OBX|2|SN|11084-1^REAGIN AB^2.16.840.1.113883.6.1^006464^RPR, Quant.^L|1|^1^:^80|
         <issued>2005-11-23T09:38:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1383,7 +1383,7 @@ NTE|1|L|Negative
         <issued>2005-11-22T01:33:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1443,7 +1443,7 @@ NTE|3|L|THIS IS A CORRECTED RESULT.
         <issued>2005-11-22T01:33:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1501,7 +1501,7 @@ NTE|1|L|NEGATIVE UPON RETEST:
         <issued>2005-11-20T11:33:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1560,7 +1560,7 @@ NTE|2|L|Giardia antigen detected.
         <issued>2005-11-23T09:01:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1625,7 +1625,7 @@ NTE|4|L|                endocervical specimens only.
         <issued>2005-11-23T09:06:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1689,7 +1689,7 @@ NTE|1|L|POSITIVE
         <issued>2005-11-23T09:38:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1753,7 +1753,7 @@ NTE|1|L|Negative
         <issued>2005-11-22T01:33:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1813,7 +1813,7 @@ NTE|3|L|THIS IS A CORRECTED RESULT.
         <issued>2005-11-22T01:33:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1871,7 +1871,7 @@ NTE|1|L|NEGATIVE UPON RETEST:
         <issued>2005-11-22T01:33:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1929,7 +1929,7 @@ NTE|1|L|NEGATIVE UPON RETEST:
         <issued>2005-11-22T03:00:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -1988,7 +1988,7 @@ NTE|2|L|Giardia antigen detected.
         <issued>2005-11-23T09:01:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -2053,7 +2053,7 @@ NTE|4|L|                endocervical specimens only.
         <issued>2005-11-23T09:06:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -2117,7 +2117,7 @@ NTE|1|L|POSITIVE
         <issued>2005-11-23T09:38:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -2181,7 +2181,7 @@ NTE|1|L|Negative
         <issued>2001-12-30T04:36:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -2243,7 +2243,7 @@ NTE|1|L|NEISSERIA MENINGITIDIS
         <issued>2005-11-22T20:50:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -2303,7 +2303,7 @@ NTE|3|L|                                           Positive          >11
         <issued>2005-11-22T08:00:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>
@@ -2363,7 +2363,7 @@ NTE|3|L|    .
         <issued>2005-11-22T23:10:01</issued>
         <patient>
           <type>Patient</type>
-          <id>101a</id>
+          <id>example</id>
         </patient>
         <laboratory>
           <type>Organization</type>

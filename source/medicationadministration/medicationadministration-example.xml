@@ -26,7 +26,7 @@
   </prescription>
   <patient>
     <type>Patient</type>
-    <id>a23</id>
+    <id>example</id>
   </patient>
   <medication>
     <coding>

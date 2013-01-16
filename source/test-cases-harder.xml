@@ -161,7 +161,7 @@ for servers to handle as part of a batch post
     <content type="text/xml">
       <Provenance xmlns="http://hl7.org/fhir">
         <target>
-          <type>Person</type>
+          <type>Patient</type>
           <id>http://www.someexternalsite/fhir/person/@1</id>
           <version>http://www.someexternalsite/fhir/person/@1/history/@1</version>
         </target>
@@ -191,7 +191,7 @@ for servers to handle as part of a batch post
     <content type="text/xml">
       <Provenance xmlns="http://hl7.org/fhir">
         <target>
-          <type>Person</type>
+          <type>Patient</type>
           <version>http://www.someexternalsite/fhir/person/@1/history/@5</version>
         </target>
         <!-- nominal activity: editing the standard -->
@@ -220,7 +220,7 @@ for servers to handle as part of a batch post
     <content type="text/xml">
       <Provenance xmlns="http://hl7.org/fhir">
         <target>
-          <type>Person</type>
+          <type>Patient</type>
           <id>urn:uuid:8f13879b-8f5c-4ed4-a1f5-bc8d8a0efe</id>
         </target>
         <!-- nominal activity: editing the standard -->

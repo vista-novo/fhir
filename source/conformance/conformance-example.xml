@@ -29,7 +29,7 @@
     <mode>server</mode>
     <!-- zero or more of these - declaration of support for a resource -->
     <resource>
-      <type>Person</type>
+      <type>Patient</type>
       <!-- let's assume that HL7 has stood up a profile registry at http://fhir.hl7.org/fhir 
         - it's likely to have a registry, though this is not decided, nor is a URL decided. 
         This application simply uses a profile registered directly with HL7. For the simplest 
@@ -64,7 +64,7 @@
     <event>
       <code>admin-notify</code>
       <mode>receiver</mode> <!-- this a receiver - i.e. answers. Not neccessariy a server -->
-      <focus>Person</focus>
+      <focus>Patient</focus>
       <!-- specify a profile for the request person. Very often there's no point profiling 
         the response, it's not interesting -->
       <request>http://fhir.hl7.org/base/profile/@7896271d-57f6-4231-89dc-dcc91eab2416</request>

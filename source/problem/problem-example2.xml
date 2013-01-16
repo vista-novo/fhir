@@ -2,7 +2,7 @@
 <Problem xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/problem.xsd">
   <subject>
     <type>Patient</type>
-    <id>a23</id>
+    <id>example</id>
   </subject>
   <code> 
     <text>Asthma</text>

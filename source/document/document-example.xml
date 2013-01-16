@@ -28,15 +28,15 @@
       <display>Henry Levin the 7th</display>
     </subject>
     <author>
-      <type>Person</type>
-      <id>xcda</id>
+      <type>Provider</type>
+      <id>xcda-author</id>
       <display>Robert Dolin MD</display>
     </author>
     <attester>
       <mode>legal</mode>
       <party>
-        <type>Person</type>
-        <id>xcda</id>
+        <type>Provider</type>
+        <id>xcda-author</id>
         <display>Robert Dolin MD</display>
       </party>
     </attester>

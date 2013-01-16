@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Provider xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/provider.xsd">
 
-  <person>
-    <type>Person</type>
-    <id>101a</id>  
-  </person> 
+  <identifier>
+    <identifier>  
+      <system>htp://www.acme.org/providers</system>
+      <id>23</id>
+    </identifier>
+  </identifier>
+  <details>
+    <name>
+      <family>Careful</family>
+      <given>Adam</given>
+      <prefix>Dr</prefix>
+    </name>
+  </details>
+
   <organization>
     <type>Organization</type>
     <id>1</id>  
@@ -23,12 +33,6 @@
     <end>2012-03-31</end>
   </period>
   
-  <identifier>
-    <identifier>  
-      <system>htp://www.acme.org/providers</system>
-      <id>23</id>
-    </identifier>
-  </identifier>
 
   <text>
     <status>generated</status>

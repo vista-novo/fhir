@@ -14,7 +14,7 @@
   <validDate>2012-09-17</validDate>
   <subject>
     <type>Patient</type>
-    <id>a23</id>
+    <id>example</id>
   </subject>
   <performer>
     <type>Provider</type>

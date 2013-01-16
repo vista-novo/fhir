@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Animal xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/animal.xsd">
+<Patient xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/patient.xsd">
+	<active>true</active>
 	
   <!-- Dog tag, under Maroondah City council -->
   <identifier>
@@ -16,14 +17,21 @@
     </assigner>
   </identifier>
 
+  <details>
+ 
   <!-- Dog's name: Kenzi -->
-  <name>
-    <use>usual</use>
-    <given>Kenzi</given>
-  </name>
-    
-  <dob>2010-03-23</dob> 
+    <name>
+      <use>usual</use>
+      <given>Kenzi</given>
+    </name>
+    <gender>
+      <code>F</code>
+    </gender>
+    <birthDate>2010-03-23</birthDate> 
 
+  </details>
+
+  <animal>
   <species>
     <coding>
       <system>http://en.wikipedia.org/wiki/Biological_classification</system>
@@ -37,13 +45,9 @@
       <display>Golden retriever</display>  
     </coding>      
   </breed>
-  <gender>
-    <coding>
-      <code>F</code>
-    </coding>
-  </gender>
-	
-  <!-- owner -->
+  </animal>
+  	
+  <!-- owner - commented out while related parties are sorted out
   <relatedEntity>
     <role>
       <coding>
@@ -71,7 +75,11 @@
       <use>work</use>
     </contact>
   </relatedEntity>
-   
+    -->
+  <provider>
+    <display>Pete's Vetinary Services</display>
+  </provider>    
+  
 	<text>
     <status>generated</status>
     <div xmlns="http://www.w3.org/1999/xhtml">
@@ -97,6 +105,6 @@
       </table>
     </div>
   </text>
-</Animal>
+</Patient>
 
 

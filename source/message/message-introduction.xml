@@ -70,6 +70,12 @@ response in a new bundle. If the source application gets no response to its requ
 the destination application within a configurable timeout period, the source application should resend the 
 same bundle with the same atom feed.id. 
 </p>
+<pre>
+TODO: Modify this so that if the reciever sees the same message id in a different feed id, it can either reprocess or reject the message. 
+TODO: Clarify which id is being talked about in this section.
+TODO: extend conformance statement to talk about transaction of currency and transaction of consequence (changes of state) - and what duration you cache for (best practice)
+TODO: describe some use cases
+</pre>
 
 <h2>Conformance Statement</h2>
 <p>

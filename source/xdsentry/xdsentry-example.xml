@@ -51,7 +51,7 @@ SourceId: 1.3.6.1.4.1.21367.2009.1.2.1
     <id>89765a87b</id>
   </sourcePatientId>
   <patientInfo>
-    <type>Person</type>
+    <type>Patient</type>
     <id>xcda</id>
   </patientInfo>
   <author>

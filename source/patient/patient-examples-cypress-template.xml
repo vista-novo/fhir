@@ -6,45 +6,48 @@
   <link href="http://hl7.org/fhir/patient" rel="self"/>
 [%loop count=70%]
   <entry>
-    <title>patient, female</title>
-    <link href="http://hl7.org/fhir/person/@[%count%]/history/@1" rel="self"/>
-    <id>http://hl7.org/fhir/person/@[%count%]</id>
+    <title>test patient</title>
+    <link href="http://hl7.org/fhir/patient/@[%count%]/history/@1" rel="self"/>
+    <id>http://hl7.org/fhir/patient/@[%count%]</id>
     <updated>2012-06-03T23:45:32Z</updated>
     <author>
       <name>Cypress Project</name>
       <uri>https://github.com/projectcypress/cypress/downloads</uri>
     </author>
-    <category scheme="http://hl7.org/fhir/resource-types" term="Person"/>
+    <category scheme="http://hl7.org/fhir/resource-types" term="Patient"/>
     <content type="text/xml">
-      <Person xmlns="http://hl7.org/fhir">
+      <Patient xmlns="http://hl7.org/fhir">
+  	    <active>true</active>
         <identifier>
-          <!-- <type>
-            <system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
-            <code>patient</code>
-          </type> -->
 		  <label>SSN</label>
           <identifier>
             <system>https://github.com/projectcypress/cypress/patient</system>
             <id>[%patient_id%]</id>
           </identifier>
         </identifier>
-        <name>
-          <use>official</use>
-          <family>[%last name%]</family>
-          <given>[%first name%]</given>
-        </name>
-        <gender>
-		  <system>http://hl7.org/fhir/sid/v2-0001</system>
-		  <code>[%gender%]</code>
-		  <display>[%gender display%]</display>
-        </gender>
-        <birthDate>[%birthdate%]</birthDate> 
-  	
+        <details>
+          <name>
+            <use>official</use>
+            <family>[%last name%]</family>
+            <given>[%first name%]</given>
+          </name>
+          <gender>
+	        <system>http://hl7.org/fhir/sid/v2-0001</system>
+            <code>[%gender%]</code>
+            <display>[%gender display%]</display>
+          </gender>
+          <birthDate>[%birthdate%]</birthDate> 
+        </details>
+		
+	    <provider>
+	      <type>Organization</type>
+	      <id>[%organization%]</id>  
+	    </provider> 
         <text>
           <status>generated</status>
           <div xmlns="http://www.w3.org/1999/xhtml">[%last name%], [%first name%]. MRN: [%patient_id%]</div>
         </text>
-      </Person>
+      </Patient>
     </content>
     <summary type="xhtml">
       <div xmlns="http://www.w3.org/1999/xhtml">[%last name%], [%first name%]. MRN: [%patient_id%]</div>

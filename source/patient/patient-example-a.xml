@@ -1,35 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patient xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/patient.xsd">
+
+  <link>
+    <type>Patient</type>
+    <id>pat2</id>
+  </link>
+
   <active>true</active>
+
   <identifier>
     <use>usual</use>
     <label>MRN</label>
     <identifier>
-      <system>urn:oid:2.16.840.1.113883.19.5</system>
-      <id>12345</id>
+      <system>oid:0.1.2.3.4.5.6.7</system>
+      <id>654321</id>
     </identifier>
   </identifier>
+	
   <details>
     <name>
-      <family>Levin</family>
-      <given>Henry</given>
+      <use>official</use>
+       <family>Donald</family>
+       <given>Duck</given>
     </name>
     <gender>
-      <system>urn:oid:2.16.840.1.113883.5.1</system>
+      <system>http://hl7.org/fhir/sid/v2-0001</system>
       <code>M</code>
-    </gender>
-    <birthDate>1932-09-24</birthDate>
+      <display>Male</display>
+    </gender>  
   </details>
+  
   <provider>
     <type>Organization</type>
-    <id>2.16.840.1.113883.19.5</id>  
-    <display>Good Health Clinic</display>
+    <id>1</id>  
+    <display>ACME Healthcare, Inc</display>
   </provider> 
 
   <text>
     <status>generated</status>
     <div xmlns="http://www.w3.org/1999/xhtml">
-      <p>Henry Levin the 7th</p>
+      <p>Patient Donald DUCK @ Acme Healthcare, Inc. MR = 654321</p>
     </div>
   </text>
 </Patient>

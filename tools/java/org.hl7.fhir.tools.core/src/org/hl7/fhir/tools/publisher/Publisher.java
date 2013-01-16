@@ -296,18 +296,22 @@ public class Publisher {
 	
 	
 	private void checkExampleLinks(List<String> errors, ResourceDefn r) throws Exception {
-    for (Example e : r.getExamples()) {
-      if (e.getXml() != null) {
-        List<ExampleReference> refs = new ArrayList<ExampleReference>(); 
-        listLinks(e.getXml().getDocumentElement(), refs);
-        for (ExampleReference ref : refs) {
-          if (!resolveLink(ref)) { 
-            errors.add("Unable to resolve example reference to "+ref.describe()+" in "+e.getPath());
-            errors.add("  Possible Ids: "+listTargetIds(ref.getType()));
-          }
-        }
-      }
-    } 
+	  for (Example e : r.getExamples()) {
+	    try {
+	      if (e.getXml() != null) {
+	        List<ExampleReference> refs = new ArrayList<ExampleReference>(); 
+	        listLinks(e.getXml().getDocumentElement(), refs);
+	        for (ExampleReference ref : refs) {
+	          if (!resolveLink(ref)) { 
+	            errors.add("Unable to resolve example reference to "+ref.describe()+" in "+e.getPath());
+	            errors.add("  Possible Ids: "+listTargetIds(ref.getType()));
+	          }
+	        }
+	      } 
+	    } catch (Exception ex) {
+	      throw new Exception("Error checking example "+e.getFileTitle()+":"+ex.getMessage(), ex);
+	    }
+	  }
   }
 
   private String listTargetIds(String type) throws Exception {

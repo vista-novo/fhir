@@ -3,11 +3,11 @@
   <date>2012-12-28T09:03:04+11:00</date>
   <subject>
     <type>Patient</type>
-    <id>25bd34</id>
+    <id>pat2</id>
   </subject>
   <source>
-    <type>Person</type>
-    <id>xcda-author</id>
+    <type>Provider</type>
+    <id>example</id>
   </source>
   <reason>Standard admission testing</reason>
   
