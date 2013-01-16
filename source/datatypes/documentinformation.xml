@@ -239,7 +239,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Person|Patient|Group|Device)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Patient|Group|Device)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Who/what the document is about</Data></Cell>
     <Cell><Data ss:Type="String">Identifies the primary subject of the document.  </Data></Cell>
@@ -255,7 +255,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Person)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Patient|Provider)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Who provided information in document</Data></Cell>
     <Cell><Data ss:Type="String">Identifies the source that recounted the information recorded</Data></Cell>
@@ -271,7 +271,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Person|Provider)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Provider|Device)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Who/what authored the final document</Data></Cell>
     <Cell><Data ss:Type="String">Identifies who is responsible for the information in the document.  (Not necessarily who typed it in.)</Data></Cell>
@@ -335,7 +335,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Person|Provider|Organization)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Patient|Provider|Organization)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Who attested the document</Data></Cell>
     <Cell><Data ss:Type="String">Who attested the document in the specified way</Data></Cell>
@@ -495,8 +495,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

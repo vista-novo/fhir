@@ -193,7 +193,7 @@
     <Cell><Data ss:Type="String">XdsEntry2.subject</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Person|Patient|Group|Device)</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Patient|Group|Device)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">current subject of care</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -266,11 +266,11 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <TopRowVisible>7</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>7</ActiveRow>
-     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
