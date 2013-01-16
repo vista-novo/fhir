@@ -20,6 +20,7 @@
   <WindowWidth>7995</WindowWidth>
   <WindowTopX>-15</WindowTopX>
   <WindowTopY>0</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -100,9 +101,6 @@
   </Style>
   <Style ss:ID="s75">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s76">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
   </Style>
   <Style ss:ID="s77">
    <Alignment ss:Vertical="Top"/>
@@ -431,7 +429,6 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <Zoom>90</Zoom>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -538,189 +535,6 @@
    <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
- <Worksheet ss:Name="Search">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="9" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="71.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="383.25"/>
-   <Row ss:AutoFitHeight="0" ss:Height="15.9375" ss:StyleID="s65">
-    <Cell><Data ss:Type="String">Name</Data></Cell>
-    <Cell><Data ss:Type="String">Description</Data></Cell>
-    <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">Repeats</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="15.9375">
-    <Cell><Data ss:Type="String">identifier</Data></Cell>
-    <Cell><Data ss:Type="String">A patient Identifier</Data></Cell>
-    <Cell><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">name</Data></Cell>
-    <Cell><Data ss:Type="String">a portion of name in any name part</Data></Cell>
-    <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">phonetic</Data></Cell>
-    <Cell><Data ss:Type="String">a portion of name using some kind of phonetic matching algorithm</Data></Cell>
-    <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">telecom</Data></Cell>
-    <Cell><Data ss:Type="String">the value in any kind of contact</Data></Cell>
-    <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">address</Data></Cell>
-    <Cell><Data ss:Type="String">an address in any kind of address/part</Data></Cell>
-    <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">gender</Data></Cell>
-    <Cell><Data ss:Type="String">gender of the person</Data></Cell>
-    <Cell><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell><Data ss:Type="String">single</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">language</Data></Cell>
-    <Cell><Data ss:Type="String">language code (irrespective of use value)</Data></Cell>
-    <Cell><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">birthdate</Data></Cell>
-    <Cell><Data ss:Type="String">the patient's date of birth</Data></Cell>
-    <Cell><Data ss:Type="String">date</Data></Cell>
-    <Cell><Data ss:Type="String">single</Data></Cell>
-   </Row>
-  </Table>
-  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <PageSetup>
-    <Header x:Margin="0.3"/>
-    <Footer x:Margin="0.3"/>
-    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
-   </PageSetup>
-   <Unsynced/>
-   <Print>
-    <ValidPrinterInfo/>
-    <PaperSizeIndex>9</PaperSizeIndex>
-    <HorizontalResolution>600</HorizontalResolution>
-    <VerticalResolution>0</VerticalResolution>
-   </Print>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>15</ActiveRow>
-     <ActiveCol>1</ActiveCol>
-     <RangeSelection>R16C2:R19C2</RangeSelection>
-    </Pane>
-   </Panes>
-   <ProtectObjects>False</ProtectObjects>
-   <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
-  </WorksheetOptions>
- </Worksheet>
- <Worksheet ss:Name="Examples">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="10" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="116.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="251.25"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="78.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="188.25"/>
-   <Row ss:AutoFitHeight="0" ss:Height="15.9375" ss:StyleID="s65">
-    <Cell><Data ss:Type="String">Name</Data></Cell>
-    <Cell><Data ss:Type="String">Description</Data></Cell>
-    <Cell><Data ss:Type="String">Identity</Data></Cell>
-    <Cell><Data ss:Type="String">Filename</Data></Cell>
-    <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">In Book</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">General</Data></Cell>
-    <Cell><Data ss:Type="String">General Person Example</Data></Cell>
-    <Cell><Data ss:Type="String">101a</Data></Cell>
-    <Cell><Data ss:Type="String">person-example.xml</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Patient1</Data></Cell>
-    <Cell><Data ss:Type="String">Person 1 for patient linking</Data></Cell>
-    <Cell><Data ss:Type="String">pat1</Data></Cell>
-    <Cell><Data ss:Type="String">person-example-a.xml</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Patient2</Data></Cell>
-    <Cell><Data ss:Type="String">Person 2 for patient linking</Data></Cell>
-    <Cell><Data ss:Type="String">pat2</Data></Cell>
-    <Cell><Data ss:Type="String">person-example-b.xml</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Publishing</Data></Cell>
-    <Cell><Data ss:Type="String">Stock people (defined by HL7 publishing)</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">person-examples.xml</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Cypress</Data></Cell>
-    <Cell><Data ss:Type="String">Example People from cypress project</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">person-examples-cypress-template.xml</Data></Cell>
-    <Cell><Data ss:Type="String">csv</Data></Cell>
-    <Cell><Data ss:Type="String">n</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">cda</Data></Cell>
-    <Cell><Data ss:Type="String">CDA Example Person</Data></Cell>
-    <Cell><Data ss:Type="String">xcda</Data></Cell>
-    <Cell><Data ss:Type="String">person-xcda.xml</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">xds</Data></Cell>
-    <Cell><Data ss:Type="String">XDS Example Person</Data></Cell>
-    <Cell><Data ss:Type="String">xds</Data></Cell>
-    <Cell><Data ss:Type="String">person-xds.xml</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">cda author</Data></Cell>
-    <Cell><Data ss:Type="String">CDA Example Author</Data></Cell>
-    <Cell><Data ss:Type="String">xcda-author</Data></Cell>
-    <Cell><Data ss:Type="String">person-xcda-author.xml</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Grahame</Data></Cell>
-    <Cell><Data ss:Type="String">Grahame's person resource</Data></Cell>
-    <Cell><Data ss:Type="String">grahame</Data></Cell>
-    <Cell><Data ss:Type="String">person-grahame.xml</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
-   </Row>
-  </Table>
-  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <PageSetup>
-    <Header x:Margin="0.3"/>
-    <Footer x:Margin="0.3"/>
-    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
-   </PageSetup>
-   <Unsynced/>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>2</ActiveCol>
-    </Pane>
-   </Panes>
-   <ProtectObjects>False</ProtectObjects>
-   <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
-  </WorksheetOptions>
- </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s77" ss:DefaultColumnWidth="65.25"
@@ -780,6 +594,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
    <x:PageLayoutZoom>0</x:PageLayoutZoom>
