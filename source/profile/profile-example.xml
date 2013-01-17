@@ -3,7 +3,10 @@
   <name>Lipid Profile</name>
   <author>
     <name>Grahame Grieve</name>
-    <reference>grahame@healthintersections.com.au</reference>
+    <telecom>
+      <system>email</system>
+      <value>grahame@healthintersections.com.au</value>
+    </telecom>
   </author>
   <description>Describes how the lab report is used for a standard Lipid Profile - Cholesterol, Triglyceride, and Cholesterol fractions. Uses LOINC codes</description>
   <status>
