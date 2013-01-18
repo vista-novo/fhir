@@ -57,6 +57,7 @@ public class Definitions {
 	private Map<String, ElementDefn> infrastructure = new HashMap<String, ElementDefn>();
 	private Map<String, ResourceDefn> resources = new HashMap<String, ResourceDefn>();
 	private Map<String, ResourceDefn> futureResources = new HashMap<String, ResourceDefn>();
+	private List<String> deletedResources = new ArrayList<String>();
 
 	private List<String> aggregationEndpoints = new ArrayList<String>();
 
@@ -229,6 +230,10 @@ public class Definitions {
       e.printStackTrace();
       return false;
     }
+  }
+
+  public List<String> getDeletedResources() {
+    return deletedResources;
   }
 
 }

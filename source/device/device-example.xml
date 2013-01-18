@@ -10,7 +10,12 @@
   </type>
   <manufacturer>Acme Devices, Inc</manufacturer>
   <model>AB 45-J</model>
-  <serialNumber>AMID-342135-8464</serialNumber>
+  <identity>
+    <gtin>04012313012313</gtin>
+    <lot>43453424</lot>
+    <serialNumber>AMID-342135-8464</serialNumber>
+    <!-- no expiry for a ECG machine -->
+  </identity>
   <assignedId>
     <system>http://goodcare.org/devices/id</system>
     <id>345675</id>

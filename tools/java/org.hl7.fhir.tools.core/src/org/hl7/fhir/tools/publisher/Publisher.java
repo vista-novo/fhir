@@ -778,9 +778,9 @@ public class Publisher {
 	        names.put(e, n);
           queue.add(e);
 	      }
-	      String ta = t != null ? "(S, #FFD700)" : "(E, Lemonchiffon)";
+	      String ta = t != null ? "(S, #FFD700)" : "(E, Aliceblue)";
 	      if (!entry)
-          s.append(rn+" << (E, Lemonchiffon) >>  *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << "+ta+" >> : "+e.getName()+"\r\n");
+          s.append(rn+" << (E, Aliceblue) >>  *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << "+ta+" >> : "+e.getName()+"\r\n");
 	      else if (resource)
           s.append(rn+" << (R, #FF7700) >> *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << "+ta+" >> : "+e.getName()+"\r\n");
 	      else
@@ -792,7 +792,7 @@ public class Publisher {
 	  else if (page.getDefinitions().dataTypeIsSharedInfo(r.typeCode()))
 	    s2.append("class "+rn+" << (S, #FFD700) >> {\r\n");
 	  else
-	    s2.append("class "+rn+" << (E, Lemonchiffon) >> {\r\n");
+	    s2.append("class "+rn+" << (E, Aliceblue ) >> {\r\n");
 	  for (org.hl7.fhir.definitions.model.ElementDefn e : r.getElements()) {
 	    if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@") && !page.getDefinitions().dataTypeIsSharedInfo(e.typeCode())) {
 	      s2.append("  "+e.getName()+" : "+e.typeCode()+" "+e.describeCardinality()+"\r\n");

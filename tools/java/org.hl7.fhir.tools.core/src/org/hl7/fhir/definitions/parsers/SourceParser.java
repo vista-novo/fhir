@@ -158,6 +158,9 @@ public class SourceParser {
 				sortTypes(PrimitiveConverter.buildPrimitiveTypesFromFhirModel(definitions
 						.getPrimitives().values())));	
 
+		for (String n : ini.getPropertyNames("removed-resources"))
+		  definitions.getDeletedResources().add(n);
+		
 		for (String n : ini.getPropertyNames("types"))
 			loadCompositeType(n, definitions.getTypes());	
 		for (String n : ini.getPropertyNames("structures"))
@@ -307,6 +310,7 @@ public class SourceParser {
 		prim.setDefinition(sheet.getColumn(row, "Definition"));
 		prim.setComment(sheet.getColumn(row, "Comments"));
 		prim.setRegex(sheet.getColumn(row, "RegEx"));
+		prim.setBase(sheet.getColumn(row, "Schema"));
 		TypeRef td = new TypeRef();
 		td.setName(prim.getCode());
 		definitions.getKnownTypes().add(td);

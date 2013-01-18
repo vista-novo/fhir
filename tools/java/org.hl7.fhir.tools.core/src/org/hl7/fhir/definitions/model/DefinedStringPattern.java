@@ -31,12 +31,22 @@ POSSIBILITY OF SUCH DAMAGE.
 public class DefinedStringPattern extends DefinedCode {
   private String regex;
 
+  private String base;
+  
   public String getRegex() {
     return regex;
   }
 
   public void setRegex(String regex) {
     this.regex = regex;
+  }
+
+  public String getBase() {
+    return base;
+  }
+
+  public void setBase(String base) {
+    this.base = base;
   }
 
 }

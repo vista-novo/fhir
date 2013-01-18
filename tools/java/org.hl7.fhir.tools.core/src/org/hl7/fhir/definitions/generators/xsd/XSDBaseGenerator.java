@@ -179,10 +179,18 @@ private void genXmlIdRef() throws Exception {
 				DefinedStringPattern sp = (DefinedStringPattern) cd;
 				write("  <xs:simpleType name=\"" + sp.getCode()
 						+ "-simple\">\r\n");
-				write("    <xs:restriction base=\"xs:string\">\r\n");
-				write("      <xs:pattern value=\"" + sp.getRegex() + "\"/>\r\n");
-				write("    </xs:restriction>\r\n");
-				write("  </xs:simpleType>\r\n");
+				if (sp.getBase().endsWith("+")) {
+	        write("    <xs:restriction base=\""+sp.getBase().substring(0, sp.getBase().length()-1)+"\">\r\n");
+	        write("      <xs:pattern value=\"" + sp.getRegex() + "\"/>\r\n");
+	        write("    </xs:restriction>\r\n");
+	        write("  </xs:simpleType>\r\n");
+				} else if (sp.getBase().contains(",")) {
+          write("    <xs:union memberTypes=\""+sp.getBase().replace(",", "")+"\"/>\r\n");
+          write("  </xs:simpleType>\r\n");        
+				} else {
+	        write("    <xs:restriction base=\""+sp.getBase()+"\"/>\r\n");
+	        write("  </xs:simpleType>\r\n");				
+				}
 				write("  <xs:complexType name=\"" + sp.getCode() + "\">\r\n");
 				write("    <xs:simpleContent>\r\n");
 				write("      <xs:extension base=\"" + sp.getCode()

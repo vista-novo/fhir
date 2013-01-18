@@ -99,6 +99,11 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     this.definitions = definitions;
     this.logger = logger;
 
+    for (String n : definitions.getDeletedResources()) {
+      File f = new File(implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl+n+".java");
+      if (f.exists())
+        f.delete();
+    }
     JavaFactoryGenerator jFactoryGen = new JavaFactoryGenerator(new FileOutputStream(javaDir+"ResourceFactory.java"));
     
     generateResourceTypeEnum();

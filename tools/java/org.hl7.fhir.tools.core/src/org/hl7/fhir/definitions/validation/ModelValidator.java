@@ -38,6 +38,7 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 
+
 public class ModelValidator {
 
 	private Definitions definitions;
@@ -65,6 +66,9 @@ public class ModelValidator {
 
 	public List<String> check(String name, ResourceDefn parent) {
 		errors.clear();
+    rule(parent.getName(), !name.equals("Metadata"), "The name 'Metadata' is not a legal name for a resource");
+    rule(parent.getName(), !name.equals("History"), "The name 'History' is not a legal name for a resource");
+    
 		checkElement(parent.getName(), parent.getRoot(), parent);
 		parent.getRoot().getElementByName("text").setShortDefn("Text summary of resource (for human interpretation)");
 		rule(parent.getName(), parent.getRoot().getElementByName("extensions") == null, "No element named \"extensions\"");
