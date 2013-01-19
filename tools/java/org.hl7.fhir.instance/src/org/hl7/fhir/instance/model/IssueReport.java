@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -75,7 +75,12 @@ public class IssueReport extends Resource {
         private CodeableConcept type;
 
         /**
-         * A simple XPath limited to element names, repetition indicators and the default child access that identifies one of the elements in the request message that caused this issue to be raised.
+         * Additional description of the issue
+         */
+        private String_ details;
+
+        /**
+         * A simple XPath limited to element names, repetition indicators and the default child access that identifies one of the elements in the resource that caused this issue to be raised.
          */
         private List<String_> location = new ArrayList<String_>();
 
@@ -95,6 +100,14 @@ public class IssueReport extends Resource {
           this.type = value;
         }
 
+        public String_ getDetails() { 
+          return this.details;
+        }
+
+        public void setDetails(String_ value) { 
+          this.details = value;
+        }
+
         public List<String_> getLocation() { 
           return this.location;
         }
@@ -109,6 +122,11 @@ public class IssueReport extends Resource {
     public List<Issue> getIssue() { 
       return this.issue;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.IssueReport;
+   }
 
 
 }

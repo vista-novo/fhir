@@ -29,14 +29,17 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Sep 10, 2012 00:30+1000 for FHIR v0.05
-
-import java.util.*;
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 /**
- * [Template] Master Definition
+ * null
  */
-public class Linda extends Resource {
+public class AnatomicalLocation extends Resource {
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.AnatomicalLocation;
+   }
 
 
 }

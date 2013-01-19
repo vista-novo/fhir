@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -126,12 +126,12 @@ public class XdsEntry extends Resource {
 
     public class Institution extends Element {
         /**
-         * id of facility
+         * Id of facility
          */
         private Identifier id;
 
         /**
-         * name of facility
+         * Name of facility
          */
         private String_ name;
 
@@ -155,12 +155,12 @@ public class XdsEntry extends Resource {
 
     public class Authenticator extends Element {
         /**
-         * id of authenticator
+         * Id of authenticator
          */
         private Identifier id;
 
         /**
-         * name of authenticator
+         * Name of authenticator
          */
         private HumanName name;
 
@@ -252,7 +252,7 @@ public class XdsEntry extends Resource {
     private Uri documentId;
 
     /**
-     * deprecated documents can be included in some responses
+     * Deprecated documents can be included in some responses
      */
     private XdsEntryAvailability availability;
 
@@ -537,6 +537,11 @@ and birth date
     public void setComments(String_ value) { 
       this.comments = value;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.XdsEntry;
+   }
 
 
 }

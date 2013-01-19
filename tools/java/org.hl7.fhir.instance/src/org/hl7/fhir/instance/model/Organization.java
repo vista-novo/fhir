@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -39,8 +39,8 @@ import java.util.*;
 public class Organization extends Resource {
 
     public enum RecordStatus {
-        active, // Active. The state representing the fact that the Entity record is currently active.
-        inactive; // Inactive. The state representing the fact that the Entity record is currently inactive.
+        active, // The state representing the fact that the Entity record is currently active.
+        inactive; // The state representing the fact that the Entity record is currently inactive.
         public static RecordStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -71,7 +71,7 @@ public class Organization extends Resource {
         private CodeableConcept code;
 
         /**
-         * The organization that confered/confers the accreditation
+         * The organization that conferred/confers the accreditation
          */
         private ResourceReference institution;
 
@@ -210,7 +210,7 @@ public class Organization extends Resource {
     /**
      * Identifier for the organization that is used to identify the organization across multiple disparate systems
      */
-    private List<HumanId> identifier = new ArrayList<HumanId>();
+    private List<Identifier> identifier = new ArrayList<Identifier>();
 
     /**
      * A name associated with the organization
@@ -238,21 +238,21 @@ public class Organization extends Resource {
     private RecordStatus status;
 
     /**
-     * The qualifications/certifications an organisation has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles the organisation may play in a healthcare environment
+     * The qualifications/certifications an organization has, including format educational achievements, accreditations and current certifications. All these qualifications may be used to determine what roles the organization may play in a healthcare environment
      */
     private List<Accreditation> accreditation = new ArrayList<Accreditation>();
 
     /**
-     * Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
+     * Other organizations that are related to this organization. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
      */
-    private RelatedOrganization relatedOrganization;
+    private List<RelatedOrganization> relatedOrganization = new ArrayList<RelatedOrganization>();
 
     /**
      * Contact details for a person acting as a contact for the organization
      */
     private List<ContactPerson> contactPerson = new ArrayList<ContactPerson>();
 
-    public List<HumanId> getIdentifier() { 
+    public List<Identifier> getIdentifier() { 
       return this.identifier;
     }
 
@@ -288,17 +288,18 @@ public class Organization extends Resource {
       return this.accreditation;
     }
 
-    public RelatedOrganization getRelatedOrganization() { 
+    public List<RelatedOrganization> getRelatedOrganization() { 
       return this.relatedOrganization;
-    }
-
-    public void setRelatedOrganization(RelatedOrganization value) { 
-      this.relatedOrganization = value;
     }
 
     public List<ContactPerson> getContactPerson() { 
       return this.contactPerson;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.Organization;
+   }
 
 
 }

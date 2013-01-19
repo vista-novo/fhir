@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -234,7 +234,7 @@ public class Message extends Resource {
     private Instant instant;
 
     /**
-     * Code that identifies the event this message represents, and connects it with the event definition in the FHIR specification
+     * Code that identifies the event this message represents and connects it with the event definition in the FHIR specification
      */
     private Code event;
 
@@ -387,6 +387,11 @@ public class Message extends Resource {
     public List<ResourceReference> getData() { 
       return this.data;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.Message;
+   }
 
 
 }

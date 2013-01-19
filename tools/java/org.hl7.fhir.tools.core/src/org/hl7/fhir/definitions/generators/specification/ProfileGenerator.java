@@ -43,6 +43,7 @@ import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.formats.XmlComposer;
 //import org.hl7.fhir.instance.model.Factory;
+import org.hl7.fhir.instance.model.Contact.ContactSystem;
 import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.Narrative;
 import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
@@ -71,7 +72,7 @@ public class ProfileGenerator {
     p.setAuthor(p.new Author());
     p.getAuthor().setName(Factory.newString_(profile.metadata("author.name")));
     if (profile.hasMetadata("author.reference"))
-      p.getAuthor().getReference().add(Factory.newUri(profile.metadata("author.reference")));
+      p.getAuthor().getTelecom().add(Factory.newContact(ContactSystem.url, profile.metadata("author.reference")));
 //  <code> opt Zero+ Coding assist with indexing and finding</code>
     if (profile.hasMetadata("intention"))
       throw new Exception("profile intention is not supported any more ("+p.getName()+")");
@@ -160,7 +161,7 @@ public class ProfileGenerator {
     dst.setReference(Factory.newUri(src.getReference()));
     for (DefinedCode dc : src.getCodes()) {
       Concept cd = p.new Concept();
-      cd.setCode(Factory.newCode(dc.getCode()));
+      cd.setCode(Factory.newString_(dc.getCode()));
       cd.setDisplay(Factory.newString_(dc.getDisplay()));
       cd.setDefinition(Factory.newString_(dc.getDefinition()));
       cd.setSystem(dc.hasSystem() ? Factory.newUri(dc.getSystem()) : null);

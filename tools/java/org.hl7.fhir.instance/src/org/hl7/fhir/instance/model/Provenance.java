@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
 /**
- * Provenance information associated with another resource that can be used to help determine it's reliability or trace where the information in it came from. The focus of the provenance resource is record keeping, audit, and traceability, not clinical meaning.
+ * Provenance information associated with another resource that can be used to help determine its reliability or trace where the information in it came from. The focus of the provenance resource is record keeping, audit and traceability, not clinical meaning
  */
 public class Provenance extends Resource {
 
@@ -163,12 +163,17 @@ public class Provenance extends Resource {
 
     public class Party extends Element {
         /**
+         * The role that the participant played
+         */
+        private Coding role;
+
+        /**
          * The type of the participant
          */
         private Coding type;
 
         /**
-         * identity of participant. May be a logical or physical uri, and maybe absolute or relative
+         * Identity of participant. May be a logical or physical uri and maybe absolute or relative
          */
         private Uri id;
 
@@ -177,10 +182,13 @@ public class Provenance extends Resource {
          */
         private String_ description;
 
-        /**
-         * The role that the participant played
-         */
-        private Coding role;
+        public Coding getRole() { 
+          return this.role;
+        }
+
+        public void setRole(Coding value) { 
+          this.role = value;
+        }
 
         public Coding getType() { 
           return this.type;
@@ -204,14 +212,6 @@ public class Provenance extends Resource {
 
         public void setDescription(String_ value) { 
           this.description = value;
-        }
-
-        public Coding getRole() { 
-          return this.role;
-        }
-
-        public void setRole(Coding value) { 
-          this.role = value;
         }
 
     }
@@ -263,6 +263,11 @@ public class Provenance extends Resource {
     public void setSignature(String_ value) { 
       this.signature = value;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.Provenance;
+   }
 
 
 }

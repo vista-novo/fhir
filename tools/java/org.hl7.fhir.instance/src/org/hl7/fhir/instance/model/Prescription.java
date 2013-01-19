@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -71,7 +71,7 @@ public class Prescription extends Resource {
         private Quantity quantity;
 
         /**
-         * Person to fullfil the requested dispense
+         * Person to fulfill the requested dispense
          */
         private ResourceReference dispenser;
 
@@ -202,7 +202,7 @@ public class Prescription extends Resource {
         /**
          * Total dose per day/week or other period when more specific information is missing or cannot be expressed using the timing specifications.
          */
-        private Ratio totalPeriodicDosis;
+        private Ratio totalPeriodicDose;
 
         /**
          * First moment on which medication should be taken
@@ -237,12 +237,12 @@ public class Prescription extends Resource {
           this.description = value;
         }
 
-        public Ratio getTotalPeriodicDosis() { 
-          return this.totalPeriodicDosis;
+        public Ratio getTotalPeriodicDose() { 
+          return this.totalPeriodicDose;
         }
 
-        public void setTotalPeriodicDosis(Ratio value) { 
-          this.totalPeriodicDosis = value;
+        public void setTotalPeriodicDose(Ratio value) { 
+          this.totalPeriodicDose = value;
         }
 
         public DateTime getStart() { 
@@ -290,7 +290,7 @@ public class Prescription extends Resource {
         private List<CodeableConcept> precondition = new ArrayList<CodeableConcept>();
 
         /**
-         * Pro re nate, "If necessary": Specifies whether administration depens on the state and symptoms of the patient
+         * As required (from Latin Pro Re Nate): Specifies whether administration is given to a fixed schedule (No) or only when the the state and symptoms of the patient at the time require it (Yes).
          */
         private Boolean prn;
 
@@ -315,7 +315,7 @@ public class Prescription extends Resource {
         private Quantity rate;
 
         /**
-         * Schedule for administration. If multiple are given, they are considered to be active in parrallel
+         * Schedule for administration. If multiple are given, they are considered to be active in parallel
          */
         private List<Schedule> schedule = new ArrayList<Schedule>();
 
@@ -368,7 +368,7 @@ public class Prescription extends Resource {
     /**
      * A identifier used in an external system and associated with this medication
      */
-    private List<HumanId> identifier = new ArrayList<HumanId>();
+    private List<Identifier> identifier = new ArrayList<Identifier>();
 
     /**
      * Actual status of the prescription
@@ -396,12 +396,12 @@ public class Prescription extends Resource {
     private Dispense dispense;
 
     /**
-     * The one single medicatine, vaccine or therapeutic good prescribed in this prescription.
+     * The one single medicine, vaccine or other product prescribed in this prescription.
      */
     private Medicine medicine;
 
     /**
-     * Instructions for the use of the medication. Includes details about the timing schedule, dosis amounts and additional usage instructions.
+     * Instructions for the use of the medication. Includes details about the timing schedule, dose amounts and additional usage instructions.
      */
     private AdministrationRequest administrationRequest;
 
@@ -410,7 +410,7 @@ public class Prescription extends Resource {
      */
     private CodeableConcept reason;
 
-    public List<HumanId> getIdentifier() { 
+    public List<Identifier> getIdentifier() { 
       return this.identifier;
     }
 
@@ -477,6 +477,11 @@ public class Prescription extends Resource {
     public void setReason(CodeableConcept value) { 
       this.reason = value;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.Prescription;
+   }
 
 
 }

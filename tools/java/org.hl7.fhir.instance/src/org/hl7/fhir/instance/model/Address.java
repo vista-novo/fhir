@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -78,17 +78,12 @@ public class Address extends Type {
     private String_ text;
 
     /**
-     * Part of an address line
-     */
-    private List<String_> part = new ArrayList<String_>();
-
-    /**
      * A line of an address (typically used for street names & numbers, unit details, delivery hints, etc.) .
      */
     private List<String_> line = new ArrayList<String_>();
 
     /**
-     * The name of the city, town, village, or other community or delivery centre.
+     * The name of the city, town, village or other community or delivery centre.
      */
     private String_ city;
 
@@ -106,11 +101,6 @@ public class Address extends Type {
      * Country. ISO 3166 3 letter codes can be used in place of a full country name.
      */
     private String_ country;
-
-    /**
-     * A value that uniquely identifies the postal address. (Often used in barcodes). 
-     */
-    private String_ dpid;
 
     /**
      * Time period when address was/is in use
@@ -131,10 +121,6 @@ public class Address extends Type {
 
     public void setText(String_ value) { 
       this.text = value;
-    }
-
-    public List<String_> getPart() { 
-      return this.part;
     }
 
     public List<String_> getLine() { 
@@ -171,14 +157,6 @@ public class Address extends Type {
 
     public void setCountry(String_ value) { 
       this.country = value;
-    }
-
-    public String_ getDpid() { 
-      return this.dpid;
-    }
-
-    public void setDpid(String_ value) { 
-      this.dpid = value;
     }
 
     public Period getPeriod() { 

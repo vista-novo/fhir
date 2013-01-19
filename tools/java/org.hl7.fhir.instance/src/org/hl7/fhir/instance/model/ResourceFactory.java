@@ -29,37 +29,47 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 public class ResourceFactory {
 
     public static Resource createResource(String name) throws Exception {
         if ("Provenance".equals(name))
             return new Provenance();
-        if ("SimpleObservation".equals(name))
-            return new SimpleObservation();
         if ("Device".equals(name))
             return new Device();
-        if ("Animal".equals(name))
-            return new Animal();
-        if ("Organization".equals(name))
-            return new Organization();
+        if ("Food".equals(name))
+            return new Food();
+        if ("Order".equals(name))
+            return new Order();
         if ("Prescription".equals(name))
             return new Prescription();
+        if ("Organization".equals(name))
+            return new Organization();
+        if ("Procedure".equals(name))
+            return new Procedure();
+        if ("Substance".equals(name))
+            return new Substance();
         if ("Group".equals(name))
             return new Group();
+        if ("Medication".equals(name))
+            return new Medication();
         if ("ValueSet".equals(name))
             return new ValueSet();
         if ("Test".equals(name))
             return new Test();
         if ("Coverage".equals(name))
             return new Coverage();
+        if ("MedicationAdministration".equals(name))
+            return new MedicationAdministration();
         if ("SecurityEvent".equals(name))
             return new SecurityEvent();
-        if ("AssessmentScale".equals(name))
-            return new AssessmentScale();
         if ("IssueReport".equals(name))
             return new IssueReport();
+        if ("AnatomicalLocation".equals(name))
+            return new AnatomicalLocation();
+        if ("List".equals(name))
+            return new List_();
         if ("LabReport".equals(name))
             return new LabReport();
         if ("Conformance".equals(name))
@@ -68,28 +78,32 @@ public class ResourceFactory {
             return new XdsEntry();
         if ("Document".equals(name))
             return new Document();
-        if ("AssessmentDefinition".equals(name))
-            return new AssessmentDefinition();
         if ("Message".equals(name))
             return new Message();
-        if ("Agent".equals(name))
-            return new Agent();
         if ("Location".equals(name))
             return new Location();
         if ("Profile".equals(name))
             return new Profile();
         if ("Admission".equals(name))
             return new Admission();
+        if ("Observation".equals(name))
+            return new Observation();
         if ("InterestOfCare".equals(name))
             return new InterestOfCare();
+        if ("Immunization".equals(name))
+            return new Immunization();
         if ("Problem".equals(name))
             return new Problem();
         if ("Specimen".equals(name))
             return new Specimen();
+        if ("OrderResponse".equals(name))
+            return new OrderResponse();
         if ("Patient".equals(name))
             return new Patient();
-        if ("Person".equals(name))
-            return new Person();
+        if ("XdsEntry2".equals(name))
+            return new XdsEntry2();
+        if ("Provider".equals(name))
+            return new Provider();
         if ("XdsFolder".equals(name))
             return new XdsFolder();
         else
@@ -117,8 +131,8 @@ public class ResourceFactory {
             return new Distance();
         if ("Contact".equals(name))
             return new Contact();
-        if ("HumanId".equals(name))
-            return new HumanId();
+        if ("Demographics".equals(name))
+            return new Demographics();
         if ("Extension".equals(name))
             return new Extension();
         if ("Schedule".equals(name))

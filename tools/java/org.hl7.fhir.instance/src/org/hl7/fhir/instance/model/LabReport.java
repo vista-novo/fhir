@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -200,7 +200,7 @@ public class LabReport extends Resource {
         private ResourceReference specimen;
 
         /**
-         * Specific detailed result, including both the value of the result item, and additional information that may be useful for clinical interpretation. Results include whatever specific data items pathology labs report as part of the clinical service; it is not confined to measurements.
+         * Specific detailed result, including both the value of the result item and additional information that may be useful for clinical interpretation. Results include whatever specific data items pathology labs report as part of the clinical service; it is not confined to measurements.
          */
         private List<Result> result = new ArrayList<Result>();
 
@@ -506,6 +506,11 @@ public class LabReport extends Resource {
     public List<Attachment> getRepresentation() { 
       return this.representation;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.LabReport;
+   }
 
 
 }

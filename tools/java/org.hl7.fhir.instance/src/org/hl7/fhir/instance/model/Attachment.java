@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 /**
  * For referring to data content defined in other formats.
@@ -57,7 +57,7 @@ public class Attachment extends Type {
     private Integer size;
 
     /**
-     * The calculated hash of the data using SHA-256. In XML, represented using base64
+     * The calculated hash of the data using SHA-1. Represented using base64
      */
     private Base64Binary hash;
 

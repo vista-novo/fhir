@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
 /**
- * A documentation of healthcare-related information that is assembled together into a single statement of meaning that establishes its own context. A document is composed of a set of resources that include both human and computer readable portions. A human may attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole. A document may be kept as a set of logically linked resources, or they may be bundled together in an atom feed
+ * A documentation of healthcare-related information that is assembled together into a single statement of meaning that establishes its own context. A document is composed of a set of resources that include both human and computer readable portions. A human may attest to the accuracy of the human readable portion and may authenticate and/or sign the entire whole. A document may be kept as a set of logically linked resources, or they may be bundled together in an atom feed
  */
 public class Document extends Resource {
 
@@ -42,7 +42,7 @@ public class Document extends Resource {
         /**
          * A code identifying the kind of content contained within the section
          */
-        private CodeableConcept type;
+        private CodeableConcept code;
 
         /**
          * Identifies the primary subject of the section.  
@@ -59,12 +59,12 @@ public class Document extends Resource {
          */
         private List<Section> section = new ArrayList<Section>();
 
-        public CodeableConcept getType() { 
-          return this.type;
+        public CodeableConcept getCode() { 
+          return this.code;
         }
 
-        public void setType(CodeableConcept value) { 
-          this.type = value;
+        public void setCode(CodeableConcept value) { 
+          this.code = value;
         }
 
         public ResourceReference getSubject() { 
@@ -158,6 +158,11 @@ public class Document extends Resource {
     public List<Section> getSection() { 
       return this.section;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.Document;
+   }
 
 
 }

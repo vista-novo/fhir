@@ -29,22 +29,22 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
 /**
- * A Resource Profile - a statement of use of FHIR. May include constraints on Resources, Data Types, Terminology Binding Statements and Extension Definitions
+ * A Resource Profile - a statement of use of FHIR.  It may include constraints on Resources, Data Types, Terminology Binding Statements and Extension Definitions
  */
 public class Profile extends Resource {
 
     public enum ResourceProfileStatus {
         draft, // This profile is still under development
-        testing, // this profile was authored for testing purposes (or education/evaluation/marketing)
+        testing, // This profile was authored for testing purposes (or education/evaluation/marketing)
         review, // This profile is undergoing review to check that it is ready for production use
         production, // This profile is ready for use in production systems
-        withdrawn, // This profile has been withdrawn
-        superseded; // This profile was superseded by a more recent version
+        withdrawn, // This profile has been withdrawn and should no longer be used
+        superseded; // This profile has been superseded by a more recent version
         public static ResourceProfileStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -97,12 +97,12 @@ public class Profile extends Resource {
     }
 
     public enum SearchParamType {
-        integer, // search parameter must be a simple whole number
-        string, // search parameter is a simple string, like a name part (search usually functions on partial matches)
-        text, // search parameter is into a long string (i.e. a text filter type search)
-        date, // search parameter is onto a date (and should support -before and -after variants). The date format is the standard XML format, thoughother formats may be supported
-        token, // search parameter is on a fixed value string (i.e. search has an exact match)
-        qtoken; // search parameter is a pair of fixed value strings, namespace and value, separated by a "#". The namespace is usually a uri, such as one of the defined code systems and is optional when searching
+        integer, // Search parameter must be a simple whole number
+        string, // Search parameter is a simple string, like a name part (search usually functions on partial matches)
+        text, // Search parameter is on a long string (i.e. a text filter type search)
+        date, // Search parameter is on a date (and should support -before and -after variants). The date format is the standard XML format, though other formats may be supported
+        token, // Search parameter is on a fixed value string (i.e. search has an exact match)
+        qtoken; // Search parameter is a pair of fixed value strings, namespace and value, separated by a "#". The namespace is usually a uri, such as one of the defined code systems and is optional when searching
         public static SearchParamType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -134,9 +134,9 @@ public class Profile extends Resource {
     }
 
     public enum SearchRepeatBehavior {
-        single, // the search parameter may only be used once
-        union, // when the search parameter is used more than once, match resources with any of the values
-        intersection; // when the search parameter is used more than once, match resources with all of the values
+        single, // The search parameter may only occur once
+        union, // When the search parameter occurs more than once, match resources with any of the values
+        intersection; // When the search parameter occurs more than once, match resources with all of the values
         public static SearchRepeatBehavior fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -217,9 +217,9 @@ public class Profile extends Resource {
     }
 
     public enum BindingConformance {
-        required, // Only codes in the specified set are allowed.  If the binding is extensible, other codes may be used for concepts not covered by the bound set of codes.
-        preferred, // For greater interoperability, implementers are strongly encouraged to use the bound set of codes, however alternate codes may be used in profiles if necessary without being considered non-conformant.
-        example; // The codes in the set are an example to illustrate the meaning of the field. There is no particular preference for its use
+        required, // Only codes in the specified set are allowed.  If the binding is extensible, other codes may be used for concepts not covered by the bound set of codes
+        preferred, // For greater interoperability, implementers are strongly encouraged to use the bound set of codes, however alternate codes may be used in derived profiles and implementations if necessary without being considered non-conformant
+        example; // The codes in the set are an example to illustrate the meaning of the field. There is no particular preference for its use nor any assertion that the provided values are sufficient to meet implementation needs
         public static BindingConformance fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -243,14 +243,14 @@ public class Profile extends Resource {
 
     public class Author extends Element {
         /**
-         * The name of the author
+         * The name of the individual or organization with primary responsibility for the content of the profile
          */
         private String_ name;
 
         /**
-         * Reference to the author to assist a user in finding and communicating with the author
+         * Contacts of the author to assist a user in finding and communicating with the author
          */
-        private List<Uri> reference = new ArrayList<Uri>();
+        private List<Contact> telecom = new ArrayList<Contact>();
 
         public String_ getName() { 
           return this.name;
@@ -260,8 +260,8 @@ public class Profile extends Resource {
           this.name = value;
         }
 
-        public List<Uri> getReference() { 
-          return this.reference;
+        public List<Contact> getTelecom() { 
+          return this.telecom;
         }
 
     }
@@ -310,7 +310,7 @@ public class Profile extends Resource {
 
     public class Import extends Element {
         /**
-         * The identifier for the profile, ideally the URL it can be retrieved from.
+         * The identifier for the profile, ideally the URL it can be retrieved from
          */
         private Uri uri;
 
@@ -364,7 +364,7 @@ public class Profile extends Resource {
         private List<Element_> element = new ArrayList<Element_>();
 
         /**
-         * defines additional search parameters for implementations to support and/or make use of
+         * Defines additional search parameters for implementations to support and/or make use of
          */
         private List<SearchParam> searchParam = new ArrayList<SearchParam>();
 
@@ -412,17 +412,17 @@ public class Profile extends Resource {
 
     public class Element_ extends Element {
         /**
-         * The path identifies the element
+         * The path identifies the element and is expressed as a "."-separated list of ancestor elements, beginning with the name of the resource
          */
         private String_ path;
 
         /**
-         * A unique name referring to a specific set of constraints applied to this element.
+         * A unique name referring to a specific set of constraints applied to this element
          */
         private String_ name;
 
         /**
-         * Definition of the content of the element to provide a more specific definition than that contained for the element in the base resource.
+         * Definition of the content of the element to provide a more specific definition than that contained for the element in the base resource
          */
         private Definition definition;
 
@@ -432,7 +432,7 @@ public class Profile extends Resource {
         private Boolean bundled;
 
         /**
-         * Indicates whether the set of slices defined is "exhaustive".  I.e. Have all the possible variants for the repeating element been defined?  If true, then no new slices can be created off the base element in derived profiles - though existing slices can be further sliced if they are defined as repeating elements.
+         * Indicates whether the set of slices defined is "exhaustive".  I.e. Have all the possible variants for the repeating element been defined?  If true, then no new slices can be created off the base element in derived profiles - though existing slices can be further sliced if they are defined as repeating elements
          */
         private Boolean closed;
 
@@ -480,7 +480,7 @@ public class Profile extends Resource {
 
     public class Definition extends Element {
         /**
-         * A concise definition that  is shown in the concise XML format that summarises profiles
+         * A concise definition that  is shown in the concise XML format that summarizes profiles
          */
         private String_ short_;
 
@@ -525,12 +525,12 @@ public class Profile extends Resource {
         private String_ nameReference;
 
         /**
-         * Specifies a value that must hold for this element in the instance.
+         * Specifies a value that must hold for this element in the instance
          */
         private org.hl7.fhir.instance.model.Type value;
 
         /**
-         * Indicates the shortest length that must be supported by conformant instances without truncation.
+         * Indicates the shortest length that must be supported by conformant instances without truncation
          */
         private Integer maxLength;
 
@@ -540,27 +540,27 @@ public class Profile extends Resource {
         private List<Id> condition = new ArrayList<Id>();
 
         /**
-         * Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.
+         * Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance
          */
         private List<Constraint> constraint = new ArrayList<Constraint>();
 
         /**
-         * If true, conformant resource authors must be capable of providing a value for the element and resource consumers must be capable of extracting and doing something useful with the data element.  If false, the element may be ignored and not supported.
+         * If true, conformant resource authors must be capable of providing a value for the element and resource consumers must be capable of extracting and doing something useful with the data element.  If false, the element may be ignored and not supported
          */
         private Boolean mustSupport;
 
         /**
-         * If true, the element cannot be ignored by systems unless they recognize the element and a pre-determination has been made that it is not relevant to their particular system.
+         * If true, the element cannot be ignored by systems unless they recognize the element and a pre-determination has been made that it is not relevant to their particular system
          */
         private Boolean mustUnderstand;
 
         /**
-         * Identifies the set of codes that applies to this element if a data type supporting codes is used.
+         * Identifies the set of codes that applies to this element if a data type supporting codes is used
          */
         private String_ binding;
 
         /**
-         * Identifies a concept from an external specification that roughly corresponds to this element.
+         * Identifies a concept from an external specification that roughly corresponds to this element
          */
         private List<Mapping> mapping = new ArrayList<Mapping>();
 
@@ -689,7 +689,7 @@ public class Profile extends Resource {
         private Code code;
 
         /**
-         * Identifies a profile that must hold for resources referenced as the type of this element.
+         * Identifies a profile that must hold for resources or datatypes referenced as the type of this element
          */
         private Uri profile;
 
@@ -713,7 +713,7 @@ public class Profile extends Resource {
 
     public class Constraint extends Element {
         /**
-         * Allows identification of which elements have their cardinalities impacted by the constraint.  Will not be referenced for constraints that do not affect cardinality.
+         * Allows identification of which elements have their cardinalities impacted by the constraint.  Will not be referenced for constraints that do not affect cardinality
          */
         private Id id;
 
@@ -723,7 +723,7 @@ public class Profile extends Resource {
         private String_ name;
 
         /**
-         * Identifies the impact constraint violation has on the conformance of the instance.
+         * Identifies the impact constraint violation has on the conformance of the instance
          */
         private ConstraintSeverity severity;
 
@@ -794,7 +794,7 @@ public class Profile extends Resource {
 
     public class Mapping extends Element {
         /**
-         * The name of the specification is mapping is being expressed to.
+         * The name of the specification is mapping is being expressed to
          */
         private String_ target;
 
@@ -833,7 +833,7 @@ public class Profile extends Resource {
         private SearchParamType type;
 
         /**
-         * Whether multiple uses of the parameter are allowed in searches, and if they are, how the multiple values are understood.
+         * Whether multiple uses of the parameter are allowed in searches, and if they are, how the multiple values are understood
          */
         private SearchRepeatBehavior repeats;
 
@@ -878,7 +878,7 @@ public class Profile extends Resource {
 
     public class ExtensionDefn extends Element {
         /**
-         * A unique code (within the profile) used to identify the extension.
+         * A unique code (within the profile) used to identify the extension
          */
         private Id id;
 
@@ -888,7 +888,7 @@ public class Profile extends Resource {
         private ExtensionContext contextType;
 
         /**
-         * Identifies the types of resource or data type elements to which the extension can be applied.
+         * Identifies the types of resource or data type elements to which the extension can be applied
          */
         private List<String_> context = new ArrayList<String_>();
 
@@ -929,7 +929,7 @@ public class Profile extends Resource {
 
     public class Binding extends Element {
         /**
-         * The name to be associated with this set of codes.
+         * The name to be associated with this set of codes
          */
         private String_ name;
 
@@ -939,12 +939,12 @@ public class Profile extends Resource {
         private String_ definition;
 
         /**
-         * Identifies how the set of codes for this binding is being defined.
+         * Identifies how the set of codes for this binding is being defined
          */
         private BindingType type;
 
         /**
-         * If true, then conformant systems may use additional codes or (where the data type permits) text alone to convey concepts not covered by the set of codes identified in the binding.  If false, then conformant systems are constrained to the provided codes alone.
+         * If true, then conformant systems may use additional codes or (where the data type permits) text alone to convey concepts not covered by the set of codes identified in the binding.  If false, then conformant systems are constrained to the provided codes alone
          */
         private Boolean isExtensible;
 
@@ -954,7 +954,7 @@ public class Profile extends Resource {
         private BindingConformance conformance;
 
         /**
-         * Points to the value set or external definition that identifies the set of codes to be used.
+         * Points to the value set or external definition that identifies the set of codes to be used
          */
         private Uri reference;
 
@@ -1021,15 +1021,15 @@ public class Profile extends Resource {
         /**
          * Identifies the code referenced or being defined as part of the binding
          */
-        private Code code;
+        private String_ code;
 
         /**
-         * Identifies the system in which the referenced code is defined.
+         * Identifies the system in which the referenced code is defined
          */
         private Uri system;
 
         /**
-         * Identifies the text to be displayed to the user for this code.  If none provided, then the code itself is displayed.
+         * Identifies the text to be displayed to the user for this code.  If none provided, then the code itself is displayed
          */
         private String_ display;
 
@@ -1038,11 +1038,11 @@ public class Profile extends Resource {
          */
         private String_ definition;
 
-        public Code getCode() { 
+        public String_ getCode() { 
           return this.code;
         }
 
-        public void setCode(Code value) { 
+        public void setCode(String_ value) { 
           this.code = value;
         }
 
@@ -1108,7 +1108,7 @@ public class Profile extends Resource {
     private List<Import> import_ = new ArrayList<Import>();
 
     /**
-     * If this profile describes a bundle, the first resource in the bundle (usually a MessageHeader or a DocumentHeader)
+     * If this profile describes a bundle, the first resource in the bundle (usually a Message or a Document)
      */
     private Code bundle;
 
@@ -1123,7 +1123,7 @@ public class Profile extends Resource {
     private List<ExtensionDefn> extensionDefn = new ArrayList<ExtensionDefn>();
 
     /**
-     * Defines a linkage between a vocabulary binding name used in the profile (or expected to be used in profile importing this one) and a value set or code list.
+     * Defines a linkage between a vocabulary binding name used in the profile (or expected to be used in profile importing this one) and a value set or code list
      */
     private List<Binding> binding = new ArrayList<Binding>();
 
@@ -1194,6 +1194,11 @@ public class Profile extends Resource {
     public List<Binding> getBinding() { 
       return this.binding;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.Profile;
+   }
 
 
 }

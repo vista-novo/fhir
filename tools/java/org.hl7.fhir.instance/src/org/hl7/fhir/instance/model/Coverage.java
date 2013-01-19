@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -86,7 +86,7 @@ public class Coverage extends Resource {
     private ResourceReference issuer;
 
     /**
-     * Time period during which the coverage is in force. A msiing start date indicates the start date isn't know, a missing end date means the coverage is continuing to be in force.
+     * Time period during which the coverage is in force. A missing start date indicates the start date isn't known, a missing end date means the coverage is continuing to be in force.
      */
     private Period period;
 
@@ -101,19 +101,19 @@ public class Coverage extends Resource {
     private Identifier identifier;
 
     /**
-     * Identifies a style or collective of coverage issues by the underwriter, for example my be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID.
+     * Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID.
      */
     private Identifier plan;
 
     /**
-     * Identifies a sub-style or sub-collective of coverage issues by the underwriter, for example my be used to identify a specific employer group within a class of employers. May be refered to as a Section or Divsiion ID.
+     * Identifies a sub-style or sub-collective of coverage issues by the underwriter, for example may be used to identify a specific employer group within a class of employers. May be referred to as a Section or Division ID.
      */
     private Identifier subplan;
 
     /**
-     * A unique identifier for a dependant under the coverage.
+     * A unique identifier for a dependent under the coverage.
      */
-    private Integer dependant;
+    private Integer dependent;
 
     /**
      * An optional counter for a particular instance of the identified coverage which increments upon each renewal.
@@ -173,12 +173,12 @@ public class Coverage extends Resource {
       this.subplan = value;
     }
 
-    public Integer getDependant() { 
-      return this.dependant;
+    public Integer getDependent() { 
+      return this.dependent;
     }
 
-    public void setDependant(Integer value) { 
-      this.dependant = value;
+    public void setDependent(Integer value) { 
+      this.dependent = value;
     }
 
     public Integer getSequence() { 
@@ -196,6 +196,11 @@ public class Coverage extends Resource {
     public void setPlanHolder(PlanHolder value) { 
       this.planHolder = value;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.Coverage;
+   }
 
 
 }

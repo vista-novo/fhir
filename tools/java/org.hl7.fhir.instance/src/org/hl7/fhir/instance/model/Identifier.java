@@ -29,12 +29,48 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 /**
  * A technical identifier - identifies some entity uniquely and unambiguously
  */
 public class Identifier extends Type {
+
+    public enum IdentifierUse {
+        usual, // the identifier recommended for display and use in real-world interactions
+        official, // the identifier considered to be most trusted for the identification of this item
+        temp; // A temporary identifier
+        public static IdentifierUse fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("usual".equals(codeString))
+          return usual;
+        if ("official".equals(codeString))
+          return official;
+        if ("temp".equals(codeString))
+          return temp;
+        throw new Exception("Unknown IdentifierUse code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case usual: return "usual";
+            case official: return "official";
+            case temp: return "temp";
+            default: return "?";
+          }
+        }
+    }
+
+    /**
+     * Identifies the use for this identifier, if known
+
+     */
+    private IdentifierUse use;
+
+    /**
+     * A label for the identifier that can be displayed to a human so they can recognise the identifier
+     */
+    private String_ label;
 
     /**
      * Establishes the namespace in which set of possible id values is unique.
@@ -45,6 +81,32 @@ public class Identifier extends Type {
      * The portion of the identifier typically displayed to the user and which is unique within the context of the system.
      */
     private String_ id;
+
+    /**
+     * Time period during which identifier was valid for use
+     */
+    private Period period;
+
+    /**
+     * Organisation that issued/manages the identifier
+     */
+    private ResourceReference assigner;
+
+    public IdentifierUse getUse() { 
+      return this.use;
+    }
+
+    public void setUse(IdentifierUse value) { 
+      this.use = value;
+    }
+
+    public String_ getLabel() { 
+      return this.label;
+    }
+
+    public void setLabel(String_ value) { 
+      this.label = value;
+    }
 
     public Uri getSystem() { 
       return this.system;
@@ -60,6 +122,22 @@ public class Identifier extends Type {
 
     public void setId(String_ value) { 
       this.id = value;
+    }
+
+    public Period getPeriod() { 
+      return this.period;
+    }
+
+    public void setPeriod(Period value) { 
+      this.period = value;
+    }
+
+    public ResourceReference getAssigner() { 
+      return this.assigner;
+    }
+
+    public void setAssigner(ResourceReference value) { 
+      this.assigner = value;
     }
 
 

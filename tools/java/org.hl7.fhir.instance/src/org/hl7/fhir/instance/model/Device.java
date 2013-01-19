@@ -29,14 +29,69 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
 /**
- * This resource identifies a manufactured entity that is used in the provision of healthcare. The device may be a machine, an insert, a computer, an application, etc
+ * This resource identifies a manufactured entity that is used in the provision of healthcare. The device may be a machine, an insert, a computer, an application, etc.
  */
 public class Device extends Resource {
+
+    public class Identity extends Element {
+        /**
+         * The number assigned to this device by an authorised issuer of Device GITNs
+         */
+        private String_ gtin;
+
+        /**
+         * Lot number of manufacture
+         */
+        private String_ lot;
+
+        /**
+         * The serial number assigned by the organisation when the device was manufactured
+         */
+        private String_ serialNumber;
+
+        /**
+         * Date of expiry of this device (if applicable)
+         */
+        private Date expiry;
+
+        public String_ getGtin() { 
+          return this.gtin;
+        }
+
+        public void setGtin(String_ value) { 
+          this.gtin = value;
+        }
+
+        public String_ getLot() { 
+          return this.lot;
+        }
+
+        public void setLot(String_ value) { 
+          this.lot = value;
+        }
+
+        public String_ getSerialNumber() { 
+          return this.serialNumber;
+        }
+
+        public void setSerialNumber(String_ value) { 
+          this.serialNumber = value;
+        }
+
+        public Date getExpiry() { 
+          return this.expiry;
+        }
+
+        public void setExpiry(Date value) { 
+          this.expiry = value;
+        }
+
+    }
 
     /**
      * Describes what kind of device that this 
@@ -59,9 +114,9 @@ public class Device extends Resource {
     private String_ version;
 
     /**
-     * The serial number assigned by the organisation when the device was manufactured
+     * Universal Device Id fields
      */
-    private String_ serialNumber;
+    private Identity identity;
 
     /**
      * The organization that is responsible for the provision and ongoing maintenance of the device
@@ -69,7 +124,7 @@ public class Device extends Resource {
     private ResourceReference owner;
 
     /**
-     * The identifier assigned to the device by the organisation that owns/manages the device
+     * Identifiers assigned to this device by various organizations (unless other specific fields exist for them)
      */
     private List<Identifier> assignedId = new ArrayList<Identifier>();
 
@@ -79,6 +134,11 @@ public class Device extends Resource {
     private ResourceReference location;
 
     /**
+     * If the resource is affixed to a person
+     */
+    private ResourceReference patient;
+
+    /**
      * Contact details for an organization or a particular human that is responsible for the device
      */
     private List<Contact> contact = new ArrayList<Contact>();
@@ -86,7 +146,7 @@ public class Device extends Resource {
     /**
      * A network address on which the device may be contacted directly
      */
-    private Contact address;
+    private Uri url;
 
     public CodeableConcept getType() { 
       return this.type;
@@ -120,12 +180,12 @@ public class Device extends Resource {
       this.version = value;
     }
 
-    public String_ getSerialNumber() { 
-      return this.serialNumber;
+    public Identity getIdentity() { 
+      return this.identity;
     }
 
-    public void setSerialNumber(String_ value) { 
-      this.serialNumber = value;
+    public void setIdentity(Identity value) { 
+      this.identity = value;
     }
 
     public ResourceReference getOwner() { 
@@ -148,17 +208,30 @@ public class Device extends Resource {
       this.location = value;
     }
 
+    public ResourceReference getPatient() { 
+      return this.patient;
+    }
+
+    public void setPatient(ResourceReference value) { 
+      this.patient = value;
+    }
+
     public List<Contact> getContact() { 
       return this.contact;
     }
 
-    public Contact getAddress() { 
-      return this.address;
+    public Uri getUrl() { 
+      return this.url;
     }
 
-    public void setAddress(Contact value) { 
-      this.address = value;
+    public void setUrl(Uri value) { 
+      this.url = value;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.Device;
+   }
 
 
 }

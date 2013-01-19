@@ -1,4 +1,5 @@
-package org.hl7.fhir.instance.model;
+package org.hl7.fhir.instance.client;
+
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
@@ -28,31 +29,15 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-import java.util.*;
+public class EFhirClientException extends Exception {
+	private static final long serialVersionUID = 1L;
 
-public abstract class Resource extends Element {
-	
-	/**
-	 * Extensions
-	 */
-	private List<Extension> extensions = new ArrayList<Extension>();
-	
-	/**
-	 * Text summary of resource, for human interpretation
-	 */
-	private Narrative text;
-
-	public Narrative getText() {
-		return text;
+	public EFhirClientException(String string) {
+		super(string);
 	}
 
-	public void setText(Narrative text) {
-		this.text = text;
+	public EFhirClientException(Exception e) {
+		super(e);
 	}
 
-	public List<Extension> getExtensions() {
-		return extensions;
-	}
-	
-	public abstract ResourceType getResourceType();
 }

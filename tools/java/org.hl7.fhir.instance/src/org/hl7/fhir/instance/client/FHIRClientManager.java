@@ -1,4 +1,3 @@
-package org.hl7.fhir.instance.model;
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
@@ -27,32 +26,36 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
+package org.hl7.fhir.instance.client;
 
-import java.util.*;
+import java.net.URI;
+import java.util.HashMap;
 
-public abstract class Resource extends Element {
+import org.hl7.fhir.instance.model.Resource;
+import org.hl7.fhir.instance.model.ResourceReference;
+
+public class FHIRClientManager {
+
+	HashMap<String, FHIRClient> servers = new HashMap<String, FHIRClient>();
 	
-	/**
-	 * Extensions
-	 */
-	private List<Extension> extensions = new ArrayList<Extension>();
-	
-	/**
-	 * Text summary of resource, for human interpretation
-	 */
-	private Narrative text;
-
-	public Narrative getText() {
-		return text;
-	}
-
-	public void setText(Narrative text) {
-		this.text = text;
-	}
-
-	public List<Extension> getExtensions() {
-		return extensions;
+	public void RegisterServer(String baseUrl, FHIRClient server) throws EFhirClientException {
+		if (servers.containsKey(baseUrl))
+			throw new EFhirClientException("Duplicate Server Id");
+		servers.put(baseUrl, server);
 	}
 	
-	public abstract ResourceType getResourceType();
+	public FHIRClient resolveServer(ResourceReference ref) {
+		return null;
+		// todo
+	}
+	
+	public Resource getResource(ResourceReference ref) {
+		return null;
+		// todo		
+	}
+
+	public Resource getResource(URI ref) {
+		return null;
+		// todo		
+	}
 }

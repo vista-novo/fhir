@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -38,11 +38,40 @@ import java.util.*;
  */
 public class DocumentInformation extends Type {
 
+    public enum DocumentAttestationMode {
+        personal, // The person authenticated the document in their personal capacity
+        professional, // The person authenticated the document in their professional capacity
+        legal, // The person authenticated the document and accepted legal responsibility for its content
+        official; // The organization authenticated the document as consistent with their policies and procedures
+        public static DocumentAttestationMode fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("personal".equals(codeString))
+          return personal;
+        if ("professional".equals(codeString))
+          return professional;
+        if ("legal".equals(codeString))
+          return legal;
+        if ("official".equals(codeString))
+          return official;
+        throw new Exception("Unknown DocumentAttestationMode code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case personal: return "personal";
+            case professional: return "professional";
+            case legal: return "legal";
+            case official: return "official";
+            default: return "?";
+          }
+        }
+    }
+
     public class Attester extends Element {
         /**
          * The type of attestation the authenticator offers
          */
-        private Code mode;
+        private DocumentAttestationMode mode;
 
         /**
          * When document was attested by the party
@@ -54,11 +83,11 @@ public class DocumentInformation extends Type {
          */
         private ResourceReference party;
 
-        public Code getMode() { 
+        public DocumentAttestationMode getMode() { 
           return this.mode;
         }
 
-        public void setMode(Code value) { 
+        public void setMode(DocumentAttestationMode value) { 
           this.mode = value;
         }
 
@@ -80,15 +109,59 @@ public class DocumentInformation extends Type {
 
     }
 
-    /**
-     * The identifier for the document as assigned by the souces system when the document was created
-     */
-    private Identifier documentId;
+    public class Event extends Element {
+        /**
+         * This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a "History and Physical Report" in which the procedure being documented is necessarily a "History and Physical" act.
+         */
+        private List<CodeableConcept> code = new ArrayList<CodeableConcept>();
+
+        /**
+         * The period of time covered by the document. There is no assertion that the document is a complete representation for this period, only that it documents events during this time
+         */
+        private Period period;
+
+        /**
+         * Full details for the event(s) the document concents
+         */
+        private List<ResourceReference> detail = new ArrayList<ResourceReference>();
+
+        public List<CodeableConcept> getCode() { 
+          return this.code;
+        }
+
+        public Period getPeriod() { 
+          return this.period;
+        }
+
+        public void setPeriod(Period value) { 
+          this.period = value;
+        }
+
+        public List<ResourceReference> getDetail() { 
+          return this.detail;
+        }
+
+    }
 
     /**
-     * the document creation time, when the document first came into being. Where the document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created.
+     * Logical Identifier for the document, assigned when created. This identifier stays constant when subsequent versions of the document are created
+     */
+    private Identifier id;
+
+    /**
+     * Version specific identifier for the document, assigned when created. This identifier changes when subsequent versions of the document are created
+     */
+    private Identifier versionId;
+
+    /**
+     * The document creation time, when the document first came into being. Where the document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created.
      */
     private Instant instant;
+
+    /**
+     * The code specifying the particular kind of document (e.g., Prescription, Discharge Summary, Report).
+     */
+    private Coding class_;
 
     /**
      * Specifies the particular kind of document (e.g. History and Physical, Discharge Summary, Progress Note)
@@ -99,6 +172,11 @@ public class DocumentInformation extends Type {
      * Official human-readable label for the document
      */
     private String_ title;
+
+    /**
+     * The code specifying the level of confidentiality of the XDS Document. These codes are specific to an XDS Affinity Domain.
+     */
+    private Coding confidentialityCode;
 
     /**
      * Identifies the primary subject of the document.  
@@ -121,21 +199,39 @@ public class DocumentInformation extends Type {
     private ResourceReference custodian;
 
     /**
-     * The main Act, such as a colonoscopy or an appendectomy, being documented
+     * The main event/act/item, such as a colonoscopy or an appendectomy, being documented
      */
-    private ResourceReference context;
+    private Event event;
 
     /**
      * Describes the clinical encounter or type of care this document is associated with.
      */
     private ResourceReference encounter;
 
-    public Identifier getDocumentId() { 
-      return this.documentId;
+    /**
+     * This code represents the type of organizational setting of the clinical encounter during which the documented act occurred
+     */
+    private CodeableConcept facilityType;
+
+    /**
+     * The code specifying the clinical specialty where the act that resulted in the document was performed (e.g., Family Practice, Laboratory, Radiology).
+     */
+    private CodeableConcept practiceSetting;
+
+    public Identifier getId() { 
+      return this.id;
     }
 
-    public void setDocumentId(Identifier value) { 
-      this.documentId = value;
+    public void setId(Identifier value) { 
+      this.id = value;
+    }
+
+    public Identifier getVersionId() { 
+      return this.versionId;
+    }
+
+    public void setVersionId(Identifier value) { 
+      this.versionId = value;
     }
 
     public Instant getInstant() { 
@@ -144,6 +240,14 @@ public class DocumentInformation extends Type {
 
     public void setInstant(Instant value) { 
       this.instant = value;
+    }
+
+    public Coding getClass_() { 
+      return this.class_;
+    }
+
+    public void setClass_(Coding value) { 
+      this.class_ = value;
     }
 
     public CodeableConcept getType() { 
@@ -160,6 +264,14 @@ public class DocumentInformation extends Type {
 
     public void setTitle(String_ value) { 
       this.title = value;
+    }
+
+    public Coding getConfidentialityCode() { 
+      return this.confidentialityCode;
+    }
+
+    public void setConfidentialityCode(Coding value) { 
+      this.confidentialityCode = value;
     }
 
     public ResourceReference getSubject() { 
@@ -186,12 +298,12 @@ public class DocumentInformation extends Type {
       this.custodian = value;
     }
 
-    public ResourceReference getContext() { 
-      return this.context;
+    public Event getEvent() { 
+      return this.event;
     }
 
-    public void setContext(ResourceReference value) { 
-      this.context = value;
+    public void setEvent(Event value) { 
+      this.event = value;
     }
 
     public ResourceReference getEncounter() { 
@@ -200,6 +312,22 @@ public class DocumentInformation extends Type {
 
     public void setEncounter(ResourceReference value) { 
       this.encounter = value;
+    }
+
+    public CodeableConcept getFacilityType() { 
+      return this.facilityType;
+    }
+
+    public void setFacilityType(CodeableConcept value) { 
+      this.facilityType = value;
+    }
+
+    public CodeableConcept getPracticeSetting() { 
+      return this.practiceSetting;
+    }
+
+    public void setPracticeSetting(CodeableConcept value) { 
+      this.practiceSetting = value;
     }
 
 

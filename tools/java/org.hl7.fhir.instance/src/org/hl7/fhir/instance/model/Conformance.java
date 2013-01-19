@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
 /**
- * A conformance statement about how an application or implementation supports FHIR or the set of requirements for a desired implementation.
+ * A conformance statement about how an application or implementation supports FHIR or the set of requirements for a desired implementation
  */
 public class Conformance extends Resource {
 
@@ -67,7 +67,8 @@ public class Conformance extends Resource {
         history, // Retrieve the update history for the resource
         validate, // Check that the content would be acceptable as an update
         updates, // Get a list of prior updates to resources of this type, optionally with some filter criteria
-        create; // Create a new resource with a server assigned id
+        create, // Create a new resource with a server assigned id
+        search; // Supports search operations using the parameters described in the profile
         public static RestfulOperation fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -87,6 +88,8 @@ public class Conformance extends Resource {
           return updates;
         if ("create".equals(codeString))
           return create;
+        if ("search".equals(codeString))
+          return search;
         throw new Exception("Unknown RestfulOperation code '"+codeString+"'");
         }
         public String toCode() {
@@ -99,6 +102,7 @@ public class Conformance extends Resource {
             case validate: return "validate";
             case updates: return "updates";
             case create: return "create";
+            case search: return "search";
             default: return "?";
           }
         }
@@ -676,6 +680,11 @@ public class Conformance extends Resource {
     public List<Document> getDocument() { 
       return this.document;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.Conformance;
+   }
 
 
 }

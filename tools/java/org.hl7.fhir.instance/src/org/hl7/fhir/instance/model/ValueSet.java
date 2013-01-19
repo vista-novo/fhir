@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -288,12 +288,12 @@ public class ValueSet extends Resource {
     /**
      * The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance 
      */
-    private Id identifier;
+    private String_ identifier;
 
     /**
-     * The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design, or instance
+     * The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design or instance
      */
-    private Id version;
+    private String_ version;
 
     /**
      * An assertion that this value set is a restriction on another value set - that it only includes codes that are part of the other value set. The value set itself must ensure that this is true - the contents of the value set are not automatically bounded by the contents of any value set identified here. This allows profile tooling to reason about the relationships between value sets without having to determine the value set contents
@@ -355,19 +355,19 @@ public class ValueSet extends Resource {
       this.date = value;
     }
 
-    public Id getIdentifier() { 
+    public String_ getIdentifier() { 
       return this.identifier;
     }
 
-    public void setIdentifier(Id value) { 
+    public void setIdentifier(String_ value) { 
       this.identifier = value;
     }
 
-    public Id getVersion() { 
+    public String_ getVersion() { 
       return this.version;
     }
 
-    public void setVersion(Id value) { 
+    public void setVersion(String_ value) { 
       this.version = value;
     }
 
@@ -386,6 +386,11 @@ public class ValueSet extends Resource {
     public List<Include> getExclude() { 
       return this.exclude;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.ValueSet;
+   }
 
 
 }

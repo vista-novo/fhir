@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -39,7 +39,7 @@ import java.util.*;
 public class XdsFolder extends Resource {
 
     /**
-     * contain the set of codes specifying the type of clinical activity that resulted in placing XDS Documents in this XDSFolder
+     * Contain the set of codes specifying the type of clinical activity that resulted in placing XDS Documents in this XDSFolder
      */
     private List<Coding> code = new ArrayList<Coding>();
 
@@ -49,7 +49,7 @@ public class XdsFolder extends Resource {
     private String_ title;
 
     /**
-     * the subject of care medical record Identifier as defined by the Document Source.
+     * The subject of care medical record Identifier as defined by the Document Source.
      */
     private Identifier patientId;
 
@@ -98,6 +98,11 @@ public class XdsFolder extends Resource {
     public void setComments(String_ value) { 
       this.comments = value;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.XdsFolder;
+   }
 
 
 }

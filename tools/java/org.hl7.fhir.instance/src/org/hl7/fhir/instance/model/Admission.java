@@ -29,12 +29,17 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 /**
  * null
  */
 public class Admission extends Resource {
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.Admission;
+   }
 
 
 }

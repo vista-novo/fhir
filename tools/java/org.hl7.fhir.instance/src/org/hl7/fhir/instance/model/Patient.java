@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -38,8 +38,50 @@ import java.util.*;
  */
 public class Patient extends Resource {
 
+    public class Animal extends Element {
+        /**
+         * Identifies the high level categorization of the kind of animal
+         */
+        private CodeableConcept species;
+
+        /**
+         * Identifies the detailed categorization of the kind of animal.
+         */
+        private CodeableConcept breed;
+
+        /**
+         * Indicates the current state of the animal's reproductive organs
+         */
+        private CodeableConcept genderStatus;
+
+        public CodeableConcept getSpecies() { 
+          return this.species;
+        }
+
+        public void setSpecies(CodeableConcept value) { 
+          this.species = value;
+        }
+
+        public CodeableConcept getBreed() { 
+          return this.breed;
+        }
+
+        public void setBreed(CodeableConcept value) { 
+          this.breed = value;
+        }
+
+        public CodeableConcept getGenderStatus() { 
+          return this.genderStatus;
+        }
+
+        public void setGenderStatus(CodeableConcept value) { 
+          this.genderStatus = value;
+        }
+
+    }
+
     /**
-     * A linked patient record is a record that concerns the same patient. Records are linked after it is realised that at least one was created in error.
+     * A linked patient record is a record that concerns the same patient. Records are linked after it is realized that at least one was created in error.
      */
     private List<ResourceReference> link = new ArrayList<ResourceReference>();
 
@@ -49,19 +91,24 @@ public class Patient extends Resource {
     private Boolean active;
 
     /**
-     * The person or animal that this patient record is about
+     * An identifier that applies to this person as a patient
      */
-    private ResourceReference subject;
+    private List<Identifier> identifier = new ArrayList<Identifier>();
+
+    /**
+     * Patient Demographic details
+     */
+    private Demographics details;
+
+    /**
+     * This element has a value if the patient is an animal
+     */
+    private Animal animal;
 
     /**
      * The provider for whom this is a patient record
      */
     private ResourceReference provider;
-
-    /**
-     * An identifier that applies to this person as a patient
-     */
-    private List<HumanId> identifier = new ArrayList<HumanId>();
 
     /**
      * Dietary restrictions for the patient
@@ -90,12 +137,24 @@ public class Patient extends Resource {
       this.active = value;
     }
 
-    public ResourceReference getSubject() { 
-      return this.subject;
+    public List<Identifier> getIdentifier() { 
+      return this.identifier;
     }
 
-    public void setSubject(ResourceReference value) { 
-      this.subject = value;
+    public Demographics getDetails() { 
+      return this.details;
+    }
+
+    public void setDetails(Demographics value) { 
+      this.details = value;
+    }
+
+    public Animal getAnimal() { 
+      return this.animal;
+    }
+
+    public void setAnimal(Animal value) { 
+      this.animal = value;
     }
 
     public ResourceReference getProvider() { 
@@ -104,10 +163,6 @@ public class Patient extends Resource {
 
     public void setProvider(ResourceReference value) { 
       this.provider = value;
-    }
-
-    public List<HumanId> getIdentifier() { 
-      return this.identifier;
     }
 
     public CodeableConcept getDiet() { 
@@ -133,6 +188,11 @@ public class Patient extends Resource {
     public void setRecordLocation(CodeableConcept value) { 
       this.recordLocation = value;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.Patient;
+   }
 
 
 }

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -93,7 +93,7 @@ public class Problem extends Resource {
         /**
          * Links to other relevant information, including pathology reports
          */
-        private ResourceReference details;
+        private List<ResourceReference> details = new ArrayList<ResourceReference>();
 
         public CodeableConcept getCode() { 
           return this.code;
@@ -103,24 +103,20 @@ public class Problem extends Resource {
           this.code = value;
         }
 
-        public ResourceReference getDetails() { 
+        public List<ResourceReference> getDetails() { 
           return this.details;
-        }
-
-        public void setDetails(ResourceReference value) { 
-          this.details = value;
         }
 
     }
 
     public class Location extends Element {
         /**
-         * code that identifies the structural location
+         * Code that identifies the structural location
          */
         private CodeableConcept code;
 
         /**
-         * detailed and structured anatomical location information
+         * Detailed and structured anatomical location information
          */
         private ResourceReference details;
 
@@ -149,7 +145,7 @@ public class Problem extends Resource {
         private ProblemRelationshipType type;
 
         /**
-         * target of the relationship 
+         * Target of the relationship 
          */
         private ResourceReference target;
 
@@ -170,6 +166,26 @@ public class Problem extends Resource {
         }
 
     }
+
+    /**
+     * Subject of this problem
+     */
+    private ResourceReference subject;
+
+    /**
+     * Encounter during which the problem was first asserted
+     */
+    private ResourceReference encounter;
+
+    /**
+     * Person who asserts this problem
+     */
+    private ResourceReference asserter;
+
+    /**
+     * Estimated or actual date the problem/diagnosis was first detected/suspected
+     */
+    private Date dateAsserted;
 
     /**
      * Identification of the problem or diagnosis. 
@@ -202,11 +218,6 @@ public class Problem extends Resource {
     private Type onset;
 
     /**
-     * Estimated or actual date the problem/diagnosis was first detected/suspected
-     */
-    private Date dateFound;
-
-    /**
      * The date or estimated date that the problem/diagnosis resolved or went into remission
      */
     private Type abatement;
@@ -217,19 +228,51 @@ public class Problem extends Resource {
     private Stage stage;
 
     /**
-     * supporting Evidence / manfiestions that are the basis on which this problem/diagnosis is suspected or confirmed
+     * Supporting Evidence / manfiestions that are the basis on which this problem/diagnosis is suspected or confirmed
      */
     private List<Evidence> evidence = new ArrayList<Evidence>();
 
     /**
      * The anatomical location where this problem/diagnosis manifests itself
      */
-    private Location location;
+    private List<Location> location = new ArrayList<Location>();
 
     /**
      * Further problems, diagnoses, procedures or events that are related in some way to this problem/diagnosis, or the substance that caused/triggered this problem
      */
     private List<RelatedItem> relatedItem = new ArrayList<RelatedItem>();
+
+    public ResourceReference getSubject() { 
+      return this.subject;
+    }
+
+    public void setSubject(ResourceReference value) { 
+      this.subject = value;
+    }
+
+    public ResourceReference getEncounter() { 
+      return this.encounter;
+    }
+
+    public void setEncounter(ResourceReference value) { 
+      this.encounter = value;
+    }
+
+    public ResourceReference getAsserter() { 
+      return this.asserter;
+    }
+
+    public void setAsserter(ResourceReference value) { 
+      this.asserter = value;
+    }
+
+    public Date getDateAsserted() { 
+      return this.dateAsserted;
+    }
+
+    public void setDateAsserted(Date value) { 
+      this.dateAsserted = value;
+    }
 
     public CodeableConcept getCode() { 
       return this.code;
@@ -279,14 +322,6 @@ public class Problem extends Resource {
       this.onset = value;
     }
 
-    public Date getDateFound() { 
-      return this.dateFound;
-    }
-
-    public void setDateFound(Date value) { 
-      this.dateFound = value;
-    }
-
     public Type getAbatement() { 
       return this.abatement;
     }
@@ -307,17 +342,18 @@ public class Problem extends Resource {
       return this.evidence;
     }
 
-    public Location getLocation() { 
+    public List<Location> getLocation() { 
       return this.location;
-    }
-
-    public void setLocation(Location value) { 
-      this.location = value;
     }
 
     public List<RelatedItem> getRelatedItem() { 
       return this.relatedItem;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.Problem;
+   }
 
 
 }

@@ -29,14 +29,14 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
 /**
- * A person who is involved in the healthcare process
+ * A description of an individual who is involved in healthcare processes. The individual may be a patient, a provider of care services, or related to a patient in some way or other. 
  */
-public class Person extends Resource {
+public class Demographics extends Type {
 
     public class Language extends Element {
         /**
@@ -94,42 +94,37 @@ public class Person extends Resource {
     }
 
     /**
-     * Identifier for a person within a particular scope.
-     */
-    private List<HumanId> identifier = new ArrayList<HumanId>();
-
-    /**
-     * A name associated with the person
+     * A name associated with the individual. 
      */
     private List<HumanName> name = new ArrayList<HumanName>();
 
     /**
-     * A contact detail for the person, e.g. a telephone number or an email address.
+     * A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted. 
      */
     private List<Contact> telecom = new ArrayList<Contact>();
 
     /**
-     * Administrative Gender
+     * Administrative Gender - the gender that the patient is considered to have for administration / record keeping purposes
      */
     private Coding gender;
 
     /**
-     * The birth date for the person.
+     * The birth date for the individual, to the degre of precision now
      */
     private DateTime birthDate;
 
     /**
-     * Indicates if the Person deceased or not
+     * Indicates if the individual is deceased or not
      */
     private Boolean deceased;
 
     /**
-     * One or more address for the person
+     * One or more addresses for the individual
      */
     private List<Address> address = new ArrayList<Address>();
 
     /**
-     * This field contains the patient's marital (civil) status.
+     * This field contains a patient's marital (civil) status.
      */
     private CodeableConcept maritalStatus;
 
@@ -137,10 +132,6 @@ public class Person extends Resource {
      * A language spoken by the person, with proficiency
      */
     private List<Language> language = new ArrayList<Language>();
-
-    public List<HumanId> getIdentifier() { 
-      return this.identifier;
-    }
 
     public List<HumanName> getName() { 
       return this.name;

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
+// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -412,7 +412,7 @@ public class SecurityEvent extends Resource {
         private String_ otherUserId;
 
         /**
-         * human-meaningful name for the user
+         * Human-meaningful name for the user
          */
         private String_ name;
 
@@ -427,7 +427,7 @@ public class SecurityEvent extends Resource {
         private List<Coding> role = new ArrayList<Coding>();
 
         /**
-         * logical network location for application activity
+         * Logical network location for application activity
          */
         private Network network;
 
@@ -546,7 +546,7 @@ public class SecurityEvent extends Resource {
 
     public class Object extends Element {
         /**
-         * object type being audited
+         * Object type being audited
          */
         private ObjectType type;
 
@@ -571,7 +571,7 @@ public class SecurityEvent extends Resource {
         private String_ id;
 
         /**
-         * Denotes policy-defined sensitivity for the Participant Object ID such as VIP, HIV status, mental health status, or similar topics
+         * Denotes policy-defined sensitivity for the Participant Object ID such as VIP, HIV status, mental health status or similar topics
          */
         private String_ sensitivity;
 
@@ -652,22 +652,22 @@ public class SecurityEvent extends Resource {
     }
 
     /**
-     * identifies the name, action type, time, and disposition of the audited event
+     * Identifies the name, action type, time, and disposition of the audited event
      */
     private Event event;
 
     /**
-     * a person, or a hardware device or software process
+     * A person, a hardware device or software process
      */
     private List<Participant> participant = new ArrayList<Participant>();
 
     /**
-     * application systems and processes
+     * Application systems and processes
      */
     private List<Source> source = new ArrayList<Source>();
 
     /**
-     * specific instances of data or objects that have been accessed
+     * Specific instances of data or objects that have been accessed
      */
     private List<Object> object = new ArrayList<Object>();
 
@@ -690,6 +690,11 @@ public class SecurityEvent extends Resource {
     public List<Object> getObject() { 
       return this.object;
     }
+
+  @Override
+  public ResourceType getResourceType() {
+    return ResourceType.SecurityEvent;
+   }
 
 
 }
