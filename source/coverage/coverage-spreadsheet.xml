@@ -541,7 +541,7 @@
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"><Data ss:Type="String">List of policy exception codes</Data></Cell>
     <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Special policy coverage may be extended to: students, and persons with special needs. (May be coded using only the field above)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Special policy coverage may be extended to: students and persons with special needs. (May be coded using only the field above)</Data></Cell>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>

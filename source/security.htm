@@ -54,6 +54,12 @@ Todo.. outline general considerations
 Digital Signatures
 </h2>
 
+<h2>Attachments</h2>
+<p>
+Several FHIR resources include attachments. Attachments can either be references to content found elsewhere, or included inline encoded in base64.
+Attachments represent security risks in a way that FHIR resources do not, since some attachments contain executable code. Implementers should 
+always use caution when handling resources.
+</p>
 
 <%footer%>
 <%/maindiv%> 

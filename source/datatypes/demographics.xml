@@ -169,7 +169,7 @@
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s69"><Data ss:Type="String">An identifier for this individual</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Identifier for a person within a particular scope.</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Indivuduals are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the patient. Examples are national person identifier and local identifier</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Indivuduals are known by a variety of ids. Some institutions maintain several and most collect identifiers for exchange with other organizations concerning the patient. Examples are national person identifier and local identifier</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">.plays:Role(classCode='IDENT').id</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">PID-3</Data></Cell>
@@ -204,7 +204,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">A contact detail for the individual</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted. </Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">People have (primary) ways to contact them in some way such as phone, email.</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Person may have multiple ways to be contacted with different uses or applicable periods. &#13;May need to have options for contacting the person urgently, and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner's phone)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Person may have multiple ways to be contacted with different uses or applicable periods. &#13;May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner's phone)</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">./telecom</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">PID-13, PID-14</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -310,7 +310,7 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">.LanguageCommunication</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Rationale for putting this in the core is based on input from Canada. Other persons on call are from single language countries. Committee felt uncomfortable with leaving any of the 3 optional attributes modeCode, proficiencyLevelCode, or preferenceInd up to extensions. Instead we said that mustUnderstand is &quot;no&quot; on modeCode, and preferenceInd.</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Rationale for putting this in the core is based on input from Canada. Other persons on call are from single language countries. Committee felt uncomfortable with leaving any of the 3 optional attributes modeCode, proficiencyLevelCode, or preferenceInd up to extensions. Instead we said that mustUnderstand is &quot;no&quot; on modeCode and preferenceInd.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
     <Cell ss:StyleID="s67"><Data ss:Type="String">Demographics.language.language</Data></Cell>

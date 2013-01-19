@@ -15,14 +15,14 @@ lab reports have a single group which has no code on it, and which contains all 
 at the same point in the hierarchy, and there is a single point on the hierarchy - the group - that may influence the meaning of the test.</li>
 <li>The element that contains the actual value of the result has a variable name depending on the type. The name is "value" + the type name, ignoring parameters, with a capital on the first letter, e.g. valueInterval or valueString</li>
 <li>The clinical information associated with a request can be a simple text summary, or a reference to another resource</li>
-<li>The <i>diagnosticTime</i> can be inferred from the specimens, if they are provided, but specimen details are often not provided, and the value of <i>diagnosticTime</i> is always important. The value of the <i>diagnosticTime</i> element must be consistent with the specimen collection times</li>
+<li>The <i>diagnosticTime</i> can be inferred from the specimens, if they are provided, but specimen details are often not provided and the value of <i>diagnosticTime</i> is always important. The value of the <i>diagnosticTime</i> element must be consistent with the specimen collection times</li>
 <li>Applications consuming lab reports must take careful note of updates to lab reports, and particularly note withdrawn reports. 
 A report shouldn't be final until all the results are final or amended. If a report is withdrawn, all the results must be 
 withdrawn by replacing every result value with the Concept "withdrawn" in the internal terminology <a href="terminologies.htm">"Special values"</a> 
 (sid = "http://hl7.org/fhir/sid/fhir/special-values"), and setting the conclusion (if provided) and the text narrative to some text like 
 "This report has been withdrawn". A reason may be provided in the narrative. </li>
 </ul>
-<h3>Relationship between results, narrative, and synoptic reports</h3>
+<h3>Relationship between results, narrative and synoptic reports</h3>
 <p>
 One difficult aspect of the design of this resource can be captured with a simple question: "just what is a result?" There 
 is a wide range of variation in the answers to this question; some respond that a result is inherently measurement based, 
@@ -39,7 +39,7 @@ Some practical examples:
 </ul>
 <p>
 Which of these are results? For this resource, we have chosen to take an inclusive view; any of these things can be a result, as long 
-as they have a formal code or name that has a clinical meaning, and some kind of (possible) value then they can be a result. 
+as they have a formal code or name that has a clinical meaning and some kind of (possible) value then they can be a result. 
 </p>
 
 <pre>

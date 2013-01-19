@@ -683,7 +683,7 @@
     <Cell><Data ss:Type="String">ObservationRangeMeaning</Data></Cell>
     <Cell><Data ss:Type="String">The meaning of this range</Data></Cell>
     <Cell><Data ss:Type="String">Code for the meaning of the reference range</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">Need to be able to say what kind of reference range this is - normal, recommended, therapeutic, or perhaps what state this reference range applies to (i.e. age, hormonal cycles, etc)</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Need to be able to say what kind of reference range this is - normal, recommended, therapeutic, or perhaps what state this reference range applies to (i.e. age, hormonal cycles, etc.)</Data></Cell>
     <Cell><Data ss:Type="String">This is only usually populated if there is more than one range</Data></Cell>
     <Cell><Data ss:Type="String">./interpretationCode</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -819,7 +819,7 @@
     <Cell ss:StyleID="s70"><Data ss:Type="String">./value</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">OBX.5, OBX.6</Data></Cell>
     <Cell ss:StyleID="s70"/>
-    <Cell><Data ss:Type="String">Do we need the full set of data types for sub-observations? And can we get away without status, reliability, etc?</Data></Cell>
+    <Cell><Data ss:Type="String">Do we need the full set of data types for sub-observations? And can we get away without status, reliability, etc.?</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s64"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">y</Data></Cell>
@@ -1425,7 +1425,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">amended</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">The observation has been modified subsequent to being Final, and is complete and verified byan authorised person</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">The observation has been modified subsequent to being Final, and is complete and verified by an authorised person</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">cancelled</Data></Cell>

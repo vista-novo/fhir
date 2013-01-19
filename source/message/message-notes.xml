@@ -20,17 +20,17 @@ Notes:
 <h2>Mailbox</h2>
 <p>
 The mailbox is the standard name for a service hosted on a RESTful server that accepts messages and processes 
-them as transactions, and returns a message response appropriate for the message received. The server is under
+them as transactions and returns a message response appropriate for the message received. The server is under
 no obligation to do anything particular with the resources except as required by the semantics of the event code in the 
 message resource. A server may choose to retain the resources and make them available on a RESTful interface, but 
 is not required to do so. If the server returns 200 Ok, it must return a valid message that indicates what the outcome
-of the event processing is. An HTTP error indicates that the message was not processed successfully, and that it should
+of the event processing is. An HTTP error indicates that the message was not processed successfully and that it should
 be resubmitted (and doing so should not result in a duplicate message response).  Repeated failures indicate either a
 fatal problem with the message or a problem with the receiving application.
 </p>
 <p>
 The mailbox can also be used to accept documents. In this case, the document is "accepted" (the server 
-takes responsibility for custody of the received document), and an HTTP status of 204 No Content is returned, 
+takes responsibility for custody of the received document) and an HTTP status of 204 No Content is returned, 
 or an HTTP error is returned. The server is under no obligation to do anything with the document except as 
 specific trading partner agreements dictate.
 </p>

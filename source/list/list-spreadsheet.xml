@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Lloyd McKenzie</LastAuthor>
+  <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2012-11-30T06:55:49Z</LastSaved>
+  <LastSaved>2013-01-19T00:21:44Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,6 +20,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -125,7 +126,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="12" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="14" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
@@ -230,11 +231,26 @@
     <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">boolean</Data></Cell>
     <Cell ss:StyleID="s66"/>
-    <Cell><Data ss:Type="String">Whether list is ordered or not</Data></Cell>
-    <Cell><Data ss:Type="String">Whether the list is ordered or not</Data></Cell>
+    <Cell><Data ss:Type="String">Whether items in the list have a meaningful order</Data></Cell>
+    <Cell><Data ss:Type="String">Whether items in the list have a meaningful order</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s66"><Data ss:Type="String">Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.</Data></Cell>
     <Cell><Data ss:Type="String">Applications SHOULD render ordered lists in the order provided, but MAY allow users to re-order based on their own preferences as well</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">count(distinct-values(./outboundRelationship[typeCode=COMP and isNormalActRelationship()]/sequenceNumber))&gt;1 &#10;or &#10;count(./participation[isNormalParticipation() and typeCode=SBJ]/sequenceNumber))&gt;1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="150">
+    <Cell><Data ss:Type="String">List.mode</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">ListMode</Data></Cell>
+    <Cell><Data ss:Type="String">working | snapshot | changes</Data></Cell>
+    <Cell><Data ss:Type="String">How this list was prepared - whether it is a working list that is suitable for being maintained in an ongoing basis, or if it represents a snapshort of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted</Data></Cell>
+    <Cell ss:Index="11" ss:StyleID="s66"><Data ss:Type="String">Lists are used in various ways, and it must be known in what way it is safe to use them</Data></Cell>
+    <Cell ss:Index="13" ss:StyleID="s66"><Data ss:Type="String">??</Data></Cell>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
    </Row>
@@ -253,18 +269,34 @@
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="165">
-    <Cell><Data ss:Type="String">List.entry.status</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">0..1</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="105">
+    <Cell><Data ss:Type="String">List.entry.flag</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">ListItemFlag</Data></Cell>
+    <Cell><Data ss:Type="String">Workflow information about this item</Data></Cell>
+    <Cell><Data ss:Type="String">The flag allows the system constructing the list to make one or more statements about the role and significance of the item in the list</Data></Cell>
+    <Cell ss:Index="11" ss:StyleID="s66"><Data ss:Type="String">This field is present to support various clinical uses of lists, such as a discharge summary medication list, where flags specify whether the medication was added, modified, or deleted from the list</Data></Cell>
+    <Cell><Data ss:Type="String">The flag can only be understood in the context of the List.code. If the flag means that the entry has actually been deleted from the list, the deleted element must be true. Deleted can only be used if the List.mode is &quot;changes&quot;</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="165">
+    <Cell><Data ss:Type="String">List.entry.deleted</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s66"/>
-    <Cell><Data ss:Type="String">code</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">ListEntryStatus</Data></Cell>
-    <Cell><Data ss:Type="String">added | retained | updated| deleted</Data></Cell>
-    <Cell><Data ss:Type="String">Status of an entry in this list.</Data></Cell>
-    <Cell ss:Index="11" ss:StyleID="s66"/>
-    <Cell><Data ss:Type="String">If no status is provided, it must be known that the status of deleted does not apply. A deleted entry should be displayed in narrative as deleted</Data></Cell>
+    <Cell><Data ss:Type="String">boolean</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell><Data ss:Type="String">If this item is actually marked as deleted</Data></Cell>
+    <Cell><Data ss:Type="String">True if this item is marked as deleted in the list.</Data></Cell>
+    <Cell ss:Index="11" ss:StyleID="s66"><Data ss:Type="String">The flag element may contain codes that an application processing the list does not understand. However there can be no ambiguity if a list item is actually marked as &quot;deleted&quot;</Data></Cell>
+    <Cell><Data ss:Type="String">If the flag means that the entry has actually been deleted from the list, the deleted element must be true. Both flag and deleted can only be used if the List.mode is &quot;changes&quot;. A deleted entry should be displayed in narrative as deleted</Data></Cell>
     <Cell ss:StyleID="s68"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">added: </Font></B><Font
        html:Color="#000000">./updateMode=(&quot;A&quot;,&quot;AR&quot;)&#10;&#10;</Font><B><Font
@@ -278,7 +310,7 @@
     <Cell><Data ss:Type="String">List.entry.item</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Resource(Any)</Data></Cell>
     <Cell ss:StyleID="s66"/>
@@ -348,11 +380,10 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>3</TopRowBottomPane>
+   <TopRowBottomPane>6</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -369,8 +400,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -385,7 +416,7 @@
    <Column ss:StyleID="s69" ss:Width="42"/>
    <Column ss:StyleID="s69" ss:Width="239.25"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="198.75"/>
-   <Column ss:StyleID="s69" ss:Width="241.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="406.5"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -403,12 +434,12 @@
     <Cell ss:StyleID="Default"><Data ss:Type="String">not(exists(f:emptyReason) and exists(f:entry))</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="Default"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Deleted Rule</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">List</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">The deleted flag can only be used if the </Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">(f:mode/text() = 'changes') or not(exists(f:entry/f:item/f:deleted))</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="Default"/>
@@ -442,6 +473,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -461,6 +493,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -697,8 +731,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>38</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -729,25 +762,25 @@
     <Cell><Data ss:Type="String">unbound</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s72"><Data ss:Type="String">ListEntryStatus</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Status of an entry in a list. </Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">ListMode</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">The processing mode that applies to this list</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">complete</Data></Cell>
-    <Cell><Data ss:Type="String">#list-entry-status</Data></Cell>
+    <Cell><Data ss:Type="String">#list-mode</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s72"><Data ss:Type="String">ListEmptyReason</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">If a list is empty, why it is empty</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">ListItemFlag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Codes that provide further information about the reason and meaning of the item in the list</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s73"/>
     <Cell ss:StyleID="s73"/>
     <Cell ss:StyleID="s73"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">ListEmptyReason</Data></Cell>
+    <Cell><Data ss:Type="String">If a list is empty, why it is empty</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s73"/>
     <Cell ss:StyleID="s73"/>
     <Cell ss:StyleID="s73"/>
@@ -779,7 +812,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>4</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -836,29 +869,28 @@
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
- <Worksheet ss:Name="list-entry-status">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="5" x:FullColumns="1"
+ <Worksheet ss:Name="list-mode">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:Width="311.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s76">
     <Cell ss:StyleID="s77"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell><Data ss:Type="String">Comments</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">added</Data></Cell>
-    <Cell><Data ss:Type="String">This item was added to the list</Data></Cell>
+    <Cell><Data ss:Type="String">working</Data></Cell>
+    <Cell><Data ss:Type="String">This list is the master list, maintained in an ongoing fashion with regular updates as the real world list it is tracking changes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">retained</Data></Cell>
-    <Cell><Data ss:Type="String">This item has been retained in the list</Data></Cell>
+    <Cell><Data ss:Type="String">snapshot</Data></Cell>
+    <Cell><Data ss:Type="String">This list was prepared as a snapshot. It should not be assumed to be current</Data></Cell>
+    <Cell><Data ss:Type="String">Mostly this status is used in documents where the list won't be changed once the document is completed</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">updated</Data></Cell>
-    <Cell><Data ss:Type="String">This item is still in the list, but its summary information changed</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">deleted</Data></Cell>
-    <Cell><Data ss:Type="String">This item has been deleted from the list</Data></Cell>
+    <Cell><Data ss:Type="String">changes</Data></Cell>
+    <Cell><Data ss:Type="String">The list is prepared as a statement of changes that have been made or recommended</Data></Cell>
+    <Cell><Data ss:Type="String">This is typically used in clinical summaries (e.g. Discharge Summary, Transfers of care). These lists should be understood as human readable statements, and applications should be extremely careful if automated processing is attempted</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">

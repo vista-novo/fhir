@@ -20,7 +20,6 @@
   <WindowWidth>17490</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -192,7 +191,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">instant</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">date issed for current status</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Date issued for current status</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The date and/or time that the result was issued from the source for the recorded ‘Test result status</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -299,7 +298,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Details concerning a single pathology test requested.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Need to be able to track completion of requests based on reports issued, and also to report what diagnostic test swere requested (not always the same as what is delivered)</Data><NamedCell
+    <Cell><Data ss:Type="String">Need to be able to track completion of requests based on reports issued and also to report what diagnostic test swere requested (not always the same as what is delivered)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Note: Usually there is one test request for each result, however in some circumstances multiple test requests may be represented using a single Pathology test result resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -402,7 +401,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">./outboundRelationship[typeCode=&quot;PERT&quot; and isNormalActRelationship()]/target</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">This isn't really *ANY* resource.  You can't send a drug or an Animal or a bunch of other things.  What you really want here are &quot;acts&quot;, and I suspect there's a constraint that the subject of the LabReport must have participated in them as subject or perhaps in some other way.</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">This isn't really *ANY* resource.  You can't send a drug or an Animal or a bunch of other things.  What you really want here are &quot;acts&quot; and I suspect there's a constraint that the subject of the LabReport must have participated in them as subject or perhaps in some other way.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -433,7 +432,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">LabServices</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Biochemistry, Haematology etc</Data><NamedCell
+    <Cell><Data ss:Type="String">Biochemistry, Haematology etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The diagnostic service that performs the examination e.g. biochemistry, haematology.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -460,7 +459,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Need to know where in the patient history to file/present this report</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">The diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship is not always automatic</Data><NamedCell
+    <Cell><Data ss:Type="String">The diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and so the exact relationship is not always automatic</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">./effectiveTime[type=&quot;TS&quot;]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -541,7 +540,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">A particular result</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Specific detailed result, including both the value of the result item, and additional information that may be useful for clinical interpretation. Results include whatever specific data items pathology labs report as part of the clinical service; it is not confined to measurements.</Data><NamedCell
+    <Cell><Data ss:Type="String">Specific detailed result, including both the value of the result item and additional information that may be useful for clinical interpretation. Results include whatever specific data items pathology labs report as part of the clinical service; it is not confined to measurements.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Need to report results with information that assist with interpretation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -785,10 +784,11 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>26</TopRowBottomPane>
+   <TopRowBottomPane>3</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -805,9 +805,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>27</ActiveRow>
-     <ActiveCol>0</ActiveCol>
-     <RangeSelection>R28:R30</RangeSelection>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1057,7 +1056,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

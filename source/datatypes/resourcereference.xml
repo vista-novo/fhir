@@ -205,7 +205,7 @@
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">version</Data></Cell>
     <Cell><Data ss:Type="String">ResourceReference</Data></Cell>
-    <Cell><Data ss:Type="String">If the version url is provided, and local, then a logical id must be provided too</Data></Cell>
+    <Cell><Data ss:Type="String">If the version url is provided and local, then a logical id must be provided too</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">not(contains(f:version, ':')) or exists(f:id)</Data></Cell>
    </Row>
   </Table>

@@ -130,7 +130,7 @@
     <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">MimeType</Data></Cell>
-    <Cell><Data ss:Type="String">Mime type of the content, with charset etc</Data></Cell>
+    <Cell><Data ss:Type="String">Mime type of the content, with charset etc.</Data></Cell>
     <Cell><Data ss:Type="String">Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate</Data></Cell>
     <Cell><Data ss:Type="String">text/plain; charset=UTF-8, image/png</Data></Cell>
     <Cell><Data ss:Type="String">Processors of the data need to be able to tell what the data is</Data></Cell>
@@ -178,7 +178,7 @@
     <Cell ss:Index="5"><Data ss:Type="String">base64Binary</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">sha-1 hash of the data (base64 )</Data></Cell>
     <Cell><Data ss:Type="String">The calculated hash of the data using SHA-1. Represented using base64</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Included so that applications can verify that the contents of a location have not changed, and also so that a signature of the xml content can implicitly sign the content of an image without having to include the data in the instance or reference the url in the signature</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Included so that applications can verify that the contents of a location have not changed and also so that a signature of the xml content can implicitly sign the content of an image without having to include the data in the instance or reference the url in the signature</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">.integrityCheck[parent::ED/integrityCheckAlgorithm=&quot;SHA-1&quot;]</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -190,7 +190,7 @@
     <Cell><Data ss:Type="String">The language that the attachment is in</Data></Cell>
     <Cell><Data ss:Type="String">eng (English), esp (Spanish)</Data></Cell>
     <Cell><Data ss:Type="String">May need to be able to pick the right language to render for a particular person from a list of attachments in different languages</Data></Cell>
-    <Cell><Data ss:Type="String">note that the v3 lang is ISO 639-2, and this is ISO 639-3</Data></Cell>
+    <Cell><Data ss:Type="String">note that the v3 lang is ISO 639-2 and this is ISO 639-3</Data></Cell>
     <Cell><Data ss:Type="String">./language</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">

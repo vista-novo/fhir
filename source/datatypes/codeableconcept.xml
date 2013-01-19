@@ -109,7 +109,7 @@
     <Cell ss:Index="7"><Data ss:Type="String">Concept - reference to a terminology or just  text</Data></Cell>
     <Cell><Data ss:Type="String">A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">This is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED-CT, and/or defined by the provision of text that captures a human sense of the concept</Data></Cell>
-    <Cell><Data ss:Type="String">Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations, and the relationship between elements and pre- and post-coordination</Data></Cell>
+    <Cell><Data ss:Type="String">Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination</Data></Cell>
     <Cell><Data ss:Type="String">CD</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">

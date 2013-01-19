@@ -10,7 +10,7 @@ Notes:
    responsibility of the server: it must modify the referenced resources whenever a change the links on any patient is updated. In a messaging context, patient 
    links SHALL only be updated though the link/unlink events</font></li>
 <li>The patient may be a person or an animal (in order to support veterinary medicine). Either a person or an animal resource link must be provided, but not both.</li> 
-<li>The dietary restrictions are not for specifying medical diets, but for casual dietary restrictions such as vegetarian, diary-free, nut-free, etc</li>
+<li>The dietary restrictions are not for specifying medical diets, but for casual dietary restrictions such as vegetarian, diary-free, nut-free, etc.</li>
 </ul>
 
 <h2>Managing Patient Registration</h2>

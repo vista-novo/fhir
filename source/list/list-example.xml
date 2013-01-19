@@ -10,15 +10,21 @@
     <id>example</id>
   </source>
   <date>2012-11-25T22:17:00+11:00</date>
+  <mode>changes</mode>
   <entry>
-    <status>deleted</status>
+    <flag>
+      <text>Deleted due to error</text>
+    </flag>
+    <deleted>true</deleted>
     <item>
       <type>Problem</type>
       <id>example</id>
     </item>
   </entry>
   <entry>
-    <status>added</status>
+    <flag>
+      <text>Added</text>
+    </flag>
     <item>
       <type>Problem</type>
       <id>example2</id>

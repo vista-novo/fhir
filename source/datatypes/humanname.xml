@@ -163,7 +163,7 @@
     <Cell ss:Index="7"><Data ss:Type="String">Text representation of the full name</Data></Cell>
     <Cell><Data ss:Type="String">a full text representation of the name</Data></Cell>
     <Cell ss:Index="10" ss:StyleID="s69"><Data ss:Type="String">A renderable, unencoded form</Data></Cell>
-    <Cell><Data ss:Type="String">Can provide both a text representation, and structured parts</Data></Cell>
+    <Cell><Data ss:Type="String">Can provide both a text representation and structured parts</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">./formatted</Data></Cell>
    </Row>

@@ -164,7 +164,7 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">identify the device or application that is source</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Identify the device or application that is source</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The APP-NAME field SHOULD identify the device or application that originated the message.  It is a string without further semantics.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -177,9 +177,9 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">value tracks discontinuity in syslog reporting</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Value tracks discontinuity in syslog reporting</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">a change in the value indicates there has been a discontinuity in syslog reporting</Data><NamedCell
+    <Cell><Data ss:Type="String">A change in the value indicates there has been a discontinuity in syslog reporting</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">The field does not have any specific syntax or semantics; the value is implementation-dependent and/or operator-assigned.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -190,9 +190,9 @@
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">right</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">what was done</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">What was done</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">identifies the name, action type, time, and disposition of the audited event</Data><NamedCell
+    <Cell><Data ss:Type="String">Identifies the name, action type, time, and disposition of the audited event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -207,7 +207,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">This identifies the audited function. For &quot;Execute&quot; Event Action Code audit records, this identifies the application function performed.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">e.g., a menu item, program, rule, policy, function code, application name, or URL. It identifies the performed function</Data><NamedCell
+    <Cell><Data ss:Type="String">e.g., a menu item, program, rule, policy, function code, application name or URL. It identifies the performed function</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -218,7 +218,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">SecurityEventEventAction</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">type of action performed during the event</Data><NamedCell
+    <Cell><Data ss:Type="String">Type of action performed during the event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Indicator for type of action performed during the event that generated the audit</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -231,7 +231,7 @@
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">instant</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">time when the event occurred on source</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Time when the event occurred on source</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The time when the event occurred on the source</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -248,7 +248,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">SecurityEventEventOutcome</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">whether the event succeeded or failed</Data><NamedCell
+    <Cell><Data ss:Type="String">Whether the event succeeded or failed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Indicates whether the event succeeded or failed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -274,7 +274,7 @@
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">left</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">a person, or a hardware device or software process</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">A person, a hardware device or software process</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">There may be more than one user per event, for example, in cases of actions initiated by one user for other users, or in events that involve more than one user, hardware device, or system process. However, only one user may be the initiator/requestor for the event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -313,9 +313,9 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">human-meaningful name for the user</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Human-meaningful name for the user</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">human-meaningful name for the user</Data><NamedCell
+    <Cell><Data ss:Type="String">Human-meaningful name for the user</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The User ID and Alternative User ID may be internal or otherwise obscure values. This field assists the auditor in identifying the actual user</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -339,7 +339,7 @@
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Coding</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">role(s) the user plays (from RBAC)</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Role(s) the user plays (from RBAC)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Specification of the role(s) the user plays when performing the event, as assigned in role-based access control security</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -350,7 +350,7 @@
     <Cell><Data ss:Type="String">SecurityEvent.participant.network</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">logical network location for application activity</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Logical network location for application activity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -361,7 +361,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">SecurityEventParticipantNetworkType</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">the type of network access point</Data><NamedCell
+    <Cell><Data ss:Type="String">The type of network access point</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">An identifier for the type of network access point that originated the audit event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -374,20 +374,20 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">identifier for the network access point of the user device</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Identifier for the network access point of the user device</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">An identifier for the network access point of the user device for the audit event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">This datum identifies the user's network access point, which may be distinct from the server that performed the action. It is an optional value that may be used to group events recorded on separate servers for analysis of a specific network access point's data access across all servers </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">This could be a device id, IP address, or some other identifier associated with a device</Data><NamedCell
+    <Cell><Data ss:Type="String">This could be a device id, IP address or some other identifier associated with a device</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">SecurityEvent.source</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">application systems and processes</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Application systems and processes</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Since multi-tier, distributed, or composite applications make source identification ambiguous, this collection of fields may repeat for each application or process actively involved in the event. For example, multiple value-sets can identify participating web servers, application processes, and database server threads in an n-tier distributed application. Passive event participants, e.g., low-level network transports, need not be identified</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -413,7 +413,7 @@
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">the id of source where event originated</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">The id of source where event originated</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Identifier of the source where the event originated</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -428,7 +428,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">SecurityEventSourceType</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">the type of source where event originated</Data><NamedCell
+    <Cell><Data ss:Type="String">The type of source where event originated</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Code specifying the type of source where event originated</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -439,9 +439,9 @@
     <Cell><Data ss:Type="String">SecurityEvent.object</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">specific instances of data or objects that have been accessed </Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Specific instances of data or objects that have been accessed </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">specific instances of data or objects that have been accessed</Data><NamedCell
+    <Cell><Data ss:Type="String">Specific instances of data or objects that have been accessed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">required unless the values for Event Identification, Active Participant Identification, and Audit Source Identification are sufficient to document the entire auditable event. Because events may have more than one participant object, this group can be a repeating set of values.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -454,9 +454,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">SecurityEventObjectType</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">object type being audited</Data><NamedCell
+    <Cell><Data ss:Type="String">Object type being audited</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">object type being audited</Data><NamedCell
+    <Cell><Data ss:Type="String">Object type being audited</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">To describe the object being acted upon. In addition to queries on the subject of the action in an auditable event, it is also important to be able to query on the object type for the action </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -471,7 +471,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">SecurityEventObjectRole</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">functional application role of Object</Data><NamedCell
+    <Cell><Data ss:Type="String">Functional application role of Object</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Code representing the functional application role of Participant Object being audited</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -488,7 +488,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">SecurityEventObjectLifecycle</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">life-cycle stage for the object</Data><NamedCell
+    <Cell><Data ss:Type="String">Life-cycle stage for the object</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Identifier for the data life-cycle stage for the participant object</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -529,9 +529,9 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">policy-defined sensitivity for the object</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Policy-defined sensitivity for the object</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Denotes policy-defined sensitivity for the Participant Object ID such as VIP, HIV status, mental health status, or similar topics</Data><NamedCell
+    <Cell><Data ss:Type="String">Denotes policy-defined sensitivity for the Participant Object ID such as VIP, HIV status, mental health status or similar topics</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">This field identifies a specific instance of an object, such as a patient, to detect/track privacy and security issues</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -544,7 +544,7 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">instance-specific descriptor for Object</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Instance-specific descriptor for Object</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">An instance-specific descriptor of the Participant Object ID audited, such as a person's name</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -557,7 +557,7 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">base64Binary</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">actual query for object</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Actual query for object</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The actual query for a query-type participant object</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -596,7 +596,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>21</ActiveRow>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1088,7 +1089,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">E</Data></Cell>
     <Cell><Data ss:Type="String">Execute</Data></Cell>
-    <Cell><Data ss:Type="String">Perform a system or application function such as log-on, program execution, or use of an object's method</Data></Cell>
+    <Cell><Data ss:Type="String">Perform a system or application function such as log-on, program execution or use of an object's method</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">

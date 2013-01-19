@@ -131,7 +131,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">A message that contains resources</Data></Cell>
     <Cell><Data ss:Type="String">A transmission requesting action on a bundle of one or more resources or a response to such a request</Data></Cell>
-    <Cell><Data ss:Type="String">Many implementations are not prepared to use REST, and need a message based infrastructure</Data></Cell>
+    <Cell><Data ss:Type="String">Many implementations are not prepared to use REST and need a message based infrastructure</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Message</Data></Cell>
     <Cell><Data ss:Type="String">MSH</Data></Cell>
    </Row>
@@ -140,7 +140,7 @@
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">id of this message</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Id of this message</Data></Cell>
     <Cell><Data ss:Type="String">The identifier of this message</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">This must be unique within the scope of this stream of messages</Data></Cell>
     <Cell><Data ss:Type="String">Message.id</Data></Cell>
@@ -163,7 +163,7 @@
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">MessageEvent</Data></Cell>
     <Cell><Data ss:Type="String">Code for the event his message represents</Data></Cell>
-    <Cell><Data ss:Type="String">Code that identifies the event this message represents, and connects it with the event definition in the FHIR specification</Data></Cell>
+    <Cell><Data ss:Type="String">Code that identifies the event this message represents and connects it with the event definition in the FHIR specification</Data></Cell>
     <Cell><Data ss:Type="String">Drives the behavior associated with this message</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">./payload[classCode=&quot;CACT&quot; and moodCode=&quot;EVN&quot; and isNormalAct()]/code[isNormalDatatype()]/code</Data></Cell>
     <Cell><Data ss:Type="String">MSH.9.2</Data></Cell>
@@ -440,7 +440,7 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>3</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -2,38 +2,46 @@
 
 <!-- insert xhtml content here -->
 <a name="status"> </a>
-<h2>Item Status</h2>
+<h2>List Mode &amp; Item Deleted</h2>
 
 <p>
-Each entry in the list includes a status. The status code can be one of the following values:
+There are several different kinds of use for a List resource:
 </p>
-<%codelist ListEntryStatus%>
-<p>
-The status values are not instructions about what should happen, but a record of what did happen. 
-The context of the list must be known in order to understand the meaning of changes to the list. 
-For example, if the list concerns current patient medications, then a deleted medication means 
-the patient was instructed not to take the medication. 
-</p>
-<p>
-It is not necessary to label an item with a status. However systems must ensure that an
-item with no status code is not deleted.
-</p>
+<%codelist ListMode%>
 
+<p>
+The final mode - a change list, may include deleted items. A typical case is a medication
+list in a discharge summary, where the list includes items that have been both added and deleted.
+In order to ensure that the list is safe to process, any item where the flag implies that the 
+item has actually been deleted must have the deleted element set to true. 
+</p>
+<p>
+Note that there is no implication about the status of a resource that has been deleted.
+The only statement that is made is that the resource has been dropped from the list. 
+However applications should ensure that the implication of adding or deleting items
+from the list is consistent with the logical status of the resource and it's contents.
+</p>
+<p>
+A proper use of List.mode = "changes" with a deleted resource is in a medications list 
+for a discharge summary. See Example "med-list". An improper use would be if the list 
+was a working list of patient medications in a clinical tracking system, and list item
+flags were used to implement version tracking history within the resource.
+</p>
 
 <a name="status"> </a>
 <h2>Narrative Content</h2>
 
 <p>
 The narrative portion of the List resource should contain a summary 
-of key properties of the items in the list, along with their status 
-as indicated in the entry.
+of key properties of the items in the list, along with a human readable 
+summary of their flags (if present).
 </p>
 <p>
 An HTML table is the recommended approach, though this is not required.
 There should be a representation in the narrative for each item in the 
 list, and vice versa, along with clear use of visual hints (borders, 
 lines, bullet marks, etc.) to ensure that human readers do not get 
-confused about which status belongs with which item on space-poor displays.
+confused about which flags belongs with which item on space-poor displays.
 </p>
 
 <a name="status"> </a>

@@ -4,7 +4,7 @@
 
 <p>
 In XDS, each patient has a series of documents. The documents are each entered in the registry as an 
-XdsEntry that describes the document and its metadata (format/type/etc + patient/author/etc) and 
+XdsEntry that describes the document and its metadata (format/type/etc. + patient/author/etc.) and 
 references the actual source of the document by a URL at which it may be retrieved.
 </p>
 <p>

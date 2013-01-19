@@ -20,7 +20,7 @@
   <acceptUnknown>true</acceptUnknown>
   
   <!-- in a real conformance statement, it's unlikely that a single conformance statement 
-    would declare conformance for REST, messaging, and documents, though it is legal. 
+    would declare conformance for REST, messaging and documents, though it is legal. 
     This example does so in order to show all the parts of a conformance statement -->
   <rest>
     <!-- this is a server conformance statement. Note that servers are required to provide 
@@ -84,7 +84,7 @@
     <status>generated</status>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <p>The EHR Server supports the following transactions for the resource Person: read, vread, 
-        update, history, search(name,gender), create, and updates.</p>
+        update, history, search(name,gender), create and updates.</p>
       <p>The EHR System supports the following message: admin-notify::Person.</p>
       <p>The EHR Application has a <a href="http://fhir.hl7.org/base/profile/@bc054d23-75e1-4dc6-aca5-838b6b1ac81d/history/@b5fdd9fc-b021-4ea1-911a-721a60663796">general document profile</a>.</p>
     </div>

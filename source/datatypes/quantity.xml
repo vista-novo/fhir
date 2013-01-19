@@ -121,7 +121,7 @@
     <Cell ss:Index="7"><Data ss:Type="String">A measured or measurable amount</Data></Cell>
     <Cell><Data ss:Type="String">A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies</Data></Cell>
     <Cell><Data ss:Type="String">Need to able to capture all sorts of measured values, even if the measured value are not precisely quantified. Values include exact measures such as 3.51g, customary units such as 3 tablets, currencies such as $100.32USD</Data></Cell>
-    <Cell><Data ss:Type="String">The context of use may frequently define what kind of quantity this is, and therefore what kind of units can be used. The context of use may also restrict the values for status</Data></Cell>
+    <Cell><Data ss:Type="String">The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for status</Data></Cell>
     <Cell><Data ss:Type="String">PQ, IVL&lt;PQ&gt;, MO, CO, depending on the values</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="81">
@@ -153,7 +153,7 @@
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Unit representation</Data></Cell>
     <Cell><Data ss:Type="String">A human readable form of the units</Data></Cell>
-    <Cell><Data ss:Type="String">There are lots of representations for the units and in many contexts, particular representations are fixed and required. i.e. mcg for micrograms, and not ug</Data></Cell>
+    <Cell><Data ss:Type="String">There are lots of representations for the units and in many contexts, particular representations are fixed and required. i.e. mcg for micrograms and not ug</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -175,7 +175,7 @@
     <Cell ss:Index="7"><Data ss:Type="String">Coded form of the unit</Data></Cell>
     <Cell><Data ss:Type="String">A computer processable form of the units in some unit representation system</Data></Cell>
     <Cell><Data ss:Type="String">Need a computable form of the units that is fixed across all forms. UCUM provides this for quantities, but SNOMED-CT provides many arbitrary units of interest</Data></Cell>
-    <Cell><Data ss:Type="String">The preferred system is UCUM, but SNOMED-CT can also be used (for customary units), or ISO 4217 for currency.&#10;&#10;The context of use may additionally require a code from a particular system (Unless the Quantity element has a dataAbsentReason flag)</Data></Cell>
+    <Cell><Data ss:Type="String">The preferred system is UCUM, but SNOMED-CT can also be used (for customary units) or ISO 4217 for currency.&#10;&#10;The context of use may additionally require a code from a particular system (Unless the Quantity element has a dataAbsentReason flag)</Data></Cell>
     <Cell><Data ss:Type="String">PQ.code, MO.currency, PQ.translation.code</Data></Cell>
    </Row>
   </Table>
@@ -276,22 +276,22 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Duration</Data></Cell>
-    <Cell><Data ss:Type="String">The unit must be an amount of time, and a UCUM unit must be provided.</Data></Cell>
+    <Cell><Data ss:Type="String">The unit must be an amount of time and a UCUM unit must be provided.</Data></Cell>
     <Cell><Data ss:Type="String">exists(f:code) and f:system='http://unitsofmeasure.org'</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Distance</Data></Cell>
-    <Cell><Data ss:Type="String">The unit must be an amount of length, and a UCUM unit must be provided.</Data></Cell>
+    <Cell><Data ss:Type="String">The unit must be an amount of length and a UCUM unit must be provided.</Data></Cell>
     <Cell><Data ss:Type="String">exists(f:code) and f:system='http://unitsofmeasure.org'</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Count</Data></Cell>
-    <Cell><Data ss:Type="String">The value must a whole number, and the UCUM unit must be &quot;1&quot;</Data></Cell>
+    <Cell><Data ss:Type="String">The value must a whole number and the UCUM unit must be &quot;1&quot;</Data></Cell>
     <Cell><Data ss:Type="String">f:code='1' and f:system='http://unitsofmeasure.org'</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Money</Data></Cell>
-    <Cell><Data ss:Type="String">The unit must be a currency, and the code must from ISO 4217 (system = &quot;urn:std:iso:4217&quot;)</Data></Cell>
+    <Cell><Data ss:Type="String">The unit must be a currency and the code must from ISO 4217 (system = &quot;urn:std:iso:4217&quot;)</Data></Cell>
     <Cell><Data ss:Type="String">exists(f:code) and f:system='urn:std:iso:4217'</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -301,7 +301,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Age</Data></Cell>
-    <Cell><Data ss:Type="String">The unit must be an amount of time, and a UCUM unit must be provided, and the value must be positive</Data></Cell>
+    <Cell><Data ss:Type="String">The unit must be an amount of time and a UCUM unit must be provided, and the value must be positive</Data></Cell>
     <Cell><Data ss:Type="String">exists(f:code) and f:system='http://unitsofmeasure.org'</Data></Cell>
    </Row>
   </Table>

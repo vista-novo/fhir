@@ -115,7 +115,7 @@ TODO: describe some use cases
 Applications may only claim to be conformant to "FHIR messaging" if they
 publish a conformance statement so the claim may be verified. A conformance
 statement lists all the message events 
-they support, either as sender or listener, and for each event, a 
+they support (either as sender or listener) and for each event, a 
 profile that states which resources are bundled (sender), or 
 are required to be bundled (listener), and any rules about the 
 information content of the individual resources. The conformance 

@@ -20,7 +20,6 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -164,6 +163,12 @@
    <Interior/>
    <NumberFormat/>
    <Protection/>
+  </Style>
+  <Style ss:ID="s89" ss:Parent="s63">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat ss:Format="@"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -337,7 +342,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s70"><Data ss:Type="String">HumanId</Data></Cell>
     <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">External Identifier</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">External identifier - FHIR will generate its own internal IDs (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration.id</Data></Cell>
    </Row>
@@ -430,10 +435,11 @@
     <HorizontalResolution>300</HorizontalResolution>
     <VerticalResolution>300</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>3</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -446,9 +452,12 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>12</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -559,7 +568,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s81"><Data ss:Type="String">MedicationAdministration-Complete</Data></Cell>
-    <Cell><Data ss:Type="String">Change the stauts of a Medication Administration to show that it is complete.</Data></Cell>
+    <Cell><Data ss:Type="String">Change the status of a Medication Administration to show that it is complete.</Data></Cell>
     <Cell ss:Index="4" ss:StyleID="s81"><Data ss:Type="String">MedicationAdministration</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">MedicationAdministration</Data></Cell>
    </Row>
@@ -577,7 +586,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

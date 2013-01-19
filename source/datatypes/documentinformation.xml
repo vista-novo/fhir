@@ -16,7 +16,7 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8910</WindowHeight>
+  <WindowHeight>8445</WindowHeight>
   <WindowWidth>24915</WindowWidth>
   <WindowTopX>3360</WindowTopX>
   <WindowTopY>3510</WindowTopY>
@@ -110,7 +110,7 @@
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">SharedDefinition</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Context and Searchable Metadata for a document</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Context and searchable metadata for a document</Data></Cell>
     <Cell><Data ss:Type="String">Describes a document: the context and searchable metadata for a document</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">This information is shared between a document and an document index entry</Data></Cell>
     <Cell><Data ss:Type="String">Document</Data></Cell>
@@ -120,7 +120,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">logical identifier for document (version-independent)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Logical identifier for document (version-independent)</Data></Cell>
     <Cell><Data ss:Type="String">Logical Identifier for the document, assigned when created. This identifier stays constant when subsequent versions of the document are created</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">see discussion in resource definition for how these relate</Data></Cell>
     <Cell><Data ss:Type="String">Document.id / Document.setId</Data></Cell>
@@ -130,7 +130,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">version-specific identifier for document</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Version-specific identifier for document</Data></Cell>
     <Cell><Data ss:Type="String">Version specific identifier for the document, assigned when created. This identifier changes when subsequent versions of the document are created</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">see discussion in resource definition for how these relate</Data></Cell>
     <Cell><Data ss:Type="String">Document.id</Data></Cell>
@@ -143,8 +143,8 @@
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">instant</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Document Creation Time</Data></Cell>
-    <Cell><Data ss:Type="String">the document creation time, when the document first came into being. Where the document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created.</Data></Cell>
+    <Cell><Data ss:Type="String">Document creation time</Data></Cell>
+    <Cell><Data ss:Type="String">The document creation time, when the document first came into being. Where the document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created.</Data></Cell>
     <Cell><Data ss:Type="String">Creation time is used for tracking, organizing versions and searching.</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">./effectiveTime[type=&quot;TS&quot;]</Data></Cell>
@@ -159,7 +159,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Coding</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">particular kind of document</Data></Cell>
+    <Cell><Data ss:Type="String">Particular kind of document</Data></Cell>
     <Cell><Data ss:Type="String">The code specifying the particular kind of document (e.g., Prescription, Discharge Summary, Report).</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String"> It is suggested that the XDS Affinity Domain draws these values from a coding scheme providing a coarse level of granularity (about 10 to 100 entries). Shall have a single value. This should be an extension</Data></Cell>
@@ -176,7 +176,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">DocumentType</Data></Cell>
-    <Cell><Data ss:Type="String">Kind of Document (LOINC if possible)</Data></Cell>
+    <Cell><Data ss:Type="String">Kind of document (LOINC if possible)</Data></Cell>
     <Cell><Data ss:Type="String">Specifies the particular kind of document (e.g. History and Physical, Discharge Summary, Progress Note)</Data></Cell>
     <Cell><Data ss:Type="String">Key metadata element describing the document, used in searching/filtering.</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -192,7 +192,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Document Title</Data></Cell>
+    <Cell><Data ss:Type="String">Document title</Data></Cell>
     <Cell><Data ss:Type="String">Official human-readable label for the document</Data></Cell>
     <Cell><Data ss:Type="String">Helps humans to assess whether the document is of interest</Data></Cell>
     <Cell><Data ss:Type="String">It's commonly the case that clinical documents do not have a title and are collectively referred to by the display name of Document.type (e.g. a &quot;consultation&quot; or &quot;progress note&quot;). Where these display names are rendered to the clinician or where the document has a unique title, the Document.title value should be used</Data></Cell>
@@ -224,7 +224,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Coding</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">as defined by Affinity Domain</Data></Cell>
+    <Cell><Data ss:Type="String">As defined by affinity domain</Data></Cell>
     <Cell><Data ss:Type="String">The code specifying the level of confidentiality of the XDS Document. These codes are specific to an XDS Affinity Domain.</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Enforcement and issues related to highly sensitive documents are beyond the scope of XDS (see security section). confidentialityCode is part of a codification scheme and value set enforced by the Document Registry. </Data></Cell>
@@ -400,7 +400,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">code(s) that apply to the event being documented</Data></Cell>
+    <Cell><Data ss:Type="String">Code(s) that apply to the event being documented</Data></Cell>
     <Cell><Data ss:Type="String">This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a &quot;History and Physical Report&quot; in which the procedure being documented is necessarily a &quot;History and Physical&quot; act.</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">An event can further specialize the act inherent in the typeCode, such as where it is simply &quot;Procedure Report&quot; and the procedure was a &quot;colonoscopy&quot;. If one or more eventCodes are included, they shall not conflict with the values inherent in the classCode, practiceSettingCode or typeCode, as such a conflict would create an ambiguous situation. This short list of codes is provided to be used as “key words” for certain types of queries.</Data></Cell>
@@ -457,7 +457,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">type of organizational setting</Data></Cell>
+    <Cell><Data ss:Type="String">Type of organizational setting</Data></Cell>
     <Cell><Data ss:Type="String">This code represents the type of organizational setting of the clinical encounter during which the documented act occurred</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">In some cases, the setting of the encounter is inherent in the typeCode, such as &quot;Diabetes Clinic Progress Note&quot;. healthcareFacilityTypeCode shall be equivalent to or further specialize the value inherent in the typeCode; for example, where the typeCode is simply &quot;Clinic Progress Note&quot; and the value of healthcareFacilityTypeCode is &quot;private clinic&quot;.  The value shall not conflict with the value inherent in the typeCode, as such a conflict would create an ambiguous situation</Data></Cell>
@@ -474,7 +474,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">clinical speciality of the act</Data></Cell>
+    <Cell><Data ss:Type="String">Clinical speciality of the act</Data></Cell>
     <Cell><Data ss:Type="String">The code specifying the clinical specialty where the act that resulted in the document was performed (e.g., Family Practice, Laboratory, Radiology).</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">It is suggested that the XDS Affinity Domain draws these values from a coding scheme providing a coarse level of granularity (about 10 to 100 entries)</Data></Cell>
@@ -492,10 +492,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <TopRowVisible>18</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>23</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

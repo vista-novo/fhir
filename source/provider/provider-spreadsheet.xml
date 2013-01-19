@@ -116,7 +116,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">A person acting on behalf of an organization</Data></Cell>
     <Cell><Data ss:Type="String">A person who represents an organization, and is authorized to perform actions on its behalf</Data></Cell>
-    <Cell><Data ss:Type="String">Need to track doctors, staff, locums etc for both healthcare providers, funders, etc.</Data></Cell>
+    <Cell><Data ss:Type="String">Need to track doctors, staff, locums etc. for both healthcare providers, funders, etc.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Role</Data></Cell>
     <Cell><Data ss:Type="String">PRD (as one example)</Data></Cell>
    </Row>

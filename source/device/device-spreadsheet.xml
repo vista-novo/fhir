@@ -103,7 +103,7 @@
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Identifies a manufactured Device involved in healthcare</Data></Cell>
-    <Cell><Data ss:Type="String">This resource identifies a manufactured entity that is used in the provision of healthcare. The device may be a machine, an insert, a computer, an application, etc</Data></Cell>
+    <Cell><Data ss:Type="String">This resource identifies a manufactured entity that is used in the provision of healthcare. The device may be a machine, an insert, a computer, an application, etc.</Data></Cell>
     <Cell><Data ss:Type="String">Allows institutions to track their devices. </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -126,14 +126,14 @@
     <Cell><Data ss:Type="String">Device.model</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">model id assigned by the manufacturer</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Model id assigned by the manufacturer</Data></Cell>
     <Cell><Data ss:Type="String">The &quot;model&quot; - an identifier assigned by the manufacturer to identify the product by it's type. This number is shared by the all devices sold as the same type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Device.version</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">version number (i.e. software)</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Version number (i.e. software)</Data></Cell>
     <Cell><Data ss:Type="String">The version of the device, if the device has multiple releases under the same model, or if the device is software or carries firmware</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -177,14 +177,14 @@
     <Cell><Data ss:Type="String">Device.owner</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Resource(Organization)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">organization responsible for device</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Organization responsible for device</Data></Cell>
     <Cell><Data ss:Type="String">The organization that is responsible for the provision and ongoing maintenance of the device</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Device.assignedId</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">identifier assigned by various organizations</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Identifier assigned by various organizations</Data></Cell>
     <Cell><Data ss:Type="String">Identifiers assigned to this device by various organizations (unless other specific fields exist for them)</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Often fixed to the device as a barcode. May include names given to the device in local usage</Data></Cell>
    </Row>
@@ -205,15 +205,15 @@
     <Cell><Data ss:Type="String">Device.contact</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Contact</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">details for human/organization for support</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Details for human/organization for support</Data></Cell>
     <Cell><Data ss:Type="String">Contact details for an organization or a particular human that is responsible for the device</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">used for troubleshooting etc</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">used for troubleshooting etc.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Device.url</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">network address to contact device</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Network address to contact device</Data></Cell>
     <Cell><Data ss:Type="String">A network address on which the device may be contacted directly</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">if the device is running a FHIR server, the network address should  be the root URL from which a conformance statement may be retrieved</Data></Cell>
    </Row>
@@ -239,12 +239,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>6</TopRowVisible>
+   <TopRowVisible>7</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>16</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveRow>13</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -1,3 +1,40 @@
+
+
+<Observation>
+  <obtainedDateTime>
+  <obtainedDatePeriod>
+
+
+MeasurementStatus ::= BITS-16 {
+
+invalid(0),
+
+questionable(1),
+
+not-available(2),
+
+calibration-ongoing(3),
+
+test-data(4),
+
+demo-data(5),
+
+validated-data(8), -- relevant, e.g., in an archive
+
+early-indication(9), -- early estimate of value
+
+msmt-ongoing(10), -- indicates that a new measurement is just being taken
+
+-- (episodic)
+
+msmt-state-in-alarm(14), -- indicates that the metric has an active alarm condition
+
+msmt-state-al-inhibited(15) -- metric supports alarming, and alarms are turned off
+
+-- (optional)
+
+}
+
 OO resources
   order / order response
   LabReport
@@ -16,6 +53,15 @@ Device
 
 
 EUI64
+
+
+UDI:
+  GTIN - 14 digit numeric maybe leading 0 - 
+  LOT - alpahumeric maximum 20
+  S/N - alpahumeric maximum 20
+  expiry - date
+
+
 
 
 

@@ -178,8 +178,8 @@ implicitly sign the content of an image without having to include the data
 or reference the url in the signature. 
 </p>
 <p>
-In many cases where Attachment is used, the cardinality is &gt;1; repeats
-are used to convey the same content in different mime types and languages.
+In many cases where Attachment is used, the cardinality is &gt;1;. A valid use of repeats is to convey the same content in different mime types and languages.
+Guidance on the meaning of repeating elements MUST be provided in the definition of the repeating resource element or extension that references this type.
 The language of the Attachment content is indicated by use of the xml:lang attribute.
 </p>
 <div class="use">
@@ -220,7 +220,7 @@ The context of use may frequently make rules about the kind of attachment
 Identifier
 </h2>
 <p>
-An identifier defined by some external system.
+An identifier intended for use external to the FHIR protocol.
 </p>
 [%dt Identifier%]
 <p>
@@ -361,7 +361,7 @@ and it should contain a <i>display</i> if it contains a <i>code</i>.
 </p>
 -->
 <p>
-The context of use usually makes rules about what codes and systems are allowed or required in a 
+The context of use (as defined in the resource or applicable profile) usually makes rules about what codes and systems are allowed or required in a 
 particular context by <a href="terminologies.htm">binding</a> the element to a value set.
 </p>
 </div>
@@ -418,9 +418,9 @@ in the definitions of the underlying codes. The ordering of Codings within a Cod
 </p>
 <p>
 Whether or not <i>coding</i> elements are present, the <i>text</i> 
-is a human language representation of the concept as seen/selected/uttered by the user 
-who entered the data, and/or that represents the intended meaning of the user or concept. 
-Very often the <i>text</i> is the same as a <i>display</i> of one of the codings. One of the codings 
+representation of the concept as entered or chosen by the user which most closely 
+represents the intended meaning of the user or concept. Very often the <i>text</i> 
+is the same as a <i>display</i> of one of the codings. One of the codings 
 may be flagged as the primary - the code that the user actually chose directly. 
 If present, the value of the primary element is an <a href="xml.htm#id">xml:id</a> that must match 
 an <i>id</i> attribute on one of the codings. 
@@ -579,7 +579,7 @@ These are used as types in resource content models, but they are really just a Q
 <pre class="xml">
   &lt;time&gt;
     &lt;value&gt;25&lt;/value&gt;
-    &lt;unit&gt;sec&lt;/unit&gt;
+    &lt;units&gt;sec&lt;/units&gt;
     &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
     &lt;code&gt;s&lt;/code&gt;
   &lt;/time&gt;
@@ -589,7 +589,7 @@ These are used as types in resource content models, but they are really just a Q
   &lt;result&gt;
     &lt;value&gt;40000&lt;/value&gt;
     &lt;range&gt;&amp;gt;&lt;/range&gt;
-    &lt;unit&gt;mcg/L&lt;/unit&gt;
+    &lt;units&gt;mcg/L&lt;/units&gt;
     &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
     &lt;code&gt;ug&lt;/code&gt;
   &lt;/result&gt;
@@ -598,7 +598,7 @@ These are used as types in resource content models, but they are really just a Q
 <pre class="xml">
   &lt;dose&gt;
     &lt;value&gt;3&lt;/value&gt;
-    &lt;unit&gt;capsules&lt;/unit&gt;
+    &lt;units&gt;capsules&lt;/units&gt;
     &lt;system&gt;http://snomed.info&lt;/system&gt;
     &lt;code&gt;385049006&lt;/code&gt;
   &lt;/dose&gt;
@@ -607,7 +607,7 @@ These are used as types in resource content models, but they are really just a Q
 <pre class="xml">
   &lt;cost&gt;
     &lt;value&gt;25.45&lt;/value&gt;
-    &lt;unit&gt;US$&lt;/unit&gt;
+    &lt;units&gt;US$&lt;/units&gt;
     &lt;system&gt;urn:std:iso:4217&lt;/system&gt;
     &lt;code&gt;USD&lt;/code&gt;
   &lt;/cost&gt;
@@ -652,11 +652,11 @@ includes 1.50, and 2.50 but not 1.49 or 2.51.
   &lt;estimate&gt;
    &lt;low&gt;
      &lt;value&gt;1.6&lt;/value&gt;
-     &lt;unit&gt;m&lt;/unit&gt;
+     &lt;units&gt;m&lt;/units&gt;
    &lt;/low&gt;
    &lt;high&gt;
      &lt;value&gt;1.9&lt;/value&gt;
-     &lt;unit&gt;m&lt;/unit&gt;
+     &lt;units&gt;m&lt;/units&gt;
    &lt;/high&gt;
   &lt;/estimate&gt;
 </pre>
@@ -703,13 +703,13 @@ The context of use may require particular types of Quantity for the numerator or
   &lt;charge&gt;
    &lt;numerator&gt;
      &lt;value&gt;103.50&lt;/value&gt;
-     &lt;unit&gt;US$&lt;/unit&gt;
+     &lt;units&gt;US$&lt;/units&gt;
      &lt;code&gt;USD&lt;/code&gt;
      &lt;system&gt;urn:std:iso:4217&lt;/system&gt;
    &lt;/numerator&gt;
    &lt;denominator&gt;
      &lt;value&gt;128&lt;/value&gt;
-     &lt;unit&gt;day&lt;/unit&gt;
+     &lt;units&gt;day&lt;/units&gt;
      &lt;code&gt;day&lt;/code&gt;
      &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
    &lt;/denominator&gt;
@@ -843,7 +843,7 @@ and the <i>identifier</i>.<i>id</i> should be the resource id.
       &lt;id&gt;2356&lt;/id&gt;
     &lt;/identifier&gt;
    &lt;period&gt;
-     &lt;low&gt;2009-06-05&lt;/low&gt;
+     &lt;low&gt;2009-07-05&lt;/low&gt;
    &lt;/period&gt;
   &lt;/id&gt;
 </pre>

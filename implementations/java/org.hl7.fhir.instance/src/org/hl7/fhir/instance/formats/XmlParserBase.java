@@ -57,6 +57,7 @@ public abstract class XmlParserBase extends XmlBase {
       return feed;
     }
   }
+  
   private Map<String, Object> idMap = new HashMap<String, Object>();
 
   /** -- worker routines --------------------------------------------------- */

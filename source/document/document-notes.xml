@@ -8,7 +8,7 @@ Notes:
  <li>The author and the attester are often the same person, but this may not be the case in some clinical workflows</li>
  <li>The attester attests to the collated narrative portions of the resources</li>
  <li>The custodian is responsible for the maintenance of the document. Principally, they are responsible for the policy regarding persistence of the documents. They need not actually retain a copy of the document, but they should do so.</li>
- <li>The <i>information</i> part of the document header is shared between a document, and a document registry entry (<a href="xdsentry2.htm">XdsEntry</a>)</li>
+ <li>The <i>information</i> part of the document header is shared between documents and a document registry entries (<a href="xdsentry2.htm">XdsEntry</a>)</li>
 </ul>  
 
 <h2>Identifying a Document</h2>
@@ -20,19 +20,19 @@ identification strategies. The following combinations are allowed:
 <ul>
  <li>A fully specified (both <a href="datatypes.htm#Identifier">Identifier</a> system and id) element is present for both <i>id</i> and <i>versionId</i>. This is the 
      preferred option: globally unique identifiers for both version and non-version specify the document</li>
- <li>A full specified element for the <i>id</i> element, and a local id (no system) for the version number. 
-     This is equivalent to a document id, and a version number. In this case the version number is assumed to be 
+ <li>A fully specified element for the <i>id</i> element and a local id (no system) for the version number. 
+     This is equivalent to a document id and a version number. In this case the version number is assumed to be 
 	 unique within the version series of the document identified by the <i>id</i> element</li>
- <li>A fully specified <i>versionId</i>, with no <i>id</i> - this version of this document is identified, but there 
-    is no version independent reference. This is discouraged, as explicit replacement tracking will be required, and 
+ <li>A fully specified <i>versionId</i> with no <i>id</i> - this version of this document is identified, but there 
+    is no version independent reference. This is discouraged, as explicit replacement tracking will be required and 
 	this can be broken by missing links in the version chain</li>
 </ul>
 <p>
-Any other combinations do not globally uniquely identity a document, and are therefore not allowed.
+Any other combinations do not globally uniquely identity a document and are therefore not allowed.
 </p>
 <p>
 Note that there is an additional identifier - the bundle identifier itself (<a href="atom.htm">atom</a> feed.id). This must be an absolute 
-URI, and in effect globally unique, but has no other particular meaning anywhere else in the specification.
+URI - in effect globally unique - but has no other particular meaning anywhere else in the specification.
 For a document, it can be populated with some URI that is extracted from the <i>versionId</i> or <i>id</i>
 above, or it can be a new UUID that has no other associated use. Implementers should not rely on its 
 value matching one of the formal document identification elements.
