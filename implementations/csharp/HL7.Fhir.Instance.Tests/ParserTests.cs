@@ -349,12 +349,14 @@ namespace HL7.Fhir.Instance.Tests
         public void TestParseNameWithExtensions()
         {
             string xmlString =
-@"<Person xmlns='http://hl7.org/fhir'>
-    <name>
-      <use>official</use>  
-      <given>Regina</given>
-      <prefix id='n1'>Dr.</prefix>
-    </name>
+@"<Patient xmlns='http://hl7.org/fhir'>
+    <details>
+        <name>
+          <use>official</use>  
+          <given>Regina</given>
+          <prefix id='n1'>Dr.</prefix>
+        </name>
+    </details>
     <extension>
       <url>http://hl7.org/fhir/profile/@iso-20190</url>
       <ref>n1</ref>
@@ -367,13 +369,13 @@ namespace HL7.Fhir.Instance.Tests
         <status>generated</status>
         <div xmlns='http://www.w3.org/1999/xhtml'>Whatever</div>
     </text>
-</Person>";
+</Patient>";
 
             XmlReader xr = fromString(xmlString);
             XmlFhirReader r = new XmlFhirReader(xr);
 
             ErrorList errors = new ErrorList();
-            Person p = (Person)ResourceParser.ParseResource(r, errors);
+            Patient p = (Patient)ResourceParser.ParseResource(r, errors);
 
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.IsNotNull(p);
@@ -398,6 +400,70 @@ namespace HL7.Fhir.Instance.Tests
             Assert.AreEqual(typeof(Quantity), rep.ResultGroup[0].Result[1].Value.GetType());
             Assert.AreEqual((decimal)5.9, (rep.ResultGroup[0].Result[1].Value as Quantity).Value.Contents);
             Assert.AreEqual("Neutrophils", rep.ResultGroup[0].Result[8].Name.Coding[0].Display.Contents);
+        }
+
+        [TestMethod]
+        public void TestParseResourceReference()
+        {
+            string xmlString = @"<x xmlns='http://hl7.org/fhir'
+                <type>Organization</type>
+                <id>http://hl7.org/fhir/organization/@1</id>
+                                 </x>";
+
+            XmlReader xr = fromString(xmlString); xr.Read();
+            XmlFhirReader r = new XmlFhirReader(xr);
+
+            ErrorList errors = new ErrorList();
+            ResourceReference result = ResourceReferenceParser.ParseResourceReference(r, errors);
+
+            Assert.AreEqual("Organization", result.Type);
+            Assert.AreEqual("http://hl7.org/fhir/organization/@1", result.Id.Contents.ToString());
+
+
+            string xmlNestedString = @"<x xmlns='http://hl7.org/fhir'
+                   <Provider>
+                 <identifier>
+                    <identifier>  
+                      <system>htp://www.acme.org/providers</system>
+                      <id>23</id>
+                    </identifier>
+                  </identifier>
+              <details>
+                <name>
+                  <family>Careful</family>
+                  <given>Adam</given>
+                  <prefix>Dr</prefix>
+                </name>
+              </details>
+
+              <organization>
+                <type>Organization</type>
+                <id>1</id>  
+              </organization> 
+
+              <!--   Referring Provider for the first 3 months of 2012   -->
+              <role>
+                <coding>
+                  <system>http://hl7.org/fhir/sid/v2-0286</system>
+                  <code>RP</code>
+                </coding>
+              </role>
+  
+              <period>
+                <start>2012-01-01</start>
+                <end>2012-03-31</end>
+              </period>
+             </x>";
+
+            xr = fromString(xmlNestedString); xr.Read();
+            r = new XmlFhirReader(xr);
+            errors = new ErrorList();
+            result = ResourceReferenceParser.ParseResourceReference(r, errors);
+
+            Assert.IsNotNull(result.InlinedContent);
+            Assert.IsInstanceOfType(result.InlinedContent, typeof(Provider));
+            Provider prov = (Provider)result.InlinedContent;
+            Assert.AreEqual("1", prov.Organization.Id.ToString());
         }
 
         [TestMethod]

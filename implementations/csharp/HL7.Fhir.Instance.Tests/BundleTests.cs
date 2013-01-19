@@ -141,7 +141,7 @@ namespace HL7.Fhir.Instance.Tests
             e1.LastUpdated = new DateTimeOffset(2012, 11, 01, 13, 04, 14, TimeSpan.Zero);
             e1.Published = new DateTimeOffset(2012, 11, 2, 14, 17, 21, TimeSpan.Zero);
             e1.AuthorName = "110.143.187.242";
-            e1.Content = new Model.Person()
+            e1.Content = new Model.Patient()
             {
                 Text =
                   new Model.Narrative()

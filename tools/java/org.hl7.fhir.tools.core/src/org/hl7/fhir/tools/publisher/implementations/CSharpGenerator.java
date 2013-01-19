@@ -123,6 +123,8 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 
 		for( CompositeTypeDefn composite : allComplexTypes )
 		{		
+			if( composite.getName() == "ResourceReference") continue;
+			
 			String xmlParserFilename = parsersDir + composite.getName() + "Parser.cs";			
 				new CSharpResourceParserGenerator(definitions)
 					.generateCompositeParser(composite, definitions).toFile(implDir+xmlParserFilename);			

@@ -187,12 +187,23 @@ public class CSharpModelResourceGenerator extends GenBlock
 			nl("Code<" + GeneratorUtils.buildFullyScopedTypeName(tref.getFullBindingRef()) + ">");
 			//isNullable = false;
 		}
+//		else if( tref.getName().equals("ResourceReference") )
+//		{
+//			// ResourceReferences that reference only one resource, get turned into a resource-specific
+//			// reference, otherwise generate a generic ResourceReference<Resource>
+//			nl( GeneratorUtils.generateCSharpTypeName(tref.getName()) );
+//
+//			if( tref.getResourceParams() != null && tref.getResourceParams().size() == 1)
+//				nl( "<" + GeneratorUtils.generateCSharpTypeName(tref.getResourceParams().get(0)) + ">" );
+//			else
+//				nl( "<Resource>" );
+//		}
 		else 
 		{
 			nl( GeneratorUtils.generateCSharpTypeName(tref.getName()) );
 			//isNullable = mapsToNullableFhirPrimitive(tref.getName());
 		}
-					
+
 //		if( member.isAllowDAR() ) nl(">");
 		if( member.getMaxCardinality() == -1 ) nl(">");
 

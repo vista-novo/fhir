@@ -40,6 +40,11 @@ namespace HL7.Fhir.Instance.Parsers
 {
     public static class ParserUtils
     {
+        public static bool IsAtNestedResource(IFhirReader reader)
+        {
+            return ModelInfo.IsKnownResource(reader.CurrentElementName);
+        }
+
         public static bool IsAtElement(IFhirReader reader, string name, bool isPolymorph = false)
         {
             if (!reader.IsAtStartElement())
