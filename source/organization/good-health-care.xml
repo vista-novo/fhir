@@ -2,10 +2,8 @@
 <Organization xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://hl7.org/fhir ../../schema/organization.xsd">
   <identifier>
-    <identifier>
-      <system>urn:ietf:rfc:3986</system>
-      <id>2.16.840.1.113883.19.5</id>
-    </identifier>
+    <system>urn:ietf:rfc:3986</system>
+    <id>2.16.840.1.113883.19.5</id>
   </identifier>
   <name>Good Health Clinic</name>
   	

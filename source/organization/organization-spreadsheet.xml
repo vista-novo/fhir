@@ -134,7 +134,7 @@
     <Cell><Data ss:Type="String">Organization.identifier</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">HumanId</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Identifier for this organization</Data></Cell>
     <Cell><Data ss:Type="String">Identifier for the organization that is used to identify the organization across multiple disparate systems</Data></Cell>
     <Cell><Data ss:Type="String">Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.</Data></Cell>

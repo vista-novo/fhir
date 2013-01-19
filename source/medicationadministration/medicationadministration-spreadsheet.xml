@@ -340,7 +340,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">HumanId</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s89"><Data ss:Type="String">External Identifier</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">External identifier - FHIR will generate its own internal IDs (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.</Data></Cell>
@@ -388,7 +388,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">HumanId</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Encounter</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">An identifier or a link to a resource that identifies the particular occurrence of contact between patient and health care provider.</Data></Cell>

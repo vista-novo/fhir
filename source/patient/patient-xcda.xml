@@ -4,10 +4,8 @@
   <identifier>
     <use>usual</use>
     <label>MRN</label>
-    <identifier>
-      <system>urn:oid:2.16.840.1.113883.19.5</system>
-      <id>12345</id>
-    </identifier>
+    <system>urn:oid:2.16.840.1.113883.19.5</system>
+    <id>12345</id>
   </identifier>
   <details>
     <name>

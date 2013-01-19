@@ -20,10 +20,8 @@
         <active>true</active>
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>444222222</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>444222222</id>
         </identifier>
         <details>
           <name>
@@ -76,10 +74,8 @@
         <active>true</active>
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>444333333</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>444333333</id>
         </identifier>
         <details>
           <name>
@@ -131,10 +127,8 @@
         <active>true</active>
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>444555555</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>444555555</id>
         </identifier>
         <details>
           <name>
@@ -186,10 +180,8 @@
         <active>true</active>
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>444114567</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>444114567</id>
         </identifier>
         <details>
           <name>
@@ -241,10 +233,8 @@
         <active>true</active>
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>444111234</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>444111234</id>
         </identifier>
         <details>
           <name>
@@ -296,10 +286,8 @@
         <active>true</active>
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>444113456</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>444113456</id>
         </identifier>
         <details>
           <name>
@@ -351,10 +339,8 @@
         <active>true</active>
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>444112345</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>444112345</id>
         </identifier>
         <details>
           <name>
@@ -406,10 +392,8 @@
         <active>true</active>
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>444666666</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>444666666</id>
         </identifier>
         <details>
           <name>
@@ -461,10 +445,8 @@
         <active>true</active>
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>444777777</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>444777777</id>
         </identifier>
         <details>
           <name>
@@ -516,10 +498,8 @@
         <active>true</active>
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>444888888</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>444888888</id>
         </identifier>
         <details>
           <name>
@@ -571,10 +551,8 @@
         <active>true</active>
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>444999999</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>444999999</id>
         </identifier>
         <details>
           <name>
@@ -626,10 +604,8 @@
         <active>true</active>
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>555222222</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>555222222</id>
         </identifier>
         <details>
           <name>

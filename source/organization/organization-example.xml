@@ -4,10 +4,8 @@
 
   <!-- Clinical Team "Gastroenterology" at Acme Hospital -->
   <identifier>
-    <identifier>
-      <system>http://www.acme.org.au/units</system>
-      <id>Gastro</id>
-    </identifier>
+    <system>http://www.acme.org.au/units</system>
+    <id>Gastro</id>
   </identifier>
   <name>Gastroenterology</name>
   <telecom>

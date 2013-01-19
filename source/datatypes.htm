@@ -50,7 +50,6 @@ be exchanged.
 <area shape="rect" coords="137, 378, 208, 407" href="#Schedule" alt="Schedule"/>
 <area shape="rect" coords="248, 378, 314, 407" href="#Address" alt="Address"/>
 <area shape="rect" coords="353, 378, 449, 407" href="#HumanName" alt="HumanName"/>
-<area shape="rect" coords="359, 304, 433, 333" href="#HumanId" alt="HumanId"/>
 </map>            
 <p align="left">
 <img id="dtmap1" src="dt-map.png" usemap="#dtmap2" border="0" height="408" width="450" alt="Data Types Concept Map"/>
@@ -212,71 +211,6 @@ The context of use may frequently make rules about the kind of attachment
    &lt;url&gt;http://10.1.2.3:1000/wado?requestType=WADO&amp;wado details...&lt;/url&gt;
    &lt;hash&gt;EQH/..AgME&lt;/hash&gt;
   &lt;/image&gt;
-</pre>
-</div>
-
-<a name="Identifier"></a>
-<h2>
-Identifier
-</h2>
-<p>
-An identifier intended for use external to the FHIR protocol.
-</p>
-[%dt Identifier%]
-<p>
-The <i>system</i> referred to by means of a URI defines how the identifier is defined (i.e. made unique). 
-It might be a specific application or a recognized standard/specification for a set or identifiers
-or a way of making identifiers unique. The <i>id</i> must be unique within the defined <i>system</i>
-and have a consistent meaning wherever it appears. Ids are always case sensitive.
-</p>
-<p>
-FHIR defines <a href="terminologies.htm#codesystems">some useful URIs directly</a>. OIDs (urn:oid:) and UUIDs (urn:uuid:) 
-may be registered in the <a href="http://hl7.org/oid">HL7 OID registry</a> and should be if the 
-content is shared or exchanged across institutional boundaries. If the identifier itself 
-is naturally globally unique (i.e. an OID, a UUID, or a URI with no trailing local part), 
-then the <i>system</i> must be "urn:ietf:rfc:3986", and the URI would be in the <i>id</i>.
-</p>
-<p>
-In some cases, the system may not be known - only the id is known (e.g. a simple device that scans a barcode), 
-or the system is known implicitly (simple exchange in a limited context). 
-In this case, no useful matching may be performed using the id unless the system can be safely inferred by the 
-context. This practice should be avoided where possible in order to future-proof implementations, as 
-information sharing in a wider context is very likely to arise eventually.
-</p>
-<!--<div class="use">
-<p><b>Use</b></p>
-[%dt.constraints Identifier%]
-</div> -->
-<div class="example">
-<p><b>Examples</b></p>
-<p>A primary key from an application table (an OID in the space allocated by HL7
-to some organisation to further sub-allocate):</p>
-<pre class="xml">
-  &lt;id&gt;
-   &lt;system&gt;oid:2.16.840.1.113883.16.4.3.2.5&lt;/system&gt;
-   &lt;id&gt;123&lt;/id&gt;
-  &lt;/id&gt;
-</pre>
-<p>A patient identifier defined by a hospital:</p>
-<pre class="xml">
-  &lt;identifier&gt;
-   &lt;system&gt;http://www.acmehosp.com/patients&lt;/system&gt;
-   &lt;id&gt;44552&lt;/id&gt;
-  &lt;/identifier&gt;
-</pre>
-<p>An identifier that refers to a patient FHIR resource on a particular system:</p>
-<pre class="xml">
-  &lt;id&gt;
-   &lt;system&gt;urn:ietf:rfc:3986&lt;/system&gt;
-   &lt;id&gt;http://pas-server/xxx/patient/@443556&lt;/id&gt;
-  &lt;/id&gt;
-</pre>
-<p>A guid:</p>
-<pre class="xml">
-  &lt;id&gt;
-   &lt;system&gt;urn:ietf:rfc:3986&lt;/system&gt;
-   &lt;id&gt;a76d9bbf-f293-4fb7-ad4c-2851cac77162&lt;/id&gt;
-  &lt;/id&gt;
 </pre>
 </div>
 
@@ -763,57 +697,93 @@ the end of the 27th May.
 <p>
 <img alt="Data Structures" src="dt-structures.png"/>
 </p>
-<a name="HumanId"></a>
-<h2>HumanId</h2>
 
-
-<p>An identifier used by humans. Such identifiers are different from system
-identifiers because they are regularly changed or 
-retired due to human intervention and error. Note that a 
-human identifier may actually be a system identifier on some master 
-system, but becomes a human identifier elsewhere (i.e. in secondary use) 
-due to how it is exchanged between humans (driver's license numbers are a 
-good example of this). <!-- Human identifiers often have some type 
-associated with them that is important to allow the identifier 
-to be picked as a basis for exchange elsewhere, either in other 
-electronic interchanges or paper forms. -->
+<a name="Identifier"></a>
+<h2>
+Identifier
+</h2>
+<p>
+An identifier intended for use external to the FHIR protocol. As an external
+identifier, they may be changed or retired due to human or system process and
+errors. 
 </p>
-[%dt HumanId%]
+
+[%dt Identifier%]
+
+<p>
+The <i>system</i> referred to by means of a URI defines how the identifier is defined (i.e. made unique). 
+It might be a specific application or a recognized standard/specification for a set or identifiers
+or a way of making identifiers unique. The <i>id</i> must be unique within the defined <i>system</i>
+and have a consistent meaning wherever it appears. Ids are always case sensitive.
+</p>
+<p>
+FHIR defines <a href="terminologies.htm#codesystems">some useful URIs directly</a>. OIDs (urn:oid:) and UUIDs (urn:uuid:) 
+may be registered in the <a href="http://hl7.org/oid">HL7 OID registry</a> and should be if the 
+content is shared or exchanged across institutional boundaries. If the identifier itself 
+is naturally globally unique (i.e. an OID, a UUID, or a URI with no trailing local part), 
+then the <i>system</i> must be "urn:ietf:rfc:3986", and the URI would be in the <i>id</i>.
+</p>
+<p>
+In some cases, the system may not be known - only the id is known (e.g. a simple device that scans a barcode), 
+or the system is known implicitly (simple exchange in a limited context, often driven by barcode readers). 
+In this case, no useful matching may be performed using the id unless the system can be safely inferred by the 
+context. This practice should be avoided where possible in order to future-proof implementations, as 
+information sharing in a wider context is very likely to arise eventually.
+</p>
 <p>
 The <i>assigner</i> is used to indicate what registry/state/facility/etc assigned the identifier. 
 </p>  
-<!-- 
-<p>
-The resource elements often use HumanId for an identifier that may be an external human mediated reference, that may also 
-come from a direct unambiguous reference to a resource or may be from a separate workflow, possibly human mediated.
-GG: There's no use for this at the moment - when appropriate resource types are defined....
 
-When 
-the identifier is actually a direct resource reference, the <i>type</i> should be a 
-<a href="terminologies.htm#resourcetypes">resource type</a>, the <i>identifier</i>.<i>system</i> should be the URL
-of the source system or, if a particular end point is 
-not known, then "http://hl7.org/fhir/sid/fhir/[X]" where "[X]" is the resource name , 
-and the <i>identifier</i>.<i>id</i> should be the resource id. 
-</p>
--->
-<!--
-<div class="use">
-<p><b>Use</b></p>
-[%dt.constraints HumanId%]
-<p>
-</div>
--->
+
+
 <div class="example">
 <p><b>Examples</b></p>
+<p>A primary key from an application table (an OID in the space allocated by HL7
+to some organisation to further sub-allocate):</p>
+<pre class="xml">
+  &lt;id&gt;
+    &lt;use&gt;official&lt;use&gt;
+    &lt;system&gt;oid:2.16.840.1.113883.16.4.3.2.5&lt;/system&gt;
+    &lt;id&gt;123&lt;/id&gt;
+  &lt;/id&gt;
+</pre>
+
+<p>A patient identifier defined by a hospital:</p>
+<pre class="xml">
+  &lt;identifier&gt;
+    &lt;use&gt;official&lt;use&gt;
+    &lt;system&gt;http://www.acmehosp.com/patients&lt;/system&gt;
+    &lt;id&gt;44552&lt;/id&gt;
+    &lt;period&gt;
+      &lt;start&gt;2003-05-03&lt;/start&gt;
+    &lt;/period&gt;
+  &lt;/identifier&gt;
+</pre>
+<p>In this case, tThe period is used to track when the identifier was first assigned to the patient.</p>
+
+<p>An identifier that refers to a patient FHIR resource on a particular system:</p>
+<pre class="xml">
+  &lt;id&gt;
+   &lt;system&gt;urn:ietf:rfc:3986&lt;/system&gt;
+   &lt;id&gt;http://pas-server/xxx/patient/@443556&lt;/id&gt;
+  &lt;/id&gt;
+</pre>
+<p>This is not a resource reference - it's a logical reference by the patient identifier.</p>
+
+<p>A UUID:</p>
+<pre class="xml">
+  &lt;id&gt;
+    &lt;use&gt;temp&lt;use&gt;
+    &lt;system&gt;urn:ietf:rfc:3986&lt;/system&gt;
+    &lt;id&gt;a76d9bbf-f293-4fb7-ad4c-2851cac77162&lt;/id&gt;
+  &lt;/id&gt;
+</pre>
+<p>UUIDs are often used for temporary identifiers, though this is not necessary.</p>
+
 <p>A US SSN:</p>
 <pre class="xml">
   &lt;id&gt;
-<!--
-    &lt;type&gt;
-      &lt;system&gt;http://hl7.org/fhir/identifier-type&lt;/system&gt;
-      &lt;code&gt;ssn&lt;/code&gt;
-    &lt;/type&gt;
--->
+    &lt;use&gt;usual&lt;use&gt;
     &lt;label&gt;SSN&lt;/label&gt;
     &lt;identifier&gt;
       &lt;system&gt;http://hl7.org/fhir/sid/us-ssn&lt;/system&gt;
@@ -823,19 +793,13 @@ and the <i>identifier</i>.<i>id</i> should be the resource id.
 </pre>
 <p>Notes:</p> 
 <ul>
-<li>US SSNs are often presented like this: 000-11-1111, the dashes are for presentation and should be removed, as specified in the <a href="terminologies.htm#identifiersystems">definition of ssn-us</a></li>
-<!--<li>There is apparent duplication between type and system; the type says that this is a national social security identifier from some country, while the system specifically identifies the 
-  US SSN. Not all countries will have a registered system id like USA does; it might be useful to also reference the country in the assigning authority</li>-->
+ <li>US SSNs are often presented like this: 000-11-1111, the dashes are for presentation and should be removed, as specified in the <a href="terminologies.htm#identifiersystems">definition of ssn-us</a></li>
+ <li>The use of "usual" means that this institution prefers to use SSN when identifying the patient</li>
 </ul>
+
 <p>A medical record number assigned on 5-July 2009:</p>
 <pre class="xml">
   &lt;id&gt;
-<!--  
-    &lt;type&gt;
-      &lt;system&gt;http://hl7.org/fhir/identifier-type&lt;/system&gt;
-      &lt;code&gt;patient&lt;/code&gt;
-    &lt;/type&gt;
-	-->
     &lt;use&gt;usual&lt;/use&gt;
     &lt;label&gt;MRN&lt;/label&gt;
     &lt;identifier&gt;

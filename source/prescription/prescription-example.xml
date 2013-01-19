@@ -11,10 +11,8 @@
 -->
     <use>usual</use>
     <label>MRN</label>
-    <identifier>
-      <system>oid:0.1.2.3.4.5.6.7</system>
-      <id>123456</id>
-    </identifier>
+    <system>oid:0.1.2.3.4.5.6.7</system>
+    <id>123456</id>
   </identifier>
 
   <status>active</status>

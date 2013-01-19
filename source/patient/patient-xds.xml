@@ -4,10 +4,8 @@
   <identifier>
     <use>usual</use>
     <label>MRN</label>
-    <identifier>
-      <system>oid:3.4.5</system>
-      <id>89765a87b</id>
-    </identifier>
+    <system>oid:3.4.5</system>
+    <id>89765a87b</id>
   </identifier>
   <details>
     <name>

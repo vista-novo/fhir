@@ -19,11 +19,9 @@
       <Patient xmlns="http://hl7.org/fhir">
   	    <active>true</active>
         <identifier>
-		  <label>SSN</label>
-          <identifier>
-            <system>https://github.com/projectcypress/cypress/patient</system>
-            <id>[%patient_id%]</id>
-          </identifier>
+          <label>SSN</label>
+          <system>https://github.com/projectcypress/cypress/patient</system>
+          <id>[%patient_id%]</id>
         </identifier>
         <details>
           <name>

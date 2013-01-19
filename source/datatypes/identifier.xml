@@ -20,6 +20,9 @@
   <WindowWidth>24675</WindowWidth>
   <WindowTopX>3600</WindowTopX>
   <WindowTopY>3855</WindowTopY>
+  <Calculation>ManualCalculation</Calculation>
+  <MaxIterations>50</MaxIterations>
+  <Iteration/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -32,17 +35,25 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s62">
+  <Style ss:ID="s62" ss:Name="Normal 2">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s63">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s63">
+  <Style ss:ID="s64">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
   </Style>
-  <Style ss:ID="s64">
+  <Style ss:ID="s65">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders>
@@ -52,37 +63,56 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s65">
+  <Style ss:ID="s66">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s67">
+  <Style ss:ID="s68">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s69">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s71" ss:Parent="s62">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s72" ss:Parent="s62">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="92.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="36.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="30"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="35.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="45"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="150.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="108.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25" ss:Span="1"/>
-   <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="8" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="92.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="36.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="30"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="35.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="56.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="45"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="108.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25" ss:Span="1"/>
+   <Column ss:Index="12" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
+   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
+    <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Example</Data></Cell>
@@ -95,15 +125,50 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">An identifier intended for computation</Data></Cell>
     <Cell><Data ss:Type="String">A technical identifier - identifies some entity uniquely and unambiguously</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Need to be able to identify things with confidence and be sure that the identification is not subject to misinterpretation</Data></Cell>
     <Cell><Data ss:Type="String">the Identifier class is a little looser than II because it allows URIs as well as registered OIDs or GUIDs</Data></Cell>
     <Cell><Data ss:Type="String">II</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="60">
+    <Cell><Data ss:Type="String">Identifier.use</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Y</Data></Cell>
+    <Cell><Data ss:Type="String">code</Data></Cell>
+    <Cell><Data ss:Type="String">IdentifierUse</Data></Cell>
+    <Cell><Data ss:Type="String">The use of this identifier</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies the use for this identifier, if known&#10;</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers</Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="60">
+    <Cell><Data ss:Type="String">Identifier.label</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">description of identifier</Data></Cell>
+    <Cell><Data ss:Type="String">A label for the identifier that can be displayed to a human so they can recognise the identifier</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Allows humans to make use of identifiers when the identifier system is not known</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Identifier.system</Data></Cell>
@@ -127,6 +192,40 @@
     <Cell ss:Index="11"><Data ss:Type="String">if the id is actually a full uri, then the system is urn:ietf:rfc:3986</Data></Cell>
     <Cell><Data ss:Type="String">II.extension or II.root if system indicates OID or GUID</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Identifier.period</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Period</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Time period when id was valid for use</Data></Cell>
+    <Cell><Data ss:Type="String">Time period during which identifier was valid for use</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Identifier.assigner</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Resource(Organization)</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Organisation that issued id (may be just text)</Data></Cell>
+    <Cell><Data ss:Type="String">Organisation that issued/manages the identifier</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">The reference may be just a text description of the assigner</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -139,8 +238,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>3</ActiveCol>
-     <RangeSelection>C4</RangeSelection>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -148,15 +247,15 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="102"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="2" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="102"
     ss:Span="1"/>
-   <Column ss:Index="4" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="386.25"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="75"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="347.25"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="292.5"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s64">
+   <Column ss:Index="4" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="386.25"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="75"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="347.25"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="292.5"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Context</Data></Cell>
@@ -166,22 +265,50 @@
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">!1</Data></Cell>
-    <Cell><Data ss:Type="String">Must Have Id</Data></Cell>
-    <Cell><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">Unless an Identifier element has a dataAbsentReason flag, it must contain an id</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or id.size &gt; 0</Data></Cell>
-    <Cell><Data ss:Type="String" x:Ticked="1">exists(@dataAbsentReason) or exists(f:id)</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">!2</Data></Cell>
-    <Cell><Data ss:Type="String">Must have System</Data></Cell>
-    <Cell><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell><Data ss:Type="String">If the Identifier element is marked as mandatory, it must contain a system</Data></Cell>
-    <Cell><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">IsMandatory implies system.size &gt; 0</Data></Cell>
-    <Cell><Data ss:Type="String">f:system</Data></Cell>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
+     <RangeSelection>R2:R3</RangeSelection>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Bindings">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="86.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="220.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="57"/>
+   <Column ss:AutoFitWidth="0" ss:Width="66.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="139.5"/>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15.75">
+    <Cell ss:StyleID="s69"><Data ss:Type="String">IdentifierUse</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Identifies the use for this identifier, if known&#10;</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">#identifier-use</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -195,7 +322,49 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="identifier-use">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="64.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="485.25"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s71"><Data ss:Type="String">usual</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">the identifier recommended for display and use in real-world interactions</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s71"><Data ss:Type="String">official</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">the identifier considered to be most trusted for the identification of this item</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s71"><Data ss:Type="String">temp</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">A temporary identifier</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>4</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

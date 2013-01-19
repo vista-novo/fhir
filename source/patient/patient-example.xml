@@ -6,10 +6,8 @@
   <identifier>
     <use>usual</use>
     <label>MRN</label>
-    <identifier>
-      <system>oid:1.2.36.146.595.217.0.1</system>
-      <id>12345</id>
-    </identifier>
+    <system>oid:1.2.36.146.595.217.0.1</system>
+    <id>12345</id>
     <period>
       <start>2001-05-06</start>
     </period>

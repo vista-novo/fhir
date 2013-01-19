@@ -5,10 +5,8 @@
   <!-- Dog tag, under Maroondah City council -->
   <identifier>
     <label>Dog Tag</label>
-    <identifier>
-      <system>http://www.maroondah.vic.gov.au/AnimalRegFees.aspx</system>
-      <id>1234123</id>	    
-    </identifier>
+    <system>http://www.maroondah.vic.gov.au/AnimalRegFees.aspx</system>
+    <id>1234123</id>	    
     <period>
       <start>2010-05-31</start>
     </period>

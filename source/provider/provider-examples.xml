@@ -19,10 +19,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>333333333</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>333333333</id>
         </identifier>
         <details>
           <name>
@@ -73,10 +71,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>33344444</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>33344444</id>
         </identifier>
         <details>
           <name>
@@ -127,10 +123,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>444444444</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>444444444</id>
         </identifier>
         <details>
           <name>
@@ -181,10 +175,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>555555555</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>555555555</id>
         </identifier>
         <details>
           <name>
@@ -235,10 +227,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>666666666</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>666666666</id>
         </identifier>
         <details>
           <name>
@@ -289,10 +279,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>777777777</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>777777777</id>
         </identifier>
         <details>
           <name>
@@ -343,10 +331,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>888888888</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>888888888</id>
         </identifier>
         <details>
           <name>
@@ -397,10 +383,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>888222222</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>888222222</id>
         </identifier>
         <details>
           <name>
@@ -451,10 +435,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>888333333</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>888333333</id>
         </identifier>
         <details>
           <name>
@@ -505,10 +487,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>888444444</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>888444444</id>
         </identifier>
         <details>
           <name>
@@ -559,10 +539,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>999999999</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>999999999</id>
         </identifier>
         <details>
           <name>
@@ -613,10 +591,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222333333</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222333333</id>
         </identifier>
         <details>
           <name>
@@ -667,10 +643,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222223333</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222223333</id>
         </identifier>
         <details>
           <name>
@@ -721,10 +695,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222666666</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222666666</id>
         </identifier>
         <details>
           <name>
@@ -775,10 +747,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222334444</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222334444</id>
         </identifier>
         <details>
           <name>
@@ -829,10 +799,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222335555</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222335555</id>
         </identifier>
         <details>
           <name>
@@ -883,10 +851,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222336666</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222336666</id>
         </identifier>
         <details>
           <name>
@@ -937,10 +903,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222337777</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222337777</id>
         </identifier>
         <details>
           <name>
@@ -991,10 +955,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222338888</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222338888</id>
         </identifier>
         <details>
           <name>
@@ -1045,10 +1007,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222339999</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222339999</id>
         </identifier>
         <details>
           <name>
@@ -1099,10 +1059,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222442222</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222442222</id>
         </identifier>
         <details>
           <name>
@@ -1153,10 +1111,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222443333</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222443333</id>
         </identifier>
         <details>
           <name>
@@ -1207,10 +1163,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222443344</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222443344</id>
         </identifier>
         <details>
           <name>
@@ -1261,10 +1215,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222445555</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222445555</id>
         </identifier>
         <details>
           <name>
@@ -1315,10 +1267,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222446666</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222446666</id>
         </identifier>
         <details>
           <name>
@@ -1369,10 +1319,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222447777</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222447777</id>
         </identifier>
         <details>
           <name>
@@ -1423,10 +1371,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222448888</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222448888</id>
         </identifier>
         <details>
           <name>
@@ -1477,10 +1423,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222449999</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222449999</id>
         </identifier>
         <details>
           <name>
@@ -1531,10 +1475,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222552222</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222552222</id>
         </identifier>
         <details>
           <name>
@@ -1585,10 +1527,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222553333</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222553333</id>
         </identifier>
         <details>
           <name>
@@ -1639,10 +1579,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222554444</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222554444</id>
         </identifier>
         <details>
           <name>
@@ -1693,10 +1631,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222555545</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222555545</id>
         </identifier>
         <details>
           <name>
@@ -1747,10 +1683,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222556666</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222556666</id>
         </identifier>
         <details>
           <name>
@@ -1801,10 +1735,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222444444</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222444444</id>
         </identifier>
         <details>
           <name>
@@ -1855,10 +1787,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222557777</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222557777</id>
         </identifier>
         <details>
           <name>
@@ -1909,10 +1839,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222558888</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222558888</id>
         </identifier>
         <details>
           <name>
@@ -1963,10 +1891,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222559999</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222559999</id>
         </identifier>
         <details>
           <name>
@@ -2017,10 +1943,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222662222</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222662222</id>
         </identifier>
         <details>
           <name>
@@ -2071,10 +1995,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222555555</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222555555</id>
         </identifier>
         <details>
           <name>
@@ -2125,10 +2047,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222663333</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222663333</id>
         </identifier>
         <details>
           <name>
@@ -2179,10 +2099,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222777777</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222777777</id>
         </identifier>
         <details>
           <name>
@@ -2233,10 +2151,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222664444</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222664444</id>
         </identifier>
         <details>
           <name>
@@ -2287,10 +2203,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222665555</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222665555</id>
         </identifier>
         <details>
           <name>
@@ -2341,10 +2255,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222888888</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222888888</id>
         </identifier>
         <details>
           <name>
@@ -2395,10 +2307,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222999999</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222999999</id>
         </identifier>
         <details>
           <name>
@@ -2449,10 +2359,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222666666</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222666666</id>
         </identifier>
         <details>
           <name>
@@ -2503,10 +2411,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222667777</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222667777</id>
         </identifier>
         <details>
           <name>
@@ -2557,10 +2463,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222668888</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222668888</id>
         </identifier>
         <details>
           <name>
@@ -2611,10 +2515,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222669999</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222669999</id>
         </identifier>
         <details>
           <name>
@@ -2665,10 +2567,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>333222222</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>333222222</id>
         </identifier>
         <details>
           <name>
@@ -2719,10 +2619,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222772222</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222772222</id>
         </identifier>
         <details>
           <name>
@@ -2773,10 +2671,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222773333</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222773333</id>
         </identifier>
         <details>
           <name>
@@ -2827,10 +2723,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>333444444</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>333444444</id>
         </identifier>
         <details>
           <name>
@@ -2881,10 +2775,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>333555555</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>333555555</id>
         </identifier>
         <details>
           <name>
@@ -2935,10 +2827,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>000111111</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>000111111</id>
         </identifier>
         <details>
           <name>
@@ -2989,10 +2879,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222776666</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222776666</id>
         </identifier>
         <details>
           <name>
@@ -3043,10 +2931,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>222778888</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>222778888</id>
         </identifier>
         <details>
           <name>
@@ -3097,10 +2983,8 @@
       <Provider xmlns="http://hl7.org/fhir">
         <identifier>
           <label>SSN</label>
-          <identifier>
-            <system>http://hl7.org/fhir/sid/us-ssn</system>
-            <id>333777777</id>
-          </identifier>
+          <system>http://hl7.org/fhir/sid/us-ssn</system>
+          <id>333777777</id>
         </identifier>
         <details>
           <name>

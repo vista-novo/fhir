@@ -159,7 +159,7 @@
     <Cell><Data ss:Type="String">Patient.identifier</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">HumanId</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">An identifier for the person as this patient</Data></Cell>
     <Cell><Data ss:Type="String">An identifier that applies to this person as a patient</Data></Cell>
     <Cell><Data ss:Type="String">Patients are almos always assigned specific numerical identifiers</Data></Cell>
@@ -267,7 +267,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">HumanId</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:Index="8" ss:StyleID="s68"><Data ss:Type="String">Identifier for the entity</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Human-displayable identifier associated with the referenced entity</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Allows reliable identification of and potentially retrieval of additional information about the related entity</Data></Cell>
