@@ -14,6 +14,8 @@
 <%maindiv%>
 <%extheader%>
 
+[%onthispage Extensibility#|Must Understand#mustUnderstand|Defining Extensions#definition%]
+
 <h1>Extensibility</h1>
 
 <p>
@@ -59,8 +61,7 @@ Each resource includes the optional "extension" element that may be present any 
 Notes:
 </p>
 <ul>
- <li>The <i>code</i> identifies the meaning of the extension. The only codes that can be used are those defined using the methodology described below.</li>
- <li>The source of the definition must be declared using the <i>definition</i> element. The <i>definition</i> identifies a <a href="profile.htm">resource profile</a> that defines the meaning of the extension.</li>
+ <li>The <i>url</i> identifies an extension definition in a <a href="profile.htm">resource profile</a> that defines the content and meaning of the extension.</li>
  <li>If present, the id in the <i>ref</i> element is <a href="xml.htm#idref">an internal reference</a> to a target element that is extended by the content as if it contained the extension itself. The id must point within the same resource. If <i>id</i> is not present, the extension applies to the root resource</li>
  <li>The order that extensions appear in is significant - where multiple extensions have the same target, they extend the target element in the order in which they appear in the extension section</li>
  <li>Any element defined as part of the resource content, or any repeating element inside a data type, may carry an id attribute to serve as the target of an extension</li>
@@ -97,8 +98,10 @@ wish to use one of the omitted primitives are expected to use one of the more co
 <a href="datatypes.htm#base64Binary">base64Binary</a> by <a href="datatypes.htm#Attachment">Attachment</a>, etc.
 </p>
 <p>
-Nested extensions cannot have a <i>ref</i> element. The <i>[type]</i> element is optional unless the definitions of the extension codes make rules about it. Extensions can never have a default value.
+Nested extensions cannot have a <i>ref</i> element. The <i>[type]</i> element is optional unless the definitions of the extensions make rules about it. Extensions can never have a default value.
 </p>
+<a name="mustUnderstand"> </a>
+
 <h2>MustUnderstand</h2>
 
 <p>
@@ -112,7 +115,7 @@ extensions unsafe to ignore. Such extensions must have an attribute <i>mustUnder
 </p>
 
 <p>
-If the application does not recognize the code on an extension that is labeled "mustUnderstand", and
+If the application does not recognize the url of an extension that is labeled "mustUnderstand", and
 where the extension either has no internal reference, or it references data processed by the application,
 the application SHALL either refuse to process the data,  or carry a warning concerning the data
 along with any action or output that results from processing the data.
@@ -151,7 +154,7 @@ as part of a <a href="profile.htm">Resource Profile</a>. Extensions are always d
  <tr><td>A particular element (including the root) in a single resource</td><td>The element path for that element</td><td>Profile.resource.element; Person</td></tr>
  <tr><td>A particular element (including the root) in a particular data type</td><td>The data type name for primitive types or the element path for complex data types</td><td>Address.part.value; string</td></tr>
  <tr><td>A particular context in one of the mapped reference models</td><td>The name of the reference model followed by the mapping path</td><td>RIM: Act[moodCode="EVN"]</td></tr>
- <tr><td>Another extension</td><td>The profile uri of the extension followed b the extension code</td><td>http://myextensions.org someExtension</td></tr>
+ <tr><td>Another extension</td><td>The profile uri of the extension followed b the extension code</td><td>http://myextensions.org#someExtension</td></tr>
  <tr><td>A set of some combination of the above</td><td>As above, separated by ';'</td><td>Address; Contact</td></tr>
 </table>
 <p>
@@ -190,6 +193,7 @@ http: url that refers to an end-point that responds with the contents of the def
 supporting the Resources Profile, or a logical reference (e.g. using a urn:) - for instance, to a national published
 standard.
 </p>
+<a name="definition"> </a>
 <h2>Control of extensions</h2>
 <p>
 As well as defining the base element structure for resources, HL7 also publishes extensions. HL7 publishes data definitions

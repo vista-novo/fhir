@@ -261,6 +261,8 @@ public class PageProcessor implements Logger  {
         src = s1+codelist(name, com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("resheader"))
         src = s1+resHeader("document", "Document", com.length > 1 ? com[1] : null)+s3;
+      else if (com[0].equals("onthispage"))
+        src = s1+onThisPage(s2.substring(com[0].length()+1))+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("pageheader"))
@@ -313,6 +315,21 @@ public class PageProcessor implements Logger  {
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
     }
     return src;
+  }
+
+  private String onThisPage(String tail) {
+    String[] entries = tail.split("\\|");
+    StringBuilder b = new StringBuilder();
+    b.append("<div class=\"itoc\">\r\n<p>On This Page:</p>\r\n");
+    for (String e : entries) {
+      String[] p = e.split("#");
+      if (p.length == 2)
+        b.append("<p class=\"link\"><a href=\"#"+p[1]+"\">"+Utilities.escapeXml(p[0])+"</a></p>");
+      if (p.length == 1)
+        b.append("<p class=\"link\"><a href=\"#\">"+Utilities.escapeXml(p[0])+"</a></p>");
+    }
+    b.append("</div>\r\n");
+    return b.toString();
   }
 
   private class TocSort implements Comparator<String> {
@@ -993,6 +1010,8 @@ public class PageProcessor implements Logger  {
         src = s1+s3;
       else if (com[0].equals("codelist"))
         src = s1+codelist(name, com.length > 1 ? com[1] : null)+s3;
+      else if (com[0].equals("onthispage"))
+        src = s1+onThisPage(s2.substring(com[0].length()+1))+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("footer"))

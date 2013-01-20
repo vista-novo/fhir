@@ -70,7 +70,8 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 	public void generate(String version, String genDate) throws Exception {
 		write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
 		write("<!-- \r\n");
-		write("  © HL7 (http://hl7.org)\r\n");
+    write(Config.FULL_LICENSE_CODE);
+    write("\r\n");
 		write("  Generated on " + genDate + " for FHIR v" + version + " \r\n");
 		write("-->\r\n");
 		write("<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://hl7.org/fhir\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" "

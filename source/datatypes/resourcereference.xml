@@ -200,7 +200,7 @@
     <Cell><Data ss:Type="String">Inline</Data></Cell>
     <Cell><Data ss:Type="String">ResourceReference</Data></Cell>
     <Cell><Data ss:Type="String">Must have a local url if the resource is provided inline</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">starts-with(f:url, '#') or not(exists(f:x))</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">not(starts-with(f:url, '#')) or exists(*[name()='f:'+f:type])</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -215,7 +215,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

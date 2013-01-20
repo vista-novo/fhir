@@ -16,6 +16,20 @@
 
 <%xmlheader%>
 
+<!--
+<div class="itoc">
+<p>On This Page:</p>
+<p class="link"><a href="#">Resource Format</a></p>
+<p class="link"><a href="#">Resource Content</a></p>
+<p class="link"><a href="#">Narrative</a></p>
+<p class="link"><a href="#idref">Internal Refernces</a></p>
+<p class="link"><a href="#resource">Resource References</a></p>
+<p class="link"><a href="#resource">Versioning</a></p>
+</div>
+-->
+
+<%onthispage Resource Format#|Resource Content#metadata|Narrative#narrative|Internal References#idref|Resource References#resource|Versioning#version%>
+
 <h1>Resource Format</h1>
 <p>
 A resource is an entity that:
@@ -100,6 +114,7 @@ All resources contain extensions, a data section, and then a narrative section a
 <pre class="spec">
 &lt;<a href="#ResourceDefn" title="A Resource Definition for FHIR" class="dict"><b>[Name]</b></a> xmlns="http://hl7.org/fhir"&gt;
  &lt;<a href="extensibility.htm" title="See Extensions" class="dict"><b>extension</b></a>&gt;<font color="Gray">&lt;!-- <font color="brown"><b>0..*</b></font> </font> <font color="darkgreen"><a href="extensibility.htm">Extension</a></font>   <a href="extensibility.htm"><font color="navy">See Extensions</font></a> <font color="Gray"> --&gt;</font>&lt;/extension&gt;
+ &lt;<a href="#inline" title="See Contained Resources" class="dict"><b>inline</b></a>&gt;<font color="Gray">&lt;!-- <font color="brown"><b>0..*</b></font> </font> <font color="darkgreen"><a href="#metadata">Resource</a></font>   <a href="extensibility.htm"><font color="navy">Contained Resource</font></a> <font color="Gray"> --&gt;</font>&lt;/inline&gt;
  <font color="Gray">&lt;!-- Defined Content for Resource --&gt;</font>
  &lt;<a href="#Narrative" title="Text summary of resource, for human interpretation" class="dict"><b>text</b></a>&gt;<font color="Gray">&lt;!--</font> <font color="brown"><b>1..1</b></font> <font color="darkgreen"><a href="#Narrative">Narrative</a></font> <font color="navy">Text summary of [x], for human interpretation</font><font color="Gray"> --&gt;</font>&lt;/text&gt;
 &lt;/[Name]&gt;
@@ -153,12 +168,11 @@ to place conformance requirements on implementations.
 </p>
 <h3>Must-Understand</h3>
 <p>
-Must-Understand is a property that is assigned when an element is defined. An element is labelled "mustUnderstand=true" if 
-the value it contains may change the interpretation of other elements or the resource as a whole. Typical examples
-of elemnets that are labelled "must-understand" are elements such as "status", "active", or "certainty". 
-Elements are defined either in the base resources themselves, as part of the FHIR specification, or 
-where profiles declare extensions. The value of mustUnderstand cannot be changed when element usage
-is described in a <a href="profile.htm">Resource Profile</a>.
+Must-Understand is a property that is assigned when an element is defined, either as part of 
+the base resource contents in this specification, or where profiles declare extensions. 
+An element is labelled "mustUnderstand=true" if the value it contains may change the interpretation of other elements or the resource as a whole. 
+Typical examples of elements that are labelled "must-understand" are elements such as "status", "active", or "certainty". 
+The value of mustUnderstand cannot be changed when element usage is described in a <a href="profile.htm">Resource Profile</a>.
 </p>
 <p>
 Generally, elements labelled "mustUnderstand=true" also have a minimum cardinality of 1, to introduce
@@ -171,18 +185,18 @@ Implementations processing resources SHALL understand the impact of the element 
 the resource. Implementations are not required to "support" the element in any meaningful way - they 
 amy achieve this by rejecting instances that contain values outside those they support (for instance,
 an application may refuse to accept observations with a reliability != "ok"). Alternatively,
-implementations may be able to sure, due to their implementation environment, that such values 
+implementations may be able to be sure, due to their implementation environment, that such values 
 will never occur. However applications SHOULD always check the value irrespective of this.
 </p>
 <h3>Must-Support</h3>
 <p>
-Labelling an element Must-Support means that implementations that produce or consume must 
+Labelling an element Must-Support means that implementations that produce or consume resources must 
 provide "support" for the element in some meaningful way. Exactly what this means is impossible
 to describe or clarify as part of the FHIR specification.
 </p>
 <p>
 For this reason, the specification itself never labels any elements as must-support. 
-This is done in <a href="profile.htm">Resource Profiles</a>, where the profile that 
+This is done in <a href="profile.htm">Resource Profiles</a>, where the profile 
 labels an element as mustSupport=true. When a profile does this, it must also make clear
 exactly what kind of "support" is required, as this can mean many things.
 </p>
@@ -190,7 +204,7 @@ exactly what kind of "support" is required, as this can mean many things.
 <p>
 Note that an element that has the property mustUnderstand is not necessarily a "key" element (e.g. one of 
 the important elements to make use of the resource), nor is it automatically mustSupport - however both 
-of these things are likely to be true.
+of these things are more likely to be true for mustUnderstand elements than for other elements.
 </p>
 
 <hr/>
@@ -331,8 +345,7 @@ There are 4 cases where elements inside a resource reference each other:
 These references are done using an id/idref based approach, where a source element indicates that it 
 has the same content as the target element. The target element has an attribute "id" which must 
 have a unique value within the resource with regard to any other id attributes. The "id" attribute is not in any namespace.
-The source element has no content (text or children elements) and just a single attribute named "idref". The value of 
-the idref attribute must match the value of an id attribute in the same resource (or, for a CodeableConcept, inside the
+The source element reference must refer to an attribute in the same resource (or, for a CodeableConcept, inside the
 same datatype). 
 </p>
 <div class="example">
@@ -347,7 +360,7 @@ same datatype).
 </pre>
 </div>
 <p>
-In a single resource, this works exactly like xml:id/idref, but there is an important difference: the 
+In a single resource, this works like xml:id/idref, but there is an important difference: the 
 uniqueness and resolution scope of these id references is within the resource that contains them. If multiple
 resources are combined into a single piece of XML, such as an <a href="atom.htm">atom feed</a>, duplicate 
 values may occur between resources. This must be managed by applications reading the resources.
@@ -417,6 +430,7 @@ This text can be used by a system that is unable to resolve the reference to an 
 </p>
 </div>
 
+<a name="inline"> </a>
 <h3>Contained Resources</h3>
 <p>
 In some circumstances, the content referred to in the resource reference does not have an independent 
