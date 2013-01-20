@@ -19,12 +19,12 @@
 
   <patient>
     <type>Patient</type>
-    <id>pat2</id>
+    <url>../patient/@pat2</url>
   </patient>
 
   <prescriber>
     <type>Provider</type>
-    <id>example</id>
+    <url>../provider/@example</url>
   </prescriber>
 
   <prescribed>2011-03-04T11:45:33+01:00</prescribed>
@@ -37,7 +37,7 @@
     </quantity>
     <dispenser>
       <type>Organization</type>
-      <id>1</id>
+      <url>../organization/@1</url>
     </dispenser>
   </dispense>
 

@@ -83,10 +83,10 @@
   <Style ss:ID="s74">
    <Alignment ss:Vertical="Top"/>
   </Style>
-  <Style ss:ID="s85">
+  <Style ss:ID="s75">
    <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s130">
+  <Style ss:ID="s76">
    <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
   </Style>
  </Styles>
@@ -547,7 +547,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">name</Data></Cell>
-    <Cell><Data ss:Type="String">a portion of name in any name part</Data></Cell>
+    <Cell><Data ss:Type="String">a portion of either family or given name</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
@@ -565,7 +565,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">phonetic</Data></Cell>
-    <Cell><Data ss:Type="String">a portion of name using some kind of phonetic matching algorithm</Data></Cell>
+    <Cell><Data ss:Type="String">a portion of either family or given name using some kind of phonetic matching algorithm</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
@@ -617,7 +617,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>9</ActiveRow>
+     <ActiveRow>5</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
@@ -716,7 +716,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="182.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="75.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="188.25"/>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Identity</Data></Cell>
@@ -724,31 +724,31 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">In Book</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">General</Data></Cell>
     <Cell><Data ss:Type="String">General Person Example</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">patient-example.xml</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">patient-example.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Patient1</Data></Cell>
     <Cell><Data ss:Type="String">Patient 1 for linking</Data></Cell>
-    <Cell ss:StyleID="s130"><Data ss:Type="String">pat1</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">pat1</Data></Cell>
     <Cell><Data ss:Type="String">patient-example-a.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Patient2</Data></Cell>
     <Cell><Data ss:Type="String">Patient 2 for linking</Data></Cell>
-    <Cell ss:StyleID="s130"><Data ss:Type="String">pat2</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">pat2</Data></Cell>
     <Cell><Data ss:Type="String">patient-example-b.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Publishing</Data></Cell>
     <Cell><Data ss:Type="String">Stock people (defined by HL7 publishing)</Data></Cell>
-    <Cell ss:Index="4" ss:StyleID="s85"><Data ss:Type="String">patient-examples.xml</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="s75"><Data ss:Type="String">patient-examples.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -762,7 +762,7 @@
     <Cell><Data ss:Type="String">x-cda</Data></Cell>
     <Cell><Data ss:Type="String">2nd person example</Data></Cell>
     <Cell><Data ss:Type="String">xcda</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">patient-xcda.xml</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">patient-xcda.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -776,7 +776,7 @@
     <Cell><Data ss:Type="String">Animal</Data></Cell>
     <Cell><Data ss:Type="String">An example of an animal</Data></Cell>
     <Cell><Data ss:Type="String">animal</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">patient-animal.xml</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">patient-animal.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
    </Row>
   </Table>

@@ -39,6 +39,12 @@ import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 
 
+/** todo
+ * Search parameters cannot include "-"
+ * 
+ * @author Grahame
+ *
+ */
 public class ModelValidator {
 
 	private Definitions definitions;
@@ -87,6 +93,7 @@ public class ModelValidator {
     rule(path, !e.getShortDefn().endsWith(".") || e.getShortDefn().endsWith("etc."), "Short Description must not end with a period ('"+e.getShortDefn()+"')");
     rule(path, e.getDefinition().contains("|") || Character.isUpperCase(e.getDefinition().charAt(0)) || !Character.isLetter(e.getDefinition().charAt(0)), "Long Description must start with an uppercase character ('"+e.getDefinition()+"')");
     
+    rule(path, !e.getName().startsWith("_"), "Element names cannot start with '_'");
 		// if (e.getConformance() == ElementDefn.Conformance.Mandatory &&
 		// !e.unbounded())
 		// rule(path, e.getMinCardinality() > 0,

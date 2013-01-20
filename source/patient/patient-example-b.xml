@@ -3,7 +3,7 @@
 
   <link>
     <type>Patient</type>
-    <id>pat1</id>
+    <url>../patient/@pat1</url>
   </link>
 
   <active>true</active>
@@ -30,7 +30,7 @@
 
   <provider>
     <type>Organization</type>
-    <id>1</id>  
+    <url>../organization/@1</url>  
     <display>ACME Healthcare, Inc</display>
   </provider> 
 

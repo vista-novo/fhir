@@ -1832,4 +1832,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     
   }
 
+  public String checkFragment(String rootDir, String fragment, String type) throws Exception {
+    return "Not supported by delphi implementation";
+  }
+
 }

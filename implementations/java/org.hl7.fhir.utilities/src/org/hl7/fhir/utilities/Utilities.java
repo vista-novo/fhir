@@ -278,6 +278,37 @@ public class Utilities {
   }
 
 
+  public static String unescapeXml(String xml) throws Exception {
+    if (xml == null)
+      return null;
+    
+    StringBuilder b = new StringBuilder();
+    int i = 0;
+    while (i < xml.length()) {
+      if (xml.charAt(i) == '&') {
+        StringBuilder e = new StringBuilder();
+        i++;
+        while (xml.charAt(i) != ';') {
+          e.append(xml.charAt(i));
+          i++;
+        }
+        if (e.toString().equals("lt")) 
+          b.append("<");
+        else if (e.toString().equals("gt")) 
+          b.append(">");
+        else if (e.toString().equals("amp")) 
+          b.append("&");
+        else if (e.toString().equals("quot")) 
+          b.append("\"");
+        else
+          throw new Exception("unknown XML entity \""+e.toString()+"\"");
+      }  else
+        b.append(xml.charAt(i));
+      i++;
+    }   
+    return b.toString();
+  }
+
 //  public static void checkCase(String filename) {
 //    File f = new CSFile(filename);
 //    if (!f.getName().equals(filename))

@@ -22,11 +22,11 @@
   </administeredDose>
   <prescription>
     <type>Prescription</type>
-    <id>example</id>
+    <url>../prescription/@example</url>
   </prescription>
   <patient>
     <type>Patient</type>
-    <id>example</id>
+    <url>../patient/@example</url>
   </patient>
   <medication>
     <coding>

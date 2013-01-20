@@ -104,36 +104,21 @@ HumanName
 
 <div class="example">
 <p>A Simple example</p>
-<pre class="xml">
+<pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Adam&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;A.&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;Everyman&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;Adam&lt;/given&gt;
+  &lt;given&gt;A.&lt;/given&gt;
+  &lt;family&gt;Everyman&lt;/family&gt;
 &lt;/name&gt;
 </pre>
 </div>
 
 <div class="example">
 <p>Composite names</p>
-<pre class="xml">
+<pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Mary Jane&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;Contrata&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;Mary Jane&lt;/given&gt;
+  &lt;family&gt;Contrata&lt;/family&gt;
 &lt;/name&gt;
 </pre>
 <p>
@@ -147,59 +132,32 @@ these cases. Composite names separated by "-" should be treated as a single name
    
 <div class="example">
 <p>A common pattern: a person is called by a name other than that expected from their official name (first given name in most cultures).</p>
-<pre class="xml">
+<pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use&gt;official&lt;/use&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Peter&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;James&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;Chalmers&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;Peter&lt;/given&gt;
+  &lt;given&gt;James&lt;/given&gt;
+  &lt;family&gt;Chalmers&lt;/family&gt;
 &lt;/name&gt;
 &lt;name&gt;
   &lt;use&gt;usual&lt;/use&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Jim&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;Jim&lt;/given&gt;
 &lt;/name&gt;
 </pre>
 <p>
 This same pattern is often encountered with immigrants, who retains their real name for official use, but adopt a localized name for everyday use:
 </p>
-<pre class="xml">
+<pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use&gt;official&lt;/use&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Piotr&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Andre&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;Sczypinski&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;Piotr&lt;/given&gt;
+  &lt;given&gt;Andre&lt;/given&gt;
+  &lt;family&gt;Sczypinski&lt;/family&gt;
 &lt;/name&gt;
 &lt;name&gt;
   &lt;use&gt;usual&lt;/use&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Jim&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;Skipper&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;Jim&lt;/given&gt;
+  &lt;family&gt;Skipper&lt;/family&gt;
 &lt;/name&gt;
 </pre>
 </div>
@@ -208,28 +166,21 @@ This same pattern is often encountered with immigrants, who retains their real n
 <p>
 Karen van Hentenryck is of Dutch origin, and the "van" is a voorvoegsel.
 </p>
-<pre class="xml">
+<pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use&gt;official&lt;/use&gt;  
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Karen&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part id="n1"&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;van&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;Hentenryck&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;Karen&lt;/given&gt;
+  &lt;family id="n1"&gt;van&lt;/family&gt;
+  &lt;family&gt;Hentenryck&lt;/family&gt;
 &lt;/name&gt;
+&lt;!--
 &lt;extension&gt;
-  &lt;code&gt;name-qualifier&lt;/code&gt;
+  &lt;url&gt;name-qualifier&lt;/url&gt;
   &lt;profile&gt;http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090&lt;/profile&gt;
   &lt;ref&gt;n1&lt;/&gt;
   &lt;valueCode&gt;VV&lt;/valueCode&gt;
 &lt;extension&gt;
+--&gt;
 </pre>
 <p>See <a href="extensibility-examples.htm">the Extensibility Example for more information</a></p>
 </div>
@@ -239,46 +190,22 @@ Karen van Hentenryck is of Dutch origin, and the "van" is a voorvoegsel.
 <p>Complex example from Germany: Dr.phil. Regina Johanna Maria Gräfin Hochheim-Weilenfels, NCFSA. This example shows extensive use of 
 multiple given names, prefixes, suffixes, for academic degrees, nobility titles, and professional designations.
 </p>
-<pre class="xml">
+<pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use&gt;official&lt;/use&gt;  
-  &lt;part id="n1"&gt;
-    &lt;type&gt;prefix&lt;/type&gt;
-    &lt;value&gt;Dr. phil..&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Regina&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Johanna&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Maria&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part id="n2"&gt;
-    &lt;type&gt;prefix&lt;/type&gt;
-    &lt;value&gt;Gräfin&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;Hochheim-Weilenfels&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;suffix&lt;/type&gt;
-    &lt;value&gt;NCFSA&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;Regina&lt;/given&gt;
+  &lt;given&gt;Johanna&lt;/given&gt;
+  &lt;given&gt;Maria&lt;/given&gt;
+  &lt;given id="n2"&gt;Gräfin&lt;/given&gt;
+  &lt;family&gt;Hochheim-Weilenfels&lt;/family&gt;
+  &lt;prefix id="n1"&gt;Dr. phil..&lt;/prefix&gt;
+  &lt;suffix&gt;NCFSA&lt;/suffix&gt;
 &lt;/name&gt;
 &lt;name&gt;
   &lt;use&gt;maiden&lt;/use&gt;  
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Hochheim&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;family&gt;Hochheim&lt;/family&gt;
 &lt;/name&gt;
-&lt;!-- ... -->
+&lt;!-- ... 
 &lt;extension>
   &lt;code>name-qualifier&lt;/code>
   &lt;definition>http://hl7.org/fhir/profile/@iso-20190&lt;/definition>
@@ -297,6 +224,7 @@ multiple given names, prefixes, suffixes, for academic degrees, nobility titles,
     &lt;system>oid:2.16.840.1.113883.5.1122&lt;/system>
   &lt;/valueCoding>
 &lt;extension>
+--&gt;
 </pre>
 <p>
 This example makes use of the ISO 21090 extensions to carry the rare ISO 21090 qualifier attributes "AC" and "NB".
@@ -307,36 +235,18 @@ This example makes use of the ISO 21090 extensions to carry the rare ISO 21090 q
 <p>
 Japanese example in the three forms: ideographic (Kanji), syllabic (Hiragana) and alphabetic (Romaji).
 </p>
-<pre class="xml">
+<pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;木村&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;通男&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;通男&lt;/given&gt;
+  &lt;family&gt;木村&lt;/family&gt;
 &lt;/name&gt;
 &lt;name&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;きむら;&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;みちお&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;みちお&lt;/given&gt;
+  &lt;family&gt;きむら;&lt;/family&gt;
 &lt;/name&gt;
 &lt;name&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;KIMURA&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;MICHIO&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;MICHIO&lt;/given&gt;
+  &lt;family&gt;KIMURA&lt;/family&gt;
 &lt;/name&gt;
 </pre>
 <p>
@@ -348,30 +258,15 @@ The three forms are differentiated by the character subset each contains.
 <p>
 Russian example in the two forms: cyrillic, and latin:
 </p>
-<pre class="xml">
+<pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;ЕМЕЛИН&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;ИВАН&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;ВЛАДИМИРОВИЧ&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;ИВАН&lt;/given&gt;
+  &lt;given&gt;ВЛАДИМИРОВИЧ&lt;/given&gt;
+  &lt;family&gt;ЕМЕЛИН&lt;/family&gt;
 &lt;/name&gt;
 &lt;name&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;EMELIN&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;IVAN&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;IVAN&lt;/given&gt;
+  &lt;family&gt;EMELIN&lt;/family&gt;
 &lt;/name&gt;
 </pre>
 <p>
@@ -384,36 +279,23 @@ the domestic and foreign names respectively. The two forms are differentiated by
 <p>
 Scandinavian example: Erikson is the family name. Jan Erik are the given names, and Östlund the family name of the mother, which is taken as a Mellannamn.
 </p>
-<pre class="xml">
+<pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use&gt;official&lt;/use&gt;  
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Jan&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Erik&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part id="n1"&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Östlund&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;Erikson&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;Jan&lt;/given&gt;
+  &lt;given&gt;Erik&lt;/given&gt;
+  &lt;given id="n1"&gt;Östlund&lt;/given&gt;
+  &lt;family&gt;Erikson&lt;/family&gt;
 &lt;/name&gt;
-&lt;!-- ... -->
+&lt;!-- ...
 &lt;extension>
-  &lt;code>name-qualifier&lt;/code>
-  &lt;definition>http://hl7.org/fhir/profile/@iso-20190&lt;/definition>
-  &lt;ref>n1&lt;/ref>
+  &lt;url>http://hl7.org/fhir/profile/@iso-20190#name-qualifier&lt;/url>
   &lt;valueCoding>
     &lt;code>MID&lt;/code>
     &lt;system>oid:2.16.840.1.113883.5.1122&lt;/system>
   &lt;/valueCoding>
 &lt;/extension>
+ --&gt;
 </pre>
 <p>
 This example makes use of the ISO 21090 extension to carry the culture specific ISO 21090 qualifier attribute "MID" for the Mellannamn.
@@ -424,41 +306,26 @@ name is "Margrete Jente" (Margrete's Girl) and the mother's family name, not the
 father's Family name is  not used at all. This is a known temporary name assigned directly after the birth of 
 the child.
 </p>
-<pre class="xml">
+<pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use&gt;temp&lt;/use&gt;  
-  &lt;!—- use could be OR+OLD, depends how record keeping is done --&gt;
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Margrete Jente&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;Hansen&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;!-- use could be OR+OLD, depends how record keeping is done --&gt;
+  &lt;given&gt;Margrete Jente&lt;/given&gt;
+  &lt;family&gt;Hansen&lt;/family&gt;
 &lt;/name&gt;
 </pre>
 <p>
 The baby's name is subsequently changed to the fathers' family name, and to use the mother's name as 
 mellomnamn.
 </p>
-<pre class="xml">
+<pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use&gt;official&lt;/use&gt;  
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Karin&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part id="n1"&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Hansen&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;Erikson&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;Karin&lt;/given&gt;
+  &lt;given id="n1"&gt;Hansen&lt;/given&gt;
+  &lt;family&gt;Erikson&lt;/family&gt;
 &lt;/name&gt;
-&lt;!-- ... -->
+&lt;!-- ... 
 &lt;extension>
   &lt;code>name-qualifier&lt;/code>
   &lt;definition>http://hl7.org/fhir/profile/@iso-20190&lt;/definition>
@@ -468,55 +335,32 @@ mellomnamn.
     &lt;system>oid:2.16.840.1.113883.5.1122&lt;/system>
   &lt;/valueCoding>
 &lt;/extension>
+--&gt;
 </pre>
 <p>
 Later, Karin gets married to Per Berg, and decides to adopts Berg as her family name, and also decides to use 
 Erikson as the mellom navn. (Note: Karin could have chosen to use another mellom navn, e.g. the family name of 
 her mother, her father or other family names as specified by naming laws of the country in question).
 </p>
-<pre class="xml">
+<pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use&gt;old&lt;/use&gt;  
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Karin&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part id="n1"&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Hansen&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;Erikson&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;Karin&lt;/given&gt;
+  &lt;given id="n1"&gt;Hansen&lt;/given&gt;
+  &lt;family&gt;Erikson&lt;/family&gt;
 &lt;/name&gt;
 &lt;name&gt;
   &lt;use&gt;official&lt;/use&gt;  
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Karin&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part id="n2"&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Erikson&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;Berg&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;Karin&lt;/given&gt;
+  &lt;given id="n2"&gt;Erikson&lt;/given&gt;
+  &lt;family&gt;Berg&lt;/family&gt;
 &lt;/name&gt;
 &lt;name&gt;
   &lt;use&gt;usual&lt;/use&gt;  
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Karin&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;Berg&lt;/value&gt;
-  &lt;/part&gt;
+  &lt;given&gt;Karin&lt;/given&gt;
+  &lt;family&gt;Berg&lt;/family&gt;
 &lt;/name&gt;
-&lt;!-- ... -->
+&lt;!-- ... 
 &lt;extension>
   &lt;code>name-qualifier&lt;/code>
   &lt;definition>http://hl7.org/fhir/profile/@iso-20190&lt;/definition>
@@ -534,7 +378,7 @@ her mother, her father or other family names as specified by naming laws of the 
     &lt;code>MID&lt;/code>
     &lt;system>oid:2.16.840.1.113883.5.1122&lt;/system>
   &lt;/valueCoding>
-&lt;/extension>
+&lt;/extension> --&gt;
 </pre>
 </div>
 

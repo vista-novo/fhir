@@ -61,6 +61,7 @@ import net.sourceforge.plantuml.FileFormat;
 import net.sourceforge.plantuml.FileFormatOption;
 import net.sourceforge.plantuml.SourceStringReader;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
@@ -136,7 +137,32 @@ import org.xml.sax.SAXParseException;
  */
 public class Publisher {
 
-	public class ExampleReference {
+	public class Fragment {
+	  private String type;
+	  private String xml;
+	  private String page;
+    public String getType() {
+      return type;
+    }
+    public void setType(String type) {
+      this.type = type;
+    }
+    public String getXml() {
+      return xml;
+    }
+    public void setXml(String xml) {
+      this.xml = xml;
+    }
+    public String getPage() {
+      return page;
+    }
+    public void setPage(String page) {
+      this.page = page;
+    }
+	  
+  }
+
+  public class ExampleReference {
 	  private String type;
 	  private String id;
     public ExampleReference(String type, String id) {
@@ -164,6 +190,7 @@ public class Publisher {
 	private boolean isGenerate;
 	private boolean nobook;
 	private AtomFeed profileFeed;
+  private List<Fragment> fragments = new ArrayList<Publisher.Fragment>();
 
 	public static void main(String[] args) throws Exception {
 		//
@@ -343,7 +370,7 @@ public class Publisher {
       return false;
     ResourceDefn r = page.getDefinitions().getResourceByName(ref.getType());
     for (Example e : r.getExamples()) {
-      String id = ref.getId();
+      String id = extractId(ref.getId(), ref.getType());
       if (id.equals(e.getId()))
         return true;
       if (e.getXml().getDocumentElement().getLocalName().equals("feed")) {
@@ -357,6 +384,33 @@ public class Publisher {
       }
     }
     return false;
+  }
+
+  private String extractId(String id, String type) throws Exception {
+    String[] parts = id.split("/");
+    if (parts.length < 3)
+      throw new Exception("The example reference '"+id+"' is not valid (not enough path parts");
+    if (!parts[0].equals(".."))
+      throw new Exception("The example reference '"+id+"' is not valid (not a relative link starting with ..)");
+    if (!parts[1].equals(type.toLowerCase()))
+      throw new Exception("The example reference '"+id+"' is not valid (the type portion doesn't match the specified type '"+type+"')");
+    if (!parts[2].startsWith("@"))
+      throw new Exception("The example reference '"+id+"' is not valid (the id doesn't start with @)");
+    if (parts[2].length() < 2 || parts[2].length() > 37)
+      throw new Exception("The example reference '"+id+"' is not valid (id length 1 - 36)");
+    if (!parts[2].substring(1).matches("[a-z0-9\\-\\.]{1,36}"))
+      throw new Exception("The example reference '"+id+"' is not valid (id doesn't match regular expression for id)");
+    if (parts.length > 3) {
+      if (!parts[3].equals("history"))
+        throw new Exception("The example reference '"+id+"' is not valid");
+      if (parts.length != 5 || !parts[4].startsWith("@")) 
+        throw new Exception("The example reference '"+id+"' is not valid");
+      if (parts[4].length() < 2 || parts[4].length() > 37)
+        throw new Exception("The example reference '"+id+"' is not valid (version id length 1 - 36)");
+      if (!parts[4].substring(1).matches("[a-z0-9\\-\\.]{1,36}"))
+        throw new Exception("The example reference '"+id+"' is not valid (version id doesn't match regular expression for id)");
+    }
+    return parts[2].substring(1);
   }
 
   private void listLinks(Element xml, List<ExampleReference> refs) throws Exception {
@@ -383,8 +437,8 @@ public class Publisher {
   private void listLinks(String path, org.hl7.fhir.definitions.model.ElementDefn d, List<Element> set, List<ExampleReference> refs) throws Exception {
     if (d.typeCode().contains("Resource") && !d.typeCode().equals("Resource")) {
       for (Element m : set) {
-        if (XMLUtil.getNamedChild(m, "type") != null && XMLUtil.getNamedChild(m, "id") != null) {
-          refs.add(new ExampleReference(XMLUtil.getNamedChild(m, "type").getTextContent(), XMLUtil.getNamedChild(m, "id").getTextContent()));
+        if (XMLUtil.getNamedChild(m, "type") != null && XMLUtil.getNamedChild(m, "url") != null) {
+          refs.add(new ExampleReference(XMLUtil.getNamedChild(m, "type").getTextContent(), XMLUtil.getNamedChild(m, "url").getTextContent()));
         }
       }
     }    
@@ -546,6 +600,8 @@ public class Publisher {
 			producePage(n, page.getIni().getStringProperty("pages", n));
 		}
 
+    log(" ...check Fragments");
+    checkFragments();
 		
 		for (String n : page.getDefinitions().getProfiles().keySet()) {
       log(" ...profile "+n);
@@ -576,7 +632,22 @@ public class Publisher {
     book.produce();
 	}
 
-	private void produceZip() throws Exception {
+	private void checkFragments() throws Exception {
+    List<String> errors = new ArrayList<String>();
+    for (Fragment f : fragments) {
+      String err = javaReferencePlatform.checkFragment(page.getFolders().dstDir, f.getXml(), f.getType());
+      if (err != null) {
+        String msg = "Fragment Error in page "+f.getPage()+": "+err+" for\r\n"+f.getXml();
+        log(msg);
+        
+        errors.add(msg);
+      }
+    }
+    //if (errors.size() > 0) 
+    //  throw new Exception("Fragment Errors prevent publication from continuing");
+  }
+
+  private void produceZip() throws Exception {
 		File f = new CSFile(page.getFolders().dstDir + "fhir-spec.zip");
 		if (f.exists())
 			f.delete();
@@ -1157,14 +1228,35 @@ public class Publisher {
   private void cachePage(String filename, String source) throws Exception {
 		try {
 			// log("parse "+filename);
-			book.getPages().put(filename, new XhtmlParser().parse(source));
+			XhtmlDocument src = new XhtmlParser().parse(source);
+			scanForFragments(filename, src);
+      book.getPages().put(filename, src);
 		} catch (Exception e) {
 			throw new Exception("error parsing page " + filename + ": "
-					+ e.getMessage() + "in source\r\n" + source);
+					+ e.getMessage() + " in source\r\n" + source);
 		}
 	}
 
-	public class MyErrorHandler implements ErrorHandler {
+	private void scanForFragments(String filename, XhtmlNode node ) throws Exception {
+    if (node != null && (node.getNodeType() == NodeType.Element || node.getNodeType() == NodeType.Document)) {
+      if (node.getNodeType() == NodeType.Element && node.getName().equals("pre") && node.getAttribute("fragment") != null) {
+        processFragment(filename, node, node.getAttribute("fragment"));
+      }
+      for (XhtmlNode child : node.getChildNodes())
+        scanForFragments(filename, child);
+    }
+  }
+
+  private void processFragment(String filename, XhtmlNode node, String type) throws Exception {
+    String xml = new XhtmlComposer().compose(node);
+    Fragment f = new Fragment();
+    f.setType(type);
+    f.setXml(Utilities.unescapeXml(xml));
+    f.setPage(filename);
+    fragments .add(f);
+  }
+
+  public class MyErrorHandler implements ErrorHandler {
 
 		private boolean trackErrors;
 		private List<String> errors = new ArrayList<String>();

@@ -7,11 +7,11 @@
 	<issued>2011-03-04T11:45:33+11:00</issued>
 	<patient>
 	  <type>Patient</type>
-	  <id>pat2</id>
+	  <url>../patient/@pat2</url>
 	</patient>
 	<laboratory>
 	  <type>Organization</type>
-	  <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+	  <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
 	  <display>Acme Laboratory, Inc</display>
 	</laboratory>
 	<reportId>

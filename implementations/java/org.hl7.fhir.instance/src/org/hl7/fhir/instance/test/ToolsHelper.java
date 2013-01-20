@@ -1,8 +1,14 @@
 package org.hl7.fhir.instance.test;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.hl7.fhir.instance.formats.AtomComposer;
 import org.hl7.fhir.instance.formats.JsonComposer;
@@ -12,6 +18,9 @@ import org.hl7.fhir.instance.formats.XmlParserBase.ResourceOrFeed;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.TextFile;
+import org.w3c.dom.Document;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
 
 
 public class ToolsHelper {
@@ -28,6 +37,8 @@ public class ToolsHelper {
         self.executeRoundTrip(args);
       else if (args[0].equals("json")) 
         self.executeJson(args);
+      else if (args[0].equals("fragment")) 
+          self.executeFragment(args);
       else 
         throw new Exception("Unknown command '"+args[0]+"'");
     } catch (Throwable e) {
@@ -40,9 +51,38 @@ public class ToolsHelper {
     }
   }
 
+  protected XmlPullParser loadXml(InputStream stream) throws Exception {
+	BufferedInputStream input = new BufferedInputStream(stream);
+    XmlPullParserFactory factory = XmlPullParserFactory.newInstance(System.getProperty(XmlPullParserFactory.PROPERTY_NAME), null);
+    factory.setNamespaceAware(true);
+    XmlPullParser xpp = factory.newPullParser();
+    xpp.setInput(input, "UTF-8");
+    xpp.next();
+    return xpp;
+  }
+	 
+  private void executeFragment(String[] args) throws Exception {
+    try {
+	  File source = new CSFile(args[1]);
+	  File dest = new CSFile(args[2]);
+      if (!source.exists())        
+        throw new Exception("Source File \""+source.getAbsolutePath()+"\" not found");
+	  XmlPullParser xpp = loadXml(new FileInputStream(source));
+	  xpp.next();
+	  xpp.next();
+	  XmlParser p = new XmlParser();
+	  p.parseFragment(xpp, args[3]);
+	  System.out.println("done");
+	  TextFile.stringToFile("ok", args[2]);
+	} catch (Exception e) {
+		e.printStackTrace();
+		TextFile.stringToFile(e.getMessage(), args[2]);
+	}
+  }
+
   public void executeRoundTrip(String[] args) throws Exception {
-    FileInputStream in;
-    File source = new CSFile(args[1]);
+	FileInputStream in;
+	File source = new CSFile(args[1]);
     File dest = new CSFile(args[2]);
 
     if (!source.exists())        

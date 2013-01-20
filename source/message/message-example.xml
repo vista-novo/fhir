@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Message xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/messageheader.xsd">
+<Message xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/message.xsd">
   <id>1cbdfb97-5859-48a4-8301-d54eab818d68</id>
   <instant>2012-01-04T09:10:14Z</instant>
   <event>admin-update</event>
@@ -21,27 +21,22 @@
     <name>Acme Message Gateway</name>
     
     <!-- this is to indicate to the Acme Message Gateway that this particular message 
-       is intended for Person 34 - usually it would make sense for the resource for 
-       Person 34 to be included in the bundle of the message as well, in case 
-       the Acme Message Gateway doesn't know who person 34 is. 
-
-       Of course, it doesn't make sense to send a person update message to a particular 
-       person, but it might very well make sense to do this with targeted clinical content -->
+       is intended for Provider "xcda" -->
     <target>
-      <type>Patient</type>
-      <id>example</id>
+      <type>Provider</type>
+      <url>../provider/@xcda-author</url>
     </target>
     <endpoint>llp:10.11.12.14:5432</endpoint>
   </destination>
   <author>
     <type>Provider</type>
-    <id>example</id>
+    <url>../provider/@example</url>
   </author>
   
   <!-- Here's the payload, the resource that this admin-update concerns -->
   <data>
     <type>Patient</type>
-    <id>example</id>
+    <url>../patient/@example</url>
   </data>
   
   <text>

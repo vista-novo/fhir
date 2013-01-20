@@ -20,7 +20,7 @@
   </details>
   <provider>
     <type>Organization</type>
-    <id>2.16.840.1.113883.19.5</id>  
+    <url>../organization/@2.16.840.1.113883.19.5</url>  
     <display>Good Health Clinic</display>
   </provider> 
 

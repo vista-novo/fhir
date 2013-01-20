@@ -127,7 +127,7 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">IssueReport</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Information about the success/failure of an action</Data></Cell>
-    <Cell><Data ss:Type="String">Error, warning or information messages that result from a system action</Data></Cell>
+    <Cell><Data ss:Type="String">A collection of Error, warning or information messages that result from a system action</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Can result from the failure of a REST call or be part of the response message returned from a request message.  If sent with extensions overriding particular issues, might even appear as part of a request message.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
@@ -144,7 +144,7 @@
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">IssueSeverity</Data></Cell>
-    <Cell><Data ss:Type="String">Error, Warning or Information</Data></Cell>
+    <Cell><Data ss:Type="String">error | warning | information&#10;</Data></Cell>
     <Cell><Data ss:Type="String">Indicates whether the issue indicates a variation from successful processing</Data></Cell>
     <Cell><Data ss:Type="String">Indicates how relevant the issue is to the overall success of the action.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">./typeCode[parent::AcknowledgmentDetail] or unique(./inboundRelationship[parent::Observation and typeCode='SUBJ' and isNormalActRelationship()]/source[classCode=&quot;OBS&quot; and moodCode=&quot;EVN&quot; and implies(code, ActCode#SEV and isNormalAct())/value[xsi:type=&quot;CD&quot;]</Data></Cell>
@@ -216,7 +216,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>4</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -229,12 +229,11 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

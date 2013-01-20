@@ -20,8 +20,7 @@
 <p>
 While the FHIR Resources are designed with a simple <a href="http.htm">RESTful HTTP-based implementation</a> 
 in mind, it is not necessary to use this implementation framework. This specification also defines a 
-straight <a href="message.htm">messaging based implementation framework</a> for FHIR resources and a <a href="document.htm">document-based framework</a>, 
-as well as documenting how <a href="hdata.htm">FHIR resources are used with hData</a>.
+straight <a href="message.htm">messaging based implementation framework</a> for FHIR resources and a <a href="document.htm">document-based framework</a>.
 </p>
 <a name="SOA"></a>
 <h2>Service Orientated use of Resources</h2>
@@ -30,7 +29,8 @@ Alternatively, it is not necessary to use any of these approaches. Resources can
 using any technical means that is appropriate to the context at hand. A common use of FHIR 
 resources or <a href="atom.htm">bundles</a> is as parameters of service interfaces. FHIR itself does not define
 any particular service interface. Instead, other standards and implementations define their 
-own service interfaces and architecture that use FHIR resources. As long as the resources that
+own service interfaces and architecture that use FHIR resources and optionally build extra features on top of the base 
+repository-mediated exchange that the FHIR RESTful specification provides. As long as the resources that
 are used are conformant with this specification and the rules for authoring and
 reading applications are followed, then the implementation can claim conformance to
 "FHIR Resources". Such implementations will need to resolve several issues:
@@ -136,6 +136,7 @@ This section contains links to content that assist implementers make FHIR work i
 TODO: add RDF &amp; OWL renditions, eCore definitions, ADL versions, anything anyone else asks for
 </p>
 
+<a name="refimpl"> </a>
 <h3>Reference Implementations</h3>
 <p>
 These reference implementations are provided for implementer interest and assistance. 

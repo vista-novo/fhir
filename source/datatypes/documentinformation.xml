@@ -136,7 +136,7 @@
     <Cell><Data ss:Type="String">Document.id</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="135">
-    <Cell><Data ss:Type="String">DocumentInformation.instant</Data></Cell>
+    <Cell><Data ss:Type="String">DocumentInformation.created</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Y</Data></Cell>
@@ -217,7 +217,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
-    <Cell><Data ss:Type="String">DocumentInformation.confidentialityCode</Data></Cell>
+    <Cell><Data ss:Type="String">DocumentInformation.confidentiality</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -492,12 +492,11 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>18</TopRowVisible>
+   <TopRowVisible>7</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>23</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveRow>10</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

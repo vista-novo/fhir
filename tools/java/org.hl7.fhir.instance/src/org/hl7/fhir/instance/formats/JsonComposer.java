@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
+// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -184,8 +184,7 @@ public class JsonComposer extends JsonComposerBase {
       open(name);
       composeTypeAttributes(element);
       composeStringSimple("type", element.getType());
-      composeUriSimple("id", element.getId());
-      composeUriSimple("version", element.getVersion());
+      composeUriSimple("url", element.getUrl());
       composeStringSimple("display", element.getDisplay());
       close();
     }
@@ -401,11 +400,11 @@ public class JsonComposer extends JsonComposerBase {
       composeTypeAttributes(element);
       composeIdentifier("id", element.getId());
       composeIdentifier("versionId", element.getVersionId());
-      composeDateSimple("instant", element.getInstant());
+      composeDateSimple("created", element.getCreated());
       composeCoding("class", element.getClass_());
       composeCodeableConcept("type", element.getType());
       composeStringSimple("title", element.getTitle());
-      composeCoding("confidentialityCode", element.getConfidentialityCode());
+      composeCoding("confidentiality", element.getConfidentiality());
       composeResourceReference("subject", element.getSubject());
       if (element.getAuthor().size() > 0) {
         openArray("author");

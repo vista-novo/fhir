@@ -6,7 +6,8 @@ Notes:
 </h2>
 <ul> 
  <li>The author and the attester are often the same person, but this may not be the case in some clinical workflows</li>
- <li>The attester attests to the collated narrative portions of the resources</li>
+ <li>The attester attests to the collated narrative portions of the document resource, the subject resource, and the 
+     resources referred to in the the Document.section.content references. When a document is bundled, additional resources can be included, but these are not attested content</li>
  <li>The custodian is responsible for the maintenance of the document. Principally, they are responsible for the policy regarding persistence of the documents. They need not actually retain a copy of the document, but they should do so.</li>
  <li>The <i>information</i> part of the document header is shared between documents and a document registry entries (<a href="xdsentry2.htm">XdsEntry</a>)</li>
 </ul>  
@@ -61,7 +62,9 @@ contain a style sheet that contains additional styles that apply to the collated
 otherwise agreed in local trading partner agreements, applications displaying the collated narrative 
 should use the style sheet provided in the document. Parties entering into such a trading agreement
 should consider the implications it will have on their long term scope for document exchange 
-very carefully. 
+very carefully. If the parties agree on a stylesheet that is not contained in the document, then 
+it is likely that they will never be able to share their documents in a more general context, 
+such as a regional or national EHR, or a global personal health record.
 </p>
 
 <h2>Document Handling Obligations</h2>
@@ -79,13 +82,13 @@ has the following responsibilities:
 <ul>
  <li>Build a valid document header that conforms to the Document rules explained here and that only links to other valid resources</li>
  <li>Ensure that the content of the document and other resources conforms to any declared <a href="profile.htm">Profiles</a>.</li>
- <li>Ensure that the presentation of the document is properly attested according to the information supplied in the <i>attesters</i>.</li>
+ <li>Ensure that the attesters are properly aware of the presentation of the document to which they are attesting</li>
 </ul>
 
 <h3>User Obligations</h3>
 <p>
 A document user is an application that receives or presents documents, or extracts data from them, or makes decisions because of them. 
-The documents may be received directly from a document author or accessed via a document management system. 
+The documents may be received directly from a document author, accessed via a document management system or forward by a third party. 
 The document user is responsible for ensuring that received documents are processed and/or rendered in accordance 
 to this specification. A document recipient has the following obligations:
 </p>
@@ -103,7 +106,7 @@ to this specification. A document recipient has the following obligations:
 <a name="rest"></a>
 <h2>Implementation Notes</h2>
 <ul>
- <li>Documents may be signed using digital signatures following the rules laid out in 
+ <li>Document Bundles may be signed using digital signatures following the rules laid out in 
      the <a href="http://tools.ietf.org/html/rfc4287" target="_blank">Atom specification</a>. 
      The signature SHOULD be provided by a listed attester of the document and the signature 
      SHOULD contain a <a href="http://www.w3.org/TR/xmldsig-core/#sec-KeyInfo" target="_blank">KeyInfo 

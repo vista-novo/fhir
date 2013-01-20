@@ -9,7 +9,7 @@
       <system>urn:ietf:rfc:3986</system>
       <id>urn:uuid:72391709-b9ae-4053-b888-4bee268bf5da</id> 
     </versionId>
-    <instant>2012-01-04T09:10:14Z</instant>
+    <created>2012-01-04T09:10:14Z</created>
     <type>
       <coding>
         <system>http://loinc.org</system>
@@ -17,32 +17,32 @@
         <display>Consultation note</display>
       </coding>
     </type>
-    <confidentialityCode>
+    <confidentiality>
       <system>http://ihe.net/xds/connectathon/confidentialityCodes</system>
       <code>1.3.6.1.4.1.21367.2006.7.101</code>
       <display>Clinical-Staff</display>
-    </confidentialityCode>
+    </confidentiality>
     <subject>
       <type>Patient</type>
-      <id>xcda</id>
+      <url>../patient/@xcda</url>
       <display>Henry Levin the 7th</display>
     </subject>
     <author>
       <type>Provider</type>
-      <id>xcda-author</id>
+      <url>../provider/@xcda-author</url>
       <display>Robert Dolin MD</display>
     </author>
     <attester>
       <mode>legal</mode>
       <party>
         <type>Provider</type>
-        <id>xcda-author</id>
+        <url>../provider/@xcda-author</url>
         <display>Robert Dolin MD</display>
       </party>
     </attester>
     <custodian>
       <type>Organization</type>
-      <id>2.16.840.1.113883.19.5</id>
+      <url>../organization/@2.16.840.1.113883.19.5</url>
       <display>Good Health Clinic</display>
     </custodian>
   </information>
@@ -56,7 +56,7 @@
     <content>
       <!-- we really need a different resource here, but it's not yet defined -->
       <type>Prescription</type> 
-      <id>example</id>
+      <url>../prescription/@example</url>
     </content>
   </section>
   <text>

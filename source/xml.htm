@@ -36,10 +36,11 @@ are not described by this specification.
 This page documents how the content of the resources are described and controlled. 
 </p>
 
-<h2>XML Content Models</h2>
+<h2>Resource Description</h2>
 <p>
-To provide a visual sense of what the end resource instances will look like, all
-resources are described using a pseudo-XML syntax. The syntax uses the following notation:
+The resources are described in two different ways: a UML diagram that summarises the content, and 
+an pseudo-XML syntax that provides a visual sense of what the end resource instances will look like. 
+The syntax uses the following notation:
 </p>
 
 <pre class="spec">
@@ -59,8 +60,8 @@ Notes:
  <li>Elements are assigned a cardinality that specifies how many times the element may or must appear. If the cardinality is shown in 
     <font color="deeppink">Pink</font> then there is an additional condition that impacts on the allowed cardinality. This is available as a mouse-over text, or in the formal definitions.</li>
  <li>The elements are assigned one or more types. All of the types are defined in <a href="datatypes.htm">the data types</a> except for "Resource" and "Narrative" that are documented below. The type names are hyperlinked.</li>
- <li>Each element name in the pseudo-syntax is also a hyperlink to the formal definition of the element in the data dictionary that underlies the exchange formats. 
-   If the element name is underlined, then applications are required to support and/or understand it.</li>
+ <li>Each element name in the pseudo-syntax is also a hyperlink to the formal definition of the element in the data dictionary that underlies the exchange formats. </li>
+ <li>If the element name is underlined, then applications are required to support and/or understand it (see below).</li>
  <li>The XML character set is always Unicode. Specifying the character encoding is optional but recommended (default value is UTF-8, as for XML). Any encoding that is round trip compatible with Unicode is allowed.</li>
  <li>FHIR elements are always in the namespace <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>.  This is usually specified as the default namespace on the root element. 
    The only other namespaces that occur in FHIR resources are where some external content model is explicitly introduced into the resource content model. For example, XHTML is found in every resource - see below.</li>
@@ -77,38 +78,55 @@ the simple XML description, W3C Schema, UML models, and other definitional model
 are provided that may be a useful aid for system implementation. Resources may 
 also be represented using <a href="json.htm">JSON</a>.
 </p>
+<p>
+The UML diagrams represent the same content as a series of classes. The root element
+class is labeled with an "R" for resource, or a "D" for a data type . All the other 
+classes have "E" since they represent elements that appear the instance. 
+</p>
+<pre>
+  todo: insert diagram
+</pre>
+<p>
+Where an element can have a choice of data types, these are represented in the 
+choice using the same syntax as the xml syntax. Due to way UML works, the actual 
+order of the elements cannot be determined from the diagram. 
+</p>
 
 <a name="metadata"></a>
-<h2>Resource Data and Metadata items</h2>
+<h2>Resource Content and Metadata</h2>
 <p>
-All resources contain extensions and then a narrative section at the end:
+All resources contain extensions, a data section, and then a narrative section at the end:
 </p>
 <pre class="spec">
 &lt;<a href="#ResourceDefn" title="A Resource Definition for FHIR" class="dict"><b>[Name]</b></a> xmlns="http://hl7.org/fhir"&gt;
- <font color="Gray">&lt;!-- Defined Content for Resource --&gt;</font>
  &lt;<a href="extensibility.htm" title="See Extensions" class="dict"><b>extension</b></a>&gt;<font color="Gray">&lt;!-- <font color="brown"><b>0..*</b></font> </font> <font color="darkgreen"><a href="extensibility.htm">Extension</a></font>   <a href="extensibility.htm"><font color="navy">See Extensions</font></a> <font color="Gray"> --&gt;</font>&lt;/extension&gt;
+ <font color="Gray">&lt;!-- Defined Content for Resource --&gt;</font>
  &lt;<a href="#Narrative" title="Text summary of resource, for human interpretation" class="dict"><b>text</b></a>&gt;<font color="Gray">&lt;!--</font> <font color="brown"><b>1..1</b></font> <font color="darkgreen"><a href="#Narrative">Narrative</a></font> <font color="navy">Text summary of [x], for human interpretation</font><font color="Gray"> --&gt;</font>&lt;/text&gt;
 &lt;/[Name]&gt;
 </pre>
 <p>
-The use of the <i>extensions</i> element is <a href="extensibility.htm">discussed under "Extensibility"</a>. 
+The use of the <i>extension</i> element is <a href="extensibility.htm">discussed under "Extensibility"</a>. 
 The text ("Narrative") is <a href="#Narrative">discussed below</a>. 
 </p>
 <p>
-In addition to these data elements, there are several pieces of metadata about a resource that are not part of the resource
-content, but are delegated to the infrastructure:
+In addition to the content inside the resource, there are several pieces of metadata about a resource that are not part of the resource
+content, yet are key aspects of the resource and how it behaves. For implementation reasons, these are represented outside the resource:
 </p>
 <table class="grid">
   <tr><th>Metadata Item</th><th>Type</th><th>Usage</th></tr>
   <tr><td>Logical Id</td> <td><a href="datatypes.htm#id">id</a></td> <td>The identity of the resource. 
-    Resources always have a known identity except in the case where a new resource is being submitted to a server that is expected to assign an identity to it. Resource identification is <a href="#Resource">discussed further below</a></td></tr>
-  <tr><td>Version Id</td><td><a href="datatypes.htm#id">id</a></td><td>Changed each time the content of the resource changes. Can be referenced in a resource reference (<a href="#Resource">see below</a>). Can be used to ensure that updates are based on the latest version of the resource. 
-  <br/>The version can be globally unique, or scoped by the Logical Id. Since version ids must be unique, they are generally either a serially incrementing id scoped by the logical id, or a uuid, though neither of these approaches is required</td></tr>
-  <tr><td>Last Modified Date</td><td><a href="datatypes.htm#dateTime">dateTime</a></td><td>Changed each time the content of the resource changes. Can be used by a system or a human to judge the currency of the resource content.</td></tr>
+    Resources always have a known identity. Resource identification is <a href="#Resource">discussed further below</a></td></tr>
+  <tr><td>Version Id</td><td><a href="datatypes.htm#id">id</a></td><td>Changed each time the content of the resource changes. 
+    Can be referenced in a resource reference (<a href="#Resource">see below</a>). Can be used to ensure that updates are based on the latest version of the resource. 
+  <br/>The version can be globally unique, or scoped by the Logical Id. Since version ids must be unique, they are generally either a serially incrementing id 
+     scoped by the logical id, or a uuid, though neither of these approaches is required</td></tr>
+  <tr><td>Last Modified Date</td><td><a href="datatypes.htm#instant">instant</a></td><td>Changed each time the content of the resource 
+    changes. Can be used by a system or a human to judge the currency of the resource content.</td></tr>
 </table>
 <p>
-In any environment where the resources are used, the technical details of how these metadata elements are represented will need to be resolved. For further details, 
-see <a href="implementation.htm">Implementation Details</a>, which also contains a discussion of how resource identity is maintained.
+In any environment where the resources are used, the technical details of how these metadata elements 
+are represented will need to be resolved. For further details, see <a href="implementation.htm">Implementation 
+Details</a>, which also contains a discussion of how resource identity is maintained.
 </p>
 <p>
 The logical id and version id of a Resource are of type <a href="datatypes.htm#id">id</a> which is up to 36 characters long and contains:
@@ -121,11 +139,62 @@ The logical id and version id of a Resource are of type <a href="datatypes.htm#i
   <tr><td></td><td></td></tr>
 </table>
 <p>
-Resource ids are case sensitive. Ids are always opaque, and systems need not and should not attempt to determine 
-their internal structure. However the id is represented, it must always be represented in the same way in resource references and URLs.
+Resource ids are case sensitive. Ids are always opaque, and systems need not and should not attempt to determine their internal structure. 
+However the id is represented, it must always be represented in the same way in resource references and URLs.
 </p>
 
 <hr/>
+<a name="mustUnderstand"> </a>
+<a name="mustSupport"> </a>
+<h2>Must-Understand, and Must-Support</h2>
+<p>
+FHIR defines two properties for all resource elements: Must-Understand, and Must-Support. These interact 
+to place conformance requirements on implementations. 
+</p>
+<h3>Must-Understand</h3>
+<p>
+Must-Understand is a property that is assigned when an element is defined. An element is labelled "mustUnderstand=true" if 
+the value it contains may change the interpretation of other elements or the resource as a whole. Typical examples
+of elemnets that are labelled "must-understand" are elements such as "status", "active", or "certainty". 
+Elements are defined either in the base resources themselves, as part of the FHIR specification, or 
+where profiles declare extensions. The value of mustUnderstand cannot be changed when element usage
+is described in a <a href="profile.htm">Resource Profile</a>.
+</p>
+<p>
+Generally, elements labelled "mustUnderstand=true" also have a minimum cardinality of 1, to introduce
+certainty in their handling. Irrespective of the minimum cardinality, implementations producing resources
+SHALL ensure that appropriate values for mustUnderstand elements are provided. MustUnderstand elements
+SHALL be represented in the narrative summary of the resource.
+</p>
+<p>
+Implementations processing resources SHALL understand the impact of the element when they process 
+the resource. Implementations are not required to "support" the element in any meaningful way - they 
+amy achieve this by rejecting instances that contain values outside those they support (for instance,
+an application may refuse to accept observations with a reliability != "ok"). Alternatively,
+implementations may be able to sure, due to their implementation environment, that such values 
+will never occur. However applications SHOULD always check the value irrespective of this.
+</p>
+<h3>Must-Support</h3>
+<p>
+Labelling an element Must-Support means that implementations that produce or consume must 
+provide "support" for the element in some meaningful way. Exactly what this means is impossible
+to describe or clarify as part of the FHIR specification.
+</p>
+<p>
+For this reason, the specification itself never labels any elements as must-support. 
+This is done in <a href="profile.htm">Resource Profiles</a>, where the profile that 
+labels an element as mustSupport=true. When a profile does this, it must also make clear
+exactly what kind of "support" is required, as this can mean many things.
+</p>
+
+<p>
+Note that an element that has the property mustUnderstand is not necessarily a "key" element (e.g. one of 
+the important elements to make use of the resource), nor is it automatically mustSupport - however both 
+of these things are likely to be true.
+</p>
+
+<hr/>
+
 
 <a name="Narrative"> </a>
 <a name="narrative"> </a>
@@ -160,7 +229,7 @@ and objects. The div element must have some non-whitespace content.
 <!-- Todo: Formally encode these constraints in schematron -->
 </p>
 <div class="example">
-<pre class="xml">
+<pre class="xml" fragment="Narrative">
   &lt;narrative&gt;
     &lt;div xmlns="http://www.w3.org/1999/xhtml"&gt;This is a simple 
           example with only plain text&lt;/div&gt;
@@ -186,18 +255,18 @@ This is an <a href="#idref">internal reference</a> to an id attribute on an elem
 directly, or an element of type "<a href="datatypes.htm#Attachment">Attachment</a>".
 </p>
 <div class="example">
-<pre class="xml">
+<pre class="xml" fragment="Narrative">
   &lt;narrative&gt;
     &lt;div xmlns="http://www.w3.org/1999/xhtml"&gt;
       &lt;p&gt;
-        &lt;img src=&quot;#a1/&gt;.
+        &lt;img src=&quot;#a1&quot;/&gt;.
       &lt;/p&gt;
     &lt;/div&gt;
     &lt;image id=&quot;a1&quot;&gt;
       &lt;mimeType&gt;image/png&lt;/mimeType&gt;
-      &lt;data&gt;MEKH....SD/Z&lt;/data&gt;
+      &lt;content&gt;MEKH....SD/Z&lt;/content&gt;
     &lt;/image&gt;
-  &lt;narrative&gt;
+  &lt;/narrative&gt;
 </pre>
 </div>
 
@@ -254,7 +323,6 @@ Authoring systems should not depend on these styles being defined for clinical c
 There are 4 cases where elements inside a resource reference each other:
 </p>
 <ul>
- <li>From <a href="extensibility.htm#Extension">an extension element</a> to its target element</li>
  <li>Inside a <a href="datatypes.htm#CodeableConcept">CodeableConcept data type to identify the primary encoding</a></li>
  <li>An &lt;img src=""/&gt; reference in the narrative, referring to an image found in the resource</li>
  <li>Between elements in the narrative and structured data elements</li>
@@ -297,64 +365,102 @@ to the source content.
 The "Resource" type indicates a reference from one resource to another.
 </p>
 <%dt ResourceReference%>
-<p>
-The reference must specify the resource type, whether or not the type of the resource reference is fixed for the element in the resource definition.
-A resource reference may contain either a version independent reference (<i>"id"</i>) or a version dependent reference (<i>"version"</i>)
-or both. If both are provided, it is at the discretion of the processor of the data whether to access the version specific or version independent reference. 
-</p>
-<p>
-Both the id and the version are URL references - they must be literal URLs that resolve to the location of the resource.
-Both URLs may either be absolute URLs, or relative URLS. If they are relative URLs, they are interpreted to contain the <a href="#metadata">logical id and versionId</a> 
-respectively of the resource in question, and the resolution of the local references is a matter of implementation logic. 
-If relative references are used, a <i>version</i> cannot be provided without an <i>id</i>, since the <i>version</i> may be scoped by the <i>id</i>.
-Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use
-when trading between separated eco-systems (see <a href="implementation.htm#identity">implementation issues for further discussion</a>). Absolute URLs do not need to point to a <a href="http.htm">FHIR RESTful 
-server</a>, though this is the preferred approach. Irrespective of whether the URL points to a FHIR RESTful server or includes the logical id in the URL, 
-URLs are always considered to be case-sensitive and lowercase is preferred.
-</p>
+<p>Notes:</p>
+<ul>
+ <li>The reference must specify the resource type, whether or not the type of the resource reference is fixed for the element in the resource definition.</li>
+ <li>Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a 
+   flexible approach suitable for use when trading across closed eco-system boundaries. (see <a href="implementation.htm#identity">implementation issues for further discussion</a>)</li>
+ <li>Absolute URLs do not need to point to a FHIR RESTful server, though this is the preferred approach. If the url 
+   conforms to the structure ""/[type]/@[id]"" then it should be assumed that the reference is to a FHIR RESTful server. Whether or not the reference is to a FHIR RESTful server,
+   the reference must point to a Resource as defined by this specification</li>
+ <li>URLs are always considered to be case-sensitive and lowercase is preferred.</li>
+ <li>The display is generally not the same content as the Resource.text of the referenced resource.  The purpose is to 
+   identify what's being referenced, not to describe it.</li>
+ <li>The use of inline resources is discussed below</li>
+</ul>
 
-<div class="example">
-<p>A relative reference to the <a href="patient.htm">patient</a> "034AB16" in an element named "context":</p>
-<pre class="xml">
-  &lt;context&gt;
-    &lt;type&gt;Patient&lt;/type&gt;
-    &lt;id&gt;034AB16&lt;/id&gt;
-  &lt;context&gt;
-</pre>
-<p>
-This is a relative reference in the sense that the patient resource "034AB16" is available from the same location as the resource that contains the reference. 
-So, for instance, if the resource that contains this reference is at http://www.acme.com/fhir/labreport/@1234567, then this patient resource will be at http://www.acme.com/fhir/patient/@034AB16
-</p>
-<p>An absolute reference to a <a href="profile.htm">resource profile</a> in an element named "profile":</p>
-<pre class="xml">
-  &lt;profile&gt;
-    &lt;type&gt;Profile&lt;/type&gt;
-    &lt;id&gt;http://fhir.hl7.org/svc/profile/@c8973a22-2b5b-4e76-9c66-00639c99e61b&lt;/id&gt;
-  &lt;profile&gt;
-</pre>
-<p><i>Note that HL7 has not yet actually created a profile registry, nor decided on a URL for it</i>.</p>
-</div>
-<p>
-A short display text that provides a human readable identification of the resource may be provided:
-</p>
-<div class="example">
-<pre class="xml">
-  &lt;id&gt;
-    &lt;type&gt;Organization&lt;/type&gt;
-    &lt;id&gt;1234&lt;/id&gt;
-    &lt;display&gt;HL7, Inc&lt;/display&gt;
-  &lt;id&gt;
-</pre>
-<p>
-This text can be used by a system that is unable to resolve the reference to an actual resource.
-</p>
-</div>
 <div class="use">
 <p><b>Use</b></p>
 <p>
 [%dt.constraints ResourceReference%]
 </p>
 </div>
+
+<div class="example">
+<p>A relative reference to the <a href="patient.htm">patient</a> "034AB16" in an element named "context" on a FHIR RESTful server:</p>
+<pre class="xml" fragment="ResourceReference">
+  &lt;context&gt;
+    &lt;type&gt;Patient&lt;/type&gt;
+    &lt;url&gt;../patient/@034AB16&lt;/url&gt;
+  &lt;/context&gt;
+</pre>
+<p>An absolute reference to a <a href="profile.htm">resource profile</a> in an element named "profile":</p>
+<pre class="xml" fragment="ResourceReference">
+  &lt;profile&gt;
+    &lt;type&gt;Profile&lt;/type&gt;
+    &lt;url&gt;http://fhir.hl7.org/svc/profile/@c8973a22-2b5b-4e76-9c66-00639c99e61b&lt;/url&gt;
+  &lt;/profile&gt;
+</pre>
+<p><i>Note that HL7 has not yet actually created a profile registry, nor decided on a URL for it</i>.</p>
+<p>
+A short display text that provides a human readable identification of the resource may be provided:
+</p>
+<pre class="xml" fragment="ResourceReference">
+  &lt;custodian&gt;
+    &lt;type&gt;Organization&lt;/type&gt;
+    &lt;url&gt;../organization/@123&lt;/url&gt;
+    &lt;display&gt;HL7, Inc&lt;/display&gt;
+  &lt;/custodian&gt;
+</pre>
+<p>
+This text can be used by a system that is unable to resolve the reference to an actual resource.
+</p>
+</div>
+
+<h3>Contained Resources</h3>
+<p>
+In some circumstances, the content referred to in the resource reference does not have an independent 
+existence apart from the resource that contains it - it cannot be identified independently, and nor 
+can it have it's own independent transaction scope. Typically, such circumstances arise where the resource
+is being assembled by a secondary user of the source data, such as a middleware engine. If the data available
+when the resource is constructed does not include record keys or absolute identification information, then
+a properly identified resource cannot be assembled, and even if an arbitrary identification was associated
+with it, the resource could never be the subject of a transaction outside the context of the resource that
+refers to it.
+</p>
+<p>
+In these circumstances, the resource is placed directly in line in the reference. <b>This should never be 
+done when the content can be identified properly, as once identification is lost, it is extremely difficult 
+(and context dependent) to restore it again.</b>
+</p>
+<pre class="xml" fragment="ResourceReference">
+  &lt;profile&gt;
+    &lt;type&gt;Patient&lt;/type&gt;
+    &lt;url&gt;#a1&lt;/url&gt;
+	&lt;Patient id="a1"&gt;
+	  &lt;!-- whatever information is available --&gt;
+	&lt;/Patient&gt;
+  &lt;profile&gt;
+</pre>
+<p>
+The type and url are always required, even though somewhate redundant in this case, to ensure that a
+single approach to resolving resource references can be used - simply be resolving the URL, and accessing
+accordingly.
+</p>
+<p>
+Some notes about use and interpretation of contained resources:
+</p>
+
+<ul>
+  <li>Contained resources share the same internal id resolution space as the parent resource</li>
+  <li>Resources that are contained inline also "inherit" context from their parent resource. For instance, if 
+    the parent resource contains a "subject", and the contained resource also has a a subject element defined, 
+    but does not specify any subject, a processing application may infer that the subject is the same. Note,
+    however, that such inferences are specific to a particular circumstance. There is no rule, for instance, 
+	that the meaning of the "subject" element is the same in both parent and contained resources</li>
+  <li>Contained resources do not need to contain any narrative</li>
+</ul>
+
 
 <a name="version"> </a>
 <h2>Inter-version Compatibility</h2>

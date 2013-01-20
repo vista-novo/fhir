@@ -10,7 +10,7 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
     <id>urn:oid:1.3.6.1.4.1.21367.2005.3.7</id>
   </id>
   <information>
-    <instant>2005-12-24T09:35:00+11:00</instant>
+    <created>2005-12-24T09:35:00+11:00</created>
     <class>
       <system>http://ihe.net/xds/connectathon/classCodes</system>
       <code>History and Physical</code>
@@ -24,14 +24,14 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
       </coding>
     </type>
     <title>Physical</title>
-    <confidentialityCode>
+    <confidentiality>
       <system>http://ihe.net/xds/connectathon/confidentialityCodes</system>
       <code>1.3.6.1.4.1.21367.2006.7.101</code>
       <display>Clinical-Staff</display>
-    </confidentialityCode>
+    </confidentiality>
     <subject>
       <type>Patient</type>
-      <id>xcda</id>
+      <url>../patient/@xcda</url>
     </subject>
   <!--
   <author>
@@ -97,7 +97,7 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
     </attester>-->
     <author>
       <type>Provider</type>
-      <id>example</id>
+      <url>../provider/@example</url>
     </author>
     <event>
       <code>
@@ -135,11 +135,11 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
   <availability>Approved</availability>
   <folder>
     <type>XdsFolder</type>
-    <id>1.2.36.90146595217.4.2.1</id>
+    <url>../xdsfolder/@1.2.36.90146595217.4.2.1</url>
   </folder>
   <subject>
     <type>Patient</type>
-    <id>xcda</id>
+    <url>../patient/@xcda</url>
   </subject>
   <content xml:lang="en-us">
     <contentType>text/plain</contentType>

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
+// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -156,7 +156,7 @@ public class DocumentInformation extends Type {
     /**
      * The document creation time, when the document first came into being. Where the document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created.
      */
-    private Instant instant;
+    private Instant created;
 
     /**
      * The code specifying the particular kind of document (e.g., Prescription, Discharge Summary, Report).
@@ -176,7 +176,7 @@ public class DocumentInformation extends Type {
     /**
      * The code specifying the level of confidentiality of the XDS Document. These codes are specific to an XDS Affinity Domain.
      */
-    private Coding confidentialityCode;
+    private Coding confidentiality;
 
     /**
      * Identifies the primary subject of the document.  
@@ -234,12 +234,12 @@ public class DocumentInformation extends Type {
       this.versionId = value;
     }
 
-    public Instant getInstant() { 
-      return this.instant;
+    public Instant getCreated() { 
+      return this.created;
     }
 
-    public void setInstant(Instant value) { 
-      this.instant = value;
+    public void setCreated(Instant value) { 
+      this.created = value;
     }
 
     public Coding getClass_() { 
@@ -266,12 +266,12 @@ public class DocumentInformation extends Type {
       this.title = value;
     }
 
-    public Coding getConfidentialityCode() { 
-      return this.confidentialityCode;
+    public Coding getConfidentiality() { 
+      return this.confidentiality;
     }
 
-    public void setConfidentialityCode(Coding value) { 
-      this.confidentialityCode = value;
+    public void setConfidentiality(Coding value) { 
+      this.confidentiality = value;
     }
 
     public ResourceReference getSubject() { 

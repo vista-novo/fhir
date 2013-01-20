@@ -7,7 +7,7 @@
     and find out -->
   <source>
     <type>Patient</type>
-    <id>example</id>
+    <url>../patient/@example</url>
   </source>
   <date>2012-11-25T22:17:00+11:00</date>
   <mode>changes</mode>
@@ -18,7 +18,7 @@
     <deleted>true</deleted>
     <item>
       <type>Problem</type>
-      <id>example</id>
+      <url>../problem/@example</url>
     </item>
   </entry>
   <entry>
@@ -27,7 +27,7 @@
     </flag>
     <item>
       <type>Problem</type>
-      <id>example2</id>
+      <url>../problem/@example2</url>
     </item>
   </entry>
   

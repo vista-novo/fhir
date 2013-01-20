@@ -3,7 +3,7 @@
 
   <subject>
     <type>Patient</type>
-    <id>example</id>
+    <url>../patient/@example</url>
   </subject>
   <type>
     <coding>

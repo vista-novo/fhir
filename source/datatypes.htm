@@ -20,10 +20,23 @@
 <h1>Data Types</h1>
 
 <p>
-The FHIR data types include primitive types imported from XML schema
-and additional data types that capture patterns that are 
-ubiquitous throughout the scope of the healthcare data that will
-be exchanged.
+The FHIR specification defines a set of types that are used for the 
+resource elements. Resource data elements may be assigned a type 
+from the types defined in this page (or they may be defined as 
+a reference to another resource). 
+</p>
+<p>
+There are two categories of data type: 
+</p>
+<ul>
+ <li>Simple / primitive types, imported from XML schema</li>
+ <li>Complex types, which are re-usable clusters of elements and capture patterns that are 
+    ubiquitous throughout the scope of the healthcare data that will be exchanged</li>
+</ul>
+<p>
+Complex data types may be "profiled". A <a href="profile.htm">profile</a> makes 
+a set of rules about which elements must have values, and what the possible 
+values are.
 </p>
 <map id="dtmap2" name="dtmap2">
 <area shape="rect" coords="200, 60, 252, 90" href="#Types" alt="Types"/>
@@ -53,14 +66,6 @@ be exchanged.
 </map>            
 <p align="left">
 <img id="dtmap1" src="dt-map.png" usemap="#dtmap2" border="0" height="408" width="450" alt="Data Types Concept Map"/>
-</p>
-<p>
-The data types defined on this page on this page are categorized as "Primitive Types", "Types" or "Structures". 
-Primitive Types are those either drawn from W3C Schema types or directly derived from them.  Types and Structures
-are more complex, made up of multiple properties.
-"Structures" are higher level concepts that some systems internally treat differently from Types. 
-There is no functional difference between the two categories, and systems are not required to treat them 
-any differently.
 </p>
 <p>
 The data types are available as a <a href="fhir-base.xsd">W3C Schema</a>.
@@ -114,7 +119,7 @@ these types are based on those specified in the W3C Schema specification part 2,
    Note: This type is for system times, not human times (see date and dateTime below).</td>
  </tr>
  <tr>
-   <td>string</td><td>xs:string</td><td>A sequence of Unicode characters. <b>Note that FHIR strings may not exceed 1MB in size</b></td>
+   <td>string</td><td>xs:string</td><td>A sequence of Unicode characters. <b>Note that FHIR strings SHALL not exceed 1MB in size</b></td>
  </tr>
  <tr>
    <td>uri</td><td>xs:anyURI</td><td>A Uniform Resource Identifier Reference. It can be absolute or relative, 
@@ -138,7 +143,7 @@ these types are based on those specified in the W3C Schema specification part 2,
 <div class="example">
 <p><b>Examples</b></p>
 <p>date (e.g. Date of birth):</p>
-<pre class="xml">
+<pre class="xml" fragment="date">
   &lt;date&gt;1951-06-04&lt;/date&gt;
 </pre>
 </div>
@@ -154,7 +159,7 @@ these types are based on those specified in the W3C Schema specification part 2,
 Attachment
 </h2>
 <p>
-This type is for containing attachments - additional data content defined in other 
+This type is for containing or referencing attachments - additional data content defined in other 
 formats. The most common use of this type is to include images or reports in 
 some report format such as PDF. However it can be used for any 
 data that has a mime type. 
@@ -197,7 +202,7 @@ The context of use may frequently make rules about the kind of attachment
 <div class="example">
 <p><b>Examples</b></p>
 <p>A PDF document:</p>
-<pre class="xml">
+<pre class="xml" fragment="Attachment">
   &lt;document xml:lang="en"&gt;
    &lt;contentType&gt;application/pdf&lt;/contentType&gt;
    &lt;data&gt;/9j/4...KAP//Z&lt;/data&gt; &lt;!-- covers many lines --&gt;
@@ -205,10 +210,10 @@ The context of use may frequently make rules about the kind of attachment
   &lt;/document&gt;
 </pre>
 <p>A reference to a DICOM image via WADO:</p>
-<pre class="xml">
+<pre class="xml" fragment="Attachment">
   &lt;image&gt;
    &lt;contentType&gt;application/dicom&lt;/contentType&gt;
-   &lt;url&gt;http://10.1.2.3:1000/wado?requestType=WADO&amp;wado details...&lt;/url&gt;
+   &lt;url&gt;http://10.1.2.3:1000/wado?requestType=WADO&amp;amp;wado_details...&lt;/url&gt;
    &lt;hash&gt;EQH/..AgME&lt;/hash&gt;
   &lt;/image&gt;
 </pre>
@@ -246,6 +251,10 @@ the system can be safely inferred by the context.
 This practice should be avoided where possible in order to future-proof implementations, as 
 information sharing in a wider context is very likely to arise eventually, and codes cannot
 be used in the absence of a known system.
+</p>
+<p>
+If the system is present, and there is no code, then this is understood to mean that there
+is no suitable code in the system in which to represent the code. 
 </p>
 <p>
 If two Codings have the same the <i>system</i> and <i>code</i> then they have the same meaning.
@@ -303,14 +312,14 @@ particular context by <a href="terminologies.htm">binding</a> the element to a v
 <div class="example">
 <p><b>Examples</b></p>
 <p>A simple code for headache, in ICD-10:</p>
-<pre class="xml">
+<pre class="xml" fragment="Coding">
   &lt;code&gt;
     &lt;system&gt;http://hl7.org/fhir/sid/icd-10&lt;/system&gt;
     &lt;code&gt;G44.1&lt;/code&gt;
   &lt;/code&gt;
 </pre>
 <p>A SNOMED-CT expression:</p>
-<pre class="xml">
+<pre class="xml" fragment="Coding">
   &lt;problem&gt;
     &lt;system&gt;http://snomed.info&lt;/system&gt;
     &lt;code&gt;128045006:{363698007=56459004}&lt;/code&gt;
@@ -374,7 +383,7 @@ particular context by <a href="terminologies.htm">binding</a> the element to a v
 <div class="example">
 <p><b>Examples</b></p>
 <p>A simple code for headache initially coded in SNOMED-CT and translated to ICD-10:</p>
-<pre class="xml">
+<pre class="xml" fragment="CodeableConcept">
   &lt;concept&gt;
     &lt;coding&gt;
       &lt;system&gt;http://hl7.org/fhir/sid/icd-10&lt;/system&gt;
@@ -383,13 +392,14 @@ particular context by <a href="terminologies.htm">binding</a> the element to a v
     &lt;coding id="1"&gt;
       &lt;system&gt;http://snomed.info&lt;/system&gt;
       &lt;code&gt;25064002&lt;/code&gt;
+      &lt;display&gt;Headache&lt;/display&gt;
     &lt;/coding&gt;
     &lt;text&gt;general headache&lt;/text&gt;
     &lt;primary&gt;1&lt;/primary&gt;
   &lt;/concept&gt;
 </pre>
 <p>A concept represented in an institution's local coding systems for unit for which no UCUM equivalent exists:</p>
-<pre class="xml">
+<pre class="xml" fragment="CodeableConcept">
   &lt;unit&gt;
     &lt;coding&gt;
       &lt;system&gt;oid:2.16.840.1.113883.19.5.2&lt;/system&gt;
@@ -402,7 +412,7 @@ particular context by <a href="terminologies.htm">binding</a> the element to a v
   &lt;/unit&gt;
 </pre>
 <p>A SNOMED-CT expression:</p>
-<pre class="xml">
+<pre class="xml" fragment="CodeableConcept">
   &lt;diagnosis&gt;
     &lt;coding&gt;
       &lt;system&gt;http://snomed.info&lt;/system&gt;
@@ -432,7 +442,7 @@ The <i>code</i> is the selected value. A list of possible options for code must 
 The selected code must be found in the list of possible codes. 
 </p>
 <p>
-If isOrdered is true, then the values have an inherent meaningful order and the list of values must be provided in the correct order.
+If isOrdered is true, then the values have an inherent meaningful order and the list of values must be provided in the correct orderr in the instance.
 </p>
 <!--<div class="use">
 <p><b>Use</b></p>
@@ -442,7 +452,7 @@ If isOrdered is true, then the values have an inherent meaningful order and the 
 <div class="example">
 <p><b>Example</b></p>
 <p>The results on a urinalysis strip:</p>
-<pre class="xml">
+<pre class="xml" fragment="Choice">
   &lt;value&gt;
     &lt;code&gt;+&lt;/code&gt;
     &lt;option&gt;
@@ -510,7 +520,7 @@ These are used as types in resource content models, but they are really just a Q
 <div class="example">
 <p><b>Examples</b></p>
 <p>A duration:</p>
-<pre class="xml">
+<pre class="xml" fragment="Quantity">
   &lt;time&gt;
     &lt;value&gt;25&lt;/value&gt;
     &lt;units&gt;sec&lt;/units&gt;
@@ -519,7 +529,7 @@ These are used as types in resource content models, but they are really just a Q
   &lt;/time&gt;
 </pre>
 <p>A concentration where the value was out of range:</p>
-<pre class="xml">
+<pre class="xml" fragment="Quantity">
   &lt;result&gt;
     &lt;value&gt;40000&lt;/value&gt;
     &lt;range&gt;&amp;gt;&lt;/range&gt;
@@ -529,7 +539,7 @@ These are used as types in resource content models, but they are really just a Q
   &lt;/result&gt;
 </pre>
 <p>An amount of prescribed medication:</p>
-<pre class="xml">
+<pre class="xml" fragment="Quantity">
   &lt;dose&gt;
     &lt;value&gt;3&lt;/value&gt;
     &lt;units&gt;capsules&lt;/units&gt;
@@ -538,7 +548,7 @@ These are used as types in resource content models, but they are really just a Q
   &lt;/dose&gt;
 </pre>
 <p>A price (coded using currency codes defined in ISO 4217):</p>
-<pre class="xml">
+<pre class="xml" fragment="Quantity">
   &lt;cost&gt;
     &lt;value&gt;25.45&lt;/value&gt;
     &lt;units&gt;US$&lt;/units&gt;
@@ -582,7 +592,7 @@ includes 1.50, and 2.50 but not 1.49 or 2.51.
 <div class="example">
 <p><b>Examples</b></p>
 <p>Range of Quantity (distance):</p>
-<pre class="xml">
+<pre class="xml" fragment="Range">
   &lt;estimate&gt;
    &lt;low&gt;
      &lt;value&gt;1.6&lt;/value&gt;
@@ -610,7 +620,7 @@ data type is used for titers (e.g., "1:128") and other quantities produced by la
 truly represent ratios. Ratios are not simply "structured numerics" - for example blood pressure measurements 
 (e.g. "120/60") are not ratios. In addition, ratios are used where common factors in the numerator 
 and denominator do not cancel out. The most common example of this is where the ratio represents a 
-unit cost, and the numerator is a currency.
+unit cost, and the numerator is a currency (e.g. 50/$10).
 </p>
 <div class="use">
 <p><b>Use</b></p>
@@ -622,7 +632,7 @@ The context of use may require particular types of Quantity for the numerator or
 <div class="example">
 <p><b>Examples</b></p>
 <p>Titer (Ratio of integer:integer)</p>
-<pre class="xml">
+<pre class="xml" fragment="Ratio">
   &lt;result&gt;
    &lt;numerator&gt;
      &lt;value&gt;1&lt;/value&gt;
@@ -633,7 +643,7 @@ The context of use may require particular types of Quantity for the numerator or
   &lt;/result&gt;
 </pre>
 <p>Unit cost (Ratio of Money:Quantity):</p>
-<pre class="xml">
+<pre class="xml" fragment="Ratio">
   &lt;charge&gt;
    &lt;numerator&gt;
      &lt;value&gt;103.50&lt;/value&gt;
@@ -642,7 +652,7 @@ The context of use may require particular types of Quantity for the numerator or
      &lt;system&gt;urn:std:iso:4217&lt;/system&gt;
    &lt;/numerator&gt;
    &lt;denominator&gt;
-     &lt;value&gt;128&lt;/value&gt;
+     &lt;value&gt;1&lt;/value&gt;
      &lt;units&gt;day&lt;/units&gt;
      &lt;code&gt;day&lt;/code&gt;
      &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
@@ -682,7 +692,7 @@ the end of the 27th May.
 <div class="example">
 <p><b>Examples</b></p>
 <p>23rd May 2011 to 27th May, including 27th May:</p>
-<pre class="xml">
+<pre class="xml" fragment="Period">
   &lt;coverage&gt;
    &lt;start&gt;2011-05-23&lt;/start&gt;
    &lt;end&gt;2011-05-27&lt;/end&gt;
@@ -740,18 +750,18 @@ The <i>assigner</i> is used to indicate what registry/state/facility/etc assigne
 <p><b>Examples</b></p>
 <p>A primary key from an application table (an OID in the space allocated by HL7
 to some organisation to further sub-allocate):</p>
-<pre class="xml">
+<pre class="xml" fragment="Identifier">
   &lt;id&gt;
-    &lt;use&gt;official&lt;use&gt;
+    &lt;use&gt;official&lt;/use&gt;
     &lt;system&gt;oid:2.16.840.1.113883.16.4.3.2.5&lt;/system&gt;
     &lt;id&gt;123&lt;/id&gt;
   &lt;/id&gt;
 </pre>
 
 <p>A patient identifier defined by a hospital:</p>
-<pre class="xml">
+<pre class="xml" fragment="Identifier">
   &lt;identifier&gt;
-    &lt;use&gt;official&lt;use&gt;
+    &lt;use&gt;official&lt;/use&gt;
     &lt;system&gt;http://www.acmehosp.com/patients&lt;/system&gt;
     &lt;id&gt;44552&lt;/id&gt;
     &lt;period&gt;
@@ -762,7 +772,7 @@ to some organisation to further sub-allocate):</p>
 <p>In this case, tThe period is used to track when the identifier was first assigned to the patient.</p>
 
 <p>An identifier that refers to a patient FHIR resource on a particular system:</p>
-<pre class="xml">
+<pre class="xml" fragment="Identifier">
   &lt;id&gt;
    &lt;system&gt;urn:ietf:rfc:3986&lt;/system&gt;
    &lt;id&gt;http://pas-server/xxx/patient/@443556&lt;/id&gt;
@@ -771,9 +781,9 @@ to some organisation to further sub-allocate):</p>
 <p>This is not a resource reference - it's a logical reference by the patient identifier.</p>
 
 <p>A UUID:</p>
-<pre class="xml">
+<pre class="xml" fragment="Identifier">
   &lt;id&gt;
-    &lt;use&gt;temp&lt;use&gt;
+    &lt;use&gt;temp&lt;/use&gt;
     &lt;system&gt;urn:ietf:rfc:3986&lt;/system&gt;
     &lt;id&gt;a76d9bbf-f293-4fb7-ad4c-2851cac77162&lt;/id&gt;
   &lt;/id&gt;
@@ -781,14 +791,12 @@ to some organisation to further sub-allocate):</p>
 <p>UUIDs are often used for temporary identifiers, though this is not necessary.</p>
 
 <p>A US SSN:</p>
-<pre class="xml">
+<pre class="xml" fragment="Identifier">
   &lt;id&gt;
-    &lt;use&gt;usual&lt;use&gt;
+    &lt;use&gt;usual&lt;/use&gt;
     &lt;label&gt;SSN&lt;/label&gt;
-    &lt;identifier&gt;
-      &lt;system&gt;http://hl7.org/fhir/sid/us-ssn&lt;/system&gt;
-      &lt;id&gt;000111111&lt;/id&gt;
-    &lt;/identifier&gt;
+    &lt;system&gt;http://hl7.org/fhir/sid/us-ssn&lt;/system&gt;
+    &lt;id&gt;000111111&lt;/id&gt;
   &lt;/id&gt;
 </pre>
 <p>Notes:</p> 
@@ -798,17 +806,15 @@ to some organisation to further sub-allocate):</p>
 </ul>
 
 <p>A medical record number assigned on 5-July 2009:</p>
-<pre class="xml">
+<pre class="xml" fragment="Identifier">
   &lt;id&gt;
     &lt;use&gt;usual&lt;/use&gt;
     &lt;label&gt;MRN&lt;/label&gt;
-    &lt;identifier&gt;
-      &lt;system&gt;oid:0.1.2.3.4.5.6.7&lt;/system&gt;
-      &lt;id&gt;2356&lt;/id&gt;
-    &lt;/identifier&gt;
-   &lt;period&gt;
-     &lt;low&gt;2009-07-05&lt;/low&gt;
-   &lt;/period&gt;
+    &lt;system&gt;oid:0.1.2.3.4.5.6.7&lt;/system&gt;
+    &lt;id&gt;2356&lt;/id&gt;
+    &lt;period&gt;
+      &lt;start&gt;2009-07-05&lt;/start&gt;
+    &lt;/period&gt;
   &lt;/id&gt;
 </pre>
 </div>
@@ -844,7 +850,7 @@ between family name and given names depends on culture and context of use.
 <div class="example">
 <p><b>Example</b></p>
 <p>Full name of Peter James Chalmers.</p>
-<pre class="xml">
+<pre class="xml" fragment="HumanName">
   &lt;name&gt;
     &lt;use&gt;usual&lt;/use&gt;
     &lt;family&gt;Chalmers&lt;/family&gt;
@@ -887,7 +893,7 @@ may be provided instead of or as well as the specific parts.
 <div class="example">
 <p><b>Example</b></p>
 <p>HL7 office's address.</p>
-<pre class="xml">
+<pre class="xml" fragment="Address">
   &lt;address&gt;
    &lt;use&gt;work&lt;/use&gt;
    &lt;text&gt;
@@ -935,7 +941,7 @@ However, this is frequently not possible due to legacy data and/or recording met
 <div class="example">
 <p><b>Example</b></p>
 <p>Home phone number:</p>
-<pre class="xml">
+<pre class="xml" fragment="Contact">
   &lt;telecom&gt;
    &lt;system&gt;phone&lt;/system&gt;
    &lt;value&gt;+15556755745&lt;/value&gt;
@@ -978,24 +984,24 @@ the Schedule will terminate on some criteria that are expressed elsewhere.
 <div class="example">
 <p><b>Example</b></p>
 <p>A series of appointments for radiotherapy:</p>
-<pre class="xml">
+<pre class="xml" fragment="Schedule">
   &lt;schedule&gt;
     &lt;event&gt;
-      &lt;low&gt;2012-01-07T09:00&lt;/low&gt;
-      &lt;high&gt;2012-01-07T13:00&lt;/high&gt;
+      &lt;start&gt;2012-01-07T09:00&lt;/start&gt;
+      &lt;end&gt;2012-01-07T13:00&lt;/end&gt;
     &lt;/event&gt;
     &lt;event&gt;
-      &lt;low&gt;2012-01-14T09:00&lt;/low&gt;
-      &lt;high&gt;2012-01-14T13:00&lt;/high&gt;
+      &lt;start&gt;2012-01-14T09:00&lt;/start&gt;
+      &lt;end&gt;2012-01-14T13:00&lt;/end&gt;
     &lt;/event&gt;
     &lt;event&gt;
-      &lt;low&gt;2012-01-22T11:00&lt;/low&gt;
-      &lt;high&gt;2012-01-22T15:00&lt;/high&gt;
+      &lt;start&gt;2012-01-22T11:00&lt;/start&gt;
+      &lt;end&gt;2012-01-22T15:00&lt;/end&gt;
     &lt;/event&gt;
   &lt;/schedule&gt;
 </pre>
 <p>BID (twice a day) (no start or end specified):</p>
-<pre class="xml">
+<pre class="xml" fragment="Schedule">
   &lt;schedule&gt;
    &lt;repeat&gt;
      &lt;frequency&gt;2&lt;/frequency&gt;
@@ -1005,10 +1011,10 @@ the Schedule will terminate on some criteria that are expressed elsewhere.
   &lt;/schedule&gt;
 </pre>
 <p>1/2 an hour before breakfast for 10 days from 23-Dec 2011:</p>
-<pre class="xml">
+<pre class="xml" fragment="Schedule">
   &lt;schedule&gt;
     &lt;event&gt;
-      &lt;low&gt;2011-12-23&lt;/low&gt;
+      &lt;start&gt;2011-12-23&lt;/start&gt;
     &lt;/event&gt;
     &lt;repeat&gt;
       &lt;when&gt;ACM&lt;/when&gt;

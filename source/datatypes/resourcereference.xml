@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Lloyd McKenzie</LastAuthor>
+  <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:23:41Z</Created>
-  <LastSaved>2012-07-16T02:37:19Z</LastSaved>
+  <LastSaved>2013-01-19T23:26:21Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,6 +20,7 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>2880</WindowTopX>
   <WindowTopY>3000</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -65,7 +66,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="7" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="130.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="39.75"/>
@@ -101,12 +102,13 @@
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">A reference from one resource to another</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">The target of a resource reference is a RIM entry point (Act, Role, or Entity)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">ResourceReference.type</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">ResourceType</Data></Cell>
     <Cell><Data ss:Type="String">Resource Type</Data></Cell>
@@ -115,24 +117,14 @@
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="180">
-    <Cell><Data ss:Type="String">ResourceReference.id</Data></Cell>
+    <Cell><Data ss:Type="String">ResourceReference.url</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">y</Data></Cell>
     <Cell><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">URL/Id of the reference</Data></Cell>
-    <Cell><Data ss:Type="String">A literal URL that resolves to the location of the resource. The URL may be relative or absolute. Relative Ids contain the logical id of the resource. This reference is version independent - it points to the latest version of this resource</Data></Cell>
-    <Cell ss:Index="10" ss:StyleID="s66"><Data ss:Type="String">Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use when trading across closed eco-system boundaries. Absolute URLs do not need to point to a FHIR RESTful server, though this is the preferred approach</Data></Cell>
-    <Cell><Data ss:Type="String">N/A</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="105">
-    <Cell><Data ss:Type="String">ResourceReference.version</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Specific version URL/Id of resource referenced</Data></Cell>
-    <Cell><Data ss:Type="String">A literal URL that resolves to the location of a particular version of the resource. The URL may be relative or absolute. Relative Ids contain the logical version id of the resource. </Data></Cell>
-    <Cell ss:Index="10" ss:StyleID="s66"><Data ss:Type="String">Version Specific references are generally used for audit trail purposes, or when building attested content. The uniqueness of the version id may be scoped by the logical id</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">relative or absolute reference</Data></Cell>
+    <Cell><Data ss:Type="String">A literal URL that resolves to the location of the resource. The URL may be relative or absolute. Relative Ids contain the logical id of the resource. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific</Data></Cell>
+    <Cell ss:Index="10" ss:StyleID="s66"><Data ss:Type="String">Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use when trading across closed eco-system boundaries. &#10;&#10;Absolute URLs do not need to point to a FHIR RESTful server, though this is the preferred approach. If the url conforms to the structure &quot;/[type]/@[id]&quot; then it should be assumed that the reference is to a FHIR RESTful server</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="135">
@@ -144,7 +136,17 @@
     <Cell ss:Index="10"><Data ss:Type="String">This is generally not the same as the Resource.text of the referenced resource.  The purpose is to identify what's being referenced, not to fully describe it.</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30"/>
+   <Row ss:AutoFitHeight="0" ss:Height="96">
+    <Cell><Data ss:Type="String">!ResourceReference.[x]</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Resource</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">If the resource is contained inline</Data></Cell>
+    <Cell><Data ss:Type="String">The actual content of the resource, if the resource is contained in the resource that contains the reference</Data></Cell>
+    <Cell><Data ss:Type="String">Handle circumstances where content is dependent</Data></Cell>
+    <Cell><Data ss:Type="String">In many circumstances, the content referred to in the resource reference does not have an independent existence apart from the resource that contains it - it cannot be identified independently, and nor can it have it's own independent transaction scope. In such circumstances, the other resource is placed in line here.&#10;&#10;This should never be used when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -159,12 +161,11 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>3</ActiveCol>
-     <RangeSelection>C4</RangeSelection>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -172,13 +173,13 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="24.75"/>
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="52.5"/>
    <Column ss:StyleID="s67" ss:Width="97.5"/>
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="249"/>
-   <Column ss:Index="6" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="191.25"/>
+   <Column ss:Index="6" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="488.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -188,25 +189,18 @@
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">!1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">ResourceReference</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Must have a type if an id is provided unless dataAbsentReason is present</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">exists(@dataAbsentReason) or exists(f:type) or not(exists(f:id) or exists(f:version))</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Must have a type if a url is provided</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">exists(f:type) or not(exists(f:url))</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">!2</Data></Cell>
-    <Cell><Data ss:Type="String">reference</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">Inline</Data></Cell>
     <Cell><Data ss:Type="String">ResourceReference</Data></Cell>
-    <Cell><Data ss:Type="String">A reference (id or version) must be provided if there is no dataAbsentReason</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">exists(@dataAbsentReason) or exists(f:id) or exists(f:version)</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="String">version</Data></Cell>
-    <Cell><Data ss:Type="String">ResourceReference</Data></Cell>
-    <Cell><Data ss:Type="String">If the version url is provided and local, then a logical id must be provided too</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">not(contains(f:version, ':')) or exists(f:id)</Data></Cell>
+    <Cell><Data ss:Type="String">Must have a local url if the resource is provided inline</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">starts-with(f:url, '#') or not(exists(f:x))</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -216,11 +210,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

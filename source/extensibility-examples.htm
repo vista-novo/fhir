@@ -88,12 +88,12 @@ This is all then represented formally in a profile. Such profiles do not need to
 and their associated bindings. In this case, the profile looks like this:
 </p>
 
-<pre class="xml">
+<pre class="xml" fragment="Profile">
 &lt;Profile xmlns="http://hl7.org/fhir">
-  &lt;id>iso-21090&lt;/id>
-  &lt;-- snip other metadata -->
+  &lt;name>iso-21090&lt;/name>
+  &lt;!-- snip other metadata -->
   &lt;extensionDefn>
-    &lt;code>name-qualifier&lt;/code>
+    &lt;id>name-qualifier&lt;/id>
     &lt;context>HumanName.part&lt;/context>
     &lt;contextType>datatype&lt;/contextType>
     &lt;definition>
@@ -104,13 +104,15 @@ and their associated bindings. In this case, the profile looks like this:
              name part and how it should be used&lt;/comments>
       &lt;min>0&lt;/min>
       &lt;max>*&lt;/max>
-      &lt;type>code&lt;/type>
+      &lt;type>
+	    &lt;code>code&lt;/code>
+	  &lt;/type>
       &lt;mustSupport>false&lt;/mustSupport>
       &lt;mustUnderstand>false&lt;/mustUnderstand>
       &lt;binding>EntityNamePartQualifier&lt;/binding>
       &lt;mapping>
-        &lt;target>ENXP.qualifier&lt;/target>
-        &lt;map>RIM&lt;/map>
+        &lt;target>RIM&lt;/target>
+        &lt;map>ENXP.qualifier&lt;/map>
       &lt;/mapping>
     &lt;/definition>
   &lt;/extensionDefn>
@@ -120,17 +122,18 @@ and their associated bindings. In this case, the profile looks like this:
     &lt;definition>A set of codes each of which specifies a certain subcategory
         of the name part in addition to the main name part type&lt;/definition>
     &lt;type>codelist&lt;/type>
-    &lt;strength>required&lt;/strength>
+    &lt;isExtensible>codelist&lt;/isExtensible>
+    &lt;conformance>required&lt;/conformance>
     &lt;reference>http://www.hl7.org/fhir/repository/valueset/@name-part-qualifier&lt;/reference>
     &lt;concept>
       &lt;code>LS&lt;/code>
       &lt;system>oid:2.16.840.1.113883.5.1122&lt;/system>
       &lt;display>Legal status&lt;/display>
-      &lt;definition>For ... &lt;-- snip definition -->&lt;/definition>
+      &lt;definition>For ... &lt;!-- snip definition -->&lt;/definition>
     &lt;/concept>
-    &lt;-- snip other codes -->
+    &lt;!-- snip other codes -->
   &lt;/binding>
-  &lt;-- snip narrative -->
+  &lt;!-- snip narrative -->
 &lt;/Profile>
 
 </pre>
@@ -147,13 +150,10 @@ This is the url that will appear in the definition element when the extension is
 To using the extension in an instance, you firstly mark the name part that is being extended with
 an id attribute, so that the extension can be connected to it:
 </p>
-<pre class="xml">
+<pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use&gt;official&lt;/use&gt;
-  &lt;part id="n1"&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Östlund&lt;/value&gt;
-  &lt;part&gt;
+  &lt;given id="n1"&gt;Östlund&lt;/given&gt;
 &lt;/name&gt;
 </pre>
 <p>

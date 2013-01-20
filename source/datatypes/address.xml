@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Lloyd McKenzie</LastAuthor>
+  <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T08:56:59Z</Created>
-  <LastSaved>2012-07-09T00:53:45Z</LastSaved>
+  <LastSaved>2013-01-19T19:20:27Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -100,7 +100,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="10" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="102"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="42"/>
@@ -111,10 +111,10 @@
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="216.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="100.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="129.75"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="128.25"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="120.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="128.25" ss:Span="1"/>
+   <Column ss:Index="13" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="120.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="67.5" ss:Span="1"/>
-   <Column ss:Index="15" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="84.75"/>
+   <Column ss:Index="16" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="84.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="73.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="60" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Element</Data></Cell>
@@ -128,6 +128,7 @@
     <Cell><Data ss:Type="String">Example</Data></Cell>
     <Cell><Data ss:Type="String">Requirements</Data></Cell>
     <Cell><Data ss:Type="String">Comments</Data></Cell>
+    <Cell><Data ss:Type="String">Aliases</Data></Cell>
     <Cell><Data ss:Type="String">RIM Mapping</Data></Cell>
     <Cell><Data ss:Type="String">v2 Mapping</Data></Cell>
     <Cell><Data ss:Type="String">vCard Mapping</Data></Cell>
@@ -144,7 +145,7 @@
     <Cell><Data ss:Type="String">There is a variety of postal address formats defined around the world. This format defines a superset that is the basis for addresses all around the world </Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Need to be able to record postal addresses, along with notes about their use</Data></Cell>
     <Cell><Data ss:Type="String">Note: address is for postal addresses, not physical locations</Data></Cell>
-    <Cell><Data ss:Type="String">AD</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">AD</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Address.use</Data></Cell>
@@ -156,8 +157,8 @@
     <Cell><Data ss:Type="String">Identifies the intended purpose of this address</Data></Cell>
     <Cell><Data ss:Type="String">Home, Work</Data></Cell>
     <Cell><Data ss:Type="String">Allows an appropriate address to be chosen from a list of many</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">unique(./use)</Data></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">Is it outside the 80% for this to repeat?</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">unique(./use)</Data></Cell>
+    <Cell ss:Index="17"><Data ss:Type="String">Is it outside the 80% for this to repeat?</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Address.text</Data></Cell>
@@ -169,7 +170,7 @@
     <Cell><Data ss:Type="String">137 Nowhere Street, Erewhon 9132</Data></Cell>
     <Cell><Data ss:Type="String">A renderable, unencoded form</Data></Cell>
     <Cell><Data ss:Type="String">Can provide both a text representation and parts</Data></Cell>
-    <Cell><Data ss:Type="String">./formatted</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">./formatted</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Address.line</Data></Cell>
@@ -177,7 +178,7 @@
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">line of an address</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">A line of an address (typically used for street names &amp; numbers, unit details, delivery hints, etc.) .</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">street address</Data></Cell>
+    <Cell ss:Index="15"><Data ss:Type="String">street address</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Address.city</Data></Cell>
@@ -185,7 +186,8 @@
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">name of city, town etc.</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">The name of the city, town, village or other community or delivery centre.</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">locality</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">Muncipality</Data></Cell>
+    <Cell ss:Index="15"><Data ss:Type="String">locality</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Address.state</Data></Cell>
@@ -193,7 +195,8 @@
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">sub-unit of country (abreviations ok)</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">region</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">Province, Territory</Data></Cell>
+    <Cell ss:Index="15"><Data ss:Type="String">region</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Address.zip</Data></Cell>
@@ -201,7 +204,8 @@
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">post code for area</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">A postal code designating a region defined by the postal service.</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">postal code</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">PostCode</Data></Cell>
+    <Cell ss:Index="15"><Data ss:Type="String">postal code</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Address.country</Data></Cell>
@@ -209,7 +213,7 @@
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">country (can be ISO 3166 3 letter code)</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Country. ISO 3166 3 letter codes can be used in place of a full country name.</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">country name</Data></Cell>
+    <Cell ss:Index="15"><Data ss:Type="String">country name</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Address.period</Data></Cell>
@@ -219,7 +223,7 @@
     <Cell><Data ss:Type="String">Time period when address was/is in use</Data></Cell>
     <Cell><Data ss:Type="String">23-Mar 2010 -&gt; 1-Jul 2010</Data></Cell>
     <Cell><Data ss:Type="String">Allows addresses to be placed in historical context</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -239,8 +243,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>11</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

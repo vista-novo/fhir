@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jan 19, 2013 17:09+1100 for FHIR v0.07
+// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -218,7 +218,7 @@ public class Problem extends Resource {
     private Type onset;
 
     /**
-     * The date or estimated date that the problem/diagnosis resolved or went into remission
+     * The date or estimated date that the problem/diagnosis resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - problems are never really resolved, but they can abate.
      */
     private Type abatement;
 

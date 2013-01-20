@@ -22,7 +22,7 @@
   <relatedOrganization>
     <organization>
       <type>Organization</type>
-      <id>1</id>
+      <url>../organization/@1</url>
       <display>ACME Healthcare, Inc</display>
     </organization>
     <type>

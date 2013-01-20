@@ -466,4 +466,45 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
         throw new Exception("Output file '"+destFile+"' empty");    
     } 
   }
+
+  public String checkFragment(String rootDir, String fragment, String type) throws Exception {
+    File file = File.createTempFile("temp", ".xml");
+    file.deleteOnExit();
+    if (file.exists())
+      file.delete();
+    TextFile.stringToFile(fragment, file.getAbsolutePath());
+    
+    File filed = File.createTempFile("temp", ".txt");
+    filed.deleteOnExit();
+    if (filed.exists())
+      filed.delete();
+    
+    List<String> command = new ArrayList<String>();
+    command.add("java");
+    command.add("-jar");
+    command.add("org.hl7.fhir.tools.jar");
+    command.add("fragment");
+    command.add(file.getAbsolutePath());
+    command.add(filed.getAbsolutePath());
+    command.add(type);
+
+    ProcessBuilder builder = new ProcessBuilder(command);
+    builder.directory(new File(rootDir));
+
+    final Process process = builder.start();
+//    BufferedReader stdError = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+//    String sl;
+//    while ((sl = stdError.readLine()) != null) {
+//      System.err.println(sl);
+//    }    
+
+    process.waitFor();
+    if (!filed.exists())
+      return "Fragment processing failed completely";
+    String s = TextFile.fileToString(filed.getAbsolutePath());
+    if ("ok".equals(s))
+      return null;
+    else
+      return s;
+  }
 }

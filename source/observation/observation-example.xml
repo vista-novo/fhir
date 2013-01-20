@@ -26,11 +26,11 @@
   
   <subject>
     <type>Patient</type>
-    <id>example</id>
+    <url>../patient/@example</url>
   </subject>
   <performer>
     <type>Provider</type>
-    <id>example</id>
+    <url>../provider/@example</url>
   </performer>
   <component>
     <name>

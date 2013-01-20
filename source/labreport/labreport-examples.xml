@@ -18,11 +18,11 @@
         <issued>2005-01-27T06:40:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>1</id>
+          <url>../patient/@1</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
@@ -907,11 +907,11 @@
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>2</id>
+          <url>../patient/@2</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
@@ -1716,11 +1716,11 @@
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>3</id>
+          <url>../patient/@3</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
@@ -2524,11 +2524,11 @@
         <issued>2004-12-21T00:00:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>4</id>
+          <url>../patient/@4</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
@@ -3331,11 +3331,11 @@
         <issued>2004-12-03T00:00:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>5</id>
+          <url>../patient/@5</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
@@ -4110,11 +4110,11 @@
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>6</id>
+          <url>../patient/@6</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
@@ -4890,11 +4890,11 @@
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>7</id>
+          <url>../patient/@7</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
@@ -5670,11 +5670,11 @@
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>8</id>
+          <url>../patient/@8</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
@@ -6474,11 +6474,11 @@
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>9</id>
+          <url>../patient/@9</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
@@ -7283,11 +7283,11 @@
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>10</id>
+          <url>../patient/@10</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
@@ -8091,11 +8091,11 @@
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>1</id>
+          <url>../patient/@1</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
@@ -8898,11 +8898,11 @@
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>2</id>
+          <url>../patient/@2</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
@@ -9677,11 +9677,11 @@
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>3</id>
+          <url>../patient/@3</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
@@ -10457,11 +10457,11 @@
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>4</id>
+          <url>../patient/@4</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
@@ -11237,11 +11237,11 @@
         <issued>2005-11-07T23:38:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>5</id>
+          <url>../patient/@5</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
@@ -11575,11 +11575,11 @@
         <issued>2005-03-07T14:02:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>6</id>
+          <url>../patient/@6</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
@@ -11644,11 +11644,11 @@
         <issued>2012-05-23T14:27:01Z</issued>
         <patient>
           <type>Patient</type>
-          <id>1</id>
+          <url>../patient/@1</url>
         </patient>
         <laboratory>
           <type>Organization</type>
-          <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
+          <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
           <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>

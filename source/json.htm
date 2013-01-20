@@ -17,8 +17,6 @@
 
 <a name="json"></a>
 <h1>JSON Format</h1>
-<p><i>Informative Section: Due to a series of issues around the formal standardization of 
-the JSON representation, the standard JSON representation for resources is only informative.</i></p>
 
 <p>
 Though the formal representation of FHIR resources is in XML, many systems wish to use 
@@ -42,7 +40,7 @@ the case, even if they do not repeat in the actual instance.</li>
 <li>The XHTML &lt;div&gt; element in the Narrative datatype is represented as a single escaped string of XHTML</li>
 </ul>
 <p>These differences - particularly the repeating element one, which cannot be avoided - mean that generic XML --&gt; JSON converters are not 
-able to perform correctly. The reference platforms will provide XML &lt;--&gt; JSON conversion functionality that accommodates these FHIR-specific characteristics.</p>
+able to perform correctly. The <a href="implementation.htm#refimpl">reference platforms</a> provide XML &lt;--&gt; JSON conversion functionality that accommodates these FHIR-specific characteristics.</p>
 
 <h2>JSON representation of primitive types</h2>
 <p>

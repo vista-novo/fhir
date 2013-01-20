@@ -46,7 +46,7 @@
         </details>
         <provider>
           <type>Organization</type>
-          <id>hl7</id>
+          <url>../organization/@hl7</url>
         </provider>
         <text>
           <status>generated</status>
@@ -99,7 +99,7 @@
         </details>
         <provider>
           <type>Organization</type>
-          <id>hl7</id>
+          <url>../organization/@hl7</url>
         </provider>
         <text>
           <status>generated</status>
@@ -152,7 +152,7 @@
         </details>
         <provider>
           <type>Organization</type>
-          <id>hl7</id>
+          <url>../organization/@hl7</url>
         </provider>
         <text>
           <status>generated</status>
@@ -205,7 +205,7 @@
         </details>
         <provider>
           <type>Organization</type>
-          <id>hl7</id>
+          <url>../organization/@hl7</url>
         </provider>
         <text>
           <status>generated</status>
@@ -258,7 +258,7 @@
         </details>
         <provider>
           <type>Organization</type>
-          <id>hl7</id>
+          <url>../organization/@hl7</url>
         </provider>
         <text>
           <status>generated</status>
@@ -311,7 +311,7 @@
         </details>
         <provider>
           <type>Organization</type>
-          <id>hl7</id>
+          <url>../organization/@hl7</url>
         </provider>
         <text>
           <status>generated</status>
@@ -364,7 +364,7 @@
         </details>
         <provider>
           <type>Organization</type>
-          <id>hl7</id>
+          <url>../organization/@hl7</url>
         </provider>
         <text>
           <status>generated</status>
@@ -417,7 +417,7 @@
         </details>
         <provider>
           <type>Organization</type>
-          <id>hl7</id>
+          <url>../organization/@hl7</url>
         </provider>
         <text>
           <status>generated</status>
@@ -470,7 +470,7 @@
         </details>
         <provider>
           <type>Organization</type>
-          <id>hl7</id>
+          <url>../organization/@hl7</url>
         </provider>
         <text>
           <status>generated</status>
@@ -523,7 +523,7 @@
         </details>
         <provider>
           <type>Organization</type>
-          <id>hl7</id>
+          <url>../organization/@hl7</url>
         </provider>
         <text>
           <status>generated</status>
@@ -576,7 +576,7 @@
         </details>
         <provider>
           <type>Organization</type>
-          <id>hl7</id>
+          <url>../organization/@hl7</url>
         </provider>
         <text>
           <status>generated</status>
@@ -629,7 +629,7 @@
         </details>
         <provider>
           <type>Organization</type>
-          <id>hl7</id>
+          <url>../organization/@hl7</url>
         </provider>
         <text>
           <status>generated</status>

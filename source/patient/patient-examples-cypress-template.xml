@@ -39,7 +39,7 @@
 		
 	    <provider>
 	      <type>Organization</type>
-	      <id>[%organization%]</id>  
+	      <url>../organization/@[%organization%]</url>  
 	    </provider> 
         <text>
           <status>generated</status>

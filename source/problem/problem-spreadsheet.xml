@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:15:30Z</Created>
-  <LastSaved>2013-01-15T03:04:43Z</LastSaved>
+  <LastSaved>2013-01-19T22:50:30Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -206,8 +206,8 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">date | Age | boolean</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">If/when in resolution/remission</Data></Cell>
-    <Cell><Data ss:Type="String">The date or estimated date that the problem/diagnosis resolved or went into remission</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the problem abated</Data></Cell>
+    <Cell><Data ss:Type="String">The date or estimated date that the problem/diagnosis resolved or went into remission. This is called &quot;abatement&quot; because of the many overloaded connotations associated with &quot;remission&quot; or &quot;resolution&quot; - problems are never really resolved, but they can abate.</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the problem abated.&#10;&#10;If there is no abatement element, it is unknown whether the problem has resolved or entered remission; applications and users should generally assume that the problem is still valid</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Problem.stage</Data></Cell>
@@ -330,14 +330,6 @@
     <VerticalResolution>-3</VerticalResolution>
    </Print>
    <Selected/>
-   <TopRowVisible>14</TopRowVisible>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>25</ActiveRow>
-     <ActiveCol>8</ActiveCol>
-    </Pane>
-   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
