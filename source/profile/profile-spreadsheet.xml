@@ -18,8 +18,8 @@
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
   <WindowHeight>9810</WindowHeight>
   <WindowWidth>15570</WindowWidth>
-  <WindowTopX>1200</WindowTopX>
-  <WindowTopY>945</WindowTopY>
+  <WindowTopX>12450</WindowTopX>
+  <WindowTopY>1815</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -823,7 +823,8 @@
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:Index="9"><Data ss:Type="String">Additional search params defined</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">right</Data></Cell>
+    <Cell><Data ss:Type="String">Additional search params defined</Data></Cell>
     <Cell><Data ss:Type="String">Defines additional search parameters for implementations to support and/or make use of</Data></Cell>
     <Cell ss:Index="12" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -1085,7 +1086,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>3</TopRowBottomPane>
+   <TopRowBottomPane>53</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -1102,8 +1103,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>12</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveRow>56</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
