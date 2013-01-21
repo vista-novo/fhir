@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:23:41Z</Created>
-  <LastSaved>2013-01-19T23:26:21Z</LastSaved>
+  <LastSaved>2013-01-20T19:49:14Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,6 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>2880</WindowTopX>
   <WindowTopY>3000</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -108,8 +107,7 @@
     <Cell><Data ss:Type="String">ResourceReference.type</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">ResourceType</Data></Cell>
     <Cell><Data ss:Type="String">Resource Type</Data></Cell>
     <Cell><Data ss:Type="String">The name of one of the resource types defined in this specification to identify the type of the resource being referenced</Data></Cell>
@@ -120,8 +118,7 @@
     <Cell><Data ss:Type="String">ResourceReference.url</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">uri</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">relative or absolute reference</Data></Cell>
     <Cell><Data ss:Type="String">A literal URL that resolves to the location of the resource. The URL may be relative or absolute. Relative Ids contain the logical id of the resource. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific</Data></Cell>
     <Cell ss:Index="10" ss:StyleID="s66"><Data ss:Type="String">Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use when trading across closed eco-system boundaries. &#10;&#10;Absolute URLs do not need to point to a FHIR RESTful server, though this is the preferred approach. If the url conforms to the structure &quot;/[type]/@[id]&quot; then it should be assumed that the reference is to a FHIR RESTful server</Data></Cell>
@@ -161,11 +158,12 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>3</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -200,7 +198,7 @@
     <Cell><Data ss:Type="String">Inline</Data></Cell>
     <Cell><Data ss:Type="String">ResourceReference</Data></Cell>
     <Cell><Data ss:Type="String">Must have a local url if the resource is provided inline</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">not(starts-with(f:url, '#')) or exists(*[name()='f:'+f:type])</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">not(starts-with(f:url/@value, '#')) or exists(ancestor::atom:entry/f:*/f:inline/f:*[local-name(.)=current()/f:url/@value]|/f:*/f:inline/f:*[local-name(.)=current()/f:url/@value])</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -210,12 +208,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

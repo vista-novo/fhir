@@ -218,7 +218,20 @@ The key property of the reference is the <i>url</i> - resources are identified a
 The actual reference looks like this(see <a href="formats.htm#syntax">"XML Format"</a>
 for details of the way resource contents are described):
 </p>
+
 [%dt ResourceReference%]
+<p>&nbsp;</p>
+<p>
+New form:
+</p>
+
+<pre class="spec">&lt;<a title="A reference from one resource to another" class="dict" href="resources-definitions.htm#ResourceReference"><b>[name]</b></a> xmlns="http://hl7.org/fhir"&gt;
+ &lt;<a title="The name of one of the resource types defined in this specification to identify the type of the resource being referenced" class="dict" href="resources-definitions.htm#ResourceReference.type"><b>type</b></a> value="<span style="color: darkgreen"><a href="datatypes.htm#code">code</a></span>"/&gt;<span style="color: Gray">&lt;!--</span> <span title="Must have a type if a url is provided" style="color: deeppink"><b>0..1</b></span> <span style="color: navy">Resource Type</span><span style="color: Gray"> --&gt;</span>
+ &lt;<a title="A literal URL that resolves to the location of the resource. The URL may be relative or absolute. Relative Ids contain the logical id of the resource. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific" class="dict" href="resources-definitions.htm#ResourceReference.url"><b>url</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span title="Must have a type if a url is provided" style="color: deeppink"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#uri">uri</a></span> <span style="color: navy">relative or absolute reference</span><span style="color: Gray"> --&gt;</span>&lt;/url&gt;
+ &lt;<a title="Plain text narrative that identifies the resource in addition to the resource reference " class="dict" href="resources-definitions.htm#ResourceReference.display"><b>display</b></a> value="<span style="color: darkgreen"><a href="datatypes.htm#string">string</a></span>"/&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: navy">Text alternative for the resource</span><span style="color: Gray"> --&gt;</span>
+&lt;/[name]&gt;
+</pre>
+
 <p>Notes:</p>
 <ul>
  <li>The reference must specify the resource type, whether or not the type of the resource reference is fixed for the element in the resource definition</li>
