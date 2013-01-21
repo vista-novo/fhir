@@ -63,7 +63,7 @@ public class Definitions {
 
 	private Map<String, EventDefn> events = new HashMap<String, EventDefn>();
 	private Map<String, ProfileDefn> profiles = new HashMap<String, ProfileDefn>();
-
+  private Map<String, String> diagrams = new HashMap<String, String>();
 
 	// Returns the root ElementDefn of a CompositeType or Resource,
 	// excluding future Resources (as they don't have definitions yet).
@@ -234,6 +234,10 @@ public class Definitions {
 
   public List<String> getDeletedResources() {
     return deletedResources;
+  }
+
+  public Map<String, String> getDiagrams() {
+    return diagrams;
   }
 
 }

@@ -23,23 +23,9 @@
 
 <p>
 The FHIR specification defines a set of types that are used for the 
-resource elements. Resource data elements may be assigned a type 
-from the types defined in this page (or they may be defined as 
-a reference to another resource). 
+resource elements. There are two categories of data type: simple / primitive types, imported from XML schema, and complex types, which are re-usable clusters of elements
 </p>
-<p>
-There are two categories of data type: 
-</p>
-<ul>
- <li>Simple / primitive types, imported from XML schema</li>
- <li>Complex types, which are re-usable clusters of elements and capture patterns that are 
-    ubiquitous throughout the scope of the healthcare data that will be exchanged</li>
-</ul>
-<p>
-Complex data types may be "profiled". A <a href="profile.htm">profile</a> makes 
-a set of rules about which elements must have values, and what the possible 
-values are.
-</p>
+
 <map id="dtmap2" name="dtmap2">
 <area shape="rect" coords="200, 60, 252, 90" href="#Types" alt="Types"/>
 <area shape="rect" coords="182, 308, 252, 339" href="#Structures" alt="Structures"/>
@@ -76,13 +62,14 @@ The data types are available as a <a href="fhir-base.xsd">W3C Schema</a>.
 <a name="primitive"></a>
 <h2>Primitive Types</h2>
 <p style="text-alignment: left">
-<img alt="Primitive Types" src="dt-primitives.png"/>
+<img alt="Primitive Types" src="primitives.png"/>
 </p>
 <a name="imports"></a>
 <p>
-The following table summarizes the primitive types that
-are used in the exchange specifications. The possible values for 
-these types are based on those specified in the W3C Schema specification part 2, with additional constraints marked in bold. 
+The following table summarizes the primitive types and their simple restrictions that
+are used in throughout this specification. These types 
+are those defined in the <a href="www.w3.org/TR/xmlschema-2/">W3C Schema (1.0) specification part 2</a>, 
+with additional constraints marked in bold. 
 </p>
 
 <a name="boolean"> </a>
@@ -98,10 +85,10 @@ these types are based on those specified in the W3C Schema specification part 2,
  
 <table class="list">
  <tr>
-   <td colspan="3"><b>Base Types</b></td>
+   <td colspan="3"><b>Primitive Types</b></td>
  </tr>
  <tr>
-   <th>Type</th><th>Base type</th><th>Description</th>
+   <th>FHIR Name</th><th>Schema type</th><th>Description</th>
  </tr>
  <tr>
    <td>boolean</td><td>xs:boolean</td><td>Values can be either true or false (<b>0 and 1 are not valid values</b>)</td>
@@ -121,7 +108,7 @@ these types are based on those specified in the W3C Schema specification part 2,
    Note: This type is for system times, not human times (see date and dateTime below).</td>
  </tr>
  <tr>
-   <td>string</td><td>xs:string</td><td>A sequence of Unicode characters. <b>Note that FHIR strings SHALL not exceed 1MB in size</b></td>
+   <td>string</td><td>xs:string</td><td>A sequence of Unicode characters. <b>Note that strings SHALL not exceed 1MB in size</b></td>
  </tr>
  <tr>
    <td>uri</td><td>xs:anyURI</td><td>A Uniform Resource Identifier Reference. It can be absolute or relative, 
@@ -129,32 +116,66 @@ these types are based on those specified in the W3C Schema specification part 2,
  </tr>
  <tr><td>date</td><td>union of xs:date, xs:gYearMonth, xs:gYear</td><td>A date, or partial date (e.g. just year or year + month) as used in human communication. There is no time zone. Dates must be valid dates. <br/>date is a union of the w3c schema types date, gYearMonth, and gYear<br/>regex: [0-9]{4}(\-((0[1-9])|(1[0-2]))(\-((0[1-9])|([1-2][0-9])|(3[0-1])))?)?</td></tr>
  <tr><td>dateTime</td><td>union of xs:dateTime, xs:date, xs:gYearMonth, xs:gYear</td><td>A date, date-time or partial date (e.g. just year or year + month) as used in human communication. If hours and minutes are specified, a time zone must be populated. Seconds may be provided but may also be ignored. Dates must be valid dates. <br/>date is a union of the w3c schema types dateTime, date, gYearMonth, gYear<br/>regex: [0-9]{4}(\-((0[1-9])|(1[0-2]))(\-((0[1-9])|([1-2][0-9])|(3[0-1]))(T(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]((\+|-)(0[0-9]|1[0-4]):(0|3|4)(0|5)|Z)?)?)?)?</td></tr>
+ <tr><td colspan="3"></td></tr>
  <tr>
-   <td colspan="3"><b>Derived Types</b> <a name="patterns"></a>
+   <td colspan="3"><b>Simple Restrictions</b> <a name="patterns"></a>
 <a name="code"> </a>
 <a name="oid"> </a>
 <a name="uuid"> </a>
 <a name="id"> </a></td>
  </tr>
- <tr><td>oid</td><td>xs:anyURI</td><td>An OID represented as a URI (<a href="http://www.ietf.org/rfc/rfc3001.txt">RFC 3001</a>)</td></tr>
- <tr><td>uuid</td><td>xs:anyURI</td><td>A UUID, represented as a URI (<a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>)</td></tr>
- <tr><td>code</td><td>xs:string</td><td>A string which has at least one character and no leading or trailing whitespace, and where there is no whitespace other than single spaces in the contents <br/>regex: [^\s]+([\s]+[^\s]+)*</td></tr>
- <tr><td>id</td><td>xs:string</td><td>A whole number in the range 0 to 2^64-1 (optionally represented in hex), a uuid, an oid, or any other combination of lowercase letters, numerals, "-" and ".", with a length limit of 36 characters <br/>regex: [a-z0-9\-\.]{1,36}</td></tr>
+ <tr>
+   <th>FHIR Name</th><th>Base FHIR Type</th><th>Description</th>
+ </tr>
+ <tr><td>oid</td><td>uri</td><td>An OID represented as a URI (<a href="http://www.ietf.org/rfc/rfc3001.txt">RFC 3001</a>)</td></tr>
+ <tr><td>uuid</td><td>uri</td><td>A UUID, represented as a URI (<a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>)</td></tr>
+ <tr><td>code</td><td>string</td><td>A string which has at least one character and no leading or trailing whitespace, and where there is no whitespace other than single spaces in the contents <br/>regex: [^\s]+([\s]+[^\s]+)*</td></tr>
+ <tr><td>id</td><td>string</td><td>A whole number in the range 0 to 2^64-1 (optionally represented in hex), a uuid, an oid, or any other combination of lowercase letters, numerals, "-" and ".", with a length limit of 36 characters <br/>regex: [a-z0-9\-\.]{1,36}</td></tr>
 </table>
 <p></p>
+<p>
+These types are represented as XML Elements with the value of the type in the text of the element. The name of the element is defined where the type is used. 
+The XML elements may have an <a href="xml.htm#idref">id attribute</a>. In JSON, the data type is represented by an object with two properties: "_id" for the id attribute, 
+and "value" for the value of the type.
+</p>
 <div class="example">
 <p><b>Examples</b></p>
 <p>date (e.g. Date of birth):</p>
 <pre class="xml" fragment="date">
   &lt;date&gt;1951-06-04&lt;/date&gt;
+
+  &lt;date id="a1"&gt;1951-06-04&lt;/date&gt;
+</pre>
+<pre class="json">
+  date : {
+    value : "1951-06-04"
+  }
+
+  date : {
+    _id : "a1",
+    value : "1951-06-04"
+  }
 </pre>
 </div>
 
 <hr/>
 <a name="Types"/>
-<h2>Types</h2>
+<h2>Complex Types</h2>
+
 <p>
-<img alt="Data Types" src="dt-types.png"/>
+These types are represented as XML Elements with child elements with the name of the defined elements of the type. The name of the element is defined where the type is used. 
+Any of the XML elements may have an <a href="xml.htm#idref">id attribute</a>. In JSON, the data type is represented by an object with properties named the same as the the
+XML elements. The JSON representation is almost exactly the same, so only the first example has an additional JSON representation.
+</p>
+<p>
+Complex data types may be "profiled". A <a href="profile.htm">profile</a> makes 
+a set of rules about which elements must have values, and what the possible 
+values are.
+</p>
+
+
+<p>
+<img alt="Data Types (1)" src="types.png"/>
 </p>
 <a name="Attachment"></a>
 <h2>
@@ -206,17 +227,28 @@ The context of use may frequently make rules about the kind of attachment
 <p>A PDF document:</p>
 <pre class="xml" fragment="Attachment">
   &lt;document xml:lang="en"&gt;
-   &lt;contentType&gt;application/pdf&lt;/contentType&gt;
-   &lt;data&gt;/9j/4...KAP//Z&lt;/data&gt; &lt;!-- covers many lines --&gt;
-   &lt;title&gt;Definition of Procedure&lt;/title&gt;
+    &lt;contentType&gt;application/pdf&lt;/contentType&gt;
+    &lt;data&gt;/9j/4...KAP//Z&lt;/data&gt; &lt;!-- covers many lines --&gt;
+    &lt;title&gt;Definition of Procedure&lt;/title&gt;
   &lt;/document&gt;
 </pre>
+<pre class="json">
+  document : {
+    languge : "en",
+    contentType : "application/pdf",
+    data : "/9j/4...KAP//Z&lt;",
+    title : "Definition of Procedure"
+  }
+</pre>
+<p>
+The element xml:lang is the only element for which the JSON element name is not an exact match - the JSON property name is "language"
+</p>
 <p>A reference to a DICOM image via WADO:</p>
 <pre class="xml" fragment="Attachment">
   &lt;image&gt;
-   &lt;contentType&gt;application/dicom&lt;/contentType&gt;
-   &lt;url&gt;http://10.1.2.3:1000/wado?requestType=WADO&amp;amp;wado_details...&lt;/url&gt;
-   &lt;hash&gt;EQH/..AgME&lt;/hash&gt;
+    &lt;contentType&gt;application/dicom&lt;/contentType&gt;
+    &lt;url&gt;http://10.1.2.3:1000/wado?requestType=WADO&amp;amp;wado_details...&lt;/url&gt;
+    &lt;hash&gt;EQH/..AgME&lt;/hash&gt;
   &lt;/image&gt;
 </pre>
 </div>
@@ -704,10 +736,8 @@ the end of the 27th May.
 
 
 <hr/>
-<a name="Structures"/>
-<h2>Structures</h2>
 <p>
-<img alt="Data Structures" src="dt-structures.png"/>
+<img alt="Types (2)" src="types2.png"/>
 </p>
 
 <a name="Identifier"></a>
@@ -1035,7 +1065,9 @@ Note that the end date is inclusive like the high date of a Period.
 <h2>Other Types</h2>
 <p>
 The following types are defined as part of the data types, but are documented elsewhere in the specification:
-<img src="base.png"/>
+</p>
+<p style="text-alignment: left">
+<img src="types3.png"/>
 </p>
 <ul>
  <li><b><a href="xml.htm#metadata">Resource</a></b> - The conceptual base class for all resources</li>

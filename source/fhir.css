@@ -261,7 +261,7 @@ div.sidebar li {
 }
 
 div.sidebar {
-	position: absolute;
+	position: fixed;
 	width: 160px;
 	left: 0px;
 }

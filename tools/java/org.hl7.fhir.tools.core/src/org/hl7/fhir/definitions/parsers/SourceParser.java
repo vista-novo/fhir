@@ -194,6 +194,9 @@ public class SourceParser {
 				sortTypes(CompositeTypeConverter.buildResourcesFromFhirModel(definitions
 						.getResources().values() )));
 
+		for (String n : ini.getPropertyNames("diagrams"))
+		  definitions.getDiagrams().put(n, ini.getStringProperty("diagrams", n));
+		
 		for (String n : ini.getPropertyNames("future-resources")) 
 		{
 			DefinedCode cd = new DefinedCode(ini.getStringProperty(

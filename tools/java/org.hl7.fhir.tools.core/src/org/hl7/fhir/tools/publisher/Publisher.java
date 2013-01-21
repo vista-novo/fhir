@@ -583,14 +583,15 @@ public class Publisher {
 		profileFeed.setTitle("Resources as Profiles");
 		profileFeed.setLink("http://hl7.org/implement/standards/fhir/profiles-resources.xml");
 		profileFeed.setUpdated(Calendar.getInstance());
+    for (String n : page.getDefinitions().getDiagrams().keySet()) {
+      log(" ...diagram "+n);
+      generateDiagramFromSource(n, page.getFolders().srcDir + page.getDefinitions().getDiagrams().get(n));
+    }
 		for (ResourceDefn n : page.getDefinitions().getResources().values()) {
       log(" ...resource "+n.getName());
 			produceResource(n);
 		}
-		for (org.hl7.fhir.definitions.model.ElementDefn n : page.getDefinitions().getStructures().values()) {
-      log(" ...diagram "+n.getName());
-      generateDiagram(n);
-		}
+
 		new AtomComposer().compose(new FileOutputStream(page.getFolders().dstDir + "profiles-resources.xml"), profileFeed, true, false);
 		// all the profiles are already individually in the examples, so no need to add this one to them as well
 		// Utilities.copyFile(new CSFile(page.getFolders().dstDir + "profiles-resources.xml"), new CSFile(page.getFolders().dstDir + "examples" + File.separator + "profiles-resources.xml"));
@@ -759,6 +760,53 @@ public class Publisher {
 
 	}
 
+	private void generateDiagramFromSource(String title, String filename) throws Exception {
+	  String src = TextFile.fileToString(filename);
+	  if (src.startsWith("[diagram]")) {
+	    IniFile ini = new IniFile(filename);
+	    String[] classes = ini.getStringProperty("diagram", "classes").split(",");
+	    StringBuilder s = new StringBuilder();
+	    StringBuilder s2 = new StringBuilder();
+	    s.append("@startuml\r\n");
+	    s.append("title "+ini.getStringProperty("diagram", "title")+"\r\n");
+	    s.append("skinparam nodesep 10\r\n");
+	    s.append("skinparam ranksep 10\r\n");
+	    s.append("skinparam classBackgroundColor Aliceblue\r\n\r\n");
+	    s.append("skinparam classBorderColor Gray\r\n\r\n");
+	    s.append("skinparam classArrowColor Navy\r\n\r\n");
+
+	    List<org.hl7.fhir.definitions.model.ElementDefn> queue = new ArrayList<org.hl7.fhir.definitions.model.ElementDefn>();
+	    List<String> elementClasses = new ArrayList<String>();
+	    Map<org.hl7.fhir.definitions.model.ElementDefn, String> names = new HashMap<org.hl7.fhir.definitions.model.ElementDefn, String>();
+      s.append("\r\n"+s2);
+	    for (String c : classes) {
+	      queue.add(page.getDefinitions().getElementDefn(c));
+	      names.put(page.getDefinitions().getElementDefn(c), c);
+	      s.append("Element <|-"+ini.getStringProperty("directions", c)+"- "+c+" << (D, #FFA500) >> \r\n"+s2);
+	    }
+	    while (queue.size() > 0) {
+	      org.hl7.fhir.definitions.model.ElementDefn r = queue.get(0);
+	      queue.remove(0);
+	      generateDiagramClass(r, queue, names, s, s2, elementClasses, false, true);
+	    }  
+	    s.append("\r\n"+s2);
+	    s.append("hide methods\r\n");
+	    for (String en : elementClasses) {
+	      s.append("hide "+en+" circle\r\n");
+	    }
+      s.append("hide Element circle\r\n");
+	    s.append("@enduml\r\n");
+	    TextFile.stringToFile(s.toString(), page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".plantuml-source");
+	    SourceStringReader rdr = new SourceStringReader(s.toString());
+	    FileOutputStream png = new FileOutputStream(page.getFolders().dstDir + title + ".png");
+	    rdr.generateImage(png);	    
+	  } else {
+	    SourceStringReader rdr = new SourceStringReader(src);
+	    FileOutputStream png = new FileOutputStream(page.getFolders().dstDir + title + ".png");
+	    rdr.generateImage(png);
+	  }
+	}
+	
 	private void generateDiagram(ResourceDefn resource, String n) throws Exception {
     StringBuilder s = new StringBuilder();
     StringBuilder s2 = new StringBuilder();
@@ -771,16 +819,20 @@ public class Publisher {
     s.append("skinparam classArrowColor Navy\r\n\r\n");
 
     List<org.hl7.fhir.definitions.model.ElementDefn> queue = new ArrayList<org.hl7.fhir.definitions.model.ElementDefn>();
+    List<String> elementClasses = new ArrayList<String>();
     Map<org.hl7.fhir.definitions.model.ElementDefn, String> names = new HashMap<org.hl7.fhir.definitions.model.ElementDefn, String>(); 
     queue.add(resource.getRoot());
     names.put(resource.getRoot(), resource.getName());
     while (queue.size() > 0) {
       org.hl7.fhir.definitions.model.ElementDefn r = queue.get(0);
       queue.remove(0);
-      generateDiagramClass(r, queue, names, s, s2, r == resource.getRoot(), true);
+      generateDiagramClass(r, queue, names, s, s2, elementClasses, r == resource.getRoot(), true);
     }  
     s.append("\r\n"+s2);
     s.append("hide methods\r\n");
+    for (String en : elementClasses) {
+      s.append("hide "+en+" circle\r\n");
+    }
     s.append("@enduml\r\n");
     TextFile.stringToFile(s.toString(), page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+resource.getName().toLowerCase()+".plantuml-source");
     SourceStringReader rdr = new SourceStringReader(s.toString());
@@ -804,16 +856,20 @@ public class Publisher {
     s.append("skinparam classArrowColor Navy\r\n\r\n");
 
     List<org.hl7.fhir.definitions.model.ElementDefn> queue = new ArrayList<org.hl7.fhir.definitions.model.ElementDefn>();
+    List<String> elementClasses = new ArrayList<String>();
     Map<org.hl7.fhir.definitions.model.ElementDefn, String> names = new HashMap<org.hl7.fhir.definitions.model.ElementDefn, String>(); 
     queue.add(element);
     names.put(element, element.getName());
     while (queue.size() > 0) {
       org.hl7.fhir.definitions.model.ElementDefn r = queue.get(0);
       queue.remove(0);
-      generateDiagramClass(r, queue, names, s, s2, r == element, false);
+      generateDiagramClass(r, queue, names, s, s2, elementClasses, r == element, false);
     }  
     s.append("\r\n"+s2);
     s.append("hide methods\r\n");
+    for (String en : elementClasses) {
+      s.append("hide "+en+" circle\r\n");
+    }
     s.append("@enduml\r\n");
     TextFile.stringToFile(s.toString(), page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+element.getName().toLowerCase()+".plantuml-source");
     SourceStringReader rdr = new SourceStringReader(s.toString());
@@ -826,7 +882,7 @@ public class Publisher {
   }
   
 	
-	private void generateDiagramClass(org.hl7.fhir.definitions.model.ElementDefn r, List<org.hl7.fhir.definitions.model.ElementDefn> queue, Map<org.hl7.fhir.definitions.model.ElementDefn, String> names, StringBuilder s, StringBuilder s2, boolean entry, boolean resource) throws Exception {
+	private void generateDiagramClass(org.hl7.fhir.definitions.model.ElementDefn r, List<org.hl7.fhir.definitions.model.ElementDefn> queue, Map<org.hl7.fhir.definitions.model.ElementDefn, String> names, StringBuilder s, StringBuilder s2, List<String> elementClasses, boolean entry, boolean resource) throws Exception {
 	  String rn; 
     if (names.keySet().contains(r))
       rn = names.get(r);
@@ -849,8 +905,10 @@ public class Publisher {
 	        names.put(e, n);
           queue.add(e);
 	      }
-	      String ta = t != null ? "(S, #FFD700)" : "(E, Aliceblue)";
-	      if (!entry)
+	      String ta = t != null ? "(D, #FFD700)" : "(E, Aliceblue)";
+	      if (page.getDefinitions().hasType(rn))
+          s.append(rn+" << (D, #FFA500) >> *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << "+ta+" >> : "+e.getName()+"\r\n");
+	      else if (!entry)
           s.append(rn+" << (E, Aliceblue) >>  *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << "+ta+" >> : "+e.getName()+"\r\n");
 	      else if (resource)
           s.append(rn+" << (R, #FF7700) >> *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << "+ta+" >> : "+e.getName()+"\r\n");
@@ -860,10 +918,12 @@ public class Publisher {
 	  }
 	  if (entry)
 	    s2.append("class "+rn+" << (R, #FF7700) >> {\r\n");
-	  else if (page.getDefinitions().dataTypeIsSharedInfo(r.typeCode()))
-	    s2.append("class "+rn+" << (S, #FFD700) >> {\r\n");
-	  else
+	  else if (page.getDefinitions().dataTypeIsSharedInfo(r.typeCode()) || page.getDefinitions().hasType(rn)) {
+      s2.append("class "+rn+" << (D, #FFD700) >> {\r\n");
+	  } else {
 	    s2.append("class "+rn+" << (E, Aliceblue ) >> {\r\n");
+	    elementClasses.add(rn);
+	  }
 	  for (org.hl7.fhir.definitions.model.ElementDefn e : r.getElements()) {
 	    if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@") && !page.getDefinitions().dataTypeIsSharedInfo(e.typeCode())) {
 	      s2.append("  "+e.getName()+" : "+e.typeCode()+" "+e.describeCardinality()+"\r\n");
