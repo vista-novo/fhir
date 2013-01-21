@@ -130,8 +130,8 @@ with additional constraints marked in bold.
  <tr>
    <th>FHIR Name</th><th>Base FHIR Type</th><th>Description</th>
  </tr>
- <tr><td>oid</td><td>uri</td><td>An OID represented as a URI (<a href="http://www.ietf.org/rfc/rfc3001.txt">RFC 3001</a>)</td></tr>
- <tr><td>uuid</td><td>uri</td><td>A UUID, represented as a URI (<a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>)</td></tr>
+ <tr><td>oid</td><td>uri</td><td>An OID represented as a URI (<a href="http://www.ietf.org/rfc/rfc3001.txt">RFC 3001</a>): urn:oid:1.2.3.4.5</td></tr>
+ <tr><td>uuid</td><td>uri</td><td>A UUID, represented as a URI (<a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>): urn:uuid:a5afddf4-e880-459b-876e-e4591b0acc11</td></tr>
  <tr><td>code</td><td>string</td><td>A string which has at least one character and no leading or trailing whitespace, and where there is no whitespace other than single spaces in the contents <br/>regex: [^\s]+([\s]+[^\s]+)*</td></tr>
  <tr><td>id</td><td>string</td><td>A whole number in the range 0 to 2^64-1 (optionally represented in hex), a uuid, an oid, or any other combination of lowercase letters, numerals, "-" and ".", with a length limit of 36 characters <br/>regex: [a-z0-9\-\.]{1,36}</td></tr>
 </table>
@@ -193,7 +193,11 @@ data that has a mime type.
 [%dt Attachment%]
 <p>
 The <i>contentType</i> element must always be populated. It can include charset information 
-and other mime type extensions as appropriate. The actual content of the 
+and other mime type extensions as appropriate. If there is no character set in the <i>contentType</i>
+then the correct course of action is undefined, though some media types may define a default
+character set and/or the correct character set can be determined by inspection of the content.
+</p>
+<p>The actual content of the 
 Attachment can be conveyed directly using the <i>data</i> element
 or a <i>url</i> reference can be provided. If both are provided, the reference must 
 point to the same content as found in the data. The reference can never be reused to point to
@@ -202,10 +206,7 @@ some different data (i.e. the reference is version specific). The
 uris such as cid: meet this requirement.
 </p>
 <p>
-The <i>hash</i> is included so that applications can verify that the contents
-of a location have not changed and also so that a signature of the xml content can 
-implicitly sign the content of an image without having to include the data 
-or reference the url in the signature. 
+The <i>hash</i> is included so that applications can verify that the contents that a url have not changed. 
 </p>
 <p>
 In many cases where Attachment is used, the cardinality is &gt;1;. A valid use of repeats is to convey the same content in different mime types and languages.
@@ -898,7 +899,7 @@ between family name and given names depends on culture and context of use.
 <ul>
  <li>HumanName.text = vCard "FN" field</li>
  <li>HumanName.use = use of the vCard "TYPE" parameter</li>
- <li>HumanName.family, .given, .prefix, .suffix = parts of vCard "N" field. Note that there is no FHIR equivalent for the poorly defined "additional" name field. In FHIR, given names go in "middle" names.</li>
+ <li>HumanName.family, .given, .prefix, .suffix = parts of vCard "N" field. Note that there is no FHIR equivalent for the poorly defined "additional" name field. In FHIR, given names go in "middle" names</li>
  <li>The vCard nickname corresponds to a name with the use "nickname"</li>
 </ul>
 </div>

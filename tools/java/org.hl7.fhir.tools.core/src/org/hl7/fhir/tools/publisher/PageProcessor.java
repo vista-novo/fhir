@@ -94,7 +94,12 @@ public class PageProcessor implements Logger  {
 	  DictHTMLGenerator gen = new DictHTMLGenerator(new FileOutputStream(tmp));
 	  TypeParser tp = new TypeParser();
 	  TypeRef t = tp.parse(dt).get(0);
-	  ElementDefn e = definitions.getElementDefn(t.getName());
+	  
+	  ElementDefn e;
+	  if (t.getName().equals("Resource"))
+	    e = definitions.getBaseResource().getRoot();
+	  else
+	    e = definitions.getElementDefn(t.getName());
 	  if (e == null) {
 		  gen.close();
 		  throw new Exception("unable to find definition for "+ dt);
@@ -174,17 +179,17 @@ public class PageProcessor implements Logger  {
           } else
             s.append("    <li>"+e.getName()+"</li>\r\n");
         }
-        if (c.getEntries().size() ==0 && c.getLink().equals("resources")) {
+        if (c.getEntries().size() ==0 && c.getLink().equals("resourcelist")) {
           List<String> list = new ArrayList<String>();
           list.addAll(definitions.getResources().keySet());
           Collections.sort(list);
 
           for (String rn : list) {
-            if (!links.contains(rn.toLowerCase())) {
+          //  if (!links.contains(rn.toLowerCase())) {
               ResourceDefn r = definitions.getResourceByName(rn);
               orderedResources.add(r.getName());
               s.append("    <li><a href=\""+rn.toLowerCase()+".htm\">"+Utilities.escapeXml(r.getName())+"</a></li>\r\n");
-            }
+          //  }
           }
 
         }
@@ -250,8 +255,10 @@ public class PageProcessor implements Logger  {
         src = s1+dictForDt(com[1])+s3;
       else if (com[0].equals("dtheader"))
         src = s1+dtHeader(name, com.length > 1 ? com[1] : null)+s3;
-      else if (com[0].equals("xmlheader"))
-        src = s1+xmlHeader(name, com.length > 1 ? com[1] : null)+s3;
+      else if (com[0].equals("formatsheader"))
+        src = s1+formatsHeader(name, com.length > 1 ? com[1] : null)+s3;
+      else if (com[0].equals("resourcesheader"))
+        src = s1+resourcesHeader(name, com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("txheader"))
         src = s1+txHeader(name, com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("extheader"))
@@ -519,7 +526,27 @@ public class PageProcessor implements Logger  {
     return b.toString();
   }
 
-  private String xmlHeader(String n, String mode) {
+  private String resourcesHeader(String n, String mode) {
+    if (n.contains("-"))
+      n = n.substring(0, n.indexOf('-'));
+    StringBuilder b = new StringBuilder();
+    b.append("<div class=\"navtop\">");
+    b.append("<ul class=\"navtop\"><li class=\"spacerleft\"><span>&nbsp;</span></li>");
+    if (mode == null || mode.equals("content"))
+      b.append("<li class=\"selected\"><span>Content</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+".htm\">Content</a></span></li>");
+    if ("definitions".equals(mode))
+      b.append("<li class=\"selected\"><span>Formal Definitions</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+"-definitions.htm\">Formal Definitions</a></span></li>");
+    b.append("<li class=\"spacerright\" style=\"width: 270px\"><span>&nbsp;</span></li>");
+    b.append("<li class=\"wiki\"><span><a href=\"http://wiki.hl7.org/index.php?title=FHIR_"+n.toUpperCase().substring(0, 1)+n.substring(1)+"_Page\">Community Input (wiki)</a></span></li>");
+    b.append("</ul></div>\r\n");
+    return b.toString();
+  }
+
+  private String formatsHeader(String n, String mode) {
     if (n.contains("-"))
       n = n.substring(0, n.indexOf('-'));
     StringBuilder b = new StringBuilder();
@@ -853,7 +880,7 @@ public class PageProcessor implements Logger  {
       String htmlFilename = c.getComment();
       
       if( definitions.getFutureResources().containsKey(c.getCode()) )
-    	  htmlFilename = "resources";
+    	  htmlFilename = "resourcelist";
       
       html.append("  <tr><td><a href=\""+htmlFilename+".htm\">"+c.getCode()+"</a></td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
     }       
@@ -928,7 +955,7 @@ public class PageProcessor implements Logger  {
         src = s1+genRestrictions(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
-      else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("xmlheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
+      else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("formatsheader") || com[0].equals("resourcesheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
         src = s1+s3;
       else if (com[0].equals("resheader"))
         src = s1+resHeader(name, "Document", com.length > 1 ? com[1] : null)+s3;
@@ -1005,7 +1032,7 @@ public class PageProcessor implements Logger  {
         src = s1+genRestrictions(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
-      else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("xmlheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
+      else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("resourcesheader") || com[0].equals("formatsheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
         src = s1+s3;
       else if (com[0].equals("resheader"))
         src = s1+s3;

@@ -36,6 +36,22 @@ import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.ZipGenerator;
 
+/*
+ * 
+ * 
+ * 
+, however because of the wide variation in how different architectures and 
+tools map from UML to XML, there should be no expectation that any particular
+tool will produce compatible XML from these UML diagrams
+ * 
+ * Systems are welcome
+to use these object models as a basis for serialization internally or even
+between trading partner systems, with any form of exchange technology (including 
+JSON). Systems that use this form of exchange cannot claim to be conformant 
+with this specification, but can describe themselves as using "FHIR consistent
+object models".
+
+ */
 public class ECoreOclGenerator extends BaseGenerator implements PlatformGenerator {
 
   public String getName() {

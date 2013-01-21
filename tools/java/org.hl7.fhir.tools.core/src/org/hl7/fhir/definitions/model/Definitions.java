@@ -58,6 +58,7 @@ public class Definitions {
 	private Map<String, ResourceDefn> resources = new HashMap<String, ResourceDefn>();
 	private Map<String, ResourceDefn> futureResources = new HashMap<String, ResourceDefn>();
 	private List<String> deletedResources = new ArrayList<String>();
+	private ResourceDefn baseResource;
 
 	private List<String> aggregationEndpoints = new ArrayList<String>();
 
@@ -240,4 +241,13 @@ public class Definitions {
     return diagrams;
   }
 
+  public ResourceDefn getBaseResource() {
+    return baseResource;
+  }
+
+  public void setBaseResource(ResourceDefn baseResource) {
+    this.baseResource = baseResource;
+  }
+
+  
 }

@@ -190,6 +190,8 @@ public class SourceParser {
 		for (String n : ini.getPropertyNames("resources"))
 			loadResource(n, definitions.getResources(), false);
 		
+		definitions.setBaseResource(loadResource("resource", null, false));
+		
 		eCoreParseResults.getTypes().addAll(
 				sortTypes(CompositeTypeConverter.buildResourcesFromFhirModel(definitions
 						.getResources().values() )));
@@ -210,6 +212,7 @@ public class SourceParser {
 			futureResource.setForFutureUse(true);
 			definitions.getFutureResources().put(cd.getCode(), futureResource);
 		}
+		
 		
 		eCoreParseResults.getTypes().addAll(
 				CompositeTypeConverter.buildResourcesFromFhirModel(definitions
@@ -362,8 +365,7 @@ public class SourceParser {
 		}
 	}
 
-	private void loadResource(String n, Map<String, ResourceDefn> map,
-			boolean sandbox) throws Exception {
+	private ResourceDefn loadResource(String n, Map<String, ResourceDefn> map, boolean sandbox) throws Exception {
 		String src = sandbox ? sndBoxDir : srcDir;
 		File spreadsheet = new CSFile((sandbox ? sndBoxDir : srcDir) + n + File.separatorChar + n + "-spreadsheet.xml");
 		if (!spreadsheet.exists())
@@ -386,13 +388,12 @@ public class SourceParser {
 		// loadResource()
 		// is always called with definitions.getResources in its map argument.
 		// definitions.getResources().put(root.getName(), root);
-		map.put(root.getName(), root);
-		definitions.getKnownResources().put(
-				root.getName(),
-				new DefinedCode(root.getName(), root.getRoot().getDefinition(),
-						n));
-
+		if (map != null) {
+		  map.put(root.getName(), root);
+		  definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getRoot().getDefinition(), n));
+		}
 		root.setStatus(ini.getStringProperty("status", n));
+		return root;
 	}
 
 	private void processEvent(EventDefn defn, ElementDefn root)
