@@ -436,10 +436,11 @@ public class GeneratorUtils {
 			}
 		}
 		
-		// An attribute cannot have the same name as a nested enum
+		// An attribute cannot have the same name as a nested enums
+		// (and enums are only generated for codelists)
 		for( BindingDefn binding : member.getParentType().getBindings() )
 		{
-			if( binding.getName().equals(result) )
+			if( binding.getName().equals(result) && binding.getBinding() == BindingType.CODE_LIST )
 			{
 				result += "_";
 				break;

@@ -405,22 +405,23 @@ namespace HL7.Fhir.Instance.Tests
         [TestMethod]
         public void TestParseResourceReference()
         {
-            string xmlString = @"<x xmlns='http://hl7.org/fhir'
+            string xmlString = @"<x xmlns='http://hl7.org/fhir'>
                 <type>Organization</type>
-                <id>http://hl7.org/fhir/organization/@1</id>
+                <url>http://hl7.org/fhir/organization/@1</url>
                                  </x>";
 
-            XmlReader xr = fromString(xmlString); xr.Read();
+            XmlReader xr = fromString(xmlString); 
+            xr.Read();
             XmlFhirReader r = new XmlFhirReader(xr);
 
             ErrorList errors = new ErrorList();
             ResourceReference result = ResourceReferenceParser.ParseResourceReference(r, errors);
 
-            Assert.AreEqual("Organization", result.Type);
-            Assert.AreEqual("http://hl7.org/fhir/organization/@1", result.Id.Contents.ToString());
+            Assert.AreEqual("Organization", result.Type.Contents);
+            Assert.AreEqual("http://hl7.org/fhir/organization/@1", result.Url.Contents.ToString());
 
 
-            string xmlNestedString = @"<x xmlns='http://hl7.org/fhir'
+            string xmlNestedString = @"<x xmlns='http://hl7.org/fhir'>
                    <Provider>
                  <identifier>
                     <identifier>  
@@ -438,7 +439,7 @@ namespace HL7.Fhir.Instance.Tests
 
               <organization>
                 <type>Organization</type>
-                <id>1</id>  
+                <url>1</url>  
               </organization> 
 
               <!--   Referring Provider for the first 3 months of 2012   -->
@@ -453,6 +454,7 @@ namespace HL7.Fhir.Instance.Tests
                 <start>2012-01-01</start>
                 <end>2012-03-31</end>
               </period>
+            </Provider>
              </x>";
 
             xr = fromString(xmlNestedString); xr.Read();
@@ -463,7 +465,7 @@ namespace HL7.Fhir.Instance.Tests
             Assert.IsNotNull(result.InlinedContent);
             Assert.IsInstanceOfType(result.InlinedContent, typeof(Provider));
             Provider prov = (Provider)result.InlinedContent;
-            Assert.AreEqual("1", prov.Organization.Id.ToString());
+            Assert.AreEqual("1", prov.Organization.Url.ToString());
         }
 
         [TestMethod]

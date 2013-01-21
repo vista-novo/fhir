@@ -342,10 +342,12 @@ public class CSharpResourceParserGenerator extends GenBlock
         ln("if (!hasContent) return result;");
 		ln();
   				
+		
 		// Generate this classes properties
 		if( composite.getElements().size() > 0)
 		{
-			generateMemberParsers( composite.getElements() );
+			boolean allowNestedResource = composite.getName().equals(TypeRef.RESOURCEREF_TYPE_NAME);
+			generateMemberParsers( composite.getElements(), allowNestedResource );
 			ln();
 		}
 		ln("// Read endtag");
@@ -355,7 +357,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 
 	
 	
-	public GenBlock generateMemberParsers( List<ElementDefn> elements ) throws Exception
+	private GenBlock generateMemberParsers( List<ElementDefn> elements, boolean allowInlinedResource ) throws Exception
 	{
 		begin();
 				
@@ -365,6 +367,18 @@ public class CSharpResourceParserGenerator extends GenBlock
 			generateMemberParser(member);
 		}
 		
+		// Special case: some resources (at this moment only ResourceReference) contain
+		// a nested inlined resource. Check if there is one if we allow it
+		if( allowInlinedResource )
+		{
+			ln("// Parse nested resource if found");
+			ln("if (ParserUtils.IsAtNestedResource(reader))");
+			bs();
+            	ln("result.InlinedContent = ResourceParser.ParseResource(reader, errors);");
+            es();
+            ln();
+		}
+        
 		ln("if( !ParserUtils.IsAtEndElement(reader, en) )" );
         bs("{");
 			ln("errors.Add(String.Format(");
