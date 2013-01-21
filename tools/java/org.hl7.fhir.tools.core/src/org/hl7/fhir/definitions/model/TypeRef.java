@@ -102,6 +102,11 @@ public class TypeRef {
 		return name.equalsIgnoreCase("xhtml");
 	}
 
+	public boolean isXmlLang()
+	{
+		return name.equalsIgnoreCase("xml:lang");
+	}
+	
 	public boolean isWildcardType() {
 		return name.equals("*");
 	}

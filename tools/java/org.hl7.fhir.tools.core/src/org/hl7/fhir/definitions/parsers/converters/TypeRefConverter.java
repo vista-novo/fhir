@@ -90,6 +90,13 @@ public class TypeRefConverter
 				convertedType.setName( ref.getResolvedTypeName() );
 			else if( ref.isIdRef() )
 				convertedType.setName( TypeRef.IDREF_PSEUDOTYPE_NAME );
+			else if( ref.isXmlLang() )
+			{
+				// The special type "xml:lang" is not a FHIR basetype, but indicates
+				// that the attribute is present as an "xml:lang" attribute in XML,
+				// and as a normal attribute in Json.
+				convertedType.setName("code");
+			}
 			else
 			{
 				// Excel mentions "Resource", but this is actually a "ResourceReference"

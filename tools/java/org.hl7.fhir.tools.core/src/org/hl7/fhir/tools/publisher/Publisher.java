@@ -253,7 +253,7 @@ public class Publisher {
 		page.getReferenceImplementations().add(new DelphiGenerator());
 		javaReferencePlatform = new JavaGenerator();
     page.getReferenceImplementations().add(javaReferencePlatform);
-//		page.getReferenceImplementations().add(new CSharpGenerator());
+		page.getReferenceImplementations().add(new CSharpGenerator());
 		page.getReferenceImplementations().add(new ECoreOclGenerator());
 	}
 
