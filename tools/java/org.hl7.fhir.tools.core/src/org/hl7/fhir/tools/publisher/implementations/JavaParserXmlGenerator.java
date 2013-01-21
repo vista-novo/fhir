@@ -241,14 +241,21 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
       write("    parseTypeAttributes(xpp, res);\r\n");
     else
       write("    parseElementAttributes(xpp, res);\r\n");
+    for (ElementDefn e : n.getElements()) {
+      if (e.typeCode().equals("xml:lang")) {
+        write("    if (xpp.getAttributeValue(null, \"xml:Id\") != null)\r\n");
+        write("        res.set"+upFirst(getElementName(e.getName(), true))+"(Factory.newCode(xpp.getAttributeValue(null, \"xml:Id\")));\r\n");
+      }
+    }    
     write("    xpp.next();\r\n");
     write("    int eventType = nextNoWhitespace(xpp);\r\n");
     write("    while (eventType != XmlPullParser.END_TAG) {\r\n");
     boolean first = true;
     for (ElementDefn e : n.getElements()) {
+      if (!e.typeCode().equals("xml:lang")) {
         genElement(n, e, first, contentsHaveDataAbsentReason, bUseOwner, listsAreWrapped);
         first = false;
-      //}
+      }
     }
     write("      } else\r\n");
     write("        unknownContent(xpp);\r\n");

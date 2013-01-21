@@ -253,7 +253,7 @@ public class Publisher {
 		page.getReferenceImplementations().add(new DelphiGenerator());
 		javaReferencePlatform = new JavaGenerator();
     page.getReferenceImplementations().add(javaReferencePlatform);
-		page.getReferenceImplementations().add(new CSharpGenerator());
+//		page.getReferenceImplementations().add(new CSharpGenerator());
 		page.getReferenceImplementations().add(new ECoreOclGenerator());
 	}
 
@@ -700,7 +700,7 @@ public class Publisher {
 		dxgen.close();
 
 		generateProfile(resource, n, xml);
-		generateDiagram(resource, n);
+		page.getImageMaps().put(n, generateDiagram(resource, n));
 		
 		for (RegisteredProfile p : resource.getProfiles())
 			produceProfile(p.getFilename(), p.getProfile());
@@ -807,7 +807,7 @@ public class Publisher {
 	  }
 	}
 	
-	private void generateDiagram(ResourceDefn resource, String n) throws Exception {
+	private String generateDiagram(ResourceDefn resource, String n) throws Exception {
     StringBuilder s = new StringBuilder();
     StringBuilder s2 = new StringBuilder();
     s.append("@startuml\r\n");
@@ -837,7 +837,8 @@ public class Publisher {
     TextFile.stringToFile(s.toString(), page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+resource.getName().toLowerCase()+".plantuml-source");
     SourceStringReader rdr = new SourceStringReader(s.toString());
     FileOutputStream png = new FileOutputStream(page.getFolders().dstDir + n + ".png");
-    rdr.generateImage(png);
+    return rdr.generateImage(png);
+    
 //    FileOutputStream svg = new FileOutputStream(page.getFolders().dstDir + n + ".svg");
 //    rdr.generateImage(svg, new FileFormatOption(FileFormat.SVG));
 //    FileOutputStream xmi = new FileOutputStream(page.getFolders().dstDir + n + ".xmi");
@@ -875,6 +876,8 @@ public class Publisher {
     SourceStringReader rdr = new SourceStringReader(s.toString());
     FileOutputStream png = new FileOutputStream(page.getFolders().dstDir + element.getName().toLowerCase() + ".png");
     rdr.generateImage(png);
+    png = new FileOutputStream(page.getFolders().dstDir + element.getName().toLowerCase() + ".cmapx");
+    rdr.generateImage(png, new FileFormatOption(FileFormat.HTML));
 //    FileOutputStream svg = new FileOutputStream(page.getFolders().dstDir + n + ".svg");
 //    rdr.generateImage(svg, new FileFormatOption(FileFormat.SVG));
 //    FileOutputStream xmi = new FileOutputStream(page.getFolders().dstDir + n + ".xmi");
@@ -916,6 +919,7 @@ public class Publisher {
           s.append(rn+" << (D, #FFA500) >> *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << "+ta+" >> : "+e.getName()+"\r\n");
 	    }
 	  }
+	  s2.append("url of "+rn+" is [[http://www/"+rn+"{"+rn+" definition}]]\r\n");
 	  if (entry)
 	    s2.append("class "+rn+" << (R, #FF7700) >> {\r\n");
 	  else if (page.getDefinitions().dataTypeIsSharedInfo(r.typeCode()) || page.getDefinitions().hasType(rn)) {
@@ -926,7 +930,7 @@ public class Publisher {
 	  }
 	  for (org.hl7.fhir.definitions.model.ElementDefn e : r.getElements()) {
 	    if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@") && !page.getDefinitions().dataTypeIsSharedInfo(e.typeCode())) {
-	      s2.append("  "+e.getName()+" : "+e.typeCode()+" "+e.describeCardinality()+"\r\n");
+	      s2.append(" "+e.getName()+" : "+e.typeCode()+" "+e.describeCardinality()+" [[http://www/"+r.getName()+"/"+e.getName()+"{Definition}]]\r\n");
 	    }
 	  }
 	  s2.append("  --\r\n}\r\n\r\n");

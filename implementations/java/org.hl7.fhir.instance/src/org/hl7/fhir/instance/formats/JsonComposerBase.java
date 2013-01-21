@@ -177,6 +177,11 @@ public abstract class JsonComposerBase extends XmlBase {
 			prop(name, value.getValue());
 	}
 
+	protected void composeCodeSimple(String name, Code value) throws Exception {
+		if (value != null)
+			prop(name, value.getValue());
+	}
+
 	 protected void composeString(String name, String value) throws Exception {
 		if (value != null)
 			prop(name, value);

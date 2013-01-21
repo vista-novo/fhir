@@ -85,6 +85,7 @@ public class PageProcessor implements Logger  {
   private List<String> orderedResources = new ArrayList<String>();
   private Map<String, SectionTracker> sectionTrackerCache = new HashMap<String, SectionTracker>(); 
   private Map<String, TocEntry> toc = new HashMap<String, TocEntry>();
+  private Map<String, String> imageMaps = new HashMap<String, String>();
   
 //  private boolean notime;
   
@@ -1118,6 +1119,8 @@ public class PageProcessor implements Logger  {
         src = s1+genResourceConstraints(resource)+s3;
       else if (com[0].equals("plural"))
         src = s1+Utilities.pluralizeMe(name)+s3;
+      else if (com[0].equals("map"))
+        src = s1+imageMaps.get(name)+s3;
       else if (com[0].equals("notes")) {
         src = s1+loadXmlNotes(name, "notes")+s3;
       } else if (com[0].equals("dictionary"))
@@ -1402,4 +1405,9 @@ public class PageProcessor implements Logger  {
     return toc;
   }
 
+  public Map<String, String> getImageMaps() {
+    return imageMaps;
+  }
+
+  
 }

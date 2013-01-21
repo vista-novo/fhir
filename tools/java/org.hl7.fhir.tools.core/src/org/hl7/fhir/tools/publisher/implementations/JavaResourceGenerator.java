@@ -349,7 +349,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 					else if (tn.equals("base64Binary")) tn = "Base64Binary";
 					else if (tn.equals("instant")) tn = "Instant";
 					else if (tn.equals("string")) tn = "String_";
-					else if (tn.equals("uri")) tn = "Uri";
+          else if (tn.equals("uri")) tn = "Uri";
+          else if (tn.equals("xml:lang")) tn = "Code";
 					else if (tn.equals("code")) tn = "Code";
 					else if (tn.equals("oid")) tn = "Oid";
           else if (tn.equals("uuid")) tn = "Uuid";

@@ -20,6 +20,7 @@
   <WindowWidth>26835</WindowWidth>
   <WindowTopX>1440</WindowTopX>
   <WindowTopY>1290</WindowTopY>
+  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -82,7 +83,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="117.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="33" ss:Span="1"/>
@@ -135,6 +136,17 @@
     <Cell><Data ss:Type="String">text/plain; charset=UTF-8, image/png</Data></Cell>
     <Cell><Data ss:Type="String">Processors of the data need to be able to tell what the data is</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">./mediaType, ./charset</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">Attachment.language</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">xml:lang</Data></Cell>
+    <Cell><Data ss:Type="String">Language</Data></Cell>
+    <Cell><Data ss:Type="String">Human language of the content (BCP-47)</Data></Cell>
+    <Cell><Data ss:Type="String">The human language of the content. The value can be any valid value for xml:lang</Data></Cell>
+    <Cell><Data ss:Type="String">en-AU</Data></Cell>
+    <Cell><Data ss:Type="String">Users need to be able to pick between the languages in a set of attachments</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">./language</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="44.25">
     <Cell><Data ss:Type="String">Attachment.data</Data></Cell>
@@ -217,13 +229,11 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
-   <TopRowVisible>2</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>11</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -310,8 +320,8 @@
     <Cell ss:StyleID="s72"><Data ss:Type="String">A human language</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">http://www.sil.org/iso639-3/codes.asp</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">ISO 639-3</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">http://tools.ietf.org/html/bcp47</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">IETF language tag</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -321,11 +331,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

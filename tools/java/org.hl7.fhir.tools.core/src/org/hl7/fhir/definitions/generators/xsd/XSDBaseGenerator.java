@@ -240,7 +240,9 @@ private void genXmlIdRef() throws Exception {
 		write("    <xs:sequence>\r\n");
 
 		for (ElementDefn e : elem.getElements()) {
-			if (e.getName().equals("[type]"))
+		  if (e.typeCode().equals("xml:lang")) {
+		    // do nothing here
+		  } else if (e.getName().equals("[type]"))
 				generateAny(elem, e, null);
 			else if ((!e.unbounded() && 1 == e.getMaxCardinality())
 					|| Config.SUPPRESS_WRAPPER_ELEMENTS)
@@ -250,8 +252,12 @@ private void genXmlIdRef() throws Exception {
 		}
 		write("    </xs:sequence>\r\n");
     write("    <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
-    if (elem.getName().equals("Attachment"))
-      write("    <xs:attribute ref=\"xml:lang\"/>\r\n");      
+    for (ElementDefn e : elem.getElements()) {
+      if (e.typeCode().equals("xml:lang")) {
+        write("    <xs:attribute ref=\"xml:lang\"/>\r\n");      
+      }
+    }
+
 		write("  </xs:complexType>\r\n");
 		// write("  <xs:complexType name=\""+name+"\">\r\n");
 		// write("    <xs:complexContent>\r\n");

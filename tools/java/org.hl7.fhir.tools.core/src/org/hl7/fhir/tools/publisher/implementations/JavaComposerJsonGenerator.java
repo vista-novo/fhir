@@ -283,7 +283,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
         } else
           comp = "compose"+upFirst(leaf(tn)).replace(".", "");
       }
-      if (!contentsHaveId && typeIsSimple(e)) 
+      if ((!contentsHaveId && typeIsSimple(e)) || e.typeCode().equals("xml:lang")) 
         comp = comp+"Simple";
       
       if (name.equals("extension")) {
@@ -361,7 +361,9 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
 //        return "String_";
 //      else
 //        return upFirst(t);
-    } else if (elem.usesCompositeType()) { 
+    }  else if (t.equals("xml:lang"))
+        return formal ? "string" : "Code";
+    else if (elem.usesCompositeType()) { 
       if (typeNames.containsKey(elem) && typeNames.get(elem) != null)
         return typeNames.get(elem);
       else  

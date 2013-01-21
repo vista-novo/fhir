@@ -11334,7 +11334,7 @@
             </name>
             <valueQuantity>
               <value>1</value>
-              <range>&lt;=</range>
+              <comparator>&lt;=</comparator>
               <units>U</units>
             </valueQuantity>            
 	          <flag>SS</flag>
@@ -11350,7 +11350,7 @@
             </name>
             <valueQuantity>
               <value>4</value>
-              <range>&lt;=</range>
+              <comparator>&lt;=</comparator>
               <units>U</units>
             </valueQuantity>            
 	          <flag>SS</flag>
@@ -11366,7 +11366,7 @@
             </name>
             <valueQuantity>
               <value>1</value>
-              <range>&lt;=</range>
+              <comparator>&lt;=</comparator>
               <units>U</units>
             </valueQuantity>            
 	    <flag>SS</flag>
@@ -11382,7 +11382,7 @@
             </name>
             <valueQuantity>
               <value>4</value>
-              <range>&lt;=</range>
+              <comparator>&lt;=</comparator>
               <units>U</units>
             </valueQuantity>            
 	    <flag>SS</flag>
@@ -11398,7 +11398,7 @@
             </name>
             <valueQuantity>
               <value>1</value>
-              <range>&lt;=</range>
+              <comparator>&lt;=</comparator>
               <units>U</units>
             </valueQuantity>            
 	    <flag>SS</flag>
@@ -11414,7 +11414,7 @@
             </name>
             <valueQuantity>
               <value>1</value>
-              <range>&lt;=</range>
+              <comparator>&lt;=</comparator>
               <units>U</units>
             </valueQuantity>            
 	    <flag>SS</flag>
@@ -11430,7 +11430,7 @@
             </name>
             <valueQuantity>
               <value>0.25</value>
-              <range>&lt;=</range>
+              <comparator>&lt;=</comparator>
               <units>U</units>
             </valueQuantity>            
 	    <flag>SS</flag>
@@ -11446,7 +11446,7 @@
             </name>
             <valueQuantity>
               <value>1</value>
-              <range>&lt;=</range>
+              <comparator>&lt;=</comparator>
               <units>U</units>
             </valueQuantity>            
 	    <flag>SS</flag>
@@ -11462,7 +11462,7 @@
             </name>
             <valueQuantity>
               <value>1</value>
-              <range>&lt;=</range>
+              <comparator>&lt;=</comparator>
               <units>U</units>
             </valueQuantity>            
 	    <flag>SS</flag>
@@ -11478,7 +11478,7 @@
             </name>
             <valueQuantity>
               <value>0.25</value>
-              <range>&lt;=</range>
+              <comparator>&lt;=</comparator>
               <units>U</units>
             </valueQuantity>            
 	    <flag>SS</flag>
@@ -11509,7 +11509,7 @@
             </name>
             <valueQuantity>
               <value>4</value>
-              <range>&lt;=</range>
+              <comparator>&lt;=</comparator>
               <units>U</units>
             </valueQuantity>            
 	    <flag>SS</flag>
@@ -11525,7 +11525,7 @@
             </name>
             <valueQuantity>
               <value>20</value>
-              <range>&lt;=</range>
+              <comparator>&lt;=</comparator>
               <units>U</units>
             </valueQuantity>            
 	    <flag>SS</flag>
@@ -11541,7 +11541,7 @@
             </name>
             <valueQuantity>
               <value>1</value>
-              <range>&lt;=</range>
+              <comparator>&lt;=</comparator>
               <units>U</units>
             </valueQuantity>            
 	    <flag>S</flag>

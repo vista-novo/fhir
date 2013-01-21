@@ -347,8 +347,10 @@ public class GeneratorUtils {
 			return "Sid";
 		else if (name.equals("id"))
 			return "Id";
-		else if (name.equals("xhtml"))
-			return "XHtml";
+    else if (name.equals("xhtml"))
+      return "XHtml";
+    else if (name.equals("xml:lang"))
+      return "FhirString";
 		else if (name.equals("date"))
 			return "Date";
 		else if (name.equals("dateTime"))

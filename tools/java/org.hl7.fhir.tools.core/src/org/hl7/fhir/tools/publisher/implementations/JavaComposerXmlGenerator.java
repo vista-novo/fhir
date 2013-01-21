@@ -231,9 +231,17 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
       write("      composeTypeAttributes(element);\r\n");
     else
       write("      composeElementAttributes(element);\r\n");
+    for (ElementDefn e : n.getElements()) { 
+      if (e.typeCode().equals("xml:lang")) {
+        write("      if (element.get"+upFirst(getElementName(e.getName(), true))+"() != null)\r\n");
+        write("        xml.attribute(\"xml:lang\", element.get"+upFirst(getElementName(e.getName(), true))+"().toString());\r\n");
+      }
+    }
     write("      xml.open(FHIR_NS, name);\r\n");
-    for (ElementDefn e : n.getElements()) 
-      genElement(n, e, type);
+    for (ElementDefn e : n.getElements()) {
+      if (!e.typeCode().equals("xml:lang")) 
+        genElement(n, e, type);
+    }
     write("      xml.close(FHIR_NS, name);\r\n");
     write("    }\r\n");    
     write("  }\r\n\r\n");    

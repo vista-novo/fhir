@@ -56,6 +56,9 @@ resource elements. There are two categories of data type: simple / primitive typ
 <img id="dtmap1" src="dt-map.png" usemap="#dtmap2" border="0" height="408" width="450" alt="Data Types Concept Map"/>
 </p>
 <p>
+Legend: Orange: category. Grey: group. Aqua: Type. Yellow: Constraint
+</p>
+<p>
 The data types are available as a <a href="fhir-base.xsd">W3C Schema</a>.
 </p>
 
@@ -68,7 +71,7 @@ The data types are available as a <a href="fhir-base.xsd">W3C Schema</a>.
 <p>
 The following table summarizes the primitive types and their simple restrictions that
 are used in throughout this specification. These types 
-are those defined in the <a href="www.w3.org/TR/xmlschema-2/">W3C Schema (1.0) specification part 2</a>, 
+are those defined in the <a href="http://www.w3.org/TR/xmlschema-2/">W3C Schema (1.0) specification part 2</a>, 
 with additional constraints marked in bold. 
 </p>
 
@@ -364,15 +367,13 @@ particular context by <a href="terminologies.htm">binding</a> the element to a v
 <h3>Choosing Coding vs. CodeableConcept</h3>
 <p>
 A <b>Coding</b> is a simple direct reference to a code in a code system. In practice, such a simple 
-reference is very difficult to use - if two different systems are using different terminologies, or
-one is using one and another text, the <b>Coding</b> type doesn't provide support for this. Since
-such situations are most common case, the type <b>CodeableConcept</b> is defined, which allows for 
-multiple <b>Coding</b> elements and/or a text representation. Because of this, the <b>CodeableConcept</b> 
-is usually used in resources in preference to the simpler <b>Coding</b>. <b>Coding</b> is generally used
-in profiles and extensions, in cases where the interplay between text and codes is done explicitly 
-rather than defaulting to the general <b>CodeableConcept</b> type, though it may also be used in 
-some resources. In such cases, these resource/extension/profile definitions have to make 
-allowance for the design issues associated with text and multiple codings in their own context directly.
+reference is very difficult to use - if a system is using text when the correct codes can't be found, or if two different systems are using different terminologies or
+a different mix of codes and text, the <b>Coding</b> type doesn't provide enough information to make this work. Since
+such situations are quite a common case, the type <b>CodeableConcept</b> is defined, which allows for 
+multiple <b>Coding</b> elements and/or a text representation. The <b>CodeableConcept</b> 
+is used in resources in preference to the simpler <b>Coding</b> except for a few special cases. 
+<b>Coding</b> is defined separately mainly for use in profiles, where the context of an explicit use 
+case means that the profile can define a better structure than the general case CodeableConcept.
 </p>
 
 <a name="CodeableConcept"></a>
@@ -520,7 +521,7 @@ A measured amount (or an amount that can potentially be measured).
 
 <p>
 The <i>value</i> contains the numerical value of the quantity, including an implicit precision. 
-If no range is specified, the value is a point value (i.e. '='). The <i>range</i> element can never be ignored.
+If no comparator is specified, the value is a point value (i.e. '='). The <i>comparator</i> element can never be ignored.
 </p>
 <p>
 The <i>units</i> element contains a displayable unit that defines what is measured. 
@@ -566,7 +567,7 @@ These are used as types in resource content models, but they are really just a Q
 <pre class="xml" fragment="Quantity">
   &lt;result&gt;
     &lt;value&gt;40000&lt;/value&gt;
-    &lt;range&gt;&amp;gt;&lt;/range&gt;
+    &lt;comparator&gt;&amp;gt;&lt;/comparator&gt;
     &lt;units&gt;mcg/L&lt;/units&gt;
     &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
     &lt;code&gt;ug&lt;/code&gt;
