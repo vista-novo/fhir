@@ -1,936 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/profile.xsd">
-  <name>Lipid Profile</name>
-  <author>
-    <name>Grahame Grieve</name>
-    <telecom>
-      <system>email</system>
-      <value>grahame@healthintersections.com.au</value>
-    </telecom>
-  </author>
-  <description>Describes how the lab report is used for a standard Lipid Profile - Cholesterol, Triglyceride and Cholesterol fractions. Uses LOINC codes</description>
-  <status>
-    <code>testing</code>
-    <date>2012-05-12</date>
-    <comment>Sample, never intended for real use</comment>
-  </status>
-  <resource>
-    <type>Resource</type>
-    <name>Lipids</name>
-    <element>
-      <path>LabReport</path>
-      <name>Lipids</name>
-      <definition>
-        <short>Lipid Lab Report</short>
-        <formal>The findings and interpretation of a general lipid lab profile</formal>
-        <comments>Not to be used for reporting on non-pathology test results e.g. diagnostic imaging, ECG or respiratory function tests. Not to be used to represent an entire cumulative report. This Pathology test result archetype represents only one of the result sets that is usually viewed as a vertical in a cumulative test report. A cumulative report is a view that is constructed from the results represented by multiple OBSERVATION archetypes. This archetype is suitable for representation of general pathology test results, but not intended to cover full synoptic reports. For these, additional resources are required to represent the data properly</comments>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>Resource</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.id</path>
-      <definition>
-        <short>Master Resource Id, always first in all resources</short>
-        <formal>Master Resource Id, always first in all resources</formal>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>id</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.status</path>
-      <definition>
-        <short>registered|interim|final|amended|cancelled|withdrawn</short>
-        <formal>The status of the pathology test result as a whole</formal>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>code</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-        <binding>LabReportStatus</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.issued</path>
-      <definition>
-        <short>date issed for current status</short>
-        <formal>The date and/or time that the result was issued from the source for the recorded Test result status</formal>
-        <comments>May be different from LabReport.updated, because that is the status of this record, not the report the record is about</comments>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>instant</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.patient</path>
-      <definition>
-        <short>The patient the report is about</short>
-        <formal>The patient about who the report is about</formal>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>Resource(Patient)</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.admission</path>
-      <definition>
-        <short>Admission Context</short>
-        <formal>The admission that this diagnostic investigation is associated with</formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>Resource(Admission)</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.laboratory</path>
-      <definition>
-        <short>Responsible Laboratory</short>
-        <formal>The laboratory service that issued the report</formal>
-        <comments>This is not necessarily the source of the atomic reports - it&#39;s the lab that takes responsibility for the clinical report</comments>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>Resource(Organization)</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.reportId</path>
-      <definition>
-        <short>Id for external references to this report</short>
-        <formal>The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS).</formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>Identifier</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.requestDetail</path>
-      <definition>
-        <short>What was requested</short>
-        <formal>Details concerning a single pathology test requested.</formal>
-        <comments>Note: Usually there is one test request for each result, however in some circumstances multiple test requests may be represented using a single Pathology test result resource</comments>
-        <min>0</min>
-        <max>*</max>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.requestDetail.requestOrderId</path>
-      <definition>
-        <short>Id assigned by requester</short>
-        <formal>The local ID assigned to the order by the order requester.</formal>
-        <comments>Equivalent to the Placer Order Identifier</comments>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>Identifier</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.requestDetail.receiverOrderId</path>
-      <definition>
-        <short>Receiver&#39;s Id for the request</short>
-        <formal>The local ID assigned to the test order by the order filler, usually by the Laboratory Information System (LIS).</formal>
-        <comments>Usually equivalent to the DICOM Accession Number and the Filler Order Identifier.</comments>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>Identifier</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.requestDetail.requestTest</path>
-      <definition>
-        <short>Test Requested</short>
-        <formal>Identification of pathology test requested,</formal>
-        <comments>Useful where the test requested differs from the test actually performed.</comments>
-        <min>0</min>
-        <max>*</max>
-        <type>
-          <code>CodeableConcept</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-        <binding>LabRequests</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.requestDetail.requester</path>
-      <definition>
-        <short>Responsible for request</short>
-        <formal>Details of the clinician or organization requesting the laboratory test.</formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>Resource(Provider|Organization)</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.requestDetail.clinicalInfo</path>
-      <definition>
-        <short>Clinical information provided</short>
-        <formal>Details of the clinical information provided to the laboratory along with the original request</formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>Resource(Any)</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.reportName</path>
-      <definition>
-        <short>LOINC Code for Lipid Report with LDL</short>
-        <formal>LOINC Code for Lipid Report with LDL</formal>
-        <comments>LOINC code includes &quot;direct&quot; LDL - does this mean LDL derived by measuring VLDL by ultracentrifugation? This panel includes both measured and calculated LDL</comments>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>CodeableConcept</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-        <binding>LabReportNames</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.service</path>
-      <definition>
-        <short>Biochemistry, Hematology, etc.</short>
-        <formal>The diagnostic service that performs the examination e.g. biochemistry, hematology.</formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>CodeableConcept</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-        <binding>LabServices</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.diagnosticTime</path>
-      <definition>
-        <short>Effective time of diagnostic report</short>
-        <formal>The diagnostically relevant time for this report</formal>
-        <comments>The diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship is not always automatic</comments>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>dateTime</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.specimen</path>
-      <definition>
-        <short>Specimen (incl. time of collection)</short>
-        <formal>Details about the specimen if all individual test results are derived from the same specimen</formal>
-        <comments>If the specimen is sufficiently specified with a code in the Test result name, then this additional data may be redundant. If there are multiple specimens, these may be represented per &#39;Result group&#39;</comments>
-        <min>0</min>
-        <max>*</max>
-        <type>
-          <code>Resource(Specimen)</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup</path>
-      <definition>
-        <short>All the results in one group</short>
-        <formal>All the lipid panel results</formal>
-        <comments>Many (most) lab reports don&#39;t really have a meaningful group. In these cases, just create a single group with no specimen or name</comments>
-        <min>1</min>
-        <max>1</max>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.name</path>
-      <definition>
-        <short>No name needed for the result group</short>
-        <formal>No name needed for the result group</formal>
-        <comments>For example, the antibody code for a goup of antibody related test, or the organism code for a group of isolate/sensitivities. Leave blank if there is no particular meaning associated with the group</comments>
-        <min>0</min>
-        <max>0</max>
-        <type>
-          <code>CodeableConcept</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-        <binding>LabResultGroupNames</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.specimen</path>
-      <definition>
-        <short>Specimen details</short>
-        <formal>Details about the individual specimen to which these Result group test results refer, where testing of multiple specimens is required.</formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>Resource(Specimen)</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result</path>
-      <name>Cholesterol Group</name>
-      <definition>
-        <short>Cholesterol Result</short>
-        <formal>Group of elements for Cholesterol result</formal>
-        <min>1</min>
-        <max>1</max>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.name</path>
-      <definition>
-        <short>Cholesterol</short>
-        <formal>Cholesterol</formal>
-        <comments>results are fundamentally a name - value pair with additional clarifying information</comments>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>CodeableConcept</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-        <binding>LabResultNames</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.value[x]</path>
-      <definition>
-        <short>Cholesterol value</short>
-        <formal>Cholesterol value. If a result is not available, use the comments field</formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>Quantity</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.flag</path>
-      <definition>
-        <short>+ | ++ | +++ | - | -- | --- </short>
-        <formal>+ | ++ | +++ | - | -- | --- </formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>code</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-        <binding>LabResultFlag</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.status</path>
-      <definition>
-        <short>Registered|Interim|Final|Amended|Cancelled|Withdrawn</short>
-        <formal>The status of the result value</formal>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>code</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-        <binding>LabReportStatus</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.comments</path>
-      <definition>
-        <short>Comments about result</short>
-        <formal>May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result.</formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>string</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.referenceRange</path>
-      <definition>
-        <short>Guide for interpretation</short>
-        <formal>Guide for interpretation</formal>
-        <comments>Most results only have one reference range. Some non-numerical results don&#39;t have a reference range</comments>
-        <min>1</min>
-        <max>1</max>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.referenceRange.meaning</path>
-      <definition>
-        <short>Range is a recommended range</short>
-        <formal>Range is a recommended range</formal>
-        <comments>yeah, so I suppose it should be coded, right? But coded how? No publically available terminologies include an appropriate code…</comments>
-        <min>0</min>
-        <max>0</max>
-        <type>
-          <code>CodeableConcept</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-        <binding>LabReferenceRanges</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.referenceRange.range[x]</path>
-      <definition>
-        <short>Reference</short>
-        <formal>&lt;4.5 mmol/L</formal>
-        <comments>Per Australian NHF Recommendations</comments>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>Quantity</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result</path>
-      <name>Triglyceride Group</name>
-      <definition>
-        <short>Triglyceride Result</short>
-        <formal>Group of elements for Triglyceride result</formal>
-        <min>1</min>
-        <max>1</max>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.name</path>
-      <definition>
-        <short>Triglyceride</short>
-        <formal>Triglyceride</formal>
-        <comments>results are fundamentally a name - value pair with additional clarifying information</comments>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>CodeableConcept</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-        <binding>LabResultNames</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.value[x]</path>
-      <definition>
-        <short>Triglyceride value</short>
-        <formal>Triglyceride value. If a result is not available, use the comments field</formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>Quantity</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.flag</path>
-      <definition>
-        <short>+ | ++ | +++ | - | -- | --- </short>
-        <formal>+ | ++ | +++ | - | -- | --- </formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>code</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-        <binding>LabResultFlag</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.comments</path>
-      <definition>
-        <short>Comments about result</short>
-        <formal>Comments about result</formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>string</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.referenceRange</path>
-      <definition>
-        <short>Guide for interpretation</short>
-        <formal>Guide for interpretation</formal>
-        <comments>Most results only have one reference range. Some non-numerical results don&#39;t have a reference range</comments>
-        <min>1</min>
-        <max>1</max>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.referenceRange.meaning</path>
-      <definition>
-        <short>Range is a recommended range</short>
-        <formal>Range is a recommended range</formal>
-        <comments>see note above</comments>
-        <min>0</min>
-        <max>0</max>
-        <type>
-          <code>CodeableConcept</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-        <binding>LabReferenceRanges</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.referenceRange.range[x]</path>
-      <definition>
-        <short>Reference</short>
-        <formal>&lt;2.0 mmol/L</formal>
-        <comments>Per Australian NHF Recommendations</comments>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>Quantity</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result</path>
-      <name>HDL Cholesteral Group</name>
-      <definition>
-        <short>HDL Cholesterol Result</short>
-        <formal>Group of elements for HDL Cholesterol result</formal>
-        <min>1</min>
-        <max>1</max>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.name</path>
-      <definition>
-        <short>HDL Cholesterol</short>
-        <formal>HDL Cholesterol</formal>
-        <comments>results are fundamentally a name - value pair with additional clarifying information</comments>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>CodeableConcept</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-        <binding>LabResultNames</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.value[x]</path>
-      <definition>
-        <short>HDL Cholesterol value</short>
-        <formal>HDL Cholesterol value. If a result is not available, use the comments field</formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>Quantity</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.flag</path>
-      <definition>
-        <short>+ | ++ | +++ | - | -- | --- </short>
-        <formal>+ | ++ | +++ | - | -- | --- </formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>code</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-        <binding>LabResultFlag</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.comments</path>
-      <definition>
-        <short>Comments about result</short>
-        <formal>Comments about result</formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>string</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.referenceRange</path>
-      <definition>
-        <short>Guide for interpretation</short>
-        <formal>Guide for interpretation</formal>
-        <comments>Most results only have one reference range. Some non-numerical results don&#39;t have a reference range</comments>
-        <min>1</min>
-        <max>1</max>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.referenceRange.meaning</path>
-      <definition>
-        <short>Range is a recommended range</short>
-        <formal>Range is a recommended range</formal>
-        <comments>See note above</comments>
-        <min>0</min>
-        <max>0</max>
-        <type>
-          <code>CodeableConcept</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-        <binding>LabReferenceRanges</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.referenceRange.range[x]</path>
-      <definition>
-        <short>Reference</short>
-        <formal>&gt;1.5 mmol/L</formal>
-        <comments>Per Australian NHF Recommendations</comments>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>Quantity</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result</path>
-      <name>LDL Cholesteral Group</name>
-      <definition>
-        <short>LDL Cholesterol result, if reported</short>
-        <formal>LDL Cholesterol result, if reported</formal>
-        <min>0</min>
-        <max>1</max>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.name</path>
-      <definition>
-        <short>LDL Cholesterol. LOINC code defines measured or calc</short>
-        <formal>Group of elements for LDL Cholesterol. LOINC code defines whether LDL is measured or calculated</formal>
-        <comments>results are fundamentally a name - value pair with additional clarifying information</comments>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>CodeableConcept</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-        <binding>LOINC 35198-1 | LOINC 13457-7</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.value[x]</path>
-      <definition>
-        <short>LDL Cholesterol value</short>
-        <formal>LDL Cholesterol value. If a result is not available, use the comments field</formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>Quantity</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.flag</path>
-      <definition>
-        <short>+ | ++ | +++ | - | -- | --- </short>
-        <formal>+ | ++ | +++ | - | -- | --- </formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>code</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-        <binding>LabResultFlag</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.comments</path>
-      <definition>
-        <short>Comments about result</short>
-        <formal>Comments about result</formal>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>string</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.referenceRange</path>
-      <definition>
-        <short>Guide for interpretation</short>
-        <formal>Guide for interpretation</formal>
-        <comments>Most results only have one reference range. Some non-numerical results don&#39;t have a reference range</comments>
-        <min>1</min>
-        <max>1</max>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.referenceRange.meaning</path>
-      <definition>
-        <short>Range is a recommended range</short>
-        <formal>Range is a recommended range</formal>
-        <comments>See Note above</comments>
-        <min>0</min>
-        <max>0</max>
-        <type>
-          <code>CodeableConcept</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-        <binding>LabReferenceRanges</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.resultGroup.result.referenceRange.range[x]</path>
-      <definition>
-        <short>Reference</short>
-        <formal>&lt;3.0 mmol/L</formal>
-        <comments>Per Australian NHF Recommendations</comments>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>Quantity</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.conclusion</path>
-      <definition>
-        <short>Clinical Interpretation of Lipid Panel</short>
-        <formal>May include diagnosis or suggestions for follow up testing</formal>
-        <comments>common reports don&#39;t have a conclusion, but some do</comments>
-        <min>0</min>
-        <max>1</max>
-        <type>
-          <code>Narrative</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>true</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.codedDiagnosis</path>
-      <definition>
-        <short>Codes for the conclusion</short>
-        <formal>Codes for the conclusion</formal>
-        <min>0</min>
-        <max>0</max>
-        <type>
-          <code>CodeableConcept</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-        <binding>LabDiagnosisCodes</binding>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.representation</path>
-      <definition>
-        <short>Entire Report as issued</short>
-        <formal>Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they must be semantically equivalent.</formal>
-        <comments>Possible formats: text/html, text/plain, text/rtf, application/msword, application/pdf, application/rtf, application/vnd.oasis.opendocument.text, application/vnd.openxmlformats-officedocument.wordprocessingml.document</comments>
-        <min>0</min>
-        <max>*</max>
-        <type>
-          <code>Attachment</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.extension</path>
-      <definition>
-        <short>See Extensions</short>
-        <formal>See Extensions</formal>
-        <min>0</min>
-        <max>*</max>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-    <element>
-      <path>LabReport.text</path>
-      <definition>
-        <short>Text summary of report, for human interpretation</short>
-        <formal>Text summary of report, for human interpretation</formal>
-        <min>1</min>
-        <max>1</max>
-        <type>
-          <code>Narrative</code>
-        </type>
-        <mustSupport>false</mustSupport>
-        <mustUnderstand>false</mustUnderstand>
-      </definition>
-      <closed>false</closed>
-    </element>
-  </resource>
   <text>
-    <status>generated</status>
+    <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <pre>
 &lt;<a title="The findings and interpretation of a general lipid lab profile" class="dict" href="#LabReport">
           <b>LabReport</b>
-        </a> xmlns=&quot;http://hl7.org/fhir&quot;&gt;
+        </a> xmlns="http://hl7.org/fhir"&gt;
  <i class="inherited">&lt;<a title="Master Resource Id, always first in all resources" class="dict" href="#LabReport.id">
             <b>id</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
@@ -1030,7 +106,7 @@
             <span style="color: darkgreen">
               <a href="datatypes.htm#Identifier">Identifier</a>
             </span>
-            <span style="color: navy">Receiver&#39;s Id for the request</span>
+            <span style="color: navy">Receiver's Id for the request</span>
             <span style="color: Gray"> --&gt;</span>&lt;/receiverOrderId&gt;</i>
           <i class="inherited">&lt;<a title="Identification of pathology test requested," class="dict" href="#LabReport.requestDetail.requestTest">
               <b>requestTest</b>
@@ -1138,7 +214,7 @@
             <b>result</b>
           </span>
         </a>
-        <span style="color: blue">&quot;Cholesterol Group&quot;</span>
+        <span style="color: blue">"Cholesterol Group"</span>
         <span style="color: Gray"> --&gt;</span>
         <span style="color: Gray">&lt;!-- Cholesterol Result --&gt;</span>
    &lt;<a title="Cholesterol (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name">
@@ -1230,7 +306,7 @@
             <b>result</b>
           </span>
         </a>
-        <span style="color: blue">&quot;Triglyceride Group&quot;</span>
+        <span style="color: blue">"Triglyceride Group"</span>
         <span style="color: Gray"> --&gt;</span>
         <span style="color: Gray">&lt;!-- Triglyceride Result --&gt;</span>
    &lt;<a title="Triglyceride (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name">
@@ -1311,7 +387,7 @@
             <b>result</b>
           </span>
         </a>
-        <span style="color: blue">&quot;HDL Cholesteral Group&quot;</span>
+        <span style="color: blue">"HDL Cholesteral Group"</span>
         <span style="color: Gray"> --&gt;</span>
         <span style="color: Gray">&lt;!-- HDL Cholesterol Result --&gt;</span>
    &lt;<a title="HDL Cholesterol (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name">
@@ -1378,7 +454,7 @@
         </span>
         <span style="color: navy">Range is a recommended range</span>
         <span style="color: Gray"> --&gt;</span>&lt;/meaning&gt;
-    &lt;<a title="" href="#LabReport.resultGroup.result.referenceRange.rangeQuantity">1.5 mmol/L&quot; class=&quot;dict&quot;&gt;rangeQuantity</a>&gt;
+    &lt;<a title="" href="#LabReport.resultGroup.result.referenceRange.rangeQuantity">1.5 mmol/L" class="dict"&gt;rangeQuantity</a>&gt;
       &lt;value&gt;1.5&lt;/value&gt;
       &lt;status&gt;&gt;&lt;/status&gt;
       &lt;units&gt;mmol/L&lt;/units&gt;
@@ -1392,7 +468,7 @@
             <b>result</b>
           </span>
         </a>
-        <span style="color: blue">&quot;LDL Cholesteral Group&quot;</span>
+        <span style="color: blue">"LDL Cholesteral Group"</span>
         <span style="color: Gray"> --&gt;</span>
         <span style="color: Gray">&lt;!-- LDL Cholesterol result, if reported --&gt;</span>
    &lt;<a title="Group of elements for LDL Cholesterol. LOINC code defines whether LDL is measured or calculated (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name">
@@ -1530,4 +606,928 @@
 </pre>
     </div>
   </text>
+  <name value="Lipid Profile"/>
+  <author>
+    <name value="Grahame Grieve"/>
+    <telecom>
+      <system value="email"/>
+      <value value="grahame@healthintersections.com.au"/>
+    </telecom>
+  </author>
+  <description value="Describes how the lab report is used for a standard Lipid Profile - Cholesterol, Triglyceride and Cholesterol fractions. Uses LOINC codes"/>
+  <status>
+    <code value="testing"/>
+    <date value="2012-05-12"/>
+    <comment value="Sample, never intended for real use"/>
+  </status>
+  <resource>
+    <type value="Resource"/>
+    <name value="Lipids"/>
+    <element>
+      <path value="LabReport"/>
+      <name value="Lipids"/>
+      <definition>
+        <short value="Lipid Lab Report"/>
+        <formal value="The findings and interpretation of a general lipid lab profile"/>
+        <comments value="Not to be used for reporting on non-pathology test results e.g. diagnostic imaging, ECG or respiratory function tests. Not to be used to represent an entire cumulative report. This Pathology test result archetype represents only one of the result sets that is usually viewed as a vertical in a cumulative test report. A cumulative report is a view that is constructed from the results represented by multiple OBSERVATION archetypes. This archetype is suitable for representation of general pathology test results, but not intended to cover full synoptic reports. For these, additional resources are required to represent the data properly"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="Resource"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.id"/>
+      <definition>
+        <short value="Master Resource Id, always first in all resources"/>
+        <formal value="Master Resource Id, always first in all resources"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="id"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.status"/>
+      <definition>
+        <short value="registered|interim|final|amended|cancelled|withdrawn"/>
+        <formal value="The status of the pathology test result as a whole"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="code"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+        <binding value="LabReportStatus"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.issued"/>
+      <definition>
+        <short value="date issed for current status"/>
+        <formal value="The date and/or time that the result was issued from the source for the recorded Test result status"/>
+        <comments value="May be different from LabReport.updated, because that is the status of this record, not the report the record is about"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="instant"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.patient"/>
+      <definition>
+        <short value="The patient the report is about"/>
+        <formal value="The patient about who the report is about"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="Resource(Patient)"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.admission"/>
+      <definition>
+        <short value="Admission Context"/>
+        <formal value="The admission that this diagnostic investigation is associated with"/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="Resource(Admission)"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.laboratory"/>
+      <definition>
+        <short value="Responsible Laboratory"/>
+        <formal value="The laboratory service that issued the report"/>
+        <comments value="This is not necessarily the source of the atomic reports - it's the lab that takes responsibility for the clinical report"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="Resource(Organization)"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.reportId"/>
+      <definition>
+        <short value="Id for external references to this report"/>
+        <formal value="The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS)."/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="Identifier"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.requestDetail"/>
+      <definition>
+        <short value="What was requested"/>
+        <formal value="Details concerning a single pathology test requested."/>
+        <comments value="Note: Usually there is one test request for each result, however in some circumstances multiple test requests may be represented using a single Pathology test result resource"/>
+        <min value="0"/>
+        <max value="*"/>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.requestDetail.requestOrderId"/>
+      <definition>
+        <short value="Id assigned by requester"/>
+        <formal value="The local ID assigned to the order by the order requester."/>
+        <comments value="Equivalent to the Placer Order Identifier"/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="Identifier"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.requestDetail.receiverOrderId"/>
+      <definition>
+        <short value="Receiver's Id for the request"/>
+        <formal value="The local ID assigned to the test order by the order filler, usually by the Laboratory Information System (LIS)."/>
+        <comments value="Usually equivalent to the DICOM Accession Number and the Filler Order Identifier."/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="Identifier"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.requestDetail.requestTest"/>
+      <definition>
+        <short value="Test Requested"/>
+        <formal value="Identification of pathology test requested,"/>
+        <comments value="Useful where the test requested differs from the test actually performed."/>
+        <min value="0"/>
+        <max value="*"/>
+        <type>
+          <code value="CodeableConcept"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+        <binding value="LabRequests"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.requestDetail.requester"/>
+      <definition>
+        <short value="Responsible for request"/>
+        <formal value="Details of the clinician or organization requesting the laboratory test."/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="Resource(Provider|Organization)"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.requestDetail.clinicalInfo"/>
+      <definition>
+        <short value="Clinical information provided"/>
+        <formal value="Details of the clinical information provided to the laboratory along with the original request"/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="Resource(Any)"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.reportName"/>
+      <definition>
+        <short value="LOINC Code for Lipid Report with LDL"/>
+        <formal value="LOINC Code for Lipid Report with LDL"/>
+        <comments value="LOINC code includes &#34;direct&#34; LDL - does this mean LDL derived by measuring VLDL by ultracentrifugation? This panel includes both measured and calculated LDL"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="CodeableConcept"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+        <binding value="LabReportNames"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.service"/>
+      <definition>
+        <short value="Biochemistry, Hematology, etc."/>
+        <formal value="The diagnostic service that performs the examination e.g. biochemistry, hematology."/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="CodeableConcept"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+        <binding value="LabServices"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.diagnosticTime"/>
+      <definition>
+        <short value="Effective time of diagnostic report"/>
+        <formal value="The diagnostically relevant time for this report"/>
+        <comments value="The diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship is not always automatic"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="dateTime"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.specimen"/>
+      <definition>
+        <short value="Specimen (incl. time of collection)"/>
+        <formal value="Details about the specimen if all individual test results are derived from the same specimen"/>
+        <comments value="If the specimen is sufficiently specified with a code in the Test result name, then this additional data may be redundant. If there are multiple specimens, these may be represented per 'Result group'"/>
+        <min value="0"/>
+        <max value="*"/>
+        <type>
+          <code value="Resource(Specimen)"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup"/>
+      <definition>
+        <short value="All the results in one group"/>
+        <formal value="All the lipid panel results"/>
+        <comments value="Many (most) lab reports don't really have a meaningful group. In these cases, just create a single group with no specimen or name"/>
+        <min value="1"/>
+        <max value="1"/>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.name"/>
+      <definition>
+        <short value="No name needed for the result group"/>
+        <formal value="No name needed for the result group"/>
+        <comments value="For example, the antibody code for a goup of antibody related test, or the organism code for a group of isolate/sensitivities. Leave blank if there is no particular meaning associated with the group"/>
+        <min value="0"/>
+        <max value="0"/>
+        <type>
+          <code value="CodeableConcept"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+        <binding value="LabResultGroupNames"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.specimen"/>
+      <definition>
+        <short value="Specimen details"/>
+        <formal value="Details about the individual specimen to which these Result group test results refer, where testing of multiple specimens is required."/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="Resource(Specimen)"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result"/>
+      <name value="Cholesterol Group"/>
+      <definition>
+        <short value="Cholesterol Result"/>
+        <formal value="Group of elements for Cholesterol result"/>
+        <min value="1"/>
+        <max value="1"/>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.name"/>
+      <definition>
+        <short value="Cholesterol"/>
+        <formal value="Cholesterol"/>
+        <comments value="results are fundamentally a name - value pair with additional clarifying information"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="CodeableConcept"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+        <binding value="LabResultNames"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.value[x]"/>
+      <definition>
+        <short value="Cholesterol value"/>
+        <formal value="Cholesterol value. If a result is not available, use the comments field"/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="Quantity"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.flag"/>
+      <definition>
+        <short value="+ | ++ | +++ | - | -- | --- "/>
+        <formal value="+ | ++ | +++ | - | -- | --- "/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="code"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+        <binding value="LabResultFlag"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.status"/>
+      <definition>
+        <short value="Registered|Interim|Final|Amended|Cancelled|Withdrawn"/>
+        <formal value="The status of the result value"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="code"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+        <binding value="LabReportStatus"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.comments"/>
+      <definition>
+        <short value="Comments about result"/>
+        <formal value="May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result."/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="string"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.referenceRange"/>
+      <definition>
+        <short value="Guide for interpretation"/>
+        <formal value="Guide for interpretation"/>
+        <comments value="Most results only have one reference range. Some non-numerical results don't have a reference range"/>
+        <min value="1"/>
+        <max value="1"/>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.referenceRange.meaning"/>
+      <definition>
+        <short value="Range is a recommended range"/>
+        <formal value="Range is a recommended range"/>
+        <comments value="yeah, so I suppose it should be coded, right? But coded how? No publically available terminologies include an appropriate code…"/>
+        <min value="0"/>
+        <max value="0"/>
+        <type>
+          <code value="CodeableConcept"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+        <binding value="LabReferenceRanges"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.referenceRange.range[x]"/>
+      <definition>
+        <short value="Reference"/>
+        <formal value="&lt;4.5 mmol/L"/>
+        <comments value="Per Australian NHF Recommendations"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="Quantity"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result"/>
+      <name value="Triglyceride Group"/>
+      <definition>
+        <short value="Triglyceride Result"/>
+        <formal value="Group of elements for Triglyceride result"/>
+        <min value="1"/>
+        <max value="1"/>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.name"/>
+      <definition>
+        <short value="Triglyceride"/>
+        <formal value="Triglyceride"/>
+        <comments value="results are fundamentally a name - value pair with additional clarifying information"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="CodeableConcept"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+        <binding value="LabResultNames"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.value[x]"/>
+      <definition>
+        <short value="Triglyceride value"/>
+        <formal value="Triglyceride value. If a result is not available, use the comments field"/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="Quantity"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.flag"/>
+      <definition>
+        <short value="+ | ++ | +++ | - | -- | --- "/>
+        <formal value="+ | ++ | +++ | - | -- | --- "/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="code"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+        <binding value="LabResultFlag"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.comments"/>
+      <definition>
+        <short value="Comments about result"/>
+        <formal value="Comments about result"/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="string"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.referenceRange"/>
+      <definition>
+        <short value="Guide for interpretation"/>
+        <formal value="Guide for interpretation"/>
+        <comments value="Most results only have one reference range. Some non-numerical results don't have a reference range"/>
+        <min value="1"/>
+        <max value="1"/>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.referenceRange.meaning"/>
+      <definition>
+        <short value="Range is a recommended range"/>
+        <formal value="Range is a recommended range"/>
+        <comments value="see note above"/>
+        <min value="0"/>
+        <max value="0"/>
+        <type>
+          <code value="CodeableConcept"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+        <binding value="LabReferenceRanges"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.referenceRange.range[x]"/>
+      <definition>
+        <short value="Reference"/>
+        <formal value="&lt;2.0 mmol/L"/>
+        <comments value="Per Australian NHF Recommendations"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="Quantity"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result"/>
+      <name value="HDL Cholesteral Group"/>
+      <definition>
+        <short value="HDL Cholesterol Result"/>
+        <formal value="Group of elements for HDL Cholesterol result"/>
+        <min value="1"/>
+        <max value="1"/>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.name"/>
+      <definition>
+        <short value="HDL Cholesterol"/>
+        <formal value="HDL Cholesterol"/>
+        <comments value="results are fundamentally a name - value pair with additional clarifying information"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="CodeableConcept"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+        <binding value="LabResultNames"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.value[x]"/>
+      <definition>
+        <short value="HDL Cholesterol value"/>
+        <formal value="HDL Cholesterol value. If a result is not available, use the comments field"/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="Quantity"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.flag"/>
+      <definition>
+        <short value="+ | ++ | +++ | - | -- | --- "/>
+        <formal value="+ | ++ | +++ | - | -- | --- "/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="code"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+        <binding value="LabResultFlag"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.comments"/>
+      <definition>
+        <short value="Comments about result"/>
+        <formal value="Comments about result"/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="string"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.referenceRange"/>
+      <definition>
+        <short value="Guide for interpretation"/>
+        <formal value="Guide for interpretation"/>
+        <comments value="Most results only have one reference range. Some non-numerical results don't have a reference range"/>
+        <min value="1"/>
+        <max value="1"/>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.referenceRange.meaning"/>
+      <definition>
+        <short value="Range is a recommended range"/>
+        <formal value="Range is a recommended range"/>
+        <comments value="See note above"/>
+        <min value="0"/>
+        <max value="0"/>
+        <type>
+          <code value="CodeableConcept"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+        <binding value="LabReferenceRanges"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.referenceRange.range[x]"/>
+      <definition>
+        <short value="Reference"/>
+        <formal value="&gt;1.5 mmol/L"/>
+        <comments value="Per Australian NHF Recommendations"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="Quantity"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result"/>
+      <name value="LDL Cholesteral Group"/>
+      <definition>
+        <short value="LDL Cholesterol result, if reported"/>
+        <formal value="LDL Cholesterol result, if reported"/>
+        <min value="0"/>
+        <max value="1"/>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.name"/>
+      <definition>
+        <short value="LDL Cholesterol. LOINC code defines measured or calc"/>
+        <formal value="Group of elements for LDL Cholesterol. LOINC code defines whether LDL is measured or calculated"/>
+        <comments value="results are fundamentally a name - value pair with additional clarifying information"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="CodeableConcept"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+        <binding value="LOINC 35198-1 | LOINC 13457-7"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.value[x]"/>
+      <definition>
+        <short value="LDL Cholesterol value"/>
+        <formal value="LDL Cholesterol value. If a result is not available, use the comments field"/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="Quantity"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.flag"/>
+      <definition>
+        <short value="+ | ++ | +++ | - | -- | --- "/>
+        <formal value="+ | ++ | +++ | - | -- | --- "/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="code"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+        <binding value="LabResultFlag"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.comments"/>
+      <definition>
+        <short value="Comments about result"/>
+        <formal value="Comments about result"/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="string"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.referenceRange"/>
+      <definition>
+        <short value="Guide for interpretation"/>
+        <formal value="Guide for interpretation"/>
+        <comments value="Most results only have one reference range. Some non-numerical results don't have a reference range"/>
+        <min value="1"/>
+        <max value="1"/>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.referenceRange.meaning"/>
+      <definition>
+        <short value="Range is a recommended range"/>
+        <formal value="Range is a recommended range"/>
+        <comments value="See Note above"/>
+        <min value="0"/>
+        <max value="0"/>
+        <type>
+          <code value="CodeableConcept"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+        <binding value="LabReferenceRanges"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.resultGroup.result.referenceRange.range[x]"/>
+      <definition>
+        <short value="Reference"/>
+        <formal value="&lt;3.0 mmol/L"/>
+        <comments value="Per Australian NHF Recommendations"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="Quantity"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.conclusion"/>
+      <definition>
+        <short value="Clinical Interpretation of Lipid Panel"/>
+        <formal value="May include diagnosis or suggestions for follow up testing"/>
+        <comments value="common reports don't have a conclusion, but some do"/>
+        <min value="0"/>
+        <max value="1"/>
+        <type>
+          <code value="Narrative"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="true"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.codedDiagnosis"/>
+      <definition>
+        <short value="Codes for the conclusion"/>
+        <formal value="Codes for the conclusion"/>
+        <min value="0"/>
+        <max value="0"/>
+        <type>
+          <code value="CodeableConcept"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+        <binding value="LabDiagnosisCodes"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.representation"/>
+      <definition>
+        <short value="Entire Report as issued"/>
+        <formal value="Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they must be semantically equivalent."/>
+        <comments value="Possible formats: text/html, text/plain, text/rtf, application/msword, application/pdf, application/rtf, application/vnd.oasis.opendocument.text, application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+        <min value="0"/>
+        <max value="*"/>
+        <type>
+          <code value="Attachment"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.extension"/>
+      <definition>
+        <short value="See Extensions"/>
+        <formal value="See Extensions"/>
+        <min value="0"/>
+        <max value="*"/>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+    <element>
+      <path value="LabReport.text"/>
+      <definition>
+        <short value="Text summary of report, for human interpretation"/>
+        <formal value="Text summary of report, for human interpretation"/>
+        <min value="1"/>
+        <max value="1"/>
+        <type>
+          <code value="Narrative"/>
+        </type>
+        <mustSupport value="false"/>
+        <mustUnderstand value="false"/>
+      </definition>
+      <closed value="false"/>
+    </element>
+  </resource>
 </Profile>

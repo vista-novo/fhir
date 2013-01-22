@@ -1,48 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Problem xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/problem.xsd">
+  <text>
+   <status value="generated"/>
+   <div xmlns="http://www.w3.org/1999/xhtml">Severe burn of left ear (Date: 24-May 2012)</div>   
+ </text>
   <subject>
-    <type>Patient</type>
-    <url>../patient/@example</url>
+    <type value="Patient"/>
+    <url value="../patient/@example"/>
   </subject>
   <code> 
     <coding>
-      <system>http://snomed.info</system>
-      <code>39065001</code>
-      <display>Burn of ear</display>
+      <system value="http://snomed.info"/>
+      <code value="39065001"/>
+      <display value="Burn of ear"/>
     </coding>
-    <text>Burnt Ear</text>
+    <text value="Burnt Ear"/>
   </code>
  <category>
    <coding>
-    <system>http://snomed.info</system>
-    <code>439401001</code> 
-    <display>Diagnosis</display>
+    <system value="http://snomed.info"/>
+    <code value="439401001"/> 
+    <display value="Diagnosis"/>
    </coding>
  </category>
- <status>confirmed</status>
+ <status value="confirmed"/>
  <severity>
    <coding>
-    <system>http://snomed.info</system>
-    <code>24484000</code>
-    <display>Severe</display>
+    <system value="http://snomed.info"/>
+    <code value="24484000"/>
+    <display value="Severe"/>
    </coding>
  </severity>
- <onsetDate>2012-05-24</onsetDate>
+ <onsetDate value="2012-05-24"/>
  <location>
   <code>
     <coding>
-      <system>http://snomed.info</system>
-      <code>49521004</code>
-      <display>Left external ear structure</display>
+      <system value="http://snomed.info"/>
+      <code value="49521004"/>
+      <display value="Left external ear structure"/>
     </coding>
-    <text>Left Ear</text>
+    <text value="Left Ear"/>
   </code>
  </location>
- <text>
-   <status>generated</status>
-   <div xmlns="http://www.w3.org/1999/xhtml">Severe burn of left ear (Date: 24-May 2012)</div>   
- </text>
 </Problem>
-
-
-

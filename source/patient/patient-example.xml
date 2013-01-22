@@ -1,69 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patient xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/patient.xsd">
-  <active>true</active>
-
-  <!-- MRN assigned by ACME healthcare on 6-May 2001 -->
-  <identifier>
-    <use>usual</use>
-    <label>MRN</label>
-    <system>oid:1.2.36.146.595.217.0.1</system>
-    <id>12345</id>
-    <period>
-      <start>2001-05-06</start>
-    </period>
-    <assigner>
-      <display>Acme Healthcare</display>
-    </assigner>
-  </identifier>
-
-  <details>
-    <!-- Peter James Chalmers, but called "Jim" -->
-    <name>
-      <use>official</use>
-      <family>Chalmers</family>
-      <given>Peter</given>
-      <given>James</given>
-    </name>
-    <name>
-      <use>usual</use>
-      <given>Jim</given>
-    </name>
-
-    <telecom>
-      <use>home</use>
-      <!-- home communication details aren't known -->
-    </telecom>
-    <telecom>
-      <system>phone</system>
-      <value>(03) 5555 6473</value>
-      <use>work</use>
-    </telecom>
-    
-    <!-- use v2 code system for male / female -->
-    <gender>
-      <system>http://hl7.org/fhir/sid/v2-0001</system>
-      <code>M</code>
-      <display>Male</display>
-    </gender>
-    <birthDate>1974-12-25</birthDate>
-    <deceased>false</deceased>
-
-    <address>
-      <use>home</use>
-      <line>534 Erewhon St</line>
-      <city>PleasantVille</city>
-      <state>Vic</state>
-      <zip>3999</zip>
-    </address>
-  </details>
-
-  <provider>
-    <type>Organization</type>
-    <url>../organization/@1</url>
-  </provider>
-  
   <text>
-    <status>generated</status>
+    <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <table>
         <tbody>
@@ -87,4 +25,65 @@
       </table>
     </div>
   </text>
+  <active value="true"/>
+
+  <!-- MRN assigned by ACME healthcare on 6-May 2001 -->
+  <identifier>
+    <use value="usual"/>
+    <label value="MRN"/>
+    <system value="oid:1.2.36.146.595.217.0.1"/>
+    <id value="12345"/>
+    <period>
+      <start value="2001-05-06"/>
+    </period>
+    <assigner>
+      <display value="Acme Healthcare"/>
+    </assigner>
+  </identifier>
+
+  <details>
+    <!-- Peter James Chalmers, but called "Jim" -->
+    <name>
+      <use value="official"/>
+      <family value="Chalmers"/>
+      <given value="Peter"/>
+      <given value="James"/>
+    </name>
+    <name>
+      <use value="usual"/>
+      <given value="Jim"/>
+    </name>
+
+    <telecom>
+      <use value="home"/>
+      <!-- home communication details aren't known -->
+    </telecom>
+    <telecom>
+      <system value="phone"/>
+      <value value="(03) 5555 6473"/>
+      <use value="work"/>
+    </telecom>
+    
+    <!-- use v2 code system for male / female -->
+    <gender>
+      <system value="http://hl7.org/fhir/sid/v2-0001"/>
+      <code value="M"/>
+      <display value="Male"/>
+    </gender>
+    <birthDate value="1974-12-25"/>
+    <deceased value="false"/>
+
+    <address>
+      <use value="home"/>
+      <line value="534 Erewhon St"/>
+      <city value="PleasantVille"/>
+      <state value="Vic"/>
+      <zip value="3999"/>
+    </address>
+  </details>
+
+  <provider>
+    <type value="Organization"/>
+    <url value="../organization/@1"/>
+  </provider>
 </Patient>

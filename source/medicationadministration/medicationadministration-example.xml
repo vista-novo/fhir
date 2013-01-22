@@ -1,46 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MedicationAdministration xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\medicationAdministration.xsd"> 
-<!--  -->
-<administrationEventStatus>completed</administrationEventStatus>
-<effectiveTime>
-  <start>2012-06-01T14:30:00</start>
-  <end>2012-06-01T14:30:00</end>
-</effectiveTime>
-  <route>
-    <coding>
-      <system>http://snomed.info</system>
-      <code>363743006</code>
-      <display>oral administration of treatment</display>
-    </coding>  
-  </route>
-  <administeredDose>
-    <value>10</value>
-    <units>ml</units>
-    <system>http://unitsofmeasure.org</system>
-    <code>ml</code>
-  </administeredDose>
-  <prescription>
-    <type>Prescription</type>
-    <url>../prescription/@example</url>
-  </prescription>
-  <patient>
-    <type>Patient</type>
-    <url>../patient/@example</url>
-  </patient>
-  <medication>
-    <coding>
-      <system>http://snomed.info</system>
-      <code>123456789</code>
-      <display>Penicillin VK oral suspension 125mg/5ml</display>
-    </coding>  
-  </medication>
-  <text>
-    <status>generated</status>
+<MedicationAdministration xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\medicationAdministration.xsd"> 
+<text>
+    <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <p>Penicillin VK 10ml suspension administered by oral route at 14:30 on 1 June 2012</p>
       <p>on the authority of prescription ref: example</p>
       <p>to patient ref: a23</p>
     </div>
-  </text>
+  </text> 
+<!--  -->
+<administrationEventStatus value="completed"/>
+<effectiveTime>
+  <start value="2012-06-01T14:30:00"/>
+  <end value="2012-06-01T14:30:00"/>
+</effectiveTime>
+  <route>
+    <coding>
+      <system value="http://snomed.info"/>
+      <code value="363743006"/>
+      <display value="oral administration of treatment"/>
+    </coding>  
+  </route>
+  <administeredDose>
+    <value value="10"/>
+    <units value="ml"/>
+    <system value="http://unitsofmeasure.org"/>
+    <code value="ml"/>
+  </administeredDose>
+  <prescription>
+    <type value="Prescription"/>
+    <url value="../prescription/@example"/>
+  </prescription>
+  <patient>
+    <type value="Patient"/>
+    <url value="../patient/@example"/>
+  </patient>
+  <medication>
+    <coding>
+      <system value="http://snomed.info"/>
+      <code value="123456789"/>
+      <display value="Penicillin VK oral suspension 125mg/5ml"/>
+    </coding>  
+  </medication>
 </MedicationAdministration>

@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Organization xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://hl7.org/fhir ../../schema/organization.xsd">
+<Organization xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/organization.xsd">
+
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>Gastroenterology @ Acme Hospital. ph: +1 555 234 3523, email: <a href="mailto:gastro@acme.org">gastro@acme.org</a></p>
+    </div>
+  </text>
 
   <!-- Clinical Team "Gastroenterology" at Acme Hospital -->
   <identifier>
-    <system>http://www.acme.org.au/units</system>
-    <id>Gastro</id>
+    <system value="http://www.acme.org.au/units"/>
+    <id value="Gastro"/>
   </identifier>
-  <name>Gastroenterology</name>
+  <name value="Gastroenterology"/>
   <telecom>
-    <system>phone</system>
-    <value>+1 555 234 3523</value>
-    <use>mobile</use>
+    <system value="phone"/>
+    <value value="+1 555 234 3523"/>
+    <use value="mobile"/>
   </telecom>
   <telecom>
-    <system>email</system>
-    <value>gastro@acme.org</value>
-    <use>work</use>
+    <system value="email"/>
+    <value value="gastro@acme.org"/>
+    <use value="work"/>
   </telecom>
 
   <relatedOrganization>
     <organization>
-      <type>Organization</type>
-      <url>../organization/@1</url>
-      <display>ACME Healthcare, Inc</display>
+      <type value="Organization"/>
+      <url value="../organization/@1"/>
+      <display value="ACME Healthcare, Inc"/>
     </organization>
     <type>
       <coding>
-        <system>oid:2.16.840.1.113883.5.110</system>
-        <code>TERR</code>
+        <system value="oid:2.16.840.1.113883.5.110"/>
+        <code value="TERR"/>
       </coding>
     </type>
   </relatedOrganization>
-
-  <text>
-    <status>generated</status>
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <p>Gastroenterology @ Acme Hospital. ph: +1 555 234 3523, email: <a
-          href="mailto:gastro@acme.org">gastro@acme.org</a></p>
-    </div>
-  </text>
 </Organization>

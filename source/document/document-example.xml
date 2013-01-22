@@ -1,68 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Document xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/document.xsd">
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>Consultation note for Henry Levin the 7th</p>
+    </div>
+  </text>
   <information>
     <id>
-      <system>http://healthintersections.com.au/test</system>
-      <id>1</id>
+      <system value="http://healthintersections.com.au/test"/>
+      <id value="1"/>
     </id>
     <versionId>
-      <system>urn:ietf:rfc:3986</system>
-      <id>urn:uuid:72391709-b9ae-4053-b888-4bee268bf5da</id> 
+      <system value="urn:ietf:rfc:3986"/>
+      <id value="urn:uuid:72391709-b9ae-4053-b888-4bee268bf5da"/> 
     </versionId>
-    <created>2012-01-04T09:10:14Z</created>
+    <created value="2012-01-04T09:10:14Z"/>
     <type>
       <coding>
-        <system>http://loinc.org</system>
-        <code>11488-4</code>
-        <display>Consultation note</display>
+        <system value="http://loinc.org"/>
+        <code value="11488-4"/>
+        <display value="Consultation note"/>
       </coding>
     </type>
     <confidentiality>
-      <system>http://ihe.net/xds/connectathon/confidentialityCodes</system>
-      <code>1.3.6.1.4.1.21367.2006.7.101</code>
-      <display>Clinical-Staff</display>
+      <system value="http://ihe.net/xds/connectathon/confidentialityCodes"/>
+      <code value="1.3.6.1.4.1.21367.2006.7.101"/>
+      <display value="Clinical-Staff"/>
     </confidentiality>
     <subject>
-      <type>Patient</type>
-      <url>../patient/@xcda</url>
-      <display>Henry Levin the 7th</display>
+      <type value="Patient"/>
+      <url value="../patient/@xcda"/>
+      <display value="Henry Levin the 7th"/>
     </subject>
     <author>
-      <type>Provider</type>
-      <url>../provider/@xcda-author</url>
-      <display>Robert Dolin MD</display>
+      <type value="Provider"/>
+      <url value="../provider/@xcda-author"/>
+      <display value="Robert Dolin MD"/>
     </author>
     <attester>
-      <mode>legal</mode>
+      <mode value="legal"/>
       <party>
-        <type>Provider</type>
-        <url>../provider/@xcda-author</url>
-        <display>Robert Dolin MD</display>
+        <type value="Provider"/>
+        <url value="../provider/@xcda-author"/>
+        <display value="Robert Dolin MD"/>
       </party>
     </attester>
     <custodian>
-      <type>Organization</type>
-      <url>../organization/@2.16.840.1.113883.19.5</url>
-      <display>Good Health Clinic</display>
+      <type value="Organization"/>
+      <url value="../organization/@2.16.840.1.113883.19.5"/>
+      <display value="Good Health Clinic"/>
     </custodian>
   </information>
   <section>
     <code>
       <coding>
-        <system>http://loinc.org</system>
-        <code>10164-2</code>
+        <system value="http://loinc.org"/>
+        <code value="10164-2"/>
       </coding>
     </code>
     <content>
       <!-- we really need a different resource here, but it's not yet defined -->
-      <type>Prescription</type> 
-      <url>../prescription/@example</url>
+      <type value="Prescription"/> 
+      <url value="../prescription/@example"/>
     </content>
   </section>
-  <text>
-    <status>generated</status>
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <p>Consultation note for Henry Levin the 7th</p>
-    </div>
-  </text>
 </Document>

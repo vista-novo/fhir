@@ -1,43 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Provider xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/provider.xsd">
 
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>Dr Adam Careful is a Referring Provider for Acme Hospital from 1-Jan 2012 to 31-Mar 2012</p>
+    </div>
+  </text>
+
   <identifier>
-    <system>htp://www.acme.org/providers</system>
-    <id>23</id>
+    <system value="htp://www.acme.org/providers"/>
+    <id value="23"/>
   </identifier>
   <details>
     <name>
-      <family>Careful</family>
-      <given>Adam</given>
-      <prefix>Dr</prefix>
+      <family value="Careful"/>
+      <given value="Adam"/>
+      <prefix value="Dr"/>
     </name>
   </details>
 
   <organization>
-    <type>Organization</type>
-    <url>../organization/@1</url>
+    <type value="Organization"/>
+    <url value="../organization/@1"/>
   </organization> 
 
   <!-- Referring Provider for the first 3 months of 2012 -->
   <role>
     <coding>
-      <system>http://hl7.org/fhir/sid/v2-0286</system>
-      <code>RP</code>
+      <system value="http://hl7.org/fhir/sid/v2-0286"/>
+      <code value="RP"/>
     </coding>
   </role>
   
   <period>
-    <start>2012-01-01</start>
-    <end>2012-03-31</end>
+    <start value="2012-01-01"/>
+    <end value="2012-03-31"/>
   </period>
-  
-
-  <text>
-    <status>generated</status>
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <p>Dr Adam Careful is a Referring Provider for Acme Hospital from 1-Jan 2012 to 31-Mar 2012</p>
-    </div>
-  </text>
 </Provider>
-
-

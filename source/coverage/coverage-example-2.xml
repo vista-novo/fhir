@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Coverage xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/coverage.xsd">
 
+ <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">A human readable rendering of the coverage</div>
+  </text>
+
  <issuer>
-  <type>Organization</type>
-  <url>../organization/@2</url>
+  <type value="Organization"/>
+  <url value="../organization/@2"/>
 </issuer>
  
  <period> 
-   <start>2011-03-17</start>
-   <end>2012-03-17</end>
+   <start value="2011-03-17"/>
+   <end value="2012-03-17"/>
  </period>
 
  <type>
-      <system>http://hl7.org/vocab/v3/ActCoverageTypeCode</system>
-      <code>EHCPOL</code>
-      <display>Extended Health Policy</display>
+      <system value="http://hl7.org/vocab/v3/ActCoverageTypeCode"/>
+      <code value="EHCPOL"/>
+      <display value="Extended Health Policy"/>
  </type>
  
  <identifier>
-    <system>http://xyz.com/codes/identifier</system>
-    <id>AB9876</id>
+    <system value="http://xyz.com/codes/identifier"/>
+    <id value="AB9876"/>
  </identifier>
  
  <plan>
-    <system>http://xyz.com/codes/plan</system>
-    <id>11024</id>
+    <system value="http://xyz.com/codes/plan"/>
+    <id value="11024"/>
  </plan>
  
  <subplan>
-    <system>http://xyz.com/codes/subplan</system>
-    <id>D15C9</id>
+    <system value="http://xyz.com/codes/subplan"/>
+    <id value="D15C9"/>
  </subplan>
  
- <dependent>1</dependent>
+ <dependent value="1"/>
   
  <planHolder>
 	<name>
-	<use>official</use>
-	 <family>Seebetter</family>
-	 <given>Frank</given>
-	 <given>I</given>
+	<use value="official"/>
+	 <family value="Seebetter"/>
+	 <given value="Frank"/>
+	 <given value="I"/>
 	</name>
 
 	<address>
-	<use>home</use>
-	 <line>123 Any St</line>
-	 <city>Anytown</city>
-	 <state>BC</state>
-	 <zip>V3R4R5</zip>
-	 <country>CANADA</country>
+	<use value="home"/>
+	 <line value="123 Any St"/>
+	 <city value="Anytown"/>
+	 <state value="BC"/>
+	 <zip value="V3R4R5"/>
+	 <country value="CANADA"/>
 	</address>
 
-	<birthdate>1952-06-26</birthdate>
+	<birthdate value="1952-06-26"/>
 
   </planHolder>
-  
-  <text>
-    <status>generated</status>
-    <div xmlns="http://www.w3.org/1999/xhtml">A human readable rendering of the coverage</div>
-  </text>
 </Coverage>

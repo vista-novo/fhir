@@ -1,51 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Provenance xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/provenance.xsd">
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">Authored on 8-Nov 2011 by Grahame Grieve. Content extracted from ISO-21090</div>
+  </text>
   <target>
-    <type>Patient</type>
-    <url>../patient/@example/history/@1</url>
+    <type value="Patient"/>
+    <url value="../patient/@example/history/@1"/>
   </target>
   <!-- nominal activity: editing the standard -->
   <activity>
     <period>
-      <start>2011-06-23</start>
+      <start value="2011-06-23"/>
     </period>
-    <recorded>2012-11-08T23:16:03+11:00</recorded>
+    <recorded value="2012-11-08T23:16:03+11:00"/>
     <reason>
-      <text>Editing the FHIR Specification</text>
+      <text value="Editing the FHIR Specification"/>
     </reason>
     <location>
-      <description>Home Office</description>
+      <description value="Home Office"/>
     </location>
   </activity>
   <!-- author -->
   <party>
     <role>
-      <system>http://hl7.org/fhir/provenance-participant-role</system>
-      <code>author</code>
+      <system value="http://hl7.org/fhir/provenance-participant-role"/>
+      <code value="author"/>
     </role>
     <type>
-      <system>http://hl7.org/fhir/provenance-participant-type</system>
-      <code>person</code>
+      <system value="http://hl7.org/fhir/provenance-participant-type"/>
+      <code value="person"/>
     </type>
-    <id>mailto:grahame@healthintersections.com.au</id>
-    <description>Grahame Grieve</description>
+    <id value="mailto:grahame@healthintersections.com.au"/>
+    <description value="Grahame Grieve"/>
   </party>
   <!-- actually, this example was extracted from ISO 21090 -->
   <party>
     <role>
-      <system>http://hl7.org/fhir/provenance-participant-role</system>
-      <code>source</code>
+      <system value="http://hl7.org/fhir/provenance-participant-role"/>
+      <code value="source"/>
     </role>
     <type>
-      <system>http://hl7.org/fhir/provenance-participant-type</system>
-      <code>document</code>
+      <system value="http://hl7.org/fhir/provenance-participant-type"/>
+      <code value="document"/>
     </type>
-    <id>urn:iso:std:21090</id>
-    <description>ISO 21090</description>
+    <id value="urn:iso:std:21090"/>
+    <description value="ISO 21090"/>
   </party>
-  
-  <text>
-    <status>generated</status>
-    <div xmlns="http://www.w3.org/1999/xhtml">Authored on 8-Nov 2011 by Grahame Grieve. Content extracted from ISO-21090</div>
-  </text>
 </Provenance>

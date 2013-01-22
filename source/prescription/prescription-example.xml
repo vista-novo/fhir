@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Prescription xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://hl7.org/fhir ../../schema/prescription.xsd">
+<Prescription xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/prescription.xsd">
+
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>Penicillin VK oral suspension, 125mg/5ml, 250 mg po tid x 10 days</p>
+    </div>
+  </text>
 
   <identifier>
  <!--
@@ -9,121 +15,121 @@
       <code>MR</code>
     </type>
 -->
-    <use>usual</use>
-    <label>MRN</label>
-    <system>oid:0.1.2.3.4.5.6.7</system>
-    <id>123456</id>
+    <use value="usual"/>
+    <label value="MRN"/>
+    <system value="oid:0.1.2.3.4.5.6.7"/>
+    <id value="123456"/>
   </identifier>
 
-  <status>active</status>
+  <status value="active"/>
 
   <patient>
-    <type>Patient</type>
-    <url>../patient/@pat2</url>
+    <type value="Patient"/>
+    <url value="../patient/@pat2"/>
   </patient>
 
   <prescriber>
-    <type>Provider</type>
-    <url>../provider/@example</url>
+    <type value="Provider"/>
+    <url value="../provider/@example"/>
   </prescriber>
 
-  <prescribed>2011-03-04T11:45:33+01:00</prescribed>
+  <prescribed value="2011-03-04T11:45:33+01:00"/>
 
   <dispense>
-    <repeats>2</repeats>
+    <repeats value="2"/>
     <quantity>
-      <value>50</value>
-      <units>ml</units>
+      <value value="50"/>
+      <units value="ml"/>
     </quantity>
     <dispenser>
-      <type>Organization</type>
-      <url>../organization/@1</url>
+      <type value="Organization"/>
+      <url value="../organization/@1"/>
     </dispenser>
   </dispense>
 
   <medicine>
     <identification>
-      <text>Penicillin VK oral suspension, 125mg/5ml</text>
+      <text value="Penicillin VK oral suspension, 125mg/5ml"/>
     </identification>
     <activeIngredient>
       <identification>
         <coding>
-          <system>urn:hl7.org:sid/atc</system>
-          <code>XXXXX</code>
-          <display>Penicillin</display>
+          <system value="urn:hl7.org:sid/atc"/>
+          <code value="XXXXX"/>
+          <display value="Penicillin"/>
         </coding>
       </identification>      
       <quantityRatio>
         <numerator>
-          <value>125</value>
-          <units>mg</units>
-          <system>http://unitsofmeasure.org</system>
-          <code>mg</code>
+          <value value="125"/>
+          <units value="mg"/>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="mg"/>
         </numerator>
         <denominator>
-          <value>5</value>
-          <units>ml</units>
-          <system>http://unitsofmeasure.org</system>
-          <code>ml</code>
+          <value value="5"/>
+          <units value="ml"/>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="ml"/>
         </denominator>
       </quantityRatio>
     </activeIngredient>
     <inactiveIngredient>
       <identification>
         <coding>
-          <system>urn:hl7.org:sid/atc</system>
-          <code>YYYYY</code>
-          <display>Water</display>
+          <system value="urn:hl7.org:sid/atc"/>
+          <code value="YYYYY"/>
+          <display value="Water"/>
         </coding>  
       </identification>
-      <quantityCode>sufficient</quantityCode>
+      <quantityCode value="sufficient"/>
     </inactiveIngredient>
   </medicine>
 
   <administrationRequest>
-    <description>250 mg po tid x 10 days</description>
+    <description value="250 mg po tid x 10 days"/>
    
     <totalPeriodicDose>
       <numerator>
-        <value>750</value>
-        <units>mg</units>
-        <system>http://unitsofmeasure.org</system>
-        <code>mg</code>
+        <value value="750"/>
+        <units value="mg"/>
+        <system value="http://unitsofmeasure.org"/>
+        <code value="mg"/>
       </numerator>
       <denominator>
-        <value>1</value>
-        <units>day</units>
-        <system>http://unitsofmeasure.org</system>
-        <code>d</code>
+        <value value="1"/>
+        <units value="day"/>
+        <system value="http://unitsofmeasure.org"/>
+        <code value="d"/>
       </denominator>
     </totalPeriodicDose>
     
     <duration>
-      <value>10</value>
-      <units>days</units>
-      <system>http://unitsofmeasure.org</system>
-      <code>d</code>
+      <value value="10"/>
+      <units value="days"/>
+      <system value="http://unitsofmeasure.org"/>
+      <code value="d"/>
     </duration>
     
     <dosageInstruction>
       <route>
         <coding>
-          <system>http://snomed.info</system>
-          <code>363743006</code>
-          <display>oral administration of treatment</display>
+          <system value="http://snomed.info"/>
+          <code value="363743006"/>
+          <display value="oral administration of treatment"/>
         </coding>          
       </route>
       <doseQuantity>
-        <value>250</value>
-        <units>mg</units>
-        <system>http://unitsofmeasure.org</system>
-        <code>mg</code>
+        <value value="250"/>
+        <units value="mg"/>
+        <system value="http://unitsofmeasure.org"/>
+        <code value="mg"/>
       </doseQuantity>
       <schedule>
         <repeat>
-          <frequency>3</frequency>
-          <duration>1</duration>
-          <units>d</units>
+          <frequency value="3"/>
+          <duration value="1"/>
+          <units value="d"/>
         </repeat>
       </schedule>
     </dosageInstruction>
@@ -131,16 +137,9 @@
 
   <reason>
     <coding>
-      <system>http://hl7.org/fhir/sid/icd-10</system>
-      <code>G44.1</code>
+      <system value="http://hl7.org/fhir/sid/icd-10"/>
+      <code value="G44.1"/>
     </coding>
-    <text>general headache</text>
+    <text value="general headache"/>
   </reason>
-  
-  <text>
-    <status>generated</status>
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <p>Penicillin VK oral suspension, 125mg/5ml, 250 mg po tid x 10 days</p>
-    </div>
-  </text>
 </Prescription>

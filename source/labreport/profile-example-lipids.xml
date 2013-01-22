@@ -1,10 +1,5 @@
-<?xml version="1.0"?>
-<?mso-application progid="Excel.Sheet"?>
-<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
- xmlns:o="urn:schemas-microsoft-com:office:office"
- xmlns:x="urn:schemas-microsoft-com:office:excel"
- xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
- xmlns:html="http://www.w3.org/TR/REC-html40">
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
@@ -33,16 +28,14 @@
    <Protection/>
   </Style>
   <Style ss:ID="s62" ss:Name="Hyperlink">
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#0000FF"
-    ss:Underline="Single"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#0000FF" ss:Underline="Single"/>
   </Style>
   <Style ss:ID="s63">
    <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
    </Borders>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
-    ss:Bold="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000" ss:Bold="1"/>
    <Interior ss:Color="#F2F2F2" ss:Pattern="Solid"/>
   </Style>
   <Style ss:ID="s64">
@@ -56,45 +49,36 @@
    <NumberFormat ss:Format="Short Date"/>
   </Style>
   <Style ss:ID="s68">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
-    ss:WrapText="1"/>
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s69">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
-    ss:WrapText="1"/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
-    ss:Bold="1"/>
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000" ss:Bold="1"/>
   </Style>
   <Style ss:ID="s70">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
-    ss:WrapText="1"/>
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
    </Borders>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
-    ss:Bold="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000" ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
   <Style ss:ID="s72">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
-    ss:WrapText="1"/>
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
    </Borders>
   </Style>
   <Style ss:ID="s73">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
-    ss:WrapText="1"/>
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
    </Borders>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
-    ss:Bold="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000" ss:Bold="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Metadata">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="12" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="12" x:FullColumns="1" x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="808.5"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">Name</Data></Cell>
@@ -114,8 +98,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">author.reference</Data></Cell>
-    <Cell ss:StyleID="s66" ss:HRef="mailto:grahame@healthintersections.com.au"><Data
-      ss:Type="String">grahame@healthintersections.com.au</Data></Cell>
+    <Cell ss:StyleID="s66" ss:HRef="mailto:grahame@healthintersections.com.au"><Data ss:Type="String">grahame@healthintersections.com.au</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">code</Data></Cell>
@@ -163,14 +146,12 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="LabReport">
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="39" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="39" x:FullColumns="1" x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="150.75"/>
    <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="2"/>
    <Column ss:Index="6" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="61.5" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="213.75"
-    ss:Span="1"/>
+   <Column ss:Index="9" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
    <Column ss:Index="11" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="161.25"/>
    <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="245.25"/>
    <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="114"/>
@@ -211,7 +192,7 @@
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://loinc.org#57698-3|Lipid panel with direct LDL</Data></Cell>
     <Cell><Data ss:Type="String">Loinc Code for Lipid Report with LDL</Data></Cell>
     <Cell><Data ss:Type="String">Loinc Code for Lipid Report with LDL</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Loinc code includes &quot;direct&quot; LDL - does this mean LDL derived by measuring VLDL by ultracentrifugation? This panel includes both measured and calculated LDL</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">Loinc code includes "direct" LDL - does this mean LDL derived by measuring VLDL by ultracentrifugation? This panel includes both measured and calculated LDL</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:Index="2"><Data ss:Type="String">LabReport.resultGroup</Data></Cell>
@@ -264,7 +245,7 @@
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">LabResultFlag</Data></Cell>
     <Cell><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">+ | ++ | +++ | - | &#45;- | &#45;&#45;- </Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">+ | ++ | +++ | - | -- | --- </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell ss:Index="2"><Data ss:Type="String">LabReport.resultGroup.result.comments</Data></Cell>
@@ -333,7 +314,7 @@
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">LabResultFlag</Data></Cell>
     <Cell><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">+ | ++ | +++ | - | &#45;- | &#45;&#45;- </Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">+ | ++ | +++ | - | -- | --- </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell ss:Index="2"><Data ss:Type="String">LabReport.resultGroup.result.comments</Data></Cell>
@@ -401,7 +382,7 @@
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">LabResultFlag</Data></Cell>
     <Cell><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">+ | ++ | +++ | - | &#45;- | &#45;&#45;- </Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">+ | ++ | +++ | - | -- | --- </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell ss:Index="2"><Data ss:Type="String">LabReport.resultGroup.result.comments</Data></Cell>
@@ -470,7 +451,7 @@
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">LabResultFlag</Data></Cell>
     <Cell><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">+ | ++ | +++ | - | &#45;- | &#45;&#45;- </Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">+ | ++ | +++ | - | -- | --- </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell ss:Index="2"><Data ss:Type="String">LabReport.resultGroup.result.comments</Data></Cell>

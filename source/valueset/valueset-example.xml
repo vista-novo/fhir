@@ -1,52 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/valueset.xsd">
-<!-- set of loinc codes for cholesterol for LONC 2.36 -->  
-  <name>Loinc Codes for Cholesterol</name>
-  <author>
-    <name>FHIR project team (example)</name>
-    <reference>http://hl7.org/fhir</reference>
-  </author>
-  <description>This is an example value set that includes 
-      all the LOINC codes for serum cholesterol from v2.36</description>
-  <status>testing</status>
-  <date>2012-06-13</date>
-
-  <!-- this example, we elected to use a UUID. We could have used 
-     an OID, or a URI - depends on how it will be used. -->
-  <identifier>256a5231-a2bb-49bd-9fea-f349d428b70d</identifier>
-
-  <!-- for version, we are going to simply use the day of publication. This is also 
-    arbitrary - whatever is here is what people use to refer to the version. 
-    Could also be a UUID too -->
-  <version>20120613</version>
-
-  <!-- we claim that this value set is a constraint on this other value set 
-    this actual URL is a reference to a fictitious value set definition on a 
-    fictitious FHIR value set registry. We claim here, simply for illustrative 
-    purposes, that the value set referred to here is all LOINC codes for serum
-    tests, and that this value set is therefor a constraint on that one -->
-  <restricts>http://hl7.org/svc/fhir/valueset/@03acace4-5206-4c8f-a8b4-df27a4c18b09</restricts>
-  
-  <!-- given that this value set is small, it doesn't make 
-   sense to import another one - what would it say? But if that made sense, 
-   we'd do it like this: 
-  <import>http://hl7.org/svc/fhir/valueset/@f0f65621-ae8c-4c57-9f96-5326c2acefe3</import> -->
-  
-  <!-- you could have multiple includes, if you wanted to include codes from more than
-     one code system, or include codes with different modes. we don't, in this case -->
-  <include>
-    <system>http://loinc.org</system>
-    <version>2.36</version>
-    <!-- for LOINC, we simply include the listed codes - no subsumption in LOINC -->
-    <mode>code</mode>
-    <!-- these were selected by hand -->
-    <code>14647-2</code>
-    <code>2093-3</code>
-    <code>35200-5</code>
-    <code>9342-7</code>
-  </include>
-  <text>
-    <status>generated</status>
+<text>
+    <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
      <p>Value set "Loinc Codes for Cholesterol": This is an example value set that includes 
         all the LOINC codes for serum cholesterol from v2.36. 
@@ -63,4 +18,48 @@
     </ul>
     </div>
   </text>
+<!-- set of loinc codes for cholesterol for LONC 2.36 -->  
+  <name value="Loinc Codes for Cholesterol"/>
+  <author>
+    <name value="FHIR project team (example)"/>
+    <reference value="http://hl7.org/fhir"/>
+  </author>
+  <description value="This is an example value set that includes &#xA;      all the LOINC codes for serum cholesterol from v2.36"/>
+  <status value="testing"/>
+  <date value="2012-06-13"/>
+
+  <!-- this example, we elected to use a UUID. We could have used 
+     an OID, or a URI - depends on how it will be used. -->
+  <identifier value="256a5231-a2bb-49bd-9fea-f349d428b70d"/>
+
+  <!-- for version, we are going to simply use the day of publication. This is also 
+    arbitrary - whatever is here is what people use to refer to the version. 
+    Could also be a UUID too -->
+  <version value="20120613"/>
+
+  <!-- we claim that this value set is a constraint on this other value set 
+    this actual URL is a reference to a fictitious value set definition on a 
+    fictitious FHIR value set registry. We claim here, simply for illustrative 
+    purposes, that the value set referred to here is all LOINC codes for serum
+    tests, and that this value set is therefor a constraint on that one -->
+  <restricts value="http://hl7.org/svc/fhir/valueset/@03acace4-5206-4c8f-a8b4-df27a4c18b09"/>
+  
+  <!-- given that this value set is small, it doesn't make 
+   sense to import another one - what would it say? But if that made sense, 
+   we'd do it like this: 
+  <import>http://hl7.org/svc/fhir/valueset/@f0f65621-ae8c-4c57-9f96-5326c2acefe3</import> -->
+  
+  <!-- you could have multiple includes, if you wanted to include codes from more than
+     one code system, or include codes with different modes. we don't, in this case -->
+  <include>
+    <system value="http://loinc.org"/>
+    <version value="2.36"/>
+    <!-- for LOINC, we simply include the listed codes - no subsumption in LOINC -->
+    <mode value="code"/>
+    <!-- these were selected by hand -->
+    <code value="14647-2"/>
+    <code value="2093-3"/>
+    <code value="35200-5"/>
+    <code value="9342-7"/>
+  </include>
 </ValueSet>

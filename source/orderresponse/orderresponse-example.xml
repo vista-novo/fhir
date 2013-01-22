@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OrderResponse xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\orderresponse.xsd">
 
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">Lab Report completed at 13:10 28-Dec 2012</div>
+  </text>
+
   <!-- 
     this should be a response to the example request, 
 	but we don't yet have all the resource types in 
@@ -11,15 +16,15 @@
 	response contains lab reports
   -->
   <request>
-    <type>Order</type>
-    <url>../order/@example</url>
+    <type value="Order"/>
+    <url value="../order/@example"/>
   </request>
-  <date>2012-12-28T13:10:56+11:00</date>
+  <date value="2012-12-28T13:10:56+11:00"/>
   
   <!-- made by the lab -->
   <who>
-    <type>Organization</type>
-    <url>../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f</url>
+    <type value="Organization"/>
+    <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
   </who>
   
   <!-- 
@@ -32,7 +37,7 @@
     practices in the order/fulfillment cycle, there's no formal
     rules about what is allowed
   -->
-  <code>complete</code>
+  <code value="complete"/>
   
   <!-- 
     the lab report that the lab provides as a token of it's 
@@ -44,12 +49,7 @@
     resource is only a token of the fulfillment of the order
   -->
   <fulfillment>
-    <type>LabReport</type>
-    <url>../labreport/@101</url>
+    <type value="LabReport"/>
+    <url value="../labreport/@101"/>
   </fulfillment>
-  
-  <text>
-    <status>generated</status>
-    <div xmlns="http://www.w3.org/1999/xhtml">Lab Report completed at 13:10 28-Dec 2012</div>
-  </text>
 </OrderResponse>

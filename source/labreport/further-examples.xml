@@ -1,4 +1,5 @@
-  <!-- 
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2005/Atom ../../schema/fhir-atom.xsd">
   <entry>
     <title/>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#27"/>
@@ -10,36 +11,40 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>27</id>
-        <status>final</status>
-        <issued>2005-03-04T12:28:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-03-04T12:28:01"/>
         <patient>
-          <type>Patient</type>
-          <id>7</id>
+          <type value="Patient"/>
+          <url value="../patient/@7"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>146006</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>AEROBIC WOUND CULTURE</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="146006"/>
+            <display value="AEROBIC WOUND CULTURE"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-03-04T12:28:17</diagnosticTime>
+        <diagnosticTime value="2005-03-04T12:28:17"/>
         <resultGroup>
           <name>
-            <text>SERUM CHEMISTRY</text>
+            <text value="SERUM CHEMISTRY"/>
           </name>
         </resultGroup>
-        <!-.-
+        <!--
 
 OBX|1|CE|SDES^SPECIMEN DESCRIPTION|1|WOUND||||||F|||200503041229|RL^REFERENCE LAB|731^MUFTIC^ DIJANA|
 OBX|2|FT|SREQ^SPECIAL REQUESTS|1|RIGHT HIP||||||F|||200503041229|RL^REFERENCE LAB|731^MUFTIC^ DIJANA|
@@ -152,12 +157,7 @@ OBX3 has antibiotic to be LOINC�d but OBX5 sensitivity result format varies.
 Is a result with multiple organisms and sensitivities without separate OBX�s  for each organism a problem?  
 
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -176,36 +176,40 @@ Is a result with multiple organisms and sensitivities without separate OBX�s  
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>28</id>
-        <status>final</status>
-        <issued>2005-10-24T10:48:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-10-24T10:48:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>6000501</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>BLOOD CULTURE-AUTOMATED</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="6000501"/>
+            <display value="BLOOD CULTURE-AUTOMATED"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-10-24T10:36:17</diagnosticTime>
+        <diagnosticTime value="2005-10-24T10:36:17"/>
         <resultGroup>
           <name>
-            <text>SERUM CHEMISTRY</text>
+            <text value="SERUM CHEMISTRY"/>
           </name>
         </resultGroup>
-        <!-.-
+        <!--
 
 Mt Carmel _Lab Result_(McKesson) system
 
@@ -251,12 +255,7 @@ OBX5- SNOMED result
 
 
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -275,36 +274,40 @@ OBX5- SNOMED result
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>29</id>
-        <status>final</status>
-        <issued>2006-01-23T08:36:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2006-01-23T08:36:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>ARDC</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>Blood Culture</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="ARDC"/>
+            <display value="Blood Culture"/>
           </coding>
         </reportName>
-        <diagnosticTime>2006-01-24T08:10:17</diagnosticTime>
+        <diagnosticTime value="2006-01-24T08:10:17"/>
         <resultGroup>
           <name>
-            <text>SERUM CHEMISTRY</text>
+            <text value="SERUM CHEMISTRY"/>
           </name>
         </resultGroup>
-        <!-.-
+        <!--
 
 
 Jefferson_Lab Result_ (Misys) system
@@ -339,12 +342,7 @@ OBX3- test to be LOINC�d
 
 
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -363,33 +361,37 @@ OBX3- test to be LOINC�d
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>30</id>
-        <status>final</status>
-        <issued>2006-02-03T03:20:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2006-02-03T03:20:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>RESPCUL</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>RESPCUL</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="RESPCUL"/>
+            <display value="RESPCUL"/>
           </coding>
         </reportName>
-        <diagnosticTime>2006-02-03T03:20:17</diagnosticTime>
+        <diagnosticTime value="2006-02-03T03:20:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 
 UMC LasVegas _Lab Result_ (?) system  
 
@@ -504,12 +506,7 @@ OBX3 does not have the antibiotic to be LOINC�d but OBX5 has antibiotic and se
 
 
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -528,29 +525,33 @@ OBX3 does not have the antibiotic to be LOINC�d but OBX5 has antibiotic and se
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>31</id>
-        <status>final</status>
-        <issued>2005-06-30T13:42:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-06-30T13:42:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
-          <text>MYCOLOGY</text>
+          <text value="MYCOLOGY"/>
         </reportName>
-        <diagnosticTime>2005-06-30T14:00:17</diagnosticTime>
+        <diagnosticTime value="2005-06-30T14:00:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 
 
 
@@ -585,12 +586,7 @@ Comments-   OBR 24 populated
 
 
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -609,33 +605,37 @@ Comments-   OBR 24 populated
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>32</id>
-        <status>final</status>
-        <issued>2005-11-07T23:38:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-07T23:38:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>URC</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>URINE CULTURE</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="URC"/>
+            <display value="URINE CULTURE"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-07T21:44:17</diagnosticTime>
+        <diagnosticTime value="2005-11-07T21:44:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MICRO TRANSACTION DIRECTLY FROM MISYS
 MSH|^~\&amp;|SUNQUEST|2|OCF|OCF|20051109102612||ORU^R01|11713|T|2.2|20041128424817|T|2.2|
 PID|||00123456^^^2||NAME DELETED||19500104|F|GOMEZ^AMY^|||||||||11111111^^^2|392547046|
@@ -664,12 +664,7 @@ OBX|15|ST|TRSUV^TRIMETH/SULFA^^|1|<=20|||SS|||F||1|200511091026|M3^CEN     MICRO
 OBX|16|ST|TOB^TOBRAMYCIN^^|1|<=1|||SS|||F||1|200511091026|M3^CEN     MICROBIOL|3729^SMYTHE^JENNIFER-CL|
  
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -688,33 +683,37 @@ OBX|16|ST|TOB^TOBRAMYCIN^^|1|<=1|||SS|||F||1|200511091026|M3^CEN     MICROBIOL|3
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>33</id>
-        <status>final</status>
-        <issued>2005-11-03T00:00:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-03T00:00:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>RTCS</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>RESPIRATORY CUL/SMR</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="RTCS"/>
+            <display value="RESPIRATORY CUL/SMR"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-06T05:25:17</diagnosticTime>
+        <diagnosticTime value="2005-11-06T05:25:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MICRO TRANSACTION DIRECTLY FROM MISYS
 MSH|^~\&amp;|SUNQUEST|2|OCF|OCF|20051109100025||ORU^R01|11014|T|2.2|20041128424317|T|2.2|
 PID|||00654321^^^2||NAME DELETED||19430609|M|^^|||||||||22222222^^^2|396429867|
@@ -750,12 +749,7 @@ OBX|7|ST|PIP^PIPERACILLIN^^|3|<=8|||SS|||F||3|200511091000|M3^CEN     MICROBIOL|
 OBX|8|ST|TOB^TOBRAMYCIN^^|3|2|||SS|||F||3|200511091000|M3^CEN     MICROBIOL|2605^GREENE^PAULA-CL|
 
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -774,33 +768,37 @@ OBX|8|ST|TOB^TOBRAMYCIN^^|3|2|||SS|||F||3|200511091000|M3^CEN     MICROBIOL|2605
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>34</id>
-        <status>final</status>
-        <issued>2005-11-22T11:31:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-22T11:31:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>6412-1</code>
-            <system>http://loinc.org</system>
-            <display>GIARDIA LAMBLIA AG</display>
+            <system value="http://loinc.org"/>
+            <code value="6412-1"/>
+            <display value="GIARDIA LAMBLIA AG"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T03:00:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T03:00:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|OE|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912102||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P281112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||196712|M||2076-6^NativeHawaiian or Other Pacific Islander^2.16.840.1.113883.6.238^H^^L|^^^OR^97005^USA^^^OR067|WASHINGTON ||||||V281112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||||2186-5^Not Hispanic or Latino^2.16.840.1.113883.6.238^N^^L|
 ORC|RE|
@@ -809,12 +807,7 @@ OBX|1|CE|6412-1^GIARDIA LAMBLIA AG^2.16.840.1.113883.6.1^182204^GIARDIA LAMBLIA,
 NTE|1|L|POSITIVE
 NTE|2|L|Giardia antigen detected.
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -833,33 +826,37 @@ NTE|2|L|Giardia antigen detected.
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>35</id>
-        <status>final</status>
-        <issued>2005-11-22T07:55:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-22T07:55:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>160218</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>Rubeola Antibodies, IgM</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="160218"/>
+            <display value="Rubeola Antibodies, IgM"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T01:00:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T01:00:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P301112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||199912|F||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|^^^OR^97005^USA^^^OR067|WASHINGTON ||||||V301112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 OBR|1||EM-83|^^^160218^Rubeola Antibodies, IgM^L|||200511220100|||||||200511220755|||||||||||F
@@ -872,12 +869,7 @@ NTE|5|L|clinical history and exposure
 NTE|6|L|risk when an acute infection
 NTE|7|L|is suspected.
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -896,33 +888,37 @@ NTE|7|L|is suspected.
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>36</id>
-        <status>final</status>
-        <issued>2005-11-22T17:19:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-22T17:19:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>096479</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>CHLAMYDIA/GONOCOCCUS DNA PROBE</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="096479"/>
+            <display value="CHLAMYDIA/GONOCOCCUS DNA PROBE"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T16:55:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T16:55:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P311112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||198402|F||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|^^^OR^97005^USA^^^OR067|WASHINGTON ||||||V311112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 ORC|RE|
@@ -932,12 +928,7 @@ NTE|1|L|POSITIVE:
 NTE|2|L|for Chlamydia trachomatis by DNA probe.
 NTE|3|L|**Verified by repeat analysis**
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -956,33 +947,37 @@ NTE|3|L|**Verified by repeat analysis**
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>37</id>
-        <status>final</status>
-        <issued>2005-11-22T10:57:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-22T10:57:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>164020</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>HSV I/II, IGG/RFX TYPE II IGG</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="164020"/>
+            <display value="HSV I/II, IGG/RFX TYPE II IGG"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T11:10:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T11:10:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P321112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||200512|F||2054-5^Black or African American^2.16.840.1.113883.6.238^AA^African American^L|^^^OR^97005^USA^^^OR067|WASHINGTON ||||||V321112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 OBR|1||EM-851|^^^164020^HSV I/II, IGG/RFX TYPE II IGG^L|||200511221110|||||||200511221057|||||||||||F|
@@ -996,12 +991,7 @@ NTE|6|L|HSV-2; coinfection with HSV 1 cannot be
 NTE|7|L|excluded.
 OBX|2|NM|21612-7^REPORTED PATIENT AGE^2.16.840.1.113883.6.1||20|d^Days^2.16.840.1.113883.6.8|||||F<CR> 
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1020,45 +1010,44 @@ OBX|2|NM|21612-7^REPORTED PATIENT AGE^2.16.840.1.113883.6.1||20|d^Days^2.16.840.
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>38</id>
-        <status>final</status>
-        <issued>2005-11-22T23:23:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-22T23:23:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>13951-9</code>
-            <system>http://loinc.org</system>
-            <display>HEPATITIS A VIRUS AB</display>
+            <system value="http://loinc.org"/>
+            <code value="13951-9"/>
+            <display value="HEPATITIS A VIRUS AB"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T09:40:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T09:40:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P331112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||199805|F||2054-5^Black or African American^2.16.840.1.113883.6.238^AA^African American^L|^^^OR^97005^USA^^^OR067|SUMTER||||||V331112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 OBR|1||EM-8.9|13951-9^HEPATITIS A VIRUS AB^2.16.840.1.113883.6.1|||200511220940|||||||200511222323|||||||||||F|
 OBX|1|CE|13951-9^HEPATITIS A VIRUS AB^2.16.840.1.113883.6.1^006726^Hep A Ab, Total^L||^^^P^POSITIVE^L|||A|||F|||20051122|34D0655059^LABCORP BURLINGTON^CLIA||EIA
 NTE|1|L|POSITIVE
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1077,45 +1066,44 @@ NTE|1|L|POSITIVE
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>39</id>
-        <status>final</status>
-        <issued>2005-11-22T23:27:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-22T23:27:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>13951-9</code>
-            <system>http://loinc.org</system>
-            <display>HEPATITIS A VIRUS AB</display>
+            <system value="http://loinc.org"/>
+            <code value="13951-9"/>
+            <display value="HEPATITIS A VIRUS AB"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T09:40:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T09:40:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P341112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||199805|F||2054-5^Black or African American^2.16.840.1.113883.6.238^AA^African American^L|^^^OR^97005^USA^^^OR067|WASHINGTON ||||||V341112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 OBR|1||EM-8.10|13951-9^HEPATITIS A VIRUS AB^2.16.840.1.113883.6.1|||200511220940|||||||200511222327|||||||||||F|
 OBX|1|CE|13951-9^HEPATITIS A VIRUS AB^2.16.840.1.113883.6.1^006726^Hep A Ab, Total^L||^^^P^POSITIVE^L|||A|||F|||20051122|34D0655059^LABCORP BURLINGTON^CLIA||EIA
 NTE|1|L|POSITIVE
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1134,33 +1122,37 @@ NTE|1|L|POSITIVE
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>40</id>
-        <status>final</status>
-        <issued>2005-11-22T23:23:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-22T23:23:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>13951-9</code>
-            <system>http://loinc.org</system>
-            <display>HEPATITIS A VIRUS AB</display>
+            <system value="http://loinc.org"/>
+            <code value="13951-9"/>
+            <display value="HEPATITIS A VIRUS AB"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T09:40:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T09:40:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P341112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||199805|U||1002.5^Native American^2.16.840.1.113883.6.238^AL^Native Alaskan^L|| ||||||V341112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 ORC|RE|
@@ -1168,12 +1160,7 @@ OBR|1||EM-8.11|13951-9^HEPATITIS A VIRUS AB^2.16.840.1.113883.6.1|||200511220940
 OBX|1|CE|13951-9^HEPATITIS A VIRUS AB^2.16.840.1.113883.6.1^006726^Hep A Ab, Total^L||^^^P^POSITIVE^L|||A|||F|||20051122|34D0655059^LABCORP BURLINGTON^CLIA||EIA
 NTE|1|L|POSITIVE
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1192,33 +1179,37 @@ NTE|1|L|POSITIVE
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>41</id>
-        <status>final</status>
-        <issued>2005-11-23T09:01:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-23T09:01:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>096479</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>CHLAMYDIA/GONOCOCCUS DNA PROBE</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="096479"/>
+            <display value="CHLAMYDIA/GONOCOCCUS DNA PROBE"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-23T02:00:17</diagnosticTime>
+        <diagnosticTime value="2005-11-23T02:00:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P351112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||198710|M||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V351112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 OBR|1||EM-8.12|^^^096479^CHLAMYDIA/GONOCOCCUS DNA PROBE^L|||200511230200|||||||200511230901||G82291^SMITH|^^^^917^3457574||||||||F|||||||2323PRI^LABORATORIAN^PRINCIPAL||||
@@ -1232,12 +1223,7 @@ NTE|2|L|for Neisseria gonorrhoeae by DNA probe.
 NTE|3|L|Note: Test valid for male urethral and female
 NTE|4|L|      endocervical specimens only.
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1256,33 +1242,37 @@ NTE|4|L|      endocervical specimens only.
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>42</id>
-        <status>final</status>
-        <issued>2005-11-23T09:29:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-23T09:29:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>5292-8</code>
-            <system>http://loinc.org</system>
-            <display>REAGIN AB</display>
+            <system value="http://loinc.org"/>
+            <code value="5292-8"/>
+            <display value="REAGIN AB"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-23T01:00:17</diagnosticTime>
+        <diagnosticTime value="2005-11-23T01:00:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P361112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|M||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V361112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||||2135-2^Hispanic or Latino
 ORC|RE|
@@ -1291,12 +1281,7 @@ OBX|1|CE|5292-8^REAGIN AB^2.16.840.1.113883.6.1^006072^RPR^L||^^^REA^Reactive^L|
 NTE|1|L|Reactive
 OBX|2|SN|11084-1^REAGIN AB^2.16.840.1.113883.6.1^006464^RPR, Quant.^L|1|^1^:^80||=<1:1|H|||F|||20051123093013|34D0655059^LABCORP BURLINGTON^CLIA||
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1315,33 +1300,37 @@ OBX|2|SN|11084-1^REAGIN AB^2.16.840.1.113883.6.1^006464^RPR, Quant.^L|1|^1^:^80|
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>43</id>
-        <status>final</status>
-        <issued>2005-11-23T09:38:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-23T09:38:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>20447-9</code>
-            <system>http://loinc.org</system>
-            <display>HIV 1 RNA</display>
+            <system value="http://loinc.org"/>
+            <code value="20447-9"/>
+            <display value="HIV 1 RNA"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-23T01:00:17</diagnosticTime>
+        <diagnosticTime value="2005-11-23T01:00:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P371112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|M||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V371112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||||2135-2^Hispanic or Latino^2.16.840.1.113883.6.238^H^^L
 OBR|1||EM-9.1|^^^550285^QUANT, RNA PCR, NON-GRAPH^L|||200511230100|||||||200511230938|||||||||||F
@@ -1354,12 +1343,7 @@ NTE|5|L|therapy.
 OBX|2|CE|20447-9^HIV 1 RNA^2.16.840.1.113883.6.1^162549^HIV-1 RNA BY PCR, Qn^L||^^^N^Negative^L|COPIES/mL||A|||F|||20051123094004|34D0655059^LABCORP BURLINGTON^CLIA||PROBE.AMP.TAR
 NTE|1|L|Negative
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1378,33 +1362,37 @@ NTE|1|L|Negative
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>44</id>
-        <status>amended</status>
-        <issued>2005-11-22T01:33:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="amended"/>
+        <issued value="2005-11-22T01:33:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>096479</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>CHLAMYDIA/GONOCOCCUS DNA PROBE</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="096479"/>
+            <display value="CHLAMYDIA/GONOCOCCUS DNA PROBE"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T20:14:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T20:14:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P381112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|M||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V381112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||||2135-2^Hispanic or Latino^2.16.840.1.113883.6.238^H^^L
 ORC|RE|
@@ -1414,12 +1402,7 @@ NTE|1|L|NEGATIVE UPON RETEST:
 NTE|2|L|for Chlamydia trachomatis by DNA probe.
 NTE|3|L|THIS IS A CORRECTED RESULT.
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1438,33 +1421,37 @@ NTE|3|L|THIS IS A CORRECTED RESULT.
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>45</id>
-        <status>final</status>
-        <issued>2005-11-22T01:33:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-22T01:33:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>096479</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>CHLAMYDIA/GONOCOCCUS DNA PROBE</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="096479"/>
+            <display value="CHLAMYDIA/GONOCOCCUS DNA PROBE"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T20:14:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T20:14:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P391112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|F||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V391112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||||2135-2^Hispanic or Latino^2.16.840.1.113883.6.238^H^^L
 ORC|RE|
@@ -1472,12 +1459,7 @@ OBR|1||EM-9.3|^^^096479^CHLAMYDIA/GONOCOCCUS DNA PROBE^L|||200511222014|||||||20
 OBX|1|CE|20993-2^CHLAMYDIA TRACHOMATIS DNA^2.16.840.1.113883.6.1^098012^Chlamydia, DNA Probe^L||^^^N^NEGATIVE:^L|||N|||F|||20051122|26D0444173^LABCORP KANSAS CITY^CLIA||PROBE
 NTE|1|L|NEGATIVE UPON RETEST:
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1496,33 +1478,37 @@ NTE|1|L|NEGATIVE UPON RETEST:
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>1</id>
-        <status>final</status>
-        <issued>2005-11-20T11:33:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-20T11:33:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>6412-1</code>
-            <system>http://loinc.org</system>
-            <display>GIARDIA LAMBLIA AG</display>
+            <system value="http://loinc.org"/>
+            <code value="6412-1"/>
+            <display value="GIARDIA LAMBLIA AG"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T03:00:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T03:00:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P401112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|M||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V401112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 ORC|RE|
@@ -1531,12 +1517,7 @@ OBX|1|CE|6412-1^GIARDIA LAMBLIA AG^2.16.840.1.113883.6.1^182204^GIARDIA LAMBLIA,
 NTE|1|L|POSITIVE
 NTE|2|L|Giardia antigen detected.
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1555,33 +1536,37 @@ NTE|2|L|Giardia antigen detected.
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>46</id>
-        <status>final</status>
-        <issued>2005-11-23T09:01:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-23T09:01:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>096479</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>CHLAMYDIA/GONOCOCCUS DNA PROBE</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="096479"/>
+            <display value="CHLAMYDIA/GONOCOCCUS DNA PROBE"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-23T02:00:17</diagnosticTime>
+        <diagnosticTime value="2005-11-23T02:00:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P411112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|M||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V411112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 ORC|RE|
@@ -1596,12 +1581,7 @@ NTE|2|L|for Neisseria gonorrhoeae by DNA probe.
 NTE|3|L|          Note: Test valid for male urethral and female
 NTE|4|L|                endocervical specimens only.
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1620,33 +1600,37 @@ NTE|4|L|                endocervical specimens only.
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>47</id>
-        <status>final</status>
-        <issued>2005-11-23T09:06:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-23T09:06:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>303744</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>HEPATITIS PANEL (5)</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="303744"/>
+            <display value="HEPATITIS PANEL (5)"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-23T01:00:17</diagnosticTime>
+        <diagnosticTime value="2005-11-23T01:00:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P421112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|M||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V421112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 ORC|RE|
@@ -1660,12 +1644,7 @@ NTE|1|L|POSITIVE
 OBX|4|CE|13955-0^HEPATITIS C VIRUS AB^2.16.840.1.113883.6.1^140608^Hep C Virus Ab^L||^^^P^POSITIVE^L|||A|||F|||20051123092448|^LABCORP BURLINGTON^CLIA||EIA
 NTE|1|L|POSITIVE
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1684,33 +1663,37 @@ NTE|1|L|POSITIVE
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>48</id>
-        <status>final</status>
-        <issued>2005-11-23T09:38:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-23T09:38:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>550285</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>QUANT, RNA PCR, NON-GRAPH</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="550285"/>
+            <display value="QUANT, RNA PCR, NON-GRAPH"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-23T01:00:17</diagnosticTime>
+        <diagnosticTime value="2005-11-23T01:00:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P431112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|M||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V431112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 ORC|RE|
@@ -1724,12 +1707,7 @@ NTE|5|L|therapy.
 OBX|2|CE|20447-9^HIV 1 RNA^2.16.840.1.113883.6.1^162549^HIV-1 RNA BY PCR, Qn^L||^^^N^Negative^L|COPIES/mL||A|||F|||20051123094028|34D0655059^LABCORP BURLINGTON^CLIA||PROBE.AMP.TAR
 NTE|1|L|Negative
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1748,33 +1726,37 @@ NTE|1|L|Negative
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>49</id>
-        <status>final</status>
-        <issued>2005-11-22T01:33:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-22T01:33:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>096479</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>CHLAMYDIA/GONOCOCCUS DNA PROBE</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="096479"/>
+            <display value="CHLAMYDIA/GONOCOCCUS DNA PROBE"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T20:14:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T20:14:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P441112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|M||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V441112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 ORC|RE|
@@ -1784,12 +1766,7 @@ NTE|1|L|NEGATIVE UPON RETEST:
 NTE|2|L|for Chlamydia trachomatis by DNA probe.
 NTE|3|L|THIS IS A CORRECTED RESULT.
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1808,33 +1785,37 @@ NTE|3|L|THIS IS A CORRECTED RESULT.
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>50</id>
-        <status>final</status>
-        <issued>2005-11-22T01:33:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-22T01:33:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>096479</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>CHLAMYDIA/GONOCOCCUS DNA PROBE</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="096479"/>
+            <display value="CHLAMYDIA/GONOCOCCUS DNA PROBE"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T20:13:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T20:13:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P451112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|M||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V451112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 ORC|RE|
@@ -1842,12 +1823,7 @@ OBR|1||EM-10.3|^^^096479^CHLAMYDIA/GONOCOCCUS DNA PROBE^L|||200511222013|||||||2
 OBX|1|CE|20993-2^CHLAMYDIA TRACHOMATIS DNA^2.16.840.1.113883.6.1^098012^Chlamydia, DNA Probe^L||^^^N^NEGATIVE:^L|||N|||F|||20051122|26D0444173^LABCORP KANSAS CITY^CLIA||PROBE
 NTE|1|L|NEGATIVE UPON RETEST:
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1866,33 +1842,37 @@ NTE|1|L|NEGATIVE UPON RETEST:
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>50</id>
-        <status>final</status>
-        <issued>2005-11-22T01:33:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-22T01:33:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>096479</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>CHLAMYDIA/GONOCOCCUS DNA PROBE</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="096479"/>
+            <display value="CHLAMYDIA/GONOCOCCUS DNA PROBE"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T20:14:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T20:14:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P461112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|M||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V461112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 ORC|RE|
@@ -1900,12 +1880,7 @@ OBR|1||EM-10.4|^^^096479^CHLAMYDIA/GONOCOCCUS DNA PROBE^L|||200511222014|||||||2
 OBX|1|CE|20993-2^CHLAMYDIA TRACHOMATIS DNA^2.16.840.1.113883.6.1^098012^Chlamydia, DNA Probe^L||^^^N^NEGATIVE:^L|||N|||F|||20051122|26D0444173^LABCORP KANSAS CITY^CLIA||PROBE
 NTE|1|L|NEGATIVE UPON RETEST:
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1924,33 +1899,37 @@ NTE|1|L|NEGATIVE UPON RETEST:
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>50</id>
-        <status>final</status>
-        <issued>2005-11-22T03:00:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-22T03:00:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>6412-1</code>
-            <system>http://loinc.org</system>
-            <display>GIARDIA LAMBLIA AG</display>
+            <system value="http://loinc.org"/>
+            <code value="6412-1"/>
+            <display value="GIARDIA LAMBLIA AG"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T03:00:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T03:00:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P471112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|M||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V471112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 ORC|RE|
@@ -1959,12 +1938,7 @@ OBX|1|CE|6412-1^GIARDIA LAMBLIA AG^2.16.840.1.113883.6.1^080381^RSLT#1^L|1|l-507
 NTE|1|L|POSITIVE
 NTE|2|L|Giardia antigen detected.
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -1983,33 +1957,37 @@ NTE|2|L|Giardia antigen detected.
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>50</id>
-        <status>final</status>
-        <issued>2005-11-23T09:01:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-23T09:01:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>096479</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>CHLAMYDIA/GONOCOCCUS DNA PROBE</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="096479"/>
+            <display value="CHLAMYDIA/GONOCOCCUS DNA PROBE"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-23T02:00:17</diagnosticTime>
+        <diagnosticTime value="2005-11-23T02:00:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P481112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|M||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V481112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 ORC|RE|
@@ -2024,12 +2002,7 @@ NTE|2|L|for Neisseria gonorrhoeae by DNA probe.
 NTE|3|L|          Note: Test valid for male urethral and female
 NTE|4|L|                endocervical specimens only.
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -2048,33 +2021,37 @@ NTE|4|L|                endocervical specimens only.
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>50</id>
-        <status>final</status>
-        <issued>2005-11-23T09:06:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-23T09:06:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>303744</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>HEPATITIS PANEL (5)</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="303744"/>
+            <display value="HEPATITIS PANEL (5)"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-23T01:00:17</diagnosticTime>
+        <diagnosticTime value="2005-11-23T01:00:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P491112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|M||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V491112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 ORC|RE|
@@ -2088,12 +2065,7 @@ NTE|1|L|POSITIVE
 OBX|4|CE|13955-0^HEPATITIS C VIRUS AB^2.16.840.1.113883.6.1^140608^Hep C Virus Ab^L||^^^P^POSITIVE^L|||A|||F|||20051123092448|34D0655059^LABCORP BURLINGTON^CLIA||EIA
 NTE|1|L|POSITIVE
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -2112,33 +2084,37 @@ NTE|1|L|POSITIVE
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>50</id>
-        <status>final</status>
-        <issued>2005-11-23T09:38:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-23T09:38:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>550285</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>QUANT, RNA PCR, NON-GRAPH</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="550285"/>
+            <display value="QUANT, RNA PCR, NON-GRAPH"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-23T01:00:17</diagnosticTime>
+        <diagnosticTime value="2005-11-23T01:00:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P501112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|M||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V501112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||||2186-5^Not Hispanic or Latino^2.16.840.1.113883.6.238^N^Not hispanic^L
 ORC|RE|
@@ -2152,12 +2128,7 @@ NTE|5|L|therapy.
 OBX|2|CE|20447-9^HIV 1 RNA^2.16.840.1.113883.6.1^162549^HIV-1 RNA BY PCR, Qn^L||^^^N^Negative^L|COPIES/mL||A|||F|||20051123094028|34D0655059^LABCORP BURLINGTON^CLIA||PROBE.AMP.TAR
 NTE|1|L|Negative
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -2176,33 +2147,37 @@ NTE|1|L|Negative
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>50</id>
-        <status>final</status>
-        <issued>2001-12-30T04:36:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2001-12-30T04:36:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>600-7</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>MICROORGANISM IDENTIFIED</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="600-7"/>
+            <display value="MICROORGANISM IDENTIFIED"/>
           </coding>
         </reportName>
-        <diagnosticTime>2001-12-28T09:40:17</diagnosticTime>
+        <diagnosticTime value="2001-12-28T09:40:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P511112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|M||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V511112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||||2186-5^Not Hispanic or Latino^2.16.840.1.113883.6.238^N^Not hispanic^L
 ORC|RE|
@@ -2214,12 +2189,7 @@ NTE|1|L|LISTERIA MONOCYTOGENES
 OBX|3|CE|600-7^MICROORGANISM IDENTIFIED^2.16.840.1.113883.6.1^997183^RESULT 3^L|1|L-22202^Neisseria monocytogenes^SNM^M469^NEISSERIA MENINGITIDIS^L|||A|||F|||20051122|LABCORP KANSAS CITY^26D0444173^CLIA||
 NTE|1|L|NEISSERIA MENINGITIDIS
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -2238,33 +2208,37 @@ NTE|1|L|NEISSERIA MENINGITIDIS
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>50</id>
-        <status>final</status>
-        <issued>2005-11-22T20:50:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-22T20:50:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>163030</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>B PERTUSSIS IGG/IGM AB, QUANT</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="163030"/>
+            <display value="B PERTUSSIS IGG/IGM AB, QUANT"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T11:45:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T11:45:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P521112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|F||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V521112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 ORC|RE|
@@ -2274,12 +2248,7 @@ NTE|1|L|                                           Negative           <9
 NTE|2|L|                                           Equivocal        9-11
 NTE|3|L|                                           Positive          >11
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -2298,33 +2267,37 @@ NTE|3|L|                                           Positive          >11
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>50</id>
-        <status>final</status>
-        <issued>2005-11-22T08:00:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="final"/>
+        <issued value="2005-11-22T08:00:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>008144</code>
-            <system>http://acme.com/labs/reports</system>
-            <display>STOOL CULTURE</display>
+            <system value="http://acme.com/labs/reports"/>
+            <code value="008144"/>
+            <display value="STOOL CULTURE"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T12:00:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T12:00:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P531112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||197608|M||2054-5^Black or African American^2.16.840.1.113883.6.238^AA^African American^L|| ||||||V531112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO
 ORC|RE|
@@ -2334,12 +2307,7 @@ NTE|1|L|CAMPYLOBACTER JEJUNI
 NTE|2|L|     Moderate growth
 NTE|3|L|    .
 
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -2358,33 +2326,37 @@ NTE|3|L|    .
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>50</id>
-        <status>amended</status>
-        <issued>2005-11-22T23:10:01</issued>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+          </div>
+        </text>
+        <status value="amended"/>
+        <issued value="2005-11-22T23:10:01"/>
         <patient>
-          <type>Patient</type>
-          <id>example</id>
+          <type value="Patient"/>
+          <url value="../patient/@example"/>
         </patient>
         <laboratory>
-          <type>Organization</type>
-          <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <type value="Organization"/>
+          <url value="../organization/@1.2.36.90146595217.4.1.1"/>
+          <display value="Acme Laboratory, Inc"/>
         </laboratory>
         <reportId>
-          <system>http://acme.com/lab/reports</system>
-          <id>5234342</id>
+          <system value="http://acme.com/lab/reports"/>
+          <id value="5234342"/>
         </reportId>
         <reportName>
           <coding>
-            <code>5196-1</code>
-            <system>http://loinc.org</system>
-            <display>HEPATITIS B VIRUS SURFACE AG</display>
+            <system value="http://loinc.org"/>
+            <code value="5196-1"/>
+            <display value="HEPATITIS B VIRUS SURFACE AG"/>
           </coding>
         </reportName>
-        <diagnosticTime>2005-11-22T09:35:17</diagnosticTime>
+        <diagnosticTime value="2005-11-22T09:35:17"/>
         <resultGroup>
         </resultGroup>
-        <!-.-
+        <!--
 MSH|^~\&amp;|LIS|^2.16.840.1.114222.4.1.150^ISO|^2.16.840.1.114222.4.3.2.3^ISO|^2.16.840.1.114222^ISO|200511221912133||ORU^R01^ORM_R01|POR012005112218321330035|D|2.5|||||||||BioSense-V1.04^PHIN^2.16.840.1.114222.4.1^ISO
 PID|1||P541112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||��||200003|F||2106-3^White^2.16.840.1.113883.6.238^C^Caucasian^L|| ||||||V541112205^^^&amp;2.16.840.1.114222.4.3.3.1&amp;ISO||||2186-5^Not Hispanic or Latino^2.16.840.1.113883.6.238^N^Not hispanic^L
 ORC|RE|
@@ -2394,12 +2366,7 @@ NTE|1|L|                               (Children under 16 years)
 NTE|2|L|                              Detection Limit = 1 mcg/dL
 BTS|28
 FTS|1
-        -.->
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-          </div>
-        </text>
+        -->
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -2407,9 +2374,9 @@ FTS|1
       </div>
     </summary>
   </entry>
-  <!-.-
+  
   <entry>
-    <title></title>
+    <title/>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#50"/>
     <id>50</id>
     <updated>2012-04-14T10:35:23</updated>
@@ -2419,13 +2386,14 @@ FTS|1
     <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>50</id>
 
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <div xmlns="http://www.w3.org/1999/xhtml">
           </div>
         </text>
+
+        
       </LabReport>
     </content>
     <summary type="xhtml">
@@ -2433,5 +2401,5 @@ FTS|1
       </div>
     </summary>
   </entry>
- 
--->
+
+</feed>

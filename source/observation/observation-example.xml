@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Observation xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\observation.xsd">
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">Sept 17, 2012: Blood pressure 107/65 (normal)</div>
+  </text>
   <name>
     <coding>
-      <system>http://loinc.org</system>
-      <code>55284-4</code>
-      <display>Blood pressure systolic and diastolic</display>
+      <system value="http://loinc.org"/>
+      <code value="55284-4"/>
+      <display value="Blood pressure systolic and diastolic"/>
     </coding>
   </name>
   <interpretation>
     <coding>
-      <system>http://hl7.org/v3/ObservationInterpretation</system>
-      <code>N</code>
-      <display>normal</display>
+      <system value="http://hl7.org/v3/ObservationInterpretation"/>
+      <code value="N"/>
+      <display value="normal"/>
     </coding>
   </interpretation>
-  <obtainedDateTime>2012-09-17</obtainedDateTime>
+  <obtainedDateTime value="2012-09-17"/>
 
-  <status>final</status>
-  <reliability>ok</reliability>
+  <status value="final"/>
+  <reliability value="ok"/>
   
   <identifier>
-    <system>urn:ietf:rfc:3986</system>
-    <id>187e0c12-8dd2-67e2-99b2-bf273c878281</id>
+    <system value="urn:ietf:rfc:3986"/>
+    <id value="187e0c12-8dd2-67e2-99b2-bf273c878281"/>
   </identifier>
   
   <subject>
-    <type>Patient</type>
-    <url>../patient/@example</url>
+    <type value="Patient"/>
+    <url value="../patient/@example"/>
   </subject>
   <performer>
-    <type>Provider</type>
-    <url>../provider/@example</url>
+    <type value="Provider"/>
+    <url value="../provider/@example"/>
   </performer>
   <component>
     <name>
       <coding>
-        <system>http://loinc.org</system>
-        <code>8580-6</code>
-        <display>Systolic blood pressure</display>
+        <system value="http://loinc.org"/>
+        <code value="8580-6"/>
+        <display value="Systolic blood pressure"/>
       </coding>
     </name>
     <valueQuantity>
-      <value>107</value>
-      <units>mm[Hg]</units>
+      <value value="107"/>
+      <units value="mm[Hg]"/>
     </valueQuantity>
   </component>
   <component>
     <name>
       <coding>
-        <system>http://loinc.org</system>
-        <code>8462-4</code>
-        <display>Diastolic blood pressure</display>
+        <system value="http://loinc.org"/>
+        <code value="8462-4"/>
+        <display value="Diastolic blood pressure"/>
       </coding>
     </name>
     <valueQuantity>
-      <value>65</value>
-      <units>mm[Hg]</units>
+      <value value="65"/>
+      <units value="mm[Hg]"/>
     </valueQuantity>
   </component>
-  <text>
-    <status>generated</status>
-    <div xmlns="http://www.w3.org/1999/xhtml">Sept 17, 2012: Blood pressure 107/65 (normal)</div>
-  </text>
 </Observation>

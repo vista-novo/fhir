@@ -1,7 +1,5 @@
-<feed xmlns="http://www.w3.org/2005/Atom" 
-     xmlns:gd="http://schemas.google.com/g/2005" 
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-     xsi:schemaLocation="http://www.w3.org/2005/Atom ../../schema/fhir-atom.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2005/Atom ../../schema/fhir-atom.xsd">
   <title>Standard Patient Examples</title>
   <updated>2012-05-29T23:45:32Z</updated>
   <id>urn:uuid:b248b1b2-1686-4b94-9936-37d7a5f94b51</id>
@@ -17,40 +15,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>333333333</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Seven</family>
-            <given>Henry</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1002</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1002 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Seven, Henry. SSN:
 						333333333</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="333333333"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Seven"/>
+            <given value="Henry"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1002"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1002 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -69,40 +67,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>33344444</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Assigned</family>
-            <given>Amanda</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1021</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1020 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Assigned, Amanda. SSN:
 						33344444</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="33344444"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Assigned"/>
+            <given value="Amanda"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1021"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1020 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -121,40 +119,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>444444444</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Hippocrates</family>
-            <given>Harold</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1003</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1003 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Hippocrates, Harold. SSN:
 						444444444</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="444444444"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Hippocrates"/>
+            <given value="Harold"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1003"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1003 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -173,40 +171,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>555555555</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Primary</family>
-            <given>Patricia</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1004</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1004 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Primary, Patricia. SSN:
 						555555555</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="555555555"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Primary"/>
+            <given value="Patricia"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1004"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1004 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -225,40 +223,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>666666666</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Admit</family>
-            <given>Alan</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1005</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1005 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Admit, Alan. SSN:
 						666666666</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="666666666"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Admit"/>
+            <given value="Alan"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1005"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1005 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -277,40 +275,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>777777777</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Attend</family>
-            <given>Aaron</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1006</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1006 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Attend, Aaron. SSN:
 						777777777</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="777777777"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Attend"/>
+            <given value="Aaron"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1006"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1006 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -329,40 +327,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>888888888</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Sender</family>
-            <given>Sam</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1007</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1007 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Sender, Sam. SSN:
 						888888888</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="888888888"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Sender"/>
+            <given value="Sam"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1007"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1007 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -381,40 +379,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>888222222</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Intern</family>
-            <given>Irving</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1022</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1021 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Intern, Irving. SSN:
 						888222222</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="888222222"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Intern"/>
+            <given value="Irving"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1022"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1021 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -433,40 +431,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>888333333</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Resident</family>
-            <given>Rachel</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1023</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1022 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Resident, Rachel. SSN:
 						888333333</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="888333333"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Resident"/>
+            <given value="Rachel"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1023"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1022 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -485,40 +483,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>888444444</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Leader</family>
-            <given>Linda</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1024</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1023 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Leader, Linda. SSN:
 						888444444</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="888444444"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Leader"/>
+            <given value="Linda"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1024"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1023 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -537,40 +535,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>999999999</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Verify</family>
-            <given>Virgil</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1008</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1008 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Verify, Virgil. SSN:
 						999999999</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="999999999"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Verify"/>
+            <given value="Virgil"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1008"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1008 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -589,40 +587,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222333333</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Specialize</family>
-            <given>Sara</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1009</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1009 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Specialize, Sara. SSN:
 						222333333</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222333333"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Specialize"/>
+            <given value="Sara"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1009"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1009 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -641,40 +639,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222223333</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Reaction</family>
-            <given>Ramsey</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1025</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1024 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Reaction, Ramsey. SSN:
 						222223333</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222223333"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Reaction"/>
+            <given value="Ramsey"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1025"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1024 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -693,40 +691,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222666666</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Sleeper</family>
-            <given>Sally</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1012</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1012 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Sleeper, Sally. SSN:
 						222666666</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222666666"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Sleeper"/>
+            <given value="Sally"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1012"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1012 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -745,40 +743,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222334444</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Pump</family>
-            <given>Patrick</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1027</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1025 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Pump, Patrick. SSN:
 						222334444</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222334444"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Pump"/>
+            <given value="Patrick"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1027"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1025 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -797,40 +795,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222335555</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Valve</family>
-            <given>Vera</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1028</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1026 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Valve, Vera. SSN:
 						222335555</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222335555"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Valve"/>
+            <given value="Vera"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1028"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1026 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -849,40 +847,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222336666</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Scratch</family>
-            <given>Sophie</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1029</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1027 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Scratch, Sophie. SSN:
 						222336666</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222336666"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Scratch"/>
+            <given value="Sophie"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1029"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1027 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -901,40 +899,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222337777</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Emergency</family>
-            <given>Eric</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1030</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1028 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Emergency, Eric. SSN:
 						222337777</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222337777"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Emergency"/>
+            <given value="Eric"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1030"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1028 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -953,40 +951,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222338888</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Hormone</family>
-            <given>Horace</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1031</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1029 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Hormone, Horace. SSN:
 						222338888</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222338888"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Hormone"/>
+            <given value="Horace"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1031"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1029 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1005,40 +1003,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222339999</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Family</family>
-            <given>Fay</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1032</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1030 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Family, Fay. SSN:
 						222339999</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222339999"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Family"/>
+            <given value="Fay"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1032"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1030 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1057,40 +1055,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222442222</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Tum</family>
-            <given>Tony</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1033</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1031 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Tum, Tony. SSN:
 						222442222</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222442222"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Tum"/>
+            <given value="Tony"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1033"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1031 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1109,40 +1107,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222443333</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Sage</family>
-            <given>Stanley</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1034</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1032 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Sage, Stanley. SSN:
 						222443333</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222443333"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Sage"/>
+            <given value="Stanley"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1034"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1032 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1161,40 +1159,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222443344</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Bleeder</family>
-            <given>Boris</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1035</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1033 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Bleeder, Boris. SSN:
 						222443344</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222443344"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Bleeder"/>
+            <given value="Boris"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1035"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1033 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1213,40 +1211,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222445555</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Pasteur</family>
-            <given>Paula</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1036</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1034 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Pasteur, Paula. SSN:
 						222445555</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222445555"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Pasteur"/>
+            <given value="Paula"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1036"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1034 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1265,40 +1263,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222446666</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Osler</family>
-            <given>Otto</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1037</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1035 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Osler, Otto. SSN:
 						222446666</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222446666"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Osler"/>
+            <given value="Otto"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1037"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1035 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1317,40 +1315,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222447777</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Renal</family>
-            <given>Rory</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1038</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1036 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Renal, Rory. SSN:
 						222447777</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222447777"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Renal"/>
+            <given value="Rory"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1038"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1036 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1369,40 +1367,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222448888</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Brain</family>
-            <given>Barry</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1039</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1037 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Brain, Barry. SSN:
 						222448888</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222448888"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Brain"/>
+            <given value="Barry"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1039"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1037 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1421,40 +1419,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222449999</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Cranium</family>
-            <given>Carol</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1040</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1038 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Cranium, Carol. SSN:
 						222449999</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222449999"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Cranium"/>
+            <given value="Carol"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1040"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1038 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1473,40 +1471,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222552222</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Fem</family>
-            <given>Flora</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1041</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1039 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Fem, Flora. SSN:
 						222552222</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222552222"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Fem"/>
+            <given value="Flora"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1041"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1039 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1525,40 +1523,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222553333</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Tumor</family>
-            <given>Trudy</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-2003</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1040 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Tumor, Trudy. SSN:
 						222553333</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222553333"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Tumor"/>
+            <given value="Trudy"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-2003"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1040 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1577,40 +1575,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222554444</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Vision</family>
-            <given>Victor</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1043</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1041 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Vision, Victor. SSN:
 						222554444</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222554444"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Vision"/>
+            <given value="Victor"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1043"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1041 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1629,40 +1627,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222555545</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Carpenter</family>
-            <given>Calvin</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1044</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1042 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Carpenter, Calvin. SSN:
 						222555545</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222555545"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Carpenter"/>
+            <given value="Calvin"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1044"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1042 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1681,40 +1679,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222556666</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Rhino</family>
-            <given>Rick</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1045</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1043 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Rhino, Rick. SSN:
 						222556666</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222556666"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Rhino"/>
+            <given value="Rick"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1045"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1043 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1733,40 +1731,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222444444</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Slide</family>
-            <given>Stan</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1010</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1010 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Slide, Stan. SSN:
 						222444444</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222444444"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Slide"/>
+            <given value="Stan"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1010"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1010 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1785,40 +1783,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222557777</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Kidder</family>
-            <given>Karen</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1046</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1044 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Kidder, Karen. SSN:
 						222557777</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222557777"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Kidder"/>
+            <given value="Karen"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1046"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1044 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1837,40 +1835,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222558888</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Hollywood</family>
-            <given>Heddie</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1047</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1045 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Hollywood, Heddie. SSN:
 						222558888</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222558888"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Hollywood"/>
+            <given value="Heddie"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1047"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1045 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1889,40 +1887,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222559999</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Shrink</family>
-            <given>Serena</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1048</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1046 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Shrink, Serena. SSN:
 						222559999</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222559999"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Shrink"/>
+            <given value="Serena"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1048"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1046 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1941,40 +1939,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222662222</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Puffer</family>
-            <given>Penny</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1049</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1047 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Puffer, Penny. SSN:
 						222662222</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222662222"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Puffer"/>
+            <given value="Penny"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1049"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1047 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -1993,40 +1991,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222555555</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Curie</family>
-            <given>Christine</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1011</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1011 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Curie, Christine. SSN:
 						222555555</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222555555"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Curie"/>
+            <given value="Christine"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1011"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1011 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2045,40 +2043,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222663333</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Joint</family>
-            <given>Jeffrey</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1050</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1048 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Joint, Jeffrey. SSN:
 						222663333</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222663333"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Joint"/>
+            <given value="Jeffrey"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1050"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1048 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2097,40 +2095,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222777777</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Cutter</family>
-            <given>Carl</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1013</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1013 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Cutter, Carl. SSN:
 						222777777</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222777777"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Cutter"/>
+            <given value="Carl"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1013"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1013 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2149,40 +2147,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222664444</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Plumber</family>
-            <given>Peter</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1051</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1049 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Plumber, Peter. SSN:
 						222664444</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222664444"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Plumber"/>
+            <given value="Peter"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1051"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1049 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2201,40 +2199,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222665555</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Helper</family>
-            <given>Horace</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1052</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1050 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Helper, Horace. SSN:
 						222665555</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222665555"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Helper"/>
+            <given value="Horace"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1052"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1050 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2253,40 +2251,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222888888</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Nightingale</family>
-            <given>Nancy</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1014</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1014 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Nightingale, Nancy. SSN:
 						222888888</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222888888"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Nightingale"/>
+            <given value="Nancy"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1014"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1014 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2305,40 +2303,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222999999</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Barton</family>
-            <given>Clarence</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1015</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1015 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Barton, Clarence. SSN:
 						222999999</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222999999"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Barton"/>
+            <given value="Clarence"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1015"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1015 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2357,40 +2355,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222666666</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Bender</family>
-            <given>Bob</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1053</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1051 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Bender, Bob. SSN:
 						222666666</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222666666"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Bender"/>
+            <given value="Bob"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1053"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1051 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2409,40 +2407,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222667777</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Chopper</family>
-            <given>Charlie</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1054</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1052 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Chopper, Charlie. SSN:
 						222667777</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222667777"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Chopper"/>
+            <given value="Charlie"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1054"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1052 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2461,40 +2459,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222668888</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Brace</family>
-            <given>Ben</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1055</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1053 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Brace, Ben. SSN:
 						222668888</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222668888"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Brace"/>
+            <given value="Ben"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1055"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1053 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2513,40 +2511,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222669999</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Specs</family>
-            <given>Sylvia</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1056</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1054 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Specs, Sylvia. SSN:
 						222669999</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222669999"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Specs"/>
+            <given value="Sylvia"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1056"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1054 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2565,40 +2563,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>333222222</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Script</family>
-            <given>Susan</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1016</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1016 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Script, Susan. SSN:
 						333222222</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="333222222"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Script"/>
+            <given value="Susan"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1016"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1016 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2617,40 +2615,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222772222</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Bunion</family>
-            <given>Paul</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1057</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1055 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Bunion, Paul. SSN:
 						222772222</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222772222"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Bunion"/>
+            <given value="Paul"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1057"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1055 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2669,40 +2667,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222773333</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Listener</family>
-            <given>Larry</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1058</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1056 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Listener, Larry. SSN:
 						222773333</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222773333"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Listener"/>
+            <given value="Larry"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1058"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1056 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2721,40 +2719,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>333444444</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Beaker</family>
-            <given>Bill</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1017</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1017 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Beaker, Bill. SSN:
 						333444444</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="333444444"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Beaker"/>
+            <given value="Bill"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1017"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1017 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2773,40 +2771,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>333555555</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Chow</family>
-            <given>Connie</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1018</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1018 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Chow, Connie. SSN:
 						333555555</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="333555555"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Chow"/>
+            <given value="Connie"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1018"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1018 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2825,40 +2823,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>000111111</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Helper</family>
-            <given>Helen</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1019</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1019 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">teHelper. SSN:
 						000111111</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="000111111"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Helper"/>
+            <given value="Helen"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1019"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1019 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2877,40 +2875,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222776666</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Player</family>
-            <given>Pamela</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1059</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1057 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Player, Pamela. SSN:
 						222776666</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222776666"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Player"/>
+            <given value="Pamela"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1059"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1057 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2929,40 +2927,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>222778888</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Stretcher</family>
-            <given>Seth</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1060</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>M</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1058 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Stretcher, Seth. SSN:
 						222778888</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="222778888"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Stretcher"/>
+            <given value="Seth"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1060"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="M"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1058 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">
@@ -2981,40 +2979,40 @@
     <category term="Provider" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provider xmlns="http://hl7.org/fhir">
-        <identifier>
-          <label>SSN</label>
-          <system>http://hl7.org/fhir/sid/us-ssn</system>
-          <id>333777777</id>
-        </identifier>
-        <details>
-          <name>
-            <use>official</use>
-            <family>Enter</family>
-            <given>Ellen</given>
-          </name>
-          <telecom>
-            <system>phone</system>
-            <value>555-555-1020</value>
-            <use>work</use>
-          </telecom>
-          <gender>
-            <system>http://hl7.org/fhir/sid/v2-0001</system>
-            <code>F</code>
-          </gender>
-          <address>
-            <use>home</use>
-            <line>1058 Healthcare Drive</line>
-          </address>
-        </details>
-        <organization>
-          <type>Organization</type>
-          <url>../organization/@hl7</url>
-        </organization>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Enter Ellen, ElleSSN:
 						333777777</xhtml:div>
         </text>
+        <identifier>
+          <label value="SSN"/>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <id value="333777777"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="official"/>
+            <family value="Enter"/>
+            <given value="Ellen"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1020"/>
+            <use value="work"/>
+          </telecom>
+          <gender>
+            <system value="http://hl7.org/fhir/sid/v2-0001"/>
+            <code value="F"/>
+          </gender>
+          <address>
+            <use value="home"/>
+            <line value="1058 Healthcare Drive"/>
+          </address>
+        </details>
+        <organization>
+          <type value="Organization"/>
+          <url value="../organization/@hl7"/>
+        </organization>
       </Provider>
     </content>
     <summary type="xhtml">

@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <List xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\list.xsd">
-  <code>
-    <coding>
-      <system>http://snomed.info</system>
-      <code>182836005</code>
-      <display>Review of medication</display>
-    </coding>
-    <text>Medication Review</text>
-  </code>
-  <source>
-    <type>Patient</type>
-    <url>../patient/@example</url>
-  </source>
-  <date>2012-11-26T07:30:23+11:00</date>
-  <mode>snapshot</mode>
-
-  <emptyReason>
-    <coding>
-      <system>http://hl7.org/fhir/special-values</system>
-      <code>nil known</code>
-      <display>The are no known applicable values in this context</display>
-    </coding>
-    <text>The patient is not on any medications</text>
-  </emptyReason>
   <text>
-    <status>generated</status>
+    <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <p>The patient is not on any medications</p>
     </div>
   </text>
+  <code>
+    <coding>
+      <system value="http://snomed.info"/>
+      <code value="182836005"/>
+      <display value="Review of medication"/>
+    </coding>
+    <text value="Medication Review"/>
+  </code>
+  <source>
+    <type value="Patient"/>
+    <url value="../patient/@example"/>
+  </source>
+  <date value="2012-11-26T07:30:23+11:00"/>
+  <mode value="snapshot"/>
+
+  <emptyReason>
+    <coding>
+      <system value="http://hl7.org/fhir/special-values"/>
+      <code value="nil known"/>
+      <display value="The are no known applicable values in this context"/>
+    </coding>
+    <text value="The patient is not on any medications"/>
+  </emptyReason>
 </List>

@@ -1,48 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Message xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/message.xsd">
-  <id>1cbdfb97-5859-48a4-8301-d54eab818d68</id>
-  <instant>2012-01-04T09:10:14Z</instant>
-  <event>admin-update</event>
-  <response>
-    <id>5015fe84-8e76-4526-89d8-44b322e8d4fb</id>
-    <code>ok</code>
-  </response>
-  <source>
-    <name>Acme Central Patient Registry</name>
-    <software>FooBar Patient Manager</software>
-    <version>3.1.45.AABB</version>
-    <contact>
-      <system>phone</system>
-      <value>+1 (555) 123 4567</value>
-    </contact>
-    <endpoint>llp:10.11.12.13:5432</endpoint>
-  </source>
-  <destination>
-    <name>Acme Message Gateway</name>
-    
-    <!-- this is to indicate to the Acme Message Gateway that this particular message 
-       is intended for Provider "xcda" -->
-    <target>
-      <type>Provider</type>
-      <url>../provider/@xcda-author</url>
-    </target>
-    <endpoint>llp:10.11.12.14:5432</endpoint>
-  </destination>
-  <author>
-    <type>Provider</type>
-    <url>../provider/@example</url>
-  </author>
-  
-  <!-- Here's the payload, the resource that this admin-update concerns -->
-  <data>
-    <type>Patient</type>
-    <url>../patient/@example</url>
-  </data>
-  
   <text>
-    <status>generated</status>
+    <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <p>Update Person resource for Peter James CHALMERS (Jim), MRN: 12345 (Acme Healthcare)</p>
     </div>
   </text>
+  <id value="1cbdfb97-5859-48a4-8301-d54eab818d68"/>
+  <instant value="2012-01-04T09:10:14Z"/>
+  <event value="admin-update"/>
+  <response>
+    <id value="5015fe84-8e76-4526-89d8-44b322e8d4fb"/>
+    <code value="ok"/>
+  </response>
+  <source>
+    <name value="Acme Central Patient Registry"/>
+    <software value="FooBar Patient Manager"/>
+    <version value="3.1.45.AABB"/>
+    <contact>
+      <system value="phone"/>
+      <value value="+1 (555) 123 4567"/>
+    </contact>
+    <endpoint value="llp:10.11.12.13:5432"/>
+  </source>
+  <destination>
+    <name value="Acme Message Gateway"/>
+    
+    <!-- this is to indicate to the Acme Message Gateway that this particular message 
+       is intended for Provider "xcda" -->
+    <target>
+      <type value="Provider"/>
+      <url value="../provider/@xcda-author"/>
+    </target>
+    <endpoint value="llp:10.11.12.14:5432"/>
+  </destination>
+  <author>
+    <type value="Provider"/>
+    <url value="../provider/@example"/>
+  </author>
+  
+  <!-- Here's the payload, the resource that this admin-update concerns -->
+  <data>
+    <type value="Patient"/>
+    <url value="../patient/@example"/>
+  </data>
 </Message>
