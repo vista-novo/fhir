@@ -17,7 +17,7 @@ todo:
 
 <%maindiv%>
 <%pageheader%>
-[%onthispage General Issues#|operations#read|Binary Support#binary|hData Information#hdata|Summary#summary%]
+[%onthispage General Issues#root|operations#read|Binary Support#binary|hData Information#hdata|Summary#summary%]
 
 <h1>RESTful HTTP Details</h1>
 
@@ -41,7 +41,7 @@ suitable where such trust does not exist (e.g. state &amp; national EHR systems 
 systems that support disparate systems). Similarly, this simple RESTful interface has no support for 
 explicit archiving and similar functions. Use-cases where these kind of features are required should 
 consider a <a href="message.htm">messaging</a> or <a href="implementation.htm#SOA">SOA-based approach</a> or 
-some kind of profiled REST interface, such as <a href="hdata.htm">hData</a>.
+some other kind of profiled REST interface.
 </p>
 <p>
 The following logical interactions are supported:
@@ -72,6 +72,7 @@ provide a <a href="conformance.htm">conformance statement</a> that says what int
 supported for any resource types that they support.
 </p>
 
+<a name="root"> </a>
 <a name="general"> </a>
 <h2>Service Root URL</h2>
 <p>
@@ -107,7 +108,7 @@ Note: All URLs (and ids that form part of the URL) defined by this specification
 </p>
 <h2>Resource Metadata and Versioning</h2>
 <p>
-Each resource has an associated set of <a href="formats.htm#metadata">resource metadata elements</a>. These map to the http request and response using the following fields:
+Each resource has an associated set of <a href="resources.htm#metadata">resource metadata elements</a>. These map to the http request and response using the following fields:
 </p>
 <table class="grid">
   <tr><th>Metadata Item</th><th>HTTP Response Header</th></tr>

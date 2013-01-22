@@ -164,7 +164,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
       else if (cd.getName().equals("FHIRContentType"))
         return "<a href=\"terminologies.htm#fhircontenttypes\">Any defined Resource or Data Type name</a>";
       else 
-        return "<a href=\"datatypes.htm\"> any defined data Type name</a> or a <a href=\"xml.htm#Resource\">Resource</a> name";
+        return "<a href=\"datatypes.htm\"> any defined data Type name</a> or a <a href=\"resources.htm#Resource\">Resource</a> name";
     } 
     if (cd.getBinding() == BindingSpecification.Binding.ValueSet) {
       if (Utilities.noString(cd.getReference())) 
@@ -243,7 +243,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
       else if (cd.getName().equals("FHIRContentType"))
         write("  <li>"+path+" of <a href=\"terminologies.htm#fhircontenttypes\"> any defined Resource or Data Type name</a></li>\r\n");
       else 
-        write("  <li>"+path+" of <a href=\"datatypes.htm\"> any defined data Type name</a> (including <a href=\"xml.htm#Resource\">Resource</a>)</li>\r\n");
+        write("  <li>"+path+" of <a href=\"datatypes.htm\"> any defined data Type name</a> (including <a href=\"resources.htm#Resource\">Resource</a>)</li>\r\n");
       
     } else {
       if (cd.getBindingStrength() == BindingSpecification.BindingStrength.Required)

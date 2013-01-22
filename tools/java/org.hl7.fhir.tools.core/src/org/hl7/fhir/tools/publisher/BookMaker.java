@@ -119,7 +119,9 @@ public class BookMaker {
           RefTarget r = new RefTarget();
           r.parent = focus;
           r.index = i;
-          tgts.put(child.getAttributes().get("name"), r);
+          String n = child.getAttributes().get("name");
+//          System.out.println("        ref: "+n);
+          tgts.put(n, r);
         }
         if ("a".equals(child.getName()) && child.getAttributes().containsKey("href")) {
           //System.out.println("found "+child.getAttributes().get("href"));
@@ -194,7 +196,7 @@ public class BookMaker {
           }
         }
       }
-      if (s.getEntries().size() == 0 && s.getLink().equals("resources")) {
+      if (s.getEntries().size() == 0 && s.getLink().equals("resourcelist")) {
        
         for (String rn : list) {
           if (!links.contains(rn.toLowerCase())) {

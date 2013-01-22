@@ -15,8 +15,9 @@
 
 [%formatsheader%]
 
-[%onthispage Resource Definition#|Narrative#Narrative|Internal References#idref|JSON#json|Atom (Bundle)#atom|JSON (Bundle)#json-bundles|Schema#schema%]
+[%onthispage Resource Definition#root|Narrative#Narrative|Internal References#idref|JSON#json|Atom (Bundle)#atom|JSON (Bundle)#json-bundles|Schema#schema%]
 
+<a name="root"> </a>
 <h1>Resource Formats</h1>
 <p>
 This page documents how the content of the resources are described, and how they are represented in XML and JSON. 
@@ -27,6 +28,7 @@ This page documents how the content of the resources are described, and how they
 The resources are described in two different ways: a UML diagram that summarises the content, and 
 an pseudo-XML syntax that provides a visual sense of what the end resource instances will look like in XML. 
 </p>
+<a name="syntax"> </a>
 <h3>XML</h3>
 <p>
 The XML syntax uses the following notation:
@@ -258,6 +260,7 @@ to the source content.
 </p>
 
 
+<a name="json"> </a>
 <h2>Representing Resources in JSON</h2>
 <p>
 Though the representation of FHIR resources is described in XML, FHIR also defines
@@ -437,7 +440,7 @@ In XML bundles are represented using an Atom format (<a href="http://tools.ietf.
  <li>The entry element carries the <a href="resources.htm#metadata">three pieces of resource metadata</a>: Id (.id), Version Id (.link), Last Updated (.updated)</li>
  <li>The entry.id must be an absolute url, the tail element of which is the logical id of the resource. The id is a version independent reference</li>
  <li>The entry.link to self is a version specific reference to the resource.</li>
- <li>When used in a <a href="http.htm">RESTful implementation</a>, the entry.link and entry.id are the URLs of the resource on the system; the version specific link can be used as the basis synchronizing pub/sub systems using the atom bundle with the <a href="http.htm#updates">updates operation</a>. In other contexts, the values should be literal references to a server if one is available</li>
+ <li>When used in a <a href="http.htm">RESTful implementation</a>, the entry.link and entry.id are the URLs of the resource on the system; the version specific link can be used as the basis synchronizing pub/sub systems using the atom bundle with the <a href="http.htm#history">updates operation</a>. In other contexts, the values should be literal references to a server if one is available</li>
  <li>Author is a required element by the atom element. The author of a resource is not explicit in the FHIR resource model; instead it is delegated to the infrastructure. The name is the name of a human author or a device. The uri is a link to the resource for the author. Note that an author is required for each entry, but if an author is provided in the base feed, an author is not needed on each entry</li>
  <li>An xml:base element may be specified on the content element, though one is not generally needed for FHIR resources.</li>
  <li>The entire bundle can be signed with a single Enveloped Digital Signature as described in the Atom specification (section 5.1). See below for further comment</li>

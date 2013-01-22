@@ -128,7 +128,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		write(" -->\r\n");
 		write(" &lt;<b>code</b>>" + ex.getCode() + "&lt;/code>\r\n");
 		write(" &lt;<b>definition</b>><span style=\" color: Gray\">&lt;!-- </span> <span style=\"color: brown;\"><b>1..1</b></span> <span style=\"color: darkgreen;\"><a href=\"datatypes.htm#uri\">uri</a></span> <span style=\"color: navy\">where registered</span> <span style=\" color: Gray\">--&gt;</span>&lt;/definition>\r\n");
-		write(" &lt;<b>ref</b>&gt; <span style=\"color: navy\"><span style=\"color: darkgreen;\"><a href=\"xml.htm#idref\">Ref</a></span> to a "
+		write(" &lt;<b>ref</b>&gt; <span style=\"color: navy\"><span style=\"color: darkgreen;\"><a href=\"formats.htm#idref\">Ref</a></span> to a "
 				+ ex.getContext()
 				+ " ("
 				+ ex.getType().toString()
