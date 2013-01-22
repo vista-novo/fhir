@@ -32,6 +32,7 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.codec.binary.Base64;
@@ -71,8 +72,8 @@ public abstract class XmlParserBase extends XmlBase {
   }
 
   protected void parseElementAttributes(XmlPullParser xpp, Element e) throws Exception {
-    if (xpp.getAttributeValue(null, "xml:Id") != null) {
-      e.setXmlId(xpp.getAttributeValue(null, "xml:Id"));
+    if (xpp.getAttributeValue(null, "id") != null) {
+      e.setXmlId(xpp.getAttributeValue(null, "id"));
       idMap.put(e.getXmlId(), e);
     }
   }
@@ -126,12 +127,16 @@ public abstract class XmlParserBase extends XmlBase {
     return result;
   }
 
+  protected abstract void parseExtensions(int eventType, XmlPullParser xpp, List<Extension> extensions) throws Exception;
 
   protected String parseString(XmlPullParser xpp) throws Exception {
-    String id = xpp.getAttributeValue(null, "xml:Id");	      
-    if (xpp.next() != XmlPullParser.TEXT)
-      throw new Exception("No text in String");
-    String res = xpp.getText();
+    String id = xpp.getAttributeValue(null, "id");	
+    String res = xpp.getAttributeValue(null, "value");
+    int eventType = xpp.next();
+    if (eventType == XmlPullParser.TEXT)
+      throw new Exception("No text is allowed String");
+    if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("extension")) 
+      parseExtensions(eventType, xpp, res.getExtensions());
     if (xpp.next() != XmlPullParser.END_TAG)
       throw new Exception("Bad String Structure");
     xpp.next();
@@ -266,5 +271,5 @@ public abstract class XmlParserBase extends XmlBase {
     result.setValue(parseString(xpp));
     return result;
   }
-  
+ 
 }

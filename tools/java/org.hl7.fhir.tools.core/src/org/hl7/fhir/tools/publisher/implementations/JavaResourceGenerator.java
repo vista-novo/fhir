@@ -38,6 +38,7 @@ import java.util.Map;
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
+import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -46,8 +47,11 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	public enum JavaGenClass { Structure, Type, Resource, Constraint }
 	private JavaGenClass clss;
 
-	public JavaResourceGenerator(OutputStream out) throws UnsupportedEncodingException {
+	private Definitions definitions;
+	
+	public JavaResourceGenerator(OutputStream out, Definitions definitions) throws UnsupportedEncodingException {
 		super(out);
+		this.definitions = definitions;
 	}
 
 	private Map<ElementDefn, String> typeNames = new HashMap<ElementDefn, String>();
@@ -81,6 +85,10 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			write("\r\n");
 		}
 
+    if (hasUri(root))
+      write("import java.net.*;\r\n");
+    if (hasDecimal(root))
+      write("import java.math.*;\r\n");
 		write("/**\r\n");
 		write(" * "+root.getDefinition()+"\r\n");
 		write(" */\r\n");
@@ -194,6 +202,22 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		return false;
 	}
 
+  private boolean hasUri(ElementDefn root) {
+    for (ElementDefn e : root.getElements()) {
+      if (e.typeCode().equals("uri") || hasUriInner(e))
+        return true;
+    }
+    return false;
+  }
+
+  private boolean hasDecimal(ElementDefn root) {
+    for (ElementDefn e : root.getElements()) {
+      if (e.typeCode().equals("decimal") || hasDecimalInner(e))
+        return true;
+    }
+    return false;
+  }
+
 	private boolean hasXhtml(ElementDefn root) {
 		for (ElementDefn e : root.getElements()) {
 			if (e.isXhtmlElement() || hasXhtmlInner(e))
@@ -220,11 +244,31 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		return false;
 	}
 
+  private boolean hasUriInner(ElementDefn e) {
+    for (ElementDefn c : e.getElements()) {
+      if (c.typeCode().equals("uri") || hasUriInner(c))
+        return true;
+    }
+
+    return false;
+  }
+
+  private boolean hasDecimalInner(ElementDefn e) {
+    for (ElementDefn c : e.getElements()) {
+      if (c.typeCode().equals("decimal") || hasDecimalInner(c))
+        return true;
+    }
+
+    return false;
+  }
+
 	private void generateEnum(ElementDefn e, Map<String, BindingSpecification> conceptDomains) throws Exception {
 		String tn = typeNames.get(e);
+		String tns = tn.substring(tn.indexOf("<")+1);
+		tns = tns.substring(0, tns.length()-1);
 		BindingSpecification cd = getConceptDomain(conceptDomains, e.getBindingName());
 
-		write("    public enum "+tn+" {\r\n");
+		write("    public enum "+tns+" {\r\n");
 		int l = cd.getCodes().size();
 		int i = 0;
 		for (DefinedCode c : cd.getCodes()) {
@@ -253,7 +297,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		}
 
 
-		write("        public static "+tn+" fromCode(String codeString) throws Exception {\r\n");
+		write("        public static "+tns+" fromCode(String codeString) throws Exception {\r\n");
 		write("            if (codeString == null || \"\".equals(codeString))\r\n");
 		write("                return null;\r\n");
 		for (DefinedCode c : cd.getCodes()) {
@@ -277,7 +321,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			write("        if (\""+c.getCode()+"\".equals(codeString))\r\n");
 			write("          return "+cc+";\r\n");
 		}		
-		write("        throw new Exception(\"Unknown "+tn+" code '\"+codeString+\"'\");\r\n");
+		write("        throw new Exception(\"Unknown "+tns+" code '\"+codeString+\"'\");\r\n");
 		write("        }\r\n");	
 
 		write("        public String toCode() {\r\n");
@@ -336,7 +380,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 					enumNames.add(tn);
 					enums.add(e);
 				}
-				typeNames.put(e,  tn);
+				typeNames.put(e,  "Enumeration<"+tn+">");
 			}
 		}
 		if (tn == null) {
@@ -464,7 +508,41 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	}
 
 
+  private String getSimpleType(String n) {
+    if (n.equals("String_"))
+      return "String";
+    if (n.equals("Code"))
+      return "String";
+    if (n.equals("Base64Binary"))
+      return "byte[]";
+    if (n.equals("Uri"))
+      return "URI";
+    if (n.equals("Integer"))
+      return "int";
+    if (n.equals("Boolean"))
+      return "boolean";
+    if (n.equals("Decimal"))
+      return "BigDecimal";
+    if (n.equals("DateTime"))
+      return "String";
+    if (n.equals("Date"))
+      return "String";
+    if (n.equals("Id"))
+      return "String";
+    if (n.equals("Instant"))
+      return "Calendar";
+    
+    String tns = null;
+    if (n.indexOf("<") > 0) {
+      tns = n.substring(n.indexOf("<")+1);
+      tns = tns.substring(0, tns.length()-1);
+    }
 
+    if (tns != null && enumNames.contains(tns))
+      return tns;
+    
+    return "??";
+  }
 	private void generateAccessors(ElementDefn root, ElementDefn e, String indent) throws Exception {
 		String tn = typeNames.get(e);
 
@@ -485,6 +563,28 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			write(indent+"  this."+getElementName(e.getName(), true)+" = value;\r\n");
 			write(indent+"}\r\n");
 			write("\r\n");
+			if (e.getTypes().size() == 1 && definitions.getPrimitives().containsKey(e.typeCode())) {
+	      write(indent+"public "+getSimpleType(tn)+" get"+getTitle(getElementName(e.getName(), false))+"Simple() { \r\n");
+	      write(indent+"  return this."+getElementName(e.getName(), true)+".getValue();\r\n");
+	      write(indent+"}\r\n");
+	      write("\r\n");
+	      write(indent+"public void set"+getTitle(getElementName(e.getName(), false))+"Simple("+getSimpleType(tn)+" value) { \r\n");
+	      if (tn.equals("Integer"))
+	        write(indent+"  if (value == -1)\r\n");
+	      else if (tn.equals("Boolean"))
+          write(indent+"  if (value == false)\r\n");
+        else
+	        write(indent+"  if (value == null)\r\n");
+        write(indent+"    this."+getElementName(e.getName(), true)+" = null;\r\n");
+        write(indent+"  else {\r\n");
+        write(indent+"    if (this."+getElementName(e.getName(), true)+" == null)\r\n");
+        write(indent+"      this."+getElementName(e.getName(), true)+" = new "+tn+"();\r\n");
+	      write(indent+"    this."+getElementName(e.getName(), true)+".setValue(value);\r\n");
+        write(indent+"  }\r\n");
+        write(indent+"}\r\n");
+	      write("\r\n");
+			  
+			}
 		}
 
 	}
