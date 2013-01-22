@@ -349,12 +349,12 @@ converted to JSON members values, in the same manner as described for primitives
  <pre class="xml">
 &lt;Person&gt;
   &lt;name&gt;
-    &lt;use&gt;official&lt;/use&gt;  
-    &lt;given&gt;Karen&lt;/given&gt;
-    &lt;family id=&quot;n1&quot;&gt;Van&lt;/family&gt;
+    &lt;use value="official" /&gt;  
+    &lt;given value="Karen" /&gt;
+    &lt;family id=&quot;n1&quot; value="Van" /&gt;
   &lt;/name&gt;
   &lt;text&gt;
-    &lt;status&gt;generated&lt;/status&gt;
+    &lt;status value="generated" /&gt;
     &lt;div xmlns="http://www.w3.org/1999/xhtml"&gt;...&lt;/div&gt;
   &lt;/text&gt;
 &lt;/Person&gt;
@@ -364,7 +364,7 @@ converted to JSON members values, in the same manner as described for primitives
 {
   "Person" : {
     "name" : [{
-      "use" : "official",
+      "use" : { "value" : "official" },
       "given" : [{
          "value" : "Karen" 
         }],
@@ -374,8 +374,8 @@ converted to JSON members values, in the same manner as described for primitives
         }]
      }],
     "text" : {
-      "status" : "generated",
-      "value" : "&lt;div xmlns='http://www.w3.org/1999/xhtml'&gt;...&lt;/div&gt;"
+      "status" : { "value" : "generated" },
+      "value" : { "value" : "&lt;div xmlns='http://www.w3.org/1999/xhtml'&gt;...&lt;/div&gt;" }
     }
 }
 </pre>
@@ -506,8 +506,8 @@ which is the id of the target, like this:
 <div class="example">
 <pre class="xml" fragment="ResourceReference">
   &lt;institution&gt;
-    &lt;type&gt;Organization&lt;/type&gt;
-    &lt;id&gt;../organization/@23&lt;/id&gt;
+    &lt;type value="Organization" /&gt;
+    &lt;url value="../organization/@23" /&gt;
   &lt;/institution&gt;
 </pre>
 </div>
@@ -543,8 +543,8 @@ the <i>id</i> element contains a direct reference to the location of the resourc
 <div class="example">
 <pre class="xml" fragment="ResourceReference">
   &lt;institution&gt;
-    &lt;type&gt;Organization&lt;/type&gt;
-    &lt;id&gt;http://example.org/organization/@23&lt;/id&gt;
+    &lt;type value="Organization" /&gt;
+    &lt;url value="http://example.org/organization/@23" /&gt;
   &lt;/institution&gt;
 </pre>
 </div>
@@ -572,23 +572,6 @@ combined into a bundle, different resources may contain duplicate id attributes.
 the scope of resolution of an id attribute to the resource in which the <i>id</i> attribute is declared.
 </li>
 </ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <a name="json-bundles"></a>
 <h3>JSON Bundle Representation</h3>
