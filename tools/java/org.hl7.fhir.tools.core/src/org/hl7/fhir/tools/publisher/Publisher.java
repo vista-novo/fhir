@@ -338,7 +338,7 @@ public class Publisher {
           List<Element> entries = new ArrayList<Element>();
           XMLUtil.getNamedChildren(e.getXml().getDocumentElement(), "entry", entries);
           for (Element c : entries) {
-            String id = XMLUtil.getNamedChild(c, "id").getTextContent();
+            String id = XMLUtil.getNamedChild(c, "id").getAttribute("value");
             if (id.startsWith("http://hl7.org/fhir/") && id.contains("@"))
               b.append(id.substring(id.indexOf("@")+1)+", ");
             else
@@ -424,7 +424,7 @@ public class Publisher {
     if (d.typeCode().contains("Resource") && !d.typeCode().equals("Resource")) {
       for (Element m : set) {
         if (XMLUtil.getNamedChild(m, "type") != null && XMLUtil.getNamedChild(m, "url") != null) {
-          refs.add(new ExampleReference(XMLUtil.getNamedChild(m, "type").getTextContent(), XMLUtil.getNamedChild(m, "url").getTextContent()));
+          refs.add(new ExampleReference(XMLUtil.getNamedChild(m, "type").getAttribute("value"), XMLUtil.getNamedChild(m, "url").getAttribute("value")));
         }
       }
     }    

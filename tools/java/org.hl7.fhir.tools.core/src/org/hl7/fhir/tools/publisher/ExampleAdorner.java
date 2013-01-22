@@ -93,8 +93,8 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
       if (s.getState() == State.Feed) {
         if (definitions.hasResource(node.getLocalName()))
           return new ExampleAdornerState(State.Element, definitions.getResourceByName(node.getLocalName()).getRoot(), "", "");
-        else if (node.getLocalName().equals("url") && !node.getTextContent().startsWith("http://"))
-          return new ExampleAdornerState(State.Feed, null, "<a name=\""+extractId(node.getTextContent(), null)+"\"></a>", "");
+        else if (node.getLocalName().equals("url") && !node.getAttribute("value").startsWith("http://"))
+          return new ExampleAdornerState(State.Feed, null, "<a name=\""+extractId(node.getAttribute("value"), null)+"\">...</a>", "");
         else
           return new ExampleAdornerState(State.Feed, null, "", "");
       } else if (s.getState() == State.Element) {
@@ -107,11 +107,11 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
           return new ExampleAdornerState(State.Element, e, "", "");
       } else if (s.getState() == State.Reference) {
         if (node.getLocalName().equals("type"))
-          return new ExampleAdornerState(State.Reference, s.getDefinition(), "<a href=\""+node.getTextContent().toLowerCase()+".htm\">", "</a>");
+          return new ExampleAdornerState(State.Reference, s.getDefinition(), "<a href=\""+node.getAttribute("value").toLowerCase()+".htm\">", "...</a>");
         if (node.getLocalName().equals("url"))
         {
-          String type = XMLUtil.getNamedChild((Element) node.getParentNode(), "type").getTextContent();
-          String id = extractId(node.getTextContent(), type);
+          String type = XMLUtil.getNamedChild((Element) node.getParentNode(), "type").getAttribute("value");
+          String id = extractId(node.getAttribute("value"), type);
           ResourceDefn r = definitions.getResourceByName(type);
           if (r == null) 
             throw new Exception("unable to find type "+type);
@@ -123,7 +123,7 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
               XMLUtil.getNamedChildren(e.getXml().getDocumentElement(), "entry", entries);
               String url = "http://hl7.org/fhir/"+type.toLowerCase()+"/@"+id;
               for (Element c : entries) {
-                String t = XMLUtil.getNamedChild(c, "id").getTextContent();
+                String t = XMLUtil.getNamedChild(c, "id").getAttribute("value");
                 if (url.equals(t))
                   return new ExampleAdornerState(State.Reference, s.getDefinition(), "<a href=\""+e.getFileTitle()+".xml.htm#"+id+"\">", "</a>");
                 }
@@ -136,6 +136,11 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
       } else // if (s.getState() == State.Unknown) {
         return new ExampleAdornerState(State.Unknown, null, "", "");
     }
+  }
+
+  @Override
+  public XhtmlGeneratorAdornerState getAttributeMarkup(XhtmlGenerator xhtmlGenerator, XhtmlGeneratorAdornerState state, Element node, String nodeName, String textContent) throws Exception {
+    return new ExampleAdornerState(State.Unknown, null, "", "");
   }
 
 }

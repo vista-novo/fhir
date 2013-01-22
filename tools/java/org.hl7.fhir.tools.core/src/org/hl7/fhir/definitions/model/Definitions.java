@@ -175,7 +175,7 @@ public class Definitions {
 		if (resources.containsKey(name))
 			root = resources.get(name);
 		if (root == null)
-			throw new Exception("unable to find resource " + name);
+			throw new Exception("unable to find resource '" + name+"'");
 		return root;
 	}
 
