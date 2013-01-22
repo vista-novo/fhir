@@ -160,8 +160,8 @@ directly, or an element of type "<a href="datatypes.htm#Attachment">Attachment</
       &lt;/p&gt;
     &lt;/div&gt;
     &lt;image id=&quot;a1&quot;&gt;
-      &lt;mimeType&gt;image/png&lt;/mimeType&gt;
-      &lt;content&gt;MEKH....SD/Z&lt;/content&gt;
+      &lt;mimeType value="image/png" /&gt;
+      &lt;content value="MEKH....SD/Z" /&gt;
     &lt;/image&gt;
   &lt;/narrative&gt;
 </pre>
@@ -241,7 +241,7 @@ same datatype).
 <pre class="xml">
   &lt;example&gt;
     &lt;target id="a1"&gt;
-      &lt;child&gt;content&lt;/child&gt;
+      &lt;child&gt;...&lt;/child&gt;
     &lt;/target&gt;
     &lt;-- other stuff --&gt;
     &lt;source idref="a1"&gt;
@@ -309,11 +309,12 @@ FHIR elements with primitive values are represented as a JSON object of the same
  }
 </pre>
 <p>
-Native JSON types other than "string" are never used, to guarantee equivalence of the serialized representation between XML and JSON.
+Native JSON types other than "string" are never used, to guarantee equivalence of the serialized representation 
+between XML and JSON.
 All XML elements <i>can</i> have an 'id' attribute, which is represented in JSON as a property of name "_id":
 </p>
 <pre class="xml">
- &lt;<b>dob</b> id='314159'&gt;1972-11-30&lt;/<b>dob</b>&gt;
+ &lt;<b>dob</b> id="314159" value="1972-11-30" /&gt;
 </pre>
 <p>is represented in JSON as:</p>
 <pre class="json">
@@ -325,10 +326,11 @@ All XML elements <i>can</i> have an 'id' attribute, which is represented in JSON
 
 <h2>Repeating elements</h2>
 
-<p>Repeating elements are rendered within a JSON array with the name of the element, so a repeating &lt;dob&gt; element in XML</p>
+<p>Repeating elements are rendered within a JSON array with the name of the element, 
+so a repeating &lt;dob&gt; element in XML</p>
 <pre class="xml">
- &lt;<b>dob</b>&gt;2011-11-30&lt;/<b>dob</b>&gt;
- &lt;<b>dob</b> id='314159'&gt;1972-11-30&lt;/<b>dob</b>&gt;
+ &lt;<b>dob</b> value="2011-11-30" /&gt;
+ &lt;<b>dob</b> id="314159" value="1972-11-30" /&gt;
 </pre>
 <p>is represented in JSON like so:</p>
 <pre class="json">
