@@ -304,13 +304,22 @@ done when the content can be identified properly, as once identification is lost
 (and context dependent) to restore it again.</b>
 </p>
 <pre class="xml" fragment="ResourceReference">
-  &lt;profile&gt;
-    &lt;type&gt;Patient&lt;/type&gt;
-    &lt;url&gt;#a1&lt;/url&gt;
-	&lt;Patient id="a1"&gt;
+ &lt;Document&gt;
+  &lt;!-- other attributes --&gt;
+  &lt;custodian&gt;
+    &lt;type&gt;Organization&lt;/type&gt;
+    &lt;url&gt;#org1&lt;/url&gt;
+    &lt;display&gt;HL7, Inc&lt;/display&gt;
+  &lt;/custodian&gt;
+  &lt;!-- other attributes --&gt;
+  &lt;extension&gt;...&lt;/extension&gt;
+  &lt;text&gt;...&lt;/text&gt;
+  &lt;contained&gt;
+	&lt;Organization id=&quot;org1&quot;&gt;
 	  &lt;!-- whatever information is available --&gt;
-	&lt;/Patient&gt;
-  &lt;profile&gt;
+	&lt;/Organization&gt;
+  &lt;/contained&gt;
+ &lt;/Document&gt;
 </pre>
 <p>
 The type and url are always required, even though somewhate redundant in this case, to ensure that a
