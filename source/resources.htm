@@ -259,15 +259,15 @@ New form:
 <p>A relative reference to the <a href="patient.htm">patient</a> "034AB16" in an element named "context" on a FHIR RESTful server:</p>
 <pre class="xml" fragment="ResourceReference">
   &lt;context&gt;
-    &lt;type&gt;Patient&lt;/type&gt;
-    &lt;url&gt;../patient/@034AB16&lt;/url&gt;
+    &lt;type value="Patient" /&gt;
+    &lt;url value="../patient/@034AB16" /&gt;
   &lt;/context&gt;
 </pre>
 <p>An absolute reference to a <a href="profile.htm">resource profile</a> in an element named "profile":</p>
 <pre class="xml" fragment="ResourceReference">
   &lt;profile&gt;
-    &lt;type&gt;Profile&lt;/type&gt;
-    &lt;url&gt;http://fhir.hl7.org/svc/profile/@c8973a22-2b5b-4e76-9c66-00639c99e61b&lt;/url&gt;
+    &lt;type value="Profile" /&gt;
+    &lt;url value="http://fhir.hl7.org/svc/profile/@c8973a22-2b5b-4e76-9c66-00639c99e61b" /&gt;
   &lt;/profile&gt;
 </pre>
 <p><i>Note that HL7 has not yet actually created a profile registry, nor decided on a URL for it</i>.</p>
@@ -276,9 +276,9 @@ A short display text that provides a human readable identification of the resour
 </p>
 <pre class="xml" fragment="ResourceReference">
   &lt;custodian&gt;
-    &lt;type&gt;Organization&lt;/type&gt;
-    &lt;url&gt;../organization/@123&lt;/url&gt;
-    &lt;display&gt;HL7, Inc&lt;/display&gt;
+    &lt;type value="Organization" /&gt;
+    &lt;url value="../organization/@123" /&gt;
+    &lt;display value="HL7, Inc" /&gt;
   &lt;/custodian&gt;
 </pre>
 <p>
@@ -307,9 +307,9 @@ done when the content can be identified properly, as once identification is lost
  &lt;Document&gt;
   &lt;!-- other attributes --&gt;
   &lt;custodian&gt;
-    &lt;type&gt;Organization&lt;/type&gt;
-    &lt;url&gt;#org1&lt;/url&gt;
-    &lt;display&gt;HL7, Inc&lt;/display&gt;
+    &lt;type value="Organization" /&gt;
+    &lt;url value="#org1" /&gt;
+    &lt;display value="HL7, Inc" /&gt;
   &lt;/custodian&gt;
   &lt;!-- other attributes --&gt;
   &lt;extension&gt;...&lt;/extension&gt;
