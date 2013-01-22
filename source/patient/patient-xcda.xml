@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patient xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/patient.xsd">
-  <active>true</active>
-  <identifier>
-    <use>usual</use>
-    <label>MRN</label>
-    <system>urn:oid:2.16.840.1.113883.19.5</system>
-    <id>12345</id>
-  </identifier>
-  <details>
-    <name>
-      <family>Levin</family>
-      <given>Henry</given>
-    </name>
-    <gender>
-      <system>urn:oid:2.16.840.1.113883.5.1</system>
-      <code>M</code>
-    </gender>
-    <birthDate>1932-09-24</birthDate>
-  </details>
-  <provider>
-    <type>Organization</type>
-    <url>../organization/@2.16.840.1.113883.19.5</url>  
-    <display>Good Health Clinic</display>
-  </provider> 
-
   <text>
-    <status>generated</status>
+    <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <p>Henry Levin the 7th</p>
     </div>
   </text>
+  <active value="true"/>
+  <identifier>
+    <use value="usual"/>
+    <label value="MRN"/>
+    <system value="urn:oid:2.16.840.1.113883.19.5"/>
+    <id value="12345"/>
+  </identifier>
+  <details>
+    <name>
+      <family value="Levin"/>
+      <given value="Henry"/>
+    </name>
+    <gender>
+      <system value="urn:oid:2.16.840.1.113883.5.1"/>
+      <code value="M"/>
+    </gender>
+    <birthDate value="1932-09-24"/>
+  </details>
+  <provider>
+    <type value="Organization"/>
+    <url value="../organization/@2.16.840.1.113883.19.5"/>  
+    <display value="Good Health Clinic"/>
+  </provider>
 </Patient>
-
-

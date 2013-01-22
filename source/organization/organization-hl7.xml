@@ -1,32 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Organization xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://hl7.org/fhir ../../schema/organization.xsd">
-
-  <!-- HL7 itself -->
-  <name>Health Level Seven International</name>
-
-  <address>
-    <line>3300 Washtenaw Avenue, Suite 227</line>
-    <city>Ann Arbor</city>
-    <state>MI</state>
-    <zip>48104</zip>
-    <country>USA</country>
-  </address>  
-  <telecom>
-    <system>phone</system>
-    <value>(+1) 734-677-7777</value>
-  </telecom>
-  <telecom>
-    <system>fax</system>
-    <value>(+1) 734-677-6622</value>
-  </telecom>
-  <telecom>
-    <system>email</system>
-    <value> hq@HL7.org</value>
-  </telecom>
+<Organization xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/organization.xsd">
 
   <text>
-    <status>generated</status>
+    <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
       Health Level Seven International<br/>
 				3300 Washtenaw Avenue, Suite 227<br/>
@@ -37,4 +13,27 @@
 				E-mail:  <a href="mailto:hq@HL7.org">hq@HL7.org</a>
     </div>
   </text>
+
+  <!-- HL7 itself -->
+  <name value="Health Level Seven International"/>
+
+  <address>
+    <line value="3300 Washtenaw Avenue, Suite 227"/>
+    <city value="Ann Arbor"/>
+    <state value="MI"/>
+    <zip value="48104"/>
+    <country value="USA"/>
+  </address>  
+  <telecom>
+    <system value="phone"/>
+    <value value="(+1) 734-677-7777"/>
+  </telecom>
+  <telecom>
+    <system value="fax"/>
+    <value value="(+1) 734-677-6622"/>
+  </telecom>
+  <telecom>
+    <system value="email"/>
+    <value value=" hq@HL7.org"/>
+  </telecom>
 </Organization>

@@ -1,10 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 This XML file includes a set of resources that test out difficult cases 
 for servers to handle as part of a batch post
- -->
-
-<feed xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005" 
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ --><feed xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <title>FHIR Test Cases</title>
   <updated>2012-11-12T18:10:00Z</updated>
   <id>urn:uuid:b248b1b2-1686-4b94-9936-37d7a5f94b51</id>
@@ -32,21 +30,21 @@ for servers to handle as part of a batch post
     <category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Person xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-        <name>
-          <family>Levin</family>
-          <given>Henry</given>
-        </name>
-        <gender>
-          <system>urn:oid:2.16.840.1.113883.5.1</system>
-          <code>M</code>
-        </gender>
-        <birthDate>1932-09-24</birthDate>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div>
             <xhtml:p>Henry Levin</xhtml:p>
           </xhtml:div>
         </text>
+        <name>
+          <family value="Levin"/>
+          <given value="Henry"/>
+        </name>
+        <gender>
+          <system value="urn:oid:2.16.840.1.113883.5.1"/>
+          <code value="M"/>
+        </gender>
+        <birthDate value="1932-09-24"/>
       </Person>
     </content>
     <summary type="xhtml">
@@ -65,21 +63,21 @@ for servers to handle as part of a batch post
     <category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Person xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-        <name>
-          <family>Levin</family>
-          <given>Henry</given>
-        </name>
-        <gender>
-          <system>urn:oid:2.16.840.1.113883.5.1</system>
-          <code>M</code>
-        </gender>
-        <birthDate>1932-09-24</birthDate>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div>
             <xhtml:p>Henry Levin</xhtml:p>
           </xhtml:div>
         </text>
+        <name>
+          <family value="Levin"/>
+          <given value="Henry"/>
+        </name>
+        <gender>
+          <system value="urn:oid:2.16.840.1.113883.5.1"/>
+          <code value="M"/>
+        </gender>
+        <birthDate value="1932-09-24"/>
       </Person>
     </content>
     <summary type="xhtml">
@@ -96,21 +94,21 @@ for servers to handle as part of a batch post
     <category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Person xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-        <name>
-          <family>Levins</family>
-          <given>Henry</given>
-        </name>
-        <gender>
-          <system>urn:oid:2.16.840.1.113883.5.1</system>
-          <code>M</code>
-        </gender>
-        <birthDate>1932-09-24</birthDate>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div>
             <xhtml:p>Henry Levins</xhtml:p>
           </xhtml:div>
         </text>
+        <name>
+          <family value="Levins"/>
+          <given value="Henry"/>
+        </name>
+        <gender>
+          <system value="urn:oid:2.16.840.1.113883.5.1"/>
+          <code value="M"/>
+        </gender>
+        <birthDate value="1932-09-24"/>
       </Person>
     </content>
     <summary type="xhtml">
@@ -128,21 +126,21 @@ for servers to handle as part of a batch post
     <category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Person xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-        <name>
-          <family>Levin</family>
-          <given>Henry</given>
-        </name>
-        <gender>
-          <system>urn:oid:2.16.840.1.113883.5.1</system>
-          <code>M</code>
-        </gender>
-        <birthDate>1932-09-24</birthDate>
         <text>
-          <status>generated</status>
+          <status value="generated"/>
           <xhtml:div>
             <xhtml:p>Henry Levin</xhtml:p>
           </xhtml:div>
         </text>
+        <name>
+          <family value="Levin"/>
+          <given value="Henry"/>
+        </name>
+        <gender>
+          <system value="urn:oid:2.16.840.1.113883.5.1"/>
+          <code value="M"/>
+        </gender>
+        <birthDate value="1932-09-24"/>
       </Person>
     </content>
     <summary type="xhtml">
@@ -160,19 +158,19 @@ for servers to handle as part of a batch post
     <category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provenance xmlns="http://hl7.org/fhir">
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">Authored on 12-Nov 2011 by Grahame Grieve</div>
+        </text>
         <target>
-          <type>Patient</type>
-          <id>http://www.someexternalsite/fhir/person/@1</id>
-          <version>http://www.someexternalsite/fhir/person/@1/history/@1</version>
+          <type value="Patient"/>
+          <id value="http://www.someexternalsite/fhir/person/@1"/>
+          <version value="http://www.someexternalsite/fhir/person/@1/history/@1"/>
         </target>
         <!-- nominal activity: editing the standard -->
         <activity>
-          <recorded>2012-11-12T18:16:00Z</recorded>
+          <recorded value="2012-11-12T18:16:00Z"/>
         </activity>
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">Authored on 12-Nov 2011 by Grahame Grieve</div>
-        </text>
       </Provenance>
     </content>
     <summary type="xhtml">
@@ -190,18 +188,18 @@ for servers to handle as part of a batch post
     <category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provenance xmlns="http://hl7.org/fhir">
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">Authored on 12-Nov 2011 by Grahame Grieve</div>
+        </text>
         <target>
-          <type>Patient</type>
-          <version>http://www.someexternalsite/fhir/person/@1/history/@5</version>
+          <type value="Patient"/>
+          <version value="http://www.someexternalsite/fhir/person/@1/history/@5"/>
         </target>
         <!-- nominal activity: editing the standard -->
         <activity>
-          <recorded>2012-11-12T18:16:00Z</recorded>
+          <recorded value="2012-11-12T18:16:00Z"/>
         </activity>
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">Authored on 12-Nov 2011 by Grahame Grieve</div>
-        </text>
       </Provenance>
     </content>
     <summary type="xhtml">
@@ -219,18 +217,18 @@ for servers to handle as part of a batch post
     <category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <Provenance xmlns="http://hl7.org/fhir">
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">Authored on 12-Nov 2011 by Grahame Grieve</div>
+        </text>
         <target>
-          <type>Patient</type>
-          <id>urn:uuid:8f13879b-8f5c-4ed4-a1f5-bc8d8a0efe</id>
+          <type value="Patient"/>
+          <id value="urn:uuid:8f13879b-8f5c-4ed4-a1f5-bc8d8a0efe"/>
         </target>
         <!-- nominal activity: editing the standard -->
         <activity>
-          <recorded>2012-11-12T18:16:00Z</recorded>
+          <recorded value="2012-11-12T18:16:00Z"/>
         </activity>
-        <text>
-          <status>generated</status>
-          <div xmlns="http://www.w3.org/1999/xhtml">Authored on 12-Nov 2011 by Grahame Grieve</div>
-        </text>
       </Provenance>
     </content>
     <summary type="xhtml">

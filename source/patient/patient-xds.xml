@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patient xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/patient.xsd">
-  <active>true</active>
-  <identifier>
-    <use>usual</use>
-    <label>MRN</label>
-    <system>oid:3.4.5</system>
-    <id>89765a87b</id>
-  </identifier>
-  <details>
-    <name>
-      <family>Doe</family>
-      <given>John</given>
-    </name>
-    <gender>
-      <system>http://hl7.org/fhir/sid/v2-0001</system>
-      <code>M</code>
-    </gender>
-    <birthDate>1956-05-27</birthDate>
-    <address>
-      <line>100 Main St</line>
-      <city>Metropolis</city>
-      <state>Il</state>
-      <zip>44130</zip>
-      <country>USA</country>
-    </address>
-  </details>
-  <provider>
-    <type>Organization</type>
-    <url>../organization/@2</url>
-  </provider>
   <text>
-    <status>generated</status>
+    <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <p>Patient John Doe, M, 27-May 1956. ID: 89765a87b</p>
     </div>
   </text>
+  <active value="true"/>
+  <identifier>
+    <use value="usual"/>
+    <label value="MRN"/>
+    <system value="oid:3.4.5"/>
+    <id value="89765a87b"/>
+  </identifier>
+  <details>
+    <name>
+      <family value="Doe"/>
+      <given value="John"/>
+    </name>
+    <gender>
+      <system value="http://hl7.org/fhir/sid/v2-0001"/>
+      <code value="M"/>
+    </gender>
+    <birthDate value="1956-05-27"/>
+    <address>
+      <line value="100 Main St"/>
+      <city value="Metropolis"/>
+      <state value="Il"/>
+      <zip value="44130"/>
+      <country value="USA"/>
+    </address>
+  </details>
+  <provider>
+    <type value="Organization"/>
+    <url value="../organization/@2"/>
+  </provider>
 </Patient>
