@@ -57,6 +57,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 	// private List<TypeDefn> datatypes = new ArrayList<TypeDefn>();
 	// private Map<String, ConceptDomain> tx;
 	private List<String> enums = new ArrayList<String>();
+	private Map<String, String> enumDefs = new HashMap<String, String>();
 
   private List<String> genEnums = new ArrayList<String>();
 
@@ -80,16 +81,17 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		write("  <xs:import namespace=\"http://www.w3.org/1999/xhtml\" schemaLocation=\"xhtml1-strict.xsd\"/>\r\n");
 
 		genXmlIdRef();
+		genElementRoot();
+    write("\r\n");
 		genPrimitives();
+    write("\r\n");
 		genResourceReference();
+    genResource();
 
 		for (ElementDefn e : definitions.getInfrastructure().values())
 			genInfrastructure(e);
 		for (ElementDefn e : definitions.getTypes().values())
-			if (e.getTypes().get(0).getName().equals("GenericType"))
-				genGeneric(e);
-			else
-				genType(e);
+			genType(e);
 		for (DefinedCode cd : definitions.getConstraints().values())
 			genConstraint(cd);
 		for (ElementDefn e : definitions.getStructures().values())
@@ -101,14 +103,48 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		flush();
 	}
 
-private void genXmlIdRef() throws Exception {
-  write("  <!-- change this to xs:IDREF and all id attributes to type xs:ID to enforce internal references by schema,\r\n");
-  write("       but note that this can't work in bundles (see comments in Resource Format section) -->\r\n");
-  write("    <xs:simpleType name=\"xmlIdRef\">\r\n");
-  write("      <xs:restriction base=\"id-simple\">\r\n");
-  write("        <xs:pattern value=\"[a-z0-9\\-\\.]{1,36}\"/>\r\n"); 
-  write("      </xs:restriction>\r\n");
-  write("    </xs:simpleType>\r\n");
+  private void genElementRoot() throws Exception  {
+    write("  <xs:complexType name=\"Element\">\r\n");
+    write("    <xs:annotation>\r\n");
+    write("      <xs:documentation>The base element used for all FHIR elements and resources - allows for them to be extended with extensions</xs:documentation>\r\n");
+    write("    </xs:annotation>\r\n");
+    write("    <xs:sequence>\r\n");
+    write("      <xs:element name=\"extension\" type=\"Extension\" minOccurs=\"0\" maxOccurs=\"unbounded\"/>\r\n");
+    write("    </xs:sequence>\r\n");
+    write("    <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
+    write("  </xs:complexType>\r\n");
+    write("\r\n");    
+  }
+
+  private void genResource() throws Exception {
+    write("  <xs:complexType name=\"Resource\">\r\n");
+    write("    <xs:annotation>\r\n");
+    write("      <xs:documentation>The base resource declaration used for all FHIR resource types - adds Narrative and xml:lang</xs:documentation>\r\n");
+    write("    </xs:annotation>\r\n");
+    write("    <xs:complexContent>\r\n");
+    write("      <xs:extension base=\"Element\">\r\n");
+    write("        <xs:sequence>\r\n");
+    write("          <xs:element name=\"text\" type=\"Narrative\" minOccurs=\"1\" maxOccurs=\"1\">\r\n");
+    write("            <xs:annotation>\r\n");
+    write("              <xs:documentation>Text summary of resource (for human interpretation)</xs:documentation>\r\n");
+    write("            </xs:annotation>\r\n");
+    write("          </xs:element>\r\n");
+    write("        </xs:sequence>\r\n");
+    write("        <xs:attribute ref=\"xml:lang\"/>\r\n");
+    write("      </xs:extension>\r\n");
+    write("    </xs:complexContent>\r\n");
+    write("  </xs:complexType>\r\n");
+    write("\r\n");
+  }
+
+  private void genXmlIdRef() throws Exception {
+    write("  <!-- change this to xs:IDREF and all id attributes to type xs:ID to enforce internal references by schema,\r\n");
+    write("       but note that this can't work in bundles (see comments in Resource Format section) -->\r\n");
+    write("  <xs:simpleType name=\"xmlIdRef\">\r\n");
+    write("    <xs:restriction base=\"id-simple\">\r\n");
+    write("      <xs:pattern value=\"[a-z0-9\\-\\.]{1,36}\"/>\r\n"); 
+    write("    </xs:restriction>\r\n");
+    write("  </xs:simpleType>\r\n");
   }
 
 //	private void genExtensionsElement() throws Exception {
@@ -169,17 +205,19 @@ private void genXmlIdRef() throws Exception {
 			if (cd instanceof PrimitiveType) {
 				PrimitiveType pt = (PrimitiveType) cd;
 				write("  <xs:complexType name=\"" + pt.getCode() + "\">\r\n");
-				write("    <xs:simpleContent>\r\n");
-				write("      <xs:extension base=\"xs:" + pt.getSchemaType()
-						+ "\">\r\n");
-		    write("        <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
+		    write("    <xs:annotation>\r\n");
+		    write("      <xs:documentation>"+Utilities.escapeXml(pt.getDefinition())+"</xs:documentation>\r\n");
+        write("      <xs:documentation>If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>\r\n");
+		    write("    </xs:annotation>\r\n");
+				write("    <xs:complexContent>\r\n");
+				write("      <xs:extension base=\"Element\">\r\n");
+		    write("        <xs:attribute name=\"value\" type=\"xs:"+pt.getSchemaType()+"\" use=\"optional\"/>\r\n");
 				write("      </xs:extension>\r\n");
-				write("    </xs:simpleContent>\r\n");
+				write("    </xs:complexContent>\r\n");
 				write("  </xs:complexType>\r\n");
 			} else {
 				DefinedStringPattern sp = (DefinedStringPattern) cd;
-				write("  <xs:simpleType name=\"" + sp.getCode()
-						+ "-simple\">\r\n");
+				write("  <xs:simpleType name=\"" + sp.getCode()+ "-simple\">\r\n");
 				if (sp.getBase().endsWith("+")) {
 	        write("    <xs:restriction base=\""+sp.getBase().substring(0, sp.getBase().length()-1)+"\">\r\n");
 	        write("      <xs:pattern value=\"" + sp.getRegex() + "\"/>\r\n");
@@ -193,12 +231,15 @@ private void genXmlIdRef() throws Exception {
 	        write("  </xs:simpleType>\r\n");				
 				}
 				write("  <xs:complexType name=\"" + sp.getCode() + "\">\r\n");
-				write("    <xs:simpleContent>\r\n");
-				write("      <xs:extension base=\"" + sp.getCode()
-						+ "-simple\">\r\n");
-		    write("        <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
+        write("    <xs:annotation>\r\n");
+        write("      <xs:documentation>"+Utilities.escapeXml(sp.getDefinition())+"</xs:documentation>\r\n");
+        write("      <xs:documentation>If the element is present, it must have either a @value, an @id referenced from the Narrative, or extensions</xs:documentation>\r\n");
+        write("    </xs:annotation>\r\n");
+				write("    <xs:complexContent>\r\n");
+				write("      <xs:extension base=\"Element\">\r\n");
+		    write("        <xs:attribute name=\"value\" type=\"" + sp.getCode()+ "-simple\"/>\r\n");
 				write("      </xs:extension>\r\n");
-				write("    </xs:simpleContent>\r\n");
+				write("    </xs:complexContent>\r\n");
 				write("  </xs:complexType>\r\n");
 			}
 		}
@@ -206,9 +247,16 @@ private void genXmlIdRef() throws Exception {
 
 	private void genInfrastructure(ElementDefn elem) throws Exception {
 		enums.clear();
+		enumDefs.clear();
 		String name = elem.getName();
 		write("  <xs:complexType name=\"" + name + "\">\r\n");
-		write("    <xs:sequence>\r\n");
+    write("    <xs:annotation>\r\n");
+    write("      <xs:documentation>"+Utilities.escapeXml(elem.getDefinition())+"</xs:documentation>\r\n");
+    write("      <xs:documentation>If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>\r\n");
+    write("    </xs:annotation>\r\n");
+    write("    <xs:complexContent>\r\n");
+    write("      <xs:extension base=\"Element\">\r\n");
+		write("        <xs:sequence>\r\n");
 
 		for (ElementDefn e : elem.getElements()) {
 			if (e.getName().equals("[type]"))
@@ -219,7 +267,9 @@ private void genXmlIdRef() throws Exception {
 			else
 				generateWrapperElement(elem, e);
 		}
-		write("    </xs:sequence>\r\n");
+		write("        </xs:sequence>\r\n");
+    write("      </xs:extension>\r\n");
+    write("    </xs:complexContent>\r\n");
 		write("  </xs:complexType>\r\n");
 		while (!structures.isEmpty()) {
 			String s = structures.keySet().iterator().next();
@@ -235,28 +285,35 @@ private void genXmlIdRef() throws Exception {
 
 	private void genType(ElementDefn elem) throws Exception {
 		enums.clear();
+		enumDefs.clear();
 		String name = elem.getName();
 		write("  <xs:complexType name=\"" + name + "\">\r\n");
-		write("    <xs:sequence>\r\n");
+    write("    <xs:annotation>\r\n");
+    write("      <xs:documentation>"+Utilities.escapeXml(elem.getDefinition())+"</xs:documentation>\r\n");
+    write("      <xs:documentation>If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>\r\n");
+    write("    </xs:annotation>\r\n");
+    write("    <xs:complexContent>\r\n");
+    write("      <xs:extension base=\"Element\">\r\n");
 
-		for (ElementDefn e : elem.getElements()) {
-		  if (e.typeCode().equals("xml:lang")) {
-		    // do nothing here
-		  } else if (e.getName().equals("[type]"))
-				generateAny(elem, e, null);
-			else if ((!e.unbounded() && 1 == e.getMaxCardinality())
-					|| Config.SUPPRESS_WRAPPER_ELEMENTS)
-				generateElement(elem, e, null);
-			else
-				generateWrapperElement(elem, e);
-		}
-		write("    </xs:sequence>\r\n");
-    write("    <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
+    write("        <xs:sequence>\r\n");
+
     for (ElementDefn e : elem.getElements()) {
       if (e.typeCode().equals("xml:lang")) {
-        write("    <xs:attribute ref=\"xml:lang\"/>\r\n");      
+        // do nothing here
+      } else if (e.getName().equals("[type]"))
+        generateAny(elem, e, null);
+      else 
+        generateElement(elem, e, null);
+    }
+    write("        </xs:sequence>\r\n");
+    for (ElementDefn e : elem.getElements()) {
+      if (e.typeCode().equals("xml:lang")) {
+        write("        <xs:attribute ref=\"xml:lang\"/>\r\n");      
       }
     }
+    
+    write("      </xs:extension>\r\n");
+    write("    </xs:complexContent>\r\n");
 
 		write("  </xs:complexType>\r\n");
 		// write("  <xs:complexType name=\""+name+"\">\r\n");
@@ -281,9 +338,16 @@ private void genXmlIdRef() throws Exception {
 
 	private void genStructure(ElementDefn elem) throws Exception {
 		enums.clear();
+		enumDefs.clear();
 		String name = elem.getName();
 		write("  <xs:complexType name=\"" + name + "\">\r\n");
-		write("    <xs:sequence>\r\n");
+    write("    <xs:annotation>\r\n");
+    write("      <xs:documentation>"+Utilities.escapeXml(elem.getDefinition())+"</xs:documentation>\r\n");
+    write("      <xs:documentation>If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>\r\n");
+    write("    </xs:annotation>\r\n");
+    write("    <xs:complexContent>\r\n");
+    write("      <xs:extension base=\"Element\">\r\n");
+		write("        <xs:sequence>\r\n");
 
 		for (ElementDefn e : elem.getElements()) {
 			if (e.getName().equals("[type]"))
@@ -294,8 +358,9 @@ private void genXmlIdRef() throws Exception {
 			else
 				generateWrapperElement(elem, e);
 		}
-		write("    </xs:sequence>\r\n");
-    write("    <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
+		write("        </xs:sequence>\r\n");
+    write("      </xs:extension>\r\n");
+    write("    </xs:complexContent>\r\n");
 		write("  </xs:complexType>\r\n");
 
 		while (!structures.isEmpty()) {
@@ -310,55 +375,11 @@ private void genXmlIdRef() throws Exception {
 
 	}
 
-	private void genGeneric(ElementDefn elem) throws Exception {
-		enums.clear();
-		for (TypeRef td : definitions.getKnownTypes()) {
-			if (td.getName().equals(elem.getName()) && td.hasParams()) {
-				for (String pt : td.getParams()) {
-
-					String name = elem.getName() + "_" + upFirst(pt);
-					write("  <xs:complexType name=\"" + name + "\">\r\n");
-					write("    <xs:sequence>\r\n");
-
-					for (ElementDefn e : elem.getElements()) {
-						if (e.getName().equals("[type]"))
-							generateAny(elem, e, null);
-						else if ((!e.unbounded() && 1 == e.getMaxCardinality())
-								|| Config.SUPPRESS_WRAPPER_ELEMENTS)
-							generateElement(elem, e, pt);
-						else
-							generateWrapperElement(elem, e);
-					}
-					write("    </xs:sequence>\r\n");
-			    write("    <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
-					write("  </xs:complexType>\r\n");
-					// write("  <xs:complexType name=\""+name+"\">\r\n");
-					// write("    <xs:complexContent>\r\n");
-					// write("      <xs:extension base=\"Core"+name+"\">\r\n");
-			    // write("        <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
-					// write("      </xs:extension>\r\n");
-					// write("    </xs:complexContent>\r\n");
-					// write("  </xs:complexType>\r\n");
-
-					while (!structures.isEmpty()) {
-						String s = structures.keySet().iterator().next();
-						generateType(elem, s, structures.get(s));
-						structures.remove(s);
-					}
-
-					for (String en : enums) {
-						generateEnum(en);
-					}
-				}
-			}
-		}
-	}
-
 	private void generateEnum(String en) throws IOException {
 	  if (genEnums.contains(en))
 	    return;
 	  
-		write("  <xs:simpleType name=\"" + en + "\">\r\n");
+		write("  <xs:simpleType name=\"" + en + "-list\">\r\n");
 		write("    <xs:restriction base=\"xs:string\">\r\n");
 		for (DefinedCode c : definitions.getBindingByName(en).getCodes()) {
 			write("      <xs:enumeration value=\""
@@ -372,13 +393,32 @@ private void genXmlIdRef() throws Exception {
 		}
 		write("    </xs:restriction>\r\n");
 		write("  </xs:simpleType>\r\n");
+		
+		write("  <xs:complexType name=\""+en+"\">\r\n");
+		write("    <xs:annotation>\r\n");
+		write("      <xs:documentation>"+Utilities.escapeXml(enumDefs.get(en))+"</xs:documentation>\r\n");
+		write("      <xs:documentation>If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>\r\n");
+		write("    </xs:annotation>\r\n");
+		write("    <xs:complexContent>\r\n");
+		write("  	   <xs:extension base=\"Element\">\r\n");
+		write("  	     <xs:attribute name=\"value\" type=\""+en + "-list\" use=\"optional\"/>\r\n");
+		write("  	   </xs:extension>\r\n");
+		write("  	 </xs:complexContent>\r\n");
+		write("  </xs:complexType>\r\n");
+	  
 		genEnums.add(en);
 	}
 
 	private void generateType(ElementDefn root, String name, ElementDefn struc)
 			throws IOException, Exception {
 		write("  <xs:complexType name=\"" + name + "\">\r\n");
-		write("    <xs:sequence>\r\n");
+    write("    <xs:annotation>\r\n");
+    write("      <xs:documentation>"+Utilities.escapeXml(root.getDefinition())+"</xs:documentation>\r\n");
+    write("      <xs:documentation>If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>\r\n");
+    write("    </xs:annotation>\r\n");
+    write("    <xs:complexContent>\r\n");
+    write("      <xs:extension base=\"Element\">\r\n");
+		write("        <xs:sequence>\r\n");
 
 		for (ElementDefn e : struc.getElements()) {
 			if (e.getName().equals("[type]"))
@@ -389,21 +429,22 @@ private void genXmlIdRef() throws Exception {
 			else
 				generateWrapperElement(root, e);
 		}
-		write("    </xs:sequence>\r\n");
-    write("    <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
+		write("        </xs:sequence>\r\n");
+    write("      </xs:extension>\r\n");
+    write("    </xs:complexContent>\r\n");
 		write("  </xs:complexType>\r\n");
 	}
 
 	private void generateAny(ElementDefn root, ElementDefn e, String prefix)
 			throws Exception {
-		write("      <xs:choice minOccurs=\""
+		write("        <xs:choice minOccurs=\""
 				+ e.getMinCardinality().toString() + "\" maxOccurs=\"1\">\r\n");
 		if (e.hasDefinition()) {
-			write("        <xs:annotation>\r\n");
-			write("          <xs:documentation>"
+			write("           <xs:annotation>\r\n");
+			write("             <xs:documentation>"
 					+ Utilities.escapeXml(e.getDefinition())
 					+ "</xs:documentation>\r\n");
-			write("        </xs:annotation>\r\n");
+			write("           </xs:annotation>\r\n");
 		}
 		for (TypeRef t : definitions.getKnownTypes()) {
 			if (!definitions.getInfrastructure().containsKey(t.getName())
@@ -412,7 +453,7 @@ private void genXmlIdRef() throws Exception {
 						.getName();
 				if (t.hasParams()) {
 					for (String p : t.getParams()) {
-						write("       <xs:element name=\"" + en + "_"
+						write("           <xs:element name=\"" + en + "_"
 								+ upFirst(p) + "\" type=\""+ t.getName() + "_" + upFirst(p) + "\"/>\r\n");
 //						write("         <xs:complexType>\r\n");
 //						write("           <xs:complexContent>\r\n");
@@ -424,7 +465,7 @@ private void genXmlIdRef() throws Exception {
 					}
 				} else {
 					// write("       <xs:element name=\""+t.getName()+"\" type=\""+t.getName()+"\"/>\r\n");
-					write("       <xs:element name=\"" + en + "\" type=\"" + t.getName()+ "\"/>\r\n");
+					write("           <xs:element name=\"" + en + "\" type=\"" + t.getName()+ "\"/>\r\n");
 //					write("         <xs:complexType>\r\n");
 //					write("           <xs:complexContent>\r\n");
 //					write("             <xs:extension base=\"" + t.getName()+ "\"/>\r\n");
@@ -434,14 +475,14 @@ private void genXmlIdRef() throws Exception {
 				}
 			}
 		}
-		write("       <xs:element name=\"" + (prefix == null ? "" : prefix) + "Resource\" type=\"ResourceReference\"/>\r\n");
+		write("           <xs:element name=\"" + (prefix == null ? "" : prefix) + "Resource\" type=\"ResourceReference\"/>\r\n");
 //		write("         <xs:complexType>\r\n");
 //		write("           <xs:complexContent>\r\n");
 //		write("             <xs:extension base=\"\"/>\r\n");
 //		write("           </xs:complexContent>\r\n");
 //		write("         </xs:complexType>\r\n");
 //		write("       </xs:element>\r\n");
-		write("      </xs:choice>\r\n");
+		write("          </xs:choice>\r\n");
 	}
 
 	private void generateWrapperElement(ElementDefn root, ElementDefn e)
@@ -519,14 +560,9 @@ private void genXmlIdRef() throws Exception {
 	private void generateElement(ElementDefn root, ElementDefn e,
 			String paramType) throws Exception {
 		List<TypeRef> types = e.getTypes();
-		if (types.size() > 1
-				|| (types.size() == 1 && types.get(0).isWildcardType())) {
+		if (types.size() > 1 || (types.size() == 1 && types.get(0).isWildcardType())) {
 			if (!e.getName().contains("[x]"))
-				throw new Exception(
-						"Element has multiple types as a choice doesn't have a [x] in the element name '"
-								+ e.getName()
-								+ "' in resource "
-								+ root.getName());
+				throw new Exception("Element has multiple types as a choice doesn't have a [x] in the element name '"+ e.getName()+ "' in resource "+ root.getName());
 			generateAny(root, e, e.getName().replace("[x]", ""));
 			// write("<xs:choice>\r\n");
 			// if (e.hasDefinition()) {
@@ -555,41 +591,33 @@ private void genXmlIdRef() throws Exception {
 			// }
 			// write("      </xs:choice>\r\n");
 		} else {
-			write("      ");
+			write("          ");
 			if ("extension".equals(e.getName()))
-				write("<xs:element name=\"" + e.getName()
-						+ "\" type=\"Extension\" ");
+				write("<xs:element name=\"" + e.getName() + "\" type=\"Extension\" ");
 			else if ("div".equals(e.getName()) && e.typeCode().equals("xhtml"))
 				write("<xs:element ref=\"xhtml:div\" ");
 			else if (e.usesCompositeType())
-				write("<xs:element name=\"" + e.getName() + "\" type=\""
-						+ e.typeCode().substring(1) + "\" ");
+				write("<xs:element name=\"" + e.getName() + "\" type=\"" + e.typeCode().substring(1) + "\" ");
 			else if (types.size() == 0 && e.getElements().size() > 0) {
 				int i = 0;
-				String tn = root.getName() + "." + upFirst(e.getName())
-						+ (i == 0 ? "" : Integer.toString(i));
+				String tn = root.getName() + "." + upFirst(e.getName()) + (i == 0 ? "" : Integer.toString(i));
 				// while (typenames.contains(tn)) {
 				// i++;
 				// tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" :
 				// Integer.toString(i));
 				// }
-				write("<xs:element name=\"" + e.getName() + "\" type=\"" + tn
-						+ "\" ");
+				write("<xs:element name=\"" + e.getName() + "\" type=\"" + tn + "\" ");
 				structures.put(tn, e);
 				typenames.add(tn);
 			} else if (types.size() == 1) {
 				if (types.get(0).isUnboundGenericParam() && paramType != null)
-					write("<xs:element name=\"" + e.getName() + "\" type=\""
-							+ paramType + "\" ");
+					write("<xs:element name=\"" + e.getName() + "\" type=\"" + paramType + "\" ");
 				else if (types.get(0).getName().equals("idref")) {
           write("<xs:element name=\"" + e.getName() + "\" type=\"xmlIdRef\" ");				
 				} else
-					write("<xs:element name=\"" + e.getName() + "\" type=\""
-							+ encodeType(e, types.get(0), true) + "\" ");
+					write("<xs:element name=\"" + e.getName() + "\" type=\"" + encodeType(e, types.get(0), true) + "\" ");
 			} else
-				throw new Exception("how do we get here? " + e.getName()
-						+ " in " + root.getName() + " "
-						+ Integer.toString(types.size()));
+				throw new Exception("how do we get here? " + e.getName() + " in " + root.getName() + " " + Integer.toString(types.size()));
 
 			write("minOccurs=\"" + e.getMinCardinality().toString() + "\"");
 			if (e.unbounded())
@@ -599,12 +627,10 @@ private void genXmlIdRef() throws Exception {
 
 			if (e.hasDefinition()) {
 				write(">\r\n");
-				write("        <xs:annotation>\r\n");
-				write("          <xs:documentation>"
-						+ Utilities.escapeXml(e.getDefinition())
-						+ "</xs:documentation>\r\n");
-				write("        </xs:annotation>\r\n");
-				write("      </xs:element>\r\n");
+				write("            <xs:annotation>\r\n");
+				write("              <xs:documentation>" + Utilities.escapeXml(e.getDefinition()) + "</xs:documentation>\r\n");
+				write("            </xs:annotation>\r\n");
+				write("          </xs:element>\r\n");
 			} else {
 				write("/>\r\n");
 			}
@@ -621,32 +647,30 @@ private void genXmlIdRef() throws Exception {
 			return "ResourceReference";
 		else if (type.isIdRef())
 			return "id-simple";
-		else if (params
-				&& definitions.getPrimitives().containsKey(type.getName())
-				&& definitions.getPrimitives().get(type.getName()) instanceof PrimitiveType)
-			return "xs:"
-					+ ((PrimitiveType) definitions.getPrimitives().get(
-							type.getName())).getSchemaType();
+//		else if (params
+//				&& definitions.getPrimitives().containsKey(type.getName())
+//				&& definitions.getPrimitives().get(type.getName()) instanceof PrimitiveType)
+//			return "xs:"
+//					+ ((PrimitiveType) definitions.getPrimitives().get(
+//							type.getName())).getSchemaType();
 		else if (type.getName().equals("code")) {
 			String en = null;
 			if (e.hasBinding()) {
-				BindingSpecification cd = definitions.getBindingByName(e
-						.getBindingName());
-				if (cd != null
-						&& cd.getBinding() == BindingSpecification.Binding.CodeList) {
+				BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
+				if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
 					en = cd.getName();
 					enums.add(en);
+					enumDefs.put(en, cd.getDefinition());
 					return en;
 				}
 			}
-			return "code-simple";
+			return "code";
 
 		} else if (!type.hasParams() || !params) {
-			if (params
-					&& definitions.getPrimitives().containsKey(type.getName())
-					&& !e.unbounded())
-				return type.getName() + "-simple";
-			else
+//			if (params && definitions.getPrimitives().containsKey(type.getName())
+//					&& !e.unbounded())
+//				return type.getName() + "-simple";
+//			else
 				return type.getName();
 		} else if (type.getParams().size() > 1)
 			throw new Exception(

@@ -83,11 +83,21 @@ public class BookMaker {
   private void addReferenceIds(XhtmlNode body) {
     Map<String, RefTarget> tgts = new HashMap<String, RefTarget>();
     List<XhtmlNode> refs = new ArrayList<XhtmlNode>();
-    buildIndex(refs, tgts, body, false);
+    List<XhtmlNode> norefs = new ArrayList<XhtmlNode>();
+    buildIndex(refs, norefs, tgts, body, false, false);
+    for (XhtmlNode a : norefs) {
+//      updateRef(tgts, a, false);
+    }
     for (XhtmlNode a : refs) {
-      if (a.getAttributes().get("href").startsWith("#")) {
-        RefTarget r = tgts.get(a.getAttributes().get("href").substring(1));
-        if (r != null) {
+      updateRef(tgts, a, true);
+    }    
+  }
+
+  private void updateRef(Map<String, RefTarget> tgts, XhtmlNode a, boolean update) {
+    if (a.getAttributes().get("href").startsWith("#")) {
+      RefTarget r = tgts.get(a.getAttributes().get("href").substring(1));
+      if (r != null) {
+        if (update) {
           int n = r.index + 1;
           while (n < r.parent.getChildNodes().size() && r.parent.getChildNodes().get(n).getNodeType() != NodeType.Element)
             n++;
@@ -97,21 +107,20 @@ public class BookMaker {
               String s = h.allText();
               if (s.contains(":"))
                 a.addText(" (§"+s.substring(0, s.indexOf(':'))+")");
-            }
-            
+            } 
           }
         }
-        else if (page.getDefinitions().getFutureResources().containsKey(a.allText())) {
-          a.addText(" (Broken Link: not done yet)");
-        } else {
-          page.log("unable to resolve reference to "+a.getAttributes().get("href").substring(1)+" on \""+a.allText()+"\"");
-          a.addText(" (Known Broken Link - needs to be resolved)");
-        }
       }
-    }    
+      else if (page.getDefinitions().getFutureResources().containsKey(a.allText())) {
+        a.addText(" (Broken Link: not done yet)");
+      } else {
+        page.log("unable to resolve reference to "+a.getAttributes().get("href").substring(1)+" on \""+a.allText()+"\"");
+        a.addText(" (Known Broken Link - needs to be resolved)");
+      }
+    }
   }
 
-  private void buildIndex(List<XhtmlNode> refs, Map<String, RefTarget> tgts, XhtmlNode focus, boolean started) {
+  private void buildIndex(List<XhtmlNode> refs, List<XhtmlNode> norefs, Map<String, RefTarget> tgts, XhtmlNode focus, boolean started, boolean noUpdate) {
     int i = 0;
     for (XhtmlNode child : focus.getChildNodes()) {
       if (started) {
@@ -125,11 +134,14 @@ public class BookMaker {
         }
         if ("a".equals(child.getName()) && child.getAttributes().containsKey("href")) {
           //System.out.println("found "+child.getAttributes().get("href"));
-          refs.add(child);
+          if (noUpdate)
+            norefs.add(child);
+          else
+            refs.add(child);
         }
 
-        if (child.getNodeType() == NodeType.Element && !child.getName().equals("pre"))
-          buildIndex(refs, tgts, child, true);
+        if (child.getNodeType() == NodeType.Element)
+          buildIndex(refs, norefs, tgts, child, true, noUpdate || child.getName().equals("pre"));
       } else if ("hr".equals(child.getName()))
         started = true;
       i++;

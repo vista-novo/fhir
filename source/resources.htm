@@ -58,14 +58,14 @@ The contents of the base resource from which all other resources derive are:
 </p>
 <pre class="spec">
 &lt;<a href="#content" title="A Resource Definition for FHIR" class="dict"><b>[Name]</b></a> xmlns="http://hl7.org/fhir"&gt;
- &lt;<a href="formats.htm#Narrative" title="Text summary of resource, for human interpretation" class="dict"><b>text</b></a>&gt;<font color="Gray">&lt;!--</font> <font color="brown"><b>1..1</b></font> <font color="darkgreen"><a href="#Narrative">Narrative</a></font> <font color="navy">Text summary of [x], for human interpretation</font><font color="Gray"> --&gt;</font>&lt;/text&gt;
  &lt;<a href="extensibility.htm" title="See Extensions" class="dict"><b>extension</b></a>&gt;<font color="Gray">&lt;!-- <font color="brown"><b>0..*</b></font> </font> <font color="darkgreen"><a href="extensibility.htm">Extension</a></font>   <a href="extensibility.htm"><font color="navy">See Extensions</font></a> <font color="Gray"> --&gt;</font>&lt;/extension&gt;
- &lt;<a href="#inline" title="See Contained Resources" class="dict"><b>contained</b></a>&gt;<font color="Gray">&lt;!-- <font color="brown"><b>0..*</b></font> </font> <font color="darkgreen"><a href="#metadata">Resource</a></font>   <a href="extensibility.htm"><font color="navy">Contained Resource</font></a> <font color="Gray"> --&gt;</font>&lt;/contained&gt;
+ &lt;<a href="formats.htm#Narrative" title="Text summary of resource, for human interpretation" class="dict"><b>text</b></a>&gt;<font color="Gray">&lt;!--</font> <font color="brown"><b>1..1</b></font> <font color="darkgreen"><a href="formats.htm#Narrative">Narrative</a></font> <font color="navy">Text summary of resource, for human interpretation</font><font color="Gray"> --&gt;</font>&lt;/text&gt;
+ &lt;<a href="#inline" title="See Contained Resources" class="dict"><b>contained</b></a>&gt;<font color="Gray">&lt;!-- <font color="brown"><b>0..*</b></font> </font> <font color="darkgreen"><a href="#inline">Resource</a></font>   <a href="extensibility.htm"><font color="navy">Contained Resource</font></a> <font color="Gray"> --&gt;</font>&lt;/contained&gt;
  <font color="Gray">&lt;!-- Defined Data Elements for Resource --&gt;</font>
 &lt;/[Name]&gt;
 </pre>
 <p>
-These elements must always appear in this order. The basic elements shared by all resources come first
+These elements must always appear in this order. These basic elements shared by all resources come first
 in order to support consistent definitions for schema and UML derived code. 
 </p>
 

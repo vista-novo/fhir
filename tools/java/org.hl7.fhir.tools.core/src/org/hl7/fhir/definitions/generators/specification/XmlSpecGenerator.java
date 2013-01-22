@@ -88,10 +88,17 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		else
 			write("</b></a>");
 
+		boolean hasXmlLang = false;
+    for (ElementDefn elem : root.getElements()) {
+      hasXmlLang = hasXmlLang || elem.typeCode().equals("xml:lang");
+    }
+		if (hasXmlLang)
+		  write(" xml:lang?");
 		write(" xmlns=\"http://hl7.org/fhir\"&gt;\r\n");
 
 		for (ElementDefn elem : root.getElements()) {
-			generateCoreElem(elem, 1, rn, root.getName());
+		  if (!elem.typeCode().equals("xml:lang"))
+		    generateCoreElem(elem, 1, rn, root.getName());
 		}
 
 		write("&lt;/");
@@ -203,6 +210,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		// return;
 
 		boolean listed = false;
+		boolean doneType = false;
 		for (int i = 0; i < indent; i++) {
 			write(" ");
 		}
@@ -261,6 +269,14 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				write("</b></a>");
 			// if (elem.isXmlIDRef())
 			// write(" idref=\"<span style=\"color: navy\" title=\""+Utilities.escapeXml(elem.getDefinition())+"\">["+elem.getShortDefn()+"]</span>\"/");
+			if (elem.getTypes().size() == 1 && (definitions.getPrimitives().containsKey(elem.typeCode()) || elem.typeCode().equals("idref"))) {
+			  doneType = true;
+			  TypeRef t = elem.getTypes().get(0);
+			  if (elem.typeCode().equals("idref"))
+          write(" value=\"[<span style=\"color: darkgreen\"><a href=\"formats.htm#idref\">" + t.getName()+ "</a></span>]\"/");
+			  else
+  			  write(" value=\"[<span style=\"color: darkgreen\"><a href=\"" + dtRoot + getSrcFile(t.getName())+ ".htm#" + t.getName() + "\">" + t.getName()+ "</a></span>]\"/");
+			}
 			write("&gt;");
 
 			// If this is an unrolled element, show its profile name
@@ -301,55 +317,57 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 							.isWildcardType()) && !sharedDT) {
 				writeCardinality(elem);
 				listed = true;
-				write(" <span style=\"color: darkgreen\">");
-				int i = 0;
-				int d = elem.getTypes().size() / 2;
-				for (TypeRef t : elem.getTypes()) {
-					if (i > 0)
-						write("|");
-					if (elem.getTypes().size() > 5 && i == d)
-						write("\r\n              ");
-					if (t.isXhtml() || t.getName().equals("list"))
-						write(t.getName());
-					else
-						write("<a href=\"" + dtRoot + getSrcFile(t.getName())
-								+ ".htm#" + t.getName() + "\">" + t.getName()
-								+ "</a>");
-					if (t.hasParams()) {
-						write("(");
-						boolean firstp = true;
-						for (String p : t.getParams()) {
-							if (!firstp)
-								write("|");
+				if (!doneType) {
+				  write(" <span style=\"color: darkgreen\">");
+				  int i = 0;
+				  int d = elem.getTypes().size() / 2;
+				  for (TypeRef t : elem.getTypes()) {
+				    if (i > 0)
+				      write("|");
+				    if (elem.getTypes().size() > 5 && i == d)
+				      write("\r\n              ");
+				    if (t.isXhtml() || t.getName().equals("list"))
+				      write(t.getName());
+				    else
+				      write("<a href=\"" + dtRoot + getSrcFile(t.getName())
+				          + ".htm#" + t.getName() + "\">" + t.getName()
+				          + "</a>");
+				    if (t.hasParams()) {
+				      write("(");
+				      boolean firstp = true;
+				      for (String p : t.getParams()) {
+				        if (!firstp)
+				          write("|");
 
-							// TODO: There has to be an aggregation
-							// specification per t.getParams()
-							if (elem.hasAggregation()) {
-								// TODO: This should link to the documentation
-								// of the profile as specified
-								// in the aggregation. For now it links to the
-								// base resource.
-								write("<a href=\"" + dtRoot + getSrcFile(p)
-										+ ".htm#" + p + "\">"
-										+ elem.getAggregation() + "</a>");
-							} 
-							else if( definitions.getFutureResources().containsKey(p) ||
-									p.equals("Any"))
-							{
-								write("<a href=\"" + "resources.htm" + "\">" + p + "</a>");								
-							}
-							else
-								write("<a href=\"" + dtRoot + getSrcFile(p)
-										+ ".htm#" + p + "\">" + p + "</a>");
+				        // TODO: There has to be an aggregation
+				        // specification per t.getParams()
+				        if (elem.hasAggregation()) {
+				          // TODO: This should link to the documentation
+				          // of the profile as specified
+				          // in the aggregation. For now it links to the
+				          // base resource.
+				          write("<a href=\"" + dtRoot + getSrcFile(p)
+				              + ".htm#" + p + "\">"
+				              + elem.getAggregation() + "</a>");
+				        } 
+				        else if( definitions.getFutureResources().containsKey(p) ||
+				            p.equals("Any"))
+				        {
+				          write("<a href=\"" + "resources.htm" + "\">" + p + "</a>");								
+				        }
+				        else
+				          write("<a href=\"" + dtRoot + getSrcFile(p)
+				              + ".htm#" + p + "\">" + p + "</a>");
 
-							firstp = false;
-						}
-						write(")");
-					}
+				        firstp = false;
+				      }
+				      write(")");
+				    }
 
-					i++;
+				    i++;
+				  }
+				  write("</span>");
 				}
-				write("</span>");
 			} else if (elem.getName().equals("extension")) {
 				write(" <a href=\"extensibility.htm\"><span style=\"color: navy\">See Extensions</span></a> ");
 			} else if (elem.getTypes().size() == 1
@@ -413,11 +431,11 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 			if (elem.getElements().isEmpty() && !sharedDT)
 				write("<span style=\"color: Gray\"> --&gt;</span>");
-			// if (!elem.isXmlIDRef()) {
-			write("&lt;/");
-			write(en);
-			write("&gt;");
-			// }
+			if (!doneType) {
+			  write("&lt;/");
+			  write(en);
+			  write("&gt;");
+			}
 			if (elem.isInherited())
 				write("</i>");
 			write("\r\n");
