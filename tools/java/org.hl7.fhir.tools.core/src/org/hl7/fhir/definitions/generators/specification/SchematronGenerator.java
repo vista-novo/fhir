@@ -57,6 +57,7 @@ public class SchematronGenerator  extends TextStreamWriter {
     ln_i("<sch:schema xmlns:sch=\"http://purl.oclc.org/dsdl/schematron\">");
     ln("<sch:ns prefix=\"f\" uri=\"http://hl7.org/fhir\"/>");
     ln("<sch:ns prefix=\"a\" uri=\"http://www.w3.org/2005/Atom\"/>");
+    ln("<sch:ns prefix=\"h\" uri=\"http://www.w3.org/1999/xhtml\"/>");
     for (ResourceDefn root : definitions.getResources().values()) {
       ln_i("<sch:pattern>");
       ln("<sch:title>"+root.getName()+"</sch:title>");
@@ -75,6 +76,8 @@ public class SchematronGenerator  extends TextStreamWriter {
 		ln("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 		ln_i("<sch:schema xmlns:sch=\"http://purl.oclc.org/dsdl/schematron\">");
 		ln("<sch:ns prefix=\"f\" uri=\"http://hl7.org/fhir\"/>");
+    ln("<sch:ns prefix=\"a\" uri=\"http://www.w3.org/2005/Atom\"/>");
+    ln("<sch:ns prefix=\"h\" uri=\"http://www.w3.org/1999/xhtml\"/>");
 		ln_i("<sch:pattern>");
 		ln("<sch:title>"+root.getName()+"</sch:title>");
 
