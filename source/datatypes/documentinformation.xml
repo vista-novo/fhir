@@ -118,7 +118,6 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">DocumentInformation.id</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Logical identifier for document (version-independent)</Data></Cell>
     <Cell><Data ss:Type="String">Logical Identifier for the document, assigned when created. This identifier stays constant when subsequent versions of the document are created</Data></Cell>
@@ -128,7 +127,6 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">DocumentInformation.versionId</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Version-specific identifier for document</Data></Cell>
     <Cell><Data ss:Type="String">Version specific identifier for the document, assigned when created. This identifier changes when subsequent versions of the document are created</Data></Cell>
@@ -139,8 +137,7 @@
     <Cell><Data ss:Type="String">DocumentInformation.created</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Y</Data></Cell>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="5" ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">instant</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Document creation time</Data></Cell>
@@ -172,8 +169,7 @@
     <Cell><Data ss:Type="String">DocumentInformation.type</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Y</Data></Cell>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="5" ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">DocumentType</Data></Cell>
     <Cell><Data ss:Type="String">Kind of document (LOINC if possible)</Data></Cell>
@@ -220,7 +216,7 @@
     <Cell><Data ss:Type="String">DocumentInformation.confidentiality</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Coding</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -237,8 +233,7 @@
     <Cell><Data ss:Type="String">DocumentInformation.subject</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Y</Data></Cell>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="5" ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Resource(Patient|Group|Device)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Who/what the document is about</Data></Cell>
@@ -492,11 +487,10 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>7</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>10</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

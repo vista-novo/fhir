@@ -113,8 +113,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Period.start</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
-    <Cell><Data ss:Type="String">dateTime</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">dateTime</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">The start of the period</Data></Cell>
     <Cell><Data ss:Type="String">The start of the period. The boundary is inclusive.</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">If the low element is missing, the meaning is that the low boundary is not known.</Data></Cell>
@@ -123,8 +122,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="195">
     <Cell><Data ss:Type="String">Period.end</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
-    <Cell><Data ss:Type="String">dateTime</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">dateTime</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">The end of the period, if not ongoing</Data></Cell>
     <Cell><Data ss:Type="String">The end of the period. If the high is missing, it means that the period is ongoing</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">The high value includes any matching date/time. i.e. 2012-02-03T10:00:00 is in a period that has a end value of 2012-02-03</Data></Cell>
@@ -142,8 +140,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>3</ActiveCol>
-     <RangeSelection>C4</RangeSelection>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

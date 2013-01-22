@@ -62,7 +62,7 @@ Notes:
 </p>
 <ul>
  <li>The <i>url</i> identifies an extension definition in a <a href="profile.htm">resource profile</a> that defines the content and meaning of the extension.</li>
- <li>If present, the id in the <i>ref</i> element is <a href="xml.htm#idref">an internal reference</a> to a target element that is extended by the content as if it contained the extension itself. The id must point within the same resource. If <i>id</i> is not present, the extension applies to the root resource</li>
+ <li>If present, the id in the <i>ref</i> element is <a href="formats.htm#idref">an internal reference</a> to a target element that is extended by the content as if it contained the extension itself. The id must point within the same resource. If <i>id</i> is not present, the extension applies to the root resource</li>
  <li>The order that extensions appear in is significant - where multiple extensions have the same target, they extend the target element in the order in which they appear in the extension section</li>
  <li>Any element defined as part of the resource content, or any repeating element inside a data type, may carry an id attribute to serve as the target of an extension</li>
  <li>An extension may have a value, or nested extensions, but not both. The actual name of the value element has the type added to it in place of the [x], such as valueQuantity</li>

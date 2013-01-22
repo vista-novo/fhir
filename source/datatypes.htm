@@ -138,7 +138,7 @@ with additional constraints marked in bold.
 <p></p>
 <p>
 These types are represented as XML Elements with the value of the type in the text of the element. The name of the element is defined where the type is used. 
-The XML elements may have an <a href="xml.htm#idref">id attribute</a>. In JSON, the data type is represented by an object with two properties: "_id" for the id attribute, 
+The XML elements may have an <a href="formats.htm#idref">id attribute</a>. In JSON, the data type is represented by an object with two properties: "_id" for the id attribute, 
 and "value" for the value of the type.
 </p>
 <div class="example">
@@ -167,7 +167,7 @@ and "value" for the value of the type.
 
 <p>
 These types are represented as XML Elements with child elements with the name of the defined elements of the type. The name of the element is defined where the type is used. 
-Any of the XML elements may have an <a href="xml.htm#idref">id attribute</a>. In JSON, the data type is represented by an object with properties named the same as the the
+Any of the XML elements may have an <a href="formats.htm#idref">id attribute</a>. In JSON, the data type is represented by an object with properties named the same as the the
 XML elements. The JSON representation is almost exactly the same, so only the first example has an additional JSON representation.
 </p>
 <p>
@@ -401,7 +401,7 @@ representation of the concept as entered or chosen by the user which most closel
 represents the intended meaning of the user or concept. Very often the <i>text</i> 
 is the same as a <i>display</i> of one of the codings. One of the codings 
 may be flagged as the primary - the code that the user actually chose directly. 
-If present, the value of the primary element is an <a href="xml.htm#id">xml:id</a> that must match 
+If present, the value of the primary element is an <a href="formats.htm#id">xml:id</a> that must match 
 an <i>id</i> attribute on one of the codings. 
 </p>
 
@@ -1072,10 +1072,10 @@ The following types are defined as part of the data types, but are documented el
 <img src="types3.png"/>
 </p>
 <ul>
- <li><b><a href="xml.htm#metadata">Resource</a></b> - The conceptual base class for all resources</li>
- <li><b><a href="xml.htm#Resource">ResourceReference</a></b> - for references from one resource to another</li>
+ <li><b><a href="resources.htm#metadata">Resource</a></b> - The conceptual base class for all resources</li>
+ <li><b><a href="resources.htm#Resource">ResourceReference</a></b> - for references from one resource to another</li>
  <li><b><a href="extensibility.htm">Extension</a></b> - used to convey additional data in a resource</li>
- <li><b><a href="xml.htm#Narrative">Narrative</a></b> - Conveys a human readable representation of the content of a resource</li>
+ <li><b><a href="formats.htm#Narrative">Narrative</a></b> - Conveys a human readable representation of the content of a resource</li>
 </ul>
 
 [%footer%]

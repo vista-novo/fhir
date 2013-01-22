@@ -3,19 +3,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Resource Format - FHIR v<%version%></title>
+    <title>Resource Format - FHIR v[%version%]</title>
     <link rel="Stylesheet" href="fhir.css" type="text/css"/>
     <link rel="Stylesheet" href="fhir-print.css" type="text/css" media="print" />
 </head>
 
 <body>
-<%sidebar%>
+[%sidebar%]
 
-<%maindiv%>
+[%maindiv%]
 
-<%formatsheader%>
+[%formatsheader%]
 
-<%onthispage Resource Definition#|Narrative#Narrative|Internal References#idref|JSON#json|Atom (Bundle)#atom|JSON (Bundle)#json-bundles|Schema#schema%>
+[%onthispage Resource Definition#|Narrative#Narrative|Internal References#idref|JSON#json|Atom (Bundle)#atom|JSON (Bundle)#json-bundles|Schema#schema%]
 
 <h1>Resource Formats</h1>
 <p>
@@ -99,7 +99,7 @@ reference platform</a>.
 Every resource SHALL include a human readable narrative that contains a summary of the resource, 
 and may be used to represent the content of the resource to a human. The narrative need 
 not encode all the structured data, but is required to contain sufficient detail to make 
-it "clinically safe" for a human to just read the narrative. Resources may define 
+it "clinically safe" for a human to just read the narrative. Resource definitions may define 
 what content should be represented in the narrative to ensure clinical safety.
 </p>
 <p>
@@ -114,7 +114,7 @@ to open up during the lifetime of the resources they define.
 <p>
 The narrative is an xhtml fragment that also includes images if appropriate:
 </p>
-<%dt Narrative%>
+[%dt Narrative%]
 <p>
 The contents of the <i>div</i> element are an XHTML fragment containing only the basic html formatting elements described in 
 chapters 7-11 (except section 4 of chapter 9) and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href),
@@ -248,7 +248,7 @@ same datatype).
 <p>
 In a single resource, this works like xml:id/idref, but there is an important difference: the 
 uniqueness and resolution scope of these id references is within the resource that contains them. If multiple
-resources are combined into a single piece of XML, such as an <a href="atom.htm">atom feed</a>, duplicate 
+resources are combined into a single piece of XML, such as an <a href="#atom">atom feed</a>, duplicate 
 values may occur between resources. This must be managed by applications reading the resources.
 </p>
 <p>
@@ -434,7 +434,7 @@ In XML bundles are represented using an Atom format (<a href="http://tools.ietf.
  <li>The title for the feed and the entry are arbitrary human readable content and not to be used for any automated processing. Applications may populate these in any useful way</li> 
  <li>Every bundle must have a unique id and that id must be a valid absolute <a href="datatypes.htm#uri">uri</a>. UUIDs are recommended (urn:uuid:...)</li>
  <li>The feed.link element is assigned no particular meaning the FHIR specification, except in the case of a search operation, but may be used to provide a reference to the source of the feed</li>
- <li>The entry element carries the <a href="xml.htm#metadata">three pieces of resource metadata</a>: Id (.id), Version Id (.link), Last Updated (.updated)</li>
+ <li>The entry element carries the <a href="resources.htm#metadata">three pieces of resource metadata</a>: Id (.id), Version Id (.link), Last Updated (.updated)</li>
  <li>The entry.id must be an absolute url, the tail element of which is the logical id of the resource. The id is a version independent reference</li>
  <li>The entry.link to self is a version specific reference to the resource.</li>
  <li>When used in a <a href="http.htm">RESTful implementation</a>, the entry.link and entry.id are the URLs of the resource on the system; the version specific link can be used as the basis synchronizing pub/sub systems using the atom bundle with the <a href="http.htm#updates">updates operation</a>. In other contexts, the values should be literal references to a server if one is available</li>
@@ -560,7 +560,7 @@ This might be a desired feature, but it may also cripple interoperability betwee
 are signed and then only when all the related resources are found in the bundle.</li>
 <li>
 <a name="Ids"></a>
-FHIR resources make use of id attributes as targets for <a href="xml.htm#idref">internal references with resources</a>. 
+FHIR resources make use of id attributes as targets for <a href="formats.htm#idref">internal references with resources</a>. 
 These id attributes are unique and resolved within the context of a single resource. When resources are 
 combined into a bundle, different resources may contain duplicate id attributes. Thus it is important to limit
 the scope of resolution of an id attribute to the resource in which the <i>id</i> attribute is declared.
@@ -589,7 +589,7 @@ the scope of resolution of an id attribute to the resource in which the <i>id</i
 
 <!--
 Note that 
-there are several initiatives to define a JSON format for <a href="atom.htm">Atom</a>, all of which are suffering from having to simulate properties, 
+there are several initiatives to define a JSON format for Atom, all of which are suffering from having to simulate properties, 
 namespaces and other xml-specific features
 
 n Atom format (<a href="http://tools.ietf.org/html/rfc4287" target="_blank">http://tools.ietf.org/html/rfc4287</a>), following this template:
@@ -697,7 +697,7 @@ The base schema is called "<a href="fhir-base.xsd">fhir-base.xsd</a>" and define
 datatypes and also the base infrastructure types described on this page. In addition, there 
 is a schema for each resource and a common schema <a href="fhir-all.xsd">fhir-all.xsd</a> 
 that includes all the resource schemas.  A customized atom schema <a href="fhir-atom.xsd">fhir-atom.xsd</a>
-is provided for validating <a href="atom.htm">bundles</a>.
+is provided for validating <a href="#atom">bundles</a>.
 </p>
 <p>
 In addition to the w3c schema files, this specification also provides Schematron files that
@@ -717,7 +717,7 @@ namespace in the resource itself.
 <!-- Todo: Relax NG, RDF, eCore -->
 
 
-<%footer%>
-<%/maindiv%>    
+[%footer%]
+[%/maindiv%]    
 </body>
 </html>

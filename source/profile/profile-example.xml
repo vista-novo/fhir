@@ -971,7 +971,7 @@
             <b>1..1</b>
           </span>
           <span style="color: darkgreen">
-            <a href="xml.htm#Resource">Resource</a>(<a href="Patient.htm#Patient">Patient</a>)</span>
+            <a href="resources.htm#Resource">Resource</a>(<a href="Patient.htm#Patient">Patient</a>)</span>
           <span style="color: navy">The patient the report is about</span>
           <span style="color: Gray"> --&gt;</span>&lt;/patient&gt;</i>
         <i class="inherited">&lt;<a title="The admission that this diagnostic investigation is associated with" class="dict" href="#LabReport.admission">
@@ -981,7 +981,7 @@
             <b>0..1</b>
           </span>
           <span style="color: darkgreen">
-            <a href="xml.htm#Resource">Resource</a>(<a href="Admission.htm#Admission">Admission</a>)</span>
+            <a href="resources.htm#Resource">Resource</a>(<a href="Admission.htm#Admission">Admission</a>)</span>
           <span style="color: navy">Admission Context</span>
           <span style="color: Gray"> --&gt;</span>&lt;/admission&gt;</i>
         <i class="inherited">&lt;<a title="The laboratory service that issued the report" class="dict" href="#LabReport.laboratory">
@@ -991,7 +991,7 @@
             <b>1..1</b>
           </span>
           <span style="color: darkgreen">
-            <a href="xml.htm#Resource">Resource</a>(<a href="Organization.htm#Organization">Organization</a>)</span>
+            <a href="resources.htm#Resource">Resource</a>(<a href="Organization.htm#Organization">Organization</a>)</span>
           <span style="color: navy">Responsible Laboratory</span>
           <span style="color: Gray"> --&gt;</span>&lt;/laboratory&gt;</i>
         <i class="inherited">&lt;<a title="The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS)." class="dict" href="#LabReport.reportId">
@@ -1050,7 +1050,7 @@
               <b>0..1</b>
             </span>
             <span style="color: darkgreen">
-              <a href="xml.htm#Resource">Resource</a>(<a href="Provider.htm#Provider">Provider</a>|<a href="Organization.htm#Organization">Organization</a>)</span>
+              <a href="resources.htm#Resource">Resource</a>(<a href="Provider.htm#Provider">Provider</a>|<a href="Organization.htm#Organization">Organization</a>)</span>
             <span style="color: navy">Responsible for request</span>
             <span style="color: Gray"> --&gt;</span>&lt;/requester&gt;</i>
           <i class="inherited">&lt;<a title="Details of the clinical information provided to the laboratory along with the original request" class="dict" href="#LabReport.requestDetail.clinicalInfo">
@@ -1060,7 +1060,7 @@
               <b>0..1</b>
             </span>
             <span style="color: darkgreen">
-              <a href="xml.htm#Resource">Resource</a>(<a href="Any.htm#Any">Any</a>)</span>
+              <a href="resources.htm#Resource">Resource</a>(<a href="Any.htm#Any">Any</a>)</span>
             <span style="color: navy">Clinical information provided</span>
             <span style="color: Gray"> --&gt;</span>&lt;/clinicalInfo&gt;</i>
  &lt;/requestDetail&gt;</i>
@@ -1102,7 +1102,7 @@
             <b>0..*</b>
           </span>
           <span style="color: darkgreen">
-            <a href="xml.htm#Resource">Resource</a>(<a href="Specimen.htm#Specimen">Specimen</a>)</span>
+            <a href="resources.htm#Resource">Resource</a>(<a href="Specimen.htm#Specimen">Specimen</a>)</span>
           <span style="color: navy">Specimen (incl. time of collection)</span>
           <span style="color: Gray"> --&gt;</span>&lt;/specimen&gt;</i>
  &lt;<a title="All the lipid panel results (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup">
@@ -1130,7 +1130,7 @@
             <b>0..1</b>
           </span>
           <span style="color: darkgreen">
-            <a href="xml.htm#Resource">Resource</a>(<a href="Specimen.htm#Specimen">Specimen</a>)</span>
+            <a href="resources.htm#Resource">Resource</a>(<a href="Specimen.htm#Specimen">Specimen</a>)</span>
           <span style="color: navy">Specimen details</span>
           <span style="color: Gray"> --&gt;</span>&lt;/specimen&gt;</i>
   &lt;<a title="Group of elements for Cholesterol result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result">

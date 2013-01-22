@@ -115,8 +115,7 @@
     <Cell><Data ss:Type="String">Range.low</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="String">Y</Data></Cell>
-    <Cell><Data ss:Type="String">Quantity</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Low limit </Data></Cell>
     <Cell><Data ss:Type="String">The low limit. The boundary is inclusive.</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">If the low element is missing, the meaning is that the low boundary is not known.</Data></Cell>
@@ -126,8 +125,7 @@
     <Cell><Data ss:Type="String">Range.high</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="String">Y</Data></Cell>
-    <Cell><Data ss:Type="String">Quantity</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">High limit </Data></Cell>
     <Cell><Data ss:Type="String">The high limit. The boundary is inclusive. </Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">If the high element is missing, the meaning is that the high boundary is not known. </Data></Cell>
@@ -145,8 +143,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>3</ActiveCol>
-     <RangeSelection>C4</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -253,7 +253,7 @@ public class Publisher {
 		page.getReferenceImplementations().add(new DelphiGenerator());
 		javaReferencePlatform = new JavaGenerator();
     page.getReferenceImplementations().add(javaReferencePlatform);
-		page.getReferenceImplementations().add(new CSharpGenerator());
+//		page.getReferenceImplementations().add(new CSharpGenerator());
 		page.getReferenceImplementations().add(new ECoreOclGenerator());
 	}
 
@@ -451,7 +451,7 @@ public class Publisher {
   }
 
 //  private List<Element> xPathQuery(String path, Element e) throws Exception {
-//    NamespaceContext context = new NamespaceContextMap("f", "http://hl7.org/fhir", "h", "http://www.w3.org/1999/xhtml");
+//    NamespaceContext context = new NamespaceContextMap("f", "http://hl7.org/fhir", "h", "http://www.w3.org/1999/xhtml", "a", );
 //
 //    XPathFactory factory = XPathFactory.newInstance();
 //    XPath xpath = factory.newXPath();
@@ -1260,6 +1260,7 @@ public class Publisher {
 
 	private String insertSectionNumbers(String src, SectionTracker st, String link) throws Exception  {
     try {
+      TextFile.stringToFile(src, "c:\\temp\\text.htm");
       XhtmlDocument doc = new XhtmlParser().parse(src);
       insertSectionNumbersInNode(doc, st, link);
       return new XhtmlComposer().compose(doc);

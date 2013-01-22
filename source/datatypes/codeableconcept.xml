@@ -115,8 +115,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">CodeableConcept.coding</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
-    <Cell><Data ss:Type="String">Coding</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Coding</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Code defined by a terminology system </Data></Cell>
     <Cell><Data ss:Type="String">A reference to a code defined by a terminology system </Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Allows for translations and alternate encodings within a code system.  Also supports communication of the same instance to systems requiring different encodings.</Data></Cell>
@@ -126,8 +125,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="String">CodeableConcept.text</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
-    <Cell><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Plain text representation of the concept</Data></Cell>
     <Cell><Data ss:Type="String">A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user or concept</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">The codes from the terminologies do not always capture the correct meaning with all the nuances of the human, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source</Data></Cell>
@@ -155,8 +153,9 @@
    <Panes>
     <Pane>
      <Number>3</Number>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>3</ActiveCol>
-     <RangeSelection>C4</RangeSelection>
+     <RangeSelection>R3C4:R4C4</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
