@@ -231,16 +231,16 @@ The context of use may frequently make rules about the kind of attachment
 <p>A PDF document:</p>
 <pre class="xml" fragment="Attachment">
   &lt;document xml:lang="en"&gt;
-    &lt;contentType&gt;application/pdf&lt;/contentType&gt;
-    &lt;data&gt;/9j/4...KAP//Z&lt;/data&gt; &lt;!-- covers many lines --&gt;
-    &lt;title&gt;Definition of Procedure&lt;/title&gt;
+    &lt;contentType value="application/pdf" /&gt;
+    &lt;data value="/9j/4...KAP//Z" /&gt; &lt;-- covers many lines --&gt;
+    &lt;title value="Definition of Procedure" /&gt;
   &lt;/document&gt;
 </pre>
 <pre class="json">
   document : {
     languge : "en",
     contentType : "application/pdf",
-    data : "/9j/4...KAP//Z&lt;",
+    data : "/9j/4...KAP//Z",
     title : "Definition of Procedure"
   }
 </pre>
@@ -250,9 +250,9 @@ The element xml:lang is the only element for which the JSON element name is not 
 <p>A reference to a DICOM image via WADO:</p>
 <pre class="xml" fragment="Attachment">
   &lt;image&gt;
-    &lt;contentType&gt;application/dicom&lt;/contentType&gt;
-    &lt;url&gt;http://10.1.2.3:1000/wado?requestType=WADO&amp;amp;wado_details...&lt;/url&gt;
-    &lt;hash&gt;EQH/..AgME&lt;/hash&gt;
+    &lt;contentType value="application/dicom" /&gt;
+    &lt;url value="http://10.1.2.3:1000/wado?requestType=WADO&amp;amp;wado_details..." /&gt;
+    &lt;hash value="EQH/..AgME" /&gt;
   &lt;/image&gt;
 </pre>
 </div>
@@ -352,15 +352,15 @@ particular context by <a href="terminologies.htm">binding</a> the element to a v
 <p>A simple code for headache, in ICD-10:</p>
 <pre class="xml" fragment="Coding">
   &lt;code&gt;
-    &lt;system&gt;http://hl7.org/fhir/sid/icd-10&lt;/system&gt;
-    &lt;code&gt;G44.1&lt;/code&gt;
+    &lt;system value="http://hl7.org/fhir/sid/icd-10" /&gt;
+    &lt;code value="G44.1" /&gt;
   &lt;/code&gt;
 </pre>
 <p>A SNOMED-CT expression:</p>
 <pre class="xml" fragment="Coding">
   &lt;problem&gt;
-    &lt;system&gt;http://snomed.info&lt;/system&gt;
-    &lt;code&gt;128045006:{363698007=56459004}&lt;/code&gt;
+    &lt;system value="http://snomed.info" /&gt;
+    &lt;code value="128045006:{363698007=56459004}" /&gt;
   &lt;/problem&gt;
 </pre>
 </div>
@@ -422,28 +422,28 @@ particular context by <a href="terminologies.htm">binding</a> the element to a v
 <pre class="xml" fragment="CodeableConcept">
   &lt;concept&gt;
     &lt;coding&gt;
-      &lt;system&gt;http://hl7.org/fhir/sid/icd-10&lt;/system&gt;
-      &lt;code&gt;R51&lt;/code&gt;
+      &lt;system value="http://hl7.org/fhir/sid/icd-10" /&gt;
+      &lt;code value="R51" /&gt;
     &lt;/coding&gt;
     &lt;coding id="a1"&gt;
-      &lt;system&gt;http://snomed.info&lt;/system&gt;
-      &lt;code&gt;25064002&lt;/code&gt;
-      &lt;display&gt;Headache&lt;/display&gt;
+      &lt;system value="http://snomed.info" /&gt;
+      &lt;code value="25064002" /&gt;
+      &lt;display value="Headache" /&gt;
     &lt;/coding&gt;
-    &lt;text&gt;general headache&lt;/text&gt;
-    &lt;primary&gt;a1&lt;/primary&gt;
+    &lt;text value="general headache" /&gt;
+    &lt;primary value="a1" /&gt;
   &lt;/concept&gt;
 </pre>
 <p>A concept represented in an institution's local coding systems for unit for which no UCUM equivalent exists:</p>
 <pre class="xml" fragment="CodeableConcept">
   &lt;unit&gt;
     &lt;coding&gt;
-      &lt;system&gt;oid:2.16.840.1.113883.19.5.2&lt;/system&gt;
-      &lt;code&gt;tab&lt;/code&gt;
-      &lt;display&gt;Tablet&lt;/display&gt;
+      &lt;system value="oid:2.16.840.1.113883.19.5.2" /&gt;
+      &lt;code value="tab" /&gt;
+      &lt;display value="Tablet" /&gt;
     &lt;/coding&gt;
     &lt;coding&gt;
-      &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
+      &lt;system value="http://unitsofmeasure.org" /&gt;
     &lt;/coding&gt;
   &lt;/unit&gt;
 </pre>
@@ -451,10 +451,10 @@ particular context by <a href="terminologies.htm">binding</a> the element to a v
 <pre class="xml" fragment="CodeableConcept">
   &lt;diagnosis&gt;
     &lt;coding&gt;
-      &lt;system&gt;http://snomed.info&lt;/system&gt;
-      &lt;code&gt;128045006:{363698007=56459004}&lt;/code&gt;
+      &lt;system value="http://snomed.info" /&gt;
+      &lt;code value="128045006:{363698007=56459004}" /&gt;
     &lt;/coding&gt;
-    &lt;text&gt;Cellulitis of the foot&lt;/text&gt;
+    &lt;text value="Cellulitis of the foot" /&gt;
   &lt;/diagnosis&gt;
 </pre>
 <p>
@@ -490,23 +490,23 @@ If isOrdered is true, then the values have an inherent meaningful order and the 
 <p>The results on a urinalysis strip:</p>
 <pre class="xml" fragment="Choice">
   &lt;value&gt;
-    &lt;code&gt;+&lt;/code&gt;
+    &lt;code value="+" /&gt;
     &lt;option&gt;
-      &lt;code&gt;neg&lt;/code&gt;
+      &lt;code value="neg" /&gt;
     &lt;/option&gt;
     &lt;option&gt;
-      &lt;code&gt;trace&lt;/code&gt;
+      &lt;code value="trace" /&gt;
     &lt;/option&gt;
     &lt;option&gt;
-      &lt;code&gt;+&lt;/code&gt;
+      &lt;code value="+" /&gt;
     &lt;/option&gt;
     &lt;option&gt;
-      &lt;code&gt;++&lt;/code&gt;
+      &lt;code value="++" /&gt;
     &lt;/option&gt;
     &lt;option&gt;
-      &lt;code&gt;+++&lt;/code&gt;
+      &lt;code value="+++" /&gt;
     &lt;/option&gt;
-    &lt;isOrdered&gt;true&lt;/isOrdered&gt;
+    &lt;isOrdered value="true" /&gt;
   &lt;/value&gt;
 </pre>
 </div>
@@ -558,38 +558,38 @@ These are used as types in resource content models, but they are really just a Q
 <p>A duration:</p>
 <pre class="xml" fragment="Quantity">
   &lt;time&gt;
-    &lt;value&gt;25&lt;/value&gt;
-    &lt;units&gt;sec&lt;/units&gt;
-    &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
-    &lt;code&gt;s&lt;/code&gt;
+    &lt;value value="25" /&gt;
+    &lt;units value="sec" /&gt;
+    &lt;system value="http://unitsofmeasure.org" /&gt;
+    &lt;code value="s" /&gt;
   &lt;/time&gt;
 </pre>
 <p>A concentration where the value was out of range:</p>
 <pre class="xml" fragment="Quantity">
   &lt;result&gt;
-    &lt;value&gt;40000&lt;/value&gt;
-    &lt;comparator&gt;&amp;gt;&lt;/comparator&gt;
-    &lt;units&gt;mcg/L&lt;/units&gt;
-    &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
-    &lt;code&gt;ug&lt;/code&gt;
+    &lt;value value="40000" /&gt;
+    &lt;comparator value="&amp;gt;" /&gt;
+    &lt;units value="mcg/L" /&gt;
+    &lt;system value="http://unitsofmeasure.org" /&gt;
+    &lt;code value="ug" /&gt;
   &lt;/result&gt;
 </pre>
 <p>An amount of prescribed medication:</p>
 <pre class="xml" fragment="Quantity">
   &lt;dose&gt;
-    &lt;value&gt;3&lt;/value&gt;
-    &lt;units&gt;capsules&lt;/units&gt;
-    &lt;system&gt;http://snomed.info&lt;/system&gt;
-    &lt;code&gt;385049006&lt;/code&gt;
+    &lt;value value="3" /&gt;
+    &lt;units value="capsules" /&gt;
+    &lt;system value="http://snomed.info" /&gt;
+    &lt;code value="385049006" /&gt;
   &lt;/dose&gt;
 </pre>
 <p>A price (coded using currency codes defined in ISO 4217):</p>
 <pre class="xml" fragment="Quantity">
   &lt;cost&gt;
-    &lt;value&gt;25.45&lt;/value&gt;
-    &lt;units&gt;US$&lt;/units&gt;
-    &lt;system&gt;urn:std:iso:4217&lt;/system&gt;
-    &lt;code&gt;USD&lt;/code&gt;
+    &lt;value value="25.45" /&gt;
+    &lt;units value="US$" /&gt;
+    &lt;system value="urn:std:iso:4217" /&gt;
+    &lt;code value="USD" /&gt;
   &lt;/cost&gt;
 </pre>
 </div>
@@ -631,12 +631,12 @@ includes 1.50, and 2.50 but not 1.49 or 2.51.
 <pre class="xml" fragment="Range">
   &lt;estimate&gt;
    &lt;low&gt;
-     &lt;value&gt;1.6&lt;/value&gt;
-     &lt;units&gt;m&lt;/units&gt;
+     &lt;value value="1.6" /&gt;
+     &lt;units value="m" /&gt;
    &lt;/low&gt;
    &lt;high&gt;
-     &lt;value&gt;1.9&lt;/value&gt;
-     &lt;units&gt;m&lt;/units&gt;
+     &lt;value value="1.9" /&gt;
+     &lt;units value="m" /&gt;
    &lt;/high&gt;
   &lt;/estimate&gt;
 </pre>
@@ -671,10 +671,10 @@ The context of use may require particular types of Quantity for the numerator or
 <pre class="xml" fragment="Ratio">
   &lt;result&gt;
    &lt;numerator&gt;
-     &lt;value&gt;1&lt;/value&gt;
+     &lt;value value="1" /&gt;
    &lt;/numerator&gt;
    &lt;denominator&gt;
-     &lt;value&gt;128&lt;/value&gt;
+     &lt;value value="128" /&gt;
    &lt;/denominator&gt;
   &lt;/result&gt;
 </pre>
@@ -682,16 +682,16 @@ The context of use may require particular types of Quantity for the numerator or
 <pre class="xml" fragment="Ratio">
   &lt;charge&gt;
    &lt;numerator&gt;
-     &lt;value&gt;103.50&lt;/value&gt;
-     &lt;units&gt;US$&lt;/units&gt;
-     &lt;code&gt;USD&lt;/code&gt;
-     &lt;system&gt;urn:std:iso:4217&lt;/system&gt;
+     &lt;value value="103.50" /&gt;
+     &lt;units value="US$" /&gt;
+     &lt;code value="USD" /&gt;
+     &lt;system value="urn:std:iso:4217" /&gt;
    &lt;/numerator&gt;
    &lt;denominator&gt;
-     &lt;value&gt;1&lt;/value&gt;
-     &lt;units&gt;day&lt;/units&gt;
-     &lt;code&gt;day&lt;/code&gt;
-     &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
+     &lt;value value="1" /&gt;
+     &lt;units value="day" /&gt;
+     &lt;code value="day" /&gt;
+     &lt;system value="http://unitsofmeasure.org" /&gt;
    &lt;/denominator&gt;
   &lt;/charge&gt;
 </pre>
@@ -730,8 +730,8 @@ the end of the 27th May.
 <p>23rd May 2011 to 27th May, including 27th May:</p>
 <pre class="xml" fragment="Period">
   &lt;coverage&gt;
-   &lt;start&gt;2011-05-23&lt;/start&gt;
-   &lt;end&gt;2011-05-27&lt;/end&gt;
+   &lt;start value="2011-05-23" /&gt;
+   &lt;end value="2011-05-27" /&gt;
   &lt;/coverage&gt;
 </pre>
 </div>
@@ -786,20 +786,20 @@ The <i>assigner</i> is used to indicate what registry/state/facility/etc assigne
 to some organisation to further sub-allocate):</p>
 <pre class="xml" fragment="Identifier">
   &lt;id&gt;
-    &lt;use&gt;official&lt;/use&gt;
-    &lt;system&gt;oid:2.16.840.1.113883.16.4.3.2.5&lt;/system&gt;
-    &lt;id&gt;123&lt;/id&gt;
+    &lt;use value="official" /&gt;
+    &lt;system value="oid:2.16.840.1.113883.16.4.3.2.5" /&gt;
+    &lt;id value="123" /&gt;
   &lt;/id&gt;
 </pre>
 
 <p>A patient identifier defined by a hospital:</p>
 <pre class="xml" fragment="Identifier">
   &lt;identifier&gt;
-    &lt;use&gt;official&lt;/use&gt;
-    &lt;system&gt;http://www.acmehosp.com/patients&lt;/system&gt;
-    &lt;id&gt;44552&lt;/id&gt;
+    &lt;use value="official" /&gt;
+    &lt;system value="http://www.acmehosp.com/patients" /&gt;
+    &lt;id value="44552" /&gt;
     &lt;period&gt;
-      &lt;start&gt;2003-05-03&lt;/start&gt;
+      &lt;start value="2003-05-03" /&gt;
     &lt;/period&gt;
   &lt;/identifier&gt;
 </pre>
@@ -808,8 +808,8 @@ to some organisation to further sub-allocate):</p>
 <p>An identifier that refers to a patient FHIR resource on a particular system:</p>
 <pre class="xml" fragment="Identifier">
   &lt;id&gt;
-   &lt;system&gt;urn:ietf:rfc:3986&lt;/system&gt;
-   &lt;id&gt;http://pas-server/xxx/patient/@443556&lt;/id&gt;
+   &lt;system value="urn:ietf:rfc:3986" /&gt;
+   &lt;id value="http://pas-server/xxx/patient/@443556" /&gt;
   &lt;/id&gt;
 </pre>
 <p>This is not a resource reference - it's a logical reference by the patient identifier.</p>
@@ -817,9 +817,9 @@ to some organisation to further sub-allocate):</p>
 <p>A UUID:</p>
 <pre class="xml" fragment="Identifier">
   &lt;id&gt;
-    &lt;use&gt;temp&lt;/use&gt;
-    &lt;system&gt;urn:ietf:rfc:3986&lt;/system&gt;
-    &lt;id&gt;a76d9bbf-f293-4fb7-ad4c-2851cac77162&lt;/id&gt;
+    &lt;use value="temp" /&gt;
+    &lt;system value="urn:ietf:rfc:3986" /&gt;
+    &lt;id value="a76d9bbf-f293-4fb7-ad4c-2851cac77162" /&gt;
   &lt;/id&gt;
 </pre>
 <p>UUIDs are often used for temporary identifiers, though this is not necessary.</p>
@@ -827,10 +827,10 @@ to some organisation to further sub-allocate):</p>
 <p>A US SSN:</p>
 <pre class="xml" fragment="Identifier">
   &lt;id&gt;
-    &lt;use&gt;usual&lt;/use&gt;
-    &lt;label&gt;SSN&lt;/label&gt;
-    &lt;system&gt;http://hl7.org/fhir/sid/us-ssn&lt;/system&gt;
-    &lt;id&gt;000111111&lt;/id&gt;
+    &lt;use value="usual" /&gt;
+    &lt;label value="SSN" /&gt;
+    &lt;system value="http://hl7.org/fhir/sid/us-ssn" /&gt;
+    &lt;id value="000111111" /&gt;
   &lt;/id&gt;
 </pre>
 <p>Notes:</p> 
@@ -842,12 +842,12 @@ to some organisation to further sub-allocate):</p>
 <p>A medical record number assigned on 5-July 2009:</p>
 <pre class="xml" fragment="Identifier">
   &lt;id&gt;
-    &lt;use&gt;usual&lt;/use&gt;
-    &lt;label&gt;MRN&lt;/label&gt;
-    &lt;system&gt;oid:0.1.2.3.4.5.6.7&lt;/system&gt;
-    &lt;id&gt;2356&lt;/id&gt;
+    &lt;use value="usual" /&gt;
+    &lt;label value="MRN" /&gt;
+    &lt;system value="oid:0.1.2.3.4.5.6.7" /&gt;
+    &lt;id value="2356" /&gt;
     &lt;period&gt;
-      &lt;start&gt;2009-07-05&lt;/start&gt;
+      &lt;start value="2009-07-05" /&gt;
     &lt;/period&gt;
   &lt;/id&gt;
 </pre>
@@ -886,10 +886,10 @@ between family name and given names depends on culture and context of use.
 <p>Full name of Peter James Chalmers.</p>
 <pre class="xml" fragment="HumanName">
   &lt;name&gt;
-    &lt;use&gt;usual&lt;/use&gt;
-    &lt;family&gt;Chalmers&lt;/family&gt;
-    &lt;given&gt;Peter&lt;/given&gt;
-    &lt;given&gt;James&lt;/given&gt;
+    &lt;use value="usual" /&gt;
+    &lt;family value="Chalmers" /&gt;
+    &lt;given value="Peter" /&gt;
+    &lt;given value="James" /&gt;
   &lt;/name&gt;
 </pre>
 <p><a href="datatypes-examples.htm#HumanName">Further examples</a></p>
@@ -929,15 +929,13 @@ may be provided instead of or as well as the specific parts.
 <p>HL7 office's address.</p>
 <pre class="xml" fragment="Address">
   &lt;address&gt;
-   &lt;use&gt;work&lt;/use&gt;
-   &lt;text&gt;
-       1050 W Wishard Blvd
+   &lt;use value="work" /&gt;
+   &lt;text value="1050 W Wishard Blvd
        RG 5th floor
-       Indianapolis, IN 46240
-   &lt;/text&gt;
-   &lt;city&gt;Indianapolis&lt;/city&gt;
-   &lt;state&gt;IN&lt;/state&gt;
-   &lt;zip&gt;46240&lt;/zip&gt;
+       Indianapolis, IN 46240" /&gt;
+   &lt;city value="Indianapolis" /&gt;
+   &lt;state value="IN" /&gt;
+   &lt;zip value="46240" /&gt;
   &lt;/address&gt;
 </pre>
 <p><a href="datatypes-examples.htm#Address">Further examples</a></p>
@@ -977,9 +975,9 @@ However, this is frequently not possible due to legacy data and/or recording met
 <p>Home phone number:</p>
 <pre class="xml" fragment="Contact">
   &lt;telecom&gt;
-   &lt;system&gt;phone&lt;/system&gt;
-   &lt;value&gt;+15556755745&lt;/value&gt;
-   &lt;use&gt;home&lt;/use&gt;
+   &lt;system value="phone" /&gt;
+   &lt;value value="+15556755745" /&gt;
+   &lt;use value="home" /&gt;
   &lt;/telecom&gt;
 </pre>
 <p><a href="datatypes-examples.htm#Contact">Further examples</a></p>
@@ -1021,16 +1019,16 @@ the Schedule will terminate on some criteria that are expressed elsewhere.
 <pre class="xml" fragment="Schedule">
   &lt;schedule&gt;
     &lt;event&gt;
-      &lt;start&gt;2012-01-07T09:00&lt;/start&gt;
-      &lt;end&gt;2012-01-07T13:00&lt;/end&gt;
+      &lt;start value="2012-01-07T09:00" /&gt;
+      &lt;end value="2012-01-07T13:00" /&gt;
     &lt;/event&gt;
     &lt;event&gt;
-      &lt;start&gt;2012-01-14T09:00&lt;/start&gt;
-      &lt;end&gt;2012-01-14T13:00&lt;/end&gt;
+      &lt;start value="2012-01-14T09:00" /&gt;
+      &lt;end value="2012-01-14T13:00" /&gt;
     &lt;/event&gt;
     &lt;event&gt;
-      &lt;start&gt;2012-01-22T11:00&lt;/start&gt;
-      &lt;end&gt;2012-01-22T15:00&lt;/end&gt;
+      &lt;start value="2012-01-22T11:00" /&gt;
+      &lt;end value="2012-01-22T15:00" /&gt;
     &lt;/event&gt;
   &lt;/schedule&gt;
 </pre>
@@ -1038,9 +1036,9 @@ the Schedule will terminate on some criteria that are expressed elsewhere.
 <pre class="xml" fragment="Schedule">
   &lt;schedule&gt;
    &lt;repeat&gt;
-     &lt;frequency&gt;2&lt;/frequency&gt;
-     &lt;duration&gt;1&lt;/duration&gt;
-     &lt;units&gt;d&lt;/units&gt;
+     &lt;frequency value="2" /&gt;
+     &lt;duration value="1" /&gt;
+     &lt;units value="d" /&gt;
    &lt;/repeat&gt;
   &lt;/schedule&gt;
 </pre>
@@ -1048,13 +1046,13 @@ the Schedule will terminate on some criteria that are expressed elsewhere.
 <pre class="xml" fragment="Schedule">
   &lt;schedule&gt;
     &lt;event&gt;
-      &lt;start&gt;2011-12-23&lt;/start&gt;
+      &lt;start value="2011-12-23" /&gt;
     &lt;/event&gt;
     &lt;repeat&gt;
-      &lt;when&gt;ACM&lt;/when&gt;
-      &lt;duration&gt;30&lt;/duration&gt;
-      &lt;units&gt;min&lt;/units&gt;
-      &lt;end&gt;2012-01-02&lt;/end&gt;
+      &lt;when value="ACM" /&gt;
+      &lt;duration value="30" /&gt;
+      &lt;units value="min" /&gt;
+      &lt;end value="2012-01-02" /&gt;
     &lt;/repeat&gt;
   &lt;/schedule&gt;
 </pre>

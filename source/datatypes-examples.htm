@@ -102,9 +102,9 @@ HumanName
 <p>A Simple example</p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;given&gt;Adam&lt;/given&gt;
-  &lt;given&gt;A.&lt;/given&gt;
-  &lt;family&gt;Everyman&lt;/family&gt;
+  &lt;given value="Adam" /&gt;
+  &lt;given value="A." /&gt;
+  &lt;family value="Everyman" /&gt;
 &lt;/name&gt;
 </pre>
 </div>
@@ -113,8 +113,8 @@ HumanName
 <p>Composite names</p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;given&gt;Mary Jane&lt;/given&gt;
-  &lt;family&gt;Contrata&lt;/family&gt;
+  &lt;given value="Mary Jane" /&gt;
+  &lt;family value="Contrata" /&gt;
 &lt;/name&gt;
 </pre>
 <p>
@@ -130,14 +130,14 @@ these cases. Composite names separated by "-" should be treated as a single name
 <p>A common pattern: a person is called by a name other than that expected from their official name (first given name in most cultures).</p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;use&gt;official&lt;/use&gt;
-  &lt;given&gt;Peter&lt;/given&gt;
-  &lt;given&gt;James&lt;/given&gt;
-  &lt;family&gt;Chalmers&lt;/family&gt;
+  &lt;use value="official" /&gt;
+  &lt;given value="Peter" /&gt;
+  &lt;given value="James" /&gt;
+  &lt;family value="Chalmers" /&gt;
 &lt;/name&gt;
 &lt;name&gt;
-  &lt;use&gt;usual&lt;/use&gt;
-  &lt;given&gt;Jim&lt;/given&gt;
+  &lt;use value="usual" /&gt;
+  &lt;given value="Jim" /&gt;
 &lt;/name&gt;
 </pre>
 <p>
@@ -145,15 +145,15 @@ This same pattern is often encountered with immigrants, who retains their real n
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;use&gt;official&lt;/use&gt;
-  &lt;given&gt;Piotr&lt;/given&gt;
-  &lt;given&gt;Andre&lt;/given&gt;
-  &lt;family&gt;Sczypinski&lt;/family&gt;
+  &lt;use value="official" /&gt;
+  &lt;given value="Piotr" /&gt;
+  &lt;given value="Andre" /&gt;
+  &lt;family value="Sczypinski" /&gt;
 &lt;/name&gt;
 &lt;name&gt;
-  &lt;use&gt;usual&lt;/use&gt;
-  &lt;given&gt;Jim&lt;/given&gt;
-  &lt;family&gt;Skipper&lt;/family&gt;
+  &lt;use value="usual" /&gt;
+  &lt;given value="Jim" /&gt;
+  &lt;family value="Skipper" /&gt;
 &lt;/name&gt;
 </pre>
 </div>
@@ -164,19 +164,16 @@ Karen van Hentenryck is of Dutch origin, and the "van" is a voorvoegsel.
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;use&gt;official&lt;/use&gt;  
-  &lt;given&gt;Karen&lt;/given&gt;
-  &lt;family id="n1"&gt;van&lt;/family&gt;
-  &lt;family&gt;Hentenryck&lt;/family&gt;
+  &lt;use value=&quot;official&quot; /&gt;  
+  &lt;given value=&quot;Karen&quot; /&gt;
+  &lt;family value=&quot;van&quot;&gt;
+    &lt;extension&gt;
+	   &lt;url value=&quot;http://hl7.org/fhir/profile/@iso-21090#qualifier&quot; /&gt;
+	   &lt;valueCode value=&quot;VV&quot; /&gt;
+    &lt;extension&gt;
+  &lt;/family&gt;
+  &lt;family value=&quot;Hentenryck&quot; /&gt;
 &lt;/name&gt;
-&lt;!--
-&lt;extension&gt;
-  &lt;url&gt;name-qualifier&lt;/url&gt;
-  &lt;profile&gt;http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090&lt;/profile&gt;
-  &lt;ref&gt;n1&lt;/&gt;
-  &lt;valueCode&gt;VV&lt;/valueCode&gt;
-&lt;extension&gt;
---&gt;
 </pre>
 <p>See <a href="extensibility-examples.htm">the Extensibility Example for more information</a></p>
 </div>
@@ -188,39 +185,35 @@ multiple given names, prefixes, suffixes, for academic degrees, nobility titles,
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;use&gt;official&lt;/use&gt;  
-  &lt;given&gt;Regina&lt;/given&gt;
-  &lt;given&gt;Johanna&lt;/given&gt;
-  &lt;given&gt;Maria&lt;/given&gt;
-  &lt;given id="n2"&gt;Gräfin&lt;/given&gt;
-  &lt;family&gt;Hochheim-Weilenfels&lt;/family&gt;
-  &lt;prefix id="n1"&gt;Dr. phil..&lt;/prefix&gt;
-  &lt;suffix&gt;NCFSA&lt;/suffix&gt;
+  &lt;use value=&quot;official&quot; /&gt;  
+  &lt;given value=&quot;Regina&quot; /&gt;
+  &lt;given value=&quot;Johanna&quot; /&gt;
+  &lt;given value=&quot;Maria&quot; /&gt;
+  &lt;given value=&quot;Gräfin&quot;&gt;
+    &lt;extension&gt;
+      &lt;url value=&quot;http://hl7.org/fhir/profile/@iso-21090#qualifier&quot; /&gt;
+      &lt;valueCoding&gt;
+         &lt;code value=&quot;NB&quot; /&gt;
+         &lt;system value=&quot;oid:2.16.840.1.113883.5.1122&quot; /&gt;
+      &lt;/valueCoding&gt;
+    &lt;extension&gt;
+  &lt;/given&gt;
+  &lt;family value=&quot;Hochheim-Weilenfels&quot; /&gt;
+  &lt;prefix value=&quot;Dr. phil.&quot;&gt;
+    &lt;extension&gt;
+      &lt;url value=&quot;http://hl7.org/fhir/profile/@iso-21090#qualifier&quot; /&gt;
+      &lt;valueCoding&gt;
+         &lt;code value=&quot;AC&quot; /&gt;
+         &lt;system value=&quot;oid:2.16.840.1.113883.5.1122&quot; /&gt;
+      &lt;/valueCoding&gt;
+    &lt;extension&gt;
+  &lt;/prefix&gt;
+  &lt;suffix value=&quot;NCFSA&quot; /&gt;
 &lt;/name&gt;
 &lt;name&gt;
-  &lt;use&gt;maiden&lt;/use&gt;  
-  &lt;family&gt;Hochheim&lt;/family&gt;
+  &lt;use value=&quot;maiden&quot; /&gt;  
+  &lt;family value=&quot;Hochheim&quot; /&gt;
 &lt;/name&gt;
-&lt;!-- ... 
-&lt;extension>
-  &lt;code>name-qualifier&lt;/code>
-  &lt;definition>http://hl7.org/fhir/profile/@iso-20190&lt;/definition>
-  &lt;ref>n1&lt;/ref>
-  &lt;valueCoding>
-    &lt;code>AC&lt;/code>
-    &lt;system>oid:2.16.840.1.113883.5.1122&lt;/system>
-  &lt;/valueCoding>
-&lt;extension>
-&lt;extension>
-  &lt;code>name-qualifier&lt;/code>
-  &lt;definition>http://hl7.org/fhir/profile/@iso-20190&lt;/definition>
-  &lt;ref>n2&lt;/ref>
-  &lt;valueCoding>
-    &lt;code>NB&lt;/code>
-    &lt;system>oid:2.16.840.1.113883.5.1122&lt;/system>
-  &lt;/valueCoding>
-&lt;extension>
---&gt;
 </pre>
 <p>
 This example makes use of the ISO 21090 extensions to carry the rare ISO 21090 qualifier attributes "AC" and "NB".
@@ -233,16 +226,16 @@ Japanese example in the three forms: ideographic (Kanji), syllabic (Hiragana) an
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;given&gt;通男&lt;/given&gt;
-  &lt;family&gt;木村&lt;/family&gt;
+  &lt;given value="通男" /&gt;
+  &lt;family value="木村" /&gt;
 &lt;/name&gt;
 &lt;name&gt;
-  &lt;given&gt;みちお&lt;/given&gt;
-  &lt;family&gt;きむら;&lt;/family&gt;
+  &lt;given value="みちお" /&gt;
+  &lt;family value="きむら" /&gt;
 &lt;/name&gt;
 &lt;name&gt;
-  &lt;given&gt;MICHIO&lt;/given&gt;
-  &lt;family&gt;KIMURA&lt;/family&gt;
+  &lt;given value="MICHIO" /&gt;
+  &lt;family value="KIMURA" /&gt;
 &lt;/name&gt;
 </pre>
 <p>
@@ -256,13 +249,14 @@ Russian example in the two forms: cyrillic, and latin:
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;given&gt;ИВАН&lt;/given&gt;
-  &lt;given&gt;ВЛАДИМИРОВИЧ&lt;/given&gt;
-  &lt;family&gt;ЕМЕЛИН&lt;/family&gt;
+  &lt;given value="ИВАН" /&gt;
+  &lt;given value="ВЛАДИМИРОВИЧ" /&gt;
+  &lt;family value="ЕМЕЛИН" /&gt;
 &lt;/name&gt;
 &lt;name&gt;
-  &lt;given&gt;IVAN&lt;/given&gt;
-  &lt;family&gt;EMELIN&lt;/family&gt;
+  &lt;given value="IVAN" /&gt;
+  &lt;given value="VLADIMIROV" /&gt;
+  &lt;family value="EMELIN" /&gt;
 &lt;/name&gt;
 </pre>
 <p>
@@ -277,21 +271,20 @@ Scandinavian example: Erikson is the family name. Jan Erik are the given names, 
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;use&gt;official&lt;/use&gt;  
-  &lt;given&gt;Jan&lt;/given&gt;
-  &lt;given&gt;Erik&lt;/given&gt;
-  &lt;given id="n1"&gt;Östlund&lt;/given&gt;
-  &lt;family&gt;Erikson&lt;/family&gt;
+  &lt;use value=&quot;official&quot; /&gt;  
+  &lt;given value=&quot;Jan&quot; /&gt;
+  &lt;given value=&quot;Erik&quot; /&gt;
+  &lt;given value=&quot;Östlund&quot;&gt;
+    &lt;extension&gt;
+      &lt;url value=&quot;http://hl7.org/fhir/profile/@iso-20190#name-qualifier&quot; /&gt;
+      &lt;valueCoding&gt;
+         &lt;code value=&quot;MID&quot; /&gt;
+         &lt;system value=&quot;oid:2.16.840.1.113883.5.1122&quot; /&gt;
+      &lt;/valueCoding&gt;
+    &lt;/extension&gt;
+  &lt;/given&gt;
+  &lt;family value=&quot;Erikson&quot; /&gt;
 &lt;/name&gt;
-&lt;!-- ...
-&lt;extension>
-  &lt;url>http://hl7.org/fhir/profile/@iso-20190#name-qualifier&lt;/url>
-  &lt;valueCoding>
-    &lt;code>MID&lt;/code>
-    &lt;system>oid:2.16.840.1.113883.5.1122&lt;/system>
-  &lt;/valueCoding>
-&lt;/extension>
- --&gt;
 </pre>
 <p>
 This example makes use of the ISO 21090 extension to carry the culture specific ISO 21090 qualifier attribute "MID" for the Mellannamn.
@@ -304,10 +297,10 @@ the child.
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;use&gt;temp&lt;/use&gt;  
+  &lt;use value="temp" /&gt;  
   &lt;!-- use could be OR+OLD, depends how record keeping is done --&gt;
-  &lt;given&gt;Margrete Jente&lt;/given&gt;
-  &lt;family&gt;Hansen&lt;/family&gt;
+  &lt;given value="Margrete Jente" /&gt;
+  &lt;family value="Hansen" /&gt;
 &lt;/name&gt;
 </pre>
 <p>
@@ -316,22 +309,19 @@ mellomnamn.
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;use&gt;official&lt;/use&gt;  
-  &lt;given&gt;Karin&lt;/given&gt;
-  &lt;given id="n1"&gt;Hansen&lt;/given&gt;
-  &lt;family&gt;Erikson&lt;/family&gt;
+  &lt;use value=&quot;official&quot; /&gt;  
+  &lt;given value=&quot;Karin&quot; /&gt;
+  &lt;given value=&quot;Hansen&quot;&gt;
+    &lt;extension&gt;
+      &lt;url value=&quot;http://hl7.org/fhir/profile/@iso-20190#name-qualifier&quot; /&gt;
+      &lt;valueCoding&gt;
+         &lt;code value=&quot;MID&quot; /&gt;
+         &lt;system value=&quot;oid:2.16.840.1.113883.5.1122&quot; /&gt;
+      &lt;/valueCoding&gt;
+    &lt;/extension&gt;
+  &lt;/given&gt;
+  &lt;family value=&quot;Erikson&quot; /&gt;
 &lt;/name&gt;
-&lt;!-- ... 
-&lt;extension>
-  &lt;code>name-qualifier&lt;/code>
-  &lt;definition>http://hl7.org/fhir/profile/@iso-20190&lt;/definition>
-  &lt;ref>n1&lt;/ref>
-  &lt;valueCoding>
-    &lt;code>MID&lt;/code>
-    &lt;system>oid:2.16.840.1.113883.5.1122&lt;/system>
-  &lt;/valueCoding>
-&lt;/extension>
---&gt;
 </pre>
 <p>
 Later, Karin gets married to Per Berg, and decides to adopts Berg as her family name, and also decides to use 
@@ -340,45 +330,40 @@ her mother, her father or other family names as specified by naming laws of the 
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;use&gt;old&lt;/use&gt;  
-  &lt;given&gt;Karin&lt;/given&gt;
-  &lt;given id="n1"&gt;Hansen&lt;/given&gt;
-  &lt;family&gt;Erikson&lt;/family&gt;
+  &lt;use value=&quot;old&quot; /&gt;  
+  &lt;given value=&quot;Karin&quot; /&gt;
+  &lt;given value=&quot;Hansen&quot;&gt;
+    &lt;extension&gt;
+      &lt;url value=&quot;http://hl7.org/fhir/profile/@iso-20190#name-qualifier&quot; /&gt;
+      &lt;valueCoding&gt;
+        &lt;code value=&quot;MID&quot; /&gt;
+        &lt;system value=&quot;oid:2.16.840.1.113883.5.1122&quot; /&gt;
+      &lt;/valueCoding&gt;
+    &lt;/extension&gt;
+  &lt;/given&gt;
+  &lt;family value=&quot;Erikson&quot; /&gt;
 &lt;/name&gt;
 &lt;name&gt;
-  &lt;use&gt;official&lt;/use&gt;  
-  &lt;given&gt;Karin&lt;/given&gt;
-  &lt;given id="n2"&gt;Erikson&lt;/given&gt;
-  &lt;family&gt;Berg&lt;/family&gt;
+  &lt;use value=&quot;official&quot; /&gt;  
+  &lt;given value=&quot;Karin&quot; /&gt;
+  &lt;given value=&quot;Erikson&quot;&gt;
+    &lt;extension&gt;
+      &lt;url value=&quot;http://hl7.org/fhir/profile/@iso-20190#name-qualifier&quot; /&gt;
+      &lt;valueCoding&gt;
+        &lt;code value=&quot;MID&quot; /&gt;
+        &lt;system value=&quot;oid:2.16.840.1.113883.5.1122&quot; /&gt;
+      &lt;/valueCoding&gt;
+    &lt;/extension&gt;
+  &lt;/given&gt;
+  &lt;family value=&quot;Berg&quot; /&gt;
 &lt;/name&gt;
 &lt;name&gt;
-  &lt;use&gt;usual&lt;/use&gt;  
-  &lt;given&gt;Karin&lt;/given&gt;
-  &lt;family&gt;Berg&lt;/family&gt;
+  &lt;use value=&quot;usual&quot; /&gt;  
+  &lt;given value=&quot;Karin&quot; /&gt;
+  &lt;family value=&quot;Berg&quot; /&gt;
 &lt;/name&gt;
-&lt;!-- ... 
-&lt;extension>
-  &lt;code>name-qualifier&lt;/code>
-  &lt;definition>http://hl7.org/fhir/profile/@iso-20190&lt;/definition>
-  &lt;ref>n1&lt;/ref>
-  &lt;valueCoding>
-    &lt;code>MID&lt;/code>
-    &lt;system>oid:2.16.840.1.113883.5.1122&lt;/system>
-  &lt;/valueCoding>
-&lt;/extension>
-&lt;extension>
-  &lt;code>name-qualifier&lt;/code>
-  &lt;definition>http://hl7.org/fhir/profile/@iso-20190&lt;/definition>
-  &lt;ref>n2&lt;/ref>
-  &lt;valueCoding>
-    &lt;code>MID&lt;/code>
-    &lt;system>oid:2.16.840.1.113883.5.1122&lt;/system>
-  &lt;/valueCoding>
-&lt;/extension> --&gt;
 </pre>
 </div>
-
-
 
 <a name="Address"></a>
 <h3>
