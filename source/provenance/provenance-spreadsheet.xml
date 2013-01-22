@@ -58,15 +58,23 @@
    <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
   </Style>
   <Style ss:ID="s66">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
   </Style>
   <Style ss:ID="s67">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s68">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s69">
    <Alignment ss:Vertical="Top"/>
   </Style>
-  <Style ss:ID="s72">
+  <Style ss:ID="s70">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
@@ -74,10 +82,10 @@
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Names>
-   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="='Data Elements'!R1C1:R21C16"
+   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="='Data Elements'!R1C1:R19C16"
     ss:Hidden="1"/>
   </Names>
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="21" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="19" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="207.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="33"/>
@@ -91,7 +99,7 @@
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25" ss:Span="1"/>
    <Column ss:Index="13" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
-   <Row ss:Height="45" ss:StyleID="s64">
+   <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Card.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Inv.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -117,7 +125,7 @@
     <Cell><Data ss:Type="String">Committee Notes</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="165">
+   <Row ss:AutoFitHeight="0" ss:Height="165">
     <Cell><Data ss:Type="String">Provenance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -139,7 +147,7 @@
     <Cell ss:Index="16"><Data ss:Type="String">Sources of requirements: v2 EVN, Control Act, CDA, W3C provenance, ATNA</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="270">
+   <Row ss:AutoFitHeight="0" ss:Height="270">
     <Cell><Data ss:Type="String">Provenance.target</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -156,7 +164,7 @@
     <Cell><Data ss:Type="String">./outboundRelationship[isNormalActRelationship() and typeCode=SUBJ]/target&#10;&#10;OR&#10;&#10;./participation[isNormalParticipation() and typeCode=SBJ]/role&#10;&#10;OR&#10;&#10;./participation[isNormalParticipation() and typeCode=SBJ]/role[isNormalRole()]/player</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Provenance.activity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -170,7 +178,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Provenance.activity.period</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -185,7 +193,7 @@
     <Cell><Data ss:Type="String">./effectiveTime[type=IVL_TS]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="90">
+   <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Provenance.activity.recorded</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -200,7 +208,7 @@
     <Cell><Data ss:Type="String">unique(./participation[isNormalParticipation() and typeCode=AUT]/time[type=TS])</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Provenance.activity.reason</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -213,7 +221,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">unique(./reasonCode)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="165">
+   <Row ss:AutoFitHeight="0" ss:Height="165">
     <Cell><Data ss:Type="String">Provenance.activity.location</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -226,7 +234,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">unique(./participation[isNormalParticipation() and typeCode=LOC]/role[isNormalRole() and subsumes(SDLOC, classCode)]/player[isNormalEntity and classCode=&quot;LOC&quot; and determinerCode=&quot;INST&quot;]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Provenance.activity.location.type</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -241,7 +249,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">./code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Provenance.activity.location.id</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -254,7 +262,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">unique(./id)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Provenance.activity.location.description</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -267,7 +275,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">./description</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="195">
+   <Row ss:AutoFitHeight="0" ss:Height="195">
     <Cell><Data ss:Type="String">Provenance.activity.location.coords</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -282,7 +290,7 @@
     <Cell><Data ss:Type="String">./playedRole[isNormalRole() and classCode=SDLOC]/participation[isNormalParticipation() and typeCode=&quot;SBJ&quot;]/act[isNormalAct() and subsumes(OBS, classCode) and moodCode=EVN and hasDomain(code, GPSCoordinates)]/value[type=ST]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="135">
+   <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="String">Provenance.activity.policy</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -295,7 +303,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">./inboundRelationship[isNormalActRelationship() and typeCode=&quot;SUBJ&quot;]/source[isNormalAct and subsumes(POLICY, classCode) and moodCode=EVN]/text[typeCode='ED'/tel</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="135">
+   <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="String">Provenance.party</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -310,7 +318,7 @@
     <Cell ss:Index="15"><Data ss:Type="String">Is DRIV the appropriate semantic for &quot;support&quot;?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="360">
+   <Row ss:AutoFitHeight="0" ss:Height="360">
     <Cell><Data ss:Type="String">Provenance.party.role</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -322,7 +330,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The role that the participant played</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><ss:Data ss:Type="String"
+    <Cell ss:Index="13" ss:StyleID="s66"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">attestor: </Font></B><Font
        html:Color="#000000">.[self::participation]/typeCode='RESP'</Font><B><Font
         html:Color="#000000">&#10;author: </Font></B><Font html:Color="#000000">.[self::participation]/typeCode='AUT'</Font><B><Font
@@ -336,7 +344,7 @@
     <Cell ss:Index="15"><Data ss:Type="String">Figure out how to handle: application, daemon for RIM mappings.  Figure out better mapping for attestor, perhaps after RIM harmonization proposal&#10;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="409.5">
+   <Row ss:AutoFitHeight="0" ss:Height="409.5">
     <Cell><Data ss:Type="String">Provenance.party.type</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -350,8 +358,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">If the type is &quot;resource&quot; then the resource itself was the participant. If the type is a type of resource, then the entity identified by the resource is the participant</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><ss:Data ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40"><B><Font
-        html:Color="#000000">person: </Font></B><Font html:Color="#000000">./role[isNormalRole() and classCode='REL']/player[isNormalEntity and classCode='PER' and determinerCode='INST']&#10;</Font><B><Font
+    <Cell ss:StyleID="s66"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">person: </Font></B><Font
+       html:Color="#000000">./role[isNormalRole() and classCode='REL']/player[isNormalEntity and classCode='PER' and determinerCode='INST']&#10;</Font><B><Font
         html:Color="#000000">agent: </Font></B><Font html:Color="#000000">./role[isNormalRole() and classCode='ASSIGNED' and player[isNormalEntity and classCode='PSN' and determinerCode='INST']]&#10;</Font><B><Font
         html:Color="#000000">organization: </Font></B><Font html:Color="#000000">./role[isNormalRole() and classCode='ASSIGNED' and not(player)]/scoper[isNormalEntity and classCode='ORG' and determinerCode='INST']&#10;&#10;</Font><B><Font
         html:Color="#000000">software: </Font></B><Font html:Color="#000000">./role[isNormalRole() and classCode='ASSIGNED']/scoper[isNormalEntity and classCode='DEV' and determinerCode='INST' and hasDomain(code, 'Software')]&#10;document: ./target[isNormalAct and subsumes('DOC', classCode) and moodCode='EVN']&#10;</Font></ss:Data><NamedCell
@@ -359,7 +368,7 @@
     <Cell ss:Index="15"><Data ss:Type="String">Not sure how to make &quot;resource&quot; or &quot;record&quot; RIM mappings work</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Provenance.party.id</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -373,7 +382,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">./id</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="135">
+   <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="String">Provenance.party.description</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -386,7 +395,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">./player/description&#10;&#10;OR&#10;&#10;./description&#10;&#10;OR&#10;&#10;./text</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Provenance.signature</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -401,26 +410,6 @@
     <Cell><Data ss:Type="String">./signatureText</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Provenance.extension</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Extension</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">See Extensions</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">[varies]</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-   </Row>
-   <Row ss:Height="30">
-    <Cell><Data ss:Type="String">Provenance.text</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Narrative</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Text summary of organization, fall back for human interpretation</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -428,11 +417,12 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>16</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -445,24 +435,27 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>17</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
-  <AutoFilter x:Range="R1C1:R21C16"
+  <AutoFilter x:Range="R1C1:R19C16"
    xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
-   <Column ss:Index="3" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="96.75"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="341.25"/>
-   <Column ss:Index="6" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="327.75"/>
+   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
+   <Column ss:Index="3" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="96.75"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="341.25"/>
+   <Column ss:Index="6" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="327.75"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -521,10 +514,10 @@
     <Cell><Data ss:Type="String">Follow Ups</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -708,13 +701,13 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s68" ss:Width="135.75"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="294.75"/>
-   <Column ss:StyleID="s68" ss:Width="47.25"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="84.75"/>
-   <Column ss:StyleID="s68" ss:Width="147"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="287.25"/>
+   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s69" ss:Width="135.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="294.75"/>
+   <Column ss:StyleID="s69" ss:Width="47.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="84.75"/>
+   <Column ss:StyleID="s69" ss:Width="147"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="287.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
@@ -723,7 +716,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s62"><Data ss:Type="String">ProvenanceLocationType</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The type of location - a classification of the kind of location at which the activity took place</Data></Cell>
     <Cell><Data ss:Type="String">unbound</Data></Cell>
@@ -777,38 +770,38 @@
  </Worksheet>
  <Worksheet ss:Name="provenance-participant-type">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="8" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s67" ss:Width="63"/>
-   <Column ss:StyleID="s67" ss:Width="372"/>
-   <Row>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Definition</Data></Cell>
+   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s68" ss:Width="63"/>
+   <Column ss:StyleID="s68" ss:Width="372"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Definition</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">resource</Data></Cell>
     <Cell><Data ss:Type="String">The participant is a resource itself. The id is a reference to the resource</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">person</Data></Cell>
     <Cell><Data ss:Type="String">The participant is a person acting on their on behalf or on behalf of the patient rather than as an provider for an organization.  I.e. &quot;not a healthcare provider&quot;</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">provider</Data></Cell>
     <Cell><Data ss:Type="String">The participant is a provider</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">organization</Data></Cell>
     <Cell><Data ss:Type="String">The participant is an organization</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">software</Data></Cell>
     <Cell><Data ss:Type="String">The participant is a software application</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">record</Data></Cell>
     <Cell><Data ss:Type="String">The participant is a logical record. The record itself participated in the activity</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">document</Data></Cell>
     <Cell><Data ss:Type="String">The participant is a document</Data></Cell>
    </Row>
@@ -819,6 +812,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
@@ -854,56 +848,56 @@
  </Worksheet>
  <Worksheet ss:Name="provenance-participant-role">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="11" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s67" ss:Width="57"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="474" ss:Span="1"/>
-   <Row>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Definition</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Comment</Data></Cell>
+   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s68" ss:Width="57"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="474" ss:Span="1"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Comment</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">enterer</Data></Cell>
     <Cell><Data ss:Type="String">A person entering the data into the originating system</Data></Cell>
     <Cell><Data ss:Type="String">The data entry person is collected optionally for internal quality control purposes. This includes the transcriptionist for dictated text</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">performer</Data></Cell>
     <Cell><Data ss:Type="String"> A person, animal, organization or device that who actually and principally carries out the activity</Data></Cell>
     <Cell><Data ss:Type="String">Device should only be assigned as a performer in circumstances where the device is performing independent of human intervention. Need not be the principal responsible actor</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">author</Data></Cell>
     <Cell><Data ss:Type="String">A party that originates the resource and therefore has responsibility for the information given in the resource and ownership of this resource</Data></Cell>
     <Cell><Data ss:Type="String">Every resource should have an author</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">verifier</Data></Cell>
     <Cell><Data ss:Type="String">A person who verifies the correctness and appropriateness of activity</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">attestor</Data></Cell>
     <Cell><Data ss:Type="String">A verifier who attests to the accuracy of the resource</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">informant</Data></Cell>
     <Cell><Data ss:Type="String">A person who reported information that contributed to the resource</Data></Cell>
     <Cell><Data ss:Type="String">e.g., a next of kin who answers questions about the patient's history</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">source</Data></Cell>
     <Cell><Data ss:Type="String">An information source from which the portions of the resource are derived</Data></Cell>
     <Cell><Data ss:Type="String">May be an electronic document, application, paper record, etc.  *Not* a person</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">cc</Data></Cell>
     <Cell><Data ss:Type="String">A party, who may or should receive or who has recieved a copy of the resource or subsequent or derivative information of that resource</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">application</Data></Cell>
     <Cell><Data ss:Type="String">An application with a user interface that interacts with a person</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">daemon</Data></Cell>
     <Cell><Data ss:Type="String">A background process that transfers information from one place or form to another</Data></Cell>
    </Row>
@@ -914,6 +908,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <HorizontalResolution>600</HorizontalResolution>

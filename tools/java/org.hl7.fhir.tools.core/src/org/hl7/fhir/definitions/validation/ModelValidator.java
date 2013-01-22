@@ -74,12 +74,10 @@ public class ModelValidator {
 		errors.clear();
     rule(parent.getName(), !name.equals("Metadata"), "The name 'Metadata' is not a legal name for a resource");
     rule(parent.getName(), !name.equals("History"), "The name 'History' is not a legal name for a resource");
-    
-		checkElement(parent.getName(), parent.getRoot(), parent);
-		parent.getRoot().getElementByName("text").setShortDefn("Text summary of resource (for human interpretation)");
-		rule(parent.getName(), parent.getRoot().getElementByName("extensions") == null, "No element named \"extensions\"");
-		if (rule(parent.getName(), parent.getRoot().getElementByName("extension") != null, "Element named \"extension\" required"))
-		  rule(parent.getName(), parent.getRoot().getElementByName("extension").getMaxCardinality() == null, "Element named \"extension\", max cardinality != *");
+
+    checkElement(parent.getName(), parent.getRoot(), parent);
+    rule(parent.getName(), parent.getRoot().getElementByName("text") == null, "Element named \"text\" not allowed");
+    rule(parent.getName(), parent.getRoot().getElementByName("extension") == null, "Element named \"extension\" not allowed");
 		return errors;
 	}
 
