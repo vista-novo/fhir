@@ -347,7 +347,9 @@ in a defined order.
 <p>
 In order to allow the client to be confident about what search parameters were used as a criteria by the server, 
 the server SHALL return the parameters that were actually used in a search URL as the self link in the atom feed that is returned.
-Applications processing search results SHALL treat this self link as a mustUnderstand field. <!-- For, example, if the client... LLOYD HERE -->
+Applications processing search results SHALL treat this self link as a mustUnderstand field. For example, if the server did not support
+some of the filters specified in the search, a client might manually apply those filters to the retrieved result set, display a warning
+message to the user or take some other action.
 </p>
 
 <a name="pages"> </a>
