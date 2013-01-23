@@ -147,20 +147,20 @@ public abstract class JsonComposerBase extends XmlBase {
 
 	protected abstract void composeResource(Resource resource) throws Exception;
 
-	protected void composeElement(Element element) throws Exception {
-		if (element.getXmlId() != null) 
-			prop("_id", element.getXmlId());
-	}
-
+//	protected void composeElement(Element element) throws Exception {
+//		if (element.getXmlId() != null) 
+//			prop("_id", element.getXmlId());
+//	}
+//
 	protected void prop(String name, String value) throws Exception {
 		if (name != null)
 			json.key(name);
 		json.value(value);
 	}
 
-	protected void composeType(Type type) throws Exception {
-		composeElement(type);
-	}
+//	protected void composeType(Type type) throws Exception {
+//		composeElement(type);
+//	}
 
 //	protected void composeStringSimple(String name, String value) throws Exception {
 //		if (value != null)

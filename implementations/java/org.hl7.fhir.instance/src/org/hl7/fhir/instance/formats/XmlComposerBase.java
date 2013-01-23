@@ -75,7 +75,7 @@ public abstract class XmlComposerBase extends XmlBase {
   
   protected void composeElementAttributes(Element element) throws Exception {
     if (element.getXmlId() != null) 
-      xml.attribute("xml:Id", element.getXmlId());
+      xml.attribute("id", element.getXmlId());
   }
 
   protected void composeTypeAttributes(Type type) throws Exception {

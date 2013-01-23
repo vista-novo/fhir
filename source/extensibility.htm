@@ -64,7 +64,8 @@ Notes:
 </p>
 <ul>
  <li>The <i>url</i> is a mandatory field, and identifies an extension definition in a <a href="profile.htm">resource profile</a> that defines the content and meaning of the extension.</li>
- <li>An extension must have a value (i.e. a value[x] element). The value itself must have content, or an id attribute that is the target of a reference from the Narrative, or extensions of it's own</li>
+ <li>An extension must have either a value (i.e. a value[x] element) or child extensions. The value itself must have content, or an id attribute that is the target of a reference from the Narrative</li>
+ <li>Multiple value[x] elements are allowed, but they must be all be of the same type, that specified in the extension definition. For how to do multiple types of different extensions, see the second example below></li>
 </ul>
 <p>
 The <i>value[x]</i> element has the [x] replaced with the name of one of the defined types, and the contents as defined for that type, or another extension. The value type may be one of the following:
@@ -88,7 +89,6 @@ The <i>value[x]</i> element has the [x] replaced with the name of one of the def
  <li><a href="datatypes.htm#Contact">Contact</a></li>
  <li><a href="datatypes.htm#Schedule">Schedule</a></li>
  <li><a href="resoures.htm#ResourceReference">Resource</a> - a reference to another resource</li>
- <li>Extension - nested extension content</li>
 </ul>
 <p>
 Nested extensions are used where the original definition of the extension defines complex content (i.e. multiple parts of the extension, not a simple data type).
@@ -104,8 +104,7 @@ Here is an example of a name with a simple extension for a tribal name:
     &lt;url value=&quot;http://hl7.org/fhir/profile/@iso-21090#name-use&quot; /&gt;
     &lt;valueCode value=&quot;I&quot; /&gt;
   &lt;/extension&gt;
-  &lt;text value=&quot;Chief Red Cloud&quot;&gt;
-  &lt;/given&gt;
+  &lt;text value=&quot;Chief Red Cloud&quot;/&gt;
 &lt;/name&gt;
 </pre>
 <p>
@@ -119,21 +118,21 @@ Extending a patient with an opt-in status for a clinical trial, with
 &lt;Patient&gt;
   &lt;extension&gt;
     &lt;url value=&quot;http://acme.org/fhir/profiles/@main#trail-status&quot; /&gt;
-    &lt;valueExtension&gt;
+    &lt;extension&gt;
       &lt;url value=&quot;http://acme.org/fhir/profiles/@main#trail-status-code&quot; /&gt;	  
       &lt;valueCode value=&quot;unsure&quot; /&gt;	  
-    &lt;/valueExtension&gt;
-    &lt;valueExtension&gt;
+    &lt;/extension&gt;
+    &lt;extension&gt;
       &lt;url value=&quot;http://acme.org/fhir/profiles/@main#trail-status-date&quot; /&gt;	  
       &lt;valueDate value=&quot;2009-03-14&quot; /&gt;	  
-    &lt;/valueExtension&gt;
-    &lt;valueExtension&gt;
+    &lt;/extension&gt;
+    &lt;extension&gt;
       &lt;url value=&quot;http://acme.org/fhir/profiles/@main#trail-status-who&quot; /&gt;	  
       &lt;valueResourceReference&gt;	  
         &lt;type value=&quot;Provider&quot; /&gt;	  
         &lt;url value=&quot;../provider/@example&quot; /&gt;	  	    
       &lt;/valueResourceReference&gt;	  
-    &lt;/valueExtension&gt;
+    &lt;/extension&gt;
   &lt;/extension&gt;
   &lt;!-- other data for patient --&gt;
 &lt;/Patient&gt;
@@ -165,8 +164,7 @@ Here is an Australian example where for cultural reasons, certain names that hav
     &lt;mustUnderstand value=&quot;true&quot; /&gt;
     &lt;valueCode value=&quot;DN&quot; /&gt;
   &lt;/extension&gt;
-  &lt;text value=&quot;Chief Red Cloud&quot;&gt;
-  &lt;/given&gt;
+  &lt;text value=&quot;Chief Red Cloud&quot;/&gt;
 &lt;/name&gt;
 </pre>
 <p>

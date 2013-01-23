@@ -103,19 +103,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			write("public class "+upFirst(name)+" extends Element {\r\n");
 		else if (clss == JavaGenClass.Constraint)
 			write("public class "+upFirst(cd.getCode())+" extends "+upFirst(root.getName())+" {\r\n");
-		else  if (root.typeCode().equals("GenericType")) {
-			write("public class "+upFirst(name)+"<T extends Ordered> extends Type {\r\n");
-			write("  private String type;\r\n");
-			write("  public String getType() {\r\n");
-			write("    return type;\r\n");
-			write("  };\r\n");
-			write("\r\n");
-			write("  public Interval(String type) {\r\n");
-			write("    super();\r\n");
-			write("    this.type = type;\r\n");
-			write("  };\r\n");
-			write("  \r\n");
-		} else if (root.getName().equals("Quantity"))
+	  else if (root.getName().equals("Quantity"))
 			write("public class "+upFirst(name)+" extends Type {\r\n");
 		else
 			write("public class "+upFirst(name)+" extends Type {\r\n");
@@ -623,9 +611,9 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			write(indent+"  this."+getElementName(e.getName(), true)+" = value;\r\n");
 			write(indent+"}\r\n");
 			write("\r\n");
-			if (e.getTypes().size() == 1 && (definitions.getPrimitives().containsKey(e.typeCode()) || e.getTypes().get(0).isIdRef())) {
+			if (e.getTypes().size() == 1 && (definitions.getPrimitives().containsKey(e.typeCode()) || e.getTypes().get(0).isIdRef() || e.typeCode().equals("xml:lang"))) {
 	      write(indent+"public "+getSimpleType(tn)+" get"+getTitle(getElementName(e.getName(), false))+"Simple() { \r\n");
-	      write(indent+"  return this."+getElementName(e.getName(), true)+".getValue();\r\n");
+	      write(indent+"  return this."+getElementName(e.getName(), true)+" == null ? null : this."+getElementName(e.getName(), true)+".getValue();\r\n");
 	      write(indent+"}\r\n");
 	      write("\r\n");
 	      write(indent+"public void set"+getTitle(getElementName(e.getName(), false))+"Simple("+getSimpleType(tn)+" value) { \r\n");

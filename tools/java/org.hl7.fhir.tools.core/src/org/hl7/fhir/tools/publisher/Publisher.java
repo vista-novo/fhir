@@ -783,18 +783,45 @@ public class Publisher {
 	    }
       s.append("hide Element circle\r\n");
 	    s.append("@enduml\r\n");
-	    TextFile.stringToFile(s.toString(), page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".plantuml-source");
-	    SourceStringReader rdr = new SourceStringReader(s.toString());
-	    FileOutputStream png = new FileOutputStream(page.getFolders().dstDir + title + ".png");
-	    rdr.generateImage(png);	    
+	    produceImageFromSource(title, s.toString(), page.getFolders().dstDir + title + ".png");
 	  } else {
-	    SourceStringReader rdr = new SourceStringReader(src);
-	    FileOutputStream png = new FileOutputStream(page.getFolders().dstDir + title + ".png");
-	    rdr.generateImage(png);
+      produceImageFromSource(title, src, page.getFolders().dstDir + title + ".png");
 	  }
 	}
 	
-	private String generateDiagram(ResourceDefn resource, String n) throws Exception {
+	private String produceImageFromSource(String title, String src, String dest) throws Exception {
+	  // this is a time consuming step. We cache the last outcome
+	  String lastSrc = null;
+	  if (new File(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".png").exists())
+	    lastSrc = TextFile.fileToString(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".plantuml-source");
+	  if (!src.equals(lastSrc)) {
+	    TextFile.stringToFile(src, page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".plantuml-source");
+	    SourceStringReader rdr = new SourceStringReader(src);
+	    FileOutputStream png = new FileOutputStream(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".png");
+	    String map = rdr.generateImage(png);     
+	    TextFile.stringToFile(map, page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".map");
+	  }
+	  Utilities.copyFile(new File(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".png"), new File(dest));
+	  return TextFile.fileToString(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".map");
+//	    
+//	  !!TextFile.stringToFile(, page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".plantuml-source");
+//    // TODO Auto-generated method stub
+//    SourceStringReader rdr = new SourceStringReader(src);
+//    FileOutputStream png = new FileOutputStream(page.getFolders().dstDir + title + ".png");
+//    rdr.generateImage(png);
+//    
+//    TextFile.stringToFile(s.toString(), page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+resource.getName().toLowerCase()+".plantuml-source");
+//    SourceStringReader rdr = new SourceStringReader(s.toString());
+//    FileOutputStream png = new FileOutputStream();
+//    return rdr.generateImage(png);
+//    
+////  FileOutputStream svg = new FileOutputStream(page.getFolders().dstDir + n + ".svg");
+////  rdr.generateImage(svg, new FileFormatOption(FileFormat.SVG));
+////  FileOutputStream xmi = new FileOutputStream(page.getFolders().dstDir + n + ".xmi");
+////  rdr.generateImage(xmi, new FileFormatOption(FileFormat.XMI_STANDARD));
+  }
+
+  private String generateDiagram(ResourceDefn resource, String n) throws Exception {
     StringBuilder s = new StringBuilder();
     StringBuilder s2 = new StringBuilder();
     s.append("@startuml\r\n");
@@ -821,15 +848,8 @@ public class Publisher {
       s.append("hide "+en+" circle\r\n");
     }
     s.append("@enduml\r\n");
-    TextFile.stringToFile(s.toString(), page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+resource.getName().toLowerCase()+".plantuml-source");
-    SourceStringReader rdr = new SourceStringReader(s.toString());
-    FileOutputStream png = new FileOutputStream(page.getFolders().dstDir + n + ".png");
-    return rdr.generateImage(png);
+    return produceImageFromSource(resource.getName(), s.toString(), page.getFolders().dstDir + n + ".png");
     
-//    FileOutputStream svg = new FileOutputStream(page.getFolders().dstDir + n + ".svg");
-//    rdr.generateImage(svg, new FileFormatOption(FileFormat.SVG));
-//    FileOutputStream xmi = new FileOutputStream(page.getFolders().dstDir + n + ".xmi");
-//    rdr.generateImage(xmi, new FileFormatOption(FileFormat.XMI_STANDARD));
 	}
 	
   private void generateDiagram(org.hl7.fhir.definitions.model.ElementDefn element) throws Exception {

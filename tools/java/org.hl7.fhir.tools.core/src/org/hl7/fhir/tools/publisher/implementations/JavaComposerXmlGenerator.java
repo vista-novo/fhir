@@ -74,13 +74,15 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     
     start(version, genDate);
     
-
+    genElement();
     generateEnumComposer();
     for (DefinedCode dc : definitions.getPrimitives().values()) 
       generatePrimitive(dc);
     
     for (ElementDefn n : definitions.getInfrastructure().values()) {
       generate(n, JavaGenClass.Structure);
+//      String t = upFirst(n.getName());
+//      regt.append("    else if (type instanceof "+t+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+t+") type);\r\n");
     }
     
     for (ElementDefn n : definitions.getTypes().values()) {
@@ -140,15 +142,25 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     finish();
   }
 
-  private void genResource() throws Exception {
-    write("  private void composeResourceAttributes(Resource element) {\r\n");
-    write("  }\r\n");
-
-    write("  private void composeResourceElements(Resource element) throws Exception {\r\n");
-    write("    composeNarrative(\"text\", element.getText());\r\n");
+  private void genElement() throws Exception {
+    write("  private void composeElementElements(Element element) throws Exception {\r\n");
     write("    for (Extension e : element.getExtensions()) {\r\n");
     write("      composeExtension(\"extension\", e);\r\n");
     write("    }\r\n");
+    write("  }\r\n");
+    write("\r\n");
+  }
+
+  private void genResource() throws Exception {
+    write("  private void composeResourceAttributes(Resource element) throws Exception {\r\n");
+    write("    composeElementAttributes(element);\r\n");
+    write("    if (element.getLanguageSimple() != null) \r\n");
+    write("      xml.attribute(\"xml:lang\", element.getLanguageSimple());\r\n");
+    write("  }\r\n\r\n");
+
+    write("  private void composeResourceElements(Resource element) throws Exception {\r\n");
+    write("    composeElementElements(element);\r\n");
+    write("    composeNarrative(\"text\", element.getText());\r\n");
     write("  }\r\n");
     write("\r\n");
   }
@@ -161,8 +173,7 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     write("        xml.attribute(\"value\", e.toCode(value.getValue()));\r\n");
     write("        \r\n");
     write("      xml.open(FHIR_NS, name);\r\n");
-    write("      for (Extension ex : value.getExtensions())\r\n");
-    write("        composeExtension(\"extension\", ex);\r\n");
+    write("      composeElementElements(value);\r\n");
     write("      xml.close(FHIR_NS, name);\r\n");
     write("    }    \r\n");
     write("  }    \r\n");
@@ -186,8 +197,7 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     write("        xml.attribute(\"value\", toString(value.getValue()));\r\n");
     write("        \r\n");
     write("      xml.open(FHIR_NS, name);\r\n");
-    write("      for (Extension e : value.getExtensions())\r\n"); 
-    write("        composeExtension(\"extension\", e);\r\n");
+    write("      composeElementElements(value);\r\n");
     write("      xml.close(FHIR_NS, name);\r\n");
     write("    }    \r\n");
     write("  }    \r\n");
@@ -291,13 +301,13 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     
     write("  private void compose"+upFirst(tn).replace(".", "").replace("<", "_").replace(">", "")+"(String name, "+tn+" element) throws Exception {\r\n");
     write("    if (element != null) {\r\n");
-    if ((type == JavaGenClass.Type || type == JavaGenClass.Constraint) && !tn.contains("."))
+    if (type == JavaGenClass.Resource) 
+      write("      composeResourceAttributes(element);\r\n");
+    else if ((type == JavaGenClass.Type || type == JavaGenClass.Constraint) && !tn.contains("."))
       write("      composeTypeAttributes(element);\r\n");
     else
       write("      composeElementAttributes(element);\r\n");
 
-    if (type == JavaGenClass.Resource) 
-      write("      composeResourceAttributes(element);\r\n");
       
     for (ElementDefn e : n.getElements()) { 
       if (e.typeCode().equals("xml:lang")) {
@@ -308,6 +318,8 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     write("      xml.open(FHIR_NS, name);\r\n");
     if (type == JavaGenClass.Resource) 
       write("      composeResourceElements(element);\r\n");
+    else
+      write("      composeElementElements(element);\r\n");
     
     for (ElementDefn e : n.getElements()) {
       if (!e.typeCode().equals("xml:lang")) 

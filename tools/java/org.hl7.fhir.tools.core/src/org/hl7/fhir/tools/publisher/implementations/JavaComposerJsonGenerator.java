@@ -75,12 +75,15 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     
     start(version, genDate);
     
+    genElement();
     generateEnumComposer();
     for (DefinedCode dc : definitions.getPrimitives().values()) 
       generatePrimitive(dc);
     
     for (ElementDefn n : definitions.getInfrastructure().values()) {
       generate(n, JavaGenClass.Structure);
+//      String t = upFirst(n.getName());
+//      regt.append("    else if (type instanceof "+t+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+t+") type);\r\n");
     }
     
     for (ElementDefn n : definitions.getTypes().values()) {
@@ -124,17 +127,26 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     finish();
   }
 
-  private void genResource() throws Exception {    
-    write("  private void composeResourceElements(Resource element) throws Exception {\r\n");
-    write("    composeElement(element);\r\n");
-    write("    if (element.getText() != null)\r\n");
-    write("      composeNarrative(\"text\", element.getText());\r\n");
+  private void genElement() throws Exception {
+    
+    write("  private void composeElement(Element element) throws Exception {\r\n");
+    write("    if (element.getXmlId() != null)\r\n");
+    write("      prop(\"_id\", element.getXmlId());\r\n");
     write("    if (element.getExtensions().size() > 0) {\r\n");
     write("      openArray(\"extension\");\r\n");
     write("      for (Extension ex : element.getExtensions())\r\n");
     write("        composeExtension(null, ex);\r\n");
     write("      closeArray();\r\n");
     write("    }\r\n");
+    write("  }\r\n");
+    write("\r\n");
+  }
+
+  private void genResource() throws Exception {    
+    write("  private void composeResourceElements(Resource element) throws Exception {\r\n");
+    write("    composeElement(element);\r\n");
+    write("    if (element.getText() != null)\r\n");
+    write("      composeNarrative(\"text\", element.getText());\r\n");
     write("  }\r\n");
     write("\r\n");		
   }
@@ -266,8 +278,6 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     write("      open(name);\r\n");
     if (clss == JavaGenClass.Resource) 
       write("      composeResourceElements(element);\r\n");
-    else if (clss == JavaGenClass.Type && !tn.contains("."))
-      write("      composeType(element);\r\n");
     else
       write("      composeElement(element);\r\n");
     for (ElementDefn e : n.getElements()) 

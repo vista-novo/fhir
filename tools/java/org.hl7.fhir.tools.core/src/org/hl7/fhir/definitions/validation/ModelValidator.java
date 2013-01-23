@@ -41,7 +41,7 @@ import org.hl7.fhir.definitions.model.TypeRef;
 
 /** todo
  * Search parameters cannot include "-"
- * 
+ * can't have element names in a resoucrce that are part of resource itself
  * @author Grahame
  *
  */
