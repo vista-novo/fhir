@@ -19,6 +19,7 @@
   <WindowWidth>26595</WindowWidth>
   <WindowTopX>1680</WindowTopX>
   <WindowTopY>1515</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -165,7 +166,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <TopRowVisible>2</TopRowVisible>
    <Panes>
     <Pane>
@@ -179,7 +179,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="25.5"/>
    <Column ss:StyleID="s67" ss:Width="87"/>
@@ -195,16 +195,6 @@
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">!1</Data></Cell>
-    <Cell><Data ss:Type="String">Must Have a code</Data></Cell>
-    <Cell><Data ss:Type="String">Choice</Data></Cell>
-    <Cell ss:StyleID="s68"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the Choice element has a dataAbsentReason flag, it must contain a </Font><I><Font
-        html:Color="#000000">code</Font></I></ss:Data></Cell>
-    <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or code.oclIsDefined</Data></Cell>
-    <Cell><Data ss:Type="String" x:Ticked="1">exists(@dataAbsentReason) or exists(f:code)</Data></Cell>
-   </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="4" ss:StyleID="s68"/>
     <Cell ss:Index="6" ss:StyleID="s68"/>
@@ -217,11 +207,13 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>1</ActiveRow>
      <ActiveCol>1</ActiveCol>
+     <RangeSelection>R2</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

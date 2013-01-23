@@ -86,21 +86,21 @@
   <Style ss:ID="s73">
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s74">
+  <Style ss:ID="s75">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s75">
+  <Style ss:ID="s76">
    <Alignment ss:Vertical="Top"/>
   </Style>
-  <Style ss:ID="s76">
+  <Style ss:ID="s77">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s78" ss:Parent="s62">
+  <Style ss:ID="s79" ss:Parent="s62">
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
    <Interior/>
   </Style>
-  <Style ss:ID="s80">
+  <Style ss:ID="s81">
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
   </Style>
@@ -1134,49 +1134,49 @@
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Profile.binding</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">concepts must be present and may only be present if binding type is &quot;codelist&quot;</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">(f:type='codelist') = exists(f:concept)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">(f:type/@value='codelist') = exists(f:concept)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Profile.extensionDefn.id</Data></Cell>
     <Cell><Data ss:Type="String">Codes must be unique in the context of a profile</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">count(ancestor::f:Profile/f:extensionDefn/f:id[.=current()])=1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">count(ancestor::f:Profile/f:extensionDefn/f:id[@value=current()/@value])=1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Profile.resource.element.definition.max</Data></Cell>
     <Cell><Data ss:Type="String">Max must be a number or &quot;*&quot;</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">@value='*' or (normalize-space(.)!='' and normalize-space(translate(@value, '0123456789',''))='')</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">@value='*' or (normalize-space(@value)!='' and normalize-space(translate(@value, '0123456789',''))='')</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">7</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Profile.resource.element.definition</Data></Cell>
     <Cell><Data ss:Type="String">Binding can only be present for coded elements</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">not(exists(f:binding)) or f:type/f:code=('code','Coding','CodeableConcept')</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">not(exists(f:binding)) or f:type/f:code/@value=('code','Coding','CodeableConcept')</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Profile</Data></Cell>
     <Cell><Data ss:Type="String">Must define at least one resource constraint, extension definition or binding</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">f:resource or f:extensionDefn or f:binding</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">exists(f:resource) or exists(f:extensionDefn) or exists(f:binding)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="Number">9</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Profile.resource.element</Data></Cell>
     <Cell><Data ss:Type="String">Bundled may only be specified if one of the allowed types for the element is a resource</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">not(exists(f:bundled)) or exists(f:definition/f:type/f:code/@value[starts-with(., 'Resource(')])</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">not(exists(f:bundled)) or exists(f:definition/f:type/f:code[starts-with(@value, 'Resource(')])</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Profile.resource.element.definition</Data></Cell>
     <Cell><Data ss:Type="String">Value may only be specified if the type consists of a single repetition that has a type corresponding to one of the primitive data types.</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">not(exists(f:*[starts-with(local-name(.), 'value')])) or (count(f:type)=1 and f:type/f:code[substring(.,1,1)=lower-case(substring(.,1,1))])</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">not(exists(f:*[starts-with(local-name(.), 'value')])) or (count(f:type)=1 and f:type/f:code[substring(@value,1,1)=lower-case(substring(@value,1,1))])</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">11</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Profile.binding.name</Data></Cell>
     <Cell><Data ss:Type="String">Binding name must be unique in the context of a profile</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">count(ancestor::f:Profile/f:binding/f:name[.=current()])=1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">count(ancestor::f:Profile/f:binding/f:name[@value=current()/@value])=1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30"/>
   </Table>
@@ -1192,8 +1192,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>12</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1202,9 +1201,9 @@
  </Worksheet>
  <Worksheet ss:Name="Search">
   <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="12" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s74" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="70.5"/>
-   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="382.5"/>
+   x:FullRows="1" ss:StyleID="s75" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="70.5"/>
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="382.5"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s66">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
@@ -1313,13 +1312,13 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="8" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s75" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s75" ss:Width="112.5"/>
-   <Column ss:StyleID="s75" ss:Width="303"/>
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="63.75"/>
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="60"/>
-   <Column ss:StyleID="s75" ss:Width="123.75"/>
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="92.25"/>
+   x:FullRows="1" ss:StyleID="s76" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s76" ss:Width="112.5"/>
+   <Column ss:StyleID="s76" ss:Width="303"/>
+   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="63.75"/>
+   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="60"/>
+   <Column ss:StyleID="s76" ss:Width="123.75"/>
+   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="92.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
@@ -1331,15 +1330,15 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">BindingType</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">How this binding is mapped to a set of codes</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">#binding-type</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">#binding-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">BindingConformance</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Must applications comply with this binding?</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#binding-conformance</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1352,28 +1351,28 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s68"><Data ss:Type="String">ConstraintSeverity</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Must applications comply with this constraint?</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#constraint-severity</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s76"><Data ss:Type="String">ResourceProfileStatus</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">The lifecycle status of a Resource Profile</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">#resource-profile-status</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">ResourceProfileStatus</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">The lifecycle status of a Resource Profile</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">#resource-profile-status</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">SearchParamType</Data></Cell>
     <Cell><Data ss:Type="String">Data types allowed to be used for search parameters</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#search-param-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">SearchRepeatBehavior</Data></Cell>
     <Cell><Data ss:Type="String">How repeating parameters are handled for the parameter type</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#search-repeat-behavior</Data></Cell>
    </Row>
@@ -1412,9 +1411,9 @@
  </Worksheet>
  <Worksheet ss:Name="binding-type">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s75" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="86.25"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="463.5"/>
+   x:FullRows="1" ss:StyleID="s76" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="86.25"/>
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="463.5"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
@@ -1460,9 +1459,9 @@
  </Worksheet>
  <Worksheet ss:Name="binding-conformance">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s76" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="54"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="474.75"/>
+   x:FullRows="1" ss:StyleID="s77" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="54"/>
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="474.75"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
@@ -1519,9 +1518,9 @@
  </Worksheet>
  <Worksheet ss:Name="constraint-severity">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s76" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="54"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="474.75"/>
+   x:FullRows="1" ss:StyleID="s77" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="54"/>
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="474.75"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
@@ -1573,8 +1572,8 @@
    <Column ss:Width="60"/>
    <Column ss:Width="424.5"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">draft</Data></Cell>
@@ -1626,9 +1625,9 @@
  </Worksheet>
  <Worksheet ss:Name="extension-context">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s76" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s76" ss:Width="90.75"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="474.75"/>
+   x:FullRows="1" ss:StyleID="s77" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s77" ss:Width="90.75"/>
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="474.75"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
@@ -1677,9 +1676,9 @@
    <Column ss:Width="60"/>
    <Column ss:Width="930"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Definition</Data></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Comment</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Comment</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">integer</Data></Cell>
@@ -1751,8 +1750,8 @@
    <Column ss:Width="60"/>
    <Column ss:Width="424.5"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">single</Data></Cell>
@@ -1813,13 +1812,13 @@
  </Worksheet>
  <Worksheet ss:Name="Examples">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s76" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="75.75"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="218.25"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="45.75"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="201"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="55.5"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="65.25"/>
+   x:FullRows="1" ss:StyleID="s77" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="75.75"/>
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="218.25"/>
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="45.75"/>
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="201"/>
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="55.5"/>
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="65.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="String">Name</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Description</Data></Cell>

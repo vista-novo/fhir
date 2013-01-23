@@ -20,6 +20,7 @@
   <WindowWidth>26355</WindowWidth>
   <WindowTopX>1920</WindowTopX>
   <WindowTopY>1860</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -59,14 +60,6 @@
   </Style>
   <Style ss:ID="s66">
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s67">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-   <Borders/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
-   <Interior/>
-   <NumberFormat/>
-   <Protection/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -149,7 +142,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -163,7 +155,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="155.25"
     ss:Span="1"/>
@@ -179,22 +171,12 @@
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">!1</Data></Cell>
-    <Cell><Data ss:Type="String">Must Have Data</Data></Cell>
-    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s67"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the CodeableConcept has a dataAbsentReason flag, it must contain a </Font><I><Font
-        html:Color="#000000">coding</Font></I><Font html:Color="#000000"> with a code or a text</Font></ss:Data></Cell>
-    <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or (coding.size &gt; 0 and coding-&gt;collect(code.size() &gt; 0).size &gt; 0) or text.size &gt; 0</Data></Cell>
-    <Cell><Data ss:Type="String" x:Ticked="1">exists(@dataAbsentReason) or exists(f:coding/f:code) or exists(f:text)</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Primary Reference must resolve</Data></Cell>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">If a primary reference is present, it must point to one of the codings</Data></Cell>
     <Cell><Data ss:Type="String">primary.oclIsDefined implies codings.collect(id = primary)-&gt;size() = 1</Data></Cell>
-    <Cell><Data ss:Type="String">not(exists(f:primary)) or count(f:coding[@id=current()/f:primary])=1</Data></Cell>
+    <Cell><Data ss:Type="String">not(exists(f:primary)) or count(f:coding[@id=current()/f:primary/@value])=1</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -204,11 +186,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

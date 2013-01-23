@@ -20,6 +20,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -350,7 +351,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -387,7 +387,7 @@
    <Column ss:StyleID="s69" ss:Width="78"/>
    <Column ss:StyleID="s69" ss:Width="252"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="177.75"/>
-   <Column ss:StyleID="s69" ss:Width="206.25"/>
+   <Column ss:StyleID="s69" ss:Width="288.75"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -402,7 +402,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Group</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Can only have members if group is &quot;actual&quot;</Data></Cell>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">f:actual='true' or not(exists(f:member))</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">f:actual/@value='true' or not(exists(f:member))</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s70"><Data ss:Type="Number">2</Data></Cell>
@@ -410,7 +410,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Group</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Can only have a code for non-Person groups</Data></Cell>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">(f:type='person')!=exists(f:code)</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">(f:type/@value='person')!=exists(f:code)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s70"><Data ss:Type="Number">3</Data></Cell>
@@ -418,7 +418,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Group.member</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Member resource types must agree with group type</Data></Cell>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">lower-case(f:type)=parent::f:Group/f:type</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">lower-case(f:type/@value)=parent::f:Group/f:type/@value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s70"/>
@@ -444,6 +444,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -463,6 +464,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

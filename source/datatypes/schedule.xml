@@ -20,6 +20,7 @@
   <WindowWidth>23475</WindowWidth>
   <WindowTopX>4800</WindowTopX>
   <WindowTopY>5220</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -197,7 +198,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -261,7 +261,7 @@
     <Cell><Data ss:Type="String">Schedule.repeat.duration</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">duration must be a positive value</Data></Cell>
     <Cell><Data ss:Type="String">duration &gt; 0</Data></Cell>
-    <Cell><Data ss:Type="String">. &amp;gt; 0</Data></Cell>
+    <Cell><Data ss:Type="String" x:Ticked="1">@value &amp;gt; 0 or not(@value)</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -276,11 +276,12 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>5</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

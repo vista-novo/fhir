@@ -68,14 +68,6 @@
   <Style ss:ID="s67">
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s68">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-   <Borders/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
-   <Interior/>
-   <NumberFormat/>
-   <Protection/>
-  </Style>
   <Style ss:ID="s70">
    <Alignment ss:Vertical="Top"/>
   </Style>
@@ -187,7 +179,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>3</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -195,7 +187,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="30.75"/>
    <Column ss:StyleID="s67" ss:Width="97.5"/>
@@ -210,26 +202,6 @@
     <Cell><Data ss:Type="String">English</Data></Cell>
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">!1</Data></Cell>
-    <Cell><Data ss:Type="String">Must Have a value</Data></Cell>
-    <Cell><Data ss:Type="String">Quantity</Data></Cell>
-    <Cell ss:StyleID="s68"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the Quantity element has a dataAbsentReason flag, it must contain a </Font><I><Font
-        html:Color="#000000">value</Font></I></ss:Data></Cell>
-    <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or value.oclIsDefined</Data></Cell>
-    <Cell><Data ss:Type="String" x:Ticked="1">exists(@dataAbsentReason) or exists(f:value)</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">!2</Data></Cell>
-    <Cell><Data ss:Type="String">Must Have units</Data></Cell>
-    <Cell><Data ss:Type="String">Quantity</Data></Cell>
-    <Cell ss:StyleID="s68"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the Quantity element has a dataAbsentReason flag, it must contain a </Font><I><Font
-        html:Color="#000000">units element</Font></I></ss:Data></Cell>
-    <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or units.oclIsDefined</Data></Cell>
-    <Cell><Data ss:Type="String" x:Ticked="1">exists(@dataAbsentReason) or exists(f:units)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
@@ -250,8 +222,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <RangeSelection>R2:R3</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
