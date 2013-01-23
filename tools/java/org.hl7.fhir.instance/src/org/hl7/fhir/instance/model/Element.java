@@ -1,4 +1,7 @@
 package org.hl7.fhir.instance.model;
+
+import java.util.ArrayList;
+import java.util.List;
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
@@ -31,7 +34,8 @@ POSSIBILITY OF SUCH DAMAGE.
 public abstract class Element {
 
 	private String xmlId;
-
+  private List<Extension> extensions = new ArrayList<Extension>();
+  
 	public String getXmlId() {
 		return xmlId;
 	}
@@ -40,5 +44,9 @@ public abstract class Element {
 		this.xmlId = xmlId;
 	}
 	
+  public List<Extension> getExtensions() {
+    return extensions;
+  }
+  
 	
 }

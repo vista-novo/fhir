@@ -29,9 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
-
-import java.util.*;
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 /**
  * Financial instrument by which payment information for health care
@@ -78,7 +76,21 @@ public class Coverage extends Resource {
           this.birthdate = value;
         }
 
-    }
+        public String getBirthdateSimple() { 
+          return this.birthdate.getValue();
+        }
+
+        public void setBirthdateSimple(String value) { 
+          if (value == null)
+            this.birthdate = null;
+          else {
+            if (this.birthdate == null)
+              this.birthdate = new Date();
+            this.birthdate.setValue(value);
+          }
+        }
+
+  }
 
     /**
      * The program or plan underwriter or payor.
@@ -181,12 +193,40 @@ public class Coverage extends Resource {
       this.dependent = value;
     }
 
+    public int getDependentSimple() { 
+      return this.dependent.getValue();
+    }
+
+    public void setDependentSimple(int value) { 
+      if (value == -1)
+        this.dependent = null;
+      else {
+        if (this.dependent == null)
+          this.dependent = new Integer();
+        this.dependent.setValue(value);
+      }
+    }
+
     public Integer getSequence() { 
       return this.sequence;
     }
 
     public void setSequence(Integer value) { 
       this.sequence = value;
+    }
+
+    public int getSequenceSimple() { 
+      return this.sequence.getValue();
+    }
+
+    public void setSequenceSimple(int value) { 
+      if (value == -1)
+        this.sequence = null;
+      else {
+        if (this.sequence == null)
+          this.sequence = new Integer();
+        this.sequence.setValue(value);
+      }
     }
 
     public PlanHolder getPlanHolder() { 

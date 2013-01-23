@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -46,7 +46,8 @@ public class OrderResponse extends Resource {
         accepted, // 
         cancelled, // 
         aborted, // 
-        complete; // 
+        complete, // 
+        Null; // added to help the parsers
         public static OrderOutcomeCode fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -83,6 +84,50 @@ public class OrderResponse extends Resource {
         }
     }
 
+  public class OrderOutcomeCodeEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("pending".equals(codeString))
+          return OrderOutcomeCode.pending;
+        if ("review".equals(codeString))
+          return OrderOutcomeCode.review;
+        if ("rejected".equals(codeString))
+          return OrderOutcomeCode.rejected;
+        if ("error".equals(codeString))
+          return OrderOutcomeCode.error;
+        if ("accepted".equals(codeString))
+          return OrderOutcomeCode.accepted;
+        if ("cancelled".equals(codeString))
+          return OrderOutcomeCode.cancelled;
+        if ("aborted".equals(codeString))
+          return OrderOutcomeCode.aborted;
+        if ("complete".equals(codeString))
+          return OrderOutcomeCode.complete;
+        throw new Exception("Unknown OrderOutcomeCode code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == OrderOutcomeCode.pending)
+        return "pending";
+      if (code == OrderOutcomeCode.review)
+        return "review";
+      if (code == OrderOutcomeCode.rejected)
+        return "rejected";
+      if (code == OrderOutcomeCode.error)
+        return "error";
+      if (code == OrderOutcomeCode.accepted)
+        return "accepted";
+      if (code == OrderOutcomeCode.cancelled)
+        return "cancelled";
+      if (code == OrderOutcomeCode.aborted)
+        return "aborted";
+      if (code == OrderOutcomeCode.complete)
+        return "complete";
+      return "?";
+      }
+    }
+
     /**
      * The order this is a response to
      */
@@ -111,7 +156,7 @@ public class OrderResponse extends Resource {
     /**
      * The status of the response
      */
-    private OrderOutcomeCode code;
+    private Enumeration<OrderOutcomeCode> code;
 
     /**
      * Additional description of the response
@@ -139,6 +184,20 @@ public class OrderResponse extends Resource {
       this.date = value;
     }
 
+    public String getDateSimple() { 
+      return this.date.getValue();
+    }
+
+    public void setDateSimple(String value) { 
+      if (value == null)
+        this.date = null;
+      else {
+        if (this.date == null)
+          this.date = new DateTime();
+        this.date.setValue(value);
+      }
+    }
+
     public ResourceReference getWho() { 
       return this.who;
     }
@@ -163,12 +222,26 @@ public class OrderResponse extends Resource {
       this.cost = value;
     }
 
-    public OrderOutcomeCode getCode() { 
+    public Enumeration<OrderOutcomeCode> getCode() { 
       return this.code;
     }
 
-    public void setCode(OrderOutcomeCode value) { 
+    public void setCode(Enumeration<OrderOutcomeCode> value) { 
       this.code = value;
+    }
+
+    public OrderOutcomeCode getCodeSimple() { 
+      return this.code.getValue();
+    }
+
+    public void setCodeSimple(OrderOutcomeCode value) { 
+      if (value == null)
+        this.code = null;
+      else {
+        if (this.code == null)
+          this.code = new Enumeration<OrderOutcomeCode>();
+        this.code.setValue(value);
+      }
     }
 
     public String_ getDescription() { 
@@ -177,6 +250,20 @@ public class OrderResponse extends Resource {
 
     public void setDescription(String_ value) { 
       this.description = value;
+    }
+
+    public String getDescriptionSimple() { 
+      return this.description.getValue();
+    }
+
+    public void setDescriptionSimple(String value) { 
+      if (value == null)
+        this.description = null;
+      else {
+        if (this.description == null)
+          this.description = new String_();
+        this.description.setValue(value);
+      }
     }
 
     public List<ResourceReference> getFulfillment() { 

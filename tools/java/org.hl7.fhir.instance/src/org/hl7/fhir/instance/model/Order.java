@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -65,7 +65,7 @@ public class Order extends Resource {
           this.schedule = value;
         }
 
-    }
+  }
 
     /**
      * When the order was made
@@ -120,6 +120,20 @@ public class Order extends Resource {
       this.date = value;
     }
 
+    public String getDateSimple() { 
+      return this.date.getValue();
+    }
+
+    public void setDateSimple(String value) { 
+      if (value == null)
+        this.date = null;
+      else {
+        if (this.date == null)
+          this.date = new DateTime();
+        this.date.setValue(value);
+      }
+    }
+
     public ResourceReference getSubject() { 
       return this.subject;
     }
@@ -150,6 +164,20 @@ public class Order extends Resource {
 
     public void setReason(String_ value) { 
       this.reason = value;
+    }
+
+    public String getReasonSimple() { 
+      return this.reason.getValue();
+    }
+
+    public void setReasonSimple(String value) { 
+      if (value == null)
+        this.reason = null;
+      else {
+        if (this.reason == null)
+          this.reason = new String_();
+        this.reason.setValue(value);
+      }
     }
 
     public ResourceReference getAuthority() { 

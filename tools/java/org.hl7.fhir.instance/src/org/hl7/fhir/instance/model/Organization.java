@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -40,7 +40,8 @@ public class Organization extends Resource {
 
     public enum RecordStatus {
         active, // The state representing the fact that the Entity record is currently active.
-        inactive; // The state representing the fact that the Entity record is currently inactive.
+        inactive, // The state representing the fact that the Entity record is currently inactive.
+        Null; // added to help the parsers
         public static RecordStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -57,6 +58,26 @@ public class Organization extends Resource {
             default: return "?";
           }
         }
+    }
+
+  public class RecordStatusEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("active".equals(codeString))
+          return RecordStatus.active;
+        if ("inactive".equals(codeString))
+          return RecordStatus.inactive;
+        throw new Exception("Unknown RecordStatus code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == RecordStatus.active)
+        return "active";
+      if (code == RecordStatus.inactive)
+        return "inactive";
+      return "?";
+      }
     }
 
     public class Accreditation extends Element {
@@ -112,7 +133,7 @@ public class Organization extends Resource {
           this.period = value;
         }
 
-    }
+  }
 
     public class RelatedOrganization extends Element {
         /**
@@ -141,7 +162,7 @@ public class Organization extends Resource {
           this.type = value;
         }
 
-    }
+  }
 
     public class ContactPerson extends Element {
         /**
@@ -205,7 +226,7 @@ public class Organization extends Resource {
           this.person = value;
         }
 
-    }
+  }
 
     /**
      * Identifier for the organization that is used to identify the organization across multiple disparate systems
@@ -235,7 +256,7 @@ public class Organization extends Resource {
     /**
      * Indication of whether this organization's record is still active.
      */
-    private RecordStatus status;
+    private Enumeration<RecordStatus> status;
 
     /**
      * The qualifications/certifications an organization has, including format educational achievements, accreditations and current certifications. All these qualifications may be used to determine what roles the organization may play in a healthcare environment
@@ -276,12 +297,26 @@ public class Organization extends Resource {
       this.type = value;
     }
 
-    public RecordStatus getStatus() { 
+    public Enumeration<RecordStatus> getStatus() { 
       return this.status;
     }
 
-    public void setStatus(RecordStatus value) { 
+    public void setStatus(Enumeration<RecordStatus> value) { 
       this.status = value;
+    }
+
+    public RecordStatus getStatusSimple() { 
+      return this.status.getValue();
+    }
+
+    public void setStatusSimple(RecordStatus value) { 
+      if (value == null)
+        this.status = null;
+      else {
+        if (this.status == null)
+          this.status = new Enumeration<RecordStatus>();
+        this.status.setValue(value);
+      }
     }
 
     public List<Accreditation> getAccreditation() { 

@@ -29,8 +29,10 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
+
+import java.net.*;
 /**
  * A reference to a code defined by a terminology system 
  */
@@ -59,6 +61,20 @@ public class Coding extends Type {
       this.system = value;
     }
 
+    public URI getSystemSimple() { 
+      return this.system.getValue();
+    }
+
+    public void setSystemSimple(URI value) { 
+      if (value == null)
+        this.system = null;
+      else {
+        if (this.system == null)
+          this.system = new Uri();
+        this.system.setValue(value);
+      }
+    }
+
     public Code getCode() { 
       return this.code;
     }
@@ -67,12 +83,40 @@ public class Coding extends Type {
       this.code = value;
     }
 
+    public String getCodeSimple() { 
+      return this.code.getValue();
+    }
+
+    public void setCodeSimple(String value) { 
+      if (value == null)
+        this.code = null;
+      else {
+        if (this.code == null)
+          this.code = new Code();
+        this.code.setValue(value);
+      }
+    }
+
     public String_ getDisplay() { 
       return this.display;
     }
 
     public void setDisplay(String_ value) { 
       this.display = value;
+    }
+
+    public String getDisplaySimple() { 
+      return this.display.getValue();
+    }
+
+    public void setDisplaySimple(String value) { 
+      if (value == null)
+        this.display = null;
+      else {
+        if (this.display == null)
+          this.display = new String_();
+        this.display.setValue(value);
+      }
     }
 
 

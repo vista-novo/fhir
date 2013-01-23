@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -87,7 +87,7 @@ public class Document extends Resource {
           return this.section;
         }
 
-    }
+  }
 
     /**
      * Defines the medata and context for this document
@@ -133,6 +133,20 @@ public class Document extends Resource {
 
     public void setReplaces(Id value) { 
       this.replaces = value;
+    }
+
+    public String getReplacesSimple() { 
+      return this.replaces.getValue();
+    }
+
+    public void setReplacesSimple(String value) { 
+      if (value == null)
+        this.replaces = null;
+      else {
+        if (this.replaces == null)
+          this.replaces = new Id();
+        this.replaces.setValue(value);
+      }
     }
 
     public List<ResourceReference> getProvenance() { 

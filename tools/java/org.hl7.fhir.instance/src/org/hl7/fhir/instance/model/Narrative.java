@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -43,7 +43,8 @@ public class Narrative extends Element {
         generated, // The contents of the narrative are entirely generated from the structured data in the resource.
         extensions, // The contents of the narrative are entirely generated from the structured data in the resource and some of the content is generated from extensions
         additional, // The contents of the narrative contain additional information not found in the structured data
-        empty; // the contents of the narrative are some equivalent of "No human readable text provided for this resource"
+        empty, // the contents of the narrative are some equivalent of "No human readable text provided for this resource"
+        Null; // added to help the parsers
         public static NarrativeStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -68,6 +69,34 @@ public class Narrative extends Element {
         }
     }
 
+  public class NarrativeStatusEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("generated".equals(codeString))
+          return NarrativeStatus.generated;
+        if ("extensions".equals(codeString))
+          return NarrativeStatus.extensions;
+        if ("additional".equals(codeString))
+          return NarrativeStatus.additional;
+        if ("empty".equals(codeString))
+          return NarrativeStatus.empty;
+        throw new Exception("Unknown NarrativeStatus code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == NarrativeStatus.generated)
+        return "generated";
+      if (code == NarrativeStatus.extensions)
+        return "extensions";
+      if (code == NarrativeStatus.additional)
+        return "additional";
+      if (code == NarrativeStatus.empty)
+        return "empty";
+      return "?";
+      }
+    }
+
     public class Image extends Element {
         /**
          * Mime type of image
@@ -87,6 +116,20 @@ public class Narrative extends Element {
           this.mimeType = value;
         }
 
+        public String getMimeTypeSimple() { 
+          return this.mimeType.getValue();
+        }
+
+        public void setMimeTypeSimple(String value) { 
+          if (value == null)
+            this.mimeType = null;
+          else {
+            if (this.mimeType == null)
+              this.mimeType = new Code();
+            this.mimeType.setValue(value);
+          }
+        }
+
         public Base64Binary getContent() { 
           return this.content;
         }
@@ -95,12 +138,26 @@ public class Narrative extends Element {
           this.content = value;
         }
 
-    }
+        public byte[] getContentSimple() { 
+          return this.content.getValue();
+        }
+
+        public void setContentSimple(byte[] value) { 
+          if (value == null)
+            this.content = null;
+          else {
+            if (this.content == null)
+              this.content = new Base64Binary();
+            this.content.setValue(value);
+          }
+        }
+
+  }
 
     /**
      * The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data
      */
-    private NarrativeStatus status;
+    private Enumeration<NarrativeStatus> status;
 
     /**
      * The actual narrative content, a stripped down version of XHTML
@@ -112,12 +169,26 @@ public class Narrative extends Element {
      */
     private List<Image> image = new ArrayList<Image>();
 
-    public NarrativeStatus getStatus() { 
+    public Enumeration<NarrativeStatus> getStatus() { 
       return this.status;
     }
 
-    public void setStatus(NarrativeStatus value) { 
+    public void setStatus(Enumeration<NarrativeStatus> value) { 
       this.status = value;
+    }
+
+    public NarrativeStatus getStatusSimple() { 
+      return this.status.getValue();
+    }
+
+    public void setStatusSimple(NarrativeStatus value) { 
+      if (value == null)
+        this.status = null;
+      else {
+        if (this.status == null)
+          this.status = new Enumeration<NarrativeStatus>();
+        this.status.setValue(value);
+      }
     }
 
     public XhtmlNode getDiv() { 

@@ -29,10 +29,11 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
+import java.net.*;
 /**
  * An entry in an XDS registry
  */
@@ -40,7 +41,8 @@ public class XdsEntry extends Resource {
 
     public enum XdsEntryAvailability {
         Approved, // 
-        Deprecated; // 
+        Deprecated, // 
+        Null; // added to help the parsers
         public static XdsEntryAvailability fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -57,6 +59,26 @@ public class XdsEntry extends Resource {
             default: return "?";
           }
         }
+    }
+
+  public class XdsEntryAvailabilityEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("Approved".equals(codeString))
+          return XdsEntryAvailability.Approved;
+        if ("Deprecated".equals(codeString))
+          return XdsEntryAvailability.Deprecated;
+        throw new Exception("Unknown XdsEntryAvailability code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == XdsEntryAvailability.Approved)
+        return "Approved";
+      if (code == XdsEntryAvailability.Deprecated)
+        return "Deprecated";
+      return "?";
+      }
     }
 
     public class Author extends Element {
@@ -122,7 +144,7 @@ public class XdsEntry extends Resource {
           return this.contact;
         }
 
-    }
+  }
 
     public class Institution extends Element {
         /**
@@ -151,7 +173,21 @@ public class XdsEntry extends Resource {
           this.name = value;
         }
 
-    }
+        public String getNameSimple() { 
+          return this.name.getValue();
+        }
+
+        public void setNameSimple(String value) { 
+          if (value == null)
+            this.name = null;
+          else {
+            if (this.name == null)
+              this.name = new String_();
+            this.name.setValue(value);
+          }
+        }
+
+  }
 
     public class Authenticator extends Element {
         /**
@@ -180,7 +216,7 @@ public class XdsEntry extends Resource {
           this.name = value;
         }
 
-    }
+  }
 
     public class Service extends Element {
         /**
@@ -201,6 +237,20 @@ public class XdsEntry extends Resource {
           this.start = value;
         }
 
+        public String getStartSimple() { 
+          return this.start.getValue();
+        }
+
+        public void setStartSimple(String value) { 
+          if (value == null)
+            this.start = null;
+          else {
+            if (this.start == null)
+              this.start = new DateTime();
+            this.start.setValue(value);
+          }
+        }
+
         public DateTime getStop() { 
           return this.stop;
         }
@@ -209,7 +259,21 @@ public class XdsEntry extends Resource {
           this.stop = value;
         }
 
-    }
+        public String getStopSimple() { 
+          return this.stop.getValue();
+        }
+
+        public void setStopSimple(String value) { 
+          if (value == null)
+            this.stop = null;
+          else {
+            if (this.stop == null)
+              this.stop = new DateTime();
+            this.stop.setValue(value);
+          }
+        }
+
+  }
 
     /**
      * A URL that is used to access the document content directly. If this is not provided, the document may be found be searching the repositoryId for the documentId
@@ -254,7 +318,7 @@ public class XdsEntry extends Resource {
     /**
      * Deprecated documents can be included in some responses
      */
-    private XdsEntryAvailability availability;
+    private Enumeration<XdsEntryAvailability> availability;
 
     /**
      * The code specifying the level of confidentiality of the XDS Document. These codes are specific to an XDS Affinity Domain.
@@ -350,6 +414,20 @@ and birth date
       this.url = value;
     }
 
+    public URI getUrlSimple() { 
+      return this.url.getValue();
+    }
+
+    public void setUrlSimple(URI value) { 
+      if (value == null)
+        this.url = null;
+      else {
+        if (this.url == null)
+          this.url = new Uri();
+        this.url.setValue(value);
+      }
+    }
+
     public Uri getRepositoryId() { 
       return this.repositoryId;
     }
@@ -358,12 +436,40 @@ and birth date
       this.repositoryId = value;
     }
 
+    public URI getRepositoryIdSimple() { 
+      return this.repositoryId.getValue();
+    }
+
+    public void setRepositoryIdSimple(URI value) { 
+      if (value == null)
+        this.repositoryId = null;
+      else {
+        if (this.repositoryId == null)
+          this.repositoryId = new Uri();
+        this.repositoryId.setValue(value);
+      }
+    }
+
     public String_ getMimeType() { 
       return this.mimeType;
     }
 
     public void setMimeType(String_ value) { 
       this.mimeType = value;
+    }
+
+    public String getMimeTypeSimple() { 
+      return this.mimeType.getValue();
+    }
+
+    public void setMimeTypeSimple(String value) { 
+      if (value == null)
+        this.mimeType = null;
+      else {
+        if (this.mimeType == null)
+          this.mimeType = new String_();
+        this.mimeType.setValue(value);
+      }
     }
 
     public Coding getFormat() { 
@@ -398,6 +504,20 @@ and birth date
       this.title = value;
     }
 
+    public String getTitleSimple() { 
+      return this.title.getValue();
+    }
+
+    public void setTitleSimple(String value) { 
+      if (value == null)
+        this.title = null;
+      else {
+        if (this.title == null)
+          this.title = new String_();
+        this.title.setValue(value);
+      }
+    }
+
     public Uri getDocumentId() { 
       return this.documentId;
     }
@@ -406,12 +526,40 @@ and birth date
       this.documentId = value;
     }
 
-    public XdsEntryAvailability getAvailability() { 
+    public URI getDocumentIdSimple() { 
+      return this.documentId.getValue();
+    }
+
+    public void setDocumentIdSimple(URI value) { 
+      if (value == null)
+        this.documentId = null;
+      else {
+        if (this.documentId == null)
+          this.documentId = new Uri();
+        this.documentId.setValue(value);
+      }
+    }
+
+    public Enumeration<XdsEntryAvailability> getAvailability() { 
       return this.availability;
     }
 
-    public void setAvailability(XdsEntryAvailability value) { 
+    public void setAvailability(Enumeration<XdsEntryAvailability> value) { 
       this.availability = value;
+    }
+
+    public XdsEntryAvailability getAvailabilitySimple() { 
+      return this.availability.getValue();
+    }
+
+    public void setAvailabilitySimple(XdsEntryAvailability value) { 
+      if (value == null)
+        this.availability = null;
+      else {
+        if (this.availability == null)
+          this.availability = new Enumeration<XdsEntryAvailability>();
+        this.availability.setValue(value);
+      }
     }
 
     public Coding getConfidentialityCode() { 
@@ -430,6 +578,20 @@ and birth date
       this.created = value;
     }
 
+    public Calendar getCreatedSimple() { 
+      return this.created.getValue();
+    }
+
+    public void setCreatedSimple(Calendar value) { 
+      if (value == null)
+        this.created = null;
+      else {
+        if (this.created == null)
+          this.created = new Instant();
+        this.created.setValue(value);
+      }
+    }
+
     public List<Coding> getEvent() { 
       return this.event;
     }
@@ -442,6 +604,20 @@ and birth date
       this.hash = value;
     }
 
+    public String getHashSimple() { 
+      return this.hash.getValue();
+    }
+
+    public void setHashSimple(String value) { 
+      if (value == null)
+        this.hash = null;
+      else {
+        if (this.hash == null)
+          this.hash = new String_();
+        this.hash.setValue(value);
+      }
+    }
+
     public String_ getSize() { 
       return this.size;
     }
@@ -450,12 +626,40 @@ and birth date
       this.size = value;
     }
 
+    public String getSizeSimple() { 
+      return this.size.getValue();
+    }
+
+    public void setSizeSimple(String value) { 
+      if (value == null)
+        this.size = null;
+      else {
+        if (this.size == null)
+          this.size = new String_();
+        this.size.setValue(value);
+      }
+    }
+
     public String_ getLanguage() { 
       return this.language;
     }
 
     public void setLanguage(String_ value) { 
       this.language = value;
+    }
+
+    public String getLanguageSimple() { 
+      return this.language.getValue();
+    }
+
+    public void setLanguageSimple(String value) { 
+      if (value == null)
+        this.language = null;
+      else {
+        if (this.language == null)
+          this.language = new String_();
+        this.language.setValue(value);
+      }
     }
 
     public List<ResourceReference> getFolder() { 
@@ -522,6 +726,20 @@ and birth date
       this.homeCommunity = value;
     }
 
+    public URI getHomeCommunitySimple() { 
+      return this.homeCommunity.getValue();
+    }
+
+    public void setHomeCommunitySimple(URI value) { 
+      if (value == null)
+        this.homeCommunity = null;
+      else {
+        if (this.homeCommunity == null)
+          this.homeCommunity = new Uri();
+        this.homeCommunity.setValue(value);
+      }
+    }
+
     public Service getService() { 
       return this.service;
     }
@@ -536,6 +754,20 @@ and birth date
 
     public void setComments(String_ value) { 
       this.comments = value;
+    }
+
+    public String getCommentsSimple() { 
+      return this.comments.getValue();
+    }
+
+    public void setCommentsSimple(String value) { 
+      if (value == null)
+        this.comments = null;
+      else {
+        if (this.comments == null)
+          this.comments = new String_();
+        this.comments.setValue(value);
+      }
     }
 
   @Override

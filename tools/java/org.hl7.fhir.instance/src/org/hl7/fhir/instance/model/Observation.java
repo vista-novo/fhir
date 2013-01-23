@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -44,7 +44,8 @@ public class Observation extends Resource {
         final_, // The observation is complete and verified by an authorised person
         amended, // The observation has been modified subsequent to being Final, and is complete and verified by an authorised person
         cancelled, // The observation is unavailable because the measurement was not started or not completed (also sometimes called "aborted")
-        withdrawn; // The observation has been withdrawn following previous Final release
+        withdrawn, // The observation has been withdrawn following previous Final release
+        Null; // added to help the parsers
         public static ObservationStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -75,6 +76,42 @@ public class Observation extends Resource {
         }
     }
 
+  public class ObservationStatusEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("registered".equals(codeString))
+          return ObservationStatus.registered;
+        if ("interim".equals(codeString))
+          return ObservationStatus.interim;
+        if ("final".equals(codeString))
+          return ObservationStatus.final_;
+        if ("amended".equals(codeString))
+          return ObservationStatus.amended;
+        if ("cancelled".equals(codeString))
+          return ObservationStatus.cancelled;
+        if ("withdrawn".equals(codeString))
+          return ObservationStatus.withdrawn;
+        throw new Exception("Unknown ObservationStatus code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == ObservationStatus.registered)
+        return "registered";
+      if (code == ObservationStatus.interim)
+        return "interim";
+      if (code == ObservationStatus.final_)
+        return "final";
+      if (code == ObservationStatus.amended)
+        return "amended";
+      if (code == ObservationStatus.cancelled)
+        return "cancelled";
+      if (code == ObservationStatus.withdrawn)
+        return "withdrawn";
+      return "?";
+      }
+    }
+
     public enum ObservationReliability {
         ok, // The result has no reliability concerns
         ongoing, // An early estimate of value; measurement is still occurring
@@ -82,7 +119,8 @@ public class Observation extends Resource {
         questionable, // The observation value should be treated with care
         calibrating, // The result has been generated while calibration is occurring
         error, // The observation could not be completed because of an error
-        unknown; // No observation value was available
+        unknown, // No observation value was available
+        Null; // added to help the parsers
         public static ObservationReliability fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -116,6 +154,46 @@ public class Observation extends Resource {
         }
     }
 
+  public class ObservationReliabilityEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("ok".equals(codeString))
+          return ObservationReliability.ok;
+        if ("ongoing".equals(codeString))
+          return ObservationReliability.ongoing;
+        if ("early".equals(codeString))
+          return ObservationReliability.early;
+        if ("questionable".equals(codeString))
+          return ObservationReliability.questionable;
+        if ("calibrating".equals(codeString))
+          return ObservationReliability.calibrating;
+        if ("error".equals(codeString))
+          return ObservationReliability.error;
+        if ("unknown".equals(codeString))
+          return ObservationReliability.unknown;
+        throw new Exception("Unknown ObservationReliability code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == ObservationReliability.ok)
+        return "ok";
+      if (code == ObservationReliability.ongoing)
+        return "ongoing";
+      if (code == ObservationReliability.early)
+        return "early";
+      if (code == ObservationReliability.questionable)
+        return "questionable";
+      if (code == ObservationReliability.calibrating)
+        return "calibrating";
+      if (code == ObservationReliability.error)
+        return "error";
+      if (code == ObservationReliability.unknown)
+        return "unknown";
+      return "?";
+      }
+    }
+
     public class ReferenceRange extends Element {
         /**
          * Code for the meaning of the reference range
@@ -143,7 +221,7 @@ public class Observation extends Resource {
           this.range = value;
         }
 
-    }
+  }
 
     public class Component extends Element {
         /**
@@ -172,7 +250,7 @@ public class Observation extends Resource {
           this.value = value;
         }
 
-    }
+  }
 
     /**
      * Identifies what type of observation was performed
@@ -207,12 +285,12 @@ public class Observation extends Resource {
     /**
      * The status of the result value
      */
-    private ObservationStatus status;
+    private Enumeration<ObservationStatus> status;
 
     /**
      * An estimate of the degree to which quality issues have impacted on the value reported
      */
-    private ObservationReliability reliability;
+    private Enumeration<ObservationReliability> reliability;
 
     /**
      * Indicates where on the subject's body the observation was made.
@@ -286,6 +364,20 @@ public class Observation extends Resource {
       this.comments = value;
     }
 
+    public String getCommentsSimple() { 
+      return this.comments.getValue();
+    }
+
+    public void setCommentsSimple(String value) { 
+      if (value == null)
+        this.comments = null;
+      else {
+        if (this.comments == null)
+          this.comments = new String_();
+        this.comments.setValue(value);
+      }
+    }
+
     public Type getObtained() { 
       return this.obtained;
     }
@@ -302,20 +394,62 @@ public class Observation extends Resource {
       this.issued = value;
     }
 
-    public ObservationStatus getStatus() { 
+    public Calendar getIssuedSimple() { 
+      return this.issued.getValue();
+    }
+
+    public void setIssuedSimple(Calendar value) { 
+      if (value == null)
+        this.issued = null;
+      else {
+        if (this.issued == null)
+          this.issued = new Instant();
+        this.issued.setValue(value);
+      }
+    }
+
+    public Enumeration<ObservationStatus> getStatus() { 
       return this.status;
     }
 
-    public void setStatus(ObservationStatus value) { 
+    public void setStatus(Enumeration<ObservationStatus> value) { 
       this.status = value;
     }
 
-    public ObservationReliability getReliability() { 
+    public ObservationStatus getStatusSimple() { 
+      return this.status.getValue();
+    }
+
+    public void setStatusSimple(ObservationStatus value) { 
+      if (value == null)
+        this.status = null;
+      else {
+        if (this.status == null)
+          this.status = new Enumeration<ObservationStatus>();
+        this.status.setValue(value);
+      }
+    }
+
+    public Enumeration<ObservationReliability> getReliability() { 
       return this.reliability;
     }
 
-    public void setReliability(ObservationReliability value) { 
+    public void setReliability(Enumeration<ObservationReliability> value) { 
       this.reliability = value;
+    }
+
+    public ObservationReliability getReliabilitySimple() { 
+      return this.reliability.getValue();
+    }
+
+    public void setReliabilitySimple(ObservationReliability value) { 
+      if (value == null)
+        this.reliability = null;
+      else {
+        if (this.reliability == null)
+          this.reliability = new Enumeration<ObservationReliability>();
+        this.reliability.setValue(value);
+      }
     }
 
     public CodeableConcept getBodySite() { 

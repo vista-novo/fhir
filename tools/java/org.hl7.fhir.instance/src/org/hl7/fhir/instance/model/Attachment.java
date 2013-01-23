@@ -29,8 +29,10 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
+
+import java.net.*;
 /**
  * For referring to data content defined in other formats.
  */
@@ -40,6 +42,11 @@ public class Attachment extends Type {
      * Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate
      */
     private Code contentType;
+
+    /**
+     * The human language of the content. The value can be any valid value for xml:lang
+     */
+    private Code language;
 
     /**
      * The actual data of the attachment - a sequence of bytes. In XML, represented using base64
@@ -74,12 +81,48 @@ public class Attachment extends Type {
       this.contentType = value;
     }
 
+    public String getContentTypeSimple() { 
+      return this.contentType.getValue();
+    }
+
+    public void setContentTypeSimple(String value) { 
+      if (value == null)
+        this.contentType = null;
+      else {
+        if (this.contentType == null)
+          this.contentType = new Code();
+        this.contentType.setValue(value);
+      }
+    }
+
+    public Code getLanguage() { 
+      return this.language;
+    }
+
+    public void setLanguage(Code value) { 
+      this.language = value;
+    }
+
     public Base64Binary getData() { 
       return this.data;
     }
 
     public void setData(Base64Binary value) { 
       this.data = value;
+    }
+
+    public byte[] getDataSimple() { 
+      return this.data.getValue();
+    }
+
+    public void setDataSimple(byte[] value) { 
+      if (value == null)
+        this.data = null;
+      else {
+        if (this.data == null)
+          this.data = new Base64Binary();
+        this.data.setValue(value);
+      }
     }
 
     public Uri getUrl() { 
@@ -90,12 +133,40 @@ public class Attachment extends Type {
       this.url = value;
     }
 
+    public URI getUrlSimple() { 
+      return this.url.getValue();
+    }
+
+    public void setUrlSimple(URI value) { 
+      if (value == null)
+        this.url = null;
+      else {
+        if (this.url == null)
+          this.url = new Uri();
+        this.url.setValue(value);
+      }
+    }
+
     public Integer getSize() { 
       return this.size;
     }
 
     public void setSize(Integer value) { 
       this.size = value;
+    }
+
+    public int getSizeSimple() { 
+      return this.size.getValue();
+    }
+
+    public void setSizeSimple(int value) { 
+      if (value == -1)
+        this.size = null;
+      else {
+        if (this.size == null)
+          this.size = new Integer();
+        this.size.setValue(value);
+      }
     }
 
     public Base64Binary getHash() { 
@@ -106,12 +177,40 @@ public class Attachment extends Type {
       this.hash = value;
     }
 
+    public byte[] getHashSimple() { 
+      return this.hash.getValue();
+    }
+
+    public void setHashSimple(byte[] value) { 
+      if (value == null)
+        this.hash = null;
+      else {
+        if (this.hash == null)
+          this.hash = new Base64Binary();
+        this.hash.setValue(value);
+      }
+    }
+
     public String_ getTitle() { 
       return this.title;
     }
 
     public void setTitle(String_ value) { 
       this.title = value;
+    }
+
+    public String getTitleSimple() { 
+      return this.title.getValue();
+    }
+
+    public void setTitleSimple(String value) { 
+      if (value == null)
+        this.title = null;
+      else {
+        if (this.title == null)
+          this.title = new String_();
+        this.title.setValue(value);
+      }
     }
 
 

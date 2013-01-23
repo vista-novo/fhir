@@ -32,6 +32,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+import org.hl7.fhir.instance.formats.JsonComposer;
 import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.Resource;
@@ -57,6 +58,10 @@ public class ResourceTest {
     FileOutputStream out = new FileOutputStream(source.getAbsoluteFile()+".out.xml");
     XmlComposer xml1 = new XmlComposer();
     xml1.compose(out, resource, true);
+    
+    out = new FileOutputStream(source.getAbsoluteFile()+".out.json");
+    JsonComposer json1 = new JsonComposer();
+    json1.compose(out, resource);
     
   }
 }

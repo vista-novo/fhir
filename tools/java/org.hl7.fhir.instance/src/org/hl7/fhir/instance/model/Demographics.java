@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -91,7 +91,21 @@ public class Demographics extends Type {
           this.preference = value;
         }
 
-    }
+        public boolean getPreferenceSimple() { 
+          return this.preference.getValue();
+        }
+
+        public void setPreferenceSimple(boolean value) { 
+          if (value == false)
+            this.preference = null;
+          else {
+            if (this.preference == null)
+              this.preference = new Boolean();
+            this.preference.setValue(value);
+          }
+        }
+
+  }
 
     /**
      * A name associated with the individual. 
@@ -157,12 +171,40 @@ public class Demographics extends Type {
       this.birthDate = value;
     }
 
+    public String getBirthDateSimple() { 
+      return this.birthDate.getValue();
+    }
+
+    public void setBirthDateSimple(String value) { 
+      if (value == null)
+        this.birthDate = null;
+      else {
+        if (this.birthDate == null)
+          this.birthDate = new DateTime();
+        this.birthDate.setValue(value);
+      }
+    }
+
     public Boolean getDeceased() { 
       return this.deceased;
     }
 
     public void setDeceased(Boolean value) { 
       this.deceased = value;
+    }
+
+    public boolean getDeceasedSimple() { 
+      return this.deceased.getValue();
+    }
+
+    public void setDeceasedSimple(boolean value) { 
+      if (value == false)
+        this.deceased = null;
+      else {
+        if (this.deceased == null)
+          this.deceased = new Boolean();
+        this.deceased.setValue(value);
+      }
     }
 
     public List<Address> getAddress() { 

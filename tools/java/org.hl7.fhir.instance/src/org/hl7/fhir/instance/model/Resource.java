@@ -28,14 +28,7 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-import java.util.*;
-
 public abstract class Resource extends Element {
-	
-	/**
-	 * Extensions
-	 */
-	private List<Extension> extensions = new ArrayList<Extension>();
 	
 	/**
 	 * Text summary of resource, for human interpretation
@@ -50,9 +43,5 @@ public abstract class Resource extends Element {
 		this.text = text;
 	}
 
-	public List<Extension> getExtensions() {
-		return extensions;
-	}
-	
 	public abstract ResourceType getResourceType();
 }

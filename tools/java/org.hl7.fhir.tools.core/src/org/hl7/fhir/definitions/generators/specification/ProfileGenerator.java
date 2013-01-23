@@ -35,6 +35,7 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ExtensionDefn;
 import org.hl7.fhir.definitions.model.ExtensionDefn.ContextType;
 import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameter;
@@ -52,6 +53,8 @@ import org.hl7.fhir.instance.model.Profile.Binding;
 import org.hl7.fhir.instance.model.Profile.BindingConformance;
 import org.hl7.fhir.instance.model.Profile.BindingType;
 import org.hl7.fhir.instance.model.Profile.Concept;
+import org.hl7.fhir.instance.model.Profile.Constraint;
+import org.hl7.fhir.instance.model.Profile.ConstraintSeverity;
 import org.hl7.fhir.instance.model.Profile.Definition;
 import org.hl7.fhir.instance.model.Profile.ExtensionContext;
 import org.hl7.fhir.instance.model.Profile.Mapping;
@@ -88,7 +91,7 @@ public class ProfileGenerator {
       s.setDate(Factory.newDateTime(profile.metadata("date").substring(0, 10)));
 
     if (profile.hasMetadata("status")) 
-      s.setCode(Profile.ResourceProfileStatus.fromCode(profile.metadata("status")));
+      s.setCodeSimple(Profile.ResourceProfileStatus.fromCode(profile.metadata("status")));
     
     for (ResourceDefn resource : profile.getResources()) {
       Profile.Resource c = p.new Resource();
@@ -113,7 +116,7 @@ public class ProfileGenerator {
     div.setNodeType(NodeType.Element);
     div.getChildNodes().add(new XhtmlParser().parseFragment(html));
     p.setText(new Narrative());
-    p.getText().setStatus(NarrativeStatus.generated);
+    p.getText().setStatusSimple(NarrativeStatus.generated);
     p.getText().setDiv(div);
     XmlComposer comp = new XmlComposer();
     comp.compose(stream, p, true, false);
@@ -124,8 +127,8 @@ public class ProfileGenerator {
   private SearchParam makeSearchParam(Profile p, SearchParameter i) {
     SearchParam result = p.new SearchParam();
     result.setName(Factory.newString_(i.getCode()));
-    result.setType(getSearchParamType(i.getType()));
-    result.setRepeats(getSearchParamRepeats(i.getRepeatMode()));
+    result.setTypeSimple(getSearchParamType(i.getType()));
+    result.setRepeatsSimple(getSearchParamRepeats(i.getRepeatMode()));
     result.setDocumentation(Factory.newString_(i.getDescription()));    
     return result;
   }
@@ -156,8 +159,8 @@ public class ProfileGenerator {
     Binding dst = p.new Binding();
     dst.setName(Factory.newString_(src.getName()));
     dst.setDefinition(Factory.newString_(src.getDefinition()));
-    dst.setType(convert(src.getBinding()));
-    dst.setConformance(convert(src.getBindingStrength()));
+    dst.setTypeSimple(convert(src.getBinding()));
+    dst.setConformanceSimple(convert(src.getBindingStrength()));
     dst.setReference(Factory.newUri(src.getReference()));
     for (DefinedCode dc : src.getCodes()) {
       Concept cd = p.new Concept();
@@ -198,7 +201,7 @@ public class ProfileGenerator {
     org.hl7.fhir.instance.model.Profile.ExtensionDefn dst = p.new ExtensionDefn();
     dst.setId(Factory.newId(src.getCode()));
     dst.getContext().add(Factory.newString_(src.getContext()));
-    dst.setContextType(convertContextType(src.getType()));
+    dst.setContextTypeSimple(convertContextType(src.getType()));
     
     ElementDefn dSrc = src.getDefinition();
     Definition dDst = p.new Definition();
@@ -273,7 +276,19 @@ public class ProfileGenerator {
     // we don't know mustSupport here
     ce.getDefinition().setMustUnderstand(Factory.newBoolean(e.isMustUnderstand()));
     // todo: mappings
+    
+    for (String in : e.getInvariants().keySet()) {
+      Constraint con = p.new Constraint();
+      Invariant inv = e.getInvariants().get(in);
+      con.setIdSimple(inv.getId());
+      con.setNameSimple(inv.getName());
+      con.setSeveritySimple(ConstraintSeverity.error);
+      con.setHumanSimple(inv.getEnglish());
+      con.setXpathSimple(inv.getXpath());
+      ce.getDefinition().getConstraint().add(con);
+    }
     // we don't have anything to say about constraints on resources
+    
     if (!"".equals(e.getBindingName()))
       ce.getDefinition().setBinding(Factory.newString_(e.getBindingName()));
     

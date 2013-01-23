@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 /**
  * A time period defined by a start and end time.
@@ -54,12 +54,40 @@ public class Period extends Type {
       this.start = value;
     }
 
+    public String getStartSimple() { 
+      return this.start.getValue();
+    }
+
+    public void setStartSimple(String value) { 
+      if (value == null)
+        this.start = null;
+      else {
+        if (this.start == null)
+          this.start = new DateTime();
+        this.start.setValue(value);
+      }
+    }
+
     public DateTime getEnd() { 
       return this.end;
     }
 
     public void setEnd(DateTime value) { 
       this.end = value;
+    }
+
+    public String getEndSimple() { 
+      return this.end.getValue();
+    }
+
+    public void setEndSimple(String value) { 
+      if (value == null)
+        this.end = null;
+      else {
+        if (this.end == null)
+          this.end = new DateTime();
+        this.end.setValue(value);
+      }
     }
 
 

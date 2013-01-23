@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -57,6 +57,20 @@ public class Immunization extends Resource {
           this.date = value;
         }
 
+        public String getDateSimple() { 
+          return this.date.getValue();
+        }
+
+        public void setDateSimple(String value) { 
+          if (value == null)
+            this.date = null;
+          else {
+            if (this.date == null)
+              this.date = new DateTime();
+            this.date.setValue(value);
+          }
+        }
+
         public CodeableConcept getReason() { 
           return this.reason;
         }
@@ -65,7 +79,7 @@ public class Immunization extends Resource {
           this.reason = value;
         }
 
-    }
+  }
 
     public class Reaction extends Element {
         /**
@@ -86,6 +100,20 @@ public class Immunization extends Resource {
           this.date = value;
         }
 
+        public String getDateSimple() { 
+          return this.date.getValue();
+        }
+
+        public void setDateSimple(String value) { 
+          if (value == null)
+            this.date = null;
+          else {
+            if (this.date == null)
+              this.date = new DateTime();
+            this.date.setValue(value);
+          }
+        }
+
         public ResourceReference getDetail() { 
           return this.detail;
         }
@@ -94,7 +122,7 @@ public class Immunization extends Resource {
           this.detail = value;
         }
 
-    }
+  }
 
     /**
      * Who this immunization was adminstered to
@@ -190,6 +218,20 @@ public class Immunization extends Resource {
       this.date = value;
     }
 
+    public String getDateSimple() { 
+      return this.date.getValue();
+    }
+
+    public void setDateSimple(String value) { 
+      if (value == null)
+        this.date = null;
+      else {
+        if (this.date == null)
+          this.date = new DateTime();
+        this.date.setValue(value);
+      }
+    }
+
     public Boolean getReported() { 
       return this.reported;
     }
@@ -198,12 +240,40 @@ public class Immunization extends Resource {
       this.reported = value;
     }
 
+    public boolean getReportedSimple() { 
+      return this.reported.getValue();
+    }
+
+    public void setReportedSimple(boolean value) { 
+      if (value == false)
+        this.reported = null;
+      else {
+        if (this.reported == null)
+          this.reported = new Boolean();
+        this.reported.setValue(value);
+      }
+    }
+
     public Integer getDoseSequence() { 
       return this.doseSequence;
     }
 
     public void setDoseSequence(Integer value) { 
       this.doseSequence = value;
+    }
+
+    public int getDoseSequenceSimple() { 
+      return this.doseSequence.getValue();
+    }
+
+    public void setDoseSequenceSimple(int value) { 
+      if (value == -1)
+        this.doseSequence = null;
+      else {
+        if (this.doseSequence == null)
+          this.doseSequence = new Integer();
+        this.doseSequence.setValue(value);
+      }
     }
 
     public ResourceReference getManufacturer() { 
@@ -222,12 +292,40 @@ public class Immunization extends Resource {
       this.lotNumber = value;
     }
 
+    public String getLotNumberSimple() { 
+      return this.lotNumber.getValue();
+    }
+
+    public void setLotNumberSimple(String value) { 
+      if (value == null)
+        this.lotNumber = null;
+      else {
+        if (this.lotNumber == null)
+          this.lotNumber = new String_();
+        this.lotNumber.setValue(value);
+      }
+    }
+
     public Date getExpirationDate() { 
       return this.expirationDate;
     }
 
     public void setExpirationDate(Date value) { 
       this.expirationDate = value;
+    }
+
+    public String getExpirationDateSimple() { 
+      return this.expirationDate.getValue();
+    }
+
+    public void setExpirationDateSimple(String value) { 
+      if (value == null)
+        this.expirationDate = null;
+      else {
+        if (this.expirationDate == null)
+          this.expirationDate = new Date();
+        this.expirationDate.setValue(value);
+      }
     }
 
     public CodeableConcept getSite() { 

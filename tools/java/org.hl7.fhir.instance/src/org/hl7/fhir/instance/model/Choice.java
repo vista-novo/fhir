@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -57,6 +57,20 @@ public class Choice extends Type {
           this.code = value;
         }
 
+        public String getCodeSimple() { 
+          return this.code.getValue();
+        }
+
+        public void setCodeSimple(String value) { 
+          if (value == null)
+            this.code = null;
+          else {
+            if (this.code == null)
+              this.code = new Code();
+            this.code.setValue(value);
+          }
+        }
+
         public String_ getDisplay() { 
           return this.display;
         }
@@ -65,7 +79,21 @@ public class Choice extends Type {
           this.display = value;
         }
 
-    }
+        public String getDisplaySimple() { 
+          return this.display.getValue();
+        }
+
+        public void setDisplaySimple(String value) { 
+          if (value == null)
+            this.display = null;
+          else {
+            if (this.display == null)
+              this.display = new String_();
+            this.display.setValue(value);
+          }
+        }
+
+  }
 
     /**
      * The code or value that the user selected from the list of possible codes
@@ -90,6 +118,20 @@ public class Choice extends Type {
       this.code = value;
     }
 
+    public String getCodeSimple() { 
+      return this.code.getValue();
+    }
+
+    public void setCodeSimple(String value) { 
+      if (value == null)
+        this.code = null;
+      else {
+        if (this.code == null)
+          this.code = new Code();
+        this.code.setValue(value);
+      }
+    }
+
     public List<Option> getOption() { 
       return this.option;
     }
@@ -100,6 +142,20 @@ public class Choice extends Type {
 
     public void setIsOrdered(Boolean value) { 
       this.isOrdered = value;
+    }
+
+    public boolean getIsOrderedSimple() { 
+      return this.isOrdered.getValue();
+    }
+
+    public void setIsOrderedSimple(boolean value) { 
+      if (value == false)
+        this.isOrdered = null;
+      else {
+        if (this.isOrdered == null)
+          this.isOrdered = new Boolean();
+        this.isOrdered.setValue(value);
+      }
     }
 
 

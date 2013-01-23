@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -41,7 +41,8 @@ public class List_ extends Resource {
     public enum ListMode {
         working, // This list is the master list, maintained in an ongoing fashion with regular updates as the real world list it is tracking changes
         snapshot, // This list was prepared as a snapshot. It should not be assumed to be current
-        changes; // The list is prepared as a statement of changes that have been made or recommended
+        changes, // The list is prepared as a statement of changes that have been made or recommended
+        Null; // added to help the parsers
         public static ListMode fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -61,6 +62,30 @@ public class List_ extends Resource {
             default: return "?";
           }
         }
+    }
+
+  public class ListModeEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("working".equals(codeString))
+          return ListMode.working;
+        if ("snapshot".equals(codeString))
+          return ListMode.snapshot;
+        if ("changes".equals(codeString))
+          return ListMode.changes;
+        throw new Exception("Unknown ListMode code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == ListMode.working)
+        return "working";
+      if (code == ListMode.snapshot)
+        return "snapshot";
+      if (code == ListMode.changes)
+        return "changes";
+      return "?";
+      }
     }
 
     public class Entry extends Element {
@@ -91,6 +116,20 @@ public class List_ extends Resource {
           this.deleted = value;
         }
 
+        public boolean getDeletedSimple() { 
+          return this.deleted.getValue();
+        }
+
+        public void setDeletedSimple(boolean value) { 
+          if (value == false)
+            this.deleted = null;
+          else {
+            if (this.deleted == null)
+              this.deleted = new Boolean();
+            this.deleted.setValue(value);
+          }
+        }
+
         public ResourceReference getItem() { 
           return this.item;
         }
@@ -99,7 +138,7 @@ public class List_ extends Resource {
           this.item = value;
         }
 
-    }
+  }
 
     /**
      * This code defines the purpose of the list - why it was created
@@ -124,7 +163,7 @@ public class List_ extends Resource {
     /**
      * How this list was prepared - whether it is a working list that is suitable for being maintained in an ongoing basis, or if it represents a snapshort of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted
      */
-    private ListMode mode;
+    private Enumeration<ListMode> mode;
 
     /**
      * Entries in this list
@@ -160,6 +199,20 @@ public class List_ extends Resource {
       this.date = value;
     }
 
+    public String getDateSimple() { 
+      return this.date.getValue();
+    }
+
+    public void setDateSimple(String value) { 
+      if (value == null)
+        this.date = null;
+      else {
+        if (this.date == null)
+          this.date = new DateTime();
+        this.date.setValue(value);
+      }
+    }
+
     public Boolean getOrdered() { 
       return this.ordered;
     }
@@ -168,12 +221,40 @@ public class List_ extends Resource {
       this.ordered = value;
     }
 
-    public ListMode getMode() { 
+    public boolean getOrderedSimple() { 
+      return this.ordered.getValue();
+    }
+
+    public void setOrderedSimple(boolean value) { 
+      if (value == false)
+        this.ordered = null;
+      else {
+        if (this.ordered == null)
+          this.ordered = new Boolean();
+        this.ordered.setValue(value);
+      }
+    }
+
+    public Enumeration<ListMode> getMode() { 
       return this.mode;
     }
 
-    public void setMode(ListMode value) { 
+    public void setMode(Enumeration<ListMode> value) { 
       this.mode = value;
+    }
+
+    public ListMode getModeSimple() { 
+      return this.mode.getValue();
+    }
+
+    public void setModeSimple(ListMode value) { 
+      if (value == null)
+        this.mode = null;
+      else {
+        if (this.mode == null)
+          this.mode = new Enumeration<ListMode>();
+        this.mode.setValue(value);
+      }
     }
 
     public List<Entry> getEntry() { 

@@ -29,10 +29,11 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
+import java.net.*;
 /**
  * Provenance information associated with another resource that can be used to help determine its reliability or trace where the information in it came from. The focus of the provenance resource is record keeping, audit and traceability, not clinical meaning
  */
@@ -80,6 +81,20 @@ public class Provenance extends Resource {
           this.recorded = value;
         }
 
+        public Calendar getRecordedSimple() { 
+          return this.recorded.getValue();
+        }
+
+        public void setRecordedSimple(Calendar value) { 
+          if (value == null)
+            this.recorded = null;
+          else {
+            if (this.recorded == null)
+              this.recorded = new Instant();
+            this.recorded.setValue(value);
+          }
+        }
+
         public CodeableConcept getReason() { 
           return this.reason;
         }
@@ -104,7 +119,21 @@ public class Provenance extends Resource {
           this.policy = value;
         }
 
-    }
+        public URI getPolicySimple() { 
+          return this.policy.getValue();
+        }
+
+        public void setPolicySimple(URI value) { 
+          if (value == null)
+            this.policy = null;
+          else {
+            if (this.policy == null)
+              this.policy = new Uri();
+            this.policy.setValue(value);
+          }
+        }
+
+  }
 
     public class Location extends Element {
         /**
@@ -151,6 +180,20 @@ public class Provenance extends Resource {
           this.description = value;
         }
 
+        public String getDescriptionSimple() { 
+          return this.description.getValue();
+        }
+
+        public void setDescriptionSimple(String value) { 
+          if (value == null)
+            this.description = null;
+          else {
+            if (this.description == null)
+              this.description = new String_();
+            this.description.setValue(value);
+          }
+        }
+
         public String_ getCoords() { 
           return this.coords;
         }
@@ -159,7 +202,21 @@ public class Provenance extends Resource {
           this.coords = value;
         }
 
-    }
+        public String getCoordsSimple() { 
+          return this.coords.getValue();
+        }
+
+        public void setCoordsSimple(String value) { 
+          if (value == null)
+            this.coords = null;
+          else {
+            if (this.coords == null)
+              this.coords = new String_();
+            this.coords.setValue(value);
+          }
+        }
+
+  }
 
     public class Party extends Element {
         /**
@@ -206,6 +263,20 @@ public class Provenance extends Resource {
           this.id = value;
         }
 
+        public URI getIdSimple() { 
+          return this.id.getValue();
+        }
+
+        public void setIdSimple(URI value) { 
+          if (value == null)
+            this.id = null;
+          else {
+            if (this.id == null)
+              this.id = new Uri();
+            this.id.setValue(value);
+          }
+        }
+
         public String_ getDescription() { 
           return this.description;
         }
@@ -214,7 +285,21 @@ public class Provenance extends Resource {
           this.description = value;
         }
 
-    }
+        public String getDescriptionSimple() { 
+          return this.description.getValue();
+        }
+
+        public void setDescriptionSimple(String value) { 
+          if (value == null)
+            this.description = null;
+          else {
+            if (this.description == null)
+              this.description = new String_();
+            this.description.setValue(value);
+          }
+        }
+
+  }
 
     /**
      * The resource that this provenance information pertains to
@@ -262,6 +347,20 @@ public class Provenance extends Resource {
 
     public void setSignature(String_ value) { 
       this.signature = value;
+    }
+
+    public String getSignatureSimple() { 
+      return this.signature.getValue();
+    }
+
+    public void setSignatureSimple(String value) { 
+      if (value == null)
+        this.signature = null;
+      else {
+        if (this.signature == null)
+          this.signature = new String_();
+        this.signature.setValue(value);
+      }
     }
 
   @Override

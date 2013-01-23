@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -43,7 +43,8 @@ public class Group extends Resource {
         animal, // Group contains Animal resources
         device, // Group contains Device resources
         medication, // Group contains Medication resources
-        food; // Group contains Food resources
+        food, // Group contains Food resources
+        Null; // added to help the parsers
         public static GroupType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -69,6 +70,38 @@ public class Group extends Resource {
             default: return "?";
           }
         }
+    }
+
+  public class GroupTypeEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("person".equals(codeString))
+          return GroupType.person;
+        if ("animal".equals(codeString))
+          return GroupType.animal;
+        if ("device".equals(codeString))
+          return GroupType.device;
+        if ("medication".equals(codeString))
+          return GroupType.medication;
+        if ("food".equals(codeString))
+          return GroupType.food;
+        throw new Exception("Unknown GroupType code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == GroupType.person)
+        return "person";
+      if (code == GroupType.animal)
+        return "animal";
+      if (code == GroupType.device)
+        return "device";
+      if (code == GroupType.medication)
+        return "medication";
+      if (code == GroupType.food)
+        return "food";
+      return "?";
+      }
     }
 
     public class Characteristic extends Element {
@@ -111,7 +144,21 @@ public class Group extends Resource {
           this.exclude = value;
         }
 
-    }
+        public boolean getExcludeSimple() { 
+          return this.exclude.getValue();
+        }
+
+        public void setExcludeSimple(boolean value) { 
+          if (value == false)
+            this.exclude = null;
+          else {
+            if (this.exclude == null)
+              this.exclude = new Boolean();
+            this.exclude.setValue(value);
+          }
+        }
+
+  }
 
     /**
      * A unique business identifier for this group
@@ -121,7 +168,7 @@ public class Group extends Resource {
     /**
      * Identifies the broad classification of the kind of resources the group includes
      */
-    private GroupType type;
+    private Enumeration<GroupType> type;
 
     /**
      * If true, indicates that the resource refers to a specific group of real individuals.  If false, the group defines a set of intended individuals
@@ -161,12 +208,26 @@ public class Group extends Resource {
       this.identifier = value;
     }
 
-    public GroupType getType() { 
+    public Enumeration<GroupType> getType() { 
       return this.type;
     }
 
-    public void setType(GroupType value) { 
+    public void setType(Enumeration<GroupType> value) { 
       this.type = value;
+    }
+
+    public GroupType getTypeSimple() { 
+      return this.type.getValue();
+    }
+
+    public void setTypeSimple(GroupType value) { 
+      if (value == null)
+        this.type = null;
+      else {
+        if (this.type == null)
+          this.type = new Enumeration<GroupType>();
+        this.type.setValue(value);
+      }
     }
 
     public Boolean getActual() { 
@@ -175,6 +236,20 @@ public class Group extends Resource {
 
     public void setActual(Boolean value) { 
       this.actual = value;
+    }
+
+    public boolean getActualSimple() { 
+      return this.actual.getValue();
+    }
+
+    public void setActualSimple(boolean value) { 
+      if (value == false)
+        this.actual = null;
+      else {
+        if (this.actual == null)
+          this.actual = new Boolean();
+        this.actual.setValue(value);
+      }
     }
 
     public CodeableConcept getCode() { 
@@ -193,12 +268,40 @@ public class Group extends Resource {
       this.name = value;
     }
 
+    public String getNameSimple() { 
+      return this.name.getValue();
+    }
+
+    public void setNameSimple(String value) { 
+      if (value == null)
+        this.name = null;
+      else {
+        if (this.name == null)
+          this.name = new String_();
+        this.name.setValue(value);
+      }
+    }
+
     public Integer getQuantity() { 
       return this.quantity;
     }
 
     public void setQuantity(Integer value) { 
       this.quantity = value;
+    }
+
+    public int getQuantitySimple() { 
+      return this.quantity.getValue();
+    }
+
+    public void setQuantitySimple(int value) { 
+      if (value == -1)
+        this.quantity = null;
+      else {
+        if (this.quantity == null)
+          this.quantity = new Integer();
+        this.quantity.setValue(value);
+      }
     }
 
     public List<Characteristic> getCharacteristic() { 

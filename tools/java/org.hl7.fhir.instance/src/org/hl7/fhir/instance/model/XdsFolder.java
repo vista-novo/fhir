@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -75,6 +75,20 @@ public class XdsFolder extends Resource {
       this.title = value;
     }
 
+    public String getTitleSimple() { 
+      return this.title.getValue();
+    }
+
+    public void setTitleSimple(String value) { 
+      if (value == null)
+        this.title = null;
+      else {
+        if (this.title == null)
+          this.title = new String_();
+        this.title.setValue(value);
+      }
+    }
+
     public Identifier getPatientId() { 
       return this.patientId;
     }
@@ -91,12 +105,40 @@ public class XdsFolder extends Resource {
       this.homeCommunity = value;
     }
 
+    public String getHomeCommunitySimple() { 
+      return this.homeCommunity.getValue();
+    }
+
+    public void setHomeCommunitySimple(String value) { 
+      if (value == null)
+        this.homeCommunity = null;
+      else {
+        if (this.homeCommunity == null)
+          this.homeCommunity = new String_();
+        this.homeCommunity.setValue(value);
+      }
+    }
+
     public String_ getComments() { 
       return this.comments;
     }
 
     public void setComments(String_ value) { 
       this.comments = value;
+    }
+
+    public String getCommentsSimple() { 
+      return this.comments.getValue();
+    }
+
+    public void setCommentsSimple(String value) { 
+      if (value == null)
+        this.comments = null;
+      else {
+        if (this.comments == null)
+          this.comments = new String_();
+        this.comments.setValue(value);
+      }
     }
 
   @Override

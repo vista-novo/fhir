@@ -29,10 +29,11 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
+import java.net.*;
 /**
  * A Resource Profile - a statement of use of FHIR.  It may include constraints on Resources, Data Types, Terminology Binding Statements and Extension Definitions
  */
@@ -44,7 +45,8 @@ public class Profile extends Resource {
         review, // This profile is undergoing review to check that it is ready for production use
         production, // This profile is ready for use in production systems
         withdrawn, // This profile has been withdrawn and should no longer be used
-        superseded; // This profile has been superseded by a more recent version
+        superseded, // This profile has been superseded by a more recent version
+        Null; // added to help the parsers
         public static ResourceProfileStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -75,9 +77,46 @@ public class Profile extends Resource {
         }
     }
 
+  public class ResourceProfileStatusEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("draft".equals(codeString))
+          return ResourceProfileStatus.draft;
+        if ("testing".equals(codeString))
+          return ResourceProfileStatus.testing;
+        if ("review".equals(codeString))
+          return ResourceProfileStatus.review;
+        if ("production".equals(codeString))
+          return ResourceProfileStatus.production;
+        if ("withdrawn".equals(codeString))
+          return ResourceProfileStatus.withdrawn;
+        if ("superseded".equals(codeString))
+          return ResourceProfileStatus.superseded;
+        throw new Exception("Unknown ResourceProfileStatus code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == ResourceProfileStatus.draft)
+        return "draft";
+      if (code == ResourceProfileStatus.testing)
+        return "testing";
+      if (code == ResourceProfileStatus.review)
+        return "review";
+      if (code == ResourceProfileStatus.production)
+        return "production";
+      if (code == ResourceProfileStatus.withdrawn)
+        return "withdrawn";
+      if (code == ResourceProfileStatus.superseded)
+        return "superseded";
+      return "?";
+      }
+    }
+
     public enum ConstraintSeverity {
         error, // If the constraint is violated, the resource is not conformant
-        warning; // If the constraint is violated, the resource is conformant, but it is not necessarily following best practice.
+        warning, // If the constraint is violated, the resource is conformant, but it is not necessarily following best practice.
+        Null; // added to help the parsers
         public static ConstraintSeverity fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -96,13 +135,34 @@ public class Profile extends Resource {
         }
     }
 
+  public class ConstraintSeverityEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("error".equals(codeString))
+          return ConstraintSeverity.error;
+        if ("warning".equals(codeString))
+          return ConstraintSeverity.warning;
+        throw new Exception("Unknown ConstraintSeverity code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == ConstraintSeverity.error)
+        return "error";
+      if (code == ConstraintSeverity.warning)
+        return "warning";
+      return "?";
+      }
+    }
+
     public enum SearchParamType {
         integer, // Search parameter must be a simple whole number
         string, // Search parameter is a simple string, like a name part (search usually functions on partial matches)
         text, // Search parameter is on a long string (i.e. a text filter type search)
         date, // Search parameter is on a date (and should support -before and -after variants). The date format is the standard XML format, though other formats may be supported
         token, // Search parameter is on a fixed value string (i.e. search has an exact match)
-        qtoken; // Search parameter is a pair of fixed value strings, namespace and value, separated by a "#". The namespace is usually a uri, such as one of the defined code systems and is optional when searching
+        qtoken, // Search parameter is a pair of fixed value strings, namespace and value, separated by a "#". The namespace is usually a uri, such as one of the defined code systems and is optional when searching
+        Null; // added to help the parsers
         public static SearchParamType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -133,10 +193,47 @@ public class Profile extends Resource {
         }
     }
 
+  public class SearchParamTypeEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("integer".equals(codeString))
+          return SearchParamType.integer;
+        if ("string".equals(codeString))
+          return SearchParamType.string;
+        if ("text".equals(codeString))
+          return SearchParamType.text;
+        if ("date".equals(codeString))
+          return SearchParamType.date;
+        if ("token".equals(codeString))
+          return SearchParamType.token;
+        if ("qtoken".equals(codeString))
+          return SearchParamType.qtoken;
+        throw new Exception("Unknown SearchParamType code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == SearchParamType.integer)
+        return "integer";
+      if (code == SearchParamType.string)
+        return "string";
+      if (code == SearchParamType.text)
+        return "text";
+      if (code == SearchParamType.date)
+        return "date";
+      if (code == SearchParamType.token)
+        return "token";
+      if (code == SearchParamType.qtoken)
+        return "qtoken";
+      return "?";
+      }
+    }
+
     public enum SearchRepeatBehavior {
         single, // The search parameter may only occur once
         union, // When the search parameter occurs more than once, match resources with any of the values
-        intersection; // When the search parameter occurs more than once, match resources with all of the values
+        intersection, // When the search parameter occurs more than once, match resources with all of the values
+        Null; // added to help the parsers
         public static SearchRepeatBehavior fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -158,11 +255,36 @@ public class Profile extends Resource {
         }
     }
 
+  public class SearchRepeatBehaviorEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("single".equals(codeString))
+          return SearchRepeatBehavior.single;
+        if ("union".equals(codeString))
+          return SearchRepeatBehavior.union;
+        if ("intersection".equals(codeString))
+          return SearchRepeatBehavior.intersection;
+        throw new Exception("Unknown SearchRepeatBehavior code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == SearchRepeatBehavior.single)
+        return "single";
+      if (code == SearchRepeatBehavior.union)
+        return "union";
+      if (code == SearchRepeatBehavior.intersection)
+        return "intersection";
+      return "?";
+      }
+    }
+
     public enum ExtensionContext {
         resource, // The context is all elements matching a particular resource element path
         datatype, // The context is all nodes matching a particular data type element path (root or repeating element) or all elements referencing a particular primitive data type (expressed as the datatype name)
         mapping, // The context is all nodes whose mapping to a specified reference model corresponds to a particular mapping structure.  The context identifies the mapping target. The mapping should clearly identify where such an extension could be used, though this 
-        extension; // The context is a particular extension from a particular profile.  Expressed as uri#name, where uri identifies the profile and #name identifies the extension code
+        extension, // The context is a particular extension from a particular profile.  Expressed as uri#name, where uri identifies the profile and #name identifies the extension code
+        Null; // added to help the parsers
         public static ExtensionContext fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -187,11 +309,40 @@ public class Profile extends Resource {
         }
     }
 
+  public class ExtensionContextEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("resource".equals(codeString))
+          return ExtensionContext.resource;
+        if ("datatype".equals(codeString))
+          return ExtensionContext.datatype;
+        if ("mapping".equals(codeString))
+          return ExtensionContext.mapping;
+        if ("extension".equals(codeString))
+          return ExtensionContext.extension;
+        throw new Exception("Unknown ExtensionContext code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == ExtensionContext.resource)
+        return "resource";
+      if (code == ExtensionContext.datatype)
+        return "datatype";
+      if (code == ExtensionContext.mapping)
+        return "mapping";
+      if (code == ExtensionContext.extension)
+        return "extension";
+      return "?";
+      }
+    }
+
     public enum BindingType {
         valueset, // The binding name has an associated URL which is a reference to a Value Set Resource that provides a formal definition of the set of possible codes
         codelist, // The binding name is associated with a simple list of codes, and definitions from some identified code system (SID, URI, OID, UUID). In resource definitions, the system reference may be omitted, and a list of custom codes with definitions supplied (this is for status and workflow fields that applications need to know)
         reference, // The binding name has an associated URL which refers to some external standard or specification that defines the possible codes
-        special; // The binding points to a list of concepts defined as part of FHIR itself (see below for possible values)
+        special, // The binding points to a list of concepts defined as part of FHIR itself (see below for possible values)
+        Null; // added to help the parsers
         public static BindingType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -216,10 +367,39 @@ public class Profile extends Resource {
         }
     }
 
+  public class BindingTypeEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("valueset".equals(codeString))
+          return BindingType.valueset;
+        if ("codelist".equals(codeString))
+          return BindingType.codelist;
+        if ("reference".equals(codeString))
+          return BindingType.reference;
+        if ("special".equals(codeString))
+          return BindingType.special;
+        throw new Exception("Unknown BindingType code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == BindingType.valueset)
+        return "valueset";
+      if (code == BindingType.codelist)
+        return "codelist";
+      if (code == BindingType.reference)
+        return "reference";
+      if (code == BindingType.special)
+        return "special";
+      return "?";
+      }
+    }
+
     public enum BindingConformance {
         required, // Only codes in the specified set are allowed.  If the binding is extensible, other codes may be used for concepts not covered by the bound set of codes
         preferred, // For greater interoperability, implementers are strongly encouraged to use the bound set of codes, however alternate codes may be used in derived profiles and implementations if necessary without being considered non-conformant
-        example; // The codes in the set are an example to illustrate the meaning of the field. There is no particular preference for its use nor any assertion that the provided values are sufficient to meet implementation needs
+        example, // The codes in the set are an example to illustrate the meaning of the field. There is no particular preference for its use nor any assertion that the provided values are sufficient to meet implementation needs
+        Null; // added to help the parsers
         public static BindingConformance fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -241,6 +421,30 @@ public class Profile extends Resource {
         }
     }
 
+  public class BindingConformanceEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("required".equals(codeString))
+          return BindingConformance.required;
+        if ("preferred".equals(codeString))
+          return BindingConformance.preferred;
+        if ("example".equals(codeString))
+          return BindingConformance.example;
+        throw new Exception("Unknown BindingConformance code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == BindingConformance.required)
+        return "required";
+      if (code == BindingConformance.preferred)
+        return "preferred";
+      if (code == BindingConformance.example)
+        return "example";
+      return "?";
+      }
+    }
+
     public class Author extends Element {
         /**
          * The name of the individual or organization with primary responsibility for the content of the profile
@@ -260,17 +464,31 @@ public class Profile extends Resource {
           this.name = value;
         }
 
+        public String getNameSimple() { 
+          return this.name.getValue();
+        }
+
+        public void setNameSimple(String value) { 
+          if (value == null)
+            this.name = null;
+          else {
+            if (this.name == null)
+              this.name = new String_();
+            this.name.setValue(value);
+          }
+        }
+
         public List<Contact> getTelecom() { 
           return this.telecom;
         }
 
-    }
+  }
 
     public class Status extends Element {
         /**
          * A coded value for the position of the profile within its life-cycle
          */
-        private ResourceProfileStatus code;
+        private Enumeration<ResourceProfileStatus> code;
 
         /**
          * The date that the current value for status was applied to the profile
@@ -282,12 +500,26 @@ public class Profile extends Resource {
          */
         private String_ comment;
 
-        public ResourceProfileStatus getCode() { 
+        public Enumeration<ResourceProfileStatus> getCode() { 
           return this.code;
         }
 
-        public void setCode(ResourceProfileStatus value) { 
+        public void setCode(Enumeration<ResourceProfileStatus> value) { 
           this.code = value;
+        }
+
+        public ResourceProfileStatus getCodeSimple() { 
+          return this.code.getValue();
+        }
+
+        public void setCodeSimple(ResourceProfileStatus value) { 
+          if (value == null)
+            this.code = null;
+          else {
+            if (this.code == null)
+              this.code = new Enumeration<ResourceProfileStatus>();
+            this.code.setValue(value);
+          }
         }
 
         public DateTime getDate() { 
@@ -298,6 +530,20 @@ public class Profile extends Resource {
           this.date = value;
         }
 
+        public String getDateSimple() { 
+          return this.date.getValue();
+        }
+
+        public void setDateSimple(String value) { 
+          if (value == null)
+            this.date = null;
+          else {
+            if (this.date == null)
+              this.date = new DateTime();
+            this.date.setValue(value);
+          }
+        }
+
         public String_ getComment() { 
           return this.comment;
         }
@@ -306,7 +552,21 @@ public class Profile extends Resource {
           this.comment = value;
         }
 
-    }
+        public String getCommentSimple() { 
+          return this.comment.getValue();
+        }
+
+        public void setCommentSimple(String value) { 
+          if (value == null)
+            this.comment = null;
+          else {
+            if (this.comment == null)
+              this.comment = new String_();
+            this.comment.setValue(value);
+          }
+        }
+
+  }
 
     public class Import extends Element {
         /**
@@ -327,6 +587,20 @@ public class Profile extends Resource {
           this.uri = value;
         }
 
+        public URI getUriSimple() { 
+          return this.uri.getValue();
+        }
+
+        public void setUriSimple(URI value) { 
+          if (value == null)
+            this.uri = null;
+          else {
+            if (this.uri == null)
+              this.uri = new Uri();
+            this.uri.setValue(value);
+          }
+        }
+
         public String_ getPrefix() { 
           return this.prefix;
         }
@@ -335,7 +609,21 @@ public class Profile extends Resource {
           this.prefix = value;
         }
 
-    }
+        public String getPrefixSimple() { 
+          return this.prefix.getValue();
+        }
+
+        public void setPrefixSimple(String value) { 
+          if (value == null)
+            this.prefix = null;
+          else {
+            if (this.prefix == null)
+              this.prefix = new String_();
+            this.prefix.setValue(value);
+          }
+        }
+
+  }
 
     public class Resource extends Element {
         /**
@@ -376,12 +664,40 @@ public class Profile extends Resource {
           this.type = value;
         }
 
+        public String getTypeSimple() { 
+          return this.type.getValue();
+        }
+
+        public void setTypeSimple(String value) { 
+          if (value == null)
+            this.type = null;
+          else {
+            if (this.type == null)
+              this.type = new Code();
+            this.type.setValue(value);
+          }
+        }
+
         public Uri getProfile() { 
           return this.profile;
         }
 
         public void setProfile(Uri value) { 
           this.profile = value;
+        }
+
+        public URI getProfileSimple() { 
+          return this.profile.getValue();
+        }
+
+        public void setProfileSimple(URI value) { 
+          if (value == null)
+            this.profile = null;
+          else {
+            if (this.profile == null)
+              this.profile = new Uri();
+            this.profile.setValue(value);
+          }
         }
 
         public String_ getName() { 
@@ -392,12 +708,40 @@ public class Profile extends Resource {
           this.name = value;
         }
 
+        public String getNameSimple() { 
+          return this.name.getValue();
+        }
+
+        public void setNameSimple(String value) { 
+          if (value == null)
+            this.name = null;
+          else {
+            if (this.name == null)
+              this.name = new String_();
+            this.name.setValue(value);
+          }
+        }
+
         public String_ getPurpose() { 
           return this.purpose;
         }
 
         public void setPurpose(String_ value) { 
           this.purpose = value;
+        }
+
+        public String getPurposeSimple() { 
+          return this.purpose.getValue();
+        }
+
+        public void setPurposeSimple(String value) { 
+          if (value == null)
+            this.purpose = null;
+          else {
+            if (this.purpose == null)
+              this.purpose = new String_();
+            this.purpose.setValue(value);
+          }
         }
 
         public List<Element_> getElement() { 
@@ -408,7 +752,7 @@ public class Profile extends Resource {
           return this.searchParam;
         }
 
-    }
+  }
 
     public class Element_ extends Element {
         /**
@@ -444,12 +788,40 @@ public class Profile extends Resource {
           this.path = value;
         }
 
+        public String getPathSimple() { 
+          return this.path.getValue();
+        }
+
+        public void setPathSimple(String value) { 
+          if (value == null)
+            this.path = null;
+          else {
+            if (this.path == null)
+              this.path = new String_();
+            this.path.setValue(value);
+          }
+        }
+
         public String_ getName() { 
           return this.name;
         }
 
         public void setName(String_ value) { 
           this.name = value;
+        }
+
+        public String getNameSimple() { 
+          return this.name.getValue();
+        }
+
+        public void setNameSimple(String value) { 
+          if (value == null)
+            this.name = null;
+          else {
+            if (this.name == null)
+              this.name = new String_();
+            this.name.setValue(value);
+          }
         }
 
         public Definition getDefinition() { 
@@ -468,6 +840,20 @@ public class Profile extends Resource {
           this.bundled = value;
         }
 
+        public boolean getBundledSimple() { 
+          return this.bundled.getValue();
+        }
+
+        public void setBundledSimple(boolean value) { 
+          if (value == false)
+            this.bundled = null;
+          else {
+            if (this.bundled == null)
+              this.bundled = new Boolean();
+            this.bundled.setValue(value);
+          }
+        }
+
         public Boolean getClosed() { 
           return this.closed;
         }
@@ -476,7 +862,21 @@ public class Profile extends Resource {
           this.closed = value;
         }
 
-    }
+        public boolean getClosedSimple() { 
+          return this.closed.getValue();
+        }
+
+        public void setClosedSimple(boolean value) { 
+          if (value == false)
+            this.closed = null;
+          else {
+            if (this.closed == null)
+              this.closed = new Boolean();
+            this.closed.setValue(value);
+          }
+        }
+
+  }
 
     public class Definition extends Element {
         /**
@@ -572,12 +972,40 @@ public class Profile extends Resource {
           this.short_ = value;
         }
 
+        public String getShortSimple() { 
+          return this.short_.getValue();
+        }
+
+        public void setShortSimple(String value) { 
+          if (value == null)
+            this.short_ = null;
+          else {
+            if (this.short_ == null)
+              this.short_ = new String_();
+            this.short_.setValue(value);
+          }
+        }
+
         public String_ getFormal() { 
           return this.formal;
         }
 
         public void setFormal(String_ value) { 
           this.formal = value;
+        }
+
+        public String getFormalSimple() { 
+          return this.formal.getValue();
+        }
+
+        public void setFormalSimple(String value) { 
+          if (value == null)
+            this.formal = null;
+          else {
+            if (this.formal == null)
+              this.formal = new String_();
+            this.formal.setValue(value);
+          }
         }
 
         public String_ getComments() { 
@@ -588,12 +1016,40 @@ public class Profile extends Resource {
           this.comments = value;
         }
 
+        public String getCommentsSimple() { 
+          return this.comments.getValue();
+        }
+
+        public void setCommentsSimple(String value) { 
+          if (value == null)
+            this.comments = null;
+          else {
+            if (this.comments == null)
+              this.comments = new String_();
+            this.comments.setValue(value);
+          }
+        }
+
         public String_ getRequirements() { 
           return this.requirements;
         }
 
         public void setRequirements(String_ value) { 
           this.requirements = value;
+        }
+
+        public String getRequirementsSimple() { 
+          return this.requirements.getValue();
+        }
+
+        public void setRequirementsSimple(String value) { 
+          if (value == null)
+            this.requirements = null;
+          else {
+            if (this.requirements == null)
+              this.requirements = new String_();
+            this.requirements.setValue(value);
+          }
         }
 
         public List<String_> getSynonym() { 
@@ -608,12 +1064,40 @@ public class Profile extends Resource {
           this.min = value;
         }
 
+        public int getMinSimple() { 
+          return this.min.getValue();
+        }
+
+        public void setMinSimple(int value) { 
+          if (value == -1)
+            this.min = null;
+          else {
+            if (this.min == null)
+              this.min = new Integer();
+            this.min.setValue(value);
+          }
+        }
+
         public String_ getMax() { 
           return this.max;
         }
 
         public void setMax(String_ value) { 
           this.max = value;
+        }
+
+        public String getMaxSimple() { 
+          return this.max.getValue();
+        }
+
+        public void setMaxSimple(String value) { 
+          if (value == null)
+            this.max = null;
+          else {
+            if (this.max == null)
+              this.max = new String_();
+            this.max.setValue(value);
+          }
         }
 
         public List<Type> getType() { 
@@ -626,6 +1110,20 @@ public class Profile extends Resource {
 
         public void setNameReference(String_ value) { 
           this.nameReference = value;
+        }
+
+        public String getNameReferenceSimple() { 
+          return this.nameReference.getValue();
+        }
+
+        public void setNameReferenceSimple(String value) { 
+          if (value == null)
+            this.nameReference = null;
+          else {
+            if (this.nameReference == null)
+              this.nameReference = new String_();
+            this.nameReference.setValue(value);
+          }
         }
 
         public org.hl7.fhir.instance.model.Type getValue() { 
@@ -644,6 +1142,20 @@ public class Profile extends Resource {
           this.maxLength = value;
         }
 
+        public int getMaxLengthSimple() { 
+          return this.maxLength.getValue();
+        }
+
+        public void setMaxLengthSimple(int value) { 
+          if (value == -1)
+            this.maxLength = null;
+          else {
+            if (this.maxLength == null)
+              this.maxLength = new Integer();
+            this.maxLength.setValue(value);
+          }
+        }
+
         public List<Id> getCondition() { 
           return this.condition;
         }
@@ -660,12 +1172,40 @@ public class Profile extends Resource {
           this.mustSupport = value;
         }
 
+        public boolean getMustSupportSimple() { 
+          return this.mustSupport.getValue();
+        }
+
+        public void setMustSupportSimple(boolean value) { 
+          if (value == false)
+            this.mustSupport = null;
+          else {
+            if (this.mustSupport == null)
+              this.mustSupport = new Boolean();
+            this.mustSupport.setValue(value);
+          }
+        }
+
         public Boolean getMustUnderstand() { 
           return this.mustUnderstand;
         }
 
         public void setMustUnderstand(Boolean value) { 
           this.mustUnderstand = value;
+        }
+
+        public boolean getMustUnderstandSimple() { 
+          return this.mustUnderstand.getValue();
+        }
+
+        public void setMustUnderstandSimple(boolean value) { 
+          if (value == false)
+            this.mustUnderstand = null;
+          else {
+            if (this.mustUnderstand == null)
+              this.mustUnderstand = new Boolean();
+            this.mustUnderstand.setValue(value);
+          }
         }
 
         public String_ getBinding() { 
@@ -676,11 +1216,25 @@ public class Profile extends Resource {
           this.binding = value;
         }
 
+        public String getBindingSimple() { 
+          return this.binding.getValue();
+        }
+
+        public void setBindingSimple(String value) { 
+          if (value == null)
+            this.binding = null;
+          else {
+            if (this.binding == null)
+              this.binding = new String_();
+            this.binding.setValue(value);
+          }
+        }
+
         public List<Mapping> getMapping() { 
           return this.mapping;
         }
 
-    }
+  }
 
     public class Type extends Element {
         /**
@@ -701,6 +1255,20 @@ public class Profile extends Resource {
           this.code = value;
         }
 
+        public String getCodeSimple() { 
+          return this.code.getValue();
+        }
+
+        public void setCodeSimple(String value) { 
+          if (value == null)
+            this.code = null;
+          else {
+            if (this.code == null)
+              this.code = new Code();
+            this.code.setValue(value);
+          }
+        }
+
         public Uri getProfile() { 
           return this.profile;
         }
@@ -709,7 +1277,21 @@ public class Profile extends Resource {
           this.profile = value;
         }
 
-    }
+        public URI getProfileSimple() { 
+          return this.profile.getValue();
+        }
+
+        public void setProfileSimple(URI value) { 
+          if (value == null)
+            this.profile = null;
+          else {
+            if (this.profile == null)
+              this.profile = new Uri();
+            this.profile.setValue(value);
+          }
+        }
+
+  }
 
     public class Constraint extends Element {
         /**
@@ -725,7 +1307,7 @@ public class Profile extends Resource {
         /**
          * Identifies the impact constraint violation has on the conformance of the instance
          */
-        private ConstraintSeverity severity;
+        private Enumeration<ConstraintSeverity> severity;
 
         /**
          * This is the text that describes the constraint in messages identifying that the constraint has been violated 
@@ -750,6 +1332,20 @@ public class Profile extends Resource {
           this.id = value;
         }
 
+        public String getIdSimple() { 
+          return this.id.getValue();
+        }
+
+        public void setIdSimple(String value) { 
+          if (value == null)
+            this.id = null;
+          else {
+            if (this.id == null)
+              this.id = new Id();
+            this.id.setValue(value);
+          }
+        }
+
         public String_ getName() { 
           return this.name;
         }
@@ -758,12 +1354,40 @@ public class Profile extends Resource {
           this.name = value;
         }
 
-        public ConstraintSeverity getSeverity() { 
+        public String getNameSimple() { 
+          return this.name.getValue();
+        }
+
+        public void setNameSimple(String value) { 
+          if (value == null)
+            this.name = null;
+          else {
+            if (this.name == null)
+              this.name = new String_();
+            this.name.setValue(value);
+          }
+        }
+
+        public Enumeration<ConstraintSeverity> getSeverity() { 
           return this.severity;
         }
 
-        public void setSeverity(ConstraintSeverity value) { 
+        public void setSeverity(Enumeration<ConstraintSeverity> value) { 
           this.severity = value;
+        }
+
+        public ConstraintSeverity getSeveritySimple() { 
+          return this.severity.getValue();
+        }
+
+        public void setSeveritySimple(ConstraintSeverity value) { 
+          if (value == null)
+            this.severity = null;
+          else {
+            if (this.severity == null)
+              this.severity = new Enumeration<ConstraintSeverity>();
+            this.severity.setValue(value);
+          }
         }
 
         public String_ getHuman() { 
@@ -774,12 +1398,40 @@ public class Profile extends Resource {
           this.human = value;
         }
 
+        public String getHumanSimple() { 
+          return this.human.getValue();
+        }
+
+        public void setHumanSimple(String value) { 
+          if (value == null)
+            this.human = null;
+          else {
+            if (this.human == null)
+              this.human = new String_();
+            this.human.setValue(value);
+          }
+        }
+
         public String_ getXpath() { 
           return this.xpath;
         }
 
         public void setXpath(String_ value) { 
           this.xpath = value;
+        }
+
+        public String getXpathSimple() { 
+          return this.xpath.getValue();
+        }
+
+        public void setXpathSimple(String value) { 
+          if (value == null)
+            this.xpath = null;
+          else {
+            if (this.xpath == null)
+              this.xpath = new String_();
+            this.xpath.setValue(value);
+          }
         }
 
         public String_ getOcl() { 
@@ -790,7 +1442,21 @@ public class Profile extends Resource {
           this.ocl = value;
         }
 
-    }
+        public String getOclSimple() { 
+          return this.ocl.getValue();
+        }
+
+        public void setOclSimple(String value) { 
+          if (value == null)
+            this.ocl = null;
+          else {
+            if (this.ocl == null)
+              this.ocl = new String_();
+            this.ocl.setValue(value);
+          }
+        }
+
+  }
 
     public class Mapping extends Element {
         /**
@@ -811,6 +1477,20 @@ public class Profile extends Resource {
           this.target = value;
         }
 
+        public String getTargetSimple() { 
+          return this.target.getValue();
+        }
+
+        public void setTargetSimple(String value) { 
+          if (value == null)
+            this.target = null;
+          else {
+            if (this.target == null)
+              this.target = new String_();
+            this.target.setValue(value);
+          }
+        }
+
         public String_ getMap() { 
           return this.map;
         }
@@ -819,7 +1499,21 @@ public class Profile extends Resource {
           this.map = value;
         }
 
-    }
+        public String getMapSimple() { 
+          return this.map.getValue();
+        }
+
+        public void setMapSimple(String value) { 
+          if (value == null)
+            this.map = null;
+          else {
+            if (this.map == null)
+              this.map = new String_();
+            this.map.setValue(value);
+          }
+        }
+
+  }
 
     public class SearchParam extends Element {
         /**
@@ -830,12 +1524,12 @@ public class Profile extends Resource {
         /**
          * The type of value a search parameter refers to, and how the content is interpreted
          */
-        private SearchParamType type;
+        private Enumeration<SearchParamType> type;
 
         /**
          * Whether multiple uses of the parameter are allowed in searches, and if they are, how the multiple values are understood
          */
-        private SearchRepeatBehavior repeats;
+        private Enumeration<SearchRepeatBehavior> repeats;
 
         /**
          * For standard parameters, provides additional information on how the parameter is used in this solution.  For custom parameters, provides a description of what the parameter does
@@ -850,20 +1544,62 @@ public class Profile extends Resource {
           this.name = value;
         }
 
-        public SearchParamType getType() { 
+        public String getNameSimple() { 
+          return this.name.getValue();
+        }
+
+        public void setNameSimple(String value) { 
+          if (value == null)
+            this.name = null;
+          else {
+            if (this.name == null)
+              this.name = new String_();
+            this.name.setValue(value);
+          }
+        }
+
+        public Enumeration<SearchParamType> getType() { 
           return this.type;
         }
 
-        public void setType(SearchParamType value) { 
+        public void setType(Enumeration<SearchParamType> value) { 
           this.type = value;
         }
 
-        public SearchRepeatBehavior getRepeats() { 
+        public SearchParamType getTypeSimple() { 
+          return this.type.getValue();
+        }
+
+        public void setTypeSimple(SearchParamType value) { 
+          if (value == null)
+            this.type = null;
+          else {
+            if (this.type == null)
+              this.type = new Enumeration<SearchParamType>();
+            this.type.setValue(value);
+          }
+        }
+
+        public Enumeration<SearchRepeatBehavior> getRepeats() { 
           return this.repeats;
         }
 
-        public void setRepeats(SearchRepeatBehavior value) { 
+        public void setRepeats(Enumeration<SearchRepeatBehavior> value) { 
           this.repeats = value;
+        }
+
+        public SearchRepeatBehavior getRepeatsSimple() { 
+          return this.repeats.getValue();
+        }
+
+        public void setRepeatsSimple(SearchRepeatBehavior value) { 
+          if (value == null)
+            this.repeats = null;
+          else {
+            if (this.repeats == null)
+              this.repeats = new Enumeration<SearchRepeatBehavior>();
+            this.repeats.setValue(value);
+          }
         }
 
         public String_ getDocumentation() { 
@@ -874,7 +1610,21 @@ public class Profile extends Resource {
           this.documentation = value;
         }
 
-    }
+        public String getDocumentationSimple() { 
+          return this.documentation.getValue();
+        }
+
+        public void setDocumentationSimple(String value) { 
+          if (value == null)
+            this.documentation = null;
+          else {
+            if (this.documentation == null)
+              this.documentation = new String_();
+            this.documentation.setValue(value);
+          }
+        }
+
+  }
 
     public class ExtensionDefn extends Element {
         /**
@@ -885,7 +1635,7 @@ public class Profile extends Resource {
         /**
          * Identifies the type of context to which the extension applies
          */
-        private ExtensionContext contextType;
+        private Enumeration<ExtensionContext> contextType;
 
         /**
          * Identifies the types of resource or data type elements to which the extension can be applied
@@ -905,12 +1655,40 @@ public class Profile extends Resource {
           this.id = value;
         }
 
-        public ExtensionContext getContextType() { 
+        public String getIdSimple() { 
+          return this.id.getValue();
+        }
+
+        public void setIdSimple(String value) { 
+          if (value == null)
+            this.id = null;
+          else {
+            if (this.id == null)
+              this.id = new Id();
+            this.id.setValue(value);
+          }
+        }
+
+        public Enumeration<ExtensionContext> getContextType() { 
           return this.contextType;
         }
 
-        public void setContextType(ExtensionContext value) { 
+        public void setContextType(Enumeration<ExtensionContext> value) { 
           this.contextType = value;
+        }
+
+        public ExtensionContext getContextTypeSimple() { 
+          return this.contextType.getValue();
+        }
+
+        public void setContextTypeSimple(ExtensionContext value) { 
+          if (value == null)
+            this.contextType = null;
+          else {
+            if (this.contextType == null)
+              this.contextType = new Enumeration<ExtensionContext>();
+            this.contextType.setValue(value);
+          }
         }
 
         public List<String_> getContext() { 
@@ -925,7 +1703,7 @@ public class Profile extends Resource {
           this.definition = value;
         }
 
-    }
+  }
 
     public class Binding extends Element {
         /**
@@ -941,7 +1719,7 @@ public class Profile extends Resource {
         /**
          * Identifies how the set of codes for this binding is being defined
          */
-        private BindingType type;
+        private Enumeration<BindingType> type;
 
         /**
          * If true, then conformant systems may use additional codes or (where the data type permits) text alone to convey concepts not covered by the set of codes identified in the binding.  If false, then conformant systems are constrained to the provided codes alone
@@ -951,7 +1729,7 @@ public class Profile extends Resource {
         /**
          * Indicates the degree of conformance expectations associated with this binding
          */
-        private BindingConformance conformance;
+        private Enumeration<BindingConformance> conformance;
 
         /**
          * Points to the value set or external definition that identifies the set of codes to be used
@@ -971,6 +1749,20 @@ public class Profile extends Resource {
           this.name = value;
         }
 
+        public String getNameSimple() { 
+          return this.name.getValue();
+        }
+
+        public void setNameSimple(String value) { 
+          if (value == null)
+            this.name = null;
+          else {
+            if (this.name == null)
+              this.name = new String_();
+            this.name.setValue(value);
+          }
+        }
+
         public String_ getDefinition() { 
           return this.definition;
         }
@@ -979,12 +1771,40 @@ public class Profile extends Resource {
           this.definition = value;
         }
 
-        public BindingType getType() { 
+        public String getDefinitionSimple() { 
+          return this.definition.getValue();
+        }
+
+        public void setDefinitionSimple(String value) { 
+          if (value == null)
+            this.definition = null;
+          else {
+            if (this.definition == null)
+              this.definition = new String_();
+            this.definition.setValue(value);
+          }
+        }
+
+        public Enumeration<BindingType> getType() { 
           return this.type;
         }
 
-        public void setType(BindingType value) { 
+        public void setType(Enumeration<BindingType> value) { 
           this.type = value;
+        }
+
+        public BindingType getTypeSimple() { 
+          return this.type.getValue();
+        }
+
+        public void setTypeSimple(BindingType value) { 
+          if (value == null)
+            this.type = null;
+          else {
+            if (this.type == null)
+              this.type = new Enumeration<BindingType>();
+            this.type.setValue(value);
+          }
         }
 
         public Boolean getIsExtensible() { 
@@ -995,12 +1815,40 @@ public class Profile extends Resource {
           this.isExtensible = value;
         }
 
-        public BindingConformance getConformance() { 
+        public boolean getIsExtensibleSimple() { 
+          return this.isExtensible.getValue();
+        }
+
+        public void setIsExtensibleSimple(boolean value) { 
+          if (value == false)
+            this.isExtensible = null;
+          else {
+            if (this.isExtensible == null)
+              this.isExtensible = new Boolean();
+            this.isExtensible.setValue(value);
+          }
+        }
+
+        public Enumeration<BindingConformance> getConformance() { 
           return this.conformance;
         }
 
-        public void setConformance(BindingConformance value) { 
+        public void setConformance(Enumeration<BindingConformance> value) { 
           this.conformance = value;
+        }
+
+        public BindingConformance getConformanceSimple() { 
+          return this.conformance.getValue();
+        }
+
+        public void setConformanceSimple(BindingConformance value) { 
+          if (value == null)
+            this.conformance = null;
+          else {
+            if (this.conformance == null)
+              this.conformance = new Enumeration<BindingConformance>();
+            this.conformance.setValue(value);
+          }
         }
 
         public Uri getReference() { 
@@ -1011,11 +1859,25 @@ public class Profile extends Resource {
           this.reference = value;
         }
 
+        public URI getReferenceSimple() { 
+          return this.reference.getValue();
+        }
+
+        public void setReferenceSimple(URI value) { 
+          if (value == null)
+            this.reference = null;
+          else {
+            if (this.reference == null)
+              this.reference = new Uri();
+            this.reference.setValue(value);
+          }
+        }
+
         public List<Concept> getConcept() { 
           return this.concept;
         }
 
-    }
+  }
 
     public class Concept extends Element {
         /**
@@ -1046,12 +1908,40 @@ public class Profile extends Resource {
           this.code = value;
         }
 
+        public String getCodeSimple() { 
+          return this.code.getValue();
+        }
+
+        public void setCodeSimple(String value) { 
+          if (value == null)
+            this.code = null;
+          else {
+            if (this.code == null)
+              this.code = new String_();
+            this.code.setValue(value);
+          }
+        }
+
         public Uri getSystem() { 
           return this.system;
         }
 
         public void setSystem(Uri value) { 
           this.system = value;
+        }
+
+        public URI getSystemSimple() { 
+          return this.system.getValue();
+        }
+
+        public void setSystemSimple(URI value) { 
+          if (value == null)
+            this.system = null;
+          else {
+            if (this.system == null)
+              this.system = new Uri();
+            this.system.setValue(value);
+          }
         }
 
         public String_ getDisplay() { 
@@ -1062,6 +1952,20 @@ public class Profile extends Resource {
           this.display = value;
         }
 
+        public String getDisplaySimple() { 
+          return this.display.getValue();
+        }
+
+        public void setDisplaySimple(String value) { 
+          if (value == null)
+            this.display = null;
+          else {
+            if (this.display == null)
+              this.display = new String_();
+            this.display.setValue(value);
+          }
+        }
+
         public String_ getDefinition() { 
           return this.definition;
         }
@@ -1070,7 +1974,21 @@ public class Profile extends Resource {
           this.definition = value;
         }
 
-    }
+        public String getDefinitionSimple() { 
+          return this.definition.getValue();
+        }
+
+        public void setDefinitionSimple(String value) { 
+          if (value == null)
+            this.definition = null;
+          else {
+            if (this.definition == null)
+              this.definition = new String_();
+            this.definition.setValue(value);
+          }
+        }
+
+  }
 
     /**
      * A free text natural language name identifying the Profile
@@ -1135,12 +2053,40 @@ public class Profile extends Resource {
       this.name = value;
     }
 
+    public String getNameSimple() { 
+      return this.name.getValue();
+    }
+
+    public void setNameSimple(String value) { 
+      if (value == null)
+        this.name = null;
+      else {
+        if (this.name == null)
+          this.name = new String_();
+        this.name.setValue(value);
+      }
+    }
+
     public String_ getVersion() { 
       return this.version;
     }
 
     public void setVersion(String_ value) { 
       this.version = value;
+    }
+
+    public String getVersionSimple() { 
+      return this.version.getValue();
+    }
+
+    public void setVersionSimple(String value) { 
+      if (value == null)
+        this.version = null;
+      else {
+        if (this.version == null)
+          this.version = new String_();
+        this.version.setValue(value);
+      }
     }
 
     public Author getAuthor() { 
@@ -1157,6 +2103,20 @@ public class Profile extends Resource {
 
     public void setDescription(String_ value) { 
       this.description = value;
+    }
+
+    public String getDescriptionSimple() { 
+      return this.description.getValue();
+    }
+
+    public void setDescriptionSimple(String value) { 
+      if (value == null)
+        this.description = null;
+      else {
+        if (this.description == null)
+          this.description = new String_();
+        this.description.setValue(value);
+      }
     }
 
     public List<Coding> getCode() { 
@@ -1181,6 +2141,20 @@ public class Profile extends Resource {
 
     public void setBundle(Code value) { 
       this.bundle = value;
+    }
+
+    public String getBundleSimple() { 
+      return this.bundle.getValue();
+    }
+
+    public void setBundleSimple(String value) { 
+      if (value == null)
+        this.bundle = null;
+      else {
+        if (this.bundle == null)
+          this.bundle = new Code();
+        this.bundle.setValue(value);
+      }
     }
 
     public List<Resource> getResource() { 

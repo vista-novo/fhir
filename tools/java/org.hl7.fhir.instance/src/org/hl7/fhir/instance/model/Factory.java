@@ -107,10 +107,10 @@ public class Factory {
   }
   
   public static Contact newContact(ContactSystem system, String value) {
-  Contact res = new Contact();
-  res.setSystem(system);
-  res.setValue(newString_(value));
-  return res;
+	Contact res = new Contact();
+	res.setSystemSimple(system);
+	res.setValue(newString_(value));
+	return res;
   }
-
+  
 }

@@ -29,10 +29,11 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
+import java.net.*;
 /**
  * Optional Extensions Element - found in all resources
  */
@@ -46,7 +47,7 @@ public class Extension extends Element {
     /**
      * Internal reference to context of the extension - a pointer to an xml:id in the same resource
      */
-    private String ref;
+    private String_ ref;
 
     /**
      * If this element is set to true, then the containing resource element and its children are only safe to process if the reader understands this extension. 
@@ -71,12 +72,40 @@ public class Extension extends Element {
       this.url = value;
     }
 
-    public String getRef() { 
+    public URI getUrlSimple() { 
+      return this.url.getValue();
+    }
+
+    public void setUrlSimple(URI value) { 
+      if (value == null)
+        this.url = null;
+      else {
+        if (this.url == null)
+          this.url = new Uri();
+        this.url.setValue(value);
+      }
+    }
+
+    public String_ getRef() { 
       return this.ref;
     }
 
-    public void setRef(String value) { 
+    public void setRef(String_ value) { 
       this.ref = value;
+    }
+
+    public String getRefSimple() { 
+      return this.ref.getValue();
+    }
+
+    public void setRefSimple(String value) { 
+      if (value == null)
+        this.ref = null;
+      else {
+        if (this.ref == null)
+          this.ref = new String_();
+        this.ref.setValue(value);
+      }
     }
 
     public Boolean getMustUnderstand() { 
@@ -85,6 +114,20 @@ public class Extension extends Element {
 
     public void setMustUnderstand(Boolean value) { 
       this.mustUnderstand = value;
+    }
+
+    public boolean getMustUnderstandSimple() { 
+      return this.mustUnderstand.getValue();
+    }
+
+    public void setMustUnderstandSimple(boolean value) { 
+      if (value == false)
+        this.mustUnderstand = null;
+      else {
+        if (this.mustUnderstand == null)
+          this.mustUnderstand = new Boolean();
+        this.mustUnderstand.setValue(value);
+      }
     }
 
     public org.hl7.fhir.instance.model.Type getValue() { 

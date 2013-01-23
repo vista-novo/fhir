@@ -29,10 +29,11 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
+import java.net.*;
 /**
  * This resource identifies a manufactured entity that is used in the provision of healthcare. The device may be a machine, an insert, a computer, an application, etc.
  */
@@ -67,12 +68,40 @@ public class Device extends Resource {
           this.gtin = value;
         }
 
+        public String getGtinSimple() { 
+          return this.gtin.getValue();
+        }
+
+        public void setGtinSimple(String value) { 
+          if (value == null)
+            this.gtin = null;
+          else {
+            if (this.gtin == null)
+              this.gtin = new String_();
+            this.gtin.setValue(value);
+          }
+        }
+
         public String_ getLot() { 
           return this.lot;
         }
 
         public void setLot(String_ value) { 
           this.lot = value;
+        }
+
+        public String getLotSimple() { 
+          return this.lot.getValue();
+        }
+
+        public void setLotSimple(String value) { 
+          if (value == null)
+            this.lot = null;
+          else {
+            if (this.lot == null)
+              this.lot = new String_();
+            this.lot.setValue(value);
+          }
         }
 
         public String_ getSerialNumber() { 
@@ -83,6 +112,20 @@ public class Device extends Resource {
           this.serialNumber = value;
         }
 
+        public String getSerialNumberSimple() { 
+          return this.serialNumber.getValue();
+        }
+
+        public void setSerialNumberSimple(String value) { 
+          if (value == null)
+            this.serialNumber = null;
+          else {
+            if (this.serialNumber == null)
+              this.serialNumber = new String_();
+            this.serialNumber.setValue(value);
+          }
+        }
+
         public Date getExpiry() { 
           return this.expiry;
         }
@@ -91,7 +134,21 @@ public class Device extends Resource {
           this.expiry = value;
         }
 
-    }
+        public String getExpirySimple() { 
+          return this.expiry.getValue();
+        }
+
+        public void setExpirySimple(String value) { 
+          if (value == null)
+            this.expiry = null;
+          else {
+            if (this.expiry == null)
+              this.expiry = new Date();
+            this.expiry.setValue(value);
+          }
+        }
+
+  }
 
     /**
      * Describes what kind of device that this 
@@ -164,6 +221,20 @@ public class Device extends Resource {
       this.manufacturer = value;
     }
 
+    public String getManufacturerSimple() { 
+      return this.manufacturer.getValue();
+    }
+
+    public void setManufacturerSimple(String value) { 
+      if (value == null)
+        this.manufacturer = null;
+      else {
+        if (this.manufacturer == null)
+          this.manufacturer = new String_();
+        this.manufacturer.setValue(value);
+      }
+    }
+
     public String_ getModel() { 
       return this.model;
     }
@@ -172,12 +243,40 @@ public class Device extends Resource {
       this.model = value;
     }
 
+    public String getModelSimple() { 
+      return this.model.getValue();
+    }
+
+    public void setModelSimple(String value) { 
+      if (value == null)
+        this.model = null;
+      else {
+        if (this.model == null)
+          this.model = new String_();
+        this.model.setValue(value);
+      }
+    }
+
     public String_ getVersion() { 
       return this.version;
     }
 
     public void setVersion(String_ value) { 
       this.version = value;
+    }
+
+    public String getVersionSimple() { 
+      return this.version.getValue();
+    }
+
+    public void setVersionSimple(String value) { 
+      if (value == null)
+        this.version = null;
+      else {
+        if (this.version == null)
+          this.version = new String_();
+        this.version.setValue(value);
+      }
     }
 
     public Identity getIdentity() { 
@@ -226,6 +325,20 @@ public class Device extends Resource {
 
     public void setUrl(Uri value) { 
       this.url = value;
+    }
+
+    public URI getUrlSimple() { 
+      return this.url.getValue();
+    }
+
+    public void setUrlSimple(URI value) { 
+      if (value == null)
+        this.url = null;
+      else {
+        if (this.url == null)
+          this.url = new Uri();
+        this.url.setValue(value);
+      }
     }
 
   @Override

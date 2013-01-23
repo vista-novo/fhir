@@ -29,8 +29,10 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
+
+import java.net.*;
 /**
  * A technical identifier - identifies some entity uniquely and unambiguously
  */
@@ -39,7 +41,8 @@ public class Identifier extends Type {
     public enum IdentifierUse {
         usual, // the identifier recommended for display and use in real-world interactions
         official, // the identifier considered to be most trusted for the identification of this item
-        temp; // A temporary identifier
+        temp, // A temporary identifier
+        Null; // added to help the parsers
         public static IdentifierUse fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -61,11 +64,35 @@ public class Identifier extends Type {
         }
     }
 
+  public class IdentifierUseEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("usual".equals(codeString))
+          return IdentifierUse.usual;
+        if ("official".equals(codeString))
+          return IdentifierUse.official;
+        if ("temp".equals(codeString))
+          return IdentifierUse.temp;
+        throw new Exception("Unknown IdentifierUse code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == IdentifierUse.usual)
+        return "usual";
+      if (code == IdentifierUse.official)
+        return "official";
+      if (code == IdentifierUse.temp)
+        return "temp";
+      return "?";
+      }
+    }
+
     /**
      * Identifies the use for this identifier, if known
 
      */
-    private IdentifierUse use;
+    private Enumeration<IdentifierUse> use;
 
     /**
      * A label for the identifier that can be displayed to a human so they can recognise the identifier
@@ -92,12 +119,26 @@ public class Identifier extends Type {
      */
     private ResourceReference assigner;
 
-    public IdentifierUse getUse() { 
+    public Enumeration<IdentifierUse> getUse() { 
       return this.use;
     }
 
-    public void setUse(IdentifierUse value) { 
+    public void setUse(Enumeration<IdentifierUse> value) { 
       this.use = value;
+    }
+
+    public IdentifierUse getUseSimple() { 
+      return this.use.getValue();
+    }
+
+    public void setUseSimple(IdentifierUse value) { 
+      if (value == null)
+        this.use = null;
+      else {
+        if (this.use == null)
+          this.use = new Enumeration<IdentifierUse>();
+        this.use.setValue(value);
+      }
     }
 
     public String_ getLabel() { 
@@ -108,6 +149,20 @@ public class Identifier extends Type {
       this.label = value;
     }
 
+    public String getLabelSimple() { 
+      return this.label.getValue();
+    }
+
+    public void setLabelSimple(String value) { 
+      if (value == null)
+        this.label = null;
+      else {
+        if (this.label == null)
+          this.label = new String_();
+        this.label.setValue(value);
+      }
+    }
+
     public Uri getSystem() { 
       return this.system;
     }
@@ -116,12 +171,40 @@ public class Identifier extends Type {
       this.system = value;
     }
 
+    public URI getSystemSimple() { 
+      return this.system.getValue();
+    }
+
+    public void setSystemSimple(URI value) { 
+      if (value == null)
+        this.system = null;
+      else {
+        if (this.system == null)
+          this.system = new Uri();
+        this.system.setValue(value);
+      }
+    }
+
     public String_ getId() { 
       return this.id;
     }
 
     public void setId(String_ value) { 
       this.id = value;
+    }
+
+    public String getIdSimple() { 
+      return this.id.getValue();
+    }
+
+    public void setIdSimple(String value) { 
+      if (value == null)
+        this.id = null;
+      else {
+        if (this.id == null)
+          this.id = new String_();
+        this.id.setValue(value);
+      }
     }
 
     public Period getPeriod() { 

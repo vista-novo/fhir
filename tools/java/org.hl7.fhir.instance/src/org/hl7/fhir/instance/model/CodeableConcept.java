@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -51,7 +51,7 @@ public class CodeableConcept extends Type {
     /**
      * Indicates which of the codes in the codings was chosen by a user, if one was chosen directly
      */
-    private String primary;
+    private String_ primary;
 
     public List<Coding> getCoding() { 
       return this.coding;
@@ -65,12 +65,40 @@ public class CodeableConcept extends Type {
       this.text = value;
     }
 
-    public String getPrimary() { 
+    public String getTextSimple() { 
+      return this.text.getValue();
+    }
+
+    public void setTextSimple(String value) { 
+      if (value == null)
+        this.text = null;
+      else {
+        if (this.text == null)
+          this.text = new String_();
+        this.text.setValue(value);
+      }
+    }
+
+    public String_ getPrimary() { 
       return this.primary;
     }
 
-    public void setPrimary(String value) { 
+    public void setPrimary(String_ value) { 
       this.primary = value;
+    }
+
+    public String getPrimarySimple() { 
+      return this.primary.getValue();
+    }
+
+    public void setPrimarySimple(String value) { 
+      if (value == null)
+        this.primary = null;
+      else {
+        if (this.primary == null)
+          this.primary = new String_();
+        this.primary.setValue(value);
+      }
     }
 
 

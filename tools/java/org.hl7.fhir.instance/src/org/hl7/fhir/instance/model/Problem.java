@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -40,7 +40,8 @@ public class Problem extends Resource {
 
     public enum ProblemRelationshipType {
         dueMinusto, // 
-        follows; // 
+        follows, // 
+        Null; // added to help the parsers
         public static ProblemRelationshipType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -57,6 +58,26 @@ public class Problem extends Resource {
             default: return "?";
           }
         }
+    }
+
+  public class ProblemRelationshipTypeEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("due-to".equals(codeString))
+          return ProblemRelationshipType.dueMinusto;
+        if ("follows".equals(codeString))
+          return ProblemRelationshipType.follows;
+        throw new Exception("Unknown ProblemRelationshipType code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == ProblemRelationshipType.dueMinusto)
+        return "due-to";
+      if (code == ProblemRelationshipType.follows)
+        return "follows";
+      return "?";
+      }
     }
 
     public class Stage extends Element {
@@ -82,7 +103,7 @@ public class Problem extends Resource {
           return this.assessment;
         }
 
-    }
+  }
 
     public class Evidence extends Element {
         /**
@@ -107,7 +128,7 @@ public class Problem extends Resource {
           return this.details;
         }
 
-    }
+  }
 
     public class Location extends Element {
         /**
@@ -136,25 +157,39 @@ public class Problem extends Resource {
           this.details = value;
         }
 
-    }
+  }
 
     public class RelatedItem extends Element {
         /**
          * The type of relationship that this problem/diagnosis has to the related item
          */
-        private ProblemRelationshipType type;
+        private Enumeration<ProblemRelationshipType> type;
 
         /**
          * Target of the relationship 
          */
         private ResourceReference target;
 
-        public ProblemRelationshipType getType() { 
+        public Enumeration<ProblemRelationshipType> getType() { 
           return this.type;
         }
 
-        public void setType(ProblemRelationshipType value) { 
+        public void setType(Enumeration<ProblemRelationshipType> value) { 
           this.type = value;
+        }
+
+        public ProblemRelationshipType getTypeSimple() { 
+          return this.type.getValue();
+        }
+
+        public void setTypeSimple(ProblemRelationshipType value) { 
+          if (value == null)
+            this.type = null;
+          else {
+            if (this.type == null)
+              this.type = new Enumeration<ProblemRelationshipType>();
+            this.type.setValue(value);
+          }
         }
 
         public ResourceReference getTarget() { 
@@ -165,7 +200,7 @@ public class Problem extends Resource {
           this.target = value;
         }
 
-    }
+  }
 
     /**
      * Subject of this problem
@@ -274,6 +309,20 @@ public class Problem extends Resource {
       this.dateAsserted = value;
     }
 
+    public String getDateAssertedSimple() { 
+      return this.dateAsserted.getValue();
+    }
+
+    public void setDateAssertedSimple(String value) { 
+      if (value == null)
+        this.dateAsserted = null;
+      else {
+        if (this.dateAsserted == null)
+          this.dateAsserted = new Date();
+        this.dateAsserted.setValue(value);
+      }
+    }
+
     public CodeableConcept getCode() { 
       return this.code;
     }
@@ -296,6 +345,20 @@ public class Problem extends Resource {
 
     public void setStatus(Code value) { 
       this.status = value;
+    }
+
+    public String getStatusSimple() { 
+      return this.status.getValue();
+    }
+
+    public void setStatusSimple(String value) { 
+      if (value == null)
+        this.status = null;
+      else {
+        if (this.status == null)
+          this.status = new Code();
+        this.status.setValue(value);
+      }
     }
 
     public CodeableConcept getCertainty() { 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -78,7 +78,7 @@ public class Patient extends Resource {
           this.genderStatus = value;
         }
 
-    }
+  }
 
     /**
      * A linked patient record is a record that concerns the same patient. Records are linked after it is realized that at least one was created in error.
@@ -135,6 +135,20 @@ public class Patient extends Resource {
 
     public void setActive(Boolean value) { 
       this.active = value;
+    }
+
+    public boolean getActiveSimple() { 
+      return this.active.getValue();
+    }
+
+    public void setActiveSimple(boolean value) { 
+      if (value == false)
+        this.active = null;
+      else {
+        if (this.active == null)
+          this.active = new Boolean();
+        this.active.setValue(value);
+      }
     }
 
     public List<Identifier> getIdentifier() { 

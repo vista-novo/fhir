@@ -29,10 +29,11 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
+import java.net.*;
 /**
  * Value Set - a set of defined codes from one or more code systems that may be bound to a context
  */
@@ -43,7 +44,8 @@ public class ValueSet extends Resource {
         testing, // This valueset was authored for testing purposes (or education/evaluation/evangelisation)
         production, // This valueset is ready for use in production systems
         withdrawn, // This valueset should no longer be used
-        superseded; // This valueset has been replaced and a different valueset should be used in its place
+        superseded, // This valueset has been replaced and a different valueset should be used in its place
+        Null; // added to help the parsers
         public static ValuesetStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -71,11 +73,44 @@ public class ValueSet extends Resource {
         }
     }
 
+  public class ValuesetStatusEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("draft".equals(codeString))
+          return ValuesetStatus.draft;
+        if ("testing".equals(codeString))
+          return ValuesetStatus.testing;
+        if ("production".equals(codeString))
+          return ValuesetStatus.production;
+        if ("withdrawn".equals(codeString))
+          return ValuesetStatus.withdrawn;
+        if ("superseded".equals(codeString))
+          return ValuesetStatus.superseded;
+        throw new Exception("Unknown ValuesetStatus code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == ValuesetStatus.draft)
+        return "draft";
+      if (code == ValuesetStatus.testing)
+        return "testing";
+      if (code == ValuesetStatus.production)
+        return "production";
+      if (code == ValuesetStatus.withdrawn)
+        return "withdrawn";
+      if (code == ValuesetStatus.superseded)
+        return "superseded";
+      return "?";
+      }
+    }
+
     public enum CodeSelectionMode {
         code, // Only this code is selected
         children, // Only the immediate children (codes with a is_a relationship) are selected, but not this code itself
         descendants, // All descendants of this code are selected, but not this code itself
-        all; // This code and any descendants are selected
+        all, // This code and any descendants are selected
+        Null; // added to help the parsers
         public static CodeSelectionMode fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -100,11 +135,40 @@ public class ValueSet extends Resource {
         }
     }
 
+  public class CodeSelectionModeEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("code".equals(codeString))
+          return CodeSelectionMode.code;
+        if ("children".equals(codeString))
+          return CodeSelectionMode.children;
+        if ("descendants".equals(codeString))
+          return CodeSelectionMode.descendants;
+        if ("all".equals(codeString))
+          return CodeSelectionMode.all;
+        throw new Exception("Unknown CodeSelectionMode code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == CodeSelectionMode.code)
+        return "code";
+      if (code == CodeSelectionMode.children)
+        return "children";
+      if (code == CodeSelectionMode.descendants)
+        return "descendants";
+      if (code == CodeSelectionMode.all)
+        return "all";
+      return "?";
+      }
+    }
+
     public enum FilterOperator {
         equal, // The property value has the concept specified by the value
         is_a, // The property value has a concept that has an is_a relationship with the value
         is_not_a, // The property value has a concept that does not have an is_a relationship with the value
-        regex; // The property value representation matches the regex specified in the value
+        regex, // The property value representation matches the regex specified in the value
+        Null; // added to help the parsers
         public static FilterOperator fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -129,6 +193,34 @@ public class ValueSet extends Resource {
         }
     }
 
+  public class FilterOperatorEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("=".equals(codeString))
+          return FilterOperator.equal;
+        if ("is_a".equals(codeString))
+          return FilterOperator.is_a;
+        if ("is_not_a".equals(codeString))
+          return FilterOperator.is_not_a;
+        if ("regex".equals(codeString))
+          return FilterOperator.regex;
+        throw new Exception("Unknown FilterOperator code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == FilterOperator.equal)
+        return "=";
+      if (code == FilterOperator.is_a)
+        return "is_a";
+      if (code == FilterOperator.is_not_a)
+        return "is_not_a";
+      if (code == FilterOperator.regex)
+        return "regex";
+      return "?";
+      }
+    }
+
     public class Author extends Element {
         /**
          * The name of the author
@@ -148,6 +240,20 @@ public class ValueSet extends Resource {
           this.name = value;
         }
 
+        public String getNameSimple() { 
+          return this.name.getValue();
+        }
+
+        public void setNameSimple(String value) { 
+          if (value == null)
+            this.name = null;
+          else {
+            if (this.name == null)
+              this.name = new String_();
+            this.name.setValue(value);
+          }
+        }
+
         public Uri getReference() { 
           return this.reference;
         }
@@ -156,7 +262,21 @@ public class ValueSet extends Resource {
           this.reference = value;
         }
 
-    }
+        public URI getReferenceSimple() { 
+          return this.reference.getValue();
+        }
+
+        public void setReferenceSimple(URI value) { 
+          if (value == null)
+            this.reference = null;
+          else {
+            if (this.reference == null)
+              this.reference = new Uri();
+            this.reference.setValue(value);
+          }
+        }
+
+  }
 
     public class Include extends Element {
         /**
@@ -172,7 +292,7 @@ public class ValueSet extends Resource {
         /**
          * The mode of selection - whether the code itself, and/or its descendants are being selected 
          */
-        private CodeSelectionMode mode;
+        private Enumeration<CodeSelectionMode> mode;
 
         /**
          * Specifies a code or concept to be included or excluded as specified by the mode from the value set
@@ -192,6 +312,20 @@ public class ValueSet extends Resource {
           this.system = value;
         }
 
+        public URI getSystemSimple() { 
+          return this.system.getValue();
+        }
+
+        public void setSystemSimple(URI value) { 
+          if (value == null)
+            this.system = null;
+          else {
+            if (this.system == null)
+              this.system = new Uri();
+            this.system.setValue(value);
+          }
+        }
+
         public String_ getVersion() { 
           return this.version;
         }
@@ -200,12 +334,40 @@ public class ValueSet extends Resource {
           this.version = value;
         }
 
-        public CodeSelectionMode getMode() { 
+        public String getVersionSimple() { 
+          return this.version.getValue();
+        }
+
+        public void setVersionSimple(String value) { 
+          if (value == null)
+            this.version = null;
+          else {
+            if (this.version == null)
+              this.version = new String_();
+            this.version.setValue(value);
+          }
+        }
+
+        public Enumeration<CodeSelectionMode> getMode() { 
           return this.mode;
         }
 
-        public void setMode(CodeSelectionMode value) { 
+        public void setMode(Enumeration<CodeSelectionMode> value) { 
           this.mode = value;
+        }
+
+        public CodeSelectionMode getModeSimple() { 
+          return this.mode.getValue();
+        }
+
+        public void setModeSimple(CodeSelectionMode value) { 
+          if (value == null)
+            this.mode = null;
+          else {
+            if (this.mode == null)
+              this.mode = new Enumeration<CodeSelectionMode>();
+            this.mode.setValue(value);
+          }
         }
 
         public List<Code> getCode() { 
@@ -216,7 +378,7 @@ public class ValueSet extends Resource {
           return this.filter;
         }
 
-    }
+  }
 
     public class Filter extends Element {
         /**
@@ -227,7 +389,7 @@ public class ValueSet extends Resource {
         /**
          * The kind of operation to perform as part of the filter criteria
          */
-        private FilterOperator op;
+        private Enumeration<FilterOperator> op;
 
         /**
          * The match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value
@@ -242,12 +404,40 @@ public class ValueSet extends Resource {
           this.property = value;
         }
 
-        public FilterOperator getOp() { 
+        public String getPropertySimple() { 
+          return this.property.getValue();
+        }
+
+        public void setPropertySimple(String value) { 
+          if (value == null)
+            this.property = null;
+          else {
+            if (this.property == null)
+              this.property = new Code();
+            this.property.setValue(value);
+          }
+        }
+
+        public Enumeration<FilterOperator> getOp() { 
           return this.op;
         }
 
-        public void setOp(FilterOperator value) { 
+        public void setOp(Enumeration<FilterOperator> value) { 
           this.op = value;
+        }
+
+        public FilterOperator getOpSimple() { 
+          return this.op.getValue();
+        }
+
+        public void setOpSimple(FilterOperator value) { 
+          if (value == null)
+            this.op = null;
+          else {
+            if (this.op == null)
+              this.op = new Enumeration<FilterOperator>();
+            this.op.setValue(value);
+          }
         }
 
         public Code getValue() { 
@@ -258,7 +448,21 @@ public class ValueSet extends Resource {
           this.value = value;
         }
 
-    }
+        public String getValueSimple() { 
+          return this.value.getValue();
+        }
+
+        public void setValueSimple(String value) { 
+          if (value == null)
+            this.value = null;
+          else {
+            if (this.value == null)
+              this.value = new Code();
+            this.value.setValue(value);
+          }
+        }
+
+  }
 
     /**
      * A free text natural language name describing the value set
@@ -278,7 +482,7 @@ public class ValueSet extends Resource {
     /**
      * The status of the value set
      */
-    private ValuesetStatus status;
+    private Enumeration<ValuesetStatus> status;
 
     /**
      * The date that the value set status was last changed
@@ -323,6 +527,20 @@ public class ValueSet extends Resource {
       this.name = value;
     }
 
+    public String getNameSimple() { 
+      return this.name.getValue();
+    }
+
+    public void setNameSimple(String value) { 
+      if (value == null)
+        this.name = null;
+      else {
+        if (this.name == null)
+          this.name = new String_();
+        this.name.setValue(value);
+      }
+    }
+
     public Author getAuthor() { 
       return this.author;
     }
@@ -339,12 +557,40 @@ public class ValueSet extends Resource {
       this.description = value;
     }
 
-    public ValuesetStatus getStatus() { 
+    public String getDescriptionSimple() { 
+      return this.description.getValue();
+    }
+
+    public void setDescriptionSimple(String value) { 
+      if (value == null)
+        this.description = null;
+      else {
+        if (this.description == null)
+          this.description = new String_();
+        this.description.setValue(value);
+      }
+    }
+
+    public Enumeration<ValuesetStatus> getStatus() { 
       return this.status;
     }
 
-    public void setStatus(ValuesetStatus value) { 
+    public void setStatus(Enumeration<ValuesetStatus> value) { 
       this.status = value;
+    }
+
+    public ValuesetStatus getStatusSimple() { 
+      return this.status.getValue();
+    }
+
+    public void setStatusSimple(ValuesetStatus value) { 
+      if (value == null)
+        this.status = null;
+      else {
+        if (this.status == null)
+          this.status = new Enumeration<ValuesetStatus>();
+        this.status.setValue(value);
+      }
     }
 
     public DateTime getDate() { 
@@ -355,6 +601,20 @@ public class ValueSet extends Resource {
       this.date = value;
     }
 
+    public String getDateSimple() { 
+      return this.date.getValue();
+    }
+
+    public void setDateSimple(String value) { 
+      if (value == null)
+        this.date = null;
+      else {
+        if (this.date == null)
+          this.date = new DateTime();
+        this.date.setValue(value);
+      }
+    }
+
     public String_ getIdentifier() { 
       return this.identifier;
     }
@@ -363,12 +623,40 @@ public class ValueSet extends Resource {
       this.identifier = value;
     }
 
+    public String getIdentifierSimple() { 
+      return this.identifier.getValue();
+    }
+
+    public void setIdentifierSimple(String value) { 
+      if (value == null)
+        this.identifier = null;
+      else {
+        if (this.identifier == null)
+          this.identifier = new String_();
+        this.identifier.setValue(value);
+      }
+    }
+
     public String_ getVersion() { 
       return this.version;
     }
 
     public void setVersion(String_ value) { 
       this.version = value;
+    }
+
+    public String getVersionSimple() { 
+      return this.version.getValue();
+    }
+
+    public void setVersionSimple(String value) { 
+      if (value == null)
+        this.version = null;
+      else {
+        if (this.version == null)
+          this.version = new String_();
+        this.version.setValue(value);
+      }
     }
 
     public List<Uri> getRestricts() { 

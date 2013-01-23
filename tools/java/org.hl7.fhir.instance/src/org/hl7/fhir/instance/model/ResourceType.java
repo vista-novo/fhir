@@ -1,6 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 public enum ResourceType {
+    CarePlan,
     Provenance,
     Device,
     Order,
@@ -31,8 +32,10 @@ public enum ResourceType {
     Medication,
     Specimen,
     Food,
+    Encounter,
     Location,
     Procedure,
+    Request,
     Admission,
     Substance,
     AnatomicalLocation,

@@ -29,19 +29,23 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
+
+import java.net.*;
+import java.math.*;
 /**
  * A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies
  */
 public class Quantity extends Type {
 
-    public enum QuantityRange {
+    public enum QuantityComparator {
         lessThan, // The actual value is less than the given value
         lessOrEqual, // The actual value is less than or equal to the given value
         greaterOrEqual, // The actual value is greater than or equal to the given value
-        greaterThan; // The actual value is greater than the given value
-        public static QuantityRange fromCode(String codeString) throws Exception {
+        greaterThan, // The actual value is greater than the given value
+        Null; // added to help the parsers
+        public static QuantityComparator fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("<".equals(codeString))
@@ -52,7 +56,7 @@ public class Quantity extends Type {
           return greaterOrEqual;
         if (">".equals(codeString))
           return greaterThan;
-        throw new Exception("Unknown QuantityRange code '"+codeString+"'");
+        throw new Exception("Unknown QuantityComparator code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -65,15 +69,43 @@ public class Quantity extends Type {
         }
     }
 
+  public class QuantityComparatorEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("<".equals(codeString))
+          return QuantityComparator.lessThan;
+        if ("<=".equals(codeString))
+          return QuantityComparator.lessOrEqual;
+        if (">=".equals(codeString))
+          return QuantityComparator.greaterOrEqual;
+        if (">".equals(codeString))
+          return QuantityComparator.greaterThan;
+        throw new Exception("Unknown QuantityComparator code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == QuantityComparator.lessThan)
+        return "<";
+      if (code == QuantityComparator.lessOrEqual)
+        return "<=";
+      if (code == QuantityComparator.greaterOrEqual)
+        return ">=";
+      if (code == QuantityComparator.greaterThan)
+        return ">";
+      return "?";
+      }
+    }
+
     /**
      * The value of the measured amount. The value includes an implicit precision in the presentation of the value
      */
     private Decimal value;
 
     /**
-     * How the value should be understood and represented - whether the actual value is greater or less than the measure due to measurement issues
+     * How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues. E.g. if the comparator is “<“ , then the real value is < stated value
      */
-    private QuantityRange range;
+    private Enumeration<QuantityComparator> comparator;
 
     /**
      * A human readable form of the units
@@ -98,12 +130,40 @@ public class Quantity extends Type {
       this.value = value;
     }
 
-    public QuantityRange getRange() { 
-      return this.range;
+    public BigDecimal getValueSimple() { 
+      return this.value.getValue();
     }
 
-    public void setRange(QuantityRange value) { 
-      this.range = value;
+    public void setValueSimple(BigDecimal value) { 
+      if (value == null)
+        this.value = null;
+      else {
+        if (this.value == null)
+          this.value = new Decimal();
+        this.value.setValue(value);
+      }
+    }
+
+    public Enumeration<QuantityComparator> getComparator() { 
+      return this.comparator;
+    }
+
+    public void setComparator(Enumeration<QuantityComparator> value) { 
+      this.comparator = value;
+    }
+
+    public QuantityComparator getComparatorSimple() { 
+      return this.comparator.getValue();
+    }
+
+    public void setComparatorSimple(QuantityComparator value) { 
+      if (value == null)
+        this.comparator = null;
+      else {
+        if (this.comparator == null)
+          this.comparator = new Enumeration<QuantityComparator>();
+        this.comparator.setValue(value);
+      }
     }
 
     public String_ getUnits() { 
@@ -114,6 +174,20 @@ public class Quantity extends Type {
       this.units = value;
     }
 
+    public String getUnitsSimple() { 
+      return this.units.getValue();
+    }
+
+    public void setUnitsSimple(String value) { 
+      if (value == null)
+        this.units = null;
+      else {
+        if (this.units == null)
+          this.units = new String_();
+        this.units.setValue(value);
+      }
+    }
+
     public Uri getSystem() { 
       return this.system;
     }
@@ -122,12 +196,40 @@ public class Quantity extends Type {
       this.system = value;
     }
 
+    public URI getSystemSimple() { 
+      return this.system.getValue();
+    }
+
+    public void setSystemSimple(URI value) { 
+      if (value == null)
+        this.system = null;
+      else {
+        if (this.system == null)
+          this.system = new Uri();
+        this.system.setValue(value);
+      }
+    }
+
     public Code getCode() { 
       return this.code;
     }
 
     public void setCode(Code value) { 
       this.code = value;
+    }
+
+    public String getCodeSimple() { 
+      return this.code.getValue();
+    }
+
+    public void setCodeSimple(String value) { 
+      if (value == null)
+        this.code = null;
+      else {
+        if (this.code == null)
+          this.code = new Code();
+        this.code.setValue(value);
+      }
     }
 
 

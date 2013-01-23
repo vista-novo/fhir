@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -42,7 +42,8 @@ public class DocumentInformation extends Type {
         personal, // The person authenticated the document in their personal capacity
         professional, // The person authenticated the document in their professional capacity
         legal, // The person authenticated the document and accepted legal responsibility for its content
-        official; // The organization authenticated the document as consistent with their policies and procedures
+        official, // The organization authenticated the document as consistent with their policies and procedures
+        Null; // added to help the parsers
         public static DocumentAttestationMode fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -67,11 +68,39 @@ public class DocumentInformation extends Type {
         }
     }
 
+  public class DocumentAttestationModeEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("personal".equals(codeString))
+          return DocumentAttestationMode.personal;
+        if ("professional".equals(codeString))
+          return DocumentAttestationMode.professional;
+        if ("legal".equals(codeString))
+          return DocumentAttestationMode.legal;
+        if ("official".equals(codeString))
+          return DocumentAttestationMode.official;
+        throw new Exception("Unknown DocumentAttestationMode code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == DocumentAttestationMode.personal)
+        return "personal";
+      if (code == DocumentAttestationMode.professional)
+        return "professional";
+      if (code == DocumentAttestationMode.legal)
+        return "legal";
+      if (code == DocumentAttestationMode.official)
+        return "official";
+      return "?";
+      }
+    }
+
     public class Attester extends Element {
         /**
          * The type of attestation the authenticator offers
          */
-        private DocumentAttestationMode mode;
+        private Enumeration<DocumentAttestationMode> mode;
 
         /**
          * When document was attested by the party
@@ -83,12 +112,26 @@ public class DocumentInformation extends Type {
          */
         private ResourceReference party;
 
-        public DocumentAttestationMode getMode() { 
+        public Enumeration<DocumentAttestationMode> getMode() { 
           return this.mode;
         }
 
-        public void setMode(DocumentAttestationMode value) { 
+        public void setMode(Enumeration<DocumentAttestationMode> value) { 
           this.mode = value;
+        }
+
+        public DocumentAttestationMode getModeSimple() { 
+          return this.mode.getValue();
+        }
+
+        public void setModeSimple(DocumentAttestationMode value) { 
+          if (value == null)
+            this.mode = null;
+          else {
+            if (this.mode == null)
+              this.mode = new Enumeration<DocumentAttestationMode>();
+            this.mode.setValue(value);
+          }
         }
 
         public DateTime getTime() { 
@@ -99,6 +142,20 @@ public class DocumentInformation extends Type {
           this.time = value;
         }
 
+        public String getTimeSimple() { 
+          return this.time.getValue();
+        }
+
+        public void setTimeSimple(String value) { 
+          if (value == null)
+            this.time = null;
+          else {
+            if (this.time == null)
+              this.time = new DateTime();
+            this.time.setValue(value);
+          }
+        }
+
         public ResourceReference getParty() { 
           return this.party;
         }
@@ -107,7 +164,7 @@ public class DocumentInformation extends Type {
           this.party = value;
         }
 
-    }
+  }
 
     public class Event extends Element {
         /**
@@ -141,7 +198,7 @@ public class DocumentInformation extends Type {
           return this.detail;
         }
 
-    }
+  }
 
     /**
      * Logical Identifier for the document, assigned when created. This identifier stays constant when subsequent versions of the document are created
@@ -242,6 +299,20 @@ public class DocumentInformation extends Type {
       this.created = value;
     }
 
+    public Calendar getCreatedSimple() { 
+      return this.created.getValue();
+    }
+
+    public void setCreatedSimple(Calendar value) { 
+      if (value == null)
+        this.created = null;
+      else {
+        if (this.created == null)
+          this.created = new Instant();
+        this.created.setValue(value);
+      }
+    }
+
     public Coding getClass_() { 
       return this.class_;
     }
@@ -264,6 +335,20 @@ public class DocumentInformation extends Type {
 
     public void setTitle(String_ value) { 
       this.title = value;
+    }
+
+    public String getTitleSimple() { 
+      return this.title.getValue();
+    }
+
+    public void setTitleSimple(String value) { 
+      if (value == null)
+        this.title = null;
+      else {
+        if (this.title == null)
+          this.title = new String_();
+        this.title.setValue(value);
+      }
     }
 
     public Coding getConfidentiality() { 

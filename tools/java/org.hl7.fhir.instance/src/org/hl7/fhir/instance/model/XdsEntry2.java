@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -40,7 +40,8 @@ public class XdsEntry2 extends Resource {
 
     public enum XdsEntryAvailability {
         Approved, // 
-        Deprecated; // 
+        Deprecated, // 
+        Null; // added to help the parsers
         public static XdsEntryAvailability fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -57,6 +58,26 @@ public class XdsEntry2 extends Resource {
             default: return "?";
           }
         }
+    }
+
+  public class XdsEntryAvailabilityEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("Approved".equals(codeString))
+          return XdsEntryAvailability.Approved;
+        if ("Deprecated".equals(codeString))
+          return XdsEntryAvailability.Deprecated;
+        throw new Exception("Unknown XdsEntryAvailability code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == XdsEntryAvailability.Approved)
+        return "Approved";
+      if (code == XdsEntryAvailability.Deprecated)
+        return "Deprecated";
+      return "?";
+      }
     }
 
     /**
@@ -77,7 +98,7 @@ public class XdsEntry2 extends Resource {
     /**
      * Deprecated documents can be included in some responses
      */
-    private XdsEntryAvailability availability;
+    private Enumeration<XdsEntryAvailability> availability;
 
     /**
      * Folders that this document is registered in
@@ -118,12 +139,26 @@ public class XdsEntry2 extends Resource {
       this.format = value;
     }
 
-    public XdsEntryAvailability getAvailability() { 
+    public Enumeration<XdsEntryAvailability> getAvailability() { 
       return this.availability;
     }
 
-    public void setAvailability(XdsEntryAvailability value) { 
+    public void setAvailability(Enumeration<XdsEntryAvailability> value) { 
       this.availability = value;
+    }
+
+    public XdsEntryAvailability getAvailabilitySimple() { 
+      return this.availability.getValue();
+    }
+
+    public void setAvailabilitySimple(XdsEntryAvailability value) { 
+      if (value == null)
+        this.availability = null;
+      else {
+        if (this.availability == null)
+          this.availability = new Enumeration<XdsEntryAvailability>();
+        this.availability.setValue(value);
+      }
     }
 
     public List<ResourceReference> getFolder() { 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -40,7 +40,8 @@ public class Prescription extends Resource {
 
     public enum PrescriptionStatus {
         active, // Patient is using the prescribed medicine
-        completed; // Prescription is no longer current
+        completed, // Prescription is no longer current
+        Null; // added to help the parsers
         public static PrescriptionStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -57,6 +58,26 @@ public class Prescription extends Resource {
             default: return "?";
           }
         }
+    }
+
+  public class PrescriptionStatusEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("active".equals(codeString))
+          return PrescriptionStatus.active;
+        if ("completed".equals(codeString))
+          return PrescriptionStatus.completed;
+        throw new Exception("Unknown PrescriptionStatus code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == PrescriptionStatus.active)
+        return "active";
+      if (code == PrescriptionStatus.completed)
+        return "completed";
+      return "?";
+      }
     }
 
     public class Dispense extends Element {
@@ -83,6 +104,20 @@ public class Prescription extends Resource {
           this.repeats = value;
         }
 
+        public int getRepeatsSimple() { 
+          return this.repeats.getValue();
+        }
+
+        public void setRepeatsSimple(int value) { 
+          if (value == -1)
+            this.repeats = null;
+          else {
+            if (this.repeats == null)
+              this.repeats = new Integer();
+            this.repeats.setValue(value);
+          }
+        }
+
         public Quantity getQuantity() { 
           return this.quantity;
         }
@@ -99,7 +134,7 @@ public class Prescription extends Resource {
           this.dispenser = value;
         }
 
-    }
+  }
 
     public class Medicine extends Element {
         /**
@@ -133,7 +168,7 @@ public class Prescription extends Resource {
           return this.inactiveIngredient;
         }
 
-    }
+  }
 
     public class ActiveIngredient extends Element {
         /**
@@ -162,7 +197,7 @@ public class Prescription extends Resource {
           this.quantity = value;
         }
 
-    }
+  }
 
     public class InactiveIngredient extends Element {
         /**
@@ -191,7 +226,7 @@ public class Prescription extends Resource {
           this.quantity = value;
         }
 
-    }
+  }
 
     public class AdministrationRequest extends Element {
         /**
@@ -237,6 +272,20 @@ public class Prescription extends Resource {
           this.description = value;
         }
 
+        public String getDescriptionSimple() { 
+          return this.description.getValue();
+        }
+
+        public void setDescriptionSimple(String value) { 
+          if (value == null)
+            this.description = null;
+          else {
+            if (this.description == null)
+              this.description = new String_();
+            this.description.setValue(value);
+          }
+        }
+
         public Ratio getTotalPeriodicDose() { 
           return this.totalPeriodicDose;
         }
@@ -253,12 +302,40 @@ public class Prescription extends Resource {
           this.start = value;
         }
 
+        public String getStartSimple() { 
+          return this.start.getValue();
+        }
+
+        public void setStartSimple(String value) { 
+          if (value == null)
+            this.start = null;
+          else {
+            if (this.start == null)
+              this.start = new DateTime();
+            this.start.setValue(value);
+          }
+        }
+
         public DateTime getEnd() { 
           return this.end;
         }
 
         public void setEnd(DateTime value) { 
           this.end = value;
+        }
+
+        public String getEndSimple() { 
+          return this.end.getValue();
+        }
+
+        public void setEndSimple(String value) { 
+          if (value == null)
+            this.end = null;
+          else {
+            if (this.end == null)
+              this.end = new DateTime();
+            this.end.setValue(value);
+          }
         }
 
         public Quantity getDuration() { 
@@ -277,11 +354,25 @@ public class Prescription extends Resource {
           this.numberOfAdministrations = value;
         }
 
+        public int getNumberOfAdministrationsSimple() { 
+          return this.numberOfAdministrations.getValue();
+        }
+
+        public void setNumberOfAdministrationsSimple(int value) { 
+          if (value == -1)
+            this.numberOfAdministrations = null;
+          else {
+            if (this.numberOfAdministrations == null)
+              this.numberOfAdministrations = new Integer();
+            this.numberOfAdministrations.setValue(value);
+          }
+        }
+
         public List<DosageInstruction> getDosageInstruction() { 
           return this.dosageInstruction;
         }
 
-    }
+  }
 
     public class DosageInstruction extends Element {
         /**
@@ -331,6 +422,20 @@ public class Prescription extends Resource {
           this.prn = value;
         }
 
+        public boolean getPrnSimple() { 
+          return this.prn.getValue();
+        }
+
+        public void setPrnSimple(boolean value) { 
+          if (value == false)
+            this.prn = null;
+          else {
+            if (this.prn == null)
+              this.prn = new Boolean();
+            this.prn.setValue(value);
+          }
+        }
+
         public List<CodeableConcept> getAdditionalInstruction() { 
           return this.additionalInstruction;
         }
@@ -363,7 +468,7 @@ public class Prescription extends Resource {
           return this.schedule;
         }
 
-    }
+  }
 
     /**
      * A identifier used in an external system and associated with this medication
@@ -373,7 +478,7 @@ public class Prescription extends Resource {
     /**
      * Actual status of the prescription
      */
-    private PrescriptionStatus status;
+    private Enumeration<PrescriptionStatus> status;
 
     /**
      * The patient the prescription is prescribing medicine for
@@ -414,12 +519,26 @@ public class Prescription extends Resource {
       return this.identifier;
     }
 
-    public PrescriptionStatus getStatus() { 
+    public Enumeration<PrescriptionStatus> getStatus() { 
       return this.status;
     }
 
-    public void setStatus(PrescriptionStatus value) { 
+    public void setStatus(Enumeration<PrescriptionStatus> value) { 
       this.status = value;
+    }
+
+    public PrescriptionStatus getStatusSimple() { 
+      return this.status.getValue();
+    }
+
+    public void setStatusSimple(PrescriptionStatus value) { 
+      if (value == null)
+        this.status = null;
+      else {
+        if (this.status == null)
+          this.status = new Enumeration<PrescriptionStatus>();
+        this.status.setValue(value);
+      }
     }
 
     public ResourceReference getPatient() { 
@@ -444,6 +563,20 @@ public class Prescription extends Resource {
 
     public void setPrescribed(DateTime value) { 
       this.prescribed = value;
+    }
+
+    public String getPrescribedSimple() { 
+      return this.prescribed.getValue();
+    }
+
+    public void setPrescribedSimple(String value) { 
+      if (value == null)
+        this.prescribed = null;
+      else {
+        if (this.prescribed == null)
+          this.prescribed = new DateTime();
+        this.prescribed.setValue(value);
+      }
     }
 
     public Dispense getDispense() { 

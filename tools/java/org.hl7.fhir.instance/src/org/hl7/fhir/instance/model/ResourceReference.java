@@ -29,8 +29,10 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
+
+import java.net.*;
 /**
  * A reference from one resource to another
  */
@@ -59,6 +61,20 @@ public class ResourceReference extends Type {
       this.type = value;
     }
 
+    public String getTypeSimple() { 
+      return this.type.getValue();
+    }
+
+    public void setTypeSimple(String value) { 
+      if (value == null)
+        this.type = null;
+      else {
+        if (this.type == null)
+          this.type = new Code();
+        this.type.setValue(value);
+      }
+    }
+
     public Uri getUrl() { 
       return this.url;
     }
@@ -67,12 +83,40 @@ public class ResourceReference extends Type {
       this.url = value;
     }
 
+    public URI getUrlSimple() { 
+      return this.url.getValue();
+    }
+
+    public void setUrlSimple(URI value) { 
+      if (value == null)
+        this.url = null;
+      else {
+        if (this.url == null)
+          this.url = new Uri();
+        this.url.setValue(value);
+      }
+    }
+
     public String_ getDisplay() { 
       return this.display;
     }
 
     public void setDisplay(String_ value) { 
       this.display = value;
+    }
+
+    public String getDisplaySimple() { 
+      return this.display.getValue();
+    }
+
+    public void setDisplaySimple(String value) { 
+      if (value == null)
+        this.display = null;
+      else {
+        if (this.display == null)
+          this.display = new String_();
+        this.display.setValue(value);
+      }
     }
 
 

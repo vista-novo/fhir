@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -41,7 +41,8 @@ public class IssueReport extends Resource {
     public enum IssueSeverity {
         error, // The issue is sufficiently important to cause the action to fail
         warning, // The issue is not important enough to cause the action to fail, but may cause it to be performed suboptimally or in a way that is not as desired
-        information; // The issue has no relation to the degree of success of the action
+        information, // The issue has no relation to the degree of success of the action
+        Null; // added to help the parsers
         public static IssueSeverity fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -63,11 +64,35 @@ public class IssueReport extends Resource {
         }
     }
 
+  public class IssueSeverityEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("error".equals(codeString))
+          return IssueSeverity.error;
+        if ("warning".equals(codeString))
+          return IssueSeverity.warning;
+        if ("information".equals(codeString))
+          return IssueSeverity.information;
+        throw new Exception("Unknown IssueSeverity code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == IssueSeverity.error)
+        return "error";
+      if (code == IssueSeverity.warning)
+        return "warning";
+      if (code == IssueSeverity.information)
+        return "information";
+      return "?";
+      }
+    }
+
     public class Issue extends Element {
         /**
          * Indicates whether the issue indicates a variation from successful processing
          */
-        private IssueSeverity severity;
+        private Enumeration<IssueSeverity> severity;
 
         /**
          * A code indicating the type of error, warning or information message.
@@ -84,12 +109,26 @@ public class IssueReport extends Resource {
          */
         private List<String_> location = new ArrayList<String_>();
 
-        public IssueSeverity getSeverity() { 
+        public Enumeration<IssueSeverity> getSeverity() { 
           return this.severity;
         }
 
-        public void setSeverity(IssueSeverity value) { 
+        public void setSeverity(Enumeration<IssueSeverity> value) { 
           this.severity = value;
+        }
+
+        public IssueSeverity getSeveritySimple() { 
+          return this.severity.getValue();
+        }
+
+        public void setSeveritySimple(IssueSeverity value) { 
+          if (value == null)
+            this.severity = null;
+          else {
+            if (this.severity == null)
+              this.severity = new Enumeration<IssueSeverity>();
+            this.severity.setValue(value);
+          }
         }
 
         public CodeableConcept getType() { 
@@ -108,11 +147,25 @@ public class IssueReport extends Resource {
           this.details = value;
         }
 
+        public String getDetailsSimple() { 
+          return this.details.getValue();
+        }
+
+        public void setDetailsSimple(String value) { 
+          if (value == null)
+            this.details = null;
+          else {
+            if (this.details == null)
+              this.details = new String_();
+            this.details.setValue(value);
+          }
+        }
+
         public List<String_> getLocation() { 
           return this.location;
         }
 
-    }
+  }
 
     /**
      * An error, warning or information message that results from a system action

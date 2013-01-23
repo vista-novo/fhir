@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -45,7 +45,8 @@ public class HumanName extends Type {
         nickname, // A name that is used to address the person in an informal manner, but is not part of their formal or usual name
         anonymous, // Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons)
         old, // This name is no longer in use (or was never correct, but retained for records)
-        maiden; // A name used prior to marriage. Marriage naming customs vary greatly around the world. This name use is for use by applications that collect and store "maiden" names. Though the concept of maiden name is often gender specific, the use of this term is not gender specific. The use of this term does not imply any particular history for a person's name, nor should the maiden name be determined algorithmically.
+        maiden, // A name used prior to marriage. Marriage naming customs vary greatly around the world. This name use is for use by applications that collect and store "maiden" names. Though the concept of maiden name is often gender specific, the use of this term is not gender specific. The use of this term does not imply any particular history for a person's name, nor should the maiden name be determined algorithmically.
+        Null; // added to help the parsers
         public static NameUse fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -79,10 +80,50 @@ public class HumanName extends Type {
         }
     }
 
+  public class NameUseEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("usual".equals(codeString))
+          return NameUse.usual;
+        if ("official".equals(codeString))
+          return NameUse.official;
+        if ("temp".equals(codeString))
+          return NameUse.temp;
+        if ("nickname".equals(codeString))
+          return NameUse.nickname;
+        if ("anonymous".equals(codeString))
+          return NameUse.anonymous;
+        if ("old".equals(codeString))
+          return NameUse.old;
+        if ("maiden".equals(codeString))
+          return NameUse.maiden;
+        throw new Exception("Unknown NameUse code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == NameUse.usual)
+        return "usual";
+      if (code == NameUse.official)
+        return "official";
+      if (code == NameUse.temp)
+        return "temp";
+      if (code == NameUse.nickname)
+        return "nickname";
+      if (code == NameUse.anonymous)
+        return "anonymous";
+      if (code == NameUse.old)
+        return "old";
+      if (code == NameUse.maiden)
+        return "maiden";
+      return "?";
+      }
+    }
+
     /**
      * Identifies the purpose for this name
      */
-    private NameUse use;
+    private Enumeration<NameUse> use;
 
     /**
      * a full text representation of the name
@@ -114,12 +155,26 @@ public class HumanName extends Type {
      */
     private Period period;
 
-    public NameUse getUse() { 
+    public Enumeration<NameUse> getUse() { 
       return this.use;
     }
 
-    public void setUse(NameUse value) { 
+    public void setUse(Enumeration<NameUse> value) { 
       this.use = value;
+    }
+
+    public NameUse getUseSimple() { 
+      return this.use.getValue();
+    }
+
+    public void setUseSimple(NameUse value) { 
+      if (value == null)
+        this.use = null;
+      else {
+        if (this.use == null)
+          this.use = new Enumeration<NameUse>();
+        this.use.setValue(value);
+      }
     }
 
     public String_ getText() { 
@@ -128,6 +183,20 @@ public class HumanName extends Type {
 
     public void setText(String_ value) { 
       this.text = value;
+    }
+
+    public String getTextSimple() { 
+      return this.text.getValue();
+    }
+
+    public void setTextSimple(String value) { 
+      if (value == null)
+        this.text = null;
+      else {
+        if (this.text == null)
+          this.text = new String_();
+        this.text.setValue(value);
+      }
     }
 
     public List<String_> getFamily() { 

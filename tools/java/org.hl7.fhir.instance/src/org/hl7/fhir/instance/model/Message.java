@@ -29,10 +29,11 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
+import java.net.*;
 /**
  * A transmission requesting action on a bundle of one or more resources or a response to such a request
  */
@@ -43,7 +44,8 @@ public class Message extends Resource {
         error, // Some internal unexpected error occurred - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required
         rejection, // The message was rejected because of some content in it. There is no point in re-sending without change. The response narrative must describe what the issue is.
         rules, // The message was rejected because of some event-specific business rules, and it may be possible to modify the request and re-submit (as a different request). The response must include an Issue report that describes what problem is
-        undeliverable; // A middleware agent was unable to deliver the message to its intended destination
+        undeliverable, // A middleware agent was unable to deliver the message to its intended destination
+        Null; // added to help the parsers
         public static ResponseCode fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -71,6 +73,38 @@ public class Message extends Resource {
         }
     }
 
+  public class ResponseCodeEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("ok".equals(codeString))
+          return ResponseCode.ok;
+        if ("error".equals(codeString))
+          return ResponseCode.error;
+        if ("rejection".equals(codeString))
+          return ResponseCode.rejection;
+        if ("rules".equals(codeString))
+          return ResponseCode.rules;
+        if ("undeliverable".equals(codeString))
+          return ResponseCode.undeliverable;
+        throw new Exception("Unknown ResponseCode code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == ResponseCode.ok)
+        return "ok";
+      if (code == ResponseCode.error)
+        return "error";
+      if (code == ResponseCode.rejection)
+        return "rejection";
+      if (code == ResponseCode.rules)
+        return "rules";
+      if (code == ResponseCode.undeliverable)
+        return "undeliverable";
+      return "?";
+      }
+    }
+
     public class Response extends Element {
         /**
          * The id of the message that this a response to
@@ -80,7 +114,7 @@ public class Message extends Resource {
         /**
          * Code that identifies the type of response to the message - whether it was successful or not, and whether it should be resent or not
          */
-        private ResponseCode code;
+        private Enumeration<ResponseCode> code;
 
         /**
          * Full details of any issues found in the message
@@ -95,12 +129,40 @@ public class Message extends Resource {
           this.id = value;
         }
 
-        public ResponseCode getCode() { 
+        public String getIdSimple() { 
+          return this.id.getValue();
+        }
+
+        public void setIdSimple(String value) { 
+          if (value == null)
+            this.id = null;
+          else {
+            if (this.id == null)
+              this.id = new Id();
+            this.id.setValue(value);
+          }
+        }
+
+        public Enumeration<ResponseCode> getCode() { 
           return this.code;
         }
 
-        public void setCode(ResponseCode value) { 
+        public void setCode(Enumeration<ResponseCode> value) { 
           this.code = value;
+        }
+
+        public ResponseCode getCodeSimple() { 
+          return this.code.getValue();
+        }
+
+        public void setCodeSimple(ResponseCode value) { 
+          if (value == null)
+            this.code = null;
+          else {
+            if (this.code == null)
+              this.code = new Enumeration<ResponseCode>();
+            this.code.setValue(value);
+          }
         }
 
         public ResourceReference getDetails() { 
@@ -111,7 +173,7 @@ public class Message extends Resource {
           this.details = value;
         }
 
-    }
+  }
 
     public class Source extends Element {
         /**
@@ -147,6 +209,20 @@ public class Message extends Resource {
           this.name = value;
         }
 
+        public String getNameSimple() { 
+          return this.name.getValue();
+        }
+
+        public void setNameSimple(String value) { 
+          if (value == null)
+            this.name = null;
+          else {
+            if (this.name == null)
+              this.name = new String_();
+            this.name.setValue(value);
+          }
+        }
+
         public String_ getSoftware() { 
           return this.software;
         }
@@ -155,12 +231,40 @@ public class Message extends Resource {
           this.software = value;
         }
 
+        public String getSoftwareSimple() { 
+          return this.software.getValue();
+        }
+
+        public void setSoftwareSimple(String value) { 
+          if (value == null)
+            this.software = null;
+          else {
+            if (this.software == null)
+              this.software = new String_();
+            this.software.setValue(value);
+          }
+        }
+
         public String_ getVersion() { 
           return this.version;
         }
 
         public void setVersion(String_ value) { 
           this.version = value;
+        }
+
+        public String getVersionSimple() { 
+          return this.version.getValue();
+        }
+
+        public void setVersionSimple(String value) { 
+          if (value == null)
+            this.version = null;
+          else {
+            if (this.version == null)
+              this.version = new String_();
+            this.version.setValue(value);
+          }
         }
 
         public Contact getContact() { 
@@ -179,7 +283,21 @@ public class Message extends Resource {
           this.endpoint = value;
         }
 
-    }
+        public URI getEndpointSimple() { 
+          return this.endpoint.getValue();
+        }
+
+        public void setEndpointSimple(URI value) { 
+          if (value == null)
+            this.endpoint = null;
+          else {
+            if (this.endpoint == null)
+              this.endpoint = new Uri();
+            this.endpoint.setValue(value);
+          }
+        }
+
+  }
 
     public class Destination extends Element {
         /**
@@ -205,6 +323,20 @@ public class Message extends Resource {
           this.name = value;
         }
 
+        public String getNameSimple() { 
+          return this.name.getValue();
+        }
+
+        public void setNameSimple(String value) { 
+          if (value == null)
+            this.name = null;
+          else {
+            if (this.name == null)
+              this.name = new String_();
+            this.name.setValue(value);
+          }
+        }
+
         public ResourceReference getTarget() { 
           return this.target;
         }
@@ -221,7 +353,21 @@ public class Message extends Resource {
           this.endpoint = value;
         }
 
-    }
+        public URI getEndpointSimple() { 
+          return this.endpoint.getValue();
+        }
+
+        public void setEndpointSimple(URI value) { 
+          if (value == null)
+            this.endpoint = null;
+          else {
+            if (this.endpoint == null)
+              this.endpoint = new Uri();
+            this.endpoint.setValue(value);
+          }
+        }
+
+  }
 
     /**
      * The identifier of this message
@@ -296,6 +442,20 @@ public class Message extends Resource {
       this.id = value;
     }
 
+    public String getIdSimple() { 
+      return this.id.getValue();
+    }
+
+    public void setIdSimple(String value) { 
+      if (value == null)
+        this.id = null;
+      else {
+        if (this.id == null)
+          this.id = new Id();
+        this.id.setValue(value);
+      }
+    }
+
     public Instant getInstant() { 
       return this.instant;
     }
@@ -304,12 +464,40 @@ public class Message extends Resource {
       this.instant = value;
     }
 
+    public Calendar getInstantSimple() { 
+      return this.instant.getValue();
+    }
+
+    public void setInstantSimple(Calendar value) { 
+      if (value == null)
+        this.instant = null;
+      else {
+        if (this.instant == null)
+          this.instant = new Instant();
+        this.instant.setValue(value);
+      }
+    }
+
     public Code getEvent() { 
       return this.event;
     }
 
     public void setEvent(Code value) { 
       this.event = value;
+    }
+
+    public String getEventSimple() { 
+      return this.event.getValue();
+    }
+
+    public void setEventSimple(String value) { 
+      if (value == null)
+        this.event = null;
+      else {
+        if (this.event == null)
+          this.event = new Code();
+        this.event.setValue(value);
+      }
     }
 
     public Response getResponse() { 

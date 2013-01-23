@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -42,7 +42,8 @@ public class Address extends Type {
         home, // A communication address at a home
         work, // An office address. First choice for business related contacts during business hours
         temp, // A temporary address. The period can provide more detailed information
-        old; // This address is no longer in use (or was never correct, but retained for records)
+        old, // This address is no longer in use (or was never correct, but retained for records)
+        Null; // added to help the parsers
         public static AddressUse fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -67,10 +68,38 @@ public class Address extends Type {
         }
     }
 
+  public class AddressUseEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("home".equals(codeString))
+          return AddressUse.home;
+        if ("work".equals(codeString))
+          return AddressUse.work;
+        if ("temp".equals(codeString))
+          return AddressUse.temp;
+        if ("old".equals(codeString))
+          return AddressUse.old;
+        throw new Exception("Unknown AddressUse code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == AddressUse.home)
+        return "home";
+      if (code == AddressUse.work)
+        return "work";
+      if (code == AddressUse.temp)
+        return "temp";
+      if (code == AddressUse.old)
+        return "old";
+      return "?";
+      }
+    }
+
     /**
      * Identifies the intended purpose of this address
      */
-    private AddressUse use;
+    private Enumeration<AddressUse> use;
 
     /**
      * a full text representation of the address
@@ -107,12 +136,26 @@ public class Address extends Type {
      */
     private Period period;
 
-    public AddressUse getUse() { 
+    public Enumeration<AddressUse> getUse() { 
       return this.use;
     }
 
-    public void setUse(AddressUse value) { 
+    public void setUse(Enumeration<AddressUse> value) { 
       this.use = value;
+    }
+
+    public AddressUse getUseSimple() { 
+      return this.use.getValue();
+    }
+
+    public void setUseSimple(AddressUse value) { 
+      if (value == null)
+        this.use = null;
+      else {
+        if (this.use == null)
+          this.use = new Enumeration<AddressUse>();
+        this.use.setValue(value);
+      }
     }
 
     public String_ getText() { 
@@ -121,6 +164,20 @@ public class Address extends Type {
 
     public void setText(String_ value) { 
       this.text = value;
+    }
+
+    public String getTextSimple() { 
+      return this.text.getValue();
+    }
+
+    public void setTextSimple(String value) { 
+      if (value == null)
+        this.text = null;
+      else {
+        if (this.text == null)
+          this.text = new String_();
+        this.text.setValue(value);
+      }
     }
 
     public List<String_> getLine() { 
@@ -135,12 +192,40 @@ public class Address extends Type {
       this.city = value;
     }
 
+    public String getCitySimple() { 
+      return this.city.getValue();
+    }
+
+    public void setCitySimple(String value) { 
+      if (value == null)
+        this.city = null;
+      else {
+        if (this.city == null)
+          this.city = new String_();
+        this.city.setValue(value);
+      }
+    }
+
     public String_ getState() { 
       return this.state;
     }
 
     public void setState(String_ value) { 
       this.state = value;
+    }
+
+    public String getStateSimple() { 
+      return this.state.getValue();
+    }
+
+    public void setStateSimple(String value) { 
+      if (value == null)
+        this.state = null;
+      else {
+        if (this.state == null)
+          this.state = new String_();
+        this.state.setValue(value);
+      }
     }
 
     public String_ getZip() { 
@@ -151,12 +236,40 @@ public class Address extends Type {
       this.zip = value;
     }
 
+    public String getZipSimple() { 
+      return this.zip.getValue();
+    }
+
+    public void setZipSimple(String value) { 
+      if (value == null)
+        this.zip = null;
+      else {
+        if (this.zip == null)
+          this.zip = new String_();
+        this.zip.setValue(value);
+      }
+    }
+
     public String_ getCountry() { 
       return this.country;
     }
 
     public void setCountry(String_ value) { 
       this.country = value;
+    }
+
+    public String getCountrySimple() { 
+      return this.country.getValue();
+    }
+
+    public void setCountrySimple(String value) { 
+      if (value == null)
+        this.country = null;
+      else {
+        if (this.country == null)
+          this.country = new String_();
+        this.country.setValue(value);
+      }
     }
 
     public Period getPeriod() { 

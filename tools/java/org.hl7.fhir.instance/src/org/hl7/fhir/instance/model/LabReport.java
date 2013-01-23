@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -44,7 +44,8 @@ public class LabReport extends Resource {
         final_, // The result is complete and verified by the responsible pathologist
         amended, // The result has been modified subsequent to being Final, and is complete and verified by the responsible pathologist
         cancelled, // The result is unavailable because the test was not started or not completed (also sometimes called "aborted")
-        withdrawn; // The result has been withdrawn following previous Final release
+        withdrawn, // The result has been withdrawn following previous Final release
+        Null; // added to help the parsers
         public static LabReportStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -75,6 +76,42 @@ public class LabReport extends Resource {
         }
     }
 
+  public class LabReportStatusEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("registered".equals(codeString))
+          return LabReportStatus.registered;
+        if ("interim".equals(codeString))
+          return LabReportStatus.interim;
+        if ("final".equals(codeString))
+          return LabReportStatus.final_;
+        if ("amended".equals(codeString))
+          return LabReportStatus.amended;
+        if ("cancelled".equals(codeString))
+          return LabReportStatus.cancelled;
+        if ("withdrawn".equals(codeString))
+          return LabReportStatus.withdrawn;
+        throw new Exception("Unknown LabReportStatus code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == LabReportStatus.registered)
+        return "registered";
+      if (code == LabReportStatus.interim)
+        return "interim";
+      if (code == LabReportStatus.final_)
+        return "final";
+      if (code == LabReportStatus.amended)
+        return "amended";
+      if (code == LabReportStatus.cancelled)
+        return "cancelled";
+      if (code == LabReportStatus.withdrawn)
+        return "withdrawn";
+      return "?";
+      }
+    }
+
     public enum LabResultFlag {
         Minus, // 
         MinusMinus, // 
@@ -84,7 +121,8 @@ public class LabReport extends Resource {
         PlusPlusPlus, // 
         R, // Resistent
         S, // Moderately  Susceptible
-        SS; // Very Susceptible
+        SS, // Very Susceptible
+        Null; // added to help the parsers
         public static LabResultFlag fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -122,6 +160,54 @@ public class LabReport extends Resource {
             default: return "?";
           }
         }
+    }
+
+  public class LabResultFlagEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("-".equals(codeString))
+          return LabResultFlag.Minus;
+        if ("--".equals(codeString))
+          return LabResultFlag.MinusMinus;
+        if ("---".equals(codeString))
+          return LabResultFlag.MinusMinusMinus;
+        if ("+".equals(codeString))
+          return LabResultFlag.Plus;
+        if ("++".equals(codeString))
+          return LabResultFlag.PlusPlus;
+        if ("+++".equals(codeString))
+          return LabResultFlag.PlusPlusPlus;
+        if ("R".equals(codeString))
+          return LabResultFlag.R;
+        if ("S".equals(codeString))
+          return LabResultFlag.S;
+        if ("SS".equals(codeString))
+          return LabResultFlag.SS;
+        throw new Exception("Unknown LabResultFlag code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == LabResultFlag.Minus)
+        return "-";
+      if (code == LabResultFlag.MinusMinus)
+        return "--";
+      if (code == LabResultFlag.MinusMinusMinus)
+        return "---";
+      if (code == LabResultFlag.Plus)
+        return "+";
+      if (code == LabResultFlag.PlusPlus)
+        return "++";
+      if (code == LabResultFlag.PlusPlusPlus)
+        return "+++";
+      if (code == LabResultFlag.R)
+        return "R";
+      if (code == LabResultFlag.S)
+        return "S";
+      if (code == LabResultFlag.SS)
+        return "SS";
+      return "?";
+      }
     }
 
     public class RequestDetail extends Element {
@@ -186,7 +272,7 @@ public class LabReport extends Resource {
           this.clinicalInfo = value;
         }
 
-    }
+  }
 
     public class ResultGroup extends Element {
         /**
@@ -224,7 +310,7 @@ public class LabReport extends Resource {
           return this.result;
         }
 
-    }
+  }
 
     public class Result extends Element {
         /**
@@ -240,12 +326,12 @@ public class LabReport extends Resource {
         /**
          * Flag indicating the abnormal status of the result
          */
-        private LabResultFlag flag;
+        private Enumeration<LabResultFlag> flag;
 
         /**
          * The status of the result value
          */
-        private LabReportStatus status;
+        private Enumeration<LabReportStatus> status;
 
         /**
          * May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result.
@@ -273,20 +359,48 @@ public class LabReport extends Resource {
           this.value = value;
         }
 
-        public LabResultFlag getFlag() { 
+        public Enumeration<LabResultFlag> getFlag() { 
           return this.flag;
         }
 
-        public void setFlag(LabResultFlag value) { 
+        public void setFlag(Enumeration<LabResultFlag> value) { 
           this.flag = value;
         }
 
-        public LabReportStatus getStatus() { 
+        public LabResultFlag getFlagSimple() { 
+          return this.flag.getValue();
+        }
+
+        public void setFlagSimple(LabResultFlag value) { 
+          if (value == null)
+            this.flag = null;
+          else {
+            if (this.flag == null)
+              this.flag = new Enumeration<LabResultFlag>();
+            this.flag.setValue(value);
+          }
+        }
+
+        public Enumeration<LabReportStatus> getStatus() { 
           return this.status;
         }
 
-        public void setStatus(LabReportStatus value) { 
+        public void setStatus(Enumeration<LabReportStatus> value) { 
           this.status = value;
+        }
+
+        public LabReportStatus getStatusSimple() { 
+          return this.status.getValue();
+        }
+
+        public void setStatusSimple(LabReportStatus value) { 
+          if (value == null)
+            this.status = null;
+          else {
+            if (this.status == null)
+              this.status = new Enumeration<LabReportStatus>();
+            this.status.setValue(value);
+          }
         }
 
         public String_ getComments() { 
@@ -297,11 +411,25 @@ public class LabReport extends Resource {
           this.comments = value;
         }
 
+        public String getCommentsSimple() { 
+          return this.comments.getValue();
+        }
+
+        public void setCommentsSimple(String value) { 
+          if (value == null)
+            this.comments = null;
+          else {
+            if (this.comments == null)
+              this.comments = new String_();
+            this.comments.setValue(value);
+          }
+        }
+
         public List<ReferenceRange> getReferenceRange() { 
           return this.referenceRange;
         }
 
-    }
+  }
 
     public class ReferenceRange extends Element {
         /**
@@ -330,12 +458,12 @@ public class LabReport extends Resource {
           this.range = value;
         }
 
-    }
+  }
 
     /**
      * The status of the pathology test result as a whole
      */
-    private LabReportStatus status;
+    private Enumeration<LabReportStatus> status;
 
     /**
      * The date and/or time that the result was issued from the source for the recorded ‘Test result status
@@ -407,12 +535,26 @@ public class LabReport extends Resource {
      */
     private List<Attachment> representation = new ArrayList<Attachment>();
 
-    public LabReportStatus getStatus() { 
+    public Enumeration<LabReportStatus> getStatus() { 
       return this.status;
     }
 
-    public void setStatus(LabReportStatus value) { 
+    public void setStatus(Enumeration<LabReportStatus> value) { 
       this.status = value;
+    }
+
+    public LabReportStatus getStatusSimple() { 
+      return this.status.getValue();
+    }
+
+    public void setStatusSimple(LabReportStatus value) { 
+      if (value == null)
+        this.status = null;
+      else {
+        if (this.status == null)
+          this.status = new Enumeration<LabReportStatus>();
+        this.status.setValue(value);
+      }
     }
 
     public Instant getIssued() { 
@@ -421,6 +563,20 @@ public class LabReport extends Resource {
 
     public void setIssued(Instant value) { 
       this.issued = value;
+    }
+
+    public Calendar getIssuedSimple() { 
+      return this.issued.getValue();
+    }
+
+    public void setIssuedSimple(Calendar value) { 
+      if (value == null)
+        this.issued = null;
+      else {
+        if (this.issued == null)
+          this.issued = new Instant();
+        this.issued.setValue(value);
+      }
     }
 
     public ResourceReference getPatient() { 
@@ -483,6 +639,20 @@ public class LabReport extends Resource {
       this.diagnosticTime = value;
     }
 
+    public String getDiagnosticTimeSimple() { 
+      return this.diagnosticTime.getValue();
+    }
+
+    public void setDiagnosticTimeSimple(String value) { 
+      if (value == null)
+        this.diagnosticTime = null;
+      else {
+        if (this.diagnosticTime == null)
+          this.diagnosticTime = new DateTime();
+        this.diagnosticTime.setValue(value);
+      }
+    }
+
     public List<ResourceReference> getSpecimen() { 
       return this.specimen;
     }
@@ -497,6 +667,20 @@ public class LabReport extends Resource {
 
     public void setConclusion(String_ value) { 
       this.conclusion = value;
+    }
+
+    public String getConclusionSimple() { 
+      return this.conclusion.getValue();
+    }
+
+    public void setConclusionSimple(String value) { 
+      if (value == null)
+        this.conclusion = null;
+      else {
+        if (this.conclusion == null)
+          this.conclusion = new String_();
+        this.conclusion.setValue(value);
+      }
     }
 
     public List<CodeableConcept> getCodedDiagnosis() { 

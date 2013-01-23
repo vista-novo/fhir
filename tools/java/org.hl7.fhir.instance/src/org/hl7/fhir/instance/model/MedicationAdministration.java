@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jan 20, 2013 20:00+1100 for FHIR v0.07
+// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -44,7 +44,8 @@ public class MedicationAdministration extends Resource {
         active, // The administration of the medication has started and is currently in progress.
         paused, // The administration of the medication has started but is currently stopped with a firm intention of restarting.
         completed, // The administration of the medication has finished
-        nullified; // The administration of the medication was recorded in error and the record should now be disregarded.
+        nullified, // The administration of the medication was recorded in error and the record should now be disregarded.
+        Null; // added to help the parsers
         public static MedAdmStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -69,10 +70,38 @@ public class MedicationAdministration extends Resource {
         }
     }
 
+  public class MedAdmStatusEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("active".equals(codeString))
+          return MedAdmStatus.active;
+        if ("paused".equals(codeString))
+          return MedAdmStatus.paused;
+        if ("completed".equals(codeString))
+          return MedAdmStatus.completed;
+        if ("nullified".equals(codeString))
+          return MedAdmStatus.nullified;
+        throw new Exception("Unknown MedAdmStatus code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == MedAdmStatus.active)
+        return "active";
+      if (code == MedAdmStatus.paused)
+        return "paused";
+      if (code == MedAdmStatus.completed)
+        return "completed";
+      if (code == MedAdmStatus.nullified)
+        return "nullified";
+      return "?";
+      }
+    }
+
     /**
      * Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.
      */
-    private MedAdmStatus administrationEventStatus;
+    private Enumeration<MedAdmStatus> administrationEventStatus;
 
     /**
      * Set this to true if the record is saying that the medication was NOT administered.
@@ -150,12 +179,26 @@ Example 250ml/30min
      */
     private List<ResourceReference> administrationDevice = new ArrayList<ResourceReference>();
 
-    public MedAdmStatus getAdministrationEventStatus() { 
+    public Enumeration<MedAdmStatus> getAdministrationEventStatus() { 
       return this.administrationEventStatus;
     }
 
-    public void setAdministrationEventStatus(MedAdmStatus value) { 
+    public void setAdministrationEventStatus(Enumeration<MedAdmStatus> value) { 
       this.administrationEventStatus = value;
+    }
+
+    public MedAdmStatus getAdministrationEventStatusSimple() { 
+      return this.administrationEventStatus.getValue();
+    }
+
+    public void setAdministrationEventStatusSimple(MedAdmStatus value) { 
+      if (value == null)
+        this.administrationEventStatus = null;
+      else {
+        if (this.administrationEventStatus == null)
+          this.administrationEventStatus = new Enumeration<MedAdmStatus>();
+        this.administrationEventStatus.setValue(value);
+      }
     }
 
     public Boolean getIsNegated() { 
@@ -164,6 +207,20 @@ Example 250ml/30min
 
     public void setIsNegated(Boolean value) { 
       this.isNegated = value;
+    }
+
+    public boolean getIsNegatedSimple() { 
+      return this.isNegated.getValue();
+    }
+
+    public void setIsNegatedSimple(boolean value) { 
+      if (value == false)
+        this.isNegated = null;
+      else {
+        if (this.isNegated == null)
+          this.isNegated = new Boolean();
+        this.isNegated.setValue(value);
+      }
     }
 
     public List<CodeableConcept> getNegatedReason() { 
