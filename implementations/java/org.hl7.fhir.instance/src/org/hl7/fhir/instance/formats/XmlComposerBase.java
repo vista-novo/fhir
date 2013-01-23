@@ -32,7 +32,9 @@ POSSIBILITY OF SUCH DAMAGE.
 
 import java.io.OutputStream;
 import java.math.BigDecimal;
+import java.net.URI;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import org.apache.commons.codec.binary.Base64;
 import org.hl7.fhir.instance.model.*;
@@ -80,49 +82,78 @@ public abstract class XmlComposerBase extends XmlBase {
     composeElementAttributes(type);
   }
     
-  protected void composeString(String name, String value) throws Exception {
-    if (value != null)
-      xml.element(FHIR_NS, name, value);
+  protected String toString(String value) {
+    return value;
   }
   
-  protected void composeURI(String name, java.net.URI value) throws Exception {
-    if (value != null)
-      xml.element(FHIR_NS, name, value.toString());
+  protected String toString(int value) {
+    return java.lang.Integer.toString(value);
   }
   
-  protected void composeUri(String name, java.net.URI value) throws Exception {
-    if (value != null) {
-      xml.element(FHIR_NS, name, value.toString());
-    }
-  }  
-  protected void composeBigDecimal(String name, BigDecimal value) throws Exception {
-    if (value != null)
-      xml.element(FHIR_NS, name, value.toString());
+  protected String toString(boolean value) {
+    return java.lang.Boolean.toString(value);
   }
   
-  protected void composeDecimal(String name, BigDecimal value) throws Exception {
-    if (value != null) {
-      xml.element(FHIR_NS, name, value.toString());
-    }
+  protected String toString(BigDecimal value) {
+    return value.toString();
   }
   
-
-  protected void composeInt(String name, java.lang.Integer value) throws Exception {
-    if (value != null)
-      xml.element(FHIR_NS, name, value.toString());
+  protected String toString(URI value) {
+    return value.toString();
   }
 
-  protected void composeInteger(String name, java.lang.Integer value) throws Exception {
-    if (value != null) {
-      xml.element(FHIR_NS, name, java.lang.Integer.toString(value));
-    }
+  protected String toString(byte[] value) {
+    byte[] encodeBase64 = Base64.encodeBase64(value);
+    return new String(encodeBase64);
   }
   
-  protected void composeBool(String name, java.lang.Boolean value) throws Exception {
-    if (value != null)
-      xml.element(FHIR_NS, name, value.toString());
+  protected String toString(Calendar value) {
+    return dateToXml(value);
   }
   
+//  protected void composeString(String name, String value) throws Exception {
+//    if (value != null)
+//      xml.element(FHIR_NS, name, value);
+//  }
+//  
+//  protected void composeURI(String name, java.net.URI value) throws Exception {
+//    if (value != null)
+//      xml.element(FHIR_NS, name, value.toString());
+//  }
+//  
+//  protected void composeUri(String name, java.net.URI value) throws Exception {
+//    if (value != null) {
+//      xml.element(FHIR_NS, name, value.toString());
+//    }
+//  }  
+//  protected void composeBigDecimal(String name, BigDecimal value) throws Exception {
+//    if (value != null)
+//      xml.element(FHIR_NS, name, value.toString());
+//  }
+//  
+//  protected void composeDecimal(String name, BigDecimal value) throws Exception {
+//    if (value != null) {
+//      xml.element(FHIR_NS, name, value.toString());
+//    }
+//  }
+//  
+//
+//  protected void composeInt(String name, java.lang.Integer value) throws Exception {
+//    if (value != null)
+//      xml.element(FHIR_NS, name, value.toString());
+//  }
+//
+//  protected void composeInteger(String name, java.lang.Integer value) throws Exception {
+//    if (value != null) {
+//      xml.element(FHIR_NS, name, java.lang.Integer.toString(value));
+//    }
+//  }
+//  
+//  protected void composeBool(String name, java.lang.Boolean value) throws Exception {
+//    if (value != null)
+//      xml.element(FHIR_NS, name, value.toString());
+//  }
+//  
   protected void composeXhtml(String name, XhtmlNode html) throws Exception {
     XhtmlComposer comp = new XhtmlComposer();
     // name is also found in the html and should the same
@@ -134,162 +165,162 @@ public abstract class XmlComposerBase extends XmlBase {
     xml.setPretty(oldPretty);
   }
   
-  protected void composeBytes(String name, byte[] content) throws Exception {
-    if (content != null) {
-      byte[] encodeBase64 = Base64.encodeBase64(content);
-      composeString(name, new String(encodeBase64));
-    }
-  }  
-
-  protected void composeBase64Binary(String name, Base64Binary value) throws Exception {
-    if (value != null) {
-      composeTypeAttributes(value);
-      composeBytes(name, value.getValue());
-    }
-  }
-  
-  protected void composeBase64Binary(String name, byte[] value) throws Exception {
-    composeBytes(name, value);
-  }
-  
-  
-  protected void composeId(String name, Id value) throws Exception {
-    if (value != null) {
-      composeTypeAttributes(value);
-      xml.element(FHIR_NS, name, value.getValue());
-    }
-  }
-  
-  protected void composeId(String name, String value) throws Exception {
-    if (value != null) {
-      xml.element(FHIR_NS, name, value);
-    }
-  }
-  
-  
-  protected void composeCode(String name, Code value) throws Exception {
-    if (value != null) {
-      composeTypeAttributes(value);
-      xml.element(FHIR_NS, name, value.getValue());
-    }
-  }
-  
-  protected void composeCode(String name, String value) throws Exception {
-    if (value != null) {
-      xml.element(FHIR_NS, name, value);
-    }
-  }
-  
-  
-  protected void composeOid(String name, Oid value) throws Exception {
-    if (value != null) {
-      composeTypeAttributes(value);
-      xml.element(FHIR_NS, name, value.getValue());
-    }
-  }
-  
-  protected void composeUuid(String name, Uuid value) throws Exception {
-    if (value != null) {
-      composeTypeAttributes(value);
-      xml.element(FHIR_NS, name, value.getValue());
-    }
-  }
-  
-  protected void composeSid(String name, Sid value) throws Exception {
-    if (value != null) {
-      composeTypeAttributes(value);
-      xml.element(FHIR_NS, name, value.getValue().toString());
-    }
-  }
-
-  protected void composeUri(String name, Uri value) throws Exception {
-    if (value != null) {
-      composeTypeAttributes(value);
-      xml.element(FHIR_NS, name, value.getValue().toString());
-    }
-  }
-
-  protected void composeDecimal(String name, Decimal value) throws Exception {
-    if (value != null) {
-      composeTypeAttributes(value);
-      if (value.getOriginal() != null)
-        xml.element(FHIR_NS, name, value.getOriginal());
-      else
-        xml.element(FHIR_NS, name, value.getValue().toString());
-    }
-  }
-  
-  protected void composeString_(String name, String_ value) throws Exception {
-    if (value != null) {
-      composeTypeAttributes(value);
-      xml.element(FHIR_NS, name, value.getValue());
-    }
-  }
-  
-  protected void composeBoolean(String name, Boolean value) throws Exception {
-    if (value != null) {
-      composeTypeAttributes(value);
-      if (value.getOriginal() != null)
-        xml.element(FHIR_NS, name, value.getOriginal());
-      else
-        xml.element(FHIR_NS, name, java.lang.Boolean.toString(value.getValue()));
-    }
-  }
-  
-  protected void composeBoolean(String name, java.lang.Boolean value) throws Exception {
-    if (value != null) {
-      xml.element(FHIR_NS, name, value.toString());
-    }
-  }
-    
-  protected void composeInstant(String name, Instant value) throws Exception {
-    if (value != null) {
-      composeTypeAttributes(value);
-      xml.element(FHIR_NS, name, dateToXml(value.getValue()));
-    }
-  }
-  
-  protected void composeInteger(String name, Integer value) throws Exception {
-    if (value != null) {
-      composeTypeAttributes(value);
-      if (value.getOriginal() != null)
-        xml.element(FHIR_NS, name, value.getOriginal());
-      else
-        xml.element(FHIR_NS, name, java.lang.Integer.toString(value.getValue()));
-    }
-  }
-  
-  protected void composeDate(String name, java.util.Calendar value) throws Exception {
-	  if (value != null) {
-	      xml.element(FHIR_NS, name, dateToXml(value));
-	  }
-  }
-	  
-  protected void composeDate(String name, Date value) throws Exception {
-    if (value != null) {
-      composeTypeAttributes(value);
-      xml.element(FHIR_NS, name, value.getValue());
-    }
-  }
-  
-  protected void composeDateTime(String name, DateTime value) throws Exception {
-    if (value != null) {
-      composeTypeAttributes(value);
-      xml.element(FHIR_NS, name, value.getValue());
-    }
-  }
-
-    protected void composeDateTime(String name, String value) throws Exception {
-    if (value != null) {
-      xml.element(FHIR_NS, name, value);
-    }
-  }
-
-  protected void composeString_(String name, String value) throws Exception {
-    if (value != null) {
-      xml.element(FHIR_NS, name, value);
-    }
-  }
-  
+//  protected void composeBytes(String name, byte[] content) throws Exception {
+//    if (content != null) {
+//      byte[] encodeBase64 = Base64.encodeBase64(content);
+//      composeString(name, new String(encodeBase64));
+//    }
+//  }  
+//
+//  protected void composeBase64Binary(String name, Base64Binary value) throws Exception {
+//    if (value != null) {
+//      composeTypeAttributes(value);
+//      composeBytes(name, value.getValue());
+//    }
+//  }
+//  
+//  protected void composeBase64Binary(String name, byte[] value) throws Exception {
+//    composeBytes(name, value);
+//  }
+//  
+//  
+//  protected void composeId(String name, Id value) throws Exception {
+//    if (value != null) {
+//      composeTypeAttributes(value);
+//      xml.element(FHIR_NS, name, value.getValue());
+//    }
+//  }
+//  
+//  protected void composeId(String name, String value) throws Exception {
+//    if (value != null) {
+//      xml.element(FHIR_NS, name, value);
+//    }
+//  }
+//  
+//  
+//  protected void composeCode(String name, Code value) throws Exception {
+//    if (value != null) {
+//      composeTypeAttributes(value);
+//      xml.element(FHIR_NS, name, value.getValue());
+//    }
+//  }
+//  
+//  protected void composeCode(String name, String value) throws Exception {
+//    if (value != null) {
+//      xml.element(FHIR_NS, name, value);
+//    }
+//  }
+//  
+//  
+//  protected void composeOid(String name, Oid value) throws Exception {
+//    if (value != null) {
+//      composeTypeAttributes(value);
+//      xml.element(FHIR_NS, name, value.getValue());
+//    }
+//  }
+//  
+//  protected void composeUuid(String name, Uuid value) throws Exception {
+//    if (value != null) {
+//      composeTypeAttributes(value);
+//      xml.element(FHIR_NS, name, value.getValue());
+//    }
+//  }
+//  
+//  protected void composeSid(String name, Sid value) throws Exception {
+//    if (value != null) {
+//      composeTypeAttributes(value);
+//      xml.element(FHIR_NS, name, value.getValue().toString());
+//    }
+//  }
+//
+//  protected void composeUri(String name, Uri value) throws Exception {
+//    if (value != null) {
+//      composeTypeAttributes(value);
+//      xml.element(FHIR_NS, name, value.getValue().toString());
+//    }
+//  }
+//
+//  protected void composeDecimal(String name, Decimal value) throws Exception {
+//    if (value != null) {
+//      composeTypeAttributes(value);
+//      if (value.getOriginal() != null)
+//        xml.element(FHIR_NS, name, value.getOriginal());
+//      else
+//        xml.element(FHIR_NS, name, value.getValue().toString());
+//    }
+//  }
+//  
+//  protected void composeString_(String name, String_ value) throws Exception {
+//    if (value != null) {
+//      composeTypeAttributes(value);
+//      xml.element(FHIR_NS, name, value.getValue());
+//    }
+//  }
+//  
+//  protected void composeBoolean(String name, Boolean value) throws Exception {
+//    if (value != null) {
+//      composeTypeAttributes(value);
+//      if (value.getOriginal() != null)
+//        xml.element(FHIR_NS, name, value.getOriginal());
+//      else
+//        xml.element(FHIR_NS, name, java.lang.Boolean.toString(value.getValue()));
+//    }
+//  }
+//  
+//  protected void composeBoolean(String name, java.lang.Boolean value) throws Exception {
+//    if (value != null) {
+//      xml.element(FHIR_NS, name, value.toString());
+//    }
+//  }
+//    
+//  protected void composeInstant(String name, Instant value) throws Exception {
+//    if (value != null) {
+//      composeTypeAttributes(value);
+//      xml.element(FHIR_NS, name, dateToXml(value.getValue()));
+//    }
+//  }
+//  
+//  protected void composeInteger(String name, Integer value) throws Exception {
+//    if (value != null) {
+//      composeTypeAttributes(value);
+//      if (value.getOriginal() != null)
+//        xml.element(FHIR_NS, name, value.getOriginal());
+//      else
+//        xml.element(FHIR_NS, name, java.lang.Integer.toString(value.getValue()));
+//    }
+//  }
+//  
+//  protected void composeDate(String name, java.util.Calendar value) throws Exception {
+//	  if (value != null) {
+//	      xml.element(FHIR_NS, name, dateToXml(value));
+//	  }
+//  }
+//	  
+//  protected void composeDate(String name, Date value) throws Exception {
+//    if (value != null) {
+//      composeTypeAttributes(value);
+//      xml.element(FHIR_NS, name, value.getValue());
+//    }
+//  }
+//  
+//  protected void composeDateTime(String name, DateTime value) throws Exception {
+//    if (value != null) {
+//      composeTypeAttributes(value);
+//      xml.element(FHIR_NS, name, value.getValue());
+//    }
+//  }
+//
+//    protected void composeDateTime(String name, String value) throws Exception {
+//    if (value != null) {
+//      xml.element(FHIR_NS, name, value);
+//    }
+//  }
+//
+//  protected void composeString_(String name, String value) throws Exception {
+//    if (value != null) {
+//      xml.element(FHIR_NS, name, value);
+//    }
+//  }
+//  
   
 }

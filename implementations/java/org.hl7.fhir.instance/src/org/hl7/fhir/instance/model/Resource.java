@@ -28,8 +28,6 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-import java.util.*;
-
 public abstract class Resource extends Element {
 	
 	/**

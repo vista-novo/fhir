@@ -302,6 +302,10 @@ span.xmlattr  {
   color: Maroon;
 }
 
+span.xmlattrvalue {
+  color: DarkGreen;
+}
+
 
 pre a {
 	color: darkgreen;

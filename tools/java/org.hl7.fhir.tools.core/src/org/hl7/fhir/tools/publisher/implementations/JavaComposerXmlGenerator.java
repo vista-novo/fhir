@@ -62,6 +62,7 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
   private StringBuilder regt = new StringBuilder();
 //  private StringBuilder regn = new StringBuilder();
   private String genparam;
+private String mainName;
   
   public JavaComposerXmlGenerator(OutputStream out) throws UnsupportedEncodingException {
     super(out);
@@ -72,6 +73,11 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     this.definitions = definitions;
     
     start(version, genDate);
+    
+
+    generateEnumComposer();
+    for (DefinedCode dc : definitions.getPrimitives().values()) 
+      generatePrimitive(dc);
     
     for (ElementDefn n : definitions.getInfrastructure().values()) {
       generate(n, JavaGenClass.Structure);
@@ -110,6 +116,8 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
 //      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }
     
+    genResource();
+
     for (ResourceDefn n : definitions.getResources().values()) {
       generate(n.getRoot(), JavaGenClass.Resource);
       String nn = javaClassName(n.getName());
@@ -125,11 +133,64 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
       
 //      if (n.equals("Uri"))
 //        t = "Uri";
-      regt.append("    else if (type instanceof "+t+")\r\n       compose"+t+"(prefix+\""+n+"\", ("+t+") type);\r\n");
+      regt.append("    else if (type instanceof "+t+")\r\n       compose"+n+"(prefix+\""+n+"\", ("+t+") type);\r\n");
 //      regn.append("    if (xpp.getName().equals(prefix+\""+n+"\"))\r\n      return true;\r\n");
     }
     
     finish();
+  }
+
+  private void genResource() throws Exception {
+    write("  private void composeResourceAttributes(Resource element) {\r\n");
+    write("  }\r\n");
+
+    write("  private void composeResourceElements(Resource element) throws Exception {\r\n");
+    write("    composeNarrative(\"text\", element.getText());\r\n");
+    write("    for (Extension e : element.getExtensions()) {\r\n");
+    write("      composeExtension(\"extension\", e);\r\n");
+    write("    }\r\n");
+    write("  }\r\n");
+    write("\r\n");
+  }
+
+  private void generateEnumComposer() throws Exception {
+    write("  private <E extends Enum<E>> void composeEnumeration(String name, Enumeration<E> value, EnumFactory e) throws Exception {\r\n");
+    write("    if (value != null) {\r\n");
+    write("      composeElementAttributes(value);\r\n");
+    write("        xml.attribute(\"value\", e.toCode(value.getValue()));\r\n");
+    write("        \r\n");
+    write("      xml.open(FHIR_NS, name);\r\n");
+    write("      for (Extension ex : value.getExtensions())\r\n");
+    write("        composeExtension(\"extension\", ex);\r\n");
+    write("      xml.close(FHIR_NS, name);\r\n");
+    write("    }    \r\n");
+    write("  }    \r\n");
+    write("\r\n");
+  }
+
+  private String getPrimitiveTypeModelName(String code) {
+    if (code.equals("string"))
+      return "String_";
+    return upFirst(code);
+  }
+
+  private void generatePrimitive(DefinedCode dc) throws Exception {
+    String tn = getPrimitiveTypeModelName(dc.getCode());
+
+    write("  private void compose"+upFirst(dc.getCode())+"(String name, "+tn+" value) throws Exception {\r\n");
+    write("    if (value != null) {\r\n");
+    write("      composeElementAttributes(value);\r\n");
+    if (!dc.getCode().equals("integer") && !dc.getCode().equals("boolean"))
+      write("      if (value.getValue() != null) \r\n");
+    write("        xml.attribute(\"value\", toString(value.getValue()));\r\n");
+    write("        \r\n");
+    write("      xml.open(FHIR_NS, name);\r\n");
+    write("      for (Extension e : value.getExtensions())\r\n"); 
+    write("        composeExtension(\"extension\", e);\r\n");
+    write("      xml.close(FHIR_NS, name);\r\n");
+    write("    }    \r\n");
+    write("  }    \r\n");
+    write("\r\n");
   }
 
   private String upFirst(String n) {
@@ -180,6 +241,7 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     strucs.clear();
     enumNames.clear();
     String nn = javaClassName(n.getName());
+    mainName = nn;
     for (ElementDefn e : n.getElements()) {
         scanNestedTypes(n, nn, e);
     }
@@ -188,7 +250,7 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     genInner(n, type);
     
     for (ElementDefn e : strucs) {
-      genInner(e, type);
+      genInner(e, JavaGenClass.Structure);
     }
 
   }
@@ -207,6 +269,7 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     strucs.clear();
     enumNames.clear();
     context = cd.getCode();
+    mainName = cd.getCode();
     ElementDefn n = definitions.getTypes().get(cd.getComment());
     
     typeNames.put(n, cd.getCode());
@@ -231,6 +294,10 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
       write("      composeTypeAttributes(element);\r\n");
     else
       write("      composeElementAttributes(element);\r\n");
+
+    if (type == JavaGenClass.Resource) 
+      write("      composeResourceAttributes(element);\r\n");
+      
     for (ElementDefn e : n.getElements()) { 
       if (e.typeCode().equals("xml:lang")) {
         write("      if (element.get"+upFirst(getElementName(e.getName(), true))+"() != null)\r\n");
@@ -238,6 +305,9 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
       }
     }
     write("      xml.open(FHIR_NS, name);\r\n");
+    if (type == JavaGenClass.Resource) 
+      write("      composeResourceElements(element);\r\n");
+    
     for (ElementDefn e : n.getElements()) {
       if (!e.typeCode().equals("xml:lang")) 
         genElement(n, e, type);
@@ -304,11 +374,14 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
           comp = "composeResourceReference";
           tn = "ResourceReference";
         };
+        if (tn.equals("string"))
+          tn = "String_";
         write("      for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : upFirst(tn))+" e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
         write("        "+comp+"(\""+name+"\", e);\r\n");
       } else if (en != null) {
         write("      if (element.get"+upFirst(getElementName(name, false))+"() != null)\r\n");
-        write("        composeString(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"().toCode());\r\n");        
+        write("        composeEnumeration(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"(), new "+mainName+"().new "+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory());\r\n");
+//        write("        composeString(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"().toCode());\r\n");        
       } else {
         write("      "+comp+"(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"());\r\n");
       }
@@ -348,8 +421,8 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
 //        return "String";
       if (t.equals("idref"))
         return "String";
-      else if (t.equals("string"))
-        return "String_";
+//      else if (t.equals("string"))
+//        return "String_";
       else
         return upFirst(t);
     } else if (elem.usesCompositeType()) { 
@@ -437,8 +510,8 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
           tn = "char[]";
         else if (tr.isWildcardType())
           tn ="Type";
-        else if (tn.equals("string"))
-          tn = "String_";
+//        else if (tn.equals("string"))
+//          tn = "String_";
         if (tn.contains("<"))
           tn = tn.substring(0, tn.indexOf('<')+1)+tn.substring(tn.indexOf('<')+1, tn.indexOf('<')+2).toUpperCase()+tn.substring(tn.indexOf('<')+2);
         typeNames.put(e,  tn);

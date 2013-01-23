@@ -77,18 +77,23 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		write("package org.hl7.fhir.instance.model;\r\n");
 		write("\r\n/*\r\n"+Config.FULL_LICENSE_CODE+"*/\r\n\r\n");
 		write("// Generated on "+Config.DATE_FORMAT().format(genDate)+" for FHIR v"+version+"\r\n\r\n");
-		if (hasList(root) || hasXhtml(root)) {
-			if (hasList(root))
-				write("import java.util.*;\r\n");
-			if (hasXhtml(root))
-				write("import org.hl7.fhir.utilities.xhtml.XhtmlNode;\r\n");
-			write("\r\n");
-		}
-
-    if (hasUri(root))
-      write("import java.net.*;\r\n");
-    if (hasDecimal(root))
-      write("import java.math.*;\r\n");
+    if (clss != JavaGenClass.Constraint) {
+      boolean l = hasList(root);
+      boolean h = hasXhtml(root);
+      boolean u = hasUri(root);
+      boolean d = hasDecimal(root);
+      if (l || h || u || d) {
+        if (l)
+          write("import java.util.*;\r\n");
+        if (h)
+          write("import org.hl7.fhir.utilities.xhtml.XhtmlNode;\r\n");
+        write("\r\n");
+        if (u)
+          write("import java.net.*;\r\n");
+        if (d)
+          write("import java.math.*;\r\n");
+      }
+    }
 		write("/**\r\n");
 		write(" * "+root.getDefinition()+"\r\n");
 		write(" */\r\n");
@@ -290,11 +295,9 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
         cc = "equal";
 			else
 				cc = cc.replace("-", "Minus").replace("+", "Plus");
-			if (i == l)
-				write("        "+cc+"; // "+c.getDefinition()+"\r\n");
-			else
-				write("        "+cc+", // "+c.getDefinition()+"\r\n");
+			write("        "+cc+", // "+c.getDefinition()+"\r\n");
 		}
+    write("        Null; // added to help the parsers\r\n");
 
 
 		write("        public static "+tns+" fromCode(String codeString) throws Exception {\r\n");
@@ -353,6 +356,61 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		write("    }\r\n");
 		write("\r\n");
 
+		
+		write("  public class "+tns+"EnumFactory implements EnumFactory {\r\n");
+		write("    public Enum<?> fromCode(String codeString) throws Exception {\r\n");
+		
+		write("      if (codeString == null || \"\".equals(codeString))\r\n");
+    write("            if (codeString == null || \"\".equals(codeString))\r\n");
+    write("                return null;\r\n");
+    for (DefinedCode c : cd.getCodes()) {
+      String cc = c.getCode();
+      if (GeneratorUtils.isJavaReservedWord(cc))
+        cc = cc + "_";
+      if (Utilities.IsInteger(cc))
+        cc = "_"+cc;
+      if (cc.equals("<"))
+        cc = "lessThan";
+      else if (cc.equals("<="))
+        cc = "lessOrEqual";
+      else if (cc.equals(">"))
+        cc = "greaterThan";
+      else if (cc.equals(">="))
+        cc = "greaterOrEqual";
+      else if (cc.equals("="))
+        cc = "equal";
+      else
+        cc = cc.replace("-", "Minus").replace("+", "Plus");
+      write("        if (\""+c.getCode()+"\".equals(codeString))\r\n");
+      write("          return "+tns+"."+cc+";\r\n");
+    }   
+    write("        throw new Exception(\"Unknown "+tns+" code '\"+codeString+\"'\");\r\n");
+    write("        }\r\n"); 
+    write("    public String toCode(Enum<?> code) throws Exception {\r\n");
+    for (DefinedCode c : cd.getCodes()) {
+      String cc = c.getCode();
+      if (GeneratorUtils.isJavaReservedWord(cc))
+        cc = cc + "_";
+      if (Utilities.IsInteger(cc))
+        cc = "_"+cc;
+      if (cc.equals("<"))
+        cc = "lessThan";
+      else if (cc.equals("<="))
+        cc = "lessOrEqual";
+      else if (cc.equals(">"))
+        cc = "greaterThan";
+      else if (cc.equals(">="))
+        cc = "greaterOrEqual";
+      else if (cc.equals("="))
+        cc = "equal";
+      else
+        cc = cc.replace("-", "Minus").replace("+", "Plus");
+      write("      if (code == "+tns+"."+cc+")\r\n        return \""+c.getCode()+"\";\r\n");
+    }
+    write("      return \"?\";\r\n"); 
+    write("      }\r\n"); 
+    write("    }\r\n"); 
+    write("\r\n");
 	}
 
 	private void generateType(ElementDefn e) throws Exception {
@@ -365,7 +423,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		for (ElementDefn c : e.getElements()) {
 			generateAccessors(e, c, "        ");
 		}
-		write("    }\r\n");
+    write("  }\r\n");
 		write("\r\n");
 
 	}
@@ -386,31 +444,33 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		if (tn == null) {
 			if (e.getTypes().size() > 0 && !e.usesCompositeType()) {
 				tn = e.typeCode();
-				if (clss != JavaGenClass.Resource) {
-					if (tn.equals("boolean")) tn = "Boolean";
-					else if (tn.equals("integer")) tn = "Integer";
-					else if (tn.equals("decimal")) tn = "Decimal";
-					else if (tn.equals("base64Binary")) tn = "Base64Binary";
-					else if (tn.equals("instant")) tn = "Instant";
-					else if (tn.equals("string")) tn = "String_";
-          else if (tn.equals("uri")) tn = "Uri";
-          else if (tn.equals("xml:lang")) tn = "Code";
-					else if (tn.equals("code")) tn = "Code";
-					else if (tn.equals("oid")) tn = "Oid";
-          else if (tn.equals("uuid")) tn = "Uuid";
-          else if (tn.equals("idref")) tn = "String";
-					else if (tn.equals("sid")) tn = "Sid";
-					else if (tn.equals("id")) tn = "Id";
-					else if (tn.equals("date")) tn = "Date";
-					else if (tn.equals("dateTime")) tn = "DateTime";
-					else 
-						tn = getTypeName(e);
-				} else 
-					tn = getTypeName(e);
+//				if (clss != JavaGenClass.Resource) {
+//					if (tn.equals("boolean")) tn = "Boolean";
+//					else if (tn.equals("integer")) tn = "Integer";
+//					else if (tn.equals("decimal")) tn = "Decimal";
+//					else if (tn.equals("base64Binary")) tn = "Base64Binary";
+//					else if (tn.equals("instant")) tn = "Instant";
+//					else if (tn.equals("string")) tn = "String_";
+//          else if (tn.equals("uri")) tn = "Uri";
+//          else if (tn.equals("xml:lang")) tn = "Code";
+//					else if (tn.equals("code")) tn = "Code";
+//					else if (tn.equals("oid")) tn = "Oid";
+//          else if (tn.equals("uuid")) tn = "Uuid";
+//          else if (tn.equals("idref")) tn = "String";
+//					else if (tn.equals("sid")) tn = "Sid";
+//					else if (tn.equals("id")) tn = "Id";
+//					else if (tn.equals("date")) tn = "Date";
+//					else if (tn.equals("dateTime")) tn = "DateTime";
+//					else 
+//						tn = getTypeName(e);
+//				} else 
+				tn = getTypeName(e);
+				if (e.typeCode().equals("xml:lang"))
+				  tn = "Code";
 				if (e.getTypes().get(0).isUnboundGenericParam())
 					tn = "T";
 				else if (e.getTypes().get(0).isIdRef())
-					tn ="String";
+					tn ="String_";
 				else if (e.isXhtmlElement()) 
 					tn = "XhtmlNode";
 				else if (e.getTypes().get(0).isWildcardType())
@@ -563,7 +623,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			write(indent+"  this."+getElementName(e.getName(), true)+" = value;\r\n");
 			write(indent+"}\r\n");
 			write("\r\n");
-			if (e.getTypes().size() == 1 && definitions.getPrimitives().containsKey(e.typeCode())) {
+			if (e.getTypes().size() == 1 && (definitions.getPrimitives().containsKey(e.typeCode()) || e.getTypes().get(0).isIdRef())) {
 	      write(indent+"public "+getSimpleType(tn)+" get"+getTitle(getElementName(e.getName(), false))+"Simple() { \r\n");
 	      write(indent+"  return this."+getElementName(e.getName(), true)+".getValue();\r\n");
 	      write(indent+"}\r\n");
