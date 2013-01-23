@@ -90,46 +90,46 @@ and their associated bindings. In this case, the profile looks like this:
 
 <pre class="xml" fragment="Profile">
 &lt;Profile xmlns="http://hl7.org/fhir">
-  &lt;name>iso-21090&lt;/name>
+  &lt;name value="iso-21090" /&gt;
   &lt;!-- snip other metadata -->
   &lt;extensionDefn>
-    &lt;id>name-qualifier&lt;/id>
-    &lt;context>HumanName.part&lt;/context>
-    &lt;contextType>datatype&lt;/contextType>
+    &lt;id value="name-qualifier" /&gt;
+    &lt;context value="HumanName.given;HumanName.prefix;HumanName.family;HumanName.suffix" /&gt;
+    &lt;contextType value="datatype" /&gt;
     &lt;definition>
-      &lt;short>AD | SP | BR | CL | IN | LS | MID | PFX | SFX&lt;/short>
-      &lt;formal>A set of codes each of which specifies a certain subcategory
-          of the name part in addition to the main name part type&lt;/formal>
-      &lt;comments>Used to indicate additional information about the
-             name part and how it should be used&lt;/comments>
-      &lt;min>0&lt;/min>
-      &lt;max>*&lt;/max>
+      &lt;short value="AD | SP | BR | CL | IN | LS | MID | PFX | SFX" /&gt;
+      &lt;formal value="A set of codes each of which specifies a certain subcategory
+          of the name part in addition to the main name part type" /&gt;
+      &lt;comments value="Used to indicate additional information about the
+             name part and how it should be used" /&gt;
+      &lt;min value="0" /&gt;
+      &lt;max value="*" /&gt;
       &lt;type>
-	    &lt;code>code&lt;/code>
-	  &lt;/type>
-      &lt;mustSupport>false&lt;/mustSupport>
-      &lt;mustUnderstand>false&lt;/mustUnderstand>
-      &lt;binding>EntityNamePartQualifier&lt;/binding>
+         &lt;code value="code" /&gt;
+      &lt;/type>
+      &lt;mustSupport value="false" /&gt;
+      &lt;mustUnderstand value="false" /&gt;
+      &lt;binding value="EntityNamePartQualifier" /&gt;
       &lt;mapping>
-        &lt;target>RIM&lt;/target>
-        &lt;map>ENXP.qualifier&lt;/map>
+         &lt;target value="RIM" /&gt;
+         &lt;map value="ENXP.qualifier" /&gt;
       &lt;/mapping>
     &lt;/definition>
   &lt;/extensionDefn>
 
   &lt;binding>
-    &lt;name>EntityNamePartQualifier&lt;/name>
-    &lt;definition>A set of codes each of which specifies a certain subcategory
-        of the name part in addition to the main name part type&lt;/definition>
-    &lt;type>codelist&lt;/type>
-    &lt;isExtensible>codelist&lt;/isExtensible>
-    &lt;conformance>required&lt;/conformance>
-    &lt;reference>http://www.hl7.org/fhir/repository/valueset/@name-part-qualifier&lt;/reference>
+    &lt;name value="EntityNamePartQualifier" /&gt;
+    &lt;definition value="A set of codes each of which specifies a certain subcategory
+        of the name part in addition to the main name part type" /&gt;
+    &lt;type value="codelist" /&gt;
+    &lt;isExtensible value="codelist" /&gt;
+    &lt;conformance value="required" /&gt;
+    &lt;reference value="http://hl7.org/fhir/valueset/@name-part-qualifier" /&gt;
     &lt;concept>
-      &lt;code>LS&lt;/code>
-      &lt;system>oid:2.16.840.1.113883.5.1122&lt;/system>
-      &lt;display>Legal status&lt;/display>
-      &lt;definition>For ... &lt;!-- snip definition -->&lt;/definition>
+      &lt;code value="LS" /&gt;
+      &lt;system value="oid:2.16.840.1.113883.5.1122" /&gt;
+      &lt;display value="Legal status" /&gt;
+      &lt;definition value="For ..." &lt;!-- snip definition --&gt; /&gt;
     &lt;/concept>
     &lt;!-- snip other codes -->
   &lt;/binding>
@@ -142,32 +142,30 @@ Note that usually you would build the actual profile using some tool. This examp
 </p>
 <h4>Register the Extension</h4>
 <p>
-For this example, it is registered at <a href="http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090?format=text/html">http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090</a>.
+For this example, it is registered at <a href="http://hl7.org/fhir/profile/@iso-21090?format=text/html">http://hl7.org/fhir/profile/@iso-21090</a>.
 This is the url that will appear in the definition element when the extension is used.
 </p>
 <h4>Use it in the instance</h4>
 <p>
-To using the extension in an instance, you firstly mark the name part that is being extended with
-an id attribute, so that the extension can be connected to it:
+To using the extension in an instance, the extension is nested within the attribute that is extended.
+Note that the url of the extension refers to the registered location, with the id of the extension as a 
+fragment identifier.
+
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;use&gt;official&lt;/use&gt;
-  &lt;given id="n1"&gt;Östlund&lt;/given&gt;
+  &lt;use value=&quot;official&quot; /&gt;
+  &lt;given value=&quot;Östlund&quot;&gt;
+     &lt;extension&gt;
+        &lt;url value=&quot;http://hl7.org/fhir/profile/@iso-21090#name-qualifier&quot; /&gt;
+        &lt;valueCode value=&quot;MID&quot; /&gt;
+     &lt;/extension&gt;
+  &lt;/given&gt;
 &lt;/name&gt;
 </pre>
 <p>
-Then, in the extensions section of the resource, you add an extension. The code and the definition have been defined above; all that is needed is the idref to the part above, and the actual value.
-</p>
-<pre class="xml">
-&lt;extension>
-  &lt;url>http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090#name-qualifier&lt;/url>
-  &lt;ref>n1&lt;/ref>
-  &lt;valueCode>MID&lt;/valueCode>
-&lt;extension>
-</pre>
-<p>
-This particular example is a Scandavian mellannamn. See <a href="datatypes-examples.htm">Datatypes examples for additional examples</a>.
+This particular example is a Scandavian mellannamn. See 
+<a href="datatypes-examples.htm">Datatypes examples for additional examples</a>.
 </p>
 
 <%footer%>
