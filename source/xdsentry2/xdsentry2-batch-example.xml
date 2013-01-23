@@ -53,7 +53,7 @@
     now, a patient resource.
     
     We are assuming that we don't know whether the server knows this patient.
-    In a classic XDS, the server would via PIX/PDQ, but here was asume otherwise
+    In a classic XDS, the server would via PIX/PDQ, but here we assume otherwise
     for the purposes of demonstration. 
     
     So since the server may not know about the patient, we construct a proper 

@@ -347,7 +347,9 @@ in a defined order.
 <p>
 In order to allow the client to be confident about what search parameters were used as a criteria by the server, 
 the server SHALL return the parameters that were actually used in a search URL as the self link in the atom feed that is returned.
+Applications processing search results SHALL treat this self link as a mustUnderstand field. <!-- For, example, if the client... LLOYD HERE -->
 </p>
+
 <a name="pages"> </a>
 <p> 
 Servers SHOULD conform to the method described in <a href="https://tools.ietf.org/html/rfc5005">RFC 5005 (Feed 
@@ -360,7 +362,7 @@ This example shows the third page of a search for all patients with the name "pe
 
 <pre>
 &lt;feed xmlns="http://www.w3.org/2005/Atom"&gt;
-  &lt;title&gt;Sarch Page 3&lt;/title&gt;
+  &lt;title&gt;Search Page 3&lt;/title&gt;
   &lt;!-- This Search. url starts with base search, and adds the effective 
     parameters, and additional parameters for search state. All searches SHALL return this value.    
 	
@@ -404,7 +406,7 @@ the should return an error. The correct action is defined along with the paramet
 In addition, the following common search parameters apply to all resource types:
 </p>
 <table class="list">
-  <tr><td>_count : <a href="datatypes.htm#integer">integer</a></td><td><i>single</i></td><td>Number of return records requested. The server is not bound to conform</td></tr>
+  <tr><td>_count : <a href="datatypes.htm#integer">integer</a></td><td><i>single</i></td><td>Number of return records requested. The server is not bound to return the number requested, but cannot return more</td></tr>
   <tr><td>_id : <a href="datatypes.htm#id">token</a></td><td><i>single</i></td><td>The <a href="resources.htm#metadata">logical resource id</a> associated with the resource (must be supported by all servers)</td></tr>
   <tr><td>_include : <a href="datatypes.htm#id">token</a></td><td><i>union</i></td><td>See below</td></tr>
   <tr><td>_inline : <a href="datatypes.htm#id">token</a></td><td><i>union</i></td><td>See below under _include</td></tr>
@@ -640,9 +642,12 @@ operation are performed by HTTP Get operation as shown:
 The return content is a <a href="resources.htm#bundle">Bundle</a> containing the specified version history, 
 sorted with oldest versions last.  
 </p>
+<table class="list">
+  <tr><td>_count : <a href="datatypes.htm#integer">integer</a></td><td><i>single</i></td><td>Number of return records requested. The server is not bound to return the number requested, but cannot return more</td></tr>
+  <tr><td>_last : <a href="datatypes.htm#integer">instant</a></td><td><i>single</i></td><td>Only include resource versions that were created at or after the given date</td></tr>
+</table>
 <p>
 The history list can be restricted to a limited period by specifying a _last parameter which contains a full date time with timezone. 
-This means that the list only includes resource versions that were created at or after the given date. 
 Servers must ensure that if a client uses the feed.updated date from the last response they received as 
 the value of the _last parameter, no versions will be missed. Clients should be aware that due to timing imprecision, 
 they may receive notifications of a resource update on the boundary instant more than once. Servers are 
