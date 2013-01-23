@@ -31,12 +31,11 @@ distinct requirements will be implemented as extensions.
 </p>
 <p>
 As such, extensibility is a fundamental part of the design of this
-specification. Every resource includes an extension section that
-may be used to represent additional information that is not part of
-the basic definition of the resource. Conformant applications are not
-allowed to reject resources because they contain extensions, though
-they may need to reject resources because of the specific contents of
-the extensions.
+specification. Every element in a resource may have extension child elements 
+to represent additional information that is not part of the basic definition 
+of the resource. Conformant applications are not allowed to reject resources 
+because they contain extensions, though they may need to reject resources 
+because of the specific contents of the extensions.
 </p>
 <p>
 Note that, unlike in many other specifications, there can be no stigma
@@ -54,19 +53,18 @@ that must be met as part of the definition of the extension.
 <a name="Extension"></a>
 <h2>Extensibility Element</h2>
 <p>
-Each resource includes the optional "extension" element that may be present any number of times before the narrative element at the end of the resource. This is the content model of the extension as it appears in each resource:
+Every element in a resource includes an optional "extension" element that may 
+be present any number of times in the element. The extension element appears as 
+the first child, prior to any other defined child elements. 
+This is the content model of the extension as it appears in each resource:
 </p>
 <%dt Extension%>
-
 <p>
 Notes:
 </p>
 <ul>
- <li>The <i>url</i> identifies an extension definition in a <a href="profile.htm">resource profile</a> that defines the content and meaning of the extension.</li>
- <li>If present, the id in the <i>ref</i> element is <a href="formats.htm#idref">an internal reference</a> to a target element that is extended by the content as if it contained the extension itself. The id must point within the same resource. If <i>id</i> is not present, the extension applies to the root resource</li>
- <li>The order that extensions appear in is significant - where multiple extensions have the same target, they extend the target element in the order in which they appear in the extension section</li>
- <li>Any element defined as part of the resource content, or any repeating element inside a data type, may carry an id attribute to serve as the target of an extension</li>
- <li>An extension may have a value, or nested extensions, but not both. The actual name of the value element has the type added to it in place of the [x], such as valueQuantity</li>
+ <li>The <i>url</i> is a mandatory field, and identifies an extension definition in a <a href="profile.htm">resource profile</a> that defines the content and meaning of the extension.</li>
+ <li>An extension must have a value (i.e. a value[x] element). The value itself must have content, or an id attribute that is the target of a reference from the Narrative, or extensions of it's own</li>
 </ul>
 <p>
 The <i>value[x]</i> element has the [x] replaced with the name of one of the defined types, and the contents as defined for that type, or another extension. The value type may be one of the following:
@@ -89,49 +87,100 @@ The <i>value[x]</i> element has the [x] replaced with the name of one of the def
  <li><a href="datatypes.htm#Address">Address</a></li>
  <li><a href="datatypes.htm#Contact">Contact</a></li>
  <li><a href="datatypes.htm#Schedule">Schedule</a></li>
- <li>Resource - a reference to another resource</li>
+ <li><a href="resoures.htm#ResourceReference">Resource</a> - a reference to another resource</li>
+ <li>Extension - nested extension content</li>
 </ul>
 <p>
-Some of the <a href="datatypes.htm#primitive">primitive</a> data types are not included in this list.  Extensions that might
-wish to use one of the omitted primitives are expected to use one of the more complex types in their place.  For example,
-<a href="datatypes.htm#decimal">decimal</a> and <a href="datatypes.htm#integer">integer</a> are handed by <a href="datatypes.htm#Quantity">Quantity</a>,
-<a href="datatypes.htm#base64Binary">base64Binary</a> by <a href="datatypes.htm#Attachment">Attachment</a>, etc.
+Nested extensions are used where the original definition of the extension defines complex content (i.e. multiple parts of the extension, not a simple data type).
+If the value of the extension themselves need extending, this is in the content of the value[x] element.
+</p>
+<div class="example">
+<p>
+Here is an example of a name with a simple extension for a tribal name:
+</p>
+<pre class="xml" fragment="HumanName">
+&lt;name&gt;
+  &lt;extension&gt;
+    &lt;url value=&quot;http://hl7.org/fhir/profile/@iso-21090#name-use&quot; /&gt;
+    &lt;valueCode value=&quot;I&quot; /&gt;
+  &lt;/extension&gt;
+  &lt;text value=&quot;Chief Red Cloud&quot;&gt;
+  &lt;/given&gt;
+&lt;/name&gt;
+</pre>
+<p>
+The proper use of the URL value is discussed below.
 </p>
 <p>
-Nested extensions cannot have a <i>ref</i> element. The <i>[type]</i> element is optional unless the definitions of the extensions make rules about it. Extensions can never have a default value.
+Extending a patient with an opt-in status for a clinical trial, with 
+3 fields: status, date of recording, and person who recorded:
 </p>
+<pre class="xml" fragment="Patient">
+&lt;Patient&gt;
+  &lt;extension&gt;
+    &lt;url value=&quot;http://acme.org/fhir/profiles/@main#trail-status&quot; /&gt;
+    &lt;valueExtension&gt;
+      &lt;url value=&quot;http://acme.org/fhir/profiles/@main#trail-status-code&quot; /&gt;	  
+      &lt;valueCode value=&quot;unsure&quot; /&gt;	  
+    &lt;/valueExtension&gt;
+    &lt;valueExtension&gt;
+      &lt;url value=&quot;http://acme.org/fhir/profiles/@main#trail-status-date&quot; /&gt;	  
+      &lt;valueDate value=&quot;2009-03-14&quot; /&gt;	  
+    &lt;/valueExtension&gt;
+    &lt;valueExtension&gt;
+      &lt;url value=&quot;http://acme.org/fhir/profiles/@main#trail-status-who&quot; /&gt;	  
+      &lt;valueResourceReference&gt;	  
+        &lt;type value=&quot;Provider&quot; /&gt;	  
+        &lt;url value=&quot;../provider/@example&quot; /&gt;	  	    
+      &lt;/valueResourceReference&gt;	  
+    &lt;/valueExtension&gt;
+  &lt;/extension&gt;
+  &lt;!-- other data for patient --&gt;
+&lt;/Patient&gt;
+</pre>
+</div>
+
 <a name="mustUnderstand"> </a>
-
 <h2>MustUnderstand</h2>
-
 <p>
 As well as providing additional information, extensions may be used to qualify the meaning of
 other existing elements or even to negate their meanings. This behavior makes these particular
-extensions unsafe to ignore. Such extensions must have an attribute <i>mustUnderstand</i> = true.
+extensions unsafe to ignore. Such extensions must have a child element "mustUnderstand".
 </p>
-
-<p>
-<b>Any application processing the data of a resource must check for extensions labeled "mustUnderstand".</b>
-</p>
-
 <p>
 If the application does not recognize the url of an extension that is labeled "mustUnderstand", and
-where the extension either has no internal reference, or it references data processed by the application,
-the application SHALL either refuse to process the data,  or carry a warning concerning the data
-along with any action or output that results from processing the data.
+the data from element it extends is processed by the application, the application SHALL either refuse 
+to process the data, or carry a warning concerning the data along with any action or output that results 
+from processing the data.
 </p>
+
+<div class="example">
+<p>
+Here is an Australian example where for cultural reasons, certain names that have been used previously must never be mentioned again:
+</p>
+<pre class="xml" fragment="HumanName">
+&lt;name&gt;
+  &lt;extension&gt;
+    &lt;url value=&quot;http://hl7.org/fhir/profile/@iso-21090#name-use&quot; /&gt;
+    &lt;mustUnderstand value=&quot;true&quot; /&gt;
+    &lt;valueCode value=&quot;DN&quot; /&gt;
+  &lt;/extension&gt;
+  &lt;text value=&quot;Chief Red Cloud&quot;&gt;
+  &lt;/given&gt;
+&lt;/name&gt;
+</pre>
+<p>
+Because the intent of the name use code is that this name should not actually be used as 
+if it were the patient's name, the extension is labelled "mustUnderstand" = it is not safe 
+to use this name unless you understand the extension.
+</p>
+</div>
 
 <p>
 Note that it must always be safe to show the narrative to humans; any extension that is
 labeled as "mustUnderstand" must be represented in the narrative. Applications are required
 to ignore extensions that they do not recognize if their "mustUnderstand" element is
 missing or set to false.
-</p>
-
-<p>
-Extensions labeled "mustUnderstand" SHALL be attached to reference points within an instance such that
-all data elements whose meaning may be impacted by the extension are contained within the element to
-which the extension is attached.
 </p>
 
 <p>
@@ -147,7 +196,8 @@ the data.
 
 <p>
 Extensions may be defined by any project or jurisdiction, up to and including international standards organizations such as HL7 itself, and are published
-as part of a <a href="profile.htm">Resource Profile</a>. Extensions are always defined against some particular context. The following are possible contexts for an extension:
+as part of a <a href="profile.htm">Resource Profile</a>. Extensions are always defined against some particular context - the type of element 
+that they may be used to extend. The following are possible contexts for an extension:
 </p>
 <table class="codes">
  <tr><th>Context type</th><th>Context format</th><th>Examples</th></tr>

@@ -62,7 +62,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="8" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="130.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="39.75"/>
@@ -110,15 +110,6 @@
     <Cell ss:Index="10"><Data ss:Type="String">The definition may point directly to a computable or human readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="105">
-    <Cell><Data ss:Type="String">Extension.ref</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">idref</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Internal reference to context of the extension (xml:id)</Data></Cell>
-    <Cell><Data ss:Type="String">Internal reference to context of the extension - a pointer to an xml:id in the same resource</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">The order that extensions appear in is significant - where multiple extensions have the same ref id, they extend the target element in the order in which they appear in the extensions</Data></Cell>
-    <Cell><Data ss:Type="String">N/A</Data></Cell>
-   </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Extension.mustUnderstand</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
@@ -131,20 +122,11 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Extension.value[x]</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">*</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Value of extension</Data></Cell>
-    <Cell><Data ss:Type="String">Value of extension - may be a resource or one of a constraint set of the data types (see Extensibility in the spec for list)</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Extension.extension</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Extension</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Nested Extensions</Data></Cell>
-    <Cell><Data ss:Type="String">Nested Extensions - further extensions that are part of the extension</Data></Cell>
+    <Cell><Data ss:Type="String">Value of extension - may be a resource or one of a constrained set of the data types, or another extension (see Extensibility in the spec for list)</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30"/>
@@ -160,7 +142,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
