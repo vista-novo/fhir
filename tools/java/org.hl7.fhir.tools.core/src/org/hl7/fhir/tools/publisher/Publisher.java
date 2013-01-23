@@ -792,6 +792,7 @@ public class Publisher {
 	private String produceImageFromSource(String title, String src, String dest) throws Exception {
 	  // this is a time consuming step. We cache the last outcome
 	  String lastSrc = null;
+	  title = title.toLowerCase();
 	  if (new File(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".png").exists())
 	    lastSrc = TextFile.fileToString(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".plantuml-source");
 	  if (!src.equals(lastSrc)) {
