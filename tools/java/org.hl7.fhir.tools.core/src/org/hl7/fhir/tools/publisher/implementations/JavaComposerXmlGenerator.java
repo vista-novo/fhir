@@ -62,7 +62,7 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
   private StringBuilder regt = new StringBuilder();
 //  private StringBuilder regn = new StringBuilder();
   private String genparam;
-private String mainName;
+  private String mainName;
   
   public JavaComposerXmlGenerator(OutputStream out) throws UnsupportedEncodingException {
     super(out);
@@ -157,6 +157,7 @@ private String mainName;
     write("  private <E extends Enum<E>> void composeEnumeration(String name, Enumeration<E> value, EnumFactory e) throws Exception {\r\n");
     write("    if (value != null) {\r\n");
     write("      composeElementAttributes(value);\r\n");
+    write("      if (value.getValue() != null) \r\n");
     write("        xml.attribute(\"value\", e.toCode(value.getValue()));\r\n");
     write("        \r\n");
     write("      xml.open(FHIR_NS, name);\r\n");

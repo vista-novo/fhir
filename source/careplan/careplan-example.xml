@@ -6,5 +6,11 @@
     <div xmlns="http://www.w3.org/1999/xhtml">Authored on 8-Nov 2011 by Grahame Grieve. Content extracted from ISO-21090</div>
   </text>
 
+  <patient>
+    <type value="Patient"/>
+    <url value="../patient/@example"/>
+  </patient>
+  <status value="active"/>
+  
   <!-- insert contents here -->
 </CarePlan>

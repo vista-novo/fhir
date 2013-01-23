@@ -82,35 +82,6 @@ public abstract class XmlComposerBase extends XmlBase {
     composeElementAttributes(type);
   }
     
-  protected String toString(String value) {
-    return value;
-  }
-  
-  protected String toString(int value) {
-    return java.lang.Integer.toString(value);
-  }
-  
-  protected String toString(boolean value) {
-    return java.lang.Boolean.toString(value);
-  }
-  
-  protected String toString(BigDecimal value) {
-    return value.toString();
-  }
-  
-  protected String toString(URI value) {
-    return value.toString();
-  }
-
-  protected String toString(byte[] value) {
-    byte[] encodeBase64 = Base64.encodeBase64(value);
-    return new String(encodeBase64);
-  }
-  
-  protected String toString(Calendar value) {
-    return dateToXml(value);
-  }
-  
 //  protected void composeString(String name, String value) throws Exception {
 //    if (value != null)
 //      xml.element(FHIR_NS, name, value);

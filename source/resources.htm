@@ -303,15 +303,17 @@ In these circumstances, the resource is placed directly in line in the reference
 done when the content can be identified properly, as once identification is lost, it is extremely difficult 
 (and context dependent) to restore it again.</b>
 </p>
-<pre class="xml" fragment="ResourceReference">
+<pre class="xml"> <!-- Can't fragment test this - too incomplete -->
  &lt;Document&gt;
-  &lt;!-- other attributes --&gt;
-  &lt;custodian&gt;
-    &lt;type value="Organization" /&gt;
-    &lt;url value="#org1" /&gt;
-    &lt;display value="HL7, Inc" /&gt;
-  &lt;/custodian&gt;
-  &lt;!-- other attributes --&gt;
+  &lt;information&gt;
+    &lt;!-- other attributes --&gt;
+    &lt;custodian&gt;
+      &lt;type value="Organization" /&gt;
+      &lt;url value="#org1" /&gt;
+      &lt;display value="HL7, Inc" /&gt;
+    &lt;/custodian&gt;
+    &lt;!-- other attributes --&gt;
+  &lt;information&gt;
   &lt;extension&gt;...&lt;/extension&gt;
   &lt;text&gt;...&lt;/text&gt;
   &lt;contained&gt;

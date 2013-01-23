@@ -31,10 +31,13 @@ POSSIBILITY OF SUCH DAMAGE.
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
+import java.math.BigDecimal;
+import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import org.apache.commons.codec.binary.Base64;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -92,5 +95,35 @@ public class XmlBase {
       xpp.next();
     xpp.next();
   }
+
+  protected String toString(String value) {
+    return value;
+  }
+  
+  protected String toString(int value) {
+    return java.lang.Integer.toString(value);
+  }
+  
+  protected String toString(boolean value) {
+    return java.lang.Boolean.toString(value);
+  }
+  
+  protected String toString(BigDecimal value) {
+    return value.toString();
+  }
+  
+  protected String toString(URI value) {
+    return value.toString();
+  }
+
+  protected String toString(byte[] value) {
+    byte[] encodeBase64 = Base64.encodeBase64(value);
+    return new String(encodeBase64);
+  }
+  
+  protected String toString(Calendar value) {
+    return dateToXml(value);
+  }
+  
 
 }
