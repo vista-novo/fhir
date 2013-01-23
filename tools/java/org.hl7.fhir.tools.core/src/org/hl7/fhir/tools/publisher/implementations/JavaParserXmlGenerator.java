@@ -147,11 +147,18 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
 
   private void genResource() throws Exception {
     write("  private boolean parseResourceContent(int eventType, XmlPullParser xpp, Resource res) throws Exception {\r\n");
-    write("    if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\"extension\")) \r\n");
+    write("    if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\"extension\")) { \r\n");
     write("      res.getExtensions().add(parseExtension(xpp));\r\n");
-    write("    else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\"text\"))\r\n"); 
+    write("    } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\"text\")) {\r\n"); 
     write("      res.setText(parseNarrative(xpp));\r\n");
-    write("    else\r\n");
+    write("    } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\"contained\")) {\r\n"); 
+    write("      xpp.next();\r\n");
+    write("      nextNoWhitespace(xpp);\r\n");
+    write("      res.getContained().add(parse(xpp));\r\n");
+    write("      xpp.next();\r\n");
+    write("      nextNoWhitespace(xpp);\r\n");
+    write("      xpp.next();\r\n");
+    write("    } else\r\n");
     write("      return false;\r\n");
     write("      \r\n");
     write("    return true;\r\n");    
@@ -414,7 +421,9 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
     write("  @Override\r\n");
     write("  protected Resource parseResource(XmlPullParser xpp) throws Exception {\r\n");
     write("    "+reg.toString().substring(9));
-    write("    return null;\r\n");
+    write("    else if (xpp.getName().equals(\"Binary\"))\r\n");
+    write("      return parseBinary(xpp);\r\n");
+    write("    throw new Exception(\"Unknown resource type \"+xpp.getName()+\"\");\r\n");
     write("  }\r\n\r\n");
     write("  protected Type parseType(String prefix, XmlPullParser xpp) throws Exception {\r\n");
     write("    "+regt.toString().substring(9));

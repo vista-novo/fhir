@@ -161,6 +161,13 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     write("  private void composeResourceElements(Resource element) throws Exception {\r\n");
     write("    composeElementElements(element);\r\n");
     write("    composeNarrative(\"text\", element.getText());\r\n");
+    write("    for (Resource r : element.getContained()) {\r\n");
+    write("      if (r.getXmlId() == null)\r\n");
+    write("        throw new Exception(\"Contained Resource has no id - one must be assigned\"); // we can't assign one here - what points to it?\r\n");
+    write("      xml.open(FHIR_NS, \"contained\");\r\n");
+    write("      composeResource(r);\r\n");
+    write("      xml.close(FHIR_NS, \"contained\");\r\n");
+    write("    }\r\n");
     write("  }\r\n");
     write("\r\n");
   }
@@ -455,6 +462,8 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     write("  @Override\r\n");
     write("  protected void composeResource(Resource resource) throws Exception {\r\n");
     write("    "+reg.toString().substring(9));
+    write("    else if (resource instanceof Binary)\r\n");
+    write("      composeBinary(\"Binary\", (Binary)resource);\r\n");
     write("    else\r\n");
     write("      throw new Exception(\"Unhanded resource type \"+resource.getClass().getName());\r\n");
     write("  }\r\n\r\n");

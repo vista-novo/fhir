@@ -117,7 +117,7 @@ table.codes td {
 }
 
 table.grid{
-	float:left;
+	x-float:left;
 	margin-bottom: 10px;
         border: 1px black solid;
         margin-left: auto;

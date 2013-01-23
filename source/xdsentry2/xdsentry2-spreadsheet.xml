@@ -20,7 +20,7 @@
   <WindowWidth>9570</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6315</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <ActiveSheet>5</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -66,6 +66,9 @@
   </Style>
   <Style ss:ID="s68">
    <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s154">
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -303,7 +306,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -565,6 +567,55 @@
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
      <RangeSelection>R2</RangeSelection>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Examples">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="174.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="123.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="106.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="85.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="106.5"/>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Name</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Identity</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Filename</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Type</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">In Book</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">General</Data></Cell>
+    <Cell><Data ss:Type="String">General XdsEntry2 Example</Data></Cell>
+    <Cell><Data ss:Type="String">example</Data></Cell>
+    <Cell ss:StyleID="s154"><Data ss:Type="String">xdsentry2-example.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Batch</Data></Cell>
+    <Cell><Data ss:Type="String">Example of an XdsEntry Batch</Data></Cell>
+    <Cell><Data ss:Type="String">batch</Data></Cell>
+    <Cell ss:StyleID="s154"><Data ss:Type="String">xdsentry2-batch-example.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

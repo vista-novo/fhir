@@ -315,7 +315,7 @@ public class Publisher {
 	        List<ExampleReference> refs = new ArrayList<ExampleReference>(); 
 	        listLinks(e.getXml().getDocumentElement(), refs);
 	        for (ExampleReference ref : refs) {
-	          if (!resolveLink(ref)) { 
+	          if (!ref.getId().startsWith("cid") && !resolveLink(ref)) { 
 	            errors.add("Unable to resolve example reference to "+ref.describe()+" in "+e.getPath());
 	            errors.add("  Possible Ids: "+listTargetIds(ref.getType()));
 	          }
@@ -352,20 +352,24 @@ public class Publisher {
   }
 
   private boolean resolveLink(ExampleReference ref) throws Exception {
+    if (ref.getId().startsWith("#"))
+      return true;
     if (!page.getDefinitions().hasResource(ref.getType()))
       return false;
     ResourceDefn r = page.getDefinitions().getResourceByName(ref.getType());
     for (Example e : r.getExamples()) {
-      String id = extractId(ref.getId(), ref.getType());
-      if (id.equals(e.getId()))
-        return true;
-      if (e.getXml().getDocumentElement().getLocalName().equals("feed")) {
-        List<Element> entries = new ArrayList<Element>();
-        XMLUtil.getNamedChildren(e.getXml().getDocumentElement(), "entry", entries);
-        for (Element c : entries) {
-          String _id = XMLUtil.getNamedChild(c, "id").getTextContent();
-          if (id.equals(_id) || _id.equals("http://hl7.org/fhir/"+ref.getType().toLowerCase()+"/@"+id))
-            return true;
+      if (!ref.getId().startsWith("#")) {
+        String id = extractId(ref.getId(), ref.getType());
+        if (id.equals(e.getId()))
+          return true;
+        if (e.getXml().getDocumentElement().getLocalName().equals("feed")) {
+          List<Element> entries = new ArrayList<Element>();
+          XMLUtil.getNamedChildren(e.getXml().getDocumentElement(), "entry", entries);
+          for (Element c : entries) {
+            String _id = XMLUtil.getNamedChild(c, "id").getTextContent();
+            if (id.equals(_id) || _id.equals("http://hl7.org/fhir/"+ref.getType().toLowerCase()+"/@"+id))
+              return true;
+          }
         }
       }
     }
@@ -411,12 +415,14 @@ public class Publisher {
       }
     } else {
       String n = xml.getLocalName();
-      ResourceDefn r = page.getDefinitions().getResourceByName(n);
-      if (r == null) 
-        throw new Exception("Unable to find resource definition for "+n);
-      List<Element> nodes = new ArrayList<Element>();
-      nodes.add(xml);
-      listLinks("/f:"+n, r.getRoot(), nodes, refs);
+      if (!n.equals("Binary")) {
+        ResourceDefn r = page.getDefinitions().getResourceByName(n);
+        if (r == null) 
+          throw new Exception("Unable to find resource definition for "+n);
+        List<Element> nodes = new ArrayList<Element>();
+        nodes.add(xml);
+        listLinks("/f:"+n, r.getRoot(), nodes, refs);
+      }
     }
   }
 
@@ -572,7 +578,7 @@ public class Publisher {
 		profileFeed.setUpdated(Calendar.getInstance());
     for (String n : page.getDefinitions().getDiagrams().keySet()) {
       log(" ...diagram "+n);
-      generateDiagramFromSource(n, page.getFolders().srcDir + page.getDefinitions().getDiagrams().get(n));
+      page.getImageMaps().put(n, generateDiagramFromSource(n, page.getFolders().srcDir + page.getDefinitions().getDiagrams().get(n)));
     }
 		for (ResourceDefn n : page.getDefinitions().getResources().values()) {
       log(" ...resource "+n.getName());
@@ -747,7 +753,7 @@ public class Publisher {
 
 	}
 
-	private void generateDiagramFromSource(String title, String filename) throws Exception {
+	private String generateDiagramFromSource(String title, String filename) throws Exception {
 	  String src = TextFile.fileToString(filename);
 	  if (src.startsWith("[diagram]")) {
 	    IniFile ini = new IniFile(filename);
@@ -764,17 +770,26 @@ public class Publisher {
 
 	    List<org.hl7.fhir.definitions.model.ElementDefn> queue = new ArrayList<org.hl7.fhir.definitions.model.ElementDefn>();
 	    List<String> elementClasses = new ArrayList<String>();
-	    Map<org.hl7.fhir.definitions.model.ElementDefn, String> names = new HashMap<org.hl7.fhir.definitions.model.ElementDefn, String>();
+      Map<org.hl7.fhir.definitions.model.ElementDefn, String> names = new HashMap<org.hl7.fhir.definitions.model.ElementDefn, String>();
+      Map<org.hl7.fhir.definitions.model.ElementDefn, String> defns = new HashMap<org.hl7.fhir.definitions.model.ElementDefn, String>();
       s.append("\r\n"+s2);
 	    for (String c : classes) {
 	      queue.add(page.getDefinitions().getElementDefn(c));
 	      names.put(page.getDefinitions().getElementDefn(c), c);
+	      if (c.startsWith("Resourc"))
+	        defns.put(page.getDefinitions().getElementDefn(c), "resources-definitions.htm#"+c);
+	      else if (c.equals("Narrative")) 
+	          defns.put(page.getDefinitions().getElementDefn(c), "formats-definitions.htm#"+c);
+        else if (c.equals("Extension")) 
+            defns.put(page.getDefinitions().getElementDefn(c), "extensibility-definitions.htm#"+c);
+        else
+          defns.put(page.getDefinitions().getElementDefn(c), "datatypes-definitions.htm#"+c);
 	      s.append("Element <|-"+ini.getStringProperty("directions", c)+"- "+c+" << (D, #FFA500) >> \r\n"+s2);
 	    }
 	    while (queue.size() > 0) {
 	      org.hl7.fhir.definitions.model.ElementDefn r = queue.get(0);
 	      queue.remove(0);
-	      generateDiagramClass(r, queue, names, s, s2, elementClasses, false, true);
+	      generateDiagramClass(r, queue, names, defns, s, s2, elementClasses, false, true);
 	    }  
 	    s.append("\r\n"+s2);
 	    s.append("hide methods\r\n");
@@ -783,9 +798,9 @@ public class Publisher {
 	    }
       s.append("hide Element circle\r\n");
 	    s.append("@enduml\r\n");
-	    produceImageFromSource(title, s.toString(), page.getFolders().dstDir + title + ".png");
+	    return produceImageFromSource(title, s.toString(), page.getFolders().dstDir + title + ".png");
 	  } else {
-      produceImageFromSource(title, src, page.getFolders().dstDir + title + ".png");
+	    return produceImageFromSource(title, src, page.getFolders().dstDir + title + ".png");
 	  }
 	}
 	
@@ -803,23 +818,8 @@ public class Publisher {
 	    TextFile.stringToFile(map, page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".map");
 	  }
 	  Utilities.copyFile(new File(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".png"), new File(dest));
-	  return TextFile.fileToString(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".map");
-//	    
-//	  !!TextFile.stringToFile(, page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".plantuml-source");
-//    // TODO Auto-generated method stub
-//    SourceStringReader rdr = new SourceStringReader(src);
-//    FileOutputStream png = new FileOutputStream(page.getFolders().dstDir + title + ".png");
-//    rdr.generateImage(png);
-//    
-//    TextFile.stringToFile(s.toString(), page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+resource.getName().toLowerCase()+".plantuml-source");
-//    SourceStringReader rdr = new SourceStringReader(s.toString());
-//    FileOutputStream png = new FileOutputStream();
-//    return rdr.generateImage(png);
-//    
-////  FileOutputStream svg = new FileOutputStream(page.getFolders().dstDir + n + ".svg");
-////  rdr.generateImage(svg, new FileFormatOption(FileFormat.SVG));
-////  FileOutputStream xmi = new FileOutputStream(page.getFolders().dstDir + n + ".xmi");
-////  rdr.generateImage(xmi, new FileFormatOption(FileFormat.XMI_STANDARD));
+	  String s = TextFile.fileToString(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".map");
+	  return s.substring(s.indexOf(")")+1).replace("name=\"plantuml_map\"", "name=\""+title+"\"");
   }
 
   private String generateDiagram(ResourceDefn resource, String n) throws Exception {
@@ -833,15 +833,19 @@ public class Publisher {
     s.append("skinparam classBorderColor Gray\r\n\r\n");
     s.append("skinparam classArrowColor Navy\r\n\r\n");
 
+    String defn = resource.getName().toLowerCase()+"-definitions.htm#"+resource.getName();
+    
     List<org.hl7.fhir.definitions.model.ElementDefn> queue = new ArrayList<org.hl7.fhir.definitions.model.ElementDefn>();
     List<String> elementClasses = new ArrayList<String>();
     Map<org.hl7.fhir.definitions.model.ElementDefn, String> names = new HashMap<org.hl7.fhir.definitions.model.ElementDefn, String>(); 
+    Map<org.hl7.fhir.definitions.model.ElementDefn, String> defns = new HashMap<org.hl7.fhir.definitions.model.ElementDefn, String>(); 
     queue.add(resource.getRoot());
     names.put(resource.getRoot(), resource.getName());
+    defns.put(resource.getRoot(), defn);
     while (queue.size() > 0) {
       org.hl7.fhir.definitions.model.ElementDefn r = queue.get(0);
       queue.remove(0);
-      generateDiagramClass(r, queue, names, s, s2, elementClasses, r == resource.getRoot(), true);
+      generateDiagramClass(r, queue, names, defns, s, s2, elementClasses, r == resource.getRoot(), true);
     }  
     s.append("\r\n"+s2);
     s.append("hide methods\r\n");
@@ -867,12 +871,14 @@ public class Publisher {
     List<org.hl7.fhir.definitions.model.ElementDefn> queue = new ArrayList<org.hl7.fhir.definitions.model.ElementDefn>();
     List<String> elementClasses = new ArrayList<String>();
     Map<org.hl7.fhir.definitions.model.ElementDefn, String> names = new HashMap<org.hl7.fhir.definitions.model.ElementDefn, String>(); 
+    Map<org.hl7.fhir.definitions.model.ElementDefn, String> defns = new HashMap<org.hl7.fhir.definitions.model.ElementDefn, String>(); 
     queue.add(element);
     names.put(element, element.getName());
+    defns.put(element, "");
     while (queue.size() > 0) {
       org.hl7.fhir.definitions.model.ElementDefn r = queue.get(0);
       queue.remove(0);
-      generateDiagramClass(r, queue, names, s, s2, elementClasses, r == element, false);
+      generateDiagramClass(r, queue, names, defns, s, s2, elementClasses, r == element, false);
     }  
     s.append("\r\n"+s2);
     s.append("hide methods\r\n");
@@ -893,12 +899,17 @@ public class Publisher {
   }
   
 	
-	private void generateDiagramClass(org.hl7.fhir.definitions.model.ElementDefn r, List<org.hl7.fhir.definitions.model.ElementDefn> queue, Map<org.hl7.fhir.definitions.model.ElementDefn, String> names, StringBuilder s, StringBuilder s2, List<String> elementClasses, boolean entry, boolean resource) throws Exception {
+	private void generateDiagramClass(org.hl7.fhir.definitions.model.ElementDefn r, List<org.hl7.fhir.definitions.model.ElementDefn> queue, Map<org.hl7.fhir.definitions.model.ElementDefn, String> names, Map<org.hl7.fhir.definitions.model.ElementDefn, String> defns, StringBuilder s, StringBuilder s2, List<String> elementClasses, boolean entry, boolean resource) throws Exception {
 	  String rn; 
     if (names.keySet().contains(r))
       rn = names.get(r);
     else 
       rn = Utilities.capitalize(r.getName());
+    String dn;
+    if (defns.keySet().contains(r))
+      dn = defns.get(r);
+    else 
+      dn = "??";
 
 	  for (org.hl7.fhir.definitions.model.ElementDefn e : r.getElements()) {
 	    if (e.getTypes().size() == 0 || e.typeCode().startsWith("@") || page.getDefinitions().dataTypeIsSharedInfo(e.typeCode())) {
@@ -915,6 +926,7 @@ public class Publisher {
 	        n = Utilities.capitalize(e.getName());
 	        names.put(e, n);
           queue.add(e);
+          defns.put(e, dn+"."+e.getName());
 	      }
 	      String ta = t != null ? "(D, #FFD700)" : "(E, Aliceblue)";
 	      if (page.getDefinitions().hasType(rn))
@@ -927,7 +939,7 @@ public class Publisher {
           s.append(rn+" << (D, #FFA500) >> *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << "+ta+" >> : "+e.getName()+"\r\n");
 	    }
 	  }
-	  s2.append("url of "+rn+" is [[http://www/"+rn+"{"+rn+" definition}]]\r\n");
+	  s2.append("url of "+rn+" is [["+dn+"]]\r\n");
 	  if (entry)
 	    s2.append("class "+rn+" << (R, #FF7700) >> {\r\n");
 	  else if (page.getDefinitions().dataTypeIsSharedInfo(r.typeCode()) || page.getDefinitions().hasType(rn)) {
@@ -938,7 +950,7 @@ public class Publisher {
 	  }
 	  for (org.hl7.fhir.definitions.model.ElementDefn e : r.getElements()) {
 	    if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@") && !page.getDefinitions().dataTypeIsSharedInfo(e.typeCode())) {
-	      s2.append(" "+e.getName()+" : "+e.typeCode()+" "+e.describeCardinality()+" [[http://www/"+r.getName()+"/"+e.getName()+"{Definition}]]\r\n");
+	      s2.append(" "+e.getName()+" : "+e.typeCode()+" "+e.describeCardinality()+" [["+dn+"."+e.getName()+"]]\r\n");
 	    }
 	  }
 	  s2.append("  --\r\n}\r\n\r\n");

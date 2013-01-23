@@ -79,6 +79,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 				+ "targetNamespace=\"http://hl7.org/fhir\" elementFormDefault=\"qualified\" version=\""+version+"\">\r\n");
 		write("  <xs:import namespace=\"http://www.w3.org/XML/1998/namespace\"/>\r\n");
 		write("  <xs:import namespace=\"http://www.w3.org/1999/xhtml\" schemaLocation=\"xhtml1-strict.xsd\"/>\r\n");
+		write("  <xs:include schemaLocation=\"fhir-all.xsd\"/>\r\n");
 
 		genXmlIdRef();
 		genElementRoot();
@@ -117,6 +118,13 @@ public class XSDBaseGenerator extends OutputStreamWriter {
   }
 
   private void genResource() throws Exception {
+    write("  <xs:complexType name=\"Resource.Inline\">\r\n");
+    write("    <xs:choice minOccurs=\"1\" maxOccurs=\"1\">\r\n");
+    write("      <xs:element ref=\"Binary\"/>\r\n");
+    for (String r : definitions.getResources().keySet()) 
+      write("      <xs:element ref=\""+r+"\"/>\r\n");
+    write("    </xs:choice>\r\n");
+    write("  </xs:complexType>\r\n");
     write("  <xs:complexType name=\"Resource\">\r\n");
     write("    <xs:annotation>\r\n");
     write("      <xs:documentation>The base resource declaration used for all FHIR resource types - adds Narrative and xml:lang</xs:documentation>\r\n");
@@ -127,6 +135,11 @@ public class XSDBaseGenerator extends OutputStreamWriter {
     write("          <xs:element name=\"text\" type=\"Narrative\" minOccurs=\"1\" maxOccurs=\"1\">\r\n");
     write("            <xs:annotation>\r\n");
     write("              <xs:documentation>Text summary of resource (for human interpretation)</xs:documentation>\r\n");
+    write("            </xs:annotation>\r\n");
+    write("          </xs:element>\r\n");
+    write("          <xs:element name=\"contained\" type=\"Resource.Inline\" minOccurs=\"0\" maxOccurs=\"unbounded\">\r\n");
+    write("            <xs:annotation>\r\n");
+    write("              <xs:documentation>Contained, inline Resources. These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope</xs:documentation>\r\n");
     write("            </xs:annotation>\r\n");
     write("          </xs:element>\r\n");
     write("        </xs:sequence>\r\n");

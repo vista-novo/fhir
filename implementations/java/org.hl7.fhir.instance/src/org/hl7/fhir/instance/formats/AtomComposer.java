@@ -96,13 +96,13 @@ public class AtomComposer extends XmlBase {
     xml.open(ATOM_NS, "entry");
     if (e.getTitle() != null)
       xml.element(ATOM_NS, "title", e.getTitle());
-    if (e.getLink() != null) {
-      xml.attribute("rel", "self");
-      xml.attribute("href", e.getLink());
-      xml.element(ATOM_NS, "link", null);
-    }
     if (e.getId() != null)
       xml.element(ATOM_NS, "id", e.getId());
+    for (String n : e.getLinks().keySet()) {
+      xml.attribute("rel", n);
+      xml.attribute("href", e.getLinks().get(n));
+      xml.element(ATOM_NS, "link", null);
+    }
     if (e.getUpdated() != null)
       xml.element(ATOM_NS, "updated", dateToXml(e.getUpdated()));
     if (e.getPublished() != null)
@@ -124,15 +124,16 @@ public class AtomComposer extends XmlBase {
     new XmlComposer().compose(xml, e.getResource(), htmlPretty);
     xml.close(ATOM_NS, "content");
     
-    xml.attribute("type", "xhtml");
-    xml.open(ATOM_NS, "summary");
-    xml.namespace(XhtmlComposer.XHTML_NS, null);
-    boolean oldPretty = xml.isPretty();
-    xml.setPretty(htmlPretty);
-    new XhtmlComposer().compose(xml, e.getSummary());
-    xml.setPretty(oldPretty);
-    xml.close(ATOM_NS, "summary");
-    
+    if (e.getSummary() != null) {
+      xml.attribute("type", "xhtml");
+      xml.open(ATOM_NS, "summary");
+      xml.namespace(XhtmlComposer.XHTML_NS, null);
+      boolean oldPretty = xml.isPretty();
+      xml.setPretty(htmlPretty);
+      new XhtmlComposer().compose(xml, e.getSummary());
+      xml.setPretty(oldPretty);
+      xml.close(ATOM_NS, "summary");
+    }
     xml.close(ATOM_NS, "entry");
   }
 }

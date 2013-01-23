@@ -107,13 +107,15 @@ public abstract class JsonComposerBase extends XmlBase {
 		prop("title", e.getTitle());
 		prop("id", e.getId());
 		prop("versionId", e.getVersionId());
-		if (e.getLink() != null) {
-			openArray("links");
-			json.object();
-			prop("rel", "self");
-			prop("href", e.getLink());
-			json.endObject();
-			closeArray();
+		if (e.getLinks().size() > 0) {
+		  openArray("links");
+		  for (String n : e.getLinks().keySet()) {
+		    json.object();
+		    prop("rel", n);
+		    prop("href", e.getLinks().get(n));
+		    json.endObject();
+		  }
+		  closeArray();
 		}
 
 		if (e.getUpdated() != null)
@@ -140,7 +142,9 @@ public abstract class JsonComposerBase extends XmlBase {
 		open("content");
 		composeResource(e.getResource());
 		close();
-		composeXhtml("summary", e.getSummary());
+		if (e.getSummary() != null) {
+		  composeXhtml("summary", e.getSummary());
+		}
 		json.endObject();  
 
 	}
@@ -437,4 +441,16 @@ public abstract class JsonComposerBase extends XmlBase {
 		json.endArray();
 	}
 
+  protected void composeBinary(String name, Binary element) throws Exception {
+    if (element != null) {
+      open(name);
+      if (element.getXmlId() != null)
+        prop("_id", element.getXmlId());
+      prop("contentType", element.getContentType());
+      prop("content", toString(element.getContent()));
+      close();
+    }    
+    
+  }
+  
 }

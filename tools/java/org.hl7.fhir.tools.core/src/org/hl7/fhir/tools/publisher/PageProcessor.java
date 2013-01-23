@@ -271,6 +271,8 @@ public class PageProcessor implements Logger  {
         src = s1+resHeader("document", "Document", com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("onthispage"))
         src = s1+onThisPage(s2.substring(com[0].length()+1))+s3;
+      else if (com[0].equals("map"))
+        src = s1+imageMaps.get(com[1])+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("pageheader"))
@@ -1047,6 +1049,8 @@ public class PageProcessor implements Logger  {
         src = s1+codelist(name, com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("onthispage"))
         src = s1+onThisPage(s2.substring(com[0].length()+1))+s3;
+      else if (com[0].equals("map"))
+        src = s1+imageMaps.get(com[1])+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("footer"))

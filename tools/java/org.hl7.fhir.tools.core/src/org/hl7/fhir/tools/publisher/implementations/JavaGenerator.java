@@ -190,18 +190,15 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     output.write("package org.hl7.fhir.instance.model;\r\n");
     output.write("\r\n");
     output.write("public enum ResourceType {\r\n");
-    boolean first = true;
+
     for (String n : definitions.getResources().keySet()) {
-      if (!first)
-        output.write(",\r\n");
-      output.write("    "+n);
-      first = false;
+      output.write("    "+n+",\r\n");
     }
 
     for (String n : definitions.getFutureResources().keySet()) {
-      output.write(",\r\n    "+n);
+      output.write("    "+n+",\r\n");
     }
-    output.write(";\r\n");
+    output.write("    Binary;\r\n");
     output.write("\r\n");
     output.write("}\r\n");
     output.close();

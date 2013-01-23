@@ -60,6 +60,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
   private String context;
 
   private StringBuilder reg = new StringBuilder();
+  private StringBuilder regn = new StringBuilder();
   private StringBuilder regt = new StringBuilder();
 //  private StringBuilder regn = new StringBuilder();
   private String genparam;
@@ -109,6 +110,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
       generate(n.getRoot(), JavaGenClass.Resource);
       String nn = javaClassName(n.getName());
       reg.append("    else if (resource instanceof "+nn+")\r\n      compose"+nn+"(\""+n.getName()+"\", ("+nn+")resource);\r\n");
+      regn.append("    else if (resource instanceof "+nn+")\r\n      compose"+nn+"(name, ("+nn+")resource);\r\n");
 //      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }
     
@@ -147,6 +149,17 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     write("    composeElement(element);\r\n");
     write("    if (element.getText() != null)\r\n");
     write("      composeNarrative(\"text\", element.getText());\r\n");
+    write("    if (element.getContained().size() > 0) {\r\n");
+    write("      openArray(\"contained\");\r\n");
+    write("      for (Resource r : element.getContained()) {\r\n");
+    write("        if (r.getXmlId() == null)\r\n");
+    write("          throw new Exception(\"Contained Resource has no id - one must be assigned\"); // we can't assign one here - what points to it?\r\n");
+    write("        open(null);\r\n");
+    write("        composeResource(r);\r\n");
+    write("        close();\r\n");
+    write("      }\r\n");
+    write("      closeArray();\r\n");
+    write("    }\r\n");
     write("  }\r\n");
     write("\r\n");		
   }
@@ -434,6 +447,15 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     write("  @Override\r\n");
     write("  protected void composeResource(Resource resource) throws Exception {\r\n");
     write("    "+reg.toString().substring(9));
+    write("    else if (resource instanceof Binary)\r\n");
+    write("      composeBinary(\"Binary\", (Binary)resource);\r\n");
+    write("    else\r\n");
+    write("      throw new Exception(\"Unhanded resource type \"+resource.getClass().getName());\r\n");
+    write("  }\r\n\r\n");
+    write("  protected void composeNamedResource(String name, Resource resource) throws Exception {\r\n");
+    write("    "+regn.toString().substring(9));
+    write("    else if (resource instanceof Binary)\r\n");
+    write("      composeBinary(name, (Binary)resource);\r\n");
     write("    else\r\n");
     write("      throw new Exception(\"Unhanded resource type \"+resource.getClass().getName());\r\n");
     write("  }\r\n\r\n");
