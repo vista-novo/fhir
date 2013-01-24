@@ -29,13 +29,18 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AtomFeed {
   private String id;
   private String title;
-  private String link;
+  private Map<String, String> links = new LinkedHashMap<String, String>();
   private java.util.Calendar updated;
+  private String authorName;
+  private String authorUri;
 
   private List<AtomEntry> entryList = new ArrayList<AtomEntry>();
 
@@ -55,14 +60,6 @@ public class AtomFeed {
     this.title = title;
   }
 
-  public String getLink() {
-    return link;
-  }
-
-  public void setLink(String link) {
-    this.link = link;
-  }
-
   public java.util.Calendar getUpdated() {
     return updated;
   }
@@ -73,6 +70,26 @@ public class AtomFeed {
 
   public List<AtomEntry> getEntryList() {
     return entryList;
+  }
+
+  public String getAuthorName() {
+    return authorName;
+  }
+
+  public void setAuthorName(String authorName) {
+    this.authorName = authorName;
+  }
+
+  public String getAuthorUri() {
+    return authorUri;
+  }
+
+  public void setAuthorUri(String authorUri) {
+    this.authorUri = authorUri;
+  }
+
+  public Map<String, String> getLinks() {
+    return links;
   }
   
   

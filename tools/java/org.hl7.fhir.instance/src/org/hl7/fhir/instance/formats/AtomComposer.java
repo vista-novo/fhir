@@ -73,14 +73,22 @@ public class AtomComposer extends XmlBase {
     xml.open(ATOM_NS, "feed");
     if (feed.getTitle() != null)
       xml.element(ATOM_NS, "title", feed.getTitle());
-    if (feed.getUpdated() != null)
-      xml.element(ATOM_NS, "updated", dateToXml(feed.getUpdated()));
+    for (String n : feed.getLinks().keySet()) {
+      xml.attribute("rel", n);
+      xml.attribute("href", feed.getLinks().get(n));
+      xml.element(ATOM_NS, "link", null);
+    }
     if (feed.getId() != null)
       xml.element(ATOM_NS, "id", feed.getId());
-    if (feed.getLink() != null) {
-      xml.attribute("rel", "self");
-      xml.attribute("href", feed.getLink());
-      xml.element(ATOM_NS, "link", null);
+    if (feed.getUpdated() != null)
+      xml.element(ATOM_NS, "updated", dateToXml(feed.getUpdated()));
+    if (feed.getAuthorName() != null || feed.getAuthorUri() != null) {
+      xml.open(ATOM_NS, "author");
+      if (feed.getAuthorName() != null)
+        xml.element(ATOM_NS, "name", feed.getAuthorName());
+      if (feed.getAuthorUri() != null)
+        xml.element(ATOM_NS, "uri", feed.getAuthorUri());
+      xml.close(ATOM_NS, "author");
     }
     for (AtomEntry e : feed.getEntryList())
       composeEntry(e);
@@ -96,9 +104,9 @@ public class AtomComposer extends XmlBase {
     xml.open(ATOM_NS, "entry");
     if (e.getTitle() != null)
       xml.element(ATOM_NS, "title", e.getTitle());
-    if (e.getLink() != null) {
-      xml.attribute("rel", "self");
-      xml.attribute("href", e.getLink());
+    for (String n : e.getLinks().keySet()) {
+      xml.attribute("rel", n);
+      xml.attribute("href", e.getLinks().get(n));
       xml.element(ATOM_NS, "link", null);
     }
     if (e.getId() != null)
@@ -107,12 +115,14 @@ public class AtomComposer extends XmlBase {
       xml.element(ATOM_NS, "updated", dateToXml(e.getUpdated()));
     if (e.getPublished() != null)
       xml.element(ATOM_NS, "published", dateToXml(e.getPublished()));
-    xml.open(ATOM_NS, "author");
-    if (e.getAuthorName() != null)
-      xml.element(ATOM_NS, "name", e.getAuthorName());
-    if (e.getAuthorUri() != null)
-      xml.element(ATOM_NS, "uri", e.getAuthorUri());
-    xml.close(ATOM_NS, "author");
+    if (e.getAuthorName() != null || e.getAuthorUri() != null) {
+      xml.open(ATOM_NS, "author");
+      if (e.getAuthorName() != null)
+        xml.element(ATOM_NS, "name", e.getAuthorName());
+      if (e.getAuthorUri() != null)
+        xml.element(ATOM_NS, "uri", e.getAuthorUri());
+      xml.close(ATOM_NS, "author");
+    }
     if (e.getCategory() != null) {      
       xml.attribute("term", e.getCategory());
       xml.attribute("scheme", "http://hl7.org/fhir/resource-types");
@@ -124,15 +134,16 @@ public class AtomComposer extends XmlBase {
     new XmlComposer().compose(xml, e.getResource(), htmlPretty);
     xml.close(ATOM_NS, "content");
     
-    xml.attribute("type", "xhtml");
-    xml.open(ATOM_NS, "summary");
-    xml.namespace(XhtmlComposer.XHTML_NS, null);
-    boolean oldPretty = xml.isPretty();
-    xml.setPretty(htmlPretty);
-    new XhtmlComposer().compose(xml, e.getSummary());
-    xml.setPretty(oldPretty);
-    xml.close(ATOM_NS, "summary");
-    
+    if (e.getSummary() != null) {
+      xml.attribute("type", "xhtml");
+      xml.open(ATOM_NS, "summary");
+      xml.namespace(XhtmlComposer.XHTML_NS, null);
+      boolean oldPretty = xml.isPretty();
+      xml.setPretty(htmlPretty);
+      new XhtmlComposer().compose(xml, e.getSummary());
+      xml.setPretty(oldPretty);
+      xml.close(ATOM_NS, "summary");
+    }
     xml.close(ATOM_NS, "entry");
   }
 }

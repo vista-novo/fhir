@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -66,7 +66,7 @@ public class CodeableConcept extends Type {
     }
 
     public String getTextSimple() { 
-      return this.text.getValue();
+      return this.text == null ? null : this.text.getValue();
     }
 
     public void setTextSimple(String value) { 
@@ -88,7 +88,7 @@ public class CodeableConcept extends Type {
     }
 
     public String getPrimarySimple() { 
-      return this.primary.getValue();
+      return this.primary == null ? null : this.primary.getValue();
     }
 
     public void setPrimarySimple(String value) { 

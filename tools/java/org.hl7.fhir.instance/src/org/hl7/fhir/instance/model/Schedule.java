@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -267,7 +267,7 @@ public class Schedule extends Type {
         }
 
         public int getFrequencySimple() { 
-          return this.frequency.getValue();
+          return this.frequency == null ? null : this.frequency.getValue();
         }
 
         public void setFrequencySimple(int value) { 
@@ -289,7 +289,7 @@ public class Schedule extends Type {
         }
 
         public EventTiming getWhenSimple() { 
-          return this.when.getValue();
+          return this.when == null ? null : this.when.getValue();
         }
 
         public void setWhenSimple(EventTiming value) { 
@@ -311,7 +311,7 @@ public class Schedule extends Type {
         }
 
         public BigDecimal getDurationSimple() { 
-          return this.duration.getValue();
+          return this.duration == null ? null : this.duration.getValue();
         }
 
         public void setDurationSimple(BigDecimal value) { 
@@ -333,7 +333,7 @@ public class Schedule extends Type {
         }
 
         public UnitsOfTime getUnitsSimple() { 
-          return this.units.getValue();
+          return this.units == null ? null : this.units.getValue();
         }
 
         public void setUnitsSimple(UnitsOfTime value) { 
@@ -355,7 +355,7 @@ public class Schedule extends Type {
         }
 
         public int getCountSimple() { 
-          return this.count.getValue();
+          return this.count == null ? null : this.count.getValue();
         }
 
         public void setCountSimple(int value) { 
@@ -377,7 +377,7 @@ public class Schedule extends Type {
         }
 
         public String getEndSimple() { 
-          return this.end.getValue();
+          return this.end == null ? null : this.end.getValue();
         }
 
         public void setEndSimple(String value) { 

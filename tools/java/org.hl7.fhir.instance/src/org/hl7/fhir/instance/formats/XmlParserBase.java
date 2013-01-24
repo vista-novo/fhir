@@ -77,7 +77,11 @@ public abstract class XmlParserBase extends XmlBase {
     }
   }
 
-
+  protected void parseResourceAttributes(XmlPullParser xpp, Resource r) throws Exception {
+    parseElementAttributes(xpp, r);
+    if (xpp.getAttributeValue(null, "xml:lang") != null) 
+      r.setLanguageSimple(xpp.getAttributeValue(null, "xml:lang"));    
+  }
 
 
   private String pathForLocation(XmlPullParser xpp) {
@@ -326,5 +330,19 @@ public abstract class XmlParserBase extends XmlBase {
     return value;
   }
 
+  protected Resource parseBinary(XmlPullParser xpp) throws Exception {
+    Binary res = new Binary();
+    parseElementAttributes(xpp, res);
+    res.setContentType(xpp.getAttributeValue(null, "contentType"));
+    int eventType = xpp.next();
+    if (eventType == XmlPullParser.TEXT) {
+      res.setContent(Base64.decodeBase64(xpp.getText().getBytes()));
+      eventType = xpp.next();
+    }
+    if (eventType != XmlPullParser.END_TAG)
+      throw new Exception("Bad String Structure");
+    xpp.next();
+    return res;
+  }
   
 }

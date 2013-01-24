@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -117,7 +117,7 @@ public class List_ extends Resource {
         }
 
         public boolean getDeletedSimple() { 
-          return this.deleted.getValue();
+          return this.deleted == null ? null : this.deleted.getValue();
         }
 
         public void setDeletedSimple(boolean value) { 
@@ -200,7 +200,7 @@ public class List_ extends Resource {
     }
 
     public String getDateSimple() { 
-      return this.date.getValue();
+      return this.date == null ? null : this.date.getValue();
     }
 
     public void setDateSimple(String value) { 
@@ -222,7 +222,7 @@ public class List_ extends Resource {
     }
 
     public boolean getOrderedSimple() { 
-      return this.ordered.getValue();
+      return this.ordered == null ? null : this.ordered.getValue();
     }
 
     public void setOrderedSimple(boolean value) { 
@@ -244,7 +244,7 @@ public class List_ extends Resource {
     }
 
     public ListMode getModeSimple() { 
-      return this.mode.getValue();
+      return this.mode == null ? null : this.mode.getValue();
     }
 
     public void setModeSimple(ListMode value) { 

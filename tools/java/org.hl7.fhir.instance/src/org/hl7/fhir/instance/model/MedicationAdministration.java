@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -188,7 +188,7 @@ Example 250ml/30min
     }
 
     public MedAdmStatus getAdministrationEventStatusSimple() { 
-      return this.administrationEventStatus.getValue();
+      return this.administrationEventStatus == null ? null : this.administrationEventStatus.getValue();
     }
 
     public void setAdministrationEventStatusSimple(MedAdmStatus value) { 
@@ -210,7 +210,7 @@ Example 250ml/30min
     }
 
     public boolean getIsNegatedSimple() { 
-      return this.isNegated.getValue();
+      return this.isNegated == null ? null : this.isNegated.getValue();
     }
 
     public void setIsNegatedSimple(boolean value) { 

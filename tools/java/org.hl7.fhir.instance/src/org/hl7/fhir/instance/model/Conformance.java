@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -288,7 +288,7 @@ public class Conformance extends Resource {
         }
 
         public String getNameSimple() { 
-          return this.name.getValue();
+          return this.name == null ? null : this.name.getValue();
         }
 
         public void setNameSimple(String value) { 
@@ -335,7 +335,7 @@ public class Conformance extends Resource {
         }
 
         public String getDescriptionSimple() { 
-          return this.description.getValue();
+          return this.description == null ? null : this.description.getValue();
         }
 
         public void setDescriptionSimple(String value) { 
@@ -357,7 +357,7 @@ public class Conformance extends Resource {
         }
 
         public URI getUrlSimple() { 
-          return this.url.getValue();
+          return this.url == null ? null : this.url.getValue();
         }
 
         public void setUrlSimple(URI value) { 
@@ -397,7 +397,7 @@ public class Conformance extends Resource {
         }
 
         public String getNameSimple() { 
-          return this.name.getValue();
+          return this.name == null ? null : this.name.getValue();
         }
 
         public void setNameSimple(String value) { 
@@ -419,7 +419,7 @@ public class Conformance extends Resource {
         }
 
         public String getVersionSimple() { 
-          return this.version.getValue();
+          return this.version == null ? null : this.version.getValue();
         }
 
         public void setVersionSimple(String value) { 
@@ -441,7 +441,7 @@ public class Conformance extends Resource {
         }
 
         public String getReleaseDateSimple() { 
-          return this.releaseDate.getValue();
+          return this.releaseDate == null ? null : this.releaseDate.getValue();
         }
 
         public void setReleaseDateSimple(String value) { 
@@ -471,7 +471,7 @@ public class Conformance extends Resource {
         }
 
         public String getDescriptionSimple() { 
-          return this.description.getValue();
+          return this.description == null ? null : this.description.getValue();
         }
 
         public void setDescriptionSimple(String value) { 
@@ -511,7 +511,7 @@ public class Conformance extends Resource {
         }
 
         public RestfulConformanceMode getModeSimple() { 
-          return this.mode.getValue();
+          return this.mode == null ? null : this.mode.getValue();
         }
 
         public void setModeSimple(RestfulConformanceMode value) { 
@@ -533,7 +533,7 @@ public class Conformance extends Resource {
         }
 
         public String getDocumentationSimple() { 
-          return this.documentation.getValue();
+          return this.documentation == null ? null : this.documentation.getValue();
         }
 
         public void setDocumentationSimple(String value) { 
@@ -582,7 +582,7 @@ public class Conformance extends Resource {
         }
 
         public String getTypeSimple() { 
-          return this.type.getValue();
+          return this.type == null ? null : this.type.getValue();
         }
 
         public void setTypeSimple(String value) { 
@@ -604,7 +604,7 @@ public class Conformance extends Resource {
         }
 
         public URI getProfileSimple() { 
-          return this.profile.getValue();
+          return this.profile == null ? null : this.profile.getValue();
         }
 
         public void setProfileSimple(URI value) { 
@@ -630,7 +630,7 @@ public class Conformance extends Resource {
         }
 
         public boolean getHistorySimple() { 
-          return this.history.getValue();
+          return this.history == null ? null : this.history.getValue();
         }
 
         public void setHistorySimple(boolean value) { 
@@ -665,7 +665,7 @@ public class Conformance extends Resource {
         }
 
         public RestfulOperation getCodeSimple() { 
-          return this.code.getValue();
+          return this.code == null ? null : this.code.getValue();
         }
 
         public void setCodeSimple(RestfulOperation value) { 
@@ -687,7 +687,7 @@ public class Conformance extends Resource {
         }
 
         public String getDocumentationSimple() { 
-          return this.documentation.getValue();
+          return this.documentation == null ? null : this.documentation.getValue();
         }
 
         public void setDocumentationSimple(String value) { 
@@ -727,7 +727,7 @@ public class Conformance extends Resource {
         }
 
         public URI getEndpointSimple() { 
-          return this.endpoint.getValue();
+          return this.endpoint == null ? null : this.endpoint.getValue();
         }
 
         public void setEndpointSimple(URI value) { 
@@ -749,7 +749,7 @@ public class Conformance extends Resource {
         }
 
         public String getDocumentationSimple() { 
-          return this.documentation.getValue();
+          return this.documentation == null ? null : this.documentation.getValue();
         }
 
         public void setDocumentationSimple(String value) { 
@@ -813,7 +813,7 @@ public class Conformance extends Resource {
         }
 
         public String getCodeSimple() { 
-          return this.code.getValue();
+          return this.code == null ? null : this.code.getValue();
         }
 
         public void setCodeSimple(String value) { 
@@ -835,7 +835,7 @@ public class Conformance extends Resource {
         }
 
         public MessageConformanceEventMode getModeSimple() { 
-          return this.mode.getValue();
+          return this.mode == null ? null : this.mode.getValue();
         }
 
         public void setModeSimple(MessageConformanceEventMode value) { 
@@ -861,7 +861,7 @@ public class Conformance extends Resource {
         }
 
         public String getFocusSimple() { 
-          return this.focus.getValue();
+          return this.focus == null ? null : this.focus.getValue();
         }
 
         public void setFocusSimple(String value) { 
@@ -883,7 +883,7 @@ public class Conformance extends Resource {
         }
 
         public URI getRequestSimple() { 
-          return this.request.getValue();
+          return this.request == null ? null : this.request.getValue();
         }
 
         public void setRequestSimple(URI value) { 
@@ -905,7 +905,7 @@ public class Conformance extends Resource {
         }
 
         public URI getResponseSimple() { 
-          return this.response.getValue();
+          return this.response == null ? null : this.response.getValue();
         }
 
         public void setResponseSimple(URI value) { 
@@ -927,7 +927,7 @@ public class Conformance extends Resource {
         }
 
         public String getDocumentationSimple() { 
-          return this.documentation.getValue();
+          return this.documentation == null ? null : this.documentation.getValue();
         }
 
         public void setDocumentationSimple(String value) { 
@@ -967,7 +967,7 @@ public class Conformance extends Resource {
         }
 
         public DocumentMode getModeSimple() { 
-          return this.mode.getValue();
+          return this.mode == null ? null : this.mode.getValue();
         }
 
         public void setModeSimple(DocumentMode value) { 
@@ -989,7 +989,7 @@ public class Conformance extends Resource {
         }
 
         public String getDocumentationSimple() { 
-          return this.documentation.getValue();
+          return this.documentation == null ? null : this.documentation.getValue();
         }
 
         public void setDocumentationSimple(String value) { 
@@ -1011,7 +1011,7 @@ public class Conformance extends Resource {
         }
 
         public URI getProfileSimple() { 
-          return this.profile.getValue();
+          return this.profile == null ? null : this.profile.getValue();
         }
 
         public void setProfileSimple(URI value) { 
@@ -1085,7 +1085,7 @@ public class Conformance extends Resource {
     }
 
     public String getDateSimple() { 
-      return this.date.getValue();
+      return this.date == null ? null : this.date.getValue();
     }
 
     public void setDateSimple(String value) { 
@@ -1139,7 +1139,7 @@ public class Conformance extends Resource {
     }
 
     public String getVersionSimple() { 
-      return this.version.getValue();
+      return this.version == null ? null : this.version.getValue();
     }
 
     public void setVersionSimple(String value) { 
@@ -1161,7 +1161,7 @@ public class Conformance extends Resource {
     }
 
     public boolean getAcceptUnknownSimple() { 
-      return this.acceptUnknown.getValue();
+      return this.acceptUnknown == null ? null : this.acceptUnknown.getValue();
     }
 
     public void setAcceptUnknownSimple(boolean value) { 

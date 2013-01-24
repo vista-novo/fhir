@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -118,7 +118,7 @@ public class IssueReport extends Resource {
         }
 
         public IssueSeverity getSeveritySimple() { 
-          return this.severity.getValue();
+          return this.severity == null ? null : this.severity.getValue();
         }
 
         public void setSeveritySimple(IssueSeverity value) { 
@@ -148,7 +148,7 @@ public class IssueReport extends Resource {
         }
 
         public String getDetailsSimple() { 
-          return this.details.getValue();
+          return this.details == null ? null : this.details.getValue();
         }
 
         public void setDetailsSimple(String value) { 

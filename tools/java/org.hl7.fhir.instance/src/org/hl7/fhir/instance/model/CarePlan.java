@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -211,6 +211,11 @@ public class CarePlan extends Resource {
         private CodeableConcept code;
 
         /**
+         * If true, indicates that the described activity is one that must NOT be engaged in when following the plan.
+         */
+        private Boolean prohibited;
+
+        /**
          * The timing or frequency upon which the described activity is to occur.
          */
         private Schedule schedule;
@@ -259,7 +264,7 @@ public class CarePlan extends Resource {
         }
 
         public CarePlanActivityCategory getCategorySimple() { 
-          return this.category.getValue();
+          return this.category == null ? null : this.category.getValue();
         }
 
         public void setCategorySimple(CarePlanActivityCategory value) { 
@@ -278,6 +283,28 @@ public class CarePlan extends Resource {
 
         public void setCode(CodeableConcept value) { 
           this.code = value;
+        }
+
+        public Boolean getProhibited() { 
+          return this.prohibited;
+        }
+
+        public void setProhibited(Boolean value) { 
+          this.prohibited = value;
+        }
+
+        public boolean getProhibitedSimple() { 
+          return this.prohibited == null ? null : this.prohibited.getValue();
+        }
+
+        public void setProhibitedSimple(boolean value) { 
+          if (value == false)
+            this.prohibited = null;
+          else {
+            if (this.prohibited == null)
+              this.prohibited = new Boolean();
+            this.prohibited.setValue(value);
+          }
         }
 
         public Schedule getSchedule() { 
@@ -333,7 +360,7 @@ public class CarePlan extends Resource {
         }
 
         public String getDetailsSimple() { 
-          return this.details.getValue();
+          return this.details == null ? null : this.details.getValue();
         }
 
         public void setDetailsSimple(String value) { 
@@ -351,6 +378,11 @@ public class CarePlan extends Resource {
         }
 
   }
+
+    /**
+     * Unique identifier by which the care plan is known in different business contexts.
+     */
+    private Identifier identifier;
 
     /**
      * Identifies the patient/subject whose intended care is described by the plan.
@@ -375,7 +407,7 @@ public class CarePlan extends Resource {
     /**
      * Identifies the problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan.
      */
-    private List<ResourceReference> condition = new ArrayList<ResourceReference>();
+    private List<ResourceReference> concern = new ArrayList<ResourceReference>();
 
     /**
      * Identifies all people and organizations who are expected to be involved in the care envisioned by this plan.
@@ -391,6 +423,14 @@ public class CarePlan extends Resource {
      * Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.
      */
     private List<Activity> activity = new ArrayList<Activity>();
+
+    public Identifier getIdentifier() { 
+      return this.identifier;
+    }
+
+    public void setIdentifier(Identifier value) { 
+      this.identifier = value;
+    }
 
     public ResourceReference getPatient() { 
       return this.patient;
@@ -409,7 +449,7 @@ public class CarePlan extends Resource {
     }
 
     public CarePlanStatus getStatusSimple() { 
-      return this.status.getValue();
+      return this.status == null ? null : this.status.getValue();
     }
 
     public void setStatusSimple(CarePlanStatus value) { 
@@ -439,7 +479,7 @@ public class CarePlan extends Resource {
     }
 
     public String getModifiedSimple() { 
-      return this.modified.getValue();
+      return this.modified == null ? null : this.modified.getValue();
     }
 
     public void setModifiedSimple(String value) { 
@@ -452,8 +492,8 @@ public class CarePlan extends Resource {
       }
     }
 
-    public List<ResourceReference> getCondition() { 
-      return this.condition;
+    public List<ResourceReference> getConcern() { 
+      return this.concern;
     }
 
     public List<Participant> getParticipant() { 
@@ -469,7 +509,7 @@ public class CarePlan extends Resource {
     }
 
     public String getGoalSimple() { 
-      return this.goal.getValue();
+      return this.goal == null ? null : this.goal.getValue();
     }
 
     public void setGoalSimple(String value) { 

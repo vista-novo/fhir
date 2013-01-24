@@ -40,13 +40,14 @@ import org.apache.commons.codec.binary.Base64;
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Boolean;
 import org.hl7.fhir.instance.model.Integer;
+import org.hl7.fhir.instance.model.CarePlan.CarePlanStatusEnumFactory;
 import org.hl7.fhir.utilities.xhtml.*;
 import org.hl7.fhir.utilities.xml.*;
 
 public abstract class XmlComposerBase extends XmlBase {
   
   protected IXMLWriter xml;
-  private boolean htmlPretty;
+  protected boolean htmlPretty;
   
   public void compose(OutputStream stream, Resource resource, boolean pretty) throws Exception {
     XMLWriter writer = new XMLWriter(stream, "UTF-8");
@@ -75,7 +76,7 @@ public abstract class XmlComposerBase extends XmlBase {
   
   protected void composeElementAttributes(Element element) throws Exception {
     if (element.getXmlId() != null) 
-      xml.attribute("xml:Id", element.getXmlId());
+      xml.attribute("id", element.getXmlId());
   }
 
   protected void composeTypeAttributes(Type type) throws Exception {
@@ -293,5 +294,15 @@ public abstract class XmlComposerBase extends XmlBase {
 //    }
 //  }
 //  
+  protected void composeBinary(String name, Binary element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.attribute("contentType", element.getContentType());
+      xml.open(FHIR_NS, name);
+      xml.text(toString(element.getContent()));
+      xml.close(FHIR_NS, name);
+    }    
+    
+  }
   
 }

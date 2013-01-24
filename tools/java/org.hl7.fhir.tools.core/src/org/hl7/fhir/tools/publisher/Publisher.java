@@ -1019,7 +1019,7 @@ public class Publisher {
 
 	private String insertSectionNumbers(String src, SectionTracker st, String link) throws Exception  {
     try {
-      TextFile.stringToFile(src, "c:\\temp\\text.htm");
+//      TextFile.stringToFile(src, "c:\\temp\\text.htm");
       XhtmlDocument doc = new XhtmlParser().parse(src);
       insertSectionNumbersInNode(doc, st, link);
       return new XhtmlComposer().compose(doc);

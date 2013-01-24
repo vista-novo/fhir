@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -58,7 +58,7 @@ public class Choice extends Type {
         }
 
         public String getCodeSimple() { 
-          return this.code.getValue();
+          return this.code == null ? null : this.code.getValue();
         }
 
         public void setCodeSimple(String value) { 
@@ -80,7 +80,7 @@ public class Choice extends Type {
         }
 
         public String getDisplaySimple() { 
-          return this.display.getValue();
+          return this.display == null ? null : this.display.getValue();
         }
 
         public void setDisplaySimple(String value) { 
@@ -119,7 +119,7 @@ public class Choice extends Type {
     }
 
     public String getCodeSimple() { 
-      return this.code.getValue();
+      return this.code == null ? null : this.code.getValue();
     }
 
     public void setCodeSimple(String value) { 
@@ -145,7 +145,7 @@ public class Choice extends Type {
     }
 
     public boolean getIsOrderedSimple() { 
-      return this.isOrdered.getValue();
+      return this.isOrdered == null ? null : this.isOrdered.getValue();
     }
 
     public void setIsOrderedSimple(boolean value) { 

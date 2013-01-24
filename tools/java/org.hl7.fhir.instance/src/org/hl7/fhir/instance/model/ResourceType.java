@@ -8,6 +8,7 @@ public enum ResourceType {
     Organization,
     Prescription,
     Group,
+    DiagnosticReport,
     ValueSet,
     Coverage,
     Test,
@@ -15,7 +16,6 @@ public enum ResourceType {
     SecurityEvent,
     IssueReport,
     List,
-    LabReport,
     Conformance,
     XdsEntry,
     Document,
@@ -39,6 +39,7 @@ public enum ResourceType {
     Admission,
     Substance,
     AnatomicalLocation,
-    InterestOfCare;
+    InterestOfCare,
+    Binary;
 
 }

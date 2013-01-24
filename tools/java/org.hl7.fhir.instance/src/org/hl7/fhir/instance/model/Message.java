@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -130,7 +130,7 @@ public class Message extends Resource {
         }
 
         public String getIdSimple() { 
-          return this.id.getValue();
+          return this.id == null ? null : this.id.getValue();
         }
 
         public void setIdSimple(String value) { 
@@ -152,7 +152,7 @@ public class Message extends Resource {
         }
 
         public ResponseCode getCodeSimple() { 
-          return this.code.getValue();
+          return this.code == null ? null : this.code.getValue();
         }
 
         public void setCodeSimple(ResponseCode value) { 
@@ -210,7 +210,7 @@ public class Message extends Resource {
         }
 
         public String getNameSimple() { 
-          return this.name.getValue();
+          return this.name == null ? null : this.name.getValue();
         }
 
         public void setNameSimple(String value) { 
@@ -232,7 +232,7 @@ public class Message extends Resource {
         }
 
         public String getSoftwareSimple() { 
-          return this.software.getValue();
+          return this.software == null ? null : this.software.getValue();
         }
 
         public void setSoftwareSimple(String value) { 
@@ -254,7 +254,7 @@ public class Message extends Resource {
         }
 
         public String getVersionSimple() { 
-          return this.version.getValue();
+          return this.version == null ? null : this.version.getValue();
         }
 
         public void setVersionSimple(String value) { 
@@ -284,7 +284,7 @@ public class Message extends Resource {
         }
 
         public URI getEndpointSimple() { 
-          return this.endpoint.getValue();
+          return this.endpoint == null ? null : this.endpoint.getValue();
         }
 
         public void setEndpointSimple(URI value) { 
@@ -324,7 +324,7 @@ public class Message extends Resource {
         }
 
         public String getNameSimple() { 
-          return this.name.getValue();
+          return this.name == null ? null : this.name.getValue();
         }
 
         public void setNameSimple(String value) { 
@@ -354,7 +354,7 @@ public class Message extends Resource {
         }
 
         public URI getEndpointSimple() { 
-          return this.endpoint.getValue();
+          return this.endpoint == null ? null : this.endpoint.getValue();
         }
 
         public void setEndpointSimple(URI value) { 
@@ -443,7 +443,7 @@ public class Message extends Resource {
     }
 
     public String getIdSimple() { 
-      return this.id.getValue();
+      return this.id == null ? null : this.id.getValue();
     }
 
     public void setIdSimple(String value) { 
@@ -465,7 +465,7 @@ public class Message extends Resource {
     }
 
     public Calendar getInstantSimple() { 
-      return this.instant.getValue();
+      return this.instant == null ? null : this.instant.getValue();
     }
 
     public void setInstantSimple(Calendar value) { 
@@ -487,7 +487,7 @@ public class Message extends Resource {
     }
 
     public String getEventSimple() { 
-      return this.event.getValue();
+      return this.event == null ? null : this.event.getValue();
     }
 
     public void setEventSimple(String value) { 

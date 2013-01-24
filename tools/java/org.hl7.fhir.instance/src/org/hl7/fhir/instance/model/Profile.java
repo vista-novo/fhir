@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -465,7 +465,7 @@ public class Profile extends Resource {
         }
 
         public String getNameSimple() { 
-          return this.name.getValue();
+          return this.name == null ? null : this.name.getValue();
         }
 
         public void setNameSimple(String value) { 
@@ -509,7 +509,7 @@ public class Profile extends Resource {
         }
 
         public ResourceProfileStatus getCodeSimple() { 
-          return this.code.getValue();
+          return this.code == null ? null : this.code.getValue();
         }
 
         public void setCodeSimple(ResourceProfileStatus value) { 
@@ -531,7 +531,7 @@ public class Profile extends Resource {
         }
 
         public String getDateSimple() { 
-          return this.date.getValue();
+          return this.date == null ? null : this.date.getValue();
         }
 
         public void setDateSimple(String value) { 
@@ -553,7 +553,7 @@ public class Profile extends Resource {
         }
 
         public String getCommentSimple() { 
-          return this.comment.getValue();
+          return this.comment == null ? null : this.comment.getValue();
         }
 
         public void setCommentSimple(String value) { 
@@ -588,7 +588,7 @@ public class Profile extends Resource {
         }
 
         public URI getUriSimple() { 
-          return this.uri.getValue();
+          return this.uri == null ? null : this.uri.getValue();
         }
 
         public void setUriSimple(URI value) { 
@@ -610,7 +610,7 @@ public class Profile extends Resource {
         }
 
         public String getPrefixSimple() { 
-          return this.prefix.getValue();
+          return this.prefix == null ? null : this.prefix.getValue();
         }
 
         public void setPrefixSimple(String value) { 
@@ -665,7 +665,7 @@ public class Profile extends Resource {
         }
 
         public String getTypeSimple() { 
-          return this.type.getValue();
+          return this.type == null ? null : this.type.getValue();
         }
 
         public void setTypeSimple(String value) { 
@@ -687,7 +687,7 @@ public class Profile extends Resource {
         }
 
         public URI getProfileSimple() { 
-          return this.profile.getValue();
+          return this.profile == null ? null : this.profile.getValue();
         }
 
         public void setProfileSimple(URI value) { 
@@ -709,7 +709,7 @@ public class Profile extends Resource {
         }
 
         public String getNameSimple() { 
-          return this.name.getValue();
+          return this.name == null ? null : this.name.getValue();
         }
 
         public void setNameSimple(String value) { 
@@ -731,7 +731,7 @@ public class Profile extends Resource {
         }
 
         public String getPurposeSimple() { 
-          return this.purpose.getValue();
+          return this.purpose == null ? null : this.purpose.getValue();
         }
 
         public void setPurposeSimple(String value) { 
@@ -789,7 +789,7 @@ public class Profile extends Resource {
         }
 
         public String getPathSimple() { 
-          return this.path.getValue();
+          return this.path == null ? null : this.path.getValue();
         }
 
         public void setPathSimple(String value) { 
@@ -811,7 +811,7 @@ public class Profile extends Resource {
         }
 
         public String getNameSimple() { 
-          return this.name.getValue();
+          return this.name == null ? null : this.name.getValue();
         }
 
         public void setNameSimple(String value) { 
@@ -841,7 +841,7 @@ public class Profile extends Resource {
         }
 
         public boolean getBundledSimple() { 
-          return this.bundled.getValue();
+          return this.bundled == null ? null : this.bundled.getValue();
         }
 
         public void setBundledSimple(boolean value) { 
@@ -863,7 +863,7 @@ public class Profile extends Resource {
         }
 
         public boolean getClosedSimple() { 
-          return this.closed.getValue();
+          return this.closed == null ? null : this.closed.getValue();
         }
 
         public void setClosedSimple(boolean value) { 
@@ -973,7 +973,7 @@ public class Profile extends Resource {
         }
 
         public String getShortSimple() { 
-          return this.short_.getValue();
+          return this.short_ == null ? null : this.short_.getValue();
         }
 
         public void setShortSimple(String value) { 
@@ -995,7 +995,7 @@ public class Profile extends Resource {
         }
 
         public String getFormalSimple() { 
-          return this.formal.getValue();
+          return this.formal == null ? null : this.formal.getValue();
         }
 
         public void setFormalSimple(String value) { 
@@ -1017,7 +1017,7 @@ public class Profile extends Resource {
         }
 
         public String getCommentsSimple() { 
-          return this.comments.getValue();
+          return this.comments == null ? null : this.comments.getValue();
         }
 
         public void setCommentsSimple(String value) { 
@@ -1039,7 +1039,7 @@ public class Profile extends Resource {
         }
 
         public String getRequirementsSimple() { 
-          return this.requirements.getValue();
+          return this.requirements == null ? null : this.requirements.getValue();
         }
 
         public void setRequirementsSimple(String value) { 
@@ -1065,7 +1065,7 @@ public class Profile extends Resource {
         }
 
         public int getMinSimple() { 
-          return this.min.getValue();
+          return this.min == null ? null : this.min.getValue();
         }
 
         public void setMinSimple(int value) { 
@@ -1087,7 +1087,7 @@ public class Profile extends Resource {
         }
 
         public String getMaxSimple() { 
-          return this.max.getValue();
+          return this.max == null ? null : this.max.getValue();
         }
 
         public void setMaxSimple(String value) { 
@@ -1113,7 +1113,7 @@ public class Profile extends Resource {
         }
 
         public String getNameReferenceSimple() { 
-          return this.nameReference.getValue();
+          return this.nameReference == null ? null : this.nameReference.getValue();
         }
 
         public void setNameReferenceSimple(String value) { 
@@ -1143,7 +1143,7 @@ public class Profile extends Resource {
         }
 
         public int getMaxLengthSimple() { 
-          return this.maxLength.getValue();
+          return this.maxLength == null ? null : this.maxLength.getValue();
         }
 
         public void setMaxLengthSimple(int value) { 
@@ -1173,7 +1173,7 @@ public class Profile extends Resource {
         }
 
         public boolean getMustSupportSimple() { 
-          return this.mustSupport.getValue();
+          return this.mustSupport == null ? null : this.mustSupport.getValue();
         }
 
         public void setMustSupportSimple(boolean value) { 
@@ -1195,7 +1195,7 @@ public class Profile extends Resource {
         }
 
         public boolean getMustUnderstandSimple() { 
-          return this.mustUnderstand.getValue();
+          return this.mustUnderstand == null ? null : this.mustUnderstand.getValue();
         }
 
         public void setMustUnderstandSimple(boolean value) { 
@@ -1217,7 +1217,7 @@ public class Profile extends Resource {
         }
 
         public String getBindingSimple() { 
-          return this.binding.getValue();
+          return this.binding == null ? null : this.binding.getValue();
         }
 
         public void setBindingSimple(String value) { 
@@ -1256,7 +1256,7 @@ public class Profile extends Resource {
         }
 
         public String getCodeSimple() { 
-          return this.code.getValue();
+          return this.code == null ? null : this.code.getValue();
         }
 
         public void setCodeSimple(String value) { 
@@ -1278,7 +1278,7 @@ public class Profile extends Resource {
         }
 
         public URI getProfileSimple() { 
-          return this.profile.getValue();
+          return this.profile == null ? null : this.profile.getValue();
         }
 
         public void setProfileSimple(URI value) { 
@@ -1333,7 +1333,7 @@ public class Profile extends Resource {
         }
 
         public String getIdSimple() { 
-          return this.id.getValue();
+          return this.id == null ? null : this.id.getValue();
         }
 
         public void setIdSimple(String value) { 
@@ -1355,7 +1355,7 @@ public class Profile extends Resource {
         }
 
         public String getNameSimple() { 
-          return this.name.getValue();
+          return this.name == null ? null : this.name.getValue();
         }
 
         public void setNameSimple(String value) { 
@@ -1377,7 +1377,7 @@ public class Profile extends Resource {
         }
 
         public ConstraintSeverity getSeveritySimple() { 
-          return this.severity.getValue();
+          return this.severity == null ? null : this.severity.getValue();
         }
 
         public void setSeveritySimple(ConstraintSeverity value) { 
@@ -1399,7 +1399,7 @@ public class Profile extends Resource {
         }
 
         public String getHumanSimple() { 
-          return this.human.getValue();
+          return this.human == null ? null : this.human.getValue();
         }
 
         public void setHumanSimple(String value) { 
@@ -1421,7 +1421,7 @@ public class Profile extends Resource {
         }
 
         public String getXpathSimple() { 
-          return this.xpath.getValue();
+          return this.xpath == null ? null : this.xpath.getValue();
         }
 
         public void setXpathSimple(String value) { 
@@ -1443,7 +1443,7 @@ public class Profile extends Resource {
         }
 
         public String getOclSimple() { 
-          return this.ocl.getValue();
+          return this.ocl == null ? null : this.ocl.getValue();
         }
 
         public void setOclSimple(String value) { 
@@ -1478,7 +1478,7 @@ public class Profile extends Resource {
         }
 
         public String getTargetSimple() { 
-          return this.target.getValue();
+          return this.target == null ? null : this.target.getValue();
         }
 
         public void setTargetSimple(String value) { 
@@ -1500,7 +1500,7 @@ public class Profile extends Resource {
         }
 
         public String getMapSimple() { 
-          return this.map.getValue();
+          return this.map == null ? null : this.map.getValue();
         }
 
         public void setMapSimple(String value) { 
@@ -1545,7 +1545,7 @@ public class Profile extends Resource {
         }
 
         public String getNameSimple() { 
-          return this.name.getValue();
+          return this.name == null ? null : this.name.getValue();
         }
 
         public void setNameSimple(String value) { 
@@ -1567,7 +1567,7 @@ public class Profile extends Resource {
         }
 
         public SearchParamType getTypeSimple() { 
-          return this.type.getValue();
+          return this.type == null ? null : this.type.getValue();
         }
 
         public void setTypeSimple(SearchParamType value) { 
@@ -1589,7 +1589,7 @@ public class Profile extends Resource {
         }
 
         public SearchRepeatBehavior getRepeatsSimple() { 
-          return this.repeats.getValue();
+          return this.repeats == null ? null : this.repeats.getValue();
         }
 
         public void setRepeatsSimple(SearchRepeatBehavior value) { 
@@ -1611,7 +1611,7 @@ public class Profile extends Resource {
         }
 
         public String getDocumentationSimple() { 
-          return this.documentation.getValue();
+          return this.documentation == null ? null : this.documentation.getValue();
         }
 
         public void setDocumentationSimple(String value) { 
@@ -1656,7 +1656,7 @@ public class Profile extends Resource {
         }
 
         public String getIdSimple() { 
-          return this.id.getValue();
+          return this.id == null ? null : this.id.getValue();
         }
 
         public void setIdSimple(String value) { 
@@ -1678,7 +1678,7 @@ public class Profile extends Resource {
         }
 
         public ExtensionContext getContextTypeSimple() { 
-          return this.contextType.getValue();
+          return this.contextType == null ? null : this.contextType.getValue();
         }
 
         public void setContextTypeSimple(ExtensionContext value) { 
@@ -1750,7 +1750,7 @@ public class Profile extends Resource {
         }
 
         public String getNameSimple() { 
-          return this.name.getValue();
+          return this.name == null ? null : this.name.getValue();
         }
 
         public void setNameSimple(String value) { 
@@ -1772,7 +1772,7 @@ public class Profile extends Resource {
         }
 
         public String getDefinitionSimple() { 
-          return this.definition.getValue();
+          return this.definition == null ? null : this.definition.getValue();
         }
 
         public void setDefinitionSimple(String value) { 
@@ -1794,7 +1794,7 @@ public class Profile extends Resource {
         }
 
         public BindingType getTypeSimple() { 
-          return this.type.getValue();
+          return this.type == null ? null : this.type.getValue();
         }
 
         public void setTypeSimple(BindingType value) { 
@@ -1816,7 +1816,7 @@ public class Profile extends Resource {
         }
 
         public boolean getIsExtensibleSimple() { 
-          return this.isExtensible.getValue();
+          return this.isExtensible == null ? null : this.isExtensible.getValue();
         }
 
         public void setIsExtensibleSimple(boolean value) { 
@@ -1838,7 +1838,7 @@ public class Profile extends Resource {
         }
 
         public BindingConformance getConformanceSimple() { 
-          return this.conformance.getValue();
+          return this.conformance == null ? null : this.conformance.getValue();
         }
 
         public void setConformanceSimple(BindingConformance value) { 
@@ -1860,7 +1860,7 @@ public class Profile extends Resource {
         }
 
         public URI getReferenceSimple() { 
-          return this.reference.getValue();
+          return this.reference == null ? null : this.reference.getValue();
         }
 
         public void setReferenceSimple(URI value) { 
@@ -1909,7 +1909,7 @@ public class Profile extends Resource {
         }
 
         public String getCodeSimple() { 
-          return this.code.getValue();
+          return this.code == null ? null : this.code.getValue();
         }
 
         public void setCodeSimple(String value) { 
@@ -1931,7 +1931,7 @@ public class Profile extends Resource {
         }
 
         public URI getSystemSimple() { 
-          return this.system.getValue();
+          return this.system == null ? null : this.system.getValue();
         }
 
         public void setSystemSimple(URI value) { 
@@ -1953,7 +1953,7 @@ public class Profile extends Resource {
         }
 
         public String getDisplaySimple() { 
-          return this.display.getValue();
+          return this.display == null ? null : this.display.getValue();
         }
 
         public void setDisplaySimple(String value) { 
@@ -1975,7 +1975,7 @@ public class Profile extends Resource {
         }
 
         public String getDefinitionSimple() { 
-          return this.definition.getValue();
+          return this.definition == null ? null : this.definition.getValue();
         }
 
         public void setDefinitionSimple(String value) { 
@@ -2054,7 +2054,7 @@ public class Profile extends Resource {
     }
 
     public String getNameSimple() { 
-      return this.name.getValue();
+      return this.name == null ? null : this.name.getValue();
     }
 
     public void setNameSimple(String value) { 
@@ -2076,7 +2076,7 @@ public class Profile extends Resource {
     }
 
     public String getVersionSimple() { 
-      return this.version.getValue();
+      return this.version == null ? null : this.version.getValue();
     }
 
     public void setVersionSimple(String value) { 
@@ -2106,7 +2106,7 @@ public class Profile extends Resource {
     }
 
     public String getDescriptionSimple() { 
-      return this.description.getValue();
+      return this.description == null ? null : this.description.getValue();
     }
 
     public void setDescriptionSimple(String value) { 
@@ -2144,7 +2144,7 @@ public class Profile extends Resource {
     }
 
     public String getBundleSimple() { 
-      return this.bundle.getValue();
+      return this.bundle == null ? null : this.bundle.getValue();
     }
 
     public void setBundleSimple(String value) { 

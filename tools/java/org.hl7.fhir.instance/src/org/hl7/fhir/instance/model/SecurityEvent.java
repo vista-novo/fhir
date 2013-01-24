@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -677,7 +677,7 @@ public class SecurityEvent extends Resource {
         }
 
         public SecurityEventEventAction getActionSimple() { 
-          return this.action.getValue();
+          return this.action == null ? null : this.action.getValue();
         }
 
         public void setActionSimple(SecurityEventEventAction value) { 
@@ -699,7 +699,7 @@ public class SecurityEvent extends Resource {
         }
 
         public Calendar getDateTimeSimple() { 
-          return this.dateTime.getValue();
+          return this.dateTime == null ? null : this.dateTime.getValue();
         }
 
         public void setDateTimeSimple(Calendar value) { 
@@ -721,7 +721,7 @@ public class SecurityEvent extends Resource {
         }
 
         public SecurityEventEventOutcome getOutcomeSimple() { 
-          return this.outcome.getValue();
+          return this.outcome == null ? null : this.outcome.getValue();
         }
 
         public void setOutcomeSimple(SecurityEventEventOutcome value) { 
@@ -780,7 +780,7 @@ public class SecurityEvent extends Resource {
         }
 
         public String getUserIdSimple() { 
-          return this.userId.getValue();
+          return this.userId == null ? null : this.userId.getValue();
         }
 
         public void setUserIdSimple(String value) { 
@@ -802,7 +802,7 @@ public class SecurityEvent extends Resource {
         }
 
         public String getOtherUserIdSimple() { 
-          return this.otherUserId.getValue();
+          return this.otherUserId == null ? null : this.otherUserId.getValue();
         }
 
         public void setOtherUserIdSimple(String value) { 
@@ -824,7 +824,7 @@ public class SecurityEvent extends Resource {
         }
 
         public String getNameSimple() { 
-          return this.name.getValue();
+          return this.name == null ? null : this.name.getValue();
         }
 
         public void setNameSimple(String value) { 
@@ -846,7 +846,7 @@ public class SecurityEvent extends Resource {
         }
 
         public boolean getRequestorSimple() { 
-          return this.requestor.getValue();
+          return this.requestor == null ? null : this.requestor.getValue();
         }
 
         public void setRequestorSimple(boolean value) { 
@@ -893,7 +893,7 @@ public class SecurityEvent extends Resource {
         }
 
         public NetworkType getTypeSimple() { 
-          return this.type.getValue();
+          return this.type == null ? null : this.type.getValue();
         }
 
         public void setTypeSimple(NetworkType value) { 
@@ -915,7 +915,7 @@ public class SecurityEvent extends Resource {
         }
 
         public String getIdSimple() { 
-          return this.id.getValue();
+          return this.id == null ? null : this.id.getValue();
         }
 
         public void setIdSimple(String value) { 
@@ -955,7 +955,7 @@ public class SecurityEvent extends Resource {
         }
 
         public String getSiteSimple() { 
-          return this.site.getValue();
+          return this.site == null ? null : this.site.getValue();
         }
 
         public void setSiteSimple(String value) { 
@@ -977,7 +977,7 @@ public class SecurityEvent extends Resource {
         }
 
         public String getIdSimple() { 
-          return this.id.getValue();
+          return this.id == null ? null : this.id.getValue();
         }
 
         public void setIdSimple(String value) { 
@@ -1046,7 +1046,7 @@ public class SecurityEvent extends Resource {
         }
 
         public ObjectType getTypeSimple() { 
-          return this.type.getValue();
+          return this.type == null ? null : this.type.getValue();
         }
 
         public void setTypeSimple(ObjectType value) { 
@@ -1068,7 +1068,7 @@ public class SecurityEvent extends Resource {
         }
 
         public ObjectRole getRoleSimple() { 
-          return this.role.getValue();
+          return this.role == null ? null : this.role.getValue();
         }
 
         public void setRoleSimple(ObjectRole value) { 
@@ -1090,7 +1090,7 @@ public class SecurityEvent extends Resource {
         }
 
         public ObjectLifecycle getLifecycleSimple() { 
-          return this.lifecycle.getValue();
+          return this.lifecycle == null ? null : this.lifecycle.getValue();
         }
 
         public void setLifecycleSimple(ObjectLifecycle value) { 
@@ -1120,7 +1120,7 @@ public class SecurityEvent extends Resource {
         }
 
         public String getIdSimple() { 
-          return this.id.getValue();
+          return this.id == null ? null : this.id.getValue();
         }
 
         public void setIdSimple(String value) { 
@@ -1142,7 +1142,7 @@ public class SecurityEvent extends Resource {
         }
 
         public String getSensitivitySimple() { 
-          return this.sensitivity.getValue();
+          return this.sensitivity == null ? null : this.sensitivity.getValue();
         }
 
         public void setSensitivitySimple(String value) { 
@@ -1164,7 +1164,7 @@ public class SecurityEvent extends Resource {
         }
 
         public String getNameSimple() { 
-          return this.name.getValue();
+          return this.name == null ? null : this.name.getValue();
         }
 
         public void setNameSimple(String value) { 
@@ -1186,7 +1186,7 @@ public class SecurityEvent extends Resource {
         }
 
         public byte[] getQuerySimple() { 
-          return this.query.getValue();
+          return this.query == null ? null : this.query.getValue();
         }
 
         public void setQuerySimple(byte[] value) { 

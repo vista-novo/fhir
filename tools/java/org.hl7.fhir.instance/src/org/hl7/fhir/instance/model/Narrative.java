@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -117,7 +117,7 @@ public class Narrative extends Element {
         }
 
         public String getMimeTypeSimple() { 
-          return this.mimeType.getValue();
+          return this.mimeType == null ? null : this.mimeType.getValue();
         }
 
         public void setMimeTypeSimple(String value) { 
@@ -139,7 +139,7 @@ public class Narrative extends Element {
         }
 
         public byte[] getContentSimple() { 
-          return this.content.getValue();
+          return this.content == null ? null : this.content.getValue();
         }
 
         public void setContentSimple(byte[] value) { 
@@ -178,7 +178,7 @@ public class Narrative extends Element {
     }
 
     public NarrativeStatus getStatusSimple() { 
-      return this.status.getValue();
+      return this.status == null ? null : this.status.getValue();
     }
 
     public void setStatusSimple(NarrativeStatus value) { 

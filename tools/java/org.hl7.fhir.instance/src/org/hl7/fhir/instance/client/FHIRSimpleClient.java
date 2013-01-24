@@ -90,7 +90,7 @@ public class FHIRSimpleClient implements FHIRClient {
 			e.setId(id);
 			e.setVersionId(client.getHeaderField("Content-Location"));
 			e.setResource(r);
-			e.setLink(client.getURL().toString());
+			e.getLinks().put("self", client.getURL().toString());
 			return e;
 		} catch (Exception e) {
 			throw new EFhirClientException(e);

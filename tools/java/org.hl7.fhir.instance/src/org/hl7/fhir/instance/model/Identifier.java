@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 
 import java.net.*;
@@ -128,7 +128,7 @@ public class Identifier extends Type {
     }
 
     public IdentifierUse getUseSimple() { 
-      return this.use.getValue();
+      return this.use == null ? null : this.use.getValue();
     }
 
     public void setUseSimple(IdentifierUse value) { 
@@ -150,7 +150,7 @@ public class Identifier extends Type {
     }
 
     public String getLabelSimple() { 
-      return this.label.getValue();
+      return this.label == null ? null : this.label.getValue();
     }
 
     public void setLabelSimple(String value) { 
@@ -172,7 +172,7 @@ public class Identifier extends Type {
     }
 
     public URI getSystemSimple() { 
-      return this.system.getValue();
+      return this.system == null ? null : this.system.getValue();
     }
 
     public void setSystemSimple(URI value) { 
@@ -194,7 +194,7 @@ public class Identifier extends Type {
     }
 
     public String getIdSimple() { 
-      return this.id.getValue();
+      return this.id == null ? null : this.id.getValue();
     }
 
     public void setIdSimple(String value) { 

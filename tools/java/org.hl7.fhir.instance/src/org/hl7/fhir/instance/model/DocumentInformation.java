@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -121,7 +121,7 @@ public class DocumentInformation extends Type {
         }
 
         public DocumentAttestationMode getModeSimple() { 
-          return this.mode.getValue();
+          return this.mode == null ? null : this.mode.getValue();
         }
 
         public void setModeSimple(DocumentAttestationMode value) { 
@@ -143,7 +143,7 @@ public class DocumentInformation extends Type {
         }
 
         public String getTimeSimple() { 
-          return this.time.getValue();
+          return this.time == null ? null : this.time.getValue();
         }
 
         public void setTimeSimple(String value) { 
@@ -300,7 +300,7 @@ public class DocumentInformation extends Type {
     }
 
     public Calendar getCreatedSimple() { 
-      return this.created.getValue();
+      return this.created == null ? null : this.created.getValue();
     }
 
     public void setCreatedSimple(Calendar value) { 
@@ -338,7 +338,7 @@ public class DocumentInformation extends Type {
     }
 
     public String getTitleSimple() { 
-      return this.title.getValue();
+      return this.title == null ? null : this.title.getValue();
     }
 
     public void setTitleSimple(String value) { 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -148,7 +148,7 @@ public class XdsEntry2 extends Resource {
     }
 
     public XdsEntryAvailability getAvailabilitySimple() { 
-      return this.availability.getValue();
+      return this.availability == null ? null : this.availability.getValue();
     }
 
     public void setAvailabilitySimple(XdsEntryAvailability value) { 

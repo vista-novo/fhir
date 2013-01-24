@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -105,7 +105,7 @@ public class Prescription extends Resource {
         }
 
         public int getRepeatsSimple() { 
-          return this.repeats.getValue();
+          return this.repeats == null ? null : this.repeats.getValue();
         }
 
         public void setRepeatsSimple(int value) { 
@@ -273,7 +273,7 @@ public class Prescription extends Resource {
         }
 
         public String getDescriptionSimple() { 
-          return this.description.getValue();
+          return this.description == null ? null : this.description.getValue();
         }
 
         public void setDescriptionSimple(String value) { 
@@ -303,7 +303,7 @@ public class Prescription extends Resource {
         }
 
         public String getStartSimple() { 
-          return this.start.getValue();
+          return this.start == null ? null : this.start.getValue();
         }
 
         public void setStartSimple(String value) { 
@@ -325,7 +325,7 @@ public class Prescription extends Resource {
         }
 
         public String getEndSimple() { 
-          return this.end.getValue();
+          return this.end == null ? null : this.end.getValue();
         }
 
         public void setEndSimple(String value) { 
@@ -355,7 +355,7 @@ public class Prescription extends Resource {
         }
 
         public int getNumberOfAdministrationsSimple() { 
-          return this.numberOfAdministrations.getValue();
+          return this.numberOfAdministrations == null ? null : this.numberOfAdministrations.getValue();
         }
 
         public void setNumberOfAdministrationsSimple(int value) { 
@@ -423,7 +423,7 @@ public class Prescription extends Resource {
         }
 
         public boolean getPrnSimple() { 
-          return this.prn.getValue();
+          return this.prn == null ? null : this.prn.getValue();
         }
 
         public void setPrnSimple(boolean value) { 
@@ -528,7 +528,7 @@ public class Prescription extends Resource {
     }
 
     public PrescriptionStatus getStatusSimple() { 
-      return this.status.getValue();
+      return this.status == null ? null : this.status.getValue();
     }
 
     public void setStatusSimple(PrescriptionStatus value) { 
@@ -566,7 +566,7 @@ public class Prescription extends Resource {
     }
 
     public String getPrescribedSimple() { 
-      return this.prescribed.getValue();
+      return this.prescribed == null ? null : this.prescribed.getValue();
     }
 
     public void setPrescribedSimple(String value) { 

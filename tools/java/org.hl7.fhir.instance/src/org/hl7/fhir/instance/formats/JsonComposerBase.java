@@ -86,12 +86,25 @@ public abstract class JsonComposerBase extends XmlBase {
 			prop("updated", dateToXml(feed.getUpdated()));
 		prop("id", feed.getId());
 
-		if (feed.getLink() != null) {
+		if (feed.getAuthorName() != null || feed.getAuthorUri() != null) {
+		  openArray("authors");
+		  json.object();
+		  if (feed.getAuthorName() != null)
+		    prop("name", feed.getAuthorName());
+		  if (feed.getAuthorUri() != null)
+		    prop("uri", feed.getAuthorUri());
+		  json.endObject();
+		  closeArray();
+		}
+
+    if (feed.getLinks().size() > 0) {
 			openArray("links");
-			json.object();
-			prop("rel", "self");
-			prop("href", feed.getLink());
-			json.endObject();
+      for (String n : feed.getLinks().keySet()) {
+  			json.object();
+        prop("rel", n);
+        prop("href", feed.getLinks().get(n));
+			  json.endObject();
+      }
 			closeArray();
 		}
 		if (feed.getEntryList().size() > 0) {
@@ -107,13 +120,15 @@ public abstract class JsonComposerBase extends XmlBase {
 		prop("title", e.getTitle());
 		prop("id", e.getId());
 		prop("versionId", e.getVersionId());
-		if (e.getLink() != null) {
-			openArray("links");
-			json.object();
-			prop("rel", "self");
-			prop("href", e.getLink());
-			json.endObject();
-			closeArray();
+		if (e.getLinks().size() > 0) {
+		  openArray("links");
+		  for (String n : e.getLinks().keySet()) {
+		    json.object();
+		    prop("rel", n);
+		    prop("href", e.getLinks().get(n));
+		    json.endObject();
+		  }
+		  closeArray();
 		}
 
 		if (e.getUpdated() != null)
@@ -121,12 +136,17 @@ public abstract class JsonComposerBase extends XmlBase {
 		if (e.getPublished() != null) 
 			prop("published", dateToXml(e.getPublished()));
 
-		openArray("authors");
-		json.object();
-		prop("name", e.getAuthorName());
-		prop("uri", e.getAuthorUri());
-		json.endObject();
-		closeArray();
+    if (e.getAuthorName() != null || e.getAuthorUri() != null) {
+      openArray("authors");
+      json.object();
+      if (e.getAuthorName() != null)
+        prop("name", e.getAuthorName());
+      if (e.getAuthorUri() != null)
+        prop("uri", e.getAuthorUri());
+      json.endObject();
+      closeArray();
+    }
+
 
 		if (e.getCategory() != null) {
 			openArray("categories");
@@ -140,27 +160,29 @@ public abstract class JsonComposerBase extends XmlBase {
 		open("content");
 		composeResource(e.getResource());
 		close();
-		composeXhtml("summary", e.getSummary());
+		if (e.getSummary() != null) {
+		  composeXhtml("summary", e.getSummary());
+		}
 		json.endObject();  
 
 	}
 
 	protected abstract void composeResource(Resource resource) throws Exception;
 
-	protected void composeElement(Element element) throws Exception {
-		if (element.getXmlId() != null) 
-			prop("_id", element.getXmlId());
-	}
-
+//	protected void composeElement(Element element) throws Exception {
+//		if (element.getXmlId() != null) 
+//			prop("_id", element.getXmlId());
+//	}
+//
 	protected void prop(String name, String value) throws Exception {
 		if (name != null)
 			json.key(name);
 		json.value(value);
 	}
 
-	protected void composeType(Type type) throws Exception {
-		composeElement(type);
-	}
+//	protected void composeType(Type type) throws Exception {
+//		composeElement(type);
+//	}
 
 //	protected void composeStringSimple(String name, String value) throws Exception {
 //		if (value != null)
@@ -437,4 +459,16 @@ public abstract class JsonComposerBase extends XmlBase {
 		json.endArray();
 	}
 
+  protected void composeBinary(String name, Binary element) throws Exception {
+    if (element != null) {
+      open(name);
+      if (element.getXmlId() != null)
+        prop("_id", element.getXmlId());
+      prop("contentType", element.getContentType());
+      prop("content", toString(element.getContent()));
+      close();
+    }    
+    
+  }
+  
 }

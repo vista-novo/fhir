@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 
 import java.net.*;
@@ -131,7 +131,7 @@ public class Quantity extends Type {
     }
 
     public BigDecimal getValueSimple() { 
-      return this.value.getValue();
+      return this.value == null ? null : this.value.getValue();
     }
 
     public void setValueSimple(BigDecimal value) { 
@@ -153,7 +153,7 @@ public class Quantity extends Type {
     }
 
     public QuantityComparator getComparatorSimple() { 
-      return this.comparator.getValue();
+      return this.comparator == null ? null : this.comparator.getValue();
     }
 
     public void setComparatorSimple(QuantityComparator value) { 
@@ -175,7 +175,7 @@ public class Quantity extends Type {
     }
 
     public String getUnitsSimple() { 
-      return this.units.getValue();
+      return this.units == null ? null : this.units.getValue();
     }
 
     public void setUnitsSimple(String value) { 
@@ -197,7 +197,7 @@ public class Quantity extends Type {
     }
 
     public URI getSystemSimple() { 
-      return this.system.getValue();
+      return this.system == null ? null : this.system.getValue();
     }
 
     public void setSystemSimple(URI value) { 
@@ -219,7 +219,7 @@ public class Quantity extends Type {
     }
 
     public String getCodeSimple() { 
-      return this.code.getValue();
+      return this.code == null ? null : this.code.getValue();
     }
 
     public void setCodeSimple(String value) { 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -145,7 +145,7 @@ public class Address extends Type {
     }
 
     public AddressUse getUseSimple() { 
-      return this.use.getValue();
+      return this.use == null ? null : this.use.getValue();
     }
 
     public void setUseSimple(AddressUse value) { 
@@ -167,7 +167,7 @@ public class Address extends Type {
     }
 
     public String getTextSimple() { 
-      return this.text.getValue();
+      return this.text == null ? null : this.text.getValue();
     }
 
     public void setTextSimple(String value) { 
@@ -193,7 +193,7 @@ public class Address extends Type {
     }
 
     public String getCitySimple() { 
-      return this.city.getValue();
+      return this.city == null ? null : this.city.getValue();
     }
 
     public void setCitySimple(String value) { 
@@ -215,7 +215,7 @@ public class Address extends Type {
     }
 
     public String getStateSimple() { 
-      return this.state.getValue();
+      return this.state == null ? null : this.state.getValue();
     }
 
     public void setStateSimple(String value) { 
@@ -237,7 +237,7 @@ public class Address extends Type {
     }
 
     public String getZipSimple() { 
-      return this.zip.getValue();
+      return this.zip == null ? null : this.zip.getValue();
     }
 
     public void setZipSimple(String value) { 
@@ -259,7 +259,7 @@ public class Address extends Type {
     }
 
     public String getCountrySimple() { 
-      return this.country.getValue();
+      return this.country == null ? null : this.country.getValue();
     }
 
     public void setCountrySimple(String value) { 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -82,7 +82,7 @@ public class Provenance extends Resource {
         }
 
         public Calendar getRecordedSimple() { 
-          return this.recorded.getValue();
+          return this.recorded == null ? null : this.recorded.getValue();
         }
 
         public void setRecordedSimple(Calendar value) { 
@@ -120,7 +120,7 @@ public class Provenance extends Resource {
         }
 
         public URI getPolicySimple() { 
-          return this.policy.getValue();
+          return this.policy == null ? null : this.policy.getValue();
         }
 
         public void setPolicySimple(URI value) { 
@@ -181,7 +181,7 @@ public class Provenance extends Resource {
         }
 
         public String getDescriptionSimple() { 
-          return this.description.getValue();
+          return this.description == null ? null : this.description.getValue();
         }
 
         public void setDescriptionSimple(String value) { 
@@ -203,7 +203,7 @@ public class Provenance extends Resource {
         }
 
         public String getCoordsSimple() { 
-          return this.coords.getValue();
+          return this.coords == null ? null : this.coords.getValue();
         }
 
         public void setCoordsSimple(String value) { 
@@ -264,7 +264,7 @@ public class Provenance extends Resource {
         }
 
         public URI getIdSimple() { 
-          return this.id.getValue();
+          return this.id == null ? null : this.id.getValue();
         }
 
         public void setIdSimple(URI value) { 
@@ -286,7 +286,7 @@ public class Provenance extends Resource {
         }
 
         public String getDescriptionSimple() { 
-          return this.description.getValue();
+          return this.description == null ? null : this.description.getValue();
         }
 
         public void setDescriptionSimple(String value) { 
@@ -350,7 +350,7 @@ public class Provenance extends Resource {
     }
 
     public String getSignatureSimple() { 
-      return this.signature.getValue();
+      return this.signature == null ? null : this.signature.getValue();
     }
 
     public void setSignatureSimple(String value) { 

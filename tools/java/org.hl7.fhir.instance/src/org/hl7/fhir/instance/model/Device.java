@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -69,7 +69,7 @@ public class Device extends Resource {
         }
 
         public String getGtinSimple() { 
-          return this.gtin.getValue();
+          return this.gtin == null ? null : this.gtin.getValue();
         }
 
         public void setGtinSimple(String value) { 
@@ -91,7 +91,7 @@ public class Device extends Resource {
         }
 
         public String getLotSimple() { 
-          return this.lot.getValue();
+          return this.lot == null ? null : this.lot.getValue();
         }
 
         public void setLotSimple(String value) { 
@@ -113,7 +113,7 @@ public class Device extends Resource {
         }
 
         public String getSerialNumberSimple() { 
-          return this.serialNumber.getValue();
+          return this.serialNumber == null ? null : this.serialNumber.getValue();
         }
 
         public void setSerialNumberSimple(String value) { 
@@ -135,7 +135,7 @@ public class Device extends Resource {
         }
 
         public String getExpirySimple() { 
-          return this.expiry.getValue();
+          return this.expiry == null ? null : this.expiry.getValue();
         }
 
         public void setExpirySimple(String value) { 
@@ -222,7 +222,7 @@ public class Device extends Resource {
     }
 
     public String getManufacturerSimple() { 
-      return this.manufacturer.getValue();
+      return this.manufacturer == null ? null : this.manufacturer.getValue();
     }
 
     public void setManufacturerSimple(String value) { 
@@ -244,7 +244,7 @@ public class Device extends Resource {
     }
 
     public String getModelSimple() { 
-      return this.model.getValue();
+      return this.model == null ? null : this.model.getValue();
     }
 
     public void setModelSimple(String value) { 
@@ -266,7 +266,7 @@ public class Device extends Resource {
     }
 
     public String getVersionSimple() { 
-      return this.version.getValue();
+      return this.version == null ? null : this.version.getValue();
     }
 
     public void setVersionSimple(String value) { 
@@ -328,7 +328,7 @@ public class Device extends Resource {
     }
 
     public URI getUrlSimple() { 
-      return this.url.getValue();
+      return this.url == null ? null : this.url.getValue();
     }
 
     public void setUrlSimple(URI value) { 

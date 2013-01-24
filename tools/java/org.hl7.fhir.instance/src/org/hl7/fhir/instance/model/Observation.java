@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -318,11 +318,6 @@ public class Observation extends Resource {
     private ResourceReference performer;
 
     /**
-     * Expected value range - guide for interpretation
-     */
-    private Type normalValue;
-
-    /**
      * Guidance on how to interpret the value by comparison to a normal or recommended range
      */
     private List<ReferenceRange> referenceRange = new ArrayList<ReferenceRange>();
@@ -365,7 +360,7 @@ public class Observation extends Resource {
     }
 
     public String getCommentsSimple() { 
-      return this.comments.getValue();
+      return this.comments == null ? null : this.comments.getValue();
     }
 
     public void setCommentsSimple(String value) { 
@@ -395,7 +390,7 @@ public class Observation extends Resource {
     }
 
     public Calendar getIssuedSimple() { 
-      return this.issued.getValue();
+      return this.issued == null ? null : this.issued.getValue();
     }
 
     public void setIssuedSimple(Calendar value) { 
@@ -417,7 +412,7 @@ public class Observation extends Resource {
     }
 
     public ObservationStatus getStatusSimple() { 
-      return this.status.getValue();
+      return this.status == null ? null : this.status.getValue();
     }
 
     public void setStatusSimple(ObservationStatus value) { 
@@ -439,7 +434,7 @@ public class Observation extends Resource {
     }
 
     public ObservationReliability getReliabilitySimple() { 
-      return this.reliability.getValue();
+      return this.reliability == null ? null : this.reliability.getValue();
     }
 
     public void setReliabilitySimple(ObservationReliability value) { 
@@ -490,14 +485,6 @@ public class Observation extends Resource {
 
     public void setPerformer(ResourceReference value) { 
       this.performer = value;
-    }
-
-    public Type getNormalValue() { 
-      return this.normalValue;
-    }
-
-    public void setNormalValue(Type value) { 
-      this.normalValue = value;
     }
 
     public List<ReferenceRange> getReferenceRange() { 

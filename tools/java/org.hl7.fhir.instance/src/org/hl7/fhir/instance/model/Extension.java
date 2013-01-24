@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -45,22 +45,17 @@ public class Extension extends Element {
     private Uri url;
 
     /**
-     * Internal reference to context of the extension - a pointer to an xml:id in the same resource
-     */
-    private String_ ref;
-
-    /**
      * If this element is set to true, then the containing resource element and its children are only safe to process if the reader understands this extension. 
      */
     private Boolean mustUnderstand;
 
     /**
-     * Value of extension - may be a resource or one of a constraint set of the data types (see Extensibility in the spec for list)
+     * Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)
      */
     private org.hl7.fhir.instance.model.Type value;
 
     /**
-     * Nested Extensions - further extensions that are part of the extension
+     * Nested Complex extensions
      */
     private List<Extension> extension = new ArrayList<Extension>();
 
@@ -73,7 +68,7 @@ public class Extension extends Element {
     }
 
     public URI getUrlSimple() { 
-      return this.url.getValue();
+      return this.url == null ? null : this.url.getValue();
     }
 
     public void setUrlSimple(URI value) { 
@@ -86,28 +81,6 @@ public class Extension extends Element {
       }
     }
 
-    public String_ getRef() { 
-      return this.ref;
-    }
-
-    public void setRef(String_ value) { 
-      this.ref = value;
-    }
-
-    public String getRefSimple() { 
-      return this.ref.getValue();
-    }
-
-    public void setRefSimple(String value) { 
-      if (value == null)
-        this.ref = null;
-      else {
-        if (this.ref == null)
-          this.ref = new String_();
-        this.ref.setValue(value);
-      }
-    }
-
     public Boolean getMustUnderstand() { 
       return this.mustUnderstand;
     }
@@ -117,7 +90,7 @@ public class Extension extends Element {
     }
 
     public boolean getMustUnderstandSimple() { 
-      return this.mustUnderstand.getValue();
+      return this.mustUnderstand == null ? null : this.mustUnderstand.getValue();
     }
 
     public void setMustUnderstandSimple(boolean value) { 

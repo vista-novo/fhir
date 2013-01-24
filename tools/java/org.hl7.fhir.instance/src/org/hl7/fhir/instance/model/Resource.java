@@ -1,4 +1,5 @@
 package org.hl7.fhir.instance.model;
+
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
@@ -27,14 +28,26 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public abstract class Resource extends Element {
 	
-	/**
+  public abstract ResourceType getResourceType();
+
+  /**
 	 * Text summary of resource, for human interpretation
 	 */
 	private Narrative text;
 
+  /**
+   * The primary/base human language of the content. The value can be any valid value for xml:lang
+   */
+  private Code language;
+
+  private List<Resource> contained = new ArrayList<Resource>();
+	
 	public Narrative getText() {
 		return text;
 	}
@@ -43,5 +56,31 @@ public abstract class Resource extends Element {
 		this.text = text;
 	}
 
-	public abstract ResourceType getResourceType();
+  public Code getLanguage() { 
+    return this.language;
+  }
+
+  public void setLanguage(Code value) { 
+    this.language = value;
+  }
+
+  public String getLanguageSimple() { 
+    return this.language == null ? null : this.language.getValue();
+
+  }
+
+  public void setLanguageSimple(String value) { 
+    if (value == null)
+      this.language = null;
+    else {
+      if (this.language == null)
+        this.language = new Code();
+      this.language.setValue(value);
+    }
+  }
+
+  public List<Resource> getContained() {
+    return contained;
+  }
+  
 }

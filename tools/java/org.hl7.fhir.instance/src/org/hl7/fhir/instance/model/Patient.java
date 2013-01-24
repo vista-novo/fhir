@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -138,7 +138,7 @@ public class Patient extends Resource {
     }
 
     public boolean getActiveSimple() { 
-      return this.active.getValue();
+      return this.active == null ? null : this.active.getValue();
     }
 
     public void setActiveSimple(boolean value) { 

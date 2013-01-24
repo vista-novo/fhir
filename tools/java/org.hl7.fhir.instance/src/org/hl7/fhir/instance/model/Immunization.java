@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -58,7 +58,7 @@ public class Immunization extends Resource {
         }
 
         public String getDateSimple() { 
-          return this.date.getValue();
+          return this.date == null ? null : this.date.getValue();
         }
 
         public void setDateSimple(String value) { 
@@ -101,7 +101,7 @@ public class Immunization extends Resource {
         }
 
         public String getDateSimple() { 
-          return this.date.getValue();
+          return this.date == null ? null : this.date.getValue();
         }
 
         public void setDateSimple(String value) { 
@@ -219,7 +219,7 @@ public class Immunization extends Resource {
     }
 
     public String getDateSimple() { 
-      return this.date.getValue();
+      return this.date == null ? null : this.date.getValue();
     }
 
     public void setDateSimple(String value) { 
@@ -241,7 +241,7 @@ public class Immunization extends Resource {
     }
 
     public boolean getReportedSimple() { 
-      return this.reported.getValue();
+      return this.reported == null ? null : this.reported.getValue();
     }
 
     public void setReportedSimple(boolean value) { 
@@ -263,7 +263,7 @@ public class Immunization extends Resource {
     }
 
     public int getDoseSequenceSimple() { 
-      return this.doseSequence.getValue();
+      return this.doseSequence == null ? null : this.doseSequence.getValue();
     }
 
     public void setDoseSequenceSimple(int value) { 
@@ -293,7 +293,7 @@ public class Immunization extends Resource {
     }
 
     public String getLotNumberSimple() { 
-      return this.lotNumber.getValue();
+      return this.lotNumber == null ? null : this.lotNumber.getValue();
     }
 
     public void setLotNumberSimple(String value) { 
@@ -315,7 +315,7 @@ public class Immunization extends Resource {
     }
 
     public String getExpirationDateSimple() { 
-      return this.expirationDate.getValue();
+      return this.expirationDate == null ? null : this.expirationDate.getValue();
     }
 
     public void setExpirationDateSimple(String value) { 

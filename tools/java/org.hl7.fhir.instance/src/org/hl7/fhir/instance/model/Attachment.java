@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 
 import java.net.*;
@@ -82,7 +82,7 @@ public class Attachment extends Type {
     }
 
     public String getContentTypeSimple() { 
-      return this.contentType.getValue();
+      return this.contentType == null ? null : this.contentType.getValue();
     }
 
     public void setContentTypeSimple(String value) { 
@@ -103,6 +103,20 @@ public class Attachment extends Type {
       this.language = value;
     }
 
+    public String getLanguageSimple() { 
+      return this.language == null ? null : this.language.getValue();
+    }
+
+    public void setLanguageSimple(String value) { 
+      if (value == null)
+        this.language = null;
+      else {
+        if (this.language == null)
+          this.language = new Code();
+        this.language.setValue(value);
+      }
+    }
+
     public Base64Binary getData() { 
       return this.data;
     }
@@ -112,7 +126,7 @@ public class Attachment extends Type {
     }
 
     public byte[] getDataSimple() { 
-      return this.data.getValue();
+      return this.data == null ? null : this.data.getValue();
     }
 
     public void setDataSimple(byte[] value) { 
@@ -134,7 +148,7 @@ public class Attachment extends Type {
     }
 
     public URI getUrlSimple() { 
-      return this.url.getValue();
+      return this.url == null ? null : this.url.getValue();
     }
 
     public void setUrlSimple(URI value) { 
@@ -156,7 +170,7 @@ public class Attachment extends Type {
     }
 
     public int getSizeSimple() { 
-      return this.size.getValue();
+      return this.size == null ? null : this.size.getValue();
     }
 
     public void setSizeSimple(int value) { 
@@ -178,7 +192,7 @@ public class Attachment extends Type {
     }
 
     public byte[] getHashSimple() { 
-      return this.hash.getValue();
+      return this.hash == null ? null : this.hash.getValue();
     }
 
     public void setHashSimple(byte[] value) { 
@@ -200,7 +214,7 @@ public class Attachment extends Type {
     }
 
     public String getTitleSimple() { 
-      return this.title.getValue();
+      return this.title == null ? null : this.title.getValue();
     }
 
     public void setTitleSimple(String value) { 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -145,7 +145,7 @@ public class Group extends Resource {
         }
 
         public boolean getExcludeSimple() { 
-          return this.exclude.getValue();
+          return this.exclude == null ? null : this.exclude.getValue();
         }
 
         public void setExcludeSimple(boolean value) { 
@@ -217,7 +217,7 @@ public class Group extends Resource {
     }
 
     public GroupType getTypeSimple() { 
-      return this.type.getValue();
+      return this.type == null ? null : this.type.getValue();
     }
 
     public void setTypeSimple(GroupType value) { 
@@ -239,7 +239,7 @@ public class Group extends Resource {
     }
 
     public boolean getActualSimple() { 
-      return this.actual.getValue();
+      return this.actual == null ? null : this.actual.getValue();
     }
 
     public void setActualSimple(boolean value) { 
@@ -269,7 +269,7 @@ public class Group extends Resource {
     }
 
     public String getNameSimple() { 
-      return this.name.getValue();
+      return this.name == null ? null : this.name.getValue();
     }
 
     public void setNameSimple(String value) { 
@@ -291,7 +291,7 @@ public class Group extends Resource {
     }
 
     public int getQuantitySimple() { 
-      return this.quantity.getValue();
+      return this.quantity == null ? null : this.quantity.getValue();
     }
 
     public void setQuantitySimple(int value) { 

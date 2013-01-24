@@ -32,9 +32,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+import org.hl7.fhir.instance.formats.AtomComposer;
 import org.hl7.fhir.instance.formats.JsonComposer;
 import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
+import org.hl7.fhir.instance.formats.XmlParserBase.ResourceOrFeed;
 import org.hl7.fhir.instance.model.Resource;
 
 public class ResourceTest {
@@ -53,15 +55,23 @@ public class ResourceTest {
     
     XmlParser xml = new XmlParser();
     xml.setAllowUnknownContent(false);
-    Resource resource = xml.parse(new FileInputStream(source));
+    ResourceOrFeed rf = xml.parseGeneral(new FileInputStream(source));
     
     FileOutputStream out = new FileOutputStream(source.getAbsoluteFile()+".out.xml");
-    XmlComposer xml1 = new XmlComposer();
-    xml1.compose(out, resource, true);
+    if (rf.getFeed() != null) {
+      AtomComposer atom = new AtomComposer(); 
+      atom.compose(out, rf.getFeed(), true);
+    } else {
+      XmlComposer xml1 = new XmlComposer();
+      xml1.compose(out, rf.getResource(), true);
+    }
     
     out = new FileOutputStream(source.getAbsoluteFile()+".out.json");
     JsonComposer json1 = new JsonComposer();
-    json1.compose(out, resource);
+    if (rf.getFeed() != null) 
+      json1.compose(out, rf.getFeed());
+    else
+      json1.compose(out, rf.getResource());
     
   }
 }

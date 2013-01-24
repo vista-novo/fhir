@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -241,7 +241,7 @@ public class ValueSet extends Resource {
         }
 
         public String getNameSimple() { 
-          return this.name.getValue();
+          return this.name == null ? null : this.name.getValue();
         }
 
         public void setNameSimple(String value) { 
@@ -263,7 +263,7 @@ public class ValueSet extends Resource {
         }
 
         public URI getReferenceSimple() { 
-          return this.reference.getValue();
+          return this.reference == null ? null : this.reference.getValue();
         }
 
         public void setReferenceSimple(URI value) { 
@@ -313,7 +313,7 @@ public class ValueSet extends Resource {
         }
 
         public URI getSystemSimple() { 
-          return this.system.getValue();
+          return this.system == null ? null : this.system.getValue();
         }
 
         public void setSystemSimple(URI value) { 
@@ -335,7 +335,7 @@ public class ValueSet extends Resource {
         }
 
         public String getVersionSimple() { 
-          return this.version.getValue();
+          return this.version == null ? null : this.version.getValue();
         }
 
         public void setVersionSimple(String value) { 
@@ -357,7 +357,7 @@ public class ValueSet extends Resource {
         }
 
         public CodeSelectionMode getModeSimple() { 
-          return this.mode.getValue();
+          return this.mode == null ? null : this.mode.getValue();
         }
 
         public void setModeSimple(CodeSelectionMode value) { 
@@ -405,7 +405,7 @@ public class ValueSet extends Resource {
         }
 
         public String getPropertySimple() { 
-          return this.property.getValue();
+          return this.property == null ? null : this.property.getValue();
         }
 
         public void setPropertySimple(String value) { 
@@ -427,7 +427,7 @@ public class ValueSet extends Resource {
         }
 
         public FilterOperator getOpSimple() { 
-          return this.op.getValue();
+          return this.op == null ? null : this.op.getValue();
         }
 
         public void setOpSimple(FilterOperator value) { 
@@ -449,7 +449,7 @@ public class ValueSet extends Resource {
         }
 
         public String getValueSimple() { 
-          return this.value.getValue();
+          return this.value == null ? null : this.value.getValue();
         }
 
         public void setValueSimple(String value) { 
@@ -528,7 +528,7 @@ public class ValueSet extends Resource {
     }
 
     public String getNameSimple() { 
-      return this.name.getValue();
+      return this.name == null ? null : this.name.getValue();
     }
 
     public void setNameSimple(String value) { 
@@ -558,7 +558,7 @@ public class ValueSet extends Resource {
     }
 
     public String getDescriptionSimple() { 
-      return this.description.getValue();
+      return this.description == null ? null : this.description.getValue();
     }
 
     public void setDescriptionSimple(String value) { 
@@ -580,7 +580,7 @@ public class ValueSet extends Resource {
     }
 
     public ValuesetStatus getStatusSimple() { 
-      return this.status.getValue();
+      return this.status == null ? null : this.status.getValue();
     }
 
     public void setStatusSimple(ValuesetStatus value) { 
@@ -602,7 +602,7 @@ public class ValueSet extends Resource {
     }
 
     public String getDateSimple() { 
-      return this.date.getValue();
+      return this.date == null ? null : this.date.getValue();
     }
 
     public void setDateSimple(String value) { 
@@ -624,7 +624,7 @@ public class ValueSet extends Resource {
     }
 
     public String getIdentifierSimple() { 
-      return this.identifier.getValue();
+      return this.identifier == null ? null : this.identifier.getValue();
     }
 
     public void setIdentifierSimple(String value) { 
@@ -646,7 +646,7 @@ public class ValueSet extends Resource {
     }
 
     public String getVersionSimple() { 
-      return this.version.getValue();
+      return this.version == null ? null : this.version.getValue();
     }
 
     public void setVersionSimple(String value) { 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -92,7 +92,7 @@ public class Demographics extends Type {
         }
 
         public boolean getPreferenceSimple() { 
-          return this.preference.getValue();
+          return this.preference == null ? null : this.preference.getValue();
         }
 
         public void setPreferenceSimple(boolean value) { 
@@ -172,7 +172,7 @@ public class Demographics extends Type {
     }
 
     public String getBirthDateSimple() { 
-      return this.birthDate.getValue();
+      return this.birthDate == null ? null : this.birthDate.getValue();
     }
 
     public void setBirthDateSimple(String value) { 
@@ -194,7 +194,7 @@ public class Demographics extends Type {
     }
 
     public boolean getDeceasedSimple() { 
-      return this.deceased.getValue();
+      return this.deceased == null ? null : this.deceased.getValue();
     }
 
     public void setDeceasedSimple(boolean value) { 

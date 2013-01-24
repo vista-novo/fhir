@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -179,7 +179,7 @@ public class Problem extends Resource {
         }
 
         public ProblemRelationshipType getTypeSimple() { 
-          return this.type.getValue();
+          return this.type == null ? null : this.type.getValue();
         }
 
         public void setTypeSimple(ProblemRelationshipType value) { 
@@ -310,7 +310,7 @@ public class Problem extends Resource {
     }
 
     public String getDateAssertedSimple() { 
-      return this.dateAsserted.getValue();
+      return this.dateAsserted == null ? null : this.dateAsserted.getValue();
     }
 
     public void setDateAssertedSimple(String value) { 
@@ -348,7 +348,7 @@ public class Problem extends Resource {
     }
 
     public String getStatusSimple() { 
-      return this.status.getValue();
+      return this.status == null ? null : this.status.getValue();
     }
 
     public void setStatusSimple(String value) { 

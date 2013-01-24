@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jan 23, 2013 13:24+1100 for FHIR v0.07
+// Generated on Fri, Jan 25, 2013 00:43+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -174,7 +174,7 @@ public class XdsEntry extends Resource {
         }
 
         public String getNameSimple() { 
-          return this.name.getValue();
+          return this.name == null ? null : this.name.getValue();
         }
 
         public void setNameSimple(String value) { 
@@ -238,7 +238,7 @@ public class XdsEntry extends Resource {
         }
 
         public String getStartSimple() { 
-          return this.start.getValue();
+          return this.start == null ? null : this.start.getValue();
         }
 
         public void setStartSimple(String value) { 
@@ -260,7 +260,7 @@ public class XdsEntry extends Resource {
         }
 
         public String getStopSimple() { 
-          return this.stop.getValue();
+          return this.stop == null ? null : this.stop.getValue();
         }
 
         public void setStopSimple(String value) { 
@@ -348,7 +348,7 @@ public class XdsEntry extends Resource {
     /**
      * Specifies the human language of character data in the document. The values of the attribute are language identifiers as described by the IETF (Internet Engineering Task Force) RFC 3066.
      */
-    private String_ language;
+    private String_ lang;
 
     /**
      * Folders that this document is registered in
@@ -415,7 +415,7 @@ and birth date
     }
 
     public URI getUrlSimple() { 
-      return this.url.getValue();
+      return this.url == null ? null : this.url.getValue();
     }
 
     public void setUrlSimple(URI value) { 
@@ -437,7 +437,7 @@ and birth date
     }
 
     public URI getRepositoryIdSimple() { 
-      return this.repositoryId.getValue();
+      return this.repositoryId == null ? null : this.repositoryId.getValue();
     }
 
     public void setRepositoryIdSimple(URI value) { 
@@ -459,7 +459,7 @@ and birth date
     }
 
     public String getMimeTypeSimple() { 
-      return this.mimeType.getValue();
+      return this.mimeType == null ? null : this.mimeType.getValue();
     }
 
     public void setMimeTypeSimple(String value) { 
@@ -505,7 +505,7 @@ and birth date
     }
 
     public String getTitleSimple() { 
-      return this.title.getValue();
+      return this.title == null ? null : this.title.getValue();
     }
 
     public void setTitleSimple(String value) { 
@@ -527,7 +527,7 @@ and birth date
     }
 
     public URI getDocumentIdSimple() { 
-      return this.documentId.getValue();
+      return this.documentId == null ? null : this.documentId.getValue();
     }
 
     public void setDocumentIdSimple(URI value) { 
@@ -549,7 +549,7 @@ and birth date
     }
 
     public XdsEntryAvailability getAvailabilitySimple() { 
-      return this.availability.getValue();
+      return this.availability == null ? null : this.availability.getValue();
     }
 
     public void setAvailabilitySimple(XdsEntryAvailability value) { 
@@ -579,7 +579,7 @@ and birth date
     }
 
     public Calendar getCreatedSimple() { 
-      return this.created.getValue();
+      return this.created == null ? null : this.created.getValue();
     }
 
     public void setCreatedSimple(Calendar value) { 
@@ -605,7 +605,7 @@ and birth date
     }
 
     public String getHashSimple() { 
-      return this.hash.getValue();
+      return this.hash == null ? null : this.hash.getValue();
     }
 
     public void setHashSimple(String value) { 
@@ -627,7 +627,7 @@ and birth date
     }
 
     public String getSizeSimple() { 
-      return this.size.getValue();
+      return this.size == null ? null : this.size.getValue();
     }
 
     public void setSizeSimple(String value) { 
@@ -640,25 +640,25 @@ and birth date
       }
     }
 
-    public String_ getLanguage() { 
-      return this.language;
+    public String_ getLang() { 
+      return this.lang;
     }
 
-    public void setLanguage(String_ value) { 
-      this.language = value;
+    public void setLang(String_ value) { 
+      this.lang = value;
     }
 
-    public String getLanguageSimple() { 
-      return this.language.getValue();
+    public String getLangSimple() { 
+      return this.lang == null ? null : this.lang.getValue();
     }
 
-    public void setLanguageSimple(String value) { 
+    public void setLangSimple(String value) { 
       if (value == null)
-        this.language = null;
+        this.lang = null;
       else {
-        if (this.language == null)
-          this.language = new String_();
-        this.language.setValue(value);
+        if (this.lang == null)
+          this.lang = new String_();
+        this.lang.setValue(value);
       }
     }
 
@@ -727,7 +727,7 @@ and birth date
     }
 
     public URI getHomeCommunitySimple() { 
-      return this.homeCommunity.getValue();
+      return this.homeCommunity == null ? null : this.homeCommunity.getValue();
     }
 
     public void setHomeCommunitySimple(URI value) { 
@@ -757,7 +757,7 @@ and birth date
     }
 
     public String getCommentsSimple() { 
-      return this.comments.getValue();
+      return this.comments == null ? null : this.comments.getValue();
     }
 
     public void setCommentsSimple(String value) { 
