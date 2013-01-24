@@ -235,7 +235,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
   public void loadAndSave(String rootDir, String sourceFile, String destFile) {
   }
 
-  public String checkFragment(String rootDir, String fragment, String type) throws Exception {
+  public String checkFragments(String rootDir, String fragments) throws Exception {
     return "Not supported by C# implementation";
   }
 }

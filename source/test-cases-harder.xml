@@ -4,9 +4,9 @@ This XML file includes a set of resources that test out difficult cases
 for servers to handle as part of a batch post
  --><feed xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <title>FHIR Test Cases</title>
-  <updated>2012-11-12T18:10:00Z</updated>
   <id>urn:uuid:b248b1b2-1686-4b94-9936-37d7a5f94b51</id>
   <link rel="self" href="http://hl7.org/fhir/batchtest"/>
+  <updated>2012-11-12T18:10:00Z</updated>
 
   <!-- 
 	  the first entry is a simple person resource that is "local" to the server, followed by 
@@ -54,8 +54,8 @@ for servers to handle as part of a batch post
 
   <entry>
     <title>test person 1, version 1</title>
-    <link rel="self" href="http://www.someexternalsite/fhir/person/@1/history/@1"/>
     <id>http://www.someexternalsite/fhir/person/@1</id>
+    <link rel="self" href="http://www.someexternalsite/fhir/person/@1/history/@1"/>
     <updated>2012-11-12T18:05:00Z</updated>
     <author>
       <name>Grahame Grieve</name>
@@ -117,8 +117,8 @@ for servers to handle as part of a batch post
   </entry>
   <entry>
     <title>new test person urn:uuid:8f13879b-8f5c-4ed4-a1f5-bc8d8a0efe</title>
-    <link rel="self" href="urn:uuid:9f13879b-9f5c-5ed4-b1f5-cc8d8a0efe"/>
     <id>urn:uuid:8f13879b-8f5c-4ed4-a1f5-bc8d8a0efe</id>
+    <link rel="self" href="urn:uuid:9f13879b-9f5c-5ed4-b1f5-cc8d8a0efe"/>
     <updated>2012-11-12T18:20:00Z</updated>
     <author>
       <name>Grahame Grieve</name>
@@ -149,8 +149,8 @@ for servers to handle as part of a batch post
   </entry>
   <entry>
     <title>test person 1 provenance for version 1</title>
-    <link rel="self" href="http://hl7.org/fhir/provenance/@101/history/@1"/>
     <id>http://hl7.org/fhir/provenance/@101</id>
+    <link rel="self" href="http://hl7.org/fhir/provenance/@101/history/@1"/>
     <updated>2012-11-12T18:05:01Z</updated>
     <author>
       <name>Grahame Grieve</name>
@@ -179,8 +179,8 @@ for servers to handle as part of a batch post
   </entry>
   <entry>
     <title>test person 1 provenance for version 5 (deletion)</title>
-    <link rel="self" href="http://hl7.org/fhir/provenance/@103/history/@1"/>
     <id>http://hl7.org/fhir/provenance/@103</id>
+    <link rel="self" href="http://hl7.org/fhir/provenance/@103/history/@1"/>
     <updated>2012-11-12T18:15:01Z</updated>
     <author>
       <name>Grahame Grieve</name>

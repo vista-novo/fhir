@@ -464,12 +464,12 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     } 
   }
 
-  public String checkFragment(String rootDir, String fragment, String type) throws Exception {
+  public String checkFragments(String rootDir, String fragments) throws Exception {
     File file = File.createTempFile("temp", ".xml");
     file.deleteOnExit();
     if (file.exists())
       file.delete();
-    TextFile.stringToFile(fragment, file.getAbsolutePath());
+    TextFile.stringToFile(fragments, file.getAbsolutePath());
     
     File filed = File.createTempFile("temp", ".txt");
     filed.deleteOnExit();
@@ -480,10 +480,9 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     command.add("java");
     command.add("-jar");
     command.add("org.hl7.fhir.tools.jar");
-    command.add("fragment");
+    command.add("fragments");
     command.add(file.getAbsolutePath());
     command.add(filed.getAbsolutePath());
-    command.add(type);
 
     ProcessBuilder builder = new ProcessBuilder(command);
     builder.directory(new File(rootDir));

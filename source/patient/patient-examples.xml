@@ -6,8 +6,8 @@
   <updated>2012-05-29T23:45:32Z</updated>
   <entry>
     <title>patient, female</title>
-    <link rel="self" href="http://hl7.org/fhir/patient/@1/history/@1"/>
     <id>http://hl7.org/fhir/patient/@1</id>
+    <link rel="self" href="http://hl7.org/fhir/patient/@1/history/@1"/>
     <updated>2012-05-29T23:45:32Z</updated>
     <author>
       <name>Grahame Grieve / HL7 publishing committee</name>
@@ -60,8 +60,8 @@
   </entry>
   <entry>
     <title>patient, male</title>
-    <link rel="self" href="http://hl7.org/fhir/patient/@2/history/@1"/>
     <id>http://hl7.org/fhir/patient/@2</id>
+    <link rel="self" href="http://hl7.org/fhir/patient/@2/history/@1"/>
     <updated>2012-05-29T23:45:32Z</updated>
     <author>
       <name>Grahame Grieve</name>
@@ -113,8 +113,8 @@
   </entry>
   <entry>
     <title>patient, child</title>
-    <link rel="self" href="http://hl7.org/fhir/patient/@3/history/@1"/>
     <id>http://hl7.org/fhir/patient/@3</id>
+    <link rel="self" href="http://hl7.org/fhir/patient/@3/history/@1"/>
     <updated>2012-05-29T23:45:32Z</updated>
     <author>
       <name>Grahame Grieve</name>
@@ -166,8 +166,8 @@
   </entry>
   <entry>
     <title>family, daughter</title>
-    <link rel="self" href="http://hl7.org/fhir/patient/@4/history/@1"/>
     <id>http://hl7.org/fhir/patient/@4</id>
+    <link rel="self" href="http://hl7.org/fhir/patient/@4/history/@1"/>
     <updated>2012-05-29T23:45:32Z</updated>
     <author>
       <name>Grahame Grieve</name>
@@ -219,8 +219,8 @@
   </entry>
   <entry>
     <title>family, husband</title>
-    <link rel="self" href="http://hl7.org/fhir/patient/@5/history/@1"/>
     <id>http://hl7.org/fhir/patient/@5</id>
+    <link rel="self" href="http://hl7.org/fhir/patient/@5/history/@1"/>
     <updated>2012-05-29T23:45:32Z</updated>
     <author>
       <name>Grahame Grieve</name>
@@ -272,8 +272,8 @@
   </entry>
   <entry>
     <title>family, son</title>
-    <link rel="self" href="http://hl7.org/fhir/patient/@6/history/@1"/>
     <id>http://hl7.org/fhir/patient/@6</id>
+    <link rel="self" href="http://hl7.org/fhir/patient/@6/history/@1"/>
     <updated>2012-05-29T23:45:32Z</updated>
     <author>
       <name>Grahame Grieve</name>
@@ -325,8 +325,8 @@
   </entry>
   <entry>
     <title>family, wife</title>
-    <link rel="self" href="http://hl7.org/fhir/patient/@7/history/@1"/>
     <id>http://hl7.org/fhir/patient/@7</id>
+    <link rel="self" href="http://hl7.org/fhir/patient/@7/history/@1"/>
     <updated>2012-05-29T23:45:32Z</updated>
     <author>
       <name>Grahame Grieve</name>
@@ -378,8 +378,8 @@
   </entry>
   <entry>
     <title>next of kin (parent)</title>
-    <link rel="self" href="http://hl7.org/fhir/patient/@8/history/@1"/>
     <id>http://hl7.org/fhir/patient/@8</id>
+    <link rel="self" href="http://hl7.org/fhir/patient/@8/history/@1"/>
     <updated>2012-05-29T23:45:32Z</updated>
     <author>
       <name>Grahame Grieve</name>
@@ -431,8 +431,8 @@
   </entry>
   <entry>
     <title>next of kin (child)</title>
-    <link rel="self" href="http://hl7.org/fhir/patient/@9/history/@1"/>
     <id>http://hl7.org/fhir/patient/@9</id>
+    <link rel="self" href="http://hl7.org/fhir/patient/@9/history/@1"/>
     <updated>2012-05-29T23:45:32Z</updated>
     <author>
       <name>Grahame Grieve</name>
@@ -484,8 +484,8 @@
   </entry>
   <entry>
     <title>next of kin (spouse)</title>
-    <link rel="self" href="http://hl7.org/fhir/patient/@10/history/@1"/>
     <id>http://hl7.org/fhir/patient/@10</id>
+    <link rel="self" href="http://hl7.org/fhir/patient/@10/history/@1"/>
     <updated>2012-05-29T23:45:32Z</updated>
     <author>
       <name>Grahame Grieve</name>
@@ -537,8 +537,8 @@
   </entry>
   <entry>
     <title>next of kin (other)</title>
-    <link rel="self" href="http://hl7.org/fhir/patient/@11/history/@1"/>
     <id>http://hl7.org/fhir/patient/@11</id>
+    <link rel="self" href="http://hl7.org/fhir/patient/@11/history/@1"/>
     <updated>2012-05-29T23:45:32Z</updated>
     <author>
       <name>Grahame Grieve</name>
@@ -590,8 +590,8 @@
   </entry>
   <entry>
     <title>contact person</title>
-    <link rel="self" href="http://hl7.org/fhir/patient/@12/history/@1"/>
     <id>http://hl7.org/fhir/patient/@12</id>
+    <link rel="self" href="http://hl7.org/fhir/patient/@12/history/@1"/>
     <updated>2012-05-29T23:45:32Z</updated>
     <author>
       <name>Grahame Grieve</name>

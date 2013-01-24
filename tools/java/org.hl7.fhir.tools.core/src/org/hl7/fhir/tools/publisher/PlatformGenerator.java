@@ -121,12 +121,8 @@ public interface PlatformGenerator {
   /**
    * Used during the build to check the syntactical validity of fragments. We use the 
    * java generated code rather than the schemas because the fragments are quite often
-   * incomplete, and we simply want to know whether they include things that are not known
+   * incomplete, and we mainly want to know whether they include things that are not known
    *  
-   * @param fragment
-   * @param type
-   * @return null if ok
-   * @throws Exception
    */
-  public String checkFragment(String rootDir, String fragment, String type) throws Exception;
+  public String checkFragments(String rootDir, String fragmentsXml) throws Exception;
 }

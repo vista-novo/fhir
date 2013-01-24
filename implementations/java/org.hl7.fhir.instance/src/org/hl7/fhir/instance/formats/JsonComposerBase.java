@@ -80,11 +80,24 @@ public abstract class JsonComposerBase extends XmlBase {
 		composeFeed(feed);
 	}
 
+  // standard order for round-tripping examples succesfully:
+  // title, id, links, updated, published, authors
 	private void composeFeed(AtomFeed feed) throws Exception {
-		prop("title", feed.getTitle());
+
+	  prop("title", feed.getTitle());
+    prop("id", feed.getId());
+    if (feed.getLinks().size() > 0) {
+      openArray("links");
+      for (String n : feed.getLinks().keySet()) {
+        json.object();
+        prop("rel", n);
+        prop("href", feed.getLinks().get(n));
+        json.endObject();
+      }
+      closeArray();
+    }
 		if (feed.getUpdated() != null)
 			prop("updated", dateToXml(feed.getUpdated()));
-		prop("id", feed.getId());
 
 		if (feed.getAuthorName() != null || feed.getAuthorUri() != null) {
 		  openArray("authors");
@@ -97,16 +110,6 @@ public abstract class JsonComposerBase extends XmlBase {
 		  closeArray();
 		}
 
-    if (feed.getLinks().size() > 0) {
-			openArray("links");
-      for (String n : feed.getLinks().keySet()) {
-  			json.object();
-        prop("rel", n);
-        prop("href", feed.getLinks().get(n));
-			  json.endObject();
-      }
-			closeArray();
-		}
 		if (feed.getEntryList().size() > 0) {
 			openArray("entries");
 			for (AtomEntry e : feed.getEntryList())
@@ -115,11 +118,12 @@ public abstract class JsonComposerBase extends XmlBase {
 		}
 	}
 
+  // standard order for round-tripping examples succesfully:
+  // title, id, links, updated, published, authors 
 	private void composeEntry(AtomEntry e) throws Exception {
 		json.object();
 		prop("title", e.getTitle());
 		prop("id", e.getId());
-		prop("versionId", e.getVersionId());
 		if (e.getLinks().size() > 0) {
 		  openArray("links");
 		  for (String n : e.getLinks().keySet()) {

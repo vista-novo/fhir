@@ -575,7 +575,7 @@ public class Publisher {
     profileFeed = new AtomFeed();
 		profileFeed.setId("http://hl7.org/fhir/profile/resources");
 		profileFeed.setTitle("Resources as Profiles");
-		profileFeed.setLink("http://hl7.org/implement/standards/fhir/profiles-resources.xml");
+		profileFeed.getLinks().put("self", "http://hl7.org/implement/standards/fhir/profiles-resources.xml");
 		profileFeed.setUpdated(Calendar.getInstance());
     for (String n : page.getDefinitions().getDiagrams().keySet()) {
       log(" ...diagram "+n);
@@ -629,16 +629,27 @@ public class Publisher {
 
 	private void checkFragments() throws Exception {
     List<String> errors = new ArrayList<String>();
+    StringBuilder s = new StringBuilder();
+    s.append("<tests>\r\n");
+    int id = 0;
     for (Fragment f : fragments) {
-      String err = javaReferencePlatform.checkFragment(page.getFolders().dstDir, f.getXml(), f.getType());
-      if (err != null) {
-        String msg = "Fragment Error in page "+f.getPage()+": "+err+" for\r\n"+f.getXml();
-        log(msg);
-        
-        errors.add(msg);
-      }
-    }
-    //if (errors.size() > 0) 
+      s.append("<test id=\""+Integer.toString(id)+"\" page=\""+f.getPage()+"\" type=\""+f.getType()+"\">\r\n");
+      s.append(f.getXml());
+      s.append("</test>\r\n");
+      id++;
+    }  
+    s.append("</tests>\r\n");
+    String err = javaReferencePlatform.checkFragments(page.getFolders().dstDir, s.toString());
+    throw new Exception("stop!");
+//
+//    if (err != null) {
+//        String msg = "Fragment Error in page "+f.getPage()+": "+err+" for\r\n"+f.getXml();
+//        log(msg);
+//        
+//        errors.add(msg);
+//      }
+//    }
+//    //if (errors.size() > 0) 
     //  throw new Exception("Fragment Errors prevent publication from continuing");
   }
 
@@ -871,7 +882,7 @@ public class Publisher {
 	private void addToResourceFeed(Profile profile, String id) {
 		AtomEntry e = new AtomEntry();
 		e.setId("http://hl7.org/fhir/profile/@" + id);
-		e.setLink("http://hl7.org/implement/standards/fhir/" + id+ ".profile.xml");
+		e.getLinks().put("self", "http://hl7.org/implement/standards/fhir/" + id+ ".profile.xml");
 		e.setTitle("Resource \"" + id+ "\" as a profile (to help derivation)");
 		e.setUpdated(page.getGenDate());
 		e.setPublished(page.getGenDate());

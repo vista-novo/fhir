@@ -102,7 +102,7 @@ public class ECoreOclGenerator extends BaseGenerator implements PlatformGenerato
    
   }
 
-  public String checkFragment(String rootDir, String fragment, String type) throws Exception {
+  public String checkFragments(String rootDir, String fragments) throws Exception {
     return "Not supported by eCore implementation";
   }
 }

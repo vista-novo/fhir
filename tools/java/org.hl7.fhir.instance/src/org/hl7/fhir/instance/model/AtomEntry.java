@@ -36,7 +36,6 @@ import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 
 public class AtomEntry {
   private String id;
-  private String versionId;
   private String title;
   private Map<String, String> links = new LinkedHashMap<String, String>();
   private String category;
@@ -53,12 +52,6 @@ public class AtomEntry {
   }
   public void setId(String id) {
     this.id = id;
-  }
-  public String getVersionId() {
-    return versionId;
-  }
-  public void setVersionId(String versionId) {
-    this.versionId = versionId;
   }
   public String getTitle() {
     return title;

@@ -69,17 +69,19 @@ public class AtomComposer extends XmlBase {
     composeFeed(feed);
   }
 
+  // standard order for round-tripping examples succesfully:
+  // title, id, links, updated, published, authors 
   private void composeFeed(AtomFeed feed) throws Exception {
     xml.open(ATOM_NS, "feed");
     if (feed.getTitle() != null)
       xml.element(ATOM_NS, "title", feed.getTitle());
+    if (feed.getId() != null)
+      xml.element(ATOM_NS, "id", feed.getId());
     for (String n : feed.getLinks().keySet()) {
       xml.attribute("rel", n);
       xml.attribute("href", feed.getLinks().get(n));
       xml.element(ATOM_NS, "link", null);
     }
-    if (feed.getId() != null)
-      xml.element(ATOM_NS, "id", feed.getId());
     if (feed.getUpdated() != null)
       xml.element(ATOM_NS, "updated", dateToXml(feed.getUpdated()));
     if (feed.getAuthorName() != null || feed.getAuthorUri() != null) {
@@ -95,22 +97,20 @@ public class AtomComposer extends XmlBase {
     xml.close(ATOM_NS, "feed");
   }
 
+  // standard order for round-tripping examples succesfully:
+  // title, id, links, updated, published, authors 
   private void composeEntry(AtomEntry e) throws Exception  {
-    if (e.getVersionId() != null) {
-      xml.namespace(GDATA_NS, "gd");
-      xml.attribute(GDATA_NS, "etag", e.getVersionId());
-    }
     
     xml.open(ATOM_NS, "entry");
     if (e.getTitle() != null)
       xml.element(ATOM_NS, "title", e.getTitle());
+    if (e.getId() != null)
+      xml.element(ATOM_NS, "id", e.getId());
     for (String n : e.getLinks().keySet()) {
       xml.attribute("rel", n);
       xml.attribute("href", e.getLinks().get(n));
       xml.element(ATOM_NS, "link", null);
     }
-    if (e.getId() != null)
-      xml.element(ATOM_NS, "id", e.getId());
     if (e.getUpdated() != null)
       xml.element(ATOM_NS, "updated", dateToXml(e.getUpdated()));
     if (e.getPublished() != null)

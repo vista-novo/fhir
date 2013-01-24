@@ -88,9 +88,8 @@ public class FHIRSimpleClient implements FHIRClient {
 			e.setCategory(r.getResourceType().toString());
 			e.setUpdated(javax.xml.bind.DatatypeConverter.parseDateTime(client.getHeaderField("Last-Updated")));
 			e.setId(id);
-			e.setVersionId(client.getHeaderField("Content-Location"));
+			e.getLinks().put("self", client.getHeaderField("Content-Location"));
 			e.setResource(r);
-			e.getLinks().put("self", client.getURL().toString());
 			return e;
 		} catch (Exception e) {
 			throw new EFhirClientException(e);

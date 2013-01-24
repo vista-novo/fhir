@@ -255,7 +255,7 @@ Common HTTP Status codes returned on FHIR-related errors (in addition to normal 
  <li><b>404 Not Found</b> - resource type not supported, or not a FHIR end point</li>
  <li><b>405 Method Not allowed</b> - the resource did not exist prior to the update, and the serer does not allow client defined ids</li>
  <li><b>409/412</b> - version conflict management - see above</li> 
- <li><b>490 <a href="http://en.wikipedia.org/wiki/Talk_to_the_hand">Talk to the Hand</a></b> - the proposed resource violated applicable FHIR profiles or server business rules. This should be accompanied by an <a href="issuereport.htm">Issue</a> resource providing additional detail</li>
+ <li><b>422 Unprocessable Entity</b> - the proposed resource violated applicable FHIR profiles or server business rules. This should be accompanied by an <a href="issuereport.htm">Issue</a> resource providing additional detail</li>
 </ul>
 <a name="delete"> </a>
 <h2>delete</h2>
@@ -326,7 +326,7 @@ Common HTTP Status codes returned on FHIR-related errors (in addition to normal 
 <ul>
  <li><b>400 Bad Request</b> - resource could not be parsed or failed basic basic FHIR validation rules</li>
  <li><b>404 Not Found</b> - resource type not supported, or not a FHIR end point</li>
- <li><b>490 <a href="http://en.wikipedia.org/wiki/Talk_to_the_hand">Talk to the Hand</a></b> - the proposed resource violated applicable FHIR profiles or server business rules. This should be accompanied by an <a href="issuereport.htm">Issue</a> resource providing additional detail</li>
+ <li><b>422 Unprocessable Entity</b> - the proposed resource violated applicable FHIR profiles or server business rules. This should be accompanied by an <a href="issuereport.htm">Issue</a> resource providing additional detail</li>
 </ul>
 
 <a name="search"> </a>
@@ -546,7 +546,7 @@ are applied as well. The return content has one of the following values:
 <ul>
  <li><b>400 Bad Request</b> - resource could not be parsed or had some basic FHIR validation error</li>
  <li><b>200 OK</b> - resource passed all validation rules</li>
- <li><b>490 <a href="http://en.wikipedia.org/wiki/Talk_to_the_hand">Talk to the Hand</a></b> - the resource was valid, but it violates applicable FHIR profiles or server business rules</li>
+ <li><b>422 Unprocessable Entity</b> - the resource was valid, but it violates applicable FHIR profiles or server business rules</li>
 </ul>
 <p>
 Unless the result is 200 OK, the response must include an <a href="issuereport.htm">Issue Report</a> that lists the issues found on validation.
@@ -759,9 +759,9 @@ Note: N/A = not present, R = Required, O = optional.
 <tr><td>read</td>         <td>R</td>            <td>Resource</td>           <td>N/A</td>      <td>R</td>                <td>200, 404, 410</td></tr>
 <tr><td>vread</td>        <td>R</td>            <td>Resource</td>           <td>N/A</td>      <td>O</td>                <td>200, 404, 410</td></tr>
 <tr><td>conformance</td>  <td>R</td>            <td>Conformance</td>        <td>N/A</td>      <td>O</td>                <td>200, 404</td></tr>
-<tr><td>update</td>       <td>R</td>            <td>Resource</td>           <td>N/A</td>      <td>R</td>                <td>201, 400, 404, 405, 409, 412, 490</td></tr>
-<tr><td>create</td>       <td>R</td>            <td>Resource</td>           <td>R</td>        <td>O</td>                <td>200, 201, 400, 404, 490</td></tr>
-<tr><td>batch</td>        <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200, 400, 404, 405, 409, 412, 490</td></tr>
+<tr><td>update</td>       <td>R</td>            <td>Resource</td>           <td>N/A</td>      <td>R</td>                <td>201, 400, 404, 405, 409, 412, 422</td></tr>
+<tr><td>create</td>       <td>R</td>            <td>Resource</td>           <td>R</td>        <td>O</td>                <td>200, 201, 400, 404, 422</td></tr>
+<tr><td>batch</td>        <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200, 400, 404, 405, 409, 412, 422</td></tr>
 <tr><td>delete</td>       <td>N/A</td>          <td>N/A</td>                <td>N/A</td>      <td>N/A</td>              <td>204, 405, 404</td></tr>
 <tr><td>search</td>       <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200</td></tr>
 <tr><td>updates</td>      <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200</td></tr>
