@@ -71,8 +71,6 @@ public class AtomParser extends XmlBase {
   
   private AtomFeed parseAtom(XmlPullParser xpp) throws Exception {
     AtomFeed res = new AtomFeed();
-    String an = null;
-    String au = null;
     if (!xpp.getName().equals("feed"))
       throw new Exception("This does not appear to be an atom feed (wrong name '"+xpp.getName()+"') (@ /)");
     xpp.next();
@@ -84,20 +82,20 @@ public class AtomParser extends XmlBase {
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id"))
         res.setId(parseString(xpp));
       else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("link")){
-        res.setLink(xpp.getAttributeValue(null, "href"));
+        res.getLinks().put(xpp.getAttributeValue(null, "rel"), xpp.getAttributeValue(null, "href"));
         skipEmptyElement(xpp);
       } else if(eventType == XmlPullParser.START_TAG && xpp.getName().equals("updated"))
         res.setUpdated(parseDate(xpp));
       else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("entry"))
-        res.getEntryList().add(parseEntry(xpp, au, an));
+        res.getEntryList().add(parseEntry(xpp));
       else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("author")) {
         xpp.next();
         eventType = nextNoWhitespace(xpp);
         while (eventType != XmlPullParser.END_TAG) {
           if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("name")) {
-            an = parseString(xpp);
+            res.setAuthorName(parseString(xpp));
           } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("uri"))
-            au = parseString(xpp);
+            res.setAuthorUri(parseString(xpp));
           else
             throw new Exception("Bad Xml parsing entry.author");
           eventType = nextNoWhitespace(xpp);
@@ -112,10 +110,8 @@ public class AtomParser extends XmlBase {
     return res;  
   }
 
-  private AtomEntry parseEntry(XmlPullParser xpp, String defaultAuthorName, String defaultAuthorUri) throws Exception {
+  private AtomEntry parseEntry(XmlPullParser xpp) throws Exception {
     AtomEntry res = new AtomEntry();
-    res.setAuthorName(defaultAuthorName);
-    res.setAuthorUri(defaultAuthorUri);
     
     xpp.next();    
     int eventType = nextNoWhitespace(xpp);

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2005/Atom ../../schema/fhir-atom.xsd">
   <title>Standard Person Examples</title>
-  <updated>2012-05-29T23:45:32Z</updated>
   <id>urn:uuid:b248b1b2-1686-4b94-9936-37d7a5f94b51</id>
   <link href="http://hl7.org/fhir/patient" rel="self"/>
+  <updated>2012-05-29T23:45:32Z</updated>
 [%loop count=70%]
   <entry>
     <title>test patient</title>

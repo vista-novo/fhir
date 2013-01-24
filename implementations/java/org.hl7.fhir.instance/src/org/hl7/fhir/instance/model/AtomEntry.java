@@ -29,6 +29,7 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -37,7 +38,7 @@ public class AtomEntry {
   private String id;
   private String versionId;
   private String title;
-  private Map<String, String> links = new HashMap<String, String>();
+  private Map<String, String> links = new LinkedHashMap<String, String>();
   private String category;
   private String authorName;
   private String authorUri;

@@ -10,10 +10,10 @@
     - an XdsEntry, registering the document with XDS
     - a Patient resource, for if the patient is not known
   -->
-	<updated>2013-01-07T01:15:36Z</updated>
 	<!-- for a batch, the difference between id and link doesn't matter -->
 	<id>urn:uuid:29372688-d46e-4b32-aafe-4808b333f781</id>
 	<link rel="self" href="urn:uuid:29372688-d46e-4b32-aafe-4808b333f781"/>
+	<updated>2013-01-07T01:15:36Z</updated>
 	<author>
 		<name>FHIR Project Team</name>
 		<uri>http://hl7.org/fhir</uri>

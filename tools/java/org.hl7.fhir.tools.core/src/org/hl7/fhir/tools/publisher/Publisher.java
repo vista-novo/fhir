@@ -1160,9 +1160,11 @@ public class Publisher {
 		for (ResourceDefn r : page.getDefinitions().getResources().values()) {
 			for (Example e : r.getExamples()) {
 				String n = e.getFileTitle();
+        log(" ...validate " + n);
 				validateXmlFile(schema, n);
 			}
 		}
+    log(" ...validate " + "profiles-resources");
 		validateXmlFile(schema, "profiles-resources");
 
 		log("Reference Platform Validation.");
@@ -1170,10 +1172,11 @@ public class Publisher {
 		for (ResourceDefn r : page.getDefinitions().getResources().values()) {
 			for (Example e : r.getExamples()) {
 				String n = e.getFileTitle();
-				log(" ...validate " + n);
+        log(" ...test " + n);
 				validateRoundTrip(schema, n);
 			}
 		}
+    log(" ...test " + "profiles-resources");
 		validateRoundTrip(schema, "profiles-resources");
 	}
 

@@ -86,12 +86,25 @@ public abstract class JsonComposerBase extends XmlBase {
 			prop("updated", dateToXml(feed.getUpdated()));
 		prop("id", feed.getId());
 
-		if (feed.getLink() != null) {
+		if (feed.getAuthorName() != null || feed.getAuthorUri() != null) {
+		  openArray("authors");
+		  json.object();
+		  if (feed.getAuthorName() != null)
+		    prop("name", feed.getAuthorName());
+		  if (feed.getAuthorUri() != null)
+		    prop("uri", feed.getAuthorUri());
+		  json.endObject();
+		  closeArray();
+		}
+
+    if (feed.getLinks().size() > 0) {
 			openArray("links");
-			json.object();
-			prop("rel", "self");
-			prop("href", feed.getLink());
-			json.endObject();
+      for (String n : feed.getLinks().keySet()) {
+  			json.object();
+        prop("rel", n);
+        prop("href", feed.getLinks().get(n));
+			  json.endObject();
+      }
 			closeArray();
 		}
 		if (feed.getEntryList().size() > 0) {
@@ -123,12 +136,17 @@ public abstract class JsonComposerBase extends XmlBase {
 		if (e.getPublished() != null) 
 			prop("published", dateToXml(e.getPublished()));
 
-		openArray("authors");
-		json.object();
-		prop("name", e.getAuthorName());
-		prop("uri", e.getAuthorUri());
-		json.endObject();
-		closeArray();
+    if (e.getAuthorName() != null || e.getAuthorUri() != null) {
+      openArray("authors");
+      json.object();
+      if (e.getAuthorName() != null)
+        prop("name", e.getAuthorName());
+      if (e.getAuthorUri() != null)
+        prop("uri", e.getAuthorUri());
+      json.endObject();
+      closeArray();
+    }
+
 
 		if (e.getCategory() != null) {
 			openArray("categories");
