@@ -196,7 +196,7 @@ h4 {
 
 div.content {
 	background-color: #fff;
-	margin-left: 160px;
+	margin-left: 180px;
 	padding: 5px;
 	border-left: 1px solid #dcdcdc;
 }
@@ -260,8 +260,11 @@ div.sidebar li {
 
 div.sidebar {
 	position: fixed;
-	width: 160px;
+	width: 180px;
 	left: 0px;
+	top: 0;
+	bottom: 0;
+	overflow-y : auto;
 }
 
 pre.spec             {
