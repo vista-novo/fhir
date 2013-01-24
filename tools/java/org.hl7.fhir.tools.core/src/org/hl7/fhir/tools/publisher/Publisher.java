@@ -28,10 +28,13 @@ package org.hl7.fhir.tools.publisher;
  POSSIBILITY OF SUCH DAMAGE.
 
  */
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -111,6 +114,8 @@ import org.w3c.dom.ls.LSResourceResolver;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
 
 /**
  * This is the entry point for the publication method for FHIR The general order
@@ -485,9 +490,8 @@ public class Publisher {
 			if (gen.doesCompile()) {
 				log("Compile " + gen.getName() + " Reference Implementation");
 				if (!gen.compile(page.getFolders().rootDir, new ArrayList<String>())) {
-					log("Compile " + gen.getName() + " failed, still going on.");
-					
-					//throw new Exception("Compile " + gen.getName() + " failed");
+					// log("Compile " + gen.getName() + " failed, still going on.");
+					throw new Exception("Compile " + gen.getName() + " failed");
 				}
 			}
 		}
@@ -627,30 +631,60 @@ public class Publisher {
     book.produce();
 	}
 
+  protected XmlPullParser loadXml(InputStream stream) throws Exception {
+    BufferedInputStream input = new BufferedInputStream(stream);
+    XmlPullParserFactory factory = XmlPullParserFactory.newInstance(System.getProperty(XmlPullParserFactory.PROPERTY_NAME), null);
+    factory.setNamespaceAware(true);
+    XmlPullParser xpp = factory.newPullParser();
+    xpp.setInput(input, "UTF-8");
+    xpp.next();
+    return xpp;
+  }
+   
+  protected int nextNoWhitespace(XmlPullParser xpp) throws Exception {
+    int eventType = xpp.getEventType();
+    while (eventType == XmlPullParser.TEXT && xpp.isWhitespace())
+      eventType = xpp.next();
+    return eventType;
+  }
+    
 	private void checkFragments() throws Exception {
     List<String> errors = new ArrayList<String>();
     StringBuilder s = new StringBuilder();
     s.append("<tests>\r\n");
-    int id = 0;
+    int i = 0;
     for (Fragment f : fragments) {
-      s.append("<test id=\""+Integer.toString(id)+"\" page=\""+f.getPage()+"\" type=\""+f.getType()+"\">\r\n");
+      s.append("<test id=\""+Integer.toString(i)+"\" page=\""+f.getPage()+"\" type=\""+f.getType()+"\">\r\n");
       s.append(f.getXml());
       s.append("</test>\r\n");
-      id++;
+      i++;
     }  
     s.append("</tests>\r\n");
     String err = javaReferencePlatform.checkFragments(page.getFolders().dstDir, s.toString());
-    throw new Exception("stop!");
-//
-//    if (err != null) {
-//        String msg = "Fragment Error in page "+f.getPage()+": "+err+" for\r\n"+f.getXml();
-//        log(msg);
-//        
-//        errors.add(msg);
-//      }
-//    }
-//    //if (errors.size() > 0) 
-    //  throw new Exception("Fragment Errors prevent publication from continuing");
+    if (err == null)
+      throw new Exception("Unable to process outcome of checking fragments");
+    if (!err.startsWith("<results"))
+      throw new Exception(err);
+
+    XmlPullParser xpp = loadXml(new ByteArrayInputStream(err.getBytes()));
+    nextNoWhitespace(xpp);
+    xpp.next();
+    nextNoWhitespace(xpp);
+    
+    while (xpp.getEventType() == XmlPullParser.START_TAG && xpp.getName().equals("result")) {
+      String id = xpp.getAttributeValue(null, "id");
+      String outcome = xpp.getAttributeValue(null, "outcome");
+      if (!"ok".equals(outcome)) {
+        Fragment f = fragments.get(Integer.parseInt(id));
+        String msg = "Fragment Error in page "+f.getPage()+": "+xpp.getAttributeValue(null, "msg")+" for\r\n"+f.getXml();
+        log(msg);
+        errors.add(msg);
+      }
+      xpp.next();
+      nextNoWhitespace(xpp);
+    }
+    if (errors.size() > 0) 
+      throw new Exception("Fragment Errors prevent publication from continuing");
   }
 
   private void produceZip() throws Exception {

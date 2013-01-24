@@ -488,6 +488,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     builder.directory(new File(rootDir));
 
     final Process process = builder.start();
+    
 //    BufferedReader stdError = new BufferedReader(new InputStreamReader(process.getErrorStream()));
 //    String sl;
 //    while ((sl = stdError.readLine()) != null) {

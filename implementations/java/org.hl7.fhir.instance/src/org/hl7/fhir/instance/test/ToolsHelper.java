@@ -18,6 +18,7 @@ import org.hl7.fhir.instance.formats.XmlParserBase.ResourceOrFeed;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.TextFile;
+import org.hl7.fhir.utilities.Utilities;
 import org.w3c.dom.Document;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -37,8 +38,8 @@ public class ToolsHelper {
         self.executeRoundTrip(args);
       else if (args[0].equals("json")) 
         self.executeJson(args);
-      else if (args[0].equals("fragment")) 
-          self.executeFragment(args);
+      else if (args[0].equals("fragments")) 
+          self.executeFragments(args);
       else 
         throw new Exception("Unknown command '"+args[0]+"'");
     } catch (Throwable e) {
@@ -61,23 +62,61 @@ public class ToolsHelper {
     return xpp;
   }
 	 
-  private void executeFragment(String[] args) throws Exception {
+  protected int nextNoWhitespace(XmlPullParser xpp) throws Exception {
+    int eventType = xpp.getEventType();
+    while (eventType == XmlPullParser.TEXT && xpp.isWhitespace())
+      eventType = xpp.next();
+    return eventType;
+  }
+  
+  private void executeFragments(String[] args) throws Exception {
     try {
-	  File source = new CSFile(args[1]);
-	  File dest = new CSFile(args[2]);
+      File source = new CSFile(args[1]);
+      File dest = new CSFile(args[2]);
       if (!source.exists())        
         throw new Exception("Source File \""+source.getAbsolutePath()+"\" not found");
-	  XmlPullParser xpp = loadXml(new FileInputStream(source));
-	  xpp.next();
-	  xpp.next();
-	  XmlParser p = new XmlParser();
-	  p.parseFragment(xpp, args[3]);
-	  System.out.println("done");
-	  TextFile.stringToFile("ok", args[2]);
-	} catch (Exception e) {
-		e.printStackTrace();
-		TextFile.stringToFile(e.getMessage(), args[2]);
-	}
+      XmlPullParser xpp = loadXml(new FileInputStream(source));
+      nextNoWhitespace(xpp);
+      if (!xpp.getName().equals("tests"))
+        throw new Exception("Unable to parse file - starts with "+xpp.getName());
+      xpp.next();
+      nextNoWhitespace(xpp);
+      StringBuilder s = new StringBuilder();
+      s.append("<results>\r\n");
+      int fail = 0;
+      while (xpp.getEventType() == XmlPullParser.START_TAG && xpp.getName().equals("test")) {
+        String id = xpp.getAttributeValue(null, "id");
+        String type = xpp.getAttributeValue(null, "type");
+        // test
+        xpp.next();
+        nextNoWhitespace(xpp);
+        // pre
+        xpp.next();
+        nextNoWhitespace(xpp);
+        XmlParser p = new XmlParser();
+        try {
+          p.parseFragment(xpp, type);
+          s.append("<result id=\""+id+"\" outcome=\"ok\"/>\r\n");
+          nextNoWhitespace(xpp);
+        } catch (Exception e) {
+          s.append("<result id=\""+id+"\" outcome=\"error\" msg=\""+Utilities.escapeXml(e.getMessage())+"\"/>\r\n");
+          fail++;
+        }
+        while (xpp.getEventType() != XmlPullParser.END_TAG || !xpp.getName().equals("pre")) 
+          xpp.next();
+        xpp.next();
+        nextNoWhitespace(xpp);
+        xpp.next();
+        nextNoWhitespace(xpp);
+      }
+      s.append("</results>\r\n");
+
+      System.out.println("done (fail = "+Integer.toString(fail)+")");
+      TextFile.stringToFile(s.toString(), args[2]);
+    } catch (Exception e) {
+      e.printStackTrace();
+      TextFile.stringToFile(e.getMessage(), args[2]);
+    }
   }
 
   public void executeRoundTrip(String[] args) throws Exception {
