@@ -193,12 +193,12 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">Must have a type if a url is provided</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">exists(f:type) or not(exists(f:url))</Data></Cell>
    </Row>
-   <Row ss:Height="60">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Inline</Data></Cell>
     <Cell><Data ss:Type="String">ResourceReference</Data></Cell>
     <Cell><Data ss:Type="String">Must have a local url if the resource is provided inline</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">not(starts-with(f:url/@value, '#')) or exists(ancestor::a:entry/f:*/f:inline/f:*[local-name(.)=current()/f:type/@value and @id=substring-after(current()/f:url/@value, '#')]|/f:*/f:inline/f:*[local-name(.)=current()/f:type/@value and @id=substring-after(current()/f:url/@value, '#')])</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">not(starts-with(f:url/@value, '#')) or exists(ancestor::a:content/f:*/f:contained/f:*[local-name(.)=current()/f:type/@value and @id=substring-after(current()/f:url/@value, '#')]|/f:*/f:contained/f:*[local-name(.)=current()/f:type/@value and @id=substring-after(current()/f:url/@value, '#')])</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
