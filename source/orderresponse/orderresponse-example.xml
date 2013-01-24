@@ -49,7 +49,7 @@
     resource is only a token of the fulfillment of the order
   -->
   <fulfillment>
-    <type value="LabReport"/>
-    <url value="../labreport/@101"/>
+    <type value="DiagnosticReport"/>
+    <url value="../diagnosticreport/@101"/>
   </fulfillment>
 </OrderResponse>

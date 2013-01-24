@@ -4,6 +4,11 @@
 
 <ul>
   <li>
+    The element that contains the actual value of the result has a variable name 
+	depending on the type. The name is "value" + the type name, ignoring parameters, 
+	with a capital on the first letter, e.g. valueInterval or valueString
+  </li>
+  <li>
     The obtainedDateTime or obtainedPeriod is the time that the observation is most 
     relevant as an observation of the subject. For a biological subject (e.g. a human patient), 
     this is the physiologically relevant time of the observation. 
@@ -29,3 +34,6 @@
 </ul>
 
 </div>
+
+
+

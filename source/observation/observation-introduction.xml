@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
   <p>Observations are a central element in healthcare, used to support diagnosis, monitor progress, determine baselines and patterns 
-and even capture demographic characteristics.  Fundamentally, observations are simple name/value pair assertions with little complexity, 
+and even capture demographic characteristics.  Fundamentally, observations are simple name/value pair assertions with little structure, 
 though there are several resources such as <a href="labreport.htm">LabReport</a> to manage and represent rich aggregation
 patterns for observations. Expected uses for this resource include:</p>
   <ul>
