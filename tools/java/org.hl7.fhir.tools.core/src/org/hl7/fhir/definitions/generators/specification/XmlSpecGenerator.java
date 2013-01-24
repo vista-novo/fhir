@@ -79,7 +79,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			write("<span title=\"" + Utilities.escapeXml(root.getDefinition())
 					+ "\"><b>");
 		else
-			write("<a href=\"" + defPage + "#" + root.getName() + "\" title=\""
+			write("<a href=\"" + (defPage + "#" + root.getName()).replace("[", "_").replace("]", "_") + "\" title=\""
 					+ Utilities.escapeXml(root.getDefinition())
 					+ "\" class=\"dict\"><b>");
 		write(rn);
@@ -229,10 +229,10 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			else
 				write("&lt;<span title=\"" + Utilities.escapeXml(elem.getDefinition()) + "\">");
 		} else if (elem.isMustUnderstand() || elem.isMustSupport())
-			write("&lt;<a href=\"" + defPage + "#" + pathName + "." + en + "\" title=\"" + Utilities .escapeXml(elem.getDefinition() + " (this element must be supported or understood)") 
+			write("&lt;<a href=\"" + (defPage + "#" + pathName + "." + en).replace("[", "_").replace("]", "_")+ "\" title=\"" + Utilities .escapeXml(elem.getDefinition() + " (this element must be supported or understood)") 
 			     + "\" class=\"dict\"><span style=\"text-decoration: underline\">");
 		else
-			write("&lt;<a href=\"" + defPage + "#" + pathName + "." + en + "\" title=\"" + Utilities.escapeXml(elem.getDefinition()) + "\" class=\"dict\">");
+			write("&lt;<a href=\"" + (defPage + "#" + pathName + "." + en).replace("[", "_").replace("]", "_") + "\" title=\"" + Utilities.escapeXml(elem.getDefinition()) + "\" class=\"dict\">");
 
 		// element contains xhtml
 		if (!elem.getTypes().isEmpty() && elem.getTypes().get(0).isXhtml()) {
@@ -275,7 +275,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			  if (elem.typeCode().equals("idref"))
           write(" value=\"[<span style=\"color: darkgreen\"><a href=\"formats.htm#idref\">" + t.getName()+ "</a></span>]\"/");
 			  else
-  			  write(" value=\"[<span style=\"color: darkgreen\"><a href=\"" + dtRoot + getSrcFile(t.getName())+ ".htm#" + t.getName() + "\">" + t.getName()+ "</a></span>]\"/");
+  			  write(" value=\"[<span style=\"color: darkgreen\"><a href=\"" + (dtRoot + getSrcFile(t.getName())+ ".htm#" + t.getName()).replace("[", "_").replace("]", "_") + "\">" + t.getName()+ "</a></span>]\"/");
 			}
 			write("&gt;");
 
@@ -329,8 +329,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				    if (t.isXhtml() || t.getName().equals("list"))
 				      write(t.getName());
 				    else
-				      write("<a href=\"" + dtRoot + getSrcFile(t.getName())
-				          + ".htm#" + t.getName() + "\">" + t.getName()
+				      write("<a href=\"" + (dtRoot + getSrcFile(t.getName())
+				          + ".htm#" + t.getName() + "\">" + t.getName()).replace("[", "_").replace("]", "_")
 				          + "</a>");
 				    if (t.hasParams()) {
 				      write("(");
@@ -346,9 +346,9 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				          // of the profile as specified
 				          // in the aggregation. For now it links to the
 				          // base resource.
-				          write("<a href=\"" + dtRoot + getSrcFile(p)
+				          write("<a href=\"" + (dtRoot + getSrcFile(p)
 				              + ".htm#" + p + "\">"
-				              + elem.getAggregation() + "</a>");
+				              + elem.getAggregation()).replace("[", "_").replace("]", "_") + "</a>");
 				        } 
 				        else if( definitions.getFutureResources().containsKey(p) ||
 				            p.equals("Any"))
@@ -356,8 +356,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				          write("<a href=\"" + "resources.htm" + "\">" + p + "</a>");								
 				        }
 				        else
-				          write("<a href=\"" + dtRoot + getSrcFile(p)
-				              + ".htm#" + p + "\">" + p + "</a>");
+				          write("<a href=\"" + (dtRoot + getSrcFile(p)
+				              + ".htm#" + p).replace("[", "_").replace("]", "_") + "\">" + p + "</a>");
 
 				        firstp = false;
 				      }

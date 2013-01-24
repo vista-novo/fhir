@@ -277,8 +277,10 @@ public class XSDGenerator extends OutputStreamWriter {
 				BindingSpecification cd = getConceptDomainByName(tx, e.getBindingName());
 				if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList && cd.getUseContexts().size() <= 1) {
 				  en = cd.getName();
-					enums.put(en, cd.getCodes());
-					enumDefs.put(en, cd.getDefinition());
+				  if (!definitions.getCommonBindings().contains(cd)) {
+				    enums.put(en, cd.getCodes());
+				    enumDefs.put(en, cd.getDefinition());
+				  }
 					return en;
 				}
 			}

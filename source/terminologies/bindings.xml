@@ -20,6 +20,7 @@
   <WindowWidth>17490</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>105</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -32,10 +33,18 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s62">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  <Style ss:ID="s62" ss:Name="Normal 2">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
   </Style>
   <Style ss:ID="s63">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s64">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders>
@@ -45,17 +54,34 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
+  <Style ss:ID="s66">
+   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+   <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s68" ss:Parent="s62">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="157.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="229.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="64.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="96"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="219"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="245.25"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s63">
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="157.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="229.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="64.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="96"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="219"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="245.25"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
@@ -98,6 +124,15 @@
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#FHIRContentType</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ObservationStatus</Data></Cell>
+    <Cell><Data ss:Type="String">Codes providing the status of an observation</Data></Cell>
+    <Cell><Data ss:Type="String">code list</Data></Cell>
+    <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">#observation-status</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -112,11 +147,67 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>6</ActiveRow>
+     <RangeSelection>R7C1:R7C7</RangeSelection>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="observation-status">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="65.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="594"/>
+   <Column ss:AutoFitWidth="0" ss:Width="563.25"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Comments</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="18.75">
+    <Cell ss:StyleID="s68"><Data ss:Type="String">registered</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">The existence of the observation is registered, but there is no result yet available</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">This is used where an observation record is created before it is made as a place holder. Some times called &quot;To Follow&quot;</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s68"><Data ss:Type="String">interim</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">This is an initial or interim observation: data may be incomplete or unverified</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s68"><Data ss:Type="String">final</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">The observation is complete and verified by an authorised person</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s68"><Data ss:Type="String">amended</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">The observation has been modified subsequent to being Final, and is complete and verified by an authorised person</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="19.5">
+    <Cell ss:StyleID="s68"><Data ss:Type="String">cancelled</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">The observation is unavailable because the measurement was not started or not completed (also sometimes called &quot;aborted&quot;)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s68"><Data ss:Type="String">withdrawn</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">The observation has been withdrawn following previous Final release</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Usually this is because some error has been detected in the measurement</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>14</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

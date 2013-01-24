@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
 import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
@@ -41,6 +42,7 @@ public class BindingsParser {
   private InputStream file;
   private String filename;
   private String root;
+  private XLSXmlParser xls;
 
   public BindingsParser(InputStream file, String filename, String root) {
     this.file = file;
@@ -55,7 +57,7 @@ public class BindingsParser {
 		n.setBinding(BindingSpecification.Binding.Unbound);
 		results.add(n);
 		
-		XLSXmlParser xls = new XLSXmlParser(file, filename);
+		xls = new XLSXmlParser(file, filename);
 		Sheet sheet = xls.getSheets().get("Bindings");
 
     for (int row = 0; row < sheet.rows.size(); row++) {
@@ -113,5 +115,24 @@ public class BindingsParser {
     if (s.equals("suggested"))
       return BindingSpecification.BindingStrength.Suggested;
     throw new Exception("Unknown Binding Strength: "+s);
+  }
+
+  public boolean loadCodes(BindingSpecification cd) throws Exception {
+    // TODO Auto-generated method stub
+    Sheet sheet = xls.getSheets().get(cd.getReference().substring(1));
+    if (sheet == null)
+      return false;
+    
+    for (int row = 0; row < sheet.rows.size(); row++) {
+      DefinedCode c = new DefinedCode();
+      c.setCode(sheet.getColumn(row, "Code"));
+      c.setDisplay(sheet.getColumn(row, "Display"));
+      c.setSystem(sheet.getColumn(row, "System"));
+      c.setDefinition(sheet.getColumn(row, "Definition"));
+      c.setComment(sheet.getColumn(row, "Comment"));
+      cd.getCodes().add(c);
+    }
+    return true;
+    
   }
 }

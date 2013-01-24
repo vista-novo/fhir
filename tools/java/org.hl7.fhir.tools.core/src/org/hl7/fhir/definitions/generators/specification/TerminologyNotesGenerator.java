@@ -41,6 +41,7 @@ import java.util.Map;
 
 import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
 import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ProfileDefn;
@@ -125,8 +126,11 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
       }
       write(" </td>");
       write("<td>"+describeBinding(cd)+"</td>");
-      write("<td>"+(cd.getExtensibility() == null ? "--" : "<a href=\"terminologies.htm#extensibility\">"+cd.getExtensibility().toString().toLowerCase())+"</a>/"+
-             "<a href=\"terminologies.htm#conformance\">"+(cd.getBindingStrength() == null ? "--" : cd.getBindingStrength().toString().toLowerCase())+"</a></td>");
+      if (cd.getBinding() == Binding.Unbound)
+        write("<td>Not Bound to any codes</td>");
+      else
+        write("<td>"+(cd.getExtensibility() == null ? "--" : "<a href=\"terminologies.htm#extensibility\">"+cd.getExtensibility().toString().toLowerCase())+"</a>/"+
+            "<a href=\"terminologies.htm#conformance\">"+(cd.getBindingStrength() == null ? "--" : cd.getBindingStrength().toString().toLowerCase())+"</a></td>");
       write(" </tr>\r\n");
     }
     write("</table>\r\n<p> </p>\r\n");

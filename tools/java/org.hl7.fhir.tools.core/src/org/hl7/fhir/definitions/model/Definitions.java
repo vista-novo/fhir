@@ -46,7 +46,8 @@ import java.util.Map;
  */
 public class Definitions {
 
-	private Map<String, BindingSpecification> bindings = new HashMap<String, BindingSpecification>();
+  private Map<String, BindingSpecification> bindings = new HashMap<String, BindingSpecification>();
+  private List<BindingSpecification> commonBindings = new ArrayList<BindingSpecification>();
 	private Map<String, DefinedCode> knownResources = new HashMap<String, DefinedCode>();
 	private List<TypeRef> knownTypes = new ArrayList<TypeRef>();
 	private Map<String, DefinedCode> constraints = new HashMap<String, DefinedCode>();
@@ -247,6 +248,10 @@ public class Definitions {
 
   public void setBaseResource(ResourceDefn baseResource) {
     this.baseResource = baseResource;
+  }
+
+  public List<BindingSpecification> getCommonBindings() {
+    return commonBindings;
   }
 
   

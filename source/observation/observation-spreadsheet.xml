@@ -20,6 +20,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -113,23 +114,6 @@
   </Style>
   <Style ss:ID="s78">
    <Alignment ss:Vertical="Top"/>
-  </Style>
-  <Style ss:ID="s83">
-   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
-    ss:Bold="1"/>
-   <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
-  </Style>
-  <Style ss:ID="s84" ss:Parent="s63">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-   <Borders/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
-   <Interior/>
-   <NumberFormat/>
-   <Protection/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -877,11 +861,10 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>16</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -894,10 +877,11 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>0</ActiveRow>
+     <ActiveRow>4</ActiveRow>
      <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
@@ -1229,7 +1213,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="11" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="179.25"/>
    <Column ss:Width="249.75"/>
@@ -1298,13 +1282,6 @@
     <Cell ss:Index="6"><Data ss:Type="String">SNOMED-CT observation value codes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s76"><Data ss:Type="String">ObservationStatus</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">Codes providing the status of an observation</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">#observation-status</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ObservationReliability</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes that provide reliability information about an observation</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">code list</Data></Cell>
@@ -1324,6 +1301,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1343,7 +1321,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>10</ActiveRow>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1390,68 +1369,6 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>33</ActiveRow>
-     <ActiveCol>1</ActiveCol>
-    </Pane>
-   </Panes>
-   <ProtectObjects>False</ProtectObjects>
-   <ProtectScenarios>False</ProtectScenarios>
-  </WorksheetOptions>
- </Worksheet>
- <Worksheet ss:Name="observation-status">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s76" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="60.75"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="336"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="347.25"/>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Definition</Data></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Comments</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s84"><Data ss:Type="String">registered</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">The existence of the observation is registered, but there is no result yet available</Data></Cell>
-    <Cell><Data ss:Type="String">This is used where an observation record is created before it is made as a place holder. Some times called &quot;To Follow&quot;</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s84"><Data ss:Type="String">interim</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">This is an initial or interim observation: data may be incomplete or unverified</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="String">final</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">The observation is complete and verified by an authorised person</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s84"><Data ss:Type="String">amended</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">The observation has been modified subsequent to being Final, and is complete and verified by an authorised person</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s84"><Data ss:Type="String">cancelled</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">The observation is unavailable because the measurement was not started or not completed (also sometimes called &quot;aborted&quot;)</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s84"><Data ss:Type="String">withdrawn</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">The observation has been withdrawn following previous Final release</Data></Cell>
-    <Cell><Data ss:Type="String">Usually this is because some error has been detected in the measurement</Data></Cell>
-   </Row>
-  </Table>
-  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <PageSetup>
-    <Header x:Margin="0.3"/>
-    <Footer x:Margin="0.3"/>
-    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
-   </PageSetup>
-   <Unsynced/>
-   <Print>
-    <ValidPrinterInfo/>
-    <PaperSizeIndex>9</PaperSizeIndex>
-    <HorizontalResolution>-3</HorizontalResolution>
-    <VerticalResolution>-3</VerticalResolution>
-   </Print>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
@@ -1511,8 +1428,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -268,19 +268,23 @@ public class SourceParser {
 		BindingsParser parser = new BindingsParser(new CSFileInputStream(new CSFile(termDir + "bindings.xml")), termDir + "bindings.xml", srcDir);
 		List<BindingSpecification> cds = parser.parse();
 
-		for (BindingSpecification cd : cds)
+		for (BindingSpecification cd : cds) {
 			definitions.getBindings().put(cd.getName(), cd);
+			definitions.getCommonBindings().add(cd);
+		}
 
 		for (BindingSpecification cd : definitions.getBindings().values()) {
-			if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
-				File file = new CSFile(termDir + cd.getReference().substring(1)	+ ".csv");
-				if (!file.exists())
-					throw new Exception("code source file not found for "
-							+ cd.getName() + ": " + file.getAbsolutePath());
-				CodeListParser cparser = new CodeListParser(
-						new CSFileInputStream(file));
-				cparser.parse(cd.getCodes());
-				cparser.close();
+		  if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
+		    if (!parser.loadCodes(cd)) {
+		      File file = new CSFile(termDir + cd.getReference().substring(1)	+ ".csv");
+		      if (!file.exists())
+		        throw new Exception("code source file not found for "
+		            + cd.getName() + ": " + file.getAbsolutePath());
+		      CodeListParser cparser = new CodeListParser(
+		          new CSFileInputStream(file));
+		      cparser.parse(cd.getCodes());
+		      cparser.close();
+		    }
 			}
 		}
 	}
