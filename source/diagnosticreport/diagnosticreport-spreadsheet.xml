@@ -66,32 +66,32 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s67">
+  <Style ss:ID="s68">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s68">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-  </Style>
   <Style ss:ID="s69">
-   <Alignment ss:Vertical="Top"/>
-  </Style>
-  <Style ss:ID="s70">
-   <Alignment ss:Vertical="Top"/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
-    ss:Bold="1"/>
-  </Style>
-  <Style ss:ID="s72">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
   </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s71">
+   <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s72">
+   <Alignment ss:Vertical="Top"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Names>
-   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="='Data Elements'!R1C1:R28C16"
+   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="='Data Elements'!R1C1:R27C16"
     ss:Hidden="1"/>
   </Names>
-  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="28" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="27" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="196.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="30"/>
@@ -292,7 +292,7 @@
        html:Color="#000000">Should this be by priorityCode too?</Font></ss:Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">DiagnosticReport.encounter</Data><NamedCell
+    <Cell><Data ss:Type="String">DiagnosticReport.requestDetail.encounter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource(Encounter)</Data><NamedCell
@@ -399,7 +399,7 @@
     <Cell><Data ss:Type="String">DiagnosticReport.requestDetail.requester</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Organization)</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Organization|Provider)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Responsible for request</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -429,26 +429,6 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">./outboundRelationship[typeCode=&quot;PERT&quot; and isNormalActRelationship()]/target.text</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">!DiagnosticReport.reportName</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">DiagnosticReportNames</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Name for the entire report</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Identification of the pathology test performed, sometimes including specimen type.</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Report Name, Code, Report Type</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Need to know what report this is, so clinicians can filter/find the reports they are looking for</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">A test result may be for a single analyte, or a group of items, including panel tests.</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">./code</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">DiagnosticReport.serviceCategory</Data><NamedCell
@@ -670,7 +650,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>17</TopRowBottomPane>
+   <TopRowBottomPane>6</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -687,7 +667,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>21</ActiveRow>
+     <ActiveRow>7</ActiveRow>
      <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
@@ -697,9 +677,9 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Column ss:Index="4" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="143.25"/>
-   <Column ss:Index="6" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="179.25"/>
+   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
+   <Column ss:Index="4" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="143.25"/>
+   <Column ss:Index="6" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="179.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -709,7 +689,7 @@
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="3" ss:StyleID="s72"/>
+    <Cell ss:Index="3" ss:StyleID="s69"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -738,14 +718,14 @@
  </Worksheet>
  <Worksheet ss:Name="Events">
   <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="73.5"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="130.5"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="118.5"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="156.75" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="125.25"
+   x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="73.5"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="130.5"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="118.5"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="156.75" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="125.25"
     ss:Span="1"/>
-   <Column ss:Index="8" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="102"/>
+   <Column ss:Index="8" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="102"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Event Code</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
@@ -867,13 +847,13 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="149.25"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="336.75"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="52.5"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="84"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="126.75"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="346.5"/>
+   x:FullRows="1" ss:StyleID="s71" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="149.25"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="336.75"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="52.5"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="84"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="126.75"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="346.5"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
@@ -884,39 +864,39 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">DiagnosisCodes</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Codes for laboratory diagnoses</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s68"><Data ss:Type="String">SNOMED-CT Diagnoses</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Codes for laboratory diagnoses</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">suggested</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">SNOMED-CT Diagnoses</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">DiagnosticReportNames</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">codes for report names</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s68"><Data ss:Type="String">LOINC Codes</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">codes for report names</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">LOINC Codes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">DiagnosticRequests</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">codes for tests/services that can be performed by diagnostic services</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">codes for tests/services that can be performed by diagnostic services</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">DiagnosticResultGroupNames</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">DiagnosticResultGroupNames</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s68"><Data ss:Type="String">LOINC Panel Names</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">LOINC Panel Names</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">DiagnosticServiceSection</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">codes for diagnostic service sections</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s68"><Data ss:Type="String">HL7 v2 table 0074</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">codes for diagnostic service sections</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">HL7 v2 table 0074</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s70"><Data ss:Type="String">BodySite</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">BodySite</Data></Cell>
     <Cell><Data ss:Type="String">Codes describing anatomical locations. May include laterality</Data></Cell>
     <Cell><Data ss:Type="String">unbound</Data></Cell>
    </Row>
