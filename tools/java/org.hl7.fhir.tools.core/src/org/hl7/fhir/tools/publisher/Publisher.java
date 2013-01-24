@@ -466,6 +466,10 @@ public class Publisher {
 		resource.load(new CSFileInputStream(eCorePath), null);
 		org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreDefs = (org.hl7.fhir.definitions.ecore.fhir.Definitions) resource.getContents().get(0);
 
+		log("Produce Schemas");
+    new SchemaGenerator().generate(page.getDefinitions(), page.getIni(), page.getFolders().tmpResDir, page.getFolders().xsdDir, page.getFolders().dstDir, 
+          page.getFolders().srcDir, page.getVersion(), Config.DATE_FORMAT().format(page.getGenDate().getTime()));
+
 		for (PlatformGenerator gen : page.getReferenceImplementations()) {
 			log("Produce " + gen.getName() + " Reference Implementation");
 
@@ -488,9 +492,6 @@ public class Publisher {
 			}
 		}
 
-		log("Produce Schemas");
-		new SchemaGenerator().generate(page.getDefinitions(), page.getIni(), page.getFolders().tmpResDir, page.getFolders().xsdDir, page.getFolders().dstDir, 
-		      page.getFolders().srcDir, page.getVersion(), Config.DATE_FORMAT().format(page.getGenDate().getTime()));
 		for (ResourceDefn r : page.getDefinitions().getResources().values()) {
 			String n = r.getName().toLowerCase();
 			SchematronGenerator sch = new SchematronGenerator(new FileOutputStream(page.getFolders().dstDir + n + ".sch"), page);

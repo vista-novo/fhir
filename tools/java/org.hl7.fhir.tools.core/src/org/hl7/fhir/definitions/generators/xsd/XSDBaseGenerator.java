@@ -198,11 +198,8 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		for (ElementDefn e : elem.getElements()) {
 			if (e.getName().equals("[type]"))
 				generateAny(elem, e, null);
-			else if ((!e.unbounded() && 1 == e.getMaxCardinality())
-					|| Config.SUPPRESS_WRAPPER_ELEMENTS)
+			else 
 				generateElement(elem, e, null);
-			else
-				generateWrapperElement(elem, e);
 		}
 		write("        </xs:sequence>\r\n");
 
@@ -267,22 +264,23 @@ public class XSDBaseGenerator extends OutputStreamWriter {
     write("      <xs:documentation>"+Utilities.escapeXml(elem.getDefinition())+"</xs:documentation>\r\n");
     write("      <xs:documentation>If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>\r\n");
     write("    </xs:annotation>\r\n");
-    write("    <xs:complexContent>\r\n");
-    write("      <xs:extension base=\"Element\">\r\n");
+    if (!elem.getName().equals("Extension")) {
+      write("    <xs:complexContent>\r\n");
+      write("      <xs:extension base=\"Element\">\r\n");
+    };
 		write("        <xs:sequence>\r\n");
 
 		for (ElementDefn e : elem.getElements()) {
 			if (e.getName().equals("[type]"))
 				generateAny(elem, e, null);
-			else if ((!e.unbounded() && 1 == e.getMaxCardinality())
-					|| Config.SUPPRESS_WRAPPER_ELEMENTS)
+			else 
 				generateElement(elem, e, null);
-			else
-				generateWrapperElement(elem, e);
 		}
 		write("        </xs:sequence>\r\n");
-    write("      </xs:extension>\r\n");
-    write("    </xs:complexContent>\r\n");
+		if (!elem.getName().equals("Extension")) {
+		  write("      </xs:extension>\r\n");
+		  write("    </xs:complexContent>\r\n");
+		}
 		write("  </xs:complexType>\r\n");
 		while (!structures.isEmpty()) {
 			String s = structures.keySet().iterator().next();
@@ -365,11 +363,8 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		for (ElementDefn e : elem.getElements()) {
 			if (e.getName().equals("[type]"))
 				generateAny(elem, e, null);
-			else if ((!e.unbounded() && 1 == e.getMaxCardinality())
-					|| Config.SUPPRESS_WRAPPER_ELEMENTS)
+			else 
 				generateElement(elem, e, null);
-			else
-				generateWrapperElement(elem, e);
 		}
 		write("        </xs:sequence>\r\n");
     write("      </xs:extension>\r\n");
@@ -436,11 +431,8 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		for (ElementDefn e : struc.getElements()) {
 			if (e.getName().equals("[type]"))
 				generateAny(root, e, null);
-			else if ((!e.unbounded() && 1 == e.getMaxCardinality())
-					|| Config.SUPPRESS_WRAPPER_ELEMENTS)
+			else 
 				generateElement(root, e, null);
-			else
-				generateWrapperElement(root, e);
 		}
 		write("        </xs:sequence>\r\n");
     write("      </xs:extension>\r\n");
@@ -496,78 +488,6 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 //		write("         </xs:complexType>\r\n");
 //		write("       </xs:element>\r\n");
 		write("          </xs:choice>\r\n");
-	}
-
-	private void generateWrapperElement(ElementDefn root, ElementDefn e)
-			throws Exception {
-		write("      <xs:element name=\"" + Utilities.pluralizeMe(e.getName())
-				+ "\" minOccurs=\"" + e.getMinCardinality().toString()
-				+ "\" maxOccurs=\"1\">\r\n");
-		write("        <xs:complexType>\r\n");
-		write("          <xs:sequence>\r\n");
-		write("            ");
-		if (e.getTypes().size() > 1) {
-			if (!e.getName().contains("[x]"))
-				throw new Exception(
-						"Element has multiple types as a choice doesn't have a [x] in the element name");
-			write("<xs:choice minOccurs=\"0\">\r\n");
-			if (e.hasDefinition()) {
-				write("            <xs:annotation>\r\n");
-				write("              <xs:documentation>"
-						+ Utilities.escapeXml(e.getDefinition())
-						+ "</xs:documentation>\r\n");
-				write("            </xs:annotation>\r\n");
-			}
-			for (TypeRef t : e.getTypes()) {
-				String tn = encodeType(e, t, false);
-				String n = e.getName().replace("[x]",
-						tn.toUpperCase().substring(0, 1) + tn.substring(1));
-				write("            <xs:element name=\"" + n + "\" type=\""
-						+ encodeType(e, t, true) + "\"/>\r\n");
-			}
-			write("          </xs:choice>\r\n");
-		} else {
-
-			if (e.usesCompositeType())
-				write("<xs:element name=\"" + e.getName() + "\" type=\""
-						+ e.typeCode().substring(1) + "\" ");
-			else if (e.getTypes().size() == 0 && e.getElements().size() > 0) {
-				int i = 0;
-				String tn = root.getName() + "." + upFirst(e.getName())
-						+ (i == 0 ? "" : Integer.toString(i));
-				// while (typenames.contains(tn)) {
-				// i++;
-				// tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" :
-				// Integer.toString(i));
-				// }
-				write("<xs:element name=\"" + e.getName() + "\" type=\"" + tn
-						+ "\" ");
-				structures.put(tn, e);
-				typenames.add(tn);
-			} else if (e.getTypes().size() == 1)
-				write("<xs:element name=\"" + e.getName() + "\" type=\""
-						+ encodeType(e, e.getTypes().get(0), true) + "\" ");
-			else
-				throw new Exception("how do we get here?");
-
-			write("minOccurs=\"0\"");
-			write(" maxOccurs=\"unbounded\"");
-
-			if (e.hasDefinition()) {
-				write(">\r\n");
-				write("              <xs:annotation>\r\n");
-				write("                <xs:documentation>"
-						+ Utilities.escapeXml(e.getDefinition())
-						+ "</xs:documentation>\r\n");
-				write("              </xs:annotation>\r\n");
-				write("            </xs:element>\r\n");
-			} else
-				write("/>\r\n");
-		}
-		write("          </xs:sequence>\r\n");
-		write("        </xs:complexType>\r\n");
-
-		write("      </xs:element>\r\n");
 	}
 
 	private void generateElement(ElementDefn root, ElementDefn e,

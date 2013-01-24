@@ -74,6 +74,7 @@ Copyright (c) 2011-2012, HL7, Inc
         <xs:element name="updated" type="atom:DateTimeType"/>
         <xs:element name="id" type="atom:IdType"/>
         <xs:element name="link" type="atom:LinkType"/>
+        <xs:element name="author" type="atom:PersonType" maxOccurs="unbounded"/>
         <xs:element name="entry" type="atom:EntryType"/>
         <xs:element ref="at:deleted-entry"/>
       </xs:choice>

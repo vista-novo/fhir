@@ -225,12 +225,12 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 		if (defPage == null) {
 			if (elem.isMustUnderstand() || elem.isMustSupport())
-				write("&lt;<span style=\"text-decoration: underline\" title=\"" + Utilities.escapeXml(elem.getDefinition() + " (this element must be supported or understood)")	+ "\">");
+  		  write("&lt;<span style=\"text-decoration: underline\" title=\"" + Utilities.escapeXml(elem.getEnhancedDefinition())	+ "\">");
 			else
 				write("&lt;<span title=\"" + Utilities.escapeXml(elem.getDefinition()) + "\">");
-		} else if (elem.isMustUnderstand() || elem.isMustSupport())
-			write("&lt;<a href=\"" + (defPage + "#" + pathName + "." + en).replace("[", "_").replace("]", "_")+ "\" title=\"" + Utilities .escapeXml(elem.getDefinition() + " (this element must be supported or understood)") 
-			     + "\" class=\"dict\"><span style=\"text-decoration: underline\">");
+		} else if (elem.isMustUnderstand() || elem.isMustSupport()) 
+      write("&lt;<a href=\"" + (defPage + "#" + pathName + "." + en).replace("[", "_").replace("]", "_")+ "\" title=\"" + Utilities .escapeXml(elem.getEnhancedDefinition()) 
+            + "\" class=\"dict\"><span style=\"text-decoration: underline\">");
 		else
 			write("&lt;<a href=\"" + (defPage + "#" + pathName + "." + en).replace("[", "_").replace("]", "_") + "\" title=\"" + Utilities.escapeXml(elem.getDefinition()) + "\" class=\"dict\">");
 

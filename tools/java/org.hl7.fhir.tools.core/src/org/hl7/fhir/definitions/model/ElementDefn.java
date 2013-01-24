@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.instance.model.Profile.Element_;
+import org.hl7.fhir.utilities.Utilities;
 
 public class ElementDefn {
 
@@ -144,6 +145,17 @@ public class ElementDefn {
 				: definition;
 	}
 
+	public String getEnhancedDefinition() {
+	  if (isMustUnderstand() && isMustSupport())
+      return getDefinition() + " (this element must be supported and understood)";
+    else if (isMustUnderstand())
+      return getDefinition() + " (this element must be understood)";
+    else if (isMustSupport())
+      return getDefinition() + " (this element must be supported)";
+    else
+      return getDefinition();
+	}
+	
 	public void setDefinition(String definition) {
 		this.definition = definition;
 	}

@@ -21,6 +21,7 @@ public class DiagramGenerator {
 
   private PageProcessor page;
   
+  private Map<String, String> definitions = new HashMap<String, String>();
   
   public DiagramGenerator(PageProcessor page) {
     super();
@@ -72,28 +73,37 @@ public class DiagramGenerator {
       }
       s.append("hide Element circle\r\n");
       s.append("@enduml\r\n");
-      return produceImageFromSource(title, s.toString(), page.getFolders().dstDir + title + ".png");
+      return produceImageFromSource(title, s.toString(), s.toString()+"####"+getDefns(), page.getFolders().dstDir + title + ".png");
     } else {
-      return produceImageFromSource(title, src, page.getFolders().dstDir + title + ".png");
+      return produceImageFromSource(title, src, src+"####"+getDefns(), page.getFolders().dstDir + title + ".png");
     }
   }
   
-  private String produceImageFromSource(String title, String src, String dest) throws Exception {
+  private String produceImageFromSource(String title, String src, String spec, String dest) throws Exception {
     // this is a time consuming step. We cache the last outcome
-    String lastSrc = null;
+    String lastSpec = null;
     title = title.toLowerCase();
     if (new File(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".png").exists())
-      lastSrc = TextFile.fileToString(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".plantuml-source");
-    if (!src.equals(lastSrc)) {
+      lastSpec = TextFile.fileToString(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".plantuml-source");
+    if (!spec.equals(lastSpec)) {
       TextFile.stringToFile(src, page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".plantuml-source");
       SourceStringReader rdr = new SourceStringReader(src);
       FileOutputStream png = new FileOutputStream(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".png");
-      String map = rdr.generateImage(png);     
+      String map = rdr.generateImage(png);  
+      map = processMap(map.substring(map.indexOf(")")+1).replace("name=\"plantuml_map\"", "name=\""+title+"\""));
       TextFile.stringToFile(map, page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".map");
+      TextFile.stringToFile(spec, page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".plantuml-source");
     }
     Utilities.copyFile(new File(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".png"), new File(dest));
     String s = TextFile.fileToString(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".map");
-    return s.substring(s.indexOf(")")+1).replace("name=\"plantuml_map\"", "name=\""+title+"\"");
+    return s;
+  }
+
+  private String processMap(String s) {
+    for (String n : definitions.keySet()) {
+      s = s.replace("title=\""+n+"\"", "title=\""+Utilities.escapeXml(definitions.get(n))+"\"");
+    }
+    return s;
   }
 
   public String generate(ResourceDefn resource, String n) throws Exception {
@@ -127,10 +137,17 @@ public class DiagramGenerator {
       s.append("hide "+en+" circle\r\n");
     }
     s.append("@enduml\r\n");
-    return produceImageFromSource(resource.getName(), s.toString(), page.getFolders().dstDir + n + ".png");
+    return produceImageFromSource(resource.getName(), s.toString(), s.toString() +"####"+getDefns(), page.getFolders().dstDir + n + ".png");
     
   }
   
+private String getDefns() {
+    StringBuilder s = new StringBuilder();
+    for (String n : definitions.keySet())
+      s.append(n+"::"+definitions.get(n)+"|||");
+    return s.toString();
+  }
+
 //  private void generateDiagram(org.hl7.fhir.definitions.model.ElementDefn element) throws Exception {
 //    StringBuilder s = new StringBuilder();
 //    StringBuilder s2 = new StringBuilder();
@@ -153,7 +170,7 @@ public class DiagramGenerator {
 //      org.hl7.fhir.definitions.model.ElementDefn r = queue.get(0);
 //      queue.remove(0);
 //      generateDiagramClass(r, queue, names, defns, s, s2, elementClasses, r == element, false);
-//    }  
+//    }   
 //    s.append("\r\n"+s2);
 //    s.append("hide methods\r\n");
 //    for (String en : elementClasses) {
@@ -219,6 +236,7 @@ public class DiagramGenerator {
       }
     }
     s2.append("url of "+rn+" is [["+dn+"]]\r\n");
+    definitions.put(dn, r.getEnhancedDefinition());
     if (entry)
       s2.append("class "+rn+" << (R, #FF7700) >> {\r\n");
     else if (page.getDefinitions().dataTypeIsSharedInfo(r.typeCode()) || page.getDefinitions().hasType(rn)) {
@@ -229,7 +247,9 @@ public class DiagramGenerator {
     }
     for (org.hl7.fhir.definitions.model.ElementDefn e : r.getElements()) {
       if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@") && !page.getDefinitions().dataTypeIsSharedInfo(e.typeCode())) {
-        s2.append(" "+e.getName()+" : "+e.typeCode()+" "+e.describeCardinality()+" [["+(dn+"."+e.getName()).replace("[", "_").replace("]", "_")+"]]\r\n");
+        String url = (dn+"."+e.getName()).replace("[", "_").replace("]", "_");
+        definitions.put(url, e.getEnhancedDefinition());
+        s2.append(" "+e.getName()+" : "+e.typeCode()+" "+e.describeCardinality()+" [["+url+"]]\r\n");
       }
     }
     s2.append("  --\r\n}\r\n\r\n");
