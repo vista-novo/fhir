@@ -565,6 +565,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
       return "byte[]";
     if (n.equals("Uri"))
       return "URI";
+    if (n.equals("Oid"))
+      return "String";
     if (n.equals("Integer"))
       return "int";
     if (n.equals("Boolean"))

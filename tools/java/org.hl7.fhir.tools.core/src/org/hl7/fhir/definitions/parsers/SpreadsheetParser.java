@@ -286,9 +286,7 @@ public class SpreadsheetParser {
 
 	private void readSearchParams(ResourceDefn root2, Sheet sheet)
 			throws Exception {
-		root2.getSearchParams().add(new SearchParameter("$page","Starting offset of the first record to return in the search set",SearchType.integer, RepeatMode.single));
-		root2.getSearchParams().add(new SearchParameter("$count","Number of return records requested. The server is not bound to conform",SearchType.integer, RepeatMode.single));
-		root2.getSearchParams().add(new SearchParameter("$id","The logical resource id associated with the resource (must be supported by all servers)",SearchType.token, RepeatMode.single));
+		root2.getSearchParams().add(new SearchParameter("_id","The logical resource id associated with the resource (must be supported by all servers)",SearchType.token, RepeatMode.single));
 
 		if (sheet != null)
 			for (int row = 0; row < sheet.rows.size(); row++) {

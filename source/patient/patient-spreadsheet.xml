@@ -26,6 +26,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>6</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -388,7 +389,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <TopRowVisible>12</TopRowVisible>
    <Panes>
     <Pane>
@@ -696,7 +696,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Examples">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:AutoFitWidth="0" ss:Width="247.5"/>
@@ -767,6 +767,13 @@
     <Cell ss:StyleID="s75"><Data ss:Type="String">patient-animal.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Dicom</Data></Cell>
+    <Cell><Data ss:Type="String">Taken from a DICOM sample</Data></Cell>
+    <Cell><Data ss:Type="String">dicom</Data></Cell>
+    <Cell><Data ss:Type="String">patient-example-dicom.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -775,10 +782,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

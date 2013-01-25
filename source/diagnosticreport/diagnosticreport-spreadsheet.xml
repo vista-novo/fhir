@@ -20,6 +20,7 @@
   <WindowWidth>17490</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -646,7 +647,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -768,63 +768,115 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Search">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="15" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="230.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Repeats</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">test</Data></Cell>
-    <Cell><Data ss:Type="String">the name or code of either a requested test, the report or a report group</Data></Cell>
-    <Cell><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">result</Data></Cell>
-    <Cell><Data ss:Type="String">the name or code of a result or result group</Data></Cell>
-    <Cell><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">specimen</Data></Cell>
-    <Cell><Data ss:Type="String">Either of the specimens</Data></Cell>
-    <Cell><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">subject</Data></Cell>
-    <Cell><Data ss:Type="String">The subject of the report</Data></Cell>
-    <Cell><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">laboratory</Data></Cell>
-    <Cell><Data ss:Type="String">The identity of an laboratory</Data></Cell>
-    <Cell><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">Path</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">status</Data></Cell>
-    <Cell><Data ss:Type="String">The status of the lab report</Data></Cell>
+    <Cell><Data ss:Type="String">The status of the report</Data></Cell>
     <Cell><Data ss:Type="String">token</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">DiagnosticReport.status</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">request</Data></Cell>
-    <Cell><Data ss:Type="String">A test requested</Data></Cell>
-    <Cell><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">issued</Data></Cell>
+    <Cell><Data ss:Type="String">when the report was issued</Data></Cell>
+    <Cell><Data ss:Type="String">date</Data></Cell>
+    <Cell><Data ss:Type="String">single</Data></Cell>
+    <Cell><Data ss:Type="String">DiagnosticReport.issued</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">diagnosis</Data></Cell>
-    <Cell><Data ss:Type="String">code of a diagnosis</Data></Cell>
+    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell><Data ss:Type="String">the subject of the report</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">DiagnosticReport.subject</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">performer</Data></Cell>
+    <Cell><Data ss:Type="String">who was the source of the report (organization)</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">DiagnosticReport.performer</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">an identifier for the report</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">DiagnosticReport.reportId</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">test</Data></Cell>
+    <Cell><Data ss:Type="String">a test requested that the report is in response to</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">DiagnosticReport.requestDetail.requestTest</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">requester</Data></Cell>
+    <Cell><Data ss:Type="String">who made a request that lead to the report</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">DiagnosticReport.requestDetail.requester</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">service</Data></Cell>
+    <Cell><Data ss:Type="String">which diagnostic discipline/department created the report</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">DiagnosticReport.serviceCategory</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">date</Data></Cell>
+    <Cell><Data ss:Type="String">the clinically relevant time of the report</Data></Cell>
+    <Cell><Data ss:Type="String">date</Data></Cell>
+    <Cell><Data ss:Type="String">single</Data></Cell>
+    <Cell><Data ss:Type="String">DiagnosticReport.diagnosticTime</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">specimen</Data></Cell>
+    <Cell><Data ss:Type="String">the specimen details</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">DiagnosticReport.results.specimen</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">name</Data></Cell>
+    <Cell><Data ss:Type="String">the name/code of the report</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">DiagnosticReport.results.name</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">group</Data></Cell>
+    <Cell><Data ss:Type="String">name /code of a group in the report</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">DiagnosticReport.results.group.name</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">result</Data></Cell>
+    <Cell><Data ss:Type="String">link to an atomic result</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">DiagnosticReport.results.result</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">code</Data></Cell>
+    <Cell><Data ss:Type="String">a coded diagnosis on the report</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">DiagnosticReport.codedDiagnosis</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -834,11 +886,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>6</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -439,15 +439,22 @@ resource (the <a href="terminologies.htm#resourcetypes">variant of the resource 
 <h3>Parameter Chaining</h3>
 <p>
 Parameters may be "chained" by appending them together separated by "." following a logical path through a graph of related resources.
-For instance, given that the resource "LabReport" has a search parameter named <i>patient</i>, which is a reference to a "Patient" resource,
-and the Patient resource includes a parameter <i>person</i>, which is a reference to the "Person" resource, and the person resource has a search 
-parameter <i>name</i> which searches on patient name, then the search
+For instance, given that the resource <a href="diagnosticreport.htm">DiagnosticReport</a> has a search parameter named <i>subject</i>, 
+which is usually a reference to a <a href="patient.htm">Patient</a> resource, and the Patient resource includes a parameter 
+<i>name</i> which searches on patient name, then the search
 </p>
 <pre>
- LabReports/search?patient.person.name=peter
+ LabReports/search?subject.name=peter
 </pre>
 <p>
 is a request to return all the lab reports that have a subject whose name includes "peter". 
+</p>
+<p>
+Where a chained parameter searches a resource reference that may have more than on 
+different type of resource as it's target, the parameter chain may refer to search 
+parameters on more than one kind of resource at once. The parameters defined in FHIR
+have consistent types wherever they are used. Implementers defining their own names 
+need to be sure that they do not create unprocessible combinations.
 </p>
 
 <h3>Searching for Missing Values</h3>
@@ -578,7 +585,7 @@ human manual interaction with the server would be appropriate.
 <a name="batch"> </a>
 <h2>batch</h2>
 <p>
-The batch interaction submits a set of resources to be updated or created on the server. 
+The batch interaction submits a set of resources to be updated, created or deleted on the server. 
 This interaction has two principle uses: to support push-based pub/sub, and to allow 
 multiple resources to be updated/created in a single transaction. Multiple different
 types of resources may be submitted, including a mix of new and existing resources. 
@@ -590,21 +597,23 @@ The interaction is performed by an HTTP POST operation as shown:
 <p>
 The content of the post submission is a resource bundle in either <a href="formats.htm#atom">XML</a> or 
 <a href="formats.htm#json-bundles">JSON</a>. The resources in the bundle are each processed separately
-as if they were an individual <a href="#create">create</a> or <a href="#update">update</a> as 
-described below, along with the normal processing for each (such as verification and version aware updates). 
-Servers SHALL either accept all resources and return a 200 OK, along with a response bundle, 
-or reject all resources and return an HTTP 400 or 500 type response. It is not an error if 
-the submitted bundle has no resources in it.
+as if they were an individual <a href="#create">create</a>, <a href="#update">update</a> or 
+<a href="#delete">delete</a> as described below, along with the normal processing for each 
+(such as verification and version aware updates). Servers SHALL either accept all resources 
+and return a 200 OK, along with a response bundle, or reject all resources and return an 
+HTTP 400 or 500 type response. It is not an error if the submitted bundle has no resources in it.
 </p>
 <p>
 When a bundle is submitted in a batch operation, all the resources have an identity specified
-in the bactch. If the identity of the resource matches an existing or possible resource location 
+in the batch. If the identity of the resource matches an existing or possible resource location 
 on the server, the server should treat this entry as an <a href="#update">update operation</a> 
 (i.e. PUT to the given resource). If the identity is not one that the server recognises, the 
 server should treat the operation as a <a href="#create">create operation</a> (i.e. POST to 
 the given resource type URL), and create a new identity for the submitted resource. For 
 clarity, when the client intends a resource to have a transient identity that the server
-must replace, it should use a cid: url on the resource. 
+must replace, it should use a cid: url on the resource. Deleted resources are those marked clearly
+using the method described for <a href=formats.htm#atom-deleted">XML</a> or 
+<a href=formats.htm#son-bundle-delete">JSON</a>.
 </p>
 <p>
 If the server must assign a new identity when it accepts the resource, it SHALL also update 
@@ -624,7 +633,7 @@ accompanying document.
 </p>
 <p>
 In order to allow the client to know how newly created resources are now identified for future 
-reference, the server must return a bundle containing the created or updated resources in the same 
+reference, the server must return a bundle containing the results of processing the resources in the same 
 order that they were submitted. 
 </p>
 

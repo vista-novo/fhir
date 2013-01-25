@@ -20,7 +20,6 @@
   <WindowWidth>17490</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>105</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -71,9 +70,16 @@
    <NumberFormat/>
    <Protection/>
   </Style>
+  <Style ss:ID="s115">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s127">
+   <Alignment ss:Vertical="Top"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="7" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="8" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="157.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="229.5"/>
@@ -133,6 +139,15 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="Default"><Data ss:Type="String">ObservationBodySite</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Codes for human and animal body sites</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">suggested</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">SNOMED-CT body sites</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -147,11 +162,11 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <RangeSelection>R7C1:R7C7</RangeSelection>
+     <ActiveRow>5</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -203,7 +218,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
