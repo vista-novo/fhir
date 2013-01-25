@@ -160,8 +160,8 @@ public class PageProcessor implements Logger  {
     
     StringBuilder s = new StringBuilder();
     s.append("<div class=\"sidebar\">\r\n");
-    s.append("<p><a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><img border=\"0\" src=\"flame16.png\" style=\"vertical-align: text-bottom\"/></a> <a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><b>FHIR</b></a> &copy; <a href=\"http://hl7.org\">HL7.org</a></p>\r\n");
-    s.append("<p class=\"note\">Version v"+getVersion()+" - Under Development</p>\r\n"); 
+    s.append("<p><a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><img border=\"0\" src=\"flame16.png\" style=\"vertical-align: text-bottom\"/></a> "+
+      "<a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><b>FHIR</b></a> v"+getVersion()+" &copy; <a href=\"http://hl7.org\">HL7</a></p>\r\n");
 
     for (Navigation.Category c : navigation.getCategories()) {
       if (!"nosidebar".equals(c.getMode())) {
@@ -273,6 +273,10 @@ public class PageProcessor implements Logger  {
         src = s1+onThisPage(s2.substring(com[0].length()+1))+s3;
       else if (com[0].equals("map"))
         src = s1+imageMaps.get(com[1])+s3;
+      else if (com[0].equals("res-category"))
+        src = s1+resCategory(s2.substring(com[0].length()+1))+s3;
+      else if (com[0].equals("res-item"))
+        src = s1+resItem(com[1])+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("pageheader"))
@@ -325,6 +329,26 @@ public class PageProcessor implements Logger  {
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
     }
     return src;
+  }
+
+  private String resItem(String name) throws Exception {
+    if (definitions.hasResource(name)) {
+      ResourceDefn r = definitions.getResourceByName(name);
+      return
+          "<tr><td><a href=\""+name.toLowerCase()+".htm\">"+name+"</a></td><td>"+Utilities.escapeXml(r.getDefinition())+"</td></tr>\r\n";
+      
+    } else 
+      return 
+         "<tr><td>"+name+"</td><td>(Not defined yet)</td></tr>\r\n";
+
+  }
+
+  private String resCategory(String string) {
+    String[] parts = string.split("\\|");
+    return
+        "<tr><td colspan=\"2\"><hr/></td></tr>\r\n"+
+        "<tr><th colspan=\"2\"><a name=\""+parts[0].toLowerCase().replace(" ", "")+"\">"+parts[0]+"</a></th></tr>\r\n"+
+        "<tr><td colspan=\"2\">"+Utilities.escapeXml(parts[1])+"</td></tr>\r\n";
   }
 
   private String onThisPage(String tail) {

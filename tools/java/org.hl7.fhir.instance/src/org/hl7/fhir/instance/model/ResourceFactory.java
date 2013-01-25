@@ -48,8 +48,6 @@ public class ResourceFactory {
             return new Prescription();
         if ("Organization".equals(name))
             return new Organization();
-        if ("Request".equals(name))
-            return new Request();
         if ("Procedure".equals(name))
             return new Procedure();
         if ("Substance".equals(name))

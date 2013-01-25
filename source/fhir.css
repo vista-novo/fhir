@@ -229,6 +229,8 @@ div.example {
 div.sidebar h2{
 	border-bottom: 1px solid #dcdcdc;
 	padding-bottom: 2px;
+	padding-top: 0px;
+	margin-top: 0px;
 	font-weight: normal;
 	margin-left: 8px;
 	margin-bottom: 0px;
@@ -241,6 +243,7 @@ div.sidebar p {
 	font-weight: normal;
 	margin-left: 8px;
 	font-size: 12px;
+	margin-bottom: 8px;
 }
 
 div.sidebar ul {
@@ -431,6 +434,7 @@ div.sidebar p.note
   color: maroon;
   font-size: 10px;
   padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 div.itoc
