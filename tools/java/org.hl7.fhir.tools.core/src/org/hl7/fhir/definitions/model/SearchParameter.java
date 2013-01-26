@@ -47,6 +47,7 @@ public class SearchParameter {
   private String description;
   private SearchType type;
   private RepeatMode repeatMode;
+  private String path;
   
   public String getCode() {
     return code;
@@ -57,28 +58,23 @@ public class SearchParameter {
   public String getDescription() {
     return description;
   }
-  public void setDescription(String description) {
-    this.description = description;
-  }
   public SearchType getType() {
     return type;
   }
-  public void setType(SearchType type) {
-    this.type = type;
-  }
-  public SearchParameter(String code, String description, SearchType type, RepeatMode mode) {
+  public SearchParameter(String code, String description, SearchType type, RepeatMode mode, String path) {
     super();
     this.code = code;
     this.description = description;
     this.type = type;
     this.repeatMode = mode;
+    this.path = path;
+  }
+  public String getPath() {
+    return path;
   }
   public RepeatMode getRepeatMode() {
     return repeatMode;
   }
-  public void setRepeatMode(RepeatMode repeatMode) {
-    this.repeatMode = repeatMode;
-  }  
   
   
 }

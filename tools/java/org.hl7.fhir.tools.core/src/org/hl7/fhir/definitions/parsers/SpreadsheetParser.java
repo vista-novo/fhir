@@ -286,25 +286,34 @@ public class SpreadsheetParser {
 
 	private void readSearchParams(ResourceDefn root2, Sheet sheet)
 			throws Exception {
-		root2.getSearchParams().add(new SearchParameter("_id","The logical resource id associated with the resource (must be supported by all servers)",SearchType.token, RepeatMode.single));
+		root2.getSearchParams().add(new SearchParameter("_id","The logical resource id associated with the resource (must be supported by all servers)",SearchType.token, RepeatMode.single, null));
 
 		if (sheet != null)
 			for (int row = 0; row < sheet.rows.size(); row++) {
 
 				if (!sheet.hasColumn(row, "Name"))
 					throw new Exception("Search Param has no name "+ getLocation(row));
-				if (!sheet.hasColumn(row, "Description"))
-					throw new Exception("Search Param has no dascription "+ getLocation(row));
+
 				if (!sheet.hasColumn(row, "Type"))
 					throw new Exception("Search Param has no type "+ getLocation(row));
 				String n = sheet.getColumn(row, "Name");
 				if (n.endsWith("-before") || n.endsWith("-after"))
 					throw new Exception("Search Param includes relative time "+ getLocation(row));
+				String p = sheet.getColumn(row, "Path");
+				ElementDefn e = null;
+				if (!Utilities.noString(p) && !p.startsWith("!"))
+				  e = root2.getRoot().getElementForPath(p); 
 				String d = sheet.getColumn(row, "Description");
+				if (d == null) {
+				  if (e != null)
+				    d = e.getShortDefn();
+				  else
+				    throw new Exception("Search Param has no description "+ getLocation(row));
+				}
 				SearchType t = readSearchType(sheet.getColumn(row, "Type"), row);
 				RepeatMode m = readRepeatMode(sheet.getColumn(row, "Repeats"), row);
 
-				root2.getSearchParams().add(new SearchParameter(n, d, t, m));
+				root2.getSearchParams().add(new SearchParameter(n, d, t, m, p));
 			}
 	}
 
