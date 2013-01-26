@@ -35,6 +35,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -183,12 +184,24 @@ public class Publisher {
 	private AtomFeed profileFeed;
   private List<Fragment> fragments = new ArrayList<Publisher.Fragment>();
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		//
 		Publisher pub = new Publisher();
 		pub.isGenerate = !(args.length > 1 && hasParam(args, "-nogen"));
 		pub.nobook = (args.length > 1 && hasParam(args, "-nobook"));
-		pub.execute(args[0]);
+		try {
+      pub.execute(args[0]);
+    } catch (Exception e) {
+      e.printStackTrace();
+      File f;
+      try {
+        f = new File("fhir-error-dump.txt");
+        PrintStream p = new PrintStream(f);
+        e.printStackTrace(p);
+        System.out.println("Stack Trace saved as fhir-error-dump.txt");
+      } catch (IOException e1) {
+      }
+    }
 	}
 
 	private static boolean hasParam(String[] args, String param) {
