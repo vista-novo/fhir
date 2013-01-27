@@ -62,7 +62,8 @@ public class ElementDefn {
 	private String committeeNotes;
 	private String condition;
 	private String example;
-	private String profileName; // only in a profile, for unpicking
+	private String profileName; // only in a profile, for slicing
+	private String profile; // means some profile is applicable to this data type or resource reference
 	private String value; // only in a profile
 	private String aggregation; // only in a profile
 	private Element_ derivation;
@@ -591,6 +592,14 @@ public class ElementDefn {
 
     public List<String> getAliases() {
       return aliases;
+    }
+
+    public String getProfile() {
+      return profile;
+    }
+
+    public void setProfile(String profile) {
+      this.profile = profile;
     }
     
 }

@@ -132,7 +132,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
     write("    <xs:complexContent>\r\n");
     write("      <xs:extension base=\"Element\">\r\n");
     write("        <xs:sequence>\r\n");
-    write("          <xs:element name=\"text\" type=\"Narrative\" minOccurs=\"1\" maxOccurs=\"1\">\r\n");
+    write("          <xs:element name=\"text\" type=\"Narrative\" minOccurs=\"0\" maxOccurs=\"1\">\r\n");
     write("            <xs:annotation>\r\n");
     write("              <xs:documentation>Text summary of resource (for human interpretation)</xs:documentation>\r\n");
     write("            </xs:annotation>\r\n");

@@ -183,6 +183,7 @@ public class Publisher {
 	private boolean nobook;
 	private AtomFeed profileFeed;
   private List<Fragment> fragments = new ArrayList<Publisher.Fragment>();
+  private Map<String, String> xmls = new HashMap<String, String>();
 
 	public static void main(String[] args) {
 		//
@@ -598,9 +599,14 @@ public class Publisher {
       log(" ...diagram "+n);
       page.getImageMaps().put(n, new DiagramGenerator(page).generateFromSource(n, page.getFolders().srcDir + page.getDefinitions().getDiagrams().get(n)));
     }
+    
+    log(" ...profiles");
+    for (ResourceDefn n : page.getDefinitions().getResources().values()) {
+      produceResource1(n);      
+    }
 		for (ResourceDefn n : page.getDefinitions().getResources().values()) {
       log(" ...resource "+n.getName());
-			produceResource(n);
+			produceResource2(n);
 		}
 
 		new AtomComposer().compose(new FileOutputStream(page.getFolders().dstDir + "profiles-resources.xml"), profileFeed, true, false);
@@ -617,7 +623,7 @@ public class Publisher {
 		
 		for (String n : page.getDefinitions().getProfiles().keySet()) {
       log(" ...profile "+n);
-			produceProfile(n, page.getDefinitions().getProfiles().get(n));
+			produceProfile(n, page.getDefinitions().getProfiles().get(n), null);
 		}
 
     log(" ...summaries");
@@ -726,15 +732,25 @@ public class Publisher {
 		Utilities.copyFile(new CSFile(page.getFolders().tmpResDir + "fhir-all-xsd.zip"), f);
 	}
 
-	private void produceResource(ResourceDefn resource) throws Exception {
+  private void produceResource1(ResourceDefn resource) throws Exception {
+    File tmp = File.createTempFile("tmp", ".tmp");
+    tmp.deleteOnExit();
+    String n = resource.getName().toLowerCase();
+    
+    XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), n + "-definitions.htm", null, page.getDefinitions());
+    gen.generate(resource.getRoot());
+    gen.close();
+    String xml = TextFile.fileToString(tmp.getAbsolutePath());
+
+    xmls.put(n, xml);
+    generateProfile(resource, n, xml);
+  }
+  
+  private void produceResource2(ResourceDefn resource) throws Exception {
 		File tmp = File.createTempFile("tmp", ".tmp");
 		tmp.deleteOnExit();
 		String n = resource.getName().toLowerCase();
-
-		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), n + "-definitions.htm", null, page.getDefinitions());
-		gen.generate(resource.getRoot());
-		gen.close();
-		String xml = TextFile.fileToString(tmp.getAbsolutePath());
+		String xml = xmls.get(n);
 
 		TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp), page);
 		tgen.generate(resource.getRoot(), page.getDefinitions().getBindings());
@@ -751,11 +767,10 @@ public class Publisher {
 		dxgen.generate(resource.getRoot(), "HL7");
 		dxgen.close();
 
-		generateProfile(resource, n, xml);
 		page.getImageMaps().put(n, new DiagramGenerator(page).generate(resource, n));
 		
 		for (RegisteredProfile p : resource.getProfiles())
-			produceProfile(p.getFilename(), p.getProfile());
+			produceProfile(p.getFilename(), p.getProfile(), p.getExamplePath());
 
 		for (Example e : resource.getExamples()) {
 		  try {
@@ -941,7 +956,7 @@ public class Publisher {
 		profileFeed.getEntryList().add(e);
 	}
 
-	private void produceProfile(String filename, ProfileDefn profile)
+	private void produceProfile(String filename, ProfileDefn profile, String example)
 			throws Exception {
 		File tmp = File.createTempFile("tmp", ".tmp");
 		tmp.deleteOnExit();
@@ -966,6 +981,21 @@ public class Publisher {
 		tgen.generate(profile);
 		tgen.close();
 		String tx = TextFile.fileToString(tmp.getAbsolutePath());
+		
+		String exXml = "<p><i>No Example Provided</i></p>";
+		if (example != null) {
+	    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	    factory.setNamespaceAware(true);
+	    DocumentBuilder builder = factory.newDocumentBuilder();
+	    Document xdoc = builder.parse(new CSFileInputStream(example));
+	    // strip namespace - see below
+	    XmlGenerator xmlgen = new XmlGenerator();
+	    xmlgen.generate(xdoc.getDocumentElement(), tmp, "http://hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
+	    builder = factory.newDocumentBuilder();
+	    xdoc = builder.parse(new CSFileInputStream(tmp.getAbsolutePath()));
+	    XhtmlGenerator xhtml = new XhtmlGenerator(null);
+	    exXml = xhtml.generateInsert(xdoc, "Profile Example", null);
+		}
 		//
 		// DictHTMLGenerator dgen = new DictHTMLGenerator(new
 		// FileOutputStream(tmp));
@@ -982,7 +1012,7 @@ public class Publisher {
 		//
 		String src = TextFile.fileToString(page.getFolders().srcDir
 				+ "template-profile.htm");
-		src = page.processProfileIncludes(filename, profile, xml, tx, src);
+		src = page.processProfileIncludes(filename, profile, xml, tx, src, exXml);
 		TextFile.stringToFile(src, page.getFolders().dstDir + filename + ".htm");
 		//
 		// src = Utilities.fileToString(page.getFolders().srcDir +

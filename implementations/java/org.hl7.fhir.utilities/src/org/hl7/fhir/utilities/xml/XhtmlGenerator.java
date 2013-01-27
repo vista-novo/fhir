@@ -32,6 +32,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.StringWriter;
+import java.io.Writer;
 
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XhtmlGeneratorAdorner.XhtmlGeneratorAdornerState;
@@ -50,6 +52,23 @@ public class XhtmlGenerator {
   public XhtmlGenerator(XhtmlGeneratorAdorner adorner) {
     super();
     this.adorner = adorner;
+  }
+
+  public String generateInsert(Document doc, String name, String desc) throws Exception {
+    StringWriter out = new StringWriter();
+    
+    out.write("<div class=\"example\">\r\n");
+    out.write("<p>Example Instance \""+name+"\""+(desc == null ? "" : ": "+Utilities.escapeXml(desc))+"</p>\r\n"); 
+    out.write("<pre class=\"xml\">\r\n");
+
+    XhtmlGeneratorAdornerState state = null; // adorner == null ? new XhtmlGeneratorAdornerState("", "") : adorner.getState(this, null, null);
+    for (int i = 0; i < doc.getChildNodes().getLength(); i++)
+      writeNode(out, doc.getChildNodes().item(i), state);
+    
+    out.write("</pre>\r\n");
+    out.write("</div>\r\n");
+    out.flush();
+    return out.toString();
   }
 
   public void generate(Document doc, File xhtml, String name, String desc) throws Exception {
@@ -79,7 +98,7 @@ public class XhtmlGenerator {
 		outs.close();
 	}
 
-	private void writeNode(OutputStreamWriter out, Node node, XhtmlGeneratorAdornerState state) throws Exception {
+	private void writeNode(Writer out, Node node, XhtmlGeneratorAdornerState state) throws Exception {
 		if (node.getNodeType() == Node.ELEMENT_NODE)
 			writeElement(out, (Element) node, state);
 		else if (node.getNodeType() == Node.TEXT_NODE)
@@ -92,20 +111,20 @@ public class XhtmlGenerator {
 			throw new Exception("Unhandled node type");
 	}
 
-	private void writeProcessingInstruction(OutputStreamWriter out, ProcessingInstruction node) {
+	private void writeProcessingInstruction(Writer out, ProcessingInstruction node) {
 		
 		
 	}
 
-	private void writeComment(OutputStreamWriter out, Comment node) throws DOMException, IOException {
+	private void writeComment(Writer out, Comment node) throws DOMException, IOException {
 		out.write("<span class=\"xmlcomment\">&lt;!-- "+node.getTextContent()+" --&gt;</span>");
 	}
 
-	private void writeText(OutputStreamWriter out, Text node) throws DOMException, IOException {
+	private void writeText(Writer out, Text node) throws DOMException, IOException {
 		out.write("<b>"+escapeHtml(Utilities.escapeXml(node.getTextContent()))+"</b>");
 	}
 
-	private void writeElement(OutputStreamWriter out, Element node, XhtmlGeneratorAdornerState state) throws Exception {
+	private void writeElement(Writer out, Element node, XhtmlGeneratorAdornerState state) throws Exception {
 		out.write("<span class=\"xmltag\">&lt;"+node.getNodeName()+"</span>");
 		if (node.hasAttributes()) {
 			out.write("<span class=\"xmlattr\">");

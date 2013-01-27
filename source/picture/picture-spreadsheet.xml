@@ -81,9 +81,17 @@
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s72">
-   <Alignment ss:Vertical="Top"/>
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
   </Style>
   <Style ss:ID="s73">
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s74">
+   <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s75">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders>
@@ -93,17 +101,9 @@
     ss:Bold="1"/>
    <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s75">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
-    ss:WrapText="1"/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
-  </Style>
-  <Style ss:ID="s76">
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
-  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="17" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="20" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="1"/>
@@ -190,6 +190,7 @@
     <Cell><Data ss:Type="String">Resource(Provider)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">The person who generated the image</Data></Cell>
+    <Cell><Data ss:Type="String">0008,1060?</Data></Cell>
     <Cell ss:Index="12" ss:StyleID="Default"/>
     <Cell ss:Index="14" ss:StyleID="Default"><Data ss:Type="String">.participation[typeCode=&quot;PERF&quot;]…</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -197,31 +198,83 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Picture.identifier</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Identifier for the image</Data></Cell>
+    <Cell><Data ss:Type="String">0008,0018</Data></Cell>
     <Cell ss:Index="12" ss:StyleID="Default"/>
     <Cell ss:Index="14" ss:StyleID="Default"><Data ss:Type="String">.id</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Picture.contextId</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">0..*</Data></Cell>
+    <Cell><Data ss:Type="String">Picture.accessionNo</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Workflow context of image</Data></Cell>
+    <Cell><Data ss:Type="String">Used by the requester to link back to the original context</Data></Cell>
     <Cell><Data ss:Type="String" x:Ticked="1">~0008,0050</Data></Cell>
+    <Cell><Data ss:Type="String">An identifier for the order that is used by the application/system that requested the image to link back to the original context (if there was such a system). This is not the identity of the image, but of the &quot;request for an image to be generated&quot;</Data></Cell>
     <Cell ss:Index="12" ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">This can be one of various identifiers that can be used to determine the context of the image</Data></Cell>
+    <Cell><Data ss:Type="String">The name &quot;Accession Number&quot; comes from DICOM, where it is used ubiquitiously</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">.id??</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Picture.studyId</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Identifier</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">The session in which the picture was taken</Data></Cell>
+    <Cell><Data ss:Type="String">0020,000D</Data></Cell>
+    <Cell><Data ss:Type="String">The session in which the picture was taken.</Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Usually used for DICOM images</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Picture.seriesId</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Identifier</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">The series of images in which this picture was taken</Data></Cell>
+    <Cell><Data ss:Type="String">0020,000E</Data></Cell>
+    <Cell><Data ss:Type="String">The series of images in which this picture was taken</Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Usually used for DICOM images</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Picture.method</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">How the image was taken</Data></Cell>
+    <Cell><Data ss:Type="String">0008,1032</Data></Cell>
+    <Cell><Data ss:Type="String">A reference to the method/protocol that was followed when the images were taken</Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="Default"/>
+    <Cell ss:Index="14" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
@@ -407,7 +460,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>15</ActiveRow>
+     <ActiveRow>7</ActiveRow>
      <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
@@ -561,10 +614,11 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Search">
-  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="33" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="32" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="105.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="352.5"/>
    <Column ss:Index="9" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -578,58 +632,69 @@
     <Cell><Data ss:Type="String">Who the image is about</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">Picture.subject</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Picture.subject</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">date</Data></Cell>
     <Cell><Data ss:Type="String">the date the image was taken</Data></Cell>
     <Cell><Data ss:Type="String">date</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">Picture.dateTime</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Picture.dateTime</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">identifier</Data></Cell>
     <Cell><Data ss:Type="String">the request id for the image</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">Picture.identifier</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">context</Data></Cell>
-    <Cell><Data ss:Type="String">a context identifier for the image</Data></Cell>
-    <Cell><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">Picture.contextId</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Picture.identifier</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">operator</Data></Cell>
     <Cell><Data ss:Type="String">person who gathered the image</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">Picture.operator</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Picture.operator</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">modality</Data></Cell>
     <Cell><Data ss:Type="String">the modality of the image</Data></Cell>
     <Cell><Data ss:Type="String">token</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">Picture.modality</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Picture.modality</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">size</Data></Cell>
     <Cell><Data ss:Type="String">the size of the image in MB - may include &gt; or &lt; in the value</Data></Cell>
     <Cell><Data ss:Type="String">integer</Data></Cell>
     <Cell><Data ss:Type="String">intersection</Data></Cell>
-    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s73"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">view</Data></Cell>
     <Cell><Data ss:Type="String">Imaging view e.g Lateral or Antero-posterior (AP)</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">Picture.view</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Picture.view</Data></Cell>
    </Row>
-   <Row ss:Index="16" ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">accession</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Picture.accessionNo</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">study</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Picture.studyId</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">series</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Picture.seriesId</Data></Cell>
+   </Row>
+   <Row ss:Index="15" ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -717,7 +782,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>5</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -744,23 +809,23 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">ImageModality3</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Type of the image capturing machinery</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#image-modality3</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s72"/>
-    <Cell ss:StyleID="s72"/>
-    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s74"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s72"/>
-    <Cell ss:StyleID="s72"/>
-    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s74"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -982,12 +1047,12 @@
    <Column ss:AutoFitWidth="0" ss:Width="167.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="60.75"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s73"><Data ss:Type="String">Name</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">Description</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">Identity</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">Filename</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">In Book</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Name</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Identity</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Filename</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Type</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">In Book</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Plain Photo</Data></Cell>

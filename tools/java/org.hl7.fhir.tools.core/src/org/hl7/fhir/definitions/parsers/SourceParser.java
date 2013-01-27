@@ -256,10 +256,13 @@ public class SourceParser {
 	private void loadProfile(String n, Map<String, ProfileDefn> profiles)
 			throws Exception {
 		File spreadsheet = new CSFile(rootDir+ ini.getStringProperty("profiles", n));
-		SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(
-				spreadsheet), spreadsheet.getName(), definitions, srcDir, logger);
-		ProfileDefn profile = sparser.parseProfile(definitions);
-		definitions.getProfiles().put(n, profile);
+		SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir, logger);
+		try {
+		  ProfileDefn profile = sparser.parseProfile(definitions);
+		  definitions.getProfiles().put(n, profile);
+		} catch (Exception e) {
+		  throw new Exception("Error Parsing Profile: '"+n+"': "+e.getMessage(), e);
+		}
 	}
 
 	private void loadGlobalConceptDomains() throws Exception {

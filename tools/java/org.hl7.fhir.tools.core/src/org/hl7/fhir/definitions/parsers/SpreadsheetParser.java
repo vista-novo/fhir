@@ -51,6 +51,7 @@ import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameter;
 import org.hl7.fhir.definitions.model.Example.ExampleType;
+import org.hl7.fhir.definitions.model.RegisteredProfile.ProfileInputType;
 import org.hl7.fhir.definitions.model.SearchParameter.RepeatMode;
 import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
@@ -239,20 +240,27 @@ public class SpreadsheetParser {
         if (name != null && !name.equals("")) {
           String desc = sheet.getColumn(row, "Description");
           if (desc == null || desc.equals(""))
-            throw new Exception("Example " + name
-                + " has no description parsing " + this.name);
+            throw new Exception("Example " + name + " has no description parsing " + this.name);
           String title = sheet.getColumn(row, "Filename");
-          File file = new CSFile(folder + title+".xml");
+          String etitle = sheet.getColumn(row, "Example");
+          ProfileInputType type = readProfileInputType(sheet.getColumn(row, "Type"));
+          File file = new CSFile(folder + title);
+          File efile = new CSFile(folder + etitle);
           if (!file.exists())
-            throw new Exception("Profile " + name + " file '"
-                + file.getAbsolutePath()
-                + "' not found parsing " + this.name);
-          defn.getProfiles().add(
-              new RegisteredProfile(name, desc, title, file.getAbsolutePath()));
+            throw new Exception("Profile " + name + " file '" + file.getAbsolutePath() + "' not found parsing " + this.name);
+          if (!efile.exists())
+            throw new Exception("Profile Example " + name + " file '" + efile.getAbsolutePath() + "' not found parsing " + this.name);
+          defn.getProfiles().add(new RegisteredProfile(name, desc, title, file.getAbsolutePath(), type, etitle, efile.getAbsolutePath()));
         }
       }
     }
-    
+  }
+
+
+  private ProfileInputType readProfileInputType(String column) throws Exception {
+    if ("spreadsheet".equals(column)) 
+      return ProfileInputType.Spreadsheet;
+    throw new Exception("Unknown value for Profile Filename Type: "+column);
   }
 
 
@@ -421,25 +429,19 @@ public class SpreadsheetParser {
     if (sheet != null)
       invariants = readInvariants(sheet);
 		
-		if (p.getMetadata().containsKey("resource")) {
-		  for (String n : p.getMetadata().get("resource")) {
-		    ResourceDefn resource = new ResourceDefn();
-		    sheet = xls.getSheets().get(n);
-		    for (int row = 0; row < sheet.rows.size(); row++) {
-		      processLine(resource, sheet, row, invariants);
-		    }
-		    sheet = xls.getSheets().get(n + "-Extensions");
-		    if (sheet != null) {
-		      for (int row = 0; row < sheet.rows.size(); row++) {
-		        p.getExtensions().add(processExtension(
-		            resource.getRoot().getElementByName("extensions"),
-		            sheet, row, definitions,
-		            p.metadata("extension.uri")));
-		      }
-		    }
-		    p.getResources().add(resource);
+    List<String> namedSheets = new ArrayList<String>();
+    
+		if (p.getMetadata().containsKey("profile")) {
+		  for (String n : p.getMetadata().get("profile")) {
+		    if (!Utilities.noString(n))
+		    parseProfileSheet(definitions, p, invariants, n, namedSheets);
 		  }
 		}
+		int i = 0;
+    while (i < namedSheets.size()) {
+      parseProfileSheet(definitions, p, invariants, namedSheets.get(i), namedSheets);
+      i++;
+    }
 
     sheet = xls.getSheets().get("Extensions");
     if (sheet != null) {
@@ -456,6 +458,32 @@ public class SpreadsheetParser {
       
 		return p;
 	}
+
+
+  private void parseProfileSheet(Definitions definitions, ProfileDefn p, Map<String, Invariant> invariants, String n, List<String> namedSheets) throws Exception {
+    Sheet sheet;
+    ResourceDefn resource = new ResourceDefn();
+    sheet = xls.getSheets().get(n);
+    if (sheet == null)
+      throw new Exception("The Profile referred to a tab by the name of '"+n+"', but no tab by the name could be found");
+    for (int row = 0; row < sheet.rows.size(); row++) {
+      ElementDefn e = processLine(resource, sheet, row, invariants);
+      if (e != null && e.getProfile() != null && e.getProfile().startsWith("#")) 
+        if (!namedSheets.contains(e.getProfile().substring(1)))
+          namedSheets.add(e.getProfile().substring(1));      
+    }
+    sheet = xls.getSheets().get(n + "-Extensions");
+    if (sheet != null) {
+      for (int row = 0; row < sheet.rows.size(); row++) {
+        p.getExtensions().add(processExtension(
+            resource.getRoot().getElementByName("extensions"),
+            sheet, row, definitions,
+            p.metadata("extension.uri")));
+      }
+    }
+    resource.getRoot().setProfileName(n);
+    p.getResources().add(resource);
+  }
 
 	private void readExamples(ResourceDefn defn, Sheet sheet) throws Exception {
 		if (sheet != null) {
@@ -538,17 +566,16 @@ public class SpreadsheetParser {
 		}
 	}
 
-	private void processLine(ResourceDefn root, Sheet sheet, int row, Map<String, Invariant> invariants) throws Exception {
+	private ElementDefn processLine(ResourceDefn root, Sheet sheet, int row, Map<String, Invariant> invariants) throws Exception {
 		ElementDefn e;
 		String path = sheet.getColumn(row, "Element");
 		if (path.startsWith("!"))
-		  return;
+		  return null;
 		
 		if (path.contains("#"))
 			throw new Exception("Old path style @ " + getLocation(row));
 
-		String profileName = isProfile ? sheet.getColumn(row, "Profile Name")
-				: "";
+		String profileName = isProfile ? sheet.getColumn(row, "Profile Name") : "";
 		
 		boolean isRoot = !path.contains(".");
 		
@@ -572,13 +599,10 @@ public class SpreadsheetParser {
 			e.setMaxCardinality(1);
 		} else {
 			String[] card = c.split("\\.\\.");
-			if (card.length != 2 || !Utilities.IsInteger(card[0])
-					|| (!"*".equals(card[1]) && !Utilities.IsInteger(card[1])))
-				throw new Exception("Unable to parse Cardinality '" + c + "' "
-						+ c + " in " + getLocation(row) + " on " + path);
+			if (card.length != 2 || !Utilities.IsInteger(card[0]) || (!"*".equals(card[1]) && !Utilities.IsInteger(card[1])))
+				throw new Exception("Unable to parse Cardinality '" + c + "' " + c + " in " + getLocation(row) + " on " + path);
 			e.setMinCardinality(Integer.parseInt(card[0]));
-			e.setMaxCardinality("*".equals(card[1]) ? null : Integer
-					.parseInt(card[1]));
+			e.setMaxCardinality("*".equals(card[1]) ? null : Integer.parseInt(card[1]));
 		}
 		e.setProfileName(profileName);
 		String aliases = sheet.getColumn(row, "Aliases");
@@ -586,10 +610,8 @@ public class SpreadsheetParser {
 		  for (String a : aliases.split(";"))
 		    e.getAliases().add(a);
 
-		e.setMustUnderstand(parseBoolean(
-				sheet.getColumn(row, "Must Understand"), row, false));
-		e.setMustSupport(parseBoolean(sheet.getColumn(row, "Must Support"),
-				row, false));
+		e.setMustUnderstand(parseBoolean(sheet.getColumn(row, "Must Understand"), row, false));
+		e.setMustSupport(parseBoolean(sheet.getColumn(row, "Must Support"), row, false));
 		e.setDir(sheet.getColumn(row, "UML"));
 		String s = sheet.getColumn(row, "Condition");
 		if (s != null && !s.equals(""))
@@ -608,6 +630,7 @@ public class SpreadsheetParser {
 		TypeParser tp = new TypeParser();
 		e.getTypes().addAll(tp.parse(t));
 		
+		e.setProfile(sheet.getColumn(row, "Profile"));
 		if (sheet.hasColumn(row, "Concept Domain"))
 			throw new Exception("Column 'Concept Domain' has been retired in "
 					+ path);
@@ -636,6 +659,7 @@ public class SpreadsheetParser {
 			e.setValue(sheet.getColumn(row, "Value"));
 			e.setAggregation(sheet.getColumn(row, "Aggregation"));
 		}
+		return e;
 	}
 
 	private ExtensionDefn processExtension(ElementDefn extensions, Sheet sheet, int row,	Definitions definitions, String uri) throws Exception {

@@ -37,26 +37,33 @@ POSSIBILITY OF SUCH DAMAGE.
  */
 public class RegisteredProfile {
 
+  public enum ProfileInputType {
+    Spreadsheet;
+  }
+
   private String name;
   private String description;
   private String filename;
   private String filepath;
   private ProfileDefn profile;
+  private String example;
+  private ProfileInputType type;
+  private String examplePath;
   
   
-  public RegisteredProfile(String name, String description, String filename, String filepath) {
+  public RegisteredProfile(String name, String description, String filename, String filepath, ProfileInputType type, String example, String examplePath) {
     super();
     this.name = name;
     this.description = description;
     this.filename = filename;
     this.filepath = filepath;
+    this.type= type;
+    this.example = example;
+    this.examplePath = examplePath;
   }
   
   public String getName() {
     return name;
-  }
-  public void setName(String name) {
-    this.name = name;
   }
   public String getDescription() {
     return description;
@@ -67,22 +74,27 @@ public class RegisteredProfile {
   public String getFilename() {
     return filename;
   }
-  public void setFilename(String filename) {
-    this.filename = filename;
-  }
   public ProfileDefn getProfile() {
     return profile;
   }
-  public void setProfile(ProfileDefn profile) {
-    this.profile = profile;
-  }
-
   public String getFilepath() {
     return filepath;
   }
 
-  public void setFilepath(String filepath) {
-    this.filepath = filepath;
+  public String getExample() {
+    return example;
+  }
+
+  public ProfileInputType getType() {
+    return type;
+  }
+
+  public String getExamplePath() {
+    return examplePath;
+  }
+
+  public void setProfile(ProfileDefn profile) {
+    this.profile = profile;
   }
   
   

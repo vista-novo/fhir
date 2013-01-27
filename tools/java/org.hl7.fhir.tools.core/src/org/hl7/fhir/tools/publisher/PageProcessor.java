@@ -196,8 +196,8 @@ public class PageProcessor implements Logger  {
         s.append("  </ul>\r\n");
       }
     }
-    s.append(SIDEBAR_SPACER);
-    s.append("<p><a href=\"http://hl7.org\"><img border=\"0\" src=\"hl7logo.png\"/></a></p>\r\n");
+    // s.append(SIDEBAR_SPACER);
+    s.append("<p><a href=\"http://hl7.org\"><img width=\"42\" height=\"50\" border=\"0\" src=\"hl7logo.png\"/></a></p>\r\n");
 
     s.append("</div>\r\n");
     prevSidebar = s.toString();
@@ -1306,7 +1306,7 @@ public class PageProcessor implements Logger  {
     }
 }
 
-  String processProfileIncludes(String filename, ProfileDefn profile, String xml, String tx, String src) throws Exception {
+  String processProfileIncludes(String filename, ProfileDefn profile, String xml, String tx, String src, String example) throws Exception {
     while (src.contains("<%"))
     {
       int i1 = src.indexOf("<%");
@@ -1337,6 +1337,8 @@ public class PageProcessor implements Logger  {
         src = s1+Config.DATE_FORMAT().format(new Date())+s3;
       else if (com[0].equals("definition"))
         src = s1+profile.getMetadata().get("description").get(0)+s3;
+      else if (com[0].equals("example"))
+        src = s1+example+s3;
       else if (com[0].equals("status"))
         src = s1+describeStatus(profile.getMetadata().get("status").get(0))+s3;
       else if (com[0].equals("author"))

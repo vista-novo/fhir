@@ -110,16 +110,19 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		write("<pre class=\"spec\">\r\n");
 
 		if (profile.getResources().size() > 0) {
-			write("  <span style=\"color: Gray\">&lt;!-- Resources --&gt;</span>\r\n");
+			write("<span style=\"color: Gray\">&lt;!-- <span style=\"color: Darkviolet\">Resources</span> --&gt;</span>\r\n");
 			for (ResourceDefn r : profile.getResources()) {
+	      write("<span style=\"color: Gray\">&lt;!--<a name=\"" + r.getRoot().getProfileName() + "\"> </a><span style=\"color: Darkviolet\">"+Utilities.escapeXml(r.getRoot().getProfileName())+"</span> --&gt;</span>\r\n");
 				generateInner(r.getRoot());
+        write("\r\n");
 			}
 		}
 
 		if (profile.getExtensions().size() > 0) {
-			write(" <span style=\" color: Gray\">&lt;!-- Extensions --&gt;</span>\r\n");
+			write("<span style=\" color: Gray\">&lt;!-- <span style=\"color: Darkviolet\">Extensions</span> --&gt;</span>\r\n");
 			for (ExtensionDefn ex : profile.getExtensions()) {
 				generateExtension(ex, definitions);
+        write("\r\n");
 			}
 		}
 
@@ -211,6 +214,14 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 		boolean listed = false;
 		boolean doneType = false;
+    // If this is an unrolled element, show its profile name
+    if (elem.getProfileName() != null
+        && !elem.getProfileName().equals("")) {
+      for (int i = 0; i < indent; i++)
+        write(" ");
+      write("<span style=\"color: Gray\">&lt;!--</span><span style=\"color: blue\">\"" + elem.getProfileName() + "\"</span>  <span style=\"color: Gray\"> --&gt;</span>\r\n");
+    }
+
 		for (int i = 0; i < indent; i++) {
 			write(" ");
 		}
@@ -278,11 +289,6 @@ public class XmlSpecGenerator extends OutputStreamWriter {
   			  write(" value=\"[<span style=\"color: darkgreen\"><a href=\"" + (dtRoot + getSrcFile(t.getName())+ ".htm#" + t.getName()).replace("[", "_").replace("]", "_") + "\">" + t.getName()+ "</a></span>]\"/");
 			}
 			write("&gt;");
-
-			// If this is an unrolled element, show its profile name
-			if (elem.getProfileName() != null
-					&& !elem.getProfileName().equals(""))
-				write(" <span style=\"color: Gray\">&lt;!--</span> <span style=\"color: blue\">\"" + elem.getProfileName() + "\"</span>  <span style=\"color: Gray\"> --&gt;</span>");
 
 			boolean sharedDT = definitions.dataTypeIsSharedInfo(elem.typeCode());
 
@@ -355,6 +361,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				        {
 				          write("<a href=\"" + "resources.htm" + "\">" + p + "</a>");								
 				        }
+				        else if (t.getName().equals("Resource") && t.getParams().size() == 1 && !Utilities.noString(elem.getProfile()))
+				          write("<a href=\""+elem.getProfile()+"\"><span style=\"color: DarkViolet\">@"+elem.getProfile().substring(1)+"</span></a>");     
 				        else
 				          write("<a href=\"" + (dtRoot + getSrcFile(p)
 				              + ".htm#" + p).replace("[", "_").replace("]", "_") + "\">" + p + "</a>");
@@ -376,6 +384,9 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				listed = true;
 			}
 
+//			if (!Utilities.noString(elem.getProfile())) {
+//	      write(" <a href=\""+elem.getProfile()+"\"><span style=\"color: DarkViolet\">Profile: \""+elem.getProfile().substring(1)+"\"</span></a>");		  
+//			}
 			write(" ");
 			if (elem.getElements().isEmpty() && !sharedDT) {
 				if ("See Extensions".equals(elem.getShortDefn())) {
@@ -466,6 +477,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		return b.toString();
 	}
 
+	// code ### | text
 	private String renderCodeableConcept(int indent, String value)
 			throws Exception {
 		StringBuilder s = new StringBuilder();
@@ -473,21 +485,22 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			s.append(" ");
 		String ind = s.toString();
 		s = new StringBuilder();
-		String[] parts = value.split("#");
-		if (parts.length != 2)
-			throw new Exception("unable to parse fixed code " + value);
-		String sys = parts[0];
-		String c = parts[1];
-		parts = c.split("\\|");
-		if (parts.length != 2)
-			throw new Exception("unable to parse fixed code " + value);
+		String[] parts = value.split("\\|");
+		
 
-		s.append("\r\n" + ind + "  &lt;coding&gt;");
-		s.append("\r\n" + ind + "    &lt;code&gt;" + parts[0] + "&lt;/code&gt;");
-		s.append("\r\n" + ind + "    &lt;system&gt;" + sys + "&lt;/system&gt;");
-		s.append("\r\n" + ind + "    &lt;display&gt;" + parts[1]
-				+ "&lt;/display&gt;");
-		s.append("\r\n" + ind + "  &lt;/coding&gt;");
+		if (parts[0].length() > 0) {
+		  String[] parts2 = parts[0].split("#");
+		  s.append("\r\n" + ind + "  &lt;coding&gt;");
+		  if (parts2.length > 0 && parts2[0].length() > 0)
+		    s.append("\r\n" + ind + "    &lt;code value=\"" + parts2[0] + "\"/&gt;");
+      if (parts2.length > 1 && parts2[1].length() > 0)
+		    s.append("\r\n" + ind + "    &lt;system value=\"" + parts2[1] + "\"/&gt;");
+      if (parts2.length > 2 && parts2[2].length() > 0)
+		    s.append("\r\n" + ind + "    &lt;display value=\"" + parts2[2] + "\"/&gt;");
+      s.append("\r\n" + ind + "  &lt;/coding&gt;");
+	  }
+    if (parts.length >= 1 && parts[1].length() > 0)
+      s.append("\r\n" + ind + "  &lt;text value=\"" + parts[1] + "\"/&gt;");
 		s.append("\r\n" + ind);
 		return s.toString();
 	}
