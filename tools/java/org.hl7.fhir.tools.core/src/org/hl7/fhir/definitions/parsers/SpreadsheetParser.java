@@ -468,7 +468,7 @@ public class SpreadsheetParser {
       throw new Exception("The Profile referred to a tab by the name of '"+n+"', but no tab by the name could be found");
     for (int row = 0; row < sheet.rows.size(); row++) {
       ElementDefn e = processLine(resource, sheet, row, invariants);
-      if (e != null && e.getProfile() != null && e.getProfile().startsWith("#")) 
+      if (e != null && e.getProfile() != null && e.typeCode().startsWith("Resource(") && e.getProfile().startsWith("#")) 
         if (!namedSheets.contains(e.getProfile().substring(1)))
           namedSheets.add(e.getProfile().substring(1));      
     }
@@ -607,8 +607,13 @@ public class SpreadsheetParser {
 		e.setProfileName(profileName);
 		String aliases = sheet.getColumn(row, "Aliases");
 		if (!Utilities.noString(aliases))
-		  for (String a : aliases.split(";"))
-		    e.getAliases().add(a);
+		  if (aliases.contains(";")) {
+		    for (String a : aliases.split(";"))
+		      e.getAliases().add(a.trim());
+		  } else {
+	      for (String a : aliases.split(","))
+	        e.getAliases().add(a.trim());
+		  }
 
 		e.setMustUnderstand(parseBoolean(sheet.getColumn(row, "Must Understand"), row, false));
 		e.setMustSupport(parseBoolean(sheet.getColumn(row, "Must Support"), row, false));

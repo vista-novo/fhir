@@ -286,7 +286,7 @@ public class PageProcessor implements Logger  {
       else if (com[0].equals("sidebar"))
         src = s1+generateSideBar()+s3;
       else if (com[0].equals("title"))
-        src = s1+name.toUpperCase().substring(0, 1)+name.substring(1)+s3;
+        src = s1+Utilities.escapeXml(name.toUpperCase().substring(0, 1)+name.substring(1))+s3;
       else if (com[0].equals("name"))
         src = s1+name+s3;
       else if (com[0].equals("version"))
@@ -530,7 +530,7 @@ public class PageProcessor implements Logger  {
   }
 
   private String pageHeader(String n) {
-    return "<div class=\"navtop\"><ul class=\"navtop\"><li class=\"spacerright\" style=\"width: 500px\"><span>&nbsp;</span></li><li class=\"wiki\"><span><a href=\"http://wiki.hl7.org/index.php?title=FHIR_"+n+"_Page\">Community Input (wiki)</a></span></li></ul></div>\r\n";
+    return "<div class=\"navtop\"><ul class=\"navtop\"><li class=\"spacerright\" style=\"width: 500px\"><span>&nbsp;</span></li><li class=\"wiki\"><span><a href=\"http://wiki.hl7.org/index.php?title=FHIR_"+Utilities.escapeXml(n)+"_Page\">Community Input (wiki)</a></span></li></ul></div>\r\n";
   }
   
   private String dtHeader(String n, String mode) {
@@ -1001,7 +1001,7 @@ public class PageProcessor implements Logger  {
       else if (com[0].equals("sidebar"))
         src = s1+s3;
       else if (com[0].equals("title"))
-        src = s1+name.toUpperCase().substring(0, 1)+name.substring(1)+s3;
+        src = s1+Utilities.escapeXml(name.toUpperCase().substring(0, 1)+name.substring(1))+s3;
       else if (com[0].equals("name"))
         src = s1+name+s3;
       else if (com[0].equals("version"))
@@ -1082,7 +1082,7 @@ public class PageProcessor implements Logger  {
       else if (com[0].equals("sidebar"))
         src = s1+s3;
       else if (com[0].equals("title"))
-        src = s1+name.toUpperCase().substring(0, 1)+name.substring(1)+s3;
+        src = s1+Utilities.escapeXml(name.toUpperCase().substring(0, 1)+name.substring(1))+s3;
       else if (com[0].equals("name"))
         src = s1+name+s3;
       else if (com[0].equals("version"))
@@ -1150,7 +1150,7 @@ public class PageProcessor implements Logger  {
       else if (com[0].equals("sidebar"))
         src = s1+generateSideBar()+s3;
       else if (com[0].equals("title"))
-        src = s1+resource.getName()+s3;
+        src = s1+Utilities.escapeXml(resource.getName())+s3;
       else if (com[0].equals("status"))
         src = s1+resource.getStatus()+s3;
       else if (com[0].equals("introduction")) 
@@ -1325,7 +1325,7 @@ public class PageProcessor implements Logger  {
       else if (com[0].equals("sidebar"))
         src = s1+generateSideBar()+s3;
       else if (com[0].equals("title"))
-        src = s1+profile.getMetadata().get("name").get(0)+s3;
+        src = s1+Utilities.escapeXml(profile.getMetadata().get("name").get(0))+s3;
       else if (com[0].equals("name"))
         src = s1+filename+s3;
       else if (com[0].equals("date")) {

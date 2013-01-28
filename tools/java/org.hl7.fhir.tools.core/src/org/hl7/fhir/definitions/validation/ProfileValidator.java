@@ -29,14 +29,18 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
+import java.util.Stack;
 
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.parsers.TypeParser;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.Profile.Element_;
+import org.hl7.fhir.instance.model.Profile.Resource;
 import org.hl7.fhir.instance.model.Profile.Type;
 
 /**
@@ -51,11 +55,31 @@ import org.hl7.fhir.instance.model.Profile.Type;
  */
 public class ProfileValidator {
 
+  public class TypeState {
+    private String prefix;
+    private Profile.Resource type;
+    public TypeState(String prefix, Resource type) {
+      super();
+      this.prefix = prefix;
+      this.type = type;
+    }
+    public String getPrefix() {
+      return prefix;
+    }
+    public Profile.Resource getType() {
+      return type;
+    }
+
+  }
+
   private Map<Profile.Element_, ArrayList<ElementDefn>> map = new HashMap<Profile.Element_, ArrayList<ElementDefn>>();
   
   private ResourceDefn candidate;
   private Profile profile;
+  private Profile types;
   private ArrayList<String> errors;
+
+  private Stack<TypeState> typePoints = new Stack<ProfileValidator.TypeState>();
 
   public void setCandidate(ResourceDefn candidate) {
     this.candidate = candidate; 
@@ -65,7 +89,16 @@ public class ProfileValidator {
     this.profile = profile;
   }
 
-  public List<String> evaluate() {
+  
+  public Profile getTypes() {
+    return types;
+  }
+
+  public void setTypes(Profile types) {
+    this.types = types;
+  }
+
+  public List<String> evaluate() throws Exception {
     map.clear();
     errors = new ArrayList<String>();
      if (candidate == null)
@@ -75,7 +108,7 @@ public class ProfileValidator {
      else {
        // what we need to do is map the profile definitions against the resource
        // first, we check the stated names against the resource names, and map to the backbone
-       matchElement(candidate, candidate.getRoot(), candidate.getName());
+       matchElement(candidate, null, candidate.getRoot(), candidate.getName());
        
        // now, we run through the resource, adding anything that the profile omitted back to the profile
        // (because profiles are open)
@@ -93,9 +126,13 @@ public class ProfileValidator {
     int i = 0;
     for (Element_ e : collectChildren(path)) {
       ElementDefn m = null;
+      String tn = terminalName(e);
       if (i < profileElement.getElements().size()) {
         m = profileElement.getElements().get(i);
-        if (!m.getName().equals(terminalName(e))) {
+        String mn = m.getName();
+//        if (mn.contains("[x]") || tn.contains("[x]"))
+//          System.out.println("Unsure how to compare mn and tn: '"+mn+"' / '"+tn+"'");
+        if (!mn.equals(tn) && !(tn.contains("[x]") && mn.substring(0, tn.indexOf("[x]")).equals(tn.substring(0, tn.indexOf("[x]"))))) {
           m = null;
         }
       }
@@ -109,7 +146,8 @@ public class ProfileValidator {
       i++;
       while (m != null && i < profileElement.getElements().size()) {
         m = profileElement.getElements().get(i);
-        if (!m.getName().equals(terminalName(e))) 
+        String mn = m.getName();
+        if (!mn.equals(tn)) 
           m = null;
         else
           i++;
@@ -166,8 +204,15 @@ public class ProfileValidator {
     
   }
 
-  private void matchElement(ResourceDefn resource, ElementDefn element, String path) {
+  private void matchElement(ResourceDefn resource, ElementDefn parent, ElementDefn element, String path) throws Exception {
     Element_ e = getConstraintByPath(path);
+    boolean xPoint = false;
+    if (e == null && parent != null && hasTypeProfile(parent.typeCode())) {
+      typePoints.push(new TypeState(path.substring(0, path.lastIndexOf(".")), getTypeProfile(parent.typeCode())));
+      xPoint = true;
+      e = getConstraintByPath(path);
+    }
+    
     if (e == null)
       errors.add("Profile element '"+path+"' not found");
     else {
@@ -183,8 +228,27 @@ public class ProfileValidator {
       a.add(element);
     }
     for (ElementDefn c : element.getElements()) {
-      matchElement(resource, c, path+"."+c.getName());
+      matchElement(resource, element, c, path+"."+c.getName());
     }
+    if (xPoint) {
+      typePoints.pop();
+    }
+  }
+
+  private Resource getTypeProfile(String type) {
+    for (Resource p : types.getResource()) {
+      if (p.getType().getValue().equals(type))
+        return p;
+    }
+    return null;
+  }
+
+  private boolean hasTypeProfile(String type) {
+    for (Resource p : types.getResource()) {
+      if (p.getType().getValue().equals(type))
+        return true;
+    }
+    return false;
   }
 
   private void completeFromDerivation(ElementDefn target, Element_ source) {
@@ -199,10 +263,31 @@ public class ProfileValidator {
   }
 
   private Element_ getConstraintByPath(String path) {
-    for (Element_ e : profile.getResource().get(0).getElement())
-      if (e.getPath().getValue().equals(path))
-        return e;
+    if (typePoints.empty()) {
+      for (Element_ e : profile.getResource().get(0).getElement()) {
+        String p = e.getPath().getValue();
+        if (p.equals(path) || (p.endsWith("[x]") && path.length() > p.length() && p.substring(0, p.length()-3).equals(path.substring(0, p.length()-3)) && isType(path.substring(p.length()-3))))
+          return e;
+      }
+    } else {
+      for (Element_ e : typePoints.firstElement().getType().getElement()) {
+        if (e.getPath().getValue().contains(".")) { // skip the first one
+          String p = typePoints.firstElement().getPrefix()+"."+e.getPath().getValue().substring(e.getPath().getValue().indexOf(".")+1);
+          if (p.equals(path) || (p.endsWith("[x]") && path.length() > p.length() && p.substring(0, p.length()-3).equals(path.substring(0, p.length()-3)) && isType(path.substring(p.length()-3))))
+            return e;
+        }        
+      }
+    }
     return null;
+  }
+
+  private boolean isType(String t) {
+    if (hasTypeProfile(t))
+      return true;
+    if (t.equals("Boolean") || t.equals("Integer") || t.equals("Decimal") || t.equals("Base64Binary") || t.equals("Instant") ||
+        t.equals("String") || t.equals("Uri") || t.equals("Date") || t.equals("DateTime") || t.equals("Oid") || t.equals("Uuid") || t.equals("Code") || t.equals("Id"))
+      return true;
+    return false;
   }
 
 }

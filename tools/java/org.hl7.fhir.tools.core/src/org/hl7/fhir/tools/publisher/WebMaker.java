@@ -95,6 +95,7 @@ public class WebMaker {
           insertTargetImages(doc, null, f);
           new XhtmlComposer().compose(new FileOutputStream(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+f), doc);
         } catch (Exception e) {
+          TextFile.stringToFile(src, "c:\\temp\\test.htm");
           throw new Exception("exception processing: "+src+": "+e.getMessage());
         }
       } else if (f.endsWith(".chm") || f.endsWith(".eap") || f.endsWith(".zip")) 

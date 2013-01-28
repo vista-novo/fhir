@@ -36,6 +36,7 @@ public class ProfileDefn {
 
 
   private List<ResourceDefn> resources = new ArrayList<ResourceDefn>();
+  private List<ElementDefn> elements = new ArrayList<ElementDefn>();
   private Map<String, ArrayList<String>> metadata = new HashMap<String, ArrayList<String>>();
   private List<ExtensionDefn> extensions = new ArrayList<ExtensionDefn>();
   private List<BindingSpecification> bindings = new ArrayList<BindingSpecification>();
@@ -46,6 +47,11 @@ public class ProfileDefn {
 
   public List<ResourceDefn> getResources() {
     return resources;
+  }
+
+  
+  public List<ElementDefn> getElements() {
+    return elements;
   }
 
   public String metadata(String name) {

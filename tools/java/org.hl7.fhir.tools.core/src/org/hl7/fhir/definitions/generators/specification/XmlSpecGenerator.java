@@ -68,8 +68,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 	private void generateInner(ElementDefn root) throws IOException, Exception {
 		String rn;
-		if (root.getTypes().get(0).getName().equals("Type")
-				|| (root.getTypes().get(0).getName().equals("Structure")))
+		if (root.getTypes().size() > 0 && (root.getTypes().get(0).getName().equals("Type")
+				|| (root.getTypes().get(0).getName().equals("Structure"))))
 			rn = "[name]";
 		else
 			rn = root.getName();
@@ -121,7 +121,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		if (profile.getExtensions().size() > 0) {
 			write("<span style=\" color: Gray\">&lt;!-- <span style=\"color: Darkviolet\">Extensions</span> --&gt;</span>\r\n");
 			for (ExtensionDefn ex : profile.getExtensions()) {
-				generateExtension(ex, definitions);
+				generateExtension(ex, definitions, profile.getMetadata().get("extension.uri").get(0));
         write("\r\n");
 			}
 		}
@@ -131,35 +131,40 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		close();
 	}
 
-	private void generateExtension(ExtensionDefn ex, Definitions definitions)
+	private void generateExtension(ExtensionDefn ex, Definitions definitions, String root)
 			throws Exception {
-		write("&lt;<b>extension</b>>  &lt;!-- ");
+	  if (ex.getDefinition().isMustUnderstand())
+	    write("&lt;<span style=\"text-decoration: underline\" title=\"" + Utilities.escapeXml(ex.getDefinition().getEnhancedDefinition()) + "\"><b>extension</b></span>&gt;");
+	  else
+	    write("&lt;<span title=\"" + Utilities.escapeXml(ex.getDefinition().getDefinition()) + "\"><b>extension</b></span>&gt;");
+	  write("<a name=\""+ex.getCode()+"\"> </a>&lt;!-- ");
+	  
 		writeCardinality(ex.getDefinition());
+		write(" ");
+    write("<span style=\"color: navy\">" + Utilities.escapeXml(ex.getDefinition().getShortDefn()) + "</span>");
 		write(" -->\r\n");
-		write(" &lt;<b>code</b>>" + ex.getCode() + "&lt;/code>\r\n");
-		write(" &lt;<b>definition</b>><span style=\" color: Gray\">&lt;!-- </span> <span style=\"color: brown;\"><b>1..1</b></span> <span style=\"color: darkgreen;\"><a href=\"datatypes.htm#uri\">uri</a></span> <span style=\"color: navy\">where registered</span> <span style=\" color: Gray\">--&gt;</span>&lt;/definition>\r\n");
-		write(" &lt;<b>ref</b>&gt; <span style=\"color: navy\"><span style=\"color: darkgreen;\"><a href=\"formats.htm#idref\">Ref</a></span> to a "
-				+ ex.getContext()
-				+ " ("
-				+ ex.getType().toString()
-				+ ")</span>\">  \r\n");
-		if (ex.getDefinition().isMustUnderstand())
-			write(" &lt;<b>mustUnderstand</b>>true&lt;/mustUnderstand>\r\n");
+		write(" &lt;<b>url</b> value=\""+ root + "#"+ex.getCode() + "\"/&gt;\r\n");
+//		write(" &lt;<b>definition</b>><span style=\" color: Gray\">&lt;!-- </span> <span style=\"color: brown;\"><b>1..1</b></span> <span style=\"color: darkgreen;\"><a href=\"datatypes.htm#uri\">uri</a></span> <span style=\"color: navy\">where registered</span> <span style=\" color: Gray\">--&gt;</span>&lt;/definition>\r\n");
+//		write(" &lt;<b>ref</b>&gt; <span style=\"color: navy\"><span style=\"color: darkgreen;\"><a href=\"formats.htm#idref\">Ref</a></span> to a "
+//				+ ex.getContext()
+//				+ " ("
+//				+ ex.getType().toString()
+//				+ ")</span>\">  \r\n");
+//		if (ex.getDefinition().isMustUnderstand())
+//			write(" &lt;<b>mustUnderstand</b>>true&lt;/mustUnderstand>\r\n");
 		String vn = "value[x]";
 		if (ex.getDefinition().getTypes().size() == 1)
 			vn = "value" + upFirst(ex.getDefinition().typeCode());
 
 		write(" &lt;<b>" + vn + "</b>");
-		write(">");
+		write("&gt;");
 		if (ex.getDefinition().getTypes().size() == 1
 				&& definitions.hasElementDefn(ex.getDefinition().typeCode())) {
-			write(" (todo: fixed values, fix links)\r\n");
-			ElementDefn vt = definitions.getElementDefn(ex.getDefinition()
-					.typeCode());
-			for (ElementDefn elem : vt.getElements()) {
-				generateCoreElem(elem, 2, "?", "?");
-			}
-			write(" &lt;/" + vn + ">\r\n");
+      write("<span style=\" color: Gray\">&lt;!-- </span>");
+		  write(" <span style=\"color: brown;\"><b>0..1</b></span> ");
+      writeTypeLinks(ex.getDefinition());
+      write(" <span style=\"color: navy\">Actual Value of Extension</span>");
+      write(" <span style=\" color: Gray\">--&gt; </span>&lt;/" + vn + ">\r\n");
 		} else if (ex.getDefinition().getTypes().size() == 1) {
 			write("<span style=\" color: Gray\">&lt;!-- </span>");
 			write("<span style=\"color: navy\">"
@@ -324,57 +329,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				writeCardinality(elem);
 				listed = true;
 				if (!doneType) {
-				  write(" <span style=\"color: darkgreen\">");
-				  int i = 0;
-				  int d = elem.getTypes().size() / 2;
-				  for (TypeRef t : elem.getTypes()) {
-				    if (i > 0)
-				      write("|");
-				    if (elem.getTypes().size() > 5 && i == d)
-				      write("\r\n              ");
-				    if (t.isXhtml() || t.getName().equals("list"))
-				      write(t.getName());
-				    else
-				      write("<a href=\"" + (dtRoot + getSrcFile(t.getName())
-				          + ".htm#" + t.getName() + "\">" + t.getName()).replace("[", "_").replace("]", "_")
-				          + "</a>");
-				    if (t.hasParams()) {
-				      write("(");
-				      boolean firstp = true;
-				      for (String p : t.getParams()) {
-				        if (!firstp)
-				          write("|");
-
-				        // TODO: There has to be an aggregation
-				        // specification per t.getParams()
-				        if (elem.hasAggregation()) {
-				          // TODO: This should link to the documentation
-				          // of the profile as specified
-				          // in the aggregation. For now it links to the
-				          // base resource.
-				          write("<a href=\"" + (dtRoot + getSrcFile(p)
-				              + ".htm#" + p + "\">"
-				              + elem.getAggregation()).replace("[", "_").replace("]", "_") + "</a>");
-				        } 
-				        else if( definitions.getFutureResources().containsKey(p) ||
-				            p.equals("Any"))
-				        {
-				          write("<a href=\"" + "resources.htm" + "\">" + p + "</a>");								
-				        }
-				        else if (t.getName().equals("Resource") && t.getParams().size() == 1 && !Utilities.noString(elem.getProfile()))
-				          write("<a href=\""+elem.getProfile()+"\"><span style=\"color: DarkViolet\">@"+elem.getProfile().substring(1)+"</span></a>");     
-				        else
-				          write("<a href=\"" + (dtRoot + getSrcFile(p)
-				              + ".htm#" + p).replace("[", "_").replace("]", "_") + "\">" + p + "</a>");
-
-				        firstp = false;
-				      }
-				      write(")");
-				    }
-
-				    i++;
-				  }
-				  write("</span>");
+				  writeTypeLinks(elem);
 				}
 			} else if (elem.getName().equals("extension")) {
 				write(" <a href=\"extensibility.htm\"><span style=\"color: navy\">See Extensions</span></a> ");
@@ -454,6 +409,62 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		}
 	}
 
+  private void writeTypeLinks(ElementDefn elem) throws Exception {
+    write(" <span style=\"color: darkgreen\">");
+    int i = 0;
+    int d = elem.getTypes().size() / 2;
+    for (TypeRef t : elem.getTypes()) {
+      if (i > 0)
+        write("|");
+      if (elem.getTypes().size() > 5 && i == d)
+        write("\r\n              ");
+      if (t.isXhtml() || t.getName().equals("list"))
+        write(t.getName());
+      else if (t.getName().equals("Extension") && t.getParams().size() == 0 && !Utilities.noString(elem.getProfile()))
+        write("<a href=\""+elem.getProfile()+"\"><span style=\"color: DarkViolet\">@"+elem.getProfile().substring(1)+"</span></a>");     
+      else
+        write("<a href=\"" + (dtRoot + getSrcFile(t.getName())
+            + ".htm#" + t.getName() + "\">" + t.getName()).replace("[", "_").replace("]", "_")
+            + "</a>");
+      if (t.hasParams()) {
+        write("(");
+        boolean firstp = true;
+        for (String p : t.getParams()) {
+          if (!firstp)
+            write("|");
+
+          // TODO: There has to be an aggregation
+          // specification per t.getParams()
+          if (elem.hasAggregation()) {
+            // TODO: This should link to the documentation
+            // of the profile as specified
+            // in the aggregation. For now it links to the
+            // base resource.
+            write("<a href=\"" + (dtRoot + getSrcFile(p)
+                + ".htm#" + p + "\">"
+                + elem.getAggregation()).replace("[", "_").replace("]", "_") + "</a>");
+          } 
+          else if( definitions.getFutureResources().containsKey(p) ||
+              p.equals("Any"))
+          {
+            write("<a href=\"" + "resources.htm" + "\">" + p + "</a>");								
+          }
+          else if (t.getName().equals("Resource") && t.getParams().size() == 1 && !Utilities.noString(elem.getProfile()))
+            write("<a href=\""+elem.getProfile()+"\"><span style=\"color: DarkViolet\">@"+elem.getProfile().substring(1)+"</span></a>");     
+          else
+            write("<a href=\"" + (dtRoot + getSrcFile(p)
+                + ".htm#" + p).replace("[", "_").replace("]", "_") + "\">" + p + "</a>");
+
+          firstp = false;
+        }
+        write(")");
+      }
+
+      i++;
+    }
+    write("</span>");
+  }
+
 	private void writeCardinality(ElementDefn elem) throws IOException {
 		if (elem.getStatedInvariants().size() > 0)
 			write(" <span style=\"color: deeppink\" title=\""
@@ -499,7 +510,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		    s.append("\r\n" + ind + "    &lt;display value=\"" + parts2[2] + "\"/&gt;");
       s.append("\r\n" + ind + "  &lt;/coding&gt;");
 	  }
-    if (parts.length >= 1 && parts[1].length() > 0)
+    if (parts.length > 1 && parts[1].length() > 0)
       s.append("\r\n" + ind + "  &lt;text value=\"" + parts[1] + "\"/&gt;");
 		s.append("\r\n" + ind);
 		return s.toString();

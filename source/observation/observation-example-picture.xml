@@ -1,31 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Observation xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\observation.xsd">
+  <extension>
+    <url value="http://hl7.org/fhir/profile/@picture#accession"/>
+    <valueIdentifier>
+      <system value="http://acme-imaging.com/accession/2012"/>
+      <id value="1234567"/>
+    </valueIdentifier> 
+  </extension>
+  <extension>
+    <url value="http://hl7.org/fhir/profile/@picture#studyid"/>
+    <valueIdentifier>
+      <system value="urn:ietf:rfc:3986"/>
+      <id value="urn:oid:1.2.840.113619.2.21.848.34082.0.538976288.3"/>
+    </valueIdentifier> 
+  </extension>
+  <extension>
+    <url value="http://hl7.org/fhir/profile/@picture#seriesid"/>
+    <valueIdentifier>
+      <system value="urn:ietf:rfc:3986"/>
+      <id value="urn:oid:1.2.840.113619.2.21.3408.700.0.757923840.3.0"/>
+    </valueIdentifier> 
+  </extension>
   <text>
     <status value="generated"/>
-    <div xmlns="http://www.w3.org/1999/xhtml">Sept 17, 2012: Blood pressure 107/65 (normal)</div>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      Ultrasound Image on patient "James Chalmers":<br/>
+      <img src="http://imaging.acme.com/wado/server?requestType=WADO&amp;contentType=application%2Fdicom&amp;studyUid=1.2.840.113619.2.21.848.34082.0.538976288.3&amp;seriesUid=1.2.840.113619.2.21.3408.700.0.757923840.3.0&amp;objectUid=1.2.840.11361907579238403408700.3.0.14.19970327150033" alt="WADO reference to image"/>
+    </div>
   </text>
   <name>
     <coding>
-      <system value="http://loinc.org"/>
-      <code value="55284-4"/>
-      <display value="Blood pressure systolic and diastolic"/>
+      <system value="http://hl7.org/fhir/image-modality4"/>
+      <code value="US"/>
+      <display value="Ultrasound"/>
     </coding>
   </name>
-  <interpretation>
-    <coding>
-      <system value="http://hl7.org/v3/ObservationInterpretation"/>
-      <code value="N"/>
-      <display value="normal"/>
-    </coding>
-  </interpretation>
-  <obtainedDateTime value="2012-09-17"/>
-
+  <valueAttachment>
+    <contentType value="application/dicom"/>
+    <!-- The actual image could be anywhere. This is a WADO example -->
+    <url value="http://imaging.acme.com/wado/server?requestType=WADO&amp;contentType=application%2Fdicom&amp;studyUid=1.2.840.113619.2.21.848.34082.0.538976288.3&amp;seriesUid=1.2.840.113619.2.21.3408.700.0.757923840.3.0&amp;objectUid=1.2.840.11361907579238403408700.3.0.14.19970327150033"/>
+  </valueAttachment>
   <status value="final"/>
   <reliability value="ok"/>
   
   <identifier>
+    <label value="InstanceUID"/>
     <system value="urn:ietf:rfc:3986"/>
-    <id value="187e0c12-8dd2-67e2-99b2-bf273c878281"/>
+    <id value="urn:oid:1.2.840.11361907579238403408700.3.0.14.19970327150033"/>
   </identifier>
   
   <subject>
@@ -36,30 +57,54 @@
     <type value="Provider"/>
     <url value="../provider/@example"/>
   </performer>
+
   <component>
     <name>
       <coding>
-        <system value="http://loinc.org"/>
-        <code value="8580-6"/>
-        <display value="Systolic blood pressure"/>
+        <system value="http://hl7.org/fhir/picture-fields"/>
+        <code value="height"/>
+        <display value="Height"/>
       </coding>
     </name>
-    <valueQuantity>
-      <value value="107"/>
-      <units value="mm[Hg]"/>
+    <valueQuantity> 
+      <value value="480"/>
     </valueQuantity>
   </component>
   <component>
     <name>
       <coding>
-        <system value="http://loinc.org"/>
-        <code value="8462-4"/>
-        <display value="Diastolic blood pressure"/>
+        <system value="http://hl7.org/fhir/picture-fields"/>
+        <code value="width"/>
+        <display value="Width"/>
       </coding>
     </name>
-    <valueQuantity>
-      <value value="65"/>
-      <units value="mm[Hg]"/>
+    <valueQuantity> 
+      <value value="640"/>
     </valueQuantity>
   </component>
+  <component>
+    <name>
+      <coding>
+        <system value="http://hl7.org/fhir/picture-fields"/>
+        <code value="bits"/>
+        <display value="Bit Count"/>
+      </coding>
+    </name>
+    <valueQuantity> 
+      <value value="2"/>
+    </valueQuantity>
+  </component>
+  <component>
+    <name>
+      <coding>
+        <system value="http://hl7.org/fhir/picture-fields"/>
+        <code value="frames"/>
+        <display value="Frame Count"/>
+      </coding>
+    </name>
+    <valueQuantity> 
+      <value value="1"/>
+    </valueQuantity>
+  </component>
+
 </Observation>

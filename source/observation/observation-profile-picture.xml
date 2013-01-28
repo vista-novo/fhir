@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:17:14Z</Created>
-  <LastSaved>2013-01-26T19:15:27Z</LastSaved>
+  <LastSaved>2013-01-28T10:06:44Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,6 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6135</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -96,9 +95,17 @@
   <Style ss:ID="s76">
    <Alignment ss:Vertical="Top"/>
   </Style>
+  <Style ss:ID="s79">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s130">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Metadata">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="13" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="14" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="808.5"/>
    <Row ss:AutoFitHeight="0">
@@ -151,6 +158,10 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">version</Data></Cell>
     <Cell><Data ss:Type="String" x:Ticked="1">0.01</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">extension.uri</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">http://hl7.org/fhir/profile/@picture</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -159,10 +170,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>9</ActiveRow>
+     <ActiveRow>11</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
@@ -179,7 +191,7 @@
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="40.5"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="44.25" ss:Span="1"/>
    <Column ss:Index="9" ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="61.5"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="99.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="220.5"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
    <Column ss:Index="13" ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="161.25"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="245.25"/>
@@ -214,7 +226,7 @@
     <Cell><Data ss:Type="String">Observation.extension</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Extension</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String" x:Ticked="1">@AccessionNumber</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String" x:Ticked="1">#accession</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Used by the requester to link back to the original context</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -222,7 +234,7 @@
     <Cell><Data ss:Type="String">Observation.extension</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Extension</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String" x:Ticked="1">@StudyId</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String" x:Ticked="1">#studyid</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">The session in which the picture was taken</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -230,20 +242,21 @@
     <Cell><Data ss:Type="String">Observation.extension</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Extension</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String" x:Ticked="1">@SeriesId</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String" x:Ticked="1">#seriesid</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">The series of images in which this picture was taken</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:Index="2"><Data ss:Type="String">Observation.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">PictureTypeCodes</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell><Data ss:Type="String">PictureTypeCodes</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="Default"/>
     <Cell ss:StyleID="s74"><Data ss:Type="String">There's no suitable LOINC code</Data></Cell>
     <Cell><Data ss:Type="String">Modality this picture is from</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:Index="2"><Data ss:Type="String">Observation.value[x]</Data></Cell>
+    <Cell ss:Index="2"><Data ss:Type="String">Observation.valueAttachment</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Attachment</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="Default"/>
@@ -253,6 +266,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:Index="2"><Data ss:Type="String">Observation.valueAttachment.contentType</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="Default"/>
     <Cell ss:StyleID="s74"/>
     <Cell><Data ss:Type="String">mime type of the actual image</Data></Cell>
@@ -261,6 +275,7 @@
     <Cell ss:Index="2"><Data ss:Type="String">Observation.valueAttachment.data</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">base64Binary</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="Default"/>
     <Cell ss:StyleID="s74"/>
     <Cell><Data ss:Type="String">if the pixel data is included directly in the resource</Data></Cell>
@@ -269,6 +284,7 @@
     <Cell ss:Index="2"><Data ss:Type="String">Observation.valueAttachment.url</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="Default"/>
     <Cell ss:StyleID="s74"/>
     <Cell><Data ss:Type="String">if the pixel data is hosted on some server somewhere</Data></Cell>
@@ -276,6 +292,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:Index="2"><Data ss:Type="String">Observation.valueAttachment.size</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">integer</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="Default"/>
     <Cell ss:StyleID="s74"/>
     <Cell><Data ss:Type="String">Size of the image in bytes</Data></Cell>
@@ -283,21 +300,25 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:Index="2"><Data ss:Type="String">Observation.interpretation</Data></Cell>
     <Cell><Data ss:Type="String">0..0</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">base64Binary</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">No interpretation when the observation is just a picture</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:Index="2"><Data ss:Type="String">Observation.comments</Data></Cell>
     <Cell><Data ss:Type="String">0..0</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">No comments when the observation is just a picture</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2"><Data ss:Type="String">Observation.obtainedDateTime</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">dateTIme</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"><Data ss:Type="String">When the image was taken</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2"><Data ss:Type="String">Observation.issued</Data></Cell>
     <Cell><Data ss:Type="String">0..0</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">instant</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Not tracked for an Image</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -370,7 +391,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2"><Data ss:Type="String">Observation.component.value[x]</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">integer</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">actual value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -383,13 +404,13 @@
     <Cell ss:Index="2"><Data ss:Type="String">Observation.component.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/picture-fields|height|Height</Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/picture-fields#height#Height</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">fixed code</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2"><Data ss:Type="String">Observation.component.value[x]</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">integer</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">actual value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -402,13 +423,13 @@
     <Cell ss:Index="2"><Data ss:Type="String">Observation.component.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/picture-fields|width|Width</Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/picture-fields#width#Width</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">fixed code</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2"><Data ss:Type="String">Observation.component.value[x]</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">integer</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">actual value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -421,13 +442,13 @@
     <Cell ss:Index="2"><Data ss:Type="String">Observation.component.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/picture-fields|bits|Bit Count</Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/picture-fields#bits#Bit Count</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">fixed code</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2"><Data ss:Type="String">Observation.component.value[x]</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">integer</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">actual value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -440,13 +461,13 @@
     <Cell ss:Index="2"><Data ss:Type="String">Observation.component.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/picture-fields|frames|Frame Count</Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/picture-fields#frames#Frame Count</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">fixed code</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2"><Data ss:Type="String">Observation.component.value[x]</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">integer</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">actual value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -459,13 +480,13 @@
     <Cell ss:Index="2"><Data ss:Type="String">Observation.component.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/picture-fields|frameDelay|Frame Delay Duration</Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/picture-fields#frameDelay#Frame Delay Duration</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">fixed code</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2"><Data ss:Type="String">Observation.component.value[x]</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Duration</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">actual value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -478,7 +499,7 @@
     <Cell ss:Index="2"><Data ss:Type="String">Observation.component.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/picture-fields|view|Patient Orientation</Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/picture-fields#view#Patient Orientation</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">fixed code</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -501,12 +522,11 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -734,6 +754,97 @@
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
      <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Extensions">
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="83.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="102.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="95.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="39"/>
+   <Column ss:AutoFitWidth="0" ss:Width="52.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="57"/>
+   <Column ss:AutoFitWidth="0" ss:Width="64.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="155.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="171"/>
+   <Column ss:Index="11" ss:AutoFitWidth="0" ss:Width="187.5"/>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Context Type</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Context</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Card.</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Type</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Must Understand</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Short Name</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Requirements</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Comments</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">RIM Mapping</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">v2 Mapping</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">To Do</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Committee Notes</Data></Cell>
+   </Row>
+   <Row ss:Height="120">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">accession</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Resource</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Observation</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="s130"><Data ss:Type="String">Identifier</Data></Cell>
+    <Cell ss:StyleID="s130"/>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">N</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Used by the requester to link back to the original context</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">An identifier for the order that is used by the application/system that requested the image to link back to the original context (if there was such a system). This is not the identity of the image, but of the &quot;request for an image to be generated&quot;</Data></Cell>
+    <Cell ss:Index="11" ss:StyleID="s130"><Data ss:Type="String">The name &quot;Accession Number&quot; comes from DICOM, where it is used ubiquitiously</Data></Cell>
+    <Cell ss:StyleID="s130"/>
+   </Row>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">studyid</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Resource</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Observation</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="s130"><Data ss:Type="String">Identifier</Data></Cell>
+    <Cell ss:StyleID="s130"/>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">N</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">The session in which the picture was taken</Data></Cell>
+    <Cell><Data ss:Type="String">The session in which the picture was taken.</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Usually used for DICOM images</Data></Cell>
+   </Row>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">seriesid</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Resource</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Observation</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="s130"><Data ss:Type="String">Identifier</Data></Cell>
+    <Cell ss:StyleID="s130"/>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">N</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">The series of images in which this picture was taken</Data></Cell>
+    <Cell><Data ss:Type="String">The series of images in which this picture was taken</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Usually used for DICOM images</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-3</HorizontalResolution>
+    <VerticalResolution>-3</VerticalResolution>
+   </Print>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

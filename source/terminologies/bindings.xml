@@ -20,6 +20,7 @@
   <WindowWidth>17490</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>105</WindowTopY>
+  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -79,7 +80,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="8" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="157.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="229.5"/>
@@ -148,6 +149,22 @@
     <Cell ss:StyleID="Default"><Data ss:Type="String">SNOMED-CT body sites</Data></Cell>
     <Cell ss:StyleID="Default"/>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s115"><Data ss:Type="String">SearchParamType</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">Data types allowed to be used for search parameters</Data></Cell>
+    <Cell><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">#search-param-type</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s115"><Data ss:Type="String">SearchRepeatBehavior</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">How repeating parameters are handled for the parameter type</Data></Cell>
+    <Cell><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">#search-repeat-behavior</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -162,11 +179,11 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>8</ActiveRow>
+     <RangeSelection>R9C1:R10C6</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -218,10 +235,98 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="search-param-type">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="84"/>
+   <Column ss:AutoFitWidth="0" ss:Width="578.25"/>
+   <Row ss:Height="30" ss:StyleID="s66">
+    <Cell><Data ss:Type="String">Code</Data></Cell>
+    <Cell><Data ss:Type="String">Definition</Data></Cell>
+    <Cell><Data ss:Type="String">Comment</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">integer</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Search parameter must be a simple whole number</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Search parameter is a simple string, like a name part (search usually functions on partial matches)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">text</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Search parameter is on a long string (i.e. a text filter type search)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">date</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Search parameter is on a date (and should support -before and -after variants). The date format is the standard XML format, though other formats may be supported</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">token</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Search parameter is on a fixed value string (i.e. search has an exact match)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Search parameter is a pair of fixed value strings, namespace and value, separated by a &quot;#&quot;. The namespace is usually a uri, such as one of the defined code systems and is optional when searching</Data></Cell>
+    <Cell><Data ss:Type="String">Note that the # needs to be encoded as '%23' in urls</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>14</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="search-repeat-behavior">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="62.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="504.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="213.75"/>
+   <Row ss:StyleID="s66">
+    <Cell><Data ss:Type="String">Code</Data></Cell>
+    <Cell><Data ss:Type="String">Definition</Data></Cell>
+    <Cell><Data ss:Type="String">Comment</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">single</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">The search parameter may only occur once</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">When the search parameter occurs more than once, match resources with any of the values</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">intersection</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">When the search parameter occurs more than once, match resources with all of the values</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>21</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

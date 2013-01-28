@@ -20,7 +20,8 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>12450</WindowTopX>
   <WindowTopY>1815</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <ActiveSheet>9</ActiveSheet>
+  <FirstVisibleSheet>4</FirstVisibleSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -99,10 +100,6 @@
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
    <Interior/>
-  </Style>
-  <Style ss:ID="s81">
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
-    ss:Bold="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -1187,7 +1184,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <TopRowVisible>4</TopRowVisible>
    <Panes>
     <Pane>
@@ -1363,18 +1359,12 @@
     <Cell ss:StyleID="s77"><Data ss:Type="String">#resource-profile-status</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s63"><Data ss:Type="String">SearchParamType</Data></Cell>
-    <Cell><Data ss:Type="String">Data types allowed to be used for search parameters</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#search-param-type</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:Index="3" ss:StyleID="s77"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s63"><Data ss:Type="String">SearchRepeatBehavior</Data></Cell>
-    <Cell><Data ss:Type="String">How repeating parameters are handled for the parameter type</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#search-repeat-behavior</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:Index="3" ss:StyleID="s77"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1403,6 +1393,9 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>0</ActiveCol>
+     <RangeSelection>R7:R8</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1670,146 +1663,6 @@
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
- <Worksheet ss:Name="search-param-type">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Width="60"/>
-   <Column ss:Width="930"/>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Definition</Data></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Comment</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">integer</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Search parameter must be a simple whole number</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Search parameter is a simple string, like a name part (search usually functions on partial matches)</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">text</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Search parameter is on a long string (i.e. a text filter type search)</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">date</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Search parameter is on a date (and should support -before and -after variants). The date format is the standard XML format, though other formats may be supported</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">token</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Search parameter is on a fixed value string (i.e. search has an exact match)</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Search parameter is a pair of fixed value strings, namespace and value, separated by a &quot;#&quot;. The namespace is usually a uri, such as one of the defined code systems and is optional when searching</Data></Cell>
-    <Cell><Data ss:Type="String">Note that the # needs to be encoded as '%23' in urls</Data></Cell>
-   </Row>
-  </Table>
-  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <PageSetup>
-    <Header x:Margin="0.3"/>
-    <Footer x:Margin="0.3"/>
-    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
-   </PageSetup>
-   <Unsynced/>
-   <Print>
-    <ValidPrinterInfo/>
-    <HorizontalResolution>600</HorizontalResolution>
-    <VerticalResolution>600</VerticalResolution>
-   </Print>
-   <FreezePanes/>
-   <FrozenNoSplit/>
-   <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
-   <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
-   <ActivePane>0</ActivePane>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-    </Pane>
-    <Pane>
-     <Number>1</Number>
-    </Pane>
-    <Pane>
-     <Number>2</Number>
-    </Pane>
-    <Pane>
-     <Number>0</Number>
-     <ActiveRow>4</ActiveRow>
-    </Pane>
-   </Panes>
-   <ProtectObjects>False</ProtectObjects>
-   <ProtectScenarios>False</ProtectScenarios>
-  </WorksheetOptions>
- </Worksheet>
- <Worksheet ss:Name="search-repeat-behavior">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Width="60"/>
-   <Column ss:Width="424.5"/>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Definition</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">single</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">The search parameter may only occur once</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">When the search parameter occurs more than once, match resources with any of the values</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">intersection</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">When the search parameter occurs more than once, match resources with all of the values</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
-   </Row>
-  </Table>
-  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <PageSetup>
-    <Header x:Margin="0.3"/>
-    <Footer x:Margin="0.3"/>
-    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
-   </PageSetup>
-   <Unsynced/>
-   <FreezePanes/>
-   <FrozenNoSplit/>
-   <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
-   <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
-   <ActivePane>0</ActivePane>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-    </Pane>
-    <Pane>
-     <Number>1</Number>
-    </Pane>
-    <Pane>
-     <Number>2</Number>
-    </Pane>
-    <Pane>
-     <Number>0</Number>
-    </Pane>
-   </Panes>
-   <ProtectObjects>False</ProtectObjects>
-   <ProtectScenarios>False</ProtectScenarios>
-  </WorksheetOptions>
- </Worksheet>
  <Worksheet ss:Name="Examples">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s77" ss:DefaultRowHeight="15">
@@ -1849,6 +1702,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

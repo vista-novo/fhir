@@ -73,6 +73,8 @@ import org.hl7.fhir.definitions.generators.xsd.SchemaGenerator;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.Definitions;
+import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.Example.ExampleType;
 import org.hl7.fhir.definitions.model.ProfileDefn;
@@ -604,6 +606,8 @@ public class Publisher {
     for (ResourceDefn n : page.getDefinitions().getResources().values()) {
       produceResource1(n);      
     }
+    produceBaseProfile();
+    
 		for (ResourceDefn n : page.getDefinitions().getResources().values()) {
       log(" ...resource "+n.getName());
 			produceResource2(n);
@@ -649,6 +653,25 @@ public class Publisher {
     log("Produce Book Form");
     book.produce();
 	}
+
+  private void produceBaseProfile() throws Exception {
+    // TODO Auto-generated method stub
+    ProfileDefn p = new ProfileDefn();
+    p.putMetadata("id", "fhir.types");
+    p.putMetadata("name", "Base Type Profiles");
+    p.putMetadata("author.name", "FHIR Specification");
+    p.putMetadata("author.ref", "http://hl7.org/fhir");
+    p.putMetadata("description", "Basic Profile for the FHIR types - distributed to assist with implementation");
+    p.putMetadata("status", "testing");
+    p.putMetadata("date", new SimpleDateFormat("yyyy-MM-dd", new Locale("en", "US")).format(new Date()));
+    for (ElementDefn e : page.getDefinitions().getTypes().values())
+      p.getElements().add(e);
+    ProfileGenerator pgen = new ProfileGenerator(page.getDefinitions());
+    Profile rp = pgen.generate(p, new FileOutputStream(page.getFolders().dstDir + "types.profile.xml"), "<div>Type definitions from <a href=\"http://hl7.org/fhir/datatypes.htm\">FHIR Specification</a></div>", false);
+    Utilities.copyFile(new CSFile(page.getFolders().dstDir + "types.profile.xml"), new CSFile(page.getFolders().dstDir+ "examples" + File.separator + "types.profile.xml"));
+    addToResourceFeed(rp, "types");
+    saveAsPureHtml(rp, new FileOutputStream(page.getFolders().dstDir+ "html" + File.separator + "datatypes.htm"));    
+  }
 
   protected XmlPullParser loadXml(InputStream stream) throws Exception {
     BufferedInputStream input = new BufferedInputStream(stream);
@@ -743,7 +766,7 @@ public class Publisher {
     String xml = TextFile.fileToString(tmp.getAbsolutePath());
 
     xmls.put(n, xml);
-    generateProfile(resource, n, xml);
+    generateProfile(resource, n, xml, true);
   }
   
   private void produceResource2(ResourceDefn resource) throws Exception {
@@ -901,7 +924,7 @@ public class Publisher {
 		  Utilities.copyFile(new CSFile(page.getFolders().dstDir + n + ".xml"), new CSFile(page.getFolders().dstDir + "examples" + File.separator + n + ".xml"));
 	}
 
-	private void generateProfile(ResourceDefn root, String n, String xmlSpec)	throws Exception, FileNotFoundException {
+	private void generateProfile(ResourceDefn root, String n, String xmlSpec, boolean addBase)	throws Exception, FileNotFoundException {
 		ProfileDefn p = new ProfileDefn();
 		p.putMetadata("id", root.getName().toLowerCase());
 		p.putMetadata("name", n);
@@ -911,8 +934,8 @@ public class Publisher {
 		p.putMetadata("status", "testing");
 		p.putMetadata("date", new SimpleDateFormat("yyyy-MM-dd", new Locale("en", "US")).format(new Date()));
 		p.getResources().add(root);
-		ProfileGenerator pgen = new ProfileGenerator();
-		Profile rp = pgen.generate(p, new FileOutputStream(page.getFolders().dstDir + n + ".profile.xml"), xmlSpec);
+		ProfileGenerator pgen = new ProfileGenerator(page.getDefinitions());
+		Profile rp = pgen.generate(p, new FileOutputStream(page.getFolders().dstDir + n + ".profile.xml"), xmlSpec, addBase);
 		Utilities.copyFile(new CSFile(page.getFolders().dstDir + n+ ".profile.xml"), new CSFile(page.getFolders().dstDir+ "examples" + File.separator + n + ".profile.xml"));
 		addToResourceFeed(rp, root.getName().toLowerCase());
 		saveAsPureHtml(rp, new FileOutputStream(page.getFolders().dstDir+ "html" + File.separator + n + ".htm"));
@@ -970,12 +993,9 @@ public class Publisher {
 		gen.close();
 		String xml = TextFile.fileToString(tmp.getAbsolutePath());
 
-		ProfileGenerator pgen = new ProfileGenerator();
-		pgen.generate(profile, new FileOutputStream(page.getFolders().dstDir
-				+ filename + ".profile.xml"), xml);
-		Utilities.copyFile(new CSFile(page.getFolders().dstDir + filename
-				+ ".profile.xml"), new CSFile(page.getFolders().dstDir
-				+ "examples" + File.separator + filename + ".profile.xml"));
+		ProfileGenerator pgen = new ProfileGenerator(page.getDefinitions());
+		pgen.generate(profile, new FileOutputStream(page.getFolders().dstDir + filename + ".profile.xml"), xml, false);
+		Utilities.copyFile(new CSFile(page.getFolders().dstDir + filename + ".profile.xml"), new CSFile(page.getFolders().dstDir + "examples" + File.separator + filename + ".profile.xml"));
 
 		TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp), page);
 		tgen.generate(profile);
@@ -1063,6 +1083,7 @@ public class Publisher {
 			ProfileValidator v = new ProfileValidator();
 			v.setCandidate(c);
 			v.setProfile(resource);
+			v.setTypes(loadResourceProfile("types"));
 			List<String> errors = v.evaluate();
 			if (errors.size() > 0)
 				throw new Exception("Error validating "+ profile.metadata("name") + ": " + errors.toString());
