@@ -47,7 +47,7 @@ namespace HL7.Fhir.Instance.Parsers
 
         public static bool IsAtElement(IFhirReader reader, string name, bool isPolymorph = false)
         {
-            if (!reader.IsAtStartElement())
+            if (!reader.IsAtElement())
                 return false;
 
             if (!isPolymorph)
@@ -58,7 +58,7 @@ namespace HL7.Fhir.Instance.Parsers
 
         public static bool IsAtArrayElement(IFhirReader reader, string name, bool isPolymorph = false)
         {
-            if (!reader.IsAtArrayElement())
+            if (!reader.IsAtArrayMember())
                 return false;
 
             if (!isPolymorph)
@@ -70,7 +70,7 @@ namespace HL7.Fhir.Instance.Parsers
 
         public static bool IsAtElementEndingWith(IFhirReader reader, string suffix)
         {
-            if (!reader.IsAtStartElement())
+            if (!reader.IsAtElement())
                 return false;
 
             return reader.CurrentElementName.EndsWith(suffix);
@@ -79,7 +79,7 @@ namespace HL7.Fhir.Instance.Parsers
 
         public static bool IsAtEndElement(IFhirReader reader, string name)
         {
-            return reader.IsAtEndElement() && reader.CurrentElementName == name;
+            return reader.IsAtElementEnd() && reader.CurrentElementName == name;
         }
 
         public static bool IsAtXhtmlElement(IFhirReader reader, string name)

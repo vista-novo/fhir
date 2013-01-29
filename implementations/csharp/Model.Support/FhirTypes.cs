@@ -35,7 +35,7 @@ using System.Text;
 
 namespace HL7.Fhir.Instance.Model
 {
-    public abstract class Data : IReferrable
+    public abstract class Data : IExtendable
     {
         public string ReferralId { get; set; }
     //    public DataAbsentReason? Dar { get; set; }
@@ -46,7 +46,7 @@ namespace HL7.Fhir.Instance.Model
             return null;
         }
 
-        //public List<Extension> Extensions { get; set; }
+        public List<Extension> Extensions { get; set; }
     }
 
 
@@ -57,13 +57,8 @@ namespace HL7.Fhir.Instance.Model
 
     // Resource is not a subclass of Composite, since it
     // cannot be used in places where you can use composites.
-    public abstract class Resource
+    public abstract class Resource : IExtendable
     {
-        /**
-	     * Master resource Id, in all resources
-	     */
-       // public Id Id { get; set; }
-
         /**
          * Text summary of resource, for human interpretation
          */
@@ -72,7 +67,7 @@ namespace HL7.Fhir.Instance.Model
         /*
          * Extensions
          */
-        public List<Extension> Extension { get; set; }
+        public List<Extension> Extensions { get; set; }
     }
 
     public abstract class Primitive : Data
@@ -105,9 +100,9 @@ namespace HL7.Fhir.Instance.Model
         }
     }
 
-    public interface IReferrable
+    public interface IExtendable
     {
-        string ReferralId { get; set; }
+        List<Extension> Extensions { get; set; }
     }
 
     [System.Serializable]

@@ -66,18 +66,13 @@ namespace HL7.Fhir.Instance.Tests
         [TestMethod]
         public void TestEnumParsing()
         {
-            Code<LabReport.LabReportStatus> c =
-                Code<LabReport.LabReportStatus>.Parse("final");
+            var c = Code<Address.AddressUse>.Parse("temp");
+            Assert.AreEqual(Address.AddressUse.Temp, c.Contents);
+            Assert.AreEqual("temp", c.ToString());
 
-            Assert.AreEqual(LabReport.LabReportStatus.Final, c.Contents);
-            Assert.AreEqual("final", c.ToString());
-
-            Code<LabReport.LabResultFlag> f =
-                Code<LabReport.LabResultFlag>.Parse("++");
-
-            Assert.AreEqual(LabReport.LabResultFlag.PlusPlus, f.Contents);
-
-            Assert.AreEqual("++", f.ToString());
+            var f = Code<Quantity.QuantityCompararator>.Parse(">");
+            Assert.AreEqual(Quantity.QuantityCompararator.GreaterThan, f.Contents);
+            Assert.AreEqual(">", f.ToString());
         }
 
 

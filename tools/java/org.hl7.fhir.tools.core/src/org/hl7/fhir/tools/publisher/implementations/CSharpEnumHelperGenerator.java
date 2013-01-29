@@ -1,5 +1,6 @@
 package org.hl7.fhir.tools.publisher.implementations;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
@@ -55,6 +56,14 @@ public class CSharpEnumHelperGenerator extends GenBlock {
 	
 	public GenBlock generateEnumHelper( Definitions definitions, List<BindingDefn> enums ) throws Exception
 	{
+		List<BindingDefn> enumerableLists = new ArrayList<BindingDefn>();
+		
+		// Only bindings that are truly enumerable ('complete' codelists),
+		// can be turned into enums, the rest remain Code.
+		for( BindingDefn enumeration : enums )
+			if( GeneratorUtils.isEnumerableCodeList(enumeration) )
+				enumerableLists.add(enumeration);
+		
 		begin();
 		
 		inc( rgen.header(definitions.getDate(), definitions.getVersion()) );
@@ -65,12 +74,12 @@ public class CSharpEnumHelperGenerator extends GenBlock {
 			bs("{");
 				ln("public static bool TryParseEnum(string value, Type enumType, out object result)");
 				bs("{");
-					enumParseCases(enums);
+					enumParseCases(enumerableLists);
 				es("}");
 				ln();
 			    ln("public static string EnumToString(object value, Type enumType)");
 			    bs("{");
-			    	enumToStringCases(enums);
+			    	enumToStringCases(enumerableLists);
 			    es("}");
 			es("}");
 		es("}");

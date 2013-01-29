@@ -68,6 +68,8 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 					// Xhtml parser is hand-built, generate the rest
 					if( !primitive.getName().equals(TypeRef.XHTML_PSEUDOTYPE_NAME) )
 						primitiveTypeParser(primitive);
+						
+					ln();
 				}
 			es("}");
 		es("}");
@@ -87,32 +89,47 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 		nl(" Parse" + csharpPrimitive);
 		nl("(IFhirReader reader, ErrorList errors)");
 		bs("{");
-			ln("string refId;");
-//			ln("string dar;");
-//        	ln("string contents = reader.ReadPrimitiveElementContents(out refId, out dar);");
-        	ln("string contents = reader.ReadPrimitiveElementContents(out refId);");
-			
-			ln();
-			ln("try");
-			bs("{");
-				ln("var result = ");
-					nl(csharpPrimitive + ".Parse(contents);");
+        	ln("try");
+        	bs("{");
+            	ln("string contents = null;");
+            	ln("string refId = null;");
 				ln();
-				ln("// Read id/dar from element's attributes");
-                ln("result.ReferralId = refId;");
-         //       ln("result.Dar = (DataAbsentReason?)Code<DataAbsentReason>.Parse(dar);");
-				ln();	
-                ln("return result;");
+				ln("bool isEmpty = reader.EnterElement();");
+				ln("if( isEmpty ) return null;");
+				ln();
+            	ln("while (!reader.IsAtElementEnd())");
+            	bs("{");
+                	ln("if (reader.IsAtRefIdElement())");
+                	ln("	refId = reader.ReadRefIdContents();");
+                	ln("else if (reader.IsAtPrimitiveValueElement())");
+                    ln("	contents = reader.ReadPrimitiveContents();");
+                	ln("else");
+                    ln("	errors.Add(String.Format(\"Encountered unknown element {0}\", reader.CurrentElementName), reader);");
+            	es("}");
+				ln();
+				ln("reader.LeaveElement();");
+				ln();
+            	ln("if (!String.IsNullOrEmpty(contents))");
+            	bs("{");
+					ln("var result = "); nl(csharpPrimitive + ".Parse(contents);");
+					ln();
+					ln("if (!String.IsNullOrEmpty(refId))");
+                    ln("	result.ReferralId = refId;");
+					ln();
+                	ln("return result;");
+                es("}");
+                ln();
+            	ln("return null;");
             es("}");
+            
         	ln("catch (FhirValueFormatException ex)");
-			bs("{");
-				ln("errors.Add(ex.Message, reader);");
-			es("}");
+        	bs("{");
+            	ln("errors.Add(ex.Message, reader);");
+        	es("}");
 			ln();
-			ln("return null;");
-		es("}");
-		ln();
-		
+        	ln("return null;");
+        es("}");
+        	
 		return end();
 	}
 }

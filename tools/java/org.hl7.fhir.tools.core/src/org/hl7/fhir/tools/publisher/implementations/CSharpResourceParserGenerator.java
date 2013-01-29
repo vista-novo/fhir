@@ -322,37 +322,39 @@ public class CSharpResourceParserGenerator extends GenBlock
 
 	private void buildCompositeElementParser(CompositeTypeDefn composite)
 			throws Exception {
-		ln("string en = reader.CurrentElementName;");
-		ln();
-
-        ln("// Read id/dar from element's attributes and read starttag");
-        ln("string refId;"); 
-//        ln("string dar;");
-
-//		ln("bool hasContent = reader.ReadStartComplexContent(out refId, out dar);");
-        ln("bool hasContent = reader.ReadStartComplexContent(out refId);");
-        
-        if( !composite.isResource() )
-        {
-	        ln("result.ReferralId = refId;");
-//	        ln("result.Dar = (DataAbsentReason?)Code<DataAbsentReason>.Parse(dar);");
-	    }
-		ln();            
-		ln("// If this is an empty (xml) node, return immediately");
-        ln("if (!hasContent) return result;");
-		ln();
-  				
 		
-		// Generate this classes properties
-		if( composite.getElements().size() > 0)
-		{
-			boolean allowNestedResource = composite.getName().equals(TypeRef.RESOURCEREF_TYPE_NAME);
-			generateMemberParsers( composite.getElements(), allowNestedResource );
-			ln();
-		}
-		ln("// Read endtag");
-		ln("reader.ReadEndComplexContent();");
-		ln();
+//				
+//		ln("string en = reader.CurrentElementName;");
+//		ln();
+//
+//        ln("// Read id/dar from element's attributes and read starttag");
+//        ln("string refId;"); 
+////        ln("string dar;");
+//
+////		ln("bool hasContent = reader.ReadStartComplexContent(out refId, out dar);");
+//        ln("bool hasContent = reader.ReadStartComplexContent(out refId);");
+//        
+//        if( !composite.isResource() )
+//        {
+//	        ln("result.ReferralId = refId;");
+////	        ln("result.Dar = (DataAbsentReason?)Code<DataAbsentReason>.Parse(dar);");
+//	    }
+//		ln();            
+//		ln("// If this is an empty (xml) node, return immediately");
+//        ln("if (!hasContent) return result;");
+//		ln();
+//  				
+//		
+//		// Generate this classes properties
+//		if( composite.getElements().size() > 0)
+//		{
+//			boolean allowNestedResource = composite.getName().equals(TypeRef.RESOURCEREF_TYPE_NAME);
+//			generateMemberParsers( composite.getElements(), allowNestedResource );
+//			ln();
+//		}
+//		ln("// Read endtag");
+//		ln("reader.ReadEndComplexContent();");
+//		ln();
 	}
 
 	

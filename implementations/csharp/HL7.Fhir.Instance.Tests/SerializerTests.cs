@@ -65,7 +65,7 @@ namespace HL7.Fhir.Instance.Tests
         {
             Extension ext = new Extension()
                 {
-                    Ref = "3141",
+                    Url = new Uri("http://hl7.org/fhir/profiles/@3141#test"),
                     Value = new FhirBoolean(true),
                     Extension_ = new List<Extension>()
                         {
@@ -81,9 +81,9 @@ namespace HL7.Fhir.Instance.Tests
             string j = writeStuffJ(action);
             string x = writeStuffX(action);
 
-            Assert.AreEqual("{\"x\":{\"ref\":\"3141\",\"valueBoolean\":\"true\",\"extension\":" +
+            Assert.AreEqual("{\"x\":{\"url\":\"http://hl7.org/fhir/profiles/@3141#test\",\"valueBoolean\":\"true\",\"extension\":" +
                 "[{\"valueCoding\":{\"system\":\"http://hl7.org/fhir/sid/icd-10\",\"code\":\"R51\"}}]}}", j);
-            Assert.AreEqual("<x xmlns=\"http://hl7.org/fhir\"><ref>3141</ref><valueBoolean>true</valueBoolean>" +
+            Assert.AreEqual("<x xmlns=\"http://hl7.org/fhir\"><url>http://hl7.org/fhir/profiles/@3141#test</url><valueBoolean>true</valueBoolean>" +
                             "<extension><valueCoding><system>http://hl7.org/fhir/sid/icd-10</system><code>R51</code>" +
                             "</valueCoding></extension></x>", x);
         }
@@ -173,11 +173,11 @@ namespace HL7.Fhir.Instance.Tests
             settings.IgnoreProcessingInstructions = true;
             settings.IgnoreWhitespace = true;
 
-            XmlReader xr = XmlReader.Create(new StreamReader(@"..\..\..\..\..\publish\labreport-example.xml"), settings);
+            XmlReader xr = XmlReader.Create(new StreamReader(@"..\..\..\..\..\publish\diagnosticreport-example.xml"), settings);
             IFhirReader r = new XmlFhirReader(xr);
 
             ErrorList errors = new ErrorList();
-            LabReport rep = (LabReport)ResourceParser.ParseResource(r, errors);
+            DiagnosticReport rep = (DiagnosticReport)ResourceParser.ParseResource(r, errors);
 
             Assert.IsNotNull(rep);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());

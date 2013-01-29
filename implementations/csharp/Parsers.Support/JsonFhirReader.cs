@@ -40,6 +40,11 @@ namespace HL7.Fhir.Instance.Parsers
 {
     public class JsonFhirReader : IFhirReader
     {
+        public const string XHTMLELEM = "value";
+        public const string IDATTR = "_id";
+        public const string VALUEATTR = "value";
+        public const string LANGATTR = "language";
+
         private JsonTextReader jr;
 
         public JsonFhirReader(JsonTextReader jr)
@@ -63,47 +68,51 @@ namespace HL7.Fhir.Instance.Parsers
 
         public string CurrentElementName
         {
-            get{
+            get
+            {
                 // Path can be strings like a.b[2].c[4]
                 // The current element is the last part, sans the array markers
                 string pathPart = jr.Path.Split('.').Last();
 
-                if (pathPart[pathPart.Length-1] == ']')
+                if (pathPart[pathPart.Length - 1] == ']')
                     pathPart = pathPart.Substring(0, pathPart.IndexOf('['));
 
                 return pathPart;
             }
         }
 
-        public bool IsAtStartElement()
+        public bool EnterElement()
+        {
+            // Read away the complex property's name, if it is there
+            skipPropertyName();
+
+            if (jr.TokenType != JsonToken.StartObject)
+                throw new FormatException("Expected a StartObject JSon token");
+
+            jr.Read();
+
+            bool isEmpty = jr.TokenType == JsonToken.EndObject;
+            return isEmpty;
+        }
+
+
+        public bool IsAtElement()
         {
             return jr.TokenType == JsonToken.PropertyName;
         }
 
-        public bool IsAtEndElement()
-        {
-            return jr.TokenType == JsonToken.EndObject;
-        }
-
-        public void ReadEndComplexContent()
-        {
-            if (IsAtEndElement())
-                jr.Read();
-            else
-                throw new FormatException("Expected to find end of complex content");
-        }
-
-        public void SkipContents(string name)
-        {
-            while (!(IsAtEndElement() && CurrentElementName == name) && jr.Read()) ;
-        }
 
         public bool IsAtXhtmlElement()
         {
-            return jr.TokenType == JsonToken.PropertyName;
+            return IsAtElement() && CurrentElementName == XHTMLELEM;
         }
 
         public string ReadXhtmlContents()
+        {
+            return readStringProperty();
+        }
+
+        private string readStringProperty()
         {
             // Read away property name
             jr.Read();
@@ -115,7 +124,57 @@ namespace HL7.Fhir.Instance.Parsers
                 return value;
             }
             else
-                throw new FormatException("Xhtml values should be simple strings");
+                throw new FormatException("Expected property with a simple string value");
+        }
+
+        public bool IsAtPrimitiveValueElement()
+        {
+            return IsAtElement() && CurrentElementName == VALUEATTR;
+        }
+
+        public string ReadPrimitiveContents()
+        {
+            return readStringProperty();
+        }
+
+        public bool IsAtLanguageElement()
+        {
+            return IsAtElement() && CurrentElementName == LANGATTR;
+        }
+
+        public string ReadLanguageContents()
+        {
+            return readStringProperty();
+        }
+
+        public bool IsAtRefIdElement()
+        {
+            return IsAtElement() && CurrentElementName == IDATTR;
+        }
+
+        public string ReadRefIdContents()
+        {
+            return readStringProperty();
+        }
+
+
+        public void LeaveElement()
+        {
+            if (IsAtElementEnd())
+                jr.Read();
+            else
+                throw new FormatException("Expected to find end of complex content");
+        }
+
+        public bool IsAtElementEnd()
+        {
+            return jr.TokenType == JsonToken.EndObject;
+        }
+
+
+        public void SkipSubElementsFor(string name)
+        {
+            while (!(IsAtElementEnd() && CurrentElementName == name) && jr.Read()) ;
         }
 
         public int LineNumber
@@ -128,7 +187,7 @@ namespace HL7.Fhir.Instance.Parsers
             get { return jr.LinePosition; }
         }
 
-        public void ReadStartArray()
+        public void EnterArray()
         {
             // Read away name of array property
             jr.Read();
@@ -140,12 +199,12 @@ namespace HL7.Fhir.Instance.Parsers
                 throw new FormatException("Expected start of array");
         }
 
-        public bool IsAtArrayElement()
+        public bool IsAtArrayMember()
         {
             return jr.TokenType != JsonToken.EndArray;
         }
 
-        public void ReadEndArray()
+        public void LeaveArray()
         {
             if (jr.TokenType == JsonToken.EndArray)
                 jr.Read();
@@ -157,97 +216,6 @@ namespace HL7.Fhir.Instance.Parsers
         private void skipPropertyName()
         {
             if (jr.TokenType == JsonToken.PropertyName) jr.Read();
-        }
-
-
-        public string ReadPrimitiveElementContents(out string refid)
-        {
-            refid = null;
-        //    dar = null;
-            string elementName = CurrentElementName;
-            
-            // Read away property name
-            skipPropertyName();
-
-            if (jr.TokenType == JsonToken.StartObject)
-            {
-                // read StartObject
-                jr.Read();
-
-                readAttributes(out refid);
-
-                string value = null;
-
-                if (jr.TokenType == JsonToken.PropertyName && (string)jr.Value == "value")
-                {
-                    jr.Read();
-                    value = readPrimitiveValue();
-                }
-
-                if (jr.TokenType != JsonToken.EndObject)
-                    throw new FormatException("Complex primitive contains unexpected contents");
-
-                // read EndObject
-                jr.Read();
-
-                return value;
-            }
-            else if (jr.TokenType == JsonToken.String)
-            {
-                // simple primitive
-                return readPrimitiveValue();
-            }
-            else
-                throw new FormatException(String.Format("Primitive {0} must be a complex object or a string",elementName));
-        }
-
-
-        private string readPrimitiveValue()
-        {
-            string value = (string)jr.Value;
-
-            if (value == String.Empty) value = null;
-
-            jr.Read();
-            
-            return value;
-        }
-
-
-        public bool ReadStartComplexContent(out string refid)
-        {
-            // Read away the complex property's name, if it is there
-            skipPropertyName();
-
-            if (jr.TokenType != JsonToken.StartObject)
-                throw new FormatException("Expected a StartObject JSon token");
-
-            jr.Read();
-
-            // Check the attributes
-            readAttributes(out refid);
-
-            return true;
-        }
-
-        private void readAttributes(out string refid)
-        {
-            refid = null;
-        //    dar = null;
-
-            if (jr.TokenType == JsonToken.PropertyName && (string)jr.Value == "_id")
-            {
-                refid = jr.ReadAsString();
-                jr.Read();
-            }
-
-            //if (jr.TokenType == JsonToken.PropertyName && (string)jr.Value == "dataAbsentReason")
-            //{
-            //    dar = jr.ReadAsString();
-            //    jr.Read();
-            //}
-
-            return;
         }
     }
 }

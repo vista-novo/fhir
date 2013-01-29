@@ -39,6 +39,12 @@ namespace HL7.Fhir.Instance.Parsers
 {
     public class XmlFhirReader : IFhirReader
     {
+        public const string XHTMLELEM = "div";
+        public const string IDATTR = "id";
+        public const string VALUEATTR = "value";
+        public const string LANGATTR = "lang";
+
+
         private XmlReader xr;
 
         public XmlFhirReader(XmlReader xr)
@@ -58,27 +64,58 @@ namespace HL7.Fhir.Instance.Parsers
 
         public string CurrentElementName
         {
-            get { return xr.LocalName; }
+            get
+            {
+                if (xr.NodeType == XmlNodeType.Element)
+                    return xr.LocalName;
+                else
+                    return "#attribute";
+            }
         }
 
-        public bool IsAtStartElement()
+
+        public bool EnterElement()
+        {
+            _lastEncounteredPrimitiveValue = null;
+            _lastEncounteredRefIdValue = null;
+            _lastEncounteredLanguageValue = null;
+
+            readAttributes();
+
+            if (!xr.IsEmptyElement)
+            {
+                xr.ReadStartElement();
+                return true;
+            }
+            else
+                return false;
+        }
+
+
+        public bool IsAtElement()
+        {
+            return
+                IsAtXhtmlElement() ||
+                IsAtPrimitiveValueElement() ||
+                IsAtLanguageElement() ||
+                IsAtRefIdElement() ||
+                isAtFhirElement();
+        }
+
+        public bool IsAtElementEnd()
+        {
+            return xr.NodeType == XmlNodeType.EndElement;
+        }
+
+        private bool isAtFhirElement()
         {
             return xr.NodeType == XmlNodeType.Element && xr.NamespaceURI == Support.Util.FHIRNS;
         }
 
-        public bool IsAtEndElement()
-        {
-            return xr.NodeType == XmlNodeType.EndElement && xr.NamespaceURI == Support.Util.FHIRNS;
-        }
-
         public bool IsAtXhtmlElement()
         {
-            return xr.NodeType == XmlNodeType.Element && xr.NamespaceURI == Support.Util.XHTMLNS;
-        }
-
-        public void ReadEndComplexContent()
-        {
-            xr.ReadEndElement();
+            return xr.NodeType == XmlNodeType.Element && xr.NamespaceURI == Support.Util.XHTMLNS &&
+                xr.LocalName == XHTMLELEM;
         }
 
         public string ReadXhtmlContents()
@@ -86,11 +123,64 @@ namespace HL7.Fhir.Instance.Parsers
             return xr.ReadOuterXml();
         }
 
-        public void SkipContents(string name)
+
+        private string _lastEncounteredPrimitiveValue = null;
+
+        public bool IsAtPrimitiveValueElement()
+        {
+            return _lastEncounteredPrimitiveValue != null;
+        }
+
+        public string ReadPrimitiveContents()
+        {
+            string result = _lastEncounteredPrimitiveValue;
+            _lastEncounteredPrimitiveValue = null;
+            return result;
+        }
+
+        private string _lastEncounteredRefIdValue = null;
+
+        public bool IsAtRefIdElement()
+        {
+            return _lastEncounteredRefIdValue != null;
+        }
+
+        public string ReadRefIdContents()
+        {
+            string result = _lastEncounteredRefIdValue;
+            _lastEncounteredRefIdValue = null;
+            return result;
+        }
+
+        private string _lastEncounteredLanguageValue = null;
+
+        public bool IsAtLanguageElement()
+        {
+            return _lastEncounteredLanguageValue != null;
+        }
+
+        public string ReadLanguageContents()
+        {
+            string result = _lastEncounteredLanguageValue;
+            _lastEncounteredLanguageValue = null;
+            return result;
+        }
+
+        public void LeaveElement()
+        {
+            if (xr.NodeType == XmlNodeType.EndElement)
+                xr.ReadEndElement();
+            else
+                throw new FormatException("Expected end of element");
+        }
+
+
+        public void SkipSubElementsFor(string name)
         {
             while (!isEndElement(xr, name) && !xr.EOF)
                 xr.Skip();
         }
+
 
         private static bool isEndElement(XmlReader reader, string en)
         {
@@ -112,75 +202,37 @@ namespace HL7.Fhir.Instance.Parsers
         }
 
 
-        public void ReadStartArray()
+        public void EnterArray()
+        {
+            if (xr.NodeType != XmlNodeType.Element)
+                throw new FormatException("Expected a (repeating) element from FHIR namespace");
+        }
+
+        public bool IsAtArrayMember()
+        {
+            return isAtFhirElement();
+        }
+
+        public void LeaveArray()
         {
             // Nothing
         }
 
-        public bool IsAtArrayElement()
+       
+        private void readAttributes()
         {
-            return IsAtStartElement();
-        }
-
-        public void ReadEndArray()
-        {
-            // Nothing
-        }
-
-        public string ReadPrimitiveElementContents(out string refid)
-        {
-            readAttributes(out refid);
-
-            return readContents();
-        }
-
-        public bool ReadStartComplexContent(out string refid)
-        {
-            readAttributes(out refid);
-
-            if (!xr.IsEmptyElement)
-            {
-                xr.ReadStartElement();
-                return true;
-            }
-            else
-                return false;
-        }
-
-
-        private string readContents()
-        {
-            string result = null;
-
-            if (!xr.IsEmptyElement)
-                result = xr.ReadElementContentAsString();
-            else
-            {
-                result = null;
-                xr.Read();
-            }
-                
-            if (result == String.Empty) result = null;
-
-            return result;
-        }
-
-
-        private void readAttributes(out string id)
-        {
-            id = null;
-        //    dar = null;
-
             string elementName = xr.LocalName;
 
             if (xr.HasAttributes)
             {
                 while (xr.MoveToNextAttribute())
                 {
-                    if (xr.LocalName == Util.IDATTR)
-                        id = xr.Value;
-                 //   else if (xr.LocalName == Util.DARATTR)
-                //        dar = xr.Value;
+                    if (xr.LocalName == IDATTR && xr.NamespaceURI == "")
+                        _lastEncounteredRefIdValue = xr.Value;
+                    else if (xr.LocalName == VALUEATTR && xr.NamespaceURI == "")
+                        _lastEncounteredPrimitiveValue = xr.Value;
+                    else if (xr.LocalName == LANGATTR && xr.Prefix == "xml")
+                        _lastEncounteredLanguageValue = xr.Value;
                     else
                     {
                         if (xr.NamespaceURI == Util.XMLNS)
@@ -188,8 +240,8 @@ namespace HL7.Fhir.Instance.Parsers
                             ;
 #pragma warning restore 642
                         else
-                           throw new FormatException(String.Format("Unsupported attribute '{0}' on element {1}",
-                                   xr.LocalName, elementName));
+                            throw new FormatException(String.Format("Unsupported attribute '{0}' on element {1}",
+                                    xr.LocalName, elementName));
                     }
                 }
 

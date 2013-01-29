@@ -20,7 +20,7 @@ namespace HL7.Fhir.Instance.Tests
         [TestMethod]
         public void TestParsePrimitive()
         {
-            string xmlString = "<someElem>true</someElem>";
+            string xmlString = "<someElem value='true' />";
             XmlReader xr = fromString(xmlString); xr.Read();
             ErrorList errors = new ErrorList();
             FhirBoolean result = PrimitiveParser.ParseFhirBoolean(new XmlFhirReader(xr), errors);
@@ -28,7 +28,7 @@ namespace HL7.Fhir.Instance.Tests
             Assert.AreEqual(true, result.Contents);
 
 
-            string jsonString = "{\"someElem\":\"true\"}";
+            string jsonString = "{\"someElem\": { \"value\" : \"true\"} }";
             JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
             jr.Read(); jr.Read();
             errors.Clear();
@@ -36,6 +36,13 @@ namespace HL7.Fhir.Instance.Tests
             Assert.IsTrue(errors.Count == 0, errors.ToString());
             Assert.AreEqual(true, result.Contents);
         }
+
+        [TestMethod]
+        public void TestParseLanguageAttribute()
+        {
+            throw new NotImplementedException();
+        }
+
 
         [TestMethod]
         public void TestParseEmptyPrimitive()
@@ -53,7 +60,7 @@ namespace HL7.Fhir.Instance.Tests
             Assert.IsNull(result.Contents);
 
             //TODO: Is this a '' value, or an empty/null value?
-            string xmlString2 = "<someElem id='4'></someElem>";
+            string xmlString2 = "<someElem id='4' value='' />";
             xr = fromString(xmlString2); xr.Read();
             r = new XmlFhirReader(xr);
 
@@ -63,8 +70,6 @@ namespace HL7.Fhir.Instance.Tests
             Assert.AreEqual("4", result.ReferralId);
             Assert.IsNotNull(result);
             Assert.IsNull(result.Contents);
-
-
 
             string jsonString = "{ \"someElem\" : { \"_id\" : \"4\" } }";
             JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
@@ -379,27 +384,29 @@ namespace HL7.Fhir.Instance.Tests
 
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.IsNotNull(p);
-            Assert.AreEqual(1, p.Extension.Count());
+            Assert.AreEqual(1, p.Extensions.Count());
         }
 
 
         [TestMethod]
         public void TestParseLargeComposite()
         {
-            XmlReader xr = XmlReader.Create(new StreamReader(@"..\..\..\..\..\publish\labreport-example.xml"));
+            XmlReader xr = XmlReader.Create(new StreamReader(@"..\..\..\..\..\publish\diagnosticreport-example.xml"));
             IFhirReader r = new XmlFhirReader(xr);
 
             ErrorList errors = new ErrorList();
-            LabReport rep = (LabReport)ResourceParser.ParseResource(r, errors);
+            DiagnosticReport rep = (DiagnosticReport)ResourceParser.ParseResource(r, errors);
 
             Assert.IsNotNull(rep);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
 
             Assert.AreEqual("2011-03-04T08:30:00+11:00", rep.DiagnosticTime.ToString());
-            Assert.AreEqual(17, rep.ResultGroup[0].Result.Count);
-            Assert.AreEqual(typeof(Quantity), rep.ResultGroup[0].Result[1].Value.GetType());
-            Assert.AreEqual((decimal)5.9, (rep.ResultGroup[0].Result[1].Value as Quantity).Value.Contents);
-            Assert.AreEqual("Neutrophils", rep.ResultGroup[0].Result[8].Name.Coding[0].Display.Contents);
+            Assert.AreEqual(17, rep.Results.Result.Count);
+
+            throw new NotImplementedException("Check values in the inlined results");
+//            Assert.AreEqual(typeof(Quantity), rep.Results.Result[1].Value.GetType());
+//            Assert.AreEqual((decimal)5.9, (rep.Results.Result[1].Value as Quantity).Value.Contents);
+//            Assert.AreEqual("Neutrophils", rep.Results.Result[8].Name.Coding[0].Display.Contents);
         }
 
         [TestMethod]
@@ -488,7 +495,7 @@ namespace HL7.Fhir.Instance.Tests
                 XmlReader xr = XmlReader.Create(new StringReader(text), settings);
                 IFhirReader r = new XmlFhirReader(xr);
                 ErrorList errors = new ErrorList();
-                LabReport rep = (LabReport)ResourceParser.ParseResource(r, errors);
+                DiagnosticReport rep = (DiagnosticReport)ResourceParser.ParseResource(r, errors);
             }
 
             sw.Stop();

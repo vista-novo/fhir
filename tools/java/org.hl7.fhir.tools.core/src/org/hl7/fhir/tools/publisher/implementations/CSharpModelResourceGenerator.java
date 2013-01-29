@@ -34,6 +34,7 @@ import java.util.List;
 
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
+import org.hl7.fhir.definitions.ecore.fhir.BindingExtensibility;
 import org.hl7.fhir.definitions.ecore.fhir.BindingType;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
@@ -262,7 +263,7 @@ public class CSharpModelResourceGenerator extends GenBlock
 		
 		for( BindingDefn binding : bindings ) 
 		{
-			if( binding.getBinding() == BindingType.CODE_LIST )
+			if( GeneratorUtils.isEnumerableCodeList(binding) )
 			{	
 				generateEnum(binding);
 				ln();

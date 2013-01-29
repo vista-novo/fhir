@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
+import org.hl7.fhir.definitions.ecore.fhir.BindingExtensibility;
 import org.hl7.fhir.definitions.ecore.fhir.BindingType;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
@@ -440,7 +441,7 @@ public class GeneratorUtils {
 		// (and enums are only generated for codelists)
 		for( BindingDefn binding : member.getParentType().getBindings() )
 		{
-			if( binding.getName().equals(result) && binding.getBinding() == BindingType.CODE_LIST )
+			if( binding.getName().equals(result) && isEnumerableCodeList(binding) )
 			{
 				result += "_";
 				break;
@@ -528,12 +529,20 @@ public class GeneratorUtils {
 		{
 			BindingDefn bindingDef = defs.findBinding(ref.getFullBindingRef());
 			
-			if( bindingDef != null )
-				return bindingDef.getBinding() == BindingType.CODE_LIST;
+			return isEnumerableCodeList(bindingDef);
 		}
 		
 		// All other cases
 		return false;
+	}
+	
+	public static boolean isEnumerableCodeList( BindingDefn binding )
+	{
+		if( binding != null )
+			return binding.getBinding() == BindingType.CODE_LIST &&
+			binding.getExtensibility() == BindingExtensibility.COMPLETE;
+		else
+			return false;
 	}
 		
 	private static TypeRef newTypeRef(String name)
