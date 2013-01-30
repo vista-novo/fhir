@@ -42,14 +42,13 @@ namespace HL7.Fhir.Instance.Parsers
 
         string CurrentElementName { get; }
 
-        bool EnterElement();
+        void EnterElement();
         bool IsAtElement();       
         bool IsAtXhtmlElement();
         bool IsAtPrimitiveValueElement();
         bool IsAtLanguageElement();
         bool IsAtRefIdElement();
         void LeaveElement();
-        bool IsAtElementEnd();
 
         void EnterArray();
         bool IsAtArrayMember();

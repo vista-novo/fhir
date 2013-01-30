@@ -71,7 +71,7 @@ namespace HL7.Fhir.Instance.Model
             if (TryParse(value, out result))
                 return result;
             else 
-                throw new FhirValueFormatException("Content is not valid xhtml");
+                throw new FhirFormatException("Content is not valid xhtml");
         }
 
         public override string ValidateData()

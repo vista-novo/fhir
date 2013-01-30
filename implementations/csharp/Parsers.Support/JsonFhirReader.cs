@@ -35,6 +35,7 @@ using System.Text;
 using System.Xml;
 using HL7.Fhir.Instance.Support;
 using Newtonsoft.Json;
+using HL7.Fhir.Instance.Model;
 
 namespace HL7.Fhir.Instance.Parsers
 {
@@ -63,7 +64,7 @@ namespace HL7.Fhir.Instance.Parsers
                 jr.Read();
             }
             else
-                throw new FormatException("Resources should have a Json object as root");
+                throw new FhirFormatException("Resources should have a Json object as root");
         }
 
         public string CurrentElementName
@@ -81,18 +82,18 @@ namespace HL7.Fhir.Instance.Parsers
             }
         }
 
-        public bool EnterElement()
+        public void EnterElement()
         {
             // Read away the complex property's name, if it is there
             skipPropertyName();
 
             if (jr.TokenType != JsonToken.StartObject)
-                throw new FormatException("Expected a StartObject JSon token");
+                throw new FhirFormatException("Expected a StartObject JSon token");
 
             jr.Read();
 
-            bool isEmpty = jr.TokenType == JsonToken.EndObject;
-            return isEmpty;
+//          bool isEmpty = jr.TokenType == JsonToken.EndObject;
+//          return isEmpty;
         }
 
 
@@ -124,7 +125,7 @@ namespace HL7.Fhir.Instance.Parsers
                 return value;
             }
             else
-                throw new FormatException("Expected property with a simple string value");
+                throw new FhirFormatException("Expected property with a simple string value");
         }
 
         public bool IsAtPrimitiveValueElement()
@@ -160,21 +161,17 @@ namespace HL7.Fhir.Instance.Parsers
 
         public void LeaveElement()
         {
-            if (IsAtElementEnd())
+            if (jr.TokenType == JsonToken.EndObject)
                 jr.Read();
             else
-                throw new FormatException("Expected to find end of complex content");
+                throw new FhirFormatException("Expected to find end of complex content");
         }
-
-        public bool IsAtElementEnd()
-        {
-            return jr.TokenType == JsonToken.EndObject;
-        }
-
 
         public void SkipSubElementsFor(string name)
         {
-            while (!(IsAtElementEnd() && CurrentElementName == name) && jr.Read()) ;
+            while (CurrentElementName != name && jr.Read())
+                // read tokens until we're back in the parent element or EOF
+                ;
         }
 
         public int LineNumber
@@ -196,7 +193,7 @@ namespace HL7.Fhir.Instance.Parsers
             if (jr.TokenType == JsonToken.StartArray)
                 jr.Read();
             else
-                throw new FormatException("Expected start of array");
+                throw new FhirFormatException("Expected start of array");
         }
 
         public bool IsAtArrayMember()
@@ -209,7 +206,7 @@ namespace HL7.Fhir.Instance.Parsers
             if (jr.TokenType == JsonToken.EndArray)
                 jr.Read();
             else
-                throw new FormatException("Expected end of array");
+                throw new FhirFormatException("Expected end of array");
         }
 
 

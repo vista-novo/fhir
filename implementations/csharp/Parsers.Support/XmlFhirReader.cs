@@ -34,6 +34,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using HL7.Fhir.Instance.Support;
+using HL7.Fhir.Instance.Model;
 
 namespace HL7.Fhir.Instance.Parsers
 {
@@ -74,7 +75,7 @@ namespace HL7.Fhir.Instance.Parsers
         }
 
 
-        public bool EnterElement()
+        public void EnterElement()
         {
             _lastEncounteredPrimitiveValue = null;
             _lastEncounteredRefIdValue = null;
@@ -83,12 +84,7 @@ namespace HL7.Fhir.Instance.Parsers
             readAttributes();
 
             if (!xr.IsEmptyElement)
-            {
                 xr.ReadStartElement();
-                return true;
-            }
-            else
-                return false;
         }
 
 
@@ -102,10 +98,6 @@ namespace HL7.Fhir.Instance.Parsers
                 isAtFhirElement();
         }
 
-        public bool IsAtElementEnd()
-        {
-            return xr.NodeType == XmlNodeType.EndElement;
-        }
 
         private bool isAtFhirElement()
         {
@@ -170,15 +162,22 @@ namespace HL7.Fhir.Instance.Parsers
         {
             if (xr.NodeType == XmlNodeType.EndElement)
                 xr.ReadEndElement();
+            else if (xr.IsEmptyElement)
+                xr.Read();
             else
-                throw new FormatException("Expected end of element");
+                throw new FhirFormatException("Expected end of element");
         }
 
 
         public void SkipSubElementsFor(string name)
         {
-            while (!isEndElement(xr, name) && !xr.EOF)
-                xr.Skip();
+            if (xr.IsEmptyElement)
+                xr.Read();
+            else
+            {
+                while (!isEndElement(xr, name) && !xr.EOF)
+                    xr.Skip();
+            }
         }
 
 
@@ -205,7 +204,7 @@ namespace HL7.Fhir.Instance.Parsers
         public void EnterArray()
         {
             if (xr.NodeType != XmlNodeType.Element)
-                throw new FormatException("Expected a (repeating) element from FHIR namespace");
+                throw new FhirFormatException("Expected a (repeating) element from FHIR namespace");
         }
 
         public bool IsAtArrayMember()
@@ -240,7 +239,7 @@ namespace HL7.Fhir.Instance.Parsers
                             ;
 #pragma warning restore 642
                         else
-                            throw new FormatException(String.Format("Unsupported attribute '{0}' on element {1}",
+                            throw new FhirFormatException(String.Format("Unsupported attribute '{0}' on element {1}",
                                     xr.LocalName, elementName));
                     }
                 }

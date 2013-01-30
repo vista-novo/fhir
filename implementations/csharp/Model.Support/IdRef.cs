@@ -38,6 +38,8 @@ namespace HL7.Fhir.Instance.Model
 {
     public partial class IdRef
     {
+        public IdRef() : base(null) { }
+
         // Just here for consistency in the parser generators
         public static IdRef Parse(string value)
         {

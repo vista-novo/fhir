@@ -50,7 +50,7 @@ namespace HL7.Fhir.Instance.Parsers
                 var result = XHtml.Parse(contents);
                 return result;
             }
-            catch (FhirValueFormatException ex)
+            catch (FhirFormatException ex)
             {
                 errors.Add(ex.Message, reader);
             }
@@ -66,35 +66,43 @@ namespace HL7.Fhir.Instance.Parsers
             {
                 string contents = null;
                 string refId = null;
-                
-                while (!reader.IsAtElementEnd())
+
+                string currentElementName = reader.CurrentElementName;
+                reader.EnterElement();
+
+                while (reader.IsAtElement())
                 {
                     if (reader.IsAtRefIdElement())
-                    	refId = reader.ReadRefIdContents();
+                        refId = reader.ReadRefIdContents();
                     else if (reader.IsAtPrimitiveValueElement())
-                    	contents = reader.ReadPrimitiveContents();
+                        contents = reader.ReadPrimitiveContents();
                     else
-                    errors.Add(String.Format("Encountered unknown element {0}", reader.CurrentElementName), reader);
+                    {
+                        errors.Add(String.Format("Encountered unknown element {0}", reader.CurrentElementName), reader);
+                        reader.SkipSubElementsFor(currentElementName);
+                    }
                 }
-                
+
+                reader.LeaveElement();
+
                 if (!String.IsNullOrEmpty(contents))
                 {
                     var result = Code<T>.Parse(contents);
-                    
+
                     if (!String.IsNullOrEmpty(refId))
-                    	result.ReferralId = refId;
-                    
+                        result.ReferralId = refId;
+
                     return result;
                 }
-                
+
                 return null;
             }
-            catch (FhirValueFormatException ex)
+            catch (FhirFormatException ex)
             {
                 errors.Add(ex.Message, reader);
             }
-            
-            return null;
+
+            return null; 
         }       
     }
 }

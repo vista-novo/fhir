@@ -64,7 +64,7 @@ namespace HL7.Fhir.Instance.Model
             if (TryParse(value, out result))
                 return result;
             else
-                throw new FhirValueFormatException("Not an correctly formatted uuid value");
+                throw new FhirFormatException("Not an correctly formatted uuid value");
         }
 
         public override string ValidateData()

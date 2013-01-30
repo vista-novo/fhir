@@ -15,84 +15,9 @@ using Newtonsoft.Json;
 namespace HL7.Fhir.Instance.Tests
 {
     [TestClass]
-    public class ParserTests
+    public class CompositeParserTests
     {
-        [TestMethod]
-        public void TestParsePrimitive()
-        {
-            string xmlString = "<someElem value='true' />";
-            XmlReader xr = fromString(xmlString); xr.Read();
-            ErrorList errors = new ErrorList();
-            FhirBoolean result = PrimitiveParser.ParseFhirBoolean(new XmlFhirReader(xr), errors);
-            Assert.IsTrue(errors.Count == 0, errors.ToString());
-            Assert.AreEqual(true, result.Contents);
-
-
-            string jsonString = "{\"someElem\": { \"value\" : \"true\"} }";
-            JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
-            jr.Read(); jr.Read();
-            errors.Clear();
-            result = PrimitiveParser.ParseFhirBoolean(new JsonFhirReader(jr), errors);
-            Assert.IsTrue(errors.Count == 0, errors.ToString());
-            Assert.AreEqual(true, result.Contents);
-        }
-
-        [TestMethod]
-        public void TestParseLanguageAttribute()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        [TestMethod]
-        public void TestParseEmptyPrimitive()
-        {
-            string xmlString = "<someElem id='4' />";
-
-            XmlReader xr = fromString(xmlString); xr.Read();
-            XmlFhirReader r = new XmlFhirReader(xr);
-
-            ErrorList errors = new ErrorList();
-            FhirBoolean result = PrimitiveParser.ParseFhirBoolean(r, errors);
-            Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.IsNotNull(result);
-            Assert.AreEqual("4", result.ReferralId);
-            Assert.IsNull(result.Contents);
-
-            //TODO: Is this a '' value, or an empty/null value?
-            string xmlString2 = "<someElem id='4' value='' />";
-            xr = fromString(xmlString2); xr.Read();
-            r = new XmlFhirReader(xr);
-
-            errors.Clear();
-            result = PrimitiveParser.ParseFhirBoolean(r, errors);
-            Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual("4", result.ReferralId);
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.Contents);
-
-            string jsonString = "{ \"someElem\" : { \"_id\" : \"4\" } }";
-            JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
-            jr.Read(); jr.Read();
-            errors.Clear();
-            result = PrimitiveParser.ParseFhirBoolean(new JsonFhirReader(jr), errors);
-            Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.IsNotNull(result);
-            Assert.AreEqual("4", result.ReferralId);
-            Assert.IsNull(result.Contents);
-
-            jsonString = "{ \"someElem\" : { \"_id\" : \"4\", \"value\" : \"\" } }";
-            jr = new JsonTextReader(new StringReader(jsonString));
-            jr.Read(); jr.Read();
-            errors.Clear();
-            result = PrimitiveParser.ParseFhirBoolean(new JsonFhirReader(jr), errors);
-            Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual("4", result.ReferralId);
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.Contents);
-        }
-
-
+       
         [TestMethod]
         public void TestParseEmptyComposite()
         {
@@ -115,6 +40,12 @@ namespace HL7.Fhir.Instance.Tests
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.IsNotNull(result);
             Assert.AreEqual("4", result.ReferralId);
+        }
+
+        [TestMethod]
+        public void TestContinueOnConsecutivePrimitives()
+        {
+            throw new NotImplementedException();
         }
 
 
@@ -148,6 +79,14 @@ namespace HL7.Fhir.Instance.Tests
             Assert.AreEqual("12", result.ReferralId);
          //   Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
         }
+
+
+        [TestMethod]
+        public void TestParseLanguageAttribute()
+        {
+            throw new NotImplementedException();
+        }
+
 
         private XmlReader fromString(string s)
         {

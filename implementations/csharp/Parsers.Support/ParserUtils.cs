@@ -77,10 +77,10 @@ namespace HL7.Fhir.Instance.Parsers
         }
 
 
-        public static bool IsAtEndElement(IFhirReader reader, string name)
-        {
-            return reader.IsAtElementEnd() && reader.CurrentElementName == name;
-        }
+        //public static bool IsAtEndElement(IFhirReader reader, string name)
+        //{
+        //    return reader.IsAtElementEnd() && reader.CurrentElementName == name;
+        //}
 
         public static bool IsAtXhtmlElement(IFhirReader reader, string name)
         {

@@ -72,7 +72,7 @@ namespace HL7.Fhir.Instance.Model
             if (TryParse(value, out result))
                 return result;
             else 
-                throw new FhirValueFormatException("Not an integer value");
+                throw new FhirFormatException("Not an integer value");
         }
 
 

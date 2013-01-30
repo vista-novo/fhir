@@ -71,7 +71,7 @@ namespace HL7.Fhir.Instance.Model
             if (TryParse(value, out result))
                 return result;
             else
-                throw new FhirValueFormatException("Booleans can be either 0, 1, true of false");
+                throw new FhirFormatException("Booleans can be either 0, 1, true of false");
         }
 
         public override string ToString()

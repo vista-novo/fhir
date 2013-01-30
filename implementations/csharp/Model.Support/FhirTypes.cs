@@ -106,12 +106,12 @@ namespace HL7.Fhir.Instance.Model
     }
 
     [System.Serializable]
-    public class FhirValueFormatException : System.Exception
+    public class FhirFormatException : System.Exception
     {
-        public FhirValueFormatException() { }
-        public FhirValueFormatException(string message) : base(message) { }
-        public FhirValueFormatException(string message, System.Exception inner) : base(message, inner) { }
-        protected FhirValueFormatException(
+        public FhirFormatException() { }
+        public FhirFormatException(string message) : base(message) { }
+        public FhirFormatException(string message, System.Exception inner) : base(message, inner) { }
+        protected FhirFormatException(
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context)
             : base(info, context) { }

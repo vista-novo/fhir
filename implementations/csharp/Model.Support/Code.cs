@@ -64,7 +64,7 @@ namespace HL7.Fhir.Instance.Model
             if (TryParse(value, out result))
                 return result;
             else
-                throw new FhirValueFormatException("Not a correctly formatted code value");
+                throw new FhirFormatException("Not a correctly formatted code value");
         }
 
         public override string ValidateData()
@@ -146,7 +146,7 @@ namespace HL7.Fhir.Instance.Model
             if (TryParse(value, out result))
                 return result;
             else
-                throw new FhirValueFormatException("'" + value + "' is not a correct value for " +
+                throw new FhirFormatException("'" + value + "' is not a correct value for " +
                             "enum " + typeof(T).Name );
         }
 
