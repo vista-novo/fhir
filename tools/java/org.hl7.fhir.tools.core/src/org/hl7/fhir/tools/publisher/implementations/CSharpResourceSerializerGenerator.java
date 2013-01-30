@@ -75,7 +75,7 @@ public class CSharpResourceSerializerGenerator extends GenBlock
 			ln("/*");
 			ln("* Starting point for serializing resources");
 			ln("*/");
-			ln("public static partial class ResourceSerializer");
+			ln("public static partial class FhirSerializer");
 			bs("{");
 				resourceSerializer(definitions);
 				ln();

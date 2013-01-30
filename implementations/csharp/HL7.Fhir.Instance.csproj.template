@@ -65,12 +65,12 @@
     <Compile Include="Model.Support\XHtml.cs" />
     <Compile Include="Model.Support\Instant.cs" />
 	<Compile Include="Model.Support\ModelInfo.cs" />
-    <Compile Include="Model.Support\ResourceReference.cs" />
 	<Compile Include="Parsers.Support\PrimitiveParser.cs" />
     <Compile Include="Parsers.Support\ParserUtils.cs" />
     <Compile Include="Parsers.Support\IFhirReader.cs" />
     <Compile Include="Parsers.Support\XmlFhirReader.cs" />
     <Compile Include="Parsers.Support\JsonFhirReader.cs" />
+	<Compile Include="Parsers.Support\FhirParser.cs" />
     <Compile Include="Support\ElementContent.cs" />
     <Compile Include="Support\ErrorList.cs" />
     <Compile Include="Support\Util.cs" />
@@ -79,11 +79,10 @@
     <Compile Include="Serializers.Support\XmlFhirWriter.cs" />
     <Compile Include="Serializers.Support\PrimitiveSerializer.cs" />
     <Compile Include="Serializers.Support\SerializationUtil.cs" />
-	<Compile Include="Serializers.Support\ResourceSerializer.cs" />
+	<Compile Include="Serializers.Support\FhirSerializer.cs" />
     <Compile Include="Support\Bundle.cs" />
 	<Compile Include="Support\BundleXml.cs" />
     <Compile Include="Support\BundleJson.cs" />
-	<Compile Include="Parsers.Support\ResourceParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

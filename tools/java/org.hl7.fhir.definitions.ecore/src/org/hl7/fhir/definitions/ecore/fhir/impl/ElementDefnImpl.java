@@ -51,6 +51,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getInvariants <em>Invariants</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getParentType <em>Parent Type</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getParentElement <em>Parent Element</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#isLanguageSpecifier <em>Language Specifier</em>}</li>
  * </ul>
  * </p>
  *
@@ -254,6 +255,26 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * @ordered
 	 */
 	protected ElementDefn parentElement;
+
+	/**
+	 * The default value of the '{@link #isLanguageSpecifier() <em>Language Specifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isLanguageSpecifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean LANGUAGE_SPECIFIER_EDEFAULT = false;
+
+		/**
+	 * The cached value of the '{@link #isLanguageSpecifier() <em>Language Specifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isLanguageSpecifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean languageSpecifier = LANGUAGE_SPECIFIER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -494,6 +515,27 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isLanguageSpecifier() {
+		return languageSpecifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLanguageSpecifier(boolean newLanguageSpecifier) {
+		boolean oldLanguageSpecifier = languageSpecifier;
+		languageSpecifier = newLanguageSpecifier;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__LANGUAGE_SPECIFIER, oldLanguageSpecifier, languageSpecifier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 //	public boolean hasNestedElements() {
@@ -548,6 +590,16 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	@Override
 	public boolean isPolymorph() {
 		return getTypes() != null && getTypes().size() > 1;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean containsResource() {
+		return getTypes() != null && getTypes().size() == 1 &&
+				getTypes().get(0).getName().equals("Resource");
 	}
 
 	/**
@@ -831,6 +883,8 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
 				if (resolve) return getParentElement();
 				return basicGetParentElement();
+			case FhirPackage.ELEMENT_DEFN__LANGUAGE_SPECIFIER:
+				return isLanguageSpecifier();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -886,6 +940,9 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
 				setParentElement((ElementDefn)newValue);
 				return;
+			case FhirPackage.ELEMENT_DEFN__LANGUAGE_SPECIFIER:
+				setLanguageSpecifier((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -937,6 +994,9 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
 				setParentElement((ElementDefn)null);
 				return;
+			case FhirPackage.ELEMENT_DEFN__LANGUAGE_SPECIFIER:
+				setLanguageSpecifier(LANGUAGE_SPECIFIER_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -975,6 +1035,8 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return getParentType() != null;
 			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
 				return parentElement != null;
+			case FhirPackage.ELEMENT_DEFN__LANGUAGE_SPECIFIER:
+				return languageSpecifier != LANGUAGE_SPECIFIER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1001,6 +1063,8 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 		result.append(mustSupport);
 		result.append(", exampleValue: ");
 		result.append(exampleValue);
+		result.append(", languageSpecifier: ");
+		result.append(languageSpecifier);
 		result.append(')');
 		return result.toString();
 	}

@@ -92,6 +92,19 @@ public class ResourceDefn  {
 	   this.root = root;
    }
 
+   
+   private boolean abstract_ = false;
+   
+   public boolean isAbstract()
+   {
+	   return abstract_;
+   }
+   
+   public void setAbstract(boolean value)
+   {
+	   abstract_ = value;
+   }
+   
    private boolean forFutureUse = false;
    
    public boolean isForFutureUse()

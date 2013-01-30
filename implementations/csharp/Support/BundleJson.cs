@@ -189,7 +189,7 @@ namespace HL7.Fhir.Instance.Support
             //parser takes as input, so no choice for now...
             string contents = token.ToString();
             JsonTextReader r = new JsonTextReader(new StringReader(contents));
-            return ResourceParser.ParseResource( new JsonFhirReader(r), errors);
+            return FhirParser.ParseResource( new JsonFhirReader(r), errors);
         }
 
         private static void getBinaryContentsFromEntry(JToken entryContent, BinaryEntry result, ErrorList errors)

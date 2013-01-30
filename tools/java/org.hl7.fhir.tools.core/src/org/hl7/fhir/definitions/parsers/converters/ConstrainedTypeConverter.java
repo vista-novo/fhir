@@ -75,7 +75,7 @@ public class ConstrainedTypeConverter
 		TypeRef baseType = 
 				TypeRefConverter.buildTypeRefsFromFhirTypeName(constrainedType.getComment()).get(0);
 		
-		result.setBaseType( baseType );
+		result.setConstrainedBaseType( baseType );
 		result.setName( constrainedType.getCode() );
 		result.setFullName( constrainedType.getCode() );		// for now, constraints can only be global
 		
@@ -92,6 +92,6 @@ public class ConstrainedTypeConverter
 
 	public static void FixTypeRefs(ConstrainedTypeDefn constrained) 
 	{
-		TypeRefConverter.Fix(constrained.getBaseType(), constrained.getScope());
+		TypeRefConverter.Fix(constrained.getConstrainedBaseType(), constrained.getScope());
 	}
 }

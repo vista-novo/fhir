@@ -102,7 +102,7 @@ public class CSharpModelResourceGenerator extends GenBlock
 			ln("*/");
 			ln("public partial class " +  GeneratorUtils.generateCSharpTypeName(constrained.getName()) );
 				nl(" : ");
-				nl(GeneratorUtils.generateCSharpTypeName(constrained.getBaseType().getName()));
+				nl(GeneratorUtils.generateCSharpTypeName(constrained.getConstrainedBaseType().getName()));
 			bs("{");
 				ln("// TODO: Add code to enforce these constraints:");
 				for( Invariant inv : constrained.getDetails() ) 
@@ -155,13 +155,7 @@ public class CSharpModelResourceGenerator extends GenBlock
 	
 			// Generate this classes properties
 			for( ElementDefn member : composite.getElements() )
-			{
-				// Generate members, except for resource-specific
-				// members as they are already defined in the abstract
-				// and hand-made Resource class
-				if( !GeneratorUtils.isBaseResourceMember(member) )
-					generateMemberProperty(composite, member);
-			}
+				generateMemberProperty(composite, member);
 		es("}");
 		ln();
 		
@@ -245,16 +239,19 @@ public class CSharpModelResourceGenerator extends GenBlock
 	
 	private void compositeClassHeader(CompositeTypeDefn composite) throws Exception
 	{
-		ln( "public partial class " +
+		ln( "public ");
+			if( composite.isAbstract() ) nl("abstract ");
+			nl("partial class " +
 				GeneratorUtils.generateCSharpTypeName(composite.getName()) );
 				
 		// Derive from appropriate baseclass
-		nl(" : ");
-		
-		if( composite.isResource() ) 
-			nl( "Resource" );
+		if( composite.getBaseType() != null ) 
+		{
+			nl( " : " ); 
+			nl(GeneratorUtils.buildFullyScopedTypeName(composite.getBaseType()));
+		}
 		else if( composite.isComposite() ) 
-			nl( "Composite" );
+			nl( " : Composite" );
 	}
 	
 	public GenBlock enums( List<BindingDefn> bindings ) throws Exception

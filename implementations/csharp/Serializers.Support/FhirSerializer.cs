@@ -40,7 +40,7 @@ using System.Xml;
 
 namespace HL7.Fhir.Instance.Serializers
 {
-    public partial class ResourceSerializer
+    public partial class FhirSerializer
     {
 
         public static byte[] ResourceAsJsonBytes(Resource resource, Encoding encoding = null)
@@ -63,7 +63,7 @@ namespace HL7.Fhir.Instance.Serializers
 
             StringWriter sw = new StringWriter(resultBuilder);
             JsonWriter jw = new JsonTextWriter(sw);
-            ResourceSerializer.Save(resource, jw);
+            FhirSerializer.Save(resource, jw);
 
             return resultBuilder.ToString();
         }

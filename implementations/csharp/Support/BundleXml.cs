@@ -337,7 +337,7 @@ namespace HL7.Fhir.Instance.Support
         private static Resource getContents(SyndicationContent content, ErrorList errors)
         {
             string contents = getContentsFromSyndication(content, errors);
-            return ResourceParser.ParseResourceFromXml(contents, errors);
+            return FhirParser.ParseResourceFromXml(contents, errors);
         }
 
 

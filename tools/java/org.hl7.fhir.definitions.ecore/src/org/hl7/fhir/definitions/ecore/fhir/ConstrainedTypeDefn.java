@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn#getBaseType <em>Base Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn#getConstrainedBaseType <em>Constrained Base Type</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn#getDetails <em>Details</em>}</li>
  * </ul>
  * </p>
@@ -27,30 +27,30 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface ConstrainedTypeDefn extends TypeDefn {
 	/**
-	 * Returns the value of the '<em><b>Base Type</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Constrained Base Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Base Type</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Constrained Base Type</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Base Type</em>' containment reference.
-	 * @see #setBaseType(TypeRef)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getConstrainedTypeDefn_BaseType()
+	 * @return the value of the '<em>Constrained Base Type</em>' containment reference.
+	 * @see #setConstrainedBaseType(TypeRef)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getConstrainedTypeDefn_ConstrainedBaseType()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	TypeRef getBaseType();
+	TypeRef getConstrainedBaseType();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn#getBaseType <em>Base Type</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn#getConstrainedBaseType <em>Constrained Base Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Base Type</em>' containment reference.
-	 * @see #getBaseType()
+	 * @param value the new value of the '<em>Constrained Base Type</em>' containment reference.
+	 * @see #getConstrainedBaseType()
 	 * @generated
 	 */
-	void setBaseType(TypeRef value);
+	void setConstrainedBaseType(TypeRef value);
 
 	/**
 	 * Returns the value of the '<em><b>Details</b></em>' containment reference list.

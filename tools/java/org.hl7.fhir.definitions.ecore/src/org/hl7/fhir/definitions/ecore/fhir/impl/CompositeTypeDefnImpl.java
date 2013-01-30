@@ -30,6 +30,7 @@ import org.hl7.fhir.definitions.ecore.fhir.Invariant;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,6 +44,8 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getInvariants <em>Invariants</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#isUnnamedElementGroup <em>Unnamed Element Group</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#isAbstract <em>Abstract</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getBaseType <em>Base Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -103,6 +106,33 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * @ordered
 	 */
 	protected boolean unnamedElementGroup = UNNAMED_ELEMENT_GROUP_EDEFAULT;
+	/**
+	 * The default value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ABSTRACT_EDEFAULT = false;
+	/**
+	 * The cached value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean abstract_ = ABSTRACT_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getBaseType() <em>Base Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBaseType()
+	 * @generated
+	 * @ordered
+	 */
+	protected TypeRef baseType;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -201,6 +231,70 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isAbstract() {
+		return abstract_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAbstract(boolean newAbstract) {
+		boolean oldAbstract = abstract_;
+		abstract_ = newAbstract;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.COMPOSITE_TYPE_DEFN__ABSTRACT, oldAbstract, abstract_));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TypeRef getBaseType() {
+		return baseType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetBaseType(TypeRef newBaseType, NotificationChain msgs) {
+		TypeRef oldBaseType = baseType;
+		baseType = newBaseType;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.COMPOSITE_TYPE_DEFN__BASE_TYPE, oldBaseType, newBaseType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBaseType(TypeRef newBaseType) {
+		if (newBaseType != baseType) {
+			NotificationChain msgs = null;
+			if (baseType != null)
+				msgs = ((InternalEObject)baseType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.COMPOSITE_TYPE_DEFN__BASE_TYPE, null, msgs);
+			if (newBaseType != null)
+				msgs = ((InternalEObject)newBaseType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.COMPOSITE_TYPE_DEFN__BASE_TYPE, null, msgs);
+			msgs = basicSetBaseType(newBaseType, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.COMPOSITE_TYPE_DEFN__BASE_TYPE, newBaseType, newBaseType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	@Override
@@ -273,6 +367,8 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 			case FhirPackage.COMPOSITE_TYPE_DEFN__INVARIANTS:
 				return ((InternalEList<?>)getInvariants()).basicRemove(otherEnd, msgs);
+			case FhirPackage.COMPOSITE_TYPE_DEFN__BASE_TYPE:
+				return basicSetBaseType(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -295,6 +391,10 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 				return getInvariants();
 			case FhirPackage.COMPOSITE_TYPE_DEFN__UNNAMED_ELEMENT_GROUP:
 				return isUnnamedElementGroup();
+			case FhirPackage.COMPOSITE_TYPE_DEFN__ABSTRACT:
+				return isAbstract();
+			case FhirPackage.COMPOSITE_TYPE_DEFN__BASE_TYPE:
+				return getBaseType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -327,6 +427,12 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 			case FhirPackage.COMPOSITE_TYPE_DEFN__UNNAMED_ELEMENT_GROUP:
 				setUnnamedElementGroup((Boolean)newValue);
 				return;
+			case FhirPackage.COMPOSITE_TYPE_DEFN__ABSTRACT:
+				setAbstract((Boolean)newValue);
+				return;
+			case FhirPackage.COMPOSITE_TYPE_DEFN__BASE_TYPE:
+				setBaseType((TypeRef)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -354,6 +460,12 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 			case FhirPackage.COMPOSITE_TYPE_DEFN__UNNAMED_ELEMENT_GROUP:
 				setUnnamedElementGroup(UNNAMED_ELEMENT_GROUP_EDEFAULT);
 				return;
+			case FhirPackage.COMPOSITE_TYPE_DEFN__ABSTRACT:
+				setAbstract(ABSTRACT_EDEFAULT);
+				return;
+			case FhirPackage.COMPOSITE_TYPE_DEFN__BASE_TYPE:
+				setBaseType((TypeRef)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -376,6 +488,10 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 				return invariants != null && !invariants.isEmpty();
 			case FhirPackage.COMPOSITE_TYPE_DEFN__UNNAMED_ELEMENT_GROUP:
 				return unnamedElementGroup != UNNAMED_ELEMENT_GROUP_EDEFAULT;
+			case FhirPackage.COMPOSITE_TYPE_DEFN__ABSTRACT:
+				return abstract_ != ABSTRACT_EDEFAULT;
+			case FhirPackage.COMPOSITE_TYPE_DEFN__BASE_TYPE:
+				return baseType != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -426,6 +542,8 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (unnamedElementGroup: ");
 		result.append(unnamedElementGroup);
+		result.append(", abstract: ");
+		result.append(abstract_);
 		result.append(')');
 		return result.toString();
 	}

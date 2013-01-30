@@ -35,7 +35,8 @@ public interface TypeRef extends EObject {
 	public final static String COMPOSITE_PSEUDOTYPE_NAME = "Composite";
 	public final static String IDREF_PSEUDOTYPE_NAME = "idref";
 	public final static String XHTML_PSEUDOTYPE_NAME = "xhtml";
-
+	
+	public final static String RESOURCE_TYPE_NAME = "Resource";
 	public final static String RESOURCEREF_TYPE_NAME = "ResourceReference";
 	public static final Object DATA_PSEUDOTYPE_NAME = "Data";
 	

@@ -427,6 +427,14 @@ public class GeneratorUtils {
 	{
 		String result = Utilities.capitalize(member.getName());
 		
+		// At this moment, Extension contains both an inherited property extensions,
+		// and it redefines extensions for nested extensions, change the name here
+		if( result.equals("Extension") && member.getParentType().getName().equals("Extension") )
+			result = "NestedExtension";
+
+		// Pluralize for arrays
+		if( member.isRepeating() ) result += "s";
+		
 		// An attribute cannot have the same name as a nested type
 		for( CompositeTypeDefn composite : member.getParentType().getLocalCompositeTypes() )
 		{
@@ -646,13 +654,13 @@ public class GeneratorUtils {
 		return result;
 	}
 	
-	public static boolean isBaseResourceMember( ElementDefn element )
-	{
-		return  element.getParentType().isResource() &&
-			//	(element.getName().equals("id") || 
-					(	element.getName().equals("extension")
-						|| element.getName().equals("text") );
-	}
+//	public static boolean isBaseResourceMember( ElementDefn element )
+//	{
+//		return  element.getParentType().isResource() &&
+//			//	(element.getName().equals("id") || 
+//					(	element.getName().equals("extension")
+//						|| element.getName().equals("text") );
+//	}
 
 
 }

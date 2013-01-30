@@ -24,6 +24,7 @@ import org.hl7.fhir.definitions.ecore.fhir.Example;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.SearchParameter;
+import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 /**
  * <!-- begin-user-doc -->

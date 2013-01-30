@@ -81,6 +81,7 @@
     <xsd:attribute name="mustUnderstand" type="xsd:boolean"/>
     <xsd:attribute name="mustSupport" type="xsd:boolean"/>
     <xsd:attribute name="exampleValue" type="xsd:string"/>
+    <xsd:attribute name="languageSpecifier" type="xsd:boolean"/>
     <xsd:attribute name="content" type="xsd:string"/>
     <xsd:attribute name="parentType" type="xsd:string"/>
     <xsd:attribute name="parentElement" type="xsd:string"/>
@@ -199,7 +200,7 @@
     <xsd:complexContent>
       <xsd:extension base="fhir:TypeDefn">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="baseType" type="fhir:TypeRef"/>
+          <xsd:element name="constrainedBaseType" type="fhir:TypeRef"/>
           <xsd:element name="details" type="fhir:Invariant"/>
         </xsd:choice>
       </xsd:extension>
@@ -285,8 +286,10 @@
           <xsd:element name="bindings" type="fhir:BindingDefn"/>
           <xsd:element name="elements" type="fhir:ElementDefn"/>
           <xsd:element name="invariants" type="fhir:Invariant"/>
+          <xsd:element name="baseType" type="fhir:TypeRef"/>
         </xsd:choice>
         <xsd:attribute name="unnamedElementGroup" type="xsd:boolean"/>
+        <xsd:attribute name="abstract" type="xsd:boolean"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

@@ -67,7 +67,7 @@ namespace HL7.Fhir.Instance.Tests
                 {
                     Url = new Uri("http://hl7.org/fhir/profiles/@3141#test"),
                     Value = new FhirBoolean(true),
-                    Extension_ = new List<Extension>()
+                    NestedExtensions = new List<Extension>()
                         {
                             new Extension()
                             {
@@ -177,7 +177,7 @@ namespace HL7.Fhir.Instance.Tests
             IFhirReader r = new XmlFhirReader(xr);
 
             ErrorList errors = new ErrorList();
-            DiagnosticReport rep = (DiagnosticReport)ResourceParser.ParseResource(r, errors);
+            DiagnosticReport rep = (DiagnosticReport)FhirParser.ParseResource(r, errors);
 
             Assert.IsNotNull(rep);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());

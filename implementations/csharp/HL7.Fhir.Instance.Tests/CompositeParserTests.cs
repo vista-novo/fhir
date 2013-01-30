@@ -205,11 +205,11 @@ namespace HL7.Fhir.Instance.Tests
             ErrorList errors = new ErrorList();
             CodeableConcept result = CodeableConceptParser.ParseCodeableConcept(r, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual(2, result.Coding.Count);
-            Assert.AreEqual("R51", result.Coding[0].Code.Contents);
-            Assert.AreEqual("25064002", result.Coding[1].Code.Contents);
-            Assert.AreEqual("http://snomed.info/", result.Coding[1].System.Contents.ToString());
-            Assert.AreEqual("1", result.Coding[1].ReferralId);
+            Assert.AreEqual(2, result.Codings.Count);
+            Assert.AreEqual("R51", result.Codings[0].Code.Contents);
+            Assert.AreEqual("25064002", result.Codings[1].Code.Contents);
+            Assert.AreEqual("http://snomed.info/", result.Codings[1].System.Contents.ToString());
+            Assert.AreEqual("1", result.Codings[1].ReferralId);
 
 
             string jsonString = "{ \"someElem\" : { \"coding\" : [ " +
@@ -222,11 +222,11 @@ namespace HL7.Fhir.Instance.Tests
             errors.Clear();
             result = CodeableConceptParser.ParseCodeableConcept(new JsonFhirReader(jr), errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual(2, result.Coding.Count);
-            Assert.AreEqual("R51", result.Coding[0].Code.Contents);
-            Assert.AreEqual("25064002", result.Coding[1].Code.Contents);
-            Assert.AreEqual("http://snomed.info/", result.Coding[1].System.Contents.ToString());
-            Assert.AreEqual("1", result.Coding[1].ReferralId);
+            Assert.AreEqual(2, result.Codings.Count);
+            Assert.AreEqual("R51", result.Codings[0].Code.Contents);
+            Assert.AreEqual("25064002", result.Codings[1].Code.Contents);
+            Assert.AreEqual("http://snomed.info/", result.Codings[1].System.Contents.ToString());
+            Assert.AreEqual("1", result.Codings[1].ReferralId);
         }
 
         [TestMethod]
@@ -319,7 +319,7 @@ namespace HL7.Fhir.Instance.Tests
             XmlFhirReader r = new XmlFhirReader(xr);
 
             ErrorList errors = new ErrorList();
-            Patient p = (Patient)ResourceParser.ParseResource(r, errors);
+            Patient p = (Patient)FhirParser.ParseResource(r, errors);
 
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.IsNotNull(p);
@@ -334,13 +334,13 @@ namespace HL7.Fhir.Instance.Tests
             IFhirReader r = new XmlFhirReader(xr);
 
             ErrorList errors = new ErrorList();
-            DiagnosticReport rep = (DiagnosticReport)ResourceParser.ParseResource(r, errors);
+            DiagnosticReport rep = (DiagnosticReport)FhirParser.ParseResource(r, errors);
 
             Assert.IsNotNull(rep);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
 
             Assert.AreEqual("2011-03-04T08:30:00+11:00", rep.DiagnosticTime.ToString());
-            Assert.AreEqual(17, rep.Results.Result.Count);
+            Assert.AreEqual(17, rep.Results.Results.Count);
 
             throw new NotImplementedException("Check values in the inlined results");
 //            Assert.AreEqual(typeof(Quantity), rep.Results.Result[1].Value.GetType());
@@ -364,54 +364,66 @@ namespace HL7.Fhir.Instance.Tests
             ResourceReference result = ResourceReferenceParser.ParseResourceReference(r, errors);
 
             Assert.AreEqual("Organization", result.Type.Contents);
-            Assert.AreEqual("http://hl7.org/fhir/organization/@1", result.Url.Contents.ToString());
+            Assert.AreEqual("http://hl7.org/fhir/organization/@1", result.Url.Contents.ToString());    
+        }
 
 
-            string xmlNestedString = @"<x xmlns='http://hl7.org/fhir'>
-                   <Provider>
-                 <identifier>
-                    <identifier>  
-                      <system>htp://www.acme.org/providers</system>
-                      <id>23</id>
-                    </identifier>
-                  </identifier>
-              <details>
-                <name>
-                  <family>Careful</family>
-                  <given>Adam</given>
-                  <prefix>Dr</prefix>
-                </name>
-              </details>
+        [TestMethod]
+        public void TestExtendedResource()
+        {
+            throw new NotImplementedException();
+        }
 
-              <organization>
-                <type>Organization</type>
-                <url>1</url>  
-              </organization> 
+        [TestMethod]
+        public void TestGetContainedResources()
+        {
+            throw new NotImplementedException();
 
-              <!--   Referring Provider for the first 3 months of 2012   -->
-              <role>
-                <coding>
-                  <system>http://hl7.org/fhir/sid/v2-0286</system>
-                  <code>RP</code>
-                </coding>
-              </role>
-  
-              <period>
-                <start>2012-01-01</start>
-                <end>2012-03-31</end>
-              </period>
-            </Provider>
-             </x>";
+//            string xmlNestedString = @"<x xmlns='http://hl7.org/fhir'>
+//                   <Provider>
+//                 <identifier>
+//                    <identifier>  
+//                      <system>htp://www.acme.org/providers</system>
+//                      <id>23</id>
+//                    </identifier>
+//                  </identifier>
+//              <details>
+//                <name>
+//                  <family>Careful</family>
+//                  <given>Adam</given>
+//                  <prefix>Dr</prefix>
+//                </name>
+//              </details>
+//
+//              <organization>
+//                <type>Organization</type>
+//                <url>1</url>  
+//              </organization> 
+//
+//              <!--   Referring Provider for the first 3 months of 2012   -->
+//              <role>
+//                <coding>
+//                  <system>http://hl7.org/fhir/sid/v2-0286</system>
+//                  <code>RP</code>
+//                </coding>
+//              </role>
+//  
+//              <period>
+//                <start>2012-01-01</start>
+//                <end>2012-03-31</end>
+//              </period>
+//            </Provider>
+//             </x>";
 
-            xr = fromString(xmlNestedString); xr.Read();
-            r = new XmlFhirReader(xr);
-            errors = new ErrorList();
-            result = ResourceReferenceParser.ParseResourceReference(r, errors);
+//            xr = fromString(xmlNestedString); xr.Read();
+//            r = new XmlFhirReader(xr);
+//            errors = new ErrorList();
+//            result = ResourceReferenceParser.ParseResourceReference(r, errors);
 
-            Assert.IsNotNull(result.InlinedContent);
-            Assert.IsInstanceOfType(result.InlinedContent, typeof(Provider));
-            Provider prov = (Provider)result.InlinedContent;
-            Assert.AreEqual("1", prov.Organization.Url.ToString());
+//            Assert.IsNotNull(result.InlinedContent);
+//            Assert.IsInstanceOfType(result.InlinedContent, typeof(Provider));
+//            Provider prov = (Provider)result.InlinedContent;
+//            Assert.AreEqual("1", prov.Organization.Url.ToString());
         }
 
         [TestMethod]
@@ -434,7 +446,7 @@ namespace HL7.Fhir.Instance.Tests
                 XmlReader xr = XmlReader.Create(new StringReader(text), settings);
                 IFhirReader r = new XmlFhirReader(xr);
                 ErrorList errors = new ErrorList();
-                DiagnosticReport rep = (DiagnosticReport)ResourceParser.ParseResource(r, errors);
+                DiagnosticReport rep = (DiagnosticReport)FhirParser.ParseResource(r, errors);
             }
 
             sw.Stop();

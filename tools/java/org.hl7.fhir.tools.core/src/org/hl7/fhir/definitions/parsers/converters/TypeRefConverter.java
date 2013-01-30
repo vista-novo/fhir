@@ -99,7 +99,9 @@ public class TypeRefConverter
 			}
 			else
 			{
-				// Excel mentions "Resource", but this is actually a "ResourceReference"
+				// Excel mentions "Resource", but this is actually either a "ResourceReference"
+				// or a contained Resource (in the last case, the name is correct and passes
+				// unaltered)
 				if( ref.isResourceReference() )
 				{
 					convertedType.setName(TypeRef.RESOURCEREF_TYPE_NAME);
@@ -117,15 +119,6 @@ public class TypeRefConverter
 		return result;
 	}
 	
-	
-//	private static boolean checkIsPseudoType( TypeRef candidate )
-//	{
-//		return
-//			candidate.getName().equals(TypeRef.PRIMITIVE_PSEUDOTYPE_NAME) ||
-//			candidate.getName().equals(TypeRef.COMPOSITE_PSEUDOTYPE_NAME) ||
-//			candidate.getName().equals(TypeRef.XHTML_PSEUDOTYPE_NAME) ||
-//			candidate.getName().equals(TypeRef.IDREF_PSEUDOTYPE_NAME);
-//	}
 	
 	
 	private static List<org.hl7.fhir.definitions.model.TypeRef> 

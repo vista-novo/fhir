@@ -36,16 +36,13 @@ import java.util.List;
 /*
  * Syntax for type declarations
  * 
- * typeSpec = '@' elementreference | '[param]' | 'xhtml' | 'xml:ID' |
- * 'Interval(' orderedType ')' | 'Resource(' resourceParams ')' | type
+ * typeSpec = '@' elementreference | '[param]' | 'xhtml' | 'xml:ID' | 'xml:lang'
+ * 'Interval(' orderedType ')' | 'Resource(' resourceParams ')' | Resource | type
  * ('|' type)* | '*'
  * 
- * resourceParams = resourceType ('|' resourceType)* | Any type =
- * primitiveType | dataType | structure
+ * resourceParams = resourceType ('|' resourceType)* | Any 
+ * type = primitiveType | dataType | structure
  * 
- * NB: mapping of primitive types is dependent on dataAbsenceAllowed. Is
- * allowed, then the primitives must be mapped to a subclass of Type,
- * otherwise to the corresponding C# primitive (or XsdDateTime).
  */
 
 public class TypeRef {
@@ -113,8 +110,16 @@ public class TypeRef {
 	
 	public boolean isResourceReference()
 	{
-		return name.equals("Resource");
+		// When the type is Resource(X), this is a resource reference
+		return name.equals("Resource") && !params.isEmpty();
 	}
+	
+	public boolean isContainedResource()
+	{
+		// When the type is Resource, it's a contained resource
+		return name.equals("Resource") && params.isEmpty();
+	}
+	
 
 	public boolean isElementReference()
 	{
@@ -133,18 +138,21 @@ public class TypeRef {
 				getParams().size() == 1 &&
 				getParams().get(0).equals(ANY_RESOURCE_GENERIC_ARG);
 	}
-	
+
+	private boolean isExtension() 
+	{
+	    return name.equals("Extension");
+	}
+
+
 	public final static String ANY_RESOURCE_GENERIC_ARG = "Any";
 	
 	public boolean isSpecialType() {
-		return isIdRef() || isXhtml() || isUnboundGenericParam()
+		return isIdRef() || isXhtml() || isUnboundGenericParam() || isXmlLang() 
 				|| isWildcardType() || name.equals("Type") || name.equals("Narrative")
-				|| name.equals("GenericType") || isResourceReference() || isExtension();
+				|| name.equals("GenericType") || isResourceReference() || 
+				isContainedResource() || isExtension();
 	}
-
-	private boolean isExtension() {
-    return name.equals("Extension");
-  }
 
   public String summary() {
 		String s = name;

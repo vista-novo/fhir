@@ -436,6 +436,15 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getElementDefn_LanguageSpecifier() {
+		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EAttribute getElementDefn_MustSupport() {
 		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(4);
@@ -997,8 +1006,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EReference getConstrainedTypeDefn_BaseType() {
+	public EReference getConstrainedTypeDefn_ConstrainedBaseType() {
 		return (EReference)constrainedTypeDefnEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1110,6 +1118,24 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	@Override
 	public EAttribute getCompositeTypeDefn_UnnamedElementGroup() {
 		return (EAttribute)compositeTypeDefnEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCompositeTypeDefn_Abstract() {
+		return (EAttribute)compositeTypeDefnEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCompositeTypeDefn_BaseType() {
+		return (EReference)compositeTypeDefnEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1638,6 +1664,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		createEReference(elementDefnEClass, ELEMENT_DEFN__INVARIANTS);
 		createEReference(elementDefnEClass, ELEMENT_DEFN__PARENT_TYPE);
 		createEReference(elementDefnEClass, ELEMENT_DEFN__PARENT_ELEMENT);
+		createEAttribute(elementDefnEClass, ELEMENT_DEFN__LANGUAGE_SPECIFIER);
 
 		invariantEClass = createEClass(INVARIANT);
 		createEAttribute(invariantEClass, INVARIANT__NAME);
@@ -1696,7 +1723,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		createEAttribute(primitiveTypeDefnEClass, PRIMITIVE_TYPE_DEFN__XSDTYPE);
 
 		constrainedTypeDefnEClass = createEClass(CONSTRAINED_TYPE_DEFN);
-		createEReference(constrainedTypeDefnEClass, CONSTRAINED_TYPE_DEFN__BASE_TYPE);
+		createEReference(constrainedTypeDefnEClass, CONSTRAINED_TYPE_DEFN__CONSTRAINED_BASE_TYPE);
 		createEReference(constrainedTypeDefnEClass, CONSTRAINED_TYPE_DEFN__DETAILS);
 
 		eventDefnEClass = createEClass(EVENT_DEFN);
@@ -1737,6 +1764,8 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		createEReference(compositeTypeDefnEClass, COMPOSITE_TYPE_DEFN__ELEMENTS);
 		createEReference(compositeTypeDefnEClass, COMPOSITE_TYPE_DEFN__INVARIANTS);
 		createEAttribute(compositeTypeDefnEClass, COMPOSITE_TYPE_DEFN__UNNAMED_ELEMENT_GROUP);
+		createEAttribute(compositeTypeDefnEClass, COMPOSITE_TYPE_DEFN__ABSTRACT);
+		createEReference(compositeTypeDefnEClass, COMPOSITE_TYPE_DEFN__BASE_TYPE);
 
 		nameScopeEClass = createEClass(NAME_SCOPE);
 		createEReference(nameScopeEClass, NAME_SCOPE__TYPES);
@@ -1837,12 +1866,15 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEReference(getElementDefn_Invariants(), this.getInvariantRef(), null, "invariants", null, 0, -1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getElementDefn_ParentType(), this.getCompositeTypeDefn(), this.getCompositeTypeDefn_Elements(), "parentType", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getElementDefn_ParentElement(), this.getElementDefn(), null, "parentElement", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getElementDefn_LanguageSpecifier(), ecorePackage.getEBoolean(), "languageSpecifier", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(elementDefnEClass, ecorePackage.getEString(), "getElementPath", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(elementDefnEClass, ecorePackage.getEBoolean(), "isRepeating", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(elementDefnEClass, ecorePackage.getEBoolean(), "isPolymorph", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(elementDefnEClass, ecorePackage.getEBoolean(), "containsResource", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(invariantEClass, Invariant.class, "Invariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInvariant_Name(), ecorePackage.getEString(), "name", null, 1, 1, Invariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1905,7 +1937,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEAttribute(getPrimitiveTypeDefn_Xsdtype(), ecorePackage.getEString(), "xsdtype", null, 1, 1, PrimitiveTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(constrainedTypeDefnEClass, ConstrainedTypeDefn.class, "ConstrainedTypeDefn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConstrainedTypeDefn_BaseType(), this.getTypeRef(), null, "baseType", null, 1, 1, ConstrainedTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConstrainedTypeDefn_ConstrainedBaseType(), this.getTypeRef(), null, "constrainedBaseType", null, 1, 1, ConstrainedTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConstrainedTypeDefn_Details(), this.getInvariant(), null, "details", null, 1, -1, ConstrainedTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventDefnEClass, EventDefn.class, "EventDefn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1956,6 +1988,8 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEReference(getCompositeTypeDefn_Elements(), this.getElementDefn(), this.getElementDefn_ParentType(), "elements", null, 0, -1, CompositeTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCompositeTypeDefn_Invariants(), this.getInvariant(), null, "invariants", null, 0, -1, CompositeTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCompositeTypeDefn_UnnamedElementGroup(), ecorePackage.getEBoolean(), "unnamedElementGroup", null, 0, 1, CompositeTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCompositeTypeDefn_Abstract(), ecorePackage.getEBoolean(), "abstract", null, 0, 1, CompositeTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompositeTypeDefn_BaseType(), this.getTypeRef(), null, "baseType", null, 0, 1, CompositeTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nameScopeEClass, NameScope.class, "NameScope", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNameScope_Types(), this.getTypeDefn(), this.getTypeDefn_Scope(), "types", null, 0, -1, NameScope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

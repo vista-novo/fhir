@@ -28,6 +28,7 @@
     <eOperations name="getElementPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="isRepeating" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="isPolymorph" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="containsResource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="attribute"/>
@@ -80,6 +81,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="parentType" eType="#//CompositeTypeDefn"
         eOpposite="#//CompositeTypeDefn/elements"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parentElement" eType="#//ElementDefn"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="languageSpecifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Invariant">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
@@ -231,7 +233,7 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConstrainedTypeDefn" eSuperTypes="#//TypeDefn">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="baseType" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constrainedBaseType" lowerBound="1"
         eType="#//TypeRef" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="details" lowerBound="1"
         upperBound="-1" eType="#//Invariant" containment="true">
@@ -334,6 +336,9 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unnamedElementGroup" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="baseType" eType="#//TypeRef"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NameScope" abstract="true" interface="true">
     <eOperations name="getLocalResources" upperBound="-1" eType="#//ResourceDefn"/>

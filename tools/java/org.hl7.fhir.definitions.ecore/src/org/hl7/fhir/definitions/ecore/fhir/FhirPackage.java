@@ -417,13 +417,22 @@ public interface FhirPackage extends EPackage {
 	int ELEMENT_DEFN__PARENT_ELEMENT = 12;
 
 	/**
+	 * The feature id for the '<em><b>Language Specifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_DEFN__LANGUAGE_SPECIFIER = 13;
+
+	/**
 	 * The number of structural features of the '<em>Element Defn</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN_FEATURE_COUNT = 13;
+	int ELEMENT_DEFN_FEATURE_COUNT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -813,13 +822,31 @@ public interface FhirPackage extends EPackage {
 	int COMPOSITE_TYPE_DEFN__UNNAMED_ELEMENT_GROUP = TYPE_DEFN_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_TYPE_DEFN__ABSTRACT = TYPE_DEFN_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Base Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_TYPE_DEFN__BASE_TYPE = TYPE_DEFN_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Composite Type Defn</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_TYPE_DEFN_FEATURE_COUNT = TYPE_DEFN_FEATURE_COUNT + 5;
+	int COMPOSITE_TYPE_DEFN_FEATURE_COUNT = TYPE_DEFN_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -910,6 +937,24 @@ public interface FhirPackage extends EPackage {
 	 * @ordered
 	 */
 	int RESOURCE_DEFN__UNNAMED_ELEMENT_GROUP = COMPOSITE_TYPE_DEFN__UNNAMED_ELEMENT_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_DEFN__ABSTRACT = COMPOSITE_TYPE_DEFN__ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Base Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_DEFN__BASE_TYPE = COMPOSITE_TYPE_DEFN__BASE_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Sandbox</b></em>' attribute.
@@ -1191,13 +1236,13 @@ public interface FhirPackage extends EPackage {
 	int CONSTRAINED_TYPE_DEFN__INFRASTRUCTURE = TYPE_DEFN__INFRASTRUCTURE;
 
 	/**
-	 * The feature id for the '<em><b>Base Type</b></em>' containment reference.
+	 * The feature id for the '<em><b>Constrained Base Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINED_TYPE_DEFN__BASE_TYPE = TYPE_DEFN_FEATURE_COUNT + 0;
+	int CONSTRAINED_TYPE_DEFN__CONSTRAINED_BASE_TYPE = TYPE_DEFN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Details</b></em>' containment reference list.
@@ -1684,6 +1729,15 @@ public interface FhirPackage extends EPackage {
 	int PROFILED_ELEMENT_DEFN__PARENT_ELEMENT = ELEMENT_DEFN__PARENT_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Language Specifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__LANGUAGE_SPECIFIER = ELEMENT_DEFN__LANGUAGE_SPECIFIER;
+
+	/**
 	 * The feature id for the '<em><b>Inherited</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1958,6 +2012,17 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getElementDefn_ParentElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isLanguageSpecifier <em>Language Specifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Language Specifier</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isLanguageSpecifier()
+	 * @see #getElementDefn()
+	 * @generated
+	 */
+	EAttribute getElementDefn_LanguageSpecifier();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isMustSupport <em>Must Support</em>}'.
@@ -2578,15 +2643,15 @@ public interface FhirPackage extends EPackage {
 	EClass getConstrainedTypeDefn();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn#getBaseType <em>Base Type</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn#getConstrainedBaseType <em>Constrained Base Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Base Type</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn#getBaseType()
+	 * @return the meta object for the containment reference '<em>Constrained Base Type</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn#getConstrainedBaseType()
 	 * @see #getConstrainedTypeDefn()
 	 * @generated
 	 */
-	EReference getConstrainedTypeDefn_BaseType();
+	EReference getConstrainedTypeDefn_ConstrainedBaseType();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn#getDetails <em>Details</em>}'.
@@ -2706,6 +2771,28 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCompositeTypeDefn_UnnamedElementGroup();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#isAbstract <em>Abstract</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Abstract</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#isAbstract()
+	 * @see #getCompositeTypeDefn()
+	 * @generated
+	 */
+	EAttribute getCompositeTypeDefn_Abstract();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#getBaseType <em>Base Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Base Type</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#getBaseType()
+	 * @see #getCompositeTypeDefn()
+	 * @generated
+	 */
+	EReference getCompositeTypeDefn_BaseType();
 
 	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.NameScope <em>Name Scope</em>}'.
@@ -3343,6 +3430,14 @@ public interface FhirPackage extends EPackage {
 		EReference ELEMENT_DEFN__PARENT_ELEMENT = eINSTANCE.getElementDefn_ParentElement();
 
 		/**
+		 * The meta object literal for the '<em><b>Language Specifier</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT_DEFN__LANGUAGE_SPECIFIER = eINSTANCE.getElementDefn_LanguageSpecifier();
+
+		/**
 		 * The meta object literal for the '<em><b>Must Support</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3817,12 +3912,12 @@ public interface FhirPackage extends EPackage {
 		EClass CONSTRAINED_TYPE_DEFN = eINSTANCE.getConstrainedTypeDefn();
 
 		/**
-		 * The meta object literal for the '<em><b>Base Type</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Constrained Base Type</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONSTRAINED_TYPE_DEFN__BASE_TYPE = eINSTANCE.getConstrainedTypeDefn_BaseType();
+		EReference CONSTRAINED_TYPE_DEFN__CONSTRAINED_BASE_TYPE = eINSTANCE.getConstrainedTypeDefn_ConstrainedBaseType();
 
 		/**
 		 * The meta object literal for the '<em><b>Details</b></em>' containment reference list feature.
@@ -3915,6 +4010,22 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMPOSITE_TYPE_DEFN__UNNAMED_ELEMENT_GROUP = eINSTANCE.getCompositeTypeDefn_UnnamedElementGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Abstract</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPOSITE_TYPE_DEFN__ABSTRACT = eINSTANCE.getCompositeTypeDefn_Abstract();
+
+		/**
+		 * The meta object literal for the '<em><b>Base Type</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPOSITE_TYPE_DEFN__BASE_TYPE = eINSTANCE.getCompositeTypeDefn_BaseType();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.NameScope <em>Name Scope</em>}' class.

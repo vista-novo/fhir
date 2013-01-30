@@ -33,7 +33,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ConstrainedTypeDefnImpl#getBaseType <em>Base Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ConstrainedTypeDefnImpl#getConstrainedBaseType <em>Constrained Base Type</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ConstrainedTypeDefnImpl#getDetails <em>Details</em>}</li>
  * </ul>
  * </p>
@@ -42,14 +42,14 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  */
 public class ConstrainedTypeDefnImpl extends TypeDefnImpl implements ConstrainedTypeDefn {
 	/**
-	 * The cached value of the '{@link #getBaseType() <em>Base Type</em>}' containment reference.
+	 * The cached value of the '{@link #getConstrainedBaseType() <em>Constrained Base Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBaseType()
+	 * @see #getConstrainedBaseType()
 	 * @generated
 	 * @ordered
 	 */
-	protected TypeRef baseType;
+	protected TypeRef constrainedBaseType;
 
 	/**
 	 * The cached value of the '{@link #getDetails() <em>Details</em>}' containment reference list.
@@ -85,9 +85,8 @@ public class ConstrainedTypeDefnImpl extends TypeDefnImpl implements Constrained
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public TypeRef getBaseType() {
-		return baseType;
+	public TypeRef getConstrainedBaseType() {
+		return constrainedBaseType;
 	}
 
 	/**
@@ -95,11 +94,11 @@ public class ConstrainedTypeDefnImpl extends TypeDefnImpl implements Constrained
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetBaseType(TypeRef newBaseType, NotificationChain msgs) {
-		TypeRef oldBaseType = baseType;
-		baseType = newBaseType;
+	public NotificationChain basicSetConstrainedBaseType(TypeRef newConstrainedBaseType, NotificationChain msgs) {
+		TypeRef oldConstrainedBaseType = constrainedBaseType;
+		constrainedBaseType = newConstrainedBaseType;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE, oldBaseType, newBaseType);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINED_BASE_TYPE, oldConstrainedBaseType, newConstrainedBaseType);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -110,19 +109,18 @@ public class ConstrainedTypeDefnImpl extends TypeDefnImpl implements Constrained
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setBaseType(TypeRef newBaseType) {
-		if (newBaseType != baseType) {
+	public void setConstrainedBaseType(TypeRef newConstrainedBaseType) {
+		if (newConstrainedBaseType != constrainedBaseType) {
 			NotificationChain msgs = null;
-			if (baseType != null)
-				msgs = ((InternalEObject)baseType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE, null, msgs);
-			if (newBaseType != null)
-				msgs = ((InternalEObject)newBaseType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE, null, msgs);
-			msgs = basicSetBaseType(newBaseType, msgs);
+			if (constrainedBaseType != null)
+				msgs = ((InternalEObject)constrainedBaseType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINED_BASE_TYPE, null, msgs);
+			if (newConstrainedBaseType != null)
+				msgs = ((InternalEObject)newConstrainedBaseType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINED_BASE_TYPE, null, msgs);
+			msgs = basicSetConstrainedBaseType(newConstrainedBaseType, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE, newBaseType, newBaseType));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINED_BASE_TYPE, newConstrainedBaseType, newConstrainedBaseType));
 	}
 
 	/**
@@ -146,8 +144,8 @@ public class ConstrainedTypeDefnImpl extends TypeDefnImpl implements Constrained
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
-				return basicSetBaseType(null, msgs);
+			case FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINED_BASE_TYPE:
+				return basicSetConstrainedBaseType(null, msgs);
 			case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
 				return ((InternalEList<?>)getDetails()).basicRemove(otherEnd, msgs);
 		}
@@ -162,8 +160,8 @@ public class ConstrainedTypeDefnImpl extends TypeDefnImpl implements Constrained
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
-				return getBaseType();
+			case FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINED_BASE_TYPE:
+				return getConstrainedBaseType();
 			case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
 				return getDetails();
 		}
@@ -179,8 +177,8 @@ public class ConstrainedTypeDefnImpl extends TypeDefnImpl implements Constrained
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
-				setBaseType((TypeRef)newValue);
+			case FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINED_BASE_TYPE:
+				setConstrainedBaseType((TypeRef)newValue);
 				return;
 			case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
 				getDetails().clear();
@@ -198,8 +196,8 @@ public class ConstrainedTypeDefnImpl extends TypeDefnImpl implements Constrained
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
-				setBaseType((TypeRef)null);
+			case FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINED_BASE_TYPE:
+				setConstrainedBaseType((TypeRef)null);
 				return;
 			case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
 				getDetails().clear();
@@ -216,8 +214,8 @@ public class ConstrainedTypeDefnImpl extends TypeDefnImpl implements Constrained
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
-				return baseType != null;
+			case FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINED_BASE_TYPE:
+				return constrainedBaseType != null;
 			case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
 				return details != null && !details.isEmpty();
 		}

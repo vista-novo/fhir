@@ -190,8 +190,12 @@ public class SourceParser {
 		for (String n : ini.getPropertyNames("resources"))
 			loadResource(n, definitions.getResources(), false);
 		
-		definitions.setBaseResource(loadResource("resource", null, false));
-		
+		ResourceDefn baseResource = loadResource("resource", null, false);
+		baseResource.setAbstract(true);
+		definitions.setBaseResource(baseResource);
+				
+		eCoreParseResults.getTypes().add(CompositeTypeConverter.buildResourceFromFhirModel(baseResource, null) );
+			
 		eCoreParseResults.getTypes().addAll(
 				sortTypes(CompositeTypeConverter.buildResourcesFromFhirModel(definitions
 						.getResources().values() )));

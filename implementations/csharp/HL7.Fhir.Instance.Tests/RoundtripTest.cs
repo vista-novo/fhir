@@ -164,7 +164,7 @@ namespace HL7.Fhir.Instance.Tests
             using (XmlReader xr = createReader(file))
             {
                 Debug.WriteLine("  Reading Xml...");
-                singleResult = ResourceParser.ParseResource(new XmlFhirReader(xr), errors);
+                singleResult = FhirParser.ParseResource(new XmlFhirReader(xr), errors);
                 xr.Close();
             }
 
@@ -195,7 +195,7 @@ namespace HL7.Fhir.Instance.Tests
             using (JsonTextReader jr = new JsonTextReader(new System.IO.StreamReader(jsonFile)))
             {
                 Debug.WriteLine("  Reading from json...");
-                singleResult = ResourceParser.ParseResource(new JsonFhirReader(jr), errors);
+                singleResult = FhirParser.ParseResource(new JsonFhirReader(jr), errors);
                 jr.Close();
             }
 

@@ -62,20 +62,19 @@ namespace HL7.Fhir.Instance.Parsers
         public static Code<T> ParseCode<T>(IFhirReader reader, ErrorList errors)
             where T : struct, IConvertible
         {
+            var result = new Code<T>();
+
             try
             {
-                string contents = null;
-                string refId = null;
-
                 string currentElementName = reader.CurrentElementName;
                 reader.EnterElement();
 
                 while (reader.IsAtElement())
                 {
                     if (reader.IsAtRefIdElement())
-                        refId = reader.ReadRefIdContents();
+                        result.ReferralId = reader.ReadRefIdContents();
                     else if (reader.IsAtPrimitiveValueElement())
-                        contents = reader.ReadPrimitiveContents();
+                        result.Contents = Code<T>.Parse(reader.ReadPrimitiveContents()).Contents;
                     else
                     {
                         errors.Add(String.Format("Encountered unknown element {0}", reader.CurrentElementName), reader);
@@ -84,25 +83,13 @@ namespace HL7.Fhir.Instance.Parsers
                 }
 
                 reader.LeaveElement();
-
-                if (!String.IsNullOrEmpty(contents))
-                {
-                    var result = Code<T>.Parse(contents);
-
-                    if (!String.IsNullOrEmpty(refId))
-                        result.ReferralId = refId;
-
-                    return result;
-                }
-
-                return null;
             }
             catch (FhirFormatException ex)
             {
                 errors.Add(ex.Message, reader);
             }
 
-            return null; 
+            return result;
         }       
     }
 }

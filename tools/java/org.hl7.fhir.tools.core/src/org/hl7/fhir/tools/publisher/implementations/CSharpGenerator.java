@@ -36,6 +36,7 @@ import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
+import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.CSFile;
@@ -123,7 +124,8 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 
 		for( CompositeTypeDefn composite : allComplexTypes )
 		{		
-			if( composite.getName() == "ResourceReference") continue;
+			// Don't generate parsers/serializers for abstract stuff (for now)
+			if( composite.isAbstract() ) continue;
 			
 			String xmlParserFilename = parsersDir + composite.getName() + "Parser.cs";			
 				new CSharpResourceParserGenerator(definitions)
@@ -169,7 +171,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		
 		// Generate resource parser entrypoint
 		{
-			String filename = parsersDir + "ResourceParser.cs";
+			String filename = parsersDir + "FhirParser.cs";
 			
 			new CSharpResourceParserGenerator(definitions)
 				.generateResourceParser(definitions).toFile(implDir+filename);						 
@@ -178,7 +180,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		
 		// Generate resource serializer entrypoint
 		{
-			String filename = serializersDir + "ResourceSerializer.cs";
+			String filename = serializersDir + "FhirSerializer.cs";
 			
 			new CSharpResourceSerializerGenerator(definitions)
 				.generateResourceSerializer().toFile(implDir+filename);						 

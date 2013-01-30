@@ -89,7 +89,7 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 		nl(" Parse" + csharpPrimitive);
 		nl("(IFhirReader reader, ErrorList errors)");
 		bs("{");
-			ln(csharpPrimitive); nl(" result = new "); nl(csharpPrimitive); nl("();");
+			ln("var result = new "); nl(csharpPrimitive); nl("();");
 			ln();
         	ln("try");
         	bs("{");

@@ -76,7 +76,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 			ln("/*");
 			ln("* Starting point for parsing resources");
 			ln("*/");
-			ln("public static partial class ResourceParser");
+			ln("public static partial class FhirParser");
 			bs("{");
 				ln("public static Resource ParseResource(IFhirReader reader, ErrorList errors)");
 				bs("{");
@@ -190,6 +190,8 @@ public class CSharpResourceParserGenerator extends GenBlock
 		
 		for( ResourceDefn resource : localResources)
 		{
+			if( resource.isAbstract() ) continue;
+			
 			if( firstTime )
 				ln("if");
 			else
@@ -220,7 +222,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 	public GenBlock generateConstrainedParser( ConstrainedTypeDefn constrained ) throws Exception
 	{
 		CompositeTypeDefn baseType = (CompositeTypeDefn)
-				getDefinitions().findType(constrained.getBaseType().getFullName());
+				getDefinitions().findType(constrained.getConstrainedBaseType().getFullName());
 
 		begin();
 		

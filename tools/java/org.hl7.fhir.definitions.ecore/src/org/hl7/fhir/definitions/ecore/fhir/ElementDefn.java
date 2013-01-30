@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getInvariants <em>Invariants</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentType <em>Parent Type</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentElement <em>Parent Element</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isLanguageSpecifier <em>Language Specifier</em>}</li>
  * </ul>
  * </p>
  *
@@ -228,6 +229,32 @@ public interface ElementDefn extends EObject {
 	void setParentElement(ElementDefn value);
 
 	/**
+	 * Returns the value of the '<em><b>Language Specifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Language Specifier</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Language Specifier</em>' attribute.
+	 * @see #setLanguageSpecifier(boolean)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_LanguageSpecifier()
+	 * @model
+	 * @generated
+	 */
+	boolean isLanguageSpecifier();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isLanguageSpecifier <em>Language Specifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Language Specifier</em>' attribute.
+	 * @see #isLanguageSpecifier()
+	 * @generated
+	 */
+	void setLanguageSpecifier(boolean value);
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
@@ -250,6 +277,14 @@ public interface ElementDefn extends EObject {
 	 * @generated
 	 */
 	boolean isPolymorph();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean containsResource();
 
 	/**
 	 * Returns the value of the '<em><b>Must Support</b></em>' attribute.

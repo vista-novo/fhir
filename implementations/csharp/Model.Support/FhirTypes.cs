@@ -57,17 +57,8 @@ namespace HL7.Fhir.Instance.Model
 
     // Resource is not a subclass of Composite, since it
     // cannot be used in places where you can use composites.
-    public abstract class Resource : IExtendable
+    public abstract partial class Resource : IExtendable
     {
-        /**
-         * Text summary of resource, for human interpretation
-         */
-        public Narrative Text { get; set; }
-
-        /*
-         * Extensions
-         */
-        public List<Extension> Extensions { get; set; }
     }
 
     public abstract class Primitive : Data
