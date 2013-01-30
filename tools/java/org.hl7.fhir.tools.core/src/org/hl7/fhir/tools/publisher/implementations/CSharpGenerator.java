@@ -173,7 +173,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		{
 			String filename = parsersDir + "FhirParser.cs";
 			
-			new CSharpResourceParserGenerator(definitions)
+			new CSharpFhirParserGenerator(definitions)
 				.generateResourceParser(definitions).toFile(implDir+filename);						 
 			generatedFilenames.add(filename);			
 		}

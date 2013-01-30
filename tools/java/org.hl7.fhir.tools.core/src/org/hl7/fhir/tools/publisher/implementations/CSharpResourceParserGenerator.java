@@ -62,163 +62,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 		rgen = new CSharpModelResourceGenerator(defs);
 	}
 
-	public GenBlock generateResourceParser( Definitions definitions ) throws Exception
-	{		
-		begin();
-		
-		inc( rgen.header(definitions.getDate(), definitions.getVersion() ) );
-		ln();
-		ln("using HL7.Fhir.Instance.Model;");
-		ln("using System.Xml;");
-		ln();
-		ln("namespace HL7.Fhir.Instance.Parsers");
-		bs("{");		
-			ln("/*");
-			ln("* Starting point for parsing resources");
-			ln("*/");
-			ln("public static partial class FhirParser");
-			bs("{");
-				ln("public static Resource ParseResource(IFhirReader reader, ErrorList errors)");
-				bs("{");
-					ln("try");
-					bs("{");
-						ln("reader.MoveToContent();");
-						ln();
-						generateResourceCases(definitions.getLocalResources());
-					es("}");
-					ln("catch( Exception xe )");
-					bs("{");
-						ln("errors.Add( xe.Message, reader);");
-						ln("return null;");
-					es("}");
-				es("}");
-				
-			ln();
-			ln();
-			generateDataParser();
-			ln();
-			generateCompositeParser();
-			ln();
-			generatePrimitiveParser();					
-			es("}");
-		es("}");
 	
-		return end();
-	}
-	
-	
-	private GenBlock buildPolymorphParser(String polymorphTypeName, List<?> composites) throws Exception {
-		begin();
-		
-		ln("public static ");
-			nl(polymorphTypeName);
-			nl(" Parse");
-			nl(polymorphTypeName);
-			nl("(IFhirReader reader, ErrorList errors)");
-		bs("{");							
-			generatePolymorphCases(composites);
-		es("}");
-				
-		return end();
-	}
-	
-
-	private GenBlock generateDataParser() throws Exception
-	{
-		List composites = new ArrayList();
-		composites.addAll(getDefinitions().getLocalCompositeTypes());
-		composites.addAll(getDefinitions().getLocalConstrainedTypes());
-		composites.addAll(getDefinitions().getPrimitives());
-
-		return buildPolymorphParser("Data", composites);
-	}
-
-
-	private GenBlock generateCompositeParser() throws Exception
-	{
-		List composites = new ArrayList();
-		composites.addAll(getDefinitions().getLocalCompositeTypes());
-		composites.addAll(getDefinitions().getLocalConstrainedTypes());
-	
-		return buildPolymorphParser("Composite", composites);
-	}
-
-	private GenBlock generatePrimitiveParser() throws Exception
-	{				
-		return buildPolymorphParser("Primitive", getDefinitions().getPrimitives());
-	}
-	
-	
-	private void generatePolymorphCases(List<?> types) throws Exception
-	{
-		boolean firstTime = true;
-		
-		for( Object t : types )
-		{
-			TypeDefn type = (TypeDefn)t;
-			
-			if( firstTime )
-				ln("if");
-			else
-				ln("else if");
-			
-			firstTime = false;
-			
-			nl("( ParserUtils.IsAtElementEndingWith(reader, \"");
-				nl( Utilities.capitalize(type.getName()) );
-				nl("\" ))");
-			bs();
-				ln("return ");
-					nl( buildParserCall(type) );
-					nl(";");
-			es();				
-		}
-		
-		ln("else");
-		bs("{");
-			ln("errors.Add(String.Format(");
-				nl("\"Encountered unrecognized datatype '{0}'\",");
-		        nl("	reader.CurrentElementName), reader);");
-		    ln("return null;");
-		es("}");
-	}
-
-
-	private void generateResourceCases(List<ResourceDefn> localResources)
-	{
-		boolean firstTime = true;
-		
-		for( ResourceDefn resource : localResources)
-		{
-			if( resource.isAbstract() ) continue;
-			
-			if( firstTime )
-				ln("if");
-			else
-				ln("else if");
-			
-			firstTime = false;
-			
-			nl("( ParserUtils.IsAtElement(reader, \"");
-				nl( resource.getName() );
-				nl("\" ) )");
-			bs();
-				ln("return " + resource.getName() + "Parser");
-					nl(".Parse" + resource.getName());
-					nl("(reader, errors);");
-			es();				
-		}
-		
-		ln("else");
-		bs("{");
-			ln("errors.Add(String.Format(");
-				nl("\"Encountered unrecognized resource '{0}'\",");
-		        nl("	reader.CurrentElementName), reader);");
-		    ln("return null;");
-		es("}");
-	}
-
-
 	public GenBlock generateConstrainedParser( ConstrainedTypeDefn constrained ) throws Exception
 	{
 		CompositeTypeDefn baseType = (CompositeTypeDefn)
@@ -322,85 +166,76 @@ public class CSharpResourceParserGenerator extends GenBlock
 	}
 
 
-	private void buildCompositeElementParser(CompositeTypeDefn composite)
-			throws Exception {
-		
-//				
-//		ln("string en = reader.CurrentElementName;");
-//		ln();
-//
-//        ln("// Read id/dar from element's attributes and read starttag");
-//        ln("string refId;"); 
-////        ln("string dar;");
-//
-////		ln("bool hasContent = reader.ReadStartComplexContent(out refId, out dar);");
-//        ln("bool hasContent = reader.ReadStartComplexContent(out refId);");
-//        
-//        if( !composite.isResource() )
-//        {
-//	        ln("result.ReferralId = refId;");
-////	        ln("result.Dar = (DataAbsentReason?)Code<DataAbsentReason>.Parse(dar);");
-//	    }
-//		ln();            
-//		ln("// If this is an empty (xml) node, return immediately");
-//        ln("if (!hasContent) return result;");
-//		ln();
-//  				
-//		
-//		// Generate this classes properties
-//		if( composite.getElements().size() > 0)
-//		{
-//			boolean allowNestedResource = composite.getName().equals(TypeRef.RESOURCEREF_TYPE_NAME);
-//			generateMemberParsers( composite.getElements(), allowNestedResource );
-//			ln();
-//		}
-//		ln("// Read endtag");
-//		ln("reader.ReadEndComplexContent();");
-//		ln();
+	private void buildCompositeElementParser(CompositeTypeDefn composite) throws Exception 
+	{
+		ln("try");
+		bs("{");
+        	ln("string currentElementName = reader.CurrentElementName;");
+        	ln("reader.EnterElement();");
+            ln(); 
+        	ln("while (reader.IsAtElement())");
+            bs("{");           	
+				// Generate this classes properties
+            	List<ElementDefn> allProperties = new ArrayList<ElementDefn>();
+            	allProperties.addAll(composite.getElements());
+            	
+				if( composite.getBaseType() != null )
+				{
+					CompositeTypeDefn baseDefn = (CompositeTypeDefn)definitions.findType(composite.getBaseType().getFullName());
+					allProperties.addAll( baseDefn.getElements() );
+				}
+				
+				generateMemberParsers(allProperties, composite.isResource());
+			es("}");
+			ln();
+			ln("reader.LeaveElement();");
+		es("}");
+		ln("catch (FhirFormatException ex)");
+		bs("{");
+			ln("errors.Add(ex.Message, reader);");
+		es("}");   
 	}
 
 	
 	
-	private GenBlock generateMemberParsers( List<ElementDefn> elements, boolean allowInlinedResource ) throws Exception
+	private GenBlock generateMemberParsers( List<ElementDefn> elements, boolean inResource ) throws Exception
 	{
 		begin();
-				
+
+		boolean first = true;
+		
 		for( ElementDefn member : elements )
 		{			
-			ln("// Parse element " + member.getElementPath());	
-			generateMemberParser(member);
+			ln("// Parse element " + member.getName());	
+			generateMemberParser(member, first);
+			first = false;
 		}
 		
-		// Special case: some resources (at this moment only ResourceReference) contain
-		// a nested inlined resource. Check if there is one if we allow it
-		if( allowInlinedResource )
-		{
-			ln("// Parse nested resource if found");
-			ln("if (ParserUtils.IsAtNestedResource(reader))");
-			bs();
-            	ln("result.InlinedContent = ResourceParser.ParseResource(reader, errors);");
-            es();
-            ln();
-		}
-        
-		ln("if( !ParserUtils.IsAtEndElement(reader, en) )" );
+    	if( !inResource )
+    	{
+    		ln("else if(reader.IsAtRefIdElement())");
+    		ln("	result.ReferralId = reader.ReadRefIdContents();");   
+    	}
+    	ln("else");
         bs("{");
-			ln("errors.Add(String.Format(");
-				nl("\"Encountered unrecognized element '{0}' while parsing '{1}'\",");
-                nl("	reader.CurrentElementName, en), reader);");
-            ln("reader.SkipContents(en);");
-            ln("result = null;");
-		es("}");
-	         
+             ln("errors.Add(String.Format(\"Encountered unknown element {0} while parsing {1}\", reader.CurrentElementName, currentElementName), reader);");
+             ln("reader.SkipSubElementsFor(currentElementName);");
+             ln("result = null;");
+        es("}");
+		        	         
 		return end();
 	}
 
 
-	private void generateMemberParser(ElementDefn member) throws Exception 
+	private void generateMemberParser(ElementDefn member, boolean first) throws Exception 
 	{
 		// First determine the possible names of the properties in the
 		// instance, which might be multiple because of polymorph elements 
-		ln("if( " );		
+		if( first )
+			ln("if( " );
+		else
+			ln("else if( ");
+		
 		nl( buildCheckForElementClause(member,false) );
 		nl(" )");
 		
@@ -425,7 +260,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 				nl(" = new List<");
 				nl(GeneratorUtils.buildFullyScopedTypeName(resultType));
 				nl(">();");
-			ln("reader.ReadStartArray();");
+			ln("reader.EnterArray();");
 			ln();
 			ln("while( ");
 				nl( buildCheckForElementClause(member,true) );
@@ -437,7 +272,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 					nl(");");
 			es();
 			ln();
-			ln("reader.ReadEndArray();");
+			ln("reader.LeaveArray();");
 		es("}");
 	}
 	
@@ -453,25 +288,16 @@ public class CSharpResourceParserGenerator extends GenBlock
 	}
 	
 	
-	private String buildParserCall(TypeDefn def) throws Exception
-	{
-		if( def.isComposite() || def.isConstrained() )
-			return buildCompositeOrConstrainedParserCall(def); 
-		else if( def.isPrimitive() )
-			return buildPrimitiveParserCall((PrimitiveTypeDefn)def);
-		else
-			throw new Exception( "Cannot handle category of type " + def.getName() + " to generate parser call." );
-	}
-	
-	
 	private String buildParserCall(ElementDefn member) throws Exception
 	{
 		TypeRef resultTypeRef = GeneratorUtils.getMostSpecializedCommonBaseForElement(getDefinitions(),member);
 				
-		// Check specials cases: parsing of enumerated codes and
+		// Check specials cases: parsing of enumerated codes, contained resources and
 		// polymorph properties of type Data, Composite or Primitive
 		if( !member.isPolymorph() && GeneratorUtils.isCodeWithCodeList(getDefinitions(), member.getTypes().get(0)) )
 			return buildEnumeratedCodeParserCall(member.getTypes().get(0));
+		else if( member.containsResource() )
+			return buildContainedResourceParserCall();
 		else if( resultTypeRef.getName().equals(TypeRef.PRIMITIVE_PSEUDOTYPE_NAME) ||
 				resultTypeRef.getName().equals(TypeRef.COMPOSITE_PSEUDOTYPE_NAME) ||
 				resultTypeRef.getName().equals(TypeRef.DATA_PSEUDOTYPE_NAME) )
@@ -482,20 +308,35 @@ public class CSharpResourceParserGenerator extends GenBlock
 		return buildParserCall(resultType);
 	}
 	
+	
+	public static String buildParserCall(TypeDefn def) throws Exception
+	{
+		if( def.isComposite() || def.isConstrained() )
+			return buildCompositeOrConstrainedParserCall(def); 
+		else if( def.isPrimitive() )
+			return buildPrimitiveParserCall((PrimitiveTypeDefn)def);
+		else
+			throw new Exception( "Cannot handle element of type " + def.getName() + " to generate parser call." );
+	}
+	
 	private String buildCheckForElementClause( ElementDefn member, Boolean inArray )
 	{
-		String clause = null;
-		
+		// Check for exception: elements of type "language specifier" (xml:lang)
+		if( member.isLanguageSpecifier() )
+			return "reader.IsAtLanguageElement()";
+
 		// Check for exception: XHTML elements are in XHTML namespace
 		if( !member.isPolymorph() && member.getTypes().get(0).getName().equals(TypeRef.XHTML_PSEUDOTYPE_NAME) )
-			clause = "ParserUtils.IsAtXhtmlElement";
+			return "reader.IsAtXhtmlElement()";
+		
+		// Other properties, possibly nested in an array
+		String clause;
+		
+		if( !inArray  )
+			clause = "ParserUtils.IsAtElement";
 		else
-		{
-			if( !inArray  )
-				clause = "ParserUtils.IsAtElement";
-			else
-				clause = "ParserUtils.IsAtArrayElement";
-		}
+			clause = "ParserUtils.IsAtArrayElement";
+
 		clause += "(reader, \"" + member.getName() + "\"";
 					
 		if( !member.isPolymorph() ) 
@@ -507,12 +348,12 @@ public class CSharpResourceParserGenerator extends GenBlock
 	}
 	
 	
-	private String buildCompositeOrConstrainedParserCall(TypeDefn type) throws Exception
+	private static String buildCompositeOrConstrainedParserCall(TypeDefn type) throws Exception
 	{
 		return buildCompositeOrConstrainedParserCall(type, null);
 	}
 	
-	private String buildCompositeOrConstrainedParserCall(TypeDefn type, String existingInstanceName) throws Exception
+	private static String buildCompositeOrConstrainedParserCall(TypeDefn type, String existingInstanceName) throws Exception
 	{		
 		StringBuilder result = new StringBuilder();
 		
@@ -558,15 +399,21 @@ public class CSharpResourceParserGenerator extends GenBlock
 		return result.toString();
 	}
 
-	private String buildPrimitiveParserCall(PrimitiveTypeDefn primitive) throws Exception 
+	private static String buildPrimitiveParserCall(PrimitiveTypeDefn primitive) throws Exception 
 	{
 		return "PrimitiveParser.Parse" +
 				GeneratorUtils.mapPrimitiveToFhirCSharpType(primitive.getName()) +
 				"(reader, errors)";
 	}
 	
+	private String buildContainedResourceParserCall() throws Exception
+	{
+		return "FhirParser.ParseResource(reader,errors)";
+	}
+	
+	
 	private String buildPolymorphParserCall(TypeRef type) throws Exception 
 	{
-		return "ResourceParser.Parse" +	type.getName() + "(reader, errors)";
+		return "FhirParser.Parse" +	type.getName() + "(reader, errors)";
 	}
 }

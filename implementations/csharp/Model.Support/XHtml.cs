@@ -45,15 +45,10 @@ namespace HL7.Fhir.Instance.Model
         {
             try
             {
-                //string xmlValue = null;
+                // Catch incorrect Xhtml content
+                //if (value != null)
+                //    XElement.Parse(value);
 
-                //if (value == null)
-                //    xmlValue = null;
-                //else
-                //    xmlValue = XElement.Parse(value);
-
-                //xmlValue = XElement.Parse(value);
-                //result = new XHtml(xmlValue);
                 result = new XHtml(value);
                 return true;
             }

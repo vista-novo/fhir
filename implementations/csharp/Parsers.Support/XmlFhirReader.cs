@@ -148,7 +148,12 @@ namespace HL7.Fhir.Instance.Parsers
 
         public bool IsAtLanguageElement()
         {
-            return _lastEncounteredLanguageValue != null;
+            return false;
+
+            //I ignore language for now. Since this is a "code" and treated as such
+            //in the parser, the parser doesn't know to call ReadLanguageContents(),
+            //so it wouldn't work.
+            //return _lastEncounteredLanguageValue != null;
         }
 
         public string ReadLanguageContents()
