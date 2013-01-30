@@ -607,19 +607,19 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		if (name.equals("id"))
 			return "datatypes";
 		if (name.equals("idref"))
-			return "xml";
+			return "resources";
 		if (name.equals("date"))
 			return "datatypes";
 		if (name.equals("dateTime"))
 			return "datatypes";
 		if (name.equals("narrative"))
-			return "xml";
+			return "formats";
 		if (name.equals("Narrative"))
-			return "xml";
+			return "formats";
 		if (name.equals("Extension"))
 			return "extensibility";
 		if (name.equals("Resource"))
-			return "xml";
+			return "resources";
 		if (name.equals("Constraint"))
 			return "constraint";
 		if (name.equals("resourceType"))
