@@ -45,9 +45,9 @@ namespace HL7.Fhir.Instance.Parsers
             return ModelInfo.IsKnownResource(reader.CurrentElementName);
         }
 
-        public static bool IsAtElement(IFhirReader reader, string name, bool isPolymorph = false)
+        public static bool IsAtFhirElement(IFhirReader reader, string name, bool isPolymorph = false)
         {
-            if (!reader.IsAtElement())
+            if (!reader.IsAtFhirElement())
                 return false;
 
             if (!isPolymorph)
@@ -68,9 +68,9 @@ namespace HL7.Fhir.Instance.Parsers
         }
 
 
-        public static bool IsAtElementEndingWith(IFhirReader reader, string suffix)
+        public static bool IsAtFhirElementEndingWith(IFhirReader reader, string suffix)
         {
-            if (!reader.IsAtElement())
+            if (!reader.IsAtFhirElement())
                 return false;
 
             return reader.CurrentElementName.EndsWith(suffix);

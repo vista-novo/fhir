@@ -3,7 +3,9 @@ package org.hl7.fhir.tools.publisher.implementations;
 import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
+import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 /*
@@ -84,6 +86,9 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 		String csharpPrimitive = GeneratorUtils
 				.mapPrimitiveToFhirCSharpType(primitive.getName());
 
+		CSharpResourceParserGenerator rgen = new CSharpResourceParserGenerator(this.definitions);
+		
+		
 		ln("public static ");
 		nl(csharpPrimitive);
 		nl(" Parse" + csharpPrimitive);
@@ -96,13 +101,14 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 				ln("string currentElementName = reader.CurrentElementName;");
 				ln("reader.EnterElement();");
 				ln();
-            	ln("while (reader.IsAtElement())");
+            	ln("while (reader.HasMoreElements())");
             	bs("{");
                 	ln("if (reader.IsAtRefIdElement())");
                 	ln("	result.ReferralId = reader.ReadRefIdContents();");
                 	ln("else if (reader.IsAtPrimitiveValueElement())");
                     ln("	result.Contents = ");
                     	nl(csharpPrimitive); nl(".Parse(reader.ReadPrimitiveContents()).Contents;");
+                    inc( rgen.generateMemberParser(buildExtensionMember(), false)  );
                 	ln("else");
                     bs("{");
                         ln("errors.Add(String.Format(\"Encountered unknown element {0}\", reader.CurrentElementName), reader);");
@@ -121,5 +127,22 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
         es("}");
         	
 		return end();
+	}
+	
+	
+	// This is a bloody HACK. I need the primitive parser to have extensions as well, but 
+	// this cannot be defined as a member on a primitive type (its a member of a primitive
+	// element), so I reuse the code used to generate it for the Resurce parser, and I
+	// resource the definition of the extension member as used in the Resource type.
+	private ElementDefn buildExtensionMember()
+	{
+		List<ElementDefn> resourceElems = ((ResourceDefn)definitions.findType("Resource")).getElements();
+	
+		for( ElementDefn extension : resourceElems )
+		{
+			if( extension.getName().equals("extension") ) return extension;
+		}
+
+		return null;
 	}
 }

@@ -173,7 +173,7 @@ public class CSharpResourceParserGenerator extends GenBlock
         	ln("string currentElementName = reader.CurrentElementName;");
         	ln("reader.EnterElement();");
             ln(); 
-        	ln("while (reader.IsAtElement())");
+        	ln("while (reader.HasMoreElements())");
             bs("{");           	
 				// Generate this classes properties
             	List<ElementDefn> allProperties = new ArrayList<ElementDefn>();
@@ -227,8 +227,10 @@ public class CSharpResourceParserGenerator extends GenBlock
 	}
 
 
-	private void generateMemberParser(ElementDefn member, boolean first) throws Exception 
+	public GenBlock generateMemberParser(ElementDefn member, boolean first) throws Exception 
 	{
+		begin();
+		
 		// First determine the possible names of the properties in the
 		// instance, which might be multiple because of polymorph elements 
 		if( first )
@@ -245,6 +247,8 @@ public class CSharpResourceParserGenerator extends GenBlock
 			parseSingleElement(member);			
 					
 		ln();
+		
+		return end();
 	}
 	
 	
@@ -333,7 +337,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 		String clause;
 		
 		if( !inArray  )
-			clause = "ParserUtils.IsAtElement";
+			clause = "ParserUtils.IsAtFhirElement";
 		else
 			clause = "ParserUtils.IsAtArrayElement";
 

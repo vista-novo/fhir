@@ -97,15 +97,25 @@ namespace HL7.Fhir.Instance.Parsers
         }
 
 
-        public bool IsAtElement()
+        private bool isAtToken()
         {
             return jr.TokenType == JsonToken.PropertyName;
         }
 
+        public bool HasMoreElements()
+        {
+            return isAtToken();
+        }
+
+        public bool IsAtFhirElement()
+        {
+            // Cannot check namespaces, so any property is fine
+            return isAtToken();
+        }
 
         public bool IsAtXhtmlElement()
         {
-            return IsAtElement() && CurrentElementName == XHTMLELEM;
+            return jr.TokenType == JsonToken.PropertyName && CurrentElementName == XHTMLELEM;
         }
 
         public string ReadXhtmlContents()
@@ -130,7 +140,7 @@ namespace HL7.Fhir.Instance.Parsers
 
         public bool IsAtPrimitiveValueElement()
         {
-            return IsAtElement() && CurrentElementName == VALUEATTR;
+            return isAtToken() && CurrentElementName == VALUEATTR;
         }
 
         public string ReadPrimitiveContents()
@@ -140,7 +150,7 @@ namespace HL7.Fhir.Instance.Parsers
 
         public bool IsAtLanguageElement()
         {
-            return IsAtElement() && CurrentElementName == LANGATTR;
+            return isAtToken() && CurrentElementName == LANGATTR;
         }
 
         public string ReadLanguageContents()
@@ -150,7 +160,7 @@ namespace HL7.Fhir.Instance.Parsers
 
         public bool IsAtRefIdElement()
         {
-            return IsAtElement() && CurrentElementName == IDATTR;
+            return isAtToken() && CurrentElementName == IDATTR;
         }
 
         public string ReadRefIdContents()

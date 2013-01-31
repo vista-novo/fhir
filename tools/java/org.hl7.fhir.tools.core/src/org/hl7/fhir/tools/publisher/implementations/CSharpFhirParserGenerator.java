@@ -164,7 +164,7 @@ public class CSharpFhirParserGenerator extends GenBlock
 			
 			firstTime = false;
 			
-			nl("( ParserUtils.IsAtElementEndingWith(reader, \"");
+			nl("( ParserUtils.IsAtFhirElementEndingWith(reader, \"");
 				nl( Utilities.capitalize(type.getName()) );
 				nl("\" ))");
 			bs();
@@ -199,7 +199,7 @@ public class CSharpFhirParserGenerator extends GenBlock
 			
 			firstTime = false;
 			
-			nl("( ParserUtils.IsAtElement(reader, \"");
+			nl("( ParserUtils.IsAtFhirElement(reader, \"");
 				nl( resource.getName() );
 				nl("\" ) )");
 			bs();

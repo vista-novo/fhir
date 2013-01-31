@@ -23,17 +23,39 @@ namespace HL7.Fhir.Instance.Tests
             string xmlString = "<x xmlns='http://hl7.org/fhir'><someElem value='true' id='3141' /><someElem2 /></x>";
             XmlReader xr = fromString(xmlString); xr.Read();
             XmlFhirReader xfr = new XmlFhirReader(xr);
+
+            verifyContinueOnEmptyElements(xfr);
+
+            string jsonString = @"{ ""x"" : 
+                                        { ""someElem"" : { ""value"" : ""true"", ""_id"" : ""3141"" },
+                                          ""someElem2"" : {} } }";
+            JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
+            jr.Read(); 
+            JsonFhirReader jfr = new JsonFhirReader(jr);
+
+            verifyContinueOnEmptyElements(jfr);
+        }
+
+
+        private static void verifyContinueOnEmptyElements(IFhirReader xfr)
+        {
             xfr.MoveToContent();
             Assert.AreEqual("x", xfr.CurrentElementName);
-            Assert.IsTrue(xfr.IsAtElement());
+            xfr.EnterElement();
 
-            xfr.EnterElement();
+            Assert.IsTrue(xfr.IsAtFhirElement());
             Assert.AreEqual("someElem", xfr.CurrentElementName);
-            xfr.LeaveElement();
-            Assert.IsTrue(xfr.IsAtElement());
             xfr.EnterElement();
-            Assert.AreEqual("someElem2", xfr.CurrentElementName);
+            Assert.IsTrue(xfr.HasMoreElements());
+            xfr.SkipSubElementsFor("someElem");
             xfr.LeaveElement();
+
+            Assert.IsTrue(xfr.IsAtFhirElement());
+            Assert.AreEqual("someElem2", xfr.CurrentElementName);
+            xfr.EnterElement();
+            Assert.IsFalse(xfr.HasMoreElements());
+            xfr.LeaveElement();
+
             xfr.LeaveElement();
         }
 
@@ -128,14 +150,109 @@ namespace HL7.Fhir.Instance.Tests
         [TestMethod]
         public void TestParseExtendedPrimitive()
         {
-            throw new NotImplementedException();
+            string xmlString =
+                @"<dateOfBirth xmlns='http://hl7.org/fhir' value='1972-11-30'>
+                    <extension>
+                       <url value='http://hl7.org/fhir/profile/@iso-21090#nullFlavor' />
+                       <valueCode value='UNK' />
+                    </extension>
+                  </dateOfBirth>";
+
+            XmlReader xr = fromString(xmlString); xr.Read();
+            XmlFhirReader r = new XmlFhirReader(xr);
+
+            verifyParseExtendedPrimitive(r);
+
+            string jsonString = @"{ ""dateOfBirth"" : 
+                                { 
+                                    ""value"" : ""1972-11-30"",
+                                    ""extension"" : [
+                                    {
+                                        ""url"" : { ""value"" : ""http://hl7.org/fhir/profile/@iso-21090#nullFlavor"" },
+                                        ""valueCode"" : { ""value"" : ""UNK"" }
+                                    } ]
+                                }
+                            }";
+
+            var jr = new JsonTextReader(new StringReader(jsonString));
+            jr.Read(); jr.Read();
+            JsonFhirReader jfr = new JsonFhirReader(jr);
+
+            verifyParseExtendedPrimitive(jfr);
+        }
+
+        private static void verifyParseExtendedPrimitive(IFhirReader r)
+        {
+            ErrorList errors = new ErrorList();
+            Date result = PrimitiveParser.ParseDate(r, errors);
+            Assert.AreEqual(0, errors.Count);
+            Assert.AreEqual("1972-11-30", result.Contents);
+            Assert.AreEqual(1, result.Extensions.Count);
+            Assert.AreEqual("http://hl7.org/fhir/profile/@iso-21090#nullFlavor", result.Extensions[0].Url.ToString());
+            Assert.IsTrue(result.Extensions[0].Value is Code);
+            Assert.AreEqual("UNK", ((Code)result.Extensions[0].Value).Contents);
         }
 
 
         [TestMethod]
         public void TestParseExtendedPrimitiveWithOtherElements()
         {
-            throw new NotImplementedException();
+            string xmlString =
+                @"<dateOfBirth xmlns='http://hl7.org/fhir' value='1972-11-30'>
+                    <crap />
+                    <extension>
+                       <url value='http://hl7.org/fhir/profile/@iso-21090#nullFlavor' />
+                       <valueCode value='UNK' />
+                    </extension>
+                  </dateOfBirth>";
+
+            XmlReader xr = fromString(xmlString); xr.Read();
+            XmlFhirReader r = new XmlFhirReader(xr);
+
+            ErrorList errors = new ErrorList();
+            Date result = PrimitiveParser.ParseDate(r, errors);
+            Assert.AreNotEqual(0, errors.Count);
+            Assert.IsTrue(errors.ToString().Contains("crap"));
+
+            xmlString =
+                @"<dateOfBirth xmlns='http://hl7.org/fhir' value='1972-11-30'>
+                    <crap xmlns=""http://furore.com"" />
+                    <extension>
+                       <url value='http://hl7.org/fhir/profile/@iso-21090#nullFlavor' />
+                       <valueCode value='UNK' />
+                    </extension>
+                  </dateOfBirth>";
+
+            xr = fromString(xmlString); xr.Read();
+            r = new XmlFhirReader(xr);
+
+            errors.Clear();
+            result = PrimitiveParser.ParseDate(r, errors);
+            Assert.AreNotEqual(0, errors.Count);
+            Assert.IsTrue(errors.ToString().Contains("crap"));
+
+
+
+
+            string jsonString = @"{ ""dateOfBirth"" : 
+                                { 
+                                    ""value"" : ""1972-11-30"",
+                                    ""crap"" : {},
+                                    ""extension"" : [
+                                    {
+                                        ""url"" : { ""value"" : ""http://hl7.org/fhir/profile/@iso-21090#nullFlavor"" },
+                                        ""valueCode"" : { ""value"" : ""UNK"" }
+                                    } ]
+                                }
+                            }";
+
+            var jr = new JsonTextReader(new StringReader(jsonString));
+            jr.Read(); jr.Read();
+            JsonFhirReader jfr = new JsonFhirReader(jr);
+            errors.Clear();
+            result = PrimitiveParser.ParseDate(jfr, errors);
+            Assert.AreNotEqual(0, errors.Count);
+            Assert.IsTrue(errors.ToString().Contains("crap"));
         }
 
 

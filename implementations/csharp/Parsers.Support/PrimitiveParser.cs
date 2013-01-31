@@ -69,7 +69,7 @@ namespace HL7.Fhir.Instance.Parsers
                 string currentElementName = reader.CurrentElementName;
                 reader.EnterElement();
 
-                while (reader.IsAtElement())
+                while (reader.HasMoreElements())
                 {
                     if (reader.IsAtRefIdElement())
                         result.ReferralId = reader.ReadRefIdContents();

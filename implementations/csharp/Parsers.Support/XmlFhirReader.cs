@@ -70,10 +70,12 @@ namespace HL7.Fhir.Instance.Parsers
                 if (xr.NodeType == XmlNodeType.Element)
                     return xr.LocalName;
                 else
-                    return "#attribute";
+                    return "#" + xr.NodeType.ToString();
             }
         }
 
+
+        bool insideEmptyElement = false;
 
         public void EnterElement()
         {
@@ -84,22 +86,36 @@ namespace HL7.Fhir.Instance.Parsers
             readAttributes();
 
             if (!xr.IsEmptyElement)
+            {
+                insideEmptyElement = false;
                 xr.ReadStartElement();
+            }
+            else
+                insideEmptyElement = true;
         }
 
 
-        public bool IsAtElement()
+        public bool HasMoreElements()
         {
-            return
-                IsAtXhtmlElement() ||
-                IsAtPrimitiveValueElement() ||
+            // First, if we still have "attribute" elements to process, we are at an element
+            if (IsAtPrimitiveValueElement() ||
                 IsAtLanguageElement() ||
-                IsAtRefIdElement() ||
-                isAtFhirElement();
+                IsAtRefIdElement()) return true;
+
+            // IsAtElement() is normally called after you called EnterElement() on your parent
+            // to see if you're at a child element. However, for empty parent elements, we cannot
+            // go "into" an element, we only simulate the "attribute" elements. So, if they
+            // are done (previous if()), and this was such an empty element, we are ready, there are
+            // no more elements
+            if (insideEmptyElement) return false;
+
+            // Otherwise, just check whether we are at an acceptable element
+            return IsAtXhtmlElement() ||
+                xr.NodeType == XmlNodeType.Element;
         }
 
 
-        private bool isAtFhirElement()
+        public bool IsAtFhirElement()
         {
             return xr.NodeType == XmlNodeType.Element && xr.NamespaceURI == Support.Util.FHIRNS;
         }
@@ -167,8 +183,11 @@ namespace HL7.Fhir.Instance.Parsers
         {
             if (xr.NodeType == XmlNodeType.EndElement)
                 xr.ReadEndElement();
-            else if (xr.IsEmptyElement)
+            else if (insideEmptyElement)
+            {
                 xr.Read();
+                insideEmptyElement = false;
+            }
             else
                 throw new FhirFormatException("Expected end of element");
         }
@@ -176,9 +195,7 @@ namespace HL7.Fhir.Instance.Parsers
 
         public void SkipSubElementsFor(string name)
         {
-            if (xr.IsEmptyElement)
-                xr.Read();
-            else
+            if(!insideEmptyElement)
             {
                 while (!isEndElement(xr, name) && !xr.EOF)
                     xr.Skip();
@@ -214,7 +231,7 @@ namespace HL7.Fhir.Instance.Parsers
 
         public bool IsAtArrayMember()
         {
-            return isAtFhirElement();
+            return IsAtFhirElement();
         }
 
         public void LeaveArray()
