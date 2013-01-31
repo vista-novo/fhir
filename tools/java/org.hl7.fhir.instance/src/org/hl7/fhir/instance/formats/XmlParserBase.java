@@ -79,8 +79,6 @@ public abstract class XmlParserBase extends XmlBase {
 
   protected void parseResourceAttributes(XmlPullParser xpp, Resource r) throws Exception {
     parseElementAttributes(xpp, r);
-    if (xpp.getAttributeValue(null, "xml:lang") != null) 
-      r.setLanguageSimple(xpp.getAttributeValue(null, "xml:lang"));    
   }
 
 

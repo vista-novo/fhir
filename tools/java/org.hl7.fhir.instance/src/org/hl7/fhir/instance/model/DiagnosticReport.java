@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Jan 25, 2013 06:40+1100 for FHIR v0.07
+// Generated on Thu, Jan 31, 2013 23:34+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -114,6 +114,11 @@ public class DiagnosticReport extends Resource {
 
     public class RequestDetail extends Element {
         /**
+         * The encounter that this diagnostic investigation is associated with
+         */
+        private ResourceReference encounter;
+
+        /**
          * The local ID assigned to the order by the order requester.
          */
         private Identifier requestOrderId;
@@ -142,6 +147,14 @@ public class DiagnosticReport extends Resource {
          * Details of the clinical information provided to the diagnostic service along with the original request
          */
         private String_ clinicalInfo;
+
+        public ResourceReference getEncounter() { 
+          return this.encounter;
+        }
+
+        public void setEncounter(ResourceReference value) { 
+          this.encounter = value;
+        }
 
         public Identifier getRequestOrderId() { 
           return this.requestOrderId;
@@ -281,11 +294,6 @@ public class DiagnosticReport extends Resource {
     private List<RequestDetail> requestDetail = new ArrayList<RequestDetail>();
 
     /**
-     * The encounter that this diagnostic investigation is associated with
-     */
-    private ResourceReference encounter;
-
-    /**
      * The section of the diagnostic service that performs the examination e.g. biochemistry, haematology, MRI
      */
     private CodeableConcept serviceCategory;
@@ -390,14 +398,6 @@ public class DiagnosticReport extends Resource {
 
     public List<RequestDetail> getRequestDetail() { 
       return this.requestDetail;
-    }
-
-    public ResourceReference getEncounter() { 
-      return this.encounter;
-    }
-
-    public void setEncounter(ResourceReference value) { 
-      this.encounter = value;
     }
 
     public CodeableConcept getServiceCategory() { 

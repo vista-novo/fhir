@@ -214,7 +214,7 @@ The <i>hash</i> is included so that applications can verify that the contents th
 <p>
 In many cases where Attachment is used, the cardinality is &gt;1;. A valid use of repeats is to convey the same content in different mime types and languages.
 Guidance on the meaning of repeating elements MUST be provided in the definition of the repeating resource element or extension that references this type.
-The language of the Attachment content is indicated by use of the xml:lang attribute.
+The language element describes the language of the attachment using the <a href="http://tools.ietf.org/html/bcp47">codes defined in BCP 47</a>.
 </p>
 <div class="use">
 <p><b>Use</b></p>
@@ -233,22 +233,23 @@ The context of use may frequently make rules about the kind of attachment
 <p><b>Examples</b></p>
 <p>A PDF document:</p>
 <pre class="xml" fragment="Attachment">
-  &lt;document xml:lang="en"&gt;
+  &lt;document&gt;
     &lt;contentType value="application/pdf" /&gt;
+    &lt;language value="en" /&gt;
     &lt;data value="/9j/4...KAP//Z" /&gt; &lt;!-- covers many lines --&gt;
     &lt;title value="Definition of Procedure" /&gt;
   &lt;/document&gt;
 </pre>
 <pre class="json">
   document : {
-    languge : { value : "en" },
     contentType :  { value : "application/pdf" },
+    languge : { value : "en" },
     data :  { value : "/9j/4...KAP//Z"},
     title :  { value : "Definition of Procedure" }
   }
 </pre>
 <p>
-The element xml:lang is the only element for which the JSON element name is not an exact match - the JSON property name is "language"
+Since the JSON examples have the same structure as the XML, only XML is shown for the rest of the examples.
 </p>
 <p>A reference to a DICOM image via WADO:</p>
 <pre class="xml" fragment="Attachment">

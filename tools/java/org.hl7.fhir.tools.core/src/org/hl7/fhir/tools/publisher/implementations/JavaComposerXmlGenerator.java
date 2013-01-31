@@ -154,12 +154,11 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
   private void genResource() throws Exception {
     write("  private void composeResourceAttributes(Resource element) throws Exception {\r\n");
     write("    composeElementAttributes(element);\r\n");
-    write("    if (element.getLanguageSimple() != null) \r\n");
-    write("      xml.attribute(\"xml:lang\", element.getLanguageSimple());\r\n");
     write("  }\r\n\r\n");
 
     write("  private void composeResourceElements(Resource element) throws Exception {\r\n");
     write("    composeElementElements(element);\r\n");
+    write("    composeCode(\"language\", element.getLanguage());\r\n");
     write("    composeNarrative(\"text\", element.getText());\r\n");
     write("    for (Resource r : element.getContained()) {\r\n");
     write("      if (r.getXmlId() == null)\r\n");

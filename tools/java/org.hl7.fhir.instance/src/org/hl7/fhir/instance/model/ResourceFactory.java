@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Jan 25, 2013 06:40+1100 for FHIR v0.07
+// Generated on Thu, Jan 31, 2013 23:34+1100 for FHIR v0.07
 
 public class ResourceFactory {
 
@@ -48,6 +48,8 @@ public class ResourceFactory {
             return new Prescription();
         if ("Organization".equals(name))
             return new Organization();
+        if ("Request".equals(name))
+            return new Request();
         if ("Procedure".equals(name))
             return new Procedure();
         if ("Substance".equals(name))
@@ -76,6 +78,8 @@ public class ResourceFactory {
             return new AnatomicalLocation();
         if ("List".equals(name))
             return new List_();
+        if ("Picture".equals(name))
+            return new Picture();
         if ("Conformance".equals(name))
             return new Conformance();
         if ("XdsEntry".equals(name))
@@ -106,6 +110,8 @@ public class ResourceFactory {
             return new Patient();
         if ("XdsEntry2".equals(name))
             return new XdsEntry2();
+        if ("ImagingStudy".equals(name))
+            return new ImagingStudy();
         if ("Provider".equals(name))
             return new Provider();
         if ("XdsFolder".equals(name))

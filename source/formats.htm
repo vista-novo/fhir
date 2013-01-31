@@ -176,6 +176,11 @@ Note: the XHTML is contained in general XML, and there is no support for HTML en
 like <i>&amp;nbsp;</i> or <i>&amp;copy;</i> etc. Unicode characters should be used instead. Note that 
 <i>&amp;#160;</i> substitutes for <i>&amp;nbsp;</i>.
 </p>
+<p>
+The narrative content should be in the <a href="resources-definitions.htm#Resource.language">language of the resource</a>, but 
+there is no reason to expect that HTML type tooling would understand the resource language. For this reason, a lang attribute
+on the &lt;div&gt; should also be used (and see <a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#the-lang-and-xml:lang-attributes">the note in the HTML 5 specification about use of language</a>).
+</p>
 
 <a name="css"></a>
 <h3>Styling the XHTML</h3>

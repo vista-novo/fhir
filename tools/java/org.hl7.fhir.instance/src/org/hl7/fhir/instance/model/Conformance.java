@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Jan 25, 2013 06:40+1100 for FHIR v0.07
+// Generated on Thu, Jan 31, 2013 23:34+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -175,6 +175,130 @@ public class Conformance extends Resource {
         return "create";
       if (code == RestfulOperation.search)
         return "search";
+      return "?";
+      }
+    }
+
+    public enum SearchParamType {
+        integer, // Search parameter must be a simple whole number
+        string, // Search parameter is a simple string, like a name part (search usually functions on partial matches)
+        text, // Search parameter is on a long string (i.e. a text filter type search)
+        date, // Search parameter is on a date (and should support -before and -after variants). The date format is the standard XML format, though other formats may be supported
+        token, // Search parameter is on a fixed value string (i.e. search has an exact match)
+        qtoken, // Search parameter is a pair of fixed value strings, namespace and value, separated by a "#". The namespace is usually a uri, such as one of the defined code systems and is optional when searching
+        Null; // added to help the parsers
+        public static SearchParamType fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("integer".equals(codeString))
+          return integer;
+        if ("string".equals(codeString))
+          return string;
+        if ("text".equals(codeString))
+          return text;
+        if ("date".equals(codeString))
+          return date;
+        if ("token".equals(codeString))
+          return token;
+        if ("qtoken".equals(codeString))
+          return qtoken;
+        throw new Exception("Unknown SearchParamType code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case integer: return "integer";
+            case string: return "string";
+            case text: return "text";
+            case date: return "date";
+            case token: return "token";
+            case qtoken: return "qtoken";
+            default: return "?";
+          }
+        }
+    }
+
+  public class SearchParamTypeEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("integer".equals(codeString))
+          return SearchParamType.integer;
+        if ("string".equals(codeString))
+          return SearchParamType.string;
+        if ("text".equals(codeString))
+          return SearchParamType.text;
+        if ("date".equals(codeString))
+          return SearchParamType.date;
+        if ("token".equals(codeString))
+          return SearchParamType.token;
+        if ("qtoken".equals(codeString))
+          return SearchParamType.qtoken;
+        throw new Exception("Unknown SearchParamType code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == SearchParamType.integer)
+        return "integer";
+      if (code == SearchParamType.string)
+        return "string";
+      if (code == SearchParamType.text)
+        return "text";
+      if (code == SearchParamType.date)
+        return "date";
+      if (code == SearchParamType.token)
+        return "token";
+      if (code == SearchParamType.qtoken)
+        return "qtoken";
+      return "?";
+      }
+    }
+
+    public enum SearchRepeatBehavior {
+        single, // The search parameter may only occur once
+        union, // When the search parameter occurs more than once, match resources with any of the values
+        intersection, // When the search parameter occurs more than once, match resources with all of the values
+        Null; // added to help the parsers
+        public static SearchRepeatBehavior fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("single".equals(codeString))
+          return single;
+        if ("union".equals(codeString))
+          return union;
+        if ("intersection".equals(codeString))
+          return intersection;
+        throw new Exception("Unknown SearchRepeatBehavior code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case single: return "single";
+            case union: return "union";
+            case intersection: return "intersection";
+            default: return "?";
+          }
+        }
+    }
+
+  public class SearchRepeatBehaviorEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("single".equals(codeString))
+          return SearchRepeatBehavior.single;
+        if ("union".equals(codeString))
+          return SearchRepeatBehavior.union;
+        if ("intersection".equals(codeString))
+          return SearchRepeatBehavior.intersection;
+        throw new Exception("Unknown SearchRepeatBehavior code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == SearchRepeatBehavior.single)
+        return "single";
+      if (code == SearchRepeatBehavior.union)
+        return "union";
+      if (code == SearchRepeatBehavior.intersection)
+        return "intersection";
       return "?";
       }
     }
@@ -573,6 +697,11 @@ public class Conformance extends Resource {
          */
         private Boolean history;
 
+        /**
+         * Defines additional search parameters for implementations to support and/or make use of
+         */
+        private List<SearchParam> searchParam = new ArrayList<SearchParam>();
+
         public Code getType() { 
           return this.type;
         }
@@ -643,6 +772,10 @@ public class Conformance extends Resource {
           }
         }
 
+        public List<SearchParam> getSearchParam() { 
+          return this.searchParam;
+        }
+
   }
 
     public class Operation extends Element {
@@ -675,6 +808,144 @@ public class Conformance extends Resource {
             if (this.code == null)
               this.code = new Enumeration<RestfulOperation>();
             this.code.setValue(value);
+          }
+        }
+
+        public String_ getDocumentation() { 
+          return this.documentation;
+        }
+
+        public void setDocumentation(String_ value) { 
+          this.documentation = value;
+        }
+
+        public String getDocumentationSimple() { 
+          return this.documentation == null ? null : this.documentation.getValue();
+        }
+
+        public void setDocumentationSimple(String value) { 
+          if (value == null)
+            this.documentation = null;
+          else {
+            if (this.documentation == null)
+              this.documentation = new String_();
+            this.documentation.setValue(value);
+          }
+        }
+
+  }
+
+    public class SearchParam extends Element {
+        /**
+         * Corresponds to the name of the standard or custom search parameter
+         */
+        private String_ name;
+
+        /**
+         * A formal reference to where this parameter was first defined, so that a client can be confident of the meaning of the search parameter
+         */
+        private Uri source;
+
+        /**
+         * The type of value a search parameter refers to, and how the content is interpreted
+         */
+        private Enumeration<SearchParamType> type;
+
+        /**
+         * Whether multiple uses of the parameter are allowed in searches, and if they are, how the multiple values are understood
+         */
+        private Enumeration<SearchRepeatBehavior> repeats;
+
+        /**
+         * For standard parameters, provides additional information on how the parameter is used in this solution.  For custom parameters, provides a description of what the parameter does
+         */
+        private String_ documentation;
+
+        public String_ getName() { 
+          return this.name;
+        }
+
+        public void setName(String_ value) { 
+          this.name = value;
+        }
+
+        public String getNameSimple() { 
+          return this.name == null ? null : this.name.getValue();
+        }
+
+        public void setNameSimple(String value) { 
+          if (value == null)
+            this.name = null;
+          else {
+            if (this.name == null)
+              this.name = new String_();
+            this.name.setValue(value);
+          }
+        }
+
+        public Uri getSource() { 
+          return this.source;
+        }
+
+        public void setSource(Uri value) { 
+          this.source = value;
+        }
+
+        public URI getSourceSimple() { 
+          return this.source == null ? null : this.source.getValue();
+        }
+
+        public void setSourceSimple(URI value) { 
+          if (value == null)
+            this.source = null;
+          else {
+            if (this.source == null)
+              this.source = new Uri();
+            this.source.setValue(value);
+          }
+        }
+
+        public Enumeration<SearchParamType> getType() { 
+          return this.type;
+        }
+
+        public void setType(Enumeration<SearchParamType> value) { 
+          this.type = value;
+        }
+
+        public SearchParamType getTypeSimple() { 
+          return this.type == null ? null : this.type.getValue();
+        }
+
+        public void setTypeSimple(SearchParamType value) { 
+          if (value == null)
+            this.type = null;
+          else {
+            if (this.type == null)
+              this.type = new Enumeration<SearchParamType>();
+            this.type.setValue(value);
+          }
+        }
+
+        public Enumeration<SearchRepeatBehavior> getRepeats() { 
+          return this.repeats;
+        }
+
+        public void setRepeats(Enumeration<SearchRepeatBehavior> value) { 
+          this.repeats = value;
+        }
+
+        public SearchRepeatBehavior getRepeatsSimple() { 
+          return this.repeats == null ? null : this.repeats.getValue();
+        }
+
+        public void setRepeatsSimple(SearchRepeatBehavior value) { 
+          if (value == null)
+            this.repeats = null;
+          else {
+            if (this.repeats == null)
+              this.repeats = new Enumeration<SearchRepeatBehavior>();
+            this.repeats.setValue(value);
           }
         }
 

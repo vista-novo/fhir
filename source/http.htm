@@ -424,14 +424,50 @@ For QToken searches:
 <ul>
  <li><b>name=namespace#code</b> specifies matches on both the namespace and the code</li>
  <li><b>name=#code</b> matches a code that has no specified namespace</li>
- <li><b>name=code</b> matches all codes irrespective of the namesapce</li>
+ <li><b>name=code</b> matches all codes irrespective of the namespace</li>
 </ul>
 <p>
 When the QToken parameter refers to a resource reference, the correct namespace to
 use is "http://hl7.org/fhir/resource-types#[Name]", where Name is the title of the 
 resource (the <a href="terminologies.htm#resourcetypes">variant of the resource name with upper case letters</a>).
 </p>
-
+<p>
+For date parameters the following rules apply:
+</p>
+<ul>
+ <li>All date parameters have an implicit -before and -after parameter. [date]=[value] searches for where the date is equal
+   to the given value. [date]-after=[value] searches for all resources where the specified date is after [value]. 
+   [date]-before=[value] searches for all resources where the specified date is before [value]. </li>
+ <li>The element the search refers to may be a date, a dateTime, a Period, or a Schedule. All of these time related 
+   types actually specify an interval of time.
+  <ul>
+    <li>For Period and Schedule, the interval of time is explicit, though the upper or lower bound may not be specified</li>
+	<li>For a date or a dateTime, the interval is implicit. For example, the date 2013-01-10 specifies all the time from 00:00 on 10-Jan 2013 to immediately before 00:00 on 11-Jan 2013.</li>
+    <li>An instant (which is the same as a fully specified dateTime with milliseconds) is considered a fixed point in time with an interval smaller than the precision of the system, i.e. an interval with an effective width of 0.</li>
+   </ul>
+ </li>
+ <li>Date parameter searches are always matches based on the behaviour of intervals, as follows:
+   <ul>
+     <li>For [date]=[value], the requirement is that the intervals match - that they are the same. i.e. 2013-01-14 != 2013-01-14T10:00</li>
+	 <li>For [date]-before=[value], the requirement is that the interval of the time before [value] intersects (i.e. overlaps) with the interval of time in the relevant resource element. 
+	    For instance, the resource time 2013-01-14 is included in the set of values that come before 2013-01-14T10:00, because it includes the part of 14-Jan 2013 before 10am </li>
+	 <li>For [date]-after=[value], the requirement is that the interval of the time after [value] intersects (i.e. overlaps) with the interval of time in the relevant resource element. 
+	    For instance, the resource time 2013-01-14 is included in the set of values that come after 2013-01-14T10:00, because it includes the part of 14-Jan 2013 after 10am </li>
+   </ul>
+   If the bounds of the interval are not known (i.e. a range with no start, or a schedule like "every two days" with neither start or end), 
+   then the boundaries are implicitly considered above or below calculatable time, and so these count as intersections. For instance, the
+   period from 21-Jan 2013 onwards is included in matches for date-after=2013-03-14 because it may include times after 14-Mar 2013.
+ </li>
+ <li>Where possible, the system should correct for timezones when performing queries. Dates do not have timezones, and timezones 
+   should not be considered. Where both search parameters and resource element date times do not have timezones, the servers local
+   time zone should be assumed.
+ </li>
+ <li>
+   Note that for a Schedule data type, the specified scheduling details are ignored and only the outer limits matter. For instance, a schedule that specifies every second day between
+   31-Jan 2013 and 24-Mar 2013 includes the 1-Feb 2013, even though that is on an odd day that is not specified by the period. This is 
+   to keep the server load processing queries reasonable.
+ </li>
+</ul>
 
 <h3>Search Parameter Repeat Behaviour</h3>
 <%codelist SearchRepeatBehavior%>

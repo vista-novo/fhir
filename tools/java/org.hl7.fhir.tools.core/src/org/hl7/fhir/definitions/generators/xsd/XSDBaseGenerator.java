@@ -132,6 +132,11 @@ public class XSDBaseGenerator extends OutputStreamWriter {
     write("    <xs:complexContent>\r\n");
     write("      <xs:extension base=\"Element\">\r\n");
     write("        <xs:sequence>\r\n");
+    write("          <xs:element name=\"language\" type=\"code\" minOccurs=\"0\" maxOccurs=\"1\">\r\n");
+    write("            <xs:annotation>\r\n");
+    write("              <xs:documentation>The human language of the content. The value can be any valid value according to BCP-47</xs:documentation>\r\n");
+    write("            </xs:annotation>\r\n");
+    write("          </xs:element>\r\n");
     write("          <xs:element name=\"text\" type=\"Narrative\" minOccurs=\"0\" maxOccurs=\"1\">\r\n");
     write("            <xs:annotation>\r\n");
     write("              <xs:documentation>Text summary of resource (for human interpretation)</xs:documentation>\r\n");
@@ -143,7 +148,6 @@ public class XSDBaseGenerator extends OutputStreamWriter {
     write("            </xs:annotation>\r\n");
     write("          </xs:element>\r\n");
     write("        </xs:sequence>\r\n");
-    write("        <xs:attribute ref=\"xml:lang\"/>\r\n");
     write("      </xs:extension>\r\n");
     write("    </xs:complexContent>\r\n");
     write("  </xs:complexType>\r\n");

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Jan 25, 2013 06:40+1100 for FHIR v0.07
+// Generated on Thu, Jan 31, 2013 23:34+1100 for FHIR v0.07
 
 
 import java.net.*;
@@ -44,7 +44,7 @@ public class Attachment extends Type {
     private Code contentType;
 
     /**
-     * The human language of the content. The value can be any valid value for xml:lang
+     * The human language of the content. The value can be any valid value according to BCP 47
      */
     private Code language;
 

@@ -42,6 +42,9 @@ import org.hl7.fhir.definitions.model.TypeRef;
 /** todo
  * Search parameters cannot include "-"
  * can't have element names in a resoucrce that are part of resource itself
+ * can't have an element name called id
+ * can't have a search parameter called id
+ * 
  * @author Grahame
  *
  */

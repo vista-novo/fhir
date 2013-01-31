@@ -20,7 +20,6 @@
   <WindowWidth>26835</WindowWidth>
   <WindowTopX>1440</WindowTopX>
   <WindowTopY>1290</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -140,10 +139,10 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Attachment.language</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">xml:lang</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">Language</Data></Cell>
     <Cell><Data ss:Type="String">Human language of the content (BCP-47)</Data></Cell>
-    <Cell><Data ss:Type="String">The human language of the content. The value can be any valid value for xml:lang</Data></Cell>
+    <Cell><Data ss:Type="String">The human language of the content. The value can be any valid value according to BCP 47</Data></Cell>
     <Cell><Data ss:Type="String">en-AU</Data></Cell>
     <Cell><Data ss:Type="String">Users need to be able to pick between the languages in a set of attachments</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">./language</Data></Cell>
@@ -229,11 +228,12 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -331,7 +331,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

@@ -149,6 +149,8 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
     write("  private boolean parseResourceContent(int eventType, XmlPullParser xpp, Resource res) throws Exception {\r\n");
     write("    if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\"extension\")) { \r\n");
     write("      res.getExtensions().add(parseExtension(xpp));\r\n");
+    write("    } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\"language\")) { \r\n");
+    write("      res.setLanguage(parseCode(xpp));\r\n");
     write("    } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\"text\")) {\r\n"); 
     write("      res.setText(parseNarrative(xpp));\r\n");
     write("    } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\"contained\")) {\r\n"); 
