@@ -128,10 +128,9 @@ public class FhirSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case FhirPackage.PRIMITIVE_TYPE_DEFN: {
-				PrimitiveTypeDefn primitiveTypeDefn = (PrimitiveTypeDefn)theEObject;
-				T result = casePrimitiveTypeDefn(primitiveTypeDefn);
-				if (result == null) result = caseTypeDefn(primitiveTypeDefn);
+			case FhirPackage.PRIMITIVE_DEFN: {
+				PrimitiveDefn primitiveDefn = (PrimitiveDefn)theEObject;
+				T result = casePrimitiveDefn(primitiveDefn);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -351,17 +350,17 @@ public class FhirSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Primitive Type Defn</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Primitive Defn</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Primitive Type Defn</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Primitive Defn</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePrimitiveTypeDefn(PrimitiveTypeDefn object) {
+	public T casePrimitiveDefn(PrimitiveDefn object) {
 		return null;
 	}
 

@@ -33,7 +33,7 @@ import org.hl7.fhir.definitions.ecore.fhir.EventDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
-import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ProfileDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
@@ -52,6 +52,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getProfiles <em>Profiles</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getEvents <em>Events</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#isInternal <em>Internal</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getPrimitives <em>Primitives</em>}</li>
  * </ul>
  * </p>
  *
@@ -157,6 +158,16 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * @ordered
 	 */
 	protected boolean internal = INTERNAL_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getPrimitives() <em>Primitives</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPrimitives()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<PrimitiveDefn> primitives;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -285,22 +296,18 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEFINITIONS__INTERNAL, oldInternal, internal));
 	}
 
+
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	@Override
-	public EList<PrimitiveTypeDefn> getPrimitives() {
-		EList<PrimitiveTypeDefn> result = new BasicEList<PrimitiveTypeDefn>();
-		
-		for( TypeDefn t : getTypes() )
-		{		
-			if( t.isPrimitive() )
-				result.add((PrimitiveTypeDefn)t);
+	public EList<PrimitiveDefn> getPrimitives() {
+		if (primitives == null) {
+			primitives = new EObjectContainmentEList<PrimitiveDefn>(PrimitiveDefn.class, this, FhirPackage.DEFINITIONS__PRIMITIVES);
 		}
-		
-		return result;
+		return primitives;
 	}
 
 	/**
@@ -445,6 +452,8 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 				return ((InternalEList<?>)getProfiles()).basicRemove(otherEnd, msgs);
 			case FhirPackage.DEFINITIONS__EVENTS:
 				return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
+			case FhirPackage.DEFINITIONS__PRIMITIVES:
+				return ((InternalEList<?>)getPrimitives()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -471,6 +480,8 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 				return getEvents();
 			case FhirPackage.DEFINITIONS__INTERNAL:
 				return isInternal();
+			case FhirPackage.DEFINITIONS__PRIMITIVES:
+				return getPrimitives();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -509,6 +520,10 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 			case FhirPackage.DEFINITIONS__INTERNAL:
 				setInternal((Boolean)newValue);
 				return;
+			case FhirPackage.DEFINITIONS__PRIMITIVES:
+				getPrimitives().clear();
+				getPrimitives().addAll((Collection<? extends PrimitiveDefn>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -542,6 +557,9 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 			case FhirPackage.DEFINITIONS__INTERNAL:
 				setInternal(INTERNAL_EDEFAULT);
 				return;
+			case FhirPackage.DEFINITIONS__PRIMITIVES:
+				getPrimitives().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -568,6 +586,8 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 				return events != null && !events.isEmpty();
 			case FhirPackage.DEFINITIONS__INTERNAL:
 				return internal != INTERNAL_EDEFAULT;
+			case FhirPackage.DEFINITIONS__PRIMITIVES:
+				return primitives != null && !primitives.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

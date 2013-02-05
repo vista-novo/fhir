@@ -127,8 +127,8 @@ public class CSharpResourceSerializerGenerator extends GenBlock
 				ln("((Composite)value).Save(writer);");
 				ln("return;");
 			es("}");
-			ln();
-			generateSerializationCases(definitions.getPrimitives());
+	//		ln();
+	//		generateSerializationCases(definitions.getPrimitives());
 		es("}");
 		ln();
 		buildSaveExtensions("Data");
@@ -175,9 +175,9 @@ public class CSharpResourceSerializerGenerator extends GenBlock
 				nl( typeName + "))");
 			bs();
 				ln("((" + typeName + ")value)");
-				if( type.isPrimitive() )
-					nl(".Save(writer,isPrimitiveResourceElement);");
-				else
+//				if( type.isPrimitive() )
+//					nl(".Save(writer,isPrimitiveResourceElement);");
+//				else
 					nl(".Save(writer);");
 			es();				
 		}
@@ -281,7 +281,7 @@ public class CSharpResourceSerializerGenerator extends GenBlock
 				
 		for( ElementDefn member : elements )
 		{								
-			ln("// Serialize element " + member.getElementPath());
+			ln("// Serialize element " + member.getName());
 			generateMemberSerializer(member);
 		}
 		         
@@ -290,20 +290,20 @@ public class CSharpResourceSerializerGenerator extends GenBlock
 
 
 
-	private boolean isResourceElement(ElementDefn element)
-	{	
-		CompositeTypeDefn parent = element.getParentType();
-		
-		// Elements that make up the contents of a resource are either 
-		// direct children of a resource, or of a composite type nested
-		// in a resource (=nested element groups, named or not)		
-		if( parent.isResource() ) return true;
-		
-		if( !parent.isGloballyDefined() )
-			return ((CompositeTypeDefn)parent.getScope()).isResource();
-			
-		return false; 
-	}
+//	private boolean isResourceElement(ElementDefn element)
+//	{	
+//		CompositeTypeDefn parent = element.getParentType();
+//		
+//		// Elements that make up the contents of a resource are either 
+//		// direct children of a resource, or of a composite type nested
+//		// in a resource (=nested element groups, named or not)		
+//		if( parent.isResource() ) return true;
+//		
+//		if( !parent.isGloballyDefined() )
+//			return ((CompositeTypeDefn)parent.getScope()).isResource();
+//			
+//		return false; 
+//	}
 
 		
 	private void generateMemberSerializer(ElementDefn member) throws Exception 
@@ -393,32 +393,31 @@ public class CSharpResourceSerializerGenerator extends GenBlock
 	private void buildSerializeStatement(String propertyName,
 			ElementDefn member) throws Exception
 	{
-		TypeRef ref = GeneratorUtils.getMostSpecializedCommonBaseForElement(getDefinitions(),member);
+		//EK: behaviour has changed: elements always get serialized as a complex value
+
 		
-		boolean isPrimitive = false;
+		//		TypeRef ref = GeneratorUtils.getMostSpecializedCommonBaseForElement(getDefinitions(),member);
 		
-		if( ref.getName() == TypeRef.PRIMITIVE_PSEUDOTYPE_NAME )
-			isPrimitive = true;
-		else if ( ref.getName() == TypeRef.DATA_PSEUDOTYPE_NAME )
-			isPrimitive = true;
-		else if( ref.getName() == TypeRef.COMPOSITE_PSEUDOTYPE_NAME )
-			isPrimitive = false;
-		else
-		{
-			TypeDefn defn = getDefinitions().findType(ref.getFullName());
-			isPrimitive = defn.isPrimitive();
-		}
+//		boolean isPrimitive = false;
+		
+//		if( ref.getName() == TypeRef.PRIMITIVE_PSEUDOTYPE_NAME )
+//			isPrimitive = true;
+//		else if ( ref.getName() == TypeRef.DATA_PSEUDOTYPE_NAME )
+//			isPrimitive = true;
+//		else if( ref.getName() == TypeRef.COMPOSITE_PSEUDOTYPE_NAME )
+//			isPrimitive = false;
+//		else
+//		{
+//			TypeDefn defn = getDefinitions().findType(ref.getFullName());
+//			isPrimitive = defn.isPrimitive();
+//		}
 	
 		ln(propertyName);
 		
 		//Primitives inside datatypes cannot have id and/or 
 		// dataAbsentReason so should be serialized as a simple value.
-		if( isPrimitive && isResourceElement(member) )
+		//EK: behaviour has changed: they always get serialized as a complex value
+	//	if( isPrimitive )
 			nl(".Save(writer,true);");
-		else
-		{
-			nl(".Save(writer);");
-		}
-				
 	}	
 }

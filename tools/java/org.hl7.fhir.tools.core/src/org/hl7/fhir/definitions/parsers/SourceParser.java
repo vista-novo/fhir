@@ -40,6 +40,7 @@ import java.util.Map;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl;
 import org.hl7.fhir.definitions.model.BindingSpecification;
@@ -135,7 +136,10 @@ public class SourceParser {
 		Collections.sort(sorted, new Comparator() {
 			public int compare( Object a, Object b )
 			{
-				return ((TypeDefn)a).getName().compareTo(((TypeDefn)b).getName());
+				if( a instanceof PrimitiveDefn )
+					return ((PrimitiveDefn)a).getName().compareTo( ((PrimitiveDefn)b).getName() );
+				else
+					return ((TypeDefn)a).getName().compareTo(((TypeDefn)b).getName());
 			}
 		});
 		
@@ -154,10 +158,10 @@ public class SourceParser {
 						.getBindings().values(), null)));
 
 		loadPrimitives();
-		eCoreParseResults.getTypes().addAll(
-				sortTypes(PrimitiveConverter.buildPrimitiveTypesFromFhirModel(definitions
-						.getPrimitives().values())));	
-
+			
+		eCoreParseResults.getPrimitives().addAll(PrimitiveConverter.buildPrimitiveTypesFromFhirModel(definitions
+				.getPrimitives().values()));
+		
 		for (String n : ini.getPropertyNames("removed-resources"))
 		  definitions.getDeletedResources().add(n);
 		
@@ -169,6 +173,10 @@ public class SourceParser {
 			loadCompositeType(n, definitions.getInfrastructure());
 		
 		List<TypeDefn> allFhirComposites = new ArrayList<TypeDefn>();
+		
+		allFhirComposites.add( CompositeTypeConverter.buildElementBaseType());
+		
+		allFhirComposites.addAll( PrimitiveConverter.buildCompositeTypesForPrimitives( eCoreParseResults.getPrimitives() ) );
 		
 		allFhirComposites.addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
 						.getTypes().values(), null ));
@@ -193,8 +201,11 @@ public class SourceParser {
 		ResourceDefn baseResource = loadResource("resource", null, false);
 		baseResource.setAbstract(true);
 		definitions.setBaseResource(baseResource);
-				
-		eCoreParseResults.getTypes().add(CompositeTypeConverter.buildResourceFromFhirModel(baseResource, null) );
+		
+		org.hl7.fhir.definitions.ecore.fhir.ResourceDefn eCoreBaseResource =
+				CompositeTypeConverter.buildResourceFromFhirModel(baseResource, null);
+		eCoreBaseResource.getElements().add(CompositeTypeConverter.buildInternalIdElement());		
+		eCoreParseResults.getTypes().add( eCoreBaseResource );
 			
 		eCoreParseResults.getTypes().addAll(
 				sortTypes(CompositeTypeConverter.buildResourcesFromFhirModel(definitions

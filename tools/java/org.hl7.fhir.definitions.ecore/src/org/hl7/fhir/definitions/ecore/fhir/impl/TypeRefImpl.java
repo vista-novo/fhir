@@ -398,4 +398,6 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 		return result.toString();
 	}
 
+	
+
 } //TypeRefImpl

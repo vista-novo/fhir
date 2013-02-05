@@ -54,6 +54,7 @@
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="profiles" type="fhir:ProfileDefn"/>
           <xsd:element name="events" type="fhir:EventDefn"/>
+          <xsd:element name="primitives" type="fhir:PrimitiveDefn"/>
         </xsd:choice>
         <xsd:attribute name="date" type="xsd:string" use="required"/>
         <xsd:attribute name="version" type="xsd:string" use="required"/>
@@ -81,7 +82,8 @@
     <xsd:attribute name="mustUnderstand" type="xsd:boolean"/>
     <xsd:attribute name="mustSupport" type="xsd:boolean"/>
     <xsd:attribute name="exampleValue" type="xsd:string"/>
-    <xsd:attribute name="languageSpecifier" type="xsd:boolean"/>
+    <xsd:attribute name="internalRef" type="xsd:boolean"/>
+    <xsd:attribute name="primitiveContents" type="xsd:boolean"/>
     <xsd:attribute name="content" type="xsd:string"/>
     <xsd:attribute name="parentType" type="xsd:string"/>
     <xsd:attribute name="parentElement" type="xsd:string"/>
@@ -187,15 +189,18 @@
     <xsd:attribute name="system" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="DefinedCode" type="fhir:DefinedCode"/>
-  <xsd:complexType name="PrimitiveTypeDefn">
-    <xsd:complexContent>
-      <xsd:extension base="fhir:TypeDefn">
-        <xsd:attribute name="pattern" type="xsd:string"/>
-        <xsd:attribute name="xsdtype" type="xsd:string" use="required"/>
-      </xsd:extension>
-    </xsd:complexContent>
+  <xsd:complexType name="PrimitiveDefn">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="annotations" type="fhir:Annotations"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="pattern" type="xsd:string"/>
+    <xsd:attribute name="xsdtype" type="xsd:string" use="required"/>
+    <xsd:attribute name="name" type="xsd:string"/>
   </xsd:complexType>
-  <xsd:element name="PrimitiveTypeDefn" type="fhir:PrimitiveTypeDefn"/>
+  <xsd:element name="PrimitiveDefn" type="fhir:PrimitiveDefn"/>
   <xsd:complexType name="ConstrainedTypeDefn">
     <xsd:complexContent>
       <xsd:extension base="fhir:TypeDefn">

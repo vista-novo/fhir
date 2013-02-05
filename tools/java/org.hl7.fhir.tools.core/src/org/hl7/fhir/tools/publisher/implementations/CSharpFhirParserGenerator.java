@@ -37,7 +37,6 @@ import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
-import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
@@ -98,8 +97,8 @@ public class CSharpFhirParserGenerator extends GenBlock
 			generateDataParser();
 			ln();
 			generateCompositeParser();
-			ln();
-			generatePrimitiveParser();					
+//			ln();
+//			generatePrimitiveParser();					
 			es("}");
 		es("}");
 	
@@ -128,7 +127,7 @@ public class CSharpFhirParserGenerator extends GenBlock
 		List composites = new ArrayList();
 		composites.addAll(getDefinitions().getLocalCompositeTypes());
 		composites.addAll(getDefinitions().getLocalConstrainedTypes());
-		composites.addAll(getDefinitions().getPrimitives());
+//		composites.addAll(getDefinitions().getPrimitives());
 
 		return buildPolymorphParser("Data", composites);
 	}

@@ -37,7 +37,7 @@ import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
-import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
@@ -317,18 +317,14 @@ public class CSharpResourceParserGenerator extends GenBlock
 	{
 		if( def.isComposite() || def.isConstrained() )
 			return buildCompositeOrConstrainedParserCall(def); 
-		else if( def.isPrimitive() )
-			return buildPrimitiveParserCall((PrimitiveTypeDefn)def);
+//		else if( def.isPrimitive() )
+//			return buildPrimitiveParserCall((PrimitiveDefn)def);
 		else
 			throw new Exception( "Cannot handle element of type " + def.getName() + " to generate parser call." );
 	}
 	
 	private String buildCheckForElementClause( ElementDefn member, Boolean inArray )
 	{
-		// Check for exception: elements of type "language specifier" (xml:lang)
-		if( member.isLanguageSpecifier() )
-			return "reader.IsAtLanguageElement()";
-
 		// Check for exception: XHTML elements are in XHTML namespace
 		if( !member.isPolymorph() && member.getTypes().get(0).getName().equals(TypeRef.XHTML_PSEUDOTYPE_NAME) )
 			return "reader.IsAtXhtmlElement()";
@@ -403,7 +399,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 		return result.toString();
 	}
 
-	private static String buildPrimitiveParserCall(PrimitiveTypeDefn primitive) throws Exception 
+	private static String buildPrimitiveParserCall(PrimitiveDefn primitive) throws Exception 
 	{
 		return "PrimitiveParser.Parse" +
 				GeneratorUtils.mapPrimitiveToFhirCSharpType(primitive.getName()) +

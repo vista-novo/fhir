@@ -49,8 +49,12 @@ public class CompositeTypeConverter {
 			CompositeTypeDefn scope) throws Exception {
 		List<CompositeTypeDefn> result = new ArrayList<CompositeTypeDefn>();
 
-		for (org.hl7.fhir.definitions.model.ElementDefn type : types) {
-			result.add(buildCompositeTypeFromFhirModel(type, false, scope));
+		for (org.hl7.fhir.definitions.model.ElementDefn type : types) 
+		{
+			TypeRef elementBase = FhirFactory.eINSTANCE.createTypeRef();
+			elementBase.setName(TypeRef.ELEMENT_TYPE_NAME);
+
+			result.add(buildCompositeTypeFromFhirModel(type, false, scope, elementBase));
 		}
 
 		return result;
@@ -101,7 +105,7 @@ public class CompositeTypeConverter {
 		{
 
 			newResource = (ResourceDefn) buildCompositeTypeFromFhirModel(
-					resource.getRoot(), true, null);
+					resource.getRoot(), true, null, base);
 			newResource.setAbstract(resource.isAbstract());
 			newResource.setSandbox(resource.isSandbox());
 			newResource.getExample().addAll(
@@ -113,13 +117,12 @@ public class CompositeTypeConverter {
 									.getSearchParams()));
 		}
 		
-		if( base != null ) newResource.setBaseType(base);
-		
 		return newResource;
 	}
 
 	public static CompositeTypeDefn buildCompositeTypeFromFhirModel( 
-			org.hl7.fhir.definitions.model.ElementDefn type, boolean isResource, CompositeTypeDefn scope ) throws Exception
+			org.hl7.fhir.definitions.model.ElementDefn type, boolean isResource, CompositeTypeDefn scope,
+			TypeRef base) throws Exception
 	{
 
 		CompositeTypeDefn result = isResource ? FhirFactory.eINSTANCE.createResourceDefn() : 
@@ -127,6 +130,8 @@ public class CompositeTypeConverter {
 
 		result.setName( type.getName() );
 
+		if( base != null ) result.setBaseType(base);
+		
 		if( scope == null )
 		{
 			// If there's no containing scope, we deduce that we are building the
@@ -227,10 +232,6 @@ public class CompositeTypeConverter {
 			result.getTypes().addAll(
 					TypeRefConverter.buildTypeRefsFromFhirModel(element
 							.getTypes()));
-
-			if (element.getTypes().size() > 0
-					&& element.getTypes().get(0).isXmlLang())
-				result.setLanguageSpecifier(true);
 		}
 
 		// If this element is actually a nested type definition, these nested
@@ -319,5 +320,65 @@ public class CompositeTypeConverter {
 		
 		if( composite.getBaseType() != null )
 			TypeRefConverter.Fix(composite.getBaseType(),composite);
+	}
+	
+	public static CompositeTypeDefn buildElementBaseType()
+	{
+//		  <types xsi:type="fhir:ResourceDefn" name="Resource" fullName="Resource" abstract="true">
+//		     <annotations rimMapping="Entity. Role, or Act"/>
+//	         <elements name="extension" minCardinality="0" maxCardinality="-1">
+//	           <types name="Extension" fullName="Extension"/>
+//	           <annotation shortDefinition="Nested values for extension" definition="Nested Complex extensions"/>
+//	           <invariants name="1"/>
+//	         </elements>
+//		  </types>
+// NB: This should come from a Element.xml Excel file, which has yet to be added to the project
+
+		CompositeTypeDefn result = FhirFactory.eINSTANCE.createCompositeTypeDefn();
+
+		result.setName(TypeRef.ELEMENT_TYPE_NAME);
+		result.setFullName(result.getName());
+		result.setAbstract(true);
+		
+		Annotations baseAnn = FhirFactory.eINSTANCE.createAnnotations();
+		baseAnn.setShortDefinition("Basetype for all composite-typed elements");
+		result.setAnnotations(baseAnn);
+		
+		ElementDefn extElem = FhirFactory.eINSTANCE.createElementDefn();
+		extElem.setName("extension");
+		extElem.setMinCardinality(0);
+		extElem.setMaxCardinality(-1);
+		
+		Annotations elemAnn = FhirFactory.eINSTANCE.createAnnotations();
+		elemAnn.setShortDefinition("Nested values for extension");
+		extElem.setAnnotation(elemAnn);
+
+		TypeRef extRef = FhirFactory.eINSTANCE.createTypeRef();
+		extRef.setName("Extension");
+		extElem.getTypes().add(extRef);
+			
+		result.getElements().add(extElem);
+		result.getElements().add(buildInternalIdElement());
+		
+		return result;
+	}
+	
+	public static ElementDefn buildInternalIdElement()
+	{
+		ElementDefn idElem = FhirFactory.eINSTANCE.createElementDefn();
+		idElem.setName("id");
+		idElem.setMinCardinality(0);
+		idElem.setMaxCardinality(1);
+		idElem.setInternalRef(true);
+		
+		Annotations elemAnn = FhirFactory.eINSTANCE.createAnnotations();
+		elemAnn.setShortDefinition("Internal id for element");
+		idElem.setAnnotation(elemAnn);
+
+		TypeRef extRef = FhirFactory.eINSTANCE.createTypeRef();
+		extRef.setName("id");
+		idElem.getTypes().add(extRef);
+		
+		return idElem;
 	}
 }

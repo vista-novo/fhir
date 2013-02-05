@@ -12,7 +12,7 @@ import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
-import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
@@ -348,10 +348,10 @@ public class GeneratorUtils {
 			return "Sid";
 		else if (name.equals("id"))
 			return "Id";
-    else if (name.equals("xhtml"))
-      return "XHtml";
-    else if (name.equals("xml:lang"))
-      return "FhirString";
+		else if (name.equals("xhtml"))
+			return "XHtml";
+		else if (name.equals("xml:lang"))
+			return "FhirString";
 		else if (name.equals("date"))
 			return "Date";
 		else if (name.equals("dateTime"))
@@ -501,9 +501,9 @@ public class GeneratorUtils {
 			
 				if( def == null )
 					throw new Exception( "Unknown element type found looking for common basetype: " + ref.getName() +
-								" in " + elem.getElementPath());
+								" in " + elem.getName());
 				
-				if( def.isPrimitive() ) hasPrimitives = true;
+		//		if( def.isPrimitive() ) hasPrimitives = true;
 				else if( def.isComposite() ) hasComposites = true;
 				else if( def.isConstrained() ) hasComposites = true;
 				else
@@ -587,7 +587,7 @@ public class GeneratorUtils {
 			else if( possibleType.getName().equals(TypeRef.PRIMITIVE_PSEUDOTYPE_NAME ) )
 			{
 				// If the type of element is "Primitive" we can expect ANY primitive type
-				for( PrimitiveTypeDefn prim : ((Definitions)findGlobalScope(context)).getPrimitives())
+				for( PrimitiveDefn prim : ((Definitions)findGlobalScope(context)).getPrimitives())
 				{
 					TypeRef newRef = FhirFactory.eINSTANCE.createTypeRef();
 					newRef.setName(prim.getName());

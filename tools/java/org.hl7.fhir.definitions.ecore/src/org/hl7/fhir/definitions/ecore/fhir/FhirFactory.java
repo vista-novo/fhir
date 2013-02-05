@@ -107,13 +107,13 @@ public interface FhirFactory extends EFactory {
 	DefinedCode createDefinedCode();
 
 	/**
-	 * Returns a new object of class '<em>Primitive Type Defn</em>'.
+	 * Returns a new object of class '<em>Primitive Defn</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Primitive Type Defn</em>'.
+	 * @return a new object of class '<em>Primitive Defn</em>'.
 	 * @generated
 	 */
-	PrimitiveTypeDefn createPrimitiveTypeDefn();
+	PrimitiveDefn createPrimitiveDefn();
 
 	/**
 	 * Returns a new object of class '<em>Constrained Type Defn</em>'.

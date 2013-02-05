@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
-import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
@@ -52,7 +52,7 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 		rgen = new CSharpModelResourceGenerator(defs);
 	}
 
-	public GenBlock generatePrimitiveParser(List<PrimitiveTypeDefn> primitives)
+	public GenBlock generatePrimitiveParser(List<PrimitiveDefn> primitives)
 			throws Exception {
 		begin();
 
@@ -65,7 +65,7 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 		bs("{");
 			ln("public static partial class PrimitiveParser");
 			bs("{");
-				for (PrimitiveTypeDefn primitive : definitions.getPrimitives())
+				for (PrimitiveDefn primitive : definitions.getPrimitives())
 				{
 					// Xhtml parser is hand-built, generate the rest
 					if( !primitive.getName().equals(TypeRef.XHTML_PSEUDOTYPE_NAME) )
@@ -79,7 +79,7 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 		return end();
 	}
 
-	public GenBlock primitiveTypeParser(PrimitiveTypeDefn primitive)
+	public GenBlock primitiveTypeParser(PrimitiveDefn primitive)
 			throws Exception {
 		begin();
 

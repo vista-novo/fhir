@@ -327,15 +327,6 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 		return this.getClass().equals(CompositeTypeDefnImpl.class);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public boolean isPrimitive() {
-		return this.getClass().equals(PrimitiveTypeDefnImpl.class);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->

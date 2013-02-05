@@ -51,7 +51,8 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getInvariants <em>Invariants</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getParentType <em>Parent Type</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getParentElement <em>Parent Element</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#isLanguageSpecifier <em>Language Specifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#isInternalRef <em>Internal Ref</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#isPrimitiveContents <em>Primitive Contents</em>}</li>
  * </ul>
  * </p>
  *
@@ -257,24 +258,44 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	protected ElementDefn parentElement;
 
 	/**
-	 * The default value of the '{@link #isLanguageSpecifier() <em>Language Specifier</em>}' attribute.
+	 * The default value of the '{@link #isInternalRef() <em>Internal Ref</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isLanguageSpecifier()
+	 * @see #isInternalRef()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean LANGUAGE_SPECIFIER_EDEFAULT = false;
+	protected static final boolean INTERNAL_REF_EDEFAULT = false;
 
 		/**
-	 * The cached value of the '{@link #isLanguageSpecifier() <em>Language Specifier</em>}' attribute.
+	 * The cached value of the '{@link #isInternalRef() <em>Internal Ref</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isLanguageSpecifier()
+	 * @see #isInternalRef()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean languageSpecifier = LANGUAGE_SPECIFIER_EDEFAULT;
+	protected boolean internalRef = INTERNAL_REF_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isPrimitiveContents() <em>Primitive Contents</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isPrimitiveContents()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean PRIMITIVE_CONTENTS_EDEFAULT = false;
+
+		/**
+	 * The cached value of the '{@link #isPrimitiveContents() <em>Primitive Contents</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isPrimitiveContents()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean primitiveContents = PRIMITIVE_CONTENTS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -517,8 +538,8 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isLanguageSpecifier() {
-		return languageSpecifier;
+	public boolean isInternalRef() {
+		return internalRef;
 	}
 
 	/**
@@ -526,11 +547,32 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLanguageSpecifier(boolean newLanguageSpecifier) {
-		boolean oldLanguageSpecifier = languageSpecifier;
-		languageSpecifier = newLanguageSpecifier;
+	public void setInternalRef(boolean newInternalRef) {
+		boolean oldInternalRef = internalRef;
+		internalRef = newInternalRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__LANGUAGE_SPECIFIER, oldLanguageSpecifier, languageSpecifier));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__INTERNAL_REF, oldInternalRef, internalRef));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isPrimitiveContents() {
+		return primitiveContents;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPrimitiveContents(boolean newPrimitiveContents) {
+		boolean oldPrimitiveContents = primitiveContents;
+		primitiveContents = newPrimitiveContents;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__PRIMITIVE_CONTENTS, oldPrimitiveContents, primitiveContents));
 	}
 
 	/**
@@ -554,23 +596,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 //	}
 
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public String getElementPath() {
-		if( getParentElement() != null )
-			return getParentElement().getElementPath() + "." + this.getName();
-		else
-		{
-			if( getParentType() != null )
-				return getParentType().getName() + "." + this.getName();
-			else
-				return "?." + this.getName();
-		}
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -883,8 +908,10 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
 				if (resolve) return getParentElement();
 				return basicGetParentElement();
-			case FhirPackage.ELEMENT_DEFN__LANGUAGE_SPECIFIER:
-				return isLanguageSpecifier();
+			case FhirPackage.ELEMENT_DEFN__INTERNAL_REF:
+				return isInternalRef();
+			case FhirPackage.ELEMENT_DEFN__PRIMITIVE_CONTENTS:
+				return isPrimitiveContents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -940,8 +967,11 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
 				setParentElement((ElementDefn)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFN__LANGUAGE_SPECIFIER:
-				setLanguageSpecifier((Boolean)newValue);
+			case FhirPackage.ELEMENT_DEFN__INTERNAL_REF:
+				setInternalRef((Boolean)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFN__PRIMITIVE_CONTENTS:
+				setPrimitiveContents((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -994,8 +1024,11 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
 				setParentElement((ElementDefn)null);
 				return;
-			case FhirPackage.ELEMENT_DEFN__LANGUAGE_SPECIFIER:
-				setLanguageSpecifier(LANGUAGE_SPECIFIER_EDEFAULT);
+			case FhirPackage.ELEMENT_DEFN__INTERNAL_REF:
+				setInternalRef(INTERNAL_REF_EDEFAULT);
+				return;
+			case FhirPackage.ELEMENT_DEFN__PRIMITIVE_CONTENTS:
+				setPrimitiveContents(PRIMITIVE_CONTENTS_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -1035,8 +1068,10 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return getParentType() != null;
 			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
 				return parentElement != null;
-			case FhirPackage.ELEMENT_DEFN__LANGUAGE_SPECIFIER:
-				return languageSpecifier != LANGUAGE_SPECIFIER_EDEFAULT;
+			case FhirPackage.ELEMENT_DEFN__INTERNAL_REF:
+				return internalRef != INTERNAL_REF_EDEFAULT;
+			case FhirPackage.ELEMENT_DEFN__PRIMITIVE_CONTENTS:
+				return primitiveContents != PRIMITIVE_CONTENTS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1063,8 +1098,10 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 		result.append(mustSupport);
 		result.append(", exampleValue: ");
 		result.append(exampleValue);
-		result.append(", languageSpecifier: ");
-		result.append(languageSpecifier);
+		result.append(", internalRef: ");
+		result.append(internalRef);
+		result.append(", primitiveContents: ");
+		result.append(primitiveContents);
 		result.append(')');
 		return result.toString();
 	}

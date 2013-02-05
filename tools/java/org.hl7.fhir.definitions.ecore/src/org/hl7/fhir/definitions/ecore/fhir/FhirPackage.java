@@ -151,16 +151,6 @@ public interface FhirPackage extends EPackage {
 	int DEFINED_CODE = 8;
 
 	/**
-	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.PrimitiveTypeDefnImpl <em>Primitive Type Defn</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.PrimitiveTypeDefnImpl
-	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getPrimitiveTypeDefn()
-	 * @generated
-	 */
-	int PRIMITIVE_TYPE_DEFN = 9;
-
-	/**
 	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl <em>Composite Type Defn</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -291,13 +281,22 @@ public interface FhirPackage extends EPackage {
 	int DEFINITIONS__INTERNAL = NAME_SCOPE_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Primitives</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEFINITIONS__PRIMITIVES = NAME_SCOPE_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Definitions</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEFINITIONS_FEATURE_COUNT = NAME_SCOPE_FEATURE_COUNT + 5;
+	int DEFINITIONS_FEATURE_COUNT = NAME_SCOPE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -417,13 +416,22 @@ public interface FhirPackage extends EPackage {
 	int ELEMENT_DEFN__PARENT_ELEMENT = 12;
 
 	/**
-	 * The feature id for the '<em><b>Language Specifier</b></em>' attribute.
+	 * The feature id for the '<em><b>Internal Ref</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__LANGUAGE_SPECIFIER = 13;
+	int ELEMENT_DEFN__INTERNAL_REF = 13;
+
+	/**
+	 * The feature id for the '<em><b>Primitive Contents</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_DEFN__PRIMITIVE_CONTENTS = 14;
 
 	/**
 	 * The number of structural features of the '<em>Element Defn</em>' class.
@@ -432,7 +440,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN_FEATURE_COUNT = 14;
+	int ELEMENT_DEFN_FEATURE_COUNT = 15;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1119,49 +1127,14 @@ public interface FhirPackage extends EPackage {
 	int DEFINED_CODE_FEATURE_COUNT = 5;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.PrimitiveDefnImpl <em>Primitive Defn</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.PrimitiveDefnImpl
+	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getPrimitiveDefn()
 	 * @generated
-	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_DEFN__NAME = TYPE_DEFN__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRIMITIVE_TYPE_DEFN__ANNOTATIONS = TYPE_DEFN__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Scope</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRIMITIVE_TYPE_DEFN__SCOPE = TYPE_DEFN__SCOPE;
-
-	/**
-	 * The feature id for the '<em><b>Full Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRIMITIVE_TYPE_DEFN__FULL_NAME = TYPE_DEFN__FULL_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Infrastructure</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRIMITIVE_TYPE_DEFN__INFRASTRUCTURE = TYPE_DEFN__INFRASTRUCTURE;
+	int PRIMITIVE_DEFN = 9;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
@@ -1170,7 +1143,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_DEFN__PATTERN = TYPE_DEFN_FEATURE_COUNT + 0;
+	int PRIMITIVE_DEFN__PATTERN = 0;
 
 	/**
 	 * The feature id for the '<em><b>Xsdtype</b></em>' attribute.
@@ -1179,16 +1152,34 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_DEFN__XSDTYPE = TYPE_DEFN_FEATURE_COUNT + 1;
+	int PRIMITIVE_DEFN__XSDTYPE = 1;
 
 	/**
-	 * The number of structural features of the '<em>Primitive Type Defn</em>' class.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_DEFN_FEATURE_COUNT = TYPE_DEFN_FEATURE_COUNT + 2;
+	int PRIMITIVE_DEFN__NAME = 2;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_DEFN__ANNOTATIONS = 3;
+
+	/**
+	 * The number of structural features of the '<em>Primitive Defn</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_DEFN_FEATURE_COUNT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1729,13 +1720,22 @@ public interface FhirPackage extends EPackage {
 	int PROFILED_ELEMENT_DEFN__PARENT_ELEMENT = ELEMENT_DEFN__PARENT_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Language Specifier</b></em>' attribute.
+	 * The feature id for the '<em><b>Internal Ref</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROFILED_ELEMENT_DEFN__LANGUAGE_SPECIFIER = ELEMENT_DEFN__LANGUAGE_SPECIFIER;
+	int PROFILED_ELEMENT_DEFN__INTERNAL_REF = ELEMENT_DEFN__INTERNAL_REF;
+
+	/**
+	 * The feature id for the '<em><b>Primitive Contents</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__PRIMITIVE_CONTENTS = ELEMENT_DEFN__PRIMITIVE_CONTENTS;
 
 	/**
 	 * The feature id for the '<em><b>Inherited</b></em>' attribute.
@@ -1938,6 +1938,17 @@ public interface FhirPackage extends EPackage {
 	EAttribute getDefinitions_Internal();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getPrimitives <em>Primitives</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Primitives</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.Definitions#getPrimitives()
+	 * @see #getDefinitions()
+	 * @generated
+	 */
+	EReference getDefinitions_Primitives();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getProfiles <em>Profiles</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2014,15 +2025,26 @@ public interface FhirPackage extends EPackage {
 	EReference getElementDefn_ParentElement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isLanguageSpecifier <em>Language Specifier</em>}'.
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isInternalRef <em>Internal Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Language Specifier</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isLanguageSpecifier()
+	 * @return the meta object for the attribute '<em>Internal Ref</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isInternalRef()
 	 * @see #getElementDefn()
 	 * @generated
 	 */
-	EAttribute getElementDefn_LanguageSpecifier();
+	EAttribute getElementDefn_InternalRef();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isPrimitiveContents <em>Primitive Contents</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Primitive Contents</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isPrimitiveContents()
+	 * @see #getElementDefn()
+	 * @generated
+	 */
+	EAttribute getElementDefn_PrimitiveContents();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isMustSupport <em>Must Support</em>}'.
@@ -2601,36 +2623,58 @@ public interface FhirPackage extends EPackage {
 	EAttribute getDefinedCode_System();
 
 	/**
-	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn <em>Primitive Type Defn</em>}'.
+	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn <em>Primitive Defn</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Primitive Type Defn</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn
+	 * @return the meta object for class '<em>Primitive Defn</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn
 	 * @generated
 	 */
-	EClass getPrimitiveTypeDefn();
+	EClass getPrimitiveDefn();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn#getPattern <em>Pattern</em>}'.
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn#getPattern <em>Pattern</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Pattern</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn#getPattern()
-	 * @see #getPrimitiveTypeDefn()
+	 * @see org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn#getPattern()
+	 * @see #getPrimitiveDefn()
 	 * @generated
 	 */
-	EAttribute getPrimitiveTypeDefn_Pattern();
+	EAttribute getPrimitiveDefn_Pattern();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn#getXsdtype <em>Xsdtype</em>}'.
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn#getXsdtype <em>Xsdtype</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Xsdtype</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn#getXsdtype()
-	 * @see #getPrimitiveTypeDefn()
+	 * @see org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn#getXsdtype()
+	 * @see #getPrimitiveDefn()
 	 * @generated
 	 */
-	EAttribute getPrimitiveTypeDefn_Xsdtype();
+	EAttribute getPrimitiveDefn_Xsdtype();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn#getName()
+	 * @see #getPrimitiveDefn()
+	 * @generated
+	 */
+	EAttribute getPrimitiveDefn_Name();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn#getAnnotations <em>Annotations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Annotations</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn#getAnnotations()
+	 * @see #getPrimitiveDefn()
+	 * @generated
+	 */
+	EReference getPrimitiveDefn_Annotations();
 
 	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn <em>Constrained Type Defn</em>}'.
@@ -3372,6 +3416,14 @@ public interface FhirPackage extends EPackage {
 		EAttribute DEFINITIONS__INTERNAL = eINSTANCE.getDefinitions_Internal();
 
 		/**
+		 * The meta object literal for the '<em><b>Primitives</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEFINITIONS__PRIMITIVES = eINSTANCE.getDefinitions_Primitives();
+
+		/**
 		 * The meta object literal for the '<em><b>Profiles</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3430,12 +3482,20 @@ public interface FhirPackage extends EPackage {
 		EReference ELEMENT_DEFN__PARENT_ELEMENT = eINSTANCE.getElementDefn_ParentElement();
 
 		/**
-		 * The meta object literal for the '<em><b>Language Specifier</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Internal Ref</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ELEMENT_DEFN__LANGUAGE_SPECIFIER = eINSTANCE.getElementDefn_LanguageSpecifier();
+		EAttribute ELEMENT_DEFN__INTERNAL_REF = eINSTANCE.getElementDefn_InternalRef();
+
+		/**
+		 * The meta object literal for the '<em><b>Primitive Contents</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT_DEFN__PRIMITIVE_CONTENTS = eINSTANCE.getElementDefn_PrimitiveContents();
 
 		/**
 		 * The meta object literal for the '<em><b>Must Support</b></em>' attribute feature.
@@ -3876,14 +3936,14 @@ public interface FhirPackage extends EPackage {
 		EAttribute DEFINED_CODE__SYSTEM = eINSTANCE.getDefinedCode_System();
 
 		/**
-		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.PrimitiveTypeDefnImpl <em>Primitive Type Defn</em>}' class.
+		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.PrimitiveDefnImpl <em>Primitive Defn</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.hl7.fhir.definitions.ecore.fhir.impl.PrimitiveTypeDefnImpl
-		 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getPrimitiveTypeDefn()
+		 * @see org.hl7.fhir.definitions.ecore.fhir.impl.PrimitiveDefnImpl
+		 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getPrimitiveDefn()
 		 * @generated
 		 */
-		EClass PRIMITIVE_TYPE_DEFN = eINSTANCE.getPrimitiveTypeDefn();
+		EClass PRIMITIVE_DEFN = eINSTANCE.getPrimitiveDefn();
 
 		/**
 		 * The meta object literal for the '<em><b>Pattern</b></em>' attribute feature.
@@ -3891,7 +3951,7 @@ public interface FhirPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PRIMITIVE_TYPE_DEFN__PATTERN = eINSTANCE.getPrimitiveTypeDefn_Pattern();
+		EAttribute PRIMITIVE_DEFN__PATTERN = eINSTANCE.getPrimitiveDefn_Pattern();
 
 		/**
 		 * The meta object literal for the '<em><b>Xsdtype</b></em>' attribute feature.
@@ -3899,7 +3959,23 @@ public interface FhirPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PRIMITIVE_TYPE_DEFN__XSDTYPE = eINSTANCE.getPrimitiveTypeDefn_Xsdtype();
+		EAttribute PRIMITIVE_DEFN__XSDTYPE = eINSTANCE.getPrimitiveDefn_Xsdtype();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRIMITIVE_DEFN__NAME = eINSTANCE.getPrimitiveDefn_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotations</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRIMITIVE_DEFN__ANNOTATIONS = eINSTANCE.getPrimitiveDefn_Annotations();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.ConstrainedTypeDefnImpl <em>Constrained Type Defn</em>}' class.

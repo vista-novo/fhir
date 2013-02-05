@@ -112,10 +112,11 @@ public class CSharpModelInformationGenerator extends GenBlock
 				for( TypeDefn type : definitions.getTypes() )
 				{
 					String cSharpName;
-					
-					if( type.isPrimitive() )
-						cSharpName = GeneratorUtils.mapPrimitiveToFhirCSharpType(type.getName());
-					else
+
+//Primitives now get converted to "real" elements types
+//					if( type.isPrimitive() )
+//						cSharpName = GeneratorUtils.mapPrimitiveToFhirCSharpType(type.getName());
+//					else
 						cSharpName = GeneratorUtils.buildFullyScopedTypeName(type);
 					
 					ln( tuple("\"" + type.getName() + "\"", "typeof(" + cSharpName + ")" ) );	
@@ -130,10 +131,11 @@ public class CSharpModelInformationGenerator extends GenBlock
 				for( TypeDefn type : definitions.getTypes() )
 				{
 					String cSharpName;
-					
-					if( type.isPrimitive() )
-						cSharpName = GeneratorUtils.mapPrimitiveToFhirCSharpType(type.getName());
-					else
+
+//Primitives now get converted to "real" elements types					
+//					if( type.isPrimitive() )
+//						cSharpName = GeneratorUtils.mapPrimitiveToFhirCSharpType(type.getName());
+//					else
 						cSharpName = GeneratorUtils.buildFullyScopedTypeName(type);
 					
 					ln( tuple("typeof(" + cSharpName + ")", "\"" + type.getName() + "\"" ) );	

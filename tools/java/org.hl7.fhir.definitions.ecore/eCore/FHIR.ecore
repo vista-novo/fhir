@@ -4,7 +4,6 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="fhir"
     nsURI="http://hl7.org/fhir/definitions" nsPrefix="fhir">
   <eClassifiers xsi:type="ecore:EClass" name="Definitions" eSuperTypes="#//NameScope">
-    <eOperations name="getPrimitives" upperBound="-1" eType="#//PrimitiveTypeDefn"/>
     <eOperations name="findType" eType="#//TypeDefn">
       <eParameters name="fullName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
@@ -23,9 +22,10 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="internal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="primitives" upperBound="-1"
+        eType="#//PrimitiveDefn" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ElementDefn">
-    <eOperations name="getElementPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="isRepeating" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="isPolymorph" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="containsResource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -81,6 +81,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="parentType" eType="#//CompositeTypeDefn"
         eOpposite="#//CompositeTypeDefn/elements"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parentElement" eType="#//ElementDefn"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalRef" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="primitiveContents" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Invariant">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
@@ -222,7 +224,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="display" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="system" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PrimitiveTypeDefn" eSuperTypes="#//TypeDefn">
+  <eClassifiers xsi:type="ecore:EClass" name="PrimitiveDefn">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -230,6 +232,9 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="xsdtype" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" lowerBound="1"
+        eType="#//Annotations" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConstrainedTypeDefn" eSuperTypes="#//TypeDefn">
     <eStructuralFeatures xsi:type="ecore:EReference" name="constrainedBaseType" lowerBound="1"
@@ -308,7 +313,6 @@
     <eLiterals name="qtoken" value="5" literal="qtoken"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TypeDefn" abstract="true">
-    <eOperations name="isPrimitive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="isComposite" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="isConstrained" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="isResource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>

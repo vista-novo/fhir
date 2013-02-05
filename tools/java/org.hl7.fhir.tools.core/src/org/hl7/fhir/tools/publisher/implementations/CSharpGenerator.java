@@ -79,6 +79,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		File f = new CSFile(implDir + modelDir);	if( !f.exists() ) f.mkdir();
 		File p = new CSFile(implDir + parsersDir);	if( !p.exists() ) p.mkdir();
 		File s = new CSFile(implDir + serializersDir);	if( !s.exists() ) s.mkdir();
+	
 		
 		List<String> generatedFilenames = new ArrayList<String>();
 
@@ -90,12 +91,12 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			generatedFilenames.add(enumsFilename);
 		}
 
-		{
-			String primFilename = modelDir + "Primitives.cs";
-			 new CSharpModelPrimitiveGenerator(definitions)
-			 	.generatePrimitives(definitions.getPrimitives()).toFile(implDir+primFilename);						 
-			generatedFilenames.add(primFilename);
-		}
+//		{
+//			String primFilename = modelDir + "Primitives.cs";
+//			 new CSharpModelPrimitiveGenerator(definitions)
+//			 	.generatePrimitives(definitions.getPrimitives()).toFile(implDir+primFilename);						 
+//			generatedFilenames.add(primFilename);
+//		}
 
 		{
 			String filename = modelDir + "ModelInfo.cs";
@@ -103,12 +104,12 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			generatedFilenames.add(filename);
 		}
 		
-		{
-			String primFilename = parsersDir + "PrimitiveParser.cs";
-			 new CSharpPrimitiveParserGenerator(definitions)
-			 	.generatePrimitiveParser(definitions.getPrimitives()).toFile(implDir+primFilename);						 
-			generatedFilenames.add(primFilename);
-		}
+//		{
+//			String primFilename = parsersDir + "PrimitiveParser.cs";
+//			 new CSharpPrimitiveParserGenerator(definitions)
+//			 	.generatePrimitiveParser(definitions.getPrimitives()).toFile(implDir+primFilename);						 
+//			generatedFilenames.add(primFilename);
+//		}
 		
 		List<CompositeTypeDefn> allComplexTypes = new ArrayList<CompositeTypeDefn>();
 		allComplexTypes.addAll(definitions.getLocalCompositeTypes());

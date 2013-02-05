@@ -3,7 +3,7 @@ package org.hl7.fhir.tools.publisher.implementations;
 import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
-import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
 
 /*
 Copyright (c) 2011-2012, HL7, Inc
@@ -53,7 +53,7 @@ public class CSharpModelPrimitiveGenerator extends GenBlock {
 	}
 
 	
-	public GenBlock generatePrimitives( List<PrimitiveTypeDefn> primitives ) throws Exception
+	public GenBlock generatePrimitives( List<PrimitiveDefn> primitives ) throws Exception
 	{
 		begin();
 		
@@ -61,7 +61,7 @@ public class CSharpModelPrimitiveGenerator extends GenBlock {
 		
 		ln("namespace HL7.Fhir.Instance.Model");
 		bs("{");
-			for( PrimitiveTypeDefn primitive : definitions.getPrimitives())
+			for( PrimitiveDefn primitive : definitions.getPrimitives())
 			{
 				primitiveType(primitive);
 				ln();
@@ -72,7 +72,7 @@ public class CSharpModelPrimitiveGenerator extends GenBlock {
 	}
  
 	
-	public GenBlock primitiveType( PrimitiveTypeDefn primitive ) throws Exception
+	public GenBlock primitiveType( PrimitiveDefn primitive ) throws Exception
 	{
 		begin();
 		

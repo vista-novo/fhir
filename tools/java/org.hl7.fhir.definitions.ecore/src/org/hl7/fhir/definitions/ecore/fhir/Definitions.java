@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getProfiles <em>Profiles</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getEvents <em>Events</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#isInternal <em>Internal</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getPrimitives <em>Primitives</em>}</li>
  * </ul>
  * </p>
  *
@@ -127,12 +128,16 @@ public interface Definitions extends NameScope {
 	void setInternal(boolean value);
 
 	/**
+	 * Returns the value of the '<em><b>Primitives</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation"
+	 * @return the value of the '<em>Primitives</em>' containment reference list.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getDefinitions_Primitives()
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<PrimitiveTypeDefn> getPrimitives();
+	EList<PrimitiveDefn> getPrimitives();
 
 	/**
 	 * <!-- begin-user-doc -->

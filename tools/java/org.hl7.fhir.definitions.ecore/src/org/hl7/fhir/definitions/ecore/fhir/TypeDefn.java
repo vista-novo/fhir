@@ -191,14 +191,6 @@ public interface TypeDefn extends EObject {
 	 * @model kind="operation"
 	 * @generated
 	 */
-	boolean isPrimitive();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
 	boolean isConstrained();
 
 } // TypeDefn

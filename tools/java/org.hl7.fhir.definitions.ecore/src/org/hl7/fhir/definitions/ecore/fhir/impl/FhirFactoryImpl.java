@@ -70,7 +70,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 			case FhirPackage.RESOURCE_DEFN: return createResourceDefn();
 			case FhirPackage.EXAMPLE: return createExample();
 			case FhirPackage.DEFINED_CODE: return createDefinedCode();
-			case FhirPackage.PRIMITIVE_TYPE_DEFN: return createPrimitiveTypeDefn();
+			case FhirPackage.PRIMITIVE_DEFN: return createPrimitiveDefn();
 			case FhirPackage.CONSTRAINED_TYPE_DEFN: return createConstrainedTypeDefn();
 			case FhirPackage.EVENT_DEFN: return createEventDefn();
 			case FhirPackage.EVENT_USAGE: return createEventUsage();
@@ -240,10 +240,9 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public PrimitiveTypeDefn createPrimitiveTypeDefn() {
-		PrimitiveTypeDefnImpl primitiveTypeDefn = new PrimitiveTypeDefnImpl();
-		return primitiveTypeDefn;
+	public PrimitiveDefn createPrimitiveDefn() {
+		PrimitiveDefnImpl primitiveDefn = new PrimitiveDefnImpl();
+		return primitiveDefn;
 	}
 
 	/**

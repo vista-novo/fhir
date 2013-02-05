@@ -108,8 +108,8 @@ public class FhirAdapterFactory extends AdapterFactoryImpl {
 				return createDefinedCodeAdapter();
 			}
 			@Override
-			public Adapter casePrimitiveTypeDefn(PrimitiveTypeDefn object) {
-				return createPrimitiveTypeDefnAdapter();
+			public Adapter casePrimitiveDefn(PrimitiveDefn object) {
+				return createPrimitiveDefnAdapter();
 			}
 			@Override
 			public Adapter caseConstrainedTypeDefn(ConstrainedTypeDefn object) {
@@ -306,16 +306,16 @@ public class FhirAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn <em>Primitive Type Defn</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn <em>Primitive Defn</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn
+	 * @see org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn
 	 * @generated
 	 */
-	public Adapter createPrimitiveTypeDefnAdapter() {
+	public Adapter createPrimitiveDefnAdapter() {
 		return null;
 	}
 
