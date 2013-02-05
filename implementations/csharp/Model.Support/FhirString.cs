@@ -32,17 +32,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HL7.Fhir.Instance.Support;
+//using HL7.Fhir.Instance.Support;
 
 namespace HL7.Fhir.Instance.Model
 {
     public partial class FhirString
     {
-        // Explicit default: null
-        public FhirString() : base(null)
-        {
-        }
-
         // Just here for consistency in the parser generators
         public static FhirString Parse(string value)
         {

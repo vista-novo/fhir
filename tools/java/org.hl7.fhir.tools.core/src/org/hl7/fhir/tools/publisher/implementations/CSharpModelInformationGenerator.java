@@ -36,7 +36,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 
 public class CSharpModelInformationGenerator extends GenBlock
 {
-	CSharpModelResourceGenerator rgen;
+	CSharpModelGenerator rgen;
 	
 	private Definitions definitions;
 	
@@ -50,7 +50,7 @@ public class CSharpModelInformationGenerator extends GenBlock
 	{
 		definitions = defs;
 		
-		rgen = new CSharpModelResourceGenerator(defs);
+		rgen = new CSharpModelGenerator(defs);
 	}
 
 	public GenBlock generateInformation() throws Exception

@@ -41,7 +41,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 public class CSharpResourceSerializerGenerator extends GenBlock
 {
-	CSharpModelResourceGenerator rgen;
+	CSharpModelGenerator rgen;
 	
 	private Definitions definitions;
 	
@@ -55,7 +55,7 @@ public class CSharpResourceSerializerGenerator extends GenBlock
 	{
 		definitions = defs;
 		
-		rgen = new CSharpModelResourceGenerator(defs);
+		rgen = new CSharpModelGenerator(defs);
 	}
 
 

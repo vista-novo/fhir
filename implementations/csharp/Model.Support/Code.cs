@@ -39,8 +39,6 @@ namespace HL7.Fhir.Instance.Model
 {
     public partial class Code
     {
-        public Code() : base(null) { }
-
         public static bool TryParse(string value, out Code result)
         {       
             Regex codeRegEx = new Regex(PATTERN);
@@ -88,15 +86,18 @@ namespace HL7.Fhir.Instance.Model
 
 
 
-    public class Code<T> : Primitive<T?>  where T : struct, IConvertible
+    public class Code<T> : Element  where T : struct, IConvertible
     {
-        public Code() : base(null)
-        {
-        }
+        // Primitive value of element
+        public T? Contents { get; set; }
 
-        public Code(T? value) : base(value)
+        public Code() : this(null) {}
+
+        public Code(T? value)
         {
             if (!typeof(T).IsEnum) throw new ArgumentException("T must be an enumerated type");
+
+            Contents = value;
         }
 
         public static implicit operator Code<T>(T? value)

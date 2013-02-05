@@ -28,6 +28,10 @@
         <element xmi:type="ecore:EOperation" href="FHIR.ecore#//Definitions/findBinding"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_o1HaYdczEeG4gq1HRQxLGw"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_djJaYG-jEeKjtO8cnwScaA" type="2002">
+        <element xmi:type="ecore:EOperation" href="FHIR.ecore#//Definitions/findPrimitive"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_djJaYW-jEeKjtO8cnwScaA"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_CLrtma_CEeGrAaDwyEdjfA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_CLrtmq_CEeGrAaDwyEdjfA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_CLrtm6_CEeGrAaDwyEdjfA"/>
@@ -64,7 +68,7 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_CL03k6_CEeGrAaDwyEdjfA"/>
       </children>
       <children xmi:type="notation:Node" xmi:id="_MTbqgGyMEeKjtO8cnwScaA" type="2001">
-        <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//ElementDefn/internalRef"/>
+        <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//ElementDefn/internalId"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_MTbqgWyMEeKjtO8cnwScaA"/>
       </children>
       <children xmi:type="notation:Node" xmi:id="_cElPEGyMEeKjtO8cnwScaA" type="2001">
@@ -611,6 +615,10 @@
       <children xmi:type="notation:Node" xmi:id="_ZsIFsGrmEeKjtO8cnwScaA" type="2001">
         <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//CompositeTypeDefn/abstract"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_ZsIFsWrmEeKjtO8cnwScaA"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_Cx6ecG-hEeKjtO8cnwScaA" type="2001">
+        <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//CompositeTypeDefn/primitiveContents"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Cx6ecW-hEeKjtO8cnwScaA"/>
       </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_CMbUsa_CEeGrAaDwyEdjfA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_CMbUsq_CEeGrAaDwyEdjfA"/>

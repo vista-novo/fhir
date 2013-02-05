@@ -368,6 +368,19 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public PrimitiveDefn findPrimitive(String name) {
+		for( PrimitiveDefn primitive : primitives )
+			if( primitive.getName().equals(name))
+				return primitive;
+		
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

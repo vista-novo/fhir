@@ -36,10 +36,8 @@ using System.Text;
 namespace HL7.Fhir.Instance.Model
 {
     // value can be true or false
-    public partial class FhirBoolean : Primitive<bool?>
+    public partial class FhirBoolean
     {
-        public FhirBoolean() : base(false) { }
-
         public static bool TryParse( string value, out FhirBoolean result)
         {
             if(value == "1" || value == "true")

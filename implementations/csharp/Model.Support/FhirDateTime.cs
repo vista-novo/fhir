@@ -39,9 +39,7 @@ namespace HL7.Fhir.Instance.Model
 {
     public partial class FhirDateTime
     {
-        public FhirDateTime() : base(null) { }
-
-        public FhirDateTime(DateTime dt) : base(dt.ToString(FMT_FULL))
+        public FhirDateTime(DateTime dt) : this(dt.ToString(FMT_FULL))
         {
         }
 
@@ -51,17 +49,17 @@ namespace HL7.Fhir.Instance.Model
         }
 
         public FhirDateTime(int year, int month, int day)
-            : base(String.Format(FMT_YEARMONTHDAY, year, month, day))
+            : this(String.Format(FMT_YEARMONTHDAY, year, month, day))
         {
         }
 
         public FhirDateTime(int year, int month)
-            : base( String.Format(FMT_YEARMONTH,year,month) )
+            : this( String.Format(FMT_YEARMONTH,year,month) )
         {
         }
 
         public FhirDateTime(int year)
-            : base(String.Format(FMT_YEAR, year))
+            : this(String.Format(FMT_YEAR, year))
         {
         }
 

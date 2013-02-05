@@ -33,14 +33,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
-using HL7.Fhir.Instance.Support;
+//using HL7.Fhir.Instance.Support;
 
 namespace HL7.Fhir.Instance.Model
 {
     public partial class XHtml
     {
-        public XHtml() : base(null) { }
-
         public static bool TryParse( string value, out XHtml result)
         {
             try

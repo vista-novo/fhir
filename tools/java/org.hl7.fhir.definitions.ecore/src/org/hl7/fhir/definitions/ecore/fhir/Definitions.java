@@ -156,6 +156,14 @@ public interface Definitions extends NameScope {
 	BindingDefn findBinding(String fullName);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	PrimitiveDefn findPrimitive(String name);
+
+	/**
 	 * Returns the value of the '<em><b>Profiles</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.ProfileDefn}.
 	 * <!-- begin-user-doc -->

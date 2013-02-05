@@ -38,7 +38,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  */
 public class CSharpPrimitiveParserGenerator extends GenBlock {
 
-	CSharpModelResourceGenerator rgen;
+	CSharpModelGenerator rgen;
 
 	private Definitions definitions;
 
@@ -49,7 +49,7 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 	public CSharpPrimitiveParserGenerator(Definitions defs) {
 		definitions = defs;
 
-		rgen = new CSharpModelResourceGenerator(defs);
+		rgen = new CSharpModelGenerator(defs);
 	}
 
 	public GenBlock generatePrimitiveParser(List<PrimitiveDefn> primitives)

@@ -38,8 +38,6 @@ namespace HL7.Fhir.Instance.Model
 {
     public partial class Instant
     {
-        public Instant() : base(null) { }
-
         public static Instant FromLocalDateTime(int year, int month, int day,
                             int hour, int min, int sec)
         {

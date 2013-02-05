@@ -50,9 +50,6 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  * resourceParams = resourceType ('|' resourceType)* | Any 
  * type = primitiveType | dataType | structure
  * 
- * NB: mapping of primitive types is dependent on dataAbsenceAllowed. Is
- * allowed, then the primitives must be mapped to a subclass of Type,
- * otherwise to the corresponding C# primitive (or XsdDateTime).
  */
 
 public class TypeRefConverter 
@@ -64,121 +61,58 @@ public class TypeRefConverter
 
 		for( org.hl7.fhir.definitions.model.TypeRef ref : refs )
 		{
-				result.addAll( buildTypeRefsFromFhirModel(ref) );
+				result.add( buildTypeRefsFromFhirModel(ref) );
 		}
 		
 		return result;
 	}
 	
 
-	
-	// Some TypeRefs, like "*" are actually short-hands fo multiple TypeRefs: 
-	// "*" will be expanded to pseudo-types Primitive | Composite | (NOT)Resource(Any)(NOT). Therefore,
-	// although this method takes one single model.TypeRef, it can return
-	// multiple eCore.TypeRefs.
-	public static List<TypeRef> buildTypeRefsFromFhirModel( org.hl7.fhir.definitions.model.TypeRef original )
+	// The current type column in the Excel sheet contains some special type names
+	// that are mapped to their correct eCore-defined types in using this function
+	public static TypeRef buildTypeRefsFromFhirModel( org.hl7.fhir.definitions.model.TypeRef ref )
 			throws Exception
 	{
-		List<TypeRef> result = new ArrayList<TypeRef>();
-		List<org.hl7.fhir.definitions.model.TypeRef> expandedTypeRefs = expandMultiTypeRef(original);
+		TypeRef convertedType = FhirFactory.eINSTANCE.createTypeRef();
 		
-		for( org.hl7.fhir.definitions.model.TypeRef ref : expandedTypeRefs )
+		if( ref.isElementReference() )
+			convertedType.setName( ref.getResolvedTypeName() );
+		else if( ref.isIdRef() )
+			convertedType.setName( TypeRef.IDREF_PSEUDOTYPE_NAME );
+		else if( ref.isXmlLang() )
 		{
-			TypeRef convertedType = FhirFactory.eINSTANCE.createTypeRef();
-			
-			if( ref.isElementReference() )
-				convertedType.setName( ref.getResolvedTypeName() );
-			else if( ref.isIdRef() )
-				convertedType.setName( TypeRef.IDREF_PSEUDOTYPE_NAME );
-			else if( ref.isXmlLang() )
-			{
-				// The special type "xml:lang" is not a FHIR basetype, but indicates
-				// that the attribute is present as an "xml:lang" attribute in XML,
-				// and as a normal attribute in Json.
-				convertedType.setName("code");
-			}
-			else
-			{
-				// Excel mentions "Resource", but this is actually either a "ResourceReference"
-				// or a contained Resource (in the last case, the name is correct and passes
-				// unaltered)
-				if( ref.isResourceReference() )
-				{
-					convertedType.setName(TypeRef.RESOURCEREF_TYPE_NAME);
-					
-					if( !ref.isAnyResource() )					
-						convertedType.getResourceParams().addAll(ref.getParams());					
-				}
-				else
-					convertedType.setName( ref.getName() );
-			}
-			
-			result.add(convertedType);
+			// The special type "xml:lang" is not a FHIR basetype, but indicates
+			// that the attribute is present as an "xml:lang" attribute in XML,
+			// and as a normal attribute in Json.
+			convertedType.setName("code");
 		}
-		
-		return result;
-	}
-	
-	
-	
-	private static List<org.hl7.fhir.definitions.model.TypeRef> 
-			expandMultiTypeRef( org.hl7.fhir.definitions.model.TypeRef ref )
-	{
-		List<org.hl7.fhir.definitions.model.TypeRef> expandedTypeRefs = 
-				new ArrayList<org.hl7.fhir.definitions.model.TypeRef>();
-		
-		if( ref.isWildcardType() )
+		else if( ref.isWildcardType() )
 		{
-			// "*" becomes pseudo-types Primitive | Composite | Resource(Any)
-			org.hl7.fhir.definitions.model.TypeRef primitivePseudoType = 
-					new org.hl7.fhir.definitions.model.TypeRef();
-			primitivePseudoType.setName( TypeRef.PRIMITIVE_PSEUDOTYPE_NAME );
-			expandedTypeRefs.add(primitivePseudoType);
-			
-			org.hl7.fhir.definitions.model.TypeRef compositePseudoType = 
-					new org.hl7.fhir.definitions.model.TypeRef();
-			compositePseudoType.setName( TypeRef.COMPOSITE_PSEUDOTYPE_NAME );
-			expandedTypeRefs.add(compositePseudoType);
-			
-			// Note: we use the type "Resource" here and not "ResourceRef"
-			// since it is called "Resource" in the Excel. This type is
-			// then mapped to the pseudotype "ResourceRef" pseudotype
-			// in the next stages of processing.
-			// IMPORTANT: Removed this, allowing Resource where we put *
-			// gives confusing results, many times double inclusions.
-			// So * is now Primitive | Composite
-//			org.hl7.fhir.definitions.model.TypeRef resourceRefPseudoType = 
-//					new org.hl7.fhir.definitions.model.TypeRef();
-//			resourceRefPseudoType.setName( "Resource" );
-//			resourceRefPseudoType.getParams().add( org.hl7.fhir.definitions.model.TypeRef.ANY_RESOURCE_GENERIC_ARG );
-//			expandedTypeRefs.add(resourceRefPseudoType);
+			// The baseclass of all primitives and composites is Element,
+			// so the wildcard ("*") is represented by this baseclass
+			convertedType.setName(TypeRef.ELEMENT_TYPE_NAME);
 		}
-//		else if( ref.isBoundGeneric() && ref.hasParams() &&
-//					ref.getParams().size() > 1)
-//		{
-//			// TypeX(A|B|C) becomes TypeX(A) | TypeX(B) | TypeX(C)
-//			for( String param : ref.getParams() )
-//			{
-//				org.hl7.fhir.definitions.model.TypeRef newRef = 
-//						new org.hl7.fhir.definitions.model.TypeRef();
-//
-//				newRef.setName(ref.getName());
-//				newRef.getParams().add(param);
-//				
-//				expandedTypeRefs.add(newRef);
-//			}				
-//		}
 		else
 		{
-			// Do nothing
-			expandedTypeRefs.add(ref);
+			// Excel mentions "Resource", but this is actually either a "ResourceReference"
+			// or a contained Resource (in the last case, the name is correct and passes
+			// unaltered)
+			if( ref.isResourceReference() )
+			{
+				convertedType.setName(TypeRef.RESOURCEREF_TYPE_NAME);
+				
+				if( !ref.isAnyResource() )					
+					convertedType.getResourceParams().addAll(ref.getParams());					
+			}
+			else
+				convertedType.setName( ref.getName() );
 		}
-		
-		return expandedTypeRefs;
+
+		return convertedType;
 	}
+	
 
-
-	public static List<TypeRef> buildTypeRefsFromFhirTypeName( String fhirTypeName ) throws Exception
+	public static TypeRef buildTypeRefsFromFhirTypeName( String fhirTypeName ) throws Exception
 	{	
 		org.hl7.fhir.definitions.model.TypeRef oldRef = new org.hl7.fhir.definitions.model.TypeRef();
 		oldRef.setName(fhirTypeName);

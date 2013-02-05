@@ -37,7 +37,7 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 public class CSharpEnumHelperGenerator extends GenBlock {
 
-	CSharpModelResourceGenerator rgen;
+	CSharpModelGenerator rgen;
 	
 	private Definitions definitions;
 	
@@ -51,7 +51,7 @@ public class CSharpEnumHelperGenerator extends GenBlock {
 	{
 		definitions = defs;
 		
-		rgen = new CSharpModelResourceGenerator(defs);
+		rgen = new CSharpModelGenerator(defs);
 	}
 	
 	public GenBlock generateEnumHelper( Definitions definitions, List<BindingDefn> enums ) throws Exception

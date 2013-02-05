@@ -37,12 +37,6 @@ namespace HL7.Fhir.Instance.Model
 {
     public partial class FhirUri
     {
-        // Explicit default: null
-        public FhirUri() : base(null)
-        {
-
-        }
-
         public static bool TryParse( string value, out FhirUri result)
         {
             System.Uri uriValue = null;

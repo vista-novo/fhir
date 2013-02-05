@@ -69,11 +69,8 @@ public class ConstrainedTypeConverter
 	{
 		ConstrainedTypeDefn result = FhirFactory.eINSTANCE.createConstrainedTypeDefn();
 		
-		// Since the comment in the old Fhir model will not contain multiple types
-		// and none of them is a Resource(A|B|C) ref, we can be sure the buildTypes..()
-		// will only return 1 result;
 		TypeRef baseType = 
-				TypeRefConverter.buildTypeRefsFromFhirTypeName(constrainedType.getComment()).get(0);
+				TypeRefConverter.buildTypeRefsFromFhirTypeName(constrainedType.getComment());
 		
 		result.setConstrainedBaseType( baseType );
 		result.setName( constrainedType.getCode() );

@@ -36,10 +36,8 @@ using System.Text;
 namespace HL7.Fhir.Instance.Model
 {
     // A stream of bytes
-    public partial class Base64Binary : Primitive<byte[]>
+    public partial class Base64Binary
     {
-        public Base64Binary() : base(null) { }
-
         public static bool TryParse( string value, out Base64Binary result)
         {
             try

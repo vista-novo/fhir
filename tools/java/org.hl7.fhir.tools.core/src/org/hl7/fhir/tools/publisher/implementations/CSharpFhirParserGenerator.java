@@ -32,20 +32,15 @@ package org.hl7.fhir.tools.publisher.implementations;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
-import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
-import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
 
 public class CSharpFhirParserGenerator extends GenBlock
 {
-	private CSharpModelResourceGenerator rgen;
+	private CSharpModelGenerator rgen;
 
 	private Definitions definitions;
 	
@@ -58,7 +53,7 @@ public class CSharpFhirParserGenerator extends GenBlock
 	public CSharpFhirParserGenerator(Definitions defs)
 	{
 		definitions = defs;
-		rgen = new CSharpModelResourceGenerator(defs);
+		rgen = new CSharpModelGenerator(defs);
 	}
 
 	public GenBlock generateResourceParser( Definitions definitions ) throws Exception

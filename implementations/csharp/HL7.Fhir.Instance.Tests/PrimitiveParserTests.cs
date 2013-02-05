@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HL7.Fhir.Instance.Model;
-using HL7.Fhir.Instance.Parsers;
+//using HL7.Fhir.Instance.Parsers;
 using System.Xml;
 using System.Xml.Linq;
 using System.IO;
-using HL7.Fhir.Instance.Support;
+//using HL7.Fhir.Instance.Support;
 using Newtonsoft.Json;
 
 

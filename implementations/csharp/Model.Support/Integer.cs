@@ -38,11 +38,6 @@ namespace HL7.Fhir.Instance.Model
 {
     public partial class Integer
     {
-        // Explicit default: 0
-        public Integer() : base(0)
-        {
-        }
-
         public static bool TryParse( string value, out Integer result)
         {
             Int32 intValue;

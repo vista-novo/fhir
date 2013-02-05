@@ -416,13 +416,13 @@ public interface FhirPackage extends EPackage {
 	int ELEMENT_DEFN__PARENT_ELEMENT = 12;
 
 	/**
-	 * The feature id for the '<em><b>Internal Ref</b></em>' attribute.
+	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__INTERNAL_REF = 13;
+	int ELEMENT_DEFN__INTERNAL_ID = 13;
 
 	/**
 	 * The feature id for the '<em><b>Primitive Contents</b></em>' attribute.
@@ -848,13 +848,22 @@ public interface FhirPackage extends EPackage {
 	int COMPOSITE_TYPE_DEFN__BASE_TYPE = TYPE_DEFN_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Primitive Contents</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_TYPE_DEFN__PRIMITIVE_CONTENTS = TYPE_DEFN_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>Composite Type Defn</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_TYPE_DEFN_FEATURE_COUNT = TYPE_DEFN_FEATURE_COUNT + 7;
+	int COMPOSITE_TYPE_DEFN_FEATURE_COUNT = TYPE_DEFN_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -963,6 +972,15 @@ public interface FhirPackage extends EPackage {
 	 * @ordered
 	 */
 	int RESOURCE_DEFN__BASE_TYPE = COMPOSITE_TYPE_DEFN__BASE_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Primitive Contents</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_DEFN__PRIMITIVE_CONTENTS = COMPOSITE_TYPE_DEFN__PRIMITIVE_CONTENTS;
 
 	/**
 	 * The feature id for the '<em><b>Sandbox</b></em>' attribute.
@@ -1720,13 +1738,13 @@ public interface FhirPackage extends EPackage {
 	int PROFILED_ELEMENT_DEFN__PARENT_ELEMENT = ELEMENT_DEFN__PARENT_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Internal Ref</b></em>' attribute.
+	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROFILED_ELEMENT_DEFN__INTERNAL_REF = ELEMENT_DEFN__INTERNAL_REF;
+	int PROFILED_ELEMENT_DEFN__INTERNAL_ID = ELEMENT_DEFN__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Primitive Contents</b></em>' attribute.
@@ -2025,15 +2043,15 @@ public interface FhirPackage extends EPackage {
 	EReference getElementDefn_ParentElement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isInternalRef <em>Internal Ref</em>}'.
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isInternalId <em>Internal Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Internal Ref</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isInternalRef()
+	 * @return the meta object for the attribute '<em>Internal Id</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isInternalId()
 	 * @see #getElementDefn()
 	 * @generated
 	 */
-	EAttribute getElementDefn_InternalRef();
+	EAttribute getElementDefn_InternalId();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isPrimitiveContents <em>Primitive Contents</em>}'.
@@ -2839,6 +2857,17 @@ public interface FhirPackage extends EPackage {
 	EReference getCompositeTypeDefn_BaseType();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#isPrimitiveContents <em>Primitive Contents</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Primitive Contents</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#isPrimitiveContents()
+	 * @see #getCompositeTypeDefn()
+	 * @generated
+	 */
+	EAttribute getCompositeTypeDefn_PrimitiveContents();
+
+	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.NameScope <em>Name Scope</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3482,12 +3511,12 @@ public interface FhirPackage extends EPackage {
 		EReference ELEMENT_DEFN__PARENT_ELEMENT = eINSTANCE.getElementDefn_ParentElement();
 
 		/**
-		 * The meta object literal for the '<em><b>Internal Ref</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Internal Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ELEMENT_DEFN__INTERNAL_REF = eINSTANCE.getElementDefn_InternalRef();
+		EAttribute ELEMENT_DEFN__INTERNAL_ID = eINSTANCE.getElementDefn_InternalId();
 
 		/**
 		 * The meta object literal for the '<em><b>Primitive Contents</b></em>' attribute feature.
@@ -4102,6 +4131,14 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMPOSITE_TYPE_DEFN__BASE_TYPE = eINSTANCE.getCompositeTypeDefn_BaseType();
+
+		/**
+		 * The meta object literal for the '<em><b>Primitive Contents</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPOSITE_TYPE_DEFN__PRIMITIVE_CONTENTS = eINSTANCE.getCompositeTypeDefn_PrimitiveContents();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.NameScope <em>Name Scope</em>}' class.

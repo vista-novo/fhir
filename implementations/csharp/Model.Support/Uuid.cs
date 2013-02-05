@@ -39,8 +39,6 @@ namespace HL7.Fhir.Instance.Model
 {
     public partial class Uuid
     {
-        public Uuid() : base(null) { }
-
         public static bool TryParse(string value, out Uuid result)
         {       
             Regex uuidRegEx = new Regex(PATTERN);

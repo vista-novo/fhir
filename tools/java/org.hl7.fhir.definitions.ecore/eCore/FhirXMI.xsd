@@ -82,7 +82,7 @@
     <xsd:attribute name="mustUnderstand" type="xsd:boolean"/>
     <xsd:attribute name="mustSupport" type="xsd:boolean"/>
     <xsd:attribute name="exampleValue" type="xsd:string"/>
-    <xsd:attribute name="internalRef" type="xsd:boolean"/>
+    <xsd:attribute name="internalId" type="xsd:boolean"/>
     <xsd:attribute name="primitiveContents" type="xsd:boolean"/>
     <xsd:attribute name="content" type="xsd:string"/>
     <xsd:attribute name="parentType" type="xsd:string"/>
@@ -295,6 +295,7 @@
         </xsd:choice>
         <xsd:attribute name="unnamedElementGroup" type="xsd:boolean"/>
         <xsd:attribute name="abstract" type="xsd:boolean"/>
+        <xsd:attribute name="primitiveContents" type="xsd:boolean"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

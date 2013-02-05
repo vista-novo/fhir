@@ -39,8 +39,6 @@ namespace HL7.Fhir.Instance.Model
 {
     public partial class Date
     {
-        public Date() : base(null) { }
-
         public static Date Today()
         {
             return new Date(DateTime.Now.ToString("yyyy-MM-dd"));

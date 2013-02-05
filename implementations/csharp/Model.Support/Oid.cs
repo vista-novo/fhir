@@ -39,8 +39,6 @@ namespace HL7.Fhir.Instance.Model
 {
     public partial class Oid
     {
-        public Oid() : base(null) { }
-
         public static bool TryParse(string value, out Oid result)
         {       
             Regex oidRegEx = new Regex(PATTERN);

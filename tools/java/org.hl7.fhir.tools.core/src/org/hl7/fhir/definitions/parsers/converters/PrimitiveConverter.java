@@ -141,6 +141,7 @@ public class PrimitiveConverter
 		// This composite type has the same name as the imported primitive
 		result.setName(primitive.getName());
 		result.setFullName(primitive.getName());
+		result.setPrimitiveContents(true);
 		
 		// Set documentation to something reasonable
 		Annotations typeAnn = FhirFactory.eINSTANCE.createAnnotations();
@@ -150,7 +151,7 @@ public class PrimitiveConverter
 		
 		// add "value" element of the correct primitive type
 		ElementDefn valueElement = FhirFactory.eINSTANCE.createElementDefn();
-		valueElement.setName("value");
+		valueElement.setName("contents");
 		valueElement.setMinCardinality(0);
 		valueElement.setMaxCardinality(1);
 		valueElement.setPrimitiveContents(true);

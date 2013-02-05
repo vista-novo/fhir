@@ -46,7 +46,7 @@ import org.hl7.fhir.utilities.Utilities;
 
 public class CSharpResourceParserGenerator extends GenBlock
 {
-	private CSharpModelResourceGenerator rgen;
+	private CSharpModelGenerator rgen;
 
 	private Definitions definitions;
 	
@@ -59,7 +59,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 	public CSharpResourceParserGenerator(Definitions defs)
 	{
 		definitions = defs;
-		rgen = new CSharpModelResourceGenerator(defs);
+		rgen = new CSharpModelGenerator(defs);
 	}
 
 	
@@ -256,7 +256,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 	private void parseRepeatingElement(ElementDefn member) throws Exception
 	{
 		String resultMember = "result." + GeneratorUtils.generateCSharpMemberName(member);
-		TypeRef resultType = GeneratorUtils.getMostSpecializedCommonBaseForElement(getDefinitions(),member);
+		TypeRef resultType = GeneratorUtils.getMemberTypeForElement(getDefinitions(),member);
 		
 		bs("{");
 			// Allocate an List in the property we are going to fill. 
@@ -294,7 +294,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 	
 	private String buildParserCall(ElementDefn member) throws Exception
 	{
-		TypeRef resultTypeRef = GeneratorUtils.getMostSpecializedCommonBaseForElement(getDefinitions(),member);
+		TypeRef resultTypeRef = GeneratorUtils.getMemberTypeForElement(getDefinitions(),member);
 				
 		// Check specials cases: parsing of enumerated codes, contained resources and
 		// polymorph properties of type Data, Composite or Primitive
@@ -302,9 +302,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 			return buildEnumeratedCodeParserCall(member.getTypes().get(0));
 		else if( member.containsResource() )
 			return buildContainedResourceParserCall();
-		else if( resultTypeRef.getName().equals(TypeRef.PRIMITIVE_PSEUDOTYPE_NAME) ||
-				resultTypeRef.getName().equals(TypeRef.COMPOSITE_PSEUDOTYPE_NAME) ||
-				resultTypeRef.getName().equals(TypeRef.DATA_PSEUDOTYPE_NAME) )
+		else if( resultTypeRef.getName().equals(TypeRef.ELEMENT_TYPE_NAME) ) 
 			return buildPolymorphParserCall(resultTypeRef);
 
 		TypeDefn resultType = getDefinitions().findType(resultTypeRef.getFullName());

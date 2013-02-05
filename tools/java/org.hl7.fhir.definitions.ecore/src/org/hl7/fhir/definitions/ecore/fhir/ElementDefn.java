@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getInvariants <em>Invariants</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentType <em>Parent Type</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentElement <em>Parent Element</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isInternalRef <em>Internal Ref</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isInternalId <em>Internal Id</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isPrimitiveContents <em>Primitive Contents</em>}</li>
  * </ul>
  * </p>
@@ -230,30 +230,30 @@ public interface ElementDefn extends EObject {
 	void setParentElement(ElementDefn value);
 
 	/**
-	 * Returns the value of the '<em><b>Internal Ref</b></em>' attribute.
+	 * Returns the value of the '<em><b>Internal Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Internal Ref</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Internal Id</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Internal Ref</em>' attribute.
-	 * @see #setInternalRef(boolean)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_InternalRef()
+	 * @return the value of the '<em>Internal Id</em>' attribute.
+	 * @see #setInternalId(boolean)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_InternalId()
 	 * @model
 	 * @generated
 	 */
-	boolean isInternalRef();
+	boolean isInternalId();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isInternalRef <em>Internal Ref</em>}' attribute.
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isInternalId <em>Internal Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Internal Ref</em>' attribute.
-	 * @see #isInternalRef()
+	 * @param value the new value of the '<em>Internal Id</em>' attribute.
+	 * @see #isInternalId()
 	 * @generated
 	 */
-	void setInternalRef(boolean value);
+	void setInternalId(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Primitive Contents</b></em>' attribute.

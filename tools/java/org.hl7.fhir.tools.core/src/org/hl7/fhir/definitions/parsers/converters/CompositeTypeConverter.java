@@ -243,20 +243,9 @@ public class CompositeTypeConverter {
 		// that getDeclaredTypeName() is set, reminds us of this explicit
 		// type declaration that was there before.
 		if (element.getDeclaredTypeName() != null)
-			result.getTypes().addAll(
+			result.getTypes().add(
 					TypeRefConverter.buildTypeRefsFromFhirTypeName(element
 							.getDeclaredTypeName()));
-
-		// Make sure we will only process the nested elements
-		// if this was not a nested type definition.
-		// EK: Commented this out since we do not have anonymous nested element
-		// groups anymore
-		// if( element.getDeclaredTypeName() == null )
-		// {
-		// if( !element.getElements().isEmpty() )
-		// result.getElements().addAll(
-		// buildElementDefnsFromFhirModel(element.getElements(), isResource));
-		// }
 
 		if (element.getBindingName() != null
 				&& !element.getBindingName().equals("")
@@ -366,10 +355,10 @@ public class CompositeTypeConverter {
 	public static ElementDefn buildInternalIdElement()
 	{
 		ElementDefn idElem = FhirFactory.eINSTANCE.createElementDefn();
-		idElem.setName("id");
+		idElem.setName("localId");
 		idElem.setMinCardinality(0);
 		idElem.setMaxCardinality(1);
-		idElem.setInternalRef(true);
+		idElem.setInternalId(true);
 		
 		Annotations elemAnn = FhirFactory.eINSTANCE.createAnnotations();
 		elemAnn.setShortDefinition("Internal id for element");

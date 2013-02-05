@@ -12,7 +12,6 @@ import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
-import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
@@ -472,60 +471,18 @@ public class GeneratorUtils {
 	 * If categories of types are mixed (primitives/composites), the function
 	 * will return the appropriate supertype.
 	 */
-	public static TypeRef getMostSpecializedCommonBaseForElement( Definitions defs, ElementDefn elem )
+	public static TypeRef getMemberTypeForElement( Definitions defs, ElementDefn elem )
 			throws Exception
 	{
-		if( elem.getTypes().size() == 1 )
-			return elem.getTypes().get(0); 
+		if( elem.containsResource() )
+			return elem.getTypes().get(0);	// the element's type is already correct, "Resource"
 
-		boolean hasPrimitives = false;
-		boolean hasComposites = false; // includes constrained types
-		boolean hasResourceRef = false;
-		boolean hasCodeWithCodeList = false;  // becomes special Code<T> type. is also a primitive
-								
-		for( TypeRef ref : elem.getTypes() )
-		{			
-			if( ref.getName().equals(TypeRef.COMPOSITE_PSEUDOTYPE_NAME) )
-				hasComposites = true;
-			else if( ref.getName().equals(TypeRef.RESOURCEREF_TYPE_NAME) )
-				hasResourceRef = true;
-			else if( ref.getName().equals(TypeRef.PRIMITIVE_PSEUDOTYPE_NAME) )
-				hasPrimitives = true;
-			else if( ref.getName().equals(TypeRef.IDREF_PSEUDOTYPE_NAME) )
-				throw new Exception("There is not common basetype if element also has idref as type");
-			else if( isCodeWithCodeList(defs, ref) )
-				hasCodeWithCodeList = true;
-			else
-			{
-				TypeDefn def = defs.findType(ref.getName());
-			
-				if( def == null )
-					throw new Exception( "Unknown element type found looking for common basetype: " + ref.getName() +
-								" in " + elem.getName());
-				
-		//		if( def.isPrimitive() ) hasPrimitives = true;
-				else if( def.isComposite() ) hasComposites = true;
-				else if( def.isConstrained() ) hasComposites = true;
-				else
-				{
-					// Note that we cannot actually encounter a TypeRef to a
-					// resource, since these are always ResourceReferences,
-					// and thus Composites
-					throw new Exception("Unknown category of element found while looking for common basetype");
-				}
-			}
-		}
-		
-		if( hasCodeWithCodeList && !hasPrimitives && !hasComposites && !hasResourceRef )
-			return newTypeRef("code");
-		if( (hasPrimitives || hasCodeWithCodeList) && !hasComposites && !hasResourceRef )
-			return newTypeRef("Primitive");
-		else if( hasComposites && !(hasPrimitives || hasCodeWithCodeList) && !hasResourceRef )
-			return newTypeRef("Composite");
-		else if( hasResourceRef && !(hasPrimitives || hasCodeWithCodeList) && !hasComposites)
-			return newTypeRef("ResourceReference");
+		boolean hasMulti = elem.isPolymorph() || elem.getName().equals(TypeRef.ELEMENT_TYPE_NAME);
+										
+		if( !hasMulti )
+			return elem.getTypes().get(0);	// no polymorphism -> the type itself
 		else
-			return newTypeRef("Data");
+			return newTypeRef(TypeRef.ELEMENT_TYPE_NAME);   // the polymophic Element type
 	}
 		
 	
@@ -584,17 +541,7 @@ public class GeneratorUtils {
 		{					
 			if( possibleType.getName().equals(TypeRef.RESOURCEREF_TYPE_NAME) ) 
 				result.put(elementName + "Resource", possibleType);
-			else if( possibleType.getName().equals(TypeRef.PRIMITIVE_PSEUDOTYPE_NAME ) )
-			{
-				// If the type of element is "Primitive" we can expect ANY primitive type
-				for( PrimitiveDefn prim : ((Definitions)findGlobalScope(context)).getPrimitives())
-				{
-					TypeRef newRef = FhirFactory.eINSTANCE.createTypeRef();
-					newRef.setName(prim.getName());
-					result.put( elementName + Utilities.capitalize(prim.getName()), newRef );
-				} 
-			}
-			else if( possibleType.getName().equals(TypeRef.COMPOSITE_PSEUDOTYPE_NAME ) )
+			else if( possibleType.getName().equals(TypeRef.ELEMENT_TYPE_NAME) )
 			{
 				// If the type of element is "Composite" we can expect ANY composite type....
 				result.putAll( makeTypeRefsWithElementNamePrefix(elementName, 
@@ -653,14 +600,4 @@ public class GeneratorUtils {
 		
 		return result;
 	}
-	
-//	public static boolean isBaseResourceMember( ElementDefn element )
-//	{
-//		return  element.getParentType().isResource() &&
-//			//	(element.getName().equals("id") || 
-//					(	element.getName().equals("extension")
-//						|| element.getName().equals("text") );
-//	}
-
-
 }

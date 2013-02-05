@@ -32,19 +32,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HL7.Fhir.Instance.Support;
+//using HL7.Fhir.Instance.Support;
 using System.Globalization;
 
 namespace HL7.Fhir.Instance.Model
 {
     public partial class FhirDecimal
     {
-        // Explicit default: 0
-        public FhirDecimal() : base(0)
-        {
-        }
-
-
         public static bool TryParse( string value, out FhirDecimal result)
         {
             decimal decimalValue;

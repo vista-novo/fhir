@@ -35,23 +35,13 @@ using System.Text;
 
 namespace HL7.Fhir.Instance.Model
 {
-    public abstract class Data : IExtendable
+    public partial class Element : IExtendable
     {
-        public string ReferralId { get; set; }
-    //    public DataAbsentReason? Dar { get; set; }
-
         public virtual string ValidateData()
         {
             //TODO: When ready, this method must be made abstract
             return null;
         }
-
-        public List<Extension> Extensions { get; set; }
-    }
-
-
-    public abstract class Composite : Data
-    {
     }
 
 
@@ -59,36 +49,6 @@ namespace HL7.Fhir.Instance.Model
     // cannot be used in places where you can use composites.
     public abstract partial class Resource : IExtendable
     {
-    }
-
-    public abstract class Primitive : Data
-    {
-        public override string ToString()
-        {
-            throw new NotImplementedException("Primitives must override ToString()");
-        }
-    }
-
-
-    public abstract class Primitive<T> : Primitive
-    {
-        public Primitive(T value)
-        {
-            this.Contents = value;
-        }
-
-        public T Contents { get; set; }
-
-        public override bool Equals(object other)
-        {
-            if (other == null) return false;
-            return Contents.Equals(other);
-        }
-
-        public override int GetHashCode()
-        {
-            return Contents.GetHashCode();
-        }
     }
 
     public interface IExtendable

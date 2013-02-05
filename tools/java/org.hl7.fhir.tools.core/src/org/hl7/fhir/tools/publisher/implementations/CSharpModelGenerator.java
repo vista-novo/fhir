@@ -42,10 +42,11 @@ import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
+import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 
-public class CSharpModelResourceGenerator extends GenBlock
+public class CSharpModelGenerator extends GenBlock
 {
 	private Definitions definitions;
 	
@@ -54,7 +55,7 @@ public class CSharpModelResourceGenerator extends GenBlock
 	}
 
 
-	public CSharpModelResourceGenerator(Definitions defs) {
+	public CSharpModelGenerator(Definitions defs) {
 		definitions = defs;
 	}
 
@@ -119,7 +120,7 @@ public class CSharpModelResourceGenerator extends GenBlock
 		
 		ln("using System;");
 		ln("using System.Collections.Generic;");
-		ln("using HL7.Fhir.Instance.Support;");
+//		ln("using HL7.Fhir.Instance.Support;");
 		ln("using System.Xml.Linq;");
 		ln();
 		ln("/*");
@@ -153,6 +154,13 @@ public class CSharpModelResourceGenerator extends GenBlock
 			if( composite.getLocalCompositeTypes().size() > 0)
 				nestedLocalTypes( composite.getLocalCompositeTypes() ); 			
 	
+			// Generate extra members if this type contains a primitive Value member
+			if( composite.isPrimitiveContents() )
+			{
+				PrimitiveDefn prim = definitions.findPrimitive(composite.getName());
+				generateExtraPrimitiveMembers(prim, GeneratorUtils.generateCSharpTypeName(composite.getName()));
+			}
+			
 			// Generate this classes properties
 			for( ElementDefn member : composite.getElements() )
 				generateMemberProperty(composite, member);
@@ -162,7 +170,6 @@ public class CSharpModelResourceGenerator extends GenBlock
 		return end();
 	}
 
-
 	
 	
 	private void generateMemberProperty(CompositeTypeDefn context, ElementDefn member)
@@ -171,43 +178,26 @@ public class CSharpModelResourceGenerator extends GenBlock
 		ln("public ");
 		
 		if( member.getMaxCardinality() == -1 )  nl("List<");		
-//		if( member.isAllowDAR() ) nl("Absentable<");
 
 		// Determine the most appropriate FHIR type to use for this
 		// (possibly polymorphic) element.
-		TypeRef tref = GeneratorUtils.getMostSpecializedCommonBaseForElement(getDefinitions(),member);
+		TypeRef tref = GeneratorUtils.getMemberTypeForElement(getDefinitions(),member);
 		
 		if( GeneratorUtils.isCodeWithCodeList( getDefinitions(), tref ) )
 		{
 			nl("Code<" + GeneratorUtils.buildFullyScopedTypeName(tref.getFullBindingRef()) + ">");
-			//isNullable = false;
 		}
-//		else if( tref.getName().equals("ResourceReference") )
-//		{
-//			// ResourceReferences that reference only one resource, get turned into a resource-specific
-//			// reference, otherwise generate a generic ResourceReference<Resource>
-//			nl( GeneratorUtils.generateCSharpTypeName(tref.getName()) );
-//
-//			if( tref.getResourceParams() != null && tref.getResourceParams().size() == 1)
-//				nl( "<" + GeneratorUtils.generateCSharpTypeName(tref.getResourceParams().get(0)) + ">" );
-//			else
-//				nl( "<Resource>" );
-//		}
+		else if( member.isPrimitiveContents() )
+		{
+			nl( GeneratorUtils.mapPrimitiveToCSharpType( context.getName() ));
+		}
 		else 
 		{
 			nl( GeneratorUtils.generateCSharpTypeName(tref.getName()) );
-			//isNullable = mapsToNullableFhirPrimitive(tref.getName());
 		}
 
-//		if( member.isAllowDAR() ) nl(">");
 		if( member.getMaxCardinality() == -1 ) nl(">");
-
-		// All generated members should be nullable, to indicate whether
-		// the element has data or not. This means cardinality needs to be 
-		// checked by the validation routines and is not converted to
-		// a structural aspect here.
-		//if( !isNullable ) nl("?");
-		
+	
 		nl( " " + GeneratorUtils.generateCSharpMemberName(member) );
 		nl(" { get; set; }");
 		ln();
@@ -227,22 +217,12 @@ public class CSharpModelResourceGenerator extends GenBlock
 		end();
 	}
 
-			
-	public GenBlock genericBaseClass( CompositeTypeDefn genericType )
-	{
-		begin();
-		
-		ln("public partial class " + genericType.getName() + ": Composite { }");
-		
-		return end();
-	}
 	
 	private void compositeClassHeader(CompositeTypeDefn composite) throws Exception
 	{
 		ln( "public ");
 			if( composite.isAbstract() ) nl("abstract ");
-			nl("partial class " +
-				GeneratorUtils.generateCSharpTypeName(composite.getName()) );
+			nl("partial class " + GeneratorUtils.generateCSharpTypeName(composite.getName()) );
 				
 		// Derive from appropriate baseclass
 		if( composite.getBaseType() != null ) 
@@ -250,8 +230,6 @@ public class CSharpModelResourceGenerator extends GenBlock
 			nl( " : " ); 
 			nl(GeneratorUtils.buildFullyScopedTypeName(composite.getBaseType()));
 		}
-		else if( composite.isComposite() ) 
-			nl( " : Composite" );
 	}
 	
 	public GenBlock enums( List<BindingDefn> bindings ) throws Exception
@@ -385,4 +363,79 @@ public class CSharpModelResourceGenerator extends GenBlock
 		
 		return end();
 	}
+	
+	
+	public GenBlock generateExtraPrimitiveMembers(PrimitiveDefn primitive, String className) throws Exception
+	{	
+		String csharpPrimitive = GeneratorUtils.mapPrimitiveToCSharpType(primitive.getName()); 
+		boolean isNullablePrimitive = csharpPrimitive.endsWith("?");
+
+		begin();
+		
+    	if( primitive.getPattern() != null )
+    	{
+    		ln("// Must conform to the pattern ");
+    			nl( "\"" + primitive.getPattern() + "\"" );
+    		ln("public const string PATTERN = @");
+    			nl("\"" + primitive.getPattern() + "\";");
+    		ln();
+    	}
+    
+    	
+    	// Generate constructor, taking one parameter - the primitive value
+        ln("public " + className);
+        	nl("(" + csharpPrimitive + " value)");
+        bs("{");
+        	ln( "Contents = value; ");
+        es("}");
+        ln();
+
+    	// Generate empty constructor
+        ln("public " + className + "()");
+        	nl(": this(null) {}");
+        ln();
+        
+        // Generate the cast from a C# primitive to the Fhir primitive
+        ln("public static implicit operator ");
+        	nl(className);
+        	nl("(" + csharpPrimitive + " value)");
+        bs("{");
+            ln( "return new " );
+            	nl(className + "(value);");
+        es("}");
+        ln();
+        
+        // Generate the cast from the Fhir primitive to the C# primitive
+        // This is an explicit cast because you'll lose information about
+        // dataAbsentReasons, refid, extensions
+        ln("public static explicit operator ");
+        	nl(csharpPrimitive);
+        	nl("(" + className + " value)");
+        bs("{");
+            ln("return value.Contents;");
+        es("}");
+        ln();
+        
+        // If the FhirPrimitive represents data using a C# nullable
+        // primitive, generate another cast from the FhirPrimitive to the
+        // non-nullable C# primitive.
+        if( isNullablePrimitive )
+        {
+        	String nonNullablePrimitive = csharpPrimitive.substring(0, csharpPrimitive.length()-1);
+        	
+        	ln("public static explicit operator ");
+        		nl(nonNullablePrimitive);
+        		nl("(" + className + " source)");
+        	bs("{");
+	            ln("if (source.Contents.HasValue)");
+	            ln("	return source.Contents.Value;");
+	            ln("else");
+	            ln("	throw new InvalidCastException();");
+	        es("}");
+        }
+        
+        return end();
+	}
+
+
 }
