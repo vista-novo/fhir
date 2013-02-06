@@ -64,8 +64,10 @@ Notes:
 </p>
 <ul>
  <li>The <i>url</i> is a mandatory field, and identifies an extension definition in a <a href="profile.htm">resource profile</a> that defines the content and meaning of the extension.</li>
- <li>An extension must have either a value (i.e. a value[x] element) or child extensions. The value itself must have content, and/or an id attribute that is the target of a reference from the Narrative</li>
- <li>Multiple value[x] elements are allowed, but they must be all be of the same type, that specified in the extension definition. For how to do multiple types of different extensions, see the second example below></li>
+ <li><i>mustUnderstand</i> is used to indicate that this value influences the understanding of other elements. It's use is further discussed below</li>
+ <li>The actual content of the extension consists of either a single value in the <i>value[x]</i> element, or a nested list of other extensions, each with their own defining url and content</li>
+ <li>An extension must have either a value (i.e. a value[x] element) or child extensions. The value element must have content, and/or an id attribute that is the target of a reference from the Narrative</li>
+ <li>This bit still to do</li>
 </ul>
 <p>
 The <i>value[x]</i> element has the [x] replaced with the name of one of the defined types, and the contents as defined for that type, or another extension. The value type may be one of the following:

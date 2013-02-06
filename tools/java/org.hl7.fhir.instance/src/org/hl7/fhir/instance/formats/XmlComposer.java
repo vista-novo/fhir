@@ -29,11 +29,12 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Thu, Jan 31, 2013 23:34+1100 for FHIR v0.07
+// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
 import org.hl7.fhir.instance.model.Boolean;
+import org.hl7.fhir.utilities.Utilities;
 import java.net.*;
 import java.math.*;
 
@@ -46,7 +47,7 @@ public class XmlComposer extends XmlComposerBase {
   }
 
   private <E extends Enum<E>> void composeEnumeration(String name, Enumeration<E> value, EnumFactory e) throws Exception {
-    if (value != null) {
+    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || value.getValue() != null)) {
       composeElementAttributes(value);
       if (value.getValue() != null) 
         xml.attribute("value", e.toCode(value.getValue()));
@@ -69,7 +70,7 @@ public class XmlComposer extends XmlComposerBase {
   }    
 
   private void composeDateTime(String name, DateTime value) throws Exception {
-    if (value != null) {
+    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || !Utilities.noString(value.getValue()))) {
       composeElementAttributes(value);
       if (value.getValue() != null) 
         xml.attribute("value", toString(value.getValue()));
@@ -81,7 +82,7 @@ public class XmlComposer extends XmlComposerBase {
   }    
 
   private void composeCode(String name, Code value) throws Exception {
-    if (value != null) {
+    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || !Utilities.noString(value.getValue()))) {
       composeElementAttributes(value);
       if (value.getValue() != null) 
         xml.attribute("value", toString(value.getValue()));
@@ -93,7 +94,7 @@ public class XmlComposer extends XmlComposerBase {
   }    
 
   private void composeDate(String name, Date value) throws Exception {
-    if (value != null) {
+    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || !Utilities.noString(value.getValue()))) {
       composeElementAttributes(value);
       if (value.getValue() != null) 
         xml.attribute("value", toString(value.getValue()));
@@ -105,7 +106,7 @@ public class XmlComposer extends XmlComposerBase {
   }    
 
   private void composeDecimal(String name, Decimal value) throws Exception {
-    if (value != null) {
+    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || value.getValue() != null)) {
       composeElementAttributes(value);
       if (value.getValue() != null) 
         xml.attribute("value", toString(value.getValue()));
@@ -117,7 +118,7 @@ public class XmlComposer extends XmlComposerBase {
   }    
 
   private void composeUri(String name, Uri value) throws Exception {
-    if (value != null) {
+    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || value.getValue() != null)) {
       composeElementAttributes(value);
       if (value.getValue() != null) 
         xml.attribute("value", toString(value.getValue()));
@@ -129,7 +130,7 @@ public class XmlComposer extends XmlComposerBase {
   }    
 
   private void composeId(String name, Id value) throws Exception {
-    if (value != null) {
+    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || !Utilities.noString(value.getValue()))) {
       composeElementAttributes(value);
       if (value.getValue() != null) 
         xml.attribute("value", toString(value.getValue()));
@@ -141,7 +142,7 @@ public class XmlComposer extends XmlComposerBase {
   }    
 
   private void composeBase64Binary(String name, Base64Binary value) throws Exception {
-    if (value != null) {
+    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || value.getValue() != null)) {
       composeElementAttributes(value);
       if (value.getValue() != null) 
         xml.attribute("value", toString(value.getValue()));
@@ -153,7 +154,7 @@ public class XmlComposer extends XmlComposerBase {
   }    
 
   private void composeOid(String name, Oid value) throws Exception {
-    if (value != null) {
+    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || !Utilities.noString(value.getValue()))) {
       composeElementAttributes(value);
       if (value.getValue() != null) 
         xml.attribute("value", toString(value.getValue()));
@@ -165,7 +166,7 @@ public class XmlComposer extends XmlComposerBase {
   }    
 
   private void composeString(String name, String_ value) throws Exception {
-    if (value != null) {
+    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || !Utilities.noString(value.getValue()))) {
       composeElementAttributes(value);
       if (value.getValue() != null) 
         xml.attribute("value", toString(value.getValue()));
@@ -188,7 +189,7 @@ public class XmlComposer extends XmlComposerBase {
   }    
 
   private void composeUuid(String name, Uuid value) throws Exception {
-    if (value != null) {
+    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || !Utilities.noString(value.getValue()))) {
       composeElementAttributes(value);
       if (value.getValue() != null) 
         xml.attribute("value", toString(value.getValue()));
@@ -200,7 +201,7 @@ public class XmlComposer extends XmlComposerBase {
   }    
 
   private void composeInstant(String name, Instant value) throws Exception {
-    if (value != null) {
+    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || value.getValue() != null)) {
       composeElementAttributes(value);
       if (value.getValue() != null) 
         xml.attribute("value", toString(value.getValue()));

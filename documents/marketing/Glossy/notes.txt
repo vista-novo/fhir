@@ -13,3 +13,5 @@ suggestions welcome for the kind of stuff I should mention
 [11:21:24 AM] Andy Stechishin: Aimed at modern Web Developers
 [11:23:00 AM] Lloyd McKenzie: Multiple developers have had simple interfaces up and running in less than a day
 [2:07:52 PM] Grahame Grieve: thanks everyone
+
+Btw - if you haven't finished the text for the himss brochure, you might also want to mention that the FHIR specs can be understood - at least at the high level - by domain experts like clinicians. Try that with v2/v3/cda!

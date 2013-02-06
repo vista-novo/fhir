@@ -4,10 +4,10 @@
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <pre>
-&lt;<a title="The findings and interpretation of a general lipid lab profile" class="dict" href="#LabReport">
-          <b>LabReport</b>
+&lt;<a title="The findings and interpretation of a general lipid lab profile" class="dict" href="#DiagnosticReport">
+          <b>DiagnosticReport</b>
         </a> xmlns="http://hl7.org/fhir"&gt;
- <i class="inherited">&lt;<a title="Master Resource Id, always first in all resources" class="dict" href="#LabReport.id">
+ <i class="inherited">&lt;<a title="Master Resource Id, always first in all resources" class="dict" href="#DiagnosticReport.id">
             <b>id</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
           <span style="color: brown">
@@ -18,7 +18,7 @@
           </span>
           <span style="color: navy">Master Resource Id, always first in all resources</span>
           <span style="color: Gray"> --&gt;</span>&lt;/id&gt;</i>
-        <i class="inherited">&lt;<a title="The status of the pathology test result as a whole" class="dict" href="#LabReport.status">
+        <i class="inherited">&lt;<a title="The status of the pathology test result as a whole" class="dict" href="#DiagnosticReport.status">
             <b>status</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
           <span style="color: brown">
@@ -29,7 +29,7 @@
           </span>
           <span style="color: navy">registered|interim|final|amended|cancelled|withdrawn</span>
           <span style="color: Gray"> --&gt;</span>&lt;/status&gt;</i>
-        <i class="inherited">&lt;<a title="The date and/or time that the result was issued from the source for the recorded â€˜Test result status" class="dict" href="#LabReport.issued">
+        <i class="inherited">&lt;<a title="The date and/or time that the result was issued from the source for the recorded â€˜Test result status" class="dict" href="#DiagnosticReport.issued">
             <b>issued</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
           <span style="color: brown">
@@ -40,7 +40,7 @@
           </span>
           <span style="color: navy">date issed for current status</span>
           <span style="color: Gray"> --&gt;</span>&lt;/issued&gt;</i>
-        <i class="inherited">&lt;<a title="The patient about who the report is about" class="dict" href="#LabReport.patient">
+        <i class="inherited">&lt;<a title="The patient about who the report is about" class="dict" href="#DiagnosticReport.patient">
             <b>patient</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
           <span style="color: brown">
@@ -50,7 +50,7 @@
             <a href="resources.htm#Resource">Resource</a>(<a href="Patient.htm#Patient">Patient</a>)</span>
           <span style="color: navy">The patient the report is about</span>
           <span style="color: Gray"> --&gt;</span>&lt;/patient&gt;</i>
-        <i class="inherited">&lt;<a title="The admission that this diagnostic investigation is associated with" class="dict" href="#LabReport.admission">
+        <i class="inherited">&lt;<a title="The admission that this diagnostic investigation is associated with" class="dict" href="#DiagnosticReport.admission">
             <b>admission</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
           <span style="color: brown">
@@ -60,7 +60,7 @@
             <a href="resources.htm#Resource">Resource</a>(<a href="Admission.htm#Admission">Admission</a>)</span>
           <span style="color: navy">Admission Context</span>
           <span style="color: Gray"> --&gt;</span>&lt;/admission&gt;</i>
-        <i class="inherited">&lt;<a title="The laboratory service that issued the report" class="dict" href="#LabReport.laboratory">
+        <i class="inherited">&lt;<a title="The laboratory service that issued the report" class="dict" href="#DiagnosticReport.laboratory">
             <b>laboratory</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
           <span style="color: brown">
@@ -70,7 +70,7 @@
             <a href="resources.htm#Resource">Resource</a>(<a href="Organization.htm#Organization">Organization</a>)</span>
           <span style="color: navy">Responsible Laboratory</span>
           <span style="color: Gray"> --&gt;</span>&lt;/laboratory&gt;</i>
-        <i class="inherited">&lt;<a title="The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS)." class="dict" href="#LabReport.reportId">
+        <i class="inherited">&lt;<a title="The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS)." class="dict" href="#DiagnosticReport.reportId">
             <b>reportId</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
           <span style="color: brown">
@@ -81,12 +81,12 @@
           </span>
           <span style="color: navy">Id for external references to this report</span>
           <span style="color: Gray"> --&gt;</span>&lt;/reportId&gt;</i>
-        <i class="inherited">&lt;<a title="Details concerning a single pathology test requested." class="dict" href="#LabReport.requestDetail">
+        <i class="inherited">&lt;<a title="Details concerning a single pathology test requested." class="dict" href="#DiagnosticReport.requestDetail">
             <b>requestDetail</b>
           </a>&gt;  <span style="color: Gray">&lt;!-- <span style="color: brown">
               <b>0..*</b>
             </span> What was requested --&gt;</span>
-          <i class="inherited">&lt;<a title="The local ID assigned to the order by the order requester." class="dict" href="#LabReport.requestDetail.requestOrderId">
+          <i class="inherited">&lt;<a title="The local ID assigned to the order by the order requester." class="dict" href="#DiagnosticReport.requestDetail.requestOrderId">
               <b>requestOrderId</b>
             </a>&gt;<span style="color: Gray">&lt;!--</span>
             <span style="color: brown">
@@ -97,7 +97,7 @@
             </span>
             <span style="color: navy">Id assigned by requester</span>
             <span style="color: Gray"> --&gt;</span>&lt;/requestOrderId&gt;</i>
-          <i class="inherited">&lt;<a title="The local ID assigned to the test order by the order filler, usually by the Laboratory Information System (LIS)." class="dict" href="#LabReport.requestDetail.receiverOrderId">
+          <i class="inherited">&lt;<a title="The local ID assigned to the test order by the order filler, usually by the Laboratory Information System (LIS)." class="dict" href="#DiagnosticReport.requestDetail.receiverOrderId">
               <b>receiverOrderId</b>
             </a>&gt;<span style="color: Gray">&lt;!--</span>
             <span style="color: brown">
@@ -108,7 +108,7 @@
             </span>
             <span style="color: navy">Receiver's Id for the request</span>
             <span style="color: Gray"> --&gt;</span>&lt;/receiverOrderId&gt;</i>
-          <i class="inherited">&lt;<a title="Identification of pathology test requested," class="dict" href="#LabReport.requestDetail.requestTest">
+          <i class="inherited">&lt;<a title="Identification of pathology test requested," class="dict" href="#DiagnosticReport.requestDetail.requestTest">
               <b>requestTest</b>
             </a>&gt;<span style="color: Gray">&lt;!--</span>
             <span style="color: brown">
@@ -119,7 +119,7 @@
             </span>
             <span style="color: navy">Test Requested</span>
             <span style="color: Gray"> --&gt;</span>&lt;/requestTest&gt;</i>
-          <i class="inherited">&lt;<a title="Details of the clinician or organization requesting the laboratory test." class="dict" href="#LabReport.requestDetail.requester">
+          <i class="inherited">&lt;<a title="Details of the clinician or organization requesting the laboratory test." class="dict" href="#DiagnosticReport.requestDetail.requester">
               <b>requester</b>
             </a>&gt;<span style="color: Gray">&lt;!--</span>
             <span style="color: brown">
@@ -129,7 +129,7 @@
               <a href="resources.htm#Resource">Resource</a>(<a href="Provider.htm#Provider">Provider</a>|<a href="Organization.htm#Organization">Organization</a>)</span>
             <span style="color: navy">Responsible for request</span>
             <span style="color: Gray"> --&gt;</span>&lt;/requester&gt;</i>
-          <i class="inherited">&lt;<a title="Details of the clinical information provided to the laboratory along with the original request" class="dict" href="#LabReport.requestDetail.clinicalInfo">
+          <i class="inherited">&lt;<a title="Details of the clinical information provided to the laboratory along with the original request" class="dict" href="#DiagnosticReport.requestDetail.clinicalInfo">
               <b>clinicalInfo</b>
             </a>&gt;<span style="color: Gray">&lt;!--</span>
             <span style="color: brown">
@@ -140,7 +140,7 @@
             <span style="color: navy">Clinical information provided</span>
             <span style="color: Gray"> --&gt;</span>&lt;/clinicalInfo&gt;</i>
  &lt;/requestDetail&gt;</i>
- &lt;<a title="LOINC Code for Lipid Report with LDL (this element must be supported or understood)" class="dict" href="#LabReport.reportName">
+ &lt;<a title="LOINC Code for Lipid Report with LDL (this element must be supported or understood)" class="dict" href="#DiagnosticReport.reportName">
           <span style="text-decoration: underline">reportName</span>
         </a>&gt;
    &lt;coding&gt;
@@ -149,7 +149,7 @@
      &lt;display&gt;Lipid panel with direct LDL&lt;/display&gt;
    &lt;/coding&gt;
  &lt;reportName/&gt;
- <i class="inherited">&lt;<a title="The diagnostic service that performs the examination e.g. biochemistry, hematology." class="dict" href="#LabReport.service">
+ <i class="inherited">&lt;<a title="The diagnostic service that performs the examination e.g. biochemistry, hematology." class="dict" href="#DiagnosticReport.service">
             <b>service</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
           <span style="color: brown">
@@ -160,7 +160,7 @@
           </span>
           <span style="color: navy">Biochemistry, Hematology, etc.</span>
           <span style="color: Gray"> --&gt;</span>&lt;/service&gt;</i>
-        <i class="inherited">&lt;<a title="The diagnostically relevant time for this report" class="dict" href="#LabReport.diagnosticTime">
+        <i class="inherited">&lt;<a title="The diagnostically relevant time for this report" class="dict" href="#DiagnosticReport.diagnosticTime">
             <b>diagnosticTime</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
           <span style="color: brown">
@@ -171,7 +171,7 @@
           </span>
           <span style="color: navy">Effective time of diagnostic report</span>
           <span style="color: Gray"> --&gt;</span>&lt;/diagnosticTime&gt;</i>
-        <i class="inherited">&lt;<a title="Details about the specimen if all individual test results are derived from the same specimen" class="dict" href="#LabReport.specimen">
+        <i class="inherited">&lt;<a title="Details about the specimen if all individual test results are derived from the same specimen" class="dict" href="#DiagnosticReport.specimen">
             <b>specimen</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
           <span style="color: brown">
@@ -181,12 +181,12 @@
             <a href="resources.htm#Resource">Resource</a>(<a href="Specimen.htm#Specimen">Specimen</a>)</span>
           <span style="color: navy">Specimen (incl. time of collection)</span>
           <span style="color: Gray"> --&gt;</span>&lt;/specimen&gt;</i>
- &lt;<a title="All the lipid panel results (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup">
+ &lt;<a title="All the lipid panel results (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup">
           <span style="text-decoration: underline">
             <b>resultGroup</b>
           </span>
         </a>
-  &lt;<a title="No name needed for the result group (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.name">
+  &lt;<a title="No name needed for the result group (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.name">
           <span style="text-decoration: underline">
             <b>name</b>
           </span>
@@ -199,7 +199,7 @@
         </span>
         <span style="color: navy">No name needed for the result group</span>
         <span style="color: Gray"> --&gt;</span>&lt;/name&gt;
-  <i class="inherited">&lt;<a title="Details about the individual specimen to which these â€˜Result groupâ€™ test results refer, where testing of multiple specimens is required." class="dict" href="#LabReport.resultGroup.specimen">
+  <i class="inherited">&lt;<a title="Details about the individual specimen to which these â€˜Result groupâ€™ test results refer, where testing of multiple specimens is required." class="dict" href="#DiagnosticReport.resultGroup.specimen">
             <b>specimen</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
           <span style="color: brown">
@@ -209,7 +209,7 @@
             <a href="resources.htm#Resource">Resource</a>(<a href="Specimen.htm#Specimen">Specimen</a>)</span>
           <span style="color: navy">Specimen details</span>
           <span style="color: Gray"> --&gt;</span>&lt;/specimen&gt;</i>
-  &lt;<a title="Group of elements for Cholesterol result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result">
+  &lt;<a title="Group of elements for Cholesterol result (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result">
           <span style="text-decoration: underline">
             <b>result</b>
           </span>
@@ -217,7 +217,7 @@
         <span style="color: blue">"Cholesterol Group"</span>
         <span style="color: Gray"> --&gt;</span>
         <span style="color: Gray">&lt;!-- Cholesterol Result --&gt;</span>
-   &lt;<a title="Cholesterol (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name">
+   &lt;<a title="Cholesterol (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.name">
           <span style="text-decoration: underline">name</span>
         </a>&gt;
      &lt;coding&gt;
@@ -226,7 +226,7 @@
        &lt;display&gt;Cholesterol&lt;/display&gt;
      &lt;/coding&gt;
    &lt;name/&gt;
-   &lt;<a title="Cholesterol value. If a result is not available, use the comments field (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.valueQuantity">
+   &lt;<a title="Cholesterol value. If a result is not available, use the comments field (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.valueQuantity">
           <span style="text-decoration: underline">
             <b>valueQuantity</b>
           </span>
@@ -239,7 +239,7 @@
         </span>
         <span style="color: navy">Cholesterol value</span>
         <span style="color: Gray"> --&gt;</span>&lt;/valueQuantity&gt;
-   &lt;<a title="+ | ++ | +++ | - | -- | ---  (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.flag">
+   &lt;<a title="+ | ++ | +++ | - | -- | ---  (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.flag">
           <span style="text-decoration: underline">
             <b>flag</b>
           </span>
@@ -252,7 +252,7 @@
         </span>
         <span style="color: navy">+ | ++ | +++ | - | -- | --- </span>
         <span style="color: Gray"> --&gt;</span>&lt;/flag&gt;
-   <i class="inherited">&lt;<a title="The status of the result value" class="dict" href="#LabReport.resultGroup.result.status">
+   <i class="inherited">&lt;<a title="The status of the result value" class="dict" href="#DiagnosticReport.resultGroup.result.status">
             <b>status</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
           <span style="color: brown">
@@ -263,7 +263,7 @@
           </span>
           <span style="color: navy">Registered|Interim|Final|Amended|Cancelled|Withdrawn</span>
           <span style="color: Gray"> --&gt;</span>&lt;/status&gt;</i>
-   &lt;<a title="May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result. (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.comments">
+   &lt;<a title="May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result. (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.comments">
           <span style="text-decoration: underline">
             <b>comments</b>
           </span>
@@ -276,12 +276,12 @@
         </span>
         <span style="color: navy">Comments about result</span>
         <span style="color: Gray"> --&gt;</span>&lt;/comments&gt;
-   &lt;<a title="Guide for interpretation (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.referenceRange">
+   &lt;<a title="Guide for interpretation (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.referenceRange">
           <span style="text-decoration: underline">
             <b>referenceRange</b>
           </span>
         </a>
-    &lt;<a title="Range is a recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning">
+    &lt;<a title="Range is a recommended range" class="dict" href="#DiagnosticReport.resultGroup.result.referenceRange.meaning">
           <b>meaning</b>
         </a>
         <span style="color: brown">
@@ -292,7 +292,7 @@
         </span>
         <span style="color: navy">Range is a recommended range</span>
         <span style="color: Gray"> --&gt;</span>&lt;/meaning&gt;
-    &lt;<a title="&lt;4.5 mmol/L" class="dict" href="#LabReport.resultGroup.result.referenceRange.rangeQuantity">rangeQuantity</a>&gt;
+    &lt;<a title="&lt;4.5 mmol/L" class="dict" href="#DiagnosticReport.resultGroup.result.referenceRange.rangeQuantity">rangeQuantity</a>&gt;
       &lt;value&gt;4.5&lt;/value&gt;
       &lt;status&gt;&amp;lt;&lt;/status&gt;
       &lt;units&gt;mmol/L&lt;/units&gt;
@@ -301,7 +301,7 @@
     &lt;rangeQuantity/&gt;
    &lt;/referenceRange&gt;
   &lt;/result&gt;
-  &lt;<a title="Group of elements for Triglyceride result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result">
+  &lt;<a title="Group of elements for Triglyceride result (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result">
           <span style="text-decoration: underline">
             <b>result</b>
           </span>
@@ -309,7 +309,7 @@
         <span style="color: blue">"Triglyceride Group"</span>
         <span style="color: Gray"> --&gt;</span>
         <span style="color: Gray">&lt;!-- Triglyceride Result --&gt;</span>
-   &lt;<a title="Triglyceride (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name">
+   &lt;<a title="Triglyceride (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.name">
           <span style="text-decoration: underline">name</span>
         </a>&gt;
      &lt;coding&gt;
@@ -318,7 +318,7 @@
        &lt;display&gt;Triglyceride&lt;/display&gt;
      &lt;/coding&gt;
    &lt;name/&gt;
-   &lt;<a title="Triglyceride value. If a result is not available, use the comments field (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.valueQuantity">
+   &lt;<a title="Triglyceride value. If a result is not available, use the comments field (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.valueQuantity">
           <span style="text-decoration: underline">
             <b>valueQuantity</b>
           </span>
@@ -331,7 +331,7 @@
         </span>
         <span style="color: navy">Triglyceride value</span>
         <span style="color: Gray"> --&gt;</span>&lt;/valueQuantity&gt;
-   &lt;<a title="+ | ++ | +++ | - | -- | ---  (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.flag">
+   &lt;<a title="+ | ++ | +++ | - | -- | ---  (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.flag">
           <span style="text-decoration: underline">
             <b>flag</b>
           </span>
@@ -344,7 +344,7 @@
         </span>
         <span style="color: navy">+ | ++ | +++ | - | -- | --- </span>
         <span style="color: Gray"> --&gt;</span>&lt;/flag&gt;
-   &lt;<a title="Comments about result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.comments">
+   &lt;<a title="Comments about result (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.comments">
           <span style="text-decoration: underline">
             <b>comments</b>
           </span>
@@ -357,12 +357,12 @@
         </span>
         <span style="color: navy">Comments about result</span>
         <span style="color: Gray"> --&gt;</span>&lt;/comments&gt;
-   &lt;<a title="Guide for interpretation (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.referenceRange">
+   &lt;<a title="Guide for interpretation (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.referenceRange">
           <span style="text-decoration: underline">
             <b>referenceRange</b>
           </span>
         </a>
-    &lt;<a title="Range is a recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning">
+    &lt;<a title="Range is a recommended range" class="dict" href="#DiagnosticReport.resultGroup.result.referenceRange.meaning">
           <b>meaning</b>
         </a>
         <span style="color: brown">
@@ -373,7 +373,7 @@
         </span>
         <span style="color: navy">Range is a recommended range</span>
         <span style="color: Gray"> --&gt;</span>&lt;/meaning&gt;
-    &lt;<a title="&lt;2.0 mmol/L" class="dict" href="#LabReport.resultGroup.result.referenceRange.rangeQuantity">rangeQuantity</a>&gt;
+    &lt;<a title="&lt;2.0 mmol/L" class="dict" href="#DiagnosticReport.resultGroup.result.referenceRange.rangeQuantity">rangeQuantity</a>&gt;
       &lt;value&gt;2.0&lt;/value&gt;
       &lt;status&gt;&amp;lt;&lt;/status&gt;
       &lt;units&gt;mmol/L&lt;/units&gt;
@@ -382,7 +382,7 @@
     &lt;rangeQuantity/&gt;
    &lt;/referenceRange&gt;
   &lt;/result&gt;
-  &lt;<a title="Group of elements for HDL Cholesterol result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result">
+  &lt;<a title="Group of elements for HDL Cholesterol result (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result">
           <span style="text-decoration: underline">
             <b>result</b>
           </span>
@@ -390,7 +390,7 @@
         <span style="color: blue">"HDL Cholesteral Group"</span>
         <span style="color: Gray"> --&gt;</span>
         <span style="color: Gray">&lt;!-- HDL Cholesterol Result --&gt;</span>
-   &lt;<a title="HDL Cholesterol (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name">
+   &lt;<a title="HDL Cholesterol (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.name">
           <span style="text-decoration: underline">name</span>
         </a>&gt;
      &lt;coding&gt;
@@ -399,7 +399,7 @@
        &lt;display&gt;Cholesterol.in HDL&lt;/display&gt;
      &lt;/coding&gt;
    &lt;name/&gt;
-   &lt;<a title="HDL Cholesterol value. If a result is not available, use the comments field (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.valueQuantity">
+   &lt;<a title="HDL Cholesterol value. If a result is not available, use the comments field (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.valueQuantity">
           <span style="text-decoration: underline">
             <b>valueQuantity</b>
           </span>
@@ -412,7 +412,7 @@
         </span>
         <span style="color: navy">HDL Cholesterol value</span>
         <span style="color: Gray"> --&gt;</span>&lt;/valueQuantity&gt;
-   &lt;<a title="+ | ++ | +++ | - | -- | ---  (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.flag">
+   &lt;<a title="+ | ++ | +++ | - | -- | ---  (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.flag">
           <span style="text-decoration: underline">
             <b>flag</b>
           </span>
@@ -425,7 +425,7 @@
         </span>
         <span style="color: navy">+ | ++ | +++ | - | -- | --- </span>
         <span style="color: Gray"> --&gt;</span>&lt;/flag&gt;
-   &lt;<a title="Comments about result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.comments">
+   &lt;<a title="Comments about result (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.comments">
           <span style="text-decoration: underline">
             <b>comments</b>
           </span>
@@ -438,12 +438,12 @@
         </span>
         <span style="color: navy">Comments about result</span>
         <span style="color: Gray"> --&gt;</span>&lt;/comments&gt;
-   &lt;<a title="Guide for interpretation (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.referenceRange">
+   &lt;<a title="Guide for interpretation (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.referenceRange">
           <span style="text-decoration: underline">
             <b>referenceRange</b>
           </span>
         </a>
-    &lt;<a title="Range is a recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning">
+    &lt;<a title="Range is a recommended range" class="dict" href="#DiagnosticReport.resultGroup.result.referenceRange.meaning">
           <b>meaning</b>
         </a>
         <span style="color: brown">
@@ -454,7 +454,7 @@
         </span>
         <span style="color: navy">Range is a recommended range</span>
         <span style="color: Gray"> --&gt;</span>&lt;/meaning&gt;
-    &lt;<a title="" href="#LabReport.resultGroup.result.referenceRange.rangeQuantity">1.5 mmol/L" class="dict"&gt;rangeQuantity</a>&gt;
+    &lt;<a title="" href="#DiagnosticReport.resultGroup.result.referenceRange.rangeQuantity">1.5 mmol/L" class="dict"&gt;rangeQuantity</a>&gt;
       &lt;value&gt;1.5&lt;/value&gt;
       &lt;status&gt;&gt;&lt;/status&gt;
       &lt;units&gt;mmol/L&lt;/units&gt;
@@ -463,7 +463,7 @@
     &lt;rangeQuantity/&gt;
    &lt;/referenceRange&gt;
   &lt;/result&gt;
-  &lt;<a title="LDL Cholesterol result, if reported (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result">
+  &lt;<a title="LDL Cholesterol result, if reported (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result">
           <span style="text-decoration: underline">
             <b>result</b>
           </span>
@@ -471,7 +471,7 @@
         <span style="color: blue">"LDL Cholesteral Group"</span>
         <span style="color: Gray"> --&gt;</span>
         <span style="color: Gray">&lt;!-- LDL Cholesterol result, if reported --&gt;</span>
-   &lt;<a title="Group of elements for LDL Cholesterol. LOINC code defines whether LDL is measured or calculated (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name">
+   &lt;<a title="Group of elements for LDL Cholesterol. LOINC code defines whether LDL is measured or calculated (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.name">
           <span style="text-decoration: underline">
             <b>name</b>
           </span>
@@ -484,7 +484,7 @@
         </span>
         <span style="color: navy">LDL Cholesterol. LOINC code defines measured or calc</span>
         <span style="color: Gray"> --&gt;</span>&lt;/name&gt;
-   &lt;<a title="LDL Cholesterol value. If a result is not available, use the comments field (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.valueQuantity">
+   &lt;<a title="LDL Cholesterol value. If a result is not available, use the comments field (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.valueQuantity">
           <span style="text-decoration: underline">
             <b>valueQuantity</b>
           </span>
@@ -497,7 +497,7 @@
         </span>
         <span style="color: navy">LDL Cholesterol value</span>
         <span style="color: Gray"> --&gt;</span>&lt;/valueQuantity&gt;
-   &lt;<a title="+ | ++ | +++ | - | -- | ---  (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.flag">
+   &lt;<a title="+ | ++ | +++ | - | -- | ---  (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.flag">
           <span style="text-decoration: underline">
             <b>flag</b>
           </span>
@@ -510,7 +510,7 @@
         </span>
         <span style="color: navy">+ | ++ | +++ | - | -- | --- </span>
         <span style="color: Gray"> --&gt;</span>&lt;/flag&gt;
-   &lt;<a title="Comments about result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.comments">
+   &lt;<a title="Comments about result (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.comments">
           <span style="text-decoration: underline">
             <b>comments</b>
           </span>
@@ -523,12 +523,12 @@
         </span>
         <span style="color: navy">Comments about result</span>
         <span style="color: Gray"> --&gt;</span>&lt;/comments&gt;
-   &lt;<a title="Guide for interpretation (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.referenceRange">
+   &lt;<a title="Guide for interpretation (this element must be supported or understood)" class="dict" href="#DiagnosticReport.resultGroup.result.referenceRange">
           <span style="text-decoration: underline">
             <b>referenceRange</b>
           </span>
         </a>
-    &lt;<a title="Range is a recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning">
+    &lt;<a title="Range is a recommended range" class="dict" href="#DiagnosticReport.resultGroup.result.referenceRange.meaning">
           <b>meaning</b>
         </a>
         <span style="color: brown">
@@ -539,7 +539,7 @@
         </span>
         <span style="color: navy">Range is a recommended range</span>
         <span style="color: Gray"> --&gt;</span>&lt;/meaning&gt;
-    &lt;<a title="&lt;3.0 mmol/L" class="dict" href="#LabReport.resultGroup.result.referenceRange.rangeQuantity">rangeQuantity</a>&gt;
+    &lt;<a title="&lt;3.0 mmol/L" class="dict" href="#DiagnosticReport.resultGroup.result.referenceRange.rangeQuantity">rangeQuantity</a>&gt;
       &lt;value&gt;3.0&lt;/value&gt;
       &lt;status&gt;&amp;lt;&lt;/status&gt;
       &lt;units&gt;mmol/L&lt;/units&gt;
@@ -549,7 +549,7 @@
    &lt;/referenceRange&gt;
   &lt;/result&gt;
  &lt;/resultGroup&gt;
- &lt;<a title="May include diagnosis or suggestions for follow up testing (this element must be supported or understood)" class="dict" href="#LabReport.conclusion">
+ &lt;<a title="May include diagnosis or suggestions for follow up testing (this element must be supported or understood)" class="dict" href="#DiagnosticReport.conclusion">
           <span style="text-decoration: underline">
             <b>conclusion</b>
           </span>
@@ -562,7 +562,7 @@
         </span>
         <span style="color: navy">Clinical Interpretation of Lipid Panel</span>
         <span style="color: Gray"> --&gt;</span>&lt;/conclusion&gt;
- &lt;<a title="Codes for the conclusion" class="dict" href="#LabReport.codedDiagnosis">
+ &lt;<a title="Codes for the conclusion" class="dict" href="#DiagnosticReport.codedDiagnosis">
           <b>codedDiagnosis</b>
         </a>
         <span style="color: brown">
@@ -573,7 +573,7 @@
         </span>
         <span style="color: navy">Codes for the conclusion</span>
         <span style="color: Gray"> --&gt;</span>&lt;/codedDiagnosis&gt;
- <i class="inherited">&lt;<a title="Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they must be semantically equivalent." class="dict" href="#LabReport.representation">
+ <i class="inherited">&lt;<a title="Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they must be semantically equivalent." class="dict" href="#DiagnosticReport.representation">
             <b>representation</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
           <span style="color: brown">
@@ -584,14 +584,14 @@
           </span>
           <span style="color: navy">Entire Report as issued</span>
           <span style="color: Gray"> --&gt;</span>&lt;/representation&gt;</i>
-        <i class="inherited">&lt;<a title="See Extensions" class="dict" href="#LabReport.extension">
+        <i class="inherited">&lt;<a title="See Extensions" class="dict" href="#DiagnosticReport.extension">
             <b>extension</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
           <a href="extensibility.htm">
             <span style="color: navy">See Extensions</span>
           </a>
           <span style="color: Gray"> --&gt;</span>&lt;/extension&gt;</i>
-        <i class="inherited">&lt;<a title="Text summary of report, for human interpretation" class="dict" href="#LabReport.text">
+        <i class="inherited">&lt;<a title="Text summary of report, for human interpretation" class="dict" href="#DiagnosticReport.text">
             <b>text</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
           <span style="color: brown">
@@ -602,7 +602,7 @@
           </span>
           <span style="color: navy">Text summary of report, for human interpretation</span>
           <span style="color: Gray"> --&gt;</span>&lt;/text&gt;</i>
-&lt;/LabReport&gt;
+&lt;/DiagnosticReport&gt;
 </pre>
     </div>
   </text>
@@ -624,7 +624,7 @@
     <type value="Resource"/>
     <name value="Lipids"/>
     <element>
-      <path value="LabReport"/>
+      <path value="DiagnosticReport"/>
       <name value="Lipids"/>
       <definition>
         <short value="Lipid Lab Report"/>
@@ -641,7 +641,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.id"/>
+      <path value="DiagnosticReport.id"/>
       <definition>
         <short value="Master Resource Id, always first in all resources"/>
         <formal value="Master Resource Id, always first in all resources"/>
@@ -656,7 +656,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.status"/>
+      <path value="DiagnosticReport.status"/>
       <definition>
         <short value="registered|interim|final|amended|cancelled|withdrawn"/>
         <formal value="The status of the pathology test result as a whole"/>
@@ -672,11 +672,11 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.issued"/>
+      <path value="DiagnosticReport.issued"/>
       <definition>
         <short value="date issed for current status"/>
         <formal value="The date and/or time that the result was issued from the source for the recorded Test result status"/>
-        <comments value="May be different from LabReport.updated, because that is the status of this record, not the report the record is about"/>
+        <comments value="May be different from DiagnosticReport.updated, because that is the status of this record, not the report the record is about"/>
         <min value="1"/>
         <max value="1"/>
         <type>
@@ -688,7 +688,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.patient"/>
+      <path value="DiagnosticReport.patient"/>
       <definition>
         <short value="The patient the report is about"/>
         <formal value="The patient about who the report is about"/>
@@ -703,7 +703,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.admission"/>
+      <path value="DiagnosticReport.admission"/>
       <definition>
         <short value="Admission Context"/>
         <formal value="The admission that this diagnostic investigation is associated with"/>
@@ -718,7 +718,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.laboratory"/>
+      <path value="DiagnosticReport.laboratory"/>
       <definition>
         <short value="Responsible Laboratory"/>
         <formal value="The laboratory service that issued the report"/>
@@ -734,7 +734,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.reportId"/>
+      <path value="DiagnosticReport.reportId"/>
       <definition>
         <short value="Id for external references to this report"/>
         <formal value="The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS)."/>
@@ -749,7 +749,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.requestDetail"/>
+      <path value="DiagnosticReport.requestDetail"/>
       <definition>
         <short value="What was requested"/>
         <formal value="Details concerning a single pathology test requested."/>
@@ -762,7 +762,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.requestDetail.requestOrderId"/>
+      <path value="DiagnosticReport.requestDetail.requestOrderId"/>
       <definition>
         <short value="Id assigned by requester"/>
         <formal value="The local ID assigned to the order by the order requester."/>
@@ -778,7 +778,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.requestDetail.receiverOrderId"/>
+      <path value="DiagnosticReport.requestDetail.receiverOrderId"/>
       <definition>
         <short value="Receiver's Id for the request"/>
         <formal value="The local ID assigned to the test order by the order filler, usually by the Laboratory Information System (LIS)."/>
@@ -794,7 +794,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.requestDetail.requestTest"/>
+      <path value="DiagnosticReport.requestDetail.requestTest"/>
       <definition>
         <short value="Test Requested"/>
         <formal value="Identification of pathology test requested,"/>
@@ -811,7 +811,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.requestDetail.requester"/>
+      <path value="DiagnosticReport.requestDetail.requester"/>
       <definition>
         <short value="Responsible for request"/>
         <formal value="Details of the clinician or organization requesting the laboratory test."/>
@@ -826,7 +826,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.requestDetail.clinicalInfo"/>
+      <path value="DiagnosticReport.requestDetail.clinicalInfo"/>
       <definition>
         <short value="Clinical information provided"/>
         <formal value="Details of the clinical information provided to the laboratory along with the original request"/>
@@ -841,7 +841,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.reportName"/>
+      <path value="DiagnosticReport.reportName"/>
       <definition>
         <short value="LOINC Code for Lipid Report with LDL"/>
         <formal value="LOINC Code for Lipid Report with LDL"/>
@@ -858,7 +858,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.service"/>
+      <path value="DiagnosticReport.service"/>
       <definition>
         <short value="Biochemistry, Hematology, etc."/>
         <formal value="The diagnostic service that performs the examination e.g. biochemistry, hematology."/>
@@ -874,7 +874,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.diagnosticTime"/>
+      <path value="DiagnosticReport.diagnosticTime"/>
       <definition>
         <short value="Effective time of diagnostic report"/>
         <formal value="The diagnostically relevant time for this report"/>
@@ -890,7 +890,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.specimen"/>
+      <path value="DiagnosticReport.specimen"/>
       <definition>
         <short value="Specimen (incl. time of collection)"/>
         <formal value="Details about the specimen if all individual test results are derived from the same specimen"/>
@@ -906,7 +906,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup"/>
+      <path value="DiagnosticReport.resultGroup"/>
       <definition>
         <short value="All the results in one group"/>
         <formal value="All the lipid panel results"/>
@@ -919,7 +919,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.name"/>
+      <path value="DiagnosticReport.resultGroup.name"/>
       <definition>
         <short value="No name needed for the result group"/>
         <formal value="No name needed for the result group"/>
@@ -936,7 +936,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.specimen"/>
+      <path value="DiagnosticReport.resultGroup.specimen"/>
       <definition>
         <short value="Specimen details"/>
         <formal value="Details about the individual specimen to which these Result group test results refer, where testing of multiple specimens is required."/>
@@ -951,7 +951,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result"/>
+      <path value="DiagnosticReport.resultGroup.result"/>
       <name value="Cholesterol Group"/>
       <definition>
         <short value="Cholesterol Result"/>
@@ -964,7 +964,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.name"/>
+      <path value="DiagnosticReport.resultGroup.result.name"/>
       <definition>
         <short value="Cholesterol"/>
         <formal value="Cholesterol"/>
@@ -981,7 +981,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.value[x]"/>
+      <path value="DiagnosticReport.resultGroup.result.value[x]"/>
       <definition>
         <short value="Cholesterol value"/>
         <formal value="Cholesterol value. If a result is not available, use the comments field"/>
@@ -996,7 +996,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.flag"/>
+      <path value="DiagnosticReport.resultGroup.result.flag"/>
       <definition>
         <short value="+ | ++ | +++ | - | -- | --- "/>
         <formal value="+ | ++ | +++ | - | -- | --- "/>
@@ -1012,7 +1012,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.status"/>
+      <path value="DiagnosticReport.resultGroup.result.status"/>
       <definition>
         <short value="Registered|Interim|Final|Amended|Cancelled|Withdrawn"/>
         <formal value="The status of the result value"/>
@@ -1028,7 +1028,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.comments"/>
+      <path value="DiagnosticReport.resultGroup.result.comments"/>
       <definition>
         <short value="Comments about result"/>
         <formal value="May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result."/>
@@ -1043,7 +1043,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.referenceRange"/>
+      <path value="DiagnosticReport.resultGroup.result.referenceRange"/>
       <definition>
         <short value="Guide for interpretation"/>
         <formal value="Guide for interpretation"/>
@@ -1056,7 +1056,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.referenceRange.meaning"/>
+      <path value="DiagnosticReport.resultGroup.result.referenceRange.meaning"/>
       <definition>
         <short value="Range is a recommended range"/>
         <formal value="Range is a recommended range"/>
@@ -1073,7 +1073,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.referenceRange.range[x]"/>
+      <path value="DiagnosticReport.resultGroup.result.referenceRange.range[x]"/>
       <definition>
         <short value="Reference"/>
         <formal value="&lt;4.5 mmol/L"/>
@@ -1089,7 +1089,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result"/>
+      <path value="DiagnosticReport.resultGroup.result"/>
       <name value="Triglyceride Group"/>
       <definition>
         <short value="Triglyceride Result"/>
@@ -1102,7 +1102,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.name"/>
+      <path value="DiagnosticReport.resultGroup.result.name"/>
       <definition>
         <short value="Triglyceride"/>
         <formal value="Triglyceride"/>
@@ -1119,7 +1119,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.value[x]"/>
+      <path value="DiagnosticReport.resultGroup.result.value[x]"/>
       <definition>
         <short value="Triglyceride value"/>
         <formal value="Triglyceride value. If a result is not available, use the comments field"/>
@@ -1134,7 +1134,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.flag"/>
+      <path value="DiagnosticReport.resultGroup.result.flag"/>
       <definition>
         <short value="+ | ++ | +++ | - | -- | --- "/>
         <formal value="+ | ++ | +++ | - | -- | --- "/>
@@ -1150,7 +1150,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.comments"/>
+      <path value="DiagnosticReport.resultGroup.result.comments"/>
       <definition>
         <short value="Comments about result"/>
         <formal value="Comments about result"/>
@@ -1165,7 +1165,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.referenceRange"/>
+      <path value="DiagnosticReport.resultGroup.result.referenceRange"/>
       <definition>
         <short value="Guide for interpretation"/>
         <formal value="Guide for interpretation"/>
@@ -1178,7 +1178,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.referenceRange.meaning"/>
+      <path value="DiagnosticReport.resultGroup.result.referenceRange.meaning"/>
       <definition>
         <short value="Range is a recommended range"/>
         <formal value="Range is a recommended range"/>
@@ -1195,7 +1195,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.referenceRange.range[x]"/>
+      <path value="DiagnosticReport.resultGroup.result.referenceRange.range[x]"/>
       <definition>
         <short value="Reference"/>
         <formal value="&lt;2.0 mmol/L"/>
@@ -1211,7 +1211,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result"/>
+      <path value="DiagnosticReport.resultGroup.result"/>
       <name value="HDL Cholesteral Group"/>
       <definition>
         <short value="HDL Cholesterol Result"/>
@@ -1224,7 +1224,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.name"/>
+      <path value="DiagnosticReport.resultGroup.result.name"/>
       <definition>
         <short value="HDL Cholesterol"/>
         <formal value="HDL Cholesterol"/>
@@ -1241,7 +1241,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.value[x]"/>
+      <path value="DiagnosticReport.resultGroup.result.value[x]"/>
       <definition>
         <short value="HDL Cholesterol value"/>
         <formal value="HDL Cholesterol value. If a result is not available, use the comments field"/>
@@ -1256,7 +1256,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.flag"/>
+      <path value="DiagnosticReport.resultGroup.result.flag"/>
       <definition>
         <short value="+ | ++ | +++ | - | -- | --- "/>
         <formal value="+ | ++ | +++ | - | -- | --- "/>
@@ -1272,7 +1272,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.comments"/>
+      <path value="DiagnosticReport.resultGroup.result.comments"/>
       <definition>
         <short value="Comments about result"/>
         <formal value="Comments about result"/>
@@ -1287,7 +1287,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.referenceRange"/>
+      <path value="DiagnosticReport.resultGroup.result.referenceRange"/>
       <definition>
         <short value="Guide for interpretation"/>
         <formal value="Guide for interpretation"/>
@@ -1300,7 +1300,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.referenceRange.meaning"/>
+      <path value="DiagnosticReport.resultGroup.result.referenceRange.meaning"/>
       <definition>
         <short value="Range is a recommended range"/>
         <formal value="Range is a recommended range"/>
@@ -1317,7 +1317,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.referenceRange.range[x]"/>
+      <path value="DiagnosticReport.resultGroup.result.referenceRange.range[x]"/>
       <definition>
         <short value="Reference"/>
         <formal value="&gt;1.5 mmol/L"/>
@@ -1333,7 +1333,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result"/>
+      <path value="DiagnosticReport.resultGroup.result"/>
       <name value="LDL Cholesteral Group"/>
       <definition>
         <short value="LDL Cholesterol result, if reported"/>
@@ -1346,7 +1346,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.name"/>
+      <path value="DiagnosticReport.resultGroup.result.name"/>
       <definition>
         <short value="LDL Cholesterol. LOINC code defines measured or calc"/>
         <formal value="Group of elements for LDL Cholesterol. LOINC code defines whether LDL is measured or calculated"/>
@@ -1363,7 +1363,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.value[x]"/>
+      <path value="DiagnosticReport.resultGroup.result.value[x]"/>
       <definition>
         <short value="LDL Cholesterol value"/>
         <formal value="LDL Cholesterol value. If a result is not available, use the comments field"/>
@@ -1378,7 +1378,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.flag"/>
+      <path value="DiagnosticReport.resultGroup.result.flag"/>
       <definition>
         <short value="+ | ++ | +++ | - | -- | --- "/>
         <formal value="+ | ++ | +++ | - | -- | --- "/>
@@ -1394,7 +1394,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.comments"/>
+      <path value="DiagnosticReport.resultGroup.result.comments"/>
       <definition>
         <short value="Comments about result"/>
         <formal value="Comments about result"/>
@@ -1409,7 +1409,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.referenceRange"/>
+      <path value="DiagnosticReport.resultGroup.result.referenceRange"/>
       <definition>
         <short value="Guide for interpretation"/>
         <formal value="Guide for interpretation"/>
@@ -1422,7 +1422,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.referenceRange.meaning"/>
+      <path value="DiagnosticReport.resultGroup.result.referenceRange.meaning"/>
       <definition>
         <short value="Range is a recommended range"/>
         <formal value="Range is a recommended range"/>
@@ -1439,7 +1439,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.resultGroup.result.referenceRange.range[x]"/>
+      <path value="DiagnosticReport.resultGroup.result.referenceRange.range[x]"/>
       <definition>
         <short value="Reference"/>
         <formal value="&lt;3.0 mmol/L"/>
@@ -1455,7 +1455,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.conclusion"/>
+      <path value="DiagnosticReport.conclusion"/>
       <definition>
         <short value="Clinical Interpretation of Lipid Panel"/>
         <formal value="May include diagnosis or suggestions for follow up testing"/>
@@ -1471,7 +1471,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.codedDiagnosis"/>
+      <path value="DiagnosticReport.codedDiagnosis"/>
       <definition>
         <short value="Codes for the conclusion"/>
         <formal value="Codes for the conclusion"/>
@@ -1487,7 +1487,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.representation"/>
+      <path value="DiagnosticReport.representation"/>
       <definition>
         <short value="Entire Report as issued"/>
         <formal value="Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they must be semantically equivalent."/>
@@ -1503,7 +1503,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.extension"/>
+      <path value="DiagnosticReport.extension"/>
       <definition>
         <short value="See Extensions"/>
         <formal value="See Extensions"/>
@@ -1515,7 +1515,7 @@
       <closed value="false"/>
     </element>
     <element>
-      <path value="LabReport.text"/>
+      <path value="DiagnosticReport.text"/>
       <definition>
         <short value="Text summary of report, for human interpretation"/>
         <formal value="Text summary of report, for human interpretation"/>

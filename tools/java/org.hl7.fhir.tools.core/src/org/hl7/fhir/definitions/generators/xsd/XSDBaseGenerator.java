@@ -218,6 +218,17 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		for (DefinedCode cd : definitions.getPrimitives().values()) {
 			if (cd instanceof PrimitiveType) {
 				PrimitiveType pt = (PrimitiveType) cd;
+        write("  <xs:simpleType name=\"" + pt.getCode() + "-primitive\">\r\n");
+				if (pt.getSchemaType().contains(",")) {
+          write("    <xs:union memberTypes=\""+pt.getSchemaType().replace(",", "")+"\"/>\r\n");
+          write("    <xs:minLength value=\"1\"/>\r\n");
+				} else {
+				  write("    <xs:restriction base=\""+pt.getSchemaType()+"\">\r\n");
+				  write("      <xs:minLength value=\"1\"/>\r\n");
+				  write("    </xs:restriction>\r\n");
+				}
+        write("  </xs:simpleType>\r\n");
+        
 				write("  <xs:complexType name=\"" + pt.getCode() + "\">\r\n");
 		    write("    <xs:annotation>\r\n");
 		    write("      <xs:documentation>"+Utilities.escapeXml(pt.getDefinition())+"</xs:documentation>\r\n");
@@ -225,23 +236,23 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		    write("    </xs:annotation>\r\n");
 				write("    <xs:complexContent>\r\n");
 				write("      <xs:extension base=\"Element\">\r\n");
-		    write("        <xs:attribute name=\"value\" type=\"xs:"+pt.getSchemaType()+"\" use=\"optional\"/>\r\n");
+		    write("        <xs:attribute name=\"value\" type=\"" + pt.getCode() + "-primitive\" use=\"optional\"/>\r\n");
 				write("      </xs:extension>\r\n");
 				write("    </xs:complexContent>\r\n");
 				write("  </xs:complexType>\r\n");
 			} else {
 				DefinedStringPattern sp = (DefinedStringPattern) cd;
-				write("  <xs:simpleType name=\"" + sp.getCode()+ "-simple\">\r\n");
-				if (sp.getBase().endsWith("+")) {
-	        write("    <xs:restriction base=\""+sp.getBase().substring(0, sp.getBase().length()-1)+"\">\r\n");
+				write("  <xs:simpleType name=\"" + sp.getCode()+ "-primitive\">\r\n");
+				if (sp.getSchema().endsWith("+")) {
+	        write("    <xs:restriction base=\""+sp.getSchema().substring(0, sp.getSchema().length()-1)+"\">\r\n");
 	        write("      <xs:pattern value=\"" + sp.getRegex() + "\"/>\r\n");
+	        write("      <xs:minLength value=\"1\"/>\r\n");
 	        write("    </xs:restriction>\r\n");
 	        write("  </xs:simpleType>\r\n");
-				} else if (sp.getBase().contains(",")) {
-          write("    <xs:union memberTypes=\""+sp.getBase().replace(",", "")+"\"/>\r\n");
-          write("  </xs:simpleType>\r\n");        
 				} else {
-	        write("    <xs:restriction base=\""+sp.getBase()+"\"/>\r\n");
+          write("    <xs:restriction base=\""+sp.getSchema()+"\">\r\n");
+          write("      <xs:minLength value=\"1\"/>\r\n");
+          write("    </xs:restriction>\r\n");
 	        write("  </xs:simpleType>\r\n");				
 				}
 				write("  <xs:complexType name=\"" + sp.getCode() + "\">\r\n");
@@ -251,7 +262,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
         write("    </xs:annotation>\r\n");
 				write("    <xs:complexContent>\r\n");
 				write("      <xs:extension base=\"Element\">\r\n");
-		    write("        <xs:attribute name=\"value\" type=\"" + sp.getCode()+ "-simple\"/>\r\n");
+		    write("        <xs:attribute name=\"value\" type=\"" + sp.getCode()+ "-primitive\"/>\r\n");
 				write("      </xs:extension>\r\n");
 				write("    </xs:complexContent>\r\n");
 				write("  </xs:complexType>\r\n");

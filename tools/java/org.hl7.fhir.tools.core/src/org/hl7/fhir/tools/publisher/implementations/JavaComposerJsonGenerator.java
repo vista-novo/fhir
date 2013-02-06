@@ -183,6 +183,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     write("import org.hl7.fhir.instance.model.*;\r\n");
     write("import org.hl7.fhir.instance.model.Integer;\r\n");
     write("import org.hl7.fhir.instance.model.Boolean;\r\n");
+    write("import org.hl7.fhir.utilities.Utilities;\r\n");
     write("import java.net.*;\r\n");
     write("import java.math.*;\r\n");
     write("\r\n");
@@ -193,7 +194,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
 
   private void generateEnumComposer() throws Exception {
     write("  private <E extends Enum<E>> void composeEnumeration(String name, Enumeration<E> value, EnumFactory e) throws Exception {\r\n");
-    write("    if (value != null) {\r\n");
+    write("    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || value.getValue() != null)) {\r\n");
     write("      open(name);\r\n");
     write("      composeElement(value);\r\n");
     write("      if (value.getValue() != null) \r\n");
@@ -221,7 +222,12 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     String tn = getPrimitiveTypeModelName(dc.getCode());
 
     write("  private void compose"+upFirst(dc.getCode())+"(String name, "+tn+" value) throws Exception {\r\n");
-    write("    if (value != null) {\r\n");
+    if (dc.getCode().equals("integer")  || dc.getCode().equals("boolean"))
+      write("    if (value != null) {\r\n");
+    else if (dc.getCode().equals("decimal") || dc.getCode().equals("uri") || dc.getCode().equals("base64Binary") || dc.getCode().equals("instant"))
+      write("    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || value.getValue() != null)) {\r\n");
+    else
+      write("    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || !Utilities.noString(value.getValue()))) {\r\n");
     write("      open(name);\r\n");
     write("      composeElement(value);\r\n");
     if (!dc.getCode().equals("integer") && !dc.getCode().equals("boolean"))

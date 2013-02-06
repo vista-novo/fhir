@@ -48,5 +48,8 @@ public abstract class Element {
     return extensions;
   }
   
+  public boolean hasExtensions() {
+    return extensions.size() > 0;
+  }
 	
 }

@@ -60,6 +60,7 @@ Notes:
    The only other namespaces that occur in FHIR resources are where some external content model is explicitly introduced into the resource content model. For example, XHTML is found in every resource - see below</li>
  <li>Any of the XML elements may have an id attribute to serve as <a href="#idref">the target of an internal reference</a>. The id attribute is not shown in this format</li>
  <li>FHIR elements are never empty. If an element is present in the resource, it must have either a value attribute, child elements as defined for its type, an id attribute that is the <a href="#idref">link target</a> of <a href="#narrative">narrative</a>, or 1 or more <a href="extensibility.htm">extensions</a></li>
+ <li>Attributes can never be empty. Either they are absent, or they are present with at least one character of non-whitespace content</li>
  <li>The xml:lang attribute may appear on the root element, where it specifies the base language of the resource. It may also appear on <a href="datatypes.htm#Attachment">attachments</a> and in the XHTML content, but nowhere else</li>
  <li>In addition to this descriptive syntax, other definitional forms are available, including W3C schema and Schematron</li>
 </ul>

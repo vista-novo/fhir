@@ -31,6 +31,8 @@ POSSIBILITY OF SUCH DAMAGE.
 public class DefinedStringPattern extends DefinedCode {
   private String regex;
 
+  private String schema;
+
   private String base;
   
   public String getRegex() {
@@ -41,12 +43,21 @@ public class DefinedStringPattern extends DefinedCode {
     this.regex = regex;
   }
 
-  public String getBase() {
-    return base;
+  public String getSchema() {
+    return schema;
+  }
+
+  public void setSchema(String schema) {
+    this.schema = schema;
   }
 
   public void setBase(String base) {
-    this.base = base;
+   this.base = base;
+    
+  }
+
+  public String getBase() {
+    return base;
   }
 
 }

@@ -88,6 +88,6 @@ public class DefinedCode {
   }
 	
   public boolean hasSystem() {
-    return system != null || !system.equals("");
+    return system != null && !system.equals("");
   }
 }

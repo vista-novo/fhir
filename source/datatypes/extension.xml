@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:23:41Z</Created>
-  <LastSaved>2012-05-13T13:51:03Z</LastSaved>
+  <LastSaved>2013-02-01T12:14:49Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -115,7 +115,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell><Data ss:Type="String">boolean</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Must  you recognize this extension to safely read the resource?</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Must you recognize this extension to safely read the resource?</Data></Cell>
     <Cell><Data ss:Type="String">If this element is set to true, then the containing resource element and its children are only safe to process if the reader understands this extension. </Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">This value should be set to true if the value of the extension qualifies or negates data in other content</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
@@ -149,8 +149,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

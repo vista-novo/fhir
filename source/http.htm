@@ -60,7 +60,7 @@ The following logical interactions are supported:
   <tr><td><a href="#history">history</a></td><td>Retrieve the update history for a particular resource type</td></tr>
   <tr><td><a href="#validate">validate</a></td><td>Check that the content would be acceptable as an update</td></tr>
   <tr><td colspan="2"><b>Whole System Operations</b></td></tr>
-  <tr><td><a href="#conformance">conformance</a></td><td>Get a conformance statement for support of this resource type</td></tr>
+  <tr><td><a href="#conformance">conformance</a></td><td>Get a conformance statement for the system</td></tr>
   <tr><td><a href="#batch">batch</a></td><td>Update or create a set of resources</td></tr>
   <tr><td><a href="#history">history</a></td><td>Retrieve the update history for all resources</td></tr>
 </table>
@@ -216,7 +216,7 @@ resource even if they are unable to support access to previous versions.
 <a name="update"> </a>
 <h2>update</h2>
 <p>
-The update interaction changes an existing resource or creates a new resource if it doesn't already exist. 
+The update interaction creates a new current version for an existing resource or creates a new resource if no resource already exists for the given id. 
 The update interaction is performed by an HTTP PUT operation as shown:
 </p>
 <pre>
@@ -225,12 +225,12 @@ The update interaction is performed by an HTTP PUT operation as shown:
 <p>
 If the operation is successful, the server must return 200 OK, along with a copy of the 
 newly updated resource (which might not be the same as that submitted) with the response, along 
-with a Last-Modified header, and a Content-Location header that refers to the version created by the 
+with a Last-Modified header, and a Content-Location header that refers to the specific version created by the 
 updated operation.
 </p>
 <p>
 Servers are permitted to reject update operations because of integrity concerns or business 
-rules implemented on the server, and return HTTP status codes accordingly. 
+rules implemented on the server, and return HTTP status codes accordingly (usually 422). 
 </p>
 <p>
 In particular, servers may choose to implement version-aware updates, where the only updates that are 
@@ -243,8 +243,8 @@ header and SHALL correctly understand a 409 response as an update conflict.
 The following resources may require special handling on the server when updated (whether directly or as part of a batch):
 </p>
 <ul>
- <li><a href="provenance.htm">Provenance</a></li>
- <li><a href="patient.htm">Patient</a></li>
+ <li><a href="provenance.htm">Provenance</a> (Version specific links)</li>
+ <li><a href="patient.htm">Patient</a> (Maintaining Patient Links)</li>
  <li><a href="securityevent.htm">SecurityEvent</a> (generally, updates are inappropriate)</li>
 </ul>
 <p>
@@ -288,7 +288,7 @@ The following resources may require special handling on the server when deleted
 (whether directly or as part of a batch):
 </p>
 <ul>
- <li><a href="patient.htm">Patient</a></li>
+ <li><a href="patient.htm">Patient</a> (Maintaining Patient links)</li>
  <li><a href="securityevent.htm">SecurityEvent</a> (generally, deletes are inappropriate)</li>
 </ul>
 <a name="create"> </a>
@@ -317,8 +317,8 @@ the update operation instead.
 The following resources may require special handling on the server when created (whether directly or as part of a batch):
 </p>
 <ul>
- <li><a href="provenance.htm">Provenance</a></li>
- <li><a href="patient.htm">Patient</a></li>
+ <li><a href="provenance.htm">Provenance</a> (Version specific links)</li>
+ <li><a href="patient.htm">Patient</a> (Maintaining Patient links)</li>
 </ul>
 <p>
 Common HTTP Status codes returned on FHIR-related errors (in addition to normal HTTP errors related to security, header and content type negotiation issues):
@@ -480,7 +480,7 @@ which is usually a reference to a <a href="patient.htm">Patient</a> resource, an
 <i>name</i> which searches on patient name, then the search
 </p>
 <pre>
- LabReports/search?subject.name=peter
+ diagnosticreport/search?subject.name=peter
 </pre>
 <p>
 is a request to return all the lab reports that have a subject whose name includes "peter". 
@@ -519,19 +519,19 @@ _include parameters.
 Each _include parameter specifies a path in a URL (as an XPath value):
 </p>
 <pre>
- LabReports/search?_include=LabReport/patient&amp;_include=Patient/subject
+ diagnosticreport/search?_include=DiagnosticReport/subject&amp;_include=Patient/provider
 </pre>
 <p> 
 For each returned resource, the server executes the XPath statement, 
 and, if it matches one or more resource references, and it is able to locate the targets, 
 appends the target resource to the return result.
 Note that _include parameters may be recursive. For instance, a client may request to return all the 
-patients associated with a search on lab reports, and then to include all the person resources for 
-the patients returned, as shown above. 
+subjects associated with a search on lab reports, and then to include all the provider organization
+resources for the patients returned, as shown above. 
 </p>
 <p>
-For servers, Recursive parameters are demanding and slow the search response
-time, 
+For servers, Recursive parameters are demanding and slow the search response time significantly. 
+Servers are not obliged to honor requests to include additional resources in the search resutls.
 </p>
 <p>
 If the _include path matches an element of type uri rather than a resource reference, 
@@ -648,8 +648,8 @@ server should treat the operation as a <a href="#create">create operation</a> (i
 the given resource type URL), and create a new identity for the submitted resource. For 
 clarity, when the client intends a resource to have a transient identity that the server
 must replace, it should use a cid: url on the resource. Deleted resources are those marked clearly
-using the method described for <a href=formats.htm#atom-deleted">XML</a> or 
-<a href=formats.htm#son-bundle-delete">JSON</a>.
+using the method described for <a href="formats.htm#atom-deleted">XML</a> or 
+<a href=formats.htm#json-bundle-delete">JSON</a>.
 </p>
 <p>
 If the server must assign a new identity when it accepts the resource, it SHALL also update 
