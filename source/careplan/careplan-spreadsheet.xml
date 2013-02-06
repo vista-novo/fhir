@@ -20,7 +20,6 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -491,7 +490,7 @@
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
+   <Row ss:Height="75">
     <Cell><Data ss:Type="String">CarePlan.activity.action</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="s67"/>
@@ -500,7 +499,7 @@
     <Cell><Data ss:Type="String">Resource(Any)</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">Appointments, orders, etc.</Data></Cell>
-    <Cell><Data ss:Type="String">Resources resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.</Data></Cell>
+    <Cell><Data ss:Type="String">Resources that describe follow-on actions resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s67"><Data ss:Type="String">Links plan to resulting actions</Data></Cell>
     <Cell ss:Index="13" ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
@@ -520,10 +519,11 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>18</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -536,11 +536,12 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>23</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -853,7 +854,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
