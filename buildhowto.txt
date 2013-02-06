@@ -4,6 +4,8 @@ Instructions for building FHIR:
 2: run publish.bat (windows) or publish.sh (OSX/Linux)
 3: wait for it to finish
 
+see also http://wiki.hl7.org/index.php?title=FHIR_Build_Process
+
 Instructions for building the tools jar in eclipse:
 
 1: file.. export... find runnable jar file
