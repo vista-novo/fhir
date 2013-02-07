@@ -1,18 +1,10 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <p>
-Note: while the <i>content</i> of the current Patient resource is not yet under ballot, 
-the Patient Administration workgroup would like to draw your opinions about the intended 
-rename of "Patient" to "SubjectOfCare". This input will be taken into account when
-preparing the May 2013 ballot, which will contain a Patient/SubjectOfCare prepared by the
-Work Group
+The patient resource covers all "subjects Of care", inclusive
+of health-related care events where the focus was not on curative activities. This would include examples in 
+care such as within social services as well as pregnancies. 
 </p>
-<p>
-The decision to change the "Patient" resource name to "SubjectOfCare" was made to be inclusive
-of health-related care events where the focus was not on curative activities within the Patient 
-Administration scope of work. This would include examples in care such as within social services 
-as well as pregnancies, wherein mothers-to-be do not consider themselves "patients" to be cured 
-of any illness. 
-</p>
+
 
 </div>

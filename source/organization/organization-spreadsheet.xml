@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Lloyd McKenzie</LastAuthor>
+  <LastAuthor>Ewout Kramer</LastAuthor>
   <Created>2012-03-19T11:15:30Z</Created>
-  <LastSaved>2012-11-28T17:18:39Z</LastSaved>
+  <LastSaved>2013-02-07T17:38:18Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,6 @@
   <WindowWidth>17496</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6072</WindowTopY>
-  <ActiveSheet>5</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -87,7 +86,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="22" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="19" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="197.4"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.4" ss:Span="1"/>
@@ -127,14 +126,15 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Company/institution/government involved in healthcare</Data></Cell>
-    <Cell><Data ss:Type="String">For any company/corporation/institution/government department that has relevance to the care process</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">A grouping of people or organizations with a common purpose</Data></Cell>
+    <Cell><Data ss:Type="String">A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Organization(classCode=ORG, determinerCode=INST)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Organization.identifier</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Identifier for this organization</Data></Cell>
     <Cell><Data ss:Type="String">Identifier for the organization that is used to identify the organization across multiple disparate systems</Data></Cell>
@@ -144,7 +144,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Organization.name</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Name used for the organization</Data></Cell>
     <Cell><Data ss:Type="String">A name associated with the organization</Data></Cell>
@@ -152,6 +153,19 @@
     <Cell><Data ss:Type="String">Don't use HumanName since that has many non-organization things in it</Data></Cell>
     <Cell><Data ss:Type="String">.name</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">Using a separate group for this makes the general use case too complicated. If necessary, use an extension to include a period.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="180">
+    <Cell><Data ss:Type="String">Organization.type</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell><Data ss:Type="String">OrganizationType</Data></Cell>
+    <Cell><Data ss:Type="String">Kind of organization</Data></Cell>
+    <Cell><Data ss:Type="String">The kind of organization that this is</Data></Cell>
+    <Cell><Data ss:Type="String">Need to be able to track the kind of organization that this is - different organization types have different uses</Data></Cell>
+    <Cell><Data ss:Type="String">Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes</Data></Cell>
+    <Cell><Data ss:Type="String">.code</Data></Cell>
+    <Cell ss:Index="14" ss:StyleID="s66"/>
+    <Cell><Data ss:Type="String">Renamed from &quot;code&quot; since that is a technical detail, it is the &quot;type&quot; of organization we are interested in &#45;&#45;- All examples mentioned here cannot be found in the suggested binding to v3 Entity Code.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Organization.address</Data></Cell>
@@ -172,19 +186,6 @@
     <Cell><Data ss:Type="String">Human contact for the organization</Data></Cell>
     <Cell><Data ss:Type="String">The use code home is not to be used. Note that these contacts are not the contact details of people who are employed by or represent the organization, but official contacts for the organization itself</Data></Cell>
     <Cell><Data ss:Type="String">.telecom</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="180">
-    <Cell><Data ss:Type="String">Organization.type</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">OrganizationType</Data></Cell>
-    <Cell><Data ss:Type="String">Kind of organization</Data></Cell>
-    <Cell><Data ss:Type="String">The kind of organization that this is</Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to track the kind of organization that this is - different organization types have different uses</Data></Cell>
-    <Cell><Data ss:Type="String">Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes</Data></Cell>
-    <Cell><Data ss:Type="String">.code</Data></Cell>
-    <Cell ss:Index="14" ss:StyleID="s66"/>
-    <Cell><Data ss:Type="String">Renamed from &quot;code&quot; since that is a technical detail, it is the &quot;type&quot; of organization we are interested in &#45;&#45;- All examples mentioned here cannot be found in the suggested binding to v3 Entity Code.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="129.44999999999999">
     <Cell><Data ss:Type="String">Organization.status</Data></Cell>
@@ -227,7 +228,7 @@
     <Cell ss:Index="12"><Data ss:Type="String">.code</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Organization.accreditation.institution</Data></Cell>
+    <Cell><Data ss:Type="String">Organization.accreditation.issuer</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource(Organization)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Who conferred accreditation</Data></Cell>
@@ -264,7 +265,7 @@
     <Cell><Data ss:Type="String">Need to know to which organization a relationship exists</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="158.55000000000001">
-    <Cell><Data ss:Type="String">Organization.relatedOrganization.type</Data></Cell>
+    <Cell><Data ss:Type="String">Organization.relatedOrganization.relation</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">OrganizationRelationship</Data></Cell>
@@ -291,40 +292,12 @@
     <Cell><Data ss:Type="String">Need to distinguish between multiple contact persons.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Organization.contactPerson.address</Data></Cell>
+    <Cell><Data ss:Type="String">Organization.contactPerson.details</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Address</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Contact person's address</Data></Cell>
-    <Cell><Data ss:Type="String">Address to use when contacting the contact person for this organization</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">The use code home is not to be used. </Data></Cell>
-    <Cell><Data ss:Type="String">.addr</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Organization.contactPerson.telecom</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Contact</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Contact person's telecom details</Data></Cell>
-    <Cell><Data ss:Type="String">Telecom details for the contact person at this organization</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">The use code home is not to be used.</Data></Cell>
-    <Cell><Data ss:Type="String">.telecom</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Organization.contactPerson.name</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">HumanName</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Name of the contact person</Data></Cell>
-    <Cell><Data ss:Type="String">Name of the contact person</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.contactPerson.name</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Organization.contactPerson.person</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Any)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">The person that is the contact person</Data></Cell>
-    <Cell><Data ss:Type="String">Link to the actual person that is a contact person for the organization</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.contactPerson</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Demographics</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Details of the contact person</Data></Cell>
+    <Cell><Data ss:Type="String">Details of the contact person</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">.addr</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -334,12 +307,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <TopRowVisible>15</TopRowVisible>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>22</ActiveRow>
-     <RangeSelection>R23:R24</RangeSelection>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -364,10 +337,10 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="String">NameOrPersonRef</Data></Cell>
-    <Cell><Data ss:Type="String">Organization.contactPerson</Data></Cell>
-    <Cell><Data ss:Type="String">Either supply a name for a contactperson or a reference to a Person resource</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s69"><Data ss:Type="String">exists(f:name) != exists(f:person)</Data></Cell>
+    <Cell><Data ss:Type="String">AtLeastANameOrId</Data></Cell>
+    <Cell><Data ss:Type="String">Organization</Data></Cell>
+    <Cell><Data ss:Type="String">The organization must at least have a name or and id, and possibly more</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s69"><Data ss:Type="String">count(f:identifier | f:name) &gt; 0</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -377,11 +350,18 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>0</VerticalResolution>
+   </Print>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+     <RangeSelection>R2</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -430,7 +410,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Search">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="11" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="12" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="70.8"/>
    <Column ss:AutoFitWidth="0" ss:Width="382.79999999999995"/>
@@ -442,13 +422,13 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">name</Data></Cell>
-    <Cell><Data ss:Type="String">A portion of name in any name part</Data></Cell>
+    <Cell><Data ss:Type="String">A portion of the Organization's name</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">phonetic</Data></Cell>
-    <Cell><Data ss:Type="String">A portion of name using some kind of phonetic matching algorithm</Data></Cell>
+    <Cell><Data ss:Type="String">A portion of the Organization's name using some kind of phonetic matching algorithm</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
@@ -460,7 +440,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">identifier</Data></Cell>
-    <Cell><Data ss:Type="String">An identifier for the organization</Data></Cell>
+    <Cell><Data ss:Type="String">Any identifier for the organization</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
@@ -495,10 +475,16 @@
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">related</Data></Cell>
+    <Cell><Data ss:Type="String">related-id</Data></Cell>
     <Cell><Data ss:Type="String">An identifier for any of the related organizations</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">related-relation</Data></Cell>
+    <Cell><Data ss:Type="String">A type of related organisation to search for</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -511,7 +497,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>11</ActiveRow>
+     <ActiveRow>12</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
@@ -545,7 +531,7 @@
     <Cell ss:StyleID="s67"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s67"><Data ss:Type="String">SNOMED-CT Organization codes and the HL7 v3 Entity Code table</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="s67"><Data ss:Type="String">SNOMED-CT Organization codes and specializations of _OrganizationEntityType in the HL7 v3 Entity Code table</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s67"><Data ss:Type="String">OrganizationAccreditation</Data></Cell>
@@ -583,6 +569,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>5</ActiveRow>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -645,7 +637,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

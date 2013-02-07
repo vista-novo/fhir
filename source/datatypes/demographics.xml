@@ -17,10 +17,9 @@
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
   <WindowHeight>9060</WindowHeight>
-  <WindowWidth>7995</WindowWidth>
-  <WindowTopX>-15</WindowTopX>
+  <WindowWidth>7992</WindowWidth>
+  <WindowTopX>-12</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -102,27 +101,29 @@
   <Style ss:ID="s75">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s77">
+  <Style ss:ID="s76">
    <Alignment ss:Vertical="Top"/>
   </Style>
-  <Style ss:ID="s78">
+  <Style ss:ID="s77">
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="17" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s63" ss:DefaultColumnWidth="65.25"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="18" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s63" ss:DefaultColumnWidth="65.400000000000006"
    ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s64" ss:Width="239.25"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="35.25"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="30.75"/>
+   <Column ss:StyleID="s64" ss:Width="239.4"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="35.4"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="30.599999999999998"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="36" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="74.25"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="83.25"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="10" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:Index="6" ss:StyleID="s63" ss:AutoFitWidth="0"
+    ss:Width="74.400000000000006"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="83.4"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.60000000000002"
     ss:Span="1"/>
-   <Column ss:Index="12" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="225.75"/>
+   <Column ss:Index="10" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.4"
+    ss:Span="1"/>
+   <Column ss:Index="12" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="225.6"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
    <Column ss:Index="15" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150"/>
    <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s65">
@@ -278,6 +279,23 @@
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>
    </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="75">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Demographics.photo</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Resource(Picture)</Data></Cell>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Image of the person</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Image of the person</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Many EHR systems have the capability to capture an image of the patient. Fits with newer social media usage too.</Data></Cell>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"/>
+   </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120" ss:StyleID="s71">
     <Cell ss:StyleID="s72"><Data ss:Type="String">Demographics.maritalStatus</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">0..1</Data></Cell>
@@ -287,8 +305,8 @@
     <Cell ss:StyleID="s73"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">MaritalStatus</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Marital (civil) status of a person</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">This field contains a patient's marital (civil) status.</Data></Cell>
-    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">This field contains a patient's most recent marital (civil) status.</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">TODO</Data></Cell>
     <Cell ss:StyleID="s73"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">./maritalStatus</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">PID-16</Data></Cell>
@@ -429,10 +447,11 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <Zoom>90</Zoom>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>11</TopRowBottomPane>
+   <TopRowBottomPane>8</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -449,8 +468,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>14</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -460,9 +479,9 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="1" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s74" ss:DefaultColumnWidth="65.25"
+   x:FullRows="1" ss:StyleID="s74" ss:DefaultColumnWidth="65.400000000000006"
    ss:DefaultRowHeight="15">
-   <Row ss:AutoFitHeight="0" ss:Height="15.9375" ss:StyleID="s65">
+   <Row ss:AutoFitHeight="0" ss:Height="16.05" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Context</Data></Cell>
@@ -497,14 +516,14 @@
  </Worksheet>
  <Worksheet ss:Name="Events">
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s75" ss:DefaultColumnWidth="65.25"
+   x:FullRows="1" ss:StyleID="s75" ss:DefaultColumnWidth="65.400000000000006"
    ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="99.75"/>
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="99.6"/>
    <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="171"/>
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="96.75"/>
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="107.25"/>
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="69.75"/>
-   <Row ss:AutoFitHeight="0" ss:Height="15.9375" ss:StyleID="s65">
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="96.6"/>
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="107.4"/>
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="69.599999999999994"/>
+   <Row ss:AutoFitHeight="0" ss:Height="16.05" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Event Code</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Request Resources</Data></Cell>
@@ -537,13 +556,14 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="5" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s77" ss:DefaultColumnWidth="65.25"
+   x:FullRows="1" ss:StyleID="s76" ss:DefaultColumnWidth="65.400000000000006"
    ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="137.25"/>
-   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="180"/>
-   <Column ss:Index="5" ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="95.25"/>
-   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="126"/>
-   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="260.25"/>
+   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="137.4"/>
+   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="180"/>
+   <Column ss:Index="5" ss:StyleID="s76" ss:AutoFitWidth="0"
+    ss:Width="95.399999999999991"/>
+   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="126"/>
+   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="260.39999999999998"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -561,7 +581,7 @@
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#administrative-gender</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="27.9375">
+   <Row ss:AutoFitHeight="0" ss:Height="28.05">
     <Cell ss:StyleID="s75"><Data ss:Type="String">MaritalStatus</Data></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="String">The domestic partnership status of a person</Data></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="String">code list</Data></Cell>
@@ -594,7 +614,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
    <x:PageLayoutZoom>0</x:PageLayoutZoom>
@@ -602,9 +621,10 @@
  </Worksheet>
  <Worksheet ss:Name="language-ability-mode">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="8" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
+   x:FullRows="1" ss:DefaultColumnWidth="65.400000000000006"
+   ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="288"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s77">
+   <Row ss:AutoFitHeight="0" ss:StyleID="s76">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"/>
@@ -613,39 +633,39 @@
     <Cell ss:StyleID="s65"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">ESGN</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Expressed signed</Data></Cell>
-    <Cell ss:StyleID="s78"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">ESGN</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Expressed signed</Data></Cell>
+    <Cell ss:StyleID="s77"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">ESP</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Expressed spoken</Data></Cell>
-    <Cell ss:StyleID="s78"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">ESP</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Expressed spoken</Data></Cell>
+    <Cell ss:StyleID="s77"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">EWR</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Expressed written</Data></Cell>
-    <Cell ss:StyleID="s78"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">EWR</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Expressed written</Data></Cell>
+    <Cell ss:StyleID="s77"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">RSGN</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Received signed</Data></Cell>
-    <Cell ss:StyleID="s78"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">RSGN</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Received signed</Data></Cell>
+    <Cell ss:StyleID="s77"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">RSP</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Received spoken</Data></Cell>
-    <Cell ss:StyleID="s78"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">RSP</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Received spoken</Data></Cell>
+    <Cell ss:StyleID="s77"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">RWR</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Received written</Data></Cell>
-    <Cell ss:StyleID="s78"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">RWR</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Received written</Data></Cell>
+    <Cell ss:StyleID="s77"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s78"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -674,9 +694,10 @@
  </Worksheet>
  <Worksheet ss:Name="language-ability-proficiency">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="419.25"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s77">
+   x:FullRows="1" ss:DefaultColumnWidth="65.400000000000006"
+   ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="419.40000000000003"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s76">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"/>
@@ -685,19 +706,19 @@
     <Cell ss:StyleID="s65"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">E</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">E</Data></Cell>
     <Cell><Data ss:Type="String">Excellent</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">F</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">F</Data></Cell>
     <Cell><Data ss:Type="String">Fair</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">G</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">G</Data></Cell>
     <Cell><Data ss:Type="String">Good</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">P</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">P</Data></Cell>
     <Cell><Data ss:Type="String">Poor</Data></Cell>
    </Row>
   </Table>
@@ -727,11 +748,12 @@
  </Worksheet>
  <Worksheet ss:Name="marital-status">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="10" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="14.4375">
-   <Column ss:AutoFitWidth="0" ss:Width="92.25"/>
-   <Column ss:Width="353.25"/>
-   <Column ss:Width="209.25"/>
-   <Row ss:AutoFitHeight="0" ss:Height="15" ss:StyleID="s77">
+   x:FullRows="1" ss:DefaultColumnWidth="65.400000000000006"
+   ss:DefaultRowHeight="14.55">
+   <Column ss:AutoFitWidth="0" ss:Width="92.4"/>
+   <Column ss:Width="353.4"/>
+   <Column ss:Width="209.39999999999998"/>
+   <Row ss:AutoFitHeight="0" ss:Height="15" ss:StyleID="s76">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"/>
@@ -739,39 +761,39 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="13.950000000000001">
     <Cell><Data ss:Type="String">A</Data></Cell>
     <Cell><Data ss:Type="String">Annulled - Marriage contract has been declared null and to not have existed</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="13.950000000000001">
     <Cell><Data ss:Type="String">D</Data></Cell>
     <Cell><Data ss:Type="String">Divorced - Marriage contract has been declared dissolved and inactive</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="13.950000000000001">
     <Cell><Data ss:Type="String">I</Data></Cell>
     <Cell><Data ss:Type="String">Interlocutory - Subject to an Interlocutory Decree.</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="13.950000000000001">
     <Cell><Data ss:Type="String">L</Data></Cell>
     <Cell><Data ss:Type="String">Legally Separated</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="13.950000000000001">
     <Cell><Data ss:Type="String">M</Data></Cell>
     <Cell><Data ss:Type="String">Married - A current marriage contract is active</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="13.950000000000001">
     <Cell><Data ss:Type="String">P</Data></Cell>
-    <Cell><Data ss:Type="String">Polygamous - More than 1 current spouse</Data></Cell>
+    <Cell><Data ss:Type="String">Polygamous - More than one current spouse</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="13.950000000000001">
     <Cell><Data ss:Type="String">S</Data></Cell>
     <Cell><Data ss:Type="String">Never married - No marriage contract has ever been entered</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="13.950000000000001">
     <Cell><Data ss:Type="String">T</Data></Cell>
     <Cell><Data ss:Type="String">Domestic Partner - Person declares that a domestic partner relationship exists</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="13.950000000000001">
     <Cell><Data ss:Type="String">W</Data></Cell>
     <Cell><Data ss:Type="String">Widowed - The spouse has died</Data></Cell>
    </Row>
@@ -792,7 +814,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>14</ActiveRow>
+     <ActiveRow>7</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
@@ -803,11 +825,12 @@
  </Worksheet>
  <Worksheet ss:Name="administrative-gender">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="14.4375">
-   <Column ss:AutoFitWidth="0" ss:Width="92.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="128.25"/>
-   <Column ss:Width="296.25"/>
-   <Row ss:AutoFitHeight="0" ss:Height="15" ss:StyleID="s77">
+   x:FullRows="1" ss:DefaultColumnWidth="65.400000000000006"
+   ss:DefaultRowHeight="14.55">
+   <Column ss:AutoFitWidth="0" ss:Width="92.4"/>
+   <Column ss:AutoFitWidth="0" ss:Width="128.4"/>
+   <Column ss:Width="296.39999999999998"/>
+   <Row ss:AutoFitHeight="0" ss:Height="15" ss:StyleID="s76">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"/>
@@ -815,15 +838,15 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="13.950000000000001">
     <Cell><Data ss:Type="String">F</Data></Cell>
     <Cell><Data ss:Type="String">Female</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="13.950000000000001">
     <Cell><Data ss:Type="String">M</Data></Cell>
     <Cell><Data ss:Type="String">Male</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="13.950000000000001">
     <Cell><Data ss:Type="String">UN</Data></Cell>
     <Cell><Data ss:Type="String">Undifferentiated</Data></Cell>
    </Row>

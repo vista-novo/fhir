@@ -31,11 +31,11 @@
       <url value="../organization/@1"/>
       <display value="ACME Healthcare, Inc"/>
     </organization>
-    <type>
+    <relation>
       <coding>
         <system value="oid:2.16.840.1.113883.5.110"/>
         <code value="TERR"/>
       </coding>
-    </type>
+    </relation>
   </relatedOrganization>
 </Organization>
