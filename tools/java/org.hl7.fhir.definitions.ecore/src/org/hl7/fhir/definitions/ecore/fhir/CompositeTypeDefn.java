@@ -170,4 +170,12 @@ public interface CompositeTypeDefn extends TypeDefn, NameScope {
 	 */
 	void setPrimitiveContents(boolean value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<ElementDefn> getAllElements();
+
 } // CompositeTypeDefn

@@ -98,9 +98,10 @@ public class CSharpModelGenerator extends GenBlock
 		
 		ln("namespace HL7.Fhir.Instance.Model");
 		bs("{");
-			ln("/*");
-			ln("* " +  constrained.getAnnotations().getDefinition());
-			ln("*/");
+			ln("/// <summary>");
+			ln("/// " +  constrained.getAnnotations().getShortDefinition());
+			ln("/// </summary>");
+			ln("[FhirComposite("); nl("\"" + constrained.getName() + "\""); nl(")]");
 			ln("public partial class " +  GeneratorUtils.generateCSharpTypeName(constrained.getName()) );
 				nl(" : ");
 				nl(GeneratorUtils.generateCSharpTypeName(constrained.getConstrainedBaseType().getName()));
@@ -120,7 +121,7 @@ public class CSharpModelGenerator extends GenBlock
 		
 		ln("using System;");
 		ln("using System.Collections.Generic;");
-//		ln("using HL7.Fhir.Instance.Support;");
+		ln("using HL7.Fhir.Instance.Support;");
 		ln("using System.Xml.Linq;");
 		ln();
 		ln("/*");
@@ -139,9 +140,9 @@ public class CSharpModelGenerator extends GenBlock
 	{
 		begin();
 		
-		ln("/*");
-		ln("* " + composite.getAnnotations().getDefinition());
-		ln("*/");
+		ln("/// <summary>");
+		ln("/// " + composite.getAnnotations().getShortDefinition());
+		ln("/// </summary>");
 
 		// Generate the class itself		
 		compositeClassHeader( composite );
@@ -174,7 +175,9 @@ public class CSharpModelGenerator extends GenBlock
 	
 	private void generateMemberProperty(CompositeTypeDefn context, ElementDefn member)
 			throws Exception {
-		ln("// " + member.getAnnotation().getShortDefinition());
+		ln("/// <summary>");
+		ln("/// " + member.getAnnotation().getShortDefinition());
+		ln("/// </summary>");
 		ln("public ");
 		
 		if( member.getMaxCardinality() == -1 )  nl("List<");		
@@ -220,6 +223,11 @@ public class CSharpModelGenerator extends GenBlock
 	
 	private void compositeClassHeader(CompositeTypeDefn composite) throws Exception
 	{
+		if( composite.isComposite() )
+			ln("[FhirComposite(");
+		else if( composite.isResource() )
+			ln("[FhirResource(");
+		nl("\"" + composite.getName() + "\""); nl(")]");
 		ln( "public ");
 			if( composite.isAbstract() ) nl("abstract ");
 			nl("partial class " + GeneratorUtils.generateCSharpTypeName(composite.getName()) );
@@ -256,9 +264,9 @@ public class CSharpModelGenerator extends GenBlock
 	{
 		begin();
 		
-		ln("/*");
-		ln("* Conversion of " + binding.getName() + "from and into string");
-		ln("*/");
+		ln("/// <summary>");
+		ln("/// Conversion of " + binding.getName() + "from and into string");
+		ln("/// <summary>");
 		ln("public static class " + binding.getName() + "Handling");
 		bs("{"); 
 			ln("public static bool TryParse");
@@ -344,9 +352,9 @@ public class CSharpModelGenerator extends GenBlock
 	public GenBlock generateEnum(BindingDefn binding) throws Exception {
 		begin();
 		
-		ln("/*");
-		ln("* " + binding.getAnnotations().getDefinition() );
-		ln("*/");
+		ln("/// <summary>");
+		ln("/// " + binding.getAnnotations().getDefinition() );
+		ln("/// </summary>");
 		ln("public enum " + 
 				GeneratorUtils.generateCSharpTypeName(binding.getName()));
 		bs("{");

@@ -1900,6 +1900,8 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		op = addEOperation(definitionsEClass, this.getPrimitiveDefn(), "findPrimitive", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(definitionsEClass, this.getResourceDefn(), "getResources", 0, -1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(elementDefnEClass, ElementDefn.class, "ElementDefn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElementDefn_Name(), ecorePackage.getEString(), "name", null, 1, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElementDefn_MinCardinality(), ecorePackage.getEInt(), "minCardinality", null, 1, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2039,17 +2041,20 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEReference(getCompositeTypeDefn_BaseType(), this.getTypeRef(), null, "baseType", null, 0, 1, CompositeTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCompositeTypeDefn_PrimitiveContents(), ecorePackage.getEBoolean(), "primitiveContents", null, 0, 1, CompositeTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		addEOperation(compositeTypeDefnEClass, this.getElementDefn(), "getAllElements", 0, -1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(nameScopeEClass, NameScope.class, "NameScope", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNameScope_Types(), this.getTypeDefn(), this.getTypeDefn_Scope(), "types", null, 0, -1, NameScope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNameScope_Bindings(), this.getBindingDefn(), this.getBindingDefn_Parent(), "bindings", null, 0, -1, NameScope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(nameScopeEClass, this.getResourceDefn(), "getLocalResources", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(nameScopeEClass, this.getCompositeTypeDefn(), "getLocalCompositeTypes", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(nameScopeEClass, this.getConstrainedTypeDefn(), "getLocalConstrainedTypes", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(nameScopeEClass, this.getNameScope(), "getContainingScope", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(nameScopeEClass, this.getTypeDefn(), "resolve", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTypeRef(), "ref", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(annotationsEClass, Annotations.class, "Annotations", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAnnotations_ShortDefinition(), ecorePackage.getEString(), "shortDefinition", null, 0, 1, Annotations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

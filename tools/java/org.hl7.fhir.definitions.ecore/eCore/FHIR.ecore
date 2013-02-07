@@ -13,6 +13,7 @@
     <eOperations name="findPrimitive" eType="#//PrimitiveDefn">
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="getResources" upperBound="-1" eType="#//ResourceDefn"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -329,6 +330,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="infrastructure" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompositeTypeDefn" eSuperTypes="#//TypeDefn #//NameScope">
+    <eOperations name="getAllElements" upperBound="-1" eType="#//ElementDefn"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//ElementDefn" containment="true" eOpposite="#//ElementDefn/parentType">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -348,10 +350,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="primitiveContents" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NameScope" abstract="true" interface="true">
-    <eOperations name="getLocalResources" upperBound="-1" eType="#//ResourceDefn"/>
     <eOperations name="getLocalCompositeTypes" upperBound="-1" eType="#//CompositeTypeDefn"/>
     <eOperations name="getLocalConstrainedTypes" upperBound="-1" eType="#//ConstrainedTypeDefn"/>
     <eOperations name="getContainingScope" eType="#//NameScope"/>
+    <eOperations name="resolve" eType="#//TypeDefn">
+      <eParameters name="ref" eType="#//TypeRef"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
         eType="#//TypeDefn" containment="true" eOpposite="#//TypeDefn/scope">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">

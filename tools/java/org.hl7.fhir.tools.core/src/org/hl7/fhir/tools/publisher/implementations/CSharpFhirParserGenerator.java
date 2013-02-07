@@ -78,7 +78,7 @@ public class CSharpFhirParserGenerator extends GenBlock
 					bs("{");
 						ln("reader.MoveToContent();");
 						ln();
-						generateResourceCases(definitions.getLocalResources());
+						generateResourceCases(definitions.getResources());
 					es("}");
 					ln("catch( Exception xe )");
 					bs("{");

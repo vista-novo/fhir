@@ -99,33 +99,32 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			
 		List<CompositeTypeDefn> allComplexTypes = new ArrayList<CompositeTypeDefn>();
 		allComplexTypes.addAll(definitions.getLocalCompositeTypes());
-		allComplexTypes.addAll(definitions.getLocalResources());
+		allComplexTypes.addAll(definitions.getResources());
 		
 		for( CompositeTypeDefn composite : allComplexTypes )
-		{					
-			CSharpModelGenerator gen = new CSharpModelGenerator(definitions);
-			gen.generateComposite(composite);
-			String compositeFilename = modelDir + GeneratorUtils.generateCSharpTypeName(composite.getName()) + ".cs";		
-			gen.toFile(implDir + compositeFilename);		
+		{							
+			String compositeFilename = modelDir + GeneratorUtils.generateCSharpTypeName(composite.getName()) + ".cs";	
+			new CSharpModelGenerator(definitions)
+				.generateComposite(composite).toFile(implDir + compositeFilename);		
 			generatedFilenames.add(compositeFilename);
 		}
 
-//		for( CompositeTypeDefn composite : allComplexTypes )
-//		{		
-//			// Don't generate parsers/serializers for abstract stuff (for now)
-//			if( composite.isAbstract() ) continue;
-//			
-//			String xmlParserFilename = parsersDir + composite.getName() + "Parser.cs";			
-//				new CSharpResourceParserGenerator(definitions)
-//					.generateCompositeParser(composite, definitions).toFile(implDir+xmlParserFilename);			
-//				generatedFilenames.add(xmlParserFilename);
-//	
+		for( CompositeTypeDefn composite : allComplexTypes )
+		{		
+			// Don't generate parsers/serializers for abstract stuff (for now)
+			if( composite.isAbstract() ) continue;
+			
+			String xmlParserFilename = parsersDir + GeneratorUtils.generateCSharpTypeName(composite.getName()) + "Parser.cs";			
+			new CSharpResourceParserGenerator(definitions)
+					.generateCompositeParser(composite, definitions).toFile(implDir+xmlParserFilename);			
+			generatedFilenames.add(xmlParserFilename);
+	
 //			String serializerFilename = serializersDir + composite.getName() + "Serializer.cs";			
 //			new CSharpResourceSerializerGenerator(definitions)
 //				.generateCompositeSerializer(composite).toFile(implDir+serializerFilename);			
 //			generatedFilenames.add(serializerFilename);
 //
-//		}
+		}
 		
 		for( ConstrainedTypeDefn constrained : definitions.getLocalConstrainedTypes() )
 		{
@@ -136,10 +135,10 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			generatedFilenames.add(constrainedFilename);
 			
 			// Build Xml parser for constrained type
-//			String parserFilename = parsersDir + constrained.getName() + "Parser.cs";
-//			new CSharpResourceParserGenerator(definitions)
-//				.generateConstrainedParser(constrained).toFile(implDir+parserFilename);						 
-//			generatedFilenames.add(parserFilename);
+			String parserFilename = parsersDir + constrained.getName() + "Parser.cs";
+			new CSharpResourceParserGenerator(definitions)
+				.generateConstrainedParser(constrained).toFile(implDir+parserFilename);						 
+			generatedFilenames.add(parserFilename);
 		}
 
 		// Collect all bindings to generate the EnumHelper class
@@ -147,7 +146,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		allBindings.addAll(definitions.getBindings());
 		for( NameScope ns : definitions.getLocalCompositeTypes() )
 			allBindings.addAll(ns.getBindings());
-		for( NameScope ns : definitions.getLocalResources() )
+		for( NameScope ns : definitions.getResources() )
 			allBindings.addAll(ns.getBindings());
 		{
 			String enumHelperFilename = modelDir + "EnumHelper.cs";

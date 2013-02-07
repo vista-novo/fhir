@@ -37,6 +37,7 @@ import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ProfileDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 /**
  * <!-- begin-user-doc -->
@@ -381,6 +382,23 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<ResourceDefn> getResources() {
+		EList<ResourceDefn> result = new BasicEList<ResourceDefn>();
+		
+		for( TypeDefn t : this.getTypes() )
+		{		
+			if( t.isResource() )
+				result.add((ResourceDefn)t);
+		}
+		
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -422,14 +440,14 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 		return null;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	@Override
-	public EList<ResourceDefn> getLocalResources() {
-		return ns().getLocalResources();
+	public TypeDefn resolve(TypeRef ref) {
+		return findType(ref.getFullName());
 	}
 
 	/**

@@ -164,6 +164,14 @@ public interface Definitions extends NameScope {
 	PrimitiveDefn findPrimitive(String name);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<ResourceDefn> getResources();
+
+	/**
 	 * Returns the value of the '<em><b>Profiles</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.ProfileDefn}.
 	 * <!-- begin-user-doc -->

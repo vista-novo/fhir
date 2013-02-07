@@ -83,6 +83,7 @@
     <Compile Include="Support\Bundle.cs" />
 	<Compile Include="Support\BundleXml.cs" />
     <Compile Include="Support\BundleJson.cs" />
+	<Compile Include="Support\Inspection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

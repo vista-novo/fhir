@@ -11,6 +11,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -338,6 +339,25 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	public EList<ElementDefn> getAllElements() {
+		EList<ElementDefn> result = new BasicEList<ElementDefn>();
+		
+		if( this.getBaseType() != null )
+		{
+			CompositeTypeDefn base = (CompositeTypeDefnImpl)resolve(this.getBaseType());
+			result.addAll(base.getAllElements());
+		}
+		
+		result.addAll(this.getElements());
+		
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	@Override
 	public EList<CompositeTypeDefn> getLocalCompositeTypes() {
 		return ns().getLocalCompositeTypes();
@@ -363,14 +383,19 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 		return this.getScope();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	@Override
-	public EList<ResourceDefn> getLocalResources() {
-		return ns().getLocalResources();
+	public TypeDefn resolve(TypeRef ref) {
+		NameScope outer = this;
+		
+		while( outer.getContainingScope() != null )
+			outer = outer.getContainingScope();
+		
+		return outer.resolve(ref);
 	}
 
 	/**

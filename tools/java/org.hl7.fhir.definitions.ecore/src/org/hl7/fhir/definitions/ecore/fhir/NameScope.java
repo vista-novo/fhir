@@ -92,9 +92,9 @@ public interface NameScope extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation"
+	 * @model
 	 * @generated
 	 */
-	EList<ResourceDefn> getLocalResources();
+	TypeDefn resolve(TypeRef ref);
 
 } // NameScope

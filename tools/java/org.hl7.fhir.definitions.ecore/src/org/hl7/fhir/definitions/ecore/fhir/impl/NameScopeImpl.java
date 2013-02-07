@@ -54,19 +54,5 @@ public class NameScopeImpl {
 	}
 
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 */
-	public EList<ResourceDefn> getLocalResources() {
-		EList<ResourceDefn> result = new BasicEList<ResourceDefn>();
-		
-		for( TypeDefn t : scope.getTypes() )
-		{		
-			if( t.isResource() )
-				result.add((ResourceDefn)t);
-		}
-		
-		return result;
-	}
+	
 }

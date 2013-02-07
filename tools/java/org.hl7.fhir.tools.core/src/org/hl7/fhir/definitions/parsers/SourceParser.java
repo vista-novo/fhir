@@ -263,7 +263,7 @@ public class SourceParser {
 		for( ConstrainedTypeDefn constrained : defs.getLocalConstrainedTypes() )
 			ConstrainedTypeConverter.FixTypeRefs(constrained);
 		
-		for( org.hl7.fhir.definitions.ecore.fhir.ResourceDefn resource : defs.getLocalResources() )
+		for( org.hl7.fhir.definitions.ecore.fhir.ResourceDefn resource : defs.getResources() )
 			CompositeTypeConverter.FixTypeRefs(resource);
 	}
 	

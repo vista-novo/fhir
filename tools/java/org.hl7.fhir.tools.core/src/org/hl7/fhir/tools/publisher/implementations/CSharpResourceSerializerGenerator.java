@@ -149,7 +149,7 @@ public class CSharpResourceSerializerGenerator extends GenBlock
 	private void resourceSerializer(Definitions definitions) throws Exception {
 		ln("public static void Save(this Resource value, IFhirWriter writer)");
 		bs("{");
-			generateSerializationCases(definitions.getLocalResources());
+			generateSerializationCases(definitions.getResources());
 		es("}");
 		ln();
 		buildSaveExtensions("Resource");

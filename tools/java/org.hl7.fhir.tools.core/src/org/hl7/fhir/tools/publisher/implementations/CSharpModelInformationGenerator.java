@@ -96,7 +96,7 @@ public class CSharpModelInformationGenerator extends GenBlock
 		bs();	
         	ln("new List<string>");
 			bs("{");	
-				for( ResourceDefn resource : definitions.getLocalResources() )
+				for( ResourceDefn resource : definitions.getResources() )
                 	ln("\"" + resource.getName() + "\",");
             es("};");
         es();

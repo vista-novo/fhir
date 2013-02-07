@@ -381,7 +381,7 @@ converted to JSON members values, in the same manner as described for primitives
      }],
     "text" : {
       "status" : { "value" : "generated" },
-      "value" : { "value" : "&lt;div xmlns='http://www.w3.org/1999/xhtml'&gt;...&lt;/div&gt;" }
+      "div" : "&lt;div xmlns='http://www.w3.org/1999/xhtml'&gt;...&lt;/div&gt;"
     }
 }
 </pre>
@@ -491,7 +491,8 @@ When binary resources are represented in the feed, they are enclosed as base64 e
     &lt;content type="text/xml"><span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span><span style="color:Gray;"> --&gt;</span>
       &lt;Binary xmlns="http://hl7.org/fhir" contentType="<span style="color:navy;">[mime type]</span>"&gt;<span style="color:navy;">[Base64 Content]</span>&lt;/Binary&gt;
     &lt;/content>
-    &lt;summary type="xhtml"><span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color:Gray;"> --&gt;</span>
+    &lt;summary type="xhtml"><span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span>
+	<span style="color:Gray;"> --&gt;</span>
       &lt;div xmlns="http://www.w3.org/1999/xhtml">Binary resource&lt;/div>
     &lt;/summary>
   &lt;/entry&gt;
