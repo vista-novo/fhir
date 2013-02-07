@@ -216,7 +216,7 @@ public class Publisher {
 
 	public void execute(String folder) throws Exception {
 
-		log("Publish FHIR in folder " + folder);
+		log("Publish FHIR in folder " + folder+" @ "+Config.DATE_FORMAT().format(page.getGenDate().getTime()));
 		registerReferencePlatforms();
 
 		if (initialize(folder)) {
@@ -238,9 +238,9 @@ public class Publisher {
 					produceSpecification(eCorePath);
 				}
 				validateXml();
-				log("Finished publishing FHIR");
+				log("Finished publishing FHIR @ "+Config.DATE_FORMAT().format(Calendar.getInstance().getTime()));
 			} else
-				log("Didn't publish FHIR due to errors");
+				log("Didn't publish FHIR due to errors @ "+Config.DATE_FORMAT().format(Calendar.getInstance().getTime()));
 		}
 	}
 

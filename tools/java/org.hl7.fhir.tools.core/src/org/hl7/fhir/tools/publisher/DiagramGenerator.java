@@ -213,8 +213,10 @@ private String getDefns() {
         else if (page.getDefinitions().dataTypeIsSharedInfo(e.typeCode())) {
           n = e.typeCode();
           t = page.getDefinitions().getElementDefn(n);
-          names.put(t, n);
-          queue.add(t);
+          if (!names.containsKey(t)) {
+        	  names.put(t, n);
+        	  queue.add(t);
+          }
         } else if (e.typeCode().startsWith("@")) {
           ElementDefn src = root.getElementForPath(e.typeCode().substring(1));
           n = names.get(src);          

@@ -55,6 +55,7 @@ public class ZipGenerator {
 
   public void addFiles(String actualDir, String statedDir, String ext) throws Exception {
     byte data[] = new byte[BUFFER];
+    statedDir.replace("\\", "/");
     File f = new CSFile(actualDir);
     String files[] = f.list();
     for (int i=0; i < files.length; i++) {

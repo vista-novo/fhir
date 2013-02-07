@@ -47,6 +47,8 @@ public class XmlBase {
   protected static final String GDATA_NS = "http://schemas.google.com/g/2005";
  
   protected XmlPullParser loadXml(InputStream stream) throws Exception {
+    
+    // compile issues? xpp: use xpp3 from http://www.extreme.indiana.edu/dist/java-repository/xpp3/distributions/ 
     BufferedInputStream input = new BufferedInputStream(stream);
     XmlPullParserFactory factory = XmlPullParserFactory.newInstance(System.getProperty(XmlPullParserFactory.PROPERTY_NAME), null);
     factory.setNamespaceAware(true);
