@@ -26,7 +26,7 @@
     </div>
   </text>
   <active value="true"/>
-
+ 
   <!-- MRN assigned by ACME healthcare on 6-May 2001 -->
   <identifier>
     <use value="usual"/>
@@ -82,6 +82,26 @@
     </address>
   </details>
 
+  <contact>
+    <relationship>
+      <coding>
+        <system value="http://hl7.org/fhir/contact-relationship" />
+        <code value="partner" />
+      </coding>
+    </relationship>
+    <details>
+      <name>
+        <family value="du" />
+        <family value="Marché" />
+        <given value="Bénédicte" />
+      </name>
+      <telecom>
+        <system value="phone" />
+        <value value="+33 (237) 998327"></value>        
+      </telecom>
+    </details>
+  </contact>
+  
   <provider>
     <type value="Organization"/>
     <url value="../organization/@1"/>
