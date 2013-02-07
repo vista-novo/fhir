@@ -5,7 +5,8 @@
   <text>
     <status value="generated" />
     <div xmlns="http://www.w3.org/1999/xhtml">UMCU, locatie Stratenum</div>
-  </text>  
+  </text>
+  <name value="UMCU, locatie Stratenum"/>  
   <type>
     <coding>
       <system value="http://www.hl7.nl/locationTypeCodeNL" />
@@ -13,7 +14,6 @@
       <display value="Branche" />
     </coding>
   </type>
-  <name value="UMCU, locatie Stratenum"/>
   <address>
     <line value="Universiteitsweg 100" />
     <city value="Utrecht" />

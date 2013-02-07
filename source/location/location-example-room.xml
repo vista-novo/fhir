@@ -6,6 +6,7 @@
     <status value="generated" />
     <div xmlns="http://www.w3.org/1999/xhtml">UMCU, OK Oost 1-4</div>
   </text>  
+  <name value="OK Oost 1-4"/>
   <type>
     <coding>
       <system value="http://www.hl7.nl/locationTypeCodeNL" />
@@ -13,7 +14,6 @@
       <display value="Operation room" />
     </coding>
   </type>
-  <name value="OK Oost 1-4"/>
   <telecom>
     <system value="phone" />
     <value value="53321" />
