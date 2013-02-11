@@ -1,4 +1,9 @@
-﻿/*
+using System;
+using System.Collections.Generic;
+using HL7.Fhir.Instance.Support;
+using System.Xml.Linq;
+
+/*
   Copyright (c) 2011-2012, HL7, Inc.
   All rights reserved.
   
@@ -28,68 +33,68 @@
 
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Linq;
-using System.Xml;
+
 using HL7.Fhir.Instance.Model;
-using HL7.Fhir.Instance.Support;
+using System.Xml;
 
 namespace HL7.Fhir.Instance.Parsers
 {
-    public static partial class PrimitiveParser
+    /// <summary>
+    /// Parser for code instances
+    /// </summary>
+    internal static partial class CodeParser
     {
-        public static XHtml ParseXHtml(IFhirReader reader, ErrorList errors)
+        /// <summary>
+        /// Parse code
+        /// </summary>
+        public static Code<T> ParseCode<T>(IFhirReader reader, ErrorList errors, 
+                                Code<T> existingInstance = null ) where T: struct, IConvertible
         {
-            var contents = reader.ReadXhtmlContents();
-
-            try
-            {
-                var result = XHtml.Parse(contents);
-                return result;
-            }
-            catch (FhirFormatException ex)
-            {
-                errors.Add(ex.Message, reader);
-            }
-
-            return null;
-        }
-        
-
-        public static Code<T> ParseCode<T>(IFhirReader reader, ErrorList errors)
-            where T : struct, IConvertible
-        {
-            var result = new Code<T>();
+            Code<T> result = existingInstance != null ? existingInstance : new Code<T>();
 
             try
             {
                 string currentElementName = reader.CurrentElementName;
                 reader.EnterElement();
-
+                
                 while (reader.HasMoreElements())
                 {
-                    if (reader.IsAtRefIdElement())
-                        result.ReferralId = reader.ReadRefIdContents();
-                    else if (reader.IsAtPrimitiveValueElement())
+                    // Parse element internalId
+                    if( reader.IsAtRefIdElement() )
+                        result.InternalId = Id.Parse(reader.ReadRefIdContents());
+                    
+                    // Parse element contents
+                    else if( reader.IsAtPrimitiveValueElement() )                    
                         result.Contents = Code<T>.Parse(reader.ReadPrimitiveContents()).Contents;
+
+                    // Parse element extension
+                    else if( ParserUtils.IsAtFhirElement(reader, "extension") )
+                    {
+                        result.Extensions = new List<Extension>();
+                        reader.EnterArray();
+                        
+                        while( ParserUtils.IsAtArrayElement(reader, "extension") )
+                            result.Extensions.Add(ExtensionParser.ParseExtension(reader, errors));
+                        
+                        reader.LeaveArray();
+                    }
+                                        
                     else
                     {
-                        errors.Add(String.Format("Encountered unknown element {0}", reader.CurrentElementName), reader);
+                        errors.Add(String.Format("Encountered unknown element {0} while parsing {1}", reader.CurrentElementName, currentElementName), reader);
                         reader.SkipSubElementsFor(currentElementName);
+                        result = null;
                     }
                 }
-
+                
                 reader.LeaveElement();
             }
             catch (FhirFormatException ex)
             {
                 errors.Add(ex.Message, reader);
             }
-
             return result;
-        }       
+        }
+        
     }
 }

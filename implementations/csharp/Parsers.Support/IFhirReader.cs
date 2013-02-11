@@ -38,7 +38,7 @@ namespace HL7.Fhir.Instance.Parsers
 {
     public interface IFhirReader
     {
-        void MoveToContent();
+   //     void MoveToContent();
 
         string CurrentElementName { get; }
 
@@ -47,7 +47,6 @@ namespace HL7.Fhir.Instance.Parsers
         bool IsAtFhirElement();
         bool IsAtXhtmlElement();
         bool IsAtPrimitiveValueElement();
-        bool IsAtLanguageElement();
         bool IsAtRefIdElement();
         void LeaveElement();
 
@@ -59,7 +58,6 @@ namespace HL7.Fhir.Instance.Parsers
 
         string ReadXhtmlContents();
         string ReadPrimitiveContents();
-        string ReadLanguageContents();
         string ReadRefIdContents();
 
         int LineNumber { get; }

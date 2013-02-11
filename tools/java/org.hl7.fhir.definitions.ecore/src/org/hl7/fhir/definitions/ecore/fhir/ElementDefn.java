@@ -306,6 +306,14 @@ public interface ElementDefn extends EObject {
 	boolean containsResource();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isXhtml();
+
+	/**
 	 * Returns the value of the '<em><b>Must Support</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>

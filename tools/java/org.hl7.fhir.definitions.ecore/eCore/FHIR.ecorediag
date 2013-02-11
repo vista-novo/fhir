@@ -96,6 +96,10 @@
         <element xmi:type="ecore:EOperation" href="FHIR.ecore#//ElementDefn/containsResource"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_3ZDfEWraEeKjtO8cnwScaA"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_HlP08XHuEeKcz-bDVSWqpQ" type="2002">
+        <element xmi:type="ecore:EOperation" href="FHIR.ecore#//ElementDefn/isXhtml"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_HlP08nHuEeKcz-bDVSWqpQ"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_CLrtqa_CEeGrAaDwyEdjfA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_CLrtqq_CEeGrAaDwyEdjfA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_CLrtq6_CEeGrAaDwyEdjfA"/>

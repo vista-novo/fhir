@@ -44,7 +44,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
 
-public class CSharpResourceParserGenerator extends GenBlock
+public class CSharpParserGenerator extends GenBlock
 {
 	private CSharpModelGenerator rgen;
 
@@ -56,7 +56,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 	}
 
 
-	public CSharpResourceParserGenerator(Definitions defs)
+	public CSharpParserGenerator(Definitions defs)
 	{
 		definitions = defs;
 		rgen = new CSharpModelGenerator(defs);
@@ -80,7 +80,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 			ln("/// <summary>");
 			ln("/// Parser for constrained " + constrained.getName() + " instances");
 			ln("/// </summary>");
-			ln("public static partial class " + constrained.getName() + "Parser");
+			ln("internal static partial class " + constrained.getName() + "Parser");
 			bs("{");	
 				String returnType = GeneratorUtils.buildFullyScopedTypeName(constrained);
 
@@ -125,7 +125,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 			ln("/// <summary>");
 			ln("/// Parser for " + composite.getName() + " instances");
 			ln("/// </summary>");
-			ln("public static partial class " + GeneratorUtils.generateCSharpTypeName(composite.getName()) + "Parser");
+			ln("internal static partial class " + GeneratorUtils.generateCSharpTypeName(composite.getName()) + "Parser");
 			bs("{");
 				compositeParserFunction(composite);
 			es("}");
@@ -210,7 +210,8 @@ public class CSharpResourceParserGenerator extends GenBlock
 			first = false;
 		}
 		
-    	ln("else");
+		if( elements.size() > 0 )
+			ln("else");
         bs("{");
              ln("errors.Add(String.Format(\"Encountered unknown element {0} while parsing {1}\", reader.CurrentElementName, currentElementName), reader);");
              ln("reader.SkipSubElementsFor(currentElementName);");
@@ -298,13 +299,39 @@ public class CSharpResourceParserGenerator extends GenBlock
 			return buildContainedResourceParserCall();
 		else if( resultTypeRef.getName().equals(TypeRef.ELEMENT_TYPE_NAME) ) 
 			return buildPolymorphParserCall(resultTypeRef);
-
-		TypeDefn resultType = getDefinitions().findType(resultTypeRef.getFullName());
-		
-		return buildParserCall(resultType);
+		else if( member.isPrimitiveContents() || member.isInternalId() || member.isXhtml() )
+			return buildPrimitiveParserCall( member );
+		else
+		{
+			TypeDefn resultType = getDefinitions().findType(resultTypeRef.getFullName());			
+			return buildParserCall(resultType);
+		}
 	}
 	
 	
+	private String buildPrimitiveParserCall(ElementDefn member) throws Exception {
+		String csharpPrimitive = GeneratorUtils
+				.mapPrimitiveToFhirCSharpType(member.getTypes().get(0).getName());
+		
+		String call;
+		
+		if( member.isInternalId() )
+			call = "ReadRefIdContents()";
+		else if( member.isPrimitiveContents() )
+			call = "ReadPrimitiveContents()";
+		else if( member.isXhtml() )
+			call = "ReadXhtmlContents()";
+		else
+			throw new IllegalArgumentException("Don't know how to handle primitive-valued element " + member.getName() );
+		
+		String result = csharpPrimitive + ".Parse(reader." + call + ")";
+		
+		if( member.isPrimitiveContents() ) result += ".Contents";
+		
+		return result;
+	}
+
+
 	public static String buildParserCall(TypeDefn def) throws Exception
 	{
 		if( def.isComposite() || def.isConstrained() )
@@ -315,9 +342,16 @@ public class CSharpResourceParserGenerator extends GenBlock
 	
 	private String buildCheckForElementClause( ElementDefn member, Boolean inArray )
 	{
-		// Check for exception: XHTML elements are in XHTML namespace
+		// Check for special cases
+		// First, XHTML elements are in XHTML namespace
 		if( !member.isPolymorph() && member.getTypes().get(0).getName().equals(TypeRef.XHTML_PSEUDOTYPE_NAME) )
 			return "reader.IsAtXhtmlElement()";
+		// Then, values of primitive elements
+		if( member.isPrimitiveContents() )
+			return "reader.IsAtPrimitiveValueElement()";
+		// Then, internal id's
+		if( member.isInternalId() )
+			return "reader.IsAtRefIdElement()";
 		
 		// Other properties, possibly nested in an array
 		String clause;
@@ -377,13 +411,14 @@ public class CSharpResourceParserGenerator extends GenBlock
 	{
 		StringBuffer result = new StringBuffer();
 		
-		result.append("PrimitiveParser.Parse");
+		//   result.Status = CodeParser.ParseCode<Narrative.NarrativeStatus>(reader, errors);
+		
+		result.append("CodeParser.ParseCode");
 		
 		BindingDefn binding = getDefinitions().findBinding(ref.getFullBindingRef());
-		
 		String enumType = GeneratorUtils.buildFullyScopedTypeName(binding.getFullName());
 								
-		result.append("Code<" + enumType + ">");
+		result.append("<" + enumType + ">");
 		result.append("(reader, errors)");
 		
 		return result.toString();

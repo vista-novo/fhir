@@ -32,6 +32,7 @@ package org.hl7.fhir.tools.publisher.implementations;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
@@ -72,12 +73,12 @@ public class CSharpFhirParserGenerator extends GenBlock
 			ln("*/");
 			ln("public static partial class FhirParser");
 			bs("{");
-				ln("public static Resource ParseResource(IFhirReader reader, ErrorList errors)");
+				ln("internal static Resource ParseResource(IFhirReader reader, ErrorList errors)");
 				bs("{");
 					ln("try");
 					bs("{");
-						ln("reader.MoveToContent();");
-						ln();
+				//		ln("reader.MoveToContent();");
+				//		ln();
 						generateResourceCases(definitions.getResources());
 					es("}");
 					ln("catch( Exception xe )");
@@ -88,12 +89,7 @@ public class CSharpFhirParserGenerator extends GenBlock
 				es("}");
 				
 			ln();
-			ln();
-			generateDataParser();
-			ln();
-			generateCompositeParser();
-//			ln();
-//			generatePrimitiveParser();					
+			generateElementParser();
 			es("}");
 		es("}");
 	
@@ -104,7 +100,7 @@ public class CSharpFhirParserGenerator extends GenBlock
 	private GenBlock buildPolymorphParser(String polymorphTypeName, List<?> composites) throws Exception {
 		begin();
 		
-		ln("public static ");
+		ln("internal static ");
 			nl(polymorphTypeName);
 			nl(" Parse");
 			nl(polymorphTypeName);
@@ -116,32 +112,14 @@ public class CSharpFhirParserGenerator extends GenBlock
 		return end();
 	}
 	
-
-	private GenBlock generateDataParser() throws Exception
-	{
-		List composites = new ArrayList();
-		composites.addAll(getDefinitions().getLocalCompositeTypes());
-		composites.addAll(getDefinitions().getLocalConstrainedTypes());
-//		composites.addAll(getDefinitions().getPrimitives());
-
-		return buildPolymorphParser("Data", composites);
-	}
-
-
-	private GenBlock generateCompositeParser() throws Exception
+	private GenBlock generateElementParser() throws Exception
 	{
 		List composites = new ArrayList();
 		composites.addAll(getDefinitions().getLocalCompositeTypes());
 		composites.addAll(getDefinitions().getLocalConstrainedTypes());
 	
-		return buildPolymorphParser("Composite", composites);
+		return buildPolymorphParser("Element", composites);
 	}
-
-	private GenBlock generatePrimitiveParser() throws Exception
-	{				
-		return buildPolymorphParser("Primitive", getDefinitions().getPrimitives());
-	}
-	
 	
 	private void generatePolymorphCases(List<?> types) throws Exception
 	{
@@ -150,6 +128,10 @@ public class CSharpFhirParserGenerator extends GenBlock
 		for( Object t : types )
 		{
 			TypeDefn type = (TypeDefn)t;
+			
+			// Don't generate parser calls for abstract types
+			if( t instanceof CompositeTypeDefn && ((CompositeTypeDefn)t).isAbstract())
+				continue;
 			
 			if( firstTime )
 				ln("if");
@@ -163,7 +145,7 @@ public class CSharpFhirParserGenerator extends GenBlock
 				nl("\" ))");
 			bs();
 				ln("return ");
-					nl( CSharpResourceParserGenerator.buildParserCall(type) );
+					nl( CSharpParserGenerator.buildParserCall(type) );
 					nl(";");
 			es();				
 		}

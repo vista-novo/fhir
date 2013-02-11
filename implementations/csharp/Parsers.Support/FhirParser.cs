@@ -36,17 +36,54 @@ using HL7.Fhir.Instance.Model;
 using HL7.Fhir.Instance.Support;
 using System.Xml;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace HL7.Fhir.Instance.Parsers
 {
     public partial class FhirParser
     {
-        public static Resource ParseResourceFromXml(string data, ErrorList errors)
+        public static Resource ParseResourceFromXml(string xml, ErrorList errors)
         {
-            XmlReader reader = fromString(data);
-            reader.MoveToContent();
+            var reader = fromString(xml);
+            return ParseResource(reader,errors);
+        }
 
-            return ParseResource(new XmlFhirReader(reader),errors);
+        public static Resource ParseResourceFromJson(string json, ErrorList errors)
+        {
+            var reader = new JsonTextReader(new StringReader(json));
+            return ParseResource(reader, errors);
+        }
+
+        public static Element ParseElementFromXml(string xml, ErrorList errors)
+        {
+            var reader = fromString(xml);
+            return ParseElement(reader, errors);
+        }
+
+        public static Element ParseElementFromJson(string json, ErrorList errors)
+        {
+            var reader = new JsonTextReader(new StringReader(json));
+            return ParseElement(reader, errors);
+        }
+
+        public static Resource ParseResource(XmlReader reader, ErrorList errors)
+        {
+            return ParseResource(new XmlFhirReader(reader), errors);
+        }
+
+        public static Resource ParseResource(JsonTextReader reader, ErrorList errors)
+        {
+            return ParseResource(new JsonFhirReader(reader), errors);
+        }
+
+        public static Element ParseElement(XmlReader reader, ErrorList errors)
+        {
+            return ParseElement(new XmlFhirReader(reader), errors);
+        }
+
+        public static Element ParseElement(JsonTextReader reader, ErrorList errors)
+        {
+            return ParseElement(new JsonFhirReader(reader), errors);
         }
 
         private static XmlReader fromString(string s)

@@ -74,8 +74,11 @@ public class PrimitiveConverter
 		
 		if( primitive instanceof org.hl7.fhir.definitions.model.PrimitiveType )
 		{
-			result.setXsdtype( ((org.hl7.fhir.definitions.model.PrimitiveType)primitive).getSchemaType() );
-			result.setPattern( null );
+			org.hl7.fhir.definitions.model.PrimitiveType prim = (org.hl7.fhir.definitions.model.PrimitiveType)primitive; 
+			result.setXsdtype( prim.getSchemaType() );
+			
+			if( prim.getRegEx() != null && prim.getRegEx().length() > 0)
+				result.setPattern( ((org.hl7.fhir.definitions.model.PrimitiveType)primitive).getRegEx() );
 		}
 		else if ( primitive instanceof org.hl7.fhir.definitions.model.DefinedStringPattern )
 		{

@@ -95,6 +95,7 @@ namespace HL7.Fhir.Instance.Model
 
         public Code(T? value)
         {
+            
             if (!typeof(T).IsEnum) throw new ArgumentException("T must be an enumerated type");
 
             Contents = value;

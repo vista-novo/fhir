@@ -48,5 +48,16 @@ public class PrimitiveType extends DefinedCode {
     return schemaType;
   }
 
+  private String regEx;
   
+  public void setRegEx(String value)
+  {
+	regEx = value;  
+  }
+
+  public String getRegEx()
+  {
+	  return regEx;
+  }
+
 }

@@ -58,6 +58,8 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompositeParserTests.cs" />
+    <Compile Include="PrimitiveParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ModelTests.cs" />
     <Compile Include="XmlAssert.cs" />

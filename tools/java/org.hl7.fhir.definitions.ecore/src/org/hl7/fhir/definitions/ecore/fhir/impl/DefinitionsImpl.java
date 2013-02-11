@@ -444,7 +444,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public TypeDefn resolve(TypeRef ref) {
 		return findType(ref.getFullName());

@@ -43,8 +43,6 @@ namespace HL7.Fhir.Instance.Parsers
         public const string XHTMLELEM = "div";
         public const string IDATTR = "id";
         public const string VALUEATTR = "value";
-        public const string LANGATTR = "lang";
-
 
         private XmlReader xr;
 
@@ -56,10 +54,6 @@ namespace HL7.Fhir.Instance.Parsers
             settings.IgnoreWhitespace = true;
 
             this.xr = XmlReader.Create(xr, settings);
-        }
-
-        public void MoveToContent()
-        {
             xr.MoveToContent();
         }
 
@@ -81,7 +75,6 @@ namespace HL7.Fhir.Instance.Parsers
         {
             _lastEncounteredPrimitiveValue = null;
             _lastEncounteredRefIdValue = null;
-            _lastEncounteredLanguageValue = null;
 
             readAttributes();
 
@@ -99,7 +92,6 @@ namespace HL7.Fhir.Instance.Parsers
         {
             // First, if we still have "attribute" elements to process, we are at an element
             if (IsAtPrimitiveValueElement() ||
-                IsAtLanguageElement() ||
                 IsAtRefIdElement()) return true;
 
             // IsAtElement() is normally called after you called EnterElement() on your parent
@@ -157,25 +149,6 @@ namespace HL7.Fhir.Instance.Parsers
         {
             string result = _lastEncounteredRefIdValue;
             _lastEncounteredRefIdValue = null;
-            return result;
-        }
-
-        private string _lastEncounteredLanguageValue = null;
-
-        public bool IsAtLanguageElement()
-        {
-            return false;
-
-            //I ignore language for now. Since this is a "code" and treated as such
-            //in the parser, the parser doesn't know to call ReadLanguageContents(),
-            //so it wouldn't work.
-            //return _lastEncounteredLanguageValue != null;
-        }
-
-        public string ReadLanguageContents()
-        {
-            string result = _lastEncounteredLanguageValue;
-            _lastEncounteredLanguageValue = null;
             return result;
         }
 
@@ -249,11 +222,9 @@ namespace HL7.Fhir.Instance.Parsers
                 while (xr.MoveToNextAttribute())
                 {
                     if (xr.LocalName == IDATTR && xr.NamespaceURI == "")
-                        _lastEncounteredRefIdValue = xr.Value;
+                        _lastEncounteredRefIdValue = String.IsNullOrEmpty(xr.Value) ? null : xr.Value;
                     else if (xr.LocalName == VALUEATTR && xr.NamespaceURI == "")
-                        _lastEncounteredPrimitiveValue = xr.Value;
-                    else if (xr.LocalName == LANGATTR && xr.Prefix == "xml")
-                        _lastEncounteredLanguageValue = xr.Value;
+                        _lastEncounteredPrimitiveValue = String.IsNullOrEmpty(xr.Value) ? null : xr.Value;
                     else
                     {
                         if (xr.NamespaceURI == Util.XMLNS)

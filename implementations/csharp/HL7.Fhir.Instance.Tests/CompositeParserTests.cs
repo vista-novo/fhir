@@ -17,142 +17,49 @@ namespace HL7.Fhir.Instance.Tests
     [TestClass]
     public class CompositeParserTests
     {
-       
-        [TestMethod]
-        public void TestParseEmptyComposite()
-        {
-            string xmlString = @"<x id='4' xmlns='http://hl7.org/fhir' />";
-
-            XmlReader xr = fromString(xmlString); xr.Read();
-            XmlFhirReader r = new XmlFhirReader(xr);
-
-            ErrorList errors = new ErrorList();
-            Coding result = CodingParser.ParseCoding(r, errors);
-            Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.IsNotNull(result);
-            Assert.AreEqual("4", result.ReferralId);
-
-            string jsonString = "{ \"someElem\" : { \"_id\" : \"4\" } }";
-            JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
-            jr.Read(); jr.Read();
-            errors.Clear();
-            result = CodingParser.ParseCoding(new JsonFhirReader(jr), errors);
-            Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.IsNotNull(result);
-            Assert.AreEqual("4", result.ReferralId);
-        }
-
-        [TestMethod]
-        public void TestContinueOnConsecutivePrimitives()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        [TestMethod]
-        public void TestAttributesParsing()
-        {
-            //string xmlString = "<someElem xmlns='http://hl7.org/fhir' id='12' " +
-            //                        "dataAbsentReason='asked'>1234</someElem>";
-            string xmlString = "<someElem xmlns='http://hl7.org/fhir' id='12' " +
-                                ">1234</someElem>";
-
-            XmlReader xr = fromString(xmlString); xr.Read();
-            XmlFhirReader r = new XmlFhirReader(xr);
-
-            ErrorList errors = new ErrorList();
-            IdRef result = PrimitiveParser.ParseIdRef(r, errors);
-            Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual("1234", result.Contents);
-            Assert.AreEqual("12", result.ReferralId);
-       //     Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
-
-//            string jsonString = "{ \"someElem\" : { \"_id\" : \"12\", \"dataAbsentReason\" : \"asked\", \"value\" : \"1234\" } }";
-            string jsonString = "{ \"someElem\" : { \"_id\" : \"12\", \"value\" : \"1234\" } }";
-
-            JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
-            jr.Read(); jr.Read();
-            errors.Clear();
-            result = PrimitiveParser.ParseIdRef(new JsonFhirReader(jr), errors);
-            Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual("1234", result.Contents);
-            Assert.AreEqual("12", result.ReferralId);
-         //   Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
-        }
-
-
-        [TestMethod]
-        public void TestParseLanguageAttribute()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        private XmlReader fromString(string s)
-        {
-            var settings = new XmlReaderSettings();
-            settings.IgnoreComments = true;
-            settings.IgnoreProcessingInstructions = true;
-            settings.IgnoreWhitespace = true;
-
-            XmlReader r = XmlReader.Create(new StringReader(s), settings);
-
-            return r;
-        }
-
-
         [TestMethod]
         public void TestNarrativeParsing()
         {
-            string xmlString = @"<text xmlns='http://hl7.org/fhir'>
-                                    <status>generated</status>
+            string xmlString = @"<testNarrative xmlns='http://hl7.org/fhir'>
+                                    <status value='generated' />
                                     <div xmlns='http://www.w3.org/1999/xhtml'>Whatever</div>
-                                 </text>";
-
-            XmlReader xr = fromString(xmlString); xr.Read();
-            XmlFhirReader r = new XmlFhirReader(xr);
+                                 </testNarrative>";
 
             ErrorList errors = new ErrorList();
-            Narrative result = NarrativeParser.ParseNarrative(r, errors);
+            Narrative result = (Narrative)FhirParser.ParseElementFromXml(xmlString, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.AreEqual(Narrative.NarrativeStatus.Generated, result.Status.Contents);
             Assert.IsTrue(result.Div != null && result.Div.Contents != null);
 
-            string xmlString2 = @"<text xmlns='http://hl7.org/fhir'>
-                                    <status>generated</status>
-                                    <xhtml:div xmlns:xhtml='http://www.w3.org/1999/xhtml'>Whatever</xhtml:div>
-                                 </text>";
+            xmlString = @"<testNarrative xmlns='http://hl7.org/fhir'>
+                             <status value='generated' />
+                             <xhtml:div xmlns:xhtml='http://www.w3.org/1999/xhtml'>Whatever</xhtml:div>
+                          </testNarrative>";
             errors.Clear();
 
-            xr = fromString(xmlString2); xr.Read();
-            r = new XmlFhirReader(xr);
-
-            result = NarrativeParser.ParseNarrative(r, errors);
+            result = (Narrative)FhirParser.ParseElementFromXml(xmlString, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.AreEqual(Narrative.NarrativeStatus.Generated, result.Status.Contents);
             Assert.IsTrue(result.Div != null && result.Div.Contents != null);
 
-            string xmlString3 = @"<text xmlns='http://hl7.org/fhir' xmlns:xhtml='http://www.w3.org/1999/xhtml'>
-                                    <status>generated</status>
-                                    <xhtml:div>Whatever</xhtml:div>
-                                 </text>";
+            xmlString = @"<testNarrative xmlns='http://hl7.org/fhir' xmlns:xhtml='http://www.w3.org/1999/xhtml'>
+                              <status value='generated' />
+                              <xhtml:div>Whatever</xhtml:div>
+                          </testNarrative>";
             errors.Clear();
 
-            xr = fromString(xmlString3); xr.Read();
-            r = new XmlFhirReader(xr);
-
-            result = NarrativeParser.ParseNarrative(r, errors);
+            result = (Narrative)FhirParser.ParseElementFromXml(xmlString, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.AreEqual(Narrative.NarrativeStatus.Generated, result.Status.Contents);
             Assert.IsTrue(result.Div != null && result.Div.Contents != null);
 
-            string jsonString = "{ \"someElem\" : { \"status\" : \"generated\", \"div\" : " +
+            string jsonString = "{ \"testNarrative\" : {" +
+                "\"status\" : { \"value\" : \"generated\" }, " +
+                "\"div\" : " +
                 "\"<div xmlns='http://www.w3.org/1999/xhtml'>Whatever</div>\" } }";
 
-            JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
-            jr.Read(); jr.Read();
             errors.Clear();
-            result = NarrativeParser.ParseNarrative(new JsonFhirReader(jr), errors);
+            result = (Narrative)FhirParser.ParseElementFromJson(jsonString, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.AreEqual(Narrative.NarrativeStatus.Generated, result.Status.Contents);
             Assert.IsTrue(result.Div != null && result.Div.Contents != null);
@@ -161,38 +68,31 @@ namespace HL7.Fhir.Instance.Tests
         [TestMethod]
         public void TestParseSimpleComposite()
         {
-            string xmlString = @"<x id='x4' xmlns='http://hl7.org/fhir'>
-                                    <system>http://hl7.org/fhir/sid/icd-10</system>
-                                    <code>G44.1</code>
-                                 </x>";
-
-            XmlReader xr = fromString(xmlString); xr.Read();
-            XmlFhirReader r = new XmlFhirReader(xr);
+            string xmlString = @"<testCoding id='x4' xmlns='http://hl7.org/fhir'>
+                                    <system value='http://hl7.org/fhir/sid/icd-10' />
+                                    <code value='G44.1' />
+                                 </testCoding>";
 
             ErrorList errors = new ErrorList();
-            Coding result = CodingParser.ParseCoding(r, errors);
+            Coding result = (Coding)FhirParser.ParseElementFromXml(xmlString, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual("x4", result.ReferralId);
-         //   Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
+            Assert.AreEqual("x4", result.InternalId.ToString());
             Assert.AreEqual("G44.1", result.Code.Contents);
             Assert.AreEqual("http://hl7.org/fhir/sid/icd-10", result.System.Contents.ToString());
             Assert.IsNull(result.Display);
 
-            string jsonString = "{ \"someElem\" : { \"_id\" : \"x4\", " +
+            string jsonString = "{ \"testCoding\" : { \"_id\" : \"x4\", " +
                     "\"system\": \"http://hl7.org/fhir/sid/icd-10\", \"code\": \"G44.1\" } }";
 
-            JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
-            jr.Read(); jr.Read();
             errors.Clear();
-            result = CodingParser.ParseCoding(new JsonFhirReader(jr), errors);
+            result = (Coding)FhirParser.ParseElementFromJson(jsonString, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual("x4", result.ReferralId);
-        //    Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
+            Assert.AreEqual("x4", result.InternalId.Contents);
             Assert.AreEqual("G44.1", result.Code.Contents);
             Assert.AreEqual("http://hl7.org/fhir/sid/icd-10", result.System.Contents.ToString());
             Assert.IsNull(result.Display);
         }
-
+/**
         [TestMethod]
         public void TestCompositeWithRepeatingElement()
         {
@@ -456,6 +356,6 @@ namespace HL7.Fhir.Instance.Tests
             File.WriteAllText(@"c:\temp\speedtest.txt", bytesPerMs.ToString() + " bytes per ms");
             Assert.IsTrue(bytesPerMs > 1024);       // Speed is of course very dependent on debug/release and machine
         }
-
+        ***/
     }
 }

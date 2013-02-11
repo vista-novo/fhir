@@ -614,7 +614,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 */
 	@Override
 	public boolean isPolymorph() {
-		return getTypes() != null && getTypes().size() > 1;
+		return getTypes() != null && (getTypes().size() > 1 || getTypes().get(0).getName().equals(TypeRef.ELEMENT_TYPE_NAME));
 	}
 
 	/**
@@ -625,6 +625,18 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	public boolean containsResource() {
 		return getTypes() != null && getTypes().size() == 1 &&
 				getTypes().get(0).getName().equals("Resource");
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isXhtml() 
+	{
+		if( this.getTypes() == null || this.getTypes().size() != 1 ) return false;
+		
+		return getTypes().get(0).getName().equals(TypeRef.XHTML_PSEUDOTYPE_NAME);	
 	}
 
 	/**

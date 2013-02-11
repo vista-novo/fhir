@@ -326,6 +326,7 @@ public class SourceParser {
 		prim.setDefinition(sheet.getColumn(row, "Definition"));
 		prim.setComment(sheet.getColumn(row, "Comments"));
 		prim.setSchemaType(sheet.getColumn(row, "Schema"));
+		prim.setRegEx(sheet.getColumn(row, "RegEx"));
 		TypeRef td = new TypeRef();
 		td.setName(prim.getCode());
 		definitions.getKnownTypes().add(td);
@@ -338,8 +339,8 @@ public class SourceParser {
 		prim.setDefinition(sheet.getColumn(row, "Definition"));
 		prim.setComment(sheet.getColumn(row, "Comments"));
 		prim.setRegex(sheet.getColumn(row, "RegEx"));
-    prim.setSchema(sheet.getColumn(row, "Schema"));
-    prim.setBase(sheet.getColumn(row, "Base"));
+		prim.setSchema(sheet.getColumn(row, "Schema"));
+		prim.setBase(sheet.getColumn(row, "Base"));
 		TypeRef td = new TypeRef();
 		td.setName(prim.getCode());
 		definitions.getKnownTypes().add(td);

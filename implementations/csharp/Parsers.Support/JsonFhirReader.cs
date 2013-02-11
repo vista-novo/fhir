@@ -41,10 +41,9 @@ namespace HL7.Fhir.Instance.Parsers
 {
     public class JsonFhirReader : IFhirReader
     {
-        public const string XHTMLELEM = "value";
+        public const string XHTMLELEM = "div";
         public const string IDATTR = "_id";
         public const string VALUEATTR = "value";
-        public const string LANGATTR = "language";
 
         private JsonTextReader jr;
 
@@ -52,9 +51,10 @@ namespace HL7.Fhir.Instance.Parsers
         {
             jr.DateParseHandling = DateParseHandling.None;
             this.jr = jr;
+            moveToContent();
         }
 
-        public void MoveToContent()
+        private void moveToContent()
         {
             if (jr.TokenType == JsonToken.None)
                 jr.Read();
@@ -120,7 +120,7 @@ namespace HL7.Fhir.Instance.Parsers
 
         public string ReadXhtmlContents()
         {
-            return readStringProperty();
+            return processStringProperty();
         }
 
         private string readStringProperty()
@@ -145,17 +145,16 @@ namespace HL7.Fhir.Instance.Parsers
 
         public string ReadPrimitiveContents()
         {
-            return readStringProperty();
+            return processStringProperty();
         }
 
-        public bool IsAtLanguageElement()
+        private string processStringProperty()
         {
-            return isAtToken() && CurrentElementName == LANGATTR;
-        }
-
-        public string ReadLanguageContents()
-        {
-            return readStringProperty();
+            string value = readStringProperty();
+            if (!String.IsNullOrEmpty(value))
+                return value;
+            else
+                return null;
         }
 
         public bool IsAtRefIdElement()
@@ -165,7 +164,7 @@ namespace HL7.Fhir.Instance.Parsers
 
         public string ReadRefIdContents()
         {
-            return readStringProperty();
+            return processStringProperty();
         }
 
 

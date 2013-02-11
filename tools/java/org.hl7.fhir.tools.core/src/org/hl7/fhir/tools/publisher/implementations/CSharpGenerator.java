@@ -115,7 +115,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			if( composite.isAbstract() ) continue;
 			
 			String xmlParserFilename = parsersDir + GeneratorUtils.generateCSharpTypeName(composite.getName()) + "Parser.cs";			
-			new CSharpResourceParserGenerator(definitions)
+			new CSharpParserGenerator(definitions)
 					.generateCompositeParser(composite, definitions).toFile(implDir+xmlParserFilename);			
 			generatedFilenames.add(xmlParserFilename);
 	
@@ -136,7 +136,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			
 			// Build Xml parser for constrained type
 			String parserFilename = parsersDir + constrained.getName() + "Parser.cs";
-			new CSharpResourceParserGenerator(definitions)
+			new CSharpParserGenerator(definitions)
 				.generateConstrainedParser(constrained).toFile(implDir+parserFilename);						 
 			generatedFilenames.add(parserFilename);
 		}
@@ -157,13 +157,13 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		}
 		
 		// Generate resource parser entrypoint
-//		{
-//			String filename = parsersDir + "FhirParser.cs";
-//			
-//			new CSharpFhirParserGenerator(definitions)
-//				.generateResourceParser(definitions).toFile(implDir+filename);						 
-//			generatedFilenames.add(filename);			
-//		}
+		{
+			String filename = parsersDir + "FhirParser.cs";
+			
+			new CSharpFhirParserGenerator(definitions)
+				.generateResourceParser(definitions).toFile(implDir+filename);						 
+			generatedFilenames.add(filename);			
+		}
 //		
 //		// Generate resource serializer entrypoint
 //		{

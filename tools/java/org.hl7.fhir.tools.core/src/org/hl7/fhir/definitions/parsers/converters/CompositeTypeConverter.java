@@ -100,6 +100,7 @@ public class CompositeTypeConverter {
 			Annotations ann = FhirFactory.eINSTANCE.createAnnotations();
 			newResource.setAnnotations(ann);
 			newResource.setFuture(true);
+			newResource.setBaseType(base);
 		}
 		else 
 		{
@@ -355,7 +356,7 @@ public class CompositeTypeConverter {
 	public static ElementDefn buildInternalIdElement()
 	{
 		ElementDefn idElem = FhirFactory.eINSTANCE.createElementDefn();
-		idElem.setName("localId");
+		idElem.setName("internalId");
 		idElem.setMinCardinality(0);
 		idElem.setMaxCardinality(1);
 		idElem.setInternalId(true);

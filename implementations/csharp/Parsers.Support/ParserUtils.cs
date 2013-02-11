@@ -38,12 +38,12 @@ using HL7.Fhir.Instance.Model;
 
 namespace HL7.Fhir.Instance.Parsers
 {
-    public static class ParserUtils
+    internal static class ParserUtils
     {
-        public static bool IsAtNestedResource(IFhirReader reader)
-        {
-            return ModelInfo.IsKnownResource(reader.CurrentElementName);
-        }
+        //public static bool IsAtNestedResource(IFhirReader reader)
+        //{
+        //    return ModelInfo.IsKnownResource(reader.CurrentElementName);
+        //}
 
         public static bool IsAtFhirElement(IFhirReader reader, string name, bool isPolymorph = false)
         {
@@ -75,17 +75,5 @@ namespace HL7.Fhir.Instance.Parsers
 
             return reader.CurrentElementName.EndsWith(suffix);
         }
-
-
-        //public static bool IsAtEndElement(IFhirReader reader, string name)
-        //{
-        //    return reader.IsAtElementEnd() && reader.CurrentElementName == name;
-        //}
-
-        //public static bool IsAtXhtmlElement(IFhirReader reader, string name)
-        //{
-        //    return reader.IsAtXhtmlElement() && reader.CurrentElementName == name;
-        //}
-
     }
 }
