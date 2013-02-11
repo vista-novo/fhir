@@ -20,6 +20,7 @@
   <WindowWidth>17496</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6072</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -307,12 +308,10 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>4</ActiveRow>
-     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -475,8 +474,8 @@
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">related-id</Data></Cell>
-    <Cell><Data ss:Type="String">An identifier for any of the related organizations</Data></Cell>
+    <Cell><Data ss:Type="String">related</Data></Cell>
+    <Cell><Data ss:Type="String">Any one of the related organizations</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
    </Row>
@@ -494,10 +493,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>12</ActiveRow>
+     <ActiveRow>11</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
