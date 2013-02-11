@@ -183,7 +183,7 @@ public class CSharpParserGenerator extends GenBlock
             bs("{");           	
 				// Generate this classes properties, getAllElements() will list
             	// all elements within this composite and its basetypes
-            	List<ElementDefn> allProperties = composite.getAllElements();            	
+            	List<ElementDefn> allProperties = composite.getAllElements();
 				generateMemberParsers(allProperties, composite.isResource());
 			es("}");
 			ln();

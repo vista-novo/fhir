@@ -82,7 +82,8 @@ namespace HL7.Fhir.Instance.Tests
             Assert.IsNull(result.Display);
 
             string jsonString = "{ \"testCoding\" : { \"_id\" : \"x4\", " +
-                    "\"system\": \"http://hl7.org/fhir/sid/icd-10\", \"code\": \"G44.1\" } }";
+                    "\"system\": { \"value\" : \"http://hl7.org/fhir/sid/icd-10\" }, " +
+                    "\"code\": { \"value\" : \"G44.1\" } } }";
 
             errors.Clear();
             result = (Coding)FhirParser.ParseElementFromJson(jsonString, errors);
@@ -92,43 +93,52 @@ namespace HL7.Fhir.Instance.Tests
             Assert.AreEqual("http://hl7.org/fhir/sid/icd-10", result.System.Contents.ToString());
             Assert.IsNull(result.Display);
         }
-/**
+
+
         [TestMethod]
         public void TestCompositeWithRepeatingElement()
         {
-            string xmlString = @"<x xmlns='http://hl7.org/fhir'><coding><system>http://hl7.org/fhir/sid/icd-10</system><code>R51</code></coding>" +
-                "<coding id='1'><system>http://snomed.info</system><code>25064002</code></coding></x>";
-
-            XmlReader xr = fromString(xmlString); xr.Read();
-            XmlFhirReader r = new XmlFhirReader(xr);
+            string xmlString = @"
+                <testCodeableConcept xmlns='http://hl7.org/fhir'>
+                    <coding>
+                        <system value=""http://hl7.org/fhir/sid/icd-10"" />
+                        <code value=""R51"" />
+                    </coding>
+                    <coding id='1'>
+                        <system value=""http://snomed.info"" />
+                        <code value=""25064002"" />
+                    </coding>
+                </testCodeableConcept>";
 
             ErrorList errors = new ErrorList();
-            CodeableConcept result = CodeableConceptParser.ParseCodeableConcept(r, errors);
+            CodeableConcept result = (CodeableConcept)FhirParser.ParseElementFromXml(xmlString, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.AreEqual(2, result.Codings.Count);
             Assert.AreEqual("R51", result.Codings[0].Code.Contents);
             Assert.AreEqual("25064002", result.Codings[1].Code.Contents);
             Assert.AreEqual("http://snomed.info/", result.Codings[1].System.Contents.ToString());
-            Assert.AreEqual("1", result.Codings[1].ReferralId);
+            Assert.AreEqual("1", result.Codings[1].InternalId.ToString());
 
 
-            string jsonString = "{ \"someElem\" : { \"coding\" : [ " +
-                "{ \"system\": \"http://hl7.org/fhir/sid/icd-10\", \"code\" : \"R51\"  }," +
-                "{ \"_id\":\"1\", \"system\": \"http://snomed.info\", \"code\" : \"25064002\" }" +
-                "] } }";
+            string jsonString = @"{ ""testCodeableConcept"" : 
+                    { ""coding"" : [ 
+                        { ""system"" : { ""value"" : ""http://hl7.org/fhir/sid/icd-10"" }
+                          ""code"" : { ""value"" : ""R51"" } },
+                        { ""_id"" : ""1"", 
+                          ""system"": { ""value"" : ""http://snomed.info"" },
+                          ""code"" : { ""value"" : ""25064002"" } } ]
+                    } }";
 
-            JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
-            jr.Read(); jr.Read();
             errors.Clear();
-            result = CodeableConceptParser.ParseCodeableConcept(new JsonFhirReader(jr), errors);
+            result = (CodeableConcept)FhirParser.ParseElementFromJson(jsonString, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.AreEqual(2, result.Codings.Count);
             Assert.AreEqual("R51", result.Codings[0].Code.Contents);
             Assert.AreEqual("25064002", result.Codings[1].Code.Contents);
             Assert.AreEqual("http://snomed.info/", result.Codings[1].System.Contents.ToString());
-            Assert.AreEqual("1", result.Codings[1].ReferralId);
+            Assert.AreEqual("1", result.Codings[1].InternalId.ToString());
         }
-
+        /*
         [TestMethod]
         public void TestCompositeWithPolymorphicElement()
         {
@@ -268,11 +278,6 @@ namespace HL7.Fhir.Instance.Tests
         }
 
 
-        [TestMethod]
-        public void TestExtendedResource()
-        {
-            throw new NotImplementedException();
-        }
 
         [TestMethod]
         public void TestGetContainedResources()

@@ -71,12 +71,23 @@ namespace HL7.Fhir.Instance.Parsers
 
         bool insideEmptyElement = false;
 
+
+        private class ElementAttributes
+        {
+            public string Primitive { get; set; }
+            public string LocalId { get; set; }
+        }
+
+        private Stack<ElementAttributes> elementStack = new Stack<ElementAttributes>();
+
+
         public void EnterElement()
         {
-            _lastEncounteredPrimitiveValue = null;
-            _lastEncounteredRefIdValue = null;
+            string value = null;
+            string id = null;
 
-            readAttributes();
+            readAttributes( out id, out value);
+            elementStack.Push(new ElementAttributes { LocalId = id, Primitive = value });
 
             if (!xr.IsEmptyElement)
             {
@@ -87,6 +98,17 @@ namespace HL7.Fhir.Instance.Parsers
                 insideEmptyElement = true;
         }
 
+
+        private ElementAttributes currentAttributes
+        {
+            get
+            {
+                if (elementStack.Count > 0)
+                    return elementStack.Peek();
+                else
+                    return null;
+            }
+        }
 
         public bool HasMoreElements()
         {
@@ -124,31 +146,40 @@ namespace HL7.Fhir.Instance.Parsers
         }
 
 
-        private string _lastEncounteredPrimitiveValue = null;
-
         public bool IsAtPrimitiveValueElement()
         {
-            return _lastEncounteredPrimitiveValue != null;
+            return currentAttributes != null && currentAttributes.Primitive != null;
         }
 
         public string ReadPrimitiveContents()
         {
-            string result = _lastEncounteredPrimitiveValue;
-            _lastEncounteredPrimitiveValue = null;
+            string result = null;
+
+            if (currentAttributes != null)
+            {
+                result = currentAttributes.Primitive;
+                currentAttributes.Primitive = null;
+            }
+
             return result;
         }
 
-        private string _lastEncounteredRefIdValue = null;
 
         public bool IsAtRefIdElement()
         {
-            return _lastEncounteredRefIdValue != null;
+            return currentAttributes != null && currentAttributes.LocalId != null;
         }
 
         public string ReadRefIdContents()
         {
-            string result = _lastEncounteredRefIdValue;
-            _lastEncounteredRefIdValue = null;
+            string result = null;
+
+            if (currentAttributes != null)
+            {
+                result = currentAttributes.LocalId;
+                currentAttributes.LocalId = null;
+            }
+
             return result;
         }
 
@@ -163,6 +194,8 @@ namespace HL7.Fhir.Instance.Parsers
             }
             else
                 throw new FhirFormatException("Expected end of element");
+
+            elementStack.Pop();
         }
 
 
@@ -213,18 +246,21 @@ namespace HL7.Fhir.Instance.Parsers
         }
 
        
-        private void readAttributes()
+        private void readAttributes(out string localId, out string value)
         {
             string elementName = xr.LocalName;
+
+            localId = null;
+            value = null;
 
             if (xr.HasAttributes)
             {
                 while (xr.MoveToNextAttribute())
                 {
                     if (xr.LocalName == IDATTR && xr.NamespaceURI == "")
-                        _lastEncounteredRefIdValue = String.IsNullOrEmpty(xr.Value) ? null : xr.Value;
+                        localId = String.IsNullOrEmpty(xr.Value) ? null : xr.Value;
                     else if (xr.LocalName == VALUEATTR && xr.NamespaceURI == "")
-                        _lastEncounteredPrimitiveValue = String.IsNullOrEmpty(xr.Value) ? null : xr.Value;
+                        value = String.IsNullOrEmpty(xr.Value) ? null : xr.Value;
                     else
                     {
                         if (xr.NamespaceURI == Util.XMLNS)

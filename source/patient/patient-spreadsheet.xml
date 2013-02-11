@@ -189,7 +189,7 @@
     <Cell ss:Index="8"><Data ss:Type="String">A contact party for the patient</Data></Cell>
     <Cell><Data ss:Type="String">A contact party for the patient</Data></Cell>
     <Cell><Data ss:Type="String">Need to track people you can contact about the patient</Data></Cell>
-    <Cell><Data ss:Type="String">Contact covers all kinds of contact parties: family members, business contacts, guardians, caregivers. Not applicable to register pedigree and familyties beyond use of having contact.</Data></Cell>
+    <Cell><Data ss:Type="String">Contact covers all kinds of contact parties: family members, business contacts, guardians, caregivers. Not applicable to register pedigree and family ties beyond use of having contact.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Patient.contact.relationship</Data></Cell>
@@ -202,7 +202,8 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Patient.contact.details</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">Demographics</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Details about the contact person</Data></Cell>
     <Cell><Data ss:Type="String">Details about the contact person</Data></Cell>
@@ -210,6 +211,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Patient.contact.organization</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">Resource(Organization)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Organization that is associated with the contact</Data></Cell>
     <Cell><Data ss:Type="String">Organization on behalf of which the contact is acting or for which the contact is working.</Data></Cell>
@@ -434,13 +436,13 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>16</TopRowVisible>
-   <LeftColumnVisible>9</LeftColumnVisible>
+   <TopRowVisible>3</TopRowVisible>
+   <LeftColumnVisible>1</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>22</ActiveRow>
-     <ActiveCol>13</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>10</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -448,8 +450,13 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="1" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="14.55">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="177"/>
+   <Column ss:AutoFitWidth="0" ss:Width="121.2"/>
+   <Column ss:AutoFitWidth="0" ss:Width="241.20000000000002"/>
+   <Column ss:AutoFitWidth="0" ss:Width="87"/>
+   <Column ss:Width="118.19999999999999"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -457,6 +464,13 @@
     <Cell><Data ss:Type="String">English</Data></Cell>
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">ContactNeedsDetails</Data></Cell>
+    <Cell><Data ss:Type="String">Patient.contact</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Need contact details or at least a reference to an organization</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">f:details or f:organization</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -466,6 +480,13 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>3</ActiveCol>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -874,13 +895,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="contact-relationship">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="14.55">
    <Column ss:AutoFitWidth="0" ss:Width="78.599999999999994"/>
    <Column ss:Width="220.8"/>
    <Row ss:AutoFitHeight="0" ss:Height="28.8">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">emergency</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Contact in case of emergency</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">family</Data></Cell>
@@ -925,8 +950,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>9</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>4</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
