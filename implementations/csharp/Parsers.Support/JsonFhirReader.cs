@@ -54,6 +54,7 @@ namespace HL7.Fhir.Instance.Parsers
             moveToContent();
         }
 
+
         private void moveToContent()
         {
             if (jr.TokenType == JsonToken.None)

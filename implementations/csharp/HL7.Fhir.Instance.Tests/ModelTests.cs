@@ -11,26 +11,6 @@ namespace HL7.Fhir.Instance.Tests
     public class ModelTests
     {
         [TestMethod]
-        public void VerifyDefaults()
-        {
-            FhirBoolean b = new FhirBoolean();
-            Assert.AreEqual(false, b.Contents);
-
-            Integer i = new Integer();
-            Assert.AreEqual(0, i.Contents);
-
-            FhirDecimal d = new FhirDecimal();
-            Assert.AreEqual(0, d.Contents);
-
-            Base64Binary b64 = new Base64Binary();
-            Assert.IsNull(b64.Contents);
-
-            FhirString s = new FhirString();
-            Assert.IsNull(s.Contents);
-        }
-
-
-        [TestMethod]
         public void VerifyCastOperators()
         {
             FhirBoolean b = true;

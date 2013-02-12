@@ -40,10 +40,20 @@ namespace HL7.Fhir.Instance.Parsers
 {
     internal static class ParserUtils
     {
-        //public static bool IsAtNestedResource(IFhirReader reader)
-        //{
-        //    return ModelInfo.IsKnownResource(reader.CurrentElementName);
-        //}
+        public static Resource ParseContainedResource(IFhirReader reader, ErrorList errors)
+        {
+            Resource result = null;
+
+            // Read into "contained" element
+            reader.EnterElement();
+
+            result = FhirParser.ParseResource(reader, errors);
+
+            // Exit from "contained" element
+            reader.LeaveElement();
+
+            return result;
+        }
 
         public static bool IsAtFhirElement(IFhirReader reader, string name, bool isPolymorph = false)
         {

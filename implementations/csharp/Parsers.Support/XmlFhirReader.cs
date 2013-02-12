@@ -54,7 +54,7 @@ namespace HL7.Fhir.Instance.Parsers
             settings.IgnoreWhitespace = true;
 
             this.xr = XmlReader.Create(xr, settings);
-            xr.MoveToContent();
+            this.xr.MoveToContent();
         }
 
         public string CurrentElementName
@@ -112,6 +112,8 @@ namespace HL7.Fhir.Instance.Parsers
 
         public bool HasMoreElements()
         {
+            if (xr.EOF || xr.ReadState == ReadState.Error) return false;
+
             // First, if we still have "attribute" elements to process, we are at an element
             if (IsAtPrimitiveValueElement() ||
                 IsAtRefIdElement()) return true;
@@ -203,7 +205,7 @@ namespace HL7.Fhir.Instance.Parsers
         {
             if(!insideEmptyElement)
             {
-                while (!isEndElement(xr, name) && !xr.EOF)
+                while (!isEndElement(xr, name) && !xr.EOF && xr.ReadState != ReadState.Error)
                     xr.Skip();
             }
         }

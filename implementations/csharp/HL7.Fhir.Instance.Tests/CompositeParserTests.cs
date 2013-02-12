@@ -122,7 +122,7 @@ namespace HL7.Fhir.Instance.Tests
 
             string jsonString = @"{ ""testCodeableConcept"" : 
                     { ""coding"" : [ 
-                        { ""system"" : { ""value"" : ""http://hl7.org/fhir/sid/icd-10"" }
+                        { ""system"" : { ""value"" : ""http://hl7.org/fhir/sid/icd-10"" },
                           ""code"" : { ""value"" : ""R51"" } },
                         { ""_id"" : ""1"", 
                           ""system"": { ""value"" : ""http://snomed.info"" },
@@ -138,61 +138,44 @@ namespace HL7.Fhir.Instance.Tests
             Assert.AreEqual("http://snomed.info/", result.Codings[1].System.Contents.ToString());
             Assert.AreEqual("1", result.Codings[1].InternalId.ToString());
         }
-        /*
-        [TestMethod]
-        public void TestCompositeWithPolymorphicElement()
-        {
-            string xmlString = @"<extension xmlns='http://hl7.org/fhir'>" +
-                "<url>http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090#name-qualifier</url>" +
-                "<ref>n1</ref><valueCode>MID</valueCode></extension>";
-
-            XmlReader xr = fromString(xmlString); xr.Read();
-            XmlFhirReader r = new XmlFhirReader(xr);
-
-            ErrorList errors = new ErrorList();
-            Extension result = ExtensionParser.ParseExtension(r, errors);
-            Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual(typeof(Code), result.Value.GetType());
-
-
-            string jsonString = "{ \"extension\" : { " +
-                   "\"url\":\"http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090#name-qualifier\", " +
-                   "\"ref\":\"n1\", \"valueCode\" : \"MID\" } }";
-
-            JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
-            jr.Read(); jr.Read();
-            errors.Clear();
-            result = ExtensionParser.ParseExtension(new JsonFhirReader(jr), errors);
-            Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual(typeof(Code), result.Value.GetType());
-        }
-
+        
 
         [TestMethod]
         public void TestParseUnknownMembersAndRecover()
         {
-            string xmlString = @"<x xmlns='http://hl7.org/fhir'><coding><system>http://hl7.org/fhir/sid/icd-10</system><ewout>bla</ewout>" +
-                "<code>R51</code></coding>" +
-                "<coding id='1'><system>http://snomed.info</system><code>25064002</code></coding><grahame></grahame></x>";
-
-            XmlReader xr = fromString(xmlString); xr.Read();
-            XmlFhirReader r = new XmlFhirReader(xr);
+            string xmlString = @"<testCodeableConcept xmlns='http://hl7.org/fhir'>
+                    <coding>
+                        <system value='http://hl7.org/fhir/sid/icd-10' />
+                        <ewout>bla</ewout>
+                        <code value='R51' />
+                    </coding>
+                    <coding id='1'>
+                        <system value='http://snomed.info' />
+                        <code value='25064002' />
+                    </coding>
+                    <grahame></grahame>
+                    </testCodeableConcept>";
 
             ErrorList errors = new ErrorList();
-            CodeableConcept result = CodeableConceptParser.ParseCodeableConcept(r, errors);
+            CodeableConcept result = (CodeableConcept)FhirParser.ParseElementFromXml(xmlString, errors);
             Assert.AreEqual(2,errors.Count);
             Assert.IsTrue(errors[0].ToString().Contains("ewout"));
             Assert.IsTrue(errors[1].ToString().Contains("grahame"));
 
-            string jsonString = "{ \"someElem\" : { \"coding\" : [ " +
-                "{ \"system\": \"http://hl7.org/fhir/sid/icd-10\", \"ewout\" : \"bla\", \"code\" : \"R51\" }," +
-                "{ \"_id\":\"1\", \"system\": \"http://snomed.info\", \"code\" : \"25064002\"  }" +
-                "], \"grahame\" : \"stuff\" } }";
+            string jsonString = @"{ ""testCodeableConcept"" : 
+                    { ""coding"" : [
+                        { ""system"": { ""value"" : ""http://hl7.org/fhir/sid/icd-10"" }, 
+                          ""ewout"" : ""bla"", 
+                          ""code"" : { ""value"" : ""R51"" } 
+                        },
+                        { ""_id"" : ""1"", 
+                          ""system"": { ""value"" : ""http://snomed.info"" }, 
+                          ""code"" : { ""value"" : ""25064002""  }
+                        } ],
+                       ""grahame"" : { ""value"" : ""x"" } } }";
 
-            JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
-            jr.Read(); jr.Read();
             errors.Clear();
-            result = CodeableConceptParser.ParseCodeableConcept(new JsonFhirReader(jr), errors);
+            result = (CodeableConcept)FhirParser.ParseElementFromJson(jsonString, errors);
             Assert.AreEqual(2, errors.Count);
             Assert.IsTrue(errors[0].ToString().Contains("ewout"));
             Assert.IsTrue(errors[1].ToString().Contains("grahame"));
@@ -203,37 +186,34 @@ namespace HL7.Fhir.Instance.Tests
         public void TestParseNameWithExtensions()
         {
             string xmlString =
-@"<Patient xmlns='http://hl7.org/fhir'>
-    <details>
-        <name>
-          <use>official</use>  
-          <given>Regina</given>
-          <prefix id='n1'>Dr.</prefix>
-        </name>
-    </details>
-    <extension>
-      <url>http://hl7.org/fhir/profile/@iso-20190</url>
-      <ref>n1</ref>
-      <valueCoding>
-        <system>oid:2.16.840.1.113883.5.1122</system>       
-        <code>AC</code>
-      </valueCoding>
-    </extension>
-    <text>
-        <status>generated</status>
-        <div xmlns='http://www.w3.org/1999/xhtml'>Whatever</div>
-    </text>
-</Patient>";
-
-            XmlReader xr = fromString(xmlString);
-            XmlFhirReader r = new XmlFhirReader(xr);
+                @"<Patient xmlns='http://hl7.org/fhir'>
+                    <details>
+                        <name>
+                          <use value='official' />  
+                          <given value='Regina' />
+                          <prefix value='Dr.'>
+                            <extension>
+                                <url value='http://hl7.org/fhir/profile/@iso-20190' />
+                                <valueCoding>
+                                    <system value='urn:oid:2.16.840.1.113883.5.1122' />       
+                                    <code value='AC' />
+                                </valueCoding>
+                            </extension>
+                          </prefix>
+                        </name>
+                    </details>
+                    <text>
+                        <status value='generated' />
+                        <div xmlns='http://www.w3.org/1999/xhtml'>Whatever</div>
+                    </text>
+                </Patient>";
 
             ErrorList errors = new ErrorList();
-            Patient p = (Patient)FhirParser.ParseResource(r, errors);
+            Patient p = (Patient)FhirParser.ParseResourceFromXml(xmlString, errors);
 
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.IsNotNull(p);
-            Assert.AreEqual(1, p.Extensions.Count());
+            Assert.AreEqual(1, p.Details.Names[0].Prefixs[0].Extensions.Count());
         }
 
 
@@ -241,105 +221,42 @@ namespace HL7.Fhir.Instance.Tests
         public void TestParseLargeComposite()
         {
             XmlReader xr = XmlReader.Create(new StreamReader(@"..\..\..\..\..\publish\diagnosticreport-example.xml"));
-            IFhirReader r = new XmlFhirReader(xr);
-
             ErrorList errors = new ErrorList();
-            DiagnosticReport rep = (DiagnosticReport)FhirParser.ParseResource(r, errors);
+            DiagnosticReport rep = (DiagnosticReport)FhirParser.ParseResource(xr, errors);
 
+            validateDiagReportAttributes(errors, rep);
+
+            JsonTextReader jr = new JsonTextReader(new StreamReader(@"..\..\..\..\..\publish\diagnosticreport-example.json"));
+            errors.Clear();
+            rep = (DiagnosticReport)FhirParser.ParseResource(jr, errors);
+
+            validateDiagReportAttributes(errors, rep);
+        }
+
+        private static void validateDiagReportAttributes(ErrorList errors, DiagnosticReport rep)
+        {
             Assert.IsNotNull(rep);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
 
             Assert.AreEqual("2011-03-04T08:30:00+11:00", rep.DiagnosticTime.ToString());
+            Assert.AreEqual(17, rep.Containeds.Count);
             Assert.AreEqual(17, rep.Results.Results.Count);
 
-            throw new NotImplementedException("Check values in the inlined results");
-//            Assert.AreEqual(typeof(Quantity), rep.Results.Result[1].Value.GetType());
-//            Assert.AreEqual((decimal)5.9, (rep.Results.Result[1].Value as Quantity).Value.Contents);
-//            Assert.AreEqual("Neutrophils", rep.Results.Result[8].Name.Coding[0].Display.Contents);
+            Assert.IsNotNull(rep.Containeds[1] as Observation);
+            Observation obs1 = (Observation)rep.Containeds[1];
+            Assert.AreEqual(typeof(Quantity), obs1.Value.GetType());
+            Assert.AreEqual((decimal)5.9, (obs1.Value as Quantity).Value.Contents);
+
+            Assert.IsNotNull(rep.Containeds[8] as Observation);
+            Observation obs8 = (Observation)rep.Containeds[8];
+            Assert.AreEqual("Neutrophils", obs8.Name.Codings[0].Display.Contents);
         }
 
-        [TestMethod]
-        public void TestParseResourceReference()
-        {
-            string xmlString = @"<x xmlns='http://hl7.org/fhir'>
-                <type>Organization</type>
-                <url>http://hl7.org/fhir/organization/@1</url>
-                                 </x>";
-
-            XmlReader xr = fromString(xmlString); 
-            xr.Read();
-            XmlFhirReader r = new XmlFhirReader(xr);
-
-            ErrorList errors = new ErrorList();
-            ResourceReference result = ResourceReferenceParser.ParseResourceReference(r, errors);
-
-            Assert.AreEqual("Organization", result.Type.Contents);
-            Assert.AreEqual("http://hl7.org/fhir/organization/@1", result.Url.Contents.ToString());    
-        }
-
-
-
-        [TestMethod]
-        public void TestGetContainedResources()
-        {
-            throw new NotImplementedException();
-
-//            string xmlNestedString = @"<x xmlns='http://hl7.org/fhir'>
-//                   <Provider>
-//                 <identifier>
-//                    <identifier>  
-//                      <system>htp://www.acme.org/providers</system>
-//                      <id>23</id>
-//                    </identifier>
-//                  </identifier>
-//              <details>
-//                <name>
-//                  <family>Careful</family>
-//                  <given>Adam</given>
-//                  <prefix>Dr</prefix>
-//                </name>
-//              </details>
-//
-//              <organization>
-//                <type>Organization</type>
-//                <url>1</url>  
-//              </organization> 
-//
-//              <!--   Referring Provider for the first 3 months of 2012   -->
-//              <role>
-//                <coding>
-//                  <system>http://hl7.org/fhir/sid/v2-0286</system>
-//                  <code>RP</code>
-//                </coding>
-//              </role>
-//  
-//              <period>
-//                <start>2012-01-01</start>
-//                <end>2012-03-31</end>
-//              </period>
-//            </Provider>
-//             </x>";
-
-//            xr = fromString(xmlNestedString); xr.Read();
-//            r = new XmlFhirReader(xr);
-//            errors = new ErrorList();
-//            result = ResourceReferenceParser.ParseResourceReference(r, errors);
-
-//            Assert.IsNotNull(result.InlinedContent);
-//            Assert.IsInstanceOfType(result.InlinedContent, typeof(Provider));
-//            Provider prov = (Provider)result.InlinedContent;
-//            Assert.AreEqual("1", prov.Organization.Url.ToString());
-        }
 
         [TestMethod]
         public void TestParsePerformance()
         {
-            var settings = new XmlReaderSettings();
-            settings.IgnoreComments = true;
-            settings.IgnoreProcessingInstructions = true;
-            settings.IgnoreWhitespace = true;
-
-            string text = File.ReadAllText(@"..\..\..\..\..\publish\labreport-example.xml");
+            string text = File.ReadAllText(@"..\..\..\..\..\publish\diagnosticreport-example.xml");
             int repeats = 25;
 
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
@@ -348,10 +265,8 @@ namespace HL7.Fhir.Instance.Tests
 
             for (int i = 0; i < repeats; i++)
             {
-                XmlReader xr = XmlReader.Create(new StringReader(text), settings);
-                IFhirReader r = new XmlFhirReader(xr);
                 ErrorList errors = new ErrorList();
-                DiagnosticReport rep = (DiagnosticReport)FhirParser.ParseResource(r, errors);
+                DiagnosticReport rep = (DiagnosticReport)FhirParser.ParseResourceFromXml(text, errors);
             }
 
             sw.Stop();
@@ -359,8 +274,7 @@ namespace HL7.Fhir.Instance.Tests
             long bytesPerMs = text.Length * repeats / sw.ElapsedMilliseconds;
 
             File.WriteAllText(@"c:\temp\speedtest.txt", bytesPerMs.ToString() + " bytes per ms");
-            Assert.IsTrue(bytesPerMs > 1024);       // Speed is of course very dependent on debug/release and machine
+            Assert.IsTrue(bytesPerMs > 10*1024);       // > 10k per ms (Speed is of course very dependent on debug/release and machine)
         }
-        ***/
     }
 }

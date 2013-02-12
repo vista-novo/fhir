@@ -189,7 +189,7 @@ public class CSharpParserGenerator extends GenBlock
 			ln();
 			ln("reader.LeaveElement();");
 		es("}");
-		ln("catch (FhirFormatException ex)");
+		ln("catch (Exception ex)");
 		bs("{");
 			ln("errors.Add(ex.Message, reader);");
 		es("}");   
@@ -427,7 +427,7 @@ public class CSharpParserGenerator extends GenBlock
 	
 	private String buildContainedResourceParserCall() throws Exception
 	{
-		return "FhirParser.ParseResource(reader,errors)";
+		return "ParserUtils.ParseContainedResource(reader,errors)";
 	}
 	
 	

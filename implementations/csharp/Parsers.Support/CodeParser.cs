@@ -89,7 +89,7 @@ namespace HL7.Fhir.Instance.Parsers
                 
                 reader.LeaveElement();
             }
-            catch (FhirFormatException ex)
+            catch (Exception ex)
             {
                 errors.Add(ex.Message, reader);
             }
