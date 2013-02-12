@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.BindingExtensibility;
 import org.hl7.fhir.definitions.ecore.fhir.BindingType;
@@ -396,6 +397,11 @@ public class GeneratorUtils {
 				 "." + GeneratorUtils.generateCSharpTypeName(nameParts[1]);
 	}
 
+	public static String buildFullyScopedSerializerTypeName( String fullName ) throws Exception
+	{		
+		String[] nameParts = fullName.split("\\.");
+		return GeneratorUtils.generateCSharpTypeName(nameParts[0]) + "Serializer";
+	}
 	
 	public static String generateCSharpEnumMemberName(String name) {
 		String result;
@@ -520,84 +526,107 @@ public class GeneratorUtils {
 	}
 	
 	
+	public static ElementDefn findLocalIdElement( EList<ElementDefn> list )
+	{
+		for( ElementDefn def : list )
+		{
+			if( def.isInternalId() )
+				return def;
+		}
+		
+		return null;
+	}
+	
+
+	public static ElementDefn findPrimitiveElement( EList<ElementDefn> list )
+	{
+		for( ElementDefn def : list )
+		{
+			if( def.isPrimitiveContents() )
+				return def;
+		}
+		
+		return null;
+	}
+	
 	/*
 	 * Rather hairy function to generate a list of all possible element names we might encounter
 	 * when expecting a (polymorphic) element. The return value is a mapping of the element names
 	 * and a TypeRef representing the type we may expect when encountering that element name.
 	 */
-	public static Map<String,TypeRef> determinePossibleElementNames(NameScope context, String elementName, 
-								List<TypeRef> types) 
-	{
-		Map<String,TypeRef> result = new HashMap<String,TypeRef>();
-			
-		// "Special case": no polymorphism.	
-		if( types.size() == 1 )
-		{
-			result.put( elementName, types.get(0) );
-			return result;
-		}
-						
-		for( TypeRef possibleType : types )
-		{					
-			if( possibleType.getName().equals(TypeRef.RESOURCEREF_TYPE_NAME) ) 
-				result.put(elementName + "Resource", possibleType);
-			else if( possibleType.getName().equals(TypeRef.ELEMENT_TYPE_NAME) )
-			{
-				// If the type of element is "Composite" we can expect ANY composite type....
-				result.putAll( makeTypeRefsWithElementNamePrefix(elementName, 
-						findGlobalScope(context).getLocalCompositeTypes()) );
-				
-				// .... and ANY constraint type
-				result.putAll( makeTypeRefsWithElementNamePrefix(elementName, 
-						findGlobalScope(context).getLocalConstrainedTypes()) );
-				
-				// .... and ANY nested composites/contraints
-				// If the type of element is "Composite" we can expect ANY composite type....
-				// Ouch...value[x] is not defined for local types...will still work though...
-				if( context != findGlobalScope(context) )
-				{
-					result.putAll( makeTypeRefsWithElementNamePrefix(elementName, 
-							context.getLocalCompositeTypes()) );
-					result.putAll( makeTypeRefsWithElementNamePrefix(elementName, 
-							context.getLocalConstrainedTypes()) );					
-				}					
-			}
-			else
-				result.put(elementName + Utilities.capitalize(possibleType.getName()), possibleType);	
-		}
-		
-		return result;
-	}
+//	public static Map<String,TypeRef> determinePossibleElementNames(NameScope context, String elementName, 
+//								List<TypeRef> types) 
+//	{
+//		Map<String,TypeRef> result = new HashMap<String,TypeRef>();
+//			
+//		// "Special case": no polymorphism.	
+//		if( types.size() == 1 )
+//		{
+//			result.put( elementName, types.get(0) );
+//			return result;
+//		}
+//						
+//		for( TypeRef possibleType : types )
+//		{					
+//			if( possibleType.getName().equals(TypeRef.RESOURCEREF_TYPE_NAME) ) 
+//				result.put(elementName + "Resource", possibleType);
+//			else if( possibleType.getName().equals(TypeRef.ELEMENT_TYPE_NAME) )
+//			{
+//				// If the type of element is "Composite" we can expect ANY composite type....
+//				result.putAll( makeTypeRefsWithElementNamePrefix(elementName, 
+//						findGlobalScope(context).getLocalCompositeTypes()) );
+//				
+//				// .... and ANY constraint type
+//				result.putAll( makeTypeRefsWithElementNamePrefix(elementName, 
+//						findGlobalScope(context).getLocalConstrainedTypes()) );
+//				
+//				// .... and ANY nested composites/contraints
+//				// If the type of element is "Composite" we can expect ANY composite type....
+//				// Ouch...value[x] is not defined for local types...will still work though...
+//				if( context != findGlobalScope(context) )
+//				{
+//					result.putAll( makeTypeRefsWithElementNamePrefix(elementName, 
+//							context.getLocalCompositeTypes()) );
+//					result.putAll( makeTypeRefsWithElementNamePrefix(elementName, 
+//							context.getLocalConstrainedTypes()) );					
+//				}					
+//			}
+//			else
+//				result.put(elementName + Utilities.capitalize(possibleType.getName()), possibleType);	
+//		}
+//		
+//		return result;
+//	}
 
 	
 	/*
 	 * Find the most global scope by going up from the given scope
 	 */
-	public static NameScope findGlobalScope(NameScope context)
-	{
-		while( context.getContainingScope() != null )
-			context = context.getContainingScope();
-			
-		return context;
-	}
+//	public static NameScope findGlobalScope(NameScope context)
+//	{
+//		while( context.getContainingScope() != null )
+//			context = context.getContainingScope();
+//			
+//		return context;
+//	}
 	
 	
-	private static Map<String,TypeRef> makeTypeRefsWithElementNamePrefix( String elementName, List<?> types )
-	{
-		Map<String,TypeRef> result = new HashMap<String,TypeRef>();
-		
-		for(Object defo : types)
-		{
-			TypeDefn def = (TypeDefn)defo;
-			if( !def.isInfrastructure() )
-			{
-				TypeRef newRef = newTypeRef(def.getName());
-				newRef.setName(def.getName());
-				newRef.setFullName(def.getName());
-				result.put( elementName + Utilities.capitalize(def.getName()), newRef );
-			}
-		}
-		
-		return result;
-	}
+//	private static Map<String,TypeRef> makeTypeRefsWithElementNamePrefix( String elementName, List<?> types )
+//	{
+//		Map<String,TypeRef> result = new HashMap<String,TypeRef>();
+//		
+//		for(Object defo : types)
+//		{
+//			TypeDefn def = (TypeDefn)defo;
+//			if( !def.isInfrastructure() )
+//			{
+//				TypeRef newRef = newTypeRef(def.getName());
+//				newRef.setName(def.getName());
+//				newRef.setFullName(def.getName());
+//				result.put( elementName + Utilities.capitalize(def.getName()), newRef );
+//			}
+//		}
+//		
+//		return result;
+//	}
 }

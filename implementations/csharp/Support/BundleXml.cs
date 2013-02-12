@@ -366,7 +366,7 @@ namespace HL7.Fhir.Instance.Support
 
             // Add wrapper root element, which will be skipped in the <content> element
             writer.WriteStartElement("x");
-            r.Save(writer);
+            FhirSerializer.SerializeResource(r,writer);
             writer.WriteEndElement();
 
             return XmlReader.Create(new StringReader(buffer.ToString()));

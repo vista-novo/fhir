@@ -333,7 +333,7 @@ namespace HL7.Fhir.Instance.Support
 
             //TODO: This would be much more efficient if we could serialize
             //the resource to a JObject directly
-            resource.Save(new JsonTextWriter(w));
+            FhirSerializer.SerializeResource(resource, new JsonTextWriter(w));
 
             JsonTextReader reader = new JsonTextReader(new StringReader(w.ToString()));
             reader.DateParseHandling = DateParseHandling.None;

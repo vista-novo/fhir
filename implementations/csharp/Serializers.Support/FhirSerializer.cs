@@ -42,43 +42,13 @@ namespace HL7.Fhir.Instance.Serializers
 {
     public partial class FhirSerializer
     {
-
-        public static byte[] ResourceAsJsonBytes(Resource resource, Encoding encoding = null)
-        {
-            if (encoding == null) encoding = Encoding.Unicode;
-
-            MemoryStream stream = new MemoryStream();
-
-            var sw = new StreamWriter(stream, encoding);
-            sw.Write(ResourceAsJson(resource));
-            sw.Close();
-
-            return stream.ToArray();
-        }
-
-
-        public static string ResourceAsJson(Resource resource)
-        {
-            StringBuilder resultBuilder = new StringBuilder();
-
-            StringWriter sw = new StringWriter(resultBuilder);
-            JsonWriter jw = new JsonTextWriter(sw);
-            FhirSerializer.Save(resource, jw);
-
-            return resultBuilder.ToString();
-        }
-
-        public static XDocument ResourceAsXElement(Resource resource)
-        {
-            return XDocument.Parse(ResourceAsXml(resource));
-        }
-
-        public static string ResourceAsXml(Resource resource)
+        public static string SerializeResourceAsXml(Resource resource)
         {
             //Note: this will always carry UTF-16 coding in the <?xml> header
             StringBuilder sb = new StringBuilder();
             XmlWriter xw = XmlWriter.Create(sb);
-            resource.Save(xw);
+            FhirSerializer.SerializeResource(resource, new XmlFhirWriter(xw));
+            xw.Flush();
             xw.Close();
 
             return sb.ToString();
@@ -91,11 +61,84 @@ namespace HL7.Fhir.Instance.Serializers
             MemoryStream stream = new MemoryStream();
             XmlWriterSettings settings = new XmlWriterSettings { Encoding = encoding };
             XmlWriter xw = XmlWriter.Create(stream, settings);
-            resource.Save(xw);
+            FhirSerializer.SerializeResource(resource, new XmlFhirWriter(xw));
             xw.Flush();
             xw.Close();
 
             return stream.ToArray();
+        }
+
+        public static string SerializeResourceAsJson(Resource resource)
+        {
+            StringBuilder resultBuilder = new StringBuilder();
+            StringWriter sw = new StringWriter(resultBuilder);
+            JsonWriter jw = new JsonTextWriter(sw);
+            FhirSerializer.SerializeResource(resource, new JsonFhirWriter(jw));
+
+            return resultBuilder.ToString();
+        }
+
+        public static byte[] SerializeResourceAsJsonBytes(Resource resource, Encoding encoding = null)
+        {
+            if (encoding == null) encoding = Encoding.Unicode;
+
+            MemoryStream stream = new MemoryStream();
+
+            var sw = new StreamWriter(stream, encoding);
+            sw.Write(SerializeResourceAsJson(resource));
+            sw.Close();
+
+            return stream.ToArray();
+        }   
+
+        public static void SerializeResource(Resource resource, JsonWriter writer)
+        {
+            FhirSerializer.SerializeResource(resource, new JsonFhirWriter(writer));
+        }
+
+        public static void SerializeResource(Resource resource, XmlWriter writer)
+        {
+            FhirSerializer.SerializeResource(resource, new XmlFhirWriter(writer));
+        }
+
+
+        public static string SerializeElementAsJson(Resource resource)
+        {
+            StringBuilder resultBuilder = new StringBuilder();
+
+            StringWriter sw = new StringWriter(resultBuilder);
+            JsonWriter jw = new JsonTextWriter(sw);
+            FhirSerializer.SerializeResource(resource, new JsonFhirWriter(jw));
+
+            return resultBuilder.ToString();
+        }
+
+        public static string SerializeElementAsXml(Element elem)
+        {
+            //Note: this will always carry UTF-16 coding in the <?xml> header
+            StringBuilder sb = new StringBuilder();
+            XmlWriter xw = XmlWriter.Create(sb);
+            FhirSerializer.SerializeElement(elem, new XmlFhirWriter(xw));
+            xw.Flush();
+            xw.Close();
+
+            return sb.ToString();
+        }
+
+        public static void SerializeElement(Element elem, JsonWriter writer)
+        {
+            FhirSerializer.SerializeElement(elem, new JsonFhirWriter(writer));
+        }
+
+        public static void SerializeElement(Element elem, XmlWriter writer)
+        {
+            FhirSerializer.SerializeElement(elem, new XmlFhirWriter(writer));
+        }
+
+
+        public static XDocument SerializeResourceAsXElement(Resource resource)
+        {
+            return XDocument.Parse(SerializeResourceAsXml(resource));
         }
     }
 }

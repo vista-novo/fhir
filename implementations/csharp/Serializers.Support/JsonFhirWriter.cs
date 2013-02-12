@@ -76,31 +76,23 @@ namespace HL7.Fhir.Instance.Serializers
             jw.WriteEndObject();
         }
 
-        public void WriteSimpleContent(string value)
+        public void WritePrimitiveContents(string value)
         {
-            WriteStartElement("value");
-            WriteValue(value);
-        }
-
-        public void WriteValue(string value)
-        {
+            WriteStartElement(Parsers.JsonFhirReader.VALUEATTR);
             jw.WriteValue(value);
         }
 
-        public void WriteStartXhtmlElement(string name)
+        public void WriteXhtmlContents(string xhtml)
         {
             // In Json, the serialization of Xhtml is the same as other elements
-            WriteStartElement(name);
+            WriteStartElement(Parsers.JsonFhirReader.XHTMLELEM);
+            jw.WriteValue(xhtml);
         }
 
-        public void WriteXhtmlContent(string xhtml)
+        public void WriteRefIdContents(string id)
         {
-            WriteValue(xhtml);
-        }
-
-        public void WriteEndXhtmlElement()
-        {
-            WriteEndElement();
+            jw.WritePropertyName(Parsers.JsonFhirReader.IDATTR);
+            jw.WriteValue(id);
         }
 
         public void WriteStartArrayElement(string name)
@@ -124,17 +116,6 @@ namespace HL7.Fhir.Instance.Serializers
             jw.WriteEndArray();
         }
 
-        public void WriteRefId(string id)
-        {
-            jw.WritePropertyName("_id");
-            jw.WriteValue(id);
-        }
-
-        public void WriteDar(string reason)
-        {
-            jw.WritePropertyName("dataAbsentReason");
-            jw.WriteValue(reason);
-        }
 
         void IDisposable.Dispose()
         {

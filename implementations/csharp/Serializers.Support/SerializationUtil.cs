@@ -37,7 +37,7 @@ using HL7.Fhir.Instance.Model;
 
 namespace HL7.Fhir.Instance.Serializers
 {
-    public class SerializationUtil
+    internal class SerializationUtil
     {
         public static string BuildPolymorphicName(string elementName, Type elementType)
         {
@@ -45,29 +45,11 @@ namespace HL7.Fhir.Instance.Serializers
             return elementName + Support.Util.Capitalize(typeName);
         }
 
-        public static void SerializeIdAttribute(JsonWriter writer, Data elem)
+        public static void SerializeContainedResource(Resource value, string name, IFhirWriter writer)
         {
-            if (elem.ReferralId != null)
-            {
-                writer.WritePropertyName("_id");
-                writer.WriteValue(elem.ReferralId);
-            }
-
-            //if (elem.Dar.HasValue)
-            //{
-            //    writer.WritePropertyName("dataAbsentReason");
-            //    writer.WriteValue(EnumHelper.EnumToString(elem.Dar.Value,
-            //        typeof(DataAbsentReason)));
-            //}
-        }
-
-        public static void SerializeIdAttribute(IFhirWriter writer, Data elem)
-        {
-            if (elem.ReferralId != null)
-                writer.WriteRefId(elem.ReferralId);
-
-            //if (elem.Dar.HasValue)
-            //    writer.WriteDar(EnumHelper.EnumToString(elem.Dar.Value,typeof(DataAbsentReason)));
+            writer.WriteStartElement(name);
+            FhirSerializer.SerializeResource(value, writer);
+            writer.WriteEndElement();
         }
     }
 }

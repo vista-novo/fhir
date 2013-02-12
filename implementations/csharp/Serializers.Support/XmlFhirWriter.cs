@@ -76,22 +76,12 @@ namespace HL7.Fhir.Instance.Serializers
             // Nothing
         }
 
-        public void WriteSimpleContent(string value)
+        public void WritePrimitiveContents(string value)
         {
-            xw.WriteValue(value);
+            xw.WriteAttributeString(Parsers.XmlFhirReader.VALUEATTR, value);
         }
-
-        public void WriteValue(string value)
-        {
-            xw.WriteValue(value);
-        }
-
-        public void WriteStartXhtmlElement(string name)
-        {
-//            xw.WriteStartElement(name, Util.XHTMLNS);
-        }
-
-        public void WriteXhtmlContent(string xhtml)
+        
+        public void WriteXhtmlContents(string xhtml)
         {
             // Write xhtml directly into the output stream,
             // the xhtml <div> becomes part of the elements
@@ -99,8 +89,10 @@ namespace HL7.Fhir.Instance.Serializers
             xw.WriteRaw(xhtml);
         }
 
-        public void WriteEndXhtmlElement()
+
+        public void WriteRefIdContents(string id)
         {
+            xw.WriteAttributeString(Parsers.XmlFhirReader.IDATTR, id);
         }
 
         public void WriteStartArrayElement(string name)
@@ -121,17 +113,6 @@ namespace HL7.Fhir.Instance.Serializers
         public void WriteEndArrayElement()
         {
             // Nothing
-        }
-
-
-        public void WriteRefId(string id)
-        {
-            xw.WriteAttributeString("id", id);
-        }
-
-        public void WriteDar(string reason)
-        {
-            xw.WriteAttributeString("dataAbsentReason", reason);
         }
 
         void IDisposable.Dispose()

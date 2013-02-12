@@ -1,5 +1,10 @@
-﻿/*
-  Copyright (c) 2011-2012, HL7, Inc
+using System;
+using System.Collections.Generic;
+using HL7.Fhir.Instance.Support;
+using System.Xml.Linq;
+
+/*
+  Copyright (c) 2011-2012, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -28,50 +33,50 @@
 
 */
 
+//
+// Generated on Tue, Feb 12, 2013 21:18+0100 for FHIR v0.07
+//
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Newtonsoft.Json;
 using HL7.Fhir.Instance.Model;
 using System.Xml;
+using Newtonsoft.Json;
+using HL7.Fhir.Instance.Serializers;
 
 namespace HL7.Fhir.Instance.Serializers
 {
-    public static class PrimitiveSerializer
+    /*
+    * Serializer for code instances
+    */
+    internal static partial class CodeSerializer
     {
-        public static void Save(this Primitive value, XmlWriter writer, bool isPrimitiveResourceElement = false)
+        public static void SerializeCode<T>(Code<T> value, IFhirWriter writer) where T : struct, IConvertible
         {
-            Save(value, new XmlFhirWriter(writer), isPrimitiveResourceElement);
-        }
-
-        public static void Save(this Primitive value, JsonWriter writer, bool isPrimitiveResourceElement = false)
-        {
-            Save(value, new JsonFhirWriter(writer), isPrimitiveResourceElement);
-        }
-
-        public static void Save(this Primitive value, IFhirWriter writer, bool isPrimitiveResourceElement=false)
-        {
-            if (isPrimitiveResourceElement)
+            writer.WriteStartComplexContent();
+            
+            // Serialize element's localId attribute
+            if( value.InternalId != null && String.IsNullOrEmpty(value.InternalId.Contents) )
+            	writer.WriteRefIdContents(value.InternalId.Contents);
+            
+            // Serialize element's primitive contents
+            if(value.Contents != null)
+            	writer.WritePrimitiveContents(value.ToString());
+            
+            // Serialize element extension
+            if(value.Extensions != null && value.Extensions.Count > 0)
             {
-                writer.WriteStartComplexContent();
-
-                SerializationUtil.SerializeIdAttribute(writer, value);
-
-                if (value.ToString() != null)
-                    writer.WriteSimpleContent(value.ToString());
-
-                writer.WriteEndComplexContent();
+                writer.WriteStartArrayElement("extension");
+                foreach(var item in value.Extensions)
+                {
+                    writer.WriteStartArrayMember("extension");
+                    ExtensionSerializer.SerializeExtension(item, writer);
+                    writer.WriteEndArrayMember();
+                }
+                writer.WriteEndArrayElement();
             }
-            else
-            {
-                // Primitives inside datatypes cannot have id and/or 
-                // dataAbsentReason so these can be serialized
-                // as a simple value Json value, no special
-                // attribute handling needed.
-                writer.WriteValue(value.ToString());
-            }
+            
+            
+            writer.WriteEndComplexContent();
         }
+        
     }
 }

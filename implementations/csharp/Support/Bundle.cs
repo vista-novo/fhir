@@ -38,7 +38,7 @@ using System.ServiceModel.Syndication;
 using System.Xml.Linq;
 using HL7.Fhir.Instance.Parsers;
 using System.IO;
-using HL7.Fhir.Instance.Serializers;
+//using HL7.Fhir.Instance.Serializers;
 
 namespace HL7.Fhir.Instance.Support
 {
@@ -48,6 +48,8 @@ namespace HL7.Fhir.Instance.Support
         public DateTimeOffset? LastUpdated { get; set; }
         public Uri Id { get; set; }
         public Uri SelfLink { get; set; }
+
+        public Dictionary<string,Uri> OtherLinks { get; set; }
 
         public List<BundleEntry> Entries { get; private set; }
 

@@ -119,11 +119,11 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 					.generateCompositeParser(composite, definitions).toFile(implDir+xmlParserFilename);			
 			generatedFilenames.add(xmlParserFilename);
 	
-//			String serializerFilename = serializersDir + composite.getName() + "Serializer.cs";			
-//			new CSharpResourceSerializerGenerator(definitions)
-//				.generateCompositeSerializer(composite).toFile(implDir+serializerFilename);			
-//			generatedFilenames.add(serializerFilename);
-//
+			String serializerFilename = serializersDir + GeneratorUtils.generateCSharpTypeName(composite.getName()) + "Serializer.cs";			
+			new CSharpSerializerGenerator(definitions)
+				.generateCompositeSerializer(composite).toFile(implDir+serializerFilename);			
+			generatedFilenames.add(serializerFilename);
+
 		}
 		
 		for( ConstrainedTypeDefn constrained : definitions.getLocalConstrainedTypes() )
@@ -164,15 +164,15 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 				.generateResourceParser(definitions).toFile(implDir+filename);						 
 			generatedFilenames.add(filename);			
 		}
-//		
-//		// Generate resource serializer entrypoint
-//		{
-//			String filename = serializersDir + "FhirSerializer.cs";
-//			
-//			new CSharpResourceSerializerGenerator(definitions)
-//				.generateResourceSerializer().toFile(implDir+filename);						 
-//			generatedFilenames.add(filename);			
-//		}
+		
+		// Generate resource serializer entrypoint
+		{
+			String filename = serializersDir + "FhirSerializer.cs";
+			
+			new CSharpSerializerGenerator(definitions)
+				.generateResourceSerializer().toFile(implDir+filename);						 
+			generatedFilenames.add(filename);			
+		}
 		
 	    // Generate C# project file
 	    CSharpProjectGenerator projGen = new CSharpProjectGenerator();
