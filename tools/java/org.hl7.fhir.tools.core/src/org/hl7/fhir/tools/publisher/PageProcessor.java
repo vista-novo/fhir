@@ -161,7 +161,7 @@ public class PageProcessor implements Logger  {
     StringBuilder s = new StringBuilder();
     s.append("<div class=\"sidebar\">\r\n");
     s.append("<p><a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><img border=\"0\" src=\"flame16.png\" style=\"vertical-align: text-bottom\"/></a> "+
-      "<a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><b>FHIR</b></a> v"+getVersion()+" &copy; <a href=\"http://hl7.org\">HL7</a></p>\r\n");
+      "<a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><b>FHIR</b></a>&reg; v"+getVersion()+" &copy; <a href=\"http://hl7.org\">HL7</a></p>\r\n");
 
     for (Navigation.Category c : navigation.getCategories()) {
       if (!"nosidebar".equals(c.getMode())) {
@@ -680,7 +680,8 @@ public class PageProcessor implements Logger  {
       hasComments = hasComments || c.hasComment();
     
     StringBuilder b = new StringBuilder();
-    b.append("<h3>"+bs.getDescription()+"</h3>\r\n");
+    if (!Utilities.noString(bs.getDescription()))
+    	b.append("<h3>"+bs.getDescription()+"</h3>\r\n");
     b.append("<table class=\"codes\">\r\n");
     for (DefinedCode c : bs.getCodes()) {
       if (hasComments)

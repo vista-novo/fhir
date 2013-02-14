@@ -114,6 +114,10 @@ public class XhtmlComposer {
         dst.append("&sect;");
       else if (c == (char) 169)
         dst.append("&copy;");
+      else if (c == (char) 8482)
+        dst.append("&trade;");
+      else if (c == (char) 174)
+        dst.append("&reg;");
       else 
         dst.append(c);
     }

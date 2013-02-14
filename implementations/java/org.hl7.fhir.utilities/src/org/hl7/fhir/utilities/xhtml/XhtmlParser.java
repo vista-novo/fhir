@@ -449,6 +449,8 @@ public class XhtmlParser {
       s.append('<');
     else if (c.equals("copy"))
       s.append((char) 169);
+    else if (c.equals("reg"))
+      s.append((char) 174);
     else if (c.equals("sect"))
       s.append((char) 0xA7);
     else if (c.charAt(0) == '#' && isInteger(c.substring(1)))

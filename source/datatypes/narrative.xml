@@ -152,28 +152,28 @@
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Narrative.image</Data></Cell>
+    <Cell><Data ss:Type="String">Narrative.blob</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Images referenced in xhtml</Data></Cell>
-    <Cell><Data ss:Type="String">An image referred to directly in the xhtml</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Binary content referenced in xhtml</Data></Cell>
+    <Cell><Data ss:Type="String">An image, stylesheet, or other resource referred to directly in the xhtml</Data></Cell>
     <Cell><Data ss:Type="String">Allows image content to be conveyed inline</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Narrative.image.mimeType</Data></Cell>
+    <Cell><Data ss:Type="String">Narrative.blob.mimeType</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">MimeType</Data></Cell>
-    <Cell><Data ss:Type="String">Mime type of image</Data></Cell>
-    <Cell><Data ss:Type="String">Mime type of image</Data></Cell>
+    <Cell><Data ss:Type="String">Mime type of binary attachment</Data></Cell>
+    <Cell><Data ss:Type="String">Mime type of the binary content</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Narrative.image.content</Data></Cell>
+    <Cell><Data ss:Type="String">Narrative.blob.content</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">base64Binary</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">base64 image data</Data></Cell>
-    <Cell><Data ss:Type="String">base64 image data</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">base64 data for attachment</Data></Cell>
+    <Cell><Data ss:Type="String">base64 data for the binary attachment</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
   </Table>
@@ -205,7 +205,7 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>3</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

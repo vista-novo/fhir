@@ -44,11 +44,11 @@ this specification defines several different ways of exchanging the resources.
 <a name="content"> </a>
 <h2>Contents of a Resource</h2>
 <p>
-All resources have the following contents:
+All resources have the following aspects:
 </p>
 <ul>
  <li>A base set of defined data elements</li>
- <li>Extensions - additional data elements added by implementations (see <a href="extensibility.htm">"Extensibility"</a>)</li>
+ <li>Extensions (optional) - additional data elements added by implementations (see <a href="extensibility.htm">"Extensibility"</a>)</li>
  <li>A human readable narrative description of the resource (see <a href="formats.htm#Narrative">"Narrative"</a>)</li>
  <li>Contained resources - additional resources that are part of the identification and transaction space of this resource (see <a href="#contained">below</a>)</li>
  <li>Metadata - important information about the resource that is not part of the content model of the resource</li>
@@ -157,8 +157,8 @@ to this base specification:
 Note that none of these are able to check complete conformance to this specification.
 </p>
 <p>
-The data elements defined resources and data types have 3 properties that are 
-directly related to conformance: Cardinality, Must-Understand, and Must-Support.
+The data elements defined resources and data types have 4 properties that are 
+directly related to conformance: Cardinality, Must-Understand, Must-Support, and Cardinality.
 These interact to place conformance requirements on implementations. 
 </p>
 
@@ -181,9 +181,10 @@ The value of mustUnderstand cannot be changed when element usage is described in
 </p>
 <p>
 Generally, elements labelled "mustUnderstand=true" also have a minimum cardinality of 1, to introduce
-certainty in their handling. Irrespective of the minimum cardinality, implementations producing resources
-SHALL ensure that appropriate values for mustUnderstand elements are provided. MustUnderstand elements
-SHALL be represented in the narrative summary of the resource.
+certainty in their handling. If the value of such an element is not explicit in the instance, or known 
+by the context, the resource cannot be understood. Irrespective of the minimum cardinality, 
+implementations producing resources SHALL ensure that appropriate values for mustUnderstand 
+elements are provided. MustUnderstand elements SHALL be represented in the narrative summary of the resource.
 </p>
 <p>
 Implementations processing resources SHALL understand the impact of the element when they process 
@@ -212,6 +213,27 @@ Note that an element that has the property mustUnderstand is not necessarily a "
 the important elements to make use of the resource), nor is it automatically mustSupport - however both 
 of these things are more likely to be true for mustUnderstand elements than for other elements.
 </p>
+<a name="cardinality"> </a>
+<h3>Cardinality</h3> 
+<p>
+All elements defined in FHIR have a cardinality as part of their definition - a minimum number 
+of required appearances, and a maximum number allowed. This number specifies the number of times
+the element may appear in the instance. In the specification, the minimum number
+is always 0 or 1, and the maximum number is always 1 or *, meaning no limit. Profiles may
+use any whole number for both minimum and maximum cardinality, as long as minimum &lt;= maximum.
+</p>
+<p>
+For elements that have cardinality &gt; 1, the order in which they appear may have meaning.
+Unless the element definition (either in this specification or the extension) defines a meaning 
+to the order explicitly, the meaning of the order is not defined, and implementations are allowed 
+to reorder the elements. Note that you cannot define a meaning for the order of the elements in 
+a profile. When there is not definition of the meaning of the order, implementations that need 
+to choose a single element from a list of elements for some use must do so based on the semantics 
+of the content of the elements that repeats. Profiles and Implementation guides may often make 
+rules about this selection process.
+</p>
+
+
 
 
 <a name="ResourceReference"> </a>
@@ -382,7 +404,7 @@ with implementation versioning considerations.
 </p>
 <p>
 In a typical scenario, mixed versions may need to exist, so applications SHOULD ignore elements 
-that they do not recognize unless they are extensions marked with a "mustUnderstand" property. 
+that they do not recognize unless they are extensions with a mustUnderstand element with value="true". 
 However, in a healthcare context, many application vendors are unwilling to 
 consider this approach because of concerns about clinical risk or 
 technical limitations in their software (i.e. schema based processing). 

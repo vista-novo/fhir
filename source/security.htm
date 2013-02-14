@@ -36,6 +36,26 @@ list</a> for prompt consideration. Alternatively, issues can be raised through t
 <a href="http://wiki.hl7.org/index.php?title=FHIR_Security_Page">community input</a> mechanism.
 </p>
 
+<a name="http"> </a>
+<h2>
+HTTP Security
+</h2>
+<p>
+Normal HTTP security and authentication rules apply. The <a href="http.htm#root">Service Root URL</a> will specify 
+whether SSL is required. HTTP authentication may be required by the server, possibly including the requirement for 
+client certificates. It is a matter of application requirements and local configuration whether all 
+interactions run under the account of a trusted system user, whether each interaction runs under the 
+account of the individual user or whether some other arrangement is required. 
+</p>
+<p>
+<a href="http://oauth.net/">OAuth</a> may be used to provide security. Applications are recommended to use the variants of the OAuth protocol 
+that do not require URL parameters, but these may be used if necessary.
+</p>
+<p>
+Implementers should track developing IHE IUA Profile for additional security considerations.
+</p>
+
+
 <a name="binding"> </a>
 <h2>
 Mapping between resources and security systems

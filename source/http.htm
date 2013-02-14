@@ -3,7 +3,6 @@
 <!--
 todo:
   register media types for text/xml+fhir application/json+fhir
-  replace dependency e-tags with version specific content location. but continue to use etag as well
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -121,24 +120,18 @@ Each resource has an associated set of <a href="resources.htm#metadata">resource
 
 <h2>Security</h2>
 <p>
-For this specification, normal HTTP security and authentication rules apply. The Service Root URL will specify 
-whether SSL is required. HTTP authentication may be required by the server, possibly including the requirement for 
-client certificates. It is a matter of application requirements and local configuration whether all 
-interactions run under the account of a trusted system user, whether each interaction runs under the 
-account of the individual user or whether some other arrangement is required. 
+See <a href="security.htm#http">HTTP Security</a>.
 </p>
-<p>
-<a href="http://oauth.net/">OAuth</a> may be used to provide security. Applications are recommended to use the variants of the OAuth protocol 
-that do not require URL parameters, but these may be used if necessary.
-</p>
+
 <h2>HTTP Status Codes</h2>
 <p>
 This specification makes rules about the use of specific HTTP status codes 
 in particular circumstances where the status codes must map to particular 
 states correctly, and only where the correct status code is not obvious. 
-Other HTTP status codes may be used for other states as appropriate.
-Note that some security layers may issue redirects which should not be interpreted
-to change the location of the resource itself (a common web programming error). 
+Other HTTP status codes may be used for other states as appropriate, and this particularly
+includes various authentication related status codes and redirects. 
+Authentication redirects should not be interpreted to change the location 
+of the resource itself (a common web programming error). 
 </p>
 <p>
 FHIR defines an <a href="issuereport.htm">Issue Report resource</a> that can be used to convey specific detailed
@@ -184,7 +177,8 @@ Servers are required to return a content-location header with the response which
 specific url (see vread below) and a Last-Modified header.
 <p>
 Note: Unknown resources and deleted resources are treated differently on a read: A GET for a deleted 
-resource returns a 410 status code, whereas a GET for an unknown resource returns 404.
+resource returns a 410 status code, whereas a GET for an unknown resource returns 404. Systems that do 
+not track deleted records will treat deleted records as an unknown resource.
 </p>
 
 </p>
@@ -199,8 +193,11 @@ is performed by an HTTP GET operation as shown:
 </pre>
 <p>
 This returns a single instance with the content specified for the resource type for that
-version of the resource. Servers may return a content-location header with the response which is the url 
+version of the resource. 
+<!-- this - what does it mean?
+Servers may return a content-location header with the response which is the url 
 requested and a Last-Modified header. 
+-->
 </p>
 <p>
 The version id is an opaque identifier that conforms to the same format requirements as 
@@ -211,21 +208,25 @@ server should return a 410 status code.
 </p>
 <p>
 Servers SHOULD support a version specific retrieval of the current version of the 
-resource even if they are unable to support access to previous versions. 
+resource even if they are unable to support access to previous versions. If a request
+is made for a previous version of a resource, and the server does not support accessing
+previous versions, it should return a 405 Method Not Allowed error.
 </p>
+
 <a name="update"> </a>
 <h2>update</h2>
 <p>
-The update interaction creates a new current version for an existing resource or creates a new resource if no resource already exists for the given id. 
+The update interaction creates a new current version for an existing resource or 
+creates a new resource if no resource already exists for the given id. 
 The update interaction is performed by an HTTP PUT operation as shown:
 </p>
 <pre>
   PUT [service-url]/[resourcetype]/{@id} (?_format=mimeType)
 </pre>
 <p>
-If the operation is successful, the server must return 200 OK, along with a copy of the 
+If the operation is successful, the server must return either a 200 OK if the resource was updated, or a 201 Created if the resource was created, along with a copy of the 
 newly updated resource (which might not be the same as that submitted) with the response, along 
-with a Last-Modified header, and a Content-Location header that refers to the specific version created by the 
+with a Last-Modified header, and a Locatin and Content-Location header that refers to the specific version created by the 
 updated operation.
 </p>
 <p>
@@ -294,7 +295,9 @@ The following resources may require special handling on the server when deleted
 <a name="create"> </a>
 <h2>create</h2>
 <p>
-The create interaction creates a new resource. The interaction is performed by an HTTP POST operation as shown:
+The create interaction creates a new resource in a server assigned location. If the client 
+wishes to have control over the id of a newly submitted resource, it should use the update 
+operation instead. The create interaction is performed by an HTTP POST operation as shown:
 </p>
 <pre>
   POST [service-url]/[resourcetype] (?_format=mimeType)
@@ -309,9 +312,6 @@ a version-aware Location header which contains the new location and id of the cr
 </pre>
 <p>
 When the payload data is incorrect and cannot be used to create a new resource, the server returns a 400 Bad Request.
-
-Note: If the client wishes to have control over the id of a newly submitted resource, it should use 
-the update operation instead.
 </p>
 <p>
 The following resources may require special handling on the server when created (whether directly or as part of a batch):
@@ -435,20 +435,21 @@ resource (the <a href="terminologies.htm#resourcetypes">variant of the resource 
 For date parameters the following rules apply:
 </p>
 <ul>
- <li>All date parameters have an implicit -before and -after parameter. [date]=[value] searches for where the date is equal
-   to the given value. [date]-after=[value] searches for all resources where the specified date is after [value]. 
+ <li>The date parameter format is yyyy-mm-ddThh:nn:ss(TZ) (the standard XML format). Any degree of precision can be provided, but it must be populated from the left (e.g. can't specify a month without a year)</li>
+ <li>All date parameters have an implicit -before and -after parameter. [date]=[value] searches for where the date is within
+   the given date value. [date]-after=[value] searches for all resources where the specified date is after [value]. 
    [date]-before=[value] searches for all resources where the specified date is before [value]. </li>
  <li>The element the search refers to may be a date, a dateTime, a Period, or a Schedule. All of these time related 
-   types actually specify an interval of time.
+   types actually specify an interval of time, as does the search parameter itself.
   <ul>
     <li>For Period and Schedule, the interval of time is explicit, though the upper or lower bound may not be specified</li>
-	<li>For a date or a dateTime, the interval is implicit. For example, the date 2013-01-10 specifies all the time from 00:00 on 10-Jan 2013 to immediately before 00:00 on 11-Jan 2013.</li>
+	<li>For a date or a dateTime (and the search parameter), the interval is implicit. For example, the date 2013-01-10 specifies all the time from 00:00 on 10-Jan 2013 to immediately before 00:00 on 11-Jan 2013.</li>
     <li>An instant (which is the same as a fully specified dateTime with milliseconds) is considered a fixed point in time with an interval smaller than the precision of the system, i.e. an interval with an effective width of 0.</li>
    </ul>
  </li>
  <li>Date parameter searches are always matches based on the behaviour of intervals, as follows:
    <ul>
-     <li>For [date]=[value], the requirement is that the intervals match - that they are the same. i.e. 2013-01-14 != 2013-01-14T10:00</li>
+     <li>For [date]=[value], the requirement is that the search interval fully contains the time of the target. i.e. 2013-01-14 = 2013-01-14T10:00 but not 2013-01-15T00:00</li>
 	 <li>For [date]-before=[value], the requirement is that the interval of the time before [value] intersects (i.e. overlaps) with the interval of time in the relevant resource element. 
 	    For instance, the resource time 2013-01-14 is included in the set of values that come before 2013-01-14T10:00, because it includes the part of 14-Jan 2013 before 10am </li>
 	 <li>For [date]-after=[value], the requirement is that the interval of the time after [value] intersects (i.e. overlaps) with the interval of time in the relevant resource element. 
@@ -491,6 +492,11 @@ different type of resource as it's target, the parameter chain may refer to sear
 parameters on more than one kind of resource at once. The parameters defined in FHIR
 have consistent types wherever they are used. Implementers defining their own names 
 need to be sure that they do not create unprocessible combinations.
+</p>
+<p>
+When chained parameters are repeated, the interpretation of parameter repeating behavior is that 
+defined for the first step in the chain, and if that parameter defines that the repeating behavior
+is "intersection", the intersection applies at the left most point of the chain.
 </p>
 
 <h3>Searching for Missing Values</h3>
@@ -576,15 +582,15 @@ update to an existing resource. The validation operation may be the first part o
 phase commit process. The interaction is performed by an HTTP POST operation as shown:
 </p>
 <pre>
-  todo: harmonise these with the RLUS REST specification
   POST [service-url]/[resourcetype]/validate/{@id}
 </pre>
 <p>
 The content is first checked against the general specification and against the conformance 
-profile that applies to the application. How much checking is performed is at the discretion 
-of the server. Then the resource is considered as a proposed update and additional instance 
-specific rules such as referential integrity and update logic (including version control) 
-are applied as well. The return content has one of the following values:
+profile that applies to the application. How much additional checking over the normal create and update
+operations is performed is at the discretion of the server. Then the resource is considered 
+as a proposed update and additional instance specific rules such as referential integrity 
+and update logic (including version control) are applied as well. The return content has 
+one of the following values:
 </p>
 <ul>
  <li><b>400 Bad Request</b> - resource could not be parsed or had some basic FHIR validation error</li>
@@ -598,24 +604,32 @@ Unless the result is 200 OK, the response must include an <a href="issuereport.h
 The validation operation has complex semantics and rules; see the full discussion of the operation in the <a href="#hdata">OMG hData REST specification</a> for further details. 
 </p>
 
+
 <a name="conformance"> </a>
 <h2>conformance</h2>
 <p>
-The conformance interaction retrieves the application's conformance statement for the resource. The interaction is performed by an HTTP OPTIONS or a GET operation as shown:
+The conformance interaction retrieves the application's conformance statement that defines how it supports resources. 
+The interaction is performed by an HTTP OPTIONS or a GET operation as shown:
 </p>
 <pre>
-  OPTIONS [service-url] (?_format=mimeType)
   GET [service-url]/metadata (?_format=mimeType)
+  OPTIONS [service-url] (?_format=mimeType)
 </pre>
 <p>
-Applications SHALL return a <a href="conformance.htm">Conformance Resource</a> that specifies which resource types and operations are supported. 
-If a 404 Unknown is returned, FHIR is not supported on the nominated service url. The GET operation is defined because not all client libraries 
-are able to perform an OPTIONS operation. Additional parameters that are required to be returned with the OPTIONS command are defined in the 
-<a href="#hdata">OMG hData RESTful Transport</a> specification.
+Applications SHALL return a <a href="conformance.htm">Conformance Resource</a> that specifies which resource types and operations are supported
+for the GET operation, and SHOULD do so for the OPTIONS oporation. If a 404 Unknown is returned from the GET, FHIR is not supported on the 
+nominated service url. The GET operation is defined because not all client libraries are able to perform an OPTIONS operation. Additional 
+parameters that are required to be returned with the OPTIONS command are defined in the <a href="#hdata">OMG hData RESTful Transport</a> 
+specification.
 </p>
 <p>
-Servers may choose what content to return when they receive a GET operation on the Service Root URL. Generally some page that guides 
-human manual interaction with the server would be appropriate.
+Note that Servers may choose what content to return when they receive a GET operation on the Service Root URL. 
+Generally some page that guides human manual interaction with the server would be appropriate.
+</p>
+<p>
+A server may also choose to provide the standard set of operations on the <a href="conformance.htm">Conformance Resource</a>,
+which means that it stores and manages a set of conformance statements. These managed conformance statements should not be confused 
+with the server's own conformance statement, which is what is returned from these methods.
 </p>
 
 <a name="batch"> </a>
@@ -631,19 +645,20 @@ The interaction is performed by an HTTP POST operation as shown:
   POST [service-url] (?_format=mimeType)
 </pre>
 <p>
-The content of the post submission is a resource bundle in either <a href="formats.htm#atom">XML</a> or 
-<a href="formats.htm#json-bundles">JSON</a>. The resources in the bundle are each processed separately
+The content of the post submission is a resource bundle. The resources in the bundle are each processed separately
 as if they were an individual <a href="#create">create</a>, <a href="#update">update</a> or 
 <a href="#delete">delete</a> as described below, along with the normal processing for each 
 (such as verification and version aware updates). Servers SHALL either accept all resources 
 and return a 200 OK, along with a response bundle, or reject all resources and return an 
 HTTP 400 or 500 type response. It is not an error if the submitted bundle has no resources in it.
+The outcome of the processing the batch SHALL not depend on the order of the resources in 
+the batch.
 </p>
 <p>
 When a bundle is submitted in a batch operation, all the resources have an identity specified
 in the batch. If the identity of the resource matches an existing or possible resource location 
 on the server, the server should treat this entry as an <a href="#update">update operation</a> 
-(i.e. PUT to the given resource). If the identity is not one that the server recognises, the 
+(i.e. PUT to the given resource). If the identity is not one that the server recognises as a resource location it can use, the 
 server should treat the operation as a <a href="#create">create operation</a> (i.e. POST to 
 the given resource type URL), and create a new identity for the submitted resource. For 
 clarity, when the client intends a resource to have a transient identity that the server
@@ -652,10 +667,12 @@ using the method described for <a href="formats.htm#atom-deleted">XML</a> or
 <a href=formats.htm#json-bundle-delete">JSON</a>.
 </p>
 <p>
-If the server must assign a new identity when it accepts the resource, it SHALL also update 
-any references to that resource in the same batch as they are processed. References to resources
-that are not part of the batch are left untouched. If a resource in the batch carries a 
-version-specific id (using its self-link), any version-specific references to it must also be updated.
+A batch may include references from one resource to another in the batch, which may 
+include circular references where resources refer to each other. If the server assigns 
+a new identity to any resource in the batch, it SHALL also update any references to that 
+resource in the same batch as they are processed. References to resources that are not 
+part of the batch are left untouched. If a resource in the batch carries a version-specific 
+id (using its self-link), any version-specific references to it must also be updated.
 Servers SHALL be replace all cid: links in the batch, whether they are found in the resource ids, 
 resource references, url elements, or &lt;a href="" &amp; &lt;img src="" in the narrative.
 </p>
@@ -668,11 +685,27 @@ corresponding target resource), or, on document repositories, a document index e
 accompanying document.
 </p>
 <p>
+The application constructing a batch may not be sure whether a particular resource will already exist
+at the time that the batch is executed; this is typically the case with reference resources such 
+as patient and provider. In this case, the batch should contain as candidate resource with
+a cid: identifier, and an additional search specifier using an Atom link:
+</p>
+<pre>
+ &lt;link href="http://localhost/patient/search?[parameters]" rel="search"/&gt;
+</pre>
+<p>
+A search link with a root of http://localhost means to search the local resource store for 
+a match as specified in the parameters (which must conform to the servers capability for 
+searching as specified in it's conformance statement). If the search returns no matches, 
+the server process the resource normally. If the search returns one match, the server
+uses this matching resource instead, and ignores the submitted resource. If more than
+one resource is found, the batch must be rejected.
+</p>
+<p>
 In order to allow the client to know how newly created resources are now identified for future 
 reference, the server must return a bundle containing the results of processing the resources in the same 
 order that they were submitted. 
 </p>
-
 <a name="history"> </a>
 <h2>history</h2>
 <p>
@@ -687,11 +720,11 @@ operation are performed by HTTP Get operation as shown:
 </pre>
 <p>
 The return content is a <a href="resources.htm#bundle">Bundle</a> containing the specified version history, 
-sorted with oldest versions last.  
+sorted with oldest versions last, and including deleted resources.  
 </p>
 <table class="list">
   <tr><td>_count : <a href="datatypes.htm#integer">integer</a></td><td><i>single</i></td><td>Number of return records requested. The server is not bound to return the number requested, but cannot return more</td></tr>
-  <tr><td>_last : <a href="datatypes.htm#integer">instant</a></td><td><i>single</i></td><td>Only include resource versions that were created at or after the given date</td></tr>
+  <tr><td>_since : <a href="datatypes.htm#integer">instant</a></td><td><i>single</i></td><td>Only include resource versions that were created at or after the given instant in time</td></tr>
 </table>
 <p>
 The history list can be restricted to a limited period by specifying a _last parameter which contains a full date time with timezone. 
@@ -719,21 +752,23 @@ list.
 FHIR servers can choose to offer support for purely binary resources
 at the end point [service-url]/binary. The binary end-point accepts
 any kind of content, such as images and other media, documents (CDA, 
-PDF, Word etc), or anything else, and stores the content as is, along 
-with the content type provided by the HTTP headers. 
+PDF, Word etc), plain text, XML or anything else, and stores the 
+content as is, along with the content type provided by the HTTP headers. 
 </p>
 <p>
-The binary resource functions with the same operations as described
+Binary resources function with the same operations as described
 above, except that there is no support for the search operation. 
 The _format  parameter has no meaning when used with binary 
-resources- they are always represented using their original content type.
+resources: they are always represented using their original content type.
 </p>
 
 <h2>Intermediaries</h2>
 <p>
 The HTTP protocol may be routed through an HTTP proxy such as 
 squid. Such proxies are transparent to the applications, though
-implementers should be alert to the effects of rogue caching.
+implementers should be alert to the effects of caching, particularly
+including the risk of receiving stale content. See the <a href="http://tools.ietf.org/html/rfc2616#page-74">HTTP specification</a>
+for further detail
 </p>
 <p>
 Interface engines may also be placed between the consumer and
@@ -774,6 +809,7 @@ In this regard, FHIR functions as a Record Format Profile as described in that s
  <li>Note that this specification does not repeat the rules in the hData RESTful Transport concerning the OPTIONS command on the service URL, but these rules (extra headers etc) still apply</li>
 </ul>
 
+<a name="summary"> </a>
 <h2>Summary</h2>
 <p>
 These tables present a summary of the operations described here.
@@ -802,10 +838,10 @@ Note: N/A = not present, R = Required, O = optional.
 <tr><th>Operation</th><th colspan="5">Response</th></tr>
 <tr><th colspan="1"></th> <th>Content-Type</th> <th>Body</th>               <th>Location</th> <th>Content-Location</th> <th>Status Codes</th></tr>
 <tr><td>read</td>         <td>R</td>            <td>Resource</td>           <td>N/A</td>      <td>R</td>                <td>200, 404, 410</td></tr>
-<tr><td>vread</td>        <td>R</td>            <td>Resource</td>           <td>N/A</td>      <td>O</td>                <td>200, 404, 410</td></tr>
+<tr><td>vread</td>        <td>R</td>            <td>Resource</td>           <td>N/A</td>      <td>O</td>                <td>200, 404, 405, 410</td></tr>
 <tr><td>conformance</td>  <td>R</td>            <td>Conformance</td>        <td>N/A</td>      <td>O</td>                <td>200, 404</td></tr>
 <tr><td>update</td>       <td>R</td>            <td>Resource</td>           <td>N/A</td>      <td>R</td>                <td>201, 400, 404, 405, 409, 412, 422</td></tr>
-<tr><td>create</td>       <td>R</td>            <td>Resource</td>           <td>R</td>        <td>O</td>                <td>200, 201, 400, 404, 422</td></tr>
+<tr><td>create</td>       <td>R</td>            <td>Resource</td>           <td>R</td>        <td>O</td>                <td>200, 201, 400, 404, 405, 422</td></tr>
 <tr><td>batch</td>        <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200, 400, 404, 405, 409, 412, 422</td></tr>
 <tr><td>delete</td>       <td>N/A</td>          <td>N/A</td>                <td>N/A</td>      <td>N/A</td>              <td>204, 405, 404</td></tr>
 <tr><td>search</td>       <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200</td></tr>
@@ -814,7 +850,8 @@ Note: N/A = not present, R = Required, O = optional.
 </table>
 
 <p>
-Note: this table lists the status codes described here, but other status codes are possible as described by the HTTP specification.
+Note: this table lists the status codes described here, but other status codes are possible as described by the HTTP specification. 
+Additional codes that are likely a server errors and various codes associated with authentication protocols.
 </p>
 
 

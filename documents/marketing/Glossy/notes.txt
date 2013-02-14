@@ -15,3 +15,37 @@ suggestions welcome for the kind of stuff I should mention
 [2:07:52 PM] Grahame Grieve: thanks everyone
 
 Btw - if you haven't finished the text for the himss brochure, you might also want to mention that the FHIR specs can be understood - at least at the high level - by domain experts like clinicians. Try that with v2/v3/cda!
+
+
+
+CIO / Clinician
+
+
+What is FHIR
+ - acronym
+ - new specification
+ - scalable simple web api
+ - same reasons the web love it, applies to enterprise 
+ 
+Why it is better
+
+Exhchanging clinical and administrative information is hard. No one can afford to get the inforamtion they want it when and where they want it. The existing standards aren't helping - the best you can hope for is to get things sort of working
+
+ - focused on implementation - fast
+ - builds on existing knowledge, but makes it available
+ - co-exist with other approaches
+ - open license, online
+ - mobile friendly
+ - free clinical information : specification GET OUT OF THE WAY
+
+
+Implementation
+ - connectathon (open, invited)
+ - result in <1 day
+
+
+
+Where it is at 
+ - draft - but implementation focused
+ - released for DSTU late 2013 early 2014
+ - Work towards normative 2016

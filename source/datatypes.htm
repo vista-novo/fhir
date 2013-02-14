@@ -619,7 +619,7 @@ is that the low or high boundaries are not known and therefore neither is the ra
 </p>
 <p>
 The <i>range</i> flag on the <i>low</i> or <i>high</i> elements cannot be present. Note that the Range type should not be 
-used to represent measurements where the range flag might be used instead.
+used to represent out of range measurements: A quantity type with the comparator element should be used instead.
 </p>
 <p>
 The low and the high values are inclusive, and are assumed to have arbitrarily high precision. E.g. the range 1.5 to 2.5 

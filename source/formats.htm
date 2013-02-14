@@ -27,6 +27,8 @@ This page documents how the content of the resources are described, and how they
 <p>
 The resources are described in two different ways: a UML diagram that summarises the content, and 
 an pseudo-XML syntax that provides a visual sense of what the end resource instances will look like in XML. 
+Note that although the description of the resources is based on their XML representation, other representations
+such as JSON are equally valid.
 </p>
 <a name="syntax"> </a>
 <h3>XML</h3>
@@ -55,13 +57,14 @@ Notes:
  <li>When a logical element can have more than one type, it's name takes the form nnn[x]. The "nnn" part of the name is constant, and the [x] is replaced with the name of the type that is actually used. The types that are allowed are listed with a "|" used to separate them</li>
  <li>Each element name in the pseudo-syntax is also a hyperlink to the formal definition of the element in the data dictionary that underlies the exchange formats. </li>
  <li>If the element name is underlined, then applications are required to <a href="resources.htm#mustSupport">support</a> and/or <a href="resources.htm#mustUnderstand">understand</a> it</li>
- <li>The XML character set is always Unicode. Specifying the character encoding is optional but recommended. The default value is UTF-8, as for XML. Any encoding that is round trip compatible with Unicode is allowed, but support for UTF-8 is mandatory</li>
+ <li>The character set for a resource is always Unicode, encoded in UTF-8. Specifying the character encoding in the XML is optional but recommended.</li>
  <li>FHIR elements are always in the namespace <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>.  This is usually specified as the default namespace on the root element. 
    The only other namespaces that occur in FHIR resources are where some external content model is explicitly introduced into the resource content model. For example, XHTML is found in every resource - see below</li>
  <li>Any of the XML elements may have an id attribute to serve as <a href="#idref">the target of an internal reference</a>. The id attribute is not shown in this format</li>
  <li>FHIR elements are never empty. If an element is present in the resource, it must have either a value attribute, child elements as defined for its type, an id attribute that is the <a href="#idref">link target</a> of <a href="#narrative">narrative</a>, or 1 or more <a href="extensibility.htm">extensions</a></li>
  <li>Attributes can never be empty. Either they are absent, or they are present with at least one character of non-whitespace content</li>
  <li>The xml:lang attribute may appear on the root element, where it specifies the base language of the resource. It may also appear on <a href="datatypes.htm#Attachment">attachments</a> and in the XHTML content, but nowhere else</li>
+ <li>The formal MIME-type for FHIR resources is text/xml+fhir</li>
  <li>In addition to this descriptive syntax, other definitional forms are available, including W3C schema and Schematron</li>
 </ul>
 <p>
@@ -110,7 +113,7 @@ The narrative for a resource is allowed to contain additional information that i
 the structured data, including human-edited content. Such additional information must be 
 in the scope of the definition of the resource. In small, closed trading partner environments,
 there may be no need for a narrative text. In such cases, implementations are allowed to 
-populate the narrative with text equivalent to "No human readable text provided for this resource" (other languages are allowed). 
+populate the narrative with text equivalent to "[ResourceName] - No human readable text provided for this resource" in an appropriate language. 
 Implementers should note that small, closed trading partner environments are very likely 
 to open up during the lifetime of the resources they define.
 </p>
@@ -133,7 +136,7 @@ and objects. The div element must have some non-whitespace content.
           example with only plain text&lt;/div&gt;
   &lt;/narrative&gt;
    
-  &lt;narrative&gt;
+   &lt;narrative&gt;
    &lt;div xmlns="http://www.w3.org/1999/xhtml"&gt;
      &lt;p&gt;
        This is an &lt;i&gt;example&lt;/i&gt; with some &lt;b&gt;xhtml&lt;/b&gt; formatting.
@@ -143,13 +146,30 @@ and objects. The div element must have some non-whitespace content.
 </pre>
 </div>
 <p>
-The image source may be a local reference within the resource:
+The inner portion of the div content is often used for the innerHTML property in a browser.
+In order to simplify processing, the narrative SHALL be encoded so that the character content
+between the first "&gt;" and the last "&lt;" characters is the content of the &lt;div&gt; element.
+</p>
+<p>
+Note that the XHTML is contained in general XML, and so there is no support for HTML entities
+like <i>&amp;nbsp;</i> or <i>&amp;copy;</i> etc. Unicode characters should be used instead. Note that 
+<i>&amp;#160;</i> substitutes for <i>&amp;nbsp;</i>. 
+</p>
+<p>
+The narrative content should be in the <a href="resources-definitions.htm#Resource.language">language of the resource</a>, but 
+there is no reason to expect that HTML type tooling would understand the resource <i>language</i> element. For this reason, 
+a lang attribute on the &lt;div&gt; should also be used (and see 
+<a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#the-lang-and-xml:lang-attributes">the note in the HTML 5 specification about use of language</a>).
+</p>
+
+<p>
+The image source references may be a local reference within the resource:
 </p>
 <pre class="xml">
   &lt;img src="#a5"/&gt;
 </pre>
 <p>
-This is an <a href="#idref">internal reference</a> to an id attribute on an element in the same resource, either in the image attachments on the text element 
+This is an <a href="#idref">internal reference</a> to an id attribute on an element in the same resource, either in the binary attachments on the text element 
 directly, or an element of type "<a href="datatypes.htm#Attachment">Attachment</a>".
 </p>
 <div class="example">
@@ -160,27 +180,17 @@ directly, or an element of type "<a href="datatypes.htm#Attachment">Attachment</
         &lt;img src=&quot;#a1&quot;/&gt;.
       &lt;/p&gt;
     &lt;/div&gt;
-    &lt;image id=&quot;a1&quot;&gt;
+    &lt;blob id=&quot;a1&quot;&gt;
       &lt;mimeType value="image/png" /&gt;
       &lt;content value="MEKH....SD/Z" /&gt;
-    &lt;/image&gt;
+    &lt;/blob&gt;
   &lt;/narrative&gt;
 </pre>
 </div>
 
 <p>
 Since the presence of images that are not part of the resource is not guaranteed, 
-images that are an essential part of the narrative should always be embedded.
-</p>
-<p>
-Note: the XHTML is contained in general XML, and there is no support for HTML entities
-like <i>&amp;nbsp;</i> or <i>&amp;copy;</i> etc. Unicode characters should be used instead. Note that 
-<i>&amp;#160;</i> substitutes for <i>&amp;nbsp;</i>.
-</p>
-<p>
-The narrative content should be in the <a href="resources-definitions.htm#Resource.language">language of the resource</a>, but 
-there is no reason to expect that HTML type tooling would understand the resource language. For this reason, a lang attribute
-on the &lt;div&gt; should also be used (and see <a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#the-lang-and-xml:lang-attributes">the note in the HTML 5 specification about use of language</a>).
+images that are an essential part of the narrative should always be embedded like this.
 </p>
 
 <a name="css"></a>
@@ -206,7 +216,7 @@ elements are deprecated in HTML 4 and must not be used in Narrative XHTML (inclu
 <p>
 Rendering systems are required to respect any of these rendering styles when they are specified in 
 the XHTML, though appropriate interpretation is allowed (e.g. a low-contrast display for dark 
-room contexts may adjust colors accordingly). 
+room contexts or a high-contrast display for the visually impaired may adjust colors accordingly). 
 </p>
 <p>
 Authors are allowed to specify additional styles and style properties as specified in the CSS specification,
@@ -263,7 +273,8 @@ values may occur between resources. This must be managed by applications reading
 <p>
 Note that all references between the xhtml elements and the data elements must be understood to 
 establish a "derived from" relationship, where the derived content (whether text or data) refers 
-to the source content.
+to the source content.  Note that this means some references may be forward references (references to 
+elements defined later in the instance).
 </p>
 
 
@@ -273,10 +284,12 @@ to the source content.
 Though the representation of FHIR resources is described in XML, FHIR also defines
 a JSON representation of the resources. The JSON format for the resources follows 
 the standard XML format very closely to make interconversion easy, and so that 
-XPath queries can easily be mapped to query the JSON structures.
+XPath queries can easily be mapped to query the JSON structures. The formal mime type
+for this format is application/json+fhir.
 </p>
 <p>
-Systems are free to choose whether to implement in XML or JSON. Note that systems must declare which format(s) they 
+Clients are free to choose whether to implement in XML or JSON. Servers must support XML, and can 
+choose to support JSON. Note that systems must declare which format(s) they 
 support. Also, the <a href="implementation.htm#refimpl">reference implementations</a>
 include bi-direction conversion functionality between the two formats.
 </p>
@@ -453,6 +466,7 @@ In XML bundles are represented using an Atom format (<a href="http://tools.ietf.
  <li>Author is a required element by the atom element. The author of a resource is not explicit in the FHIR resource model; instead it is delegated to the infrastructure. The name is the name of a human author or a device. The uri is a link to the resource for the author. Note that an author is required for each entry, but if an author is provided in the base feed, an author is not needed on each entry</li>
  <li>An xml:base element may be specified on the content element, though one is not generally needed for FHIR resources.</li>
  <li>The entire bundle can be signed with a single Enveloped Digital Signature as described in the Atom specification (section 5.1). See below for further comment</li>
+ <li>The mime type for an bundle when represented in XML is application/atom+xml</li>
 </ul>
 
 <a name="atom-deleted"> </a>
@@ -637,6 +651,9 @@ Here is an example feed returning search results for a person query:
 <p>
 Note that property names for elements that can repeat are not pluralized for consistency of overall approach.
 </p>
+<p>
+The mime type for a json bundle is also application/json+fhir.
+</p>
 
 <a name="json-bundle-delete"> </a>
 <h4>Bundling versions - deletion</h4>
@@ -702,12 +719,11 @@ as files for each resource as well as a combined fhir-atom.sch file
 that incorporates the rules for all resources.
 </p>
 <p>
-XML that is exchanged must be valid against the w3c schema and Schematron, though there is no requirement to
-validate instances against either, nor is being valid against the schema and 
-Schematron sufficient 
-to be a conformant instance. (This specification makes several rules that cannot be checked 
-by either mechanism.) Exchanged content must not specify the schema or even the schema instance 
-namespace in the resource itself. 
+XML that is exchanged must be valid against the w3c schema and Schematron, nor is being 
+valid against the schema and Schematron sufficient to be a conformant instance. 
+(This specification makes several rules that cannot be checked by either mechanism.) 
+Exchanged content must not specify the schema or even the schema instance namespace in 
+the resource itself. 
 </p>
 
 <!-- Todo: Relax NG, RDF, eCore -->

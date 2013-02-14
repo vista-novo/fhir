@@ -1169,7 +1169,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         defPub.append("    {@member "+s+"Simple\r\n");
         defPub.append("      Typed access to "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
         defPub.append("    }\r\n");
-        defPub.append("    property "+s+"ST : "+tn+" read Get"+getTitle(s)+"Simple write Set"+getTitle(s)+"Simple;\r\n");
+        defPub.append("    property "+s+"ST : "+tn+" read Get"+getTitle(s)+"ST write Set"+getTitle(s)+"ST;\r\n");
       } else {
         
         defPriv1.append("    F"+getTitle(s)+" : "+tn+";\r\n");
@@ -1187,13 +1187,13 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
           defPub.append("    }\r\n");
           defPub.append("    property "+s+"ST : "+sn+" read Get"+getTitle(s)+"Simple write Set"+getTitle(s)+"Simple;\r\n");
         }
-        }
+      }
       defPub.append("\r\n");
       if (typeIsSimple(tn) && !tn.equals("TFhirXHtmlNode")) {
         if (enumNames.contains(tn)) {         
           impl.append("Procedure "+cn+".Set"+getTitle(s)+"(value : TFhirEnum);\r\nbegin\r\n  F"+getTitle(s)+".free;\r\n  F"+getTitle(s)+" := value;\r\nend;\r\n\r\n");
-          impl.append("Function "+cn+".Get"+getTitle(s)+"Simple : "+tn+";\r\nbegin\r\n  if F"+getTitle(s)+" = nil then\r\n    result := "+tn+"(0)\r\n  else\r\n    result := "+tn+"(StringArrayIndexOf(CODES_"+tn+", "+getTitle(s)+".value));\r\nend;\r\n\r\n");
-          impl.append("Procedure "+cn+".Set"+getTitle(s)+"Simple(value : "+tn+");\r\nbegin\r\n  if ord(value) = 0 then\r\n    "+getTitle(s)+" := nil\r\n  else\r\n    "+getTitle(s)+" := TFhirEnum.create(CODES_"+tn+"[value]);\r\nend;\r\n\r\n");
+          impl.append("Function "+cn+".Get"+getTitle(s)+"ST : "+tn+";\r\nbegin\r\n  if F"+getTitle(s)+" = nil then\r\n    result := "+tn+"(0)\r\n  else\r\n    result := "+tn+"(StringArrayIndexOf(CODES_"+tn+", "+getTitle(s)+".value));\r\nend;\r\n\r\n");
+          impl.append("Procedure "+cn+".Set"+getTitle(s)+"ST(value : "+tn+");\r\nbegin\r\n  if ord(value) = 0 then\r\n    "+getTitle(s)+" := nil\r\n  else\r\n    "+getTitle(s)+" := TFhirEnum.create(CODES_"+tn+"[value]);\r\nend;\r\n\r\n");
         } else {
           impl.append("Procedure "+cn+".Set"+getTitle(s)+"(value : TFhirEnum);\r\nbegin\r\n  F"+getTitle(s)+".free;\r\n  F"+getTitle(s)+" := value;\r\nend;\r\n\r\n");
         }
@@ -1209,6 +1209,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 //          workingComposerX.append("    xml.Tag('"+e.getName()+"');\r\n");
 //          workingComposerX.append("  end;\r\n");
 //        } else
+        destroy.append("  F"+getTitle(s)+".free;\r\n");
         if (enumNames.contains(tn)) {         
           workingComposerX.append("  ComposeEnum(xml, '"+e.getName()+"', elem."+getTitle(s)+", CODES_"+tn+");\r\n");
           workingComposerJ.append("  ComposeEnum(json, '"+e.getName()+"', elem."+getTitle(s)+", CODES_"+tn+");\r\n");
@@ -2067,6 +2068,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("  }\r\n");
     def.append("  TFhirResourceType = (\r\n");
     con.append("  CODES_TFhirResourceType : Array[TFhirResourceType] of String = (");
+    def.append("    frtNull, {@enum.value Resource type not known / not Specified }\r\n");
+    con.append("'', ");
 
     List<String> types = new ArrayList<String>();
     for (String s : definitions.getResources().keySet()) 
@@ -2084,17 +2087,20 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     con.append("'Binary');");
 
     con.append("\r\n  PLURAL_CODES_TFhirResourceType : Array[TFhirResourceType] of String = (");
+    con.append("'', ");
     for (String s : types) {
       con.append("'"+Utilities.pluralizeMe(s.toLowerCase())+"', ");
     }
     con.append("'binaries');");
     con.append("\r\n  LOWERCASE_CODES_TFhirResourceType : Array[TFhirResourceType] of String = (");
+    con.append("'', ");
     for (String s : types) {
         con.append("'"+s.toLowerCase()+"', ");
     }
   con.append("'binary');");
 
     con.append("\r\n  CLASSES_TFhirResourceType : Array[TFhirResourceType] of TFhirResourceClass = (");
+    con.append("nil, ");
     for (String s : types) {
       con.append("TFhir"+getTitle(s)+", ");
     }

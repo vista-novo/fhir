@@ -43,6 +43,9 @@ must include it with a minimum cardinality of 1 and therefore any instance that 
 that if the extension is simply directly referenced in an instance rather than applied through a profile, the minimum cardinality doesn't apply, 
 though the maximum one still does.
 </li>  
+<li>For xpath constraints, the prefix "f" should be used for "http://hl7.org/fhir", and "h" for "http://www.w3.org/1999/xhtml".</li>
+<li>When using xpath to make constraints about the relationship between the contents of the narrative and the contents of the data elements, 
+  the element against which the rule is expressed is the one against which the error will be reported.</li>
 </ul>
 
 <p>
