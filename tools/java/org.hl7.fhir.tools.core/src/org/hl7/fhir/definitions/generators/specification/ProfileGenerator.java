@@ -115,7 +115,7 @@ public class ProfileGenerator {
       // no purpose element here
       defineElement(p, c, resource.getRoot(), resource.getName(), addBase);
       
-      for (SearchParameter i : resource.getSearchParams()) {
+      for (SearchParameter i : resource.getSearchParams().values()) {
         c.getSearchParam().add(makeSearchParam(p, i));
       }
     }

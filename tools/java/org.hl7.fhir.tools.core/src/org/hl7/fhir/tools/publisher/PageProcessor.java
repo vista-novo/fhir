@@ -486,7 +486,7 @@ public class PageProcessor implements Logger  {
     StringBuilder b = new StringBuilder();
     generateConstraints("", e, b);
     if (b.length() > 0)
-      return "<p>Constraints</p><ul>"+b+"</ul>";
+      return "<h3>Constraints</h3><ul>"+b+"</ul>";
     else
       return "";
   }
@@ -520,9 +520,9 @@ public class PageProcessor implements Logger  {
     for (String n : e.getInvariants().keySet()) {
       Invariant inv = e.getInvariants().get(n);
       if ("".equals(path))
-        b.append("<li>"+Utilities.escapeXml(inv.getEnglish())+" (xpath: "+Utilities.escapeXml(inv.getXpath())+")</li>");
+        b.append("<li>"+Utilities.escapeXml(inv.getEnglish())+" (xpath: <span style=\"font-family: Courier New, monospace\">"+Utilities.escapeXml(inv.getXpath())+"</span>)</li>");
       else
-        b.append("<li>"+Utilities.escapeXml(inv.getEnglish())+" (xpath on "+path+": "+Utilities.escapeXml(inv.getXpath())+")</li>");
+        b.append("<li>"+Utilities.escapeXml(inv.getEnglish())+" (xpath on "+path+": <span style=\"font-family: Courier New, monospace\">"+Utilities.escapeXml(inv.getXpath())+"</span>)</li>");
     }
     for (ElementDefn c : e.getElements()) {
       generateConstraints(path+"/"+c.getName(), c, b);
@@ -955,7 +955,7 @@ public class PageProcessor implements Logger  {
       res.add(n.getName());
     for (DefinedCode c : definitions.getKnownResources().values()) {
       if (res.contains(c.getComment()))
-        html.append("  <tr><td>"+c.getCode()+"</td><td><a href=\""+c.getComment()+".dict.xml\">Definitions</a></td><td><a href=\""+c.getComment()+".xsd\">Schema</a></td><td><a href=\""+c.getComment()+".xml\">Example</a></td><td><a href=\""+c.getComment()+".json\">JSON Example</a></td>\r\n");
+        html.append("  <tr><td>"+c.getCode()+"</td><td></td><td><a href=\""+c.getComment()+".xsd\">Schema</a></td><td><a href=\""+c.getComment()+".xml\">Example</a></td><td><a href=\""+c.getComment()+".json\">JSON Example</a></td>\r\n");
     }       
     return html.toString();
 
@@ -1210,7 +1210,11 @@ public class PageProcessor implements Logger  {
       b.append("<h2>Search Parameters</h2>\r\n");
       b.append("<p>Search Parameters for RESTful searches. The standard parameters also apply. See <a href=\"http.htm#search\">Searching</a> for more information.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
-      for (SearchParameter p : resource.getSearchParams()) {
+      List<String> names = new ArrayList<String>();
+      names.addAll(resource.getSearchParams().keySet());
+      Collections.sort(names);
+      for (String name : names)  {
+    	SearchParameter p = resource.getSearchParams().get(name);
         if (p.getType() == SearchType.date) {
           b.append("<tr><td>"+p.getCode()+" : "+p.getType()+"</td><td>date equal to "+Utilities.escapeXml(p.getDescription())+"</td><td>single</td></tr>\r\n");
           b.append("<tr><td>"+p.getCode()+"-before : "+p.getType()+"</td><td>date before or equal to "+Utilities.escapeXml(p.getDescription())+"</td><td>single</td></tr>\r\n");

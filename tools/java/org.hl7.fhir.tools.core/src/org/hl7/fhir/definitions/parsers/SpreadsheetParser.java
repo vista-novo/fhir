@@ -294,7 +294,7 @@ public class SpreadsheetParser {
 
 	private void readSearchParams(ResourceDefn root2, Sheet sheet)
 			throws Exception {
-		root2.getSearchParams().add(new SearchParameter("_id","The logical resource id associated with the resource (must be supported by all servers)",SearchType.token, RepeatMode.single, null));
+		root2.getSearchParams().put("_id", new SearchParameter("_id","The logical resource id associated with the resource (must be supported by all servers)",SearchType.token, RepeatMode.single, null));
 
 		if (sheet != null)
 			for (int row = 0; row < sheet.rows.size(); row++) {
@@ -321,7 +321,7 @@ public class SpreadsheetParser {
 				SearchType t = readSearchType(sheet.getColumn(row, "Type"), row);
 				RepeatMode m = readRepeatMode(sheet.getColumn(row, "Repeats"), row);
 
-				root2.getSearchParams().add(new SearchParameter(n, d, t, m, p));
+				root2.getSearchParams().put(n, new SearchParameter(n, d, t, m, p));
 			}
 	}
 

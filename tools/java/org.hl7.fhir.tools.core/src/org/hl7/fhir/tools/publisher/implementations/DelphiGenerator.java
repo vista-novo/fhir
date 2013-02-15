@@ -611,7 +611,11 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       int l = r.getSearchParams().size();
       int i = 0;
 
-      for (SearchParameter p : r.getSearchParams()) {
+      List<String> names = new ArrayList<String>();
+      names.addAll(r.getSearchParams().keySet());
+      Collections.sort(names);
+      for (String name : names) {
+    	SearchParameter p = r.getSearchParams().get(name);
         i++;
         String n = p.getCode().replace("$", "_");
         String d = Utilities.normaliseEolns(p.getDescription());

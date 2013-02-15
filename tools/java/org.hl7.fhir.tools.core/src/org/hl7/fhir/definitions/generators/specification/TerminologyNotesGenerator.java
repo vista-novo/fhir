@@ -105,7 +105,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 			return;
 		
 		Collections.sort(cds, new MyCompare());
-		write("<p>\r\nTerminology Bindings\r\n</p>\r\n");
+		write("<h3>\r\nTerminology Bindings\r\n</h3>\r\n");
 		// 1. new form
     write("<table class=\"grid\">\r\n");
     write(" <tr><th>Path</th><th>Details</th><th>Strength</th></tr>\r\n");

@@ -28,11 +28,13 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ResourceDefn  {
    private List<Example> examples = new ArrayList<Example>();
-   private List<SearchParameter> searchParams = new ArrayList<SearchParameter>();
+   private Map<String, SearchParameter> searchParams = new HashMap<String, SearchParameter>();
    private List<RegisteredProfile> profiles = new ArrayList<RegisteredProfile>();
    
    private boolean sandbox;
@@ -129,7 +131,7 @@ public class ResourceDefn  {
     this.sandbox = sandbox;
   }
 
-  public List<SearchParameter> getSearchParams() {
+  public Map<String, SearchParameter> getSearchParams() {
     return searchParams;
   }
 

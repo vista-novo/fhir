@@ -64,7 +64,6 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
-import org.hl7.fhir.definitions.generators.specification.DictXMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.ProfileGenerator;
 import org.hl7.fhir.definitions.generators.specification.SchematronGenerator;
 import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerator;
@@ -630,14 +629,6 @@ public class Publisher {
 			produceProfile(n, page.getDefinitions().getProfiles().get(n), null);
 		}
 
-    log(" ...summaries");
-		produceCombinedDictionary();
-		Utilities.copyFile(new CSFile(page.getFolders().umlDir + "fhir.eap"),
-				new CSFile(page.getFolders().dstDir + "fhir.eap"));
-		// todo - collect and zip the xmi files
-		// Utilities.copyFile(new CSFile(page.getFolders().umlDir + "fhir.xmi"),
-		// new CSFile(page.getFolders().dstDir + "fhir.xmi"));
-
     log(" ...zips");
     ZipGenerator zip = new ZipGenerator(page.getFolders().dstDir + "examples.zip");
     zip.addFiles(page.getFolders().dstDir + "examples" + File.separator, "", null);
@@ -785,10 +776,6 @@ public class Publisher {
 		dgen.close();
 		
 		String dict = TextFile.fileToString(tmp.getAbsolutePath());
-
-		DictXMLGenerator dxgen = new DictXMLGenerator(new FileOutputStream(page.getFolders().dstDir + n + ".dict.xml"));
-		dxgen.generate(resource.getRoot(), "HL7");
-		dxgen.close();
 
 		page.getImageMaps().put(n, new DiagramGenerator(page).generate(resource, n));
 		
@@ -1022,9 +1009,6 @@ public class Publisher {
 		// dgen.generate(root);
 		// String dict = Utilities.fileToString(tmp.getAbsolutePath());
 		//
-		// DictXMLGenerator dxgen = new DictXMLGenerator(new
-		// FileOutputStream(page.getFolders().dstDir+n+".dict.xml"));
-		// dxgen.generate(root, "HL7");
 		//
 		// File xmlf = new
 		// File(page.getFolders().srcDir+n+File.separatorChar+"example.xml");
@@ -1419,17 +1403,6 @@ public class Publisher {
 			node.appendChild(node.getOwnerDocument().createTextNode("\r\n"));
 		}
 
-	}
-
-	private void produceCombinedDictionary() throws FileNotFoundException,
-			UnsupportedEncodingException, Exception, IOException {
-		FileOutputStream fos = new FileOutputStream(page.getFolders().dstDir
-				+ "fhir.dict.xml");
-		DictXMLGenerator dxgen = new DictXMLGenerator(fos);
-		dxgen.setConceptDomains(page.getDefinitions().getBindings());
-		dxgen.generate(page.getDefinitions().getResources().values(), "HL7");
-		dxgen.close();
-		fos.close();
 	}
 
   public void log(String content) {

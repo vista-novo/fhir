@@ -70,7 +70,7 @@ public class XLSXmlParser {
       else if (rows.get(row).size() <= c)
         return "";
       else
-        return rows.get(row).get(c);
+        return rows.get(row).get(c).trim();
     }
   }
   

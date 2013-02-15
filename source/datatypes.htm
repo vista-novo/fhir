@@ -217,7 +217,7 @@ Guidance on the meaning of repeating elements MUST be provided in the definition
 The language element describes the language of the attachment using the <a href="http://tools.ietf.org/html/bcp47">codes defined in BCP 47</a>.
 </p>
 <div class="use">
-<p><b>Use</b></p>
+<p><b>Constraints</b></p>
 [%dt.constraints Attachment%]
 <p>
 If neither <i>data</i> nor a <i>url</i> 
@@ -335,7 +335,7 @@ LOINC), the release date is to be used.
 The <i>version</i> element must always be ignored when comparing <i>Coding</i> values
 </p>-->
 <div class="use">
-<p><b>Use</b></p>
+<p><b>Constraints</b></p>
 <!--
 [%dt.constraints Coding%]
 <p>
@@ -410,7 +410,7 @@ an <i>id</i> attribute on one of the codings.
 </p>
 
 <div class="use">
-<p><b>Use</b></p>
+<p><b>Constraints</b></p>
 [%dt.constraints CodeableConcept%]
 <p>
 The context of use usually makes rules about what codes and systems are allowed or required in a 
@@ -485,7 +485,7 @@ The selected code must be found in the list of possible codes.
 If isOrdered is true, then the values have an inherent meaningful order and the list of values must be provided in the correct orderr in the instance.
 </p>
 <!--<div class="use">
-<p><b>Use</b></p>
+<p><b>Constraints</b></p>
 [%dt.constraints Choice%]
 </div>
 -->
@@ -541,7 +541,7 @@ contain text that is actually a valid UCUM unit, but it cannot be assumed that i
 </p>
 
 <div class="use">
-<p><b>Use</b></p>
+<p><b>Constraints</b></p>
 [%dt.constraints Quantity%]
 <p>
 The context of use may frequently define what kind of quantity
@@ -626,7 +626,7 @@ The low and the high values are inclusive, and are assumed to have arbitrarily h
 includes 1.50, and 2.50 but not 1.49 or 2.51.
 </p>
 <div class="use">
-<p><b>Use</b></p>
+<p><b>Constraints</b></p>
 [%dt.constraints Range%]
 </div>
 <div class="example">
@@ -663,7 +663,7 @@ and denominator do not cancel out. The most common example of this is where the 
 unit cost, and the numerator is a currency (e.g. 50/$10).
 </p>
 <div class="use">
-<p><b>Use</b></p>
+<p><b>Constraints</b></p>
 [%dt.constraints Ratio%]
 <p>
 The context of use may require particular types of Quantity for the numerator or denominator.
@@ -725,7 +725,7 @@ The end value includes any matching date/time. For example, the period
 the end of the 27th May.
 </p>
 <!--<div class="use">
-<p><b>Use</b></p>
+<p><b>Constraints</b></p>
 [%dt.constraints Period%]
 </div>
 -->
@@ -883,7 +883,7 @@ parts within a given part type has significance and must be observed. The order
 between family name and given names depends on culture and context of use. 
 </p>
 <!--<div class="use">
-<p><b>Use</b></p>
+<p><b>Constraints</b></p>
 [%dt.constraints HumanName%]
 </div>
 -->
@@ -927,7 +927,7 @@ may be provided instead of or as well as the specific parts.
 
 
 <div class="use">
-<p><b>Use</b></p>
+<p><b>Constraints</b></p>
 [%dt.constraints Address%]
 </div>
 <div class="example">
@@ -973,7 +973,7 @@ If capturing a phone, fax or similar contact, the value should be a properly for
 However, this is frequently not possible due to legacy data and/or recording methods.
 </p>
 <div class="use">
-<p><b>Use</b></p>
+<p><b>Constraints</b></p>
 [%dt.constraints Contact%]
 </div>
 <div class="example">
@@ -1015,7 +1015,7 @@ the Schedule will terminate on some criteria that are expressed elsewhere.
 </p>
 
 <div class="use">
-<p><b>Use</b></p>
+<p><b>Constraints</b></p>
 [%dt.constraints Schedule%]
 
 </div>
