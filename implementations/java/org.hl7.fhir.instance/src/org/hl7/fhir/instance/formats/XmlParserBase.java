@@ -46,6 +46,14 @@ import org.xmlpull.v1.XmlPullParser;
 
 public abstract class XmlParserBase extends ParserBase {
 
+  private boolean allowUnknownContent;
+  public boolean isAllowUnknownContent() {
+    return allowUnknownContent;
+  }
+  public void setAllowUnknownContent(boolean allowUnknownContent) {
+    this.allowUnknownContent = allowUnknownContent;
+  }
+    
   abstract protected Resource parseResource(XmlPullParser xpp) throws Exception;
 
   /** -- worker routines --------------------------------------------------- */

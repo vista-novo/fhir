@@ -65,14 +65,7 @@ public class XmlBase {
   }
 
   
-  private boolean allowUnknownContent;
-  public boolean isAllowUnknownContent() {
-    return allowUnknownContent;
-  }
-  public void setAllowUnknownContent(boolean allowUnknownContent) {
-    this.allowUnknownContent = allowUnknownContent;
-  }
-  
+
   protected String dateToXml(java.util.Calendar date) {
     // there's a better way to do this in java 1.7, but for now going java 1.7 is too hard for implementers
     // String res = new SimpleDateFormat(XML_DATE_PATTERN).format(date);

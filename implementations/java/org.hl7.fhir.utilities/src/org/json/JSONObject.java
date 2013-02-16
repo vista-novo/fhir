@@ -558,7 +558,7 @@ public class JSONObject {
             return (JSONObject)object;
         }
         throw new JSONException("JSONObject[" + quote(key) +
-                "] is not a JSONObject.");
+                "] is not a JSONObject. ("+object.getClass().toString()+")");
     }
 
 

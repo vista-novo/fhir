@@ -90,7 +90,7 @@ public class WebMaker {
         if (i > 0)
           src = src.substring(0, i) + google()+src.substring(i);
         try {
-          XhtmlDocument doc = new XhtmlParser().parse(src);
+          XhtmlDocument doc = new XhtmlParser().parse(src, "html");
           replaceDownloadUrls(doc);
           insertTargetImages(doc, null, f);
           new XhtmlComposer().compose(new FileOutputStream(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+f), doc);

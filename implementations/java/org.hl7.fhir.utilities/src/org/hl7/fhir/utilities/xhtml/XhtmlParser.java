@@ -98,17 +98,17 @@ public class XhtmlParser {
   private int col = 0;
   private char lastChar;
   
-  public XhtmlDocument parse(String source) throws Exception {
+  public XhtmlDocument parse(String source, String entryName) throws Exception {
     rdr = new StringReader(source);
-    return parse();
+    return parse(entryName);
   }
   
-  public XhtmlDocument parse(InputStream input) throws Exception {
+  public XhtmlDocument parse(InputStream input, String entryName) throws Exception {
     rdr = new InputStreamReader(input);
-    return parse();
+    return parse(entryName);
   }
   
-  private XhtmlDocument parse() throws Exception
+  private XhtmlDocument parse(String entryName) throws Exception
   {
     XhtmlDocument result = new XhtmlDocument();
     skipWhiteSpaceAndComments(result);
@@ -116,7 +116,7 @@ public class XhtmlParser {
       throw new Exception("Unable to Parse HTML - does not start with tag. Found "+peekChar()+descLoc());
     readChar();
     String n = readName().toLowerCase();
-    if (!n.equals("html"))
+    if (!n.equals(entryName))
       throw new Exception("Unable to Parse HTML - does not start with 'html'"+descLoc());
     XhtmlNode root = result.addTag(n);
 

@@ -78,8 +78,8 @@ public class AtomComposer extends XmlBase {
     if (feed.getId() != null)
       xml.element(ATOM_NS, "id", feed.getId());
     for (String n : feed.getLinks().keySet()) {
-      xml.attribute("rel", n);
       xml.attribute("href", feed.getLinks().get(n));
+      xml.attribute("rel", n);
       xml.element(ATOM_NS, "link", null);
     }
     if (feed.getUpdated() != null)
@@ -107,8 +107,8 @@ public class AtomComposer extends XmlBase {
     if (e.getId() != null)
       xml.element(ATOM_NS, "id", e.getId());
     for (String n : e.getLinks().keySet()) {
-      xml.attribute("rel", n);
       xml.attribute("href", e.getLinks().get(n));
+      xml.attribute("rel", n);
       xml.element(ATOM_NS, "link", null);
     }
     if (e.getUpdated() != null)
@@ -124,8 +124,8 @@ public class AtomComposer extends XmlBase {
       xml.close(ATOM_NS, "author");
     }
     if (e.getCategory() != null) {      
-      xml.attribute("term", e.getCategory());
       xml.attribute("scheme", "http://hl7.org/fhir/resource-types");
+      xml.attribute("term", e.getCategory());
       xml.element(ATOM_NS, "category", null);
     }
 

@@ -120,13 +120,18 @@ public class AtomParser extends XmlBase {
 
   private AtomFeed parseAtom(JSONObject json) throws Exception {
     AtomFeed res = new AtomFeed();
-    res.setTitle(json.getString("title"));
-    res.setId(json.getString("id"));
-    res.setUpdated(xmlToDate(json.getString("updated")));
+    if (json.has("title"))
+      res.setTitle(json.getString("title"));
+    if (json.has("id"))
+      res.setId(json.getString("id"));
+    if (json.has("updated"))
+      res.setUpdated(xmlToDate(json.getString("updated")));
     if (json.has("authors")) {
       JSONObject author = json.getJSONArray("authors").getJSONObject(0);
-      res.setAuthorName(author.getString("name"));
-      res.setAuthorUri(author.getString("uri"));
+      if (author.has("name"))
+        res.setAuthorName(author.getString("name"));
+      if (author.has("uri"))
+        res.setAuthorUri(author.getString("uri"));
     }
     if (json.has("links")) {
       JSONArray array = json.getJSONArray("links");
@@ -142,15 +147,20 @@ public class AtomParser extends XmlBase {
   }
 
   private void parseLink(Map<String, String> links, JSONObject json) throws Exception {
-    links.put(json.getString("href"), json.getString("rel"));    
+    if (json.has("href") && json.has("rel"))
+    links.put(json.getString("rel"), json.getString("href"));    
   }
 
   private AtomEntry parseEntry(JSONObject json) throws Exception {
     AtomEntry res = new AtomEntry();
-    res.setTitle(json.getString("title"));
-    res.setId(json.getString("id"));
-    res.setUpdated(xmlToDate(json.getString("updated")));
-    res.setPublished(xmlToDate(json.getString("published")));
+    if (json.has("title"))
+      res.setTitle(json.getString("title"));
+    if (json.has("id"))
+      res.setId(json.getString("id"));
+    if (json.has("updated"))
+      res.setUpdated(xmlToDate(json.getString("updated")));
+    if (json.has("published"))
+      res.setPublished(xmlToDate(json.getString("published")));
     if (json.has("links")) {
       JSONArray array = json.getJSONArray("links");
       for (int i = 0; i < array.length(); i++) {
@@ -159,15 +169,20 @@ public class AtomParser extends XmlBase {
     }
     if (json.has("authors")) {
       JSONObject author = json.getJSONArray("authors").getJSONObject(0);
-      res.setAuthorName(author.getString("name"));
-      res.setAuthorUri(author.getString("uri"));
+      if (author.has("name"))
+        res.setAuthorName(author.getString("name"));
+      if (author.has("uri"))
+        res.setAuthorUri(author.getString("uri"));
     }
     if (json.has("categories")) {
-      JSONObject author = json.getJSONArray("categories").getJSONObject(0);
-      res.setCategory(author.getString("term"));
+      JSONObject cat = json.getJSONArray("categories").getJSONObject(0);
+      if (cat.has("term"))
+        res.setCategory(cat.getString("term"));
     }
-    res.setSummary(new XhtmlParser().parse(json.getString("summary")));
-    res.setResource(new JsonParser().parse(json.getJSONObject("content")));
+    if (json.has("summary"))
+      res.setSummary(new XhtmlParser().parse(json.getString("summary"), "div").getChildNodes().get(0));
+    if (json.has("content"))
+      res.setResource(new JsonParser().parse(json.getJSONObject("content")));
     return res;
   }
   

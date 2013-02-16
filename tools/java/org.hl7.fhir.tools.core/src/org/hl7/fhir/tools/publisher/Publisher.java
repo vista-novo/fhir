@@ -901,7 +901,7 @@ public class Publisher {
 		XhtmlGenerator xhtml = new XhtmlGenerator(new ExampleAdorner(page.getDefinitions()));
 		xhtml.generate(xdoc, new CSFile(page.getFolders().dstDir + n + ".xml.htm"), n.toUpperCase().substring(0, 1) + n.substring(1), Utilities.noString(e.getId()) ? e.getDescription() : e.getDescription()+" (id = \""+e.getId()+"\")");
 		if (e.isInBook()) {
-			XhtmlDocument d = new XhtmlParser().parse(new CSFileInputStream(page.getFolders().dstDir + n + ".xml.htm"));
+			XhtmlDocument d = new XhtmlParser().parse(new CSFileInputStream(page.getFolders().dstDir + n + ".xml.htm"), "html");
 			XhtmlNode pre = d.getElement("html").getElement("body").getElement("div");
 			e.setXhtm(new XhtmlComposer().compose(pre));
 		}
@@ -1113,7 +1113,7 @@ public class Publisher {
 	private String insertSectionNumbers(String src, SectionTracker st, String link) throws Exception  {
     try {
 //      TextFile.stringToFile(src, "c:\\temp\\text.htm");
-      XhtmlDocument doc = new XhtmlParser().parse(src);
+      XhtmlDocument doc = new XhtmlParser().parse(src, "html");
       insertSectionNumbersInNode(doc, st, link);
       return new XhtmlComposer().compose(doc);
     } catch (Exception e) {
@@ -1145,7 +1145,7 @@ public class Publisher {
   private void cachePage(String filename, String source) throws Exception {
 		try {
 			// log("parse "+filename);
-			XhtmlDocument src = new XhtmlParser().parse(source);
+			XhtmlDocument src = new XhtmlParser().parse(source, "html");
 			scanForFragments(filename, src);
       book.getPages().put(filename, src);
 		} catch (Exception e) {

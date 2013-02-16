@@ -1166,13 +1166,13 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       if (enumNames.contains(tn)) {         
         defPriv1.append("    F"+getTitle(s)+" : TFhirEnum;\r\n"); 
         defPriv2.append("    Procedure Set"+getTitle(s)+"(value : TFhirEnum);\r\n");
-        defPriv2.append("    Function Get"+getTitle(s)+"Simple : "+tn+";\r\n");
-        defPriv2.append("    Procedure Set"+getTitle(s)+"Simple(value : "+tn+");\r\n");
+        defPriv2.append("    Function Get"+getTitle(s)+"ST : "+tn+";\r\n");
+        defPriv2.append("    Procedure Set"+getTitle(s)+"ST(value : "+tn+");\r\n");
         defPub.append("    {@member "+s+"\r\n");
         defPub.append("      "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
         defPub.append("    }\r\n");
         defPub.append("    property "+s+" : TFhirEnum read F"+getTitle(s)+" write Set"+getTitle(s)+";\r\n");
-        defPub.append("    {@member "+s+"Simple\r\n");
+        defPub.append("    {@member "+s+"ST\r\n");
         defPub.append("      Typed access to "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
         defPub.append("    }\r\n");
         defPub.append("    property "+s+"ST : "+tn+" read Get"+getTitle(s)+"ST write Set"+getTitle(s)+"ST;\r\n");
@@ -1186,12 +1186,12 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         defPub.append("    property "+s+" : "+tn+" read F"+getTitle(s)+" write Set"+getTitle(s)+";\r\n");
         if (simpleTypes.containsKey(tn)) {
           String sn = simpleTypes.get(tn);
-          defPriv2.append("    Function Get"+getTitle(s)+"Simple : "+sn+";\r\n");
-          defPriv2.append("    Procedure Set"+getTitle(s)+"Simple(value : "+sn+");\r\n");
-          defPub.append("    {@member "+s+"Simple\r\n");
+          defPriv2.append("    Function Get"+getTitle(s)+"ST : "+sn+";\r\n");
+          defPriv2.append("    Procedure Set"+getTitle(s)+"ST(value : "+sn+");\r\n");
+          defPub.append("    {@member "+s+"ST\r\n");
           defPub.append("      Typed access to "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
           defPub.append("    }\r\n");
-          defPub.append("    property "+s+"ST : "+sn+" read Get"+getTitle(s)+"Simple write Set"+getTitle(s)+"Simple;\r\n");
+          defPub.append("    property "+s+"ST : "+sn+" read Get"+getTitle(s)+"ST write Set"+getTitle(s)+"ST;\r\n");
         }
       }
       defPub.append("\r\n");
@@ -1229,11 +1229,11 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         if (simpleTypes.containsKey(tn)) {
           String sn = simpleTypes.get(tn);
           if (sn.equals("String")) {
-            impl.append("Function "+cn+".Get"+getTitle(s)+"Simple : "+sn+";\r\nbegin\r\n  if F"+getTitle(s)+" = nil then\r\n    result := ''\r\n  else\r\n    result := "+getTitle(s)+".value;\r\nend;\r\n\r\n");
-            impl.append("Procedure "+cn+".Set"+getTitle(s)+"Simple(value : "+sn+");\r\nbegin\r\n  if value <> '' then\r\n  begin\r\n    if F"+getTitle(s)+" = nil then\r\n      F"+getTitle(s)+" := "+tn+".create;\r\n    F"+getTitle(s)+".value := value\r\n  end\r\n  else if F"+getTitle(s)+" <> nil then\r\n    F"+getTitle(s)+".value := '';\r\nend;\r\n\r\n");
+            impl.append("Function "+cn+".Get"+getTitle(s)+"ST : "+sn+";\r\nbegin\r\n  if F"+getTitle(s)+" = nil then\r\n    result := ''\r\n  else\r\n    result := "+getTitle(s)+".value;\r\nend;\r\n\r\n");
+            impl.append("Procedure "+cn+".Set"+getTitle(s)+"ST(value : "+sn+");\r\nbegin\r\n  if value <> '' then\r\n  begin\r\n    if F"+getTitle(s)+" = nil then\r\n      F"+getTitle(s)+" := "+tn+".create;\r\n    F"+getTitle(s)+".value := value\r\n  end\r\n  else if F"+getTitle(s)+" <> nil then\r\n    F"+getTitle(s)+".value := '';\r\nend;\r\n\r\n");
           } else {
-            impl.append("Function "+cn+".Get"+getTitle(s)+"Simple : "+sn+";\r\nbegin\r\n  if F"+getTitle(s)+" = nil then\r\n    result := nil\r\n  else\r\n    result := "+getTitle(s)+".value;\r\nend;\r\n\r\n");
-            impl.append("Procedure "+cn+".Set"+getTitle(s)+"Simple(value : "+sn+");\r\nbegin\r\n  if value <> nil then\r\n  begin\r\n    if F"+getTitle(s)+" = nil then\r\n      F"+getTitle(s)+" := "+tn+".create;\r\n    F"+getTitle(s)+".value := value\r\n  end\r\n  else if F"+getTitle(s)+" <> nil then\r\n    F"+getTitle(s)+".value := nil;\r\nend;\r\n\r\n");
+            impl.append("Function "+cn+".Get"+getTitle(s)+"ST : "+sn+";\r\nbegin\r\n  if F"+getTitle(s)+" = nil then\r\n    result := nil\r\n  else\r\n    result := "+getTitle(s)+".value;\r\nend;\r\n\r\n");
+            impl.append("Procedure "+cn+".Set"+getTitle(s)+"ST(value : "+sn+");\r\nbegin\r\n  if value <> nil then\r\n  begin\r\n    if F"+getTitle(s)+" = nil then\r\n      F"+getTitle(s)+" := "+tn+".create;\r\n    F"+getTitle(s)+".value := value\r\n  end\r\n  else if F"+getTitle(s)+" <> nil then\r\n    F"+getTitle(s)+".value := nil;\r\nend;\r\n\r\n");
           }
         }
         destroy.append("  F"+getTitle(s)+".free;\r\n");
@@ -2008,10 +2008,6 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     prsrImpl.append("  result := true;\r\n");
     prsrImpl.append("  if (json.ItemName = '_id') then\r\n");
     prsrImpl.append("    element.xmlId := json.itemValue\r\n");
-    prsrImpl.append("  else if (json.ItemName = '_xml_comments_start') then\r\n");
-    prsrImpl.append("    parseComments(element.xml_commentsStart)\r\n");
-    prsrImpl.append("  else if (json.ItemName = '_xml_comments_end') then\r\n");
-    prsrImpl.append("    parseComments(element.xml_commentsEnd)\r\n");
     prsrImpl.append("  else if (json.ItemName = 'extension') then\r\n");
     prsrImpl.append("  begin\r\n");
     prsrImpl.append("    json.checkState(jpitArray);\r\n");
@@ -2046,7 +2042,6 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     prsrImpl.append("var\r\n");
     prsrImpl.append("  i : integer;\r\n");
     prsrImpl.append("begin\r\n");
-    prsrImpl.append("  Comments(json, elem);\r\n");
     prsrImpl.append("  Prop(json, '_id', elem.xmlId);\r\n");
     prsrImpl.append("  if elem.hasExtensions then\r\n");
     prsrImpl.append("  begin\r\n");

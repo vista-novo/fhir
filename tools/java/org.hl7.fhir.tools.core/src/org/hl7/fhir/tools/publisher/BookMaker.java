@@ -72,7 +72,7 @@ public class BookMaker {
     
     String src = TextFile.fileToString(page.getFolders().srcDir+"book.htm");
     src = page.processPageIncludes(page.getFolders().srcDir+"book.htm", src);
-    XhtmlDocument doc = new XhtmlParser().parse(src);
+    XhtmlDocument doc = new XhtmlParser().parse(src, "html");
     XhtmlNode body = doc.getElement("html").getElement("body");
     addTOC(body);   
     addContent(body);
