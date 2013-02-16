@@ -1,4 +1,4 @@
-package org.hl7.fhir.tools.publisher.implementations;
+package org.hl7.fhir.tools.implementations.csharp;
 
 /*
  Copyright (c) 2011-2012, HL7, Inc
@@ -44,6 +44,8 @@ import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
 import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
+import org.hl7.fhir.tools.implementations.GenBlock;
+import org.hl7.fhir.tools.implementations.GeneratorUtils;
 
 
 public class CSharpModelGenerator extends GenBlock

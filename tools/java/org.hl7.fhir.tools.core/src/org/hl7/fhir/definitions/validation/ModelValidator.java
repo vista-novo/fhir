@@ -44,6 +44,7 @@ import org.hl7.fhir.definitions.model.TypeRef;
  * can't have element names in a resource that are part of resource itself
  * can't have an element name called id
  * can't have a search parameter called id
+ * can't have an element name "entries"
  * banned parameter type names: history, metadata, mailbox, validation 
  * 
  * @author Grahame

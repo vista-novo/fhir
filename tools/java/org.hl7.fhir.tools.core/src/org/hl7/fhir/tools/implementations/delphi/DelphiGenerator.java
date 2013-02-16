@@ -1,4 +1,4 @@
-package org.hl7.fhir.tools.publisher.implementations;
+package org.hl7.fhir.tools.implementations.delphi;
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
@@ -48,6 +48,8 @@ import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameter;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.tools.implementations.BaseGenerator;
+import org.hl7.fhir.tools.implementations.GeneratorUtils;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;

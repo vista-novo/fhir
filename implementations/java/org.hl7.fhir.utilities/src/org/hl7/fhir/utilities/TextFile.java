@@ -33,10 +33,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.json.JSONTokener;
 
 public class TextFile {
 
@@ -76,15 +80,18 @@ public class TextFile {
 		sw.close();
 	}
 
-    public static String fileToString(String src) throws Exception {
-		File file = new CSFile(src);
-		InputStreamReader sr = new InputStreamReader(new FileInputStream(file), "UTF-8");
-		StringBuilder b = new StringBuilder();
-		while (sr.ready()) {
-			char c = (char) sr.read();
-			b.append(c);
-		}
-		sr.close();
-		return b.toString();
+  public static String fileToString(String src) throws Exception {
+    return streamToString(new FileInputStream(new CSFile(src)));
 	}
+
+  public static String streamToString(InputStream input) throws Exception {
+    InputStreamReader sr = new InputStreamReader(input, "UTF-8");
+    StringBuilder b = new StringBuilder();
+    while (sr.ready()) {
+      char c = (char) sr.read();
+      b.append(c);
+    }
+    sr.close();
+    return b.toString();
+  }
 }

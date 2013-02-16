@@ -1,4 +1,4 @@
-package org.hl7.fhir.tools.publisher.implementations;
+package org.hl7.fhir.tools.implementations;
 
 import java.util.ArrayList;
 import java.util.Arrays;

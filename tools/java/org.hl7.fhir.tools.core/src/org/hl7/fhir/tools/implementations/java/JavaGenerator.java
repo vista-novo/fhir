@@ -1,4 +1,4 @@
-package org.hl7.fhir.tools.publisher.implementations;
+package org.hl7.fhir.tools.implementations.java;
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
@@ -66,8 +66,9 @@ import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.formats.XmlParserBase.ResourceOrFeed;
 import org.hl7.fhir.instance.test.ToolsHelper;
+import org.hl7.fhir.tools.implementations.BaseGenerator;
+import org.hl7.fhir.tools.implementations.java.JavaResourceGenerator.JavaGenClass;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
-import org.hl7.fhir.tools.publisher.implementations.JavaResourceGenerator.JavaGenClass;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.Logger;
@@ -164,8 +165,10 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
       jgen.close();
     }
     
-    JavaParserXmlGenerator jParserGen = new JavaParserXmlGenerator(new FileOutputStream(javaParserDir+"XmlParser.java"));
-    jParserGen.generate(definitions, version, genDate);    
+    JavaParserXmlGenerator jParserGenX = new JavaParserXmlGenerator(new FileOutputStream(javaParserDir+"XmlParser.java"));
+    jParserGenX.generate(definitions, version, genDate);    
+    JavaParserJsonGenerator jParserGenJ = new JavaParserJsonGenerator(new FileOutputStream(javaParserDir+"JsonParser.java"));
+    jParserGenJ.generate(definitions, version, genDate);    
     JavaComposerXmlGenerator jComposerGen = new JavaComposerXmlGenerator(new FileOutputStream(javaParserDir+"XmlComposer.java"));
     jComposerGen.generate(definitions, version, genDate);    
     JavaComposerJsonGenerator jjComposerGen = new JavaComposerJsonGenerator(new FileOutputStream(javaParserDir+"JsonComposer.java"));
@@ -180,7 +183,8 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     zip.close();
     jjComposerGen.close();
     jComposerGen.close();
-    jParserGen.close();
+    jParserGenX.close();
+    jParserGenJ.close();
     jFactoryGen.close();
   }
 

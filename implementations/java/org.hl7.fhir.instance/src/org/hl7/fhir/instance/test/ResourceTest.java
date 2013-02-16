@@ -36,7 +36,7 @@ import org.hl7.fhir.instance.formats.AtomComposer;
 import org.hl7.fhir.instance.formats.JsonComposer;
 import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
-import org.hl7.fhir.instance.formats.XmlParserBase.ResourceOrFeed;
+import org.hl7.fhir.instance.formats.ParserBase.ResourceOrFeed;
 import org.hl7.fhir.instance.model.Resource;
 
 public class ResourceTest {

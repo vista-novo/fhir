@@ -1,4 +1,4 @@
-package org.hl7.fhir.tools.publisher.implementations;
+package org.hl7.fhir.tools.implementations.java;
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
@@ -40,6 +40,7 @@ import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.tools.implementations.GeneratorUtils;
 import org.hl7.fhir.utilities.Utilities;
 
 public class JavaResourceGenerator extends JavaBaseGenerator {

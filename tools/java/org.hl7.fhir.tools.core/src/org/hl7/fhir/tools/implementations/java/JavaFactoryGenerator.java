@@ -1,4 +1,4 @@
-package org.hl7.fhir.tools.publisher.implementations;
+package org.hl7.fhir.tools.implementations.java;
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
@@ -37,38 +37,63 @@ import java.util.Map;
 import org.hl7.fhir.definitions.Config;
 
 
-public class JavaParserFactoryGenerator extends OutputStreamWriter {
+public class JavaFactoryGenerator extends OutputStreamWriter {
 
-	private Map<String, String> resources = new HashMap<String, String>(); 
+  private Map<String, String> resources = new HashMap<String, String>(); 
+  private Map<String, String> types = new HashMap<String, String>(); 
 	
-	public JavaParserFactoryGenerator(OutputStream out) throws UnsupportedEncodingException {
+	public JavaFactoryGenerator(OutputStream out) throws UnsupportedEncodingException {
 		super(out, "UTF-8");
 	}
 
-	public void registerResource(String name, String classname) {
-		resources.put(name,  classname);
-	}
-	
+  public void registerResource(String name, String classname) {
+    resources.put(name,  classname);
+  }
+  
+  public void registerType(String name, String classname) {
+    types.put(name,  classname);
+  }
+  
 	public void generate(String version, Date genDate) throws Exception {
-     	write("package org.hl7.fhir.instance.parser;\r\n");
-      write("\r\n/*\r\n"+Config.FULL_LICENSE_CODE+"*/\r\n\r\n");
-      write("// Generated on "+Config.DATE_FORMAT().format(genDate)+" for FHIR v"+version+"\r\n\r\n");
-		write("public class ResourceParserFactory {\r\n");
+		write("package org.hl7.fhir.instance.model;\r\n");
+    write("\r\n/*\r\n"+Config.FULL_LICENSE_CODE+"*/\r\n\r\n");
+    write("// Generated on "+Config.DATE_FORMAT().format(genDate)+" for FHIR v"+version+"\r\n\r\n");
+		write("public class ResourceFactory {\r\n");
 		write("\r\n");
-		write("    public static ResourceParser createParser(String name) throws Exception {\r\n");
+		write("    public static Resource createResource(String name) throws Exception {\r\n");
 		for (String name : resources.keySet()) {
 			write("        if (\""+name+"\".equals(name))\r\n");
-			write("            return new "+resources.get(name)+"Parser();\r\n");
+			write("            return new "+javaClassName(resources.get(name))+"();\r\n");
 		}
 		
 		write("        else\r\n");
 		write("            throw new Exception(\"Unknown Resource Name '\"+name+\"'\");\r\n");
 		write("    }\r\n");
 		write("\r\n");
+    write("    public static Element createType(String name) throws Exception {\r\n");
+    for (String name : types.keySet()) {
+      write("        if (\""+name+"\".equals(name))\r\n");
+      String t = types.get(name);
+      if (t.contains("<"))
+        write("            return new "+t+"(\""+t.substring(t.indexOf('<')+1).replace(">", "")+"\");\r\n");
+      else
+        write("            return new "+t+"();\r\n");
+    }    
+    write("        else\r\n");
+    write("            throw new Exception(\"Unknown Type Name '\"+name+\"'\");\r\n");
+    write("    }\r\n");
+    write("\r\n");
 		write("}\r\n");
 		write("\r\n");
 		flush();
 		close();
 	}
 	
+	private String javaClassName(String name) {
+    if (name.equals("List"))
+      return "List_";
+    else 
+      return name;
+  }
+
 }

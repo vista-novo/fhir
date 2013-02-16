@@ -1,4 +1,4 @@
-package org.hl7.fhir.tools.publisher.implementations;
+package org.hl7.fhir.tools.implementations.csharp;
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
@@ -38,6 +38,8 @@ import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.definitions.model.Definitions;
+import org.hl7.fhir.tools.implementations.BaseGenerator;
+import org.hl7.fhir.tools.implementations.GeneratorUtils;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.Logger;

@@ -34,16 +34,20 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 import org.hl7.fhir.instance.model.AtomEntry;
 import org.hl7.fhir.instance.model.AtomFeed;
 import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.ResourceReference;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 public class AtomParser extends XmlBase {
+  
   public AtomFeed parse(InputStream input) throws Exception {
     XmlPullParser xpp = loadXml(input);
   
@@ -56,6 +60,10 @@ public class AtomParser extends XmlBase {
     if (!xpp.getNamespace().equals(ATOM_NS))
       throw new Exception("This does not appear to be an atom feed (wrong namespace '"+xpp.getNamespace()+"') (@ /)");
     return parseAtom(xpp);
+  }
+
+  public AtomFeed parse(JSONObject json) throws Exception {
+    return parseAtom(json);
   }
 
   private String parseString(XmlPullParser xpp) throws Exception {
@@ -110,6 +118,59 @@ public class AtomParser extends XmlBase {
     return res;  
   }
 
+  private AtomFeed parseAtom(JSONObject json) throws Exception {
+    AtomFeed res = new AtomFeed();
+    res.setTitle(json.getString("title"));
+    res.setId(json.getString("id"));
+    res.setUpdated(xmlToDate(json.getString("updated")));
+    if (json.has("authors")) {
+      JSONObject author = json.getJSONArray("authors").getJSONObject(0);
+      res.setAuthorName(author.getString("name"));
+      res.setAuthorUri(author.getString("uri"));
+    }
+    if (json.has("links")) {
+      JSONArray array = json.getJSONArray("links");
+      for (int i = 0; i < array.length(); i++) {
+        parseLink(res.getLinks(), array.getJSONObject(i));
+      }
+    }
+    JSONArray array = json.getJSONArray("entries");
+    for (int i = 0; i < array.length(); i++) {
+      res.getEntryList().add(parseEntry(array.getJSONObject(i)));
+    }
+    return res;  
+  }
+
+  private void parseLink(Map<String, String> links, JSONObject json) throws Exception {
+    links.put(json.getString("href"), json.getString("rel"));    
+  }
+
+  private AtomEntry parseEntry(JSONObject json) throws Exception {
+    AtomEntry res = new AtomEntry();
+    res.setTitle(json.getString("title"));
+    res.setId(json.getString("id"));
+    res.setUpdated(xmlToDate(json.getString("updated")));
+    res.setPublished(xmlToDate(json.getString("published")));
+    if (json.has("links")) {
+      JSONArray array = json.getJSONArray("links");
+      for (int i = 0; i < array.length(); i++) {
+        parseLink(res.getLinks(), array.getJSONObject(i));
+      }
+    }
+    if (json.has("authors")) {
+      JSONObject author = json.getJSONArray("authors").getJSONObject(0);
+      res.setAuthorName(author.getString("name"));
+      res.setAuthorUri(author.getString("uri"));
+    }
+    if (json.has("categories")) {
+      JSONObject author = json.getJSONArray("categories").getJSONObject(0);
+      res.setCategory(author.getString("term"));
+    }
+    res.setSummary(new XhtmlParser().parse(json.getString("summary")));
+    res.setResource(new JsonParser().parse(json.getJSONObject("content")));
+    return res;
+  }
+  
   private AtomEntry parseEntry(XmlPullParser xpp) throws Exception {
     AtomEntry res = new AtomEntry();
     
@@ -173,5 +234,7 @@ public class AtomParser extends XmlBase {
   private Calendar parseDate(XmlPullParser xpp) throws Exception {
     return xmlToDate(parseString(xpp));    
   }
+
+ 
 
 }

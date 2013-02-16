@@ -1,4 +1,4 @@
-package org.hl7.fhir.tools.publisher.implementations;
+package org.hl7.fhir.tools.implementations.java;
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
@@ -33,6 +33,7 @@ import java.io.UnsupportedEncodingException;
 
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.tools.implementations.GeneratorUtils;
 
 public class JavaBaseGenerator extends OutputStreamWriter {
 

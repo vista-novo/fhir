@@ -1,4 +1,4 @@
-package org.hl7.fhir.tools.publisher.implementations;
+package org.hl7.fhir.tools.implementations;
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
