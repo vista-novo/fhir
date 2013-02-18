@@ -140,9 +140,9 @@ namespace HL7.Fhir.Instance.Serializers
         }
 
 
-        public static XDocument SerializeResourceAsXElement(Resource resource)
+        public static XElement SerializeResourceAsXElement(Resource resource)
         {
-            return XDocument.Parse(SerializeResourceAsXml(resource));
+            return XElement.Parse(SerializeResourceAsXml(resource));
         }
     }
 }

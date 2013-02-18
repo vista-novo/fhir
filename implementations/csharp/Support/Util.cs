@@ -43,6 +43,13 @@ namespace HL7.Fhir.Instance.Support
         public const string XHTMLNS = "http://www.w3.org/1999/xhtml";
         public const string XMLNS = "http://www.w3.org/2000/xmlns/";
 
+        public const string ATOM_LINKREL_SELF = "self";
+        public const string ATOM_LINKREL_PREVIOUS = "previous";
+        public const string ATOM_LINKREL_NEXT = "next";
+        public const string ATOM_LINKREL_FIRST = "first";
+        public const string ATOM_LINKREL_LAST = "last";
+
+
     //    public static string DARATTR = "dataAbsentReason";
 
         public static string Capitalize(string s)

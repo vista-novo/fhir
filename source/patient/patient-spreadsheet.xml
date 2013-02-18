@@ -393,10 +393,11 @@
     <Cell ss:Index="16"><Data ss:Type="String">But is thie same as institution above?</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
-    <Cell><Data ss:Type="String">Patient.multipleBirth</Data></Cell>
+    <Cell><Data ss:Type="String">Patient.multipleBirth[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">boolean</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">boolean|integer</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Indicates whether patient is part of a multiple birth</Data></Cell>
+    <Cell><Data ss:Type="String">Indicates whether the patient is part of a multiple or indicates the actual birth order.</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">.multipleBirthInd</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
@@ -418,7 +419,7 @@
     <Cell><Data ss:Type="String">not for specifying medical diets, but for casual dietary restrictions such as vegetarian, diary-free, nut-free, etc</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Patient.confidentiality</Data></Cell>
+    <Cell><Data ss:Type="String">!Patient.confidentiality</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">PatientConfidentiality</Data></Cell>
@@ -436,13 +437,13 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>3</TopRowVisible>
+   <TopRowVisible>14</TopRowVisible>
    <LeftColumnVisible>1</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>10</ActiveCol>
+     <ActiveRow>21</ActiveRow>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -895,7 +896,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="contact-relationship">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="10" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="11" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="14.55">
    <Column ss:AutoFitWidth="0" ss:Width="78.599999999999994"/>
    <Column ss:Width="220.8"/>
@@ -939,6 +940,10 @@
     <Cell><Data ss:Type="String">guarantor</Data></Cell>
     <Cell><Data ss:Type="String">Contact for financial matters</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">owner</Data></Cell>
+    <Cell><Data ss:Type="String">For animals, the owner of the animal</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -950,7 +955,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>10</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

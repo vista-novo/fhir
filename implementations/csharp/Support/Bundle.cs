@@ -47,17 +47,24 @@ namespace HL7.Fhir.Instance.Support
         public string Title { get; set; }
         public DateTimeOffset? LastUpdated { get; set; }
         public Uri Id { get; set; }
-        public Uri SelfLink { get; set; }
+        public UriLinkList Links { get; set; }
 
-        public Dictionary<string,Uri> OtherLinks { get; set; }
+        public string AuthorName { get; set; }
+        public string AuthorUri { get; set; }
+
 
         public List<BundleEntry> Entries { get; private set; }
 
         public Bundle()
         {
             Entries = new List<BundleEntry>();
+            Links = new UriLinkList();
         }
 
+
+        public ResourceEntry CreateResourceEntry() { return new ResourceEntry(this); }
+        public DeletedEntry CreateDeletedEntry() { return new DeletedEntry(this); }
+        public BinaryEntry CreateBinaryEntry() { return new BinaryEntry(this); }
 
         public ErrorList Validate()
         {
@@ -81,7 +88,7 @@ namespace HL7.Fhir.Instance.Support
             return errors;
         }
 
-        public static string ATOM_CATEGORY_NAMESPACE = "http://hl7.org/fhir/resource-types";
+        public static string ATOM_CATEGORY_RESOURCETYPE_NS = "http://hl7.org/fhir/resource-types";
         public static string ATOMPUB_TOMBSTONES_NS = "http://purl.org/atompub/tombstones/1.0";
         public static string ATOMPUBNS = "http://www.w3.org/2005/Atom";
     }
@@ -89,8 +96,14 @@ namespace HL7.Fhir.Instance.Support
 
     public abstract class BundleEntry
     {
+        internal BundleEntry(Bundle parent)
+        {
+            this.Parent = parent;
+        }
+
         public Uri SelfLink { get; set; }
         public Uri Id { get; set; }
+        public Bundle Parent { private set; get; }
 
         public virtual ErrorList Validate()
         {
@@ -121,6 +134,8 @@ namespace HL7.Fhir.Instance.Support
 
     public class DeletedEntry : BundleEntry
     {
+        internal DeletedEntry(Bundle parent) : base(parent) { }
+
         public DateTimeOffset When { get; set; }
 
         public override string Summary
@@ -135,12 +150,36 @@ namespace HL7.Fhir.Instance.Support
 
     public abstract class ContentEntry : BundleEntry
     {
+        internal ContentEntry(Bundle parent) : base(parent) { }
+
         public string Title { get; set; }
 
         public DateTimeOffset? LastUpdated { get; set; }
         public DateTimeOffset? Published { get; set; }
-        public string AuthorName { get; set; }
-        public string AuthorUri { get; set; }
+        public string EntryAuthorName { get; set; }
+        public string EntryAuthorUri { get; set; }
+
+        public string AuthorName 
+        {
+            get
+            {
+                if (!String.IsNullOrEmpty(EntryAuthorName))
+                    return EntryAuthorName;
+                else
+                    return Parent.AuthorName;
+            }
+        }
+
+        public string AuthorUri
+        {
+            get
+            {
+                if (!String.IsNullOrEmpty(EntryAuthorUri))
+                    return EntryAuthorUri;
+                else
+                    return Parent.AuthorUri;
+            }
+        }
 
         public override ErrorList Validate()
         {
@@ -150,7 +189,7 @@ namespace HL7.Fhir.Instance.Support
                 errors.Add("Entry must contain a title");
 
             if (String.IsNullOrWhiteSpace(AuthorName))
-                errors.Add("Entry must have at least one author with a name");
+                errors.Add("Entry, or its parent feed, must have at least one author with a name");
 
             if (LastUpdated == null)
                 errors.Add("Entry must have an updated date");
@@ -161,6 +200,8 @@ namespace HL7.Fhir.Instance.Support
 
     public class BinaryEntry : ContentEntry
     {
+        internal BinaryEntry(Bundle parent) : base(parent) { }
+
         public string MediaType;
         public byte[] Content { get; set; }
 
@@ -188,6 +229,8 @@ namespace HL7.Fhir.Instance.Support
 
     public class ResourceEntry : ContentEntry
     {
+        internal ResourceEntry(Bundle parent) : base(parent) { }
+
         public string ResourceType { get; private set; }
 
         // Provide the content by either giving a Resource (for FHIR resources)

@@ -99,25 +99,32 @@ namespace HL7.Fhir.Instance.Tests
                  {
                      Status = Narrative.NarrativeStatus.Generated,
                      Div = "<div xmlns='http://www.w3.org/1999/xhtml'>Patient 3141 - Wouter Gert, nov. 30th, 1972</div>"
-                 }
+                 },
+
+                 Containeds = new List<Resource>() { new List() { Mode = List.ListMode.Snapshot } }
             };
 
             Assert.AreEqual(@"<?xml version=""1.0"" encoding=""utf-16""?>" +
-                @"<Patient id=""Ab4"" xmlns=""http://hl7.org/fhir""><identifier><id value=""3141"" /></identifier>" +
+                @"<Patient id=""Ab4"" xmlns=""http://hl7.org/fhir"">" +
+                @"<text><status value=""generated"" /><div xmlns='http://www.w3.org/1999/xhtml'>Patient 3141 - Wouter Gert, nov. 30th, 1972</div></text>" +
+                @"<contained><List><mode value=""snapshot"" /></List></contained>" +
+                @"<identifier><id value=""3141"" /></identifier>" +
                 @"<details><name>" +
                     @"<family value=""van der"">" +
                         @"<extension><url value=""http://hl7.org/fhir/profile/@iso-21090#name-qualifier"" /><valueCode value=""VV"" /></extension>" +
                     @"</family><family value=""Vlies"" /><given value=""Wouter"" /><given value=""Gert"" /></name>" +
                     @"<birthDate value=""1972-11-30"" /></details>" +
-                @"<text><status value=""generated"" /><div xmlns='http://www.w3.org/1999/xhtml'>Patient 3141 - Wouter Gert, nov. 30th, 1972</div></text>" +
                 @"</Patient>", FhirSerializer.SerializeResourceAsXml(p));
 
-            Assert.AreEqual(@"{""Patient"":{""_id"":""Ab4"",""identifier"":[{""id"":{""value"":""3141""}}]," +
+            Assert.AreEqual(@"{""Patient"":{""_id"":""Ab4""," +
+                 @"""text"":{""status"":{""value"":""generated""},""div"":""<div xmlns='http://www.w3.org/1999/xhtml'>" +
+                    @"Patient 3141 - Wouter Gert, nov. 30th, 1972</div>""},"+
+                 @"""contained"":[{""List"":{""mode"":{""value"":""snapshot""}}}],"+
+                @"""identifier"":[{""id"":{""value"":""3141""}}]," +
                 @"""details"":{""name"":[{""family"":[{""value"":""van der""," +
                     @"""extension"":[{""url"":{""value"":""http://hl7.org/fhir/profile/@iso-21090#name-qualifier""},""valueCode"":{""value"":""VV""}}]}," +
-                    @"{""value"":""Vlies""}],""given"":[{""value"":""Wouter""},{""value"":""Gert""}]}],""birthDate"":{""value"":""1972-11-30""}}," +
-                @"""text"":{""status"":{""value"":""generated""},""div"":""<div xmlns='http://www.w3.org/1999/xhtml'>" +
-                    @"Patient 3141 - Wouter Gert, nov. 30th, 1972</div>""}}}", FhirSerializer.SerializeResourceAsJson(p));
+                    @"{""value"":""Vlies""}],""given"":[{""value"":""Wouter""},{""value"":""Gert""}]}],""birthDate"":{""value"":""1972-11-30""}}" +
+                @"}}", FhirSerializer.SerializeResourceAsJson(p));
         }
     }
 }

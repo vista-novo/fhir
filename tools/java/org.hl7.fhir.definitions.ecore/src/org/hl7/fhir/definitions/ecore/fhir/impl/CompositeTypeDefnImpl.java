@@ -342,13 +342,13 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	public EList<ElementDefn> getAllElements() {
 		EList<ElementDefn> result = new BasicEList<ElementDefn>();
 		
-		result.addAll(this.getElements());
-		
 		if( this.getBaseType() != null )
 		{
 			CompositeTypeDefn base = (CompositeTypeDefnImpl)resolve(this.getBaseType());
 			result.addAll(base.getAllElements());
 		}
+		
+		result.addAll(this.getElements());
 		
 		return result;
 	}

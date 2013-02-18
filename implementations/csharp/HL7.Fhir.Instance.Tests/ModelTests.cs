@@ -11,6 +11,13 @@ namespace HL7.Fhir.Instance.Tests
     public class ModelTests
     {
         [TestMethod]
+        public void ValidateUriAssertions()
+        {
+            Uri abs = new Uri("http://www.nu.nl", UriKind.RelativeOrAbsolute);
+            Assert.IsTrue(abs.IsAbsoluteUri);
+        }
+
+        [TestMethod]
         public void VerifyCastOperators()
         {
             FhirBoolean b = true;
