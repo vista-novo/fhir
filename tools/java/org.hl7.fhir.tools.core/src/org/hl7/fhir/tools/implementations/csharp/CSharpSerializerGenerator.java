@@ -205,7 +205,7 @@ public class CSharpSerializerGenerator extends GenBlock
 			if( idElement != null )
 			{
 				ln("// Serialize element's localId attribute");
-				ln("if( value.InternalId != null && String.IsNullOrEmpty(value.InternalId.Contents) )");
+				ln("if( value.InternalId != null && !String.IsNullOrEmpty(value.InternalId.Contents) )");
 				ln("	writer.WriteRefIdContents(value.InternalId.Contents);");
 				ln();
 			}

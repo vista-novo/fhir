@@ -18,16 +18,6 @@ namespace HL7.Fhir.Instance.Tests
     public class RoundtripTest
     {
         [TestMethod]
-        public void RoundtripDavid()
-        {
-            string file = @"..\..\..\..\..\dhSample\meddocument.xml";
-
-            string baseFilename = Path.Combine(Path.GetDirectoryName(file), "meddocument");
-
-            testFeed(file, baseFilename);
-        }
-
-        [TestMethod]
         public void FullRoundtripOfAllExamples()
         {
             string examples = @"..\..\..\..\..\publish\examples.zip";
@@ -164,7 +154,7 @@ namespace HL7.Fhir.Instance.Tests
             using (XmlReader xr = createReader(file))
             {
                 Debug.WriteLine("  Reading Xml...");
-                singleResult = FhirParser.ParseResource(new XmlFhirReader(xr), errors);
+                singleResult = FhirParser.ParseResource(xr, errors);
                 xr.Close();
             }
 
@@ -177,9 +167,7 @@ namespace HL7.Fhir.Instance.Tests
                 using (JsonTextWriter w = new JsonTextWriter(new System.IO.StreamWriter(jsonFile)))
                 {
                     Debug.WriteLine("  Writing json...");
-                    singleResult.Save(w);
-                    w.Flush();
-                    w.Close();
+                    FhirSerializer.SerializeResource(singleResult, w);
                 }
 
                 testSingleJsonResource(jsonFile);
@@ -195,7 +183,7 @@ namespace HL7.Fhir.Instance.Tests
             using (JsonTextReader jr = new JsonTextReader(new System.IO.StreamReader(jsonFile)))
             {
                 Debug.WriteLine("  Reading from json...");
-                singleResult = FhirParser.ParseResource(new JsonFhirReader(jr), errors);
+                singleResult = FhirParser.ParseResource(jr, errors);
                 jr.Close();
             }
 
@@ -208,9 +196,7 @@ namespace HL7.Fhir.Instance.Tests
                 using (XmlWriter xw = new XmlTextWriter(new System.IO.StreamWriter(xmlFile)))
                 {
                     Debug.WriteLine("  Writing xml...");
-                    singleResult.Save(xw);
-                    xw.Flush();
-                    xw.Close();
+                    FhirSerializer.SerializeResource(singleResult, xw);
                 }
             }
         }

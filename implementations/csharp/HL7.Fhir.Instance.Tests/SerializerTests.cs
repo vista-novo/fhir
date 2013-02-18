@@ -18,50 +18,41 @@ namespace HL7.Fhir.Instance.Tests
     public class SerializerTests
     {
         [TestMethod]
-        public void SerializePrimitive()
+        public void SerializeElement()
         {
-            Action<IFhirWriter> action = writer =>
-                 {
-                     FhirBoolean bl = new FhirBoolean(true);
-                     bl.Save(writer);
-                 };
-
-            string j = writeStuffJ(action);
-            string x = writeStuffX(action);
-
-            Assert.AreEqual("{\"x\":\"true\"}",j);
-            Assert.AreEqual("<x xmlns=\"http://hl7.org/fhir\">true</x>", x);
-
-            Action<IFhirWriter> action2 = writer =>
+            Identifier id = new Identifier
                 {
-                    FhirBoolean bl = new FhirBoolean(null);
-                //    bl.Dar = DataAbsentReason.Notasked;
-                    bl.Save(writer,true);
+                    InternalId = "3141",
+                    Use = Identifier.IdentifierUse.Official,
+                    Label = "SSN",
+                    System = new Uri("http://hl7.org/fhir/sid/us-ssn"),
+                    Id = "000111111",
+                    Period = new Period() { Start = new FhirDateTime(2001, 1, 2), End = new FhirDateTime(2010, 3, 4) },
+                    Assigner = new ResourceReference { Type = "Organization", Url = new Uri("../organization/@123", UriKind.Relative), Display = "HL7, Inc" }
                 };
 
-            j = writeStuffJ(action2);
-            x = writeStuffX(action2);
 
-         //   Assert.AreEqual("{\"x\":{\"dataAbsentReason\":\"notasked\"}}", j);
-        //    Assert.AreEqual("<x dataAbsentReason=\"notasked\" xmlns=\"http://hl7.org/fhir\" />", x);
+            Assert.AreEqual(@"<?xml version=""1.0"" encoding=""utf-16""?>" +
+                    @"<element id=""3141"" xmlns=""http://hl7.org/fhir"">" +
+                        @"<use value=""official"" />" +
+                        @"<label value=""SSN"" />" +
+                        @"<system value=""http://hl7.org/fhir/sid/us-ssn"" />" +
+                        @"<id value=""000111111"" />" +
+                        @"<period><start value=""2001-01-02"" /><end value=""2010-03-04"" /></period>" +
+                        @"<assigner><type value=""Organization"" /><url value=""../organization/@123"" /><display value=""HL7, Inc"" /></assigner>" +
+                     @"</element>", FhirSerializer.SerializeElementAsXml(id));
 
-
-            Action<IFhirWriter> action3 = writer =>
-                {
-                    FhirBoolean bl = new FhirBoolean(false);
-                    bl.ReferralId = "3141";
-                    bl.Save(writer,true);
-                };
-
-            j = writeStuffJ(action3);
-            x = writeStuffX(action3);
-
-            Assert.AreEqual("{\"x\":{\"_id\":\"3141\",\"value\":\"false\"}}", j);
-            Assert.AreEqual("<x id=\"3141\" xmlns=\"http://hl7.org/fhir\">false</x>", x);
+            Assert.AreEqual(
+                @"{""_id"":""3141"",""use"":{""value"":""official""},""label"":{""value"":""SSN""}," +
+                @"""system"":{""value"":""http://hl7.org/fhir/sid/us-ssn""},""id"":{""value"":""000111111""}," +
+                @"""period"":{""start"":{""value"":""2001-01-02""},""end"":{""value"":""2010-03-04""}}," +
+                @"""assigner"":{""type"":{""value"":""Organization""},""url"":{""value"":""../organization/@123""}," +
+                @"""display"":{""value"":""HL7, Inc""}}}", FhirSerializer.SerializeElementAsJson(id));
         }
 
+
         [TestMethod]
-        public void TestPolymorphSerialization()
+        public void PolymorphAndArraySerialization()
         {
             Extension ext = new Extension()
                 {
@@ -76,153 +67,57 @@ namespace HL7.Fhir.Instance.Tests
                         }
                 };
 
-            Action<IFhirWriter> action = writer => ext.Save(writer);
-
-            string j = writeStuffJ(action);
-            string x = writeStuffX(action);
-
-            Assert.AreEqual("{\"x\":{\"url\":\"http://hl7.org/fhir/profiles/@3141#test\",\"valueBoolean\":\"true\",\"extension\":" +
-                "[{\"valueCoding\":{\"system\":\"http://hl7.org/fhir/sid/icd-10\",\"code\":\"R51\"}}]}}", j);
-            Assert.AreEqual("<x xmlns=\"http://hl7.org/fhir\"><url>http://hl7.org/fhir/profiles/@3141#test</url><valueBoolean>true</valueBoolean>" +
-                            "<extension><valueCoding><system>http://hl7.org/fhir/sid/icd-10</system><code>R51</code>" +
-                            "</valueCoding></extension></x>", x);
+            Assert.AreEqual(@"<?xml version=""1.0"" encoding=""utf-16""?>" +
+                @"<element xmlns=""http://hl7.org/fhir""><url value=""http://hl7.org/fhir/profiles/@3141#test"" /><valueBoolean value=""true"" />" +
+                @"<extension><valueCoding><system value=""http://hl7.org/fhir/sid/icd-10"" /><code value=""R51"" /></valueCoding></extension>" +
+                @"</element>", FhirSerializer.SerializeElementAsXml(ext));
+            Assert.AreEqual(
+                @"{""url"":{""value"":""http://hl7.org/fhir/profiles/@3141#test""},""valueBoolean"":{""value"":""true""}," +
+                @"""extension"":[{""valueCoding"":{""system"":{""value"":""http://hl7.org/fhir/sid/icd-10""},""code"":{""value"":""R51""}}}]}",
+                FhirSerializer.SerializeElementAsJson(ext));
         }
 
         [TestMethod]
-        public void TestResourceSerialization()
+        public void ResourceWithExtensionAndNarrative()
         {
-            var sw = new StringWriter();
-            JsonWriter w = new JsonTextWriter(sw);
-            IFhirWriter writer = new JsonFhirWriter(w);
-
-            /** TODO: Fix this when Person definition is stable 
-            CodeableConcept nl = new CodeableConcept();
-            nl.Coding
-            nl.ReferralId = "lang-1";
-
-            Person p = new Person()
-            {           
-                Id = new Id("34234"),
-                BirthDate = new FhirDateTime(null) { Dar = DataAbsentReason.Notasked },
-                
-                Language = new List<Person.PersonLanguageComponent>()
+            Patient p = new Patient()
+            {
+                InternalId = "Ab4",
+                Identifiers = new List<Identifier> { new Identifier() { Id = "3141" } },
+                Details = new Demographics()
                 {
-                    new Person.PersonLanguageComponent() { LanguageCode = nl, ProficiencyLevelCode = Person.LanguageAbilityProficiency.F },
-                    new Person.PersonLanguageComponent() { LanguageCode = "cmn", ProficiencyLevelCode = PersonLanguageUse.Useable }
+                    BirthDate = new FhirDateTime(1972, 11, 30),
+                    Names = new List<HumanName> {
+                        new HumanName() { Givens = new List<FhirString>() { "Wouter", "Gert" },
+                                   Familys = new List<FhirString>() { new FhirString() { Contents = "van der", 
+                                        Extensions = new List<Extension> { new Extension 
+                                                        { Url= new Uri("http://hl7.org/fhir/profile/@iso-21090#name-qualifier"),
+                                                            Value = new Code("VV") } } }, "Vlies" } } }
                 },
 
-                Name = new List<HumanName>()
-                {
-                    new HumanName()
-                    {
-                        Use = HumanName.NameUse.Official,
-                        Part = new List<HumanName.HumanNamePartComponent>()
-                            {
-                                new HumanName.HumanNamePartComponent() 
-                                {
-                                    Type = HumanName.NamePartType.Given,
-                                    Value = "Karen"
-                                },
-                                new HumanName.HumanNamePartComponent() 
-                                {
-                                    ReferralId = "n1",
-                                    Type = HumanName.NamePartType.Family,
-                                    Value = "van"
-                                }
-                            }
-                    }
-                 },
-
-                 Text = new Narrative()
+                Text = new Narrative()
                  {
                      Status = Narrative.NarrativeStatus.Generated,
-                     Div = "<div xmlns='http://www.w3.org/1999/xhtml'>stuff</div>"            
+                     Div = "<div xmlns='http://www.w3.org/1999/xhtml'>Patient 3141 - Wouter Gert, nov. 30th, 1972</div>"
                  }
             };
 
-            p.Save(writer);
+            Assert.AreEqual(@"<?xml version=""1.0"" encoding=""utf-16""?>" +
+                @"<Patient id=""Ab4"" xmlns=""http://hl7.org/fhir""><identifier><id value=""3141"" /></identifier>" +
+                @"<details><name>" +
+                    @"<family value=""van der"">" +
+                        @"<extension><url value=""http://hl7.org/fhir/profile/@iso-21090#name-qualifier"" /><valueCode value=""VV"" /></extension>" +
+                    @"</family><family value=""Vlies"" /><given value=""Wouter"" /><given value=""Gert"" /></name>" +
+                    @"<birthDate value=""1972-11-30"" /></details>" +
+                @"<text><status value=""generated"" /><div xmlns='http://www.w3.org/1999/xhtml'>Patient 3141 - Wouter Gert, nov. 30th, 1972</div></text>" +
+                @"</Patient>", FhirSerializer.SerializeResourceAsXml(p));
 
-            Assert.AreEqual("{\"Person\":{\"id\":{\"value\":\"34234\"},\"name\":" +
-                "[{\"use\":\"official\",\"part\":[{\"type\":\"given\",\"value\":\"Karen\"}"+
-                ",{\"_id\":\"n1\",\"type\":\"family\",\"value\":\"van\"}]}],\"dob\":"+
-                "{\"dataAbsentReason\":\"notasked\"},\"language\":[{\"code\":"+
-                "{\"_id\":\"lang-1\",\"value\":\"dut\"},\"use\":{\"value\":\"fluent\"}},"+
-                "{\"code\":{\"value\":\"cmn\"},\"use\":{\"value\":\"useable\"}}],\"text\":"+
-                "{\"status\":\"generated\",\"div\":\"<div xmlns='http://www.w3.org/1999/xhtml'>stuff</div>\"}}}", sw.ToString());
-
-            sw = new StringWriter();
-            XmlWriter wx = new XmlTextWriter(sw);
-            writer = new XmlFhirWriter(wx);
-
-            p.Save(writer);
-
-            Assert.AreEqual("<Person xmlns=\"http://hl7.org/fhir\">" +
-                "<id>34234</id><name><use>official</use><part><type>given</type><value>Karen</value></part>" +
-                "<part id=\"n1\"><type>family</type><value>van</value></part></name><dob dataAbsentReason=\"notasked\" />" +
-                "<language><code id=\"lang-1\">dut</code><use>fluent</use></language><language><code>cmn</code>" +
-                "<use>useable</use></language><text><status>generated</status>" +
-                "<div xmlns='http://www.w3.org/1999/xhtml'>stuff</div></text></Person>", sw.ToString()); */
-        }
-
-
-        [TestMethod]
-        public void LoadAndSerializeLargeResource()
-        {
-            var settings = new XmlReaderSettings();
-            settings.IgnoreComments = true;
-            settings.IgnoreProcessingInstructions = true;
-            settings.IgnoreWhitespace = true;
-
-            XmlReader xr = XmlReader.Create(new StreamReader(@"..\..\..\..\..\publish\diagnosticreport-example.xml"), settings);
-            IFhirReader r = new XmlFhirReader(xr);
-
-            ErrorList errors = new ErrorList();
-            DiagnosticReport rep = (DiagnosticReport)FhirParser.ParseResource(r, errors);
-
-            Assert.IsNotNull(rep);
-            Assert.IsTrue(errors.Count() == 0, errors.ToString());
-
-            var sw = new StringWriter();
-            JsonWriter w = new JsonTextWriter(sw);
-            IFhirWriter writer = new JsonFhirWriter(w);
-            rep.Save(writer);
-
-            string result = sw.ToString();
-        }
-        
-        private string writeStuffJ(Action<IFhirWriter> action)
-        {
-            var sw = new StringWriter();
-            JsonWriter w = new JsonTextWriter(sw);
-            IFhirWriter writer = new JsonFhirWriter(w);
-
-            writer.WriteStartComplexContent();
-            writer.WriteStartElement("x");
-
-            action(writer);
-
-            writer.WriteEndElement();
-            writer.WriteEndComplexContent();
-
-            return sw.ToString();
-        }
-
-
-        private string writeStuffX(Action<IFhirWriter> action)
-        {
-            var sw = new StringWriter();
-            XmlWriter w = new XmlTextWriter(sw);
-            IFhirWriter writer = new XmlFhirWriter(w);
-
-            writer.WriteStartComplexContent();
-            writer.WriteStartElement("x");
-
-            action(writer);
-
-            writer.WriteEndElement();
-            writer.WriteEndComplexContent();
-
-            return sw.ToString();
+            Assert.AreEqual(@"{""Patient"":{""_id"":""Ab4"",""identifier"":[{""id"":{""value"":""3141""}}]," +
+                @"""details"":{""name"":[{""family"":[{""value"":""van der""," +
+                    @"""extension"":[{""url"":{""value"":""http://hl7.org/fhir/profile/@iso-21090#name-qualifier""},""valueCode"":{""value"":""VV""}}]}," +
+                    @"{""value"":""Vlies""}],""given"":[{""value"":""Wouter""},{""value"":""Gert""}]}],""birthDate"":{""value"":""1972-11-30""}}," +
+                @"""text"":{""status"":{""value"":""generated""},""div"":""<div xmlns='http://www.w3.org/1999/xhtml'>" +
+                    @"Patient 3141 - Wouter Gert, nov. 30th, 1972</div>""}}}", FhirSerializer.SerializeResourceAsJson(p));
         }
     }
 }

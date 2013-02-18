@@ -102,23 +102,27 @@ namespace HL7.Fhir.Instance.Serializers
         }
 
 
-        public static string SerializeElementAsJson(Resource resource)
+        public static string SerializeElementAsJson(Element elem)
         {
             StringBuilder resultBuilder = new StringBuilder();
 
             StringWriter sw = new StringWriter(resultBuilder);
             JsonWriter jw = new JsonTextWriter(sw);
-            FhirSerializer.SerializeResource(resource, new JsonFhirWriter(jw));
+            FhirSerializer.SerializeElement(elem, new JsonFhirWriter(jw));
 
             return resultBuilder.ToString();
         }
 
-        public static string SerializeElementAsXml(Element elem)
+        public static string SerializeElementAsXml(Element elem, string name = null)
         {
             //Note: this will always carry UTF-16 coding in the <?xml> header
             StringBuilder sb = new StringBuilder();
-            XmlWriter xw = XmlWriter.Create(sb);
+            XmlWriterSettings xws = new XmlWriterSettings { }; // { ConformanceLevel = System.Xml.ConformanceLevel.Fragment };
+            XmlWriter xw = XmlWriter.Create(sb,xws);
+            
+            xw.WriteStartElement(name == null ? "element" : name, Support.Util.FHIRNS);
             FhirSerializer.SerializeElement(elem, new XmlFhirWriter(xw));
+            xw.WriteEndElement();
             xw.Flush();
             xw.Close();
 

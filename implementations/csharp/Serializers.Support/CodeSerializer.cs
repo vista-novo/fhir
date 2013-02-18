@@ -54,7 +54,7 @@ namespace HL7.Fhir.Instance.Serializers
             writer.WriteStartComplexContent();
             
             // Serialize element's localId attribute
-            if( value.InternalId != null && String.IsNullOrEmpty(value.InternalId.Contents) )
+            if( value.InternalId != null && !String.IsNullOrEmpty(value.InternalId.Contents) )
             	writer.WriteRefIdContents(value.InternalId.Contents);
             
             // Serialize element's primitive contents
