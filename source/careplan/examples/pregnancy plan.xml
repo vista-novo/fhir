@@ -2,10 +2,12 @@
 <CarePlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://hl7.org/fhir ../fhirSchema/careplan.xsd"
     xmlns="http://hl7.org/fhir">
+    <!-- an extension to record the LMP, which is required at the plan level... -->
     <extension>
         <url value="http://orionhealth.com/fhir/careplan#lmp" />
         <valueDateTime value="20130101" />
     </extension>
+ 
     <text>
         <status value="additional"></status>
         <div xmlns="http://www.w3.org/1999/xhtml">
@@ -68,6 +70,13 @@
     <goal value="Maintain a womans health throughout pregnancy and ensure a healthy child"/>
     <activity>
         <!-- This will be the first antenatal visit -->
+        
+        <!-- a link to further details about the first antenatal details -->
+        <extension>
+            <url value="http://orionhealth.com/fhir/careplan#andetails" />
+            <valueUri value="http://orionhealth.com/fhir/careplan/1andetails" />
+        </extension>
+        
         <category value="encounter"></category>
         <code>
             <coding>
