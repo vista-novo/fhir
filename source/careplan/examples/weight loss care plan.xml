@@ -1,0 +1,69 @@
+<CarePlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://hl7.org/fhir ../fhirSchema/careplan.xsd"
+ xmlns="http://hl7.org/fhir">
+    <text>
+        <status value="additional"></status>
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            A simple care plan to indicate a patient taking their weight once a day because of obesity.
+            Some Notes:
+            <ul>
+            <li>It would be good to have some way of specifying/coding a goal. eg what the target weight is</li>
+            <li>In the codeable concepts I've been lazy and just put the text. There should, of course, ba a code behind these</li>
+        </ul></div>
+    </text>
+    <patient>
+        <type value="patient"></type>
+        <url value="100"/>
+        <display value="john smith"/>
+    </patient>
+    <status value="active"/>
+    <period>
+        <end value ="20130101"/>
+    </period>
+    <concern>
+        <type value="problem"></type>
+        <url value="100"/>
+        <display value="obesity"/>
+    </concern>
+    <participant>
+        <role>
+            <text value='responsiblePerson'></text>
+        </role>
+        <member>
+            <type value="patient"></type>
+            <url value="100"/>
+            <display value="john smith"/>
+        </member>
+    </participant>
+    <participant>
+        <role>
+            <text value='adviser'></text>
+        </role>
+        <member>
+            <type value="clinician"></type>
+            <url value="100"/>
+            <display value="Dorothy Dietition"/>
+        </member>
+    </participant>
+    <goal value="Target weight is 80 kg. Note: be nice if this could be coded"/>
+    <activity>
+        <category value="observation"></category>
+        <code>
+            <text value="a code for weight measurement"></text>
+        </code>
+        <prohibited value="false"></prohibited>
+        <schedule>
+            <repeat>
+                <frequency value="1" />
+                <duration value="1" />
+                <units value="d" />
+            </repeat>
+        </schedule>
+        <performer>
+            <type value="patient"></type>
+            <url value="100"/>
+            <display value="john smith"/>
+        </performer>
+    </activity>
+</CarePlan>
+

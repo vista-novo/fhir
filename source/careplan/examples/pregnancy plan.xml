@@ -1,0 +1,178 @@
+
+<CarePlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://hl7.org/fhir ../fhirSchema/careplan.xsd"
+    xmlns="http://hl7.org/fhir">
+    <extension>
+        <url value="http://orionhealth.com/fhir/careplan#lmp" />
+        <valueDateTime value="20130101" />
+    </extension>
+    <text>
+        <status value="additional"></status>
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <div>A maternity care plan (for a pregnant woman).</div>           
+            <div>LMP is 1st Jan, 2013 (a greaat new years party!) The plan has a scheduled first antenatal,
+            and 'placeholders' for the second antenatal and delivery (there would be lots of others of course)</div>
+            <div>Note that where is a proposed 'status' element against each activity</div>
+        </div>
+    </text>
+    <patient>
+        <type value="patient"></type>
+        <url value="101"/>
+        <display value="jane smith"/>
+    </patient>
+    <status value="active"/>
+    <period>
+        <!-- The likely duration of the pregnancy -->
+        <start value ="20130101"/>
+        <end value ="20131001"/>
+    </period>
+    <concern>
+        <!-- Shouldn't really call a pregnancy a 'problem'! -->
+        <type value="problem"></type>
+        <url value="100"/>
+        <display value="pregnancy"/>
+    </concern>
+
+    <participant>
+        <!-- In New Zealand, there is a Lead Maternity Carer (LMC) - often a midwife -->
+        <role>
+            <coding>
+                <system value="mySys"/>
+                <code value="lmc"/>
+            </coding>
+            <text value='Mid Wife'></text>
+        </role>
+        <member>
+            <!-- This links to the clincian resource, so we get all the stuff related to that like address, contact etc... -->
+            <type value="clinician"></type>
+            <url value="mm100"/>
+            <display value="Mavis Midwife"/>
+        </member>
+    </participant>
+    <participant>
+        <!-- To indicate that there is an obstretian consultant involved in this case. -->
+        <role>
+            <coding>
+                <system value="mySys"/>
+                <code value="obs"/>
+            </coding>
+            <text value='Obstretitian'></text>
+        </role>
+        <member>
+            <!-- This links to the clincian resource, so we get all tha stuff related to that like address, contact etc... -->
+            <type value="clinician"></type>
+            <url value="101"/>
+            <display value="Oscar Obstretian"/>
+        </member>
+    </participant>
+    <goal value="Maintain a womans health throughout pregnancy and ensure a healthy child"/>
+    <activity>
+        <!-- This will be the first antenatal visit -->
+        <category value="encounter"></category>
+        <code>
+            <coding>
+                <system value="mySystem"/>
+                <code value="1an"/>
+            </coding>
+            <text value='First Antenatal visit'></text>
+        </code>
+        <!-- 
+            There is no status property (yet). Can use an extension if we had to...
+            Other options could be completed, cancelled...
+            <status value='scheduled'/>
+         -->
+        <prohibited value="false"></prohibited>
+        <schedule>
+            <!-- The visit should occur between 14 feb and 30 feb -->
+            <event>
+                <start value="20130214"/>
+                <end value="20130230"/>
+            </event>
+        </schedule>
+        <performer>
+            <type value="clinician"></type>
+            <url value="mm100"/>
+            <display value="Mavis Midwife"/>
+        </performer>
+        <details value="The first antenatal visit. This is where a detailed physical examination is performed.
+            and the pregnanacy discussed with the mother-to-be."></details>
+        <action>
+            <!-- This is a booked encounter with Mavis Midwife for the first antenatal checkup. 
+            This entry is only made after the appointment (a planned encounter) has been made.-->
+            <type value="encounter"></type>
+            <url value="xxx"/>
+            <display value="Appointment with Mavis midwife @12.30pm, 112 St albans Ave"/>
+        </action>
+    </activity>
+    
+    <activity>
+        <!-- This will be the second antenatal visit - 3 months after LMP. It is not yet scheduled. -->
+        <category value="encounter"></category>
+        <code>
+            <!-- The code is just for an antenatal visit. There are many of these, the first is special... -->
+            <coding>
+                <system value="mySystem"/>
+                <code value="an"/>
+            </coding>
+            <text value='Follow-up Antenatal visit'></text>           
+        </code>
+        <prohibited value="false"></prohibited>
+        <schedule>
+            <!-- The visit should occur between 1 march and 14 march -->
+            <event>
+                <start value="20130301"/>
+                <end value="20130314"/>
+            </event>
+        </schedule>
+        <performer>
+            <!-- The performer is known, but the actual appointment is not yet made, hence there is no action element... -->
+            <type value="clinician"></type>
+            <url value="mm100"/>
+            <display value="Mavis Midwife"/>
+        </performer>
+        <details value="The second antenatal visit. Discuss any issues that arose from the first antenatal visit"></details>
+    </activity>
+    <!-- 
+        There would be a number of other visits to be scheduled here... 
+        ...
+        ...
+    
+    -->
+    
+    <activity>
+        <!-- This will be the delivery. It is not yet scheduled. -->
+        <category value="encounter"></category>
+        <code>
+            <coding>
+                <system value="mySystem"/>
+                <code value="del"/>
+            </coding>
+            <text value='Delivery'></text>
+            
+        </code>
+        <prohibited value="false"></prohibited>
+        <schedule>
+            <!-- The delivery should occur between 1 september and 14 september -->
+            <event>
+                <start value="20130901"/>
+                <end value="20130914"/>
+            </event>
+        </schedule>
+        <location>
+            <!-- Where the delivery is to occur... -->
+            <type value="location"></type>
+            <url value="loc100"/>
+            <display value="St Albans delivery suite"/>
+        </location>
+        <performer>
+            <!-- The intention is that Maris will be perfroming the delivery... -->
+            <type value="clinician"></type>
+            <url value="mm100"/>
+            <display value="Mavis Midwife"/>
+        </performer>
+        <details value="The delivery."></details>
+    </activity>
+    
+    
+</CarePlan>
+
