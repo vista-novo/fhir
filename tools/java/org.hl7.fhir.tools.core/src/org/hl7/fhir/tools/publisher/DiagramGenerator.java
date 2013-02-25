@@ -11,6 +11,7 @@ import net.sourceforge.plantuml.FileFormat;
 import net.sourceforge.plantuml.FileFormatOption;
 import net.sourceforge.plantuml.SourceStringReader;
 
+import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.utilities.IniFile;
@@ -20,8 +21,8 @@ import org.hl7.fhir.utilities.Utilities;
 public class DiagramGenerator {
 
   private PageProcessor page;
-  
-  private Map<String, String> definitions = new HashMap<String, String>();
+
+  private Map<String, String> founddefinitions = new HashMap<String, String>();
   
   public DiagramGenerator(PageProcessor page) {
     super();
@@ -100,8 +101,8 @@ public class DiagramGenerator {
   }
 
   private String processMap(String s) {
-    for (String n : definitions.keySet()) {
-      s = s.replace("title=\""+n+"\"", "title=\""+Utilities.escapeXml(definitions.get(n))+"\"");
+    for (String n : founddefinitions.keySet()) {
+      s = s.replace("title=\""+n+"\"", "title=\""+Utilities.escapeXml(founddefinitions.get(n))+"\"");
     }
     return s;
   }
@@ -143,8 +144,8 @@ public class DiagramGenerator {
   
 private String getDefns() {
     StringBuilder s = new StringBuilder();
-    for (String n : definitions.keySet())
-      s.append(n+"::"+definitions.get(n)+"|||");
+    for (String n : founddefinitions.keySet())
+      s.append(n+"::"+founddefinitions.get(n)+"|||");
     return s.toString();
   }
 
@@ -218,7 +219,7 @@ private String getDefns() {
         	  queue.add(t);
           }
         } else if (e.typeCode().startsWith("@")) {
-          ElementDefn src = root.getElementForPath(e.typeCode().substring(1));
+          ElementDefn src = root.getElementForPath(e.typeCode().substring(1), page.getDefinitions());
           n = names.get(src);          
         } else {
           n = Utilities.capitalize(e.getName());
@@ -238,7 +239,7 @@ private String getDefns() {
       }
     }
     s2.append("url of "+rn+" is [["+dn+"]]\r\n");
-    definitions.put(dn, r.getEnhancedDefinition());
+    founddefinitions.put(dn, r.getEnhancedDefinition());
     if (entry)
       s2.append("class "+rn+" << (R, #FF7700) >> {\r\n");
     else if (page.getDefinitions().dataTypeIsSharedInfo(r.typeCode()) || page.getDefinitions().hasType(rn)) {
@@ -250,7 +251,7 @@ private String getDefns() {
     for (org.hl7.fhir.definitions.model.ElementDefn e : r.getElements()) {
       if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@") && !page.getDefinitions().dataTypeIsSharedInfo(e.typeCode())) {
         String url = (dn+"."+e.getName()).replace("[", "_").replace("]", "_");
-        definitions.put(url, e.getEnhancedDefinition());
+        founddefinitions.put(url, e.getEnhancedDefinition());
         s2.append(" "+e.getName()+" : "+e.typeCode()+" "+e.describeCardinality()+" [["+url+"]]\r\n");
       }
     }

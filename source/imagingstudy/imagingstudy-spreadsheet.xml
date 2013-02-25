@@ -20,7 +20,6 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -160,7 +159,7 @@
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">dateTime</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Date and Time the study took place</Data></Cell>
+    <Cell><Data ss:Type="String">When the study took place (0008,0020 &amp; 0008,0030)</Data></Cell>
     <Cell><Data ss:Type="String">0008,0020+0008,0030</Data></Cell>
     <Cell><Data ss:Type="String">StudyDate, StudyTime</Data></Cell>
     <Cell><Data ss:Type="String">2011-01-01T11:01:20.000000</Data></Cell>
@@ -189,7 +188,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">oid</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Formal identifier for the study</Data></Cell>
+    <Cell><Data ss:Type="String">Formal identifier for the study (0020,000D)</Data></Cell>
     <Cell><Data ss:Type="String">0020,000D</Data></Cell>
     <Cell><Data ss:Type="String">StudyInstanceUID</Data></Cell>
     <Cell><Data ss:Type="String">urn:oid:2.16.124.113543.6003.1154777499.30246.19789.3503430045</Data></Cell>
@@ -204,7 +203,7 @@
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Other identifiers for the study</Data></Cell>
+    <Cell><Data ss:Type="String">Other identifiers for the study (0020,0010)</Data></Cell>
     <Cell><Data ss:Type="String">0020,0010</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Other identifiers for the study</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -217,7 +216,7 @@
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">ImageModality</Data></Cell>
-    <Cell><Data ss:Type="String">Modalities in this study</Data></Cell>
+    <Cell><Data ss:Type="String">Modalities in this study (0008,0061)</Data></Cell>
     <Cell><Data ss:Type="String">0008,0061</Data></Cell>
     <Cell><Data ss:Type="String">Modalities in Study</Data></Cell>
     <Cell><Data ss:Type="String">n/a</Data></Cell>
@@ -233,7 +232,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource(Provider)</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">The requesting/referring physician</Data></Cell>
+    <Cell><Data ss:Type="String">Requesting physician (0008,0090)</Data></Cell>
     <Cell><Data ss:Type="String">0008,0090</Data></Cell>
     <Cell><Data ss:Type="String">Referring Physician’s Name</Data></Cell>
     <Cell><Data ss:Type="String">n/a</Data></Cell>
@@ -248,7 +247,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Accession Number</Data></Cell>
+    <Cell><Data ss:Type="String">Accession Number (0008,0050)</Data></Cell>
     <Cell><Data ss:Type="String">0008,0050</Data></Cell>
     <Cell><Data ss:Type="String">AccessionNumber</Data></Cell>
     <Cell><Data ss:Type="String">n/a</Data></Cell>
@@ -263,7 +262,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Diagnoses etc provided with request</Data></Cell>
+    <Cell><Data ss:Type="String">Diagnoses etc with request (0008,1080)</Data></Cell>
     <Cell><Data ss:Type="String">0008,1080</Data></Cell>
     <Cell><Data ss:Type="String">Admitting Diagnoses Description</Data></Cell>
     <Cell><Data ss:Type="String">n/a</Data></Cell>
@@ -278,7 +277,7 @@
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Coding</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Type of procedure performed</Data></Cell>
+    <Cell><Data ss:Type="String">Type of procedure performed (0008,1032)</Data></Cell>
     <Cell><Data ss:Type="String">0008,1032</Data></Cell>
     <Cell><Data ss:Type="String">Procedure Code Sequence</Data></Cell>
     <Cell><Data ss:Type="String">n/a</Data></Cell>
@@ -293,7 +292,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource(Provider)</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Who read study and interpreted the images</Data></Cell>
+    <Cell><Data ss:Type="String">Who interpreted images (0008,1060)</Data></Cell>
     <Cell><Data ss:Type="String">0008,1060</Data></Cell>
     <Cell><Data ss:Type="String">Name of Physician(s) Reading Study</Data></Cell>
     <Cell><Data ss:Type="String">n/a</Data></Cell>
@@ -409,7 +408,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">integer</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">The number of this series in the overall sequence</Data></Cell>
+    <Cell><Data ss:Type="String">Number of this series in overall sequence (0020,0011)</Data></Cell>
     <Cell><Data ss:Type="String">0020,0011</Data></Cell>
     <Cell><Data ss:Type="String">Series Number</Data></Cell>
     <Cell><Data ss:Type="String">3</Data></Cell>
@@ -425,7 +424,7 @@
     <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">ImageModality</Data></Cell>
-    <Cell><Data ss:Type="String">The modality of this sequence</Data></Cell>
+    <Cell><Data ss:Type="String">The modality of this sequence (0008,0060)</Data></Cell>
     <Cell><Data ss:Type="String">0008,0060</Data></Cell>
     <Cell><Data ss:Type="String">Modality</Data></Cell>
     <Cell><Data ss:Type="String">CT</Data></Cell>
@@ -440,7 +439,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">oid</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Formal identifier for this series</Data></Cell>
+    <Cell><Data ss:Type="String">Formal identifier for this series (0020,000E)</Data></Cell>
     <Cell><Data ss:Type="String">0020,000E</Data></Cell>
     <Cell><Data ss:Type="String">Series Instance UID</Data></Cell>
     <Cell><Data ss:Type="String">2.16.124.113543.6003.2588828330.45298.17418.2723805630</Data></Cell>
@@ -455,7 +454,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">A description of the series</Data></Cell>
+    <Cell><Data ss:Type="String">A description of the series (0008,103E)</Data></Cell>
     <Cell><Data ss:Type="String">0008,103E</Data></Cell>
     <Cell><Data ss:Type="String">Series Description </Data></Cell>
     <Cell><Data ss:Type="String">CT Surview 180</Data></Cell>
@@ -470,7 +469,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Coding</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">ObservationBodySite</Data></Cell>
-    <Cell><Data ss:Type="String">Body part examined</Data></Cell>
+    <Cell><Data ss:Type="String">Body part examined (0018,0015)</Data></Cell>
     <Cell><Data ss:Type="String">0018,0015</Data></Cell>
     <Cell><Data ss:Type="String">Body Part Examined  (0018,0015)  O  O  O  O </Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Body part examined</Data></Cell>
@@ -501,7 +500,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">integer</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">The number of this image in the series</Data></Cell>
+    <Cell><Data ss:Type="String">The number of this image in the series (0020,0013)</Data></Cell>
     <Cell><Data ss:Type="String">0020,0013</Data></Cell>
     <Cell><Data ss:Type="String">Instance Number</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
@@ -519,7 +518,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">oid</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Formal identifier for this image</Data></Cell>
+    <Cell><Data ss:Type="String">Formal identifier for this image (0008,0018)</Data></Cell>
     <Cell><Data ss:Type="String">0008,0018</Data></Cell>
     <Cell><Data ss:Type="String">SOP Instance UID</Data></Cell>
     <Cell><Data ss:Type="String">2.16.124.113543.6003.189642796.63084.16748.2599092903</Data></Cell>
@@ -537,7 +536,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">oid</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">DICOM Image type</Data></Cell>
+    <Cell><Data ss:Type="String">DICOM Image type (0008,0016)</Data></Cell>
     <Cell><Data ss:Type="String">0008,0016</Data></Cell>
     <Cell><Data ss:Type="String">SOP Class UID</Data></Cell>
     <Cell><Data ss:Type="String">1.2.840.10008.5.1.4.1.1.2</Data></Cell>
@@ -579,6 +578,7 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -598,8 +598,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>12</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -987,7 +987,6 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>

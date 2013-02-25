@@ -492,7 +492,7 @@ public class ElementDefn {
 	}
 
 	
-	public ElementDefn getElementForPath(String pathname) throws Exception {
+	public ElementDefn getElementForPath(String pathname, Definitions definitions) throws Exception {
 		String[] path = pathname.split("\\.");
 
 		if (!path[0].equals(getName()))
@@ -505,13 +505,19 @@ public class ElementDefn {
 			String en = path[i];
 			if (en.length() == 0)
 				throw new Exception("Improper path " + pathname);
+			ElementDefn t = null;
 
-			ElementDefn t = res.getElementByName(en);
+			if (definitions.dataTypeIsSharedInfo(res.typeCode())) {
+				res = definitions.getElementDefn(res.typeCode());
+			} else if (definitions.hasType(res.typeCode())) {
+				res = definitions.getElementDefn(res.typeCode());
+			}
+			t = res.getElementByName(en);
 			if (t == null) {
 				throw new Exception("unable to resolve " + pathname);
 			}
-
 			res = t;
+
 		}
 
 		return res;

@@ -593,6 +593,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     StringBuilder con3 = new StringBuilder();
     StringBuilder con4 = new StringBuilder();
     StringBuilder con5 = new StringBuilder();
+    StringBuilder con6 = new StringBuilder();
+    StringBuilder con7 = new StringBuilder();
 
     String tn = "TSearchParams"+r.getName();
     String prefix = "sp"+r.getName()+"_";
@@ -609,6 +611,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       con5.append("  REPEATS_"+tn+" : Array["+tn+"] of TFhirSearchRepeatBehavior = (");
       con.append("  DESC_"+tn+" : Array["+tn+"] of String = (");
       con2.append("//  CHECK_"+tn+" : Array["+tn+"] of "+tn+" = (");
+      con6.append("  PATHS_"+tn+" : Array["+tn+"] of String = (");
+      con7.append("  TARGETS_"+tn+" : Array["+tn+"] of TFhirResourceTypeSet = (");
 
       int l = r.getSearchParams().size();
       int i = 0;
@@ -622,6 +626,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         String n = p.getCode().replace("$", "_");
         String d = Utilities.normaliseEolns(p.getDescription());
         String nf = n.replace("-", "_");
+        String t = getTarget(p.getPath(), r);
         if (i == l) {
           def.append("    "+prefix+getTitle(nf)+"); {@enum.value "+prefix+getTitle(nf)+" "+d+" }\r\n");
           con.append("'"+defCodeType.escape(d)+"');");
@@ -629,6 +634,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
           con4.append(" SearchParamType"+getTitle(p.getType().toString())+");");
           con3.append("'"+defCodeType.escape(n)+"');");
           con5.append(" SearchRepeatBehavior"+getTitle(p.getRepeatMode().toString())+");");
+          con6.append("'"+defCodeType.escape(n+": "+p.getPath())+"');");
+          con7.append(""+t+");");
         }
         else {
           def.append("    "+prefix+getTitle(nf)+", {@enum.value "+prefix+getTitle(nf)+" "+d+" }\r\n");
@@ -637,19 +644,55 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
           con4.append(" SearchParamType"+getTitle(p.getType().toString())+", ");
           con3.append("'"+defCodeType.escape(n)+"', ");
           con5.append(" SearchRepeatBehavior"+getTitle(p.getRepeatMode().toString())+", ");
+          con6.append("'"+defCodeType.escape(n+": "+p.getPath())+"',\r\n     ");
+          con7.append(""+t+", ");
         }
       }
 
-      defCodeType.enumDefs.add(def.toString());
-      defCodeType.enumConsts.add(con3.toString());
-      defCodeType.enumConsts.add(con5.toString());
-      defCodeType.enumConsts.add(con4.toString());
-      defCodeType.enumConsts.add(con.toString());
-      defCodeType.enumConsts.add(con2.toString());
+      defCodeRes.enumDefs.add(def.toString());
+      defCodeRes.enumConsts.add(con3.toString());
+      defCodeRes.enumConsts.add(con5.toString());
+      defCodeRes.enumConsts.add(con4.toString());
+      defCodeRes.enumConsts.add(con.toString());
+      defCodeRes.enumConsts.add(con2.toString());
+      defCodeRes.enumConsts.add(con6.toString());
+      defCodeRes.enumConsts.add(con7.toString());
     }
   }
   
-  private void generateEnum(ElementDefn e) throws Exception {
+  private String getTarget(String path, ResourceDefn r) throws Exception {
+    if (Utilities.noString(path))
+	  return "[]";
+    try {
+      ElementDefn e = r.getRoot().getElementForPath(path, definitions);
+      if (!e.typeCode().startsWith("Resource("))
+    	return "[]";
+      else if (e.typeCode().endsWith("(Any)"))
+        return "ALL_RESOURCE_TYPES";
+      else {
+    	  StringBuilder s = new StringBuilder();
+    	  s.append("[");
+    	  boolean first = true;
+    	  for (String p : e.getTypes().get(0).getParams()) {
+    		  if (definitions.hasResource(p)) {
+    			  if (!first)
+    				  s.append(", ");
+    			  s.append("frt"+p);
+    			  first = false;
+    		  }
+    	  }
+    	  s.append("]");
+    	  return s.toString();
+      }
+      
+    } catch (Exception e) {
+    	return "[]";
+    }
+    
+	  
+}
+
+private void generateEnum(ElementDefn e) throws Exception {
     String tn = typeNames.get(e);
     BindingSpecification cd = getConceptDomain(e.getBindingName());
     
@@ -2087,6 +2130,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("    "+prefix+"Binary); {@enum.value Binary Resource }\r\n");
     con.append("'Binary');");
 
+    def.append("\r\n  TFhirResourceTypeSet = set of TFhirResourceType;");
     con.append("\r\n  PLURAL_CODES_TFhirResourceType : Array[TFhirResourceType] of String = (");
     con.append("'', ");
     for (String s : types) {

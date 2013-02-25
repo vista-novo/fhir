@@ -26,6 +26,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -67,9 +68,13 @@
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s68">
-   <Alignment ss:Vertical="Top"/>
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
   </Style>
   <Style ss:ID="s69">
+   <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s70">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders/>
@@ -238,12 +243,10 @@
     <ValidPrinterInfo/>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>12</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>11</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -321,39 +324,45 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Search">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="152.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Repeats</Data></Cell>
+    <Cell><Data ss:Type="String">Path</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">issuer</Data></Cell>
     <Cell><Data ss:Type="String">The identity of the insurer</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Coverage.issuer</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">identifier</Data></Cell>
     <Cell><Data ss:Type="String">The primary identifier of the insured</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s68"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">plan</Data></Cell>
     <Cell><Data ss:Type="String">A plan or policy identifier</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s68"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">name</Data></Cell>
     <Cell><Data ss:Type="String">The name of the insured</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Coverage.planHolder.name</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -363,10 +372,17 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-3</HorizontalResolution>
+    <VerticalResolution>-3</VerticalResolution>
+   </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
+     <ActiveRow>6</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
@@ -376,13 +392,13 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="114.75"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="201.75"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="53.25"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="86.25"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="130.5"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="214.5"/>
+   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="114.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="201.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="53.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="86.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="130.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="214.5"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
@@ -498,7 +514,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Committee Notes</Data></Cell>
     <Cell ss:StyleID="s64"/>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Vocab</Data></Cell>
-    <Cell ss:Index="20" ss:StyleID="s69"><Data ss:Type="String">Example</Data></Cell>
+    <Cell ss:Index="20" ss:StyleID="s70"><Data ss:Type="String">Example</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell ss:StyleID="s63"><Data ss:Type="String">Coverage.planHolder.language</Data></Cell>

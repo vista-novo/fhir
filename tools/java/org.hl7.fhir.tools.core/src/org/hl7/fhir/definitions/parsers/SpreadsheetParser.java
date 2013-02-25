@@ -310,7 +310,7 @@ public class SpreadsheetParser {
 				String p = sheet.getColumn(row, "Path");
 				ElementDefn e = null;
 				if (!Utilities.noString(p) && !p.startsWith("!"))
-				  e = root2.getRoot().getElementForPath(p); 
+				  e = root2.getRoot().getElementForPath(p, definitions); 
 				String d = sheet.getColumn(row, "Description");
 				if (Utilities.noString(d)) {
 				  if (e != null)
