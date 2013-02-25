@@ -1,0 +1,29 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<p>
+A Questionnaire is a structured set of answers to a predefined list of questions. The Questionnaire can be a flat list, or can be composed
+of (possibly named) sections and subsections, each containing answers. There may be multiple answers to the same question and even whole
+sections may be repeated. Anwers identify the question they answer and take the form of codes, values, text. They may be shaped like or based 
+on Observations, Procedures and other resources.</p>
+
+<p>Questionnaires cover the need to communicate data originating from forms used in medical history examinations, research questionnaires and sometimes full
+clinical speciality records. In many systems this data is collected using user-defined screens and forms. Although there is possible overlap between the 
+information covered by Questionnaires and other Resources (mainly Observation, Procedure and MedicationAdministration), the process of collection and 
+recording differ: Questionnaires record history while Resources are part of the registration of an ongoing clinical process. Because of this overlap,
+Questionnaire allows information both to be based on on-screen forms and/or actual Observations and other Resources using Answer.evidence.</p>
+
+<p>Questionnaires differ from Lists because Lists regroup or summarize existing information, while Questionnaires contain original, 
+clinician collected data.</p>
+
+<p>Examples of Questionnaires are:</p>
+<ul>
+<li>Past medical history (PMH)</li>
+<li>Family diseases</li>
+<li>Social history</li>
+<li>Research questionnaires</li>
+<li>Quality and evaluation forms</li>
+</ul>
+
+</div>
+
+
