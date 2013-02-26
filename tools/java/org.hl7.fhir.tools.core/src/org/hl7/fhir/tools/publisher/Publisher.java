@@ -189,6 +189,12 @@ public class Publisher {
 	public static void main(String[] args) {
 		//
 		Publisher pub = new Publisher();
+		
+		if( args.length == 0 )
+		{
+			System.out.println("Please specify the FHIR directory");
+			return;
+		}
 		pub.isGenerate = !(args.length > 1 && hasParam(args, "-nogen"));
 		pub.nobook = (args.length > 1 && hasParam(args, "-nobook"));
 		try {
