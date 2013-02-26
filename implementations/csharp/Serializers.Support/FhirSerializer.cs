@@ -32,13 +32,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HL7.Fhir.Instance.Model;
+using Hl7.Fhir.Model;
 using System.IO;
 using Newtonsoft.Json;
 using System.Xml.Linq;
 using System.Xml;
 
-namespace HL7.Fhir.Instance.Serializers
+namespace Hl7.Fhir.Serializers
 {
     public partial class FhirSerializer
     {

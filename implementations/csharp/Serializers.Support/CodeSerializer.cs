@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using HL7.Fhir.Instance.Support;
+using Hl7.Fhir.Support;
 using System.Xml.Linq;
 
 /*
@@ -37,12 +37,12 @@ using System.Xml.Linq;
 // Generated on Tue, Feb 12, 2013 21:18+0100 for FHIR v0.07
 //
 
-using HL7.Fhir.Instance.Model;
+using Hl7.Fhir.Model;
 using System.Xml;
 using Newtonsoft.Json;
-using HL7.Fhir.Instance.Serializers;
+using Hl7.Fhir.Serializers;
 
-namespace HL7.Fhir.Instance.Serializers
+namespace Hl7.Fhir.Serializers
 {
     /*
     * Serializer for code instances

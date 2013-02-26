@@ -8,8 +8,8 @@
     <ProjectGuid>{3CA811D7-19A7-43AC-A403-1F35E4EC2BFC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HL7.Fhir.Instance</RootNamespace>
-    <AssemblyName>HL7.Fhir.Instance</AssemblyName>
+    <RootNamespace>Hl7.Fhir</RootNamespace>
+    <AssemblyName>Hl7.Fhir</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

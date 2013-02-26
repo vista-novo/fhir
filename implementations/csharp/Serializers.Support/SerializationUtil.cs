@@ -33,9 +33,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
-using HL7.Fhir.Instance.Model;
+using Hl7.Fhir.Model;
 
-namespace HL7.Fhir.Instance.Serializers
+namespace Hl7.Fhir.Serializers
 {
     internal class SerializationUtil
     {

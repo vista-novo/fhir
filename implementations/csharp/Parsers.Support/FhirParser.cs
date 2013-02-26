@@ -32,13 +32,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HL7.Fhir.Instance.Model;
-using HL7.Fhir.Instance.Support;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Support;
 using System.Xml;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace HL7.Fhir.Instance.Parsers
+namespace Hl7.Fhir.Parsers
 {
     public partial class FhirParser
     {

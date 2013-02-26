@@ -35,7 +35,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
-namespace HL7.Fhir.Instance.Support
+namespace Hl7.Fhir.Support
 {
     public class Util
     {

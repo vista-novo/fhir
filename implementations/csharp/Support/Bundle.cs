@@ -33,14 +33,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
-using HL7.Fhir.Instance.Model;
+using Hl7.Fhir.Model;
 using System.ServiceModel.Syndication;
 using System.Xml.Linq;
-using HL7.Fhir.Instance.Parsers;
+using Hl7.Fhir.Parsers;
 using System.IO;
-//using HL7.Fhir.Instance.Serializers;
+//using Hl7.Fhir.Serializers;
 
-namespace HL7.Fhir.Instance.Support
+namespace Hl7.Fhir.Support
 {
     public partial class Bundle
     {

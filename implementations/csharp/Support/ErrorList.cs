@@ -33,10 +33,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
-using HL7.Fhir.Instance.Model;
-using HL7.Fhir.Instance.Parsers;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Parsers;
 
-namespace HL7.Fhir.Instance.Support
+namespace Hl7.Fhir.Support
 {
     public class ErrorList : List<ErrorList.Error>
     {

@@ -33,9 +33,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
-using HL7.Fhir.Instance.Support;
+using Hl7.Fhir.Support;
 
-namespace HL7.Fhir.Instance.Serializers
+namespace Hl7.Fhir.Serializers
 {
     public class XmlFhirWriter : IFhirWriter
     {

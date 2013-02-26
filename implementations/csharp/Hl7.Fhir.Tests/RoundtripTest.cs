@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using HL7.Fhir.Instance.Parsers;
-using HL7.Fhir.Instance.Serializers;
+using Hl7.Fhir.Parsers;
+using Hl7.Fhir.Serializers;
 using System.Xml;
 using System.Xml.Linq;
 using Newtonsoft.Json;
@@ -12,7 +12,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using Ionic.Zip;
 
-namespace HL7.Fhir.Instance.Tests
+namespace Hl7.Fhir.Tests
 {
     [TestClass]
     public class RoundtripTest

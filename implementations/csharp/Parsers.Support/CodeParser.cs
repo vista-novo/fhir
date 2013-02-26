@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using HL7.Fhir.Instance.Support;
+using Hl7.Fhir.Support;
 using System.Xml.Linq;
 
 /*
@@ -34,10 +34,10 @@ using System.Xml.Linq;
 */
 
 
-using HL7.Fhir.Instance.Model;
+using Hl7.Fhir.Model;
 using System.Xml;
 
-namespace HL7.Fhir.Instance.Parsers
+namespace Hl7.Fhir.Parsers
 {
     /// <summary>
     /// Parser for code instances

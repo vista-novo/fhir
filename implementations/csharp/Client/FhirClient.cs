@@ -1,5 +1,11 @@
-﻿/*
-  Copyright (c) 2011-2012, HL7, Inc
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Hl7.Fhir;
+
+/*
+  Copyright (c) 2011-2012, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,58 +35,10 @@
 */
 
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Client
 {
-    public partial class Oid
+    public class FhirClient
     {
-        public static bool TryParse(string value, out Oid result)
-        {       
-            Regex oidRegEx = new Regex(PATTERN);
-
-            if (value==null || oidRegEx.IsMatch(value))
-            {
-                result = new Oid(value);
-                return true;
-            }
-            else
-            {
-                result = null;
-                return false;
-            }
-        }
-
-        public static Oid Parse(string value)
-        {
-            Oid result = null;
-
-            if (TryParse(value, out result))
-                return result;
-            else
-                throw new FhirFormatException("Not an correctly formatted oid value");
-        }
-
-        public override string ValidateData()
-        {
-            if (Contents == null)
-                return "Oid values cannot be empty";
-
-            Oid dummy;
-
-            if (!TryParse( this.Contents, out dummy ))
-                return "Not an correctly formatted oid value";
-            
-            return null; 
-        }
-
-        public override string ToString()
-        {
-            return Contents;
-        }
+        
     }
 }

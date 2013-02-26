@@ -34,7 +34,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace HL7.Fhir.Instance.Serializers
+namespace Hl7.Fhir.Serializers
 {
     public class JsonFhirWriter : IFhirWriter
     {

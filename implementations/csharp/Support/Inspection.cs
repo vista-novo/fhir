@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HL7.Fhir.Instance.Support
+namespace Hl7.Fhir.Support
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
     sealed class FhirResourceAttribute : Attribute

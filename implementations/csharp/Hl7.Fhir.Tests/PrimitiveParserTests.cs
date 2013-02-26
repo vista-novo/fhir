@@ -3,16 +3,16 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using HL7.Fhir.Instance.Model;
+using Hl7.Fhir.Model;
 using System.Xml;
 using System.Xml.Linq;
 using System.IO;
 using Newtonsoft.Json;
-using HL7.Fhir.Instance.Parsers;
-using HL7.Fhir.Instance.Support;
+using Hl7.Fhir.Parsers;
+using Hl7.Fhir.Support;
 
 
-namespace HL7.Fhir.Instance.Tests
+namespace Hl7.Fhir.Tests
 {
     [TestClass]
     public class PrimitiveParserTests

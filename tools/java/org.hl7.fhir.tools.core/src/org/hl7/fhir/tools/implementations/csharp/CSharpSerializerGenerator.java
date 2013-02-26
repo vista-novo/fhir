@@ -69,12 +69,12 @@ public class CSharpSerializerGenerator extends GenBlock
 		
 		inc( rgen.header(definitions.getDate(), definitions.getVersion() ) );
 		ln();
-		ln("using HL7.Fhir.Instance.Model;");
+		ln("using Hl7.Fhir.Model;");
 		ln("using System.Xml;");
 		ln("using Newtonsoft.Json;");
-		ln("using HL7.Fhir.Instance.Serializers;");
+		ln("using Hl7.Fhir.Serializers;");
 		ln();
-		ln("namespace HL7.Fhir.Instance.Serializers");
+		ln("namespace Hl7.Fhir.Serializers");
 		bs("{");		
 			ln("/*");
 			ln("* Starting point for serializing resources");
@@ -152,13 +152,13 @@ public class CSharpSerializerGenerator extends GenBlock
 		
 		inc( rgen.header(definitions.getDate(), definitions.getVersion() ) );
 		ln();
-		ln("using HL7.Fhir.Instance.Model;");
+		ln("using Hl7.Fhir.Model;");
 		ln("using System.Xml;");
 		ln("using Newtonsoft.Json;");
-		ln("using HL7.Fhir.Instance.Serializers;");
+		ln("using Hl7.Fhir.Serializers;");
 		
 		ln();
-		ln("namespace HL7.Fhir.Instance.Serializers");
+		ln("namespace Hl7.Fhir.Serializers");
 		bs("{");
 			ln("/*");
 			ln("* Serializer for " + composite.getName() + " instances");

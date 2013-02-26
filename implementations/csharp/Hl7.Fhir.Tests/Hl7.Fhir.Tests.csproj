@@ -9,8 +9,8 @@
     <ProjectGuid>{6739C236-29D9-4B70-BB70-B96794FCAB34}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HL7.Fhir.Instance.Tests</RootNamespace>
-    <AssemblyName>HL7.Fhir.Instance.Tests</AssemblyName>
+    <RootNamespace>HL7.Fhir.Tests</RootNamespace>
+    <AssemblyName>HL7.Fhir.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -68,7 +68,7 @@
     <Compile Include="XmlAssert.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HL7.Fhir.Instance.csproj">
+    <ProjectReference Include="..\HL7.Fhir.csproj">
       <Project>{3CA811D7-19A7-43AC-A403-1F35E4EC2BFC}</Project>
       <Name>HL7.Fhir.Instance</Name>
     </ProjectReference>

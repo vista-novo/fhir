@@ -6,12 +6,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.IO;
-using HL7.Fhir.Instance.Support;
-using HL7.Fhir.Instance.Serializers;
+using Hl7.Fhir.Support;
+using Hl7.Fhir.Serializers;
 using System.Text.RegularExpressions;
 using System.Xml;
 
-namespace HL7.Fhir.Instance.Tests
+namespace Hl7.Fhir.Tests
 {
     [TestClass]
     public class BundleTests

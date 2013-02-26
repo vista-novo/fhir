@@ -33,7 +33,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HL7.Fhir.Instance.Model
+namespace Hl7.Fhir.Model
 {
     public partial class FhirUri
     {

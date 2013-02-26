@@ -34,7 +34,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace HL7.Fhir.Instance.Parsers
+namespace Hl7.Fhir.Parsers
 {
     public interface IFhirReader
     {

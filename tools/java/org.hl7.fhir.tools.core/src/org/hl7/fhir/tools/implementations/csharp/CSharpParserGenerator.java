@@ -74,10 +74,10 @@ public class CSharpParserGenerator extends GenBlock
 		
 		inc( rgen.header(definitions.getDate(), definitions.getVersion() ) );
 		ln();
-		ln("using HL7.Fhir.Instance.Model;");
+		ln("using Hl7.Fhir.Model;");
 		ln("using System.Xml;");
 		ln();
-		ln("namespace HL7.Fhir.Instance.Parsers");
+		ln("namespace Hl7.Fhir.Parsers");
 		bs("{");
 			ln("/// <summary>");
 			ln("/// Parser for constrained " + constrained.getName() + " instances");
@@ -119,10 +119,10 @@ public class CSharpParserGenerator extends GenBlock
 		
 		inc( rgen.header(definitions.getDate(), definitions.getVersion() ) );
 		ln();
-		ln("using HL7.Fhir.Instance.Model;");
+		ln("using Hl7.Fhir.Model;");
 		ln("using System.Xml;");
 		ln();
-		ln("namespace HL7.Fhir.Instance.Parsers");
+		ln("namespace Hl7.Fhir.Parsers");
 		bs("{");
 			ln("/// <summary>");
 			ln("/// Parser for " + composite.getName() + " instances");

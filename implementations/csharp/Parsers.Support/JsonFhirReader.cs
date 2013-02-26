@@ -33,11 +33,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
-using HL7.Fhir.Instance.Support;
+using Hl7.Fhir.Support;
 using Newtonsoft.Json;
-using HL7.Fhir.Instance.Model;
+using Hl7.Fhir.Model;
 
-namespace HL7.Fhir.Instance.Parsers
+namespace Hl7.Fhir.Parsers
 {
     public class JsonFhirReader : IFhirReader
     {

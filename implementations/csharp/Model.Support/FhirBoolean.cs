@@ -33,7 +33,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HL7.Fhir.Instance.Model
+namespace Hl7.Fhir.Model
 {
     // value can be true or false
     public partial class FhirBoolean

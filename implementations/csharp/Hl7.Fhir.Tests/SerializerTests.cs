@@ -5,14 +5,14 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using System.IO;
-using HL7.Fhir.Instance.Model;
-using HL7.Fhir.Instance.Serializers;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Serializers;
 using System.Xml.Linq;
 using System.Xml;
-using HL7.Fhir.Instance.Support;
-using HL7.Fhir.Instance.Parsers;
+using Hl7.Fhir.Support;
+using Hl7.Fhir.Parsers;
 
-namespace HL7.Fhir.Instance.Tests
+namespace Hl7.Fhir.Tests
 {
     [TestClass]
     public class SerializerTests

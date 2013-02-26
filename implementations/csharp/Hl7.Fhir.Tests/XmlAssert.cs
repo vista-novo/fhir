@@ -5,7 +5,7 @@ using System.Text;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace HL7.Fhir.Instance.Tests
+namespace Hl7.Fhir.Tests
 {
     public class XmlAssert
     {

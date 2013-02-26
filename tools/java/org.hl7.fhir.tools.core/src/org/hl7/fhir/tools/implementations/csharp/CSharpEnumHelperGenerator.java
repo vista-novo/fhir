@@ -70,7 +70,7 @@ public class CSharpEnumHelperGenerator extends GenBlock {
 		
 		inc( rgen.header(definitions.getDate(), definitions.getVersion()) );
 		
-		ln("namespace HL7.Fhir.Instance.Model");
+		ln("namespace Hl7.Fhir.Model");
 		bs("{");
 			ln("public static class EnumHelper");
 			bs("{");

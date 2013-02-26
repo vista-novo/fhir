@@ -41,10 +41,10 @@ public class CSharpProjectGenerator
 		if( !destDir.endsWith(File.separator) )
 			destDir += File.separator;
 		
-		List<String> templateContents = TextFile.readAllLines(destDir + "HL7.Fhir.Instance.csproj.template"); 	
+		List<String> templateContents = TextFile.readAllLines(destDir + "Hl7.Fhir.csproj.template"); 	
 		List<String> itemGroup = buildItemGroupContents(cSharpProjectFiles);
 		List<String> outputLines = replaceTemplateVar( templateContents, "@@@MODELFILES@@@", itemGroup);
-		TextFile.writeAllLines(destDir + "HL7.Fhir.Instance.csproj", outputLines);
+		TextFile.writeAllLines(destDir + "Hl7.Fhir.csproj", outputLines);
 	}
 	
 

@@ -32,10 +32,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-//using HL7.Fhir.Instance.Support;
+//using Hl7.Fhir.Support;
 using System.Globalization;
 
-namespace HL7.Fhir.Instance.Model
+namespace Hl7.Fhir.Model
 {
     public partial class FhirDecimal
     {

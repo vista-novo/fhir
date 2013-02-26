@@ -3,9 +3,9 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using HL7.Fhir.Instance.Model;
+using Hl7.Fhir.Model;
 
-namespace HL7.Fhir.Instance.Tests
+namespace Hl7.Fhir.Tests
 {
     [TestClass]
     public class ModelTests

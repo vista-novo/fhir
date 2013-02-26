@@ -67,7 +67,7 @@ public class CSharpModelGenerator extends GenBlock
 		
 		header(getDefinitions().getDate(), getDefinitions().getVersion());
 		
-		ln("namespace HL7.Fhir.Instance.Model");
+		ln("namespace Hl7.Fhir.Model");
 		bs("{");
 			compositeClass( composite ); 
 		es("}");
@@ -82,7 +82,7 @@ public class CSharpModelGenerator extends GenBlock
 		
 		header(definitions.getDate(), definitions.getVersion());
 		
-		ln("namespace HL7.Fhir.Instance.Model");
+		ln("namespace Hl7.Fhir.Model");
 		bs("{");
 			enums(globalEnums); 
 		es("}");
@@ -98,7 +98,7 @@ public class CSharpModelGenerator extends GenBlock
 		
 		header(definitions.getDate(), definitions.getVersion());
 		
-		ln("namespace HL7.Fhir.Instance.Model");
+		ln("namespace Hl7.Fhir.Model");
 		bs("{");
 			ln("/// <summary>");
 			ln("/// " +  constrained.getAnnotations().getShortDefinition());
@@ -123,7 +123,7 @@ public class CSharpModelGenerator extends GenBlock
 		
 		ln("using System;");
 		ln("using System.Collections.Generic;");
-		ln("using HL7.Fhir.Instance.Support;");
+		ln("using Hl7.Fhir.Support;");
 		ln("using System.Xml.Linq;");
 		ln();
 		ln("/*");

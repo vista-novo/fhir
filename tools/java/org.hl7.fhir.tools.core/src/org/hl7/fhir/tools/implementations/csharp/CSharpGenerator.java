@@ -197,13 +197,13 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		zip.addFiles(implDir, "", ".csproj");
 		zip.addFiles(implDir, "", ".sln");
 		zip.addFiles(implDir, "", "Local.testsettings");
-		zip.addFiles(implDir, "", "HL7.Fhir.Instance.vsmdi");
+		zip.addFiles(implDir, "", "Hl7.Fhir.vsmdi");
 		// Include supporting libraries
 		String librariesDir = "Libraries" + sl;
 		zip.addFiles(implDir+librariesDir, librariesDir, ".dll");
 		
 		// Include test project
-		String testProjectDir = "HL7.Fhir.Instance.Tests" + sl;
+		String testProjectDir = "Hl7.Fhir.Tests" + sl;
 		zip.addFiles(implDir+testProjectDir, testProjectDir, ".cs");
 		zip.addFiles(implDir+testProjectDir + "Properties" + sl, testProjectDir+"Properties"+sl, ".cs");
 		zip.addFiles(implDir+testProjectDir, testProjectDir, ".csproj");

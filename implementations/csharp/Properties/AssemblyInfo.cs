@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("HL7.Fhir.Instance")]
+[assembly: AssemblyTitle("Hl7.Fhire")]
 [assembly: AssemblyDescription("FHIR Resource model, parsers and support for C#")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("HL7 International")]
