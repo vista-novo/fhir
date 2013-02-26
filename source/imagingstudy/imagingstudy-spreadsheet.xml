@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
@@ -7,19 +6,19 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Grahame</LastAuthor>
+  <LastAuthor>Grahame Grieve</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2013-01-26T05:50:36Z</LastSaved>
-  <Version>14.00</Version>
+  <LastSaved>2013-02-26T02:28:05Z</LastSaved>
+  <Version>14.0</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6345</WindowHeight>
-  <WindowWidth>22755</WindowWidth>
-  <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6075</WindowTopY>
+  <WindowHeight>340</WindowHeight>
+  <WindowWidth>22760</WindowWidth>
+  <WindowTopX>3320</WindowTopX>
+  <WindowTopY>1720</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -55,7 +54,7 @@
    </Borders>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
-   <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
   </Style>
   <Style ss:ID="s66">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
@@ -65,13 +64,13 @@
    </Borders>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
-   <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
    <NumberFormat ss:Format="@"/>
   </Style>
   <Style ss:ID="s67">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
-   <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
+   <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>
   </Style>
   <Style ss:ID="s69">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
@@ -90,31 +89,31 @@
   <Style ss:ID="s73">
    <Alignment ss:Vertical="Top"/>
   </Style>
-  <Style ss:ID="s74">
+  <Style ss:ID="s82">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
-    ss:Bold="1"/>
-   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="30" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="232.5"/>
+  <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="33" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="65"
+   ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="233"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="39"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="24.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="31.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="33.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="94.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="44.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="32"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="34"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="95"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="44"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="327"/>
-   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="161.25" ss:Span="1"/>
-   <Column ss:Index="11" ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="277.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"/>
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="161" ss:Span="1"/>
+   <Column ss:Index="11" ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="278"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s65">
@@ -159,8 +158,7 @@
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">dateTime</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">When the study took place (0008,0020 &amp; 0008,0030)</Data></Cell>
-    <Cell><Data ss:Type="String">0008,0020+0008,0030</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">0008,0020+0008,0030</Data></Cell>
     <Cell><Data ss:Type="String">StudyDate, StudyTime</Data></Cell>
     <Cell><Data ss:Type="String">2011-01-01T11:01:20.000000</Data></Cell>
     <Cell><Data ss:Type="String">Date and Time the study took place</Data></Cell>
@@ -304,6 +302,19 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ImagingStudy.description</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Institution-generated description (0008,1030)</Data></Cell>
+    <Cell><Data ss:Type="String">0008,1030</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">Institution-generated description or classification of the Study (component) performed</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="15" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">!ImagingStudy.references</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="Default"/>
@@ -435,6 +446,17 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ImagingStudy.series.datetime</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">dateTime</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">When the series started</Data></Cell>
+    <Cell ss:Index="13" ss:StyleID="Default"/>
+    <Cell ss:Index="15" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ImagingStudy.series.uid</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">oid</Data></Cell>
@@ -511,6 +533,21 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ImagingStudy.series.image.dateTime</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">dateTime</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">When this image was taken</Data></Cell>
+    <Cell ss:Index="11" ss:StyleID="s62"/>
+    <Cell ss:Index="13" ss:StyleID="Default"/>
+    <Cell ss:Index="15" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ImagingStudy.series.image.uid</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -578,6 +615,7 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
@@ -598,7 +636,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>12</ActiveRow>
+     <ActiveRow>17</ActiveRow>
      <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
@@ -608,12 +646,13 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="115.5"/>
+   x:FullRows="1" ss:StyleID="s69" ss:DefaultColumnWidth="65"
+   ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="116"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="153"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="204.75"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="198.75"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="188.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="205"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="199"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="188"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -670,6 +709,13 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-3</HorizontalResolution>
+    <VerticalResolution>-3</VerticalResolution>
+   </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -697,13 +743,13 @@
  </Worksheet>
  <Worksheet ss:Name="Events">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="82.5"/>
-   <Column ss:AutoFitWidth="0" ss:Width="198.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="157.5"/>
-   <Column ss:AutoFitWidth="0" ss:Width="162.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="195.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="74.25"/>
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="83"/>
+   <Column ss:AutoFitWidth="0" ss:Width="199"/>
+   <Column ss:AutoFitWidth="0" ss:Width="158"/>
+   <Column ss:AutoFitWidth="0" ss:Width="163"/>
+   <Column ss:AutoFitWidth="0" ss:Width="196"/>
+   <Column ss:AutoFitWidth="0" ss:Width="74"/>
    <Row ss:AutoFitHeight="0" ss:Height="33">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Event Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
@@ -726,6 +772,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -753,12 +800,12 @@
  </Worksheet>
  <Worksheet ss:Name="Search">
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="41" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="105.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
-   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="316.5"/>
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="106"/>
+   <Column ss:AutoFitWidth="0" ss:Width="383"/>
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="317"/>
    <Column ss:AutoFitWidth="0" ss:Width="375"/>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
+   <Row ss:AutoFitHeight="0" ss:Height="16" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
@@ -987,6 +1034,7 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1016,14 +1064,14 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="93"/>
-   <Column ss:AutoFitWidth="0" ss:Width="221.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="81.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="221"/>
+   <Column ss:AutoFitWidth="0" ss:Width="82"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
-   <Column ss:AutoFitWidth="0" ss:Width="106.5"/>
-   <Column ss:AutoFitWidth="0" ss:Width="274.5"/>
-   <Row ss:AutoFitHeight="0" ss:Height="15.75">
+   <Column ss:AutoFitWidth="0" ss:Width="107"/>
+   <Column ss:AutoFitWidth="0" ss:Width="275"/>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
@@ -1060,6 +1108,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1088,8 +1137,8 @@
  </Worksheet>
  <Worksheet ss:Name="image-modality">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="37" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="251.25"/>
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="251"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
@@ -1248,6 +1297,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -1261,19 +1311,19 @@
  </Worksheet>
  <Worksheet ss:Name="Examples">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="1" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="66.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="221.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="62.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="167.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="60.75"/>
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="67"/>
+   <Column ss:AutoFitWidth="0" ss:Width="221"/>
+   <Column ss:AutoFitWidth="0" ss:Width="62"/>
+   <Column ss:AutoFitWidth="0" ss:Width="167"/>
+   <Column ss:AutoFitWidth="0" ss:Width="61"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s74"><Data ss:Type="String">Name</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">Description</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">Identity</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">Filename</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">In Book</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Name</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Identity</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Filename</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Type</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">In Book</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1283,6 +1333,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
