@@ -1,6 +1,6 @@
 Instructions for building FHIR:
 
-1: install graphviz from www.graphviz.com
+1: install graphviz from www.graphviz.org
 2: run publish.bat (windows) or publish.sh (OSX/Linux)
 3: wait for it to finish
 
