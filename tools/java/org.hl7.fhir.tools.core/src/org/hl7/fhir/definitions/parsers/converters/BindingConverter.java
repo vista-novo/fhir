@@ -33,13 +33,16 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.hl7.fhir.definitions.ecore.fhir.Annotations;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.BindingExtensibility;
 import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
 import org.hl7.fhir.definitions.ecore.fhir.BindingType;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
+import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
+import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.utilities.Utilities;
 
 
@@ -113,5 +116,31 @@ public class BindingConverter
 //		result.getAnnotations().setComment( Utilities.cleanupTextString(code.getComment()));
 		
 		return  result;
+	}
+
+	public static BindingDefn buildResourceTypeBinding(Definitions definitions) {
+		BindingDefn result = FhirFactory.eINSTANCE.createBindingDefn();
+		
+		result.setId(10000);
+		result.setName("ResourceType");
+		result.setFullName(result.getName());
+
+		Annotations ann = FhirFactory.eINSTANCE.createAnnotations();
+		ann.setShortDefinition("List of all supported FHIR Resources");
+		result.setAnnotations(ann);
+		
+		result.setBinding(BindingType.CODE_LIST);
+		result.setExtensibility(BindingExtensibility.COMPLETE);
+		result.setStrength(BindingStrength.REQUIRED);
+		
+		for(ResourceDefn resource : definitions.getResources() )
+		{
+			DefinedCode code = FhirFactory.eINSTANCE.createDefinedCode();
+			code.setCode(resource.getName());
+			code.setDefinition("The " + code.getCode() + " resource");
+			result.getCodes().add(code);
+		}
+		
+		return result;
 	}
 }

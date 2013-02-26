@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Hl7.Fhir;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Support;
 
 /*
   Copyright (c) 2011-2012, HL7, Inc.
@@ -39,6 +41,57 @@ namespace Hl7.Fhir.Client
 {
     public class FhirClient
     {
-        
+        /// <summary>
+        /// // Get a conformance statement for the system
+        /// </summary>
+        /// <returns></returns>
+        public Conformance GetConformanceStatement()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        /// <summary>
+        /// // Read the current state of a resource
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public BundleEntry Read(ResourceType type, string id)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public BundleEntry VRead(ResourceType type, string id, string versionId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BundleEntry Update(string id, BundleEntry resource)
+        {
+            throw new NotImplementedException();
+        }
+
+
+/**
+        // Delete a resource
+	public void delete(ResourceType type, String id) throws EFhirClientException; 
+
+	// Create a new resource with a server assigned id. return the id the server assigned
+	public String create(AtomEntry resource) throws EFhirClientException;
+	
+	// Retrieve the update history for a resource, for a resource type, for all resources. LastUpdate can be null for all of these
+	public AtomFeed history(Calendar lastUpdate, ResourceType type, String id) throws EFhirClientException;
+	public AtomFeed history(Calendar lastUpdate, ResourceType type) throws EFhirClientException;
+	public AtomFeed history(Calendar lastUpdate) throws EFhirClientException;
+	
+	// Search the resource type based on some filter criteria
+	public AtomFeed search(ResourceType type, Map<String, String> params) throws EFhirClientException;
+	
+	// 	Update or create a set of resources
+	public AtomFeed batch(AtomFeed batch) throws EFhirClientException;
+ * 
+ * **/
     }
 }

@@ -238,6 +238,8 @@ public class SourceParser {
 	
 		// As a second pass, resolve typerefs to the types
 		fixTypeRefs( eCoreParseResults );
+	
+		eCoreParseResults.getBindings().add(BindingConverter.buildResourceTypeBinding(eCoreParseResults));
 		
 		for (String n : ini.getPropertyNames("special-resources"))
 			definitions.getAggregationEndpoints().add(n);
