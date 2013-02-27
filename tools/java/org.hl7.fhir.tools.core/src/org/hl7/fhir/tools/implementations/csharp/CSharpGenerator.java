@@ -193,6 +193,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		zip.addFiles(implDir+parsersSupportDir, parsersSupportDir, ".cs");
 		zip.addFiles(implDir+serializersSupportDir, serializersSupportDir, ".cs");
 		zip.addFiles(implDir+supportDir, supportDir, ".cs");
+		zip.addFiles(implDir+"Client"+sl, "Client"+sl, ".cs");
 		zip.addFiles(implDir+"Properties" + sl, "Properties"+sl, ".cs");
 		zip.addFiles(implDir, "", ".csproj");
 		zip.addFiles(implDir, "", ".sln");
