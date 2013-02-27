@@ -31,6 +31,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -49,9 +50,6 @@ namespace Hl7.Fhir.Support
         public const string ATOM_LINKREL_FIRST = "first";
         public const string ATOM_LINKREL_LAST = "last";
 
-
-    //    public static string DARATTR = "dataAbsentReason";
-
         public static string Capitalize(string s)
         {
             if (string.IsNullOrEmpty(s)) return string.Empty;
@@ -65,5 +63,32 @@ namespace Hl7.Fhir.Support
         {
             return u != null && !String.IsNullOrEmpty(u.ToString());
         }
+
+        //No, this is not Path.Combine. It's for Uri's
+        public static string Combine(string path1, string path2)
+        {
+            if (String.IsNullOrEmpty(path1)) return path2;
+            if (String.IsNullOrEmpty(path2)) return path1;
+
+            return path1.TrimEnd('/') + "/" + path2.TrimStart('/');
+        }
+
+        public static byte[] ReadAllFromStream(Stream s, int contentLength)
+        {
+            if (contentLength == 0) return null;
+
+            byte[] byteBuffer = new byte[4096];
+            MemoryStream buffer = new MemoryStream();
+            int readLen;
+
+            do
+            {
+                readLen = s.Read(byteBuffer, 0, byteBuffer.Length);
+                if (readLen > 0) buffer.Write(byteBuffer, 0, readLen);
+            } while (buffer.Length < contentLength);
+
+            return buffer.ToArray();
+        }
+
     }
 }

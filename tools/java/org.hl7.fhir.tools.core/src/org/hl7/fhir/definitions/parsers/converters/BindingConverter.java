@@ -127,6 +127,7 @@ public class BindingConverter
 
 		Annotations ann = FhirFactory.eINSTANCE.createAnnotations();
 		ann.setShortDefinition("List of all supported FHIR Resources");
+		ann.setDefinition(ann.getShortDefinition());
 		result.setAnnotations(ann);
 		
 		result.setBinding(BindingType.CODE_LIST);

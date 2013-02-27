@@ -71,9 +71,6 @@
     <Compile Include="Parsers.Support\XmlFhirReader.cs" />
     <Compile Include="Parsers.Support\JsonFhirReader.cs" />
 	<Compile Include="Parsers.Support\FhirParser.cs" />
-    <Compile Include="Support\ElementContent.cs" />
-    <Compile Include="Support\ErrorList.cs" />
-    <Compile Include="Support\Util.cs" />
     <Compile Include="Serializers.Support\IFhirWriter.cs" />
 	<Compile Include="Serializers.Support\CodeSerializer.cs" />
     <Compile Include="Serializers.Support\JsonFhirWriter.cs" />
@@ -81,11 +78,19 @@
     <Compile Include="Serializers.Support\SerializationUtil.cs" />
 	<Compile Include="Serializers.Support\FhirSerializer.cs" />
     <Compile Include="Support\Bundle.cs" />
-	<Compile Include="Support\BundleXml.cs" />
     <Compile Include="Support\BundleJson.cs" />
+	<Compile Include="Support\BundleXml.cs" />
+	<Compile Include="Support\ContentType.cs />
+	<Compile Include="Support\ElementContent.cs" />
+    <Compile Include="Support\ErrorList.cs" />
 	<Compile Include="Support\Inspection.cs" />
+	<Compile Include="Support\ResourceLocation.cs" />
 	<Compile Include="Support\UriLinkList.cs" />
+    <Compile Include="Support\Util.cs" />
 	<Compile Include="Client\FhirClient.cs" />
+	<Compile Include="Client\FhirParseException.cs" />
+	<Compile Include="Client\ResponseDetails.cs" />
+	<Compile Include="Client\WebRequestExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

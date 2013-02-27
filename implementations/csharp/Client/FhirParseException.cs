@@ -28,47 +28,30 @@
 
 */
 
+
+using Hl7.Fhir.Support;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Hl7.Fhir.Support
+namespace Hl7.Fhir.Client
 {
-    [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
-    sealed class FhirResourceAttribute : Attribute
+    public class FhirParseException : Exception
     {
-        readonly string name;
-
-        // This is a positional argument
-        public FhirResourceAttribute(string name)
+        public FhirParseException(string message)
+            : base(message)
         {
-            this.name = name;
         }
 
-        public string Name
+        public FhirParseException(string validatedData, ErrorList validationErrors, string message)
+            : base(message)
         {
-            get { return name; }
+            ValidatedData = validatedData;
+            ValidationErrors = validationErrors;
         }
 
-        // This is a named argument
-        //public int NamedInt { get; set; }
-    }
-
-    [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
-    sealed class FhirCompositeAttribute : Attribute
-    {
-        readonly string name;
-
-        // This is a positional argument
-        public FhirCompositeAttribute(string name)
-        {
-            this.name = name;
-        }
-
-        public string Name
-        {
-            get { return name; }
-        }
+        public ErrorList ValidationErrors { get; set; }
+        public string ValidatedData { get; set; }
     }
 }

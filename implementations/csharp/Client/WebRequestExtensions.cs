@@ -31,44 +31,27 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 
-namespace Hl7.Fhir.Support
+namespace Hl7.Fhir.Client
 {
-    [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
-    sealed class FhirResourceAttribute : Attribute
+    public static class WebRequestExtensions
     {
-        readonly string name;
-
-        // This is a positional argument
-        public FhirResourceAttribute(string name)
+        public static WebResponse GetResponseNoEx(this WebRequest req)
         {
-            this.name = name;
-        }
-
-        public string Name
-        {
-            get { return name; }
-        }
-
-        // This is a named argument
-        //public int NamedInt { get; set; }
-    }
-
-    [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
-    sealed class FhirCompositeAttribute : Attribute
-    {
-        readonly string name;
-
-        // This is a positional argument
-        public FhirCompositeAttribute(string name)
-        {
-            this.name = name;
-        }
-
-        public string Name
-        {
-            get { return name; }
+            try
+            {
+                return req.GetResponse();
+            }
+            catch (WebException wex)
+            {
+                if (wex.Response != null)
+                {
+                    return wex.Response;
+                }
+                throw;
+            }
         }
     }
 }
