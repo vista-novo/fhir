@@ -54,9 +54,9 @@ namespace Hl7.Fhir.Serializers
             return sb.ToString();
         }
 
-        public static byte[] ResourceAsXmlBytes(Resource resource, Encoding encoding = null)
+        public static byte[] SerializeResourceAsXmlBytes(Resource resource, Encoding encoding = null)
         {
-            if (encoding == null) encoding = Encoding.Unicode;
+            if (encoding == null) encoding = Encoding.UTF8;
 
             MemoryStream stream = new MemoryStream();
             XmlWriterSettings settings = new XmlWriterSettings { Encoding = encoding };
@@ -80,7 +80,7 @@ namespace Hl7.Fhir.Serializers
 
         public static byte[] SerializeResourceAsJsonBytes(Resource resource, Encoding encoding = null)
         {
-            if (encoding == null) encoding = Encoding.Unicode;
+            if (encoding == null) encoding = Encoding.UTF8;
 
             MemoryStream stream = new MemoryStream();
 

@@ -37,6 +37,8 @@ using Hl7.Fhir.Model;
 using Hl7.Fhir.Support;
 using System.Net;
 using Hl7.Fhir.Parsers;
+using Hl7.Fhir.Serializers;
+using System.IO;
 
 
 
@@ -53,7 +55,7 @@ namespace Hl7.Fhir.Client
         public FhirClient(Uri endpoint)
         {
             FhirEndpoint = endpoint;
-            DefaultFormatRequestMethod = FormatRequestMethod.XmlAccept;
+            PreferredFormat = ContentType.ResourceFormat.Xml;
         }
 
 
@@ -142,24 +144,64 @@ namespace Hl7.Fhir.Client
         /// <summary>
         /// Delete a resource
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="id"></param>
-        public void Delete(ResourceType type, string id)
+        /// <param name="type">Type of resource to delete</param>
+        /// <param name="id">id of the resource to delete</param>
+        /// <returns>true if the delete succeeded, or false otherwise</returns>
+        public bool Delete(ResourceType type, string id)
         {
-            throw new NotImplementedException();
+            var req =
+                  createRequest(ResourceLocation.BuildResourceLocation(type.ToString(), id), false);
+            req.Method = "DELETE";
+
+            doRequest(req);
+
+            if (LastResponseDetails.Result == HttpStatusCode.NoContent)
+                return true;
+            else
+                return false;
         }
 
 
         /// <summary>
         /// Create a resource
         /// </summary>
-        /// <param name="resource"></param>
-        /// <returns></returns>
-        public BundleEntry Create(BundleEntry resource)
+        /// <param name="type">The resource type to create</param>
+        /// <param name="resource">The resource instance to create</param>
+        /// <param name="newId">Newly assigned id by server after successful creation</param>
+        /// <returns>The resource as created on the server, or null if the create failed.</returns>
+        /// <remarks>The returned resource need not be the same as the resources passed as a parameter,
+        /// since the server may have updated or changed part of the data because of business rules.
+        /// When the resource was created, but newId is null, the server failed to return the new
+        /// id in the Http Location header.
+        /// </remarks>
+ 
+        public Resource Create(ResourceType type, Resource resource, out string newId)
         {
-               throw new NotImplementedException();
-        }
+            string contentType = ContentType.BuildContentType(PreferredFormat, false);
 
+            byte[] data = PreferredFormat == ContentType.ResourceFormat.Xml ?
+                FhirSerializer.SerializeResourceAsXmlBytes(resource) :
+                FhirSerializer.SerializeResourceAsJsonBytes(resource);
+
+            var req = createRequest(type.ToString(), false);
+            req.Method = "POST";
+            req.ContentType = contentType;
+            setRequestBody(req, data);
+         
+            doRequest(req);
+
+            newId = null;
+
+            if (LastResponseDetails.Result == HttpStatusCode.Created)
+            {
+                var result = parseResource();
+                if (LastResponseDetails.Location != null)
+                    newId = ResourceLocation.ParseIdFromRestUri(new Uri(LastResponseDetails.Location));
+                return result;
+            }
+            else
+                return null;
+        }
 
 
         /// <summary>
@@ -230,34 +272,7 @@ namespace Hl7.Fhir.Client
         }
 
 
-        public FormatRequestMethod DefaultFormatRequestMethod { get; set; }
-
-        /// <summary>
-        /// The method used to communicate the preferred resource format
-        /// </summary>
-        public enum FormatRequestMethod
-        {
-            /// <summary>
-            /// Use Accept header to request Xml
-            /// </summary>
-            XmlAccept,
-
-            /// <summary>
-            /// Use Accept header to request Json
-            /// </summary>
-            JsonAccept,
-
-            /// <summary>
-            /// Use the _format parameter to request Xml
-            /// </summary>
-            XmlFormatParam,
-
-            /// <summary>
-            /// Use the _format parameter to request Json
-            /// </summary>
-            JsonFormatParam
-        }
-
+        public ContentType.ResourceFormat PreferredFormat { get; set; }
 
         private HttpWebRequest createRequest(Uri path, bool forBundle)
         {
@@ -268,18 +283,20 @@ namespace Hl7.Fhir.Client
         {
             Uri endpoint = new Uri( Util.Combine(FhirEndpoint.ToString(), path) );
 
-            if( DefaultFormatRequestMethod == FormatRequestMethod.JsonFormatParam )
-                endpoint = addParam(endpoint, ContentType.FORMAT_PARAM, ContentType.FORMAT_PARAM_JSON);
-            if (DefaultFormatRequestMethod == FormatRequestMethod.XmlFormatParam)
-                endpoint = addParam(endpoint, ContentType.FORMAT_PARAM, ContentType.FORMAT_PARAM_XML);
+            //if( PreferredFormat == ContentType.ResourceFormat.Json )
+            //    endpoint = addParam(endpoint, ContentType.FORMAT_PARAM, ContentType.FORMAT_PARAM_JSON);
+            //if (PreferredFormat == ContentType.ResourceFormat.Xml)
+            //    endpoint = addParam(endpoint, ContentType.FORMAT_PARAM, ContentType.FORMAT_PARAM_XML);
 
             var req = (HttpWebRequest)HttpWebRequest.Create(endpoint);
             req.UserAgent = "FhirClient for FHIR " + Model.ModelInfo.Version;
 
-            if (DefaultFormatRequestMethod == FormatRequestMethod.XmlAccept)
+            if (PreferredFormat == ContentType.ResourceFormat.Xml)
                 req.Accept = ContentType.BuildContentType(ContentType.ResourceFormat.Xml, forBundle);
-            if (DefaultFormatRequestMethod == FormatRequestMethod.JsonAccept)
+            else if (PreferredFormat == ContentType.ResourceFormat.Json)
                 req.Accept = ContentType.BuildContentType(ContentType.ResourceFormat.Json, forBundle);
+            else
+                throw new ArgumentException("PreferrredFormat was set to an unsupported seralization format");
 
             return req;
         }
@@ -339,5 +356,14 @@ namespace Hl7.Fhir.Client
 
             return result;
         }
+
+        private void setRequestBody(HttpWebRequest request, byte[] data)
+        {
+            Stream outs = request.GetRequestStream();
+            outs.Write(data, 0, (int)data.Length);
+            outs.Flush();
+            outs.Close();
+        }
+
     }
 }
