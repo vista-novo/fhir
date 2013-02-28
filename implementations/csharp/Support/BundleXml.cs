@@ -277,6 +277,31 @@ namespace Hl7.Fhir.Support
             result.WriteTo(writer);
         }
 
+        public string ToXml()
+        {
+            //Note: this will always carry UTF-16 coding in the <?xml> header
+            StringBuilder sb = new StringBuilder();
+            XmlWriter xw = XmlWriter.Create(sb);
+            Save(xw);
+            xw.Flush();
+            xw.Close();
+
+            return sb.ToString();
+        }
+
+
+        public byte[] ToXmlBytes()
+        {
+            MemoryStream stream = new MemoryStream();
+            XmlWriterSettings settings = new XmlWriterSettings { Encoding = Encoding.UTF8 };
+            XmlWriter xw = XmlWriter.Create(stream, settings);
+            Save(xw);
+            xw.Flush();
+            xw.Close();
+
+            return stream.ToArray();
+        }
+
         private XElement xmlCreateId(Uri id)
         {
             return new XElement(XATOMNS + XATOM_ID, id.ToString());

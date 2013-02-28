@@ -62,10 +62,10 @@ namespace Hl7.Fhir.Serializers
             	writer.WritePrimitiveContents(value.ToString());
             
             // Serialize element extension
-            if(value.Extensions != null && value.Extensions.Count > 0)
+            if(value.Extension != null && value.Extension.Count > 0)
             {
                 writer.WriteStartArrayElement("extension");
-                foreach(var item in value.Extensions)
+                foreach(var item in value.Extension)
                 {
                     writer.WriteStartArrayMember("extension");
                     ExtensionSerializer.SerializeExtension(item, writer);

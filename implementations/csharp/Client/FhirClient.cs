@@ -39,6 +39,7 @@ using System.Net;
 using Hl7.Fhir.Parsers;
 using Hl7.Fhir.Serializers;
 using System.IO;
+using Newtonsoft.Json;
 
 
 
@@ -46,7 +47,6 @@ namespace Hl7.Fhir.Client
 {
     public class FhirClient
     {
-        //TODO: _include
         //TODO: Binaries
 
         public Uri FhirEndpoint { get; private set; }
@@ -220,7 +220,7 @@ namespace Hl7.Fhir.Client
         public TResource Create<TResource>(TResource resource, out string newId) where TResource : Resource
         {
             string contentType = ContentType.BuildContentType(PreferredFormat, false);
-            string collection = getCollectionForResourceName(typeof(Resource));
+            string collection = getCollectionForResourceName(typeof(TResource));
 
             byte[] data = PreferredFormat == ContentType.ResourceFormat.Xml ?
                 FhirSerializer.SerializeResourceAsXmlBytes(resource) :
@@ -259,6 +259,8 @@ namespace Hl7.Fhir.Client
             var collection = getCollectionForResourceName(typeof(TResource));
             var path = Util.Combine(ResourceLocation.BuildResourceLocation(collection, id).ToString(),
                                 Util.RESTOPER_HISTORY);
+            if (lastUpdate.HasValue)
+                path = addParam(path, Util.HISTORY_PARAM_SINCE, Util.FormatDateTimeParameter(lastUpdate.Value));
 
             var req = createRequest(path, true);
             req.Method = "GET";
@@ -278,10 +280,14 @@ namespace Hl7.Fhir.Client
         /// <param name="lastUpdate">If provided, only get updates on or after the given point in time</param>
         /// <typeparam name="TResource">The type of resource to get the history for</typeparam>
         /// <returns>A Bundle listing all versions for all resources of the given type</returns>
-        public Bundle History<TResource>(DateTimeOffset? lastUpdate = null ) where TResource : Resource
+        public Bundle History<TResource>(DateTimeOffset? lastUpdate = null) where TResource : Resource
         {
             var collection = getCollectionForResourceName(typeof(TResource));
             var path = Util.Combine(collection, Util.RESTOPER_HISTORY);
+
+            if (lastUpdate.HasValue)
+                path = addParam(path, Util.HISTORY_PARAM_SINCE, Util.FormatDateTimeParameter(lastUpdate.Value));
+
             var req = createRequest(path, true);
             req.Method = "GET";
 
@@ -301,7 +307,12 @@ namespace Hl7.Fhir.Client
         /// <returns>A Bundle listing all versions of all resource on the server</returns>
         public Bundle History(DateTimeOffset? lastUpdate = null)
         {
-            var req = createRequest(Util.RESTOPER_HISTORY, true);
+            var path = Util.RESTOPER_HISTORY;
+
+            if (lastUpdate.HasValue)
+                path = addParam(path, Util.HISTORY_PARAM_SINCE, Util.FormatDateTimeParameter(lastUpdate.Value));
+
+            var req = createRequest(path, true);
             req.Method = "GET";
 
             doRequest(req);
@@ -316,34 +327,189 @@ namespace Hl7.Fhir.Client
         /// <summary>
         /// Validates whether the contents of the resource would be acceptable as an update
         /// </summary>
-        /// <param name="lastUpdate"></param>
-        /// <returns></returns>
-        public IssueReport Validate(string id, BundleEntry resource)
+        /// <param name="resource">The resource contents to validate</param>
+        /// <param name="id">The id that would be updated</param>
+        /// <returns>null is validation succeeded, otherwise returns an IssueReport detailing the validation errors</returns>
+        public IssueReport Validate<TResource>(TResource resource, string id) where TResource : Resource
         {
-            // Shoudn't this be a PUT instead of a POST?
-            throw new NotImplementedException();
+            string contentType = ContentType.BuildContentType(PreferredFormat, false);
+            string collection = getCollectionForResourceName(typeof(TResource));
+
+            byte[] data = PreferredFormat == ContentType.ResourceFormat.Xml ?
+                FhirSerializer.SerializeResourceAsXmlBytes(resource) :
+                FhirSerializer.SerializeResourceAsJsonBytes(resource);
+
+            var req = createRequest(ResourceLocation.BuildResourceLocation(collection, id), false);
+
+            req.Method = "POST";
+            req.ContentType = contentType;
+            setRequestBody(req, data);
+
+            doRequest(req);
+
+            if (LastResponseDetails.Result == HttpStatusCode.OK)
+                return null;
+            else
+                return (IssueReport)parseResource();
         }
+
+
+     
+        /// <summary>
+        /// Return all resources of a certain type
+        /// </summary>
+        /// <param name="count">The maximum number of resources to return</param>
+        /// <param name="includes">Zero or more include paths</param>
+        /// <typeparam name="TResource">The type of resource to list</typeparam>
+        /// <returns>A Bundle with all resources of the given type, or an empty Bundle if none were found.</returns>
+        /// <remarks>This operation supports include parameters to include resources in the bundle that the
+        /// returned resources refer to.</remarks>
+        public Bundle SearchAll<TResource>(int? count = null, params string[] includes) where TResource : Resource
+        {
+            var collection = getCollectionForResourceName(typeof(TResource));
+            string pathWithParam = collection;
+
+            if( count.HasValue )
+                pathWithParam = addParam(pathWithParam, Util.SEARCH_PARAM_COUNT, count.Value.ToString());
+            
+            foreach (string includeParam in includes)
+                pathWithParam = addParam(pathWithParam, Util.SEARCH_PARAM_INCLUDE, includeParam);
+
+            var req = createRequest(pathWithParam.ToString(), true);
+            req.Method = "GET";
+
+            doRequest(req);
+
+            if (LastResponseDetails.Result == HttpStatusCode.OK)
+                return parseBundle();
+            else
+                return null;
+        }
+
 
         /// <summary>
         /// Search for resources based on search criteria
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="parameters"></param>
-        /// <returns></returns>
-        public Bundle Search(ResourceType type, Dictionary<string,string> parameters)
+        /// <param name="parameters">A list of key,value pairs that contain the search params and their search criteria</param>
+        /// <param name="count">The maximum number of resources to return</param>
+        /// <param name="includes">Zero or more include paths</param>
+        /// <typeparam name="TResource">The type of resource to search for</typeparam>
+        /// <returns>A Bundle with the BundleEntries matching the search criteria, or an empty
+        /// Bundle if no resources were found.</returns>
+        /// <remarks>This operation supports include parameters to include resources in the bundle that the
+        /// returned resources refer to.</remarks> 
+        public Bundle Search<TResource>(string[] parameters, int? count = null, 
+                        params string[] includes) where TResource : Resource
         {
-               throw new NotImplementedException();
+            var collection = getCollectionForResourceName(typeof(TResource));
+            var pathWithParam = Util.Combine(collection, Util.RESTOPER_SEARCH);
+
+            if (parameters.Length % 2 != 0)
+                throw new ArgumentException("Parameters should contain pairs of keys and values");
+
+            for (var pi = 0; pi < parameters.Length; pi+=2)
+                pathWithParam = addParam(pathWithParam, parameters[pi], parameters[pi+1]);
+
+            foreach (var include in includes)
+                pathWithParam = addParam(pathWithParam, Util.SEARCH_PARAM_INCLUDE, include);
+
+            var req = createRequest(pathWithParam.ToString(), true);
+            req.Method = "GET";
+
+            doRequest(req);
+
+            if (LastResponseDetails.Result == HttpStatusCode.OK)
+                return parseBundle();
+            else
+                return null;
+
+        }
+  
+
+        /// <summary>
+        /// Search for resources based on a resource's id.
+        /// </summary>
+        /// <param name="id">The id of the resource to search for</param>
+        /// <param name="includes">Zero or more include paths</param>
+        /// <typeparam name="TResource">The type of resource to search for</typeparam>
+        /// <returns>A Bundle with the BundleEntry as identified by the id parameter or an empty
+        /// Bundle if the resource wasn't found.</returns>
+        /// <remarks>This operation is similar to Read, but additionally,
+        /// it is possible to specify include parameters to include resources in the bundle that the
+        /// returned resource refers to.</remarks>
+        public Bundle SearchById<TResource>(string id, params string[] includes) where TResource : Resource
+        {
+            var idCriteria = new Dictionary<string, string>();
+            idCriteria.Add(Util.SEARCH_PARAM_ID, id);
+            return Search<TResource>( new string[] { Util.SEARCH_PARAM_ID, id }, 1, includes);
         }
 
-	   
+
+
         /// <summary>
         /// Send a batched update to the server
         /// </summary>
-        /// <param name="lastUpdate"></param>
-        /// <returns></returns>
+        /// <param name="batch">The contents of the batch to be sent</param>
+        /// <returns>A bundle as returned by the server after it has processed the updates in the batch, or null
+        /// if an error occurred.</returns>
         public Bundle Batch(Bundle batch)
         {
-               throw new NotImplementedException();
+            byte[] data;
+            string contentType = ContentType.BuildContentType(PreferredFormat, false);
+
+            if (PreferredFormat == ContentType.ResourceFormat.Json)
+                data = batch.ToJsonBytes();
+            else if (PreferredFormat == ContentType.ResourceFormat.Xml)
+                data = batch.ToXmlBytes();
+            else
+                throw new ArgumentException("Cannot encode a batch into format " + PreferredFormat.ToString());
+
+            var req = createRequest("", true);
+            req.Method = "POST";
+            req.ContentType = contentType;
+            setRequestBody(req, data);
+
+            doRequest(req);
+
+            if (LastResponseDetails.Result == HttpStatusCode.OK)
+                return parseBundle();
+            else
+                return null;
+        }
+
+
+        /// <summary>
+        /// Send a Bundle to a path on the server
+        /// </summary>
+        /// <param name="bundle">The contents of the Bundle to be sent</param>
+        /// <param name="path">A path on the server to send the Bundle to</param>
+        /// <returns>True if the bundle was successfully delivered, false otherwise</returns>
+        /// <remarks>This method differs from Batch, in that it can be used to deliver a Bundle
+        /// at the endpoint for messages, documents or binaries, instead of the batched update
+        /// REST endpoint.</remarks>
+        public bool DeliverBundle(Bundle bundle, string path)
+        {
+            byte[] data;
+            string contentType = ContentType.BuildContentType(PreferredFormat, false);
+
+            if (PreferredFormat == ContentType.ResourceFormat.Json)
+                data = bundle.ToJsonBytes();
+            else if (PreferredFormat == ContentType.ResourceFormat.Xml)
+                data = bundle.ToXmlBytes();
+            else
+                throw new ArgumentException("Cannot encode a batch into format " + PreferredFormat.ToString());
+
+            var req = createRequest(path, true);
+            req.Method = "POST";
+            req.ContentType = contentType;
+            setRequestBody(req, data);
+
+            doRequest(req);
+
+            if (LastResponseDetails.Result == HttpStatusCode.OK)
+                return true;
+            else
+                return false;
         }
 
 
@@ -361,7 +527,9 @@ namespace Hl7.Fhir.Client
 
         private HttpWebRequest createRequest(string path, bool forBundle)
         {
-            Uri endpoint = new Uri( Util.Combine(FhirEndpoint.ToString(), path) );
+            string fullPath = Util.Combine(FhirEndpoint.ToString(), path);
+
+            Uri endpoint = new Uri( Uri.EscapeUriString(fullPath) );
 
             //if( PreferredFormat == ContentType.ResourceFormat.Json )
             //    endpoint = addParam(endpoint, ContentType.FORMAT_PARAM, ContentType.FORMAT_PARAM_JSON);
@@ -381,14 +549,18 @@ namespace Hl7.Fhir.Client
             return req;
         }
 
-        private static Uri addParam(Uri original, string paramName, string paramValue)
+        private static string addParam(string original, string paramName, string paramValue)
         {
-            string url = original.GetLeftPart(UriPartial.Path);
+            string url = original;
 
-            url += String.IsNullOrEmpty(original.Query) ? "?" : original.Query + "&";
+            if (!original.Contains('?'))
+                url += "?";
+            else
+                url += "&";
+
             url += paramName + "=" + paramValue;
 
-            return new Uri(url);
+            return url;
         }
 
 

@@ -438,7 +438,7 @@ public class GeneratorUtils {
 			result = "NestedExtension";
 
 		// Pluralize for arrays
-		if( member.isRepeating() ) result += "s";
+		//if( member.isRepeating() ) result += "s";
 		
 		// An attribute cannot have the same name as a nested type
 		for( CompositeTypeDefn composite : member.getParentType().getLocalCompositeTypes() )

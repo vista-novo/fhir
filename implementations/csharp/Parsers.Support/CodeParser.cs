@@ -66,11 +66,11 @@ namespace Hl7.Fhir.Parsers
                     // Parse element extension
                     else if (ParserUtils.IsAtFhirElement(reader, "extension"))
                     {
-                        result.Extensions = new List<Extension>();
+                        result.Extension = new List<Extension>();
                         reader.EnterArray();
 
                         while (ParserUtils.IsAtArrayElement(reader, "extension"))
-                            result.Extensions.Add(ExtensionParser.ParseExtension(reader, errors));
+                            result.Extension.Add(ExtensionParser.ParseExtension(reader, errors));
 
                         reader.LeaveArray();
                     }

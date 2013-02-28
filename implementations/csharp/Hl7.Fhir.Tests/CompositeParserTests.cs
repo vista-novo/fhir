@@ -113,11 +113,11 @@ namespace Hl7.Fhir.Tests
             ErrorList errors = new ErrorList();
             CodeableConcept result = (CodeableConcept)FhirParser.ParseElementFromXml(xmlString, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual(2, result.Codings.Count);
-            Assert.AreEqual("R51", result.Codings[0].Code.Contents);
-            Assert.AreEqual("25064002", result.Codings[1].Code.Contents);
-            Assert.AreEqual("http://snomed.info/", result.Codings[1].System.Contents.ToString());
-            Assert.AreEqual("1", result.Codings[1].InternalId.ToString());
+            Assert.AreEqual(2, result.Coding.Count);
+            Assert.AreEqual("R51", result.Coding[0].Code.Contents);
+            Assert.AreEqual("25064002", result.Coding[1].Code.Contents);
+            Assert.AreEqual("http://snomed.info/", result.Coding[1].System.Contents.ToString());
+            Assert.AreEqual("1", result.Coding[1].InternalId.ToString());
 
 
             string jsonString = @"{ ""testCodeableConcept"" : 
@@ -132,11 +132,11 @@ namespace Hl7.Fhir.Tests
             errors.Clear();
             result = (CodeableConcept)FhirParser.ParseElementFromJson(jsonString, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual(2, result.Codings.Count);
-            Assert.AreEqual("R51", result.Codings[0].Code.Contents);
-            Assert.AreEqual("25064002", result.Codings[1].Code.Contents);
-            Assert.AreEqual("http://snomed.info/", result.Codings[1].System.Contents.ToString());
-            Assert.AreEqual("1", result.Codings[1].InternalId.ToString());
+            Assert.AreEqual(2, result.Coding.Count);
+            Assert.AreEqual("R51", result.Coding[0].Code.Contents);
+            Assert.AreEqual("25064002", result.Coding[1].Code.Contents);
+            Assert.AreEqual("http://snomed.info/", result.Coding[1].System.Contents.ToString());
+            Assert.AreEqual("1", result.Coding[1].InternalId.ToString());
         }
         
 
@@ -213,7 +213,7 @@ namespace Hl7.Fhir.Tests
 
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.IsNotNull(p);
-            Assert.AreEqual(1, p.Details.Names[0].Prefixs[0].Extensions.Count());
+            Assert.AreEqual(1, p.Details.Name[0].Prefix[0].Extension.Count());
         }
 
 
@@ -239,17 +239,17 @@ namespace Hl7.Fhir.Tests
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
 
             Assert.AreEqual("2011-03-04T08:30:00+11:00", rep.DiagnosticTime.ToString());
-            Assert.AreEqual(17, rep.Containeds.Count);
-            Assert.AreEqual(17, rep.Results.Results.Count);
+            Assert.AreEqual(17, rep.Contained.Count);
+            Assert.AreEqual(17, rep.Results.Result.Count);
 
-            Assert.IsNotNull(rep.Containeds[1] as Observation);
-            Observation obs1 = (Observation)rep.Containeds[1];
+            Assert.IsNotNull(rep.Contained[1] as Observation);
+            Observation obs1 = (Observation)rep.Contained[1];
             Assert.AreEqual(typeof(Quantity), obs1.Value.GetType());
             Assert.AreEqual((decimal)5.9, (obs1.Value as Quantity).Value.Contents);
 
-            Assert.IsNotNull(rep.Containeds[8] as Observation);
-            Observation obs8 = (Observation)rep.Containeds[8];
-            Assert.AreEqual("Neutrophils", obs8.Name.Codings[0].Display.Contents);
+            Assert.IsNotNull(rep.Contained[8] as Observation);
+            Observation obs8 = (Observation)rep.Contained[8];
+            Assert.AreEqual("Neutrophils", obs8.Name.Coding[0].Display.Contents);
         }
 
 

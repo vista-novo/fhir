@@ -180,10 +180,10 @@ namespace Hl7.Fhir.Tests
         private static void verifyParseExtendedPrimitive(Date result)
         {
             Assert.AreEqual("1972-11-30", result.Contents);
-            Assert.AreEqual(1, result.Extensions.Count);
-            Assert.AreEqual("http://hl7.org/fhir/profile/@iso-21090#nullFlavor", result.Extensions[0].Url.ToString());
-            Assert.IsTrue(result.Extensions[0].Value is Code);
-            Assert.AreEqual("UNK", ((Code)result.Extensions[0].Value).Contents);
+            Assert.AreEqual(1, result.Extension.Count);
+            Assert.AreEqual("http://hl7.org/fhir/profile/@iso-21090#nullFlavor", result.Extension[0].Url.ToString());
+            Assert.IsTrue(result.Extension[0].Value is Code);
+            Assert.AreEqual("UNK", ((Code)result.Extension[0].Value).Contents);
         }
 
 

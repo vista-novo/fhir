@@ -58,15 +58,20 @@ namespace Hl7.Fhir.Support
 
         public static Uri BuildVersionedResourceLocation(string collectionName, string id, string versionId)
         {
-            string historyPath = Util.Combine("history", versionId);
+            string historyPath = Util.Combine("history", "@" + versionId);
 
             return new Uri(Util.Combine(BuildResourceLocation(collectionName, id).ToString(), historyPath),UriKind.Relative);
         }
 
         public static string ParseIdFromRestUri(Uri requestUri)
         {
+            return ParseIdFromRestUri(requestUri.ToString());
+        }
+
+        public static string ParseIdFromRestUri(string requestUri)
+        {
             Regex r = new Regex(@"/\w+/@([^/]+)/?");
-            Match result = r.Match(requestUri.ToString());
+            Match result = r.Match(requestUri);
 
             if (result.Success)
                 return result.Groups[1].Value;
@@ -76,8 +81,13 @@ namespace Hl7.Fhir.Support
 
         public static string ParseVersionIdFromRestUri(Uri requestUri)
         {
+            return ParseVersionIdFromRestUri(requestUri.ToString());
+        }
+
+        public static string ParseVersionIdFromRestUri(string requestUri)
+        {
             Regex r = new Regex(@"/\w+/@[^/]+/history/@([^/]+)");
-            Match result = r.Match(requestUri.ToString());
+            Match result = r.Match(requestUri);
 
             if (result.Success)
                 return result.Groups[1].Value;
@@ -87,8 +97,13 @@ namespace Hl7.Fhir.Support
 
         public static string ParseCollectionNameFromRestUri(Uri requestUri)
         {
+            return ParseCollectionNameFromRestUri(requestUri.ToString());
+        }
+
+        public static string ParseCollectionNameFromRestUri(string requestUri)
+        {
             Regex r = new Regex(@"/(\w+)/@[\w]+/?");
-            Match result = r.Match(requestUri.ToString());
+            Match result = r.Match(requestUri);
 
             if (result.Success)
                 return result.Groups[1].Value;

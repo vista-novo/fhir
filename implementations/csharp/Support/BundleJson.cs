@@ -236,6 +236,26 @@ namespace Hl7.Fhir.Support
             result.WriteTo(writer);
         }
 
+
+        public string ToJson()
+        {
+            StringBuilder resultBuilder = new StringBuilder();
+            StringWriter sw = new StringWriter(resultBuilder);
+            JsonWriter jw = new JsonTextWriter(sw);
+            Save(jw);
+            jw.Flush();
+            jw.Close();
+
+            return resultBuilder.ToString();
+        }
+
+
+        public byte[] ToJsonBytes()
+        {
+            return Encoding.UTF8.GetBytes(ToJson());
+        }
+
+
         private JArray jsonCreateLinkArray(UriLinkList links)
         {
             var result = new JArray();

@@ -25,8 +25,8 @@
   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
   POSSIBILITY OF SUCH DAMAGE.
   
-*/
 
+*/
 
 using System;
 using System.Collections.Generic;
@@ -35,36 +35,40 @@ using System.Text;
 
 namespace Hl7.Fhir.Model
 {
-    public partial class Element : IExtendable
+    public partial class HumanName
     {
-        public virtual string ValidateData()
+        public static HumanName ForFamily(string family)
         {
-            //TODO: When ready, this method must be made abstract
-            return null;
+            var result = new HumanName();
+
+            result.Family = new List<FhirString> { new FhirString(family) };
+
+            return result;
+        }
+
+        public HumanName WithGiven(string given)
+        {
+            if (this.Given == null)
+                this.Given = new List<FhirString>();
+
+            this.Given.Add(given);
+
+            return this;
         }
     }
 
 
-    // Resource is not a subclass of Composite, since it
-    // cannot be used in places where you can use composites.
-    public abstract partial class Resource : IExtendable
+    public partial class Demographics
     {
-    }
+        public static Demographics ForName(HumanName name)
+        {
+            return new Demographics { Name = new List<HumanName>() { name } };
+        }
 
-    public interface IExtendable
-    {
-        List<Extension> Extension { get; set; }
-    }
-
-    [System.Serializable]
-    public class FhirFormatException : System.Exception
-    {
-        public FhirFormatException() { }
-        public FhirFormatException(string message) : base(message) { }
-        public FhirFormatException(string message, System.Exception inner) : base(message, inner) { }
-        protected FhirFormatException(
-          System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context)
-            : base(info, context) { }
+        public Demographics WithBirthDate(FhirDateTime dob)
+        {
+            this.BirthDate = dob;
+            return this;
+        }
     }
 }

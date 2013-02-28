@@ -55,6 +55,13 @@ namespace Hl7.Fhir.Support
         public const string RESTOPER_METADATA = "metadata";
         public const string RESTOPER_HISTORY = "history";
         public const string RESTOPER_SEARCH = "search";
+        public const string RESTOPER_BINARY = "binary";
+
+        public const string SEARCH_PARAM_ID = "_id";
+        public const string SEARCH_PARAM_COUNT = "_count";
+        public const string SEARCH_PARAM_INCLUDE = "_include";
+        public const string HISTORY_PARAM_SINCE = "_since";
+        public const string HISTORY_PARAM_COUNT = SEARCH_PARAM_COUNT;
 
         public static string Capitalize(string s)
         {
@@ -111,6 +118,30 @@ namespace Hl7.Fhir.Support
         public static JsonTextReader JsonReaderFromString(string json)
         {
             return new JsonTextReader(new StringReader(json));
+        }
+
+        public const string DT_PARAM_PATTERN_FULL = @"yyyy-MM-dd'T'HH:mm:ssK";
+        public const string DT_PARAM_PATTERN_DATE = @"yyyy-MM-dd";
+
+        public static bool TryParseDateTimeParameter(string value, out DateTimeOffset result)
+        {
+            result = DateTimeOffset.MinValue;
+
+            if (value == null)
+                return false;
+            else if (DateTimeOffset.TryParseExact(value, DT_PARAM_PATTERN_FULL,
+                null, System.Globalization.DateTimeStyles.AssumeUniversal, out result))
+                return true;
+            else if (DateTimeOffset.TryParseExact(value, DT_PARAM_PATTERN_DATE,
+               null, System.Globalization.DateTimeStyles.AssumeUniversal, out result))
+                return true;
+            else
+                return false;
+        }
+
+        public static string FormatDateTimeParameter(DateTimeOffset value)
+        {
+            return value.ToString(DT_PARAM_PATTERN_FULL);
         }
 
     }

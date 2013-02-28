@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Tests
                 {
                     Url = new Uri("http://hl7.org/fhir/profiles/@3141#test"),
                     Value = new FhirBoolean(true),
-                    NestedExtensions = new List<Extension>()
+                    NestedExtension = new List<Extension>()
                         {
                             new Extension()
                             {
@@ -83,14 +83,14 @@ namespace Hl7.Fhir.Tests
             Patient p = new Patient()
             {
                 InternalId = "Ab4",
-                Identifiers = new List<Identifier> { new Identifier() { Id = "3141" } },
+                Identifier = new List<Identifier> { new Identifier() { Id = "3141" } },
                 Details = new Demographics()
                 {
                     BirthDate = new FhirDateTime(1972, 11, 30),
-                    Names = new List<HumanName> {
-                        new HumanName() { Givens = new List<FhirString>() { "Wouter", "Gert" },
-                                   Familys = new List<FhirString>() { new FhirString() { Contents = "van der", 
-                                        Extensions = new List<Extension> { new Extension 
+                    Name = new List<HumanName> {
+                        new HumanName() { Given = new List<FhirString>() { "Wouter", "Gert" },
+                                   Family = new List<FhirString>() { new FhirString() { Contents = "van der", 
+                                        Extension = new List<Extension> { new Extension 
                                                         { Url= new Uri("http://hl7.org/fhir/profile/@iso-21090#name-qualifier"),
                                                             Value = new Code("VV") } } }, "Vlies" } } }
                 },
@@ -101,7 +101,7 @@ namespace Hl7.Fhir.Tests
                      Div = "<div xmlns='http://www.w3.org/1999/xhtml'>Patient 3141 - Wouter Gert, nov. 30th, 1972</div>"
                  },
 
-                 Containeds = new List<Resource>() { new List() { Mode = List.ListMode.Snapshot } }
+                 Contained = new List<Resource>() { new List() { Mode = List.ListMode.Snapshot } }
             };
 
             Assert.AreEqual(@"<?xml version=""1.0"" encoding=""utf-16""?>" +
