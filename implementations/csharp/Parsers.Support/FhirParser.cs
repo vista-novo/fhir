@@ -44,25 +44,25 @@ namespace Hl7.Fhir.Parsers
     {
         public static Resource ParseResourceFromXml(string xml, ErrorList errors)
         {
-            var reader = fromString(xml);
+            var reader = Util.XmlReaderFromString(xml);
             return ParseResource(reader,errors);
         }
 
         public static Resource ParseResourceFromJson(string json, ErrorList errors)
         {
-            var reader = new JsonTextReader(new StringReader(json));
+            var reader = Util.JsonReaderFromString(json);
             return ParseResource(reader, errors);
         }
 
         public static Element ParseElementFromXml(string xml, ErrorList errors)
         {
-            var reader = fromString(xml);
+            var reader = Util.XmlReaderFromString(xml);
             return ParseElement(reader, errors);
         }
 
         public static Element ParseElementFromJson(string json, ErrorList errors)
         {
-            var reader = new JsonTextReader(new StringReader(json));
+            var reader = Util.JsonReaderFromString(json);
             return ParseElement(reader, errors);
         }
 
@@ -84,18 +84,6 @@ namespace Hl7.Fhir.Parsers
         public static Element ParseElement(JsonTextReader reader, ErrorList errors)
         {
             return ParseElement(new JsonFhirReader(reader), errors);
-        }
-
-        private static XmlReader fromString(string s)
-        {
-            var settings = new XmlReaderSettings();
-            settings.IgnoreComments = true;
-            settings.IgnoreProcessingInstructions = true;
-            settings.IgnoreWhitespace = true;
-
-            XmlReader r = XmlReader.Create(new StringReader(s), settings);
-
-            return r;
         }
     }
 }

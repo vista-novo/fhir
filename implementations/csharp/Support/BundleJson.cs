@@ -101,6 +101,11 @@ namespace Hl7.Fhir.Support
             return result;
         }
 
+        public static Bundle LoadFromJson(string json, ErrorList errors)
+        {
+            return Bundle.Load(Util.JsonReaderFromString(json), errors);
+        }
+
 
         private void loadItems( JToken token, ErrorList errors )
         {

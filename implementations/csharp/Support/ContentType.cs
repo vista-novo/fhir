@@ -38,8 +38,6 @@ namespace Hl7.Fhir.Support
 {
     public static class ContentType
     {
-        public const string FORMAT_PARAM = "_format";
-
         public const string JSON_CONTENT_HEADER = "application/json";
         public const string XML_CONTENT_HEADER = "text/xml";
         public const string XML_CONTENT_HEADER2 = "application/xml";    // Also accepted, but never sent

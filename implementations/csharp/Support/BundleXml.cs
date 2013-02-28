@@ -115,6 +115,12 @@ namespace Hl7.Fhir.Support
             return result;
         }
 
+
+        public static Bundle LoadFromXml(string xml, ErrorList errors)
+        {
+            return Bundle.Load(Util.XmlReaderFromString(xml), errors);
+        }
+
         private void loadDeletedItems(SyndicationElementExtensionCollection extensions, ErrorList errors)
         {
             foreach (SyndicationElementExtension extension in extensions.Where(

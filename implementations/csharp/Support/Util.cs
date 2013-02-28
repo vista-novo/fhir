@@ -29,6 +29,7 @@
 */
 
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -49,6 +50,11 @@ namespace Hl7.Fhir.Support
         public const string ATOM_LINKREL_NEXT = "next";
         public const string ATOM_LINKREL_FIRST = "first";
         public const string ATOM_LINKREL_LAST = "last";
+
+        public const string RESTPARAM_FORMAT = "_format";
+        public const string RESTOPER_METADATA = "metadata";
+        public const string RESTOPER_HISTORY = "history";
+        public const string RESTOPER_SEARCH = "search";
 
         public static string Capitalize(string s)
         {
@@ -88,6 +94,23 @@ namespace Hl7.Fhir.Support
             } while (buffer.Length < contentLength);
 
             return buffer.ToArray();
+        }
+
+        public static XmlReader XmlReaderFromString(string xml)
+        {
+            var settings = new XmlReaderSettings();
+            settings.IgnoreComments = true;
+            settings.IgnoreProcessingInstructions = true;
+            settings.IgnoreWhitespace = true;
+
+            XmlReader r = XmlReader.Create(new StringReader(xml), settings);
+
+            return r;
+        }
+
+        public static JsonTextReader JsonReaderFromString(string json)
+        {
+            return new JsonTextReader(new StringReader(json));
         }
 
     }

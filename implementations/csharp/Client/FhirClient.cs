@@ -66,7 +66,7 @@ namespace Hl7.Fhir.Client
         /// <returns>A Conformance resource, or null if the server did not return status 200</returns>
         public Conformance Conformance(bool useOptionsVerb = false)
         {
-            string path = useOptionsVerb ? "" : "metadata";
+            string path = useOptionsVerb ? "" : Util.RESTOPER_METADATA;
             var req = createRequest(path, false);
             req.Method = useOptionsVerb ? "OPTIONS" : "GET";
 
@@ -90,19 +90,19 @@ namespace Hl7.Fhir.Client
         /// <summary>
         /// Fetches the latest version of a resource
         /// </summary>
-        /// <param name="type">The type of resource to fetch</param>
         /// <param name="id">The id of the Resource to fetch</param>
+        /// <typeparam name="TResource">The type of resource to fetch</typeparam>
         /// <returns>The requested resource, or null if the server did not return status 200</returns>
-        public Resource Read(ResourceType type, string id)
+        public TResource Read<TResource>(string id) where TResource : Resource
         {
-            var req =
-                  createRequest(ResourceLocation.BuildResourceLocation(type.ToString(), id), false);
+            var collection = getCollectionForResourceName(typeof(TResource));
+            var req = createRequest(ResourceLocation.BuildResourceLocation(collection, id), false);
             req.Method = "GET";
             
             doRequest(req);
 
             if (LastResponseDetails.Result == HttpStatusCode.OK)
-                return parseResource();
+                return (TResource)parseResource();
             else
                 return null;
         }
@@ -111,20 +111,21 @@ namespace Hl7.Fhir.Client
         /// <summary>
         /// Fetches a specific version of a resource
         /// </summary>
-        /// <param name="type">The type of resource to fetch</param>
         /// <param name="id">The id of the resource to fetch</param>
         /// <param name="versionId">The version id of the resource to fetch</param>
+        /// <typeparam name="TResource">The type of resource to fetch</typeparam>
         /// <returns></returns>
-        public Resource VRead(ResourceType type, string id, string versionId)
+        public TResource VRead<TResource>(string id, string versionId) where TResource : Resource
         {
-            Uri vReadLocation = ResourceLocation.BuildVersionedResourceLocation(type.ToString(), id, versionId);
+            var collection = getCollectionForResourceName(typeof(TResource));
+            Uri vReadLocation = ResourceLocation.BuildVersionedResourceLocation(collection, id, versionId);
             var req = createRequest(vReadLocation.ToString(), false);
             req.Method = "GET";
 
             doRequest(req);
 
             if (LastResponseDetails.Result == HttpStatusCode.OK)
-                return parseResource();
+                return (TResource)parseResource();
             else
                 return null;
         }
@@ -133,24 +134,66 @@ namespace Hl7.Fhir.Client
         /// <summary>
         /// Update (or create) a resource
         /// </summary>
-        /// <param name="resource"></param>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public BundleEntry Update(BundleEntry resource, string id = null)
+        /// <param name="resource">The updated resource content</param>
+        /// <param name="id">The id of the resource to be updated</param>
+        /// <param name="versionId">If not null, the version of the resource that is being updated</param>
+        /// <typeparam name="TResource">The type of resource that is being updated</typeparam>
+        /// <returns>The resource as updated on the server, or null if the update failed.</returns>
+        /// <remarks>
+        /// <para>The returned resource need not be the same as the resources passed as a parameter,
+        /// since the server may have updated or changed part of the data because of business rules.</para>
+        /// <para>If there was no existing resource to update with the given id, the server may allow the client
+        /// to create the resource instead. If so, it returns status code 201 (Created) instead of 200. If
+        /// the resource did not exist and creation using the id given by the client if forbidden, a
+        /// 405 (Method Not Allowed) is returned.</para>
+        /// <para>If a versionId parameter is provided, the update will only succeed if the last version
+        /// on the server corresponds to that versionId. This allows the client to detect update conflicts.
+        /// If a conflict arises, Update returns null and the result status code will be 409 (Conflict). If
+        /// the server requires version-aware updates but the client does not provide the versionId parameter,
+        /// Update also returns null, but the result status code will be 412 (Preconditions failed).</para></remarks>
+        public TResource Update<TResource>(TResource resource, string id, string versionId = null)
+                        where TResource : Resource
         {
-            throw new NotImplementedException();
+            string contentType = ContentType.BuildContentType(PreferredFormat, false);
+            string collection = getCollectionForResourceName(typeof(TResource));
+
+            byte[] data = PreferredFormat == ContentType.ResourceFormat.Xml ?
+                FhirSerializer.SerializeResourceAsXmlBytes(resource) :
+                FhirSerializer.SerializeResourceAsJsonBytes(resource);
+
+            var req = createRequest(ResourceLocation.BuildResourceLocation(collection, id), false);
+
+            req.Method = "PUT";
+            req.ContentType = contentType;
+            setRequestBody(req, data);
+
+            if (versionId != null)
+            {
+                string versionUrl = Util.Combine(FhirEndpoint.ToString(), 
+                    ResourceLocation.BuildVersionedResourceLocation(collection, id, versionId).ToString());
+                req.Headers[HttpRequestHeader.ContentLocation] = versionUrl;
+            }
+
+            doRequest(req);
+
+            if (LastResponseDetails.Result == HttpStatusCode.Created || LastResponseDetails.Result == HttpStatusCode.OK)
+                return (TResource)parseResource();
+            else
+                return null;
         }
+
 
         /// <summary>
         /// Delete a resource
         /// </summary>
-        /// <param name="type">Type of resource to delete</param>
         /// <param name="id">id of the resource to delete</param>
+        /// <typeparam name="TResource">The type of the resource to delete</typeparam>
         /// <returns>true if the delete succeeded, or false otherwise</returns>
-        public bool Delete(ResourceType type, string id)
+        public bool Delete<TResource>(string id) where TResource : Resource
         {
+            var collection = getCollectionForResourceName(typeof(TResource));
             var req =
-                  createRequest(ResourceLocation.BuildResourceLocation(type.ToString(), id), false);
+                  createRequest(ResourceLocation.BuildResourceLocation(collection, id), false);
             req.Method = "DELETE";
 
             doRequest(req);
@@ -165,25 +208,25 @@ namespace Hl7.Fhir.Client
         /// <summary>
         /// Create a resource
         /// </summary>
-        /// <param name="type">The resource type to create</param>
         /// <param name="resource">The resource instance to create</param>
         /// <param name="newId">Newly assigned id by server after successful creation</param>
         /// <returns>The resource as created on the server, or null if the create failed.</returns>
-        /// <remarks>The returned resource need not be the same as the resources passed as a parameter,
-        /// since the server may have updated or changed part of the data because of business rules.
-        /// When the resource was created, but newId is null, the server failed to return the new
-        /// id in the Http Location header.
+        /// <typeparam name="TResource">The type of resource to create</typeparam>
+        /// <remarks><para>The returned resource need not be the same as the resources passed as a parameter,
+        /// since the server may have updated or changed part of the data because of business rules.</para>
+        /// <para>When the resource was created, but newId is null, the server failed to return the new
+        /// id in the Http Location header.</para>
         /// </remarks>
- 
-        public Resource Create(ResourceType type, Resource resource, out string newId)
+        public TResource Create<TResource>(TResource resource, out string newId) where TResource : Resource
         {
             string contentType = ContentType.BuildContentType(PreferredFormat, false);
+            string collection = getCollectionForResourceName(typeof(Resource));
 
             byte[] data = PreferredFormat == ContentType.ResourceFormat.Xml ?
                 FhirSerializer.SerializeResourceAsXmlBytes(resource) :
                 FhirSerializer.SerializeResourceAsJsonBytes(resource);
 
-            var req = createRequest(type.ToString(), false);
+            var req = createRequest(collection, false);
             req.Method = "POST";
             req.ContentType = contentType;
             setRequestBody(req, data);
@@ -197,7 +240,7 @@ namespace Hl7.Fhir.Client
                 var result = parseResource();
                 if (LastResponseDetails.Location != null)
                     newId = ResourceLocation.ParseIdFromRestUri(new Uri(LastResponseDetails.Location));
-                return result;
+                return (TResource)result;
             }
             else
                 return null;
@@ -207,34 +250,66 @@ namespace Hl7.Fhir.Client
         /// <summary>
         /// Retrieve the version history for a specific resource instance
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="id"></param>
-        /// <param name="lastUpdate"></param>
-        /// <returns></returns>
-	    public Bundle History(Resource type, string id, DateTimeOffset? lastUpdate = null )
+        /// <param name="id">The id of the resource to get the history for</param>
+        /// <param name="lastUpdate">If provided, only get updates on or after the given point in time</param>
+        /// <typeparam name="TResource">The type of resource to get the history for</typeparam>
+        /// <returns>A Bundle listing all versions for the given resource id</returns>
+	    public Bundle History<TResource>(string id, DateTimeOffset? lastUpdate = null ) where TResource : Resource
         {
-               throw new NotImplementedException();
+            var collection = getCollectionForResourceName(typeof(TResource));
+            var path = Util.Combine(ResourceLocation.BuildResourceLocation(collection, id).ToString(),
+                                Util.RESTOPER_HISTORY);
+
+            var req = createRequest(path, true);
+            req.Method = "GET";
+            
+            doRequest(req);
+
+            if (LastResponseDetails.Result == HttpStatusCode.OK)
+                return parseBundle();
+            else
+                return null;
         }
 
+       
         /// <summary>
         /// Retrieve the version history for all resources of a certain type
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="lastUpdate"></param>
-        /// <returns></returns>
-        public Bundle History(ResourceType type, DateTimeOffset? lastUpdate = null )
+        /// <param name="lastUpdate">If provided, only get updates on or after the given point in time</param>
+        /// <typeparam name="TResource">The type of resource to get the history for</typeparam>
+        /// <returns>A Bundle listing all versions for all resources of the given type</returns>
+        public Bundle History<TResource>(DateTimeOffset? lastUpdate = null ) where TResource : Resource
         {
-               throw new NotImplementedException();
+            var collection = getCollectionForResourceName(typeof(TResource));
+            var path = Util.Combine(collection, Util.RESTOPER_HISTORY);
+            var req = createRequest(path, true);
+            req.Method = "GET";
+
+            doRequest(req);
+
+            if (LastResponseDetails.Result == HttpStatusCode.OK)
+                return parseBundle();
+            else
+                return null;
         }
+
 
         /// <summary>
         /// Retrieve the version history of any resource on the server
         /// </summary>
-        /// <param name="lastUpdate"></param>
-        /// <returns></returns>
+        /// <param name="lastUpdate">If provided, only get updates on or after the given point in time</param>
+        /// <returns>A Bundle listing all versions of all resource on the server</returns>
         public Bundle History(DateTimeOffset? lastUpdate = null)
         {
-               throw new NotImplementedException();
+            var req = createRequest(Util.RESTOPER_HISTORY, true);
+            req.Method = "GET";
+
+            doRequest(req);
+
+            if (LastResponseDetails.Result == HttpStatusCode.OK)
+                return parseBundle();
+            else
+                return null;
         }
 
 
@@ -277,6 +352,11 @@ namespace Hl7.Fhir.Client
         private HttpWebRequest createRequest(Uri path, bool forBundle)
         {
             return createRequest(path.ToString(), forBundle);
+        }
+
+        private string getCollectionForResourceName(Type type)
+        {
+            return type.Name.ToLowerInvariant();
         }
 
         private HttpWebRequest createRequest(string path, bool forBundle)
@@ -353,6 +433,36 @@ namespace Hl7.Fhir.Client
             if (parseErrors.Count() > 0)
                 throw new FhirParseException(data, parseErrors,
                     "Failed to parse the resource data: " + parseErrors.ToString());
+
+            return result;
+        }
+
+
+        private Bundle parseBundle()
+        {
+            string data = LastResponseDetails.BodyAsString();
+            string contentType = LastResponseDetails.ContentType;
+
+            ErrorList parseErrors = new ErrorList();
+            Bundle result;
+
+            ContentType.ResourceFormat format = ContentType.GetResourceFormatFromContentType(contentType);
+
+            switch (format)
+            {
+                case ContentType.ResourceFormat.Json:
+                    result = Bundle.LoadFromJson(data, parseErrors);
+                    break;
+                case ContentType.ResourceFormat.Xml:
+                    result = Bundle.LoadFromXml(data, parseErrors);
+                    break;
+                default:
+                    throw new FhirParseException("Cannot decode bundle: unrecognized content type");
+            }
+
+            if (parseErrors.Count() > 0)
+                throw new FhirParseException(data, parseErrors,
+                    "Failed to parse the bundle data: " + parseErrors.ToString());
 
             return result;
         }
