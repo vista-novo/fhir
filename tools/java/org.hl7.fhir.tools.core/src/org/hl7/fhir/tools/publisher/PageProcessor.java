@@ -916,6 +916,7 @@ public class PageProcessor implements Logger  {
       
       html.append("  <tr><td><a href=\""+htmlFilename+".htm\">"+c.getCode()+"</a></td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
     }       
+    html.append("  <tr><td><a href=\"http.htm#binary\">Binary</a></td><td>Pure binary content (special case)</td></tr>");
     return html.toString();
   }
 

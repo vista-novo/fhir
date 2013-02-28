@@ -26,8 +26,14 @@
 
   <!-- while the FHIR infrastructure is turning over prior to development, a version is 
     required. Note that this may be rescinded later? -->
-  <version value="0.02"/>
+  <version value="0.07"/>
+  
+  <!-- this system accepts unknown content in the resources -->
   <acceptUnknown value="true"/>
+
+  <!-- this system can do either xml or json. (Listing both implies full support for either, with interconversion) -->  
+  <format value="xml"/>
+  <format value="json"/>
   
   <!-- in a real conformance statement, it's unlikely that a single conformance statement 
     would declare conformance for REST, messaging and documents, though it is legal. 
@@ -56,15 +62,17 @@
         <code value="update"/>
       </operation>
       <operation>
-        <code value="history"/>
+        <code value="history-instance"/>
       </operation>
       <operation>
         <code value="create"/>
       </operation>
       <operation>
-        <code value="updates"/>
+        <code value="history-type"/>
       </operation>
     </resource>
+    <batch value="true"/>
+    <history value="true"/>
   </rest>
 
   <!-- a messaging conformance statement. Applications are not required to make a conformance 

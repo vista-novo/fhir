@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
@@ -9,17 +10,18 @@
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:19:17Z</Created>
   <LastSaved>2013-02-24T22:25:34Z</LastSaved>
-  <Version>14.0</Version>
+  <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>16080</WindowHeight>
-  <WindowWidth>38400</WindowWidth>
+  <WindowHeight>13176</WindowHeight>
+  <WindowWidth>1896</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <TabRatio>612</TabRatio>
+  <TabRatio>651</TabRatio>
+  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -90,20 +92,23 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="53" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s63" ss:DefaultColumnWidth="65"
+  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="62" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s63" ss:DefaultColumnWidth="64.8"
    ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="211"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="37"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="26"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="56" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="83"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="214" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161"
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="229.2"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="37.200000000000003"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="25.8"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="55.800000000000004"
     ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="82.8"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="214.20000000000002"
+    ss:Span="1"/>
+   <Column ss:Index="9" ss:StyleID="s63" ss:AutoFitWidth="0"
+    ss:Width="160.80000000000001" ss:Span="1"/>
    <Column ss:Index="11" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
-   <Column ss:Index="13" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="146"/>
+   <Column ss:Index="13" ss:StyleID="s63" ss:AutoFitWidth="0"
+    ss:Width="145.79999999999998"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
@@ -232,6 +237,7 @@
     <Cell><Data ss:Type="String">Conformance.implementation.software</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String" x:Ticked="1">@Conformance.software</Data></Cell>
+    <Cell><Data ss:Type="String">right</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">The software running this instance</Data></Cell>
     <Cell><Data ss:Type="String">The software running this instance</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
@@ -269,6 +275,15 @@
     <Cell><Data ss:Type="String">Whether the application accepts unknown non-&quot;must understand&quot; elements as part of a resource. This does not include extensions, but genuine new additions to a resource</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="75">
+    <Cell><Data ss:Type="String">Conformance.format</Data></Cell>
+    <Cell><Data ss:Type="String">1..*</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">MimeType</Data></Cell>
+    <Cell><Data ss:Type="String">formats supported (xml | json | mime type)</Data></Cell>
+    <Cell><Data ss:Type="String">The formats supported by this implementation</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">&quot;xml&quot; or &quot;json&quot; are allowed, which describe the simple encodings described in the specification (and imply appropriate bundle support). Otherwise, mime types are legal here</Data></Cell>
+   </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">Conformance.rest</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
@@ -292,9 +307,53 @@
     <Cell><Data ss:Type="String">Conformance.rest.documentation</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Security, etc.</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">General description of implementation</Data></Cell>
     <Cell><Data ss:Type="String">Provides documentation about the system's restful capabilities that apply across all applications, such as security</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">Do we need something more formal for security capabilities?</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">Conformance.rest.security</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">right</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Information about security of implementation</Data></Cell>
+    <Cell><Data ss:Type="String">Information about security of implementation</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">Conformance.rest.security.service</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">RestfulSecurityService</Data></Cell>
+    <Cell><Data ss:Type="String">What type of security services are supported/required</Data></Cell>
+    <Cell><Data ss:Type="String">What type of security services are supported/required</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">Conformance.rest.security.description</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">General description of how security works</Data></Cell>
+    <Cell><Data ss:Type="String">General description of how security works</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">Conformance.rest.security.certificate</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">right</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Certificates associated with security profiles</Data></Cell>
+    <Cell><Data ss:Type="String">Certificates associated with security profiles</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">Conformance.rest.security.certificate.type</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">MimeType</Data></Cell>
+    <Cell><Data ss:Type="String">Mime type for certificate</Data></Cell>
+    <Cell><Data ss:Type="String">Mime type for certificate</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">Conformance.rest.security.certificate.blob</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">base64Binary</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Actual certificate</Data></Cell>
+    <Cell><Data ss:Type="String">Actual certificate</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.rest.resource</Data></Cell>
@@ -315,11 +374,13 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Conformance.rest.resource.profile</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Resource Profiles supported</Data></Cell>
     <Cell><Data ss:Type="String">Identifies the profile that describes the solution's support for the resource, including any constraints on cardinality, bindings, lengths or other limitations</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">This profile applies to all the resources of this type - i.e. it is the superset of what is supported</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Does a system need to be able to enumerate profiles that it doe support?</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.rest.resource.operation</Data></Cell>
@@ -349,7 +410,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell><Data ss:Type="String">Conformance.rest.resource.history</Data></Cell>
+    <Cell><Data ss:Type="String">Conformance.rest.resource.readHistory</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">boolean</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Whether vRead can return past versions</Data></Cell>
@@ -483,6 +544,34 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Chained names supported</Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="12" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="90">
+    <Cell><Data ss:Type="String">Conformance.rest.batch</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">boolean</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">If batches are supported</Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="12" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="90">
+    <Cell><Data ss:Type="String">Conformance.rest.history</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">boolean</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">If a system wide history list is supported</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:Index="12" ss:StyleID="Default"/>
@@ -670,12 +759,10 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>33</TopRowBottomPane>
+   <TopRowBottomPane>19</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -692,20 +779,21 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>37</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>25</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s70" ss:DefaultColumnWidth="65"
+   x:FullRows="1" ss:StyleID="s70" ss:DefaultColumnWidth="64.8"
    ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="95"/>
-   <Column ss:StyleID="s70" ss:Width="68"/>
+   <Column ss:Index="2" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="94.8"/>
+   <Column ss:StyleID="s70" ss:Width="67.8"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="144"/>
    <Column ss:Index="6" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="147"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
@@ -745,7 +833,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -755,15 +842,16 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Search">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="9" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="71"/>
-   <Column ss:AutoFitWidth="0" ss:Width="383"/>
-   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="353"/>
-   <Row ss:AutoFitHeight="0" ss:Height="16" ss:StyleID="s65">
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="11" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="64.8" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="70.8"/>
+   <Column ss:AutoFitWidth="0" ss:Width="382.79999999999995"/>
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="352.8"/>
+   <Row ss:AutoFitHeight="0" ss:Height="16.05" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
@@ -826,6 +914,18 @@
     <Cell><Data ss:Type="String">single</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Conformance.date</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">format</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">token</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Conformance.format</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">security</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">token</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Conformance.rest.security</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -840,27 +940,28 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>11</ActiveRow>
      <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s72" ss:DefaultColumnWidth="65"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s72" ss:DefaultColumnWidth="64.8"
    ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="134"/>
-   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="257"/>
-   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="49"/>
-   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="86"/>
-   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="179"/>
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="133.80000000000001"/>
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="256.8"/>
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="49.2"/>
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="85.8"/>
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="178.8"/>
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="324"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
@@ -876,6 +977,13 @@
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#restful-conformance-mode</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">RestfulSecurityService</Data></Cell>
+    <Cell><Data ss:Type="String">Types of security services used with FHIR</Data></Cell>
+    <Cell><Data ss:Type="String">code list</Data></Cell>
+    <Cell><Data ss:Type="String">preferred</Data></Cell>
+    <Cell><Data ss:Type="String">#restful-security-service</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">RestfulOperation</Data></Cell>
@@ -919,22 +1027,21 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>2</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="restful-conformance-mode">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="436"/>
+   x:FullRows="1" ss:DefaultColumnWidth="64.8" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="436.20000000000005"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
@@ -955,7 +1062,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -979,12 +1085,13 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="restful-operation">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="10" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="436"/>
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="13" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="64.8" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="436.20000000000005"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
@@ -1006,16 +1113,16 @@
     <Cell><Data ss:Type="String">Delete a resource</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">history</Data></Cell>
-    <Cell><Data ss:Type="String">Retrieve the update history for the resource</Data></Cell>
+    <Cell><Data ss:Type="String">history-instance</Data></Cell>
+    <Cell><Data ss:Type="String">Retrieve the update history for a resource instance</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">validate</Data></Cell>
     <Cell><Data ss:Type="String">Check that the content would be acceptable as an update</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">updates</Data></Cell>
-    <Cell><Data ss:Type="String">Get a list of prior updates to resources of this type, optionally with some filter criteria</Data></Cell>
+    <Cell><Data ss:Type="String">history-type</Data></Cell>
+    <Cell><Data ss:Type="String">Get a list of updates to resources of this type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">create</Data></Cell>
@@ -1025,6 +1132,7 @@
     <Cell><Data ss:Type="String">search</Data></Cell>
     <Cell><Data ss:Type="String">Supports search operations using the parameters described in the profile</Data></Cell>
    </Row>
+   <Row ss:Index="13" ss:AutoFitHeight="0"/>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -1033,7 +1141,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1053,17 +1160,18 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>8</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="message-conformance-event-mode">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="439"/>
+   x:FullRows="1" ss:DefaultColumnWidth="64.8" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="439.2"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
@@ -1084,7 +1192,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -1093,12 +1200,13 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="message-transport">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="439"/>
+   x:FullRows="1" ss:DefaultColumnWidth="64.8" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="439.2"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
@@ -1123,7 +1231,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -1133,12 +1240,13 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="document-mode">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="439"/>
+   x:FullRows="1" ss:DefaultColumnWidth="64.8" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="439.2"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
@@ -1159,7 +1267,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -1168,11 +1275,12 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Sheet10">
   <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="1" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
+   x:FullRows="1" ss:DefaultColumnWidth="64.8" ss:DefaultRowHeight="15">
    <Row ss:AutoFitHeight="0"/>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1182,7 +1290,53 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="restful-security-service">
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="6" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="14.4">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="153.6"/>
+   <Row ss:AutoFitHeight="0" ss:Height="15" ss:StyleID="s65">
+    <Cell><Data ss:Type="String">Code</Data></Cell>
+    <Cell><Data ss:Type="String">Definition</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">OAuth</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">OAuth (see oauth.net)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">OAuth2</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">OAuth version 2 (see oauth.net)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">NTLM</Data></Cell>
+    <Cell><Data ss:Type="String">Microsoft NTLM Authentication</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Basic</Data></Cell>
+    <Cell><Data ss:Type="String">Basic authentication defined in HTTP specification</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Kerberos</Data></Cell>
+    <Cell><Data ss:Type="String">see…</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>

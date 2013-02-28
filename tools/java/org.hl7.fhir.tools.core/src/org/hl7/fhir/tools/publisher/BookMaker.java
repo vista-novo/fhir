@@ -60,7 +60,6 @@ public class BookMaker {
   }
 
   
-  
   public BookMaker(PageProcessor page) {
     super();
     this.page = page;
