@@ -52,6 +52,7 @@ public class DiagramGenerator {
       for (String c : classes) {
         queue.add(page.getDefinitions().getElementDefn(c));
         names.put(page.getDefinitions().getElementDefn(c), c);
+        
         if (c.startsWith("Resourc"))
           defns.put(page.getDefinitions().getElementDefn(c), "resources-definitions.htm#"+c);
         else if (c.equals("Narrative")) 
@@ -126,6 +127,7 @@ public class DiagramGenerator {
     Map<org.hl7.fhir.definitions.model.ElementDefn, String> defns = new HashMap<org.hl7.fhir.definitions.model.ElementDefn, String>(); 
     queue.add(resource.getRoot());
     names.put(resource.getRoot(), resource.getName());
+
     defns.put(resource.getRoot(), defn);
     while (queue.size() > 0) {
       org.hl7.fhir.definitions.model.ElementDefn r = queue.get(0);
@@ -220,13 +222,22 @@ private String getDefns() {
           }
         } else if (e.typeCode().startsWith("@")) {
           ElementDefn src = root.getElementForPath(e.typeCode().substring(1), page.getDefinitions());
-          n = names.get(src);          
+          if (names.containsKey(src))
+        	n = names.get(src);      
+          else {
+            n = Utilities.capitalize(e.getName());
+            names.put(e, n);
+            queue.add(e);
+            defns.put(e, dn+"."+e.getName());
+          }          
         } else {
           n = Utilities.capitalize(e.getName());
           names.put(e, n);
           queue.add(e);
           defns.put(e, dn+"."+e.getName());
         }
+        if (n == null)
+        	n = "??";
         String ta = t != null ? "(D, #FFD700)" : "(E, Aliceblue)";
         if (page.getDefinitions().hasType(rn))
           s.append(rn+" << (D, #FFA500) >> *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << "+ta+" >> : "+e.getName()+"\r\n");
@@ -244,6 +255,7 @@ private String getDefns() {
       s2.append("class "+rn+" << (R, #FF7700) >> {\r\n");
     else if (page.getDefinitions().dataTypeIsSharedInfo(r.typeCode()) || page.getDefinitions().hasType(rn)) {
       s2.append("class "+rn+" << (D, #FFD700) >> {\r\n");
+      elementClasses.add(rn);
     } else {
       s2.append("class "+rn+" << (E, Aliceblue ) >> {\r\n");
       elementClasses.add(rn);

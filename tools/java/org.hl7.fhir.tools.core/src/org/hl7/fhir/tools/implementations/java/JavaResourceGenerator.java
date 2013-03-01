@@ -41,6 +41,7 @@ import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.tools.implementations.GeneratorUtils;
+import org.hl7.fhir.utilities.Inflector;
 import org.hl7.fhir.utilities.Utilities;
 
 public class JavaResourceGenerator extends JavaBaseGenerator {
@@ -267,7 +268,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		int i = 0;
 		for (DefinedCode c : cd.getCodes()) {
 			i++;
-			String cc = c.getCode();
+			String cc = Utilities.camelCase(c.getCode());
 			if (GeneratorUtils.isJavaReservedWord(cc))
 				cc = cc + "_";
 			if (Utilities.IsInteger(cc))
@@ -293,7 +294,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		write("            if (codeString == null || \"\".equals(codeString))\r\n");
 		write("                return null;\r\n");
 		for (DefinedCode c : cd.getCodes()) {
-			String cc = c.getCode();
+			String cc = Utilities.camelCase(c.getCode());
 			if (GeneratorUtils.isJavaReservedWord(cc))
 				cc = cc + "_";
       if (Utilities.IsInteger(cc))
@@ -319,7 +320,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		write("        public String toCode() {\r\n");
 		write("          switch (this) {\r\n");
 		for (DefinedCode c : cd.getCodes()) {
-			String cc = c.getCode();
+			String cc = Utilities.camelCase(c.getCode());
 			if (GeneratorUtils.isJavaReservedWord(cc))
 				cc = cc + "_";
       if (Utilities.IsInteger(cc))
@@ -353,7 +354,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     write("            if (codeString == null || \"\".equals(codeString))\r\n");
     write("                return null;\r\n");
     for (DefinedCode c : cd.getCodes()) {
-      String cc = c.getCode();
+      String cc = Utilities.camelCase(c.getCode());
       if (GeneratorUtils.isJavaReservedWord(cc))
         cc = cc + "_";
       if (Utilities.IsInteger(cc))
@@ -377,7 +378,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     write("        }\r\n"); 
     write("    public String toCode(Enum<?> code) throws Exception {\r\n");
     for (DefinedCode c : cd.getCodes()) {
-      String cc = c.getCode();
+      String cc = Utilities.camelCase(c.getCode());
       if (GeneratorUtils.isJavaReservedWord(cc))
         cc = cc + "_";
       if (Utilities.IsInteger(cc))
