@@ -123,7 +123,20 @@ namespace Hl7.Fhir.Support
         public const string DT_PARAM_PATTERN_FULL = @"yyyy-MM-dd'T'HH:mm:ssK";
         public const string DT_PARAM_PATTERN_DATE = @"yyyy-MM-dd";
 
-        public static bool TryParseDateTimeParameter(string value, out DateTimeOffset result)
+
+        public static DateTimeOffset ParseIsoDateTime(string value)
+        {
+            DateTimeOffset result;
+
+            bool canParse = TryParseIsoDateTime(value, out result);
+
+            if (!canParse)
+                throw new ArgumentException("Cannot parse DateTimeOffset from given string");
+
+            return result;
+        }
+
+        public static bool TryParseIsoDateTime(string value, out DateTimeOffset result)
         {
             result = DateTimeOffset.MinValue;
 
@@ -139,7 +152,7 @@ namespace Hl7.Fhir.Support
                 return false;
         }
 
-        public static string FormatDateTimeParameter(DateTimeOffset value)
+        public static string FormatIsoDateTime(DateTimeOffset value)
         {
             return value.ToString(DT_PARAM_PATTERN_FULL);
         }

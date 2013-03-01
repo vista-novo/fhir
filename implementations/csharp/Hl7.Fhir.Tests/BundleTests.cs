@@ -100,7 +100,7 @@ namespace Hl7.Fhir.Tests
            @"<title type=""text"">Resource 99 Version 1</title><link rel=""self"" href=""http://test.com/fhir/binary/@99/history/@1"" />"+
            @"<id>http://test.com/fhir/binary/@99</id><updated>2012-10-31T13:04:14Z</updated><published>2012-11-02T14:17:21Z</published>"+
            @"<category term=""Binary"" scheme=""http://hl7.org/fhir/resource-types"" /><content type=""text/xml"">"+
-           @"<Binary contentType=""application/x-test"">AAECAw==</Binary></content><summary type=""xhtml""><div xmlns=""http://www.w3.org/1999/xhtml"">"+
+           @"<Binary contentType=""application/x-test"" xmlns=""http://hl7.org/fhir"">AAECAw==</Binary></content><summary type=""xhtml""><div xmlns=""http://www.w3.org/1999/xhtml"">" +
            @"Binary content</div></summary></entry></feed>";
 
 
@@ -135,7 +135,7 @@ namespace Hl7.Fhir.Tests
             b.Links.LastLink = new Uri("http://test.com/fhir/patient/@233");
             b.AuthorName = "Ewout Kramer";
 
-            ResourceEntry e1 = b.CreateResourceEntry();
+            ResourceEntry e1 = new ResourceEntry();
             e1.Id = new Uri("http://test.com/fhir/patient/@233");
             e1.Title = "Resource 233 Version 1";
             e1.SelfLink = new Uri("http://test.com/fhir/patient/@233/history/@1");
@@ -152,12 +152,12 @@ namespace Hl7.Fhir.Tests
                   }
             };
 
-            DeletedEntry e2 = b.CreateDeletedEntry();
+            DeletedEntry e2 = new DeletedEntry();
             e2.Id = new Uri("http://test.com/fhir/patient/@233");
             e2.SelfLink = new Uri("http://test.com/fhir/patient/@233/history/@2");
             e2.When = new DateTimeOffset(2012, 11, 01, 13, 15, 30, TimeSpan.Zero);
 
-            BinaryEntry e3 = b.CreateBinaryEntry();
+            BinaryEntry e3 = new BinaryEntry();
             e3.Id = new Uri("http://test.com/fhir/binary/@99");
             e3.Title = "Resource 99 Version 1";
             e3.SelfLink = new Uri("http://test.com/fhir/binary/@99/history/@1");

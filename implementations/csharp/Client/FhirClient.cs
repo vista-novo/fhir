@@ -260,7 +260,7 @@ namespace Hl7.Fhir.Client
             var path = Util.Combine(ResourceLocation.BuildResourceLocation(collection, id).ToString(),
                                 Util.RESTOPER_HISTORY);
             if (lastUpdate.HasValue)
-                path = addParam(path, Util.HISTORY_PARAM_SINCE, Util.FormatDateTimeParameter(lastUpdate.Value));
+                path = addParam(path, Util.HISTORY_PARAM_SINCE, Util.FormatIsoDateTime(lastUpdate.Value));
 
             var req = createRequest(path, true);
             req.Method = "GET";
@@ -286,7 +286,7 @@ namespace Hl7.Fhir.Client
             var path = Util.Combine(collection, Util.RESTOPER_HISTORY);
 
             if (lastUpdate.HasValue)
-                path = addParam(path, Util.HISTORY_PARAM_SINCE, Util.FormatDateTimeParameter(lastUpdate.Value));
+                path = addParam(path, Util.HISTORY_PARAM_SINCE, Util.FormatIsoDateTime(lastUpdate.Value));
 
             var req = createRequest(path, true);
             req.Method = "GET";
@@ -310,7 +310,7 @@ namespace Hl7.Fhir.Client
             var path = Util.RESTOPER_HISTORY;
 
             if (lastUpdate.HasValue)
-                path = addParam(path, Util.HISTORY_PARAM_SINCE, Util.FormatDateTimeParameter(lastUpdate.Value));
+                path = addParam(path, Util.HISTORY_PARAM_SINCE, Util.FormatIsoDateTime(lastUpdate.Value));
 
             var req = createRequest(path, true);
             req.Method = "GET";

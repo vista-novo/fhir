@@ -85,6 +85,7 @@
 	<Compile Include="Support\ElementContent.cs" />
     <Compile Include="Support\ErrorList.cs" />
 	<Compile Include="Support\Inspection.cs" />
+	<Compile Include="Support\ManagedEntryList.cs" />
 	<Compile Include="Support\ResourceLocation.cs" />
 	<Compile Include="Support\UriLinkList.cs" />
     <Compile Include="Support\Util.cs" />

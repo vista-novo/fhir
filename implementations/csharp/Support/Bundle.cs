@@ -53,18 +53,13 @@ namespace Hl7.Fhir.Support
         public string AuthorUri { get; set; }
 
 
-        public List<BundleEntry> Entries { get; private set; }
+        public ManagedEntryList Entries { get; private set; }
 
         public Bundle()
         {
-            Entries = new List<BundleEntry>();
+            Entries = new ManagedEntryList(this);
             Links = new UriLinkList();
         }
-
-
-        public ResourceEntry CreateResourceEntry() { return new ResourceEntry(this); }
-        public DeletedEntry CreateDeletedEntry() { return new DeletedEntry(this); }
-        public BinaryEntry CreateBinaryEntry() { return new BinaryEntry(this); }
 
         public ErrorList Validate()
         {
@@ -83,7 +78,8 @@ namespace Hl7.Fhir.Support
             if (LastUpdated == null)
                 errors.Add("Feed must have a updated date", context);
 
-            Entries.ForEach(entry => errors.AddRange(entry.Validate()));
+            foreach(var entry in Entries)
+                errors.AddRange(entry.Validate());
 
             return errors;
         }
@@ -96,14 +92,9 @@ namespace Hl7.Fhir.Support
 
     public abstract class BundleEntry
     {
-        internal BundleEntry(Bundle parent)
-        {
-            this.Parent = parent;
-        }
-
         public Uri SelfLink { get; set; }
         public Uri Id { get; set; }
-        public Bundle Parent { private set; get; }
+        public Bundle Parent { set; get; }
 
         public virtual ErrorList Validate()
         {
@@ -134,8 +125,6 @@ namespace Hl7.Fhir.Support
 
     public class DeletedEntry : BundleEntry
     {
-        internal DeletedEntry(Bundle parent) : base(parent) { }
-
         public DateTimeOffset When { get; set; }
 
         public override string Summary
@@ -150,8 +139,6 @@ namespace Hl7.Fhir.Support
 
     public abstract class ContentEntry : BundleEntry
     {
-        internal ContentEntry(Bundle parent) : base(parent) { }
-
         public string Title { get; set; }
 
         public DateTimeOffset? LastUpdated { get; set; }
@@ -200,8 +187,6 @@ namespace Hl7.Fhir.Support
 
     public class BinaryEntry : ContentEntry
     {
-        internal BinaryEntry(Bundle parent) : base(parent) { }
-
         public string MediaType;
         public byte[] Content { get; set; }
 
@@ -229,8 +214,6 @@ namespace Hl7.Fhir.Support
 
     public class ResourceEntry : ContentEntry
     {
-        internal ResourceEntry(Bundle parent) : base(parent) { }
-
         public string ResourceType { get; private set; }
 
         // Provide the content by either giving a Resource (for FHIR resources)

@@ -34,7 +34,6 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using Hl7.Fhir.Model;
-using System.ServiceModel.Syndication;
 using System.Xml.Linq;
 using Hl7.Fhir.Parsers;
 using System.IO;
@@ -52,7 +51,8 @@ namespace Hl7.Fhir.Support
         public const string XATOM_LINK_REL = "rel";
         public const string XATOM_LINK_HREF = "href";
         public const string XATOM_CONTENT_BINARY = "Binary";
-        public const string XATOM_CONTENT_TYPE = "contentType";
+        public const string XATOM_CONTENT_TYPE = "type";
+        public const string XATOM_CONTENT_BINARY_TYPE = "contentType";
         public const string XATOM_TITLE = "title";
         public const string XATOM_UPDATED = "updated";
         public const string XATOM_ID = "id";
@@ -67,13 +67,52 @@ namespace Hl7.Fhir.Support
         public const string XATOM_CONTENT = "content";
         public const string XATOM_SUMMARY = "summary";
 
+        private static readonly XNamespace XATOMNS = ATOMPUBNS;
+        private static readonly XNamespace XTOMBSTONE = ATOMPUB_TOMBSTONES_NS;
+        private static readonly XNamespace XFHIRNS = Util.FHIRNS;
+
+        private static string xValue(XObject elem)
+        {
+            if (elem == null) return null;
+
+            if (elem is XElement)
+                return (elem as XElement).Value;
+            if (elem is XAttribute)
+                return (elem as XAttribute).Value;
+
+            return null;
+        }
+
+        private static string stringValueOrNull(XObject elem)
+        {
+            string value = xValue(elem);
+
+            return String.IsNullOrEmpty(value) ? null : value;
+        }
+
+
+        private static Uri uriValueOrNull(XObject elem)
+        {
+            string value = stringValueOrNull(elem);
+
+            return value != null ? new Uri(value) : null;
+        }
+
+        public static DateTimeOffset? dateTimeOrNull(XElement elem)
+        {
+            string value = stringValueOrNull(elem);
+
+            return value != null ?
+                Util.ParseIsoDateTime(value) : (DateTimeOffset?)null;
+        }
+
         public static Bundle Load(XmlReader reader, ErrorList errors)
         {
-            SyndicationFeed feed;
+            XElement feed;
 
             try
             {
-                feed = SyndicationFeed.Load(reader);
+                feed = XDocument.Load(reader).Root;
             }
             catch (Exception exc)
             {
@@ -82,37 +121,51 @@ namespace Hl7.Fhir.Support
             }
 
             Bundle result;
-
+            
             try
             {
                 result = new Bundle()
                 {
-                    Title = feed.Title != null && !String.IsNullOrWhiteSpace(feed.Title.Text) ?
-                                feed.Title.Text : null,
-                    LastUpdated = (feed.LastUpdatedTime == DateTimeOffset.MinValue) ? (DateTimeOffset?)null : feed.LastUpdatedTime,
-                    Id = new Uri(feed.Id, UriKind.Absolute),
-                    Links = getLinksFromSyndication(feed.Links),
-                    AuthorName = feed.Authors != null ?
-                                    feed.Authors.Select(auth => auth.Name).FirstOrDefault() : null,
-                    AuthorUri = feed.Authors != null ?
-                                 feed.Authors.Select(auth => auth.Uri).FirstOrDefault() : null
-
+                    Title = stringValueOrNull(feed.Element(XATOMNS + XATOM_TITLE)),
+                    LastUpdated = dateTimeOrNull(feed.Element(XATOMNS + XATOM_UPDATED)),
+                    Id = uriValueOrNull(feed.Element(XATOMNS + XATOM_ID)),
+                    Links = getLinksFromSyndication(feed.Elements(XATOMNS+XATOM_LINK)),
+                    AuthorName = feed.Elements(XATOMNS+XATOM_AUTHOR).Count() == 0 ? null :
+                            stringValueOrNull(feed.Element(XATOMNS+XATOM_AUTHOR)
+                                .Element(XATOMNS+XATOM_AUTH_NAME)),
+                    AuthorUri = feed.Elements(XATOMNS + XATOM_AUTHOR).Count() == 0 ? null :
+                            stringValueOrNull(feed.Element(XATOMNS+XATOM_AUTHOR)
+                                .Element(XATOMNS + XATOM_AUTH_URI))
                 };
             }
             catch (Exception exc)
             {
                 errors.Add("Exception while parsing feed attributes: " + exc.Message,
-                    String.Format("Feed '{0}'", feed.Id) );
+                    String.Format("Feed '{0}'", feed.Element(XATOMNS + XATOM_ID).Value) );
                 return null;
             }
 
             result.Entries.Clear();
-            result.loadContentItems(feed.Items, errors);
-            result.loadDeletedItems(feed.ElementExtensions, errors);
+            result.Entries.AddRange( loadEntries( feed.Elements().Where(elem=>
+                        (elem.Name == XATOMNS+XATOM_ENTRY ||
+                         elem.Name == XTOMBSTONE+XATOM_DELETED_ENTRY)), errors ));
 
             errors.AddRange(result.Validate());
 
             return result;
+        }
+
+        private static IEnumerable<BundleEntry> loadEntries(IEnumerable<XElement> entries, ErrorList errors)
+        {
+            return entries.Select(entry =>
+                        {
+                            if (entry.Name == XATOMNS + XATOM_ENTRY)
+                                return (BundleEntry)loadContentItem(entry, errors);
+                            if (entry.Name == XTOMBSTONE + XATOM_DELETED_ENTRY)
+                                return (BundleEntry)loadDeletedItem(entry, errors);
+
+                            return (BundleEntry)null;
+                        });
         }
 
 
@@ -121,135 +174,160 @@ namespace Hl7.Fhir.Support
             return Bundle.Load(Util.XmlReaderFromString(xml), errors);
         }
 
-        private void loadDeletedItems(SyndicationElementExtensionCollection extensions, ErrorList errors)
+        private static DeletedEntry loadDeletedItem(XElement item, ErrorList errors)
         {
-            foreach (SyndicationElementExtension extension in extensions.Where(
-                        ext => ext.OuterName == XATOM_DELETED_ENTRY && ext.OuterNamespace == ATOMPUB_TOMBSTONES_NS))
+            DeletedEntry de = new DeletedEntry();
+
+            try
             {
-                DeletedEntry de = new DeletedEntry(this);
+                errors.DefaultContext = "A deleted entry";
 
-                try
-                {
-                    errors.DefaultContext = "A deleted entry";
+                string id = Bundle.stringValueOrNull(item.Attribute(XATOM_DELETED_REF));
+                if (id != null) de.Id = new Uri(id, UriKind.Absolute);
+                if (id != null) errors.DefaultContext = String.Format("Entry '{0}'", id);
 
-                    XmlReader extensionReader = extension.GetReader();
-                    XElement deletedExtension = (XElement)(XElement.ReadFrom(extensionReader));
-                    XAttribute id = deletedExtension.Attribute(XATOM_DELETED_REF);
+                string when = Bundle.stringValueOrNull(item.Attribute(XATOM_DELETED_WHEN));
+                if (when != null) de.When = Instant.Parse(when).Contents.Value;
 
-                    if (id != null) errors.DefaultContext = String.Format("Entry '{0}'", id);
-
-                    XAttribute when = deletedExtension.Attribute(XATOM_DELETED_WHEN);
-
-                    XElement self = deletedExtension.Elements(XName.Get(XATOM_LINK,ATOMPUBNS))
-                        .Where(el => el.Attribute(XATOM_LINK_REL) != null &&
-                                    el.Attribute(XATOM_LINK_REL).Value == Util.ATOM_LINKREL_SELF).FirstOrDefault();
-   
-                    if (when != null) de.When = Instant.Parse(when.Value).Contents.Value;
-                    if (id != null) de.Id = new Uri(id.Value, UriKind.Absolute);
-                    if (self != null && self.Attribute(XATOM_LINK_HREF) != null ) 
-                                de.SelfLink = new Uri(self.Attribute(XATOM_LINK_HREF).Value, UriKind.Absolute);
-                }
-                catch (Exception exc)
-                {
-                    errors.Add("Exception while reading deleted-entry: " + exc.Message);
-                    return;
-                }
-                finally
-                {
-                    errors.DefaultContext = null;
-                }
-
-                Entries.Add(de);
+                var links = Bundle.getLinksFromSyndication(item.Elements(XATOMNS + XATOM_LINK));
+                de.SelfLink = links.SelfLink;
             }
+            catch (Exception exc)
+            {
+                errors.Add("Exception while reading deleted-entry: " + exc.Message);
+                return null;
+            }
+            finally
+            {
+                errors.DefaultContext = null;
+            }
+
+            return de;
         }
 
-        private void loadContentItems( IEnumerable<SyndicationItem> items, ErrorList errors )
+
+        private static ContentEntry loadContentItem( XElement item, ErrorList errors )
         {
-            foreach (SyndicationItem item in items)
+            ContentEntry result;
+
+            try
             {
-                ContentEntry result;
+                if( getCategoryFromEntry(item) == XATOM_CONTENT_BINARY )
+                    result = new BinaryEntry();
+                else
+                    result = new ResourceEntry();
 
-                try
+                result.Id = uriValueOrNull(item.Element(XATOMNS + XATOM_ID));
+                errors.DefaultContext = String.Format("Entry '{0}'", result.Id.ToString());
+
+                result.Title = stringValueOrNull(item.Element(XATOMNS+XATOM_TITLE));
+                result.SelfLink = getLinksFromSyndication(item.Elements(XATOMNS + XATOM_LINK)).SelfLink;
+                result.LastUpdated = dateTimeOrNull(item.Element(XATOMNS + XATOM_UPDATED));
+                result.Published = dateTimeOrNull(item.Element(XATOMNS + XATOM_PUBLISHED)); 
+                result.EntryAuthorName = item.Elements(XATOMNS+XATOM_AUTHOR).Count() == 0 ? null :
+                            stringValueOrNull(item.Element(XATOMNS+XATOM_AUTHOR)
+                                .Element(XATOMNS+XATOM_AUTH_NAME));
+                result.EntryAuthorUri = item.Elements(XATOMNS + XATOM_AUTHOR).Count() == 0 ? null :
+                            stringValueOrNull(item.Element(XATOMNS + XATOM_AUTHOR)
+                                .Element(XATOMNS + XATOM_AUTH_URI));
+
+                XElement content = item.Element(XATOMNS+XATOM_CONTENT);
+                if (content != null)
                 {
-                    errors.DefaultContext = String.Format("Entry '{0}'", item.Id);
-
-                    if( getCategoryFromEntry(item) == XATOM_CONTENT_BINARY )
-                        result = new BinaryEntry(this);
-                    else
-                        result = new ResourceEntry(this);
-
-                    result.Title = item.Title != null && !String.IsNullOrWhiteSpace(item.Title.Text) ?
-                                    item.Title.Text : null;
-                    result.SelfLink = getLinksFromSyndication(item.Links).SelfLink;
-                    result.Id = new Uri(item.Id,UriKind.Absolute);
-                    result.LastUpdated = (item.LastUpdatedTime == DateTimeOffset.MinValue) ?
-                                    (DateTimeOffset?)null : item.LastUpdatedTime;
-                    result.Published = (item.PublishDate == DateTimeOffset.MinValue) ?
-                                    (DateTimeOffset?)null : item.PublishDate;
-                    result.EntryAuthorName = item.Authors != null ?
-                                 item.Authors.Select(auth => auth.Name).FirstOrDefault() : null;
-                    result.EntryAuthorUri = item.Authors != null ?
-                                 item.Authors.Select(auth => auth.Uri).FirstOrDefault() : null;
-
                     if (result is ResourceEntry)
-                        ((ResourceEntry)result).Content = getContents(item.Content, errors);
+                        ((ResourceEntry)result).Content = getContents(content, errors);
                     else
-                        getBinaryContentsFromSyndication(item.Content, (BinaryEntry)result, errors);
+                    {
+                        BinaryEntry be = (BinaryEntry)result;
+                        be.Content = getBinaryContents(content, out be.MediaType, errors);
+                    }
                 }
-                catch (Exception exc)
-                {
-                    errors.Add("Exception while reading entry: " + exc.Message);
-                    return;
-                }
-                finally
-                {
-                    errors.DefaultContext = null;
-                }
-
-                Entries.Add(result);
             }
+            catch (Exception exc)
+            {
+                errors.Add("Exception while reading entry: " + exc.Message);
+                return null;
+            }
+            finally
+            {
+                errors.DefaultContext = null;
+            }
+
+            return result;
         }
 
-        private static void getBinaryContentsFromSyndication(SyndicationContent content, BinaryEntry result, ErrorList errors)
+        private static byte[] getBinaryContents(XElement content, out string mediaType, ErrorList errors)
         {
-            string contents = getContentsFromSyndication(content, errors);
-            XElement binary = null;
+            var contentType = stringValueOrNull(content.Attribute(XATOM_CONTENT_TYPE));
+            mediaType = null;
+
+            if (contentType != "text/xml")
+            {
+                errors.Add("Binary entries should be contained in content elements of type text/xml");
+                return null;
+            }
+
+            XElement binary = content.Element(XFHIRNS + XATOM_CONTENT_BINARY);
+
+            if (binary == null)
+            {
+                errors.Add("Binary entries must contain an element Binary");
+                return null;
+            }
+
+            mediaType = stringValueOrNull(binary.Attribute(XATOM_CONTENT_BINARY_TYPE));
+
+            if (mediaType == null)
+            {
+                errors.Add("Binary entries must contain a Binary element with a contentType attribute");
+                return null;
+            }
 
             try
             {
-                binary = XElement.Parse(contents);
-            }
-            catch (XmlException e)
-            {
-                errors.Add("Cannot parse Binary: " + e.Message);
-                return;
-            }
-
-            XAttribute contentType = binary.Attribute(XName.Get(XATOM_CONTENT_TYPE));
-
-            if (contentType != null)
-                result.MediaType = contentType.Value;
-
-            try
-            {
-                result.Content = Convert.FromBase64String(binary.FirstNode.ToString());
+                return Convert.FromBase64String(binary.Value);
             }
             catch (Exception e)
             {
                 errors.Add("Cannot parse content of Binary: " + e.Message);
+                return null;
             }
         }
 
 
-        private string getCategoryFromEntry(SyndicationItem item)
+        private static string getCategoryFromEntry(XElement item)
         {
-            return item.Categories != null ? item.Categories
-                               .Where(cat => cat.Scheme == ATOM_CATEGORY_RESOURCETYPE_NS)
-                               .Select(scat => scat.Name).FirstOrDefault() : null;
+            return item.Elements(XATOMNS + XATOM_CATEGORY).Count() == 0 ? null :
+                item.Elements(XATOMNS + XATOM_CATEGORY)
+                    .Where(cat => stringValueOrNull(cat.Attribute(XATOM_CAT_SCHEME))
+                        == ATOM_CATEGORY_RESOURCETYPE_NS)
+                    .Select(scat => stringValueOrNull(scat.Attribute(XATOM_CAT_TERM)))
+                    .FirstOrDefault();
+        }
+
+        private static UriLinkList getLinksFromSyndication(IEnumerable<XElement> links)
+        {
+            return new UriLinkList(
+                links.Select(el => new UriLinkEntry
+                {
+                    Rel = stringValueOrNull(el.Attribute(XATOM_LINK_REL)),
+                    Uri = uriValueOrNull(el.Attribute(XATOM_LINK_HREF))
+                }));
         }
 
 
-        private readonly XNamespace XATOMNS = ATOMPUBNS;
+        private static Resource getContents(XElement content, ErrorList errors)
+        {
+            string contentType = stringValueOrNull(content.Attribute(XATOM_CONTENT_TYPE));
+
+            if (contentType != "text/xml")
+            {
+                errors.Add("Entry should have contents of type 'text/xml'");
+                return null;
+            }
+
+            return FhirParser.ParseResourceFromXml(content.FirstNode.ToString(), errors);
+        }
 
         public void Save(XmlWriter writer)
         {
@@ -315,7 +393,7 @@ namespace Hl7.Fhir.Support
 
         private XElement xmlCreateTitle(string title)
         {
-            return new XElement(XATOMNS + XATOM_TITLE, new XAttribute("type", "text"), title);
+            return new XElement(XATOMNS + XATOM_TITLE, new XAttribute(XATOM_CONTENT_TYPE, "text"), title);
         }
 
 
@@ -334,12 +412,12 @@ namespace Hl7.Fhir.Support
 
         private XElement xmlCreateDeletedEntry(DeletedEntry de)
         {
-            XElement result = new XElement(XName.Get(XATOM_DELETED_ENTRY, ATOMPUB_TOMBSTONES_NS),
+            XElement result = new XElement(XTOMBSTONE+XATOM_DELETED_ENTRY,
                     new XAttribute(XATOM_DELETED_REF, de.Id.ToString()),
                     new XAttribute(XATOM_DELETED_WHEN, de.When));
 
             if( Util.UriHasValue(de.SelfLink) )
-                result.Add(new XElement(XName.Get(XATOM_LINK, ATOMPUBNS),
+                result.Add(new XElement(XATOMNS+XATOM_LINK,
                         new XAttribute(XATOM_LINK_REL, Util.ATOM_LINKREL_SELF),
                         new XAttribute(XATOM_LINK_HREF, de.SelfLink.ToString())));
 
@@ -386,7 +464,7 @@ namespace Hl7.Fhir.Support
 
                 if (re.Content != null)
                     result.Add(new XElement(XATOMNS + XATOM_CONTENT,
-                        new XAttribute("type", "text/xml"),
+                        new XAttribute(XATOM_CONTENT_TYPE, "text/xml"),
                         FhirSerializer.SerializeResourceAsXElement(re.Content)));
             }
             else if (entry is BinaryEntry)
@@ -397,9 +475,9 @@ namespace Hl7.Fhir.Support
 
                 if (be.Content != null)
                     result.Add(new XElement(XATOMNS+XATOM_CONTENT,
-                        new XAttribute("type", "text/xml"),
-                        new XElement(XATOMNS+XATOM_CONTENT_BINARY,
-                            new XAttribute(XATOM_CONTENT_TYPE, be.MediaType),
+                        new XAttribute(XATOM_CONTENT_TYPE, "text/xml"),
+                        new XElement(XFHIRNS+XATOM_CONTENT_BINARY,
+                            new XAttribute(XATOM_CONTENT_BINARY_TYPE, be.MediaType),
                             new XText(Convert.ToBase64String(be.Content)))));
             }
             else
@@ -407,41 +485,9 @@ namespace Hl7.Fhir.Support
 
             if (entry.Summary != null)
                 result.Add(new XElement(XATOMNS + XATOM_SUMMARY,
-                        new XAttribute("type", "xhtml"), XElement.Parse(entry.Summary)));
+                        new XAttribute(XATOM_CONTENT_TYPE, "xhtml"), XElement.Parse(entry.Summary)));
 
             return result;
-        }
-
-
-        private static UriLinkList getLinksFromSyndication( IEnumerable<SyndicationLink> links )
-        {
-            return new UriLinkList(links.Select(fl => new UriLinkEntry { Rel = fl.RelationshipType, Uri = fl.Uri }));
-        }
-
-
-        private static Resource getContents(SyndicationContent content, ErrorList errors)
-        {
-            string contents = getContentsFromSyndication(content, errors);
-            return FhirParser.ParseResourceFromXml(contents, errors);
-        }
-
-
-        private static string getContentsFromSyndication(SyndicationContent content, ErrorList errors)
-        {
-            if (content.Type != "text/xml")
-            {
-                errors.Add("Entry should have contents of type 'text/xml'");
-                return null;
-            }
-
-            // Sigh....why does this have to be hard? I don't WANT an extra
-            // root element around the contents...
-            StringWriter buffer = new StringWriter();
-            content.WriteTo(new XmlTextWriter(buffer), "x", null);
-            buffer.GetStringBuilder().Replace("<x type=\"text/xml\">", "");
-            buffer.GetStringBuilder().Replace("</x>", "");
-
-            return buffer.ToString();
         }
     }
 }

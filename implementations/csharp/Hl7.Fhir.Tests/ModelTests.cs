@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hl7.Fhir.Model;
+using System.Xml.Linq;
 
 namespace Hl7.Fhir.Tests
 {
@@ -15,6 +16,22 @@ namespace Hl7.Fhir.Tests
         {
             Uri abs = new Uri("http://www.nu.nl", UriKind.RelativeOrAbsolute);
             Assert.IsTrue(abs.IsAbsoluteUri);
+
+            abs = new Uri("http://www.nu.nl");
+            Assert.IsTrue(abs.IsAbsoluteUri);
+        }
+
+
+        [TestMethod]
+        public void ValidateElementAssertions()
+        {
+            XElement xr = new XElement("root",
+                        new XElement("child", "value"),
+                        new XElement("child", "value2"));
+
+            Assert.IsNull(xr.Element("childx"));
+            Assert.AreEqual(0,xr.Elements("childx").Count());
+            Assert.AreEqual("value",xr.Element("child").Value);
         }
 
         [TestMethod]

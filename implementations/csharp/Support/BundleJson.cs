@@ -126,11 +126,11 @@ namespace Hl7.Fhir.Support
                     string category = getCategoryFromEntry(item);
 
                     if (item.Value<DateTimeOffset?>(JATOM_DELETED) != null)
-                        result = new DeletedEntry(this);
+                        result = new DeletedEntry();
                     else if (category == XATOM_CONTENT_BINARY)
-                        result = new BinaryEntry(this);
+                        result = new BinaryEntry();
                     else
-                        result = new ResourceEntry(this);
+                        result = new ResourceEntry();
 
                     result.SelfLink = getLinks(item[XATOM_LINK]).SelfLink;
                     result.Id = new Uri(id, UriKind.Absolute);
@@ -197,7 +197,7 @@ namespace Hl7.Fhir.Support
 
             if (binaryObject != null)
             {
-                result.MediaType = binaryObject.Value<string>(XATOM_CONTENT_TYPE);
+                result.MediaType = binaryObject.Value<string>(XATOM_CONTENT_BINARY_TYPE);
 
                 JToken binaryContent = binaryObject[XATOM_CONTENT];
 
@@ -324,7 +324,7 @@ namespace Hl7.Fhir.Support
                 {
                     newItem.Add(new JProperty(XATOM_CONTENT, new JObject(
                             new JProperty( XATOM_CONTENT_BINARY, new JObject(
-                                new JProperty( XATOM_CONTENT_TYPE, be.MediaType ),
+                                new JProperty( XATOM_CONTENT_BINARY_TYPE, be.MediaType ),
                                 new JProperty( XATOM_CONTENT, Convert.ToBase64String(be.Content)) ) ) ) ));
                 }
             }
