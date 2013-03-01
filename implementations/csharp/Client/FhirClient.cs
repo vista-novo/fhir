@@ -537,7 +537,8 @@ namespace Hl7.Fhir.Client
             //    endpoint = addParam(endpoint, ContentType.FORMAT_PARAM, ContentType.FORMAT_PARAM_XML);
 
             var req = (HttpWebRequest)HttpWebRequest.Create(endpoint);
-            req.UserAgent = "FhirClient for FHIR " + Model.ModelInfo.Version;
+            req.Headers[HttpRequestHeader.UserAgent] =
+                        "FhirClient for FHIR " + Model.ModelInfo.Version;
 
             if (PreferredFormat == ContentType.ResourceFormat.Xml)
                 req.Accept = ContentType.BuildContentType(ContentType.ResourceFormat.Xml, forBundle);
@@ -553,7 +554,7 @@ namespace Hl7.Fhir.Client
         {
             string url = original;
 
-            if (!original.Contains('?'))
+            if (!original.Contains("?"))
                 url += "?";
             else
                 url += "&";
@@ -576,7 +577,9 @@ namespace Hl7.Fhir.Client
             }
             finally
             {
+#if !NETFX_CORE
                 response.Close();
+#endif
             }
         }
 
@@ -641,10 +644,20 @@ namespace Hl7.Fhir.Client
 
         private void setRequestBody(HttpWebRequest request, byte[] data)
         {
+#if NETFX_CORE
+            var getStreamTask = request.GetRequestStreamAsync();
+            getStreamTask.RunSynchronously();
+            Stream outs = getStreamTask.Result;
+#else
             Stream outs = request.GetRequestStream();
+#endif
+
             outs.Write(data, 0, (int)data.Length);
             outs.Flush();
+
+#if !NETFX_CORE
             outs.Close();
+#endif
         }
 
     }

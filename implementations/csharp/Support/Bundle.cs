@@ -34,7 +34,6 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using Hl7.Fhir.Model;
-using System.ServiceModel.Syndication;
 using System.Xml.Linq;
 using Hl7.Fhir.Parsers;
 using System.IO;

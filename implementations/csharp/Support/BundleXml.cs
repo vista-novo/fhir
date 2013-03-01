@@ -337,7 +337,10 @@ namespace Hl7.Fhir.Support
             if (Util.UriHasValue(Id)) root.Add(xmlCreateId(Id));
             if (LastUpdated != null) root.Add(new XElement(XATOMNS+XATOM_UPDATED, LastUpdated));
             if (Links.Count > 0)
-                Links.ForEach( l => root.Add(xmlCreateLink(l.Rel, l.Uri)));
+            {
+                foreach(var l in Links)
+                    root.Add(xmlCreateLink(l.Rel, l.Uri));
+            }
             if (!String.IsNullOrWhiteSpace(AuthorName))
                 root.Add(xmlCreateAuthor(AuthorName, AuthorUri));
 
@@ -362,7 +365,10 @@ namespace Hl7.Fhir.Support
             XmlWriter xw = XmlWriter.Create(sb);
             Save(xw);
             xw.Flush();
+
+#if !NETFX_CORE
             xw.Close();
+#endif
 
             return sb.ToString();
         }
@@ -375,7 +381,10 @@ namespace Hl7.Fhir.Support
             XmlWriter xw = XmlWriter.Create(stream, settings);
             Save(xw);
             xw.Flush();
+
+#if !NETFX_CORE 
             xw.Close();
+#endif
 
             return stream.ToArray();
         }

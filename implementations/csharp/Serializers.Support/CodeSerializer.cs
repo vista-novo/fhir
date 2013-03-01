@@ -49,7 +49,7 @@ namespace Hl7.Fhir.Serializers
     */
     internal static partial class CodeSerializer
     {
-        public static void SerializeCode<T>(Code<T> value, IFhirWriter writer) where T : struct, IConvertible
+        public static void SerializeCode<T>(Code<T> value, IFhirWriter writer) where T : struct
         {
             writer.WriteStartComplexContent();
             

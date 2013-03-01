@@ -69,9 +69,9 @@
     <Compile Include="XmlAssert.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HL7.Fhir.csproj">
+    <ProjectReference Include="..\Hl7.Fhir.csproj">
       <Project>{3CA811D7-19A7-43AC-A403-1F35E4EC2BFC}</Project>
-      <Name>HL7.Fhir.Instance</Name>
+      <Name>Hl7.Fhir</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

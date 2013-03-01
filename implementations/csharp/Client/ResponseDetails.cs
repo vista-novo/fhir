@@ -35,7 +35,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Mime;
 using System.Text;
 
 namespace Hl7.Fhir.Client
@@ -67,16 +66,22 @@ namespace Hl7.Fhir.Client
         }
 
 
+        public const string CONTENTLOCATION = "Content-Location";
+        public const string LOCATION = "Location";
+        public const string LASTMODIFIED = "Last-Modified";
+
+
         public static ResponseDetails FromHttpWebResponse(HttpWebResponse response)
         {
+            
             return new ResponseDetails
                 {
                     Result = response.StatusCode,
                     ContentType = getContentType(response),
                     CharacterEncoding = getContentEncoding(response),
-                    ContentLocation = response.Headers[HttpResponseHeader.ContentLocation],
-                    Location = response.Headers[HttpResponseHeader.Location],
-                    LastModified = response.Headers[HttpResponseHeader.LastModified],
+                    ContentLocation = response.Headers[CONTENTLOCATION],
+                    Location = response.Headers[LOCATION],
+                    LastModified = response.Headers[LASTMODIFIED],
                     Body = readBody(response),
                     Reponse = response
                 };
@@ -91,7 +96,13 @@ namespace Hl7.Fhir.Client
         private static string getContentType(HttpWebResponse response)
         {
             if (!String.IsNullOrEmpty(response.ContentType))
+            {
+#if !NETFX_CORE
                 return new System.Net.Mime.ContentType(response.ContentType).MediaType;
+#else
+                return System.Net.Http.Headers.MediaTypeHeaderValue.Parse(response.ContentType).MediaType;               
+#endif
+            }
             else
                 return null;
         }
@@ -100,16 +111,24 @@ namespace Hl7.Fhir.Client
         {
             Encoding result = null;
 
+            //Stripped off, there will always be a content type according 
+            //to our specs and CharacterSet is not supported under WinRT
             // First try .NET's idea of the CharacterSet
-            if (!String.IsNullOrEmpty(response.CharacterSet))
-                result = Encoding.GetEncoding(response.CharacterSet);
+            // if (!String.IsNullOrEmpty(response.CharacterSet))
+            //     result = Encoding.GetEncoding(response.CharacterSet);
 
             // Then look at charset parameter on Content-Type header.
             // This possibly overrides the CharacterSet header
-            if (!String.IsNullOrEmpty(response.ContentType) &&
-                !String.IsNullOrEmpty(new System.Net.Mime.ContentType(response.ContentType).CharSet))
-                result = Encoding.GetEncoding(new System.Net.Mime.ContentType(response.ContentType).CharSet);
-
+            if (!String.IsNullOrEmpty(response.ContentType))
+            {
+#if !NETFX_CORE
+                var charset = new System.Net.Mime.ContentType(response.ContentType).CharSet;
+#else
+                var charset = System.Net.Http.Headers.MediaTypeHeaderValue.Parse(response.ContentType).CharSet;
+#endif           
+                if(!String.IsNullOrEmpty(charset))
+                    result = Encoding.GetEncoding(charset);
+            }
             return result;
         }
     }

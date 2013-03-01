@@ -34,7 +34,6 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using Hl7.Fhir.Model;
-using System.ServiceModel.Syndication;
 using System.Xml.Linq;
 using Hl7.Fhir.Parsers;
 using System.IO;
@@ -259,7 +258,9 @@ namespace Hl7.Fhir.Support
         private JArray jsonCreateLinkArray(UriLinkList links)
         {
             var result = new JArray();
-            links.ForEach(l => result.Add(jsonCreateLink(l.Rel, l.Uri)));
+            
+            foreach(var l in links)
+                result.Add(jsonCreateLink(l.Rel, l.Uri));
 
             return result;
         }

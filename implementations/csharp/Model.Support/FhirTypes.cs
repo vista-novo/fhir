@@ -56,15 +56,10 @@ namespace Hl7.Fhir.Model
         List<Extension> Extension { get; set; }
     }
 
-    [System.Serializable]
     public class FhirFormatException : System.Exception
     {
         public FhirFormatException() { }
         public FhirFormatException(string message) : base(message) { }
         public FhirFormatException(string message, System.Exception inner) : base(message, inner) { }
-        protected FhirFormatException(
-          System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context)
-            : base(info, context) { }
     }
 }

@@ -35,6 +35,12 @@ namespace Hl7.Fhir.Tests
         }
 
         [TestMethod]
+        public void ValidateEncodingNameAssertions()
+        {
+            Assert.AreEqual(Encoding.UTF8.HeaderName, Encoding.UTF8.WebName);
+        }
+
+        [TestMethod]
         public void VerifyCastOperators()
         {
             FhirBoolean b = true;

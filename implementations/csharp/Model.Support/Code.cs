@@ -30,6 +30,7 @@
 
 
 using System;
+using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -86,7 +87,7 @@ namespace Hl7.Fhir.Model
 
 
 
-    public class Code<T> : Element  where T : struct, IConvertible
+    public class Code<T> : Element  where T : struct
     {
         // Primitive value of element
         public T? Contents { get; set; }
@@ -95,8 +96,12 @@ namespace Hl7.Fhir.Model
 
         public Code(T? value)
         {
-            
-            if (!typeof(T).IsEnum) throw new ArgumentException("T must be an enumerated type");
+#if !NETFX_CORE
+            if (!typeof(T).IsEnum) 
+#else
+            if(!typeof(T).GetTypeInfo().IsEnum)
+#endif
+                throw new ArgumentException("T must be an enumerated type");
 
             Contents = value;
         }

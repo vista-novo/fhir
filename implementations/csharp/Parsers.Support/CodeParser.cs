@@ -48,7 +48,7 @@ namespace Hl7.Fhir.Parsers
         /// Parse code
         /// </summary>
         public static Code<T> ParseCode<T>(IFhirReader reader, ErrorList errors,
-                                Code<T> existingInstance = null) where T : struct, IConvertible
+                                Code<T> existingInstance = null) where T : struct
         {
             Code<T> result = existingInstance != null ? existingInstance : new Code<T>();
 

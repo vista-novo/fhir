@@ -42,7 +42,13 @@ namespace Hl7.Fhir.Client
         {
             try
             {
+#if NETFX_CORE
+                var getResponseTask = req.GetResponseAsync();
+                getResponseTask.RunSynchronously();
+                return getResponseTask.Result;
+#else
                 return req.GetResponse();
+#endif
             }
             catch (WebException wex)
             {

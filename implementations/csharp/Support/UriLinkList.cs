@@ -34,7 +34,6 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using Hl7.Fhir.Model;
-using System.ServiceModel.Syndication;
 using System.Xml.Linq;
 using Hl7.Fhir.Parsers;
 using System.IO;
@@ -115,7 +114,7 @@ namespace Hl7.Fhir.Support
 
         private Uri getEntry(string rel)
         {
-            UriLinkEntry entry = this.FirstOrDefault(e => rel.Equals(e.Rel, StringComparison.InvariantCultureIgnoreCase));
+            UriLinkEntry entry = this.FirstOrDefault(e => rel.Equals(e.Rel, StringComparison.OrdinalIgnoreCase));
 
             if (entry != null)
                 return entry.Uri;
@@ -125,7 +124,7 @@ namespace Hl7.Fhir.Support
 
         private void setEntry(string rel, Uri uri)
         {
-            UriLinkEntry entry = this.FirstOrDefault(e => rel.Equals(e.Rel, StringComparison.InvariantCultureIgnoreCase));
+            UriLinkEntry entry = this.FirstOrDefault(e => rel.Equals(e.Rel, StringComparison.OrdinalIgnoreCase));
 
             if (entry != null)
                 entry.Uri = uri;

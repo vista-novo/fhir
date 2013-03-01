@@ -49,7 +49,10 @@ namespace Hl7.Fhir.Serializers
             XmlWriter xw = XmlWriter.Create(sb);
             FhirSerializer.SerializeResource(resource, new XmlFhirWriter(xw));
             xw.Flush();
+
+#if !NETFX_CORE
             xw.Close();
+#endif
 
             return sb.ToString();
         }
@@ -63,8 +66,10 @@ namespace Hl7.Fhir.Serializers
             XmlWriter xw = XmlWriter.Create(stream, settings);
             FhirSerializer.SerializeResource(resource, new XmlFhirWriter(xw));
             xw.Flush();
-            xw.Close();
 
+#if !NETFX_CORE
+            xw.Close();
+#endif
             return stream.ToArray();
         }
 
@@ -86,7 +91,10 @@ namespace Hl7.Fhir.Serializers
 
             var sw = new StreamWriter(stream, encoding);
             sw.Write(SerializeResourceAsJson(resource));
+
+#if !NETFX_CORE
             sw.Close();
+#endif
 
             return stream.ToArray();
         }   
@@ -124,7 +132,10 @@ namespace Hl7.Fhir.Serializers
             FhirSerializer.SerializeElement(elem, new XmlFhirWriter(xw));
             xw.WriteEndElement();
             xw.Flush();
+
+#if !NETFX_CORE
             xw.Close();
+#endif
 
             return sb.ToString();
         }
