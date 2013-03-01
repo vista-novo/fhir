@@ -22,7 +22,10 @@
   <name value="Loinc Codes for Cholesterol"/>
   <author>
     <name value="FHIR project team (example)"/>
-    <reference value="http://hl7.org/fhir"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom> 
   </author>
   <description value="This is an example value set that includes &#xA;      all the LOINC codes for serum cholesterol from v2.36"/>
   <status value="testing"/>

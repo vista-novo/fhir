@@ -13,8 +13,8 @@ able to:
  <li>Describe how resources are bound to terminology in a particular context</li>
 </ul>
 <p>
-All these things are done by a Resource Profile, which is itself a resource that 
-describes the usage of one or more other resources. Profiles have a 
+All these things are done using a Resource Profile, which itself is a resource that 
+describes how other resources are used in a particular context. Profiles have a 
 metadata section that describes who published the profile, and why, as well as optional
 lists of resources constraints, extension definitions, and vocabulary bindings. 
 </p>
