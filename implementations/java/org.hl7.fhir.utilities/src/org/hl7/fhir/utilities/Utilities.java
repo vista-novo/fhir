@@ -83,6 +83,10 @@ public class Utilities {
 		}
 	}
 	
+	public static String camelCase(String value) {
+	  return new Inflector().camelCase(value.trim().replace(" ", "_"), false);
+	}
+	
 	public static String escapeXml(String doco) {
 		if (doco == null)
 			return "";
