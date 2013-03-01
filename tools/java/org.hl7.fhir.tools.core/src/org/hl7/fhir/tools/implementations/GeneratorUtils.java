@@ -404,26 +404,32 @@ public class GeneratorUtils {
 	}
 	
 	public static String generateCSharpEnumMemberName(String name) {
-		String result;
+		String result = name;
 		
-		if (name.equals("<"))
+		if (result.equals("<"))
 			result = "LessThan";
-		else if (name.equals("<="))
+		else if (result.equals("<="))
 			result = "LessOrEqual";
-		else if (name.equals(">"))
+		else if (result.equals(">"))
 			result = "GreaterThan";
-		else if (name.equals(">="))
+		else if (result.equals(">="))
 			result = "GreaterOrEqual";
-		else if (name.equals("="))
+		else if (result.equals("="))
 			result = "Equal";
-		else if (name.startsWith("-"))
-			result = name.replace("-", "Minus");
-		else if (Utilities.IsInteger(name))
-			result = "N" + name;
-		else
-			result = Utilities.capitalize(name);
-
-		return result.replace("-", "_").replace("+", "Plus");
+		
+		if (result.startsWith("-"))
+			result = result.replace("-", "Minus");
+		
+		if (Utilities.IsInteger(result))
+			result = "N" + result;
+		
+		result = result.replace("-", "_");
+		result = result.replace("+", "Plus"); 
+		
+		result = Utilities.camelCase(result);
+		result = Utilities.capitalize(result);
+ 
+		return result;
 	}
 	
 	

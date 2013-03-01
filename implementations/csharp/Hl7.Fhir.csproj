@@ -309,6 +309,7 @@
     <Compile Include="Model.Support\XHtml.cs" />
     <Compile Include="Model.Support\Instant.cs" />
 	<Compile Include="Model.Support\ModelInfo.cs" />
+	<Compile Include="Model.Support\Initializers.cs" />
     <Compile Include="Parsers.Support\ParserUtils.cs" />
 	<Compile Include="Parsers.Support\CodeParser.cs" />
     <Compile Include="Parsers.Support\IFhirReader.cs" />
