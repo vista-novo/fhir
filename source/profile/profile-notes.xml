@@ -29,7 +29,7 @@ When the type of the element is fixed in the underlying resource definitions, it
   The meaning needs to be consistent with the underlying definition, but narrower - a constraint on it.</li>
   
 <li>For an element with a maximum cardinality of 1, there can only be one entry in the value list, which is either a literal fixed type (with an element name matching the type of the fixed value) or a name,
-  which is a reference to a named constraint pattern. If the element has a type of "list", then there can be multiple values - again, either fixed values with a type or a named constraint. 
+  which is a reference to a named constraint pattern. If the element has a maximum cardinality of &gt;1, then there can be multiple values - again, either fixed values with a type or a named constraint. 
   Each of these appears in the list with the order and cardinality specified. By this means, a list may be "sliced" into a series of different components.</li>
 
 <li>There can be more than one entry for each element path. The constraint specification can define multiple different constraints for any element and 
@@ -81,7 +81,7 @@ relationship type element. Fixing a code value is the most common way to slice a
 
 <h2>Profiled FHIR</h2>
 <p>
-If a profile is unambiguous, then the FHIR profile tooling (ref to be provided) 
+If a profile is unambiguous, then the FHIR profile tooling (ref to be provided when the tooling exists) 
 is able to generate reference implementation based object models that express 
 the profiled model natively, where the object interface does not include 
 prohibited elements, treats declared extensions as primary properties and 
