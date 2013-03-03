@@ -9,17 +9,18 @@
   <Author>Grahame</Author>
   <LastAuthor>Lloyd McKenzie</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2013-03-01T06:13:07Z</LastSaved>
+  <LastSaved>2013-03-03T00:16:39Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6345</WindowHeight>
+  <WindowHeight>6285</WindowHeight>
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6075</WindowTopY>
+  <WindowTopY>6135</WindowTopY>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -99,9 +100,15 @@
    <NumberFormat/>
    <Protection/>
   </Style>
+  <Style ss:ID="s134">
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s135">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="29" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="30" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="150.75"/>
    <Column ss:StyleID="s63" ss:Width="29.25"/>
@@ -416,7 +423,7 @@
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="90">
+   <Row ss:Height="105">
     <Cell><Data ss:Type="String">CarePlan.activity.status</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
@@ -427,7 +434,8 @@
     <Cell><Data ss:Type="String">not started | ongoing | suspended | completed | abandoned</Data></Cell>
     <Cell><Data ss:Type="String">Identifies what progress is being made for the specific activity.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Indicates progress against the plan, whether the activity is still relevant for the plan</Data></Cell>
-    <Cell ss:Index="13" ss:StyleID="s67"/>
+    <Cell><Data ss:Type="String">Some aspects of Status can be inferred based on the resources linked in actionTaken.  Note that &quot;status&quot; is only as current as the plan was most recently updated.</Data></Cell>
+    <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
@@ -449,15 +457,15 @@
     <Cell ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">CarePlan.activity.schedule</Data></Cell>
+    <Cell><Data ss:Type="String">CarePlan.activity.timing[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
-    <Cell><Data ss:Type="String">Schedule</Data></Cell>
+    <Cell><Data ss:Type="String">Schedule|Period | string</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">When activity is to occur</Data></Cell>
-    <Cell><Data ss:Type="String">The timing or frequency upon which the described activity is to occur.</Data></Cell>
+    <Cell><Data ss:Type="String">The period, timing or frequency upon which the described activity is to occur.</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s67"><Data ss:Type="String">Allows prompting for activities and detection of missed planned activities.</Data></Cell>
     <Cell ss:Index="13" ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
@@ -587,6 +595,14 @@
     <Cell ss:Index="11"><Data ss:Type="String">Can be used to capture information about adherence, progress, concerns, etc.</Data></Cell>
     <Cell><Data ss:Type="String">Doesn't describe the activity - that goes in details.</Data></Cell>
    </Row>
+   <Row ss:Height="90">
+    <Cell><Data ss:Type="String">CarePlan.notes</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Comments about the plan</Data></Cell>
+    <Cell><Data ss:Type="String">General notes about the care plan not covered elsewhere</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Used to capture information that applies to the plan as a whole that doesn't fit into discrete elements.</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -600,11 +616,10 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>8</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -617,12 +632,9 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>14</ActiveRow>
-     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -712,8 +724,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>21</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -781,6 +792,7 @@
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
+   <Column ss:Index="5" ss:Width="162.75"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
@@ -826,10 +838,9 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">activitydate</Data></Cell>
-    <Cell><Data ss:Type="String">[CarePlan.activity.schedule] has occurrence within</Data></Cell>
+    <Cell><Data ss:Type="String">Specified date occurs within period specified by CarePlan.activity.timingSchedule</Data></Cell>
     <Cell><Data ss:Type="String">date</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
-    <Cell><Data ss:Type="String">CarePlan.activity.schedule</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -961,6 +972,62 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>4</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Examples">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Width="60.75"/>
+   <Column ss:Width="355.5"/>
+   <Column ss:Index="4" ss:Width="169.5"/>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Name</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Identity</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Filename</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Type</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">In Book</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Weight Loss</Data></Cell>
+    <Cell><Data ss:Type="String">General Person Example</Data></Cell>
+    <Cell><Data ss:Type="String">example</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">careplan-example.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Pregnancy</Data></Cell>
+    <Cell><Data ss:Type="String">Patient 1 for linking</Data></Cell>
+    <Cell ss:StyleID="s135"><Data ss:Type="String">preg</Data></Cell>
+    <Cell><Data ss:Type="String">careplan-example-pregnancy.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Integrated</Data></Cell>
+    <Cell><Data ss:Type="String">Simple integrated care plan with multiple goals &amp; conditions (from Mayo)</Data></Cell>
+    <Cell ss:StyleID="s135"><Data ss:Type="String">integrate</Data></Cell>
+    <Cell><Data ss:Type="String">careplan-example-integrated.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1264,9 +1331,9 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="care-plan-activity-status">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="8" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Width="57.75"/>
+   <Column ss:Width="66"/>
    <Column ss:Width="478.5"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
@@ -1277,11 +1344,15 @@
     <Cell><Data ss:Type="String">Activity is planned but no action has yet been taken</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">scheduled</Data></Cell>
+    <Cell><Data ss:Type="String">Appointment or other booking has occurred but activity has not yet begun</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ongoing</Data></Cell>
     <Cell><Data ss:Type="String">Activity has been started but is not yet complete</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">suspended</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">on hold</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Activity was started but has temporarily ceased with an expectation of resumption at a future time.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1289,8 +1360,8 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">The activities have been completed (more or less) as planned</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">abandoned</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">The activities have been discontinued prior to completion (perhaps even before they were started)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">discontinued</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">The activities have been ended prior to completion (perhaps even before they were started)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s62"/>
@@ -1306,13 +1377,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>1</ActiveCol>
-    </Pane>
-   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>

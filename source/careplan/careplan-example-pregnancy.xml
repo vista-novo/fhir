@@ -1,10 +1,8 @@
-
-<CarePlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://hl7.org/fhir ../fhirSchema/careplan.xsd"
-    xmlns="http://hl7.org/fhir">
+<?xml version="1.0" encoding="UTF-8"?>
+<CarePlan xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/CarePlan.xsd">
     <!-- an extension to record the LMP, which is required at the plan level... -->
     <extension>
-        <url value="http://orionhealth.com/fhir/careplan#lmp" />
+        <url value="http://exampleDoNotUse/careplan#lmp" />
         <valueDateTime value="20130101" />
     </extension>
  
@@ -17,10 +15,48 @@
             <div>Note that where is a proposed 'status' element against each activity</div>
         </div>
     </text>
+    <contained>
+      <Problem id="p1">
+        <subject>
+          <type value="Patient"/>
+          <url value="../patient/@1"/>
+          <display value="Eve Everywoman"/>
+        </subject>
+        <code>
+          <text value="pregnancy"/>
+        </code>
+      </Problem>
+    </contained>
+    <contained>
+      <Provider id="pr1">
+        <details>
+          <name>
+            <family value="Midwife"/>
+            <given value="Mavis"/>
+          </name>
+        </details>
+        <specialty>
+          <text value="Midwife"/>
+        </specialty>
+      </Provider>
+    </contained>
+    <contained>
+      <Provider id="pr2">
+        <details>
+          <name>
+            <family value="Obstetrician"/>
+            <given value="Oscar"/>
+          </name>
+        </details>
+        <specialty>
+          <text value="Obstetrician"/>
+        </specialty>
+      </Provider>
+    </contained>
     <patient>
-        <type value="patient"></type>
-        <url value="101"/>
-        <display value="jane smith"/>
+        <type value="Patient"/>
+        <url value="../patient/@1"/>
+        <display value="Eve Everywoman"/>
     </patient>
     <status value="active"/>
     <period>
@@ -30,8 +66,8 @@
     </period>
     <concern>
         <!-- Shouldn't really call a pregnancy a 'problem'! -->
-        <type value="problem"></type>
-        <url value="100"/>
+        <type value="Problem"></type>
+        <url value="#p1"/>
         <display value="pregnancy"/>
     </concern>
 
@@ -46,8 +82,8 @@
         </role>
         <member>
             <!-- This links to the clincian resource, so we get all the stuff related to that like address, contact etc... -->
-            <type value="clinician"></type>
-            <url value="mm100"/>
+            <type value="Provider"></type>
+            <url value="#pr1"/>
             <display value="Mavis Midwife"/>
         </member>
     </participant>
@@ -62,18 +98,20 @@
         </role>
         <member>
             <!-- This links to the clincian resource, so we get all tha stuff related to that like address, contact etc... -->
-            <type value="clinician"></type>
-            <url value="101"/>
-            <display value="Oscar Obstretian"/>
+            <type value="Provider"></type>
+            <url value="#pr2"/>
+            <display value="Oscar Obstetrician"/>
         </member>
     </participant>
-    <goal value="Maintain a womans health throughout pregnancy and ensure a healthy child"/>
+    <goal>
+      <description value="Maintain a womans health throughout pregnancy and ensure a healthy child"/>
+    </goal>
     <activity>
         <!-- This will be the first antenatal visit -->
         
         <!-- a link to further details about the first antenatal details -->
         <extension>
-            <url value="http://orionhealth.com/fhir/careplan#andetails" />
+            <url value="http://exampleDoNotUse/careplan#andetails" />
             <valueUri value="http://orionhealth.com/fhir/careplan/1andetails" />
         </extension>
         
@@ -85,33 +123,30 @@
             </coding>
             <text value='First Antenatal visit'></text>
         </code>
-        <!-- 
-            There is no status property (yet). Can use an extension if we had to...
-            Other options could be completed, cancelled...
-            <status value='scheduled'/>
-         -->
+        <status value="scheduled"/>
         <prohibited value="false"></prohibited>
-        <schedule>
+        <timingSchedule>
             <!-- The visit should occur between 14 feb and 30 feb -->
             <event>
                 <start value="20130214"/>
                 <end value="20130230"/>
             </event>
-        </schedule>
+        </timingSchedule>
         <performer>
-            <type value="clinician"></type>
-            <url value="mm100"/>
+            <type value="Provider"></type>
+            <url value="#pr1"/>
             <display value="Mavis Midwife"/>
         </performer>
         <details value="The first antenatal visit. This is where a detailed physical examination is performed.
             and the pregnanacy discussed with the mother-to-be."></details>
-        <action>
-            <!-- This is a booked encounter with Mavis Midwife for the first antenatal checkup. 
-            This entry is only made after the appointment (a planned encounter) has been made.-->
-            <type value="encounter"></type>
+        <!-- This is a booked encounter with Mavis Midwife for the first antenatal checkup. 
+        This entry is only made after the appointment (a planned encounter) has been made.
+        Commented out for now because Encounter hasn't been defined yet
+        <actionTaken>
+            <type value="Encounter"></type>
             <url value="xxx"/>
             <display value="Appointment with Mavis midwife @12.30pm, 112 St albans Ave"/>
-        </action>
+        </actionTaken>-->
     </activity>
     
     <activity>
@@ -125,18 +160,19 @@
             </coding>
             <text value='Follow-up Antenatal visit'></text>           
         </code>
+        <status value="not started"/>
         <prohibited value="false"></prohibited>
-        <schedule>
+        <timingSchedule>
             <!-- The visit should occur between 1 march and 14 march -->
             <event>
                 <start value="20130301"/>
                 <end value="20130314"/>
             </event>
-        </schedule>
+        </timingSchedule>
         <performer>
             <!-- The performer is known, but the actual appointment is not yet made, hence there is no action element... -->
-            <type value="clinician"></type>
-            <url value="mm100"/>
+            <type value="Provider"></type>
+            <url value="#pr1"/>
             <display value="Mavis Midwife"/>
         </performer>
         <details value="The second antenatal visit. Discuss any issues that arose from the first antenatal visit"></details>
@@ -159,24 +195,26 @@
             <text value='Delivery'></text>
             
         </code>
+        <status value="not started"/>
         <prohibited value="false"></prohibited>
-        <schedule>
+        <timingSchedule>
             <!-- The delivery should occur between 1 september and 14 september -->
             <event>
                 <start value="20130901"/>
                 <end value="20130914"/>
             </event>
-        </schedule>
+        </timingSchedule>
+        <!-- Where the delivery is to occur... 
+          Commented out for now because location resource isn't defined
         <location>
-            <!-- Where the delivery is to occur... -->
-            <type value="location"></type>
+            <type value="Location"></type>
             <url value="loc100"/>
             <display value="St Albans delivery suite"/>
-        </location>
+        </location>-->
         <performer>
             <!-- The intention is that Maris will be perfroming the delivery... -->
-            <type value="clinician"></type>
-            <url value="mm100"/>
+            <type value="Provider"></type>
+            <url value="#pr1"/>
             <display value="Mavis Midwife"/>
         </performer>
         <details value="The delivery."></details>
