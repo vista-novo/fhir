@@ -47,8 +47,6 @@ public class XmlBase {
   protected static final String GDATA_NS = "http://schemas.google.com/g/2005";
  
   protected XmlPullParser loadXml(InputStream stream) throws Exception {
-    
-    // compile issues? xpp: use xpp3 from http://www.extreme.indiana.edu/dist/java-repository/xpp3/distributions/ 
     BufferedInputStream input = new BufferedInputStream(stream);
     XmlPullParserFactory factory = XmlPullParserFactory.newInstance(System.getProperty(XmlPullParserFactory.PROPERTY_NAME), null);
     factory.setNamespaceAware(true);
@@ -67,14 +65,7 @@ public class XmlBase {
   }
 
   
-  private boolean allowUnknownContent;
-  public boolean isAllowUnknownContent() {
-    return allowUnknownContent;
-  }
-  public void setAllowUnknownContent(boolean allowUnknownContent) {
-    this.allowUnknownContent = allowUnknownContent;
-  }
-  
+
   protected String dateToXml(java.util.Calendar date) {
     // there's a better way to do this in java 1.7, but for now going java 1.7 is too hard for implementers
     // String res = new SimpleDateFormat(XML_DATE_PATTERN).format(date);

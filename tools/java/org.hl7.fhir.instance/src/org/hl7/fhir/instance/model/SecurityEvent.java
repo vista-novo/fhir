@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 import java.util.*;
 
 /**
- * A record of an event 
+ * A record of an event
  */
 public class SecurityEvent extends Resource {
 
@@ -767,7 +767,12 @@ public class SecurityEvent extends Resource {
         private List<Coding> role = new ArrayList<Coding>();
 
         /**
-         * Logical network location for application activity
+         * Used when the event is about exporting/importing onto media
+         */
+        private CodeableConcept mediaId;
+
+        /**
+         * Logical network location for application activity, if the activity has a network location
          */
         private Network network;
 
@@ -861,6 +866,14 @@ public class SecurityEvent extends Resource {
 
         public List<Coding> getRole() { 
           return this.role;
+        }
+
+        public CodeableConcept getMediaId() { 
+          return this.mediaId;
+        }
+
+        public void setMediaId(CodeableConcept value) { 
+          this.mediaId = value;
         }
 
         public Network getNetwork() { 
@@ -1214,7 +1227,7 @@ public class SecurityEvent extends Resource {
     /**
      * Application systems and processes
      */
-    private List<Source> source = new ArrayList<Source>();
+    private Source source;
 
     /**
      * Specific instances of data or objects that have been accessed
@@ -1233,8 +1246,12 @@ public class SecurityEvent extends Resource {
       return this.participant;
     }
 
-    public List<Source> getSource() { 
+    public Source getSource() { 
       return this.source;
+    }
+
+    public void setSource(Source value) { 
+      this.source = value;
     }
 
     public List<Object> getObject() { 

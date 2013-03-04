@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -40,54 +40,54 @@ import java.math.*;
 public class Schedule extends Type {
 
     public enum EventTiming {
-        HS, // event occurs [duration] before the hour of sleep (or trying to)
-        WAKE, // event occurs [duration] after waking
-        AC, // event occurs [duration] before a meal (from the Latin ante cibus)
-        ACM, // event occurs [duration] before breakfast (from the Latin ante cibus matutinus)
-        ACD, // event occurs [duration] before lunch (from the Latin ante cibus diurnus)
-        ACV, // event occurs [duration] before dinner (from the Latin ante cibus vespertinus)
-        PC, // event occurs [duration] after a meal (from the Latin post cibus)
-        PCM, // event occurs [duration] after breakfast (from the Latin post cibus matutinus)
-        PCD, // event occurs [duration] after lunch (from the Latin post cibus diurnus)
-        PCV, // event occurs [duration] after dinner (from the Latin post cibus vespertinus) 
+        hS, // event occurs [duration] before the hour of sleep (or trying to)
+        wAKE, // event occurs [duration] after waking
+        aC, // event occurs [duration] before a meal (from the Latin ante cibus)
+        aCM, // event occurs [duration] before breakfast (from the Latin ante cibus matutinus)
+        aCD, // event occurs [duration] before lunch (from the Latin ante cibus diurnus)
+        aCV, // event occurs [duration] before dinner (from the Latin ante cibus vespertinus)
+        pC, // event occurs [duration] after a meal (from the Latin post cibus)
+        pCM, // event occurs [duration] after breakfast (from the Latin post cibus matutinus)
+        pCD, // event occurs [duration] after lunch (from the Latin post cibus diurnus)
+        pCV, // event occurs [duration] after dinner (from the Latin post cibus vespertinus)
         Null; // added to help the parsers
         public static EventTiming fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("HS".equals(codeString))
-          return HS;
+          return hS;
         if ("WAKE".equals(codeString))
-          return WAKE;
+          return wAKE;
         if ("AC".equals(codeString))
-          return AC;
+          return aC;
         if ("ACM".equals(codeString))
-          return ACM;
+          return aCM;
         if ("ACD".equals(codeString))
-          return ACD;
+          return aCD;
         if ("ACV".equals(codeString))
-          return ACV;
+          return aCV;
         if ("PC".equals(codeString))
-          return PC;
+          return pC;
         if ("PCM".equals(codeString))
-          return PCM;
+          return pCM;
         if ("PCD".equals(codeString))
-          return PCD;
+          return pCD;
         if ("PCV".equals(codeString))
-          return PCV;
+          return pCV;
         throw new Exception("Unknown EventTiming code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case HS: return "HS";
-            case WAKE: return "WAKE";
-            case AC: return "AC";
-            case ACM: return "ACM";
-            case ACD: return "ACD";
-            case ACV: return "ACV";
-            case PC: return "PC";
-            case PCM: return "PCM";
-            case PCD: return "PCD";
-            case PCV: return "PCV";
+            case hS: return "HS";
+            case wAKE: return "WAKE";
+            case aC: return "AC";
+            case aCM: return "ACM";
+            case aCD: return "ACD";
+            case aCV: return "ACV";
+            case pC: return "PC";
+            case pCM: return "PCM";
+            case pCD: return "PCD";
+            case pCV: return "PCV";
             default: return "?";
           }
         }
@@ -99,47 +99,47 @@ public class Schedule extends Type {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("HS".equals(codeString))
-          return EventTiming.HS;
+          return EventTiming.hS;
         if ("WAKE".equals(codeString))
-          return EventTiming.WAKE;
+          return EventTiming.wAKE;
         if ("AC".equals(codeString))
-          return EventTiming.AC;
+          return EventTiming.aC;
         if ("ACM".equals(codeString))
-          return EventTiming.ACM;
+          return EventTiming.aCM;
         if ("ACD".equals(codeString))
-          return EventTiming.ACD;
+          return EventTiming.aCD;
         if ("ACV".equals(codeString))
-          return EventTiming.ACV;
+          return EventTiming.aCV;
         if ("PC".equals(codeString))
-          return EventTiming.PC;
+          return EventTiming.pC;
         if ("PCM".equals(codeString))
-          return EventTiming.PCM;
+          return EventTiming.pCM;
         if ("PCD".equals(codeString))
-          return EventTiming.PCD;
+          return EventTiming.pCD;
         if ("PCV".equals(codeString))
-          return EventTiming.PCV;
+          return EventTiming.pCV;
         throw new Exception("Unknown EventTiming code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == EventTiming.HS)
+      if (code == EventTiming.hS)
         return "HS";
-      if (code == EventTiming.WAKE)
+      if (code == EventTiming.wAKE)
         return "WAKE";
-      if (code == EventTiming.AC)
+      if (code == EventTiming.aC)
         return "AC";
-      if (code == EventTiming.ACM)
+      if (code == EventTiming.aCM)
         return "ACM";
-      if (code == EventTiming.ACD)
+      if (code == EventTiming.aCD)
         return "ACD";
-      if (code == EventTiming.ACV)
+      if (code == EventTiming.aCV)
         return "ACV";
-      if (code == EventTiming.PC)
+      if (code == EventTiming.pC)
         return "PC";
-      if (code == EventTiming.PCM)
+      if (code == EventTiming.pCM)
         return "PCM";
-      if (code == EventTiming.PCD)
+      if (code == EventTiming.pCD)
         return "PCD";
-      if (code == EventTiming.PCV)
+      if (code == EventTiming.pCV)
         return "PCV";
       return "?";
       }
@@ -398,7 +398,7 @@ public class Schedule extends Type {
     private List<Period> event = new ArrayList<Period>();
 
     /**
-     * Identifies a repeating pattern to the intended time periods. 
+     * Identifies a repeating pattern to the intended time periods.
      */
     private Repeat repeat;
 

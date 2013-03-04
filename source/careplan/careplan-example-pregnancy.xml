@@ -61,8 +61,8 @@
     <status value="active"/>
     <period>
         <!-- The likely duration of the pregnancy -->
-        <start value ="20130101"/>
-        <end value ="20131001"/>
+        <start value ="2013-01-01"/>
+        <end value ="2013-10-01"/>
     </period>
     <concern>
         <!-- Shouldn't really call a pregnancy a 'problem'! -->
@@ -126,10 +126,10 @@
         <status value="scheduled"/>
         <prohibited value="false"></prohibited>
         <timingSchedule>
-            <!-- The visit should occur between 14 feb and 30 feb -->
+            <!-- The visit should occur between 14 feb and 28 feb -->
             <event>
-                <start value="20130214"/>
-                <end value="20130230"/>
+                <start value="2013-02-14"/>
+                <end value="2013-02-28"/>
             </event>
         </timingSchedule>
         <performer>
@@ -165,8 +165,8 @@
         <timingSchedule>
             <!-- The visit should occur between 1 march and 14 march -->
             <event>
-                <start value="20130301"/>
-                <end value="20130314"/>
+                <start value="2013-03-01"/>
+                <end value="2013-03-14"/>
             </event>
         </timingSchedule>
         <performer>
@@ -200,8 +200,8 @@
         <timingSchedule>
             <!-- The delivery should occur between 1 september and 14 september -->
             <event>
-                <start value="20130901"/>
-                <end value="20130914"/>
+                <start value="2013-09-01"/>
+                <end value="2013-09-14"/>
             </event>
         </timingSchedule>
         <!-- Where the delivery is to occur... 

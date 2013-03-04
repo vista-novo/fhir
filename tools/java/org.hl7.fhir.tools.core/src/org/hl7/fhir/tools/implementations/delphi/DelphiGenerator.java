@@ -110,15 +110,15 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     
     generateElement();
     parserGap();
-    generatePrimitive(new DefinedCode("enum", "", ""), "TFhirElement", true);
+    generatePrimitive(new DefinedCode("enum", "", ""), "TFhirElement", true, false);
     
     for (DefinedCode n : definitions.getPrimitives().values()) {
       if (n instanceof PrimitiveType)
-        generatePrimitive((PrimitiveType)n, "TFhirType", false);
+        generatePrimitive((PrimitiveType)n, "TFhirType", false, false);
     }
     for (DefinedCode n : definitions.getPrimitives().values()) {
       if (!(n instanceof PrimitiveType))
-        generatePrimitive((DefinedStringPattern) n, ((DefinedStringPattern) n).getBase().contains(" ") ? "TFhirType" : "TFhir"+Utilities.capitalize(((DefinedStringPattern) n).getBase()), false);
+        generatePrimitive((DefinedStringPattern) n, ((DefinedStringPattern) n).getBase().contains(" ") ? "TFhirType" : "TFhir"+Utilities.capitalize(((DefinedStringPattern) n).getBase()), false, true);
     }
     parserGap();
     
@@ -721,7 +721,15 @@ private void generateEnum(ElementDefn e) throws Exception {
       for (DefinedCode c : cd.getCodes()) {
         i++;
         String cc = c.getCode();
-        cc = cc.replace("-", "Minus").replace("+", "Plus").replace(">=", "greaterOrEquals").replace("<=", "lessOrEquals").replace("<", "lessThan").replace(">", "greaterThan").replace("=", "equal");
+        if (cc.equals("-"))
+        	cc = "Minus";
+        else if (cc.equals("+"))
+        	cc = "Plus";
+        else {
+        	cc = cc.replace("-", " ").replace("+", " ");
+        	cc = Utilities.camelCase(cc);
+        	cc = cc.replace(">=", "greaterOrEquals").replace("<=", "lessOrEquals").replace("<", "lessThan").replace(">", "greaterThan").replace("=", "equal");
+        }
 
         cc = prefix + getTitle(cc);
         if (GeneratorUtils.isDelphiReservedWord(cc))
@@ -1666,7 +1674,7 @@ private void generateEnum(ElementDefn e) throws Exception {
   }
   
   
-  private void generatePrimitive(DefinedCode t, String parent, boolean isEnum) {
+  private void generatePrimitive(DefinedCode t, String parent, boolean isEnum, boolean derived) {
     StringBuilder def = new StringBuilder();
     String tn = Utilities.capitalize(t.getCode());
     String pn = "String";
@@ -1682,11 +1690,13 @@ private void generateEnum(ElementDefn e) throws Exception {
     def.append("  {!.Net HL7Connect.Fhir."+tn+"}\r\n");
     def.append("  TFhir"+tn+" = class ("+parent+")\r\n");
     def.append("  Private\r\n");
-    def.append("    FValue: "+pn+";\r\n");
-    def.append("    procedure setValue(value: "+pn+");\r\n");
-    def.append("  protected\r\n");
-    def.append("    Procedure GetChildrenByName(child_name : string; list : TFHIRObjectList); override;\r\n");
-    def.append("    Procedure ListProperties(oList : TFHIRPropertyList; bInheritedProperties : Boolean); Override;\r\n");
+    if (!derived) {
+    	def.append("    FValue: "+pn+";\r\n");
+    	def.append("    procedure setValue(value: "+pn+");\r\n");
+    	def.append("  protected\r\n");
+    	def.append("    Procedure GetChildrenByName(child_name : string; list : TFHIRObjectList); override;\r\n");
+    	def.append("    Procedure ListProperties(oList : TFHIRPropertyList; bInheritedProperties : Boolean); Override;\r\n");
+    }
     def.append("  Public\r\n");
     def.append("    Constructor Create(value : "+pn+"); overload;\r\n");
     def.append("    Destructor Destroy; override;\r\n");
@@ -1694,13 +1704,17 @@ private void generateEnum(ElementDefn e) throws Exception {
     def.append("    {!script hide}\r\n");
     def.append("    Function Link : TFhir"+tn+"; Overload;\r\n");
     def.append("    Function Clone : TFhir"+tn+"; Overload;\r\n");
-    def.append("    procedure Assign(oSource : TAdvObject); override;\r\n");
-    def.append("  Published\r\n");
+    if (!derived) {
+    	def.append("    procedure Assign(oSource : TAdvObject); override;\r\n");
+    }
     def.append("    {!script show}\r\n");
-    def.append("    {@member value\r\n");
-    def.append("      The actual value of the "+t.getCode()+"\r\n");
-    def.append("    }\r\n");
-    def.append("    property value : "+pn+" read FValue write SetValue;\r\n");
+    if (!derived) {
+    	def.append("  Published\r\n");
+    	def.append("    {@member value\r\n");
+    	def.append("      The actual value of the "+t.getCode()+"\r\n");
+    	def.append("    }\r\n");
+    	def.append("    property value : "+pn+" read FValue write SetValue;\r\n");
+    }
     def.append("  End;    \r\n");
     def.append("\r\n");
 
@@ -1715,34 +1729,39 @@ private void generateEnum(ElementDefn e) throws Exception {
     
     impl2.append("Destructor TFhir"+tn+".Destroy;\r\n");
     impl2.append("begin\r\n");
+    if (!derived) {
     if (!pn.equals("String"))
       impl2.append("  FValue.free;\r\n");
+    }
     impl2.append("  inherited;\r\n");
     impl2.append("end;\r\n\r\n");
     
-    impl2.append("procedure TFhir"+tn+".GetChildrenByName(child_name : string; list : TFHIRObjectList);\r\n");
-    impl2.append("begin\r\n");
-    impl2.append("  inherited;\r\n");
-    impl2.append("  if child_name = 'value' then\r\n    list.add(TFHIRObjectText.create(value));\r\n");
-    impl2.append("end;\r\n\r\n");
-    impl2.append("procedure TFhir"+tn+".ListProperties(oList: TFHIRPropertyList; bInheritedProperties: Boolean);\r\n");
-    impl2.append("begin\r\n");
-    impl2.append("  inherited;\r\n");
-    if (!pn.equals("String"))
-      impl2.append("  oList.add(TFHIRProperty.create(self, 'value', '"+t.getCode()+"', FValue.toString));\r\n");
-    else
-      impl2.append("  oList.add(TFHIRProperty.create(self, 'value', '"+t.getCode()+"', FValue));\r\n");
-    impl2.append("end;\r\n\r\n");
-    
-    
-    impl2.append("procedure TFhir"+tn+".Assign(oSource : TAdvObject);\r\n");
-    impl2.append("begin\r\n");
-    impl2.append("  inherited;\r\n");
-    impl2.append("  FXmlId := TFhirElement(oSource).FXmlId;\r\n");
-    impl2.append("  if TFhirElement(oSource).HasExtensions then\r\n    extensionList.assign(TFhirElement(oSource).extensionList)\r\n"+
-    "  else if FExtensionList <> nil then\r\n  begin\r\n    FExtensionList.free;\r\n    FExtensionList := nil;\r\n  end;\r\n");
-    impl2.append("end;\r\n\r\n");
-    
+    if (!derived) {
+
+    	impl2.append("procedure TFhir"+tn+".GetChildrenByName(child_name : string; list : TFHIRObjectList);\r\n");
+    	impl2.append("begin\r\n");
+    	impl2.append("  inherited;\r\n");
+    	impl2.append("  if child_name = 'value' then\r\n    list.add(TFHIRObjectText.create(value));\r\n");
+    	impl2.append("end;\r\n\r\n");
+    	impl2.append("procedure TFhir"+tn+".ListProperties(oList: TFHIRPropertyList; bInheritedProperties: Boolean);\r\n");
+    	impl2.append("begin\r\n");
+    	impl2.append("  inherited;\r\n");
+    	if (!pn.equals("String"))
+    		impl2.append("  oList.add(TFHIRProperty.create(self, 'value', '"+t.getCode()+"', FValue.toString));\r\n");
+    	else
+    		impl2.append("  oList.add(TFHIRProperty.create(self, 'value', '"+t.getCode()+"', FValue));\r\n");
+    	impl2.append("end;\r\n\r\n");
+
+
+    	impl2.append("procedure TFhir"+tn+".Assign(oSource : TAdvObject);\r\n");
+    	impl2.append("begin\r\n");
+    	impl2.append("  inherited;\r\n");
+    	impl2.append("  FXmlId := TFhirElement(oSource).FXmlId;\r\n");
+    	impl2.append("  if TFhirElement(oSource).HasExtensions then\r\n    extensionList.assign(TFhirElement(oSource).extensionList)\r\n"+
+    			"  else if FExtensionList <> nil then\r\n  begin\r\n    FExtensionList.free;\r\n    FExtensionList := nil;\r\n  end;\r\n");
+    	impl2.append("end;\r\n\r\n");
+    }
+
     impl2.append("function TFhir"+tn+".Link : TFhir"+tn+";\r\n");
     impl2.append("begin\r\n");
     impl2.append("  result := TFhir"+tn+"(inherited Link);\r\n");
@@ -1751,13 +1770,14 @@ private void generateEnum(ElementDefn e) throws Exception {
     impl2.append("begin\r\n");
     impl2.append("  result := TFhir"+tn+"(inherited Clone);\r\n");
     impl2.append("end;\r\n\r\n");
-    impl2.append("procedure TFhir"+tn+".setValue(value : "+pn+");\r\n");
-    impl2.append("begin\r\n");
-    if (!pn.equals("String")) 
-      impl2.append("  FValue.free;\r\n");
-    impl2.append("  FValue := value;\r\n");
-    impl2.append("end;\r\n\r\n");
-    
+    if (!derived) {
+    	impl2.append("procedure TFhir"+tn+".setValue(value : "+pn+");\r\n");
+    	impl2.append("begin\r\n");
+    	if (!pn.equals("String")) 
+    		impl2.append("  FValue.free;\r\n");
+    	impl2.append("  FValue := value;\r\n");
+    	impl2.append("end;\r\n\r\n");
+    }    
 
     if (isEnum) {
       prsrdefX.append("    function Parse"+tn+"(Const aNames : Array Of String; element : IXmlDomElement) : TFhir"+tn+";\r\n");

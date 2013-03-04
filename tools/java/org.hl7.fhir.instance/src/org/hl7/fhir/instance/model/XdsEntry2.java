@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -39,22 +39,22 @@ import java.util.*;
 public class XdsEntry2 extends Resource {
 
     public enum XdsEntryAvailability {
-        Approved, // 
-        Deprecated, // 
+        approved, // 
+        deprecated, // 
         Null; // added to help the parsers
         public static XdsEntryAvailability fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("Approved".equals(codeString))
-          return Approved;
+          return approved;
         if ("Deprecated".equals(codeString))
-          return Deprecated;
+          return deprecated;
         throw new Exception("Unknown XdsEntryAvailability code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case Approved: return "Approved";
-            case Deprecated: return "Deprecated";
+            case approved: return "Approved";
+            case deprecated: return "Deprecated";
             default: return "?";
           }
         }
@@ -66,15 +66,15 @@ public class XdsEntry2 extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("Approved".equals(codeString))
-          return XdsEntryAvailability.Approved;
+          return XdsEntryAvailability.approved;
         if ("Deprecated".equals(codeString))
-          return XdsEntryAvailability.Deprecated;
+          return XdsEntryAvailability.deprecated;
         throw new Exception("Unknown XdsEntryAvailability code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == XdsEntryAvailability.Approved)
+      if (code == XdsEntryAvailability.approved)
         return "Approved";
-      if (code == XdsEntryAvailability.Deprecated)
+      if (code == XdsEntryAvailability.deprecated)
         return "Deprecated";
       return "?";
       }

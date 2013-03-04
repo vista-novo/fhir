@@ -29,12 +29,143 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+
+import java.util.*;
 
 /**
- * null
+ * A place at which services may be provided by, or on behalf of, an Organization
  */
 public class Location extends Resource {
+
+    /**
+     * Name of the location
+     */
+    private String_ name;
+
+    /**
+     * Classification of the location
+     */
+    private List<CodeableConcept> type = new ArrayList<CodeableConcept>();
+
+    /**
+     * Physical location
+     */
+    private Address address;
+
+    /**
+     * The contact details of the main communication devices present at the location
+     */
+    private Contact telecom;
+
+    /**
+     * The organization that provides services at the location
+     */
+    private ResourceReference provider;
+
+    /**
+     * Whether the location is still used to provide services
+     */
+    private Boolean active;
+
+    /**
+     * Description of the location
+     */
+    private String_ description;
+
+    public String_ getName() { 
+      return this.name;
+    }
+
+    public void setName(String_ value) { 
+      this.name = value;
+    }
+
+    public String getNameSimple() { 
+      return this.name == null ? null : this.name.getValue();
+    }
+
+    public void setNameSimple(String value) { 
+      if (value == null)
+        this.name = null;
+      else {
+        if (this.name == null)
+          this.name = new String_();
+        this.name.setValue(value);
+      }
+    }
+
+    public List<CodeableConcept> getType() { 
+      return this.type;
+    }
+
+    public Address getAddress() { 
+      return this.address;
+    }
+
+    public void setAddress(Address value) { 
+      this.address = value;
+    }
+
+    public Contact getTelecom() { 
+      return this.telecom;
+    }
+
+    public void setTelecom(Contact value) { 
+      this.telecom = value;
+    }
+
+    public ResourceReference getProvider() { 
+      return this.provider;
+    }
+
+    public void setProvider(ResourceReference value) { 
+      this.provider = value;
+    }
+
+    public Boolean getActive() { 
+      return this.active;
+    }
+
+    public void setActive(Boolean value) { 
+      this.active = value;
+    }
+
+    public boolean getActiveSimple() { 
+      return this.active == null ? null : this.active.getValue();
+    }
+
+    public void setActiveSimple(boolean value) { 
+      if (value == false)
+        this.active = null;
+      else {
+        if (this.active == null)
+          this.active = new Boolean();
+        this.active.setValue(value);
+      }
+    }
+
+    public String_ getDescription() { 
+      return this.description;
+    }
+
+    public void setDescription(String_ value) { 
+      this.description = value;
+    }
+
+    public String getDescriptionSimple() { 
+      return this.description == null ? null : this.description.getValue();
+    }
+
+    public void setDescriptionSimple(String value) { 
+      if (value == null)
+        this.description = null;
+      else {
+        if (this.description == null)
+          this.description = new String_();
+        this.description.setValue(value);
+      }
+    }
 
   @Override
   public ResourceType getResourceType() {

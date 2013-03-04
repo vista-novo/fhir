@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -40,158 +40,158 @@ import java.net.*;
 public class ImagingStudy extends Resource {
 
     public enum ImageModality {
-        XC, // External Camera (Photography)
-        DIA, // Diagram / Hand drawn image
-        BI, // Biomagnetic Imaging
-        CR, // Computed Radiography
-        CT, // Computed Tomography
-        DG, // Diaphanography
-        DX, // Digital Radiography
-        ECG, // Electrocardiograms
-        EM, // Electron Microscope
-        ES, // Endoscopy
-        GM, // General Microscopy
-        LS, // Laser Surface Scan
-        MG, // Mammography
-        MR, // Magnetic Resonance
-        NM, // Nuclear Medicine
-        OP, // Ophthalmic Photography
-        OPM, // Ophthalmic Mapping
-        OPR, // Ophthalmic Refraction
-        OPV, // Ophthalmic Visual Field
-        PT, // Positron Emission Tomography (PET)
-        RD, // Radiotherapy Dose (a.k.a. RTDOSE)
-        RF, // Radio Fluoroscopy
-        RG, // Radiographic Imaging (conventional film screen)
-        RTIMAG, // Radiotherapy Image
-        RP, // Radiotherapy Plan (a.k.a. RTPLAN)
-        RS, // Radiotherapy Structure Set (a.k.a. RTSTRUCT)
-        RT, // Radiation Therapy
-        SC, // Secondary Capture
-        SM, // Slide Microscopy
-        SR, // Structured Reporting
-        TG, // Thermography
-        US, // Ultrasound
-        VL, // Visible Light
-        XA, // X-Ray Angiography
-        HC, // Hard Copy
-        OT, // Other
+        xC, // External Camera (Photography)
+        dIA, // Diagram / Hand drawn image
+        bI, // Biomagnetic Imaging
+        cR, // Computed Radiography
+        cT, // Computed Tomography
+        dG, // Diaphanography
+        dX, // Digital Radiography
+        eCG, // Electrocardiograms
+        eM, // Electron Microscope
+        eS, // Endoscopy
+        gM, // General Microscopy
+        lS, // Laser Surface Scan
+        mG, // Mammography
+        mR, // Magnetic Resonance
+        nM, // Nuclear Medicine
+        oP, // Ophthalmic Photography
+        oPM, // Ophthalmic Mapping
+        oPR, // Ophthalmic Refraction
+        oPV, // Ophthalmic Visual Field
+        pT, // Positron Emission Tomography (PET)
+        rD, // Radiotherapy Dose (a.k.a. RTDOSE)
+        rF, // Radio Fluoroscopy
+        rG, // Radiographic Imaging (conventional film screen)
+        rTIMAG, // Radiotherapy Image
+        rP, // Radiotherapy Plan (a.k.a. RTPLAN)
+        rS, // Radiotherapy Structure Set (a.k.a. RTSTRUCT)
+        rT, // Radiation Therapy
+        sC, // Secondary Capture
+        sM, // Slide Microscopy
+        sR, // Structured Reporting
+        tG, // Thermography
+        uS, // Ultrasound
+        vL, // Visible Light
+        xA, // X-Ray Angiography
+        hC, // Hard Copy
+        oT, // Other
         Null; // added to help the parsers
         public static ImageModality fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("XC".equals(codeString))
-          return XC;
+          return xC;
         if ("DIA".equals(codeString))
-          return DIA;
+          return dIA;
         if ("BI".equals(codeString))
-          return BI;
+          return bI;
         if ("CR".equals(codeString))
-          return CR;
+          return cR;
         if ("CT".equals(codeString))
-          return CT;
+          return cT;
         if ("DG".equals(codeString))
-          return DG;
+          return dG;
         if ("DX".equals(codeString))
-          return DX;
+          return dX;
         if ("ECG".equals(codeString))
-          return ECG;
+          return eCG;
         if ("EM".equals(codeString))
-          return EM;
+          return eM;
         if ("ES".equals(codeString))
-          return ES;
+          return eS;
         if ("GM".equals(codeString))
-          return GM;
+          return gM;
         if ("LS".equals(codeString))
-          return LS;
+          return lS;
         if ("MG".equals(codeString))
-          return MG;
+          return mG;
         if ("MR".equals(codeString))
-          return MR;
+          return mR;
         if ("NM".equals(codeString))
-          return NM;
+          return nM;
         if ("OP".equals(codeString))
-          return OP;
+          return oP;
         if ("OPM".equals(codeString))
-          return OPM;
+          return oPM;
         if ("OPR".equals(codeString))
-          return OPR;
+          return oPR;
         if ("OPV".equals(codeString))
-          return OPV;
+          return oPV;
         if ("PT".equals(codeString))
-          return PT;
+          return pT;
         if ("RD".equals(codeString))
-          return RD;
+          return rD;
         if ("RF".equals(codeString))
-          return RF;
+          return rF;
         if ("RG".equals(codeString))
-          return RG;
+          return rG;
         if ("RTIMAG".equals(codeString))
-          return RTIMAG;
+          return rTIMAG;
         if ("RP".equals(codeString))
-          return RP;
+          return rP;
         if ("RS".equals(codeString))
-          return RS;
+          return rS;
         if ("RT".equals(codeString))
-          return RT;
+          return rT;
         if ("SC".equals(codeString))
-          return SC;
+          return sC;
         if ("SM".equals(codeString))
-          return SM;
+          return sM;
         if ("SR".equals(codeString))
-          return SR;
+          return sR;
         if ("TG".equals(codeString))
-          return TG;
+          return tG;
         if ("US".equals(codeString))
-          return US;
+          return uS;
         if ("VL".equals(codeString))
-          return VL;
+          return vL;
         if ("XA".equals(codeString))
-          return XA;
+          return xA;
         if ("HC".equals(codeString))
-          return HC;
+          return hC;
         if ("OT".equals(codeString))
-          return OT;
+          return oT;
         throw new Exception("Unknown ImageModality code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case XC: return "XC";
-            case DIA: return "DIA";
-            case BI: return "BI";
-            case CR: return "CR";
-            case CT: return "CT";
-            case DG: return "DG";
-            case DX: return "DX";
-            case ECG: return "ECG";
-            case EM: return "EM";
-            case ES: return "ES";
-            case GM: return "GM";
-            case LS: return "LS";
-            case MG: return "MG";
-            case MR: return "MR";
-            case NM: return "NM";
-            case OP: return "OP";
-            case OPM: return "OPM";
-            case OPR: return "OPR";
-            case OPV: return "OPV";
-            case PT: return "PT";
-            case RD: return "RD";
-            case RF: return "RF";
-            case RG: return "RG";
-            case RTIMAG: return "RTIMAG";
-            case RP: return "RP";
-            case RS: return "RS";
-            case RT: return "RT";
-            case SC: return "SC";
-            case SM: return "SM";
-            case SR: return "SR";
-            case TG: return "TG";
-            case US: return "US";
-            case VL: return "VL";
-            case XA: return "XA";
-            case HC: return "HC";
-            case OT: return "OT";
+            case xC: return "XC";
+            case dIA: return "DIA";
+            case bI: return "BI";
+            case cR: return "CR";
+            case cT: return "CT";
+            case dG: return "DG";
+            case dX: return "DX";
+            case eCG: return "ECG";
+            case eM: return "EM";
+            case eS: return "ES";
+            case gM: return "GM";
+            case lS: return "LS";
+            case mG: return "MG";
+            case mR: return "MR";
+            case nM: return "NM";
+            case oP: return "OP";
+            case oPM: return "OPM";
+            case oPR: return "OPR";
+            case oPV: return "OPV";
+            case pT: return "PT";
+            case rD: return "RD";
+            case rF: return "RF";
+            case rG: return "RG";
+            case rTIMAG: return "RTIMAG";
+            case rP: return "RP";
+            case rS: return "RS";
+            case rT: return "RT";
+            case sC: return "SC";
+            case sM: return "SM";
+            case sR: return "SR";
+            case tG: return "TG";
+            case uS: return "US";
+            case vL: return "VL";
+            case xA: return "XA";
+            case hC: return "HC";
+            case oT: return "OT";
             default: return "?";
           }
         }
@@ -203,151 +203,151 @@ public class ImagingStudy extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("XC".equals(codeString))
-          return ImageModality.XC;
+          return ImageModality.xC;
         if ("DIA".equals(codeString))
-          return ImageModality.DIA;
+          return ImageModality.dIA;
         if ("BI".equals(codeString))
-          return ImageModality.BI;
+          return ImageModality.bI;
         if ("CR".equals(codeString))
-          return ImageModality.CR;
+          return ImageModality.cR;
         if ("CT".equals(codeString))
-          return ImageModality.CT;
+          return ImageModality.cT;
         if ("DG".equals(codeString))
-          return ImageModality.DG;
+          return ImageModality.dG;
         if ("DX".equals(codeString))
-          return ImageModality.DX;
+          return ImageModality.dX;
         if ("ECG".equals(codeString))
-          return ImageModality.ECG;
+          return ImageModality.eCG;
         if ("EM".equals(codeString))
-          return ImageModality.EM;
+          return ImageModality.eM;
         if ("ES".equals(codeString))
-          return ImageModality.ES;
+          return ImageModality.eS;
         if ("GM".equals(codeString))
-          return ImageModality.GM;
+          return ImageModality.gM;
         if ("LS".equals(codeString))
-          return ImageModality.LS;
+          return ImageModality.lS;
         if ("MG".equals(codeString))
-          return ImageModality.MG;
+          return ImageModality.mG;
         if ("MR".equals(codeString))
-          return ImageModality.MR;
+          return ImageModality.mR;
         if ("NM".equals(codeString))
-          return ImageModality.NM;
+          return ImageModality.nM;
         if ("OP".equals(codeString))
-          return ImageModality.OP;
+          return ImageModality.oP;
         if ("OPM".equals(codeString))
-          return ImageModality.OPM;
+          return ImageModality.oPM;
         if ("OPR".equals(codeString))
-          return ImageModality.OPR;
+          return ImageModality.oPR;
         if ("OPV".equals(codeString))
-          return ImageModality.OPV;
+          return ImageModality.oPV;
         if ("PT".equals(codeString))
-          return ImageModality.PT;
+          return ImageModality.pT;
         if ("RD".equals(codeString))
-          return ImageModality.RD;
+          return ImageModality.rD;
         if ("RF".equals(codeString))
-          return ImageModality.RF;
+          return ImageModality.rF;
         if ("RG".equals(codeString))
-          return ImageModality.RG;
+          return ImageModality.rG;
         if ("RTIMAG".equals(codeString))
-          return ImageModality.RTIMAG;
+          return ImageModality.rTIMAG;
         if ("RP".equals(codeString))
-          return ImageModality.RP;
+          return ImageModality.rP;
         if ("RS".equals(codeString))
-          return ImageModality.RS;
+          return ImageModality.rS;
         if ("RT".equals(codeString))
-          return ImageModality.RT;
+          return ImageModality.rT;
         if ("SC".equals(codeString))
-          return ImageModality.SC;
+          return ImageModality.sC;
         if ("SM".equals(codeString))
-          return ImageModality.SM;
+          return ImageModality.sM;
         if ("SR".equals(codeString))
-          return ImageModality.SR;
+          return ImageModality.sR;
         if ("TG".equals(codeString))
-          return ImageModality.TG;
+          return ImageModality.tG;
         if ("US".equals(codeString))
-          return ImageModality.US;
+          return ImageModality.uS;
         if ("VL".equals(codeString))
-          return ImageModality.VL;
+          return ImageModality.vL;
         if ("XA".equals(codeString))
-          return ImageModality.XA;
+          return ImageModality.xA;
         if ("HC".equals(codeString))
-          return ImageModality.HC;
+          return ImageModality.hC;
         if ("OT".equals(codeString))
-          return ImageModality.OT;
+          return ImageModality.oT;
         throw new Exception("Unknown ImageModality code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == ImageModality.XC)
+      if (code == ImageModality.xC)
         return "XC";
-      if (code == ImageModality.DIA)
+      if (code == ImageModality.dIA)
         return "DIA";
-      if (code == ImageModality.BI)
+      if (code == ImageModality.bI)
         return "BI";
-      if (code == ImageModality.CR)
+      if (code == ImageModality.cR)
         return "CR";
-      if (code == ImageModality.CT)
+      if (code == ImageModality.cT)
         return "CT";
-      if (code == ImageModality.DG)
+      if (code == ImageModality.dG)
         return "DG";
-      if (code == ImageModality.DX)
+      if (code == ImageModality.dX)
         return "DX";
-      if (code == ImageModality.ECG)
+      if (code == ImageModality.eCG)
         return "ECG";
-      if (code == ImageModality.EM)
+      if (code == ImageModality.eM)
         return "EM";
-      if (code == ImageModality.ES)
+      if (code == ImageModality.eS)
         return "ES";
-      if (code == ImageModality.GM)
+      if (code == ImageModality.gM)
         return "GM";
-      if (code == ImageModality.LS)
+      if (code == ImageModality.lS)
         return "LS";
-      if (code == ImageModality.MG)
+      if (code == ImageModality.mG)
         return "MG";
-      if (code == ImageModality.MR)
+      if (code == ImageModality.mR)
         return "MR";
-      if (code == ImageModality.NM)
+      if (code == ImageModality.nM)
         return "NM";
-      if (code == ImageModality.OP)
+      if (code == ImageModality.oP)
         return "OP";
-      if (code == ImageModality.OPM)
+      if (code == ImageModality.oPM)
         return "OPM";
-      if (code == ImageModality.OPR)
+      if (code == ImageModality.oPR)
         return "OPR";
-      if (code == ImageModality.OPV)
+      if (code == ImageModality.oPV)
         return "OPV";
-      if (code == ImageModality.PT)
+      if (code == ImageModality.pT)
         return "PT";
-      if (code == ImageModality.RD)
+      if (code == ImageModality.rD)
         return "RD";
-      if (code == ImageModality.RF)
+      if (code == ImageModality.rF)
         return "RF";
-      if (code == ImageModality.RG)
+      if (code == ImageModality.rG)
         return "RG";
-      if (code == ImageModality.RTIMAG)
+      if (code == ImageModality.rTIMAG)
         return "RTIMAG";
-      if (code == ImageModality.RP)
+      if (code == ImageModality.rP)
         return "RP";
-      if (code == ImageModality.RS)
+      if (code == ImageModality.rS)
         return "RS";
-      if (code == ImageModality.RT)
+      if (code == ImageModality.rT)
         return "RT";
-      if (code == ImageModality.SC)
+      if (code == ImageModality.sC)
         return "SC";
-      if (code == ImageModality.SM)
+      if (code == ImageModality.sM)
         return "SM";
-      if (code == ImageModality.SR)
+      if (code == ImageModality.sR)
         return "SR";
-      if (code == ImageModality.TG)
+      if (code == ImageModality.tG)
         return "TG";
-      if (code == ImageModality.US)
+      if (code == ImageModality.uS)
         return "US";
-      if (code == ImageModality.VL)
+      if (code == ImageModality.vL)
         return "VL";
-      if (code == ImageModality.XA)
+      if (code == ImageModality.xA)
         return "XA";
-      if (code == ImageModality.HC)
+      if (code == ImageModality.hC)
         return "HC";
-      if (code == ImageModality.OT)
+      if (code == ImageModality.oT)
         return "OT";
       return "?";
       }
@@ -363,6 +363,11 @@ public class ImagingStudy extends Resource {
          * The modality of this sequence
          */
         private Enumeration<ImageModality> modality;
+
+        /**
+         * When the series started
+         */
+        private DateTime datetime;
 
         /**
          * Formal identifier for this series
@@ -425,6 +430,28 @@ public class ImagingStudy extends Resource {
             if (this.modality == null)
               this.modality = new Enumeration<ImageModality>();
             this.modality.setValue(value);
+          }
+        }
+
+        public DateTime getDatetime() { 
+          return this.datetime;
+        }
+
+        public void setDatetime(DateTime value) { 
+          this.datetime = value;
+        }
+
+        public String getDatetimeSimple() { 
+          return this.datetime == null ? null : this.datetime.getValue();
+        }
+
+        public void setDatetimeSimple(String value) { 
+          if (value == null)
+            this.datetime = null;
+          else {
+            if (this.datetime == null)
+              this.datetime = new DateTime();
+            this.datetime.setValue(value);
           }
         }
 
@@ -493,6 +520,11 @@ public class ImagingStudy extends Resource {
         private Integer number;
 
         /**
+         * When this image was taken
+         */
+        private DateTime dateTime;
+
+        /**
          * Formal identifier for this image
          */
         private Oid uid;
@@ -526,6 +558,28 @@ public class ImagingStudy extends Resource {
             if (this.number == null)
               this.number = new Integer();
             this.number.setValue(value);
+          }
+        }
+
+        public DateTime getDateTime() { 
+          return this.dateTime;
+        }
+
+        public void setDateTime(DateTime value) { 
+          this.dateTime = value;
+        }
+
+        public String getDateTimeSimple() { 
+          return this.dateTime == null ? null : this.dateTime.getValue();
+        }
+
+        public void setDateTimeSimple(String value) { 
+          if (value == null)
+            this.dateTime = null;
+          else {
+            if (this.dateTime == null)
+              this.dateTime = new DateTime();
+            this.dateTime.setValue(value);
           }
         }
 
@@ -643,6 +697,11 @@ public class ImagingStudy extends Resource {
     private ResourceReference interpreter;
 
     /**
+     * Institution-generated description or classification of the Study (component) performed
+     */
+    private String_ description;
+
+    /**
      * Each study has one or more series of image instances
      */
     private List<Series> series = new ArrayList<Series>();
@@ -751,6 +810,28 @@ public class ImagingStudy extends Resource {
 
     public void setInterpreter(ResourceReference value) { 
       this.interpreter = value;
+    }
+
+    public String_ getDescription() { 
+      return this.description;
+    }
+
+    public void setDescription(String_ value) { 
+      this.description = value;
+    }
+
+    public String getDescriptionSimple() { 
+      return this.description == null ? null : this.description.getValue();
+    }
+
+    public void setDescriptionSimple(String value) { 
+      if (value == null)
+        this.description = null;
+      else {
+        if (this.description == null)
+          this.description = new String_();
+        this.description.setValue(value);
+      }
     }
 
     public List<Series> getSeries() { 

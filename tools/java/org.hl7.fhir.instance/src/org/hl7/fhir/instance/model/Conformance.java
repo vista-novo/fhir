@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -86,9 +86,9 @@ public class Conformance extends Resource {
         vread, // Read the state of a specific version of the resource
         update, // Update an existing resource by its id (or create it if it is new)
         delete, // Delete a resource
-        history, // Retrieve the update history for the resource
+        historyMinusinstance, // Retrieve the update history for a resource instance
         validate, // Check that the content would be acceptable as an update
-        updates, // Get a list of prior updates to resources of this type, optionally with some filter criteria
+        historyMinustype, // Get a list of updates to resources of this type
         create, // Create a new resource with a server assigned id
         search, // Supports search operations using the parameters described in the profile
         Null; // added to help the parsers
@@ -103,12 +103,12 @@ public class Conformance extends Resource {
           return update;
         if ("delete".equals(codeString))
           return delete;
-        if ("history".equals(codeString))
-          return history;
+        if ("history-instance".equals(codeString))
+          return historyMinusinstance;
         if ("validate".equals(codeString))
           return validate;
-        if ("updates".equals(codeString))
-          return updates;
+        if ("history-type".equals(codeString))
+          return historyMinustype;
         if ("create".equals(codeString))
           return create;
         if ("search".equals(codeString))
@@ -121,9 +121,9 @@ public class Conformance extends Resource {
             case vread: return "vread";
             case update: return "update";
             case delete: return "delete";
-            case history: return "history";
+            case historyMinusinstance: return "history-instance";
             case validate: return "validate";
-            case updates: return "updates";
+            case historyMinustype: return "history-type";
             case create: return "create";
             case search: return "search";
             default: return "?";
@@ -144,12 +144,12 @@ public class Conformance extends Resource {
           return RestfulOperation.update;
         if ("delete".equals(codeString))
           return RestfulOperation.delete;
-        if ("history".equals(codeString))
-          return RestfulOperation.history;
+        if ("history-instance".equals(codeString))
+          return RestfulOperation.historyMinusinstance;
         if ("validate".equals(codeString))
           return RestfulOperation.validate;
-        if ("updates".equals(codeString))
-          return RestfulOperation.updates;
+        if ("history-type".equals(codeString))
+          return RestfulOperation.historyMinustype;
         if ("create".equals(codeString))
           return RestfulOperation.create;
         if ("search".equals(codeString))
@@ -165,12 +165,12 @@ public class Conformance extends Resource {
         return "update";
       if (code == RestfulOperation.delete)
         return "delete";
-      if (code == RestfulOperation.history)
-        return "history";
+      if (code == RestfulOperation.historyMinusinstance)
+        return "history-instance";
       if (code == RestfulOperation.validate)
         return "validate";
-      if (code == RestfulOperation.updates)
-        return "updates";
+      if (code == RestfulOperation.historyMinustype)
+        return "history-type";
       if (code == RestfulOperation.create)
         return "create";
       if (code == RestfulOperation.search)
@@ -439,63 +439,6 @@ public class Conformance extends Resource {
 
   }
 
-    public class Implementation extends Element {
-        /**
-         * Information about the specific implementation 
-         */
-        private String_ description;
-
-        /**
-         * The base URL for the implementation.  This forms the base for REST interfaces as well as the mailbox and document interfaces.
-         */
-        private Uri url;
-
-        public String_ getDescription() { 
-          return this.description;
-        }
-
-        public void setDescription(String_ value) { 
-          this.description = value;
-        }
-
-        public String getDescriptionSimple() { 
-          return this.description == null ? null : this.description.getValue();
-        }
-
-        public void setDescriptionSimple(String value) { 
-          if (value == null)
-            this.description = null;
-          else {
-            if (this.description == null)
-              this.description = new String_();
-            this.description.setValue(value);
-          }
-        }
-
-        public Uri getUrl() { 
-          return this.url;
-        }
-
-        public void setUrl(Uri value) { 
-          this.url = value;
-        }
-
-        public URI getUrlSimple() { 
-          return this.url == null ? null : this.url.getValue();
-        }
-
-        public void setUrlSimple(URI value) { 
-          if (value == null)
-            this.url = null;
-          else {
-            if (this.url == null)
-              this.url = new Uri();
-            this.url.setValue(value);
-          }
-        }
-
-  }
-
     public class Software extends Element {
         /**
          * Name software is known by
@@ -580,6 +523,76 @@ public class Conformance extends Resource {
 
   }
 
+    public class Implementation extends Element {
+        /**
+         * Information about the specific installation that this conformance statement relates to
+         */
+        private String_ description;
+
+        /**
+         * The base URL for the implementation.  This forms the base for REST interfaces as well as the mailbox and document interfaces.
+         */
+        private Uri url;
+
+        /**
+         * The software running this instance
+         */
+        private Software software;
+
+        public String_ getDescription() { 
+          return this.description;
+        }
+
+        public void setDescription(String_ value) { 
+          this.description = value;
+        }
+
+        public String getDescriptionSimple() { 
+          return this.description == null ? null : this.description.getValue();
+        }
+
+        public void setDescriptionSimple(String value) { 
+          if (value == null)
+            this.description = null;
+          else {
+            if (this.description == null)
+              this.description = new String_();
+            this.description.setValue(value);
+          }
+        }
+
+        public Uri getUrl() { 
+          return this.url;
+        }
+
+        public void setUrl(Uri value) { 
+          this.url = value;
+        }
+
+        public URI getUrlSimple() { 
+          return this.url == null ? null : this.url.getValue();
+        }
+
+        public void setUrlSimple(URI value) { 
+          if (value == null)
+            this.url = null;
+          else {
+            if (this.url == null)
+              this.url = new Uri();
+            this.url.setValue(value);
+          }
+        }
+
+        public Software getSoftware() { 
+          return this.software;
+        }
+
+        public void setSoftware(Software value) { 
+          this.software = value;
+        }
+
+  }
+
     public class Proposal extends Element {
         /**
          * Provides details about the intention and scope of the proposal
@@ -622,9 +635,24 @@ public class Conformance extends Resource {
         private String_ documentation;
 
         /**
+         * Information about security of implementation
+         */
+        private Security security;
+
+        /**
          * Identifies the restful capabilities of the solution for a specific resource type
          */
         private List<Resource> resource = new ArrayList<Resource>();
+
+        /**
+         * If batches are supported
+         */
+        private Boolean batch;
+
+        /**
+         * If a system wide history list is supported
+         */
+        private Boolean history;
 
         public Enumeration<RestfulConformanceMode> getMode() { 
           return this.mode;
@@ -670,8 +698,165 @@ public class Conformance extends Resource {
           }
         }
 
+        public Security getSecurity() { 
+          return this.security;
+        }
+
+        public void setSecurity(Security value) { 
+          this.security = value;
+        }
+
         public List<Resource> getResource() { 
           return this.resource;
+        }
+
+        public Boolean getBatch() { 
+          return this.batch;
+        }
+
+        public void setBatch(Boolean value) { 
+          this.batch = value;
+        }
+
+        public boolean getBatchSimple() { 
+          return this.batch == null ? null : this.batch.getValue();
+        }
+
+        public void setBatchSimple(boolean value) { 
+          if (value == false)
+            this.batch = null;
+          else {
+            if (this.batch == null)
+              this.batch = new Boolean();
+            this.batch.setValue(value);
+          }
+        }
+
+        public Boolean getHistory() { 
+          return this.history;
+        }
+
+        public void setHistory(Boolean value) { 
+          this.history = value;
+        }
+
+        public boolean getHistorySimple() { 
+          return this.history == null ? null : this.history.getValue();
+        }
+
+        public void setHistorySimple(boolean value) { 
+          if (value == false)
+            this.history = null;
+          else {
+            if (this.history == null)
+              this.history = new Boolean();
+            this.history.setValue(value);
+          }
+        }
+
+  }
+
+    public class Security extends Element {
+        /**
+         * What type of security services are supported/required
+         */
+        private List<CodeableConcept> service = new ArrayList<CodeableConcept>();
+
+        /**
+         * General description of how security works
+         */
+        private String_ description;
+
+        /**
+         * Certificates associated with security profiles
+         */
+        private List<Certificate> certificate = new ArrayList<Certificate>();
+
+        public List<CodeableConcept> getService() { 
+          return this.service;
+        }
+
+        public String_ getDescription() { 
+          return this.description;
+        }
+
+        public void setDescription(String_ value) { 
+          this.description = value;
+        }
+
+        public String getDescriptionSimple() { 
+          return this.description == null ? null : this.description.getValue();
+        }
+
+        public void setDescriptionSimple(String value) { 
+          if (value == null)
+            this.description = null;
+          else {
+            if (this.description == null)
+              this.description = new String_();
+            this.description.setValue(value);
+          }
+        }
+
+        public List<Certificate> getCertificate() { 
+          return this.certificate;
+        }
+
+  }
+
+    public class Certificate extends Element {
+        /**
+         * Mime type for certificate
+         */
+        private Code type;
+
+        /**
+         * Actual certificate
+         */
+        private Base64Binary blob;
+
+        public Code getType() { 
+          return this.type;
+        }
+
+        public void setType(Code value) { 
+          this.type = value;
+        }
+
+        public String getTypeSimple() { 
+          return this.type == null ? null : this.type.getValue();
+        }
+
+        public void setTypeSimple(String value) { 
+          if (value == null)
+            this.type = null;
+          else {
+            if (this.type == null)
+              this.type = new Code();
+            this.type.setValue(value);
+          }
+        }
+
+        public Base64Binary getBlob() { 
+          return this.blob;
+        }
+
+        public void setBlob(Base64Binary value) { 
+          this.blob = value;
+        }
+
+        public byte[] getBlobSimple() { 
+          return this.blob == null ? null : this.blob.getValue();
+        }
+
+        public void setBlobSimple(byte[] value) { 
+          if (value == null)
+            this.blob = null;
+          else {
+            if (this.blob == null)
+              this.blob = new Base64Binary();
+            this.blob.setValue(value);
+          }
         }
 
   }
@@ -683,7 +868,7 @@ public class Conformance extends Resource {
         private Code type;
 
         /**
-         * Identifies the profile that describes the solution's support for the resource, including any constraints on cardinality, bindings, lengths or other limitations, along with the search parameters supported
+         * Identifies the profile that describes the solution's support for the resource, including any constraints on cardinality, bindings, lengths or other limitations
          */
         private Uri profile;
 
@@ -695,7 +880,12 @@ public class Conformance extends Resource {
         /**
          * A flag for whether the server is able to return past versions as part of the vRead operation
          */
-        private Boolean history;
+        private Boolean readHistory;
+
+        /**
+         * _include values supported by the server
+         */
+        private List<String_> searchInclude = new ArrayList<String_>();
 
         /**
          * Defines additional search parameters for implementations to support and/or make use of
@@ -750,26 +940,30 @@ public class Conformance extends Resource {
           return this.operation;
         }
 
-        public Boolean getHistory() { 
-          return this.history;
+        public Boolean getReadHistory() { 
+          return this.readHistory;
         }
 
-        public void setHistory(Boolean value) { 
-          this.history = value;
+        public void setReadHistory(Boolean value) { 
+          this.readHistory = value;
         }
 
-        public boolean getHistorySimple() { 
-          return this.history == null ? null : this.history.getValue();
+        public boolean getReadHistorySimple() { 
+          return this.readHistory == null ? null : this.readHistory.getValue();
         }
 
-        public void setHistorySimple(boolean value) { 
+        public void setReadHistorySimple(boolean value) { 
           if (value == false)
-            this.history = null;
+            this.readHistory = null;
           else {
-            if (this.history == null)
-              this.history = new Boolean();
-            this.history.setValue(value);
+            if (this.readHistory == null)
+              this.readHistory = new Boolean();
+            this.readHistory.setValue(value);
           }
+        }
+
+        public List<String_> getSearchInclude() { 
+          return this.searchInclude;
         }
 
         public List<SearchParam> getSearchParam() { 
@@ -860,6 +1054,16 @@ public class Conformance extends Resource {
          * For standard parameters, provides additional information on how the parameter is used in this solution.  For custom parameters, provides a description of what the parameter does
          */
         private String_ documentation;
+
+        /**
+         * Types of resource (if a resource reference)
+         */
+        private List<Code> target = new ArrayList<Code>();
+
+        /**
+         * Chained names supported
+         */
+        private List<String_> chain = new ArrayList<String_>();
 
         public String_ getName() { 
           return this.name;
@@ -969,6 +1173,14 @@ public class Conformance extends Resource {
               this.documentation = new String_();
             this.documentation.setValue(value);
           }
+        }
+
+        public List<Code> getTarget() { 
+          return this.target;
+        }
+
+        public List<String_> getChain() { 
+          return this.chain;
         }
 
   }
@@ -1308,14 +1520,14 @@ public class Conformance extends Resource {
     private Publisher publisher;
 
     /**
-     * Describes the implementation that is covered by this conformance statement.  Used when the profile describes the capabilities of a specific implementation instance.
-     */
-    private Implementation implementation;
-
-    /**
      * Describes the software that is covered by this conformance statement.  Used when the profile describes the capabilities of a particular software version, independent of an installation.
      */
     private Software software;
+
+    /**
+     * Used when the statement describes the capabilities of a specific implementation instance - i.e. a particular installation, rather than the capabilities of a software program
+     */
+    private Implementation implementation;
 
     /**
      * Describes the proposed solution described by this conformance statement.  Used when the profile describes a desired rather than an actual solution, for example as a formal expression of requirements as part of an RFP.
@@ -1323,7 +1535,7 @@ public class Conformance extends Resource {
     private Proposal proposal;
 
     /**
-     * The version of the FHIR specification on which this conformance profile is based
+     * The version of the FHIR specification on which this conformance statement is based
      */
     private Id version;
 
@@ -1331,6 +1543,11 @@ public class Conformance extends Resource {
      * Whether the application accepts unknown non-"must understand" elements as part of a resource. This does not include extensions, but genuine new additions to a resource
      */
     private Boolean acceptUnknown;
+
+    /**
+     * The formats supported by this implementation
+     */
+    private List<Code> format = new ArrayList<Code>();
 
     /**
      * Defines the restful capabilities of the solution, if any
@@ -1377,20 +1594,20 @@ public class Conformance extends Resource {
       this.publisher = value;
     }
 
-    public Implementation getImplementation() { 
-      return this.implementation;
-    }
-
-    public void setImplementation(Implementation value) { 
-      this.implementation = value;
-    }
-
     public Software getSoftware() { 
       return this.software;
     }
 
     public void setSoftware(Software value) { 
       this.software = value;
+    }
+
+    public Implementation getImplementation() { 
+      return this.implementation;
+    }
+
+    public void setImplementation(Implementation value) { 
+      this.implementation = value;
     }
 
     public Proposal getProposal() { 
@@ -1443,6 +1660,10 @@ public class Conformance extends Resource {
           this.acceptUnknown = new Boolean();
         this.acceptUnknown.setValue(value);
       }
+    }
+
+    public List<Code> getFormat() { 
+      return this.format;
     }
 
     public List<Rest> getRest() { 

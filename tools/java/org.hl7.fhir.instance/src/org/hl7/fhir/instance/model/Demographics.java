@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 import java.util.*;
 
 /**
- * A description of an individual who is involved in healthcare processes. The individual may be a patient, a provider of care services, or related to a patient in some way or other. 
+ * A description of an individual who is involved in healthcare processes. The individual may be a patient, a provider of care services, or related to a patient in some way or other.
  */
 public class Demographics extends Type {
 
@@ -108,12 +108,17 @@ public class Demographics extends Type {
   }
 
     /**
-     * A name associated with the individual. 
+     * Identifier for a natural person, in contrast to the identifier in a specific context.
+     */
+    private List<Identifier> identifier = new ArrayList<Identifier>();
+
+    /**
+     * A name associated with the individual.
      */
     private List<HumanName> name = new ArrayList<HumanName>();
 
     /**
-     * A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted. 
+     * A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted.
      */
     private List<Contact> telecom = new ArrayList<Contact>();
 
@@ -138,7 +143,12 @@ public class Demographics extends Type {
     private List<Address> address = new ArrayList<Address>();
 
     /**
-     * This field contains a patient's marital (civil) status.
+     * Image of the person
+     */
+    private List<ResourceReference> photo = new ArrayList<ResourceReference>();
+
+    /**
+     * This field contains a patient's most recent marital (civil) status.
      */
     private CodeableConcept maritalStatus;
 
@@ -146,6 +156,10 @@ public class Demographics extends Type {
      * A language spoken by the person, with proficiency
      */
     private List<Language> language = new ArrayList<Language>();
+
+    public List<Identifier> getIdentifier() { 
+      return this.identifier;
+    }
 
     public List<HumanName> getName() { 
       return this.name;
@@ -209,6 +223,10 @@ public class Demographics extends Type {
 
     public List<Address> getAddress() { 
       return this.address;
+    }
+
+    public List<ResourceReference> getPhoto() { 
+      return this.photo;
     }
 
     public CodeableConcept getMaritalStatus() { 

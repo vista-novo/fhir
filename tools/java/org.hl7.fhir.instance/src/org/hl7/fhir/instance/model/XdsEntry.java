@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -40,22 +40,22 @@ import java.net.*;
 public class XdsEntry extends Resource {
 
     public enum XdsEntryAvailability {
-        Approved, // 
-        Deprecated, // 
+        approved, // 
+        deprecated, // 
         Null; // added to help the parsers
         public static XdsEntryAvailability fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("Approved".equals(codeString))
-          return Approved;
+          return approved;
         if ("Deprecated".equals(codeString))
-          return Deprecated;
+          return deprecated;
         throw new Exception("Unknown XdsEntryAvailability code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case Approved: return "Approved";
-            case Deprecated: return "Deprecated";
+            case approved: return "Approved";
+            case deprecated: return "Deprecated";
             default: return "?";
           }
         }
@@ -67,15 +67,15 @@ public class XdsEntry extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("Approved".equals(codeString))
-          return XdsEntryAvailability.Approved;
+          return XdsEntryAvailability.approved;
         if ("Deprecated".equals(codeString))
-          return XdsEntryAvailability.Deprecated;
+          return XdsEntryAvailability.deprecated;
         throw new Exception("Unknown XdsEntryAvailability code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == XdsEntryAvailability.Approved)
+      if (code == XdsEntryAvailability.approved)
         return "Approved";
-      if (code == XdsEntryAvailability.Deprecated)
+      if (code == XdsEntryAvailability.deprecated)
         return "Deprecated";
       return "?";
       }
@@ -103,7 +103,7 @@ public class XdsEntry extends Resource {
         private List<String_> specialty = new ArrayList<String_>();
 
         /**
-         * Represents a specific healthcare facility under which the human and/or machines authored the document.  A specific case is that of homecare. 
+         * Represents a specific healthcare facility under which the human and/or machines authored the document.  A specific case is that of homecare.
          */
         private List<Institution> institution = new ArrayList<Institution>();
 
@@ -392,7 +392,7 @@ and birth date
     private Coding practiceSetting;
 
     /**
-     * A globally unique identifier for a community. 
+     * A globally unique identifier for a community.
      */
     private Uri homeCommunity;
 

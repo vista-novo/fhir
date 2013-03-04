@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 import java.util.*;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -97,14 +97,14 @@ public class Narrative extends Element {
       }
     }
 
-    public class Image extends Element {
+    public class Blob extends Element {
         /**
-         * Mime type of image
+         * Mime type of the binary content
          */
         private Code mimeType;
 
         /**
-         * base64 image data
+         * base64 data for the binary attachment
          */
         private Base64Binary content;
 
@@ -165,9 +165,9 @@ public class Narrative extends Element {
     private XhtmlNode div;
 
     /**
-     * An image referred to directly in the xhtml
+     * An image, stylesheet, or other resource referred to directly in the xhtml
      */
-    private List<Image> image = new ArrayList<Image>();
+    private List<Blob> blob = new ArrayList<Blob>();
 
     public Enumeration<NarrativeStatus> getStatus() { 
       return this.status;
@@ -199,8 +199,8 @@ public class Narrative extends Element {
       this.div = value;
     }
 
-    public List<Image> getImage() { 
-      return this.image;
+    public List<Blob> getBlob() { 
+      return this.blob;
     }
 
 

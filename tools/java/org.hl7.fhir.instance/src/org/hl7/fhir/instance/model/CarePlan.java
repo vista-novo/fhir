@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -84,6 +84,64 @@ public class CarePlan extends Resource {
         return "active";
       if (code == CarePlanStatus.ended)
         return "ended";
+      return "?";
+      }
+    }
+
+    public enum CarePlanGoalStatus {
+        inProgress, // The goal is being sought but has not yet been reached.  (Also applies if goal was reached in the past but there has been regression and goal is being sought again)
+        achieved, // The goal has been met and no further action is needed
+        sustaining, // The goal has been met, but ongoing activity is needed to sustain the goal objective
+        abandoned, // The goal is no longer being sought
+        Null; // added to help the parsers
+        public static CarePlanGoalStatus fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("in progress".equals(codeString))
+          return inProgress;
+        if ("achieved".equals(codeString))
+          return achieved;
+        if ("sustaining".equals(codeString))
+          return sustaining;
+        if ("abandoned".equals(codeString))
+          return abandoned;
+        throw new Exception("Unknown CarePlanGoalStatus code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case inProgress: return "in progress";
+            case achieved: return "achieved";
+            case sustaining: return "sustaining";
+            case abandoned: return "abandoned";
+            default: return "?";
+          }
+        }
+    }
+
+  public class CarePlanGoalStatusEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("in progress".equals(codeString))
+          return CarePlanGoalStatus.inProgress;
+        if ("achieved".equals(codeString))
+          return CarePlanGoalStatus.achieved;
+        if ("sustaining".equals(codeString))
+          return CarePlanGoalStatus.sustaining;
+        if ("abandoned".equals(codeString))
+          return CarePlanGoalStatus.abandoned;
+        throw new Exception("Unknown CarePlanGoalStatus code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == CarePlanGoalStatus.inProgress)
+        return "in progress";
+      if (code == CarePlanGoalStatus.achieved)
+        return "achieved";
+      if (code == CarePlanGoalStatus.sustaining)
+        return "sustaining";
+      if (code == CarePlanGoalStatus.abandoned)
+        return "abandoned";
       return "?";
       }
     }
@@ -170,6 +228,80 @@ public class CarePlan extends Resource {
       }
     }
 
+    public enum CarePlanActivityStatus {
+        notStarted, // Activity is planned but no action has yet been taken
+        scheduled, // Appointment or other booking has occurred but activity has not yet begun
+        ongoing, // Activity has been started but is not yet complete
+        onHold, // Activity was started but has temporarily ceased with an expectation of resumption at a future time.
+        completed, // The activities have been completed (more or less) as planned
+        discontinued, // The activities have been ended prior to completion (perhaps even before they were started)
+        Null; // added to help the parsers
+        public static CarePlanActivityStatus fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("not started".equals(codeString))
+          return notStarted;
+        if ("scheduled".equals(codeString))
+          return scheduled;
+        if ("ongoing".equals(codeString))
+          return ongoing;
+        if ("on hold".equals(codeString))
+          return onHold;
+        if ("completed".equals(codeString))
+          return completed;
+        if ("discontinued".equals(codeString))
+          return discontinued;
+        throw new Exception("Unknown CarePlanActivityStatus code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case notStarted: return "not started";
+            case scheduled: return "scheduled";
+            case ongoing: return "ongoing";
+            case onHold: return "on hold";
+            case completed: return "completed";
+            case discontinued: return "discontinued";
+            default: return "?";
+          }
+        }
+    }
+
+  public class CarePlanActivityStatusEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("not started".equals(codeString))
+          return CarePlanActivityStatus.notStarted;
+        if ("scheduled".equals(codeString))
+          return CarePlanActivityStatus.scheduled;
+        if ("ongoing".equals(codeString))
+          return CarePlanActivityStatus.ongoing;
+        if ("on hold".equals(codeString))
+          return CarePlanActivityStatus.onHold;
+        if ("completed".equals(codeString))
+          return CarePlanActivityStatus.completed;
+        if ("discontinued".equals(codeString))
+          return CarePlanActivityStatus.discontinued;
+        throw new Exception("Unknown CarePlanActivityStatus code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == CarePlanActivityStatus.notStarted)
+        return "not started";
+      if (code == CarePlanActivityStatus.scheduled)
+        return "scheduled";
+      if (code == CarePlanActivityStatus.ongoing)
+        return "ongoing";
+      if (code == CarePlanActivityStatus.onHold)
+        return "on hold";
+      if (code == CarePlanActivityStatus.completed)
+        return "completed";
+      if (code == CarePlanActivityStatus.discontinued)
+        return "discontinued";
+      return "?";
+      }
+    }
+
     public class Participant extends Element {
         /**
          * Indicates specific responsibility of an individual within the care plan.  E.g. "Primary physician", "Team coordinator", "Caregiver", etc.
@@ -199,6 +331,90 @@ public class CarePlan extends Resource {
 
   }
 
+    public class Goal extends Element {
+        /**
+         * Human readable description of a specific desired objective of the care plan.
+         */
+        private String_ description;
+
+        /**
+         * Indicates whether the goal has been reached and is still considered relevant
+         */
+        private Enumeration<CarePlanGoalStatus> status;
+
+        /**
+         * Any comments related to the goal
+         */
+        private String_ notes;
+
+        public String_ getDescription() { 
+          return this.description;
+        }
+
+        public void setDescription(String_ value) { 
+          this.description = value;
+        }
+
+        public String getDescriptionSimple() { 
+          return this.description == null ? null : this.description.getValue();
+        }
+
+        public void setDescriptionSimple(String value) { 
+          if (value == null)
+            this.description = null;
+          else {
+            if (this.description == null)
+              this.description = new String_();
+            this.description.setValue(value);
+          }
+        }
+
+        public Enumeration<CarePlanGoalStatus> getStatus() { 
+          return this.status;
+        }
+
+        public void setStatus(Enumeration<CarePlanGoalStatus> value) { 
+          this.status = value;
+        }
+
+        public CarePlanGoalStatus getStatusSimple() { 
+          return this.status == null ? null : this.status.getValue();
+        }
+
+        public void setStatusSimple(CarePlanGoalStatus value) { 
+          if (value == null)
+            this.status = null;
+          else {
+            if (this.status == null)
+              this.status = new Enumeration<CarePlanGoalStatus>();
+            this.status.setValue(value);
+          }
+        }
+
+        public String_ getNotes() { 
+          return this.notes;
+        }
+
+        public void setNotes(String_ value) { 
+          this.notes = value;
+        }
+
+        public String getNotesSimple() { 
+          return this.notes == null ? null : this.notes.getValue();
+        }
+
+        public void setNotesSimple(String value) { 
+          if (value == null)
+            this.notes = null;
+          else {
+            if (this.notes == null)
+              this.notes = new String_();
+            this.notes.setValue(value);
+          }
+        }
+
+  }
+
     public class Activity extends Element {
         /**
          * High-level categorization of the type of activity in a care plan.
@@ -211,14 +427,19 @@ public class CarePlan extends Resource {
         private CodeableConcept code;
 
         /**
+         * Identifies what progress is being made for the specific activity.
+         */
+        private Enumeration<CarePlanActivityStatus> status;
+
+        /**
          * If true, indicates that the described activity is one that must NOT be engaged in when following the plan.
          */
         private Boolean prohibited;
 
         /**
-         * The timing or frequency upon which the described activity is to occur.
+         * The period, timing or frequency upon which the described activity is to occur.
          */
-        private Schedule schedule;
+        private Type timing;
 
         /**
          * Identifies the facility where the activity will occur.  E.g. home, hospital, specific clinic, etc.
@@ -251,9 +472,14 @@ public class CarePlan extends Resource {
         private String_ details;
 
         /**
-         * Resources resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.
+         * Resources that describe follow-on actions resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.
          */
-        private List<ResourceReference> action = new ArrayList<ResourceReference>();
+        private List<ResourceReference> actionTaken = new ArrayList<ResourceReference>();
+
+        /**
+         * Notes about the execution of the activity
+         */
+        private String_ notes;
 
         public Enumeration<CarePlanActivityCategory> getCategory() { 
           return this.category;
@@ -285,6 +511,28 @@ public class CarePlan extends Resource {
           this.code = value;
         }
 
+        public Enumeration<CarePlanActivityStatus> getStatus() { 
+          return this.status;
+        }
+
+        public void setStatus(Enumeration<CarePlanActivityStatus> value) { 
+          this.status = value;
+        }
+
+        public CarePlanActivityStatus getStatusSimple() { 
+          return this.status == null ? null : this.status.getValue();
+        }
+
+        public void setStatusSimple(CarePlanActivityStatus value) { 
+          if (value == null)
+            this.status = null;
+          else {
+            if (this.status == null)
+              this.status = new Enumeration<CarePlanActivityStatus>();
+            this.status.setValue(value);
+          }
+        }
+
         public Boolean getProhibited() { 
           return this.prohibited;
         }
@@ -307,12 +555,12 @@ public class CarePlan extends Resource {
           }
         }
 
-        public Schedule getSchedule() { 
-          return this.schedule;
+        public Type getTiming() { 
+          return this.timing;
         }
 
-        public void setSchedule(Schedule value) { 
-          this.schedule = value;
+        public void setTiming(Type value) { 
+          this.timing = value;
         }
 
         public ResourceReference getLocation() { 
@@ -373,8 +621,30 @@ public class CarePlan extends Resource {
           }
         }
 
-        public List<ResourceReference> getAction() { 
-          return this.action;
+        public List<ResourceReference> getActionTaken() { 
+          return this.actionTaken;
+        }
+
+        public String_ getNotes() { 
+          return this.notes;
+        }
+
+        public void setNotes(String_ value) { 
+          this.notes = value;
+        }
+
+        public String getNotesSimple() { 
+          return this.notes == null ? null : this.notes.getValue();
+        }
+
+        public void setNotesSimple(String value) { 
+          if (value == null)
+            this.notes = null;
+          else {
+            if (this.notes == null)
+              this.notes = new String_();
+            this.notes.setValue(value);
+          }
         }
 
   }
@@ -395,7 +665,7 @@ public class CarePlan extends Resource {
     private Enumeration<CarePlanStatus> status;
 
     /**
-     * Indicates when the plan did (or is intended to) come into effect and end. 
+     * Indicates when the plan did (or is intended to) come into effect and end.
      */
     private Period period;
 
@@ -417,12 +687,17 @@ public class CarePlan extends Resource {
     /**
      * Describes the intended objective(s) of carrying out the Care Plan.
      */
-    private String_ goal;
+    private List<Goal> goal = new ArrayList<Goal>();
 
     /**
      * Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.
      */
     private List<Activity> activity = new ArrayList<Activity>();
+
+    /**
+     * General notes about the care plan not covered elsewhere
+     */
+    private String_ notes;
 
     public Identifier getIdentifier() { 
       return this.identifier;
@@ -500,30 +775,34 @@ public class CarePlan extends Resource {
       return this.participant;
     }
 
-    public String_ getGoal() { 
+    public List<Goal> getGoal() { 
       return this.goal;
-    }
-
-    public void setGoal(String_ value) { 
-      this.goal = value;
-    }
-
-    public String getGoalSimple() { 
-      return this.goal == null ? null : this.goal.getValue();
-    }
-
-    public void setGoalSimple(String value) { 
-      if (value == null)
-        this.goal = null;
-      else {
-        if (this.goal == null)
-          this.goal = new String_();
-        this.goal.setValue(value);
-      }
     }
 
     public List<Activity> getActivity() { 
       return this.activity;
+    }
+
+    public String_ getNotes() { 
+      return this.notes;
+    }
+
+    public void setNotes(String_ value) { 
+      this.notes = value;
+    }
+
+    public String getNotesSimple() { 
+      return this.notes == null ? null : this.notes.getValue();
+    }
+
+    public void setNotesSimple(String value) { 
+      if (value == null)
+        this.notes = null;
+      else {
+        if (this.notes == null)
+          this.notes = new String_();
+        this.notes.setValue(value);
+      }
     }
 
   @Override

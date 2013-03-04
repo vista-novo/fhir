@@ -39,8 +39,8 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.parsers.TypeParser;
 import org.hl7.fhir.instance.model.Profile;
+import org.hl7.fhir.instance.model.Profile.Constraint;
 import org.hl7.fhir.instance.model.Profile.Element_;
-import org.hl7.fhir.instance.model.Profile.Resource;
 import org.hl7.fhir.instance.model.Profile.Type;
 
 /**
@@ -57,8 +57,8 @@ public class ProfileValidator {
 
   public class TypeState {
     private String prefix;
-    private Profile.Resource type;
-    public TypeState(String prefix, Resource type) {
+    private Profile.Constraint type;
+    public TypeState(String prefix, Constraint type) {
       super();
       this.prefix = prefix;
       this.type = type;
@@ -66,7 +66,7 @@ public class ProfileValidator {
     public String getPrefix() {
       return prefix;
     }
-    public Profile.Resource getType() {
+    public Profile.Constraint getType() {
       return type;
     }
 
@@ -162,7 +162,7 @@ public class ProfileValidator {
 
   private List<Element_> collectChildren(String path) {
     List<Element_> results = new ArrayList<Element_>();
-    for (Element_ r : profile.getResource().get(0).getElement())
+    for (Element_ r : profile.getConstraint().get(0).getElement())
       if (r.getPath().getValue().startsWith(path+".") && !r.getPath().getValue().substring(path.length()+1).contains(".")) 
         results.add(r);
     return results;
@@ -235,8 +235,8 @@ public class ProfileValidator {
     }
   }
 
-  private Resource getTypeProfile(String type) {
-    for (Resource p : types.getResource()) {
+  private Constraint getTypeProfile(String type) {
+    for (Constraint p : types.getConstraint()) {
       if (p.getType().getValue().equals(type))
         return p;
     }
@@ -244,7 +244,7 @@ public class ProfileValidator {
   }
 
   private boolean hasTypeProfile(String type) {
-    for (Resource p : types.getResource()) {
+    for (Constraint p : types.getConstraint()) {
       if (p.getType().getValue().equals(type))
         return true;
     }
@@ -264,7 +264,7 @@ public class ProfileValidator {
 
   private Element_ getConstraintByPath(String path) {
     if (typePoints.empty()) {
-      for (Element_ e : profile.getResource().get(0).getElement()) {
+      for (Element_ e : profile.getConstraint().get(0).getElement()) {
         String p = e.getPath().getValue();
         if (p.equals(path) || (p.endsWith("[x]") && path.length() > p.length() && p.substring(0, p.length()-3).equals(path.substring(0, p.length()-3)) && isType(path.substring(p.length()-3))))
           return e;

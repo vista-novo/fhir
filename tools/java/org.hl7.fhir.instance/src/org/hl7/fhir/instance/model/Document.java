@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -45,7 +45,7 @@ public class Document extends Resource {
         private CodeableConcept code;
 
         /**
-         * Identifies the primary subject of the section.  
+         * Identifies the primary subject of the section.
          */
         private ResourceReference subject;
 
@@ -105,7 +105,7 @@ public class Document extends Resource {
     private List<ResourceReference> provenance = new ArrayList<ResourceReference>();
 
     /**
-     * A fixed stylesheet to use when rendering the documents
+     * A fixed CSS stylesheet to use when rendering the documents
      */
     private Attachment stylesheet;
 

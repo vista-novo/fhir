@@ -29,13 +29,13 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 import java.util.*;
 
 import java.net.*;
 /**
- * A Resource Profile - a statement of use of FHIR.  It may include constraints on Resources, Data Types, Terminology Binding Statements and Extension Definitions
+ * A Resource Profile - a statement of use of one or more FHIR Resources.  It may include constraints on Resources and Data Types, Terminology Binding Statements and Extension Definitions
  */
 public class Profile extends Resource {
 
@@ -45,7 +45,7 @@ public class Profile extends Resource {
         review, // This profile is undergoing review to check that it is ready for production use
         production, // This profile is ready for use in production systems
         withdrawn, // This profile has been withdrawn and should no longer be used
-        superseded, // This profile has been superseded by a more recent version
+        superseded, // This profile has been replaced and a different valueset should be used in its place
         Null; // added to help the parsers
         public static ResourceProfileStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
@@ -282,7 +282,7 @@ public class Profile extends Resource {
     public enum ExtensionContext {
         resource, // The context is all elements matching a particular resource element path
         datatype, // The context is all nodes matching a particular data type element path (root or repeating element) or all elements referencing a particular primitive data type (expressed as the datatype name)
-        mapping, // The context is all nodes whose mapping to a specified reference model corresponds to a particular mapping structure.  The context identifies the mapping target. The mapping should clearly identify where such an extension could be used, though this 
+        mapping, // The context is all nodes whose mapping to a specified reference model corresponds to a particular mapping structure.  The context identifies the mapping target. The mapping should clearly identify where such an extension could be used, though this
         extension, // The context is a particular extension from a particular profile.  Expressed as uri#name, where uri identifies the profile and #name identifies the extension code
         Null; // added to help the parsers
         public static ExtensionContext fromCode(String codeString) throws Exception {
@@ -447,9 +447,14 @@ public class Profile extends Resource {
 
     public class Author extends Element {
         /**
-         * The name of the individual or organization with primary responsibility for the content of the profile
+         * The name of the individual or organization that contributed to the development of the content of the profile
          */
         private String_ name;
+
+        /**
+         * In what fashion this named author contributed to the profile
+         */
+        private String_ role;
 
         /**
          * Contacts of the author to assist a user in finding and communicating with the author
@@ -475,6 +480,28 @@ public class Profile extends Resource {
             if (this.name == null)
               this.name = new String_();
             this.name.setValue(value);
+          }
+        }
+
+        public String_ getRole() { 
+          return this.role;
+        }
+
+        public void setRole(String_ value) { 
+          this.role = value;
+        }
+
+        public String getRoleSimple() { 
+          return this.role == null ? null : this.role.getValue();
+        }
+
+        public void setRoleSimple(String value) { 
+          if (value == null)
+            this.role = null;
+          else {
+            if (this.role == null)
+              this.role = new String_();
+            this.role.setValue(value);
           }
         }
 
@@ -625,16 +652,11 @@ public class Profile extends Resource {
 
   }
 
-    public class Resource extends Element {
+    public class Constraint extends Element {
         /**
          * The Resource or Data type being described
          */
         private Code type;
-
-        /**
-         * Reference to a resource profile that includes the constraint statement that applies to this resource
-         */
-        private Uri profile;
 
         /**
          * The name of this resource constraint statement (to refer to it from other resource constraints)
@@ -645,6 +667,11 @@ public class Profile extends Resource {
          * Human summary: why describe this resource?
          */
         private String_ purpose;
+
+        /**
+         * Reference to a resource profile that includes the constraint statement that applies to this resource
+         */
+        private Uri profile;
 
         /**
          * Captures constraints on each element within the resource
@@ -675,28 +702,6 @@ public class Profile extends Resource {
             if (this.type == null)
               this.type = new Code();
             this.type.setValue(value);
-          }
-        }
-
-        public Uri getProfile() { 
-          return this.profile;
-        }
-
-        public void setProfile(Uri value) { 
-          this.profile = value;
-        }
-
-        public URI getProfileSimple() { 
-          return this.profile == null ? null : this.profile.getValue();
-        }
-
-        public void setProfileSimple(URI value) { 
-          if (value == null)
-            this.profile = null;
-          else {
-            if (this.profile == null)
-              this.profile = new Uri();
-            this.profile.setValue(value);
           }
         }
 
@@ -744,6 +749,28 @@ public class Profile extends Resource {
           }
         }
 
+        public Uri getProfile() { 
+          return this.profile;
+        }
+
+        public void setProfile(Uri value) { 
+          this.profile = value;
+        }
+
+        public URI getProfileSimple() { 
+          return this.profile == null ? null : this.profile.getValue();
+        }
+
+        public void setProfileSimple(URI value) { 
+          if (value == null)
+            this.profile = null;
+          else {
+            if (this.profile == null)
+              this.profile = new Uri();
+            this.profile.setValue(value);
+          }
+        }
+
         public List<Element_> getElement() { 
           return this.element;
         }
@@ -774,11 +801,6 @@ public class Profile extends Resource {
          * Whether the Resource that is the value for this element is included in the bundle, if the profile is specifying a bundle
          */
         private Boolean bundled;
-
-        /**
-         * Indicates whether the set of slices defined is "exhaustive".  I.e. Have all the possible variants for the repeating element been defined?  If true, then no new slices can be created off the base element in derived profiles - though existing slices can be further sliced if they are defined as repeating elements
-         */
-        private Boolean closed;
 
         public String_ getPath() { 
           return this.path;
@@ -854,28 +876,6 @@ public class Profile extends Resource {
           }
         }
 
-        public Boolean getClosed() { 
-          return this.closed;
-        }
-
-        public void setClosed(Boolean value) { 
-          this.closed = value;
-        }
-
-        public boolean getClosedSimple() { 
-          return this.closed == null ? null : this.closed.getValue();
-        }
-
-        public void setClosedSimple(boolean value) { 
-          if (value == false)
-            this.closed = null;
-          else {
-            if (this.closed == null)
-              this.closed = new Boolean();
-            this.closed.setValue(value);
-          }
-        }
-
   }
 
     public class Definition extends Element {
@@ -885,7 +885,7 @@ public class Profile extends Resource {
         private String_ short_;
 
         /**
-         *  The definition must be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource
+         * The definition must be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource
          */
         private String_ formal;
 
@@ -920,7 +920,7 @@ public class Profile extends Resource {
         private List<Type> type = new ArrayList<Type>();
 
         /**
-         * Identifies the name of a slice defined elsewhere in the profile whose constraints should be applied to the current element 
+         * Identifies the name of a slice defined elsewhere in the profile whose constraints should be applied to the current element
          */
         private String_ nameReference;
 
@@ -942,7 +942,7 @@ public class Profile extends Resource {
         /**
          * Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance
          */
-        private List<Constraint> constraint = new ArrayList<Constraint>();
+        private List<ConstraintA> constraint = new ArrayList<ConstraintA>();
 
         /**
          * If true, conformant resource authors must be capable of providing a value for the element and resource consumers must be capable of extracting and doing something useful with the data element.  If false, the element may be ignored and not supported
@@ -1160,7 +1160,7 @@ public class Profile extends Resource {
           return this.condition;
         }
 
-        public List<Constraint> getConstraint() { 
+        public List<ConstraintA> getConstraint() { 
           return this.constraint;
         }
 
@@ -1293,7 +1293,7 @@ public class Profile extends Resource {
 
   }
 
-    public class Constraint extends Element {
+    public class ConstraintA extends Element {
         /**
          * Allows identification of which elements have their cardinalities impacted by the constraint.  Will not be referenced for constraints that do not affect cardinality
          */
@@ -1310,7 +1310,7 @@ public class Profile extends Resource {
         private Enumeration<ConstraintSeverity> severity;
 
         /**
-         * This is the text that describes the constraint in messages identifying that the constraint has been violated 
+         * This is the text that describes the constraint in messages identifying that the constraint has been violated
          */
         private String_ human;
 
@@ -2003,7 +2003,7 @@ public class Profile extends Resource {
     /**
      * Details of the author who accepts responsibility for publishing the profile
      */
-    private Author author;
+    private List<Author> author = new ArrayList<Author>();
 
     /**
      * A free text natural language description of the profile and its use
@@ -2033,7 +2033,7 @@ public class Profile extends Resource {
     /**
      * A constraint statement about what contents a resource or data type may have
      */
-    private List<Resource> resource = new ArrayList<Resource>();
+    private List<Constraint> constraint = new ArrayList<Constraint>();
 
     /**
      * An extension defined as part of the profile
@@ -2089,12 +2089,8 @@ public class Profile extends Resource {
       }
     }
 
-    public Author getAuthor() { 
+    public List<Author> getAuthor() { 
       return this.author;
-    }
-
-    public void setAuthor(Author value) { 
-      this.author = value;
     }
 
     public String_ getDescription() { 
@@ -2157,8 +2153,8 @@ public class Profile extends Resource {
       }
     }
 
-    public List<Resource> getResource() { 
-      return this.resource;
+    public List<Constraint> getConstraint() { 
+      return this.constraint;
     }
 
     public List<ExtensionDefn> getExtensionDefn() { 

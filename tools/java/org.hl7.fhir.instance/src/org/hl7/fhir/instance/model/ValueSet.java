@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -42,8 +42,9 @@ public class ValueSet extends Resource {
     public enum ValuesetStatus {
         draft, // This valueset is still under development
         testing, // This valueset was authored for testing purposes (or education/evaluation/evangelisation)
+        review, // This valueset is undergoing review to check that it is ready for production use
         production, // This valueset is ready for use in production systems
-        withdrawn, // This valueset should no longer be used
+        withdrawn, // This valueset has been withdrawn and should no longer be used
         superseded, // This valueset has been replaced and a different valueset should be used in its place
         Null; // added to help the parsers
         public static ValuesetStatus fromCode(String codeString) throws Exception {
@@ -53,6 +54,8 @@ public class ValueSet extends Resource {
           return draft;
         if ("testing".equals(codeString))
           return testing;
+        if ("review".equals(codeString))
+          return review;
         if ("production".equals(codeString))
           return production;
         if ("withdrawn".equals(codeString))
@@ -65,6 +68,7 @@ public class ValueSet extends Resource {
           switch (this) {
             case draft: return "draft";
             case testing: return "testing";
+            case review: return "review";
             case production: return "production";
             case withdrawn: return "withdrawn";
             case superseded: return "superseded";
@@ -82,6 +86,8 @@ public class ValueSet extends Resource {
           return ValuesetStatus.draft;
         if ("testing".equals(codeString))
           return ValuesetStatus.testing;
+        if ("review".equals(codeString))
+          return ValuesetStatus.review;
         if ("production".equals(codeString))
           return ValuesetStatus.production;
         if ("withdrawn".equals(codeString))
@@ -95,6 +101,8 @@ public class ValueSet extends Resource {
         return "draft";
       if (code == ValuesetStatus.testing)
         return "testing";
+      if (code == ValuesetStatus.review)
+        return "review";
       if (code == ValuesetStatus.production)
         return "production";
       if (code == ValuesetStatus.withdrawn)
@@ -165,8 +173,8 @@ public class ValueSet extends Resource {
 
     public enum FilterOperator {
         equal, // The property value has the concept specified by the value
-        is_a, // The property value has a concept that has an is_a relationship with the value
-        is_not_a, // The property value has a concept that does not have an is_a relationship with the value
+        isA, // The property value has a concept that has an is_a relationship with the value
+        isNotA, // The property value has a concept that does not have an is_a relationship with the value
         regex, // The property value representation matches the regex specified in the value
         Null; // added to help the parsers
         public static FilterOperator fromCode(String codeString) throws Exception {
@@ -175,9 +183,9 @@ public class ValueSet extends Resource {
         if ("=".equals(codeString))
           return equal;
         if ("is_a".equals(codeString))
-          return is_a;
+          return isA;
         if ("is_not_a".equals(codeString))
-          return is_not_a;
+          return isNotA;
         if ("regex".equals(codeString))
           return regex;
         throw new Exception("Unknown FilterOperator code '"+codeString+"'");
@@ -185,8 +193,8 @@ public class ValueSet extends Resource {
         public String toCode() {
           switch (this) {
             case equal: return "=";
-            case is_a: return "is_a";
-            case is_not_a: return "is_not_a";
+            case isA: return "is_a";
+            case isNotA: return "is_not_a";
             case regex: return "regex";
             default: return "?";
           }
@@ -201,9 +209,9 @@ public class ValueSet extends Resource {
         if ("=".equals(codeString))
           return FilterOperator.equal;
         if ("is_a".equals(codeString))
-          return FilterOperator.is_a;
+          return FilterOperator.isA;
         if ("is_not_a".equals(codeString))
-          return FilterOperator.is_not_a;
+          return FilterOperator.isNotA;
         if ("regex".equals(codeString))
           return FilterOperator.regex;
         throw new Exception("Unknown FilterOperator code '"+codeString+"'");
@@ -211,9 +219,9 @@ public class ValueSet extends Resource {
     public String toCode(Enum<?> code) throws Exception {
       if (code == FilterOperator.equal)
         return "=";
-      if (code == FilterOperator.is_a)
+      if (code == FilterOperator.isA)
         return "is_a";
-      if (code == FilterOperator.is_not_a)
+      if (code == FilterOperator.isNotA)
         return "is_not_a";
       if (code == FilterOperator.regex)
         return "regex";
@@ -223,14 +231,19 @@ public class ValueSet extends Resource {
 
     public class Author extends Element {
         /**
-         * The name of the author
+         * The name of the individual or organization that contributed to the development of the content of the value set
          */
         private String_ name;
 
         /**
-         * Some way of reaching or finding the author.
+         * In what fashion this named author contributed to the value set
          */
-        private Uri reference;
+        private String_ role;
+
+        /**
+         * Contacts of the author to assist a user in finding and communicating with the author
+         */
+        private List<Contact> telecom = new ArrayList<Contact>();
 
         public String_ getName() { 
           return this.name;
@@ -254,26 +267,30 @@ public class ValueSet extends Resource {
           }
         }
 
-        public Uri getReference() { 
-          return this.reference;
+        public String_ getRole() { 
+          return this.role;
         }
 
-        public void setReference(Uri value) { 
-          this.reference = value;
+        public void setRole(String_ value) { 
+          this.role = value;
         }
 
-        public URI getReferenceSimple() { 
-          return this.reference == null ? null : this.reference.getValue();
+        public String getRoleSimple() { 
+          return this.role == null ? null : this.role.getValue();
         }
 
-        public void setReferenceSimple(URI value) { 
+        public void setRoleSimple(String value) { 
           if (value == null)
-            this.reference = null;
+            this.role = null;
           else {
-            if (this.reference == null)
-              this.reference = new Uri();
-            this.reference.setValue(value);
+            if (this.role == null)
+              this.role = new String_();
+            this.role.setValue(value);
           }
+        }
+
+        public List<Contact> getTelecom() { 
+          return this.telecom;
         }
 
   }
@@ -290,7 +307,7 @@ public class ValueSet extends Resource {
         private String_ version;
 
         /**
-         * The mode of selection - whether the code itself, and/or its descendants are being selected 
+         * The mode of selection - whether the code itself, and/or its descendants are being selected
          */
         private Enumeration<CodeSelectionMode> mode;
 
@@ -472,7 +489,7 @@ public class ValueSet extends Resource {
     /**
      * Details of the author who accepts responsibility for publishing the value set
      */
-    private Author author;
+    private List<Author> author = new ArrayList<Author>();
 
     /**
      * A free text natural language description of the value set - contents, reason for definition, conditions of use, etc.
@@ -490,7 +507,7 @@ public class ValueSet extends Resource {
     private DateTime date;
 
     /**
-     * The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance 
+     * The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance
      */
     private String_ identifier;
 
@@ -541,12 +558,8 @@ public class ValueSet extends Resource {
       }
     }
 
-    public Author getAuthor() { 
+    public List<Author> getAuthor() { 
       return this.author;
-    }
-
-    public void setAuthor(Author value) { 
-      this.author = value;
     }
 
     public String_ getDescription() { 

@@ -42,7 +42,7 @@
     </patient>
     <status value="active"/>
     <period>
-        <end value ="20130101"/>
+      <end value ="2013-01-01"/>
     </period>
     <concern>
         <type value="Problem"></type>

@@ -56,6 +56,7 @@ import org.hl7.fhir.instance.model.Profile.BindingConformance;
 import org.hl7.fhir.instance.model.Profile.BindingType;
 import org.hl7.fhir.instance.model.Profile.Concept;
 import org.hl7.fhir.instance.model.Profile.Constraint;
+import org.hl7.fhir.instance.model.Profile.ConstraintA;
 import org.hl7.fhir.instance.model.Profile.ConstraintSeverity;
 import org.hl7.fhir.instance.model.Profile.Definition;
 import org.hl7.fhir.instance.model.Profile.Element_;
@@ -84,10 +85,10 @@ public class ProfileGenerator {
   public Profile generate(ProfileDefn profile, OutputStream stream, String html, boolean addBase) throws Exception {
     Profile p = new Profile();
     p.setName(Factory.newString_(profile.metadata("name")));
-    p.setAuthor(p.new Author());
-    p.getAuthor().setName(Factory.newString_(profile.metadata("author.name")));
+    p.getAuthor().add(p.new Author());
+    p.getAuthor().get(0).setName(Factory.newString_(profile.metadata("author.name")));
     if (profile.hasMetadata("author.reference"))
-      p.getAuthor().getTelecom().add(Factory.newContact(ContactSystem.url, profile.metadata("author.reference")));
+      p.getAuthor().get(0).getTelecom().add(Factory.newContact(ContactSystem.url, profile.metadata("author.reference")));
 //  <code> opt Zero+ Coding assist with indexing and finding</code>
     if (profile.hasMetadata("intention"))
       throw new Exception("profile intention is not supported any more ("+p.getName()+")");
@@ -106,8 +107,8 @@ public class ProfileGenerator {
       s.setCodeSimple(Profile.ResourceProfileStatus.fromCode(profile.metadata("status")));
     
     for (ResourceDefn resource : profile.getResources()) {
-      Profile.Resource c = p.new Resource();
-      p.getResource().add(c);
+      Profile.Constraint c = p.new Constraint();
+      p.getConstraint().add(c);
       c.setType(Factory.newCode(resource.getRoot().getName()));
       // we don't profile URI when we generate in this mode - we are generating an actual statement, not a re-reference
       if (!"".equals(resource.getRoot().getProfileName()))
@@ -120,8 +121,8 @@ public class ProfileGenerator {
       }
     }
     for (ElementDefn elem : profile.getElements()) {
-      Profile.Resource c = p.new Resource();
-      p.getResource().add(c);
+      Profile.Constraint c = p.new Constraint();
+      p.getConstraint().add(c);
       c.setType(Factory.newCode(elem.getName()));
       // we don't profile URI when we generate in this mode - we are generating an actual statement, not a re-reference
       if (!"".equals(elem.getProfileName()))
@@ -271,7 +272,7 @@ public class ProfileGenerator {
     throw new Exception("unknown value ContextType."+type.toString());
   }
 
-  private void defineElement(Profile p, Profile.Resource c, ElementDefn e, String path, boolean addBase) throws Exception {
+  private void defineElement(Profile p, Profile.Constraint c, ElementDefn e, String path, boolean addBase) throws Exception {
     Profile.Element_ ce = p.new Element_();
     c.getElement().add(ce);
     ce.setPath(Factory.newString_(path));
@@ -305,7 +306,7 @@ public class ProfileGenerator {
     // todo: mappings
     
     for (String in : e.getInvariants().keySet()) {
-      Constraint con = p.new Constraint();
+      ConstraintA con = p.new ConstraintA();
       Invariant inv = e.getInvariants().get(in);
       con.setIdSimple(inv.getId());
       con.setNameSimple(inv.getName());
@@ -357,8 +358,6 @@ public class ProfileGenerator {
     // todo? conditions, constraints, binding, mapping
     if (src.isMustUnderstand())
       ce.getDefinition().setMustUnderstand(Factory.newBoolean(true));
-    if (src.getMaxCardinality() == null)
-      ce.setClosed(Factory.newBoolean(false));    
     return ce;
   }
 

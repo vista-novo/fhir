@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -37,6 +37,44 @@ import java.util.*;
  * A patient is a person or animal that is receiving care
  */
 public class Patient extends Resource {
+
+    public class Contact extends Element {
+        /**
+         * The nature of the relationship between the patient and the contactperson
+         */
+        private List<CodeableConcept> relationship = new ArrayList<CodeableConcept>();
+
+        /**
+         * Details about the contact person
+         */
+        private Demographics details;
+
+        /**
+         * Organization on behalf of which the contact is acting or for which the contact is working.
+         */
+        private ResourceReference organization;
+
+        public List<CodeableConcept> getRelationship() { 
+          return this.relationship;
+        }
+
+        public Demographics getDetails() { 
+          return this.details;
+        }
+
+        public void setDetails(Demographics value) { 
+          this.details = value;
+        }
+
+        public ResourceReference getOrganization() { 
+          return this.organization;
+        }
+
+        public void setOrganization(ResourceReference value) { 
+          this.organization = value;
+        }
+
+  }
 
     public class Animal extends Element {
         /**
@@ -101,6 +139,11 @@ public class Patient extends Resource {
     private Demographics details;
 
     /**
+     * A contact party for the patient
+     */
+    private List<Contact> contact = new ArrayList<Contact>();
+
+    /**
      * This element has a value if the patient is an animal
      */
     private Animal animal;
@@ -111,19 +154,19 @@ public class Patient extends Resource {
     private ResourceReference provider;
 
     /**
+     * Indicates whether the patient is part of a multiple or indicates the actual birth order.
+     */
+    private Type multipleBirth;
+
+    /**
+     * Date of death of patient
+     */
+    private DateTime deceasedDate;
+
+    /**
      * Dietary restrictions for the patient
      */
     private CodeableConcept diet;
-
-    /**
-     * Confidentiality of the patient records
-     */
-    private CodeableConcept confidentiality;
-
-    /**
-     * The location of the paper record for the patient, if there is one
-     */
-    private CodeableConcept recordLocation;
 
     public List<ResourceReference> getLink() { 
       return this.link;
@@ -163,6 +206,10 @@ public class Patient extends Resource {
       this.details = value;
     }
 
+    public List<Contact> getContact() { 
+      return this.contact;
+    }
+
     public Animal getAnimal() { 
       return this.animal;
     }
@@ -179,28 +226,42 @@ public class Patient extends Resource {
       this.provider = value;
     }
 
+    public Type getMultipleBirth() { 
+      return this.multipleBirth;
+    }
+
+    public void setMultipleBirth(Type value) { 
+      this.multipleBirth = value;
+    }
+
+    public DateTime getDeceasedDate() { 
+      return this.deceasedDate;
+    }
+
+    public void setDeceasedDate(DateTime value) { 
+      this.deceasedDate = value;
+    }
+
+    public String getDeceasedDateSimple() { 
+      return this.deceasedDate == null ? null : this.deceasedDate.getValue();
+    }
+
+    public void setDeceasedDateSimple(String value) { 
+      if (value == null)
+        this.deceasedDate = null;
+      else {
+        if (this.deceasedDate == null)
+          this.deceasedDate = new DateTime();
+        this.deceasedDate.setValue(value);
+      }
+    }
+
     public CodeableConcept getDiet() { 
       return this.diet;
     }
 
     public void setDiet(CodeableConcept value) { 
       this.diet = value;
-    }
-
-    public CodeableConcept getConfidentiality() { 
-      return this.confidentiality;
-    }
-
-    public void setConfidentiality(CodeableConcept value) { 
-      this.confidentiality = value;
-    }
-
-    public CodeableConcept getRecordLocation() { 
-      return this.recordLocation;
-    }
-
-    public void setRecordLocation(CodeableConcept value) { 
-      this.recordLocation = value;
     }
 
   @Override

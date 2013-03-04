@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -166,7 +166,7 @@ public class Problem extends Resource {
         private Enumeration<ProblemRelationshipType> type;
 
         /**
-         * Target of the relationship 
+         * Target of the relationship
          */
         private ResourceReference target;
 
@@ -223,7 +223,7 @@ public class Problem extends Resource {
     private Date dateAsserted;
 
     /**
-     * Identification of the problem or diagnosis. 
+     * Identification of the problem or diagnosis.
      */
     private CodeableConcept code;
 

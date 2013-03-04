@@ -620,7 +620,7 @@
     <date value="2012-05-12"/>
     <comment value="Sample, never intended for real use"/>
   </status>
-  <resource>
+  <constraint>
     <type value="Resource"/>
     <name value="Lipids"/>
     <element>
@@ -638,7 +638,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.id"/>
@@ -653,7 +652,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.status"/>
@@ -669,7 +667,6 @@
         <mustUnderstand value="false"/>
         <binding value="LabReportStatus"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.issued"/>
@@ -685,7 +682,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.patient"/>
@@ -700,7 +696,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.admission"/>
@@ -715,7 +710,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.laboratory"/>
@@ -731,7 +725,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.reportId"/>
@@ -746,7 +739,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.requestDetail"/>
@@ -759,7 +751,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.requestDetail.requestOrderId"/>
@@ -775,7 +766,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.requestDetail.receiverOrderId"/>
@@ -791,7 +781,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.requestDetail.requestTest"/>
@@ -808,7 +797,6 @@
         <mustUnderstand value="false"/>
         <binding value="LabRequests"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.requestDetail.requester"/>
@@ -823,7 +811,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.requestDetail.clinicalInfo"/>
@@ -838,7 +825,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.reportName"/>
@@ -855,7 +841,6 @@
         <mustUnderstand value="true"/>
         <binding value="LabReportNames"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.service"/>
@@ -871,7 +856,6 @@
         <mustUnderstand value="false"/>
         <binding value="LabServices"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.diagnosticTime"/>
@@ -887,7 +871,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.specimen"/>
@@ -903,7 +886,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup"/>
@@ -916,7 +898,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.name"/>
@@ -933,7 +914,6 @@
         <mustUnderstand value="true"/>
         <binding value="LabResultGroupNames"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.specimen"/>
@@ -948,7 +928,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result"/>
@@ -961,7 +940,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.name"/>
@@ -978,7 +956,6 @@
         <mustUnderstand value="true"/>
         <binding value="LabResultNames"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.value[x]"/>
@@ -993,7 +970,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.flag"/>
@@ -1009,7 +985,6 @@
         <mustUnderstand value="true"/>
         <binding value="LabResultFlag"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.status"/>
@@ -1025,7 +1000,6 @@
         <mustUnderstand value="false"/>
         <binding value="LabReportStatus"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.comments"/>
@@ -1040,7 +1014,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.referenceRange"/>
@@ -1053,7 +1026,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.referenceRange.meaning"/>
@@ -1070,7 +1042,6 @@
         <mustUnderstand value="false"/>
         <binding value="LabReferenceRanges"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.referenceRange.range[x]"/>
@@ -1086,7 +1057,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result"/>
@@ -1099,7 +1069,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.name"/>
@@ -1116,7 +1085,6 @@
         <mustUnderstand value="true"/>
         <binding value="LabResultNames"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.value[x]"/>
@@ -1131,7 +1099,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.flag"/>
@@ -1147,7 +1114,6 @@
         <mustUnderstand value="true"/>
         <binding value="LabResultFlag"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.comments"/>
@@ -1162,7 +1128,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.referenceRange"/>
@@ -1175,7 +1140,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.referenceRange.meaning"/>
@@ -1192,7 +1156,6 @@
         <mustUnderstand value="false"/>
         <binding value="LabReferenceRanges"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.referenceRange.range[x]"/>
@@ -1208,7 +1171,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result"/>
@@ -1221,7 +1183,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.name"/>
@@ -1238,7 +1199,6 @@
         <mustUnderstand value="true"/>
         <binding value="LabResultNames"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.value[x]"/>
@@ -1253,7 +1213,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.flag"/>
@@ -1269,7 +1228,6 @@
         <mustUnderstand value="true"/>
         <binding value="LabResultFlag"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.comments"/>
@@ -1284,7 +1242,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.referenceRange"/>
@@ -1297,7 +1254,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.referenceRange.meaning"/>
@@ -1314,7 +1270,6 @@
         <mustUnderstand value="false"/>
         <binding value="LabReferenceRanges"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.referenceRange.range[x]"/>
@@ -1330,7 +1285,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result"/>
@@ -1343,7 +1297,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.name"/>
@@ -1360,7 +1313,6 @@
         <mustUnderstand value="true"/>
         <binding value="LOINC 35198-1 | LOINC 13457-7"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.value[x]"/>
@@ -1375,7 +1327,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.flag"/>
@@ -1391,7 +1342,6 @@
         <mustUnderstand value="true"/>
         <binding value="LabResultFlag"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.comments"/>
@@ -1406,7 +1356,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.referenceRange"/>
@@ -1419,7 +1368,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.referenceRange.meaning"/>
@@ -1436,7 +1384,6 @@
         <mustUnderstand value="false"/>
         <binding value="LabReferenceRanges"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.resultGroup.result.referenceRange.range[x]"/>
@@ -1452,7 +1399,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.conclusion"/>
@@ -1468,7 +1414,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="true"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.codedDiagnosis"/>
@@ -1484,7 +1429,6 @@
         <mustUnderstand value="false"/>
         <binding value="LabDiagnosisCodes"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.representation"/>
@@ -1500,7 +1444,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.extension"/>
@@ -1512,7 +1455,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
     <element>
       <path value="DiagnosticReport.text"/>
@@ -1527,7 +1469,6 @@
         <mustSupport value="false"/>
         <mustUnderstand value="false"/>
       </definition>
-      <closed value="false"/>
     </element>
-  </resource>
+  </constraint>
 </Profile>

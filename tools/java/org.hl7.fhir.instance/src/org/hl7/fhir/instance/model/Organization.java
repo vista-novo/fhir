@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 import java.util.*;
 
 /**
- * For any company/corporation/institution/government department that has relevance to the care process
+ * A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc
  */
 public class Organization extends Resource {
 
@@ -94,7 +94,7 @@ public class Organization extends Resource {
         /**
          * The organization that conferred/confers the accreditation
          */
-        private ResourceReference institution;
+        private ResourceReference issuer;
 
         /**
          * The period for which the accreditation is held
@@ -117,12 +117,12 @@ public class Organization extends Resource {
           this.code = value;
         }
 
-        public ResourceReference getInstitution() { 
-          return this.institution;
+        public ResourceReference getIssuer() { 
+          return this.issuer;
         }
 
-        public void setInstitution(ResourceReference value) { 
-          this.institution = value;
+        public void setIssuer(ResourceReference value) { 
+          this.issuer = value;
         }
 
         public Period getPeriod() { 
@@ -144,7 +144,7 @@ public class Organization extends Resource {
         /**
          * Code that specifies how this organization is related to the subject. A code is required.
          */
-        private CodeableConcept type;
+        private CodeableConcept relation;
 
         public ResourceReference getOrganization() { 
           return this.organization;
@@ -154,12 +154,12 @@ public class Organization extends Resource {
           this.organization = value;
         }
 
-        public CodeableConcept getType() { 
-          return this.type;
+        public CodeableConcept getRelation() { 
+          return this.relation;
         }
 
-        public void setType(CodeableConcept value) { 
-          this.type = value;
+        public void setRelation(CodeableConcept value) { 
+          this.relation = value;
         }
 
   }
@@ -171,24 +171,9 @@ public class Organization extends Resource {
         private CodeableConcept type;
 
         /**
-         * Address to use when contacting the contact person for this organization
+         * Details of the contact person
          */
-        private Address address;
-
-        /**
-         * Telecom details for the contact person at this organization
-         */
-        private List<Contact> telecom = new ArrayList<Contact>();
-
-        /**
-         * Name of the contact person
-         */
-        private HumanName name;
-
-        /**
-         * Link to the actual person that is a contact person for the organization
-         */
-        private ResourceReference person;
+        private Demographics details;
 
         public CodeableConcept getType() { 
           return this.type;
@@ -198,32 +183,12 @@ public class Organization extends Resource {
           this.type = value;
         }
 
-        public Address getAddress() { 
-          return this.address;
+        public Demographics getDetails() { 
+          return this.details;
         }
 
-        public void setAddress(Address value) { 
-          this.address = value;
-        }
-
-        public List<Contact> getTelecom() { 
-          return this.telecom;
-        }
-
-        public HumanName getName() { 
-          return this.name;
-        }
-
-        public void setName(HumanName value) { 
-          this.name = value;
-        }
-
-        public ResourceReference getPerson() { 
-          return this.person;
-        }
-
-        public void setPerson(ResourceReference value) { 
-          this.person = value;
+        public void setDetails(Demographics value) { 
+          this.details = value;
         }
 
   }
@@ -239,6 +204,11 @@ public class Organization extends Resource {
     private List<String_> name = new ArrayList<String_>();
 
     /**
+     * The kind of organization that this is
+     */
+    private CodeableConcept type;
+
+    /**
      * An address for the organization
      */
     private List<Address> address = new ArrayList<Address>();
@@ -247,11 +217,6 @@ public class Organization extends Resource {
      * A contact detail for the organization
      */
     private List<Contact> telecom = new ArrayList<Contact>();
-
-    /**
-     * The kind of organization that this is
-     */
-    private CodeableConcept type;
 
     /**
      * Indication of whether this organization's record is still active.
@@ -281,20 +246,20 @@ public class Organization extends Resource {
       return this.name;
     }
 
-    public List<Address> getAddress() { 
-      return this.address;
-    }
-
-    public List<Contact> getTelecom() { 
-      return this.telecom;
-    }
-
     public CodeableConcept getType() { 
       return this.type;
     }
 
     public void setType(CodeableConcept value) { 
       this.type = value;
+    }
+
+    public List<Address> getAddress() { 
+      return this.address;
+    }
+
+    public List<Contact> getTelecom() { 
+      return this.telecom;
     }
 
     public Enumeration<RecordStatus> getStatus() { 

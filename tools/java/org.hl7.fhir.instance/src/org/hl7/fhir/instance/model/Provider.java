@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 import java.util.*;
 
@@ -68,16 +68,6 @@ public class Provider extends Resource {
      */
     private Period period;
 
-    /**
-     * A postal address for this person playing this role
-     */
-    private List<Address> address = new ArrayList<Address>();
-
-    /**
-     * A contact detail address for this person playing this role
-     */
-    private List<Contact> contact = new ArrayList<Contact>();
-
     public List<Identifier> getIdentifier() { 
       return this.identifier;
     }
@@ -112,14 +102,6 @@ public class Provider extends Resource {
 
     public void setPeriod(Period value) { 
       this.period = value;
-    }
-
-    public List<Address> getAddress() { 
-      return this.address;
-    }
-
-    public List<Contact> getContact() { 
-      return this.contact;
     }
 
   @Override

@@ -29,10 +29,10 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 /**
- * A set of ordered Quantities defined by a low and high limit. 
+ * A set of ordered Quantities defined by a low and high limit.
  */
 public class Range extends Type {
 
@@ -42,7 +42,7 @@ public class Range extends Type {
     private Quantity low;
 
     /**
-     * The high limit. The boundary is inclusive. 
+     * The high limit. The boundary is inclusive.
      */
     private Quantity high;
 

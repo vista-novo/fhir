@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Feb 2, 2013 11:50+1100 for FHIR v0.07
+// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 
 import java.net.*;
 /**
- * A reference to a code defined by a terminology system 
+ * A reference to a code defined by a terminology system
  */
 public class Coding extends Type {
 
@@ -49,7 +49,7 @@ public class Coding extends Type {
     private Code code;
 
     /**
-     * A representation of the meaning of the code in the system, following the rules laid out by the system. 
+     * A representation of the meaning of the code in the system, following the rules laid out by the system.
      */
     private String_ display;
 

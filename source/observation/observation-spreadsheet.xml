@@ -1040,24 +1040,28 @@
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Repeats</Data></Cell>
+    <Cell><Data ss:Type="String">Path</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">name</Data></Cell>
     <Cell><Data ss:Type="String">The name of the observation type or component type</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.name</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">value</Data></Cell>
     <Cell><Data ss:Type="String">The name or code or value of a result</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.value[x]</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">date</Data></Cell>
     <Cell><Data ss:Type="String">obtained date/time. If obtained is a period, a date that falls in the period</Data></Cell>
     <Cell><Data ss:Type="String">date</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.obtained[x]</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1065,6 +1069,7 @@
     <Cell><Data ss:Type="String">The status of the observation</Data></Cell>
     <Cell><Data ss:Type="String">token</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.status</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1072,6 +1077,7 @@
     <Cell><Data ss:Type="String">The reliability of the observation</Data></Cell>
     <Cell><Data ss:Type="String">token</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.reliability</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1079,6 +1085,7 @@
     <Cell><Data ss:Type="String">The subject that the observation is about</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.subject</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1086,6 +1093,7 @@
     <Cell><Data ss:Type="String">who/what performed the observation</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.performer</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1200,8 +1208,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
