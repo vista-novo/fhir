@@ -57,12 +57,10 @@ namespace Hl7.Fhir.Serializers
             return sb.ToString();
         }
 
-        public static byte[] SerializeResourceAsXmlBytes(Resource resource, Encoding encoding = null)
+        public static byte[] SerializeResourceAsXmlBytes(Resource resource)
         {
-            if (encoding == null) encoding = Encoding.UTF8;
-
             MemoryStream stream = new MemoryStream();
-            XmlWriterSettings settings = new XmlWriterSettings { Encoding = encoding };
+            XmlWriterSettings settings = new XmlWriterSettings { Encoding = Encoding.UTF8 };
             XmlWriter xw = XmlWriter.Create(stream, settings);
             FhirSerializer.SerializeResource(resource, new XmlFhirWriter(xw));
             xw.Flush();
@@ -83,13 +81,11 @@ namespace Hl7.Fhir.Serializers
             return resultBuilder.ToString();
         }
 
-        public static byte[] SerializeResourceAsJsonBytes(Resource resource, Encoding encoding = null)
+        public static byte[] SerializeResourceAsJsonBytes(Resource resource)
         {
-            if (encoding == null) encoding = Encoding.UTF8;
-
             MemoryStream stream = new MemoryStream();
 
-            var sw = new StreamWriter(stream, encoding);
+            var sw = new StreamWriter(stream, Encoding.UTF8);
             sw.Write(SerializeResourceAsJson(resource));
 
 #if !NETFX_CORE

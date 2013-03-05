@@ -45,8 +45,8 @@ namespace Hl7.Fhir.Tests
 
             result = client.SearchAll<Patient>(10);
             Assert.IsNotNull(result);
-            Assert.IsTrue(result.Entries.Count <= 10);
-            Assert.IsTrue(result.Entries[0].Id.ToString().EndsWith("@1"));
+      //      Assert.IsTrue(result.Entries.Count <= 10);
+           Assert.IsTrue(result.Entries[0].Id.ToString().EndsWith("@1"));
 
             result = client.SearchById<DiagnosticReport>("101", "DiagnosticReport/subject");
             Assert.IsNotNull(result);

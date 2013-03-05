@@ -44,7 +44,7 @@ namespace Hl7.Fhir.Client
         {
         }
 
-        public FhirParseException(string validatedData, ErrorList validationErrors, string message)
+        public FhirParseException(string message, ErrorList validationErrors, string validatedData = null )
             : base(message)
         {
             ValidatedData = validatedData;

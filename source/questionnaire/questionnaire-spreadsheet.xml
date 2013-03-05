@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>3492</WindowHeight>
+  <WindowHeight>3495</WindowHeight>
   <WindowWidth>14640</WindowWidth>
   <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6132</WindowTopY>
+  <WindowTopY>6135</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -74,37 +74,33 @@
     ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
   </Style>
-  <Style ss:ID="s70">
+  <Style ss:ID="s71">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s71">
+  <Style ss:ID="s72">
    <Alignment ss:Vertical="Top"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Names>
-   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="='Data Elements'!R1C1:R18C16"
+   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="='Data Elements'!R1C1:R19C16"
     ss:Hidden="1"/>
   </Names>
-  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="18" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="19" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="196.8"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="196.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="30"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="25.8"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="36.599999999999994"
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="25.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="36.75" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="162.75"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="139.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="2"/>
+   <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="267.75"
     ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="98.4"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="139.80000000000001"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.60000000000002"
-    ss:Span="2"/>
-   <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0"
-    ss:Width="267.60000000000002" ss:Span="1"/>
-   <Column ss:Index="13" ss:StyleID="s62" ss:AutoFitWidth="0"
-    ss:Width="666.59999999999991"/>
+   <Column ss:Index="13" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="666.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
-   <Column ss:Index="16" ss:StyleID="s62" ss:AutoFitWidth="0"
-    ss:Width="164.39999999999998"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="722.4"/>
+   <Column ss:Index="16" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="164.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="722.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Card.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -132,7 +128,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Notes on mapping</Data></Cell>
    </Row>
-   <Row ss:Height="72">
+   <Row ss:AutoFitHeight="0" ss:Height="72">
     <Cell><Data ss:Type="String">Questionnaire</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -150,7 +146,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="17" ss:StyleID="s66"/>
    </Row>
-   <Row ss:Height="57.6">
+   <Row ss:AutoFitHeight="0" ss:Height="57.5625">
     <Cell><Data ss:Type="String">Questionnaire.status</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -169,7 +165,7 @@
     <Cell ss:Index="13" ss:StyleID="s66"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="17" ss:StyleID="s66"/>
    </Row>
-   <Row ss:Height="72">
+   <Row ss:AutoFitHeight="0" ss:Height="72">
     <Cell><Data ss:Type="String">Questionnaire.authored</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -187,7 +183,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="17" ss:StyleID="s63"/>
    </Row>
-   <Row ss:Height="57.6">
+   <Row ss:AutoFitHeight="0" ss:Height="57.5625">
     <Cell><Data ss:Type="String">Questionnaire.subject</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -202,7 +198,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="17" ss:StyleID="s66"/>
    </Row>
-   <Row ss:Height="43.199999999999996">
+   <Row ss:AutoFitHeight="0" ss:Height="43.3125">
     <Cell><Data ss:Type="String">Questionnaire.author</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -236,7 +232,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="17" ss:StyleID="s66"/>
    </Row>
-   <Row ss:Height="28.8">
+   <Row ss:AutoFitHeight="0" ss:Height="28.6875">
     <Cell><Data ss:Type="String">Questionnaire.name</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -251,7 +247,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">Need to supply the type of form that was used to collect the answers in this questionnaire</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="28.8">
+   <Row ss:AutoFitHeight="0" ss:Height="28.6875">
     <Cell><Data ss:Type="String">Questionnaire.identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -285,9 +281,7 @@
     <Cell><Data ss:Type="String">Questionnaire.answer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">down</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String" x:Ticked="1">=Answer</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">=Answer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Answers to questions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -307,9 +301,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">AnswerName</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Code of the answer</Data><NamedCell
+    <Cell><Data ss:Type="String">Code or text of the question answered</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Code of the answer which can be used to relate an answer to a question in the questionnaire</Data><NamedCell
+    <Cell><Data ss:Type="String">Code of the answer, used to relate an answer to a question in the questionnaire and/or the actual question text</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Must be able to relate an answer to the question answered</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -320,7 +314,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="Number">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">Quantity|CodeableConcept|Coding|Ratio|Choice|Period|string|code</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">Quantity|CodeableConcept|Coding|Ratio|Choice|Period|dateTime|string|code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">The answer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -328,7 +322,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="17" ss:StyleID="s66"/>
    </Row>
-   <Row ss:Height="57.6">
+   <Row ss:AutoFitHeight="0" ss:Height="57.5625">
     <Cell><Data ss:Type="String">Questionnaire.answer.evidence</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -343,13 +337,25 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="17" ss:StyleID="s66"/>
    </Row>
-   <Row ss:Height="28.8">
+   <Row ss:AutoFitHeight="0" ss:Height="57.5625">
+    <Cell><Data ss:Type="String">Questionnaire.answer.remarks</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">string</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Remarks about the answer given</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The remark contains information about the answer given. This is additional information about the anwer the author wishes to convey, but should not be used to contain information that is part of the answer itself.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Many questionnaires allow you to include &quot;comments&quot; in addition to the answers given.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="17" ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="28.6875">
     <Cell><Data ss:Type="String">Questionnaire.section</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">right</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String" x:Ticked="1">=Section</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">=Section</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Grouped answers</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -358,7 +364,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">Need to be able to logically group answers to grouped questions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="43.199999999999996">
+   <Row ss:AutoFitHeight="0" ss:Height="43.3125">
     <Cell><Data ss:Type="String">Questionnaire.section.name</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -366,7 +372,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">QuestionnaireSectionName</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Name/code for this group of answers</Data><NamedCell
+    <Cell><Data ss:Type="String">Code or name of the section on a questionnaire</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Structured name for a section of a predefined list of questions this questionnaire is responding to.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -429,8 +435,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>13</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>15</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -440,10 +446,10 @@
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="162.6"
+   <Column ss:Index="2" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="162.75"
     ss:Span="1"/>
-   <Column ss:Index="4" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="143.4"/>
-   <Column ss:Index="6" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="179.4"/>
+   <Column ss:Index="4" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="143.25"/>
+   <Column ss:Index="6" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="179.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -486,14 +492,14 @@
  </Worksheet>
  <Worksheet ss:Name="Events">
   <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="73.8"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="130.80000000000001"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="118.8"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="156.6" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="125.4"
+   x:FullRows="1" ss:StyleID="s71" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="73.5"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="130.5"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="118.5"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="156.75" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="125.25"
     ss:Span="1"/>
-   <Column ss:Index="8" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="102"/>
+   <Column ss:Index="8" ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="102"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Event Code</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
@@ -504,7 +510,7 @@
     <Cell><Data ss:Type="String">Response Aggregations</Data></Cell>
     <Cell><Data ss:Type="String">Follow Ups</Data></Cell>
    </Row>
-   <Row ss:Height="14.4"/>
+   <Row ss:AutoFitHeight="0" ss:Height="14.4375"/>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -533,9 +539,9 @@
  <Worksheet ss:Name="Search">
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="8" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="70.8"/>
-   <Column ss:AutoFitWidth="0" ss:Width="382.79999999999995"/>
-   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="230.4"/>
+   <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="230.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
@@ -614,13 +620,13 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s71" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="149.4"/>
-   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="336.59999999999997"/>
-   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="52.8"/>
-   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="84"/>
-   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="126.6"/>
-   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="346.79999999999995"/>
+   x:FullRows="1" ss:StyleID="s72" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="149.25"/>
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="336.75"/>
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="52.5"/>
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="84"/>
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="126.75"/>
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="346.5"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
@@ -631,22 +637,22 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">QuestionnaireName</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Structured names for forms</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">unbound</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">E.g. Family anamnesis, social anamnesis, intake</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Structured names for forms</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:Index="6" ss:StyleID="s71"><Data ss:Type="String">E.g. Family anamnesis, social anamnesis, intake</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">AnswerName</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Structured names for questions on the form</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">unbound</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">E.g. A.4.5, pack-years</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Structured names for questions on the form</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:Index="6" ss:StyleID="s71"><Data ss:Type="String">E.g. A.4.5, pack-years</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">QuestionnaireSectionName</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Structured names for (sub)sections of forms</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Structured names for (sub)sections of forms</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">E.g. intoxications, living conditions</Data></Cell>
    </Row>
   </Table>
@@ -670,11 +676,11 @@
  <Worksheet ss:Name="Examples">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="76.8"/>
-   <Column ss:AutoFitWidth="0" ss:Width="219.6"/>
-   <Column ss:AutoFitWidth="0" ss:Width="44.400000000000006"/>
+   <Column ss:AutoFitWidth="0" ss:Width="76.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="219.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="44.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="228"/>
-   <Column ss:AutoFitWidth="0" ss:Width="68.399999999999991"/>
+   <Column ss:AutoFitWidth="0" ss:Width="68.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
@@ -711,11 +717,11 @@
  <Worksheet ss:Name="Profiles">
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="1" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="114.6"/>
-   <Column ss:AutoFitWidth="0" ss:Width="208.79999999999998"/>
-   <Column ss:AutoFitWidth="0" ss:Width="184.8"/>
+   <Column ss:AutoFitWidth="0" ss:Width="114.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="208.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="184.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="297.60000000000002"/>
+   <Column ss:AutoFitWidth="0" ss:Width="297.75"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>

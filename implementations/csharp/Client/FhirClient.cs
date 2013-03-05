@@ -522,7 +522,7 @@ namespace Hl7.Fhir.Client
 
         private string getCollectionForResourceName(Type type)
         {
-            return type.Name.ToLowerInvariant();
+            return ModelInfo.GetResourceNameForType(type).ToLowerInvariant();
         }
 
         private HttpWebRequest createRequest(string path, bool forBundle)
@@ -537,7 +537,9 @@ namespace Hl7.Fhir.Client
             //    endpoint = addParam(endpoint, ContentType.FORMAT_PARAM, ContentType.FORMAT_PARAM_XML);
 
             var req = (HttpWebRequest)HttpWebRequest.Create(endpoint);
-            req.Headers[HttpRequestHeader.UserAgent] =
+
+            req.UserAgent = 
+        //    req.Headers[HttpRequestHeader.UserAgent] =
                         "FhirClient for FHIR " + Model.ModelInfo.Version;
 
             if (PreferredFormat == ContentType.ResourceFormat.Xml)
@@ -606,8 +608,7 @@ namespace Hl7.Fhir.Client
             }
 
             if (parseErrors.Count() > 0)
-                throw new FhirParseException(data, parseErrors,
-                    "Failed to parse the resource data: " + parseErrors.ToString());
+                throw new FhirParseException("Failed to parse the resource data", parseErrors, data);
 
             return result;
         }
@@ -636,8 +637,7 @@ namespace Hl7.Fhir.Client
             }
 
             if (parseErrors.Count() > 0)
-                throw new FhirParseException(data, parseErrors,
-                    "Failed to parse the bundle data: " + parseErrors.ToString());
+                throw new FhirParseException("Failed to parse the bundle data: ", parseErrors, data);
 
             return result;
         }

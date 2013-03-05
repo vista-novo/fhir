@@ -14,13 +14,16 @@ the subject and the source of information.</li>
 set of answers to the questions on these forms.</li>
 <li>Questionnaires may directly contain anwers and/or contain sections and subsections with answers. These may or may not correspond to the structure
 of the original form. If they do correspond, sections and subsections may be named, so answers on a Questionnaire can refer to the section on the form.
-Likewise, Answers on Questionnaires can be named to refer to the question on a form.</li>
+Likewise, Answers on Questionnaires can be named to refer to the question on a form. As mentioned in the introduction, it is also possible to
+include the actual text of the questions posed with the answers.</li>
 <li>Since sections and questions may be answered multiple times, the same Section.name and Answer.name may appear multiple times.</li>
 <li>As described in the introduction, answers may simple be numeric values, coded answers and text, but this atomic information may be based on or replaced
 by actual Observations, Procedures and other resources.</li>
 <li>Questionnaire allows for flexible naming and structuring of its contents to reflect the flexible and varying nature of forms and questionnaires. 
 It explicitly does not try to standardize or streamline exchange of its contents outside its context of use, although exchanging partners may further
 constrain its structure and flexibility using profiles to define standardized, reusable forms.</li>
+<li>Because of the lack of explicit support for Questionnaires in HL7v3, HL7 CDA Documents frequently used named sections with
+Observations to model Questionnaires, such usecases should now utilize the Questionnaire Resource instead.</li>
 </ul>
 
 <p>
