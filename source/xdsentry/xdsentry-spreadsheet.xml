@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Lloyd McKenzie</LastAuthor>
+  <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:15:30Z</Created>
-  <LastSaved>2012-12-01T02:58:15Z</LastSaved>
+  <LastSaved>2013-03-04T16:05:35Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,7 @@
   <WindowWidth>9570</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6315</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -66,6 +66,11 @@
   </Style>
   <Style ss:ID="s68">
    <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s69">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -596,8 +601,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>19</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>20</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -613,7 +617,7 @@
    <Column ss:Index="3" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="96.75"/>
    <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="341.25"/>
    <Column ss:Index="6" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="327.75"/>
-   <Row ss:StyleID="s64">
+   <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Context</Data></Cell>
@@ -621,31 +625,31 @@
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Author Rule</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">XdsEntry.author</Data></Cell>
     <Cell><Data ss:Type="String">At least a name, id, contact, or institution sub-attribute shall be present</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">exists(f:name) or exists(f:id) or exists(f:contact) or exists(f:institution)</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Authenticator</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">XdsEntry.authenticator</Data></Cell>
     <Cell><Data ss:Type="String">A name or id must be provided</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">exists(f:name) or exists(f:id) or exists(f:contact) or exists(f:institution)</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">Source</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">XdsEntry</Data></Cell>
     <Cell><Data ss:Type="String">A url or a repositoryId must be provided</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">exists(f:url) or exists(f:repositoryId) </Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:Index="3" ss:StyleID="s63"/>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:Index="3" ss:StyleID="s63"/>
    </Row>
   </Table>
@@ -655,7 +659,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Selected/>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -708,7 +712,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Search">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="23" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="23" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="78.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
@@ -717,6 +721,7 @@
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Repeats</Data></Cell>
+    <Cell><Data ss:Type="String">Path</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">repositoryId</Data></Cell>
@@ -789,6 +794,7 @@
     <Cell><Data ss:Type="String">folders this document is in</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">XdsEntry.folder</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">patientId</Data></Cell>
@@ -801,6 +807,7 @@
     <Cell><Data ss:Type="String">demographic details</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">XdsEntry.patientInfo</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">authorName</Data></Cell>
@@ -858,11 +865,18 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-3</HorizontalResolution>
+    <VerticalResolution>-3</VerticalResolution>
+   </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>13</ActiveRow>
-     <RangeSelection>R14</RangeSelection>
+     <ActiveRow>15</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
