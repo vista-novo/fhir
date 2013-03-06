@@ -64,6 +64,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
+import org.hl7.fhir.definitions.generators.specification.MappingsGenerator;
 import org.hl7.fhir.definitions.generators.specification.ProfileGenerator;
 import org.hl7.fhir.definitions.generators.specification.SchematronGenerator;
 import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerator;
@@ -767,35 +768,39 @@ public class Publisher {
   }
   
   private void produceResource2(ResourceDefn resource) throws Exception {
-		File tmp = File.createTempFile("tmp", ".tmp");
-		tmp.deleteOnExit();
-		String n = resource.getName().toLowerCase();
-		String xml = xmls.get(n);
+	  File tmp = File.createTempFile("tmp", ".tmp");
+	  tmp.deleteOnExit();
+	  String n = resource.getName().toLowerCase();
+	  String xml = xmls.get(n);
 
-		TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp), page);
-		tgen.generate(resource.getRoot(), page.getDefinitions().getBindings());
-		tgen.close();
-		String tx = TextFile.fileToString(tmp.getAbsolutePath());
+	  TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp), page);
+	  tgen.generate(resource.getRoot(), page.getDefinitions().getBindings());
+	  tgen.close();
+	  String tx = TextFile.fileToString(tmp.getAbsolutePath());
 
-		DictHTMLGenerator dgen = new DictHTMLGenerator(new FileOutputStream(tmp));
-		dgen.generate(resource.getRoot());
-		dgen.close();
-		
-		String dict = TextFile.fileToString(tmp.getAbsolutePath());
+	  DictHTMLGenerator dgen = new DictHTMLGenerator(new FileOutputStream(tmp));
+	  dgen.generate(resource.getRoot());
+	  dgen.close();
+	  String dict = TextFile.fileToString(tmp.getAbsolutePath());
 
-		page.getImageMaps().put(n, new DiagramGenerator(page).generate(resource, n));
-		
-		for (RegisteredProfile p : resource.getProfiles())
-			produceProfile(p.getFilename(), p.getProfile(), p.getExamplePath());
+	  MappingsGenerator mgen = new MappingsGenerator();
+	  mgen.generate(resource);
+	  String mappings = mgen.getMappings();
+	  String mappingsList = mgen.getMappingsList();
+	  
+	  page.getImageMaps().put(n, new DiagramGenerator(page).generate(resource, n));
 
-		for (Example e : resource.getExamples()) {
+	  for (RegisteredProfile p : resource.getProfiles())
+		  produceProfile(p.getFilename(), p.getProfile(), p.getExamplePath());
+
+	  for (Example e : resource.getExamples()) {
 		  try {
 			  processExample(e);
 		  } catch (Exception ex) {
-		    throw new Exception("processing "+e.getFileTitle(), ex);
-//		    throw new Exception(ex.getMessage()+" processing "+e.getFileTitle());
+			  throw new Exception("processing "+e.getFileTitle(), ex);
+			  //		    throw new Exception(ex.getMessage()+" processing "+e.getFileTitle());
 		  }
-		}
+	  }
 
     String prefix = page.getNavigation().getIndexPrefixForFile(n+".htm");
     if (Utilities.noString(prefix))
@@ -804,7 +809,7 @@ public class Publisher {
     page.getSectionTrackerCache().put(n, st);
 
     String src = TextFile.fileToString(page.getFolders().srcDir+ "template.htm");
-		src = insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src), st, n+".htm");
+		src = insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src, mappings, mappingsList), st, n+".htm");
 		TextFile.stringToFile(src, page.getFolders().dstDir + n + ".htm");
 			
     String pages = page.getIni().getStringProperty("resource-pages", n);
@@ -815,22 +820,24 @@ public class Publisher {
     }
 		
 		src = TextFile.fileToString(page.getFolders().srcDir+ "template-examples.htm");
-		TextFile.stringToFile(insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src), st, n + "-examples.htm"), page.getFolders().dstDir + n + "-examples.htm");
+		TextFile.stringToFile(insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src, mappings, mappingsList), st, n + "-examples.htm"), page.getFolders().dstDir + n + "-examples.htm");
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-definitions.htm");
-		TextFile.stringToFile(insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src), st, n + "-definitions.htm"), page.getFolders().dstDir + n + "-definitions.htm");
+		TextFile.stringToFile(insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src, mappings, mappingsList), st, n + "-definitions.htm"), page.getFolders().dstDir + n + "-definitions.htm");
+		src = TextFile.fileToString(page.getFolders().srcDir + "template-mappings.htm");
+		TextFile.stringToFile(insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src, mappings, mappingsList), st, n + "-mappings.htm"), page.getFolders().dstDir + n + "-mappings.htm");
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-explanations.htm");
-		TextFile.stringToFile(insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src), st, n + "-explanations.htm"), page.getFolders().dstDir + n + "-explanations.htm");
+		TextFile.stringToFile(insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src, mappings, mappingsList), st, n + "-explanations.htm"), page.getFolders().dstDir + n + "-explanations.htm");
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-profiles.htm");
-		TextFile.stringToFile(insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src), st, n + "-profiles.htm"), page.getFolders().dstDir + n + "-profiles.htm");
+		TextFile.stringToFile(insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src, mappings, mappingsList), st, n + "-profiles.htm"), page.getFolders().dstDir + n + "-profiles.htm");
 
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-book.htm").replace("<body>", "<body style=\"margin: 10px\">");
-		src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
+		src = page.processResourceIncludes(n, resource, xml, tx, dict, src, mappings, mappingsList);
 		cachePage(n + ".htm", src);
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-book-ex.htm").replace("<body>", "<body style=\"margin: 10px\">");
-		src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
+		src = page.processResourceIncludes(n, resource, xml, tx, dict, src, mappings, mappingsList);
 		cachePage(n + "Ex.htm", src);
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-book-defn.htm").replace("<body>", "<body style=\"margin: 10px\">");
-		src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
+		src = page.processResourceIncludes(n, resource, xml, tx, dict, src, mappings, mappingsList);
 		cachePage(n + "Defn.htm", src);
 
 		// xml to json

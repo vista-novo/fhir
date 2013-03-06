@@ -37,6 +37,12 @@ import org.hl7.fhir.instance.model.Profile.Element_;
 import org.hl7.fhir.utilities.Utilities;
 
 public class ElementDefn {
+	
+	public static final String RIM_MAPPING = "_rim";
+	public static final String v2_MAPPING = "v2";
+	public static final String DICOM_MAPPING = "dicom";
+	public static final String vCard_MAPPING = "vcard";
+	
 
 	private List<TypeRef> types = new ArrayList<TypeRef>();
 	private List<ElementDefn> elements = new ArrayList<ElementDefn>();
@@ -47,6 +53,7 @@ public class ElementDefn {
 	private boolean mustUnderstand;
 	private boolean mustSupport;
 
+	private Map<String, String> mappings = new HashMap<String, String>();
 	// private String id;
 	private String bindingName;
 	private String dir;
@@ -54,9 +61,7 @@ public class ElementDefn {
 	private String shortDefn;
 	private String definition;
 	private String requirements;
-	private String rimMapping;
 	private String comments;
-	private String v2Mapping;
 	private String todo;
 	private List<String> aliases = new ArrayList<String>();
 	private String committeeNotes;
@@ -92,9 +97,8 @@ public class ElementDefn {
 		shortDefn = pattern.shortDefn;
 		definition = pattern.definition;
 		requirements = pattern.requirements;
-		rimMapping = pattern.rimMapping;
+		mappings.putAll(pattern.mappings);
 		comments = pattern.comments;
-		v2Mapping = pattern.v2Mapping;
 		todo = pattern.todo;
 		committeeNotes = pattern.committeeNotes;
 		condition = pattern.condition;
@@ -169,13 +173,10 @@ public class ElementDefn {
 		this.requirements = requirements;
 	}
 
-	public String getRimMapping() {
-		return rimMapping;
+	public Map<String, String> getMappings() {
+		return mappings;
 	}
 
-	public void setRimMapping(String rimMapping) {
-		this.rimMapping = rimMapping;
-	}
 
 	public String getComments() {
 		return comments;
@@ -185,13 +186,6 @@ public class ElementDefn {
 		this.comments = comments;
 	}
 
-	public String getV2Mapping() {
-		return v2Mapping;
-	}
-
-	public void setV2Mapping(String v2Mapping) {
-		this.v2Mapping = v2Mapping;
-	}
 
 	public void setElements(List<ElementDefn> elements) {
 		this.elements = elements;
@@ -584,8 +578,8 @@ public class ElementDefn {
       return bindingName != null && !"".equals(bindingName);
     }
 
-    public boolean hasRimMapping() {
-      return rimMapping != null && !"".equals(rimMapping);
+    public boolean hasMapping(String name) {
+      return mappings.containsKey(name);
     }
 
     public String getDir() {
@@ -607,6 +601,16 @@ public class ElementDefn {
     public void setProfile(String profile) {
       this.profile = profile;
     }
+
+	public void addMapping(String name, String value) {
+		if (!Utilities.noString(value))
+			mappings.put(name, value);
+		
+	}
+
+	public String getMapping(String name) {
+		return mappings.get(name);
+	}
     
 }
 

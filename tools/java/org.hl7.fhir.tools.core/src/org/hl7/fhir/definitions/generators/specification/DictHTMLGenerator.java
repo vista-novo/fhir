@@ -73,8 +73,8 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 		tableRow("Requirements", e.getRequirements());
     tableRow("Aliases", toSeperatedString(e.getAliases()));
 		tableRow("Comments", e.getComments());
-		tableRow("RIM Mapping", e.getRimMapping());
-    tableRow("v2 Mapping", e.getV2Mapping());
+//		tableRow("RIM Mapping", e.getRimMapping());
+//    tableRow("v2 Mapping", e.getV2Mapping());
 		tableRow("To Do", e.getTodo());
 		
 	}

@@ -655,8 +655,10 @@ public class SpreadsheetParser {
 		
 		e.setRequirements(sheet.getColumn(row, "Requirements"));
 		e.setComments(sheet.getColumn(row, "Comments"));
-		e.setRimMapping(sheet.getColumn(row, "RIM Mapping"));
-		e.setV2Mapping(sheet.getColumn(row, "v2 Mapping"));
+		e.addMapping(ElementDefn.RIM_MAPPING, sheet.getColumn(row, "RIM Mapping"));
+		e.addMapping(ElementDefn.v2_MAPPING, sheet.getColumn(row, "v2 Mapping"));
+		e.addMapping(ElementDefn.DICOM_MAPPING, sheet.getColumn(row, "DICOM Mapping"));
+		e.addMapping(ElementDefn.vCard_MAPPING, sheet.getColumn(row, "vCard Mapping"));
 		e.setTodo(sheet.getColumn(row, "To Do"));
 		e.setExample(sheet.getColumn(row, "Example"));
 		e.setCommitteeNotes(sheet.getColumn(row, "Committee Notes"));
@@ -694,8 +696,10 @@ public class SpreadsheetParser {
     exe.setDefinition(sheet.getColumn(row, "Definition"));
     exe.setRequirements(sheet.getColumn(row, "Requirements"));
     exe.setComments(sheet.getColumn(row, "Comments"));
-    exe.setRimMapping(sheet.getColumn(row, "RIM Mapping"));
-    exe.setV2Mapping(sheet.getColumn(row, "v2 Mapping"));
+	exe.addMapping(ElementDefn.RIM_MAPPING, sheet.getColumn(row, "RIM Mapping"));
+	exe.addMapping(ElementDefn.v2_MAPPING, sheet.getColumn(row, "v2 Mapping"));
+	exe.addMapping(ElementDefn.DICOM_MAPPING, sheet.getColumn(row, "DICOM Mapping"));
+	exe.addMapping(ElementDefn.vCard_MAPPING, sheet.getColumn(row, "vCard Mapping"));
     exe.setTodo(sheet.getColumn(row, "To Do"));
     exe.setExample(sheet.getColumn(row, "Example"));
     exe.setCommitteeNotes(sheet.getColumn(row, "Committee Notes"));
@@ -726,8 +730,7 @@ public class SpreadsheetParser {
 	    e.setDefinition(exe.getDefinition());
 	    e.setRequirements(exe.getRequirements());
 	    e.setComments(exe.getComments());
-	    e.setRimMapping(exe.getRimMapping());
-	    e.setV2Mapping(exe.getV2Mapping());
+	    e.getMappings().putAll(exe.getMappings());
 	    e.setTodo(exe.getTodo());
 	    e.setExample(exe.getExample());
 	    e.setCommitteeNotes(exe.getCommitteeNotes());

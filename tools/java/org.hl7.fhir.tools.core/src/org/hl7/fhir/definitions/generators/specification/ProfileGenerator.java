@@ -248,10 +248,10 @@ public class ProfileGenerator {
       type.setCode(Factory.newCode(t.summary()));
       dDst.getType().add(type);
     }
-    if (dSrc.hasRimMapping()) {
+    if (dSrc.hasMapping(ElementDefn.RIM_MAPPING)) {
       Mapping m = p.new Mapping();
       m.setMap(Factory.newString_("RIM"));
-      m.setTarget(Factory.newString_(dSrc.getRimMapping()));
+      m.setTarget(Factory.newString_(dSrc.getMapping(ElementDefn.RIM_MAPPING)));
       dDst.getMapping().add(m);
     }
     dDst.setBinding(Factory.newString_(dSrc.getBindingName()));

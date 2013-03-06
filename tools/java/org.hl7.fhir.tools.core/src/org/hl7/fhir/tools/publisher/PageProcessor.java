@@ -44,6 +44,7 @@ import java.util.Map;
 
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
+import org.hl7.fhir.definitions.generators.specification.MappingsGenerator;
 import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerator;
 import org.hl7.fhir.definitions.generators.specification.XmlSpecGenerator;
 import org.hl7.fhir.definitions.model.BindingSpecification;
@@ -271,6 +272,8 @@ public class PageProcessor implements Logger  {
         src = s1+resHeader("document", "Document", com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("onthispage"))
         src = s1+onThisPage(s2.substring(com[0].length()+1))+s3;
+      else if (com[0].equals("maponthispage"))
+          src = s1+mapOnThisPage(null)+s3;
       else if (com[0].equals("map"))
         src = s1+imageMaps.get(com[1])+s3;
       else if (com[0].equals("res-category"))
@@ -312,7 +315,9 @@ public class PageProcessor implements Logger  {
       else if (com[0].equals("bindingtable-others"))
         src = s1 + genBindingTable(false) + s3;
       else if (com[0].equals("resimplall"))
-        src = s1 + genResImplList() + s3;
+          src = s1 + genResImplList() + s3;
+      else if (com[0].equals("dtmappings"))
+          src = s1 + genDataTypeMappings() + s3;
       else if (com[0].equals("impllist"))
         src = s1 + genReferenceImplList() + s3;
       else if (com[0].equals("txurl"))
@@ -331,7 +336,17 @@ public class PageProcessor implements Logger  {
     return src;
   }
 
-  private String resItem(String name) throws Exception {
+  private String genDataTypeMappings() {
+	List<ElementDefn> list = new ArrayList<ElementDefn>();
+	list.addAll(definitions.getStructures().values());
+	list.addAll(definitions.getTypes().values());
+	list.addAll(definitions.getInfrastructure().values());
+	MappingsGenerator maps = new MappingsGenerator();
+	maps.generate(list);
+	return maps.getMappings();
+}
+
+private String resItem(String name) throws Exception {
     if (definitions.hasResource(name)) {
       ResourceDefn r = definitions.getResourceByName(name);
       return
@@ -365,6 +380,30 @@ public class PageProcessor implements Logger  {
     b.append("</div>\r\n");
     return b.toString();
   }
+
+  private String mapOnThisPage(String mappings) {
+	  if (mappings == null) {
+			List<ElementDefn> list = new ArrayList<ElementDefn>();
+			list.addAll(definitions.getStructures().values());
+			list.addAll(definitions.getTypes().values());
+			list.addAll(definitions.getInfrastructure().values());
+			MappingsGenerator maps = new MappingsGenerator();
+			maps.generate(list);
+			mappings = maps.getMappingsList();
+	  }
+	    String[] entries = mappings.split("\\|");
+	    StringBuilder b = new StringBuilder();
+	    b.append("<div class=\"itoc\">\r\n<p>Mappings:</p>\r\n");
+	    for (String e : entries) {
+	      String[] p = e.split("#");
+	      if (p.length == 2)
+	        b.append("<p class=\"link\"><a href=\"#"+p[1]+"\">"+Utilities.escapeXml(p[0])+"</a></p>");
+	      if (p.length == 1)
+	        b.append("<p class=\"link\"><a href=\"#\">"+Utilities.escapeXml(p[0])+"</a></p>");
+	    }
+	    b.append("</div>\r\n");
+	    return b.toString();
+	  }
 
   private class TocSort implements Comparator<String> {
 
@@ -551,6 +590,10 @@ public class PageProcessor implements Logger  {
       b.append("<li class=\"selected\"><span>Formal Definitions</span></li>");
     else
       b.append("<li class=\"nselected\"><span><a href=\""+n+"-definitions.htm\">Formal Definitions</a></span></li>");
+    if ("mappings".equals(mode))
+        b.append("<li class=\"selected\"><span>Mappings</span></li>");
+      else
+        b.append("<li class=\"nselected\"><span><a href=\""+n+"-mappings.htm\">Mappings</a></span></li>");
     b.append("<li class=\"spacerright\" style=\"width: 270px\"><span>&nbsp;</span></li>");
     b.append("<li class=\"wiki\"><span><a href=\"http://wiki.hl7.org/index.php?title=FHIR_"+n.toUpperCase().substring(0, 1)+n.substring(1)+"_Page\">Community Input (wiki)</a></span></li>");
     b.append("</ul></div>\r\n");
@@ -719,9 +762,14 @@ public class PageProcessor implements Logger  {
     else
       b.append("<li class=\"nselected\"><span><a href=\""+n+"-examples.htm\">Examples</a></span></li>");
     if ("definitions".equals(mode))
-      b.append("<li class=\"selected\"><span>Formal Definitions</span></li>");
-    else
-      b.append("<li class=\"nselected\"><span><a href=\""+n+"-definitions.htm\">Formal Definitions</a></span></li>");
+        b.append("<li class=\"selected\"><span>Formal Definitions</span></li>");
+      else
+        b.append("<li class=\"nselected\"><span><a href=\""+n+"-definitions.htm\">Formal Definitions</a></span></li>");
+
+    if ("mappings".equals(mode))
+        b.append("<li class=\"selected\"><span>Mappings</span></li>");
+      else
+        b.append("<li class=\"nselected\"><span><a href=\""+n+"-mappings.htm\">Mappings</a></span></li>");
 
     if ("explanations".equals(mode))
       b.append("<li class=\"selected\"><span>Design Notes</span></li>");
@@ -1030,6 +1078,8 @@ public class PageProcessor implements Logger  {
         src = s1 + genCodeSystemsTable() + s3;
       else if (com[0].equals("resimplall"))
         src = s1 + genResImplList() + s3;
+      else if (com[0].equals("dtmappings"))
+          src = s1 + genDataTypeMappings() + s3;
       else if (com[0].equals("impllist"))
         src = s1 + genReferenceImplList() + s3;
       else if (com[0].equals("txurl"))
@@ -1073,8 +1123,10 @@ public class PageProcessor implements Logger  {
         src = s1+s3;
       else if (com[0].equals("codelist"))
         src = s1+codelist(name, com.length > 1 ? com[1] : null)+s3;
+      else if (com[0].equals("maponthispage"))
+          src = s1+mapOnThisPage(null)+s3;
       else if (com[0].equals("onthispage"))
-        src = s1+onThisPage(s2.substring(com[0].length()+1))+s3;
+          src = s1+onThisPage(s2.substring(com[0].length()+1))+s3;
       else if (com[0].equals("map"))
         src = s1+imageMaps.get(com[1])+s3;
       else if (com.length != 1)
@@ -1111,6 +1163,8 @@ public class PageProcessor implements Logger  {
         src = s1 + genBindingTable(false) + s3;
       else if (com[0].equals("resimplall"))
         src = s1 + genResImplList() + s3;
+      else if (com[0].equals("dtmappings"))
+          src = s1 + genDataTypeMappings() + s3;
       else if (com[0].equals("impllist"))
         src = s1 + genReferenceImplList() + s3;
       else if (com[0].equals("txurl"))
@@ -1131,7 +1185,7 @@ public class PageProcessor implements Logger  {
 
 
 
-  String processResourceIncludes(String name, ResourceDefn resource, String xml, String tx, String dict, String src) throws Exception {
+  String processResourceIncludes(String name, ResourceDefn resource, String xml, String tx, String dict, String src, String mappings, String mappingsList) throws Exception {
     while (src.contains("<%"))
     {
       int i1 = src.indexOf("<%");
@@ -1147,6 +1201,8 @@ public class PageProcessor implements Logger  {
         throw new Exception("Instruction <%"+s2+"%> not understood parsing resource "+name);
       else if (com[0].equals("pageheader"))
         src = s1+pageHeader(resource.getName())+s3;
+      else if (com[0].equals("maponthispage"))
+          src = s1+mapOnThisPage(mappingsList)+s3;
       else if (com[0].equals("footer"))
         src = s1+TextFile.fileToString(folders.srcDir + "footer.htm")+s3;
       else if (com[0].equals("sidebar"))
@@ -1189,6 +1245,10 @@ public class PageProcessor implements Logger  {
         src = s1+loadXmlNotes(name, "notes")+s3;
       } else if (com[0].equals("dictionary"))
         src = s1+dict+s3;
+      else if (com[0].equals("mappings"))
+          src = s1+mappings+s3;
+      else if (com[0].equals("mappingslist"))
+          src = s1+mappingsList+s3;
       else if (com[0].equals("resurl")) {
         if (isAggregationEndpoint(resource.getName()))
           src = s1+s3;
