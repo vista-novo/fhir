@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8445</WindowHeight>
-  <WindowWidth>24915</WindowWidth>
+  <WindowHeight>8448</WindowHeight>
+  <WindowWidth>23256</WindowWidth>
   <WindowTopX>3360</WindowTopX>
-  <WindowTopY>3510</WindowTopY>
+  <WindowTopY>3516</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -75,15 +75,19 @@
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="26" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="171.75"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="41.25" ss:Span="1"/>
-   <Column ss:Index="4" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="37.5"/>
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="171.6"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="41.4" ss:Span="1"/>
+   <Column ss:Index="4" ss:StyleID="s63" ss:AutoFitWidth="0"
+    ss:Width="37.800000000000004"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="45"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="86.25"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="164.25"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="182.25" ss:Span="1"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="86.399999999999991"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.60000000000002"
+    ss:Span="1"/>
+   <Column ss:Index="9" ss:StyleID="s63" ss:AutoFitWidth="0"
+    ss:Width="164.39999999999998"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.4"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="182.39999999999998"
+    ss:Span="1"/>
    <Column ss:Index="13" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s65">
@@ -487,10 +491,14 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <TopRowVisible>6</TopRowVisible>
+   <LeftColumnVisible>1</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+     <RangeSelection>R10C2:R10C12</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -500,12 +508,12 @@
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="24.75"/>
-   <Column ss:StyleID="s69" ss:Width="96.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="24.6"/>
+   <Column ss:StyleID="s69" ss:Width="96.6"/>
    <Column ss:StyleID="s69" ss:Width="66"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="405.75"/>
-   <Column ss:StyleID="s69" ss:Width="325.5"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="233.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="405.6"/>
+   <Column ss:StyleID="s69" ss:Width="325.8"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="233.4"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -540,11 +548,11 @@
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="114"/>
-   <Column ss:AutoFitWidth="0" ss:Width="211.5"/>
-   <Column ss:AutoFitWidth="0" ss:Width="62.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="211.8"/>
+   <Column ss:AutoFitWidth="0" ss:Width="62.400000000000006"/>
    <Column ss:AutoFitWidth="0" ss:Width="123"/>
-   <Column ss:AutoFitWidth="0" ss:Width="141.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="242.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="141.6"/>
+   <Column ss:AutoFitWidth="0" ss:Width="242.4"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -588,8 +596,8 @@
  <Worksheet ss:Name="document-attestation-mode">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="77.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="511.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="77.399999999999991"/>
+   <Column ss:AutoFitWidth="0" ss:Width="511.8"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
