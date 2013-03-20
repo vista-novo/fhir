@@ -11,6 +11,7 @@ using System.Xml.Linq;
 using System.Xml;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Parsers;
+using Hl7.Fhir.Client;
 
 namespace Hl7.Fhir.Tests
 {
@@ -103,6 +104,14 @@ namespace Hl7.Fhir.Tests
 
                  Contained = new List<Resource>() { new List() { Mode = List.ListMode.Snapshot } }
             };
+
+
+            FhirClient client = new FhirClient(new Uri("http://fhir.someendpoint.com/svc/fhir"));
+            Patient ewout = client.Read<Patient>("1");
+            ewout.Details.Name.Add(HumanName.ForFamily("Kramer").WithGiven("Ewout"));
+            ewout = client.Update<Patient>(ewout, "1");
+
+
 
             Assert.AreEqual(@"<?xml version=""1.0"" encoding=""utf-16""?>" +
                 @"<Patient id=""Ab4"" xmlns=""http://hl7.org/fhir"">" +

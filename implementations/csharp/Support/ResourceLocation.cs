@@ -65,12 +65,16 @@ namespace Hl7.Fhir.Support
 
         public static string ParseIdFromRestUri(Uri requestUri)
         {
+            if (requestUri == null) return null;
+
             return ParseIdFromRestUri(requestUri.ToString());
         }
 
         public static string ParseIdFromRestUri(string requestUri)
         {
-            Regex r = new Regex(@"/\w+/@([^/]+)/?");
+            if (requestUri == null) return null;
+
+            Regex r = new Regex(@"\w+/@([^/]+)/?");
             Match result = r.Match(requestUri);
 
             if (result.Success)
@@ -81,12 +85,16 @@ namespace Hl7.Fhir.Support
 
         public static string ParseVersionIdFromRestUri(Uri requestUri)
         {
+            if (requestUri == null) return null;
+
             return ParseVersionIdFromRestUri(requestUri.ToString());
         }
 
         public static string ParseVersionIdFromRestUri(string requestUri)
         {
-            Regex r = new Regex(@"/\w+/@[^/]+/history/@([^/]+)");
+            if (requestUri == null) return null;
+
+            Regex r = new Regex(@"\w+/@[^/]+/history/@([^/]+)");
             Match result = r.Match(requestUri);
 
             if (result.Success)
@@ -97,12 +105,16 @@ namespace Hl7.Fhir.Support
 
         public static string ParseCollectionNameFromRestUri(Uri requestUri)
         {
+            if (requestUri == null) return null;
+
             return ParseCollectionNameFromRestUri(requestUri.ToString());
         }
 
         public static string ParseCollectionNameFromRestUri(string requestUri)
         {
-            Regex r = new Regex(@"/(\w+)/@[\w]+/?");
+            if (requestUri == null) return null;
+
+            Regex r = new Regex(@"(\w+)/@[\w]+/?");
             Match result = r.Match(requestUri);
 
             if (result.Success)

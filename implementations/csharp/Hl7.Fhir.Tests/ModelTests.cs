@@ -5,6 +5,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hl7.Fhir.Model;
 using System.Xml.Linq;
+using Hl7.Fhir.Support;
 
 namespace Hl7.Fhir.Tests
 {
@@ -118,6 +119,22 @@ namespace Hl7.Fhir.Tests
 
             FhirDateTime dt2 = new FhirDateTime(1972, 11, 30, 15, 10);
             Assert.IsTrue(dt2.ToString().StartsWith("1972-11-30T15:10"));
+        }
+
+        [TestMethod]
+        public void TestUrlParsing()
+        {
+            Assert.AreEqual("1", ResourceLocation.ParseIdFromRestUri("/patient/@1"));
+            Assert.AreEqual("1", ResourceLocation.ParseIdFromRestUri("/patient/@1/history/@3"));
+            Assert.AreEqual("1", ResourceLocation.ParseIdFromRestUri("../patient/@1"));
+            Assert.AreEqual("1", ResourceLocation.ParseIdFromRestUri("../patient/@1/history/@3"));
+            Assert.AreEqual("1", ResourceLocation.ParseIdFromRestUri("patient/@1"));
+            Assert.AreEqual("1", ResourceLocation.ParseIdFromRestUri("patient/@1/history/@3"));
+
+            Assert.AreEqual("3", ResourceLocation.ParseVersionIdFromRestUri("/patient/@1/history/@3"));
+            Assert.AreEqual("3", ResourceLocation.ParseVersionIdFromRestUri("../patient/@1/history/@3"));
+            Assert.AreEqual("3", ResourceLocation.ParseVersionIdFromRestUri("patient/@1/history/@3"));
+
         }
     }
 }
