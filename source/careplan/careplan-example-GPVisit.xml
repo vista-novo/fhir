@@ -19,7 +19,7 @@
         <Problem id="p1">
             <subject>
                 <type value="Patient"/>
-                <url value="100"/>
+                <url value="../patient/@100"/>
                 <display value="Peter James Chalmers"/>
             </subject>
             <code>
@@ -30,7 +30,7 @@
     </contained>
     <patient>
         <type value="Patient"></type>
-        <url value="100"/>
+        <url value="../patient/@100"/>
         <display value="Peter James Chalmers"/>
     </patient>
     <status value="active"/>
@@ -54,7 +54,7 @@
         </role>
         <member>
             <type value="Provider"></type>
-            <url value="101"/>
+            <url value="../provider/@101"/>
             <display value="Nurse Nancy"/>
         </member>
     </participant>
@@ -68,7 +68,7 @@
         </role>
         <member>
             <type value="Provider"></type>
-            <url value="100"/>
+            <url value="../provider/@100"/>
             <display value="Doctor Dave"/>
         </member>
     </participant>
@@ -89,7 +89,7 @@
         <status value="completed"/>
         <prohibited value="false"></prohibited>
         <timingPeriod>
-            <!-- the nurse saw that patient between 10:38 and 10:50 -->
+            <!-- the nurse saw the patient between 10:38 and 10:50 -->
             <start value ="2013-01-01T10:38:00+00:00"/>
             <end value ="2013-01-01T10:50:00+00:00"/>            
         </timingPeriod>
@@ -104,7 +104,7 @@
             are modelled as separate encounters. Ideally, there will be  a 'master/parent' encounter that ties them together.
             If there is a single encounter, then all participants will be linked to that encounter.-->
             <type value="Encounter"/>
-            <url value="./encounter/@1000"/>
+            <url value="../encounter/@1000"/>
         </actionTaken>
     </activity>
     <activity>
