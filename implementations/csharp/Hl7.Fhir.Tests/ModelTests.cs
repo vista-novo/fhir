@@ -134,7 +134,17 @@ namespace Hl7.Fhir.Tests
             Assert.AreEqual("3", ResourceLocation.ParseVersionIdFromRestUri("/patient/@1/history/@3"));
             Assert.AreEqual("3", ResourceLocation.ParseVersionIdFromRestUri("../patient/@1/history/@3"));
             Assert.AreEqual("3", ResourceLocation.ParseVersionIdFromRestUri("patient/@1/history/@3"));
+        }
 
+        [TestMethod]
+        public void TestUrlBuilding()
+        {
+            Assert.AreEqual("patient/@1", ResourceLocation.BuildResourceLocation("patient", "1").ToString());
+            Assert.AreEqual("http://www.nu.nl/patient/@1", ResourceLocation.BuildResourceLocation(new Uri("http://www.nu.nl"), "patient", "1").ToString());
+            Assert.AreEqual("patient/@1/history/@3", ResourceLocation.BuildVersionedResourceLocation("patient", "1", "3").ToString());
+            Assert.AreEqual("patient/@1/history/@3", ResourceLocation.BuildVersionedResourceLocation(new Uri("patient/@1",UriKind.Relative), "3").ToString());
+            Assert.AreEqual("http://www.nu.nl/patient/@1/history/@3", 
+                ResourceLocation.BuildVersionedResourceLocation(new Uri("http://www.nu.nl"), "patient", "1", "3").ToString());
         }
     }
 }

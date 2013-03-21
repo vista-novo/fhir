@@ -58,9 +58,16 @@ namespace Hl7.Fhir.Support
 
         public static Uri BuildVersionedResourceLocation(string collectionName, string id, string versionId)
         {
+            //string historyPath = Util.Combine("history", "@" + versionId);
+
+            return BuildVersionedResourceLocation( BuildResourceLocation(collectionName, id), versionId );
+        }
+
+        public static Uri BuildVersionedResourceLocation(Uri resourceId, string versionId)
+        {
             string historyPath = Util.Combine("history", "@" + versionId);
 
-            return new Uri(Util.Combine(BuildResourceLocation(collectionName, id).ToString(), historyPath),UriKind.Relative);
+            return new Uri(Util.Combine(resourceId.ToString(), historyPath), UriKind.RelativeOrAbsolute);
         }
 
         public static string ParseIdFromRestUri(Uri requestUri)
