@@ -120,6 +120,9 @@ public class Utilities {
 	
 	public static void copyFile(File sourceFile, File destFile) throws IOException {
 		if(!destFile.exists()) {
+			if (!new CSFile(destFile.getParent()).exists()) {
+				createDirectory(destFile.getParent());
+			}
 			destFile.createNewFile();
 		}
 
