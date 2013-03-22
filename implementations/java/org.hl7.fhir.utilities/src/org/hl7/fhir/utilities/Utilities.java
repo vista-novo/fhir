@@ -185,13 +185,15 @@ public class Utilities {
   }
 
   public static void clearDirectory(String folder) {
-    String[] files = new CSFile(folder).list();
-    for (String f : files) {
-      File fh = new CSFile(folder+File.separatorChar+f);
-      if (fh.isDirectory()) 
-        clearDirectory(fh.getAbsolutePath());
-      fh.delete();
-    }
+	  String[] files = new CSFile(folder).list();
+	  if (files != null) {
+		  for (String f : files) {
+			  File fh = new CSFile(folder+File.separatorChar+f);
+			  if (fh.isDirectory()) 
+				  clearDirectory(fh.getAbsolutePath());
+			  fh.delete();
+		  }
+	  }
   }
 
   public static void createDirectory(String path) {
