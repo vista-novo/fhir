@@ -13,7 +13,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://fhir/1.0"
-            class="fhir.FhirPackage"
+            class="org.hl7.fhir.definitions.ecore.fhir.FhirPackage"
             genModel="eCore/fhir.genmodel"/>
    </extension>
 
