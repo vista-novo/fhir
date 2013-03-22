@@ -86,7 +86,7 @@ public class ModelValidator {
 		return errors;
 	}
 
-	//todo: chsck that primitives *in datatypes* don't repeat
+	//todo: check that primitives *in datatypes* don't repeat
 	
 	private void checkElement(String path, ElementDefn e, ResourceDefn parent) {
 		rule(path, e.unbounded() || e.getMaxCardinality() == 1,	"Max Cardinality must be 1 or unbounded");
