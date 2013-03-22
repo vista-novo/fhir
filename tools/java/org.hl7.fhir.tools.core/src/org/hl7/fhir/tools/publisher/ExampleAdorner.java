@@ -7,10 +7,9 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XMLUtil;
-import org.hl7.fhir.utilities.xml.XhtmlGeneratorAdorner;
 import org.hl7.fhir.utilities.xml.XhtmlGenerator;
+import org.hl7.fhir.utilities.xml.XhtmlGeneratorAdorner;
 import org.w3c.dom.Element;
 
 public class ExampleAdorner implements XhtmlGeneratorAdorner {
@@ -78,7 +77,8 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
     return parts[2].substring(1);
   }
 
-  public XhtmlGeneratorAdornerState getState(XhtmlGenerator ref, XhtmlGeneratorAdornerState state, Element node) throws Exception {
+  @Override
+public XhtmlGeneratorAdornerState getState(XhtmlGenerator ref, XhtmlGeneratorAdornerState state, Element node) throws Exception {
     if (state == null) {
       if (node == null)
         return new ExampleAdornerState(State.Unknown, null, "", "");

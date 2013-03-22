@@ -31,9 +31,9 @@ package org.hl7.fhir.instance.model;
 
 // Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
-import java.util.*;
-
-import java.net.*;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * Optional Extensions Element - found in all resources
  */

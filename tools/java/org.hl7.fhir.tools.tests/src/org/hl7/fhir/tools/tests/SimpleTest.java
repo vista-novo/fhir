@@ -5,13 +5,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-import org.hl7.fhir.tools.core.model.Root;
-import org.hl7.fhir.tools.core.parser.CSVGenerator;
-import org.hl7.fhir.tools.core.parser.CSVParser;
-import org.hl7.fhir.tools.core.parser.DictHTMLGenerator;
-import org.hl7.fhir.tools.core.parser.XmlSpecGenerator;
-import org.hl7.fhir.tools.core.parser.XmlSpecParser;
-import org.hl7.fhir.tools.core.parser.SchemaGenerator;
+import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
+import org.hl7.fhir.definitions.generators.specification.XmlSpecGenerator;
+import org.hl7.fhir.definitions.generators.xsd.SchemaGenerator;
 
 public class SimpleTest {
 

@@ -31,7 +31,8 @@ package org.hl7.fhir.instance.model;
 
 // Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Use to record detailed information about problems or diagnoses recognised by a clinician. There are many uses including: recording a Diagnosis during an Encounter; populating a Problem List or a Summary Statement, such as a Discharge Summary
@@ -61,7 +62,8 @@ public class Problem extends Resource {
     }
 
   public class ProblemRelationshipTypeEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -71,7 +73,8 @@ public class Problem extends Resource {
           return ProblemRelationshipType.follows;
         throw new Exception("Unknown ProblemRelationshipType code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == ProblemRelationshipType.dueMinusto)
         return "due-to";
       if (code == ProblemRelationshipType.follows)

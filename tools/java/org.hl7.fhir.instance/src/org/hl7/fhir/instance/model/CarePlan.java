@@ -31,7 +31,8 @@ package org.hl7.fhir.instance.model;
 
 // Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Describes the intention of how one or more providers intend to deliver care for a particular patient for a period of time, possibly limited to care for a specific condition or set of conditions.
@@ -65,7 +66,8 @@ public class CarePlan extends Resource {
     }
 
   public class CarePlanStatusEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -77,7 +79,8 @@ public class CarePlan extends Resource {
           return CarePlanStatus.ended;
         throw new Exception("Unknown CarePlanStatus code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == CarePlanStatus.planned)
         return "planned";
       if (code == CarePlanStatus.active)
@@ -119,7 +122,8 @@ public class CarePlan extends Resource {
     }
 
   public class CarePlanGoalStatusEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -133,7 +137,8 @@ public class CarePlan extends Resource {
           return CarePlanGoalStatus.abandoned;
         throw new Exception("Unknown CarePlanGoalStatus code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == CarePlanGoalStatus.inProgress)
         return "in progress";
       if (code == CarePlanGoalStatus.achieved)
@@ -189,7 +194,8 @@ public class CarePlan extends Resource {
     }
 
   public class CarePlanActivityCategoryEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -209,7 +215,8 @@ public class CarePlan extends Resource {
           return CarePlanActivityCategory.other;
         throw new Exception("Unknown CarePlanActivityCategory code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == CarePlanActivityCategory.diet)
         return "diet";
       if (code == CarePlanActivityCategory.drug)
@@ -267,7 +274,8 @@ public class CarePlan extends Resource {
     }
 
   public class CarePlanActivityStatusEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -285,7 +293,8 @@ public class CarePlan extends Resource {
           return CarePlanActivityStatus.discontinued;
         throw new Exception("Unknown CarePlanActivityStatus code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == CarePlanActivityStatus.notStarted)
         return "not started";
       if (code == CarePlanActivityStatus.scheduled)

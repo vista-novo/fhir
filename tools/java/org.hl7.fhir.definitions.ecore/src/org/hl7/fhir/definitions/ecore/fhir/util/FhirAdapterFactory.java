@@ -8,12 +8,31 @@ package org.hl7.fhir.definitions.ecore.fhir.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.hl7.fhir.definitions.ecore.fhir.*;
+import org.hl7.fhir.definitions.ecore.fhir.Annotations;
+import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
+import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
+import org.hl7.fhir.definitions.ecore.fhir.Definitions;
+import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
+import org.hl7.fhir.definitions.ecore.fhir.EventDefn;
+import org.hl7.fhir.definitions.ecore.fhir.EventUsage;
+import org.hl7.fhir.definitions.ecore.fhir.Example;
+import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
+import org.hl7.fhir.definitions.ecore.fhir.Invariant;
+import org.hl7.fhir.definitions.ecore.fhir.InvariantRef;
+import org.hl7.fhir.definitions.ecore.fhir.Mapping;
+import org.hl7.fhir.definitions.ecore.fhir.MetaDataItem;
+import org.hl7.fhir.definitions.ecore.fhir.NameScope;
+import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
+import org.hl7.fhir.definitions.ecore.fhir.ProfileDefn;
+import org.hl7.fhir.definitions.ecore.fhir.ProfiledElementDefn;
+import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
+import org.hl7.fhir.definitions.ecore.fhir.SearchParameter;
+import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 /**
  * <!-- begin-user-doc -->

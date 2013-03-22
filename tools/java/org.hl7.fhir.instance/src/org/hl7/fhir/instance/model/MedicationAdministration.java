@@ -31,7 +31,8 @@ package org.hl7.fhir.instance.model;
 
 // Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Describes the event of a patient being given a dose of a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.
@@ -71,7 +72,8 @@ public class MedicationAdministration extends Resource {
     }
 
   public class MedAdmStatusEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -85,7 +87,8 @@ public class MedicationAdministration extends Resource {
           return MedAdmStatus.nullified;
         throw new Exception("Unknown MedAdmStatus code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == MedAdmStatus.active)
         return "active";
       if (code == MedAdmStatus.paused)

@@ -29,7 +29,6 @@ package org.hl7.fhir.tools.implementations.csharp;
 
 */
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
@@ -37,13 +36,10 @@ import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
-import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
-import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.tools.implementations.GenBlock;
 import org.hl7.fhir.tools.implementations.GeneratorUtils;
-import org.hl7.fhir.utilities.Utilities;
 
 
 public class CSharpParserGenerator extends GenBlock

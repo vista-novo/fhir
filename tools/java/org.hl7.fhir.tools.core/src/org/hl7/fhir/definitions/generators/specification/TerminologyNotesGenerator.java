@@ -27,8 +27,6 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
-import java.io.File;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
@@ -39,14 +37,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.tools.publisher.PageProcessor;
-import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 
 public class TerminologyNotesGenerator extends OutputStreamWriter {
@@ -64,6 +60,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 
 	public class MyCompare implements Comparator<BindingSpecification> {
 
+		@Override
 		public int compare(BindingSpecification arg0, BindingSpecification arg1) {
 			return txusages.get(arg0).get(0).path.compareTo(txusages.get(arg1).get(0).path);
 		}

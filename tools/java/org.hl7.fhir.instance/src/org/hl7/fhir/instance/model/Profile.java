@@ -31,9 +31,9 @@ package org.hl7.fhir.instance.model;
 
 // Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
-import java.util.*;
-
-import java.net.*;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * A Resource Profile - a statement of use of one or more FHIR Resources.  It may include constraints on Resources and Data Types, Terminology Binding Statements and Extension Definitions
  */
@@ -78,7 +78,8 @@ public class Profile extends Resource {
     }
 
   public class ResourceProfileStatusEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -96,7 +97,8 @@ public class Profile extends Resource {
           return ResourceProfileStatus.superseded;
         throw new Exception("Unknown ResourceProfileStatus code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == ResourceProfileStatus.draft)
         return "draft";
       if (code == ResourceProfileStatus.testing)
@@ -136,7 +138,8 @@ public class Profile extends Resource {
     }
 
   public class ConstraintSeverityEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -146,7 +149,8 @@ public class Profile extends Resource {
           return ConstraintSeverity.warning;
         throw new Exception("Unknown ConstraintSeverity code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == ConstraintSeverity.error)
         return "error";
       if (code == ConstraintSeverity.warning)
@@ -194,7 +198,8 @@ public class Profile extends Resource {
     }
 
   public class SearchParamTypeEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -212,7 +217,8 @@ public class Profile extends Resource {
           return SearchParamType.qtoken;
         throw new Exception("Unknown SearchParamType code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == SearchParamType.integer)
         return "integer";
       if (code == SearchParamType.string)
@@ -256,7 +262,8 @@ public class Profile extends Resource {
     }
 
   public class SearchRepeatBehaviorEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -268,7 +275,8 @@ public class Profile extends Resource {
           return SearchRepeatBehavior.intersection;
         throw new Exception("Unknown SearchRepeatBehavior code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == SearchRepeatBehavior.single)
         return "single";
       if (code == SearchRepeatBehavior.union)
@@ -310,7 +318,8 @@ public class Profile extends Resource {
     }
 
   public class ExtensionContextEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -324,7 +333,8 @@ public class Profile extends Resource {
           return ExtensionContext.extension;
         throw new Exception("Unknown ExtensionContext code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == ExtensionContext.resource)
         return "resource";
       if (code == ExtensionContext.datatype)
@@ -368,7 +378,8 @@ public class Profile extends Resource {
     }
 
   public class BindingTypeEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -382,7 +393,8 @@ public class Profile extends Resource {
           return BindingType.special;
         throw new Exception("Unknown BindingType code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == BindingType.valueset)
         return "valueset";
       if (code == BindingType.codelist)
@@ -422,7 +434,8 @@ public class Profile extends Resource {
     }
 
   public class BindingConformanceEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -434,7 +447,8 @@ public class Profile extends Resource {
           return BindingConformance.example;
         throw new Exception("Unknown BindingConformance code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == BindingConformance.required)
         return "required";
       if (code == BindingConformance.preferred)

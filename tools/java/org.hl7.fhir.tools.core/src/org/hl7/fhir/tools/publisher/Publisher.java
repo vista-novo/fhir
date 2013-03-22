@@ -36,7 +36,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -52,10 +51,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-
-import net.sourceforge.plantuml.FileFormat;
-import net.sourceforge.plantuml.FileFormatOption;
-import net.sourceforge.plantuml.SourceStringReader;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMIResource;
@@ -74,7 +69,6 @@ import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.Example.ExampleType;
 import org.hl7.fhir.definitions.model.ProfileDefn;
@@ -1195,6 +1189,7 @@ public class Publisher {
 			this.trackErrors = trackErrors;
 		}
 
+		@Override
 		public void error(SAXParseException arg0) throws SAXException {
 			if (trackErrors) {
 				System.out.println("error: " + arg0.toString());
@@ -1203,11 +1198,13 @@ public class Publisher {
 
 		}
 
+		@Override
 		public void fatalError(SAXParseException arg0) throws SAXException {
 			System.out.println("fatal error: " + arg0.toString());
 
 		}
 
+		@Override
 		public void warning(SAXParseException arg0) throws SAXException {
 			// System.out.println("warning: " + arg0.toString());
 
@@ -1227,6 +1224,7 @@ public class Publisher {
 			this.dir = dir;
 		}
 
+		@Override
 		public LSInput resolveResource(final String type,
 				final String namespaceURI, final String publicId,
 				String systemId, final String baseURI) {

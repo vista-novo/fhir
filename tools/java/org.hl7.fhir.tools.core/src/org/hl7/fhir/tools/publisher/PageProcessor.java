@@ -31,7 +31,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
-import java.lang.management.MemoryUsage;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -407,7 +406,8 @@ private String resItem(String name) throws Exception {
 
   private class TocSort implements Comparator<String> {
 
-    public int compare(String arg0, String arg1) {
+    @Override
+	public int compare(String arg0, String arg1) {
       String[] a0 = arg0.split("\\.");
       String[] a1 = arg1.split("\\.");
       for (int i = 0; i < Math.min(a0.length, a1.length); i++) {
@@ -1496,7 +1496,8 @@ private String resItem(String name) throws Exception {
     return genDate;
   }
 
-  public void log(String content) {
+  @Override
+public void log(String content) {
 //    if (notime) {
 //      System.out.println(content);
 //      notime = false;

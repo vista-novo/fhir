@@ -7,7 +7,6 @@
 package org.hl7.fhir.definitions.ecore.fhir;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

@@ -27,7 +27,6 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -53,15 +52,18 @@ import org.w3c.dom.NodeList;
 public class UMLValidator {
 
   private final class namespaceInfo implements NamespaceContext {
-    public Iterator getPrefixes(String arg0) {
+    @Override
+	public Iterator getPrefixes(String arg0) {
       return null;
     }
 
-    public String getPrefix(String arg0) {
+    @Override
+	public String getPrefix(String arg0) {
       return "UML";
     }
 
-    public String getNamespaceURI(String arg0) {
+    @Override
+	public String getNamespaceURI(String arg0) {
       return "omg.org/UML1.3";
     }
   }
@@ -132,7 +134,8 @@ public class UMLValidator {
 
   private class PositionSorter implements Comparator<Element> {
 
-    public int compare(Element o1, Element o2) {
+    @Override
+	public int compare(Element o1, Element o2) {
       Map<String, String> tags1 = readTags(o1);
       Map<String, String> tags2 = readTags(o2);
       return Integer.valueOf(tags1.get("position")).compareTo(Integer.valueOf(tags2.get("position")));

@@ -29,7 +29,6 @@ package org.hl7.fhir.definitions.parsers;
 
  */
 import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -118,6 +117,7 @@ public class SourceParser {
 		sorted.addAll(unsorted);
 		
 		Collections.sort(sorted, new Comparator<BindingDefn>() {
+			@Override
 			public int compare( BindingDefn a, BindingDefn b )
 			{
 				return a.getName().compareTo(b.getName());
@@ -134,6 +134,7 @@ public class SourceParser {
 		sorted.addAll(unsorted);
 		
 		Collections.sort(sorted, new Comparator() {
+			@Override
 			public int compare( Object a, Object b )
 			{
 				if( a instanceof PrimitiveDefn )

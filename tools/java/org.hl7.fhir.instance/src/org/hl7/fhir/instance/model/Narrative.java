@@ -31,7 +31,9 @@ package org.hl7.fhir.instance.model;
 
 // Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 
 /**
@@ -70,7 +72,8 @@ public class Narrative extends Element {
     }
 
   public class NarrativeStatusEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -84,7 +87,8 @@ public class Narrative extends Element {
           return NarrativeStatus.empty;
         throw new Exception("Unknown NarrativeStatus code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == NarrativeStatus.generated)
         return "generated";
       if (code == NarrativeStatus.extensions)

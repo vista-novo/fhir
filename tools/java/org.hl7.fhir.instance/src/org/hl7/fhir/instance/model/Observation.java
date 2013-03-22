@@ -31,7 +31,9 @@ package org.hl7.fhir.instance.model;
 
 // Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 /**
  * Simple assertions and measurements made about a patient, device or other subject
@@ -77,7 +79,8 @@ public class Observation extends Resource {
     }
 
   public class ObservationStatusEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -95,7 +98,8 @@ public class Observation extends Resource {
           return ObservationStatus.withdrawn;
         throw new Exception("Unknown ObservationStatus code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == ObservationStatus.registered)
         return "registered";
       if (code == ObservationStatus.interim)
@@ -155,7 +159,8 @@ public class Observation extends Resource {
     }
 
   public class ObservationReliabilityEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -175,7 +180,8 @@ public class Observation extends Resource {
           return ObservationReliability.unknown;
         throw new Exception("Unknown ObservationReliability code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == ObservationReliability.ok)
         return "ok";
       if (code == ObservationReliability.ongoing)

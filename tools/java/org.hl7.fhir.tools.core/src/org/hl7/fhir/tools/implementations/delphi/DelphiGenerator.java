@@ -102,7 +102,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   private StringBuilder srlsdefJ = new StringBuilder();
   private Map<String, String> simpleTypes = new HashMap<String, String>();
   
-  public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger)  throws Exception {
+  @Override
+public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger)  throws Exception {
     start(implDir, version, genDate);
     initParser(version, genDate);
     
@@ -114,11 +115,11 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     
     for (DefinedCode n : definitions.getPrimitives().values()) {
       if (n instanceof PrimitiveType)
-        generatePrimitive((PrimitiveType)n, "TFhirType", false, false);
+        generatePrimitive(n, "TFhirType", false, false);
     }
     for (DefinedCode n : definitions.getPrimitives().values()) {
       if (!(n instanceof PrimitiveType))
-        generatePrimitive((DefinedStringPattern) n, ((DefinedStringPattern) n).getBase().contains(" ") ? "TFhirType" : "TFhir"+Utilities.capitalize(((DefinedStringPattern) n).getBase()), false, true);
+        generatePrimitive(n, ((DefinedStringPattern) n).getBase().contains(" ") ? "TFhirType" : "TFhir"+Utilities.capitalize(((DefinedStringPattern) n).getBase()), false, true);
     }
     parserGap();
     
@@ -1657,7 +1658,8 @@ private void generateEnum(ElementDefn e) throws Exception {
     }
   }
   
-  public String getName() {
+  @Override
+public String getName() {
     return "delphi";
   }
 
@@ -2517,41 +2519,50 @@ private void generateEnum(ElementDefn e) throws Exception {
         "  end;\r\n\r\n";
   }
 
-  public String getDescription() {
+  @Override
+public String getDescription() {
     return "Resource Definitions and XML & JSON parsers. D5+. TODO: remove dependencies on unpublished code.";
   }
 
-  public String getTitle() {
+  @Override
+public String getTitle() {
     return "Delphi";
   }
 
-  public boolean isECoreGenerator() {
+  @Override
+public boolean isECoreGenerator() {
     return false;
   }
 
-  public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
+  @Override
+public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
       String implDir, Logger logger) throws Exception {
 
     throw new UnsupportedOperationException("Delphi generator uses ElementDefn-style definitions.");
   }
 
-  public boolean doesCompile() {
+  @Override
+public boolean doesCompile() {
     return false;
   }
 
-  public boolean compile(String rootDir, List<String> errors) {
+  @Override
+public boolean compile(String rootDir, List<String> errors) {
     return false;
   }
 
-  public boolean doesTest() {
+  @Override
+public boolean doesTest() {
     return false;
   }
 
-  public void loadAndSave(String rootDir, String sourceFile, String destFile) {
+  @Override
+public void loadAndSave(String rootDir, String sourceFile, String destFile) {
     
   }
 
-  public String checkFragments(String rootDir, String fragments) throws Exception {
+  @Override
+public String checkFragments(String rootDir, String fragments) throws Exception {
     return "Not supported by delphi implementation";
   }
 

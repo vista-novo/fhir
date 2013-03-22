@@ -67,7 +67,8 @@ public class Contact extends Type {
     }
 
   public class ContactSystemEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -81,7 +82,8 @@ public class Contact extends Type {
           return ContactSystem.url;
         throw new Exception("Unknown ContactSystem code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == ContactSystem.phone)
         return "phone";
       if (code == ContactSystem.fax)
@@ -129,7 +131,8 @@ public class Contact extends Type {
     }
 
   public class ContactUseEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -145,7 +148,8 @@ public class Contact extends Type {
           return ContactUse.mobile;
         throw new Exception("Unknown ContactUse code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == ContactUse.home)
         return "home";
       if (code == ContactUse.work)

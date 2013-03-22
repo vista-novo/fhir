@@ -36,7 +36,6 @@ import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
-import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.tools.implementations.BaseGenerator;
 import org.hl7.fhir.tools.implementations.GeneratorUtils;
@@ -47,6 +46,7 @@ import org.hl7.fhir.utilities.ZipGenerator;
 
 public class CSharpGenerator extends BaseGenerator implements PlatformGenerator {
 
+	@Override
 	public void generate(Definitions definitions, String destDir,
 			String implDir, String version, Date genDate, Logger logger)
 			throws Exception {
@@ -54,22 +54,27 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		throw new UnsupportedOperationException("The C# generator uses eCore, not ElementDefn-style definition.");
 	}
 
+	@Override
 	public String getName() {
 		return "csharp";
 	}
 
+	@Override
 	public String getDescription() {
 		return "Resource definitions (+ more todo)";
 	}
 
+	@Override
 	public String getTitle() {
 		return "C#";
 	}
 
+	@Override
 	public boolean isECoreGenerator() {
 		return true;
 	}
 
+	@Override
 	public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
 			String implDir, Logger logger) throws Exception {
 	
@@ -214,22 +219,27 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		zip.close();		
 	}
 
-  public boolean doesCompile() {
+  @Override
+public boolean doesCompile() {
     return false;
   }
 
-  public boolean compile(String rootDir, List<String> errors) {
+  @Override
+public boolean compile(String rootDir, List<String> errors) {
     return false;
   }
 
-  public boolean doesTest() {
+  @Override
+public boolean doesTest() {
     return false;
   }
 
-  public void loadAndSave(String rootDir, String sourceFile, String destFile) {
+  @Override
+public void loadAndSave(String rootDir, String sourceFile, String destFile) {
   }
 
-  public String checkFragments(String rootDir, String fragments) throws Exception {
+  @Override
+public String checkFragments(String rootDir, String fragments) throws Exception {
     return "Not supported by C# implementation";
   }
 }

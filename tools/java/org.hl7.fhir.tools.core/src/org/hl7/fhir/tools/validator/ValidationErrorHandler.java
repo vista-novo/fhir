@@ -42,7 +42,8 @@ public class ValidationErrorHandler implements ErrorHandler {
     this.outputs = outputs;
   }
 
-  public void error(SAXParseException arg0) throws SAXException {
+  @Override
+public void error(SAXParseException arg0) throws SAXException {
     ValidationOutput o = new ValidationOutput();
     o.setLevel(ValidationOutput.Strength.Error);
     o.setLocation("line "+Integer.toString(arg0.getLineNumber())+", column "+Integer.toString(arg0.getColumnNumber()));
@@ -50,7 +51,8 @@ public class ValidationErrorHandler implements ErrorHandler {
     outputs.add(o);
   }
 
-  public void fatalError(SAXParseException arg0) throws SAXException {
+  @Override
+public void fatalError(SAXParseException arg0) throws SAXException {
     ValidationOutput o = new ValidationOutput();
     o.setLevel(ValidationOutput.Strength.Fatal);
     o.setLocation("line "+Integer.toString(arg0.getLineNumber())+", column "+Integer.toString(arg0.getColumnNumber()));
@@ -58,7 +60,8 @@ public class ValidationErrorHandler implements ErrorHandler {
     outputs.add(o);
   }
 
-  public void warning(SAXParseException arg0) throws SAXException {
+  @Override
+public void warning(SAXParseException arg0) throws SAXException {
     ValidationOutput o = new ValidationOutput();
     o.setLevel(ValidationOutput.Strength.Warning);
     o.setLocation("line "+Integer.toString(arg0.getLineNumber())+", column "+Integer.toString(arg0.getColumnNumber()));

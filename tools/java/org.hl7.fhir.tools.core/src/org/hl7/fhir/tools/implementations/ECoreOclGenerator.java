@@ -54,19 +54,23 @@ object models".
  */
 public class ECoreOclGenerator extends BaseGenerator implements PlatformGenerator {
 
-  public String getName() {
+  @Override
+public String getName() {
     return "ecore";
   }
 
-  public String getTitle() {
+  @Override
+public String getTitle() {
     return "ECore";
   }
 
-  public String getDescription() {
+  @Override
+public String getDescription() {
     return "Formal Object Definitions in OCLinECore text format - under development";
   }
 
-  public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger) throws Exception {
+  @Override
+public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger) throws Exception {
 	  ECoreOclFormatGenerator eofg = new ECoreOclFormatGenerator(new FileOutputStream(implDir+"eCore.txt"));
 	  eofg.generate(definitions, version, genDate);
 	  eofg.close();
@@ -77,32 +81,39 @@ public class ECoreOclGenerator extends BaseGenerator implements PlatformGenerato
     
   }
 
-  public boolean isECoreGenerator() {
+  @Override
+public boolean isECoreGenerator() {
     return false;
   }
 
-  public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
+  @Override
+public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
       String implDir, Logger logger) throws Exception {
     throw new UnsupportedOperationException("Ocl generator uses ElementDefn-style definitions.");
   }
 
-  public boolean doesCompile() {
+  @Override
+public boolean doesCompile() {
     return false;
   }
 
-  public boolean compile(String rootDir, List<String> errors) {
+  @Override
+public boolean compile(String rootDir, List<String> errors) {
     return false;
   }
 
-  public boolean doesTest() {
+  @Override
+public boolean doesTest() {
     return false;
   }
 
-  public void loadAndSave(String rootDir, String sourceFile, String destFile) {
+  @Override
+public void loadAndSave(String rootDir, String sourceFile, String destFile) {
    
   }
 
-  public String checkFragments(String rootDir, String fragments) throws Exception {
+  @Override
+public String checkFragments(String rootDir, String fragments) throws Exception {
     return "Not supported by eCore implementation";
   }
 }

@@ -31,9 +31,9 @@ package org.hl7.fhir.instance.model;
 
 // Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
-import java.util.*;
-
-import java.net.*;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * Value Set - a set of defined codes from one or more code systems that may be bound to a context
  */
@@ -78,7 +78,8 @@ public class ValueSet extends Resource {
     }
 
   public class ValuesetStatusEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -96,7 +97,8 @@ public class ValueSet extends Resource {
           return ValuesetStatus.superseded;
         throw new Exception("Unknown ValuesetStatus code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == ValuesetStatus.draft)
         return "draft";
       if (code == ValuesetStatus.testing)
@@ -144,7 +146,8 @@ public class ValueSet extends Resource {
     }
 
   public class CodeSelectionModeEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -158,7 +161,8 @@ public class ValueSet extends Resource {
           return CodeSelectionMode.all;
         throw new Exception("Unknown CodeSelectionMode code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == CodeSelectionMode.code)
         return "code";
       if (code == CodeSelectionMode.children)
@@ -202,7 +206,8 @@ public class ValueSet extends Resource {
     }
 
   public class FilterOperatorEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+    @Override
+	public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -216,7 +221,8 @@ public class ValueSet extends Resource {
           return FilterOperator.regex;
         throw new Exception("Unknown FilterOperator code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    @Override
+	public String toCode(Enum<?> code) throws Exception {
       if (code == FilterOperator.equal)
         return "=";
       if (code == FilterOperator.isA)

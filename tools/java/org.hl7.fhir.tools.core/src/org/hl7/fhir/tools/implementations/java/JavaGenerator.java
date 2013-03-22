@@ -30,12 +30,9 @@ POSSIBILITY OF SUCH DAMAGE.
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -47,7 +44,6 @@ import java.util.jar.Manifest;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import javax.management.Attribute;
 import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaCompiler;
@@ -60,19 +56,15 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
-import org.hl7.fhir.instance.formats.AtomComposer;
-//import org.hl7.fhir.instance.formats.JsonComposer;
-import org.hl7.fhir.instance.formats.XmlComposer;
-import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.test.ToolsHelper;
 import org.hl7.fhir.tools.implementations.BaseGenerator;
 import org.hl7.fhir.tools.implementations.java.JavaResourceGenerator.JavaGenClass;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.CSFile;
-import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.ZipGenerator;
+//import org.hl7.fhir.instance.formats.JsonComposer;
 
 public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
 
@@ -84,15 +76,18 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
   private Definitions definitions;
   private Logger logger;
 
-  public String getName() {
+  @Override
+public String getName() {
     return "java";
   }
 
-  public String getDescription() {
+  @Override
+public String getDescription() {
     return "Resource Definitions + parser (+ more todo). The java reference implementation depends on XmlPull (http://www.xmlpull.org/) and the Apache Commons Codec library (http://commons.apache.org/codec/).";
   }
 
-  public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger) throws Exception {
+  @Override
+public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger) throws Exception {
     char sl = File.separatorChar;
     javaDir       =  implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl;
     javaParserDir =  implDir+"org.hl7.fhir.instance"+sl+"src"+sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"formats"+sl;
@@ -219,20 +214,24 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     return n.substring(0,1).toUpperCase()+n.substring(1);
   }
 
-  public String getTitle() {
+  @Override
+public String getTitle() {
     return "Java";
   }
 
-  public boolean isECoreGenerator() {
+  @Override
+public boolean isECoreGenerator() {
     return false;
   }
 
-  public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
+  @Override
+public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
       String implDir, Logger logger) throws Exception {
     throw new UnsupportedOperationException("Java generator uses ElementDefn-style definitions.");	
   }
 
-  public boolean doesCompile() {
+  @Override
+public boolean doesCompile() {
     return true; // ToolProvider.getSystemJavaCompiler() != null;
   }
 
@@ -245,7 +244,8 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     return r == 0;
   }
   
-  public boolean compile(String rootDir, List<String> errors) throws Exception {
+  @Override
+public boolean compile(String rootDir, List<String> errors) throws Exception {
     this.rootDir = rootDir;
     char sc = File.separatorChar;
     List<File> classes = new ArrayList<File>();
@@ -387,11 +387,13 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
   }
 
  
-  public boolean doesTest() {
+  @Override
+public boolean doesTest() {
     return true;
   }
 
-  public void loadAndSave(String rootDir, String sourceFile, String destFile) throws Exception {
+  @Override
+public void loadAndSave(String rootDir, String sourceFile, String destFile) throws Exception {
     // execute the jar file javatest.jar
     // it will produce either the specified output file, or [output file].err with an exception
     // 
@@ -467,7 +469,8 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     } 
   }
 
-  public String checkFragments(String rootDir, String fragments) throws Exception {
+  @Override
+public String checkFragments(String rootDir, String fragments) throws Exception {
     File file = File.createTempFile("temp", ".xml");
     file.deleteOnExit();
     if (file.exists())

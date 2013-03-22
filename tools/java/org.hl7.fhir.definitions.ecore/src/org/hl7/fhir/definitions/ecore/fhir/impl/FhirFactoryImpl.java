@@ -10,12 +10,36 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.hl7.fhir.definitions.ecore.fhir.*;
+import org.hl7.fhir.definitions.ecore.fhir.Annotations;
+import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
+import org.hl7.fhir.definitions.ecore.fhir.BindingExtensibility;
+import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
+import org.hl7.fhir.definitions.ecore.fhir.BindingType;
+import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
+import org.hl7.fhir.definitions.ecore.fhir.Definitions;
+import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
+import org.hl7.fhir.definitions.ecore.fhir.EventDefn;
+import org.hl7.fhir.definitions.ecore.fhir.EventUsage;
+import org.hl7.fhir.definitions.ecore.fhir.Example;
+import org.hl7.fhir.definitions.ecore.fhir.ExampleType;
+import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
+import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
+import org.hl7.fhir.definitions.ecore.fhir.Invariant;
+import org.hl7.fhir.definitions.ecore.fhir.InvariantRef;
+import org.hl7.fhir.definitions.ecore.fhir.Mapping;
+import org.hl7.fhir.definitions.ecore.fhir.MetaDataItem;
+import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
+import org.hl7.fhir.definitions.ecore.fhir.ProfileDefn;
+import org.hl7.fhir.definitions.ecore.fhir.ProfiledElementDefn;
+import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
+import org.hl7.fhir.definitions.ecore.fhir.SearchParameter;
+import org.hl7.fhir.definitions.ecore.fhir.SearchRepeatMode;
+import org.hl7.fhir.definitions.ecore.fhir.SearchType;
+import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 /**
  * <!-- begin-user-doc -->

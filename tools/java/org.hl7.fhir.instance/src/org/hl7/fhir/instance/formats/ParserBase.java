@@ -9,7 +9,6 @@ import java.util.Map;
 import org.apache.commons.codec.binary.Base64;
 import org.hl7.fhir.instance.model.AtomFeed;
 import org.hl7.fhir.instance.model.Resource;
-import org.xmlpull.v1.XmlPullParser;
 
 public abstract class ParserBase extends XmlBase {
 

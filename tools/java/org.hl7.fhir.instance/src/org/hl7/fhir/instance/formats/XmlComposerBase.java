@@ -31,18 +31,15 @@ POSSIBILITY OF SUCH DAMAGE.
 
 
 import java.io.OutputStream;
-import java.math.BigDecimal;
-import java.net.URI;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
-import org.apache.commons.codec.binary.Base64;
-import org.hl7.fhir.instance.model.*;
-import org.hl7.fhir.instance.model.Boolean;
-import org.hl7.fhir.instance.model.Integer;
-import org.hl7.fhir.instance.model.CarePlan.CarePlanStatusEnumFactory;
-import org.hl7.fhir.utilities.xhtml.*;
-import org.hl7.fhir.utilities.xml.*;
+import org.hl7.fhir.instance.model.Binary;
+import org.hl7.fhir.instance.model.Element;
+import org.hl7.fhir.instance.model.Resource;
+import org.hl7.fhir.instance.model.Type;
+import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
+import org.hl7.fhir.utilities.xhtml.XhtmlNode;
+import org.hl7.fhir.utilities.xml.IXMLWriter;
+import org.hl7.fhir.utilities.xml.XMLWriter;
 
 public abstract class XmlComposerBase extends XmlBase {
   

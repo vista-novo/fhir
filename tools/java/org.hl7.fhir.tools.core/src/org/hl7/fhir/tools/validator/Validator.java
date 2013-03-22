@@ -145,7 +145,8 @@ public class Validator {
       this.files = files;
     }
 
-    public LSInput resolveResource(final String type, final String namespaceURI, final String publicId, String systemId, final String baseURI) {
+    @Override
+	public LSInput resolveResource(final String type, final String namespaceURI, final String publicId, String systemId, final String baseURI) {
 //      if (!(namespaceURI.equals("http://hl7.org/fhir"))) //|| namespaceURI.equals("http://www.w3.org/1999/xhtml")))
       if (!files.containsKey(systemId))
         return null;

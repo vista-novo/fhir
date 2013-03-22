@@ -22,7 +22,8 @@ public class Utilities {
 		while (same && one.available() > 0) {
 			same = one.read() == two.read();
 		}
-		
+		one.close();
+		two.close();
 		if (!same) {
 			if (!SKIP_THIRD_PARTY)
 				Runtime.getRuntime().exec(COMPARE_PATH+" \""+filename1+"\" \""+filename2+"\"");
