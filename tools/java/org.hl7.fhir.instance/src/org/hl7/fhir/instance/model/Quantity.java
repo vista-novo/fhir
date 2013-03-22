@@ -32,8 +32,8 @@ package org.hl7.fhir.instance.model;
 // Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
 
-import java.net.*;
-import java.math.*;
+import java.math.BigDecimal;
+import java.net.URI;
 /**
  * A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies
  */
@@ -103,7 +103,7 @@ public class Quantity extends Type {
     private Decimal value;
 
     /**
-     * How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues. E.g. if the comparator is “<“ , then the real value is < stated value
+     * How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues. E.g. if the comparator is "<" , then the real value is < stated value
      */
     private Enumeration<QuantityComparator> comparator;
 
