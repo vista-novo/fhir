@@ -31,7 +31,9 @@ package org.hl7.fhir.instance.model;
 
 // Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 /**
  * The findings and interpretation of diagnostic  tests performed on patients and/or specimens. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretation, and formatted representation of diagnostic reports
@@ -223,7 +225,7 @@ public class DiagnosticReport extends Resource {
         private CodeableConcept name;
 
         /**
-         * Details about the individual specimen to which these ‘Result group’ test results refer
+         * Details about the individual specimen to which these "Result group" test results refer
          */
         private ResourceReference specimen;
 
