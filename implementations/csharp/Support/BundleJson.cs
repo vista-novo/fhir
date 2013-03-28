@@ -90,10 +90,8 @@ namespace Hl7.Fhir.Support
                 return null;
             }
 
-            result.Entries.Clear();
-
             if( feed[XATOM_ENTRY] != null )
-                result.loadItems(feed[XATOM_ENTRY], errors);
+                result.Entries = result.loadItems(feed[XATOM_ENTRY], errors);
 
             errors.AddRange(result.Validate());
 
@@ -106,68 +104,77 @@ namespace Hl7.Fhir.Support
         }
 
 
-        private void loadItems( JToken token, ErrorList errors )
+        private ManagedEntryList loadItems( JToken token, ErrorList errors )
         {
+            var result = new ManagedEntryList(this);
+
             JArray items = (JArray)token;
 
             foreach (var item in items)
             {
-                BundleEntry result;
-
-                errors.DefaultContext = "An atom entry";
-
-                string id = item.Value<string>(XATOM_ID);
-                if( id != null )
-                    errors.DefaultContext = String.Format("Entry '{0}'", id);
-
-                try
-                {
-                    string category = getCategoryFromEntry(item);
-
-                    if (item.Value<DateTimeOffset?>(JATOM_DELETED) != null)
-                        result = new DeletedEntry();
-                    else if (category == XATOM_CONTENT_BINARY)
-                        result = new BinaryEntry();
-                    else
-                        result = new ResourceEntry();
-
-                    result.SelfLink = getLinks(item[XATOM_LINK]).SelfLink;
-                    result.Id = new Uri(id, UriKind.Absolute);
-                    
-                    if( result is DeletedEntry )
-                        ((DeletedEntry)result).When = item.Value<DateTimeOffset>(JATOM_DELETED);
-                    else
-                    {
-                        ContentEntry ce = (ContentEntry)result;
- 
-                        ce.Title = item.Value<string>(XATOM_TITLE);
-                        ce.LastUpdated = item.Value<DateTimeOffset?>(XATOM_UPDATED);
-                        ce.Published = item.Value<DateTimeOffset?>(XATOM_PUBLISHED);
-                        ce.EntryAuthorName = item[XATOM_AUTHOR] as JArray != null ? item[XATOM_AUTHOR]
-                                .Select(auth => auth.Value<string>(XATOM_AUTH_NAME))
-                                .FirstOrDefault() : null;
-                        ce.EntryAuthorUri = item[XATOM_AUTHOR] as JArray != null ? item[XATOM_AUTHOR]
-                                .Select(auth => auth.Value<string>(XATOM_AUTH_URI))
-                                .FirstOrDefault() : null;
-
-                        if (result is ResourceEntry)
-                            ((ResourceEntry)ce).Content = getContents(item[XATOM_CONTENT], errors);
-                        else
-                            getBinaryContentsFromEntry(item[XATOM_CONTENT], (BinaryEntry)ce, errors);
-                    };
-                }
-                catch (Exception exc)
-                {
-                    errors.Add("Exception while reading entry: " + exc.Message);
-                    return;
-                }
-                finally
-                {
-                    errors.DefaultContext = null;
-                }
-
-                Entries.Add(result);
+                result.Add(loadItem(item, errors));
             }
+
+            return result;
+        }
+
+        private BundleEntry loadItem(JToken item, ErrorList errors)
+        {
+            BundleEntry result;
+
+            errors.DefaultContext = "An atom entry";
+
+            string id = item.Value<string>(XATOM_ID);
+            if (id != null)
+                errors.DefaultContext = String.Format("Entry '{0}'", id);
+
+            try
+            {
+                string category = getCategoryFromEntry(item);
+
+                if (item.Value<DateTimeOffset?>(JATOM_DELETED) != null)
+                    result = new DeletedEntry();
+                else if (category == XATOM_CONTENT_BINARY)
+                    result = new BinaryEntry();
+                else
+                    result = new ResourceEntry();
+
+                result.SelfLink = getLinks(item[XATOM_LINK]).SelfLink;
+                result.Id = new Uri(id, UriKind.Absolute);
+
+                if (result is DeletedEntry)
+                    ((DeletedEntry)result).When = item.Value<DateTimeOffset>(JATOM_DELETED);
+                else
+                {
+                    ContentEntry ce = (ContentEntry)result;
+
+                    ce.Title = item.Value<string>(XATOM_TITLE);
+                    ce.LastUpdated = item.Value<DateTimeOffset?>(XATOM_UPDATED);
+                    ce.Published = item.Value<DateTimeOffset?>(XATOM_PUBLISHED);
+                    ce.EntryAuthorName = item[XATOM_AUTHOR] as JArray != null ? item[XATOM_AUTHOR]
+                            .Select(auth => auth.Value<string>(XATOM_AUTH_NAME))
+                            .FirstOrDefault() : null;
+                    ce.EntryAuthorUri = item[XATOM_AUTHOR] as JArray != null ? item[XATOM_AUTHOR]
+                            .Select(auth => auth.Value<string>(XATOM_AUTH_URI))
+                            .FirstOrDefault() : null;
+
+                    if (result is ResourceEntry)
+                        ((ResourceEntry)ce).Content = getContents(item[XATOM_CONTENT], errors);
+                    else
+                        getBinaryContentsFromEntry(item[XATOM_CONTENT], (BinaryEntry)ce, errors);
+                };
+            }
+            catch (Exception exc)
+            {
+                errors.Add("Exception while reading entry: " + exc.Message);
+                return null;
+            }
+            finally
+            {
+                errors.DefaultContext = null;
+            }
+
+            return result;
         }
 
         private static string getCategoryFromEntry(JToken item)

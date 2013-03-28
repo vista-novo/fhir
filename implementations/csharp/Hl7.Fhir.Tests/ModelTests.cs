@@ -146,5 +146,14 @@ namespace Hl7.Fhir.Tests
             Assert.AreEqual("http://www.nu.nl/patient/@1/history/@3", 
                 ResourceLocation.BuildVersionedResourceLocation(new Uri("http://www.nu.nl"), "patient", "1", "3").ToString());
         }
+
+        [TestMethod]
+        public void DetermineCollectionName()
+        {
+            Patient p = new Patient();
+
+            Assert.AreEqual("patient", ResourceLocation.GetCollectionNameForResource(p));
+            Assert.AreEqual("patient", ResourceLocation.GetCollectionNameForResource(p.GetType()));
+        }
     }
 }

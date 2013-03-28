@@ -106,13 +106,6 @@ namespace Hl7.Fhir.Tests
             };
 
 
-            FhirClient client = new FhirClient(new Uri("http://fhir.someendpoint.com/svc/fhir"));
-            Patient ewout = client.Read<Patient>("1");
-            ewout.Details.Name.Add(HumanName.ForFamily("Kramer").WithGiven("Ewout"));
-            ewout = client.Update<Patient>(ewout, "1");
-
-
-
             Assert.AreEqual(@"<?xml version=""1.0"" encoding=""utf-16""?>" +
                 @"<Patient id=""Ab4"" xmlns=""http://hl7.org/fhir"">" +
                 @"<text><status value=""generated"" /><div xmlns='http://www.w3.org/1999/xhtml'>Patient 3141 - Wouter Gert, nov. 30th, 1972</div></text>" +

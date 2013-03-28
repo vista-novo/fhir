@@ -33,12 +33,30 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using System.Text.RegularExpressions;
+using Hl7.Fhir.Model;
 
 
 namespace Hl7.Fhir.Support
 {
     public static class ResourceLocation
     {
+        public static string GetCollectionNameForResource(Resource r)
+        {
+            if (r == null) return null;
+
+            return GetCollectionNameForResource(r.GetType());
+        }
+
+        public static string GetCollectionNameForResource(Type t)
+        {
+            if (typeof(Resource).IsAssignableFrom(t))
+                return ModelInfo.GetResourceNameForType(t).ToLower();
+            else
+                throw new ArgumentException(String.Format("Cannot determine collection name, type {0} is " +
+                        "not a resource type", t.Name));
+        }
+
+
         public static Uri BuildResourceLocation(Uri baseUri, string collectionName, string id)
         {
             return new Uri(Util.Combine(baseUri.ToString(),
