@@ -9,6 +9,11 @@ systems, including systems such as IHE XDS. Applications claiming conformance to
 to be conformant to "FHIR documents". 
 </p>
 
+<p>
+Note that FHIR defines both a this document format and also a <a href="documentreference.htm">document reference resource</a>. FHIR documents are for documents 
+that are authored and assembled in FHIR, while the document reference resource is for general references to other documents. 
+</p>
+
 <h2>Document Content</h2>
 <p>
 All documents have the same structure: a <a href="resources.htm#bundle">bundle</a> that has a <i>Document</i> resource (see below) 
