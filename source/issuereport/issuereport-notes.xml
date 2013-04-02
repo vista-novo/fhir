@@ -24,7 +24,7 @@ This granularity could include:
 <li>more detail about the location of an issue</li>
 <li>the ability to identify multiple distinct issues</li>
 <li>the need to drive automated behavior at a more detailed level than supported by HTTP codes and/or</li>
-<li>the need to return information with severities other than "failure"</li>
+<li>the need to return information with severities other than "error"</li>
 </ul>
 Issue reports returned SHOULD be in alignment with the HTTP response code.  For example, if the HTTP code indicates a failure, at least
 one of the issues should have a severity of "error", indicating the reason for the failure.

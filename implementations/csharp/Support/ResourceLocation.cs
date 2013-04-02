@@ -40,6 +40,8 @@ namespace Hl7.Fhir.Support
 {
     public static class ResourceLocation
     {
+        public const string BINARY_COLLECTION_NAME = "binary";
+
         public static string GetCollectionNameForResource(Resource r)
         {
             if (r == null) return null;

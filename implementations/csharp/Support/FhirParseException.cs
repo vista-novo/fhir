@@ -35,7 +35,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Hl7.Fhir.Client
+namespace Hl7.Fhir.Support
 {
     public class FhirParseException : Exception
     {
