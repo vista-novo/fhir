@@ -40,8 +40,8 @@ namespace Hl7.Fhir.Model
     public partial class Uuid
     {
         public static bool TryParse(string value, out Uuid result)
-        {       
-            Regex uuidRegEx = new Regex(PATTERN);
+        {
+            Regex uuidRegEx = new Regex("^" + PATTERN + "$", RegexOptions.Singleline);
 
             if(value==null ||uuidRegEx.IsMatch(value))
             {

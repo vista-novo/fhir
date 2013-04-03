@@ -18,6 +18,24 @@ namespace Hl7.Fhir.Tests
     public class PrimitiveParserTests
     {
         [TestMethod]
+        public void TestBasicTypePatterns()
+        {
+            Id result;
+
+            bool succ = Id.TryParse("az23", out result);
+            Assert.IsTrue(succ);
+
+            succ = Id.TryParse("!notgood!", out result);
+            Assert.IsFalse(succ);
+
+            succ = Id.TryParse("NotGood", out result);
+            Assert.IsFalse(succ);
+
+            succ = Id.TryParse("1234567890123456789012345678901234567", out result);
+            Assert.IsFalse(succ);
+        }
+
+        [TestMethod]
         public void TestContinueOnEmptyElements()
         {
             string xmlString = "<x xmlns='http://hl7.org/fhir'><someElem value='true' id='3141' /><someElem2 /></x>";

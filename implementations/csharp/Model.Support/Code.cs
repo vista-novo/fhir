@@ -41,8 +41,8 @@ namespace Hl7.Fhir.Model
     public partial class Code
     {
         public static bool TryParse(string value, out Code result)
-        {       
-            Regex codeRegEx = new Regex(PATTERN);
+        {
+            Regex codeRegEx = new Regex("^" + PATTERN + "$", RegexOptions.Singleline);
 
             if (value == null || codeRegEx.IsMatch(value))
             {

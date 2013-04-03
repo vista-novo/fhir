@@ -45,8 +45,8 @@ namespace Hl7.Fhir.Model
         }
 
         public static bool TryParse(string value, out Date result)
-        {       
-            Regex sidRegEx = new Regex(PATTERN);
+        {
+            Regex sidRegEx = new Regex("^" + PATTERN + "$", RegexOptions.Singleline);
 
             if (value==null || sidRegEx.IsMatch(value))
             {

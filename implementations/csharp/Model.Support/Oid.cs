@@ -40,8 +40,8 @@ namespace Hl7.Fhir.Model
     public partial class Oid
     {
         public static bool TryParse(string value, out Oid result)
-        {       
-            Regex oidRegEx = new Regex(PATTERN);
+        {
+            Regex oidRegEx = new Regex("^" + PATTERN + "$", RegexOptions.Singleline);
 
             if (value==null || oidRegEx.IsMatch(value))
             {
