@@ -6,52 +6,50 @@
       <p>Consultation note for Henry Levin the 7th</p>
     </div>
   </text>
-  <information>
-    <id>
-      <system value="http://healthintersections.com.au/test"/>
-      <id value="1"/>
-    </id>
-    <versionId>
-      <system value="urn:ietf:rfc:3986"/>
-      <id value="urn:uuid:72391709-b9ae-4053-b888-4bee268bf5da"/> 
-    </versionId>
-    <created value="2012-01-04T09:10:14Z"/>
-    <type>
-      <coding>
-        <system value="http://loinc.org"/>
-        <code value="11488-4"/>
-        <display value="Consultation note"/>
-      </coding>
-    </type>
-    <confidentiality>
-      <system value="http://ihe.net/xds/connectathon/confidentialityCodes"/>
-      <code value="1.3.6.1.4.1.21367.2006.7.101"/>
-      <display value="Clinical-Staff"/>
-    </confidentiality>
-    <subject>
-      <type value="Patient"/>
-      <url value="../patient/@xcda"/>
-      <display value="Henry Levin the 7th"/>
-    </subject>
-    <author>
-      <type value="Provider"/>
-      <url value="../provider/@xcda-author"/>
-      <display value="Robert Dolin MD"/>
-    </author>
-    <attester>
-      <mode value="legal"/>
-      <party>
-        <type value="Provider"/>
-        <url value="../provider/@xcda-author"/>
-        <display value="Robert Dolin MD"/>
-      </party>
-    </attester>
-    <custodian>
-      <type value="Organization"/>
-      <url value="../organization/@2.16.840.1.113883.19.5"/>
-      <display value="Good Health Clinic"/>
-    </custodian>
-  </information>
+	<id>
+	  <system value="http://healthintersections.com.au/test"/>
+	  <id value="1"/>
+	</id>
+	<versionId>
+	  <system value="urn:ietf:rfc:3986"/>
+	  <id value="urn:uuid:72391709-b9ae-4053-b888-4bee268bf5da"/> 
+	</versionId>
+	<created value="2012-01-04T09:10:14Z"/>
+	<type>
+	  <coding>
+		<system value="http://loinc.org"/>
+		<code value="11488-4"/>
+		<display value="Consultation note"/>
+	  </coding>
+	</type>
+	<confidentiality>
+	  <system value="http://ihe.net/xds/connectathon/confidentialityCodes"/>
+	  <code value="1.3.6.1.4.1.21367.2006.7.101"/>
+	  <display value="Clinical-Staff"/>
+	</confidentiality>
+	<subject>
+	  <type value="Patient"/>
+	  <url value="../patient/@xcda"/>
+	  <display value="Henry Levin the 7th"/>
+	</subject>
+	<author>
+	  <type value="Provider"/>
+	  <url value="../provider/@xcda-author"/>
+	  <display value="Robert Dolin MD"/>
+	</author>
+	<attester>
+	  <mode value="legal"/>
+	  <party>
+		<type value="Provider"/>
+		<url value="../provider/@xcda-author"/>
+		<display value="Robert Dolin MD"/>
+	  </party>
+	</attester>
+	<custodian>
+	  <type value="Organization"/>
+	  <url value="../organization/@2.16.840.1.113883.19.5"/>
+	  <display value="Good Health Clinic"/>
+	</custodian>
   <section>
     <code>
       <coding>

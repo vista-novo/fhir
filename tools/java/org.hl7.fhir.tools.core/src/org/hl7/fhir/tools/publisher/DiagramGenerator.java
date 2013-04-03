@@ -110,8 +110,8 @@ public class DiagramGenerator {
     StringBuilder s2 = new StringBuilder();
     s.append("@startuml\r\n");
     s.append("title "+resource.getName()+"\r\n");
-    s.append("skinparam nodesep 10\r\n");
-    s.append("skinparam ranksep 10\r\n");
+    s.append("skinparam nodesep 20\r\n");
+    s.append("skinparam ranksep 20\r\n");
     s.append("skinparam classBackgroundColor Aliceblue\r\n\r\n");
     s.append("skinparam classBorderColor Gray\r\n\r\n");
     s.append("skinparam classArrowColor Navy\r\n\r\n");

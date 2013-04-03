@@ -202,7 +202,8 @@ public class JavaParserJsonGenerator extends JavaBaseGenerator {
     for (DefinedCode dc : definitions.getPrimitives().values()) 
       write("import org.hl7.fhir.instance.model."+getPrimitiveTypeModelName(dc.getCode())+";\r\n");
     write("import org.hl7.fhir.instance.model.*;\r\n");
-    write("import org.json.*;\r\n");
+    write("import org.json.JSONObject;\r\n");
+    write("import org.json.JSONArray;\r\n");
   //  write("import java.util.*;\r\n");
     write("\r\n");
     write("public class JsonParser extends JsonParserBase {\r\n");

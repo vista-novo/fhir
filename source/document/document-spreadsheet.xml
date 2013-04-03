@@ -20,12 +20,20 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>5040</WindowTopX>
   <WindowTopY>5505</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
  <Styles>
   <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s113" ss:Name="Normal 2">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
@@ -59,17 +67,17 @@
    <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
   </Style>
   <Style ss:ID="s67">
-   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s68">
-   <Alignment ss:Vertical="Top"/>
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s69">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Vertical="Top"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="18" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="39" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:Width="189"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
@@ -115,14 +123,378 @@
     <Cell ss:Index="14"><Data ss:Type="String">Confidentiality? Language? Consent? Signatures</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Document.information</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">y</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell><Data ss:Type="String">DocumentInformation</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Metadata and context for this document</Data></Cell>
-    <Cell><Data ss:Type="String">Defines the medata and context for this document</Data></Cell>
+    <Cell><Data ss:Type="String">Document.id</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Identifier</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Logical identifier for document (version-independent)</Data></Cell>
+    <Cell><Data ss:Type="String">Logical Identifier for the document, assigned when created. This identifier stays constant when subsequent versions of the document are created</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">see discussion in resource definition for how these relate</Data></Cell>
+    <Cell><Data ss:Type="String">Document.id / Document.setId</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.versionId</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Identifier</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Version-specific identifier for document</Data></Cell>
+    <Cell><Data ss:Type="String">Version specific identifier for the document, assigned when created. This identifier changes when subsequent versions of the document are created</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">see discussion in resource definition for how these relate</Data></Cell>
+    <Cell><Data ss:Type="String">Document.id</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.created</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">instant</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Document creation time</Data></Cell>
+    <Cell><Data ss:Type="String">The document creation time, when the document first came into being. Where the document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created.</Data></Cell>
+    <Cell><Data ss:Type="String">Creation time is used for tracking, organizing versions and searching.</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">./effectiveTime[type=&quot;TS&quot;]</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.class</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Coding</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Particular kind of document</Data></Cell>
+    <Cell><Data ss:Type="String">The code specifying the particular kind of document (e.g., Prescription, Discharge Summary, Report).</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String"> It is suggested that the XDS Affinity Domain draws these values from a coding scheme providing a coarse level of granularity (about 10 to 100 entries). Shall have a single value. This should be an extension</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.type</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell><Data ss:Type="String">DocumentType</Data></Cell>
+    <Cell><Data ss:Type="String">Kind of document (LOINC if possible)</Data></Cell>
+    <Cell><Data ss:Type="String">Specifies the particular kind of document (e.g. History and Physical, Discharge Summary, Progress Note)</Data></Cell>
+    <Cell><Data ss:Type="String">Key metadata element describing the document, used in searching/filtering.</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">./code</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.title</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Document title</Data></Cell>
+    <Cell><Data ss:Type="String">Official human-readable label for the document</Data></Cell>
+    <Cell><Data ss:Type="String">Helps humans to assess whether the document is of interest</Data></Cell>
+    <Cell><Data ss:Type="String">It's commonly the case that clinical documents do not have a title and are collectively referred to by the display name of Document.type (e.g. a &quot;consultation&quot; or &quot;progress note&quot;). Where these display names are rendered to the clinician or where the document has a unique title, the Document.title value should be used</Data></Cell>
+    <Cell><Data ss:Type="String">./title</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">!Document.enterer</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Resource(Provider)</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">The source of the data entry</Data></Cell>
+    <Cell><Data ss:Type="String">The person or device that performed the data entry leading to this document. Where there is more than one candidate, pick the most proximal to the document creation or capture on a per-section basis. </Data></Cell>
+    <Cell><Data ss:Type="String">Identifies who is responsible for the entry of the data.</Data></Cell>
+    <Cell><Data ss:Type="String">Can provide other enterers in extensions</Data></Cell>
+    <Cell><Data ss:Type="String">unique(highest(./participation[typeCode=&quot;INT&quot; and isNormalParticipation], priorityNumber)/role[classCode=&quot;ASSIGNED&quot; and isNormalRole]/player[determinerCode=&quot;INST&quot; and classCode=(&quot;DEV&quot;, &quot;PSN&quot;) and isNormalEntity()])</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.confidentiality</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Coding</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">DocumentConfidentiality</Data></Cell>
+    <Cell><Data ss:Type="String">As defined by affinity domain</Data></Cell>
+    <Cell><Data ss:Type="String">The code specifying the level of confidentiality of the XDS Document. These codes are specific to an XDS Affinity Domain.</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Enforcement and issues related to highly sensitive documents are beyond the scope of XDS (see security section). confidentialityCode is part of a codification scheme and value set enforced by the Document Registry. </Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.subject</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Resource(Patient|Group|Device)</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Who/what the document is about</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies the primary subject of the document.  </Data></Cell>
+    <Cell><Data ss:Type="String">Essential metadata for searching for the document, identifies who the document applies to</Data></Cell>
+    <Cell><Data ss:Type="String">For clinical documents, this is usually the patient.</Data></Cell>
+    <Cell><Data ss:Type="String">unique(./participation[typeCode=&quot;SBJ&quot; and isNormalParticipation]/role[typeCode=&quot;PAT&quot;])&#10;or&#10;unique(./participation[typeCode=&quot;SBJ&quot; and isNormalParticipation]/role[typeCode=&quot;IDENT&quot;]/player[determinerCode=&quot;INST&quot; and classCode=(&quot;DEV&quot;, &quot;ORG&quot;) and isNormalEntity()])</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Need to extend this to support documents with other types of subjects.  Also rationalize with encounter &amp; context elements</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">!Document.informant</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Resource(Patient|Provider)</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Who provided information in document</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies the source that recounted the information recorded</Data></Cell>
+    <Cell><Data ss:Type="String">Provides context as to the potential accuracy of the information</Data></Cell>
+    <Cell><Data ss:Type="String">Generally used if information is sourced from a non-clinician (patient, relative, etc.)</Data></Cell>
+    <Cell><Data ss:Type="String">unique(highest(./participation[typeCode=&quot;INF&quot; and isNormalParticipation], priorityNumber)/role[classCode=&quot;ASSIGNED&quot; and isNormalRole]/player[determinerCode=&quot;INST&quot; and classCode=(&quot;DEV&quot;, &quot;PSN&quot;) and isNormalEntity()])</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.author</Data></Cell>
+    <Cell><Data ss:Type="String">1..*</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Resource(Provider|Device)</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Who/what authored the final document</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies who is responsible for the information in the document.  (Not necessarily who typed it in.)</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies who is responsible for the content.</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">./participation[typeCode=&quot;AUT&quot; and isNormalParticipation]/role[classCode=&quot;ASSIGNED&quot; and isNormalRole()]</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.attester</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">right</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Attests to accuracy of document</Data></Cell>
+    <Cell><Data ss:Type="String">A participant who has attested to the accuracy of the document</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies responsibility for the accuracy of the document content.</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">./participation[typeCode=&quot;AUTHEN&quot; and isNormalParticipation]</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.attester.mode</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">DocumentAttestationMode</Data></Cell>
+    <Cell><Data ss:Type="String">personal | professional | legal | official</Data></Cell>
+    <Cell><Data ss:Type="String">The type of attestation the authenticator offers</Data></Cell>
+    <Cell><Data ss:Type="String">Indicates the level of officialness of the attestation.</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">unique(./modeCode)</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.attester.time</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">dateTime</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">When document attested</Data></Cell>
+    <Cell><Data ss:Type="String">When document was attested by the party</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies when the information in the document was deemed accurate.  (Things may have changed since then.)</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">./time[type=&quot;TS&quot; and isNormalDatatype()]</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.attester.party</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Resource(Patient|Provider|Organization)</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Who attested the document</Data></Cell>
+    <Cell><Data ss:Type="String">Who attested the document in the specified way</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies who has taken on the responsibility for accuracy of the document content.</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">./role[classCode=&quot;ASSIGNED&quot; and isNormalRole]/player[determinerCode=&quot;INST&quot; and classCode=(&quot;DEV&quot;, &quot;PSN&quot;) and isNormalEntity()]&#10;or&#10;./role[classCode=&quot;ASSIGNED&quot; and isNormalRole and not(player)]/scoper[determinerCode=&quot;INST&quot; and classCode=&quot;ORG&quot; and isNormalEntity()]</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">!Document.recipient</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Resource(Provider|Organization)</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Expected to receive a copy </Data></Cell>
+    <Cell><Data ss:Type="String">Identifies the people and organisations for whom the document is intended</Data></Cell>
+    <Cell><Data ss:Type="String">Used for routing and also provides context as to intended audience.</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">./participation[typeCode=&quot;RCV&quot; and isNormalParticipation]/role[classCode=&quot;ASSIGNED&quot; and isNormalRole]&#10;or&#10;./participation[typeCode=&quot;RCV&quot; and isNormalParticipation]/role[classCode=&quot;ASSIGNED&quot; and isNormalRole and not (player)]/scoper[classCode=&quot;ORG&quot; and determinerCode=&quot;INST&quot; and isNormalEntity()]</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.custodian</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Resource(Organization)</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Org which maintains the document</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies the organization or group who is responsible for ongoing maintenance of and access to the document.</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies where to go to find the current version, where to report issues, etc.</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">./participation[typeCode=&quot;RCV&quot; and isNormalParticipation]/role[classCode=&quot;CUST&quot; and isNormalRole and not (player)]/scoper[classCode=&quot;ORG&quot; and determinerCode=&quot;INST&quot; and isNormalEntity()]</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.event</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">The clinical event/act/item being documented</Data></Cell>
+    <Cell><Data ss:Type="String">The main event/act/item, such as a colonoscopy or an appendectomy, being documented</Data></Cell>
+    <Cell><Data ss:Type="String">Provides context for the document and creates a linkage between a resource describing an event and the document created describing the event.</Data></Cell>
+    <Cell><Data ss:Type="String">The event needs to be consistent with the type element, though can provide further information if desired</Data></Cell>
+    <Cell><Data ss:Type="String">unique(highest(./outboundRelationship[typeCode=&quot;SUBJ&quot; and isNormalActRelationship()], priorityNumber)/target[moodCode=&quot;EVN&quot; and isNormalAct])</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.event.code</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Code(s) that apply to the event being documented</Data></Cell>
+    <Cell><Data ss:Type="String">This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a &quot;History and Physical Report&quot; in which the procedure being documented is necessarily a &quot;History and Physical&quot; act.</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">An event can further specialize the act inherent in the typeCode, such as where it is simply &quot;Procedure Report&quot; and the procedure was a &quot;colonoscopy&quot;. If one or more eventCodes are included, they shall not conflict with the values inherent in the classCode, practiceSettingCode or typeCode, as such a conflict would create an ambiguous situation. This short list of codes is provided to be used as “key words” for certain types of queries.</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.event.period</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Period</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">The period covered by the document</Data></Cell>
+    <Cell><Data ss:Type="String">The period of time covered by the document. There is no assertion that the document is a complete representation for this period, only that it documents events during this time</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.event.detail</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Resource(Any)</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Full details for the event(s) the document concents</Data></Cell>
+    <Cell><Data ss:Type="String">Full details for the event(s) the document concents</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Document.encounter</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Resource(Admission|InterestOfCare)</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Context of the document</Data></Cell>
+    <Cell><Data ss:Type="String">Describes the clinical encounter or type of care this document is associated with.</Data></Cell>
+    <Cell><Data ss:Type="String">Provides context for the document and supports searching.</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">unique(highest(./outboundRelationship[typeCode=&quot;SUBJ&quot; and isNormalActRelationship()], priorityNumber)/target[moodCode=&quot;EVN&quot; and classCode=(&quot;ENC&quot;, &quot;PCPR&quot;) and isNormalAct])</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="195">
     <Cell><Data ss:Type="String">Document.replaces</Data></Cell>
@@ -301,7 +673,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>0</ActiveRow>
      <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
@@ -311,13 +683,13 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="25.5"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="60.75"/>
-   <Column ss:StyleID="s67" ss:Width="106.5"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="230.25"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="210.75"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="306"/>
+   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="25.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="60.75"/>
+   <Column ss:StyleID="s69" ss:Width="106.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="230.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="210.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="306"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -383,42 +755,42 @@
     <Cell><Data ss:Type="String">the type of the document</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell><Data ss:Type="String">Document.information.type</Data></Cell>
+    <Cell><Data ss:Type="String">Document.type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">date</Data></Cell>
     <Cell><Data ss:Type="String">the document creation time</Data></Cell>
     <Cell><Data ss:Type="String">date</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
-    <Cell><Data ss:Type="String">Document.information.created</Data></Cell>
+    <Cell><Data ss:Type="String">Document.created</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">subject</Data></Cell>
     <Cell><Data ss:Type="String">subject of the document</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell><Data ss:Type="String">Document.information.subject</Data></Cell>
+    <Cell><Data ss:Type="String">Document.subject</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">author</Data></Cell>
     <Cell><Data ss:Type="String">author of the document</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell><Data ss:Type="String">Document.information.author</Data></Cell>
+    <Cell><Data ss:Type="String">Document.author</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">attester</Data></Cell>
     <Cell><Data ss:Type="String">attester of the document</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell><Data ss:Type="String">Document.information.attester.party</Data></Cell>
+    <Cell><Data ss:Type="String">Document.attester.party</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">context</Data></Cell>
     <Cell><Data ss:Type="String">context of the document</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell><Data ss:Type="String">Document.information.event.code</Data></Cell>
+    <Cell><Data ss:Type="String">Document.event.code</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">section-type</Data></Cell>
@@ -442,11 +814,10 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
+     <ActiveRow>1</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
@@ -455,14 +826,14 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="18.75">
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="153.75"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="252.75"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="54"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="91.5"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="169.5"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="288"/>
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="18.75">
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="153.75"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="252.75"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="54"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="91.5"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="169.5"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="288"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
@@ -472,11 +843,35 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">DocumentSectionCode</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Classification of a clinical document section</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s69"><Data ss:Type="String">LOINC Section Types</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">DocumentSectionCode</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Classification of a clinical document section</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s67"><Data ss:Type="String">LOINC Section Types</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">DocumentAttestationMode</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">The way in which a person authenticated a document</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">#document-attestation-mode</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">DocumentType</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Type of a clinical document</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">LOINC Document Types</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="Default"><Data ss:Type="String">DocumentConfidentiality</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Codes specifying the level of confidentiality of the XDS Document</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -489,7 +884,50 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>2</ActiveRow>
+     <RangeSelection>R3C1:R5C6</RangeSelection>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="document-attestation-mode">
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="5" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="344.25"/>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s113"><Data ss:Type="String">personal</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="String">The person authenticated the document in their personal capacity</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s113"><Data ss:Type="String">professional</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="String">The person authenticated the document in their professional capacity</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s113"><Data ss:Type="String">legal</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="String">The person authenticated the document and accepted legal responsibility for its content</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s113"><Data ss:Type="String">official</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="String">The organization authenticated the document as consistent with their policies and procedures</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>18</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

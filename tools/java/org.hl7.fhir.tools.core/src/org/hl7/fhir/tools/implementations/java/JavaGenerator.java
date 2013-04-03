@@ -83,7 +83,7 @@ public String getName() {
 
   @Override
 public String getDescription() {
-    return "Resource Definitions + parser (+ more todo). The java reference implementation depends on XmlPull (http://www.xmlpull.org/) and the Apache Commons Codec library (http://commons.apache.org/codec/).";
+    return "Resource Definitions + parser (+ more todo). The java reference implementation depends on XmlPull (http://www.xmlpull.org/), the Java JSON library (http://json.org) and the Apache Commons Codec library (http://commons.apache.org/codec/).";
   }
 
   @Override
