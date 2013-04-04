@@ -54,7 +54,6 @@
     <Compile Include="Model\Coding.cs" />
     <Compile Include="Model\Contact.cs" />
     <Compile Include="Model\Demographics.cs" />
-    <Compile Include="Model\DocumentInformation.cs" />
     <Compile Include="Model\Element.cs" />
     <Compile Include="Model\Extension.cs" />
     <Compile Include="Model\HumanName.cs" />
@@ -83,11 +82,13 @@
     <Compile Include="Model\XHtml.cs" />
     <Compile Include="Model\Resource.cs" />
     <Compile Include="Model\CarePlan.cs" />
+    <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Conformance.cs" />
     <Compile Include="Model\Coverage.cs" />
     <Compile Include="Model\Device.cs" />
     <Compile Include="Model\DiagnosticReport.cs" />
     <Compile Include="Model\Document.cs" />
+    <Compile Include="Model\DocumentReference.cs" />
     <Compile Include="Model\Encounter.cs" />
     <Compile Include="Model\Group.cs" />
     <Compile Include="Model\ImagingStudy.cs" />
@@ -112,9 +113,6 @@
     <Compile Include="Model\SecurityEvent.cs" />
     <Compile Include="Model\Test.cs" />
     <Compile Include="Model\ValueSet.cs" />
-    <Compile Include="Model\XdsEntry.cs" />
-    <Compile Include="Model\XdsEntry2.cs" />
-    <Compile Include="Model\XdsFolder.cs" />
     <Compile Include="Model\Medication.cs" />
     <Compile Include="Model\Specimen.cs" />
     <Compile Include="Model\Food.cs" />
@@ -139,8 +137,6 @@
     <Compile Include="Serializers\ContactSerializer.cs" />
     <Compile Include="Parsers\DemographicsParser.cs" />
     <Compile Include="Serializers\DemographicsSerializer.cs" />
-    <Compile Include="Parsers\DocumentInformationParser.cs" />
-    <Compile Include="Serializers\DocumentInformationSerializer.cs" />
     <Compile Include="Parsers\ExtensionParser.cs" />
     <Compile Include="Serializers\ExtensionSerializer.cs" />
     <Compile Include="Parsers\HumanNameParser.cs" />
@@ -193,6 +189,8 @@
     <Compile Include="Serializers\XHtmlSerializer.cs" />
     <Compile Include="Parsers\CarePlanParser.cs" />
     <Compile Include="Serializers\CarePlanSerializer.cs" />
+    <Compile Include="Parsers\CategoryParser.cs" />
+    <Compile Include="Serializers\CategorySerializer.cs" />
     <Compile Include="Parsers\ConformanceParser.cs" />
     <Compile Include="Serializers\ConformanceSerializer.cs" />
     <Compile Include="Parsers\CoverageParser.cs" />
@@ -203,6 +201,8 @@
     <Compile Include="Serializers\DiagnosticReportSerializer.cs" />
     <Compile Include="Parsers\DocumentParser.cs" />
     <Compile Include="Serializers\DocumentSerializer.cs" />
+    <Compile Include="Parsers\DocumentReferenceParser.cs" />
+    <Compile Include="Serializers\DocumentReferenceSerializer.cs" />
     <Compile Include="Parsers\EncounterParser.cs" />
     <Compile Include="Serializers\EncounterSerializer.cs" />
     <Compile Include="Parsers\GroupParser.cs" />
@@ -251,12 +251,6 @@
     <Compile Include="Serializers\TestSerializer.cs" />
     <Compile Include="Parsers\ValueSetParser.cs" />
     <Compile Include="Serializers\ValueSetSerializer.cs" />
-    <Compile Include="Parsers\XdsEntryParser.cs" />
-    <Compile Include="Serializers\XdsEntrySerializer.cs" />
-    <Compile Include="Parsers\XdsEntry2Parser.cs" />
-    <Compile Include="Serializers\XdsEntry2Serializer.cs" />
-    <Compile Include="Parsers\XdsFolderParser.cs" />
-    <Compile Include="Serializers\XdsFolderSerializer.cs" />
     <Compile Include="Parsers\MedicationParser.cs" />
     <Compile Include="Serializers\MedicationSerializer.cs" />
     <Compile Include="Parsers\SpecimenParser.cs" />
@@ -328,13 +322,13 @@
     <Compile Include="Support\ContentType.cs" />
     <Compile Include="Support\ElementContent.cs" />
     <Compile Include="Support\ErrorList.cs" />
+    <Compile Include="Support\FhirParseException.cs" />
     <Compile Include="Support\Inspection.cs" />
     <Compile Include="Support\ManagedEntryList.cs" />
     <Compile Include="Support\ResourceLocation.cs" />
     <Compile Include="Support\UriLinkList.cs" />
     <Compile Include="Support\Util.cs" />
     <Compile Include="Client\FhirClient.cs" />
-    <Compile Include="Support\FhirParseException.cs" />
     <Compile Include="Client\ResponseDetails.cs" />
     <Compile Include="Client\WebRequestExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

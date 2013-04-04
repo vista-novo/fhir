@@ -4,7 +4,7 @@
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">Image 1 from Series 3: CT Images on Patient MINT (MINT1234) taken at 1-Jan 2011 01:20 AM</div>
   </text>
-  <dateTime value="2011-01-01T11:01:20.000000"/>
+  <dateTime value="2011-01-01T11:01:20"/>
   <subject>
     <type value="Patient"/>
     <url value="../patient/@dicom"/>

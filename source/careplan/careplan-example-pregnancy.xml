@@ -3,7 +3,7 @@
     <!-- an extension to record the LMP, which is required at the plan level... -->
     <extension>
         <url value="http://exampleDoNotUse/careplan#lmp" />
-        <valueDateTime value="20130101" />
+        <valueDateTime value="2013-01-01" />
     </extension>
  
     <text>
