@@ -91,7 +91,6 @@
 	<Compile Include="Support\UriLinkList.cs" />
     <Compile Include="Support\Util.cs" />
 	<Compile Include="Client\FhirClient.cs" />
-	<Compile Include="Client\FhirParseException.cs" />
 	<Compile Include="Client\ResponseDetails.cs" />
 	<Compile Include="Client\WebRequestExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
