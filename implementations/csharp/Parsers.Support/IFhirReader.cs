@@ -38,7 +38,7 @@ namespace Hl7.Fhir.Parsers
 {
     public interface IFhirReader
     {
-       // void MoveToContent();
+        void MoveToContent();
 
         string CurrentElementName { get; }
 

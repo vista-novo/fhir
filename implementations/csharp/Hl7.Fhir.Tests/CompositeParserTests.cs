@@ -276,5 +276,26 @@ namespace Hl7.Fhir.Tests
             File.WriteAllText(@"c:\temp\speedtest.txt", bytesPerMs.ToString() + " bytes per ms");
           //  Assert.IsTrue(bytesPerMs > 10*1024);       // > 10k per ms (Speed is of course very dependent on debug/release and machine)
         }
+
+        [TestMethod]
+        public void TestHandleCrap()
+        {
+            var errors = new ErrorList();
+            FhirParser.ParseResourceFromJson("Crap!", errors);
+            Assert.IsTrue(errors.Count > 0);
+
+            errors.Clear();
+            FhirParser.ParseResourceFromJson("{ \" Crap!", errors);
+            Assert.IsTrue(errors.Count > 0);
+
+            errors.Clear();
+            FhirParser.ParseResourceFromXml("Crap", errors);
+            Assert.IsTrue(errors.Count > 0);
+
+            errors.Clear();
+            FhirParser.ParseResourceFromXml("<Crap><cra", errors);
+            Assert.IsTrue(errors.Count > 0);
+
+        }
     }
 }

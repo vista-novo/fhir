@@ -54,7 +54,13 @@ namespace Hl7.Fhir.Parsers
             settings.IgnoreWhitespace = true;
 
             this.xr = XmlReader.Create(xr, settings);
-            this.xr.MoveToContent();
+            //this.xr.MoveToContent();
+        }
+
+        public void MoveToContent()
+        {
+            if( this.xr.ReadState == ReadState.Initial )
+                this.xr.MoveToContent();
         }
 
         public string CurrentElementName

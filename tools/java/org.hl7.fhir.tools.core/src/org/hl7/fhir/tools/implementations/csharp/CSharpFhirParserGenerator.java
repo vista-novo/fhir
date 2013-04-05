@@ -78,8 +78,8 @@ public class CSharpFhirParserGenerator extends GenBlock
 				bs("{");
 					ln("try");
 					bs("{");
-				//		ln("reader.MoveToContent();");
-				//		ln();
+						ln("reader.MoveToContent();");
+						ln();
 						generateResourceCases(definitions.getResources());
 					es("}");
 					ln("catch( Exception xe )");
@@ -106,8 +106,18 @@ public class CSharpFhirParserGenerator extends GenBlock
 			nl(" Parse");
 			nl(polymorphTypeName);
 			nl("(IFhirReader reader, ErrorList errors)");
-		bs("{");							
-			generatePolymorphCases(composites);
+		bs("{");
+			ln("try");
+			bs("{");
+				ln("reader.MoveToContent();");
+				ln();
+				generatePolymorphCases(composites);
+			es("}");
+			ln("catch( Exception xe )");
+			bs("{");
+				ln("errors.Add( xe.Message, reader);");
+				ln("return null;");
+			es("}");
 		es("}");
 				
 		return end();

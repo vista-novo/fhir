@@ -51,21 +51,23 @@ namespace Hl7.Fhir.Parsers
         {
             jr.DateParseHandling = DateParseHandling.None;
             this.jr = jr;
-            moveToContent();
+          //  moveToContent();
         }
 
 
-        private void moveToContent()
+        public void MoveToContent()
         {
             if (jr.TokenType == JsonToken.None)
-                jr.Read();
-
-            if (jr.TokenType == JsonToken.StartObject)
             {
                 jr.Read();
+
+                if (jr.TokenType == JsonToken.StartObject)
+                {
+                    jr.Read();
+                }
+                else
+                    throw new FhirFormatException("Resources should have a Json object as root");
             }
-            else
-                throw new FhirFormatException("Resources should have a Json object as root");
         }
 
         public string CurrentElementName

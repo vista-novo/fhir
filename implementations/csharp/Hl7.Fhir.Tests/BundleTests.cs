@@ -46,6 +46,27 @@ namespace Hl7.Fhir.Tests
 
 
         [TestMethod]
+        public void TestHandleCrap()
+        {
+            var errors = new ErrorList();
+            Bundle.LoadFromJson("Crap!", errors);
+            Assert.IsTrue(errors.Count > 0);
+
+            errors.Clear();
+            Bundle.LoadFromJson("{ \" Crap!", errors);
+            Assert.IsTrue(errors.Count > 0);
+
+            errors.Clear();
+            Bundle.LoadFromXml("Crap", errors);
+            Assert.IsTrue(errors.Count > 0);
+
+            errors.Clear();
+            Bundle.LoadFromXml("<Crap><cra", errors);
+            Assert.IsTrue(errors.Count > 0);
+        }
+
+
+        [TestMethod]
         public void TestParseBundleXml()
         {
             ErrorList errors = new ErrorList();

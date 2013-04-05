@@ -41,6 +41,7 @@ namespace Hl7.Fhir.Tests
             string xmlString = "<x xmlns='http://hl7.org/fhir'><someElem value='true' id='3141' /><someElem2 /></x>";
             XmlReader xr = fromString(xmlString); xr.Read();
             XmlFhirReader xfr = new XmlFhirReader(xr);
+            xfr.MoveToContent();
 
             verifyContinueOnEmptyElements(xfr);
 
@@ -48,9 +49,8 @@ namespace Hl7.Fhir.Tests
                                         { ""someElem"" : { ""value"" : ""true"", ""_id"" : ""3141"" },
                                           ""someElem2"" : {} } }";
             JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
-            jr.Read(); 
             JsonFhirReader jfr = new JsonFhirReader(jr);
-
+            jfr.MoveToContent();
             verifyContinueOnEmptyElements(jfr);
         }
 
