@@ -100,7 +100,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Client\FhirClient.cs" />
-    <Compile Include="Client\FhirParseException.cs" />
     <Compile Include="Client\ResponseDetails.cs" />
     <Compile Include="Client\WebRequestExtensions.cs" />
     <Compile Include="Model.Support\Base64Binary.cs" />
@@ -129,6 +128,7 @@
     <Compile Include="Model\Base64Binary.cs" />
     <Compile Include="Model\Bindings.cs" />
     <Compile Include="Model\CarePlan.cs" />
+    <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Choice.cs" />
     <Compile Include="Model\Code.cs" />
     <Compile Include="Model\CodeableConcept.cs" />
@@ -143,7 +143,7 @@
     <Compile Include="Model\DiagnosticReport.cs" />
     <Compile Include="Model\Distance.cs" />
     <Compile Include="Model\Document.cs" />
-    <Compile Include="Model\DocumentInformation.cs" />
+    <Compile Include="Model\DocumentReference.cs" />
     <Compile Include="Model\Duration.cs" />
     <Compile Include="Model\Element.cs" />
     <Compile Include="Model\Encounter.cs" />
@@ -203,9 +203,6 @@
     <Compile Include="Model\Test.cs" />
     <Compile Include="Model\Uuid.cs" />
     <Compile Include="Model\ValueSet.cs" />
-    <Compile Include="Model\XdsEntry.cs" />
-    <Compile Include="Model\XdsEntry2.cs" />
-    <Compile Include="Model\XdsFolder.cs" />
     <Compile Include="Model\XHtml.cs" />
     <Compile Include="Parsers.Support\CodeParser.cs" />
     <Compile Include="Parsers.Support\FhirParser.cs" />
@@ -220,6 +217,7 @@
     <Compile Include="Parsers\AttachmentParser.cs" />
     <Compile Include="Parsers\Base64BinaryParser.cs" />
     <Compile Include="Parsers\CarePlanParser.cs" />
+    <Compile Include="Parsers\CategoryParser.cs" />
     <Compile Include="Parsers\ChoiceParser.cs" />
     <Compile Include="Parsers\CodeableConceptParser.cs" />
     <Compile Include="Parsers\CodeParser.cs" />
@@ -233,8 +231,8 @@
     <Compile Include="Parsers\DeviceParser.cs" />
     <Compile Include="Parsers\DiagnosticReportParser.cs" />
     <Compile Include="Parsers\DistanceParser.cs" />
-    <Compile Include="Parsers\DocumentInformationParser.cs" />
     <Compile Include="Parsers\DocumentParser.cs" />
+    <Compile Include="Parsers\DocumentReferenceParser.cs" />
     <Compile Include="Parsers\DurationParser.cs" />
     <Compile Include="Parsers\EncounterParser.cs" />
     <Compile Include="Parsers\ExtensionParser.cs" />
@@ -291,9 +289,6 @@
     <Compile Include="Parsers\TestParser.cs" />
     <Compile Include="Parsers\UuidParser.cs" />
     <Compile Include="Parsers\ValueSetParser.cs" />
-    <Compile Include="Parsers\XdsEntry2Parser.cs" />
-    <Compile Include="Parsers\XdsEntryParser.cs" />
-    <Compile Include="Parsers\XdsFolderParser.cs" />
     <Compile Include="Parsers\XHtmlParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializers.Support\CodeSerializer.cs" />
@@ -308,6 +303,7 @@
     <Compile Include="Serializers\AttachmentSerializer.cs" />
     <Compile Include="Serializers\Base64BinarySerializer.cs" />
     <Compile Include="Serializers\CarePlanSerializer.cs" />
+    <Compile Include="Serializers\CategorySerializer.cs" />
     <Compile Include="Serializers\ChoiceSerializer.cs" />
     <Compile Include="Serializers\CodeableConceptSerializer.cs" />
     <Compile Include="Serializers\CodeSerializer.cs" />
@@ -319,7 +315,7 @@
     <Compile Include="Serializers\DemographicsSerializer.cs" />
     <Compile Include="Serializers\DeviceSerializer.cs" />
     <Compile Include="Serializers\DiagnosticReportSerializer.cs" />
-    <Compile Include="Serializers\DocumentInformationSerializer.cs" />
+    <Compile Include="Serializers\DocumentReferenceSerializer.cs" />
     <Compile Include="Serializers\DocumentSerializer.cs" />
     <Compile Include="Serializers\EncounterSerializer.cs" />
     <Compile Include="Serializers\ExtensionSerializer.cs" />
@@ -375,9 +371,6 @@
     <Compile Include="Serializers\TestSerializer.cs" />
     <Compile Include="Serializers\UuidSerializer.cs" />
     <Compile Include="Serializers\ValueSetSerializer.cs" />
-    <Compile Include="Serializers\XdsEntry2Serializer.cs" />
-    <Compile Include="Serializers\XdsEntrySerializer.cs" />
-    <Compile Include="Serializers\XdsFolderSerializer.cs" />
     <Compile Include="Serializers\XHtmlSerializer.cs" />
     <Compile Include="Support\Bundle.cs" />
     <Compile Include="Support\BundleJson.cs" />
@@ -385,6 +378,7 @@
     <Compile Include="Support\ContentType.cs" />
     <Compile Include="Support\ElementContent.cs" />
     <Compile Include="Support\ErrorList.cs" />
+    <Compile Include="Support\FhirParseException.cs" />
     <Compile Include="Support\Inspection.cs" />
     <Compile Include="Support\ManagedEntryList.cs" />
     <Compile Include="Support\ResourceLocation.cs" />

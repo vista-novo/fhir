@@ -538,8 +538,8 @@ namespace Hl7.Fhir.Client
 
             var req = (HttpWebRequest)HttpWebRequest.Create(endpoint);
 
-            req.UserAgent = 
-        //    req.Headers[HttpRequestHeader.UserAgent] =
+        //    req.UserAgent = 
+            req.Headers[HttpRequestHeader.UserAgent] =
                         "FhirClient for FHIR " + Model.ModelInfo.Version;
 
             if (PreferredFormat == ContentType.ResourceFormat.Xml)

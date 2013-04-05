@@ -34,6 +34,7 @@ using System.Text;
 using System.Net;
 using System.Text.RegularExpressions;
 using Hl7.Fhir.Model;
+using System.Reflection;
 
 
 namespace Hl7.Fhir.Support
@@ -51,7 +52,11 @@ namespace Hl7.Fhir.Support
 
         public static string GetCollectionNameForResource(Type t)
         {
+#if NETFX_CORE
+            if(typeof(Resource).GetTypeInfo().IsAssignableFrom(t.GetTypeInfo()))
+#else
             if (typeof(Resource).IsAssignableFrom(t))
+#endif
                 return ModelInfo.GetResourceNameForType(t).ToLower();
             else
                 throw new ArgumentException(String.Format("Cannot determine collection name, type {0} is " +
