@@ -218,7 +218,7 @@ private String getDefns() {
         	  queue.add(t);
           }
         } else if (e.typeCode().startsWith("@")) {
-          ElementDefn src = root.getElementForPath(e.typeCode().substring(1), page.getDefinitions());
+          ElementDefn src = root.getElementForPath(e.typeCode().substring(1), page.getDefinitions(), "type cross reference");
           if (names.containsKey(src))
         	n = names.get(src);      
           else {

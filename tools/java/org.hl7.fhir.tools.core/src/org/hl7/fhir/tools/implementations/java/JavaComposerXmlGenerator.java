@@ -398,10 +398,16 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
           comp = "composeResourceReference";
           tn = "ResourceReference";
         };
-        if (tn.equals("string"))
-          tn = "String_";
-        write("      for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : upFirst(tn))+" e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
-        write("        "+comp+"(\""+name+"\", e);\r\n");
+  	    if (en == null) {
+          if (tn.equals("string"))
+            tn = "String_";
+          write("      for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : upFirst(tn))+" e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
+          write("        "+comp+"(\""+name+"\", e);\r\n");
+  	    } else {
+            write("        for (Enumeration<"+prepEnumName(en)+"> e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
+            write("          composeEnumeration(\""+name+"\", e, new "+context+"().new "+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory());\r\n");
+  	    
+  	    }
       } else if (en != null) {
         write("      if (element.get"+upFirst(getElementName(name, false))+"() != null)\r\n");
         write("        composeEnumeration(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"(), new "+mainName+"().new "+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory());\r\n");
@@ -411,6 +417,15 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
       }
     }
   }
+
+  private String prepEnumName(String en) {
+	String[] parts = en.split("\\.");
+	if (parts.length == 1)
+		return upFirst(parts[0]);
+	else
+		return upFirst(parts[0])+'.'+upFirst(parts[1].substring(1));
+}
+
 
   private String leaf(String tn) {
     return tn.startsWith("java.lang.") ? tn.substring(10) : tn;

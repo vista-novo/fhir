@@ -20,7 +20,6 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -65,12 +64,12 @@
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s69">
-   <Alignment ss:Vertical="Top"/>
-  </Style>
-  <Style ss:ID="s70">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Vertical="Top"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -171,7 +170,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Organisation|Device)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Organization|Device)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Who is intended to fulfill the order</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
@@ -287,6 +286,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -306,8 +306,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>0</ActiveCol>
-     <RangeSelection>R2C1:R13C1</RangeSelection>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -477,53 +477,53 @@
     <Cell><Data ss:Type="String">date</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">date</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Order.date</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Order.date</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">subject</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Order.subject</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Order.subject</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">source</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Order.source</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Order.source</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">target</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Order.target</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Order.target</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">authority</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Order.authority</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Order.authority</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">when_code</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Order.when.code</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Order.when.code</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">when</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">date</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Order.when.schedule</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Order.when.schedule</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">detail</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Order.detail</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Order.detail</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -624,7 +624,6 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -671,7 +670,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">RequestedTime</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">When a requested action should be performed</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">RequestCode</Data></Cell>

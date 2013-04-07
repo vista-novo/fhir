@@ -42,7 +42,8 @@ public class MappingsGenerator {
 		boolean first = true;
 		for (String m : maps) {
 			list.append("|"+titleFor(m) + "#"+m);
-			s.append("<h3>Mappings for "+titleFor(m)+"</h3>");
+			s.append("<a name=\""+m+"\"> </a>\r\n");
+			s.append("<h3>Mappings for "+titleFor(m)+"</h3>\r\n");
 			s.append("<table class=\"grid\">\r\n");
 			for (ElementDefn e : elements) 
 				if (elementHasMapping(e, m)) {

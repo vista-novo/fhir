@@ -44,7 +44,7 @@ statements</a> that identify particular documents they support.
 
 <ul>
  <li>[baseurl]/document/: a normal RESTful end point for document resources as standalone resources</li> 
- <li>[baseurl]/binary/: for documents as <a href="resources.htm#bundle">bundles</a>. Usually used with <a href="xdsentry.htm">a document registry</a></li> 
+ <li>[baseurl]/binary/: for documents as <a href="resources.htm#bundle">bundles</a></li> 
 </ul>
 <p>
 Note: While these end-points are defined for use with document resources and document bundles, 

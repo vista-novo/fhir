@@ -98,7 +98,7 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
       <display value="Clinical-Staff"/>
     </coding>
   </confidentiality>
-  <language value="en-US"/>
+  <primaryLanguage value="en-US"/>
   <format value="application/hl7-v3+xml"/>
   <size value="3654"/>
   <hash value="da39a3ee5e6b4b0d3255bfef95601890afd80709"/>

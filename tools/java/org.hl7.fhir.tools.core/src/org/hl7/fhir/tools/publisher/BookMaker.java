@@ -69,6 +69,8 @@ public class BookMaker {
     target = page.getFolders().dstDir;
     target = target + File.separator;
     
+    checkCrossLinks();
+    
     String src = TextFile.fileToString(page.getFolders().srcDir+"book.htm");
     src = page.processPageIncludes(page.getFolders().srcDir+"book.htm", src);
     XhtmlDocument doc = new XhtmlParser().parse(src, "html");
@@ -79,13 +81,72 @@ public class BookMaker {
     new XhtmlComposer().compose(new FileOutputStream(target+"fhir-book.htm"), doc); 
   }
 
+  private void checkCrossLinks() {
+	  for (String name : pages.keySet()) {
+		  if (!"toc.htm".equals(name)) {
+			  XhtmlDocument d = pages.get(name);
+			  checkCrossLinks(name, d);
+		  }
+	}
+  }
+  
+  private boolean findTarget(XhtmlNode node, String name) {
+	if (node == null)
+	  return false;
+	if (node.getNodeType() == NodeType.Element && node.getName().equals("a") && name.equals(node.getAttribute("name"))) 
+	  return true;
+	boolean r = false;
+	for (XhtmlNode c : node.getChildNodes()) 
+	  r = r || findTarget(c, name);
+	return r;
+  }
+  
+  private void checkCrossLinks(String name, XhtmlNode node) {
+	  if (node.getNodeType() == NodeType.Element && node.getName().equals("a")) {
+		  String href = node.getAttribute("href");
+		  if (href != null) {
+			  if (!pages.containsKey(href)) {
+				  boolean found = false;
+				  if (href.endsWith(".xsd") || href.endsWith(".xml") || href.endsWith(".xml.htm") || href.endsWith(".json") || href.endsWith(".zip"))
+					  found = true;
+				  else if (pages.containsKey(href))
+					  found = true;
+				  else if (href.startsWith("http:") || href.startsWith("https:"))
+					  found = true;
+				  if (!found && href.contains("#")) {
+					  String parts[] = href.split("#");
+					  if (parts[0].equals(""))
+						  parts[0] = name;
+					  found = pages.containsKey(parts[0]);
+					  if (found && parts[1] != null && !parts[1].equals(""))
+					  {
+						  found = findTarget(pages.get(parts[0]), parts[1]);
+						  if (!found)
+							try {
+								new XhtmlComposer().compose(new FileOutputStream("c:\\temp\\source.htm"), pages.get(parts[0]));
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+					  }
+				  }
+				  if (!found)
+					  page.log("broken link in "+name+": <a href=\""+href+"\">"+node.allText()+"</a>");
+			  }
+		  }
+	  } else {
+		  if (!(node.getNodeType() == NodeType.Element && "div".equals(node.getName()) && "index-only-no-book".equals(node.getAttribute("class"))))
+  		    for (XhtmlNode c : node.getChildNodes()) 
+	 		  checkCrossLinks(name, c);
+	  }
+  }
+
   private void addReferenceIds(XhtmlNode body) {
     Map<String, RefTarget> tgts = new HashMap<String, RefTarget>();
     List<XhtmlNode> refs = new ArrayList<XhtmlNode>();
     List<XhtmlNode> norefs = new ArrayList<XhtmlNode>();
     buildIndex(refs, norefs, tgts, body, false, false);
     for (XhtmlNode a : norefs) {
-//      updateRef(tgts, a, false);
+    //      updateRef(tgts, a, false);
     }
     for (XhtmlNode a : refs) {
       updateRef(tgts, a, true);
@@ -113,7 +174,7 @@ public class BookMaker {
       else if (page.getDefinitions().getFutureResources().containsKey(a.allText())) {
         a.addText(" (Broken Link: not done yet)");
       } else {
-        page.log("unable to resolve reference to "+a.getAttributes().get("href").substring(1)+" on \""+a.allText()+"\"");
+       // page.log("unable to resolve reference to "+a.getAttributes().get("href").substring(1)+" on \""+a.allText()+"\"");
         a.addText(" (Known Broken Link - needs to be resolved)");
       }
     }

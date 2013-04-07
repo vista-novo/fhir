@@ -354,8 +354,12 @@ public class CSharpSerializerGenerator extends GenBlock
 		else
 		{
 			TypeRef ref = member.getTypes().get(0);
-			TypeDefn type = definitions.findType(ref.getFullName());	
-			String serializerCall = buildSerializerCall(type);
+			TypeDefn type = definitions.findType(ref.getFullName());
+			String serializerCall;
+			if (type == null)
+				serializerCall = "not done yet";
+			else
+				serializerCall = buildSerializerCall(type);
 			ln(serializerCall + "(");
 		}
 		

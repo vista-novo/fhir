@@ -408,7 +408,7 @@ the should return an error. The correct action is defined along with the paramet
 In addition, the following common search parameters apply to all resource types:
 </p>
 <table class="list">
-  <tr><td>_count : <a href="datatypes.htm#integer">integer</a></td><td><i>single</i></td><td>Number of return records requested. The server is not bound to return the number requested, but cannot return more</td></tr>
+  <tr><td>_count : <a href="datatypes.htm#integer">integer</a></td><td><i>single</i></td><td>Number of return records requested per page. The server is not bound to return the number requested, but cannot return more</td></tr>
   <tr><td>_id : <a href="datatypes.htm#id">token</a></td><td><i>single</i></td><td>The <a href="resources.htm#metadata">logical resource id</a> associated with the resource (must be supported by all servers)</td></tr>
   <tr><td>_include : <a href="datatypes.htm#id">token</a></td><td><i>union</i></td><td>See below</td></tr>
   <tr><td>_inline : <a href="datatypes.htm#id">token</a></td><td><i>union</i></td><td>See below under _include</td></tr>
@@ -664,7 +664,7 @@ the given resource type URL), and create a new identity for the submitted resour
 clarity, when the client intends a resource to have a transient identity that the server
 must replace, it should use a cid: url on the resource. Deleted resources are those marked clearly
 using the method described for <a href="formats.htm#atom-deleted">XML</a> or 
-<a href=formats.htm#json-bundle-delete">JSON</a>.
+<a href="formats.htm#json-bundle-delete">JSON</a>.
 </p>
 <p>
 A batch may include references from one resource to another in the batch, which may 

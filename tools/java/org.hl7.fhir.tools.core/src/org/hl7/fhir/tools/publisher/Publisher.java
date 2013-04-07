@@ -832,6 +832,7 @@ public class Publisher {
 		cachePage(n + "Ex.htm", src);
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-book-defn.htm").replace("<body>", "<body style=\"margin: 10px\">");
 		src = page.processResourceIncludes(n, resource, xml, tx, dict, src, mappings, mappingsList);
+		cachePage(n + "-definitions.htm", src);
 		cachePage(n + "Defn.htm", src);
 
 		// xml to json
@@ -1024,6 +1025,7 @@ public class Publisher {
 		String src = TextFile.fileToString(page.getFolders().srcDir
 				+ "template-profile.htm");
 		src = page.processProfileIncludes(filename, profile, xml, tx, src, exXml);
+		book.getPages().put(filename+".htm", new XhtmlParser().parse(src, "html"));
 		TextFile.stringToFile(src, page.getFolders().dstDir + filename + ".htm");
 		//
 		// src = Utilities.fileToString(page.getFolders().srcDir +

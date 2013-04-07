@@ -486,12 +486,12 @@ public class ElementDefn {
 	}
 
 	
-	public ElementDefn getElementForPath(String pathname, Definitions definitions) throws Exception {
+	public ElementDefn getElementForPath(String pathname, Definitions definitions, String purpose) throws Exception {
 		String[] path = pathname.split("\\.");
 
 		if (!path[0].equals(getName()))
 			throw new Exception("Element Path '" + pathname
-					+ "' is not legal in this context");
+					+ "' is not legal in this context ("+purpose+")");
 
 		ElementDefn res = this;
 

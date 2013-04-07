@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6348</WindowHeight>
-  <WindowWidth>22752</WindowWidth>
+  <WindowHeight>6345</WindowHeight>
+  <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6072</WindowTopY>
+  <WindowTopY>6075</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -75,14 +75,13 @@
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="20" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="197.4"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.4" ss:Span="1"/>
-   <Column ss:Index="4" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="35.4"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="197.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="1"/>
+   <Column ss:Index="4" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="35.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="93"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.8"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.60000000000002"
-    ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.4"
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
+   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
    <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
@@ -142,28 +141,30 @@
     <Cell ss:Index="10"><Data ss:Type="String">Usually, either a value or some flags should be provided</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.etrics</Data></Cell>
+    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.metrics</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Information about the quality of the data etc</Data></Cell>
     <Cell><Data ss:Type="String">Information about the quality of the data etc</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Usually, either a value or some flags should be provided</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.etrics.key</Data></Cell>
+    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.metrics.key</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Information about the quality of the data etc</Data></Cell>
     <Cell><Data ss:Type="String">Information about the quality of the data etc</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Usually, either a value or some flags should be provided</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.etrics.facet</Data></Cell>
+    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.metrics.facet</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Test</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.etrics.facet.key</Data></Cell>
+    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.metrics.facet.key</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Test</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45" ss:Span="4"/>
    <Row ss:Index="16" ss:AutoFitHeight="0" ss:Height="60" ss:Span="2"/>
@@ -181,8 +182,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -222,9 +223,9 @@
  <Worksheet ss:Name="Events">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="69.599999999999994"/>
-   <Column ss:AutoFitWidth="0" ss:Width="93.600000000000009" ss:Span="1"/>
-   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="101.4"/>
+   <Column ss:AutoFitWidth="0" ss:Width="69.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="93.75" ss:Span="1"/>
+   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="101.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="111"/>
    <Column ss:AutoFitWidth="0" ss:Width="69"/>
    <Row ss:AutoFitHeight="0" ss:Height="22.5">
@@ -261,11 +262,12 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Search">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="14" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="70.8"/>
-   <Column ss:AutoFitWidth="0" ss:Width="382.79999999999995"/>
+   <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
    <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="273"/>
+   <Column ss:AutoFitWidth="0" ss:Width="339.75"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
@@ -274,24 +276,12 @@
     <Cell><Data ss:Type="String">Path</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="16.5">
-    <Cell><Data ss:Type="String">key</Data></Cell>
+    <Cell><Data ss:Type="String">manufacturer</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">DeviceLog.item.key</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">DeviceCapabilities.manufacturer</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="16.5">
-    <Cell><Data ss:Type="String">value</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">DeviceLog.item.value</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">flag</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">token</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">DeviceLog.item.flag</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
     <Cell ss:Index="5" ss:StyleID="s68"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -305,6 +295,30 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="5" ss:StyleID="s68"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s68"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s68"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="6" ss:StyleID="s63"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="6" ss:StyleID="s63"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="6" ss:StyleID="s63"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="6" ss:StyleID="s63"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="6" ss:StyleID="s63"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -323,7 +337,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>6</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
@@ -334,12 +348,12 @@
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="130.80000000000001"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="294.60000000000002"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="65.400000000000006"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="84.600000000000009"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="89.4"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="287.39999999999998"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="130.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="294.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="65.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="84.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="89.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="287.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
@@ -349,8 +363,8 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s67"><Data ss:Type="String">DeviceKind</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Defines the nature of the device and the kind of functionality/services/behavior that may be expected from it</Data></Cell>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
     <Cell ss:Index="6" ss:StyleID="s67"/>
@@ -384,7 +398,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <RangeSelection>R2</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

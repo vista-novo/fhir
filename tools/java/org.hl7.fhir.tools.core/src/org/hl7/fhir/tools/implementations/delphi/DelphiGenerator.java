@@ -665,7 +665,7 @@ public void generate(Definitions definitions, String destDir, String implDir, St
     if (Utilities.noString(path))
 	  return "[]";
     try {
-      ElementDefn e = r.getRoot().getElementForPath(path, definitions);
+      ElementDefn e = r.getRoot().getElementForPath(path, definitions, "generating pascal code");
       if (!e.typeCode().startsWith("Resource("))
     	return "[]";
       else if (e.typeCode().endsWith("(Any)"))

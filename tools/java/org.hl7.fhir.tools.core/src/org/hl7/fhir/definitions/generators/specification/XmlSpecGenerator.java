@@ -255,8 +255,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			write("<b title=\""
 					+ Utilities.escapeXml(elem.getDefinition())
 					+ "\">div</b>" +  ((elem.isMustUnderstand() || elem.isMustSupport()) ? "</span>" : "") 
-					+ (defPage == null ? "" : "</a>")
-					+ " xmlns=\"http://www.w3.org/1999/xhtml\"> <span style=\"color: Gray\">&lt;!--</span> <span style=\"color: navy\">"
+					+ (defPage == null ? "</span>" : "</a>") 
+					+ " xmlns=\"http://www.w3.org/1999/xhtml\"&lt; <span style=\"color: Gray\">&lt;!--</span> <span style=\"color: navy\">"
 					+ Utilities.escapeXml(elem.getShortDefn())
 					+ "</span><span style=\"color: Gray\">&lt; --&gt;</span> &lt;/div&gt;\r\n");
 		}
@@ -380,13 +380,11 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 					ElementDefn sdt = definitions.getElementDefn(elem
 							.typeCode());
 					for (ElementDefn child : sdt.getElements()) {
-						generateCoreElem(child, indent + 1, rootName,
-								sdt.getName());
+						generateCoreElem(child, indent + 1, rootName, pathName+ "." + en); //sdt.getName());
 					}
 				} else {
 					for (ElementDefn child : elem.getElements()) {
-						generateCoreElem(child, indent + 1, rootName, pathName
-								+ "." + en);
+						generateCoreElem(child, indent + 1, rootName, pathName + "." + en);
 					}
 				}
 
@@ -572,8 +570,6 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			return "datatypes";
 		if (name.equals("HumanName"))
 			return "datatypes";
-		if (name.equals("Location"))
-			return "datatypes";
 		if (name.equals("Coding"))
 			return "datatypes";
 		if (name.equals("Choice"))
@@ -608,9 +604,13 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			return "datatypes";
 		if (name.equals("idref"))
 			return "resources";
+		if (name.equals("Duration"))
+			return "datatypes";
 		if (name.equals("date"))
 			return "datatypes";
 		if (name.equals("dateTime"))
+			return "datatypes";
+		if (name.equals("Money"))
 			return "datatypes";
 		if (name.equals("narrative"))
 			return "formats";
@@ -624,7 +624,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			return "constraint";
 		if (name.equals("resourceType"))
 			return "terminologies";
-		return name;
+		return name.toLowerCase();
 
 	}
 

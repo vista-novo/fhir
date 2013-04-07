@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CarePlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://hl7.org/fhir ../../../fhir-all-xsd%20Mar/careplan.xsd"
+ xsi:schemaLocation="http://hl7.org/fhir ../../schema/careplan.xsd"
  xmlns="http://hl7.org/fhir">
     <text>
         <status value="additional"></status>
@@ -96,7 +96,7 @@
         <performer>
             <!-- refer to the participant (the nurse) in this resource-->
           <type value="Provider"></type>
-          <url value="#part1"/>
+            <url value="../provider/@13"/>
           <display value="Nurse Nancy"/>
         </performer>
         <actionTaken>
@@ -127,7 +127,7 @@
         <performer>
             <!-- refer to the participant (the nurse) in this resource-->
             <type value="Provider"></type>
-            <url value="#part2"/>
+            <url value="../provider/@14"/>
             <display value="Doctor Dave"/>
         </performer>
     </activity>

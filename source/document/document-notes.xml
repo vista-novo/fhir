@@ -9,7 +9,6 @@ Notes:
  <li>The attester attests to the collated narrative portions of the document resource, the subject resource, and the 
      resources referred to in the the Document.section.content references. When a document is bundled, additional resources can be included, but these are not attested content</li>
  <li>The custodian is responsible for the maintenance of the document. Principally, they are responsible for the policy regarding persistence of the documents. They need not actually retain a copy of the document, but they should do so.</li>
- <li>The <i>information</i> part of the document header is shared between documents and a document registry entries (<a href="xdsentry2.htm">XdsEntry</a>)</li>
 </ul>  
 
 <h2>Identifying a Document</h2>

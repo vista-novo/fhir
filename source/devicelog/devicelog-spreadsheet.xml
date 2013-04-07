@@ -16,11 +16,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6348</WindowHeight>
-  <WindowWidth>22752</WindowWidth>
+  <WindowHeight>6345</WindowHeight>
+  <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6072</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
+  <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>5</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -74,20 +74,19 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="18" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="197.4"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.4" ss:Span="1"/>
-   <Column ss:Index="4" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="35.4"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="197.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="1"/>
+   <Column ss:Index="4" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="35.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="93"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.8"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.60000000000002"
-    ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.4"
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
+   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
    <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s64">
+   <Row ss:Height="45" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
@@ -103,7 +102,7 @@
     <Cell><Data ss:Type="String">To Do</Data></Cell>
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
+   <Row ss:Height="75">
     <Cell><Data ss:Type="String">DeviceLog</Data></Cell>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
@@ -114,7 +113,7 @@
     <Cell><Data ss:Type="String">A low level ultra-simple resource is needed to devices that send current observations on a routine bases as an event log</Data></Cell>
     <Cell><Data ss:Type="String">This resource can only be understood in the context of the DeviceCapabilities that defines what the meanings of the key values are</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
+   <Row ss:Height="30">
     <Cell><Data ss:Type="String">DeviceLog.instant</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">instant</Data></Cell>
@@ -122,20 +121,20 @@
     <Cell><Data ss:Type="String">The point in time that the values are reported</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Not all devices have clocks, and so the time may not be included</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row>
     <Cell><Data ss:Type="String">DeviceLog.item</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">An item of data</Data></Cell>
     <Cell><Data ss:Type="String">An item of data that the device produces</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:Height="30">
     <Cell><Data ss:Type="String">DeviceLog.item.key</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">code</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Reference to a device capabilities declaration</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Reference to device capabilities declaration</Data></Cell>
     <Cell><Data ss:Type="String">Reference to a device capabilities declaration</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
+   <Row ss:Height="30">
     <Cell><Data ss:Type="String">DeviceLog.item.value</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
@@ -143,7 +142,7 @@
     <Cell><Data ss:Type="String">The value of the data item, if available</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Usually, either a value or some flags should be provided</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:Height="30">
     <Cell><Data ss:Type="String">DeviceLog.item.flag</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
@@ -153,10 +152,6 @@
     <Cell><Data ss:Type="String">Information about the quality of the data etc</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Usually, either a value or some flags should be provided</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:Span="5"/>
-   <Row ss:Index="14" ss:AutoFitHeight="0" ss:Height="60" ss:Span="2"/>
-   <Row ss:Index="17" ss:AutoFitHeight="0" ss:Height="45"/>
-   <Row ss:AutoFitHeight="0" ss:Height="75"/>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -164,12 +159,11 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <RangeSelection>R5C1:R7C1</RangeSelection>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -209,9 +203,9 @@
  <Worksheet ss:Name="Events">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="69.599999999999994"/>
-   <Column ss:AutoFitWidth="0" ss:Width="93.600000000000009" ss:Span="1"/>
-   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="101.4"/>
+   <Column ss:AutoFitWidth="0" ss:Width="69.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="93.75" ss:Span="1"/>
+   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="101.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="111"/>
    <Column ss:AutoFitWidth="0" ss:Width="69"/>
    <Row ss:AutoFitHeight="0" ss:Height="22.5">
@@ -250,8 +244,8 @@
  <Worksheet ss:Name="Search">
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="70.8"/>
-   <Column ss:AutoFitWidth="0" ss:Width="382.79999999999995"/>
+   <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
    <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="273"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -307,7 +301,6 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -322,12 +315,12 @@
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="130.80000000000001"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="294.60000000000002"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="65.400000000000006"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="84.600000000000009"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="89.4"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="287.39999999999998"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="130.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="294.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="65.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="84.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="89.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="287.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
@@ -337,11 +330,12 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s67"><Data ss:Type="String">DeviceKind</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Defines the nature of the device and the kind of functionality/services/behavior that may be expected from it</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">DeviceValueFlag</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Flags that supply information about the status of a device reading</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">#device-value-flag</Data></Cell>
     <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:Index="6" ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s67"/>
@@ -371,8 +365,38 @@
    <Panes>
     <Pane>
      <Number>3</Number>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>5</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="device-value-flag">
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="2" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Row>
+    <Cell><Data ss:Type="String">Code</Data></Cell>
+    <Cell><Data ss:Type="String">Definition</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">test</Data></Cell>
+    <Cell><Data ss:Type="String">test</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
      <ActiveRow>1</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

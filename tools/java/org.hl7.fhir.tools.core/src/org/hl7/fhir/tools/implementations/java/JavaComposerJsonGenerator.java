@@ -368,14 +368,19 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
         if (tn.contains("Resource(")) {
           comp = "composeResourceReference";
           tn = "ResourceReference";
-        };
+        }
         write("      if (element.get"+upFirst(name)+"().size() > 0) {\r\n");
         write("        openArray(\""+name+"\");\r\n");
-        if (tn.equals("String"))
-          tn = "String_";
-        write("        for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : upFirst(tn))+" e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
-        write("          "+comp+"(null, e);\r\n");
-        write("        closeArray();\r\n");
+  	    if (en == null) {
+          if (tn.equals("String"))
+              tn = "String_";
+          write("        for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : upFirst(tn))+" e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
+          write("          "+comp+"(null, e);\r\n");
+  	    } else {
+            write("        for (Enumeration<"+prepEnumName(en)+"> e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
+            write("          composeEnumeration(null, e, new "+context+"().new "+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory());\r\n");
+  	    }
+  	  write("        closeArray();\r\n");
         write("      };\r\n");
       } else if (en != null) {
         write("      if (element.get"+upFirst(name)+"() != null)\r\n");
@@ -387,7 +392,15 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     }
   }
 
-  private String leaf(String tn) {
+  private String prepEnumName(String en) {
+	String[] parts = en.split("\\.");
+	if (parts.length == 1)
+		return upFirst(parts[0]);
+	else
+		return upFirst(parts[0])+'.'+upFirst(parts[1].substring(1));
+}
+
+private String leaf(String tn) {
     return tn.startsWith("java.lang.") ? tn.substring(10) : tn;
   }
   

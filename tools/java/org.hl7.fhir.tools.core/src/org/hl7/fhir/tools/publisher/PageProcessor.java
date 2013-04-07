@@ -457,10 +457,12 @@ private String resItem(String name) throws Exception {
       }
     }
     for (ElementDefn e : definitions.getTypes().values())
-      scanForUsage(b, cd, e, "datatypes.htm#"+e.getName());
+      if (!definitions.dataTypeIsSharedInfo(e.getName()))
+    	scanForUsage(b, cd, e, "datatypes.htm#"+e.getName());
     for (ElementDefn e : definitions.getStructures().values())
       if (!e.getName().equals("DocumentInformation"))
-        scanForUsage(b, cd, e, "datatypes.htm#"+e.getName());
+        if (!definitions.dataTypeIsSharedInfo(e.getName()))
+          scanForUsage(b, cd, e, "datatypes.htm#"+e.getName());
       
     if (b.length() == 0)
       return "<p>\r\nThese codes are not currently used\r\n</p>\r\n";
@@ -535,7 +537,7 @@ private String resItem(String name) throws Exception {
     StringBuilder b2 = new StringBuilder();
     for (DefinedCode c : definitions.getConstraints().values()) {
       if (c.getComment().equals(name)) {
-        b.append("<a name=\""+c.getCode()+"\"></a>\r\n");
+        b.append("<a name=\""+c.getCode()+"\"> </a>\r\n");
         b2.append(" <tr><td>"+c.getCode()+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>\r\n");
       }
     }
@@ -1020,10 +1022,15 @@ private String resItem(String name) throws Exception {
 
 
   String processPageIncludesForPrinting(String file, String src) throws Exception {
-    while (src.contains("<%"))
-    {
-      int i1 = src.indexOf("<%");
-      int i2 = src.indexOf("%>");
+	  while (src.contains("<%") || src.contains("[%"))
+	  {
+		  int i1 = src.indexOf("<%");
+		  int i2 = src.indexOf("%>");
+		  if (i1 == -1) {
+			  i1 = src.indexOf("[%");
+			  i2 = src.indexOf("%]");
+		  }
+
       String s1 = src.substring(0, i1);
       String s2 = src.substring(i1 + 2, i2).trim();
       String s3 = src.substring(i2+2);
@@ -1044,6 +1051,10 @@ private String resItem(String name) throws Exception {
         src = s1+resHeader(name, "Document", com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("codelist"))
         src = s1+codelist(name, com.length > 1 ? com[1] : null)+s3;
+      else if (com[0].equals("res-category"))
+          src = s1+resCategory(s2.substring(com[0].length()+1))+s3;
+        else if (com[0].equals("res-item"))
+          src = s1+resItem(com[1])+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("footer"))
@@ -1099,10 +1110,15 @@ private String resItem(String name) throws Exception {
   } 
 
   String processPageIncludesForBook(String file, String src) throws Exception {
-    while (src.contains("<%"))
-    {
-      int i1 = src.indexOf("<%");
-      int i2 = src.indexOf("%>");
+	  while (src.contains("<%") || src.contains("[%"))
+	  {
+		  int i1 = src.indexOf("<%");
+		  int i2 = src.indexOf("%>");
+		  if (i1 == -1) {
+			  i1 = src.indexOf("[%");
+			  i2 = src.indexOf("%]");
+		  }
+
       String s1 = src.substring(0, i1);
       String s2 = src.substring(i1 + 2, i2).trim();
       String s3 = src.substring(i2+2);
@@ -1129,6 +1145,10 @@ private String resItem(String name) throws Exception {
           src = s1+onThisPage(s2.substring(com[0].length()+1))+s3;
       else if (com[0].equals("map"))
         src = s1+imageMaps.get(com[1])+s3;
+      else if (com[0].equals("res-category"))
+          src = s1+resCategory(s2.substring(com[0].length()+1))+s3;
+        else if (com[0].equals("res-item"))
+          src = s1+resItem(com[1])+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("footer"))

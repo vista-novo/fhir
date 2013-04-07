@@ -301,8 +301,12 @@ public class CSharpParserGenerator extends GenBlock
 			return buildPrimitiveParserCall( member );
 		else
 		{
-			TypeDefn resultType = getDefinitions().findType(resultTypeRef.getFullName());			
-			return buildParserCall(resultType);
+			TypeDefn resultType = getDefinitions().findType(resultTypeRef.getFullName());	
+			if (resultType != null)
+			  return buildParserCall(resultType);
+			 else
+				 return "not done yet";
+			//	throw new Exception("unable to find type for "+resultTypeRef.getFullName());
 		}
 	}
 	
