@@ -391,10 +391,18 @@ integrity in the context of ongoing changes to the resources. An alternative app
 is to use version specific references to the records on the boundaries, but this is 
 subject to continuity failures when records are updated.
 </p>
-
+<p>
+A server can inform the client of the total number of search matches using the <i>totalResults</i> element from the open search specification:
+</p>
 <pre>
-TODO: sorting - need to find a balance between something that is is possible and something that is useful
+&lt;feed xmlns="http://www.w3.org/2005/Atom"&gt;
+  &lt;title&gt;Search Page 3&lt;/title&gt;
+  &lt;os:totalResults xmlns:os="http://a9.com/-/spec/opensearch/1.1/"&gt;1432&lt;/os:totalResults&gt;
+  
+  &lt;!-- the rest of the search results... --&gt;  
+&lt;/feed&gt;
 </pre>
+
 <h3>Search Parameters</h3>
 <p>
 Each FHIR resource type defines a set of applicable search parameters with their names, types, repeat behaviour, and meanings. 
@@ -512,6 +520,13 @@ For instance, if the resource defines a parameter "gender", then there is an imp
 Seaching for "gender-missing=true" will return all the resources that don't have any value for the gender parameter (which usually 
 equates to not having the relevent element in the resource). Searching for "gender-missing=false"
 will return all the resources that have a value for the "gender" parameter. 
+</p>
+
+<h3>Sorting</h3>
+<p>
+The client can indicate which order to return the results in using the parameter "search-sort". This can be set to one 
+of the search parameters. Where the search parameter returns multiple values, the lowest value will be used when ordering
+the returned records. Note that the actual sort value used is not returned explicitly by the server.
 </p>
 
 <h3>Including other resources in result (_include)</h3>
