@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2005/Atom ../../schema/fhir-atom.xsd">
-	<title>FHIR Batch Examnple</title>
+	<title>FHIR Batch Example</title>
 	<!-- 
     Batches are the most difficult part of FHIR to implement for a general purpose server. 
     This example shows a batch - it demonstrates several advanced concepts. 
