@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 <p>
 A document reference is a reference to a document defined in some other format, or stored in some other system.
-Typically, Document Reference Resources are used in document indexing systems, such as IHE XDS (see the <a href="??.htm">XDS specific profile)</a>,
+Typically, Document Reference Resources are used in document indexing systems, such as IHE XDS (see the <a href="xds.htm">XDS specific profile</a>),
 and also to refer to:
 </p>
 <ul>
