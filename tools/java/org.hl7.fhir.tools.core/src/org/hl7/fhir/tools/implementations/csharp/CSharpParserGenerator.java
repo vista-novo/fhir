@@ -250,12 +250,20 @@ public class CSharpParserGenerator extends GenBlock
 	{
 		String resultMember = "result." + GeneratorUtils.generateCSharpMemberName(member);
 		TypeRef resultType = GeneratorUtils.getMemberTypeForElement(getDefinitions(),member);
-		
+				
 		bs("{");
 			// Allocate an List in the property we are going to fill. 
 			ln(resultMember);
 				nl(" = new List<");
-				nl(GeneratorUtils.buildFullyScopedTypeName(resultType));
+								
+				if( GeneratorUtils.isCodeWithCodeList(getDefinitions(), resultType ))
+				{
+					nl("Code<");
+					nl(GeneratorUtils.buildFullyScopedTypeName(resultType.getFullBindingRef()));
+					nl(">");
+				}
+				else
+					nl(GeneratorUtils.buildFullyScopedTypeName(resultType));
 				nl(">();");
 			ln("reader.EnterArray();");
 			ln();
@@ -288,7 +296,9 @@ public class CSharpParserGenerator extends GenBlock
 	private String buildParserCall(ElementDefn member) throws Exception
 	{
 		TypeRef resultTypeRef = GeneratorUtils.getMemberTypeForElement(getDefinitions(),member);
-				
+		
+		
+		
 		// Check specials cases: parsing of enumerated codes, contained resources and
 		// polymorph properties of type Data, Composite or Primitive
 		if( !member.isPolymorph() && GeneratorUtils.isCodeWithCodeList(getDefinitions(), member.getTypes().get(0)) )
@@ -410,7 +420,7 @@ public class CSharpParserGenerator extends GenBlock
 	
 
 	private String buildEnumeratedCodeParserCall(TypeRef ref) throws Exception
-	{
+	{		
 		StringBuffer result = new StringBuffer();
 		
 		//   result.Status = CodeParser.ParseCode<Narrative.NarrativeStatus>(reader, errors);

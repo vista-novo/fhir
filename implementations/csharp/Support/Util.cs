@@ -56,6 +56,7 @@ namespace Hl7.Fhir.Support
         public const string RESTOPER_HISTORY = "history";
         public const string RESTOPER_SEARCH = "search";
         public const string RESTOPER_BINARY = "binary";
+        public const string RESTOPER_VALIDATE = "validate";
 
         public const string SEARCH_PARAM_ID = "_id";
         public const string SEARCH_PARAM_COUNT = "_count";

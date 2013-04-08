@@ -13,17 +13,6 @@ namespace Hl7.Fhir.Tests
     public class ModelTests
     {
         [TestMethod]
-        public void ValidateUriAssertions()
-        {
-            Uri abs = new Uri("http://www.nu.nl", UriKind.RelativeOrAbsolute);
-            Assert.IsTrue(abs.IsAbsoluteUri);
-
-            abs = new Uri("http://www.nu.nl");
-            Assert.IsTrue(abs.IsAbsoluteUri);
-        }
-
-
-        [TestMethod]
         public void ValidateElementAssertions()
         {
             XElement xr = new XElement("root",
@@ -119,41 +108,6 @@ namespace Hl7.Fhir.Tests
 
             FhirDateTime dt2 = new FhirDateTime(1972, 11, 30, 15, 10);
             Assert.IsTrue(dt2.ToString().StartsWith("1972-11-30T15:10"));
-        }
-
-        [TestMethod]
-        public void TestUrlParsing()
-        {
-            Assert.AreEqual("1", ResourceLocation.ParseIdFromRestUri("/patient/@1"));
-            Assert.AreEqual("1", ResourceLocation.ParseIdFromRestUri("/patient/@1/history/@3"));
-            Assert.AreEqual("1", ResourceLocation.ParseIdFromRestUri("../patient/@1"));
-            Assert.AreEqual("1", ResourceLocation.ParseIdFromRestUri("../patient/@1/history/@3"));
-            Assert.AreEqual("1", ResourceLocation.ParseIdFromRestUri("patient/@1"));
-            Assert.AreEqual("1", ResourceLocation.ParseIdFromRestUri("patient/@1/history/@3"));
-
-            Assert.AreEqual("3", ResourceLocation.ParseVersionIdFromRestUri("/patient/@1/history/@3"));
-            Assert.AreEqual("3", ResourceLocation.ParseVersionIdFromRestUri("../patient/@1/history/@3"));
-            Assert.AreEqual("3", ResourceLocation.ParseVersionIdFromRestUri("patient/@1/history/@3"));
-        }
-
-        [TestMethod]
-        public void TestUrlBuilding()
-        {
-            Assert.AreEqual("patient/@1", ResourceLocation.BuildResourceLocation("patient", "1").ToString());
-            Assert.AreEqual("http://www.nu.nl/patient/@1", ResourceLocation.BuildResourceLocation(new Uri("http://www.nu.nl"), "patient", "1").ToString());
-            Assert.AreEqual("patient/@1/history/@3", ResourceLocation.BuildVersionedResourceLocation("patient", "1", "3").ToString());
-            Assert.AreEqual("patient/@1/history/@3", ResourceLocation.BuildVersionedResourceLocation(new Uri("patient/@1",UriKind.Relative), "3").ToString());
-            Assert.AreEqual("http://www.nu.nl/patient/@1/history/@3", 
-                ResourceLocation.BuildVersionedResourceLocation(new Uri("http://www.nu.nl"), "patient", "1", "3").ToString());
-        }
-
-        [TestMethod]
-        public void DetermineCollectionName()
-        {
-            Patient p = new Patient();
-
-            Assert.AreEqual("patient", ResourceLocation.GetCollectionNameForResource(p));
-            Assert.AreEqual("patient", ResourceLocation.GetCollectionNameForResource(p.GetType()));
         }
     }
 }
