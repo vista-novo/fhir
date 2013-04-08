@@ -658,8 +658,12 @@ Here is an example feed returning search results for a person query:
 </pre>
 
 <p>
-Note that property names for elements that can repeat are not pluralized for consistency of overall approach.
+Notes:
 </p>
+<ul>
+ <li>property names for elements that can repeat are not pluralized for consistency of overall approach</li>
+ <li>Category repeats because it is allowed to repeat in atom, even though FHIR does not make use of this facility</li>
+</ul>
 <p>
 The mime type for a json bundle is also application/json+fhir.
 </p>
