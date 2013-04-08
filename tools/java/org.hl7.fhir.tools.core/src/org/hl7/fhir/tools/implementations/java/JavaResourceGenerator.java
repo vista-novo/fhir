@@ -470,8 +470,15 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 				if (e.usesCompositeType()) {
 					tn = typeNames.get(getElementForPath(root, e.typeCode().substring(1)));
 					typeNames.put(e,  tn);
+//				} else if (e.getDeclaredTypeName() != null) {
+//					tn = e.getDeclaredTypeName();
+//					typeNames.put(e,  tn);
+//					System.out.println(tn);
 				} else {
-					tn = getTitle(e.getName());
+					if (e.getDeclaredTypeName() != null) 
+						tn = e.getDeclaredTypeName();
+					else
+						tn = getTitle(e.getName());
 					if (tn.equals("Element"))
 						tn = "Element_";
 					strucs.add(e);

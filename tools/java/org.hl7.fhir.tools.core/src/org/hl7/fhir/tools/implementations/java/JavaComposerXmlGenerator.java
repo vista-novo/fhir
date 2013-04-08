@@ -557,7 +557,10 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
           tn = tn.substring(0, tn.indexOf('<')+1)+tn.substring(tn.indexOf('<')+1, tn.indexOf('<')+2).toUpperCase()+tn.substring(tn.indexOf('<')+2);
         typeNames.put(e,  tn);
       } else {
-        tn = upFirst(e.getName());
+    	  if (e.getDeclaredTypeName() != null) 
+				tn = e.getDeclaredTypeName();
+			else
+				tn = upFirst(e.getName());
         if (tn.equals("Element"))
           tn = "Element_";
         if (!e.getName().equals("extension"))

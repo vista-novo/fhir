@@ -495,7 +495,10 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
           tn = typeNames.get(getElementForPath(root, e.typeCode().substring(1)));
           typeNames.put(e,  tn);
         } else {
-          tn = upFirst(e.getName());
+        	if (e.getDeclaredTypeName() != null) 
+				tn = e.getDeclaredTypeName();
+			else
+				tn = upFirst(e.getName());
           if (tn.equals("Element"))
             tn = "Element_";
           if (!e.getName().equals("extension"))
