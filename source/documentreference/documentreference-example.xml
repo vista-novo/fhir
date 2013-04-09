@@ -12,7 +12,7 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
   <contained>
     <!-- Many XDS systems do not trak any id for the author. When systems don't do this, 
     the only option is for the author information to be contained in the Document Reference -->
-    <Provider id="a1">    
+    <Practitioner id="a1">    
       <details>
         <name>
           <family value="Dopplemeyer"/>
@@ -33,10 +33,10 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
 -->
       <role><text value="Primary Surgon"/></role>
       <specialty><text value="Orthopedic"/></specialty>
-    </Provider>
+    </Practitioner>
   </contained>
   <contained>
-    <Provider id="a2">    
+    <Practitioner id="a2">    
       <details>
         <name>
           <family value="Smitty"/>
@@ -57,7 +57,7 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
 -->
       <role><text value="Attending"/></role>
       <specialty><text value="Orthopedic"/></specialty>
-    </Provider>
+    </Practitioner>
   </contained>
   <id>
     <system value="urn:ietf:rfc:3986"/>
@@ -79,11 +79,11 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
     <url value="../category/@1.2.36.90146595217.4.2.1"/>
   </category>
   <author>
-    <type value="Provider"/>
+    <type value="Practitioner"/>
     <url value="#a1"/>
   </author>
   <author>
-    <type value="Provider"/>
+    <type value="Practitioner"/>
     <url value="#a2"/>
   </author>
   <created value="2005-12-24T09:35:00+11:00"/>

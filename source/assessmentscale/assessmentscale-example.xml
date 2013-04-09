@@ -13,7 +13,7 @@ For simplicitly, this example uses BMI as the assessment scale
     <id value="pat2"/>
   </subject>
   <performer>
-    <type value="Provider"/>
+    <type value="Practitioner"/>
     <id value="example"/>
   </performer>
   <time value="2012-05-23T07:43:00"/>

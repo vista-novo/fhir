@@ -54,8 +54,8 @@
     <url value="../patient/@example"/>
   </subject>
   <performer>
-    <type value="Provider"/>
-    <url value="../provider/@example"/>
+    <type value="Practitioner"/>
+    <url value="../practitioner/@example"/>
   </performer>
 
   <component>

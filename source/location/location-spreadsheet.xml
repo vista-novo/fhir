@@ -210,7 +210,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">./serviceProviderOrganization</Data></Cell>
+    <Cell><Data ss:Type="String">./servicePractitionerOrganization</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Location.active</Data></Cell>

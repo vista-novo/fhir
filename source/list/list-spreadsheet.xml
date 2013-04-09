@@ -197,7 +197,7 @@
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
-    <Cell><Data ss:Type="String">Resource(Provider|Patient|Device)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Practitioner|Patient|Device)</Data></Cell>
     <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Source of the list</Data></Cell>
     <Cell><Data ss:Type="String">The entity responsible for deciding what the contents of the list were</Data></Cell>

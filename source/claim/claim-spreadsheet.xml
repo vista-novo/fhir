@@ -97,12 +97,12 @@
     <Cell><Data ss:Type="String">12345678900000VAA</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Provider</Data></Cell>
+    <Cell><Data ss:Type="String">Practitioner</Data></Cell>
     <Cell><Data ss:Type="String">No Information Available </Data></Cell>
     <Cell><Data ss:Type="String">No Information Available</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Provider Billing Address</Data></Cell>
+    <Cell><Data ss:Type="String">Practitioner Billing Address</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Service Start Date</Data></Cell>
@@ -123,7 +123,7 @@
     <Cell><Data ss:Type="String">$504.80</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Provider Paid</Data></Cell>
+    <Cell><Data ss:Type="String">Practitioner Paid</Data></Cell>
     <Cell><Data ss:Type="String">$27.20</Data></Cell>
     <Cell><Data ss:Type="String">$126.31</Data></Cell>
    </Row>
@@ -243,11 +243,11 @@
     <Cell><Data ss:Type="String">1 - Medical Care</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Rendering Provider No</Data></Cell>
+    <Cell><Data ss:Type="String">Rendering Practitioner No</Data></Cell>
     <Cell><Data ss:Type="String">0000001</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Rendering Provider NPI</Data></Cell>
+    <Cell><Data ss:Type="String">Rendering Practitioner NPI</Data></Cell>
     <Cell><Data ss:Type="String">123456789</Data></Cell>
    </Row>
    <Row ss:Index="36" ss:AutoFitHeight="0">
@@ -266,7 +266,7 @@
     <Cell><Data ss:Type="String">11/23/2011</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Pharmacy / Service Provider</Data></Cell>
+    <Cell><Data ss:Type="String">Pharmacy / Service Practitioner</Data></Cell>
     <Cell><Data ss:Type="String">123456789</Data></Cell>
     <Cell><Data ss:Type="String">1234567890</Data></Cell>
    </Row>
@@ -442,7 +442,7 @@
     <Cell ss:StyleID="s68"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Claim.billingProvider</Data></Cell>
+    <Cell><Data ss:Type="String">Claim.billingPractitioner</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Y</Data></Cell>

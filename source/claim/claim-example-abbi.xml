@@ -14,9 +14,9 @@
 		<type>Patient</type>
 		<id>example-abbi</id>
 	</patient>
-	<billingProvider>
-		<!-- Provider: MANHATTAN ENDOSCOPY CENTER L    Provider Billing Address: CL #4685  PO BOX 95000 PHILADELPHIA PA 191954685  -->
-	</billingProvider>
+	<billingPractitioner>
+		<!-- Practitioner: MANHATTAN ENDOSCOPY CENTER L    Practitioner Billing Address: CL #4685  PO BOX 95000 PHILADELPHIA PA 191954685  -->
+	</billingPractitioner>
 	<coverage>
 		<!-- what goes here -->
 	</coverage>
@@ -111,13 +111,13 @@
     <div xmlns="http://www.w3.org/1999/xhtml">
       <pre>
 Claim Number: 9427984358334
-Provider: MANHATTAN ENDOSCOPY CENTER L
-Provider Billing Address: CL #4685  PO BOX 95000 PHILADELPHIA PA 191954685
+Practitioner: MANHATTAN ENDOSCOPY CENTER L
+Practitioner Billing Address: CL #4685  PO BOX 95000 PHILADELPHIA PA 191954685
 Service Start Date: 9/21/2012
 Service End Date: 
 Amount Charged: $386.60
 Medicare Approved: $386.59
-Provider Paid: $386.59
+Practitioner Paid: $386.59
 You May be Billed: $0.00
 Claim Type: PartB
 Diagnosis Code 1: V1272
@@ -133,8 +133,8 @@ Line number:  1
  Non-Covered:  $0.00
  Place of Service/Description:  24 - Ambulatory  Surgical Center
  Type of Service/Description:  F - Ambulatory Surgical Center
- Rendering Provider No:  A300070363
- Rendering Provider NPI:  1124324181
+ Rendering Practitioner No:  A300070363
+ Rendering Practitioner NPI:  1124324181
 
 Line number:  2
  Date of Service From:  10/22/2012
@@ -146,8 +146,8 @@ Line number:  2
  Non-Covered:  $0.01
  Place of Service/Description:  24 - Ambulatory  Surgical Center
  Type of Service/Description:  F - Ambulatory Surgical Center
- Rendering Provider No:  A300070363
- Rendering Provider NPI:  1124324181
+ Rendering Practitioner No:  A300070363
+ Rendering Practitioner NPI:  1124324181
       </pre>
     </div>
   </text>	

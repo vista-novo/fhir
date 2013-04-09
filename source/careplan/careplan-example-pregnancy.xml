@@ -28,7 +28,7 @@
       </Problem>
     </contained>
     <contained>
-      <Provider id="pr1">
+      <Practitioner id="pr1">
         <details>
           <name>
             <family value="Midwife"/>
@@ -38,10 +38,10 @@
         <specialty>
           <text value="Midwife"/>
         </specialty>
-      </Provider>
+      </Practitioner>
     </contained>
     <contained>
-      <Provider id="pr2">
+      <Practitioner id="pr2">
         <details>
           <name>
             <family value="Obstetrician"/>
@@ -51,7 +51,7 @@
         <specialty>
           <text value="Obstetrician"/>
         </specialty>
-      </Provider>
+      </Practitioner>
     </contained>
     <patient>
         <type value="Patient"/>
@@ -82,7 +82,7 @@
         </role>
         <member>
             <!-- This links to the clincian resource, so we get all the stuff related to that like address, contact etc... -->
-            <type value="Provider"></type>
+            <type value="Practitioner"></type>
             <url value="#pr1"/>
             <display value="Mavis Midwife"/>
         </member>
@@ -98,7 +98,7 @@
         </role>
         <member>
             <!-- This links to the clincian resource, so we get all tha stuff related to that like address, contact etc... -->
-            <type value="Provider"></type>
+            <type value="Practitioner"></type>
             <url value="#pr2"/>
             <display value="Oscar Obstetrician"/>
         </member>
@@ -133,7 +133,7 @@
             </event>
         </timingSchedule>
         <performer>
-            <type value="Provider"></type>
+            <type value="Practitioner"></type>
             <url value="#pr1"/>
             <display value="Mavis Midwife"/>
         </performer>
@@ -171,7 +171,7 @@
         </timingSchedule>
         <performer>
             <!-- The performer is known, but the actual appointment is not yet made, hence there is no action element... -->
-            <type value="Provider"></type>
+            <type value="Practitioner"></type>
             <url value="#pr1"/>
             <display value="Mavis Midwife"/>
         </performer>
@@ -213,7 +213,7 @@
         </location>-->
         <performer>
             <!-- The intention is that Maris will be perfroming the delivery... -->
-            <type value="Provider"></type>
+            <type value="Practitioner"></type>
             <url value="#pr1"/>
             <display value="Mavis Midwife"/>
         </performer>

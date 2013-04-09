@@ -323,9 +323,9 @@
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Resource(Provider)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
     <Cell ss:StyleID="s62"/>
-    <Cell><Data ss:Type="String">Vaccine Ordering Provider Name</Data></Cell>
+    <Cell><Data ss:Type="String">Vaccine Ordering Practitioner Name</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">Clinician who ordered the vaccine</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
     <Cell ss:StyleID="s62"><Data ss:Type="String">other participants - delegate to Provenance resource</Data></Cell>
@@ -339,9 +339,9 @@
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Resource(Provider)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
     <Cell ss:StyleID="s62"/>
-    <Cell><Data ss:Type="String">Vaccine Administering Provider Name</Data></Cell>
+    <Cell><Data ss:Type="String">Vaccine Administering Practitioner Name</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">Clinician that administered the vaccine</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
     <Cell ss:Index="13" ss:StyleID="Default"/>

@@ -791,11 +791,11 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">person</Data></Cell>
-    <Cell><Data ss:Type="String">The participant is a person acting on their on behalf or on behalf of the patient rather than as an provider for an organization.  I.e. &quot;not a healthcare provider&quot;</Data></Cell>
+    <Cell><Data ss:Type="String">The participant is a person acting on their on behalf or on behalf of the patient rather than as an practitioner for an organization.  I.e. &quot;not a healthcare provider&quot;</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">provider</Data></Cell>
-    <Cell><Data ss:Type="String">The participant is a provider</Data></Cell>
+    <Cell><Data ss:Type="String">practitioner</Data></Cell>
+    <Cell><Data ss:Type="String">The participant is a practitioner</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">organization</Data></Cell>

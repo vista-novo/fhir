@@ -152,7 +152,7 @@
     <Cell><Data ss:Type="String">SharedDefinition</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Description of an individual</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">A description of an individual who is involved in healthcare processes. The individual may be a patient, a provider of care services, or related to a patient in some way or other. </Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">A description of an individual who is involved in healthcare processes. The individual may be a patient, a practitioner, or related to a patient in some way or other. </Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Need to track persons potentially across multiple roles</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">The individual may be a non-human. The only usual use for this is non-human patients</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Person(classCode=&quot;LIV&quot; and determinerCode=&quot;INST&quot; and quantity=&quot;1&quot;)</Data></Cell>
@@ -170,7 +170,7 @@
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s69"><Data ss:Type="String">An identifier for this individual</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Identifier for a natural person, in contrast to the identifier in a specific context.</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Individuals are known by a variety of ids. Some of these are specific to their role as a patient or provider, other are used for identification of the person him/herself, like drivers license id's, national or social security numbers, etcetera.</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Individuals are known by a variety of ids. Some of these are specific to their role as a patient or practitioner, other are used for identification of the person him/herself, like drivers license id's, national or social security numbers, etcetera.</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">.plays:Role(classCode='IDENT').id</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">PID-3</Data></Cell>

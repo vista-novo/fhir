@@ -3,6 +3,6 @@
 <p>A patient encounter is further characterized by the setting in which it takes place, amongst them are ambulatory, emergency, home health, 
 inpatient and virtual encounters. An Encounter encompasses the whole lifecycle of an encounter from making appointments, to planning, the actual
 visit (for ambulatory encounters), and admission, stay and discharge (for inpatient encounters). An Encounter has a single reason, during the
-encounter the patient may move from provider to provider and location to location. </p>
+encounter the patient may move from practitioner to practitioner and location to location. </p>
 
 </div>

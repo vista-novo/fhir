@@ -27,16 +27,16 @@
     <name value="Acme Message Gateway"/>
     
     <!-- this is to indicate to the Acme Message Gateway that this particular message 
-       is intended for Provider "xcda" -->
+       is intended for Practitioner "xcda" -->
     <target>
-      <type value="Provider"/>
-      <url value="../provider/@xcda-author"/>
+      <type value="Practitioner"/>
+      <url value="../practitioner/@xcda-author"/>
     </target>
     <endpoint value="llp:10.11.12.14:5432"/>
   </destination>
   <author>
-    <type value="Provider"/>
-    <url value="../provider/@example"/>
+    <type value="Practitioner"/>
+    <url value="../practitioner/@example"/>
   </author>
   
   <!-- Here's the payload, the resource that this admin-update concerns -->

@@ -39,13 +39,13 @@
     </Patient>
   </contained>
   <contained>
-    <Provider id="questauth">
+    <Practitioner id="questauth">
       <identifier>
         <label value="LUMC, Leiden"/>
         <system value="http://cancer.questionnaire.org/systems/id/org"/>
         <id value="LUMC"/>
       </identifier>
-    </Provider>
+    </Practitioner>
   </contained>
   <contained>
     <Observation id="obs.pt-category">
@@ -67,7 +67,7 @@
     <url value="#patsub"/>
   </subject>
   <author>
-    <type value="Provider"/>
+    <type value="Practitioner"/>
     <url value="#questauth"/>
   </author>
   <name>

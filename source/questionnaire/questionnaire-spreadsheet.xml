@@ -202,13 +202,13 @@
     <Cell><Data ss:Type="String">Questionnaire.author</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Provider|Patient|Person)</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Practitioner|Patient|Person)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Person that collected the answers</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Person that collected the answers to the questions in the Questionnaire</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Laboratory, Service, Provider, Department, Company</Data><NamedCell
+    <Cell><Data ss:Type="String">Laboratory, Service, Practitioner, Department, Company</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Need to know who interpreted the subject's answers to the questions in the questionnaire, and selected the appropriate options for answers.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -220,7 +220,7 @@
     <Cell><Data ss:Type="String">Questionnaire.source</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Patient|Provider|Person)</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Patient|Practitioner|Person)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">The person that answered the questions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

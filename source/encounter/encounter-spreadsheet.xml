@@ -207,10 +207,10 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Provider)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">The main provider responsible for providing the service</Data></Cell>
-    <Cell><Data ss:Type="String">The main provider responsible for providing the service</Data></Cell>
+    <Cell><Data ss:Type="String">The main practitioner responsible for providing the service</Data></Cell>
+    <Cell><Data ss:Type="String">The main practitioner responsible for providing the service</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
     <Cell ss:Index="13" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -290,9 +290,9 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Provider)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">The provider responsible for admission</Data></Cell>
+    <Cell><Data ss:Type="String">The practitioner responsible for admission</Data></Cell>
     <Cell ss:StyleID="s197"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -348,8 +348,8 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Encounter.location.responsible</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Provider)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Provider responsible for the patient during his stay at this location</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Practitioner responsible for the patient during his stay at this location</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Encounter.discharge</Data></Cell>
@@ -359,8 +359,8 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Encounter.discharge.discharger</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Provider)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Provider responsible for the patient during the discharge</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Practitioner responsible for the patient during the discharge</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Encounter.discharge.contact</Data></Cell>

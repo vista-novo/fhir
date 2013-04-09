@@ -156,8 +156,8 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">A person who is involved in the healthcare process</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Need to track persons potentially across multiple roles</Data></Cell>
     <Cell ss:StyleID="s68"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">The Person resource does justice to Person registries that keep track of Persons regardless of their role. The Person resource is also a primary resource to point to for people acting in a particular role such as SubjectofCare, Provider, and Agent. Very few attributes are specific to </Font><I><Font
-        html:Color="#000000">any</Font></I><Font html:Color="#000000"> role and so Person is kept lean. Most attributes are expected to be tied to the role the Person plays rather than the Person himself. Examples of that are Guardian (SubjectofCare), ContactParty (SubjectOfCare, Provider), and multipleBirthInd (SubjectofCare)</Font></ss:Data></Cell>
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">The Person resource does justice to Person registries that keep track of Persons regardless of their role. The Person resource is also a primary resource to point to for people acting in a particular role such as SubjectofCare, Practitioner, and Agent. Very few attributes are specific to </Font><I><Font
+        html:Color="#000000">any</Font></I><Font html:Color="#000000"> role and so Person is kept lean. Most attributes are expected to be tied to the role the Person plays rather than the Person himself. Examples of that are Guardian (SubjectofCare), ContactParty (SubjectOfCare, Practitioner), and multipleBirthInd (SubjectofCare)</Font></ss:Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Person(classCode=&quot;PSN&quot; and determinerCode=&quot;INST&quot; and quantity=&quot;1&quot;)</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>

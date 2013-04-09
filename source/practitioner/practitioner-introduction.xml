@@ -1,0 +1,23 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<p>
+This Resource cover all individuals who are professionally engaged in the healthcare process. These include:
+</p>
+<ul>
+<li>physicians, dentists, pharmacists</li>
+<li>physician assistants, nurses</li>
+<li>midwives, dietitians, therapists, optometrists, paramedics</li>
+<li>medical technicians, laboratory scientists, prosthetic technicians, radiographers</li>
+<li>social workers, home carers</li>
+</ul>
+<p>
+But specifically exclude persons involved for non-professional reasons or persons providing services not related to healthcare:</p>
+<ul>
+<li>individuals taking care for friends and relatives</li>
+<li>IT-personnel or HR-personnel</li>
+<li>receptionists</li>
+</ul>
+<p>
+Although a Practitioner Resource represents individuals, they may practice their profession on behalf on an organization. Commonly, a Practitioner represent the same organization in multiple different ways. Depending on jurisdiction and custom, it may be necessary to maintain a specific Practitioner Resource for each combination of role, qualification and organization. The role is also often limited to a specific period, after which authorization for this role ends. Note that the represented organization need not necessarily be the (direct) employer of a Practitioner.
+</p>
+</div>

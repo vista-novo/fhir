@@ -23,7 +23,7 @@
       </Problem>
     </contained>
     <contained>
-      <Provider id="pr1">
+      <Practitioner id="pr1">
         <details>
           <name>
             <family value="Dietician"/>
@@ -33,7 +33,7 @@
         <specialty>
           <text value="Dietician"/>
         </specialty>
-      </Provider>
+      </Practitioner>
     </contained>
     <patient>
         <type value="Patient"></type>
@@ -64,7 +64,7 @@
             <text value='adviser'></text>
         </role>
         <member>
-            <type value="Provider"></type>
+            <type value="Practitioner"></type>
             <url value="#pr1"/>
             <display value="Dorothy Dietition"/>
         </member>

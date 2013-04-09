@@ -148,7 +148,7 @@
             does it mean to change that name? - nothing. So it's a
             contained resource
            -->
-          <Provider id="a1">
+          <Practitioner id="a1">
             <!-- no text for contained resources -->
             <text>
               <status value="empty"/>
@@ -162,7 +162,7 @@
                 <given value="Gerald"/>
               </name>
             </details>
-          </Provider>          
+          </Practitioner>          
         </contained>
         <!-- Version specific document identifier -->
         <id>
@@ -197,7 +197,7 @@
             <url value="cid:20130107011536-2@fhir.hl7.org"/>
           </subject>
           <author>
-            <type value="Provider"/>
+            <type value="Practitioner"/>
             <url value="#a1"/> <!-- internal reference -->
           </author>
         </information>

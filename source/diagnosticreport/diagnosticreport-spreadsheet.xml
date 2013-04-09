@@ -244,7 +244,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The diagnostic service that is responsible for issuing the report</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Laboratory, Service, Provider, Department, Company</Data><NamedCell
+    <Cell><Data ss:Type="String">Laboratory, Service, Practitioner, Department, Company</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Need to know who to contact if there are queries about the results. Also may need to track the source of reports for secondary data analysis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -399,18 +399,18 @@
     <Cell><Data ss:Type="String">DiagnosticReport.requestDetail.requester</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Organization|Provider)</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Organization|Practitioner)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Responsible for request</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Details of the clinician or organisation requesting the diagnostic service</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Provider, Orderer, Physician</Data><NamedCell
+    <Cell><Data ss:Type="String">Practitioner, Orderer, Physician</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The requesting clinician may need to be contacted concerning the method or interpretation of the diagnostic service, and is frequently used for billing purposes too</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="13" ss:StyleID="s66"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">Provider: </Font></B><Font
+      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">Practitioner: </Font></B><Font
        html:Color="#000000">unique(./participation[isHighest(priorityCode) and typeCode=&quot;AUT&quot; and isNormalParticipation()]/role[subsumesCode(&quot;RoleClass#ASSIGN&quot;, classCode)]&#10;&#10;</Font><B><Font
         html:Color="#000000">Organization:</Font></B><Font html:Color="#000000"> unique(./participation[isHighest(priorityCode) and typeCode=&quot;AUT&quot; and isNormalParticipation()]/role[subsumesCode(&quot;RoleClass#ASSIGN&quot;, classCode)]/scoper[subsumesCode(&quot;EntityClass#ORG&quot;, classCode) and determinerCode=&quot;INSTANCE&quot; and code[isNormalDatatype]])&#10;</Font></ss:Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

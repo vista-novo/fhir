@@ -40,7 +40,7 @@ because of the wide variety of forms that the result of a diagnostic investigati
 described above. Languages other than English have their own variations on this theme.
 </p>
 <p>
-This resource uses one particular set of terms. A provider "requests" a set of "tests". The
+This resource uses one particular set of terms. A practitioner "requests" a set of "tests". The
 diagnostic service returns a "report" which contains a "narrative" - a written summary of the 
 outcomes, and "results" - the individual pieces of atomic data. The results are assembled
 in a "group" which is a nested structure that can be used to define relationships between

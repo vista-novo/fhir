@@ -155,10 +155,10 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Provider)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Who initiated the order</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Author, Provider</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Author, Practitioner</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:Index="13" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>

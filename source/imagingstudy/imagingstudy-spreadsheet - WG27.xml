@@ -264,7 +264,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ImagingStudy.referrer</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Provider)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Referring physician (0008,0090)</Data></Cell>
     <Cell><Data ss:Type="String">0008,0090</Data></Cell>
@@ -380,7 +380,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ImagingStudy.interpreter</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Provider)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Who interpreted images (0008,1060)</Data></Cell>
     <Cell><Data ss:Type="String">0008,1060</Data></Cell>

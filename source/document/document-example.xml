@@ -33,15 +33,15 @@
 	  <display value="Henry Levin the 7th"/>
 	</subject>
 	<author>
-	  <type value="Provider"/>
-	  <url value="../provider/@xcda-author"/>
+	  <type value="Practitioner"/>
+	  <url value="../practitioner/@xcda-author"/>
 	  <display value="Robert Dolin MD"/>
 	</author>
 	<attester>
 	  <mode value="legal"/>
 	  <party>
-		<type value="Provider"/>
-		<url value="../provider/@xcda-author"/>
+		<type value="Practitioner"/>
+		<url value="../practitioner/@xcda-author"/>
 		<display value="Robert Dolin MD"/>
 	  </party>
 	</attester>

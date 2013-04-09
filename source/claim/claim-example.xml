@@ -17,10 +17,10 @@
     <id>1</id>
     <!-- Todo -->
   </patient>
-  <billingProvider>
+  <billingPractitioner>
     <type>Organization</type>
     <display>No Information Available</display>
-  </billingProvider>
+  </billingPractitioner>
   <coverage>
     <type>Coverage</type>
     <id>9876B1</id>
@@ -97,7 +97,7 @@
       <performer>
         <!-- <Agent>
           <identifier>
-            <label>Local Provider No</label>
+            <label>Local Practitioner No</label>
             <identifier>
               <id>0000001</id>
             </identifier>
@@ -159,13 +159,13 @@
     <div xmlns="http://www.w3.org/1999/xhtml">
 <pre>
 Claim Number: 1234567890000
-Provider: No Information Available 
-Provider Billing Address:    
+Practitioner: No Information Available 
+Practitioner Billing Address:    
 Service Start Date: 10/18/2012
 Service End Date: 
 Amount Charged: $60.00
 Medicare Approved: $34.00
-Provider Paid: $27.20
+Practitioner Paid: $27.20
 You May be Billed: $6.80
 Claim Type: PartB
 Diagnosis Code 1: 3534
@@ -192,8 +192,8 @@ Allowed Amount:  $34.00
 Non-Covered:  $26.00
 Place of Service/Description:  11 - Office
 Type of Service/Description:  1 - Medical Care
-Rendering Provider No:  0000001
-Rendering Provider NPI:  123456789
+Rendering Practitioner No:  0000001
+Rendering Practitioner NPI:  123456789
 </pre>
     </div>
   </text>

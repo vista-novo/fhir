@@ -46,8 +46,8 @@
   </seriesId>  
 
   <requester>
-    <type value="Provider"/>
-    <url value="../provider/@example"/>
+    <type value="Practitioner"/>
+    <url value="../practitioner/@example"/>
   </requester>
 
   <modality value="US"/>

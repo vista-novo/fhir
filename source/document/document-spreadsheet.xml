@@ -230,7 +230,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Provider)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">The source of the data entry</Data></Cell>
     <Cell><Data ss:Type="String">The person or device that performed the data entry leading to this document. Where there is more than one candidate, pick the most proximal to the document creation or capture on a per-section basis. </Data></Cell>
@@ -281,7 +281,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Patient|Provider)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Patient|Practitioner)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Who provided information in document</Data></Cell>
     <Cell><Data ss:Type="String">Identifies the source that recounted the information recorded</Data></Cell>
@@ -298,7 +298,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Provider|Device)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Practitioner|Device)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Who/what authored the final document</Data></Cell>
     <Cell><Data ss:Type="String">Identifies who is responsible for the information in the document.  (Not necessarily who typed it in.)</Data></Cell>
@@ -366,7 +366,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Patient|Provider|Organization)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Patient|Practitioner|Organization)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Who attested the document</Data></Cell>
     <Cell><Data ss:Type="String">Who attested the document in the specified way</Data></Cell>
@@ -383,7 +383,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Provider|Organization)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Practitioner|Organization)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Expected to receive a copy </Data></Cell>
     <Cell><Data ss:Type="String">Identifies the people and organisations for whom the document is intended</Data></Cell>
@@ -509,7 +509,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="String">!Document.enterer</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Provider)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">The source of the data entry</Data></Cell>
     <Cell><Data ss:Type="String">The person or device that performed the data entry leading to this document. Where there is more than one candidate, pick the most proximal to the document creation or capture on a per-section basis. </Data></Cell>
     <Cell><Data ss:Type="String">Identifies who is responsible for the entry of the data.</Data></Cell>
@@ -576,7 +576,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="String">!Document.section.author</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Provider)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Who/what authored the section</Data></Cell>
     <Cell><Data ss:Type="String">Identifies who is responsible for the information in the section.  (Not necessarily who typed it in.)</Data></Cell>
     <Cell><Data ss:Type="String">Identifies who is responsible for the content.</Data></Cell>
@@ -585,7 +585,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="String">!Document.section.enterer</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Provider)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">The source of the data entry</Data></Cell>
     <Cell><Data ss:Type="String">The person or device that performed the data entry leading to this section. Where there is more than one candidate, pick the most proximal to the document creation. </Data></Cell>
     <Cell><Data ss:Type="String">Identifies who is responsible for the entry of the data.</Data></Cell>

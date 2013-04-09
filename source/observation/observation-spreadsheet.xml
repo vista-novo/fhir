@@ -573,7 +573,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
-    <Cell><Data ss:Type="String">Resource(Provider|Device|Organization)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Practitioner|Device|Organization)</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell><Data ss:Type="String">Who did the observation</Data></Cell>
     <Cell><Data ss:Type="String">Who was responsible for asserting the observed value as &quot;true&quot;</Data></Cell>
