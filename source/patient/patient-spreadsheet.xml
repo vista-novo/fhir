@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Ewout Kramer</LastAuthor>
   <Created>2012-03-19T11:15:11Z</Created>
-  <LastSaved>2013-02-07T15:27:50Z</LastSaved>
+  <LastSaved>2013-04-09T12:01:10Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -26,7 +26,6 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -97,9 +96,12 @@
   <Style ss:ID="s77">
    <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
   </Style>
+  <Style ss:ID="s83" ss:Parent="s62">
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="25" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="19" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="214.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="56.25"/>
@@ -132,15 +134,15 @@
     <Cell><Data ss:Type="String">To Do</Data></Cell>
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+   <Row ss:Height="60">
     <Cell><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Person or animal receiving care</Data></Cell>
-    <Cell><Data ss:Type="String">A patient is a person or animal that is receiving care</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Information about a person or animal receiving health care services</Data></Cell>
+    <Cell><Data ss:Type="String">Demographics and other administrative information about a person or animal receiving care or other health-related services</Data></Cell>
     <Cell><Data ss:Type="String">Tracking patient is the center of the healthcare process</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">SubjectOfCare</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">Patient</Data></Cell>
@@ -181,6 +183,7 @@
     <Cell><Data ss:Type="String">Demographics</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Patient demographics</Data></Cell>
     <Cell><Data ss:Type="String">Patient Demographic details</Data></Cell>
+    <Cell ss:Index="16"><Data ss:Type="String">Requirements</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Patient.contact</Data></Cell>
@@ -207,6 +210,7 @@
     <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">Demographics</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Details about the contact person</Data></Cell>
     <Cell><Data ss:Type="String">Details about the contact person</Data></Cell>
+    <Cell ss:Index="16"><Data ss:Type="String">Requirements</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Patient.contact.organization</Data></Cell>
@@ -280,108 +284,6 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">!Patient.animal.relatedEntity</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s69"><Data ss:Type="String" x:Ticked="1">=RelatedEntity</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Kin, owner, care giver, etc.</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">People and animals that hold a relevant relationship to the animal</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Genetic relationships between animals can be relevant for some use-cases, but the primary use-case is to identify the humans affiliated with an animal</Data></Cell>
-    <Cell ss:Index="13" ss:StyleID="Default"/>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">.scopes[Role](classCode=REL).player</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">ROL</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Is there a use-case for linking to Animal or Person resource directly?</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">!Patient.animal.relatedEntity.identifier</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:Index="8" ss:StyleID="s69"><Data ss:Type="String">Identifier for the entity</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Human-displayable identifier associated with the referenced entity</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Allows reliable identification of and potentially retrieval of additional information about the related entity</Data></Cell>
-    <Cell ss:Index="13" ss:StyleID="Default"/>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">.id</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">ROL.4</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">!Patient.animal.relatedEntity.role</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">AnimalRelationship</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Type of relationship</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Identifies how the referenced entity is related to the animal</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Allows choosing between multiple related entities</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:Index="14" ss:StyleID="s69"><Data ss:Type="String">.code</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">ROL.3</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">!Patient.animal.relatedEntity.name</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">HumanName</Data></Cell>
-    <Cell ss:Index="8" ss:StyleID="s69"><Data ss:Type="String">Name of the related entity</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Name of the related entity</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">This is the human-recognizable label for the entity and indicates how to address a human</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:Index="14" ss:StyleID="s69"><Data ss:Type="String">.name</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">ROL.4</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">!Patient.animal.relatedEntity.address</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Address</Data></Cell>
-    <Cell ss:Index="8" ss:StyleID="s69"><Data ss:Type="String">Physical or postal address</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Indicates where the related entity can be found or reached</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Allows contacting the related entity</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Usually for human related entities, but could be the address of a related animal</Data></Cell>
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:Index="14" ss:StyleID="s69"><Data ss:Type="String">.addr</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">ROL.11</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">!Patient.animal.relatedEntity.contact</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Contact</Data></Cell>
-    <Cell ss:Index="8" ss:StyleID="s69"><Data ss:Type="String">Phone, e-mail, etc.</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Indicates how the related entity can be contacted</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Allows contacting the related entity</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Usually for human related entities</Data></Cell>
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:Index="14" ss:StyleID="s69"><Data ss:Type="String">.telecom</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">ROL.12</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-   </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Patient.provider</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
@@ -399,6 +301,7 @@
     <Cell ss:Index="8"><Data ss:Type="String">Indicates whether patient is part of a multiple birth</Data></Cell>
     <Cell><Data ss:Type="String">Indicates whether the patient is part of a multiple or indicates the actual birth order.</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">.multipleBirthInd</Data></Cell>
+    <Cell ss:Index="16"><Data ss:Type="String">Requirements</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Patient.deceasedDate</Data></Cell>
@@ -406,7 +309,8 @@
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">dateTime</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Date of death of patient</Data></Cell>
-    <Cell><Data ss:Type="String">Date of death of patient</Data></Cell>
+    <Cell><Data ss:Type="String">Date of death of patient. May include time.</Data></Cell>
+    <Cell ss:Index="16"><Data ss:Type="String">Requirements</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Patient.diet</Data></Cell>
@@ -436,11 +340,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <TopRowVisible>7</TopRowVisible>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>20</ActiveRow>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -571,13 +476,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>1</ActiveCol>
-    </Pane>
-   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -687,7 +585,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -703,7 +600,7 @@
   <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s75" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="114.75"/>
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="234.75"/>
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="363"/>
    <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="53.25"/>
    <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="69.75"/>
    <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="86.25"/>
@@ -721,12 +618,6 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s74"><Data ss:Type="String">PatientConfidentiality</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">The confidentiality of the records associated with this patient</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">unbound</Data></Cell>
-    <Cell ss:StyleID="s74"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s74"><Data ss:Type="String">PatientDiet</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">casual dietary restrictions associated with this patient</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s74"/>
    </Row>
@@ -778,6 +669,14 @@
     <Cell><Data ss:Type="String">suggested</Data></Cell>
     <Cell><Data ss:Type="String">#contact-relationship</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PatientDiet</Data></Cell>
+    <Cell><Data ss:Type="String">Medical, cultural or ethical food preferences to help with catering requirements</Data></Cell>
+    <Cell><Data ss:Type="String">code list</Data></Cell>
+    <Cell><Data ss:Type="String">extensible</Data></Cell>
+    <Cell><Data ss:Type="String">suggested</Data></Cell>
+    <Cell><Data ss:Type="String">#dietary-restrictions</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -789,8 +688,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>16</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>18</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -956,6 +855,68 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>10</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="dietary-restrictions">
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="8" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="14.4375">
+   <Column ss:AutoFitWidth="0" ss:Width="78.75"/>
+   <Column ss:Width="220.5"/>
+   <Row ss:AutoFitHeight="0" ss:Height="28.6875">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">vegetarian</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">food without meat, poultry or seafood</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">diary-free</Data></Cell>
+    <Cell><Data ss:Type="String">exludes dairy  products</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">nut-free</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">excluded ingredients containing nuts</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">gluten-free</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">excludes ingredients containing gluten</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">vegan</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">food without meat, poulry, seafood,  eggs, dairy products and other animal-derived substances</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">halal</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">foods that conform to Islamic law&#160;</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">kosher</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">foods that conform to Jewish dietary law&#160;</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>0</VerticalResolution>
+   </Print>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>12</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
