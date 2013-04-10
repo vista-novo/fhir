@@ -1,0 +1,7 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+  <p>Adverse Reaction resources are used to provide information about specific reactions to a substance.  These are normally associated with an allergy/intolerance resource,
+    but can be reported on their own when no assumption of further reactions is being made.
+  </p>  
+</div>
+
