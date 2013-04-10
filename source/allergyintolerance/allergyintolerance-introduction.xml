@@ -1,0 +1,10 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+  <p>Allergy/Intolerance resources are used to provide information about adverse sensitivities to substances.  An adverse sensitivity is defined as:
+    A condition expected to result in undesirable physiologic reaction to an amount of a substance that would not produce a reaction in most individuals.  
+  </p>  
+  <p>
+    Most of the details of the sensitivity can be found in the set of reactions that are associated with the resource.
+  </p>  
+</div>
+
