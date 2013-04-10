@@ -109,10 +109,12 @@ namespace Hl7.Fhir.Support
         /// <summary>
         /// Construct a new ResourceLocation with parts filled according to the specified location
         /// </summary>
-        /// <param name="location">A string containing an absolute url</param>
+        /// <param name="location">A string containing an absolute or relative url</param>
         /// <remarks>
-        /// This constructor will parse the location to not only find it usual Uri parts (host, path, query, etc),
-        /// but also its Fhir-specific parts, like collection, service path, identifier, version and REST operation
+        /// * This constructor will parse the location to not only find it usual Uri parts 
+        /// (host, path, query, etc), but also its Fhir-specific parts, like collection, service path, 
+        /// identifier, version and REST operation.
+        /// * If the location is relative, http://localhost is assumed to be the protocol and host.
         /// </remarks>
         public ResourceLocation(string location) : this(new Uri(location, UriKind.RelativeOrAbsolute))
         {
@@ -122,17 +124,21 @@ namespace Hl7.Fhir.Support
         /// <summary>
         /// Construct a new ResourceLocation with parts filled according to the specified location
         /// </summary>
-        /// <param name="location">An absolute url</param>
+        /// <param name="location"></param>
         /// <seealso cref="ResourceLocation.#ctor(System.String)"/>
         public ResourceLocation(Uri location)
         {
-            if (!location.IsAbsoluteUri)
-                throw new ArgumentException("If location is a relative Uri, you must use the two-parameter form of the constructor",
-                    "location");
-
-            construct(location);
+           if (!location.IsAbsoluteUri)
+                construct(new Uri(LOCALHOST, location));
+            else
+                construct(location);
         }
 
+        /// <summary>
+        /// Construct a new ResourceLocation based on an absolute base path and a relative location.
+        /// </summary>
+        /// <param name="basePath"></param>
+        /// <param name="location"></param>
         public ResourceLocation(string basePath, string location)
             : this(new Uri(basePath, UriKind.RelativeOrAbsolute), location)
         {
@@ -176,6 +182,27 @@ namespace Hl7.Fhir.Support
             construct(new Uri(Combine(baseUri.ToString(), location.ToString()), UriKind.Absolute));
         }
 
+        private static readonly Uri LOCALHOST = new Uri("http://localhost");
+
+
+        /// <summary>
+        /// Build a ResourceLocation based on the name of a collection.
+        /// </summary>
+        /// <param name="collectionName"></param>
+        /// <returns></returns>
+        /// <remarks>ResourceLocations are always absolute, its host will be http://localhost</remarks>
+        public static ResourceLocation Build(string collectionName)
+        {
+            return Build(LOCALHOST, collectionName);
+        }
+
+
+        /// <summary>
+        /// Build a ResourceLocation based on an absolute endpoint and the name of a collection.
+        /// </summary>
+        /// <param name="baseUri"></param>
+        /// <param name="collectionName"></param>
+        /// <returns></returns>
         public static ResourceLocation Build(Uri baseUri, string collectionName)
         {
             if (!baseUri.IsAbsoluteUri)
@@ -187,6 +214,27 @@ namespace Hl7.Fhir.Support
             return new ResourceLocation(baseUri, collectionName);
         }
 
+
+        /// <summary>
+        /// Build a ResourceLocation based on the name of a collection and a resource id
+        /// </summary>
+        /// <param name="baseUri"></param>
+        /// <param name="collectionName"></param>
+        /// <param name="id">The id, without '@'</param>
+        /// <returns></returns>
+        public static ResourceLocation Build(string collectionName, string id)
+        {
+            return Build(LOCALHOST, collectionName, id);
+        }
+
+
+        /// <summary>
+        /// Build a ResourceLocation based on the endpoint, the name of a collection and a resource id
+        /// </summary>
+        /// <param name="baseUri"></param>
+        /// <param name="collectionName"></param>
+        /// <param name="id">The id, without '@'</param>
+        /// <returns></returns>
         public static ResourceLocation Build(Uri baseUri, string collectionName, string id)
         {
             if (String.IsNullOrEmpty(id))
@@ -199,6 +247,26 @@ namespace Hl7.Fhir.Support
         }
 
 
+        /// <summary>
+        /// Build a new ResourceLocation based on the name of the collection, the id and version.
+        /// </summary>
+        /// <param name="collectionName"></param>
+        /// <param name="id"></param>
+        /// <param name="versionId"></param>
+        /// <returns></returns>       
+        public static ResourceLocation Build(string collectionName, string id, string versionId)
+        {
+            return Build(LOCALHOST, collectionName, id, versionId);
+        }
+
+
+        /// <summary>
+        /// Build a new ResourceLocation based on the endpoint, name of the collection, the id and version.
+        /// </summary>
+        /// <param name="collectionName"></param>
+        /// <param name="id"></param>
+        /// <param name="versionId"></param>
+        /// <returns></returns>
         public static ResourceLocation Build(Uri baseUri, string collectionName, string id, string versionId)
         {
             if (String.IsNullOrEmpty(versionId))
@@ -207,7 +275,7 @@ namespace Hl7.Fhir.Support
             var result = ResourceLocation.Build(baseUri, collectionName, id);
             result.Operation = Util.RESTOPER_HISTORY;
             result.VersionId = versionId;
-
+            var x = result.ToString();
             return result;
         }
 
@@ -403,9 +471,9 @@ namespace Hl7.Fhir.Support
 
         private static readonly string[] resourceCollections = ModelInfo.SupportedResources.Select(res => res.ToLower()).ToArray();
 
-        private bool isResourceCollection(string part)
+        private bool isResourceOrBinaryCollection(string part)
         {
-            return resourceCollections.Contains(part);
+            return part == ResourceLocation.BINARY_COLLECTION_NAME || resourceCollections.Contains(part);
         }
 
         private void parseLocationParts()
@@ -434,13 +502,13 @@ namespace Hl7.Fhir.Support
                 {
                     // Match groups from back to front: versionId, history?, id, collection, service path
                     if (match.Groups[5].Success)
-                        VersionId = match.Groups[5].Value;
+                        _versionId = match.Groups[5].Value;
                     if (match.Groups[4].Success)
-                        Operation = match.Groups[4].Value;
-                    Id = match.Groups[3].Value;
-                    Collection = match.Groups[2].Value;
+                        _operation = match.Groups[4].Value;
+                    _id = match.Groups[3].Value;
+                    _collection = match.Groups[2].Value;
                     if (match.Groups[1].Success)
-                        Service = match.Groups[1].Value;
+                        _service = match.Groups[1].Value;
 
                     return;
                 }
@@ -451,29 +519,29 @@ namespace Hl7.Fhir.Support
                 var serviceParts = parts.Length;
 
                 // Check for <service>/<resourcetype>/<operation>
-                if( parts.Length >= 2 && isResourceCollection(parts[parts.Length - 2]) )
+                if( parts.Length >= 2 && isResourceOrBinaryCollection(parts[parts.Length - 2]) )
                 {
-                    Operation = parts[parts.Length - 1];
-                    Collection = parts[parts.Length - 2];
+                    _operation = parts[parts.Length - 1];
+                    _collection = parts[parts.Length - 2];
                     serviceParts = parts.Length - 2;
                 }
 
                 // Check for <service>/<history|metadata>
                 else if (lastPart == Util.RESTOPER_METADATA || lastPart == Util.RESTOPER_HISTORY)
                 {
-                    Operation = lastPart;
+                    _operation = lastPart;
                     serviceParts = parts.Length - 1;                    
                 }
 
                 // Check for <service>/<resourcetype>
-                else if (isResourceCollection(lastPart))
+                else if (isResourceOrBinaryCollection(lastPart))
                 {
-                    Collection = lastPart;
+                    _collection = lastPart;
                     serviceParts = parts.Length - 1;
                 }
 
                 // Assume any remaining parts are part of the Service path
-                Service = serviceParts > 0 ? String.Join("/", parts, 0, serviceParts) : null;
+                _service = serviceParts > 0 ? String.Join("/", parts, 0, serviceParts) : null;
             }
         }
 
@@ -551,16 +619,19 @@ namespace Hl7.Fhir.Support
 
         private static readonly Uri DUMMY_BASE = new Uri("http://hl7.org");
 
+        [Obsolete]
         public static Uri BuildResourceIdPath(string collection, string id)
         {
             return ResourceLocation.Build(DUMMY_BASE, collection, id).OperationPath;
         }
 
+        [Obsolete]
         public static Uri BuildResourceIdPath(string collection, string id, string version)
         {
             return ResourceLocation.Build(DUMMY_BASE, collection, id, version).OperationPath;
         }
 
+        [Obsolete]
         public static string GetCollectionFromResourceId(Uri versionedUrl)
         {
             if (versionedUrl.IsAbsoluteUri)
@@ -569,6 +640,7 @@ namespace Hl7.Fhir.Support
                 return new ResourceLocation(DUMMY_BASE, versionedUrl).Collection;
         }
 
+        [Obsolete]
         public static string GetIdFromResourceId(Uri versionedUrl)
         {
             if (versionedUrl.IsAbsoluteUri)
@@ -577,6 +649,8 @@ namespace Hl7.Fhir.Support
                 return new ResourceLocation(DUMMY_BASE, versionedUrl).Id;
         }
 
+
+        [Obsolete]
         public static string GetVersionFromResourceId(Uri versionedUrl)
         {
             if (versionedUrl.IsAbsoluteUri)
@@ -584,8 +658,5 @@ namespace Hl7.Fhir.Support
             else
                 return new ResourceLocation(DUMMY_BASE, versionedUrl).VersionId;
         }
-
-
-
     }
 }

@@ -164,6 +164,7 @@ namespace Hl7.Fhir.Tests
             Assert.AreEqual("svc", rl.Service);
             Assert.IsNull(rl.Operation);
             Assert.AreEqual("patient", rl.Collection);
+            Assert.AreEqual("http://hl7.org/svc/patient", rl.ToString());
 
 
             rl = ResourceLocation.Build(new Uri("http://hl7.org/svc"), "patient", "1");
@@ -172,6 +173,8 @@ namespace Hl7.Fhir.Tests
             Assert.IsNull(rl.Operation);
             Assert.AreEqual("patient", rl.Collection);
             Assert.AreEqual("1", rl.Id);
+            Assert.AreEqual("http://hl7.org/svc/patient/@1", rl.ToString());
+
 
             rl = ResourceLocation.Build(new Uri("http://hl7.org/svc"), "patient", "1", "2");
             Assert.AreEqual("hl7.org", rl.Host);
@@ -180,6 +183,10 @@ namespace Hl7.Fhir.Tests
             Assert.AreEqual("1", rl.Id);
             Assert.AreEqual("history",rl.Operation);
             Assert.AreEqual("2", rl.VersionId);
+            Assert.AreEqual("http://hl7.org/svc/patient/@1/history/@2", rl.ToString());
+
+            rl = ResourceLocation.Build("binary");
+            Assert.AreEqual("binary", rl.Collection);
         }
 
 
@@ -213,20 +220,24 @@ namespace Hl7.Fhir.Tests
 
 
         [TestMethod]
-        public void TestStaticParsersAndBuilders()
+        public void TestUseOfRelativePaths()
         {
-            Assert.AreEqual("patient/@4", ResourceLocation.BuildResourceIdPath("patient", "4").ToString());
-            Assert.AreEqual("patient/@4/history/@5", ResourceLocation.BuildResourceIdPath("patient", "4", "5").ToString());
+            Assert.AreEqual("patient/@1", ResourceLocation.Build("patient", "1").OperationPath.ToString());
+            Assert.AreEqual("patient/@1", new ResourceLocation("patient/@1").OperationPath.ToString());
 
-            Assert.AreEqual("patient", ResourceLocation.GetCollectionFromResourceId(new Uri("patient/@1/history/@4", UriKind.Relative)));
-            Assert.AreEqual("patient", ResourceLocation.GetCollectionFromResourceId(new Uri("http://www.hl7.org/patient/@1/history/@4")));
+            Assert.AreEqual("patient/@1/history/@4", ResourceLocation.Build("patient","1","4").OperationPath.ToString());
+            Assert.AreEqual("patient/@1/history/@4", new ResourceLocation("patient/@1/history/@4").OperationPath.ToString());
+            
+            var rl = ResourceLocation.Build("patient", "1");
+            rl.Operation = "x-history";
+            Assert.AreEqual("patient/@1/x-history", rl.OperationPath.ToString());
 
-            Assert.AreEqual("1", ResourceLocation.GetIdFromResourceId(new Uri("patient/@1/history/@4", UriKind.Relative)));
-            Assert.AreEqual("1", ResourceLocation.GetIdFromResourceId(new Uri("http://www.hl7.org/patient/@1/history/@4")));
+            rl = new ResourceLocation("patient/@1/history/@4");
 
-            Assert.AreEqual("4", ResourceLocation.GetVersionFromResourceId(new Uri("patient/@1/history/@4", UriKind.Relative)));
-            Assert.AreEqual("4", ResourceLocation.GetVersionFromResourceId(new Uri("http://www.hl7.org/patient/@1/history/@4")));
-        }   
+            Assert.AreEqual("1", rl.Id);
+            Assert.AreEqual("4", rl.VersionId);
+            Assert.AreEqual("patient", rl.Collection);
+            Assert.AreEqual("history", rl.Operation);
+        } 
     }
-
 }
