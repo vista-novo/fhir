@@ -40,11 +40,17 @@ public class CSharpProjectGenerator
 	{
 		if( !destDir.endsWith(File.separator) )
 			destDir += File.separator;
-		
+
+		// Generate "normal" VS2012 .NET project
 		List<String> templateContents = TextFile.readAllLines(destDir + "Hl7.Fhir.csproj.template"); 	
 		List<String> itemGroup = buildItemGroupContents(cSharpProjectFiles);
 		List<String> outputLines = replaceTemplateVar( templateContents, "@@@MODELFILES@@@", itemGroup);
 		TextFile.writeAllLines(destDir + "Hl7.Fhir.csproj", outputLines);
+		
+		// Generate WinRT VS2012 project
+		templateContents = TextFile.readAllLines(destDir + "Hl7.Fhir.WinRt.csproj.template"); 	
+		outputLines = replaceTemplateVar( templateContents, "@@@MODELFILES@@@", itemGroup);
+		TextFile.writeAllLines(destDir + "Hl7.Fhir.WinRt.csproj", outputLines);
 	}
 	
 

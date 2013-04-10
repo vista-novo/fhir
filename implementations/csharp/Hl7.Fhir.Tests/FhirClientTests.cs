@@ -72,8 +72,7 @@ namespace Hl7.Fhir.Tests
             Assert.IsNotNull(eve);
             Assert.AreEqual("Eve", eve.Details.Name[0].Given[0].Contents);
 
-            string version = ResourceLocation
-                .ParseVersionIdFromRestUri(client.LastResponseDetails.ContentLocation);
+            string version = new ResourceLocation(client.LastResponseDetails.ContentLocation).VersionId;               
             Assert.AreEqual("1", version);
 
             Patient eve2 = client.VRead<Patient>("1", version);

@@ -78,15 +78,7 @@ namespace Hl7.Fhir.Support
             return u != null && !String.IsNullOrEmpty(u.ToString());
         }
 
-        //No, this is not Path.Combine. It's for Uri's
-        public static string Combine(string path1, string path2)
-        {
-            if (String.IsNullOrEmpty(path1)) return path2;
-            if (String.IsNullOrEmpty(path2)) return path1;
-
-            return path1.TrimEnd('/') + "/" + path2.TrimStart('/');
-        }
-
+       
         public static byte[] ReadAllFromStream(Stream s, int contentLength)
         {
             if (contentLength == 0) return null;

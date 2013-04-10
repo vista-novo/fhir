@@ -64,139 +64,178 @@ namespace Hl7.Fhir.Support
                         "not a resource type", t.Name));
         }
 
-
-        public static Uri BuildResourceLocation(Uri baseUri, string collectionName, string id)
+    
+         //No, this is not Path.Combine. It's for Uri's
+        public static string Combine(string path1, string path2)
         {
-            return new Uri(Util.Combine(baseUri.ToString(),
-                BuildResourceLocation(collectionName, id).ToString()), UriKind.Absolute);
+            if (String.IsNullOrEmpty(path1)) return path2;
+            if (String.IsNullOrEmpty(path2)) return path1;
+
+            return path1.TrimEnd('/') + "/" + path2.TrimStart('/');
         }
 
-        public static Uri BuildResourceLocation(string collectionName, string id)
+        /// <summary>
+        /// Determine whether the url in location is absolute (specifies protocol, hostname and path)
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        public static bool IsAbsolute(string location)
         {
-            return new Uri(Util.Combine(collectionName, "@" + id), UriKind.Relative);
+            return new Uri(location, UriKind.RelativeOrAbsolute).IsAbsoluteUri;
         }
 
-        public static Uri BuildVersionedResourceLocation(Uri baseUri, string collectionName, string id, string versionId)
-        {            
-            return new Uri(Util.Combine(baseUri.ToString(),
-                            BuildVersionedResourceLocation(collectionName, id, versionId).ToString()), UriKind.Absolute);
-        }
-
-        public static Uri BuildVersionedResourceLocation(string collectionName, string id, string versionId)
+        /// <summary>
+        /// Determine whether location is absolute (specifies protocol, hostname and path)
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        public static bool IsAbsolute(Uri location)
         {
-            //string historyPath = Util.Combine("history", "@" + versionId);
-
-            return BuildVersionedResourceLocation( BuildResourceLocation(collectionName, id), versionId );
+            return location.IsAbsoluteUri;
         }
-
-        public static Uri BuildVersionedResourceLocation(Uri resourceId, string versionId)
-        {
-            string historyPath = Util.Combine("history", "@" + versionId);
-
-            return new Uri(Util.Combine(resourceId.ToString(), historyPath), UriKind.RelativeOrAbsolute);
-        }
-
-        public static string ParseIdFromRestUri(Uri requestUri)
-        {
-            if (requestUri == null) return null;
-
-            return ParseIdFromRestUri(requestUri.ToString());
-        }
-
-        public static string ParseIdFromRestUri(string requestUri)
-        {
-            if (requestUri == null) return null;
-
-            Regex r = new Regex(@"\w+/@([^/]+)/?");
-            Match result = r.Match(requestUri);
-
-            if (result.Success)
-                return result.Groups[1].Value;
-            else
-                return null;
-        }
-
-        public static string ParseVersionIdFromRestUri(Uri requestUri)
-        {
-            if (requestUri == null) return null;
-
-            return ParseVersionIdFromRestUri(requestUri.ToString());
-        }
-
-        public static string ParseVersionIdFromRestUri(string requestUri)
-        {
-            if (requestUri == null) return null;
-
-            Regex r = new Regex(@"\w+/@[^/]+/history/@([^/]+)");
-            Match result = r.Match(requestUri);
-
-            if (result.Success)
-                return result.Groups[1].Value;
-            else
-                return null;
-        }
-
-        public static string ParseCollectionNameFromRestUri(Uri requestUri)
-        {
-            if (requestUri == null) return null;
-
-            return ParseCollectionNameFromRestUri(requestUri.ToString());
-        }
-
-        public static string ParseCollectionNameFromRestUri(string requestUri)
-        {
-            if (requestUri == null) return null;
-
-            Regex r = new Regex(@"(\w+)/@[\w]+/?");
-            Match result = r.Match(requestUri);
-
-            if (result.Success)
-                return result.Groups[1].Value;
-            else
-            {
-                var parts = requestUri.Split('/');
-                foreach (var part in parts)
-                {
-                    if (ModelInfo.IsKnownResource(part))
-                        return part;
-                }
-
-                return null;
-            }
-             
-        }
-
 
         private UriBuilder _location;
 
+
+        /// <summary>
+        /// Construct a ResourceLocation with all of its parts empty
+        /// </summary>
         public ResourceLocation()
         {
             _location = new UriBuilder();
         }
 
-        public ResourceLocation(string location)
+
+        /// <summary>
+        /// Construct a new ResourceLocation with parts filled according to the specified location
+        /// </summary>
+        /// <param name="location">A string containing an absolute url</param>
+        /// <remarks>
+        /// This constructor will parse the location to not only find it usual Uri parts (host, path, query, etc),
+        /// but also its Fhir-specific parts, like collection, service path, identifier, version and REST operation
+        /// </remarks>
+        public ResourceLocation(string location) : this(new Uri(location, UriKind.RelativeOrAbsolute))
         {
-            _location = new UriBuilder(location);
-            parseLocationParts();
         }
 
+
+        /// <summary>
+        /// Construct a new ResourceLocation with parts filled according to the specified location
+        /// </summary>
+        /// <param name="location">An absolute url</param>
+        /// <seealso cref="ResourceLocation.#ctor(System.String)"/>
         public ResourceLocation(Uri location)
         {
-            _location = new UriBuilder(location);
+            if (!location.IsAbsoluteUri)
+                throw new ArgumentException("If location is a relative Uri, you must use the two-parameter form of the constructor",
+                    "location");
+
+            construct(location);
+        }
+
+        public ResourceLocation(string basePath, string location)
+            : this(new Uri(basePath, UriKind.RelativeOrAbsolute), location)
+        {
+        }
+
+        public ResourceLocation(Uri baseUri, string location)
+            : this(baseUri, new Uri(location, UriKind.RelativeOrAbsolute))
+        {
+        }
+
+        /// <summary>
+        /// Construct a ResourceLocation based on a baseUri and a relative path
+        /// </summary>
+        /// <param name="baseUri"></param>
+        /// <param name="location"></param>
+        /// <remarks>
+        /// The relative path is appended after the baseUri, resolving any backtracks and path separators,
+        /// so if the relative path starts with a '/', it will be appended right after the host part of
+        /// the baseUri, even if the baseUri would have contained paths parts itself.
+        /// 
+        /// If the relative path contains backtracks (..), these will all be resolved, by following the
+        /// backtrack. The resulting ResourceLocation will not contain backtracks.
+        /// </remarks>
+        public ResourceLocation(Uri baseUri, Uri location)
+        {
+            if (!baseUri.IsAbsoluteUri)
+                throw new ArgumentException("basePath must be an absolute Uri", "baseUri");
+
+            if (location.IsAbsoluteUri)
+                throw new ArgumentException("location must be a relative Uri", "location");
+
+            // if location starts with "/", use the default Uri functionality
+            // to concatenate the two, any path parts in basePath will be ignored, and
+            // location will replace the path part, and start right after the hostname
+            if (location.ToString().StartsWith("/"))
+                construct(new Uri(baseUri, location));
+
+            // Otherwise, use the constructor to normalize the combined version. The
+            // constructor will resolve ..-type path navigation and result in an
+            // absolute path.
+            construct(new Uri(Combine(baseUri.ToString(), location.ToString()), UriKind.Absolute));
+        }
+
+        public static ResourceLocation Build(Uri baseUri, string collectionName)
+        {
+            if (!baseUri.IsAbsoluteUri)
+                throw new ArgumentException("baseUri must be absolute", "baseUri");
+
+            if (String.IsNullOrEmpty(collectionName))
+                throw new ArgumentException("collection must not be empty", "collectionName");
+
+            return new ResourceLocation(baseUri, collectionName);
+        }
+
+        public static ResourceLocation Build(Uri baseUri, string collectionName, string id)
+        {
+            if (String.IsNullOrEmpty(id))
+                throw new ArgumentException("id must not be empty", "id");
+
+            var result = ResourceLocation.Build(baseUri, collectionName);
+            result.Id = id;
+
+            return result;
+        }
+
+
+        public static ResourceLocation Build(Uri baseUri, string collectionName, string id, string versionId)
+        {
+            if (String.IsNullOrEmpty(versionId))
+                throw new ArgumentException("versionId must not be empty", "versionId");
+
+            var result = ResourceLocation.Build(baseUri, collectionName, id);
+            result.Operation = Util.RESTOPER_HISTORY;
+            result.VersionId = versionId;
+
+            return result;
+        }
+
+
+        private void construct(Uri absolutePath)
+        {
+            _location = new UriBuilder(absolutePath);
             parseLocationParts();
         }
 
+        /// <summary>
+        /// The schema used in the ResourceLocation (http, mail, etc)
+        /// </summary>
         public string Scheme
         {
             get { return _location.Scheme; }
             set { _location.Scheme = value; }
         }
 
+        /// <summary>
+        /// The hostname used in the ResourceLocation (e.g. www.hl7.org)
+        /// </summary>
         public string Host 
         {
             get { return _location.Host; }
             set { _location.Host = value; }
         }
+
 
         public int Port
         {
@@ -204,27 +243,163 @@ namespace Hl7.Fhir.Support
             set { _location.Port = value; }
         }
 
-
-
-        public string Fragment
+        /// <summary>
+        /// The path of the ResourceLocation (e.g. /svc/patient/@1)
+        /// </summary>
+        public string Path
         {
-            get { return _location.Fragment; }
-            set { _location.Fragment = value; }
+            get { return _location.Path; }
+
+            set 
+            { 
+                _location.Path = value; 
+                parseLocationParts(); 
+            }
         }
 
+        //public string Fragment
+        //{
+        //    get { return _location.Fragment; }
+        //    set { _location.Fragment = value;  }
+        //}
+
+        /// <summary>
+        /// The query part of the ResourceLocation, including the '?' (e.g. ?name=Kramer&gender=M)
+        /// </summary>
         public string Query
         {
             get { return _location.Query; }
-            set { _location.Query = value; }
+            set { _location.Query = value.TrimStart('?'); }
         }
 
-        public string Service { get; set; }
-        public string Operation { get; set; }
-        public string Collection { get; set; }
-        public string Id { get; set; }
-        public string VersionId { get; set; }
 
-        private const string DUMMY_PATH = "http://hl7.org";
+        /// <summary>
+        /// The service path of a Fhir REST uri (e.g. /svc/fhir)
+        /// </summary>
+        private string _service;
+        public string Service
+        {
+            get { return _service; }
+
+            set
+            {
+                _service = value;
+                _location.Path = buildPath();
+            }
+        }
+        
+        
+        /// <summary>
+        /// The specified Fhir REST operation (e.g. history, validate)
+        /// </summary>
+        private string _operation;
+        public string Operation 
+        { 
+            get { return _operation; }
+
+            set
+            {
+                _operation = value;
+                _location.Path = buildPath();
+            }
+        }
+
+        /// <summary>
+        /// The collection part of a Fhir REST Url, corresponding to a Resource (patient, observation)
+        /// </summary>
+        private string _collection;
+        public string Collection 
+        {
+            get { return _collection; }
+
+            set
+            {
+                _collection = value;
+                _location.Path = buildPath();
+            }
+        }
+        
+        /// <summary>
+        /// The id part of a Fhir REST url, without the '@'
+        /// </summary>
+        private string _id;
+        public string Id 
+        {
+            get { return _id; }
+
+            set
+            {
+                _id = value;
+                _location.Path = buildPath();
+            }
+        }
+
+        private string buildPath()
+        {
+            var path = new StringBuilder("/");
+
+            if (!String.IsNullOrEmpty(Service)) 
+                path.Append(Service + "/");
+
+            path.Append(buildOperationPath());
+
+            return path.ToString().TrimEnd('/');
+        }
+
+        private string buildOperationPath()
+        {
+            var path = new StringBuilder();
+
+            if (!String.IsNullOrEmpty(Collection))
+            {
+                path.Append(Collection + "/");
+
+                if (!String.IsNullOrEmpty(Id))
+                {
+                    path.Append("@" + Id + "/");
+
+                    if (!String.IsNullOrEmpty(Operation))
+                    {
+                        path.Append(Operation + "/");
+
+                        if (!String.IsNullOrEmpty(VersionId))
+                            path.Append("@" + VersionId + "/");
+                    }
+                }
+                else
+                {
+                    if (!String.IsNullOrEmpty(Operation))
+                    {
+                        path.Append(Operation + "/");
+                    }
+                }
+            }
+            else
+            {
+                if (!String.IsNullOrEmpty(Operation))
+                {
+                    path.Append(Operation + "/");
+                }
+            }
+
+            return path.ToString().TrimEnd('/');
+        }
+
+        
+        /// <summary>
+        /// The version part of a Fhir REST url, without the '@'
+        /// </summary>
+        private string _versionId;
+        public string VersionId 
+        {
+            get { return _versionId; }
+
+            set
+            {
+                _versionId = value;
+                _location.Path = buildPath();
+            }
+        }
 
         private static readonly string[] resourceCollections = ModelInfo.SupportedResources.Select(res => res.ToLower()).ToArray();
 
@@ -235,41 +410,43 @@ namespace Hl7.Fhir.Support
 
         private void parseLocationParts()
         {
-            Service = null;
-            Operation = null;
-            Collection = null;
-            Id = null;
-            VersionId = null;
+            _service = null;
+            _operation = null;
+            _collection = null;
+            _id = null;
+            _versionId = null;
 
             if (!String.IsNullOrEmpty(_location.Path))
             {
                 var path = _location.Path.Trim('/');
 
                 // The empty path, /, used for batch and conformance
-                if (String.Empty == path)
+                if (path == String.Empty)
                     return;
 
                 // Parse <service>/<resourcetype>/@<id>/history/@<version>
-                var instancePattern = @"^(?:(.*)/)?(\w+)/@([^/]+)(?:/(history)(?:/@([^/]+))?)?$";
+                var instancePattern = @"^(?:(.*)/)?(\w+)/@([^/]+)(?:/(\w+)(?:/@([^/]+))?)?$";
 
-                Regex instanceRegEx = new Regex(instancePattern);
+                Regex instanceRegEx = new Regex(instancePattern, RegexOptions.RightToLeft);
                 var match = instanceRegEx.Match(path);
               
                 if (match.Success)
                 {
+                    // Match groups from back to front: versionId, history?, id, collection, service path
+                    if (match.Groups[5].Success)
+                        VersionId = match.Groups[5].Value;
                     if (match.Groups[4].Success)
-                        VersionId = match.Groups[4].Value;
-                    if (match.Groups[3].Success)
-                        Operation = match.Groups[3].Value;
-                    Id = match.Groups[2].Value;
-                    Collection = match.Groups[1].Value;
-                    if (match.Groups[0].Success)
-                        Service = match.Groups[0].Value;
+                        Operation = match.Groups[4].Value;
+                    Id = match.Groups[3].Value;
+                    Collection = match.Groups[2].Value;
+                    if (match.Groups[1].Success)
+                        Service = match.Groups[1].Value;
 
                     return;
                 }
                                 
-                var parts = _location.Path.Split('/');
+                // Not a resource id or version-specific location, try other options...
+                var parts = path.Split('/');
                 var lastPart = parts[parts.Length - 1];
                 var serviceParts = parts.Length;
 
@@ -299,5 +476,107 @@ namespace Hl7.Fhir.Support
                 Service = serviceParts > 0 ? String.Join("/", parts, 0, serviceParts) : null;
             }
         }
+
+
+        /// <summary>
+        /// Make a new ResourceLocation that represents a location after navigating to the specified path
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        /// <example>If the current path is "http://hl7.org/svc/patient", NavigatingTo("../observation") will 
+        /// result in a ResourceLocation of "http://hl7.org/svc/observation"</example>
+        public ResourceLocation NavigateTo(string path)
+        {
+            return NavigateTo(new Uri(path, UriKind.RelativeOrAbsolute));
+        }
+
+        public ResourceLocation NavigateTo(Uri path)
+        {
+            if (path.IsAbsoluteUri)
+                throw new ArgumentException("Can only navigate to relative paths", "path");
+
+            return new ResourceLocation(_location.Uri, path.ToString());
+        }
+
+        /// <summary>
+        /// Return the absolute Uri that represents this full ResourceLocation
+        /// </summary>
+        /// <returns></returns>
+        public Uri ToUri()
+        {
+            return _location.Uri;
+        }
+
+        /// <summary>
+        /// Return the absolute Uri that represents this full ResourceLocation as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return ToUri().ToString();
+        }
+
+        /// <summary>
+        /// Return the absolute Uri representing the ResourceLocation's base endpoint (e.g. http://hl7.org/fhir/svc)
+        /// </summary>
+        /// <returns>An absolute uri to reach the Fhir service endpoint</returns>
+        public Uri ServiceUri
+        {
+            get
+            {
+                var path = Combine(_location.Uri.GetComponents(UriComponents.SchemeAndServer,UriFormat.Unescaped), Service);
+                return new Uri(path, UriKind.Absolute);
+            }
+        }
+
+        /// <summary>
+        /// Return the path of the ResourceLocation relative to the ServicePath  (e.g. patient/@1/history)
+        /// </summary>
+        /// <returns>A relative uri</returns>
+        public Uri OperationPath
+        {
+            get
+            {
+                var path = new StringBuilder(buildOperationPath());
+//                if (!String.IsNullOrEmpty(Fragment))
+//                    path.Append("#" + Fragment);
+                if (!String.IsNullOrEmpty(Query))
+                    path.Append(Query);
+
+                return new Uri(path.ToString(), UriKind.Relative);
+            }
+        }
+
+
+
+        private static readonly Uri DUMMY_BASE = new Uri("http://hl7.org");
+
+        public static Uri BuildResouceIdPath(string collection, string id)
+        {
+            return ResourceLocation.Build(DUMMY_BASE, collection, id).OperationPath;
+        }
+
+        public static Uri BuildResourceIdPath(string collection, string id, string version)
+        {
+            return ResourceLocation.Build(DUMMY_BASE, collection, id, version).OperationPath;
+        }
+
+        public static string GetCollectionFromResourceId(Uri versionedUrl)
+        {
+            return new ResourceLocation(DUMMY_BASE, versionedUrl).Collection;
+        }
+
+        public static string GetIdFromResourceId(Uri versionedUrl)
+        {
+            return new ResourceLocation(DUMMY_BASE, versionedUrl).Collection;
+        }
+
+        public static string GetVersionFromResourceId(Uri versionedUrl)
+        {
+            return new ResourceLocation(DUMMY_BASE, versionedUrl).VersionId;
+        }
+
+
+
     }
 }
