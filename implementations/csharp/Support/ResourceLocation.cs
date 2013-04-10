@@ -551,7 +551,7 @@ namespace Hl7.Fhir.Support
 
         private static readonly Uri DUMMY_BASE = new Uri("http://hl7.org");
 
-        public static Uri BuildResouceIdPath(string collection, string id)
+        public static Uri BuildResourceIdPath(string collection, string id)
         {
             return ResourceLocation.Build(DUMMY_BASE, collection, id).OperationPath;
         }
@@ -563,17 +563,26 @@ namespace Hl7.Fhir.Support
 
         public static string GetCollectionFromResourceId(Uri versionedUrl)
         {
-            return new ResourceLocation(DUMMY_BASE, versionedUrl).Collection;
+            if (versionedUrl.IsAbsoluteUri)
+                return new ResourceLocation(versionedUrl).Collection;
+            else
+                return new ResourceLocation(DUMMY_BASE, versionedUrl).Collection;
         }
 
         public static string GetIdFromResourceId(Uri versionedUrl)
         {
-            return new ResourceLocation(DUMMY_BASE, versionedUrl).Collection;
+            if (versionedUrl.IsAbsoluteUri)
+                return new ResourceLocation(versionedUrl).Id;
+            else
+                return new ResourceLocation(DUMMY_BASE, versionedUrl).Id;
         }
 
         public static string GetVersionFromResourceId(Uri versionedUrl)
         {
-            return new ResourceLocation(DUMMY_BASE, versionedUrl).VersionId;
+            if (versionedUrl.IsAbsoluteUri)
+                return new ResourceLocation(versionedUrl).VersionId;
+            else
+                return new ResourceLocation(DUMMY_BASE, versionedUrl).VersionId;
         }
 
 

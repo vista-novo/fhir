@@ -210,5 +210,23 @@ namespace Hl7.Fhir.Tests
             rl.Query = "?_count=50";
             Assert.AreEqual("http://hl7.org:2100/svc/patient/@10/history/@12?_count=50", rl.ToString());
         }
+
+
+        [TestMethod]
+        public void TestStaticParsersAndBuilders()
+        {
+            Assert.AreEqual("patient/@4", ResourceLocation.BuildResourceIdPath("patient", "4").ToString());
+            Assert.AreEqual("patient/@4/history/@5", ResourceLocation.BuildResourceIdPath("patient", "4", "5").ToString());
+
+            Assert.AreEqual("patient", ResourceLocation.GetCollectionFromResourceId(new Uri("patient/@1/history/@4", UriKind.Relative)));
+            Assert.AreEqual("patient", ResourceLocation.GetCollectionFromResourceId(new Uri("http://www.hl7.org/patient/@1/history/@4")));
+
+            Assert.AreEqual("1", ResourceLocation.GetIdFromResourceId(new Uri("patient/@1/history/@4", UriKind.Relative)));
+            Assert.AreEqual("1", ResourceLocation.GetIdFromResourceId(new Uri("http://www.hl7.org/patient/@1/history/@4")));
+
+            Assert.AreEqual("4", ResourceLocation.GetVersionFromResourceId(new Uri("patient/@1/history/@4", UriKind.Relative)));
+            Assert.AreEqual("4", ResourceLocation.GetVersionFromResourceId(new Uri("http://www.hl7.org/patient/@1/history/@4")));
+        }   
     }
+
 }
