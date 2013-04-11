@@ -399,7 +399,7 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
           tn = "ResourceReference";
         };
   	    if (en == null) {
-          if (tn.equals("string"))
+          if (tn.equalsIgnoreCase("string"))
             tn = "String_";
           write("      for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : upFirst(tn))+" e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
           write("        "+comp+"(\""+name+"\", e);\r\n");
@@ -459,7 +459,7 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
 //      else 
 //        return "String";
       if (t.equals("idref"))
-        return "String";
+        return "String_";
 //      else if (t.equals("string"))
 //        return "String_";
       else

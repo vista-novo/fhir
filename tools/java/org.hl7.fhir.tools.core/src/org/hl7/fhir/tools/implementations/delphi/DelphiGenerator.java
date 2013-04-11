@@ -744,8 +744,42 @@ private void generateEnum(ElementDefn e) throws Exception {
           con.append("'"+c.getCode()+"', ");
         }
       }
+      def.append("  "+tn+"List = set of "+tn+";\r\n");
       defCodeType.enumDefs.add(def.toString());
       defCodeType.enumConsts.add(con.toString());
+      defCodeType.enumProcs.add("Function SetAsInteger(aSet : "+tn+"List) : Integer; overload;");
+      defCodeType.enumProcs.add("Function IntegerAs"+tn+"List(i : integer) : "+tn+"List; overload;");
+      
+      
+      StringBuilder impl = new StringBuilder();
+      
+      impl.append("function SetAsInteger(aSet : "+tn+"List) : Integer;\r\n");
+      impl.append("var\r\n");
+      impl.append("  a : "+tn+";\r\n");
+      impl.append("begin\r\n");
+      impl.append("  result := 0;\r\n");
+      impl.append("  for a := low("+tn+") to high("+tn+") do\r\n");
+      impl.append("  begin\r\n");
+      impl.append("    assert(ord(a) < 32);\r\n");
+      impl.append("    if a in aSet then\r\n");
+      impl.append("      result := result + 1 shl (ord(a));\r\n");
+      impl.append("  end;\r\n");
+      impl.append("end;\r\n\r\n");
+
+      impl.append("function IntegerAs"+tn+"List(i : Integer) : "+tn+"List;\r\n");
+      impl.append("var\r\n");
+      impl.append("  aLoop : "+tn+";\r\n");
+      impl.append("begin\r\n");
+      impl.append("  result := [];\r\n");
+      impl.append("  for aLoop := low("+tn+") to high("+tn+") Do\r\n");
+      impl.append("  begin\r\n");
+      impl.append("    assert(ord(aLoop) < 32);\r\n");
+      impl.append("    if i and (1 shl (ord(aLoop))) > 0 Then\r\n");
+      impl.append("      result := result + [aLoop];\r\n");
+      impl.append("  end;\r\n");
+      impl.append(" end;\r\n\r\n");
+      
+      defCodeType.classImpls.add(impl.toString());
     }
   }
 
@@ -1152,68 +1186,89 @@ private void generateEnum(ElementDefn e) throws Exception {
       if (enumNames.contains(tn)) {
         srls = "CODES_"+tn+"[#]";
       } else if (tn.equals("Integer")) {
-        srls = "IntegerToString(#)";
+    	  srls = "IntegerToString(#)";
       } else if (tn.equals("Boolean")) {
-        srls = "BooleanToString(#)";
+    	  srls = "BooleanToString(#)";
       } else if (tn.equals("TDateAndTime")) {
-        srls = "#.AsXml";
+    	  srls = "#.AsXml";
       };
     }
-    
-    
+
+
     String s = getElementName(e.getName()); 
     if (e.unbounded()) {
-      String tnl;
-      if (tn.contains("{"))
-        tnl = tn.substring(0, tn.indexOf('{'))+"List"+tn.substring(tn.indexOf('{'));
-      else
-        tnl = tn+"List";
-      s = s+"List";
-      defPriv1.append("    F"+s+" : "+tnl+";\r\n");
-      defPub.append("    {@member "+s+"\r\n");
-      defPub.append("      "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
-      defPub.append("    }\r\n");
-      defPub.append("    property "+s+" : "+tnl+" read F"+getTitle(s)+";\r\n");
-      defPub.append("\r\n");
-      create.append("  F"+getTitle(s)+" := "+tnl+".Create;\r\n");
-      destroy.append("  F"+getTitle(s)+".Free;\r\n");
-      assign.append("  F"+getTitle(s)+".Assign("+cn+"(oSource).F"+getTitle(s)+");\r\n");
-      getkids.append("  if (child_name = '"+getElementName(e.getName())+"') Then\r\n     list.addAll(F"+getTitle(s)+");\r\n");
-      getprops.append("  oList.add(TFHIRProperty.create(self, '"+e.getName()+"', '"+e.typeCode()+"', F"+getTitle(s)+".Link)){3};\r\n");
-      
-//      defineList(tn, tnl, category);
-      if (!typeIsSimple(tn)) {
-        if (!e.getName().equals("[type]") && !e.getName().contains("[x]")) {
-          parse = "Parse"+parseName(tn)+"(child)";
-          parseJ = "Parse"+parseName(tn)+"";
-          srlsd = "Compose"+parseName(tn);
-          srlsdJ = "Compose"+parseName(tn);
-        } else {
-          throw new Exception("not supported");
-        }
-      };
-        workingParserX.append("      else if (child.baseName = '"+e.getName()+"') then\r\n"+
-            "        result."+s+".Add("+parse+")\r\n");
-        workingComposerX.append("  for i := 0 to elem."+s+".Count - 1 do\r\n"+
-            "    "+srlsd+"(xml, '"+e.getName()+"', "+srls.replace("#", "elem."+s+"[i]")+");\r\n");
-      workingParserJ.append("      else if (json.ItemName = '"+e.getName()+"') then\r\n"+
-          "      begin\r\n"+
-          "        json.checkState(jpitArray);\r\n"+
-          "        json.Next;\r\n"+
-          "        while (json.ItemType <> jpitEnd) do\r\n"+
-          "        begin\r\n"+
-          "          result."+s+".Add("+parseJ+");\r\n"+
-          "          json.Next;\r\n"+
-          "        end;\r\n"+
-          "      end\r\n");
+    	if (enumNames.contains(tn)) {         
+    		defPriv1.append("    F"+getTitle(s)+" : TFhirEnumList;\r\n"); 
+    		defPriv2.append("    Function Get"+getTitle(s)+"ST : "+tn+"List;\r\n");
+    		defPriv2.append("    Procedure Set"+getTitle(s)+"ST(value : "+tn+"List);\r\n");
+    		defPub.append("    {@member "+s+"\r\n");
+    		defPub.append("      "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
+    		defPub.append("    }\r\n");
+    		defPub.append("    property "+s+" : TFhirEnumList read F"+getTitle(s)+";\r\n");
+    		defPub.append("    {@member "+s+"ST\r\n");
+    		defPub.append("      Typed access to "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
+    		defPub.append("    }\r\n");
+    		defPub.append("    property "+s+"ST : "+tn+"List read Get"+getTitle(s)+"ST write Set"+getTitle(s)+"ST;\r\n");
+    		create.append("  F"+getTitle(s)+" := TFHIREnumList.Create;\r\n");
+    		destroy.append("  F"+getTitle(s)+".Free;\r\n");
+    		assign.append("  F"+getTitle(s)+".Assign("+cn+"(oSource).F"+getTitle(s)+");\r\n");
+    		getkids.append("  if (child_name = '"+getElementName(e.getName())+"') Then\r\n     list.addAll(F"+getTitle(s)+");\r\n");
+    		getprops.append("  oList.add(TFHIRProperty.create(self, '"+e.getName()+"', '"+e.typeCode()+"', F"+getTitle(s)+".Link)){3};\r\n");
+            impl.append("Function "+cn+".Get"+getTitle(s)+"ST : "+tn+"List;\r\n  var i : integer;\r\nbegin\r\n  result := [];\r\n  for i := 0 to "+s+".count - 1 do\r\n    result := result + ["+tn+"(StringArrayIndexOf(CODES_"+tn+", "+s+"[i].value))];\r\nend;\r\n\r\n");
+            impl.append("Procedure "+cn+".Set"+getTitle(s)+"ST(value : "+tn+"List);\r\nvar a : "+tn+";\r\nbegin\r\n  "+s+".clear;\r\n  for a := low("+tn+") to high("+tn+") do\r\n    if a in value then\r\n      "+s+".add(TFhirEnum.create(CODES_"+tn+"[a]));\r\nend;\r\n\r\n");
+    	} else {
+    		String tnl;
+    		if (tn.contains("{"))
+    			tnl = tn.substring(0, tn.indexOf('{'))+"List"+tn.substring(tn.indexOf('{'));
+    		else
+    			tnl = tn+"List";
+    		s = s+"List";
+    		defPriv1.append("    F"+s+" : "+tnl+";\r\n");
+    		defPub.append("    {@member "+s+"\r\n");
+    		defPub.append("      "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
+    		defPub.append("    }\r\n");
+    		defPub.append("    property "+s+" : "+tnl+" read F"+getTitle(s)+";\r\n");
+    		defPub.append("\r\n");
+    		create.append("  F"+getTitle(s)+" := "+tnl+".Create;\r\n");
+    		destroy.append("  F"+getTitle(s)+".Free;\r\n");
+    		assign.append("  F"+getTitle(s)+".Assign("+cn+"(oSource).F"+getTitle(s)+");\r\n");
+    		getkids.append("  if (child_name = '"+getElementName(e.getName())+"') Then\r\n     list.addAll(F"+getTitle(s)+");\r\n");
+    		getprops.append("  oList.add(TFHIRProperty.create(self, '"+e.getName()+"', '"+e.typeCode()+"', F"+getTitle(s)+".Link)){3};\r\n");
 
-      workingComposerJ.append("  if elem."+s+".Count > 0 then\r\n"+
-          "  begin\r\n"+
-          "    json.valueArray('"+e.getName()+"');\r\n"+
-          "    for i := 0 to elem."+s+".Count - 1 do\r\n"+
-          "      "+srlsdJ+"(json, '',"+srls.replace("#", "elem."+s+"[i]")+");\r\n"+
-          "    json.FinishArray;\r\n"+
-          "  end;\r\n");
+    		//      defineList(tn, tnl, category);
+    		if (!typeIsSimple(tn)) {
+    			if (!e.getName().equals("[type]") && !e.getName().contains("[x]")) {
+    				parse = "Parse"+parseName(tn)+"(child)";
+    				parseJ = "Parse"+parseName(tn)+"";
+    				srlsd = "Compose"+parseName(tn);
+    				srlsdJ = "Compose"+parseName(tn);
+    			} else {
+    				throw new Exception("not supported at "+e.getName()+" - complex type "+tn);
+    			}
+    		};
+    		workingParserX.append("      else if (child.baseName = '"+e.getName()+"') then\r\n"+
+    				"        result."+s+".Add("+parse+")\r\n");
+    		workingComposerX.append("  for i := 0 to elem."+s+".Count - 1 do\r\n"+
+    				"    "+srlsd+"(xml, '"+e.getName()+"', "+srls.replace("#", "elem."+s+"[i]")+");\r\n");
+    		workingParserJ.append("      else if (json.ItemName = '"+e.getName()+"') then\r\n"+
+    				"      begin\r\n"+
+    				"        json.checkState(jpitArray);\r\n"+
+    				"        json.Next;\r\n"+
+    				"        while (json.ItemType <> jpitEnd) do\r\n"+
+    				"        begin\r\n"+
+    				"          result."+s+".Add("+parseJ+");\r\n"+
+    				"          json.Next;\r\n"+
+    				"        end;\r\n"+
+    				"      end\r\n");
+
+    		workingComposerJ.append("  if elem."+s+".Count > 0 then\r\n"+
+    				"  begin\r\n"+
+    				"    json.valueArray('"+e.getName()+"');\r\n"+
+    				"    for i := 0 to elem."+s+".Count - 1 do\r\n"+
+    				"      "+srlsdJ+"(json, '',"+srls.replace("#", "elem."+s+"[i]")+");\r\n"+
+    				"    json.FinishArray;\r\n"+
+    				"  end;\r\n");
+    	}
     } else {
       if (enumNames.contains(tn)) {         
         defPriv1.append("    F"+getTitle(s)+" : TFhirEnum;\r\n"); 

@@ -44,6 +44,7 @@ public class DelphiCodeGenerator extends OutputStreamWriter {
   public List<String> precomments = new ArrayList<String>();
   public List<String> enumDefs = new ArrayList<String>();
 	public List<String> enumConsts = new ArrayList<String>();
+	public List<String> enumProcs = new ArrayList<String>();
   public List<String> classFwds = new ArrayList<String>();
   public List<String> classDefs = new ArrayList<String>();
 	public List<String> classImpls = new ArrayList<String>();
@@ -127,7 +128,12 @@ public class DelphiCodeGenerator extends OutputStreamWriter {
         write(s+"\r\n");
       }
       write("\r\n");
-    }
+
+        for (String s : enumProcs) {
+          write(s+"\r\n");
+        }
+        write("\r\n");
+      }
     if (procsPub.size() > 0) {
       for (String s : procsPub) {
         write(s);
