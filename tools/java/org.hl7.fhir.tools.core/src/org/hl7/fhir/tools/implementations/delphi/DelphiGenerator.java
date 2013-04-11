@@ -158,6 +158,7 @@ public void generate(Definitions definitions, String destDir, String implDir, St
 //      e.setName(ini.getStringProperty("future-resources", n));
 //      generate(e, definitions.getConceptDomains());
 //    }
+
     defCodeRes.enumConsts.add("  FHIR_GENERATED_VERSION = '"+version+"';\r\n");
     defCodeRes.enumConsts.add("  FHIR_GENERATED_DATE = '"+new SimpleDateFormat("yyyyMMddHHmmss").format(genDate)+"';\r\n");
     defCodeRes.classDefs.add(" TFhirResourceFactory = class (TFHIRBaseFactory)\r\n  public\r\n"+factoryIntf.toString()+"  end;\r\n");
@@ -747,13 +748,13 @@ private void generateEnum(ElementDefn e) throws Exception {
       def.append("  "+tn+"List = set of "+tn+";\r\n");
       defCodeType.enumDefs.add(def.toString());
       defCodeType.enumConsts.add(con.toString());
-      defCodeType.enumProcs.add("Function SetAsInteger(aSet : "+tn+"List) : Integer; overload;");
+      defCodeType.enumProcs.add("Function "+tn+"ListAsInteger(aSet : "+tn+"List) : Integer; overload;");
       defCodeType.enumProcs.add("Function IntegerAs"+tn+"List(i : integer) : "+tn+"List; overload;");
       
       
       StringBuilder impl = new StringBuilder();
       
-      impl.append("function SetAsInteger(aSet : "+tn+"List) : Integer;\r\n");
+      impl.append("function "+tn+"ListAsInteger(aSet : "+tn+"List) : Integer;\r\n");
       impl.append("var\r\n");
       impl.append("  a : "+tn+";\r\n");
       impl.append("begin\r\n");
