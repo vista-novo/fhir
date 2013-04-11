@@ -15,10 +15,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>340</WindowHeight>
-  <WindowWidth>22760</WindowWidth>
-  <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6080</WindowTopY>
+  <WindowHeight>8700</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
+  <WindowTopX>11200</WindowTopX>
+  <WindowTopY>120</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -100,14 +100,14 @@
   </Style>
   <Style ss:ID="s74">
    <Alignment ss:Vertical="Top"/>
-  </Style>
-  <Style ss:ID="s79">
-   <Alignment ss:Vertical="Top"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s75">
+   <Alignment ss:Vertical="Top"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="15" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="11" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s64" ss:DefaultColumnWidth="65"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s65" ss:Width="198"/>
@@ -160,7 +160,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">AllergyIntolerance.criticality</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -190,7 +190,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">AllergyIntolerance.recordedDate</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -235,7 +235,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">AllergyIntolerance.recorder</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -280,69 +280,10 @@
     <Cell><Data ss:Type="String">AllergyIntolerance.sensitivityTest</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:Index="8"><Data ss:Type="String">Tests that confirm the sensitivity</Data></Cell>
-    <Cell ss:Index="13" ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:Index="17" ss:StyleID="s68"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="75">
-    <Cell><Data ss:Type="String">AllergyIntolerance.sensitivityTest.name</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"/>
-    <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell><Data ss:Type="String">Name of the test</Data></Cell>
-    <Cell ss:Index="11" ss:StyleID="s69"/>
-    <Cell ss:Index="13" ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:Index="17" ss:StyleID="s68"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="105">
-    <Cell><Data ss:Type="String">AllergyIntolerance.sensitivityTest.identifier</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"/>
-    <Cell><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell><Data ss:Type="String">External identifier of the test</Data></Cell>
-    <Cell ss:Index="11" ss:StyleID="s69"/>
-    <Cell ss:Index="13" ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:Index="17" ss:StyleID="s68"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">AllergyIntolerance.sensitivityTest.orderer</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"/>
-    <Cell><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell><Data ss:Type="String">Who ordered the test</Data></Cell>
-    <Cell ss:Index="11" ss:StyleID="s69"/>
-    <Cell ss:Index="13" ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:Index="17" ss:StyleID="s68"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="195">
-    <Cell><Data ss:Type="String">AllergyIntolerance.sensitivityTest.result</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell><Data ss:Type="String">Resource(Observation)</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell><Data ss:Type="String">The result of the test</Data></Cell>
-    <Cell ss:Index="11" ss:StyleID="s69"/>
+    <Cell ss:Index="8"><Data ss:Type="String">Observations that confirm or refute the sensitivity</Data></Cell>
     <Cell ss:Index="13" ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
@@ -366,7 +307,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>7</TopRowBottomPane>
+   <TopRowBottomPane>9</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -383,8 +324,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>9</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>10</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -744,41 +684,41 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Criticality</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">The criticality of an adverse sensitivity</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">#criticality</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">suggested</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">#criticality</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">SensitivityType</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">The type of an adverse sensitivity</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">#sensitivitytype</Data></Cell>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">suggested</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">#sensitivitytype</Data></Cell>
+    <Cell ss:StyleID="s75"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">SensitivityStatus</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">The status of the adverse sensitivity</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">#sensitivitystatus</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">suggested</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">#sensitivitystatus</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s64"/>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s75"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s64"/>
-    <Cell ss:StyleID="s74"/>
-    <Cell ss:Index="6" ss:StyleID="s74"/>
+    <Cell ss:StyleID="s75"/>
+    <Cell ss:Index="6" ss:StyleID="s75"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s64"/>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s75"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s64"/>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s75"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"/>
@@ -859,6 +799,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>

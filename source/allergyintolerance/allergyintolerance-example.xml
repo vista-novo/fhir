@@ -20,4 +20,12 @@
     <type value="Substance"/>
     <url value="../substance/@example"/>
   </substance>
+  <reactions>
+    <type value="AdverseReaction"/>
+    <url value="../adversereaction/@example"/>
+  </reactions>
+  <sensitivityTest>
+    <type value="Observation"/>
+    <url value="../observation/@example"/>
+  </sensitivityTest>
 </AllergyIntolerance>

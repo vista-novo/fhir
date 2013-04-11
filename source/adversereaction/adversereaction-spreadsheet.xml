@@ -15,11 +15,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>340</WindowHeight>
-  <WindowWidth>22760</WindowWidth>
-  <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6080</WindowTopY>
-  <ActiveSheet>4</ActiveSheet>
+  <WindowHeight>6400</WindowHeight>
+  <WindowWidth>21940</WindowWidth>
+  <WindowTopX>11300</WindowTopX>
+  <WindowTopY>2000</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -190,7 +189,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">AdverseReaction.substance</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -219,7 +218,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">AdverseReaction.manifestation.occurrenceDate</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -248,7 +247,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">AdverseReaction.manifestation.didNotOccurFlag</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -263,7 +262,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">AdverseReaction.manifestation.recorder</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -305,7 +304,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="180">
     <Cell><Data ss:Type="String">AdverseReaction.manifestation.exposure.exposureType</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -380,10 +379,11 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>12</TopRowBottomPane>
+   <TopRowBottomPane>13</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -400,8 +400,6 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>15</ActiveRow>
-     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -809,7 +807,6 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>

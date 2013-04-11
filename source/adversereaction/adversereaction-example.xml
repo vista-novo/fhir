@@ -23,6 +23,7 @@
   <manifestation>
     <occurrenceDate value="2012-09-17"/>
     <severity value="moderate"/>
+    <didNotOccurFlag value="false"/>
     <recorder>
       <type value="Practitioner"/>
       <url value="../practitioner/@example"/>
