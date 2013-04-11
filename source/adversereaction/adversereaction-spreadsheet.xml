@@ -8,17 +8,18 @@
   <Author>Grahame</Author>
   <LastAuthor>Jean-Henri Duteau</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2013-04-10T22:37:07Z</LastSaved>
+  <LastSaved>2013-04-11T04:29:41Z</LastSaved>
   <Version>14.0</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6400</WindowHeight>
-  <WindowWidth>21940</WindowWidth>
-  <WindowTopX>11300</WindowTopX>
-  <WindowTopY>2000</WindowTopY>
+  <WindowHeight>6560</WindowHeight>
+  <WindowWidth>22000</WindowWidth>
+  <WindowTopX>3080</WindowTopX>
+  <WindowTopY>320</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -379,7 +380,6 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -586,7 +586,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">date</Data></Cell>
-    <Cell><Data ss:Type="String">recorded date/time.</Data></Cell>
+    <Cell><Data ss:Type="String">a date of one of the reaction's manifestations</Data></Cell>
     <Cell><Data ss:Type="String">date</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
     <Cell><Data ss:Type="String">AdverseReaction.manifestation.occurrenceDate</Data></Cell>
@@ -702,6 +702,7 @@
    </PageSetup>
    <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -722,7 +723,6 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>4</ActiveRow>
-     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
