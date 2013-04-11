@@ -20,6 +20,7 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6135</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -95,12 +96,12 @@
   <Style ss:ID="s76">
    <Alignment ss:Vertical="Top"/>
   </Style>
-  <Style ss:ID="s79">
+  <Style ss:ID="s77">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
   </Style>
-  <Style ss:ID="s130">
+  <Style ss:ID="s78">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
  </Styles>
@@ -170,7 +171,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -310,7 +310,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">No comments when the observation is just a picture</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="2"><Data ss:Type="String">Observation.obtainedDateTime</Data></Cell>
+    <Cell ss:Index="2"><Data ss:Type="String">Observation.appliesDateTime</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">dateTIme</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"><Data ss:Type="String">When the image was taken</Data></Cell>
@@ -522,11 +522,12 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>13</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -773,7 +774,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="155.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="171"/>
    <Column ss:Index="11" ss:AutoFitWidth="0" ss:Width="187.5"/>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s71"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Context Type</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Context</Data></Cell>
@@ -790,38 +791,38 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">To Do</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
-   <Row ss:Height="120">
+   <Row ss:AutoFitHeight="0" ss:Height="120">
     <Cell ss:StyleID="s70"><Data ss:Type="String">accession</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Resource</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Observation</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s130"><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:StyleID="s130"/>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Identifier</Data></Cell>
+    <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s69"><Data ss:Type="String">N</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Used by the requester to link back to the original context</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">An identifier for the order that is used by the application/system that requested the image to link back to the original context (if there was such a system). This is not the identity of the image, but of the &quot;request for an image to be generated&quot;</Data></Cell>
-    <Cell ss:Index="11" ss:StyleID="s130"><Data ss:Type="String">The name &quot;Accession Number&quot; comes from DICOM, where it is used ubiquitiously</Data></Cell>
-    <Cell ss:StyleID="s130"/>
+    <Cell ss:Index="11" ss:StyleID="s78"><Data ss:Type="String">The name &quot;Accession Number&quot; comes from DICOM, where it is used ubiquitiously</Data></Cell>
+    <Cell ss:StyleID="s78"/>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s70"><Data ss:Type="String">studyid</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Resource</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Observation</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s130"><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:StyleID="s130"/>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Identifier</Data></Cell>
+    <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s69"><Data ss:Type="String">N</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">The session in which the picture was taken</Data></Cell>
     <Cell><Data ss:Type="String">The session in which the picture was taken.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Usually used for DICOM images</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s70"><Data ss:Type="String">seriesid</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Resource</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Observation</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s130"><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:StyleID="s130"/>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Identifier</Data></Cell>
+    <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s69"><Data ss:Type="String">N</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">The series of images in which this picture was taken</Data></Cell>
     <Cell><Data ss:Type="String">The series of images in which this picture was taken</Data></Cell>
@@ -834,6 +835,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>

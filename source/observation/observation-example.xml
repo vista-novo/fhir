@@ -18,7 +18,7 @@
       <display value="normal"/>
     </coding>
   </interpretation>
-  <obtainedDateTime value="2012-09-17"/>
+  <appliesDateTime value="2012-09-17"/>
 
   <status value="final"/>
   <reliability value="ok"/>
