@@ -4,7 +4,11 @@
     A condition expected to result in undesirable physiologic reaction to an amount of a substance that would not produce a reaction in most individuals.  
   </p>  
   <p>
-    Most of the details of the sensitivity can be found in the set of reactions that are associated with the resource.
-  </p>  
+    Most of the details of the sensitivity can be found in the set of <a href="adversereaction.htm">reactions</a> that are associated with the resource.
+  </p>
+  <p>
+    <a href="adversereaction.htm">Adverse Reactions</a> do not have to be always associated with an AllergyIntolerance.
+    This would usually be done when an individual reaction has not provided enough evidence for an Allergy/Intolerance.  
+   </p>
 </div>
 
