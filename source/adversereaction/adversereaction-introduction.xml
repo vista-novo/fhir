@@ -3,9 +3,5 @@
   <p>Adverse Reaction resources are used to provide information about specific reactions to a substance.  These are normally associated with an <a href="allergyintolerance.htm">AllergyIntolerance</a> resource,
     but can be reported on their own when no assumption of further reactions is being made.
   </p>  
-  <p>If there are multiple reactions to occur due to an exposure to a substance, each of those reactions would be result in
-    separate instances of an Adverse Reaction resource.  As an example, if a subject experienced a rash, vomiting, and anaphylaxis,
-    those would be three separate AdverseReactions that each had the same Manifestation.occurrenceDate.
-  </p>
 </div>
 
