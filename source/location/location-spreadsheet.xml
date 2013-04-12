@@ -9,17 +9,17 @@
   <Author>Grahame</Author>
   <LastAuthor>Ewout Kramer</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2013-02-07T11:44:08Z</LastSaved>
+  <LastSaved>2013-04-12T10:46:21Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6348</WindowHeight>
-  <WindowWidth>22752</WindowWidth>
+  <WindowHeight>6345</WindowHeight>
+  <WindowWidth>19440</WindowWidth>
   <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6072</WindowTopY>
+  <WindowTopY>6075</WindowTopY>
   <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -62,6 +62,15 @@
     ss:WrapText="1"/>
    <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
   </Style>
+  <Style ss:ID="s68">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
   <Style ss:ID="s69">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
@@ -74,15 +83,6 @@
   <Style ss:ID="s74">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
-   <Borders/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
-   <Interior/>
-   <NumberFormat/>
-   <Protection/>
-  </Style>
-  <Style ss:ID="s127">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
-    ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
    </Borders>
@@ -92,18 +92,18 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="14" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="150.60000000000002"/>
-   <Column ss:StyleID="s63" ss:Width="29.4"/>
-   <Column ss:StyleID="s63" ss:Width="22.799999999999997"/>
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="150.75"/>
+   <Column ss:StyleID="s63" ss:Width="29.25"/>
+   <Column ss:StyleID="s63" ss:Width="22.5"/>
    <Column ss:StyleID="s63" ss:Width="60"/>
-   <Column ss:StyleID="s63" ss:Width="27"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="119.4"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="106.80000000000001"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="158.4"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.4"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="77.399999999999991"/>
+   <Column ss:StyleID="s63" ss:Width="42"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="119.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="106.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="204.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="77.25"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s65">
@@ -132,7 +132,8 @@
     <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">A place at which services may be provided by, or on behalf of, an Organization</Data></Cell>
+    <Cell><Data ss:Type="String">Contact details and position information for a physical place</Data></Cell>
+    <Cell><Data ss:Type="String">Contact details and position information for a physical place that may be visited and where healthcare resources and participants may be found or contained, accomodated, or stored</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
     <Cell ss:Index="13" ss:StyleID="Default"><Data ss:Type="String">ServiceDeliveryLocation</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -147,10 +148,19 @@
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Name of the location</Data></Cell>
+    <Cell><Data ss:Type="String">Name of the location which identifies it to its users</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
     <Cell ss:Index="13" ss:StyleID="Default"><Data ss:Type="String">./location/name</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Location.description</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Description of the Location</Data></Cell>
+    <Cell><Data ss:Type="String">Description of the Location, which helps in finding or referencing the place</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">./location/desc</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Location.type</Data></Cell>
@@ -163,24 +173,9 @@
     <Cell><Data ss:Type="String">Classification of the location</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">There are many ways by which locations can be classified, so this element may be repeated.</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">./code</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">./code</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Location.address</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Address</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Physical location</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">./location/addr</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Location.telecom</Data></Cell>
@@ -198,6 +193,54 @@
     <Cell><Data ss:Type="String">./location/telecom</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Location.address</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Address</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Physical location</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">./location/addr</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Location.position</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The absolute geographic location (from KML)</Data></Cell>
+    <Cell><Data ss:Type="String">The absolute geographic location of the Location, expressed in a KML compatible manner</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Location.position.longitude</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="6"><Data ss:Type="String">decimal</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Longitude (from KML)</Data></Cell>
+    <Cell><Data ss:Type="String">Longitude. The value domain and the interpretation are the same as for the text of the longitude element in KML</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Location.position.latitude</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="6"><Data ss:Type="String">decimal</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Lattitude (from KML)</Data></Cell>
+    <Cell><Data ss:Type="String">Lattitude. The value domain and the interpretation are the same as for the text of the lattitude element in KML</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Location.position.altitude</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="6"><Data ss:Type="String">decimal</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Altitude (from KML)</Data></Cell>
+    <Cell><Data ss:Type="String">Altitude. The value domain and the interpretation are the same as for the text of the altitude element in KML</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Location.provider</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -211,6 +254,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">./servicePractitionerOrganization</Data></Cell>
+    <Cell ss:Index="15"><Data ss:Type="String">EK: Shouldn't that be &quot;owns or manages&quot;? Why introduce the fact that an organization provides services here? If this is a home location, you wouldn't mention the organization(s) providing services there?</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Location.active</Data></Cell>
@@ -228,11 +272,10 @@
     <Cell><Data ss:Type="String">./statusCode</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Location.description</Data></Cell>
+    <Cell><Data ss:Type="String">Location.partOf</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Description of the location</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">./location/desc</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Location)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Another Location which this Location is physically inside of</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -267,8 +310,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>16</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -278,12 +321,11 @@
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s69" ss:AutoFitWidth="0"
-    ss:Width="115.80000000000001"/>
+   <Column ss:Index="2" ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="115.5"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="153"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="204.60000000000002"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="198.6"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="188.4"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="204.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="198.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="188.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -368,12 +410,12 @@
  <Worksheet ss:Name="Events">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="82.8"/>
-   <Column ss:AutoFitWidth="0" ss:Width="198.6"/>
-   <Column ss:AutoFitWidth="0" ss:Width="157.80000000000001"/>
-   <Column ss:AutoFitWidth="0" ss:Width="162.6"/>
-   <Column ss:AutoFitWidth="0" ss:Width="195.60000000000002"/>
-   <Column ss:AutoFitWidth="0" ss:Width="74.400000000000006"/>
+   <Column ss:AutoFitWidth="0" ss:Width="82.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="198.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="157.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="162.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="195.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="74.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="33">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Event Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
@@ -424,9 +466,9 @@
  <Worksheet ss:Name="Search">
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="41" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="70.8"/>
-   <Column ss:AutoFitWidth="0" ss:Width="382.79999999999995"/>
-   <Column ss:AutoFitWidth="0" ss:Width="63.599999999999994"/>
+   <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="63.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="69"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -459,12 +501,24 @@
     <Cell><Data ss:Type="String">single</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">partof</Data></Cell>
+    <Cell><Data ss:Type="String">The location of which this location is a part</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">single</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">near</Data></Cell>
+    <Cell><Data ss:Type="String">The coordinates expressed in KML to find locations near to</Data></Cell>
+    <Cell><Data ss:Type="String">token</Data></Cell>
+    <Cell><Data ss:Type="String">single</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">near-radius</Data></Cell>
+    <Cell><Data ss:Type="String">A distance quantity to limit the near search to locations within a specific radius</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">single</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -594,7 +648,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>8</ActiveRow>
      <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
@@ -606,11 +660,11 @@
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="93"/>
-   <Column ss:AutoFitWidth="0" ss:Width="221.4"/>
-   <Column ss:AutoFitWidth="0" ss:Width="81.599999999999994"/>
-   <Column ss:AutoFitWidth="0" ss:Width="118.19999999999999"/>
-   <Column ss:AutoFitWidth="0" ss:Width="106.80000000000001"/>
-   <Column ss:AutoFitWidth="0" ss:Width="274.8"/>
+   <Column ss:AutoFitWidth="0" ss:Width="221.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="81.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="118.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="106.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="274.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -675,27 +729,27 @@
  </Worksheet>
  <Worksheet ss:Name="Examples">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="14.4">
+   x:FullRows="1" ss:DefaultRowHeight="14.4375">
    <Column ss:Width="54"/>
-   <Column ss:Width="201.6"/>
+   <Column ss:Width="201.75"/>
    <Column ss:Width="192"/>
-   <Column ss:Width="138.6"/>
-   <Row ss:Height="28.8">
-    <Cell ss:StyleID="s127"><Data ss:Type="String">Name</Data></Cell>
-    <Cell ss:StyleID="s127"><Data ss:Type="String">Description</Data></Cell>
-    <Cell ss:StyleID="s127"><Data ss:Type="String">Identity</Data></Cell>
-    <Cell ss:StyleID="s127"><Data ss:Type="String">Filename</Data></Cell>
-    <Cell ss:StyleID="s127"><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:StyleID="s127"><Data ss:Type="String">In Book</Data></Cell>
+   <Column ss:Width="138.75"/>
+   <Row ss:AutoFitHeight="0" ss:Height="28.6875">
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Name</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Identity</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Filename</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Type</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">In Book</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Location</Data></Cell>
     <Cell><Data ss:Type="String">Location of hospital branche</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">location-example.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Room</Data></Cell>
     <Cell><Data ss:Type="String">Operation room within hospital</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -709,6 +763,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
