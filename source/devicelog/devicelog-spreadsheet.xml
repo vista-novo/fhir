@@ -74,7 +74,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="7" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="197.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="1"/>
@@ -86,7 +86,7 @@
     ss:Span="1"/>
    <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
-   <Row ss:Height="45" ss:StyleID="s64">
+   <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
@@ -102,7 +102,7 @@
     <Cell><Data ss:Type="String">To Do</Data></Cell>
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">DeviceLog</Data></Cell>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
@@ -113,7 +113,7 @@
     <Cell><Data ss:Type="String">A low level ultra-simple resource is needed to devices that send current observations on a routine bases as an event log</Data></Cell>
     <Cell><Data ss:Type="String">This resource can only be understood in the context of the DeviceCapabilities that defines what the meanings of the key values are</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DeviceLog.instant</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">instant</Data></Cell>
@@ -121,20 +121,36 @@
     <Cell><Data ss:Type="String">The point in time that the values are reported</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Not all devices have clocks, and so the time may not be included</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">DeviceLog.capabilities</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Resource(DeviceCapabilities)</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Explicit reference to the capabilities</Data></Cell>
+    <Cell><Data ss:Type="String">An explicit reference  to the capabilities</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Simple devices may not be in a position to provide an explicit capabilities reference (though even the simplest devices could refer to a capabilities resource on a manufacturer website)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">DeviceLog.subject</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Resource(Patient|Group|Device)</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Subject of the measurement</Data></Cell>
+    <Cell><Data ss:Type="String">The subject of the measurement</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Devices may hold no information about the subject at all, or possibly just  an id read from a bar code, with no additional knowledge</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DeviceLog.item</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">An item of data</Data></Cell>
     <Cell><Data ss:Type="String">An item of data that the device produces</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DeviceLog.item.key</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Reference to device capabilities declaration</Data></Cell>
     <Cell><Data ss:Type="String">Reference to a device capabilities declaration</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DeviceLog.item.value</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
@@ -142,7 +158,7 @@
     <Cell><Data ss:Type="String">The value of the data item, if available</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Usually, either a value or some flags should be provided</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DeviceLog.item.flag</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
@@ -159,11 +175,12 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -273,13 +290,22 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">DeviceLog.item.flag</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="5" ss:StyleID="s68"/>
+    <Cell><Data ss:Type="String">instant</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">date</Data></Cell>
+    <Cell><Data ss:Type="String">intersection</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">DeviceLog.instant</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="5" ss:StyleID="s68"/>
+    <Cell><Data ss:Type="String">capabilities</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">DeviceLog.capabilities</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="5" ss:StyleID="s68"/>
+    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">DeviceLog.subject</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="5" ss:StyleID="s68"/>
@@ -304,8 +330,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -374,16 +400,66 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="device-value-flag">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="2" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="11" ss:ExpandedRowCount="29" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Row>
+   <Column ss:AutoFitWidth="0" ss:Width="66"/>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="String">test</Data></Cell>
-    <Cell><Data ss:Type="String">test</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ok</Data></Cell>
+    <Cell><Data ss:Type="String">the value is valid</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ongoing</Data></Cell>
+    <Cell><Data ss:Type="String">An early estimate of value; measurement is still occurring</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">early</Data></Cell>
+    <Cell><Data ss:Type="String">An early estimate of value; processing is still occurring</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">questionable</Data></Cell>
+    <Cell><Data ss:Type="String">The observation value should be treated with care (there are reasons for doubting the accuracy of the current value)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">calibrating</Data></Cell>
+    <Cell><Data ss:Type="String">The value has been generated while calibration is occurring</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">error</Data></Cell>
+    <Cell><Data ss:Type="String">the current conditions are invalid, and the value should not be used</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">unknown</Data></Cell>
+    <Cell><Data ss:Type="String">No observation value was available</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">test</Data></Cell>
+    <Cell><Data ss:Type="String">this is test data</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">demo</Data></Cell>
+    <Cell><Data ss:Type="String">this is demo data</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">under</Data></Cell>
+    <Cell><Data ss:Type="String">the value is under accurate measurement limits</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">over</Data></Cell>
+    <Cell><Data ss:Type="String">the value is over accurate measurement limits</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">alarm</Data></Cell>
+    <Cell><Data ss:Type="String">the value is associated with an active alarm condition</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">alarm-off</Data></Cell>
+    <Cell><Data ss:Type="String">the value would be associated with an active alarm, but alarms are turned off</Data></Cell>
+   </Row>
+   <Row ss:Index="24" ss:AutoFitHeight="0" ss:Span="5"/>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -391,12 +467,13 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <RangeSelection>R2C1:R14C1</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Ewout Kramer</LastAuthor>
+  <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:15:11Z</Created>
-  <LastSaved>2013-04-09T12:01:10Z</LastSaved>
+  <LastSaved>2013-04-12T11:05:10Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -26,6 +26,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>6</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -78,26 +79,27 @@
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s72">
+  <Style ss:ID="s71">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s73">
+  <Style ss:ID="s72">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s74">
+  <Style ss:ID="s73">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s75">
+  <Style ss:ID="s74">
    <Alignment ss:Vertical="Top"/>
   </Style>
-  <Style ss:ID="s76">
+  <Style ss:ID="s75">
    <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s77">
+  <Style ss:ID="s76">
    <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
   </Style>
-  <Style ss:ID="s83" ss:Parent="s62">
+  <Style ss:ID="s79" ss:Parent="s62">
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -134,7 +136,7 @@
     <Cell><Data ss:Type="String">To Do</Data></Cell>
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
-   <Row ss:Height="60">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
@@ -340,7 +342,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -372,7 +373,7 @@
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">ContactNeedsDetails</Data></Cell>
     <Cell><Data ss:Type="String">Patient.contact</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Need contact details or at least a reference to an organization</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Need contact details or at least a reference to an organization</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">f:details or f:organization</Data></Cell>
    </Row>
   </Table>
@@ -396,10 +397,10 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants-onhold">
   <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s72" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s72" ss:Width="109.5"/>
-   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="161.25"/>
-   <Column ss:Index="8" ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="278.25"/>
+   x:FullRows="1" ss:StyleID="s71" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:StyleID="s71" ss:Width="109.5"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="161.25"/>
+   <Column ss:Index="8" ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="278.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -409,12 +410,12 @@
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">NoAnimalMaidenName</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Patient.name</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">Name use cannot be &quot;maiden&quot;</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Name use cannot be &quot;maiden&quot;</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">not(exists(f:animal) and f:use='maiden')</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">not(exists(f:animal) and f:use='maiden')</Data></Cell>
     <Cell ss:Index="8" ss:StyleID="s63"><Data ss:Type="String">Need to change this so it is only active when this patient is an animal</Data></Cell>
    </Row>
   </Table>
@@ -452,10 +453,10 @@
     <Cell><Data ss:Type="String">Follow Ups</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="110.25">
-    <Cell ss:StyleID="s74"><Data ss:Type="String">admin-notify</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">(see Person)</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">Patient Links cannot be updated using admin-notify. The links element must be empty</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">Patient</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">admin-notify</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">(see Person)</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Patient Links cannot be updated using admin-notify. The links element must be empty</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">patient-link</Data></Cell>
@@ -598,14 +599,14 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="9" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s75" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="114.75"/>
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="363"/>
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="53.25"/>
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="69.75"/>
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="86.25"/>
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="130.5"/>
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="214.5"/>
+   x:FullRows="1" ss:StyleID="s74" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="114.75"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="363"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="53.25"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="69.75"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="86.25"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="130.5"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="214.5"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -616,47 +617,47 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s74"><Data ss:Type="String">PatientConfidentiality</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">The confidentiality of the records associated with this patient</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">unbound</Data></Cell>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">PatientConfidentiality</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">The confidentiality of the records associated with this patient</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s73"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s74"><Data ss:Type="String">PaperRecordLocation</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">A physical location for a record. (Usually site specific)</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">unbound</Data></Cell>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">PaperRecordLocation</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">A physical location for a record. (Usually site specific)</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s73"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s74"><Data ss:Type="String">AnimalGenderStatus</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">The state of the animal's reproductive organs</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">AnimalGenderStatus</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">The state of the animal's reproductive organs</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:Index="5" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s74"><Data ss:Type="String">AnimalRelationship</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">The relationship of an animal to another entity (person, corporation, or other animal)</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">AnimalRelationship</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">The relationship of an animal to another entity (person, corporation, or other animal)</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:Index="5" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s74"><Data ss:Type="String">AnimalSpecies</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">The species of an animal</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">unbound</Data></Cell>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">AnimalSpecies</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">The species of an animal</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s73"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s74"><Data ss:Type="String">AnimalBreed</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">The breed of an animal</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">unbound</Data></Cell>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">AnimalBreed</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">The breed of an animal</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s73"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -697,7 +698,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Examples">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="10" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="11" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:AutoFitWidth="0" ss:Width="247.5"/>
@@ -717,27 +718,27 @@
     <Cell><Data ss:Type="String">General</Data></Cell>
     <Cell><Data ss:Type="String">General Person Example</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">patient-example.xml</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">patient-example.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Patient1</Data></Cell>
     <Cell><Data ss:Type="String">Patient 1 for linking</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">pat1</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">pat1</Data></Cell>
     <Cell><Data ss:Type="String">patient-example-a.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Patient2</Data></Cell>
     <Cell><Data ss:Type="String">Patient 2 for linking</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">pat2</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">pat2</Data></Cell>
     <Cell><Data ss:Type="String">patient-example-b.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Publishing</Data></Cell>
     <Cell><Data ss:Type="String">Stock people (defined by HL7 publishing)</Data></Cell>
-    <Cell ss:Index="4" ss:StyleID="s76"><Data ss:Type="String">patient-examples.xml</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="s75"><Data ss:Type="String">patient-examples.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -751,7 +752,7 @@
     <Cell><Data ss:Type="String">x-cda</Data></Cell>
     <Cell><Data ss:Type="String">2nd person example</Data></Cell>
     <Cell><Data ss:Type="String">xcda</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">patient-xcda.xml</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">patient-xcda.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -765,7 +766,7 @@
     <Cell><Data ss:Type="String">Animal</Data></Cell>
     <Cell><Data ss:Type="String">An example of an animal</Data></Cell>
     <Cell><Data ss:Type="String">animal</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">patient-animal.xml</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">patient-animal.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -773,6 +774,13 @@
     <Cell><Data ss:Type="String">Taken from a DICOM sample</Data></Cell>
     <Cell><Data ss:Type="String">dicom</Data></Cell>
     <Cell><Data ss:Type="String">patient-example-dicom.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ihd-pcd</Data></Cell>
+    <Cell><Data ss:Type="String">Example from IHE-PCD example</Data></Cell>
+    <Cell><Data ss:Type="String">ihe-pcd</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">patient-example-ihe-pcd.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
    </Row>
   </Table>
@@ -783,11 +791,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>9</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -889,7 +898,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">vegan</Data></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">food without meat, poulry, seafood,  eggs, dairy products and other animal-derived substances</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">food without meat, poulry, seafood,  eggs, dairy products and other animal-derived substances</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">halal</Data></Cell>

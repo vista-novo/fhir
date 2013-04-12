@@ -20,4 +20,12 @@ statement to create a device observation, which is suitable for wider use within
 </p>
 
 
+<h3>Structure of the Device Observation</h3>
+
+<p>
+The Device Observation is a simple wrapper that groups a set of actual observations together 
+and extracts the common elements that are the same for all of them. In addition, the DeviceObservation
+resource has some additional attribution and context information.
+</p>
+ 
 </div>

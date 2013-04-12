@@ -10,13 +10,44 @@ There are 4 device related resources
  <li><a href="deviceobservation.htm">Device Observation</a> - A report of observations from a device</li>
 </ul>
 <p>
-The device capabilities and emission resources are used when communicating directly with a device. 
+The device capabilities and <a href="devicelog.htm">device log</a> resources are used when communicating directly with a device. 
 When a channel is opened with the device, it first sends the Capabilities resource, and then a 
-series of emission resources. The FHIR JSON format is used in this case. 
-
+series of emission resources. The FHIR JSON format is used in this case. (TODO: What's the communication protocol?)
 The application that receives the emission resources may choose to merge the emission with the capabilities 
-statement to create a device observation, which is suitable for wider use within a EHR/Clinical record context.
+statement to create a device observation, which is suitable for wider use within a EHR/Clinical record context. 
+The Device Capabilites and Device Log resources may be used in a RESTful context, but in many contexts this 
+will not be very useful - the data should be converted to a device observation for normal RESTful use in a 
+patient care context.
 </p>
-<!-- content goes here -->
 
+<p>
+Note that this resource is entirely concerned with devices that report data; interacting with an 
+controlling devices such as infusion pumps etc is not in scope for this resource. This resource is based on ISO 11073.
+</p>
+
+<h3>Structure of the Device Capabilities</h3>
+
+<p>
+A medical device is conceived of as a measuring device that is capable of reporting 
+a series of groups of measurements on a regular basis. The device capabilities resource 
+describes the kind of data that a medical device reports. Devices are conceptualised 
+using the following main structure:
+</p>
+<ol>
+ <li><b>Device</b> - The actual device that external systems communicate with</li>
+ <li><b>Compartment</b> - (Virtual Medical Device) a medical-related subsystem of a medical device</li>
+ <li><b>Channel</b> - groups together physiological measurement data and derived data</li>
+ <li><b>Metrics</b> - A piece of measured or derived data that will be reported by the machine</li>
+ <li><b>Facets</b> - additional data that qualifies the metric, or contributes to it's assessment</li>
+</ol>
+
+<p>
+Very simple devices may have only a single compartment with a single channel and one metric, while complex devices may have multiple items at every level. 
+</p>
+<p>
+When the <a href="devicelog.htm">data emitted by the device</a> is converted to a <a href="deviceobservation.htm">Device Observation</a>
+based on the information in the capabilities, and known local context, the Metrics level usually corresponds to a 
+single <a href="observation.htm">Observation</a>, but this is not appropriate in all cases.
+</p>
+ 
 </div>
