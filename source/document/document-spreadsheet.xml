@@ -272,7 +272,7 @@
     <Cell><Data ss:Type="String">For clinical documents, this is usually the patient.</Data></Cell>
     <Cell><Data ss:Type="String">unique(./participation[typeCode=&quot;SBJ&quot; and isNormalParticipation]/role[typeCode=&quot;PAT&quot;])&#10;or&#10;unique(./participation[typeCode=&quot;SBJ&quot; and isNormalParticipation]/role[typeCode=&quot;IDENT&quot;]/player[determinerCode=&quot;INST&quot; and classCode=(&quot;DEV&quot;, &quot;ORG&quot;) and isNormalEntity()])</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Need to extend this to support documents with other types of subjects.  Also rationalize with encounter &amp; context elements</Data></Cell>
+    <Cell><Data ss:Type="String">Need to extend this to support documents with other types of subjects.  Also rationalize with visit &amp; context elements</Data></Cell>
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -480,7 +480,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Document.encounter</Data></Cell>
+    <Cell><Data ss:Type="String">Document.visit</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -488,7 +488,7 @@
     <Cell><Data ss:Type="String">Resource(Admission|InterestOfCare)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Context of the document</Data></Cell>
-    <Cell><Data ss:Type="String">Describes the clinical encounter or type of care this document is associated with.</Data></Cell>
+    <Cell><Data ss:Type="String">Describes the clinical visit or type of care this document is associated with.</Data></Cell>
     <Cell><Data ss:Type="String">Provides context for the document and supports searching.</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">unique(highest(./outboundRelationship[typeCode=&quot;SUBJ&quot; and isNormalActRelationship()], priorityNumber)/target[moodCode=&quot;EVN&quot; and classCode=(&quot;ENC&quot;, &quot;PCPR&quot;) and isNormalAct])</Data></Cell>

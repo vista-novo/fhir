@@ -78,7 +78,7 @@
     </goal>
     <activity>
         <!-- This activity is for the initial nurse visit where vitals are taken. It has been completed.-->
-        <category value="encounter"></category>
+        <category value="visit"></category>
         <code>
             <coding>
                 <system value='local'/>
@@ -100,17 +100,17 @@
           <display value="Nurse Nancy"/>
         </performer>
         <actionTaken>
-            <!-- This is a link to the nurse encounter. The assumption is that all contacts with practitioners
-            are modelled as separate encounters. Ideally, there will be  a 'master/parent' encounter that ties them together.
-            If there is a single encounter, then all participants will be linked to that encounter.-->
-            <type value="Encounter"/>
-            <url value="../encounter/@example"/>
+            <!-- This is a link to the nurse visit. The assumption is that all contacts with practitioners
+            are modelled as separate visits. Ideally, there will be  a 'master/parent' visit that ties them together.
+            If there is a single visit, then all participants will be linked to that visit.-->
+            <type value="Visit"/>
+            <url value="../visit/@example"/>
         </actionTaken>
     </activity>
     <activity>
         <!-- This activity is for the visit with the doctor. It is scheduled, but not yet started,
             so there is no timing[x]  or actionTaken element yet -->
-        <category value="encounter"></category>
+        <category value="visit"></category>
         <code>
             <coding>
                 <system value='local'/>

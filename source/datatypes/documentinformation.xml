@@ -242,7 +242,7 @@
     <Cell><Data ss:Type="String">For clinical documents, this is usually the patient.</Data></Cell>
     <Cell><Data ss:Type="String">unique(./participation[typeCode=&quot;SBJ&quot; and isNormalParticipation]/role[typeCode=&quot;PAT&quot;])&#10;or&#10;unique(./participation[typeCode=&quot;SBJ&quot; and isNormalParticipation]/role[typeCode=&quot;IDENT&quot;]/player[determinerCode=&quot;INST&quot; and classCode=(&quot;DEV&quot;, &quot;ORG&quot;) and isNormalEntity()])</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Need to extend this to support documents with other types of subjects.  Also rationalize with encounter &amp; context elements</Data></Cell>
+    <Cell><Data ss:Type="String">Need to extend this to support documents with other types of subjects.  Also rationalize with visit &amp; context elements</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
     <Cell><Data ss:Type="String">!DocumentInformation.informant</Data></Cell>
@@ -429,7 +429,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell><Data ss:Type="String">DocumentInformation.encounter</Data></Cell>
+    <Cell><Data ss:Type="String">DocumentInformation.visit</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -437,7 +437,7 @@
     <Cell><Data ss:Type="String">Resource(Admission|InterestOfCare)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Context of the document</Data></Cell>
-    <Cell><Data ss:Type="String">Describes the clinical encounter or type of care this document is associated with.</Data></Cell>
+    <Cell><Data ss:Type="String">Describes the clinical visit or type of care this document is associated with.</Data></Cell>
     <Cell><Data ss:Type="String">Provides context for the document and supports searching.</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">unique(highest(./outboundRelationship[typeCode=&quot;SUBJ&quot; and isNormalActRelationship()], priorityNumber)/target[moodCode=&quot;EVN&quot; and classCode=(&quot;ENC&quot;, &quot;PCPR&quot;) and isNormalAct])</Data></Cell>
@@ -453,9 +453,9 @@
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Type of organizational setting</Data></Cell>
-    <Cell><Data ss:Type="String">This code represents the type of organizational setting of the clinical encounter during which the documented act occurred</Data></Cell>
+    <Cell><Data ss:Type="String">This code represents the type of organizational setting of the clinical visit during which the documented act occurred</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">In some cases, the setting of the encounter is inherent in the typeCode, such as &quot;Diabetes Clinic Progress Note&quot;. healthcareFacilityTypeCode shall be equivalent to or further specialize the value inherent in the typeCode; for example, where the typeCode is simply &quot;Clinic Progress Note&quot; and the value of healthcareFacilityTypeCode is &quot;private clinic&quot;.  The value shall not conflict with the value inherent in the typeCode, as such a conflict would create an ambiguous situation</Data></Cell>
+    <Cell><Data ss:Type="String">In some cases, the setting of the visit is inherent in the typeCode, such as &quot;Diabetes Clinic Progress Note&quot;. healthcareFacilityTypeCode shall be equivalent to or further specialize the value inherent in the typeCode; for example, where the typeCode is simply &quot;Clinic Progress Note&quot; and the value of healthcareFacilityTypeCode is &quot;private clinic&quot;.  The value shall not conflict with the value inherent in the typeCode, as such a conflict would create an ambiguous situation</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>

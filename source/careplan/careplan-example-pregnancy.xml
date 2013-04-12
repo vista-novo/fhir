@@ -115,7 +115,7 @@
             <valueUri value="http://orionhealth.com/fhir/careplan/1andetails" />
         </extension>
         
-        <category value="encounter"></category>
+        <category value="visit"></category>
         <code>
             <coding>
                 <system value="mySystem"/>
@@ -139,11 +139,11 @@
         </performer>
         <details value="The first antenatal visit. This is where a detailed physical examination is performed.
             and the pregnanacy discussed with the mother-to-be."></details>
-        <!-- This is a booked encounter with Mavis Midwife for the first antenatal checkup. 
-        This entry is only made after the appointment (a planned encounter) has been made.
-        Commented out for now because Encounter hasn't been defined yet
+        <!-- This is a booked visit with Mavis Midwife for the first antenatal checkup. 
+        This entry is only made after the appointment (a planned visit) has been made.
+        Commented out for now because Visit hasn't been defined yet
         <actionTaken>
-            <type value="Encounter"></type>
+            <type value="Visit"></type>
             <url value="xxx"/>
             <display value="Appointment with Mavis midwife @12.30pm, 112 St albans Ave"/>
         </actionTaken>-->
@@ -151,7 +151,7 @@
     
     <activity>
         <!-- This will be the second antenatal visit - 3 months after LMP. It is not yet scheduled. -->
-        <category value="encounter"></category>
+        <category value="visit"></category>
         <code>
             <!-- The code is just for an antenatal visit. There are many of these, the first is special... -->
             <coding>
@@ -186,7 +186,7 @@
     
     <activity>
         <!-- This will be the delivery. It is not yet scheduled. -->
-        <category value="encounter"></category>
+        <category value="visit"></category>
         <code>
             <coding>
                 <system value="mySystem"/>

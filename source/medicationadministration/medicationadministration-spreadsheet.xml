@@ -217,7 +217,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Administration of medication to a patient</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Describes the event of a patient being given a dose of a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.&#10;&#10;Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Describes the event of a patient being given a dose of a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.&#10;&#10;Related resources tie this event to the authorizing prescription, and the specific visit between patient and health care practitioner</Data></Cell>
     <Cell ss:StyleID="s72"/>
     <Cell ss:Index="12" ss:StyleID="s72"><Data ss:Type="String">SubstanceAdministration</Data></Cell>
     <Cell ss:StyleID="s72"/>
@@ -387,16 +387,16 @@
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration-&gt;consumable-&gt;ManufacturedProduct</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationAdministration.encounter</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationAdministration.visit</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">Encounter</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Visit</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">An identifier or a link to a resource that identifies the particular occurrence of contact between patient and health care practitioner.</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration-&gt;component-&gt;EncounterEvent</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration-&gt;component-&gt;VisitEvent</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationAdministration.administrationDevice</Data></Cell>
@@ -657,8 +657,8 @@
     <Cell ss:Index="10" ss:StyleID="s65"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">encounter</Data></Cell>
-    <Cell><Data ss:Type="String">Return administrations with this encounter identity</Data></Cell>
+    <Cell><Data ss:Type="String">visit</Data></Cell>
+    <Cell><Data ss:Type="String">Return administrations with this visit identity</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
     <Cell ss:StyleID="s90"/>

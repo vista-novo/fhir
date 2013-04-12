@@ -119,7 +119,7 @@
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String"> Detailed information about problems or diagnoses</Data></Cell>
-    <Cell><Data ss:Type="String">Use to record detailed information about problems or diagnoses recognised by a clinician. There are many uses including: recording a Diagnosis during an Encounter; populating a Problem List or a Summary Statement, such as a Discharge Summary</Data></Cell>
+    <Cell><Data ss:Type="String">Use to record detailed information about problems or diagnoses recognised by a clinician. There are many uses including: recording a Diagnosis during an Visit; populating a Problem List or a Summary Statement, such as a Discharge Summary</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">* Age is questionable, you might well need a range of Age or even (in practice)&#10;&#10;a text like &quot;in their teens&quot;. =&gt; new ballot comment.&#10;&#10;* Todo: discuss the applicability of assessing stages&#10;&#10;* Change the description: it is circular</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
@@ -129,10 +129,10 @@
     <Cell ss:Index="8"><Data ss:Type="String">Subject of this problem</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell><Data ss:Type="String">Problem.encounter</Data></Cell>
+    <Cell><Data ss:Type="String">Problem.visit</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Encounter)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Encounter during which the problem was first asserted</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Visit)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Visit during which the problem was first asserted</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Problem.asserter</Data></Cell>
