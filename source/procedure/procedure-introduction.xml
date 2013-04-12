@@ -1,5 +1,8 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<!-- insert xhtml content here -->
+Used to record the details of procedures performed on a patient. This includes surgical procedures, 
+diagnostic procedures, endoscopic precedures, biopsies - anything that could be thought of as 'invasive' to the patient.
+
+
 
 </div>

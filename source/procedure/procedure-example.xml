@@ -4,7 +4,31 @@
     <status value="generated" />
     <div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>
   </text>
+  <subject>
+    <type value="Patient"/>
+    <url value="../patient/@example"/>
+  </subject>
+  <description>
+      <code>
+        <coding>
+          <system value="http://snomed.info"/>
+          <code value="39065001"/>
+          <display value="Burn of ear"/>
+        </coding>
+        <text value='Appendicectomy'/>
+      </code>
+      <notes value='Routine Appendiciectomy. Appendix was in retro-caceal position'/>
+  </description>
+  <indication value='Generalized abdominal pain 24 hours. Localized in RIF with rebound and guarding'/>
+  <performer>
+    <type value="Practitioner"/>
+    <url value="../practitioner/@example"/>
+    <display value='Dr John Kildaire'></display>
+  </performer>
 
-  <!-- insert contents here -->
+  <period>
+    <start value="2013-04-05" />
+  </period>
+  <followUp value='ROS 5 days  - 2013-04-10'/>
   
 </Procedure>
