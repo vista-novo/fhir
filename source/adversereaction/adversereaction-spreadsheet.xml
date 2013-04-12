@@ -15,10 +15,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>3780</WindowHeight>
-  <WindowWidth>22140</WindowWidth>
-  <WindowTopX>3080</WindowTopX>
-  <WindowTopY>320</WindowTopY>
+  <WindowHeight>12460</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>0</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -239,8 +239,9 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:Index="7" ss:StyleID="s68"/>
-    <Cell><Data ss:Type="String">The symptoms that were observed as part of the reaction</Data></Cell>
-    <Cell ss:Index="11" ss:StyleID="s69"/>
+    <Cell><Data ss:Type="String">The signs and symptoms that were observed as part of the reaction</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Signs, Symptoms, Manifestations</Data></Cell>
+    <Cell ss:StyleID="s69"/>
     <Cell ss:Index="13" ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
@@ -254,7 +255,7 @@
     <Cell ss:StyleID="s68"/>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">SymptomType</Data></Cell>
-    <Cell><Data ss:Type="String">A code that indicates the specific symptom that was observed</Data></Cell>
+    <Cell><Data ss:Type="String">A code that indicates the specific sign or symptom that was observed</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s69"/>
     <Cell ss:Index="13" ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
@@ -269,7 +270,7 @@
     <Cell ss:StyleID="s68"/>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">ReactionSeverity</Data></Cell>
-    <Cell><Data ss:Type="String">The severity of the symptom</Data></Cell>
+    <Cell><Data ss:Type="String">The severity of the sign or symptom</Data></Cell>
     <Cell ss:Index="13" ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
@@ -383,7 +384,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>10</TopRowBottomPane>
+   <TopRowBottomPane>4</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -400,7 +401,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>13</ActiveRow>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
