@@ -9,26 +9,29 @@
     <url value="../patient/@example"/>
   </subject>
   <description>
-      <code>
+      <type>
         <coding>
           <system value="http://snomed.info"/>
           <code value="80146002"/>
           <display value="Appendectomy (Procedure)"/>
         </coding>
         <text value='Appendicectomy'/>
-      </code>
+      </type>
       <notes value='Routine Appendicectomy. Appendix was inflamed and in retro-caecal position'/>
   </description>
   <indication value='Generalized abdominal pain 24 hours. Localized in RIF with rebound and guarding'/>
   <performer>
-    <type value="Practitioner"/>
-    <url value="../practitioner/@example"/>
-    <display value='Dr Cyril Surgeon'></display>
+    <person>
+      <type value="Practitioner"/>
+      <url value="../practitioner/@example"/>
+      <display value='Dr Cyril Surgeon'></display>
+    </person>
+    
   </performer>
 
-  <period>
+  <date>
     <start value="2013-04-05" />
-  </period>
+  </date>
   <followUp value='ROS 5 days  - 2013-04-10'/>
   
 </Procedure>

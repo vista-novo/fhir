@@ -9,34 +9,37 @@
     <url value="../patient/@example"/>
   </subject>
   <description>
-      <code>
+      <type>
         <coding>
           <system value="http://snomed.info"/>
           <code value="90105005"/>
           <display value="Biopsy of soft tissue of forearm (Procedure)"/>
         </coding>
         <text value='Biopsy of suspected melanoma L) arm'/>
-      </code>
+      </type>
       <notes value='Standard Biopsy'/>
-    <anatomicalLocation>
+    <bodySite>
       <coding>
         <system value="http://snomed.info"/>
         <code value="368225008"/>
         <display value="Entire Left Forearm"/>
       </coding>
       <text value='Left forearm'/>
-    </anatomicalLocation>
+    </bodySite>
   </description>
   <indication value='Dark lesion l) forearm. getting darker last 3 months.'/>
   <performer>
-    <type value="Practitioner"/>
-    <url value="../practitioner/@example"/>
-    <display value='Dr Bert Biopser'></display>
+    <person>
+      <type value="Practitioner"/>
+      <url value="../practitioner/@example"/>
+      <display value='Dr Bert Biopser'></display>
+    </person>
+   
   </performer>
 
-  <period>
+  <date>
     <start value="2014-02-03" />
-  </period>
+  </date>
   <followUp value='Review in clinic'/>
   
 </Procedure>
