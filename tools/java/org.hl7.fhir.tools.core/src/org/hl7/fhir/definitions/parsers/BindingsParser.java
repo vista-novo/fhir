@@ -43,11 +43,13 @@ public class BindingsParser {
   private String filename;
   private String root;
   private XLSXmlParser xls;
+  private boolean forPublication;
 
-  public BindingsParser(InputStream file, String filename, String root) {
+  public BindingsParser(InputStream file, String filename, String root, boolean forPublication) {
     this.file = file;
 		this.filename = filename;
 		this.root = root;
+		this.forPublication = forPublication;
 	}
 
 	public List<BindingSpecification> parse() throws Exception {
@@ -75,7 +77,7 @@ public class BindingsParser {
     cd.setExtensibility(readExtensibility(sheet.getColumn(row, "Extensibility")));
     cd.setReference(sheet.getColumn(row, "Reference"));
     cd.setDescription(sheet.getColumn(row, "Description"));
-    cd.setId(new BindingNameRegistry(root).idForName(cd.getName()));
+    cd.setId(new BindingNameRegistry(root, forPublication).idForName(cd.getName()));
     cd.setSource(filename);
 		results.add(cd);
 	}

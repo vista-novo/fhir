@@ -70,9 +70,11 @@ public class SpreadsheetParser {
 	private String title;
 	private String folder;
 	private Logger log;
+	private boolean forPublication;
 
-	public SpreadsheetParser(InputStream in, String name,	Definitions definitions, String root, Logger log) throws Exception {
+	public SpreadsheetParser(InputStream in, String name,	Definitions definitions, String root, Logger log, boolean forPublication) throws Exception {
 		this.name = name;
+		this.forPublication = forPublication;
 		xls = new XLSXmlParser(in, name);
 		this.definitions = definitions;
 		if (name.indexOf('-') > 0)
@@ -364,7 +366,7 @@ public class SpreadsheetParser {
       cd.setExtensibility(BindingsParser.readExtensibility(sheet.getColumn(row, "Extensibility")));
 			cd.setReference(sheet.getColumn(row, "Reference"));
 			cd.setDescription(sheet.getColumn(row, "Description"));
-			cd.setId(new BindingNameRegistry(root).idForName(cd.getName()));
+			cd.setId(new BindingNameRegistry(root, forPublication).idForName(cd.getName()));
 			cd.setSource(name);
 
 			if (cd.getBinding() == BindingSpecification.Binding.CodeList) {

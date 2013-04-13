@@ -87,9 +87,11 @@ public class SourceParser {
 	private String termDir;
 	public String dtDir;
 	private String rootDir;
+	private boolean forPublication;
 
-	public SourceParser(Logger logger, String root, Definitions definitions) {
+	public SourceParser(Logger logger, String root, Definitions definitions, boolean forPublication) {
 		this.logger = logger;
+		this.forPublication = forPublication;
 
 		this.definitions = definitions;
 
@@ -251,7 +253,7 @@ public class SourceParser {
 		
 		for (ResourceDefn r : definitions.getResources().values()) {
 		  for (RegisteredProfile p : r.getProfiles()) {
-		    SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(p.getFilepath()), p.getName(), definitions, srcDir, logger);
+		    SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(p.getFilepath()), p.getName(), definitions, srcDir, logger, forPublication);
 		    p.setProfile(sparser.parseProfile(definitions));
 		  }
 		}
@@ -274,7 +276,7 @@ public class SourceParser {
 	private void loadProfile(String n, Map<String, ProfileDefn> profiles)
 			throws Exception {
 		File spreadsheet = new CSFile(rootDir+ ini.getStringProperty("profiles", n));
-		SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir, logger);
+		SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, forPublication);
 		try {
 		  ProfileDefn profile = sparser.parseProfile(definitions);
 		  definitions.getProfiles().put(n, profile);
@@ -286,7 +288,7 @@ public class SourceParser {
 	private void loadGlobalConceptDomains() throws Exception {
 		logger.log("Load Concept Domains");
 
-		BindingsParser parser = new BindingsParser(new CSFileInputStream(new CSFile(termDir + "bindings.xml")), termDir + "bindings.xml", srcDir);
+		BindingsParser parser = new BindingsParser(new CSFileInputStream(new CSFile(termDir + "bindings.xml")), termDir + "bindings.xml", srcDir, forPublication);
 		List<BindingSpecification> cds = parser.parse();
 
 		for (BindingSpecification cd : cds) {
@@ -361,7 +363,7 @@ public class SourceParser {
 		if (csv.exists()) {
 			SpreadsheetParser p = new SpreadsheetParser(
 					new CSFileInputStream(csv), csv.getName(), definitions,
-					srcDir, logger);
+					srcDir, logger, forPublication);
 			ElementDefn el = p.parseCompositeType();
 			map.put(t.getName(), el);
 			el.getAcceptableGenericTypes().addAll(ts.get(0).getParams());
@@ -399,7 +401,7 @@ public class SourceParser {
 			spreadsheet = new CSFile((sandbox ? sndBoxDir : srcDir) + n + File.separatorChar + n + "-def.xml");
 
 		SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(
-				spreadsheet), spreadsheet.getName(), definitions, src, logger);
+				spreadsheet), spreadsheet.getName(), definitions, src, logger, forPublication);
 		ResourceDefn root;
 		try {
 		  root = sparser.parseResource();

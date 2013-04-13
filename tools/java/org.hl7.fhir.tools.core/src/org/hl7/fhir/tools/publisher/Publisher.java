@@ -176,7 +176,7 @@ public class Publisher {
   private JavaGenerator javaReferencePlatform;
 
 	private boolean isGenerate;
-	private boolean nobook;
+	private boolean web;
 	private AtomFeed profileFeed;
   private List<Fragment> fragments = new ArrayList<Publisher.Fragment>();
   private Map<String, String> xmls = new HashMap<String, String>();
@@ -191,7 +191,7 @@ public class Publisher {
 			return;
 		}
 		pub.isGenerate = !(args.length > 1 && hasParam(args, "-nogen"));
-		pub.nobook = (args.length > 1 && hasParam(args, "-nobook"));
+		pub.web = (args.length > 1 && hasParam(args, "-web"));
 		try {
       pub.execute(args[0]);
     } catch (Exception e) {
@@ -278,7 +278,7 @@ public class Publisher {
 			page.setIni(new IniFile(page.getFolders().rootDir + "publish.ini"));
 			page.setVersion(page.getIni().getStringProperty("FHIR", "version"));
 
-			prsr = new SourceParser(page, folder,page.getDefinitions());
+			prsr = new SourceParser(page, folder,page.getDefinitions(), web);
 			prsr.checkConditions(errors);
 
 			Utilities.checkFolder(page.getFolders().xsdDir, errors);
@@ -527,12 +527,13 @@ public class Publisher {
 		log("Produce Content");
 		produceSpec();
 
-		if (!nobook) {
+		if (web) {
 			log("Produce HL7 copy");
 			new WebMaker(page.getFolders(), page.getVersion(), page.getIni()).produceHL7Copy();
-			log("Produce Archive copy");
-			produceArchive();
 		}
+		log("Produce Archive copy");
+		produceArchive();
+		
 	}
 
 	private void produceArchive() throws Exception {

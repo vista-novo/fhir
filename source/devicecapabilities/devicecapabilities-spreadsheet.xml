@@ -20,7 +20,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>5</ActiveSheet>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -313,10 +313,10 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s71" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="59.25"/>
-   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="142.5"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="366"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -327,10 +327,17 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="String">Information rules</Data></Cell>
+    <Cell><Data ss:Type="String">Quantity rule</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.info</Data></Cell>
-    <Cell><Data ss:Type="String">If the type is &quot;Quantity&quot;, units must be provided. If the type is &quot;Coding', system must be provided</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">todo</Data></Cell>
+    <Cell><Data ss:Type="String">If the type is &quot;Quantity&quot;, units must be provided</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">(f:type/@value != 'Quantity') or f:units</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">Coding Rule</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.info</Data></Cell>
+    <Cell><Data ss:Type="String">If the type is &quot;Coding', system must be provided</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">(f:type/@value != 'Coding') or f:system</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -340,10 +347,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -595,7 +604,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

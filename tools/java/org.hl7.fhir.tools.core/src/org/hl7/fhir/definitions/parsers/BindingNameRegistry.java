@@ -32,15 +32,19 @@ import org.hl7.fhir.utilities.IniFile;
 public class BindingNameRegistry {
 
   private String srcDir;
+  private boolean forPublication;
 
-  public BindingNameRegistry(String srcDir) {
+  public BindingNameRegistry(String srcDir, boolean forPublication) {
     this.srcDir = srcDir;
+    this.forPublication = forPublication;
   }
 
   public String idForName(String name) {
     IniFile ini = new IniFile(srcDir+"bindings.ini");
     if (ini.getIntegerProperty("Binding Names", name) != null)
       return ini.getIntegerProperty("Binding Names", name).toString();
+    else if (!forPublication)
+    	return "??";
     else {
       Integer last;
       if (ini.getIntegerProperty("Key", "Last") != null)
