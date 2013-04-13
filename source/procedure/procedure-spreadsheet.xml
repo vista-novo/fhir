@@ -15,16 +15,24 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11780</WindowHeight>
+  <WindowHeight>8020</WindowHeight>
   <WindowWidth>24020</WindowWidth>
-  <WindowTopX>2640</WindowTopX>
-  <WindowTopY>1220</WindowTopY>
-  <ActiveSheet>5</ActiveSheet>
+  <WindowTopX>2720</WindowTopX>
+  <WindowTopY>2080</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
  <Styles>
   <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s76" ss:Name="Normal 2">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
@@ -66,11 +74,19 @@
   <Style ss:ID="s69">
    <Alignment ss:Vertical="Top"/>
   </Style>
-  <Style ss:ID="s78">
+  <Style ss:ID="s70">
    <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s79">
+  <Style ss:ID="s71">
    <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+  </Style>
+  <Style ss:ID="s78">
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#DD0806"/>
+  </Style>
+  <Style ss:ID="s79" ss:Parent="s76">
+   <Alignment ss:Vertical="Top"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -223,7 +239,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>8</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -236,7 +252,6 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
@@ -313,6 +328,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <FreezePanes/>
    <FrozenNoSplit/>
@@ -406,12 +427,21 @@
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Repeats</Data></Cell>
+    <Cell><Data ss:Type="String">Path</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="16">
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">code for the procedure</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell><Data ss:Type="String">The identity of a patient to list procedures  for</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">single</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Procedure.subject</Data></Cell>
+    <Cell ss:StyleID="s78"/>
    </Row>
    <Row ss:Index="6" ss:AutoFitHeight="0">
     <Cell ss:Index="9" ss:StyleID="s63"/>
@@ -530,6 +560,7 @@
    </PageSetup>
    <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -549,7 +580,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>9</ActiveRow>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -644,25 +676,30 @@
     <Cell><Data ss:Type="String">General</Data></Cell>
     <Cell><Data ss:Type="String">General Procedure Example</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">procedure-example.xml</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">procedure-example.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="15">
     <Cell><Data ss:Type="String">Biopsy</Data></Cell>
     <Cell><Data ss:Type="String">Example of a Biopsy</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">biopsy</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">biopsy</Data></Cell>
     <Cell><Data ss:Type="String">procedure-example-biopsy.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <RangeSelection>R1</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
