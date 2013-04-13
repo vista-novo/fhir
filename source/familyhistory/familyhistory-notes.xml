@@ -1,5 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<!-- insert xhtml content here -->
+<ul>
+    <li>The person who is the relation of the patient is also modelled as a Patient - ideally this would be a Person (but we already got rid of that)</li>
+</ul>
 
 </div>
