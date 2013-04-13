@@ -1,5 +1,10 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
+
+<ul>
+    <li>Would there be value in having a link to a diagnosticreport for any histological outcome?</li>
+    <li>Does follow-up make sense? Dhould it be a careplan? Perhaps more likely to be in a document that described the encounter than the procedure itself</li>
+</ul>
 <!-- insert xhtml content here -->
 
 </div>
