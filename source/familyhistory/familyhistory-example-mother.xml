@@ -4,48 +4,29 @@
     <status value="generated" />
     <div xmlns="http://www.w3.org/1999/xhtml">Mother died of a stroke aged 56</div>
   </text>
-
-  <contained>
-    <Patient id="pat1">
-      <details>
-        <name>
-          <family value="Patient"/>
-          <given value="Mater"/>
-        </name>
-        <birthDate value="1955-12-12"/>
-      </details>
-
-    </Patient>
-  </contained>
-  
   <subject>
     <type value="Patient"/>
     <url value="../patient/@100"/>
     <display value="Peter Patient"/>
   </subject>
-
-  <relatedPerson>
-    <type value="Patient"/>
-    <url value="../patient/@pat1"/>
-    <display value="Mater Patient"/>  
-  </relatedPerson>
+  <relation>
+    <relationship value='mother'/>
+    <condition>
+      <type>
+       <coding>
+         <system value="http://snomed.info"/>
+         <code value="371041009"/>
+         <display value="Embolic Stroke"/>
+       </coding>
+       <text value='Stroke'/>
+      </type>
   
-  <relationship value='mother'/>
-  <condition>
-    <type>
-     <coding>
-       <system value="http://snomed.info"/>
-       <code value="371041009"/>
-       <display value="Embolic Stroke"/>
-     </coding>
-     <text value='Stroke'/>
-    </type>
-
-   <onsetAge>
-     <value value="56" />
-     <units value="a" />
-     <system value="http://unitsofmeasure.org" />
-   </onsetAge>
-
-  </condition>
+     <onsetAge>
+       <value value="56" />
+       <units value="a" />
+       <system value="http://unitsofmeasure.org" />
+     </onsetAge>
+  
+    </condition>
+  </relation>
 </FamilyHistory>

@@ -8,18 +8,19 @@
   <Author>Grahame</Author>
   <LastAuthor>David Hay</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2013-04-14T20:21:41Z</LastSaved>
+  <LastSaved>2013-04-14T21:23:51Z</LastSaved>
   <Version>14.0</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11460</WindowHeight>
+  <WindowHeight>11140</WindowHeight>
   <WindowWidth>24460</WindowWidth>
   <WindowTopX>2000</WindowTopX>
   <WindowTopY>420</WindowTopY>
   <TabRatio>705</TabRatio>
+  <ActiveSheet>6</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -110,7 +111,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="12" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="13" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultColumnWidth="65"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="215"/>
@@ -165,8 +166,14 @@
     <Cell ss:Index="8"><Data ss:Type="String">Subject of this history</Data></Cell>
     <Cell><Data ss:Type="String">The person who this history concerns</Data></Cell>
    </Row>
+   <Row ss:Height="28">
+    <Cell><Data ss:Type="String">FamilyHistory.relation</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The relation</Data></Cell>
+    <Cell><Data ss:Type="String">The related person. Each FamilyHistory resource contains the entire family history for a single person.</Data></Cell>
+   </Row>
    <Row ss:AutoFitHeight="0" ss:Height="42">
-    <Cell><Data ss:Type="String">FamilyHistory.relatedPerson</Data></Cell>
+    <Cell><Data ss:Type="String">FamilyHistory.relation.relatedPerson</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -180,7 +187,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="70">
-    <Cell><Data ss:Type="String">FamilyHistory.relationship</Data></Cell>
+    <Cell><Data ss:Type="String">FamilyHistory.relation.relationship</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -193,7 +200,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:Height="84">
-    <Cell><Data ss:Type="String">FamilyHistory.deceased[x]</Data></Cell>
+    <Cell><Data ss:Type="String">FamilyHistory.relation.deceased[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">y</Data></Cell>
@@ -206,7 +213,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:Height="42">
-    <Cell><Data ss:Type="String">FamilyHistory.note</Data></Cell>
+    <Cell><Data ss:Type="String">FamilyHistory.relation.note</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -219,7 +226,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:Height="56">
-    <Cell><Data ss:Type="String">FamilyHistory.condition</Data></Cell>
+    <Cell><Data ss:Type="String">FamilyHistory.relation.condition</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -231,7 +238,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:Height="56">
-    <Cell><Data ss:Type="String">FamilyHistory.condition.type</Data></Cell>
+    <Cell><Data ss:Type="String">FamilyHistory.relation.condition.type</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -246,7 +253,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:Height="42">
-    <Cell><Data ss:Type="String">FamilyHistory.condition.fatal</Data></Cell>
+    <Cell><Data ss:Type="String">FamilyHistory.relation.condition.fatal</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">y</Data></Cell>
@@ -261,14 +268,14 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="42">
-    <Cell><Data ss:Type="String">FamilyHistory.condition.onset[x]</Data></Cell>
+    <Cell><Data ss:Type="String">FamilyHistory.relation.condition.onset[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">date | Age</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">How old the person was when the condition manifested</Data></Cell>
     <Cell><Data ss:Type="String">Either the age of onset or the date of onset can be recorded.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
-    <Cell><Data ss:Type="String">FamilyHistory.condition.note</Data></Cell>
+    <Cell><Data ss:Type="String">FamilyHistory.relation.condition.note</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">General notes</Data></Cell>
@@ -289,11 +296,10 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>4</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -306,12 +312,11 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>0</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -732,12 +737,18 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <RangeSelection>R2:R3</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -745,8 +756,10 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="familial-relationship">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="13" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="14">
+   <Column ss:Width="74"/>
+   <Column ss:Width="113"/>
    <Row ss:AutoFitHeight="0" ss:Height="15" ss:StyleID="s75">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -772,30 +785,52 @@
     <Cell><Data ss:Type="String">Brother</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">uncle</Data></Cell>
-    <Cell><Data ss:Type="String">Uncle</Data></Cell>
+    <Cell><Data ss:Type="String">matUncle</Data></Cell>
+    <Cell><Data ss:Type="String">Maternal Uncle</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">aunt</Data></Cell>
-    <Cell><Data ss:Type="String">Auth</Data></Cell>
+    <Cell><Data ss:Type="String">matAunt</Data></Cell>
+    <Cell><Data ss:Type="String">Maternal Aunt</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">gFather</Data></Cell>
-    <Cell><Data ss:Type="String">GrandFather</Data></Cell>
+    <Cell><Data ss:Type="String">matGFather</Data></Cell>
+    <Cell><Data ss:Type="String">Maternal GrandFather</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">gMother</Data></Cell>
-    <Cell><Data ss:Type="String">GrandMother</Data></Cell>
+    <Cell><Data ss:Type="String">matGMother</Data></Cell>
+    <Cell><Data ss:Type="String">Maternal GrandMother</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">patUncle</Data></Cell>
+    <Cell><Data ss:Type="String">Paternal Uncle</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">patAunt</Data></Cell>
+    <Cell><Data ss:Type="String">Paternal Aunt</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">patGFather</Data></Cell>
+    <Cell><Data ss:Type="String">Paternal GrandFather</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">patGMother</Data></Cell>
+    <Cell><Data ss:Type="String">Paternal GrandMother</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>14</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>11</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
