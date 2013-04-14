@@ -19,19 +19,21 @@
   </relatedPerson>
   <relationship value='father'/>
   <condition>
+    <type>
     <coding>
       <system value="http://snomed.info"/>
       <code value="315619001"/>
       <display value="Myocardial Infarction"/>
     </coding>
     <text value='Heart Attack'/>
-  </condition>
-  <isDeath value='true'/>
+    </type>
+ 
+
   <onsetAge>
     <value value="74" />
     <units value="a" />
     <system value="http://unitsofmeasure.org" />
   </onsetAge>
   <note value="Was fishing at the time. At least he went doing someting he loved." />
-
+  </condition>
 </FamilyHistory>
