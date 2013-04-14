@@ -20,7 +20,7 @@
   <WindowTopX>2000</WindowTopX>
   <WindowTopY>420</WindowTopY>
   <TabRatio>705</TabRatio>
-  <ActiveSheet>6</ActiveSheet>
+  <ActiveSheet>5</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -729,7 +729,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="56">
     <Cell><Data ss:Type="String">Mother</Data></Cell>
-    <Cell><Data ss:Type="String">Mother died from a stroke aged 56. Shows how to represent a person (the mother) who is not known to the system - as an Embedded resource. Note that relatedPerson.url.value points to contained.Patient.id.</Data></Cell>
+    <Cell><Data ss:Type="String">Mother died from a stroke aged 56. Brother with diabetes.</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">mother</Data></Cell>
     <Cell><Data ss:Type="String">familyhistory-example-mother.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
@@ -744,11 +744,12 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <RangeSelection>R2:R3</RangeSelection>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -826,7 +827,6 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

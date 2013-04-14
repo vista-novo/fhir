@@ -2,7 +2,7 @@
 <FamilyHistory xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/familyhistory.xsd">
   <text>
     <status value="generated" />
-    <div xmlns="http://www.w3.org/1999/xhtml">Mother died of a stroke aged 56</div>
+    <div xmlns="http://www.w3.org/1999/xhtml">Mother died of a stroke aged 56. Brother has diabetes</div>
   </text>
   <subject>
     <type value="Patient"/>
@@ -10,6 +10,11 @@
     <display value="Peter Patient"/>
   </subject>
   <relation>
+    <relatedPerson>
+      <type value="Patient"/>
+      <url value="../patient/@101"/>
+      <display value="Mrs Patient"/>
+    </relatedPerson>
     <relationship value='mother'/>
     <condition>
       <type>
@@ -27,6 +32,19 @@
        <system value="http://unitsofmeasure.org" />
      </onsetAge>
   
+    </condition>
+  </relation>
+  <relation>
+    <relationship value="brother"/>
+    <condition>
+      <type>
+        <coding>
+          <system value="http://snomed.info"/>
+          <code value="190372001"/>
+          <display value="Type 1 Diabetes, Maturity Onset"/>
+        </coding>
+        <text value='Diabetes Mellitus'/>
+      </type>
     </condition>
   </relation>
 </FamilyHistory>
