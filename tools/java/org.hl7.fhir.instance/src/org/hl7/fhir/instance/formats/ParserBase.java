@@ -9,6 +9,8 @@ import java.util.Map;
 import org.apache.commons.codec.binary.Base64;
 import org.hl7.fhir.instance.model.AtomFeed;
 import org.hl7.fhir.instance.model.Resource;
+import org.hl7.fhir.utilities.Utilities;
+import org.xmlpull.v1.XmlPullParser;
 
 public abstract class ParserBase extends XmlBase {
 
@@ -32,7 +34,9 @@ public abstract class ParserBase extends XmlBase {
 
 
   protected int parseIntegerPrimitive(String value) {
-    return java.lang.Integer.parseInt(value);
+    if (value.startsWith("+") && Utilities.IsInteger(value.substring(1)))
+      value = value.substring(1);
+	return java.lang.Integer.parseInt(value);
   }
 
   protected String parseDateTimePrimitive(String value) {

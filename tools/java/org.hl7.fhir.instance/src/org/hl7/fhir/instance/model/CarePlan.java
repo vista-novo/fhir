@@ -29,13 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
- * Describes the intention of how one or more providers intend to deliver care for a particular patient for a period of time, possibly limited to care for a specific condition or set of conditions.
+ * Describes the intention of how one or more practitioners intend to deliver care for a particular patient for a period of time, possibly limited to care for a specific condition or set of conditions.
  */
 public class CarePlan extends Resource {
 
@@ -66,8 +65,7 @@ public class CarePlan extends Resource {
     }
 
   public class CarePlanStatusEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -79,8 +77,7 @@ public class CarePlan extends Resource {
           return CarePlanStatus.ended;
         throw new Exception("Unknown CarePlanStatus code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == CarePlanStatus.planned)
         return "planned";
       if (code == CarePlanStatus.active)
@@ -122,8 +119,7 @@ public class CarePlan extends Resource {
     }
 
   public class CarePlanGoalStatusEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -137,8 +133,7 @@ public class CarePlan extends Resource {
           return CarePlanGoalStatus.abandoned;
         throw new Exception("Unknown CarePlanGoalStatus code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == CarePlanGoalStatus.inProgress)
         return "in progress";
       if (code == CarePlanGoalStatus.achieved)
@@ -154,7 +149,7 @@ public class CarePlan extends Resource {
     public enum CarePlanActivityCategory {
         diet, // Plan for the patient to consume food of a specified nature
         drug, // Plan for the patient to consume/receive a drug, vaccine or other product
-        encounter, // Plan to meet or communicate with the patient (in-patient, out-patient, phone call, etc.)
+        visit, // Plan to meet or communicate with the patient (in-patient, out-patient, phone call, etc.)
         observation, // Plan to capture information about a patient (vitals, labs, diagnostic images, etc.)
         procedure, // Plan to modify the patient in some way (surgery, physio-therapy, education, counselling, etc.)
         supply, // Plan to provide something to the patient (medication, medical supply, etc.)
@@ -167,8 +162,8 @@ public class CarePlan extends Resource {
           return diet;
         if ("drug".equals(codeString))
           return drug;
-        if ("encounter".equals(codeString))
-          return encounter;
+        if ("visit".equals(codeString))
+          return visit;
         if ("observation".equals(codeString))
           return observation;
         if ("procedure".equals(codeString))
@@ -183,7 +178,7 @@ public class CarePlan extends Resource {
           switch (this) {
             case diet: return "diet";
             case drug: return "drug";
-            case encounter: return "encounter";
+            case visit: return "visit";
             case observation: return "observation";
             case procedure: return "procedure";
             case supply: return "supply";
@@ -194,8 +189,7 @@ public class CarePlan extends Resource {
     }
 
   public class CarePlanActivityCategoryEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -203,8 +197,8 @@ public class CarePlan extends Resource {
           return CarePlanActivityCategory.diet;
         if ("drug".equals(codeString))
           return CarePlanActivityCategory.drug;
-        if ("encounter".equals(codeString))
-          return CarePlanActivityCategory.encounter;
+        if ("visit".equals(codeString))
+          return CarePlanActivityCategory.visit;
         if ("observation".equals(codeString))
           return CarePlanActivityCategory.observation;
         if ("procedure".equals(codeString))
@@ -215,14 +209,13 @@ public class CarePlan extends Resource {
           return CarePlanActivityCategory.other;
         throw new Exception("Unknown CarePlanActivityCategory code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == CarePlanActivityCategory.diet)
         return "diet";
       if (code == CarePlanActivityCategory.drug)
         return "drug";
-      if (code == CarePlanActivityCategory.encounter)
-        return "encounter";
+      if (code == CarePlanActivityCategory.visit)
+        return "visit";
       if (code == CarePlanActivityCategory.observation)
         return "observation";
       if (code == CarePlanActivityCategory.procedure)
@@ -274,8 +267,7 @@ public class CarePlan extends Resource {
     }
 
   public class CarePlanActivityStatusEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -293,8 +285,7 @@ public class CarePlan extends Resource {
           return CarePlanActivityStatus.discontinued;
         throw new Exception("Unknown CarePlanActivityStatus code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == CarePlanActivityStatus.notStarted)
         return "not started";
       if (code == CarePlanActivityStatus.scheduled)
@@ -311,7 +302,7 @@ public class CarePlan extends Resource {
       }
     }
 
-    public class Participant extends Element {
+    public class CarePlanParticipantComponent extends Element {
         /**
          * Indicates specific responsibility of an individual within the care plan.  E.g. "Primary physician", "Team coordinator", "Caregiver", etc.
          */
@@ -340,7 +331,7 @@ public class CarePlan extends Resource {
 
   }
 
-    public class Goal extends Element {
+    public class CarePlanGoalComponent extends Element {
         /**
          * Human readable description of a specific desired objective of the care plan.
          */
@@ -424,14 +415,14 @@ public class CarePlan extends Resource {
 
   }
 
-    public class Activity extends Element {
+    public class CarePlanActivityComponent extends Element {
         /**
          * High-level categorization of the type of activity in a care plan.
          */
         private Enumeration<CarePlanActivityCategory> category;
 
         /**
-         * Detailed description of the type of activity.  E.g. What lab test, what procedure, what kind of encounter.
+         * Detailed description of the type of activity.  E.g. What lab test, what procedure, what kind of visit.
          */
         private CodeableConcept code;
 
@@ -481,7 +472,7 @@ public class CarePlan extends Resource {
         private String_ details;
 
         /**
-         * Resources that describe follow-on actions resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.
+         * Resources that describe follow-on actions resulting from the plan, such as drug prescriptions, visit records, appointments, etc.
          */
         private List<ResourceReference> actionTaken = new ArrayList<ResourceReference>();
 
@@ -691,17 +682,17 @@ public class CarePlan extends Resource {
     /**
      * Identifies all people and organizations who are expected to be involved in the care envisioned by this plan.
      */
-    private List<Participant> participant = new ArrayList<Participant>();
+    private List<CarePlanParticipantComponent> participant = new ArrayList<CarePlanParticipantComponent>();
 
     /**
      * Describes the intended objective(s) of carrying out the Care Plan.
      */
-    private List<Goal> goal = new ArrayList<Goal>();
+    private List<CarePlanGoalComponent> goal = new ArrayList<CarePlanGoalComponent>();
 
     /**
      * Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.
      */
-    private List<Activity> activity = new ArrayList<Activity>();
+    private List<CarePlanActivityComponent> activity = new ArrayList<CarePlanActivityComponent>();
 
     /**
      * General notes about the care plan not covered elsewhere
@@ -780,15 +771,15 @@ public class CarePlan extends Resource {
       return this.concern;
     }
 
-    public List<Participant> getParticipant() { 
+    public List<CarePlanParticipantComponent> getParticipant() { 
       return this.participant;
     }
 
-    public List<Goal> getGoal() { 
+    public List<CarePlanGoalComponent> getGoal() { 
       return this.goal;
     }
 
-    public List<Activity> getActivity() { 
+    public List<CarePlanActivityComponent> getActivity() { 
       return this.activity;
     }
 

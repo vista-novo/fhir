@@ -47,7 +47,7 @@ import org.hl7.fhir.utilities.Utilities;
 public class XSDGenerator extends OutputStreamWriter {
 
 	private Definitions definitions;
-	private Map<String, ElementDefn> structures = new HashMap<String, ElementDefn>();
+	private List<ElementDefn> structures = new ArrayList<ElementDefn>();
 	private Map<ElementDefn, String> types = new HashMap<ElementDefn, String>();
 	private List<String> typenames = new ArrayList<String>();
 	private List<TypeRef> datatypes = new ArrayList<TypeRef>();
@@ -86,13 +86,12 @@ public class XSDGenerator extends OutputStreamWriter {
 		write("    </xs:annotation>\r\n");
 		write("  </xs:element>\r\n");
 
+		scanTypes(root, root);
+		
 		generateType(root, root.getName(), root, true);
 
-		while (!structures.isEmpty())
-		{
-			String s = structures.keySet().iterator().next();
-			generateType(root, s, structures.get(s), false);
-			structures.remove(s);
+		for (ElementDefn e : structures) {
+			generateType(root, types.get(e), e, false);
 		}
 
 		for (String en : enums.keySet()) {
@@ -220,22 +219,14 @@ public class XSDGenerator extends OutputStreamWriter {
 			String tn = null;
 			if ("extension".equals(e.getName()))
 				write("<xs:element name=\""+e.getName()+"\" type=\"Extension\" ");
-			else if (e.usesCompositeType()) {
+			else if (e.usesCompositeType()/* && types.containsKey(root.getElementByName(e.typeCode().substring(1)))*/) {
 				ElementDefn ref = root.getElementByName(e.typeCode().substring(1));
 				String rtn = types.get(ref);
+				if (rtn == null)
+				  throw new Exception("logic error in schema generator (null composite reference in "+types.toString()+")");
 				write("<xs:element name=\""+e.getName()+"\" type=\""+rtn+"\" ");
 			} else if (e.getTypes().size() == 0 && e.getElements().size() > 0){
-				int i = 0;
-				tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" : Integer.toString(i));
-				while (typenames.contains(tn)) {
-					i++;
-					tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" : Integer.toString(i));
-				}
-				write("<xs:element name=\""+e.getName()+"\" type=\""+tn+"\" ");
-				structures.put(tn, e);
-				typenames.add(tn);
-				types.put(e, tn);
-				tn = null;
+				write("<xs:element name=\""+e.getName()+"\" type=\""+types.get(e)+"\" ");
 			}	else if (e.getTypes().size() == 1) {
 				write("<xs:element name=\""+e.getName()+"\" ");
 				tn = encodeType(e, e.getTypes().get(0), true);
@@ -263,6 +254,22 @@ public class XSDGenerator extends OutputStreamWriter {
 		}
 	}
 
+	private void scanTypes(ElementDefn root, ElementDefn focus) {
+	  for (ElementDefn e : focus.getElements()) {
+	    if (e.getTypes().size() == 0 && e.getElements().size() > 0) {
+        int i = 0;
+        String tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" : Integer.toString(i));
+        while (typenames.contains(tn)) {
+          i++;
+          tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" : Integer.toString(i));
+        }
+        structures.add(e);
+        typenames.add(tn);
+        types.put(e, tn);
+        scanTypes(root, e);
+	    }
+	  }
+	}
 
 	private String upFirst(String name) {
 		return name.toUpperCase().charAt(0)+name.substring(1);

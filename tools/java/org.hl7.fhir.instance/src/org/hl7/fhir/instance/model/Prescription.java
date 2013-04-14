@@ -29,10 +29,9 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Directions provided by a prescribing practitioner for a specific medication to be administered (and possibly) supplied to an individual
@@ -81,7 +80,7 @@ public class Prescription extends Resource {
       }
     }
 
-    public class Dispense extends Element {
+    public class PrescriptionDispenseComponent extends Element {
         /**
          * Requested number of repeats
          */
@@ -137,7 +136,7 @@ public class Prescription extends Resource {
 
   }
 
-    public class Medicine extends Element {
+    public class PrescriptionMedicineComponent extends Element {
         /**
          * Text and or Code(s) that identify the medicine
          */
@@ -146,12 +145,12 @@ public class Prescription extends Resource {
         /**
          * The substance in the medication formulation that is pharmaceutically active and is responsible for the medication's therapeutic effect
          */
-        private List<ActiveIngredient> activeIngredient = new ArrayList<ActiveIngredient>();
+        private List<PrescriptionMedicineActiveIngredientComponent> activeIngredient = new ArrayList<PrescriptionMedicineActiveIngredientComponent>();
 
         /**
          * Ingredients in the medication that are not active
          */
-        private List<InactiveIngredient> inactiveIngredient = new ArrayList<InactiveIngredient>();
+        private List<PrescriptionMedicineInactiveIngredientComponent> inactiveIngredient = new ArrayList<PrescriptionMedicineInactiveIngredientComponent>();
 
         public CodeableConcept getIdentification() { 
           return this.identification;
@@ -161,17 +160,17 @@ public class Prescription extends Resource {
           this.identification = value;
         }
 
-        public List<ActiveIngredient> getActiveIngredient() { 
+        public List<PrescriptionMedicineActiveIngredientComponent> getActiveIngredient() { 
           return this.activeIngredient;
         }
 
-        public List<InactiveIngredient> getInactiveIngredient() { 
+        public List<PrescriptionMedicineInactiveIngredientComponent> getInactiveIngredient() { 
           return this.inactiveIngredient;
         }
 
   }
 
-    public class ActiveIngredient extends Element {
+    public class PrescriptionMedicineActiveIngredientComponent extends Element {
         /**
          * Coded representation of active ingredient
          */
@@ -200,7 +199,7 @@ public class Prescription extends Resource {
 
   }
 
-    public class InactiveIngredient extends Element {
+    public class PrescriptionMedicineInactiveIngredientComponent extends Element {
         /**
          * Coded representation of the inactive ingredient
          */
@@ -229,7 +228,7 @@ public class Prescription extends Resource {
 
   }
 
-    public class AdministrationRequest extends Element {
+    public class PrescriptionAdministrationRequestComponent extends Element {
         /**
          * Textual description of the use of the medication.
          */
@@ -263,7 +262,7 @@ public class Prescription extends Resource {
         /**
          * Specification of dose and schedule for administration
          */
-        private List<DosageInstruction> dosageInstruction = new ArrayList<DosageInstruction>();
+        private List<PrescriptionAdministrationRequestDosageInstructionComponent> dosageInstruction = new ArrayList<PrescriptionAdministrationRequestDosageInstructionComponent>();
 
         public String_ getDescription() { 
           return this.description;
@@ -369,13 +368,13 @@ public class Prescription extends Resource {
           }
         }
 
-        public List<DosageInstruction> getDosageInstruction() { 
+        public List<PrescriptionAdministrationRequestDosageInstructionComponent> getDosageInstruction() { 
           return this.dosageInstruction;
         }
 
   }
 
-    public class DosageInstruction extends Element {
+    public class PrescriptionAdministrationRequestDosageInstructionComponent extends Element {
         /**
          * Precondition for starting the administration specified in this instruction
          */
@@ -499,17 +498,17 @@ public class Prescription extends Resource {
     /**
      * Details of the dispense as requested by the prescriber
      */
-    private Dispense dispense;
+    private PrescriptionDispenseComponent dispense;
 
     /**
      * The one single medicine, vaccine or other product prescribed in this prescription.
      */
-    private Medicine medicine;
+    private PrescriptionMedicineComponent medicine;
 
     /**
      * Instructions for the use of the medication. Includes details about the timing schedule, dose amounts and additional usage instructions.
      */
-    private AdministrationRequest administrationRequest;
+    private PrescriptionAdministrationRequestComponent administrationRequest;
 
     /**
      * Diagnosis which is the reason for prescribing this medicine
@@ -580,27 +579,27 @@ public class Prescription extends Resource {
       }
     }
 
-    public Dispense getDispense() { 
+    public PrescriptionDispenseComponent getDispense() { 
       return this.dispense;
     }
 
-    public void setDispense(Dispense value) { 
+    public void setDispense(PrescriptionDispenseComponent value) { 
       this.dispense = value;
     }
 
-    public Medicine getMedicine() { 
+    public PrescriptionMedicineComponent getMedicine() { 
       return this.medicine;
     }
 
-    public void setMedicine(Medicine value) { 
+    public void setMedicine(PrescriptionMedicineComponent value) { 
       this.medicine = value;
     }
 
-    public AdministrationRequest getAdministrationRequest() { 
+    public PrescriptionAdministrationRequestComponent getAdministrationRequest() { 
       return this.administrationRequest;
     }
 
-    public void setAdministrationRequest(AdministrationRequest value) { 
+    public void setAdministrationRequest(PrescriptionAdministrationRequestComponent value) { 
       this.administrationRequest = value;
     }
 

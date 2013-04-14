@@ -29,11 +29,9 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * The findings and interpretation of diagnostic  tests performed on patients and/or specimens. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretation, and formatted representation of diagnostic reports
@@ -114,11 +112,11 @@ public class DiagnosticReport extends Resource {
       }
     }
 
-    public class RequestDetail extends Element {
+    public class DiagnosticReportRequestDetailComponent extends Element {
         /**
-         * The encounter that this diagnostic investigation is associated with
+         * The visit that this diagnostic investigation is associated with
          */
-        private ResourceReference encounter;
+        private ResourceReference visit;
 
         /**
          * The local ID assigned to the order by the order requester.
@@ -150,12 +148,12 @@ public class DiagnosticReport extends Resource {
          */
         private String_ clinicalInfo;
 
-        public ResourceReference getEncounter() { 
-          return this.encounter;
+        public ResourceReference getVisit() { 
+          return this.visit;
         }
 
-        public void setEncounter(ResourceReference value) { 
-          this.encounter = value;
+        public void setVisit(ResourceReference value) { 
+          this.visit = value;
         }
 
         public Identifier getRequestOrderId() { 
@@ -218,21 +216,21 @@ public class DiagnosticReport extends Resource {
 
   }
 
-    public class Results extends Element {
+    public class ResultGroupComponent extends Element {
         /**
          * A code or name that describes this group of results. For the base group, this is the report name
          */
         private CodeableConcept name;
 
         /**
-         * Details about the individual specimen to which these "Result group" test results refer
+         * Details about the individual specimen to which these ‘Result group’ test results refer
          */
         private ResourceReference specimen;
 
         /**
          * A sub-group in a report group. Sub groups can be grouped in arbitrary ways. The group.name defines the purpose and interpretation of the grouping
          */
-        private List<Results> group = new ArrayList<Results>();
+        private List<ResultGroupComponent> group = new ArrayList<ResultGroupComponent>();
 
         /**
          * Specific detailed result, including both the value of the result item and additional information that may be useful for clinical interpretation. Results include whatever specific data items pathology labs report as part of the clinical service; it is not confined to measurements.
@@ -255,7 +253,7 @@ public class DiagnosticReport extends Resource {
           this.specimen = value;
         }
 
-        public List<Results> getGroup() { 
+        public List<ResultGroupComponent> getGroup() { 
           return this.group;
         }
 
@@ -293,7 +291,7 @@ public class DiagnosticReport extends Resource {
     /**
      * Details concerning a single pathology test requested.
      */
-    private List<RequestDetail> requestDetail = new ArrayList<RequestDetail>();
+    private List<DiagnosticReportRequestDetailComponent> requestDetail = new ArrayList<DiagnosticReportRequestDetailComponent>();
 
     /**
      * The section of the diagnostic service that performs the examination e.g. biochemistry, haematology, MRI
@@ -308,7 +306,7 @@ public class DiagnosticReport extends Resource {
     /**
      * A group of results. Results may be grouped by specimen, or by some value in DiagnosticReport.resultGroup.name to describe what binds all the results together.
      */
-    private Results results;
+    private ResultGroupComponent results;
 
     /**
      * A list of key images associated with this report. The images are generally created during the diagnostic process, and maybe directly of the patient, or of treated specimens (i.e. slides of interest)
@@ -398,7 +396,7 @@ public class DiagnosticReport extends Resource {
       this.reportId = value;
     }
 
-    public List<RequestDetail> getRequestDetail() { 
+    public List<DiagnosticReportRequestDetailComponent> getRequestDetail() { 
       return this.requestDetail;
     }
 
@@ -432,11 +430,11 @@ public class DiagnosticReport extends Resource {
       }
     }
 
-    public Results getResults() { 
+    public ResultGroupComponent getResults() { 
       return this.results;
     }
 
-    public void setResults(Results value) { 
+    public void setResults(ResultGroupComponent value) { 
       this.results = value;
     }
 

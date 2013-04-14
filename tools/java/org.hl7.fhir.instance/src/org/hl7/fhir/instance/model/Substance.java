@@ -29,12 +29,65 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
 /**
- * null
+ * Substance
  */
 public class Substance extends Resource {
+
+    /**
+     * Identifier of the substance
+     */
+    private Identifier identifier;
+
+    /**
+     * Name of the substance
+     */
+    private String_ name;
+
+    /**
+     * Type of the substance
+     */
+    private Coding type;
+
+    public Identifier getIdentifier() { 
+      return this.identifier;
+    }
+
+    public void setIdentifier(Identifier value) { 
+      this.identifier = value;
+    }
+
+    public String_ getName() { 
+      return this.name;
+    }
+
+    public void setName(String_ value) { 
+      this.name = value;
+    }
+
+    public String getNameSimple() { 
+      return this.name == null ? null : this.name.getValue();
+    }
+
+    public void setNameSimple(String value) { 
+      if (value == null)
+        this.name = null;
+      else {
+        if (this.name == null)
+          this.name = new String_();
+        this.name.setValue(value);
+      }
+    }
+
+    public Coding getType() { 
+      return this.type;
+    }
+
+    public void setType(Coding value) { 
+      this.type = value;
+    }
 
   @Override
   public ResourceType getResourceType() {

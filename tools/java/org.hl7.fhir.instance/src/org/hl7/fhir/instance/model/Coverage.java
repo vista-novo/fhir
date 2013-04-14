@@ -29,14 +29,14 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
 /**
  * Financial instrument by which payment information for health care
  */
 public class Coverage extends Resource {
 
-    public class PlanHolder extends Element {
+    public class CoveragePlanHolderComponent extends Element {
         /**
          * The name of the PolicyHolder
          */
@@ -135,7 +135,7 @@ public class Coverage extends Resource {
     /**
      * Planholder information
      */
-    private PlanHolder planHolder;
+    private CoveragePlanHolderComponent planHolder;
 
     public ResourceReference getIssuer() { 
       return this.issuer;
@@ -229,11 +229,11 @@ public class Coverage extends Resource {
       }
     }
 
-    public PlanHolder getPlanHolder() { 
+    public CoveragePlanHolderComponent getPlanHolder() { 
       return this.planHolder;
     }
 
-    public void setPlanHolder(PlanHolder value) { 
+    public void setPlanHolder(CoveragePlanHolderComponent value) { 
       this.planHolder = value;
     }
 

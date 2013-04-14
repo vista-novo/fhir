@@ -29,15 +29,14 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Describes the event of a patient being given a dose of a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.
 
-Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care provider
+Related resources tie this event to the authorizing prescription, and the specific visit between patient and health care practitioner
  */
 public class MedicationAdministration extends Resource {
 
@@ -72,8 +71,7 @@ public class MedicationAdministration extends Resource {
     }
 
   public class MedAdmStatusEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -87,8 +85,7 @@ public class MedicationAdministration extends Resource {
           return MedAdmStatus.nullified;
         throw new Exception("Unknown MedAdmStatus code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == MedAdmStatus.active)
         return "active";
       if (code == MedAdmStatus.paused)
@@ -173,9 +170,9 @@ Example 250ml/30min
     private List<CodeableConcept> medication = new ArrayList<CodeableConcept>();
 
     /**
-     * An identifier or a link to a resource that identifies the particular occurrence of contact between patient and health care provider.
+     * An identifier or a link to a resource that identifies the particular occurrence of contact between patient and health care practitioner.
      */
-    private Identifier encounter;
+    private Identifier visit;
 
     /**
      * An identifier or a link to a resource that identifies a device used in administering the medication to the patient.
@@ -302,12 +299,12 @@ Example 250ml/30min
       return this.medication;
     }
 
-    public Identifier getEncounter() { 
-      return this.encounter;
+    public Identifier getVisit() { 
+      return this.visit;
     }
 
-    public void setEncounter(Identifier value) { 
-      this.encounter = value;
+    public void setVisit(Identifier value) { 
+      this.visit = value;
     }
 
     public List<ResourceReference> getAdministrationDevice() { 

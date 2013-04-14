@@ -29,11 +29,9 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * A record of an event
@@ -287,7 +285,7 @@ public class SecurityEvent extends Resource {
         _12, // Security User Group
         _13, // Security Resource
         _14, // Security Granularity Definition
-        _15, // Provider
+        _15, // Practitioner
         _16, // Data Destination
         _17, // Data Repository
         _18, // Schedule
@@ -636,7 +634,7 @@ public class SecurityEvent extends Resource {
       }
     }
 
-    public class Event extends Element {
+    public class SecurityEventEventComponent extends Element {
         /**
          * Identifier for a specific audited event
          */
@@ -742,7 +740,7 @@ public class SecurityEvent extends Resource {
 
   }
 
-    public class Participant extends Element {
+    public class SecurityEventParticipantComponent extends Element {
         /**
          * Unique identifier for the user actively participating in the event
          */
@@ -776,7 +774,7 @@ public class SecurityEvent extends Resource {
         /**
          * Logical network location for application activity, if the activity has a network location
          */
-        private Network network;
+        private SecurityEventParticipantNetworkComponent network;
 
         public String_ getUserId() { 
           return this.userId;
@@ -878,17 +876,17 @@ public class SecurityEvent extends Resource {
           this.mediaId = value;
         }
 
-        public Network getNetwork() { 
+        public SecurityEventParticipantNetworkComponent getNetwork() { 
           return this.network;
         }
 
-        public void setNetwork(Network value) { 
+        public void setNetwork(SecurityEventParticipantNetworkComponent value) { 
           this.network = value;
         }
 
   }
 
-    public class Network extends Element {
+    public class SecurityEventParticipantNetworkComponent extends Element {
         /**
          * An identifier for the type of network access point that originated the audit event
          */
@@ -945,7 +943,7 @@ public class SecurityEvent extends Resource {
 
   }
 
-    public class Source extends Element {
+    public class SecurityEventSourceComponent extends Element {
         /**
          * Logical source location within the healthcare enterprise network
          */
@@ -1011,7 +1009,7 @@ public class SecurityEvent extends Resource {
 
   }
 
-    public class Object extends Element {
+    public class SecurityEventObjectComponent extends Element {
         /**
          * Object type being audited
          */
@@ -1219,44 +1217,44 @@ public class SecurityEvent extends Resource {
     /**
      * Identifies the name, action type, time, and disposition of the audited event
      */
-    private Event event;
+    private SecurityEventEventComponent event;
 
     /**
      * A person, a hardware device or software process
      */
-    private List<Participant> participant = new ArrayList<Participant>();
+    private List<SecurityEventParticipantComponent> participant = new ArrayList<SecurityEventParticipantComponent>();
 
     /**
      * Application systems and processes
      */
-    private Source source;
+    private SecurityEventSourceComponent source;
 
     /**
      * Specific instances of data or objects that have been accessed
      */
-    private List<Object> object = new ArrayList<Object>();
+    private List<SecurityEventObjectComponent> object = new ArrayList<SecurityEventObjectComponent>();
 
-    public Event getEvent() { 
+    public SecurityEventEventComponent getEvent() { 
       return this.event;
     }
 
-    public void setEvent(Event value) { 
+    public void setEvent(SecurityEventEventComponent value) { 
       this.event = value;
     }
 
-    public List<Participant> getParticipant() { 
+    public List<SecurityEventParticipantComponent> getParticipant() { 
       return this.participant;
     }
 
-    public Source getSource() { 
+    public SecurityEventSourceComponent getSource() { 
       return this.source;
     }
 
-    public void setSource(Source value) { 
+    public void setSource(SecurityEventSourceComponent value) { 
       this.source = value;
     }
 
-    public List<Object> getObject() { 
+    public List<SecurityEventObjectComponent> getObject() { 
       return this.object;
     }
 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
 /**
  * All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc.
@@ -67,8 +67,7 @@ public class Contact extends Type {
     }
 
   public class ContactSystemEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -82,8 +81,7 @@ public class Contact extends Type {
           return ContactSystem.url;
         throw new Exception("Unknown ContactSystem code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == ContactSystem.phone)
         return "phone";
       if (code == ContactSystem.fax)
@@ -131,8 +129,7 @@ public class Contact extends Type {
     }
 
   public class ContactUseEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -148,8 +145,7 @@ public class Contact extends Type {
           return ContactUse.mobile;
         throw new Exception("Unknown ContactUse code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == ContactUse.home)
         return "home";
       if (code == ContactUse.work)

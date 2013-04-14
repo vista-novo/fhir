@@ -29,11 +29,11 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+import java.net.*;
 /**
  * A Resource Profile - a statement of use of one or more FHIR Resources.  It may include constraints on Resources and Data Types, Terminology Binding Statements and Extension Definitions
  */
@@ -78,8 +78,7 @@ public class Profile extends Resource {
     }
 
   public class ResourceProfileStatusEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -97,8 +96,7 @@ public class Profile extends Resource {
           return ResourceProfileStatus.superseded;
         throw new Exception("Unknown ResourceProfileStatus code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == ResourceProfileStatus.draft)
         return "draft";
       if (code == ResourceProfileStatus.testing)
@@ -138,8 +136,7 @@ public class Profile extends Resource {
     }
 
   public class ConstraintSeverityEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -149,8 +146,7 @@ public class Profile extends Resource {
           return ConstraintSeverity.warning;
         throw new Exception("Unknown ConstraintSeverity code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == ConstraintSeverity.error)
         return "error";
       if (code == ConstraintSeverity.warning)
@@ -198,8 +194,7 @@ public class Profile extends Resource {
     }
 
   public class SearchParamTypeEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -217,8 +212,7 @@ public class Profile extends Resource {
           return SearchParamType.qtoken;
         throw new Exception("Unknown SearchParamType code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == SearchParamType.integer)
         return "integer";
       if (code == SearchParamType.string)
@@ -262,8 +256,7 @@ public class Profile extends Resource {
     }
 
   public class SearchRepeatBehaviorEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -275,8 +268,7 @@ public class Profile extends Resource {
           return SearchRepeatBehavior.intersection;
         throw new Exception("Unknown SearchRepeatBehavior code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == SearchRepeatBehavior.single)
         return "single";
       if (code == SearchRepeatBehavior.union)
@@ -318,8 +310,7 @@ public class Profile extends Resource {
     }
 
   public class ExtensionContextEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -333,8 +324,7 @@ public class Profile extends Resource {
           return ExtensionContext.extension;
         throw new Exception("Unknown ExtensionContext code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == ExtensionContext.resource)
         return "resource";
       if (code == ExtensionContext.datatype)
@@ -378,8 +368,7 @@ public class Profile extends Resource {
     }
 
   public class BindingTypeEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -393,8 +382,7 @@ public class Profile extends Resource {
           return BindingType.special;
         throw new Exception("Unknown BindingType code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == BindingType.valueset)
         return "valueset";
       if (code == BindingType.codelist)
@@ -434,8 +422,7 @@ public class Profile extends Resource {
     }
 
   public class BindingConformanceEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -447,8 +434,7 @@ public class Profile extends Resource {
           return BindingConformance.example;
         throw new Exception("Unknown BindingConformance code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == BindingConformance.required)
         return "required";
       if (code == BindingConformance.preferred)
@@ -459,7 +445,7 @@ public class Profile extends Resource {
       }
     }
 
-    public class Author extends Element {
+    public class AuthorComponent extends Element {
         /**
          * The name of the individual or organization that contributed to the development of the content of the profile
          */
@@ -525,7 +511,7 @@ public class Profile extends Resource {
 
   }
 
-    public class Status extends Element {
+    public class ProfileStatusComponent extends Element {
         /**
          * A coded value for the position of the profile within its life-cycle
          */
@@ -609,7 +595,7 @@ public class Profile extends Resource {
 
   }
 
-    public class Import extends Element {
+    public class ProfileImportComponent extends Element {
         /**
          * The identifier for the profile, ideally the URL it can be retrieved from
          */
@@ -666,7 +652,7 @@ public class Profile extends Resource {
 
   }
 
-    public class Constraint extends Element {
+    public class ProfileStructureComponent extends Element {
         /**
          * The Resource or Data type being described
          */
@@ -690,12 +676,12 @@ public class Profile extends Resource {
         /**
          * Captures constraints on each element within the resource
          */
-        private List<Element_> element = new ArrayList<Element_>();
+        private List<ElementComponent> element = new ArrayList<ElementComponent>();
 
         /**
          * Defines additional search parameters for implementations to support and/or make use of
          */
-        private List<SearchParam> searchParam = new ArrayList<SearchParam>();
+        private List<ProfileStructureSearchParamComponent> searchParam = new ArrayList<ProfileStructureSearchParamComponent>();
 
         public Code getType() { 
           return this.type;
@@ -785,17 +771,17 @@ public class Profile extends Resource {
           }
         }
 
-        public List<Element_> getElement() { 
+        public List<ElementComponent> getElement() { 
           return this.element;
         }
 
-        public List<SearchParam> getSearchParam() { 
+        public List<ProfileStructureSearchParamComponent> getSearchParam() { 
           return this.searchParam;
         }
 
   }
 
-    public class Element_ extends Element {
+    public class ElementComponent extends Element {
         /**
          * The path identifies the element and is expressed as a "."-separated list of ancestor elements, beginning with the name of the resource
          */
@@ -809,7 +795,7 @@ public class Profile extends Resource {
         /**
          * Definition of the content of the element to provide a more specific definition than that contained for the element in the base resource
          */
-        private Definition definition;
+        private ElementDefinitionComponent definition;
 
         /**
          * Whether the Resource that is the value for this element is included in the bundle, if the profile is specifying a bundle
@@ -860,11 +846,11 @@ public class Profile extends Resource {
           }
         }
 
-        public Definition getDefinition() { 
+        public ElementDefinitionComponent getDefinition() { 
           return this.definition;
         }
 
-        public void setDefinition(Definition value) { 
+        public void setDefinition(ElementDefinitionComponent value) { 
           this.definition = value;
         }
 
@@ -892,7 +878,7 @@ public class Profile extends Resource {
 
   }
 
-    public class Definition extends Element {
+    public class ElementDefinitionComponent extends Element {
         /**
          * A concise definition that  is shown in the concise XML format that summarizes profiles
          */
@@ -931,7 +917,7 @@ public class Profile extends Resource {
         /**
          * The data type or resource that the value of this element is permitted to be
          */
-        private List<Type> type = new ArrayList<Type>();
+        private List<TypeRefComponent> type = new ArrayList<TypeRefComponent>();
 
         /**
          * Identifies the name of a slice defined elsewhere in the profile whose constraints should be applied to the current element
@@ -956,7 +942,7 @@ public class Profile extends Resource {
         /**
          * Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance
          */
-        private List<ConstraintA> constraint = new ArrayList<ConstraintA>();
+        private List<ElementDefinitionConstraintComponent> constraint = new ArrayList<ElementDefinitionConstraintComponent>();
 
         /**
          * If true, conformant resource authors must be capable of providing a value for the element and resource consumers must be capable of extracting and doing something useful with the data element.  If false, the element may be ignored and not supported
@@ -976,7 +962,7 @@ public class Profile extends Resource {
         /**
          * Identifies a concept from an external specification that roughly corresponds to this element
          */
-        private List<Mapping> mapping = new ArrayList<Mapping>();
+        private List<ElementDefinitionMappingComponent> mapping = new ArrayList<ElementDefinitionMappingComponent>();
 
         public String_ getShort() { 
           return this.short_;
@@ -1114,7 +1100,7 @@ public class Profile extends Resource {
           }
         }
 
-        public List<Type> getType() { 
+        public List<TypeRefComponent> getType() { 
           return this.type;
         }
 
@@ -1174,7 +1160,7 @@ public class Profile extends Resource {
           return this.condition;
         }
 
-        public List<ConstraintA> getConstraint() { 
+        public List<ElementDefinitionConstraintComponent> getConstraint() { 
           return this.constraint;
         }
 
@@ -1244,13 +1230,13 @@ public class Profile extends Resource {
           }
         }
 
-        public List<Mapping> getMapping() { 
+        public List<ElementDefinitionMappingComponent> getMapping() { 
           return this.mapping;
         }
 
   }
 
-    public class Type extends Element {
+    public class TypeRefComponent extends Element {
         /**
          * Data type or Resource
          */
@@ -1307,7 +1293,7 @@ public class Profile extends Resource {
 
   }
 
-    public class ConstraintA extends Element {
+    public class ElementDefinitionConstraintComponent extends Element {
         /**
          * Allows identification of which elements have their cardinalities impacted by the constraint.  Will not be referenced for constraints that do not affect cardinality
          */
@@ -1472,7 +1458,7 @@ public class Profile extends Resource {
 
   }
 
-    public class Mapping extends Element {
+    public class ElementDefinitionMappingComponent extends Element {
         /**
          * The name of the specification is mapping is being expressed to
          */
@@ -1529,7 +1515,7 @@ public class Profile extends Resource {
 
   }
 
-    public class SearchParam extends Element {
+    public class ProfileStructureSearchParamComponent extends Element {
         /**
          * Corresponds to the name of the standard or custom search parameter
          */
@@ -1640,7 +1626,7 @@ public class Profile extends Resource {
 
   }
 
-    public class ExtensionDefn extends Element {
+    public class ProfileExtensionDefnComponent extends Element {
         /**
          * A unique code (within the profile) used to identify the extension
          */
@@ -1659,7 +1645,7 @@ public class Profile extends Resource {
         /**
          * Definition of the extension and its content
          */
-        private Definition definition;
+        private ElementDefinitionComponent definition;
 
         public Id getId() { 
           return this.id;
@@ -1709,17 +1695,17 @@ public class Profile extends Resource {
           return this.context;
         }
 
-        public Definition getDefinition() { 
+        public ElementDefinitionComponent getDefinition() { 
           return this.definition;
         }
 
-        public void setDefinition(Definition value) { 
+        public void setDefinition(ElementDefinitionComponent value) { 
           this.definition = value;
         }
 
   }
 
-    public class Binding extends Element {
+    public class ProfileBindingComponent extends Element {
         /**
          * The name to be associated with this set of codes
          */
@@ -1753,7 +1739,7 @@ public class Profile extends Resource {
         /**
          * Identifies the codes forming the code list for the binding
          */
-        private List<Concept> concept = new ArrayList<Concept>();
+        private List<CodeDefinitionComponent> concept = new ArrayList<CodeDefinitionComponent>();
 
         public String_ getName() { 
           return this.name;
@@ -1887,13 +1873,13 @@ public class Profile extends Resource {
           }
         }
 
-        public List<Concept> getConcept() { 
+        public List<CodeDefinitionComponent> getConcept() { 
           return this.concept;
         }
 
   }
 
-    public class Concept extends Element {
+    public class CodeDefinitionComponent extends Element {
         /**
          * Identifies the code referenced or being defined as part of the binding
          */
@@ -2017,7 +2003,7 @@ public class Profile extends Resource {
     /**
      * Details of the author who accepts responsibility for publishing the profile
      */
-    private List<Author> author = new ArrayList<Author>();
+    private List<AuthorComponent> author = new ArrayList<AuthorComponent>();
 
     /**
      * A free text natural language description of the profile and its use
@@ -2032,12 +2018,12 @@ public class Profile extends Resource {
     /**
      * Indicates where the profile exists in its overall life-cycle
      */
-    private Status status;
+    private ProfileStatusComponent status;
 
     /**
      * Other profiles that define extensions and bindings that are used in this profile
      */
-    private List<Import> import_ = new ArrayList<Import>();
+    private List<ProfileImportComponent> import_ = new ArrayList<ProfileImportComponent>();
 
     /**
      * If this profile describes a bundle, the first resource in the bundle (usually a Message or a Document)
@@ -2047,17 +2033,17 @@ public class Profile extends Resource {
     /**
      * A constraint statement about what contents a resource or data type may have
      */
-    private List<Constraint> constraint = new ArrayList<Constraint>();
+    private List<ProfileStructureComponent> structure = new ArrayList<ProfileStructureComponent>();
 
     /**
      * An extension defined as part of the profile
      */
-    private List<ExtensionDefn> extensionDefn = new ArrayList<ExtensionDefn>();
+    private List<ProfileExtensionDefnComponent> extensionDefn = new ArrayList<ProfileExtensionDefnComponent>();
 
     /**
      * Defines a linkage between a vocabulary binding name used in the profile (or expected to be used in profile importing this one) and a value set or code list
      */
-    private List<Binding> binding = new ArrayList<Binding>();
+    private List<ProfileBindingComponent> binding = new ArrayList<ProfileBindingComponent>();
 
     public String_ getName() { 
       return this.name;
@@ -2103,7 +2089,7 @@ public class Profile extends Resource {
       }
     }
 
-    public List<Author> getAuthor() { 
+    public List<AuthorComponent> getAuthor() { 
       return this.author;
     }
 
@@ -2133,15 +2119,15 @@ public class Profile extends Resource {
       return this.code;
     }
 
-    public Status getStatus() { 
+    public ProfileStatusComponent getStatus() { 
       return this.status;
     }
 
-    public void setStatus(Status value) { 
+    public void setStatus(ProfileStatusComponent value) { 
       this.status = value;
     }
 
-    public List<Import> getImport() { 
+    public List<ProfileImportComponent> getImport() { 
       return this.import_;
     }
 
@@ -2167,15 +2153,15 @@ public class Profile extends Resource {
       }
     }
 
-    public List<Constraint> getConstraint() { 
-      return this.constraint;
+    public List<ProfileStructureComponent> getStructure() { 
+      return this.structure;
     }
 
-    public List<ExtensionDefn> getExtensionDefn() { 
+    public List<ProfileExtensionDefnComponent> getExtensionDefn() { 
       return this.extensionDefn;
     }
 
-    public List<Binding> getBinding() { 
+    public List<ProfileBindingComponent> getBinding() { 
       return this.binding;
     }
 

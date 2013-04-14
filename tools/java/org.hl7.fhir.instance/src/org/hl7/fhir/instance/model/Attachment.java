@@ -29,10 +29,10 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
 
-import java.net.URI;
+import java.net.*;
 /**
  * For referring to data content defined in other formats.
  */

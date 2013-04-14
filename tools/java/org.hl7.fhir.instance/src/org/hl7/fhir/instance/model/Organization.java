@@ -29,10 +29,9 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc
@@ -62,8 +61,7 @@ public class Organization extends Resource {
     }
 
   public class RecordStatusEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -73,8 +71,7 @@ public class Organization extends Resource {
           return RecordStatus.inactive;
         throw new Exception("Unknown RecordStatus code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == RecordStatus.active)
         return "active";
       if (code == RecordStatus.inactive)
@@ -83,7 +80,7 @@ public class Organization extends Resource {
       }
     }
 
-    public class Accreditation extends Element {
+    public class OrganizationAccreditationComponent extends Element {
         /**
          * The identifier of the accreditation
          */
@@ -138,7 +135,7 @@ public class Organization extends Resource {
 
   }
 
-    public class RelatedOrganization extends Element {
+    public class OrganizationRelatedOrganizationComponent extends Element {
         /**
          * The organization that is related to this organization
          */
@@ -167,7 +164,7 @@ public class Organization extends Resource {
 
   }
 
-    public class ContactPerson extends Element {
+    public class OrganizationContactPersonComponent extends Element {
         /**
          * Indicates a purpose for which the person can be contacted.
          */
@@ -229,17 +226,17 @@ public class Organization extends Resource {
     /**
      * The qualifications/certifications an organization has, including format educational achievements, accreditations and current certifications. All these qualifications may be used to determine what roles the organization may play in a healthcare environment
      */
-    private List<Accreditation> accreditation = new ArrayList<Accreditation>();
+    private List<OrganizationAccreditationComponent> accreditation = new ArrayList<OrganizationAccreditationComponent>();
 
     /**
      * Other organizations that are related to this organization. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
      */
-    private List<RelatedOrganization> relatedOrganization = new ArrayList<RelatedOrganization>();
+    private List<OrganizationRelatedOrganizationComponent> relatedOrganization = new ArrayList<OrganizationRelatedOrganizationComponent>();
 
     /**
      * Contact details for a person acting as a contact for the organization
      */
-    private List<ContactPerson> contactPerson = new ArrayList<ContactPerson>();
+    private List<OrganizationContactPersonComponent> contactPerson = new ArrayList<OrganizationContactPersonComponent>();
 
     public List<Identifier> getIdentifier() { 
       return this.identifier;
@@ -287,15 +284,15 @@ public class Organization extends Resource {
       }
     }
 
-    public List<Accreditation> getAccreditation() { 
+    public List<OrganizationAccreditationComponent> getAccreditation() { 
       return this.accreditation;
     }
 
-    public List<RelatedOrganization> getRelatedOrganization() { 
+    public List<OrganizationRelatedOrganizationComponent> getRelatedOrganization() { 
       return this.relatedOrganization;
     }
 
-    public List<ContactPerson> getContactPerson() { 
+    public List<OrganizationContactPersonComponent> getContactPerson() { 
       return this.contactPerson;
     }
 

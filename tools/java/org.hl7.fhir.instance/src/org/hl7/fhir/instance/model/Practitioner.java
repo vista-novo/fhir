@@ -29,15 +29,56 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
- * A person who represents an organization, and is authorized to perform actions on its behalf
+ * Demographics and qualification information for an individual who is directly or indirectly involved in the provisioning of healthcare
  */
-public class Provider extends Resource {
+public class Practitioner extends Resource {
+
+    public class PractitionerQualificationComponent extends Element {
+        /**
+         * Coded representation of the qualification
+         */
+        private CodeableConcept code;
+
+        /**
+         * Period during which the qualification is valid
+         */
+        private Period period;
+
+        /**
+         * Organization that regulates and issues the qualification
+         */
+        private ResourceReference issuer;
+
+        public CodeableConcept getCode() { 
+          return this.code;
+        }
+
+        public void setCode(CodeableConcept value) { 
+          this.code = value;
+        }
+
+        public Period getPeriod() { 
+          return this.period;
+        }
+
+        public void setPeriod(Period value) { 
+          this.period = value;
+        }
+
+        public ResourceReference getIssuer() { 
+          return this.issuer;
+        }
+
+        public void setIssuer(ResourceReference value) { 
+          this.issuer = value;
+        }
+
+  }
 
     /**
      * An identifier that applies to this person in this role
@@ -45,12 +86,12 @@ public class Provider extends Resource {
     private List<Identifier> identifier = new ArrayList<Identifier>();
 
     /**
-     * Provider Demographic details
+     * Practitioner Demographic details
      */
     private Demographics details;
 
     /**
-     * The organisation that is being represented
+     * The organisation that the practitioner represents
      */
     private ResourceReference organization;
 
@@ -60,14 +101,19 @@ public class Provider extends Resource {
     private List<CodeableConcept> role = new ArrayList<CodeableConcept>();
 
     /**
-     * Represents a specific specialty within the healthcare facility under which the agent acts
+     * Specific specialty of the practitioner
      */
     private List<CodeableConcept> specialty = new ArrayList<CodeableConcept>();
 
     /**
-     * The time period during which the agent was/is authorised to represent the organisation.
+     * The period during which the person is authorized to perform the service
      */
     private Period period;
+
+    /**
+     * Qualifications relevant to the provided service
+     */
+    private List<PractitionerQualificationComponent> qualification = new ArrayList<PractitionerQualificationComponent>();
 
     public List<Identifier> getIdentifier() { 
       return this.identifier;
@@ -105,9 +151,13 @@ public class Provider extends Resource {
       this.period = value;
     }
 
+    public List<PractitionerQualificationComponent> getQualification() { 
+      return this.qualification;
+    }
+
   @Override
   public ResourceType getResourceType() {
-    return ResourceType.Provider;
+    return ResourceType.Practitioner;
    }
 
 

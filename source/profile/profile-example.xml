@@ -620,7 +620,7 @@
     <date value="2012-05-12"/>
     <comment value="Sample, never intended for real use"/>
   </status>
-  <constraint>
+  <structure>
     <type value="Resource"/>
     <name value="Lipids"/>
     <element>
@@ -1470,5 +1470,5 @@
         <mustUnderstand value="false"/>
       </definition>
     </element>
-  </constraint>
+  </structure>
 </Profile>

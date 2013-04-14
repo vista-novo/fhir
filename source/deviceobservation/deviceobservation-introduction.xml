@@ -11,11 +11,11 @@ There are 4 device related resources
  <li>Device Observation (this resource) - A report of observations from a device</li>
 </ul>
 <p>
-The device capabilities and emission resources are used when communicating directly with a device. 
+The device capabilities and log resources are used when communicating directly with a device. 
 When a channel is opened with the device, it first sends the Capabilities resource, and then a 
-series of emission resources. The FHIR JSON format is used in this case. 
+series of log resources. The FHIR JSON format is used in this case. 
 
-The application that receives the emission resources may choose to merge the emission with the capabilities 
+The application that receives the log resources may choose to merge the log with the capabilities 
 statement to create a device observation, which is suitable for wider use within a EHR/Clinical record context.
 </p>
 

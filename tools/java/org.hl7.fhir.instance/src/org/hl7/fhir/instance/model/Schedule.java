@@ -29,11 +29,11 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+import java.math.*;
 /**
  * A schedule that specifies an event that may occur multiple times. Schedules are not used for recording when things did happen, but when they are expected or requested to occur.
  */
@@ -227,7 +227,7 @@ public class Schedule extends Type {
       }
     }
 
-    public class Repeat extends Element {
+    public class ScheduleRepeatComponent extends Element {
         /**
          * Indicates how often the event should occur.
          */
@@ -400,17 +400,17 @@ public class Schedule extends Type {
     /**
      * Identifies a repeating pattern to the intended time periods.
      */
-    private Repeat repeat;
+    private ScheduleRepeatComponent repeat;
 
     public List<Period> getEvent() { 
       return this.event;
     }
 
-    public Repeat getRepeat() { 
+    public ScheduleRepeatComponent getRepeat() { 
       return this.repeat;
     }
 
-    public void setRepeat(Repeat value) { 
+    public void setRepeat(ScheduleRepeatComponent value) { 
       this.repeat = value;
     }
 

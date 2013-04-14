@@ -29,11 +29,11 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+import java.net.*;
 /**
  * Manifest of a set of images produced in study. The set of images may include every image in the study, or it may be an incomplete sample, such as a list of key images
  */
@@ -353,7 +353,7 @@ public class ImagingStudy extends Resource {
       }
     }
 
-    public class Series extends Element {
+    public class ImagingStudySeriesComponent extends Element {
         /**
          * The number of this series in the overall sequence
          */
@@ -387,7 +387,7 @@ public class ImagingStudy extends Resource {
         /**
          * A single image taken from a patient
          */
-        private List<Image> image = new ArrayList<Image>();
+        private List<ImagingStudySeriesImageComponent> image = new ArrayList<ImagingStudySeriesImageComponent>();
 
         public Integer getNumber() { 
           return this.number;
@@ -507,13 +507,13 @@ public class ImagingStudy extends Resource {
           this.bodySite = value;
         }
 
-        public List<Image> getImage() { 
+        public List<ImagingStudySeriesImageComponent> getImage() { 
           return this.image;
         }
 
   }
 
-    public class Image extends Element {
+    public class ImagingStudySeriesImageComponent extends Element {
         /**
          * The number of this image in the series
          */
@@ -704,7 +704,7 @@ public class ImagingStudy extends Resource {
     /**
      * Each study has one or more series of image instances
      */
-    private List<Series> series = new ArrayList<Series>();
+    private List<ImagingStudySeriesComponent> series = new ArrayList<ImagingStudySeriesComponent>();
 
     public DateTime getDateTime() { 
       return this.dateTime;
@@ -834,7 +834,7 @@ public class ImagingStudy extends Resource {
       }
     }
 
-    public List<Series> getSeries() { 
+    public List<ImagingStudySeriesComponent> getSeries() { 
       return this.series;
     }
 

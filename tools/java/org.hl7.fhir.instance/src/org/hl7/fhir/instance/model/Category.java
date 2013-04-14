@@ -29,42 +29,31 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
- * An organised collection of documents that belong to a patient. The documents are collected by their clinical function
+ * A patient-specific category into which resources may be placed. The resources are collected by their clinical function
  */
-public class XdsFolder extends Resource {
+public class Category extends Resource {
 
     /**
-     * Contain the set of codes specifying the type of clinical activity that resulted in placing XDS Documents in this XDSFolder
+     * Contain the set of codes specifying the type of clinical category that caused resources to be placed in this Category
      */
-    private List<Coding> code = new ArrayList<Coding>();
+    private List<CodeableConcept> code = new ArrayList<CodeableConcept>();
 
     /**
-     * Represents the title of the Folder
+     * Represents the title of the Category
      */
     private String_ title;
 
     /**
-     * The subject of care medical record Identifier as defined by the Document Source.
+     * Optionally specifies that for this category, all resources belong to this subject
      */
-    private Identifier patientId;
+    private ResourceReference subject;
 
-    /**
-     * A globally unique identifier for a community
-     */
-    private String_ homeCommunity;
-
-    /**
-     * Comments associated with the Folder
-     */
-    private String_ comments;
-
-    public List<Coding> getCode() { 
+    public List<CodeableConcept> getCode() { 
       return this.code;
     }
 
@@ -90,61 +79,17 @@ public class XdsFolder extends Resource {
       }
     }
 
-    public Identifier getPatientId() { 
-      return this.patientId;
+    public ResourceReference getSubject() { 
+      return this.subject;
     }
 
-    public void setPatientId(Identifier value) { 
-      this.patientId = value;
-    }
-
-    public String_ getHomeCommunity() { 
-      return this.homeCommunity;
-    }
-
-    public void setHomeCommunity(String_ value) { 
-      this.homeCommunity = value;
-    }
-
-    public String getHomeCommunitySimple() { 
-      return this.homeCommunity == null ? null : this.homeCommunity.getValue();
-    }
-
-    public void setHomeCommunitySimple(String value) { 
-      if (value == null)
-        this.homeCommunity = null;
-      else {
-        if (this.homeCommunity == null)
-          this.homeCommunity = new String_();
-        this.homeCommunity.setValue(value);
-      }
-    }
-
-    public String_ getComments() { 
-      return this.comments;
-    }
-
-    public void setComments(String_ value) { 
-      this.comments = value;
-    }
-
-    public String getCommentsSimple() { 
-      return this.comments == null ? null : this.comments.getValue();
-    }
-
-    public void setCommentsSimple(String value) { 
-      if (value == null)
-        this.comments = null;
-      else {
-        if (this.comments == null)
-          this.comments = new String_();
-        this.comments.setValue(value);
-      }
+    public void setSubject(ResourceReference value) { 
+      this.subject = value;
     }
 
   @Override
   public ResourceType getResourceType() {
-    return ResourceType.XdsFolder;
+    return ResourceType.Category;
    }
 
 

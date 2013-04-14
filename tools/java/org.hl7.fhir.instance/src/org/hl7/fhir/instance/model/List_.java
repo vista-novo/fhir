@@ -29,10 +29,9 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * A set of information summarized from a list of other resources
@@ -89,7 +88,7 @@ public class List_ extends Resource {
       }
     }
 
-    public class Entry extends Element {
+    public class ListEntryComponent extends Element {
         /**
          * The flag allows the system constructing the list to make one or more statements about the role and significance of the item in the list
          */
@@ -169,7 +168,7 @@ public class List_ extends Resource {
     /**
      * Entries in this list
      */
-    private List<Entry> entry = new ArrayList<Entry>();
+    private List<ListEntryComponent> entry = new ArrayList<ListEntryComponent>();
 
     /**
      * If the list is empty, why the list is empty
@@ -258,7 +257,7 @@ public class List_ extends Resource {
       }
     }
 
-    public List<Entry> getEntry() { 
+    public List<ListEntryComponent> getEntry() { 
       return this.entry;
     }
 

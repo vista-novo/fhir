@@ -29,12 +29,11 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
+
+import java.net.*;
 /**
  * A transmission requesting action on a bundle of one or more resources or a response to such a request
  */
@@ -75,8 +74,7 @@ public class Message extends Resource {
     }
 
   public class ResponseCodeEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -92,8 +90,7 @@ public class Message extends Resource {
           return ResponseCode.undeliverable;
         throw new Exception("Unknown ResponseCode code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == ResponseCode.ok)
         return "ok";
       if (code == ResponseCode.error)
@@ -108,7 +105,7 @@ public class Message extends Resource {
       }
     }
 
-    public class Response extends Element {
+    public class MessageResponseComponent extends Element {
         /**
          * The id of the message that this a response to
          */
@@ -178,7 +175,7 @@ public class Message extends Resource {
 
   }
 
-    public class Source extends Element {
+    public class MessageSourceComponent extends Element {
         /**
          * Human readable name for the target system
          */
@@ -302,7 +299,7 @@ public class Message extends Resource {
 
   }
 
-    public class Destination extends Element {
+    public class MessageDestinationComponent extends Element {
         /**
          * Human readable name for the source system
          */
@@ -390,17 +387,17 @@ public class Message extends Resource {
     /**
      * Information about the message that this message is a response to.  Only present if this message is a response.
      */
-    private Response response;
+    private MessageResponseComponent response;
 
     /**
      * The source application from which this message originated
      */
-    private Source source;
+    private MessageSourceComponent source;
 
     /**
      * The destination application which the message is intended for
      */
-    private Destination destination;
+    private MessageDestinationComponent destination;
 
     /**
      * The person or device that performed the data entry leading to this Message. Where there is more than one candidate, pick the most proximal to the Message. Can provide other enterers in extensions
@@ -503,27 +500,27 @@ public class Message extends Resource {
       }
     }
 
-    public Response getResponse() { 
+    public MessageResponseComponent getResponse() { 
       return this.response;
     }
 
-    public void setResponse(Response value) { 
+    public void setResponse(MessageResponseComponent value) { 
       this.response = value;
     }
 
-    public Source getSource() { 
+    public MessageSourceComponent getSource() { 
       return this.source;
     }
 
-    public void setSource(Source value) { 
+    public void setSource(MessageSourceComponent value) { 
       this.source = value;
     }
 
-    public Destination getDestination() { 
+    public MessageDestinationComponent getDestination() { 
       return this.destination;
     }
 
-    public void setDestination(Destination value) { 
+    public void setDestination(MessageDestinationComponent value) { 
       this.destination = value;
     }
 

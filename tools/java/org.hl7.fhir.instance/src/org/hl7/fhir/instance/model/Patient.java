@@ -29,17 +29,16 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
- * A patient is a person or animal that is receiving care
+ * Demographics and other administrative information about a person or animal receiving care or other health-related services
  */
 public class Patient extends Resource {
 
-    public class Contact extends Element {
+    public class ContactComponent extends Element {
         /**
          * The nature of the relationship between the patient and the contactperson
          */
@@ -77,7 +76,7 @@ public class Patient extends Resource {
 
   }
 
-    public class Animal extends Element {
+    public class AnimalComponent extends Element {
         /**
          * Identifies the high level categorization of the kind of animal
          */
@@ -142,12 +141,12 @@ public class Patient extends Resource {
     /**
      * A contact party for the patient
      */
-    private List<Contact> contact = new ArrayList<Contact>();
+    private List<ContactComponent> contact = new ArrayList<ContactComponent>();
 
     /**
      * This element has a value if the patient is an animal
      */
-    private Animal animal;
+    private AnimalComponent animal;
 
     /**
      * The provider for whom this is a patient record
@@ -160,7 +159,7 @@ public class Patient extends Resource {
     private Type multipleBirth;
 
     /**
-     * Date of death of patient
+     * Date of death of patient. May include time.
      */
     private DateTime deceasedDate;
 
@@ -207,15 +206,15 @@ public class Patient extends Resource {
       this.details = value;
     }
 
-    public List<Contact> getContact() { 
+    public List<ContactComponent> getContact() { 
       return this.contact;
     }
 
-    public Animal getAnimal() { 
+    public AnimalComponent getAnimal() { 
       return this.animal;
     }
 
-    public void setAnimal(Animal value) { 
+    public void setAnimal(AnimalComponent value) { 
       this.animal = value;
     }
 

@@ -29,67 +29,16 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
-
-import java.util.ArrayList;
-import java.util.List;
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
 /**
- * An interaction between a patient and healthcare participant(s) for the purpose of providing patient service(s) or assessing the health status of a patient.
+ * null
  */
-public class Encounter extends Resource {
-
-    /**
-     * Classification of the encounter
-     */
-    private CodeableConcept type;
-
-    /**
-     * Period during which the encounter took place
-     */
-    private Period date;
-
-    /**
-     * Patient that was present at the encounter
-     */
-    private ResourceReference subject;
-
-    /**
-     * Other participants present at the encounter
-     */
-    private List<ResourceReference> participant = new ArrayList<ResourceReference>();
-
-    public CodeableConcept getType() { 
-      return this.type;
-    }
-
-    public void setType(CodeableConcept value) { 
-      this.type = value;
-    }
-
-    public Period getDate() { 
-      return this.date;
-    }
-
-    public void setDate(Period value) { 
-      this.date = value;
-    }
-
-    public ResourceReference getSubject() { 
-      return this.subject;
-    }
-
-    public void setSubject(ResourceReference value) { 
-      this.subject = value;
-    }
-
-    public List<ResourceReference> getParticipant() { 
-      return this.participant;
-    }
+public class Appointment extends Resource {
 
   @Override
   public ResourceType getResourceType() {
-    return ResourceType.Encounter;
+    return ResourceType.Appointment;
    }
 
 

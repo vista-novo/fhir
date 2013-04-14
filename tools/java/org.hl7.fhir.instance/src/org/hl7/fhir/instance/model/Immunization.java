@@ -29,60 +29,46 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * An administered immunization
  */
 public class Immunization extends Resource {
 
-    public class Refusal extends Element {
-        /**
-         * Date of refusal
-         */
-        private DateTime date;
-
+    public class ImmunizationRefusalComponent extends Element {
         /**
          * Refusal or exemption reason
          */
-        private CodeableConcept reason;
+        private Code reason;
 
-        public DateTime getDate() { 
-          return this.date;
-        }
-
-        public void setDate(DateTime value) { 
-          this.date = value;
-        }
-
-        public String getDateSimple() { 
-          return this.date == null ? null : this.date.getValue();
-        }
-
-        public void setDateSimple(String value) { 
-          if (value == null)
-            this.date = null;
-          else {
-            if (this.date == null)
-              this.date = new DateTime();
-            this.date.setValue(value);
-          }
-        }
-
-        public CodeableConcept getReason() { 
+        public Code getReason() { 
           return this.reason;
         }
 
-        public void setReason(CodeableConcept value) { 
+        public void setReason(Code value) { 
           this.reason = value;
+        }
+
+        public String getReasonSimple() { 
+          return this.reason == null ? null : this.reason.getValue();
+        }
+
+        public void setReasonSimple(String value) { 
+          if (value == null)
+            this.reason = null;
+          else {
+            if (this.reason == null)
+              this.reason = new Code();
+            this.reason.setValue(value);
+          }
         }
 
   }
 
-    public class Reaction extends Element {
+    public class ImmunizationReactionComponent extends Element {
         /**
          * Date of reaction to the immunization
          */
@@ -92,6 +78,11 @@ public class Immunization extends Resource {
          * Details of the reaction
          */
         private ResourceReference detail;
+
+        /**
+         * Self-reported indicator
+         */
+        private Boolean reported;
 
         public DateTime getDate() { 
           return this.date;
@@ -123,6 +114,233 @@ public class Immunization extends Resource {
           this.detail = value;
         }
 
+        public Boolean getReported() { 
+          return this.reported;
+        }
+
+        public void setReported(Boolean value) { 
+          this.reported = value;
+        }
+
+        public boolean getReportedSimple() { 
+          return this.reported == null ? null : this.reported.getValue();
+        }
+
+        public void setReportedSimple(boolean value) { 
+          if (value == false)
+            this.reported = null;
+          else {
+            if (this.reported == null)
+              this.reported = new Boolean();
+            this.reported.setValue(value);
+          }
+        }
+
+  }
+
+    public class ImmunizationVaccinationProtocolComponent extends Element {
+        /**
+         * Nominal position in a series
+         */
+        private Integer doseSequence;
+
+        /**
+         * Vaccine Administration Protocol Description
+         */
+        private String_ description;
+
+        /**
+         * Who published the protocol?  E.g. ACIP
+         */
+        private ResourceReference authority;
+
+        /**
+         * One possible path to achieve presumed immunity against a disease - within the context of an authority
+         */
+        private String_ series;
+
+        /**
+         * The recommended number of doses to achieve immunity.
+         */
+        private Integer seriesDoses;
+
+        /**
+         * The targeted disease
+         */
+        private Code doseTarget;
+
+        /**
+         * Should this count??
+         */
+        private Code doseStatus;
+
+        /**
+         * Dose Status Reason
+         */
+        private Code doseStatusReason;
+
+        public Integer getDoseSequence() { 
+          return this.doseSequence;
+        }
+
+        public void setDoseSequence(Integer value) { 
+          this.doseSequence = value;
+        }
+
+        public int getDoseSequenceSimple() { 
+          return this.doseSequence == null ? null : this.doseSequence.getValue();
+        }
+
+        public void setDoseSequenceSimple(int value) { 
+          if (value == -1)
+            this.doseSequence = null;
+          else {
+            if (this.doseSequence == null)
+              this.doseSequence = new Integer();
+            this.doseSequence.setValue(value);
+          }
+        }
+
+        public String_ getDescription() { 
+          return this.description;
+        }
+
+        public void setDescription(String_ value) { 
+          this.description = value;
+        }
+
+        public String getDescriptionSimple() { 
+          return this.description == null ? null : this.description.getValue();
+        }
+
+        public void setDescriptionSimple(String value) { 
+          if (value == null)
+            this.description = null;
+          else {
+            if (this.description == null)
+              this.description = new String_();
+            this.description.setValue(value);
+          }
+        }
+
+        public ResourceReference getAuthority() { 
+          return this.authority;
+        }
+
+        public void setAuthority(ResourceReference value) { 
+          this.authority = value;
+        }
+
+        public String_ getSeries() { 
+          return this.series;
+        }
+
+        public void setSeries(String_ value) { 
+          this.series = value;
+        }
+
+        public String getSeriesSimple() { 
+          return this.series == null ? null : this.series.getValue();
+        }
+
+        public void setSeriesSimple(String value) { 
+          if (value == null)
+            this.series = null;
+          else {
+            if (this.series == null)
+              this.series = new String_();
+            this.series.setValue(value);
+          }
+        }
+
+        public Integer getSeriesDoses() { 
+          return this.seriesDoses;
+        }
+
+        public void setSeriesDoses(Integer value) { 
+          this.seriesDoses = value;
+        }
+
+        public int getSeriesDosesSimple() { 
+          return this.seriesDoses == null ? null : this.seriesDoses.getValue();
+        }
+
+        public void setSeriesDosesSimple(int value) { 
+          if (value == -1)
+            this.seriesDoses = null;
+          else {
+            if (this.seriesDoses == null)
+              this.seriesDoses = new Integer();
+            this.seriesDoses.setValue(value);
+          }
+        }
+
+        public Code getDoseTarget() { 
+          return this.doseTarget;
+        }
+
+        public void setDoseTarget(Code value) { 
+          this.doseTarget = value;
+        }
+
+        public String getDoseTargetSimple() { 
+          return this.doseTarget == null ? null : this.doseTarget.getValue();
+        }
+
+        public void setDoseTargetSimple(String value) { 
+          if (value == null)
+            this.doseTarget = null;
+          else {
+            if (this.doseTarget == null)
+              this.doseTarget = new Code();
+            this.doseTarget.setValue(value);
+          }
+        }
+
+        public Code getDoseStatus() { 
+          return this.doseStatus;
+        }
+
+        public void setDoseStatus(Code value) { 
+          this.doseStatus = value;
+        }
+
+        public String getDoseStatusSimple() { 
+          return this.doseStatus == null ? null : this.doseStatus.getValue();
+        }
+
+        public void setDoseStatusSimple(String value) { 
+          if (value == null)
+            this.doseStatus = null;
+          else {
+            if (this.doseStatus == null)
+              this.doseStatus = new Code();
+            this.doseStatus.setValue(value);
+          }
+        }
+
+        public Code getDoseStatusReason() { 
+          return this.doseStatusReason;
+        }
+
+        public void setDoseStatusReason(Code value) { 
+          this.doseStatusReason = value;
+        }
+
+        public String getDoseStatusReasonSimple() { 
+          return this.doseStatusReason == null ? null : this.doseStatusReason.getValue();
+        }
+
+        public void setDoseStatusReasonSimple(String value) { 
+          if (value == null)
+            this.doseStatusReason = null;
+          else {
+            if (this.doseStatusReason == null)
+              this.doseStatusReason = new Code();
+            this.doseStatusReason.setValue(value);
+          }
+        }
+
   }
 
     /**
@@ -131,9 +349,24 @@ public class Immunization extends Resource {
     private ResourceReference subject;
 
     /**
-     * Type of vaccine administered
+     * Clinician who ordered the vaccine
      */
-    private CodeableConcept type;
+    private ResourceReference requester;
+
+    /**
+     * Clinician that administered the vaccine
+     */
+    private ResourceReference performer;
+
+    /**
+     * Name of manufacturer
+     */
+    private ResourceReference manufacturer;
+
+    /**
+     * The service delivery location where the administration occurred.
+     */
+    private ResourceReference location;
 
     /**
      * Date vaccine administered
@@ -146,14 +379,9 @@ public class Immunization extends Resource {
     private Boolean reported;
 
     /**
-     * Dose number in the series
+     * Vaccine administered
      */
-    private Integer doseSequence;
-
-    /**
-     * Name of manufacturer
-     */
-    private ResourceReference manufacturer;
+    private Code vaccineType;
 
     /**
      * Lot number for vaccine
@@ -168,32 +396,32 @@ public class Immunization extends Resource {
     /**
      * Body site where vaccine was administered
      */
-    private CodeableConcept site;
+    private Code site;
 
     /**
      * Route of administration
      */
-    private CodeableConcept route;
+    private Code route;
 
     /**
-     * Clinician who ordered the vaccine
+     * Vaccine dosage
      */
-    private ResourceReference requester;
-
-    /**
-     * Clinician that administered the vaccine
-     */
-    private ResourceReference performer;
+    private Quantity doseQuantity;
 
     /**
      * Exemption(s)/ Parent Refusal(s) of Vaccine Product Type Administered
      */
-    private Refusal refusal;
+    private ImmunizationRefusalComponent refusal;
 
     /**
      * Categorical data indicating that an adverse event is associated in time to an immunization
      */
-    private List<Reaction> reaction = new ArrayList<Reaction>();
+    private List<ImmunizationReactionComponent> reaction = new ArrayList<ImmunizationReactionComponent>();
+
+    /**
+     * Vaccine Administration Protocol
+     */
+    private ImmunizationVaccinationProtocolComponent vaccinationProtocol;
 
     public ResourceReference getSubject() { 
       return this.subject;
@@ -203,12 +431,36 @@ public class Immunization extends Resource {
       this.subject = value;
     }
 
-    public CodeableConcept getType() { 
-      return this.type;
+    public ResourceReference getRequester() { 
+      return this.requester;
     }
 
-    public void setType(CodeableConcept value) { 
-      this.type = value;
+    public void setRequester(ResourceReference value) { 
+      this.requester = value;
+    }
+
+    public ResourceReference getPerformer() { 
+      return this.performer;
+    }
+
+    public void setPerformer(ResourceReference value) { 
+      this.performer = value;
+    }
+
+    public ResourceReference getManufacturer() { 
+      return this.manufacturer;
+    }
+
+    public void setManufacturer(ResourceReference value) { 
+      this.manufacturer = value;
+    }
+
+    public ResourceReference getLocation() { 
+      return this.location;
+    }
+
+    public void setLocation(ResourceReference value) { 
+      this.location = value;
     }
 
     public DateTime getDate() { 
@@ -255,34 +507,26 @@ public class Immunization extends Resource {
       }
     }
 
-    public Integer getDoseSequence() { 
-      return this.doseSequence;
+    public Code getVaccineType() { 
+      return this.vaccineType;
     }
 
-    public void setDoseSequence(Integer value) { 
-      this.doseSequence = value;
+    public void setVaccineType(Code value) { 
+      this.vaccineType = value;
     }
 
-    public int getDoseSequenceSimple() { 
-      return this.doseSequence == null ? null : this.doseSequence.getValue();
+    public String getVaccineTypeSimple() { 
+      return this.vaccineType == null ? null : this.vaccineType.getValue();
     }
 
-    public void setDoseSequenceSimple(int value) { 
-      if (value == -1)
-        this.doseSequence = null;
+    public void setVaccineTypeSimple(String value) { 
+      if (value == null)
+        this.vaccineType = null;
       else {
-        if (this.doseSequence == null)
-          this.doseSequence = new Integer();
-        this.doseSequence.setValue(value);
+        if (this.vaccineType == null)
+          this.vaccineType = new Code();
+        this.vaccineType.setValue(value);
       }
-    }
-
-    public ResourceReference getManufacturer() { 
-      return this.manufacturer;
-    }
-
-    public void setManufacturer(ResourceReference value) { 
-      this.manufacturer = value;
     }
 
     public String_ getLotNumber() { 
@@ -329,48 +573,76 @@ public class Immunization extends Resource {
       }
     }
 
-    public CodeableConcept getSite() { 
+    public Code getSite() { 
       return this.site;
     }
 
-    public void setSite(CodeableConcept value) { 
+    public void setSite(Code value) { 
       this.site = value;
     }
 
-    public CodeableConcept getRoute() { 
+    public String getSiteSimple() { 
+      return this.site == null ? null : this.site.getValue();
+    }
+
+    public void setSiteSimple(String value) { 
+      if (value == null)
+        this.site = null;
+      else {
+        if (this.site == null)
+          this.site = new Code();
+        this.site.setValue(value);
+      }
+    }
+
+    public Code getRoute() { 
       return this.route;
     }
 
-    public void setRoute(CodeableConcept value) { 
+    public void setRoute(Code value) { 
       this.route = value;
     }
 
-    public ResourceReference getRequester() { 
-      return this.requester;
+    public String getRouteSimple() { 
+      return this.route == null ? null : this.route.getValue();
     }
 
-    public void setRequester(ResourceReference value) { 
-      this.requester = value;
+    public void setRouteSimple(String value) { 
+      if (value == null)
+        this.route = null;
+      else {
+        if (this.route == null)
+          this.route = new Code();
+        this.route.setValue(value);
+      }
     }
 
-    public ResourceReference getPerformer() { 
-      return this.performer;
+    public Quantity getDoseQuantity() { 
+      return this.doseQuantity;
     }
 
-    public void setPerformer(ResourceReference value) { 
-      this.performer = value;
+    public void setDoseQuantity(Quantity value) { 
+      this.doseQuantity = value;
     }
 
-    public Refusal getRefusal() { 
+    public ImmunizationRefusalComponent getRefusal() { 
       return this.refusal;
     }
 
-    public void setRefusal(Refusal value) { 
+    public void setRefusal(ImmunizationRefusalComponent value) { 
       this.refusal = value;
     }
 
-    public List<Reaction> getReaction() { 
+    public List<ImmunizationReactionComponent> getReaction() { 
       return this.reaction;
+    }
+
+    public ImmunizationVaccinationProtocolComponent getVaccinationProtocol() { 
+      return this.vaccinationProtocol;
+    }
+
+    public void setVaccinationProtocol(ImmunizationVaccinationProtocolComponent value) { 
+      this.vaccinationProtocol = value;
     }
 
   @Override

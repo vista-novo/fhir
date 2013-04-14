@@ -29,11 +29,11 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+import java.net.*;
 /**
  * A conformance statement about how an application or implementation supports FHIR or the set of requirements for a desired implementation
  */
@@ -387,7 +387,7 @@ public class Conformance extends Resource {
       }
     }
 
-    public class Publisher extends Element {
+    public class ConformancePublisherComponent extends Element {
         /**
          * Name of Organization
          */
@@ -439,7 +439,7 @@ public class Conformance extends Resource {
 
   }
 
-    public class Software extends Element {
+    public class ConformanceSoftwareComponent extends Element {
         /**
          * Name software is known by
          */
@@ -523,7 +523,7 @@ public class Conformance extends Resource {
 
   }
 
-    public class Implementation extends Element {
+    public class ConformanceImplementationComponent extends Element {
         /**
          * Information about the specific installation that this conformance statement relates to
          */
@@ -537,7 +537,7 @@ public class Conformance extends Resource {
         /**
          * The software running this instance
          */
-        private Software software;
+        private ConformanceSoftwareComponent software;
 
         public String_ getDescription() { 
           return this.description;
@@ -583,17 +583,17 @@ public class Conformance extends Resource {
           }
         }
 
-        public Software getSoftware() { 
+        public ConformanceSoftwareComponent getSoftware() { 
           return this.software;
         }
 
-        public void setSoftware(Software value) { 
+        public void setSoftware(ConformanceSoftwareComponent value) { 
           this.software = value;
         }
 
   }
 
-    public class Proposal extends Element {
+    public class ConformanceProposalComponent extends Element {
         /**
          * Provides details about the intention and scope of the proposal
          */
@@ -623,7 +623,7 @@ public class Conformance extends Resource {
 
   }
 
-    public class Rest extends Element {
+    public class ConformanceRestComponent extends Element {
         /**
          * Identifies whether this portion of the statement is describing ability to initiate or receive restful operations
          */
@@ -637,12 +637,12 @@ public class Conformance extends Resource {
         /**
          * Information about security of implementation
          */
-        private Security security;
+        private ConformanceRestSecurityComponent security;
 
         /**
          * Identifies the restful capabilities of the solution for a specific resource type
          */
-        private List<Resource> resource = new ArrayList<Resource>();
+        private List<ConformanceRestResourceComponent> resource = new ArrayList<ConformanceRestResourceComponent>();
 
         /**
          * If batches are supported
@@ -698,15 +698,15 @@ public class Conformance extends Resource {
           }
         }
 
-        public Security getSecurity() { 
+        public ConformanceRestSecurityComponent getSecurity() { 
           return this.security;
         }
 
-        public void setSecurity(Security value) { 
+        public void setSecurity(ConformanceRestSecurityComponent value) { 
           this.security = value;
         }
 
-        public List<Resource> getResource() { 
+        public List<ConformanceRestResourceComponent> getResource() { 
           return this.resource;
         }
 
@@ -756,7 +756,7 @@ public class Conformance extends Resource {
 
   }
 
-    public class Security extends Element {
+    public class ConformanceRestSecurityComponent extends Element {
         /**
          * What type of security services are supported/required
          */
@@ -770,7 +770,7 @@ public class Conformance extends Resource {
         /**
          * Certificates associated with security profiles
          */
-        private List<Certificate> certificate = new ArrayList<Certificate>();
+        private List<ConformanceRestSecurityCertificateComponent> certificate = new ArrayList<ConformanceRestSecurityCertificateComponent>();
 
         public List<CodeableConcept> getService() { 
           return this.service;
@@ -798,13 +798,13 @@ public class Conformance extends Resource {
           }
         }
 
-        public List<Certificate> getCertificate() { 
+        public List<ConformanceRestSecurityCertificateComponent> getCertificate() { 
           return this.certificate;
         }
 
   }
 
-    public class Certificate extends Element {
+    public class ConformanceRestSecurityCertificateComponent extends Element {
         /**
          * Mime type for certificate
          */
@@ -861,7 +861,7 @@ public class Conformance extends Resource {
 
   }
 
-    public class Resource extends Element {
+    public class ConformanceRestResourceComponent extends Element {
         /**
          * Identifies the resource exposed via the restful interface
          */
@@ -875,7 +875,7 @@ public class Conformance extends Resource {
         /**
          * Identifies a restful operation supported by the solution
          */
-        private List<Operation> operation = new ArrayList<Operation>();
+        private List<ConformanceRestResourceOperationComponent> operation = new ArrayList<ConformanceRestResourceOperationComponent>();
 
         /**
          * A flag for whether the server is able to return past versions as part of the vRead operation
@@ -890,7 +890,7 @@ public class Conformance extends Resource {
         /**
          * Defines additional search parameters for implementations to support and/or make use of
          */
-        private List<SearchParam> searchParam = new ArrayList<SearchParam>();
+        private List<ConformanceRestResourceSearchParamComponent> searchParam = new ArrayList<ConformanceRestResourceSearchParamComponent>();
 
         public Code getType() { 
           return this.type;
@@ -936,7 +936,7 @@ public class Conformance extends Resource {
           }
         }
 
-        public List<Operation> getOperation() { 
+        public List<ConformanceRestResourceOperationComponent> getOperation() { 
           return this.operation;
         }
 
@@ -966,13 +966,13 @@ public class Conformance extends Resource {
           return this.searchInclude;
         }
 
-        public List<SearchParam> getSearchParam() { 
+        public List<ConformanceRestResourceSearchParamComponent> getSearchParam() { 
           return this.searchParam;
         }
 
   }
 
-    public class Operation extends Element {
+    public class ConformanceRestResourceOperationComponent extends Element {
         /**
          * Identifies which operation is supported
          */
@@ -1029,7 +1029,7 @@ public class Conformance extends Resource {
 
   }
 
-    public class SearchParam extends Element {
+    public class ConformanceRestResourceSearchParamComponent extends Element {
         /**
          * Corresponds to the name of the standard or custom search parameter
          */
@@ -1185,7 +1185,7 @@ public class Conformance extends Resource {
 
   }
 
-    public class Messaging extends Element {
+    public class ConformanceMessagingComponent extends Element {
         /**
          * The address to which messages and/or replies are to be sent.
          */
@@ -1199,7 +1199,7 @@ public class Conformance extends Resource {
         /**
          * Describes the solution's support for an event at this end point.
          */
-        private List<Event> event = new ArrayList<Event>();
+        private List<ConformanceMessagingEventComponent> event = new ArrayList<ConformanceMessagingEventComponent>();
 
         public Uri getEndpoint() { 
           return this.endpoint;
@@ -1245,13 +1245,13 @@ public class Conformance extends Resource {
           }
         }
 
-        public List<Event> getEvent() { 
+        public List<ConformanceMessagingEventComponent> getEvent() { 
           return this.event;
         }
 
   }
 
-    public class Event extends Element {
+    public class ConformanceMessagingEventComponent extends Element {
         /**
          * Identifies the supported messaging event
          */
@@ -1425,7 +1425,7 @@ public class Conformance extends Resource {
 
   }
 
-    public class Document extends Element {
+    public class ConformanceDocumentComponent extends Element {
         /**
          * The mode of this event declaration - whether application is sender or receiver
          */
@@ -1517,22 +1517,22 @@ public class Conformance extends Resource {
     /**
      * The organization that publishes this conformance statement
      */
-    private Publisher publisher;
+    private ConformancePublisherComponent publisher;
 
     /**
      * Describes the software that is covered by this conformance statement.  Used when the profile describes the capabilities of a particular software version, independent of an installation.
      */
-    private Software software;
+    private ConformanceSoftwareComponent software;
 
     /**
      * Used when the statement describes the capabilities of a specific implementation instance - i.e. a particular installation, rather than the capabilities of a software program
      */
-    private Implementation implementation;
+    private ConformanceImplementationComponent implementation;
 
     /**
      * Describes the proposed solution described by this conformance statement.  Used when the profile describes a desired rather than an actual solution, for example as a formal expression of requirements as part of an RFP.
      */
-    private Proposal proposal;
+    private ConformanceProposalComponent proposal;
 
     /**
      * The version of the FHIR specification on which this conformance statement is based
@@ -1552,17 +1552,17 @@ public class Conformance extends Resource {
     /**
      * Defines the restful capabilities of the solution, if any
      */
-    private List<Rest> rest = new ArrayList<Rest>();
+    private List<ConformanceRestComponent> rest = new ArrayList<ConformanceRestComponent>();
 
     /**
      * Describes the messaging capabilities of the solution
      */
-    private List<Messaging> messaging = new ArrayList<Messaging>();
+    private List<ConformanceMessagingComponent> messaging = new ArrayList<ConformanceMessagingComponent>();
 
     /**
      * A document definition
      */
-    private List<Document> document = new ArrayList<Document>();
+    private List<ConformanceDocumentComponent> document = new ArrayList<ConformanceDocumentComponent>();
 
     public DateTime getDate() { 
       return this.date;
@@ -1586,35 +1586,35 @@ public class Conformance extends Resource {
       }
     }
 
-    public Publisher getPublisher() { 
+    public ConformancePublisherComponent getPublisher() { 
       return this.publisher;
     }
 
-    public void setPublisher(Publisher value) { 
+    public void setPublisher(ConformancePublisherComponent value) { 
       this.publisher = value;
     }
 
-    public Software getSoftware() { 
+    public ConformanceSoftwareComponent getSoftware() { 
       return this.software;
     }
 
-    public void setSoftware(Software value) { 
+    public void setSoftware(ConformanceSoftwareComponent value) { 
       this.software = value;
     }
 
-    public Implementation getImplementation() { 
+    public ConformanceImplementationComponent getImplementation() { 
       return this.implementation;
     }
 
-    public void setImplementation(Implementation value) { 
+    public void setImplementation(ConformanceImplementationComponent value) { 
       this.implementation = value;
     }
 
-    public Proposal getProposal() { 
+    public ConformanceProposalComponent getProposal() { 
       return this.proposal;
     }
 
-    public void setProposal(Proposal value) { 
+    public void setProposal(ConformanceProposalComponent value) { 
       this.proposal = value;
     }
 
@@ -1666,15 +1666,15 @@ public class Conformance extends Resource {
       return this.format;
     }
 
-    public List<Rest> getRest() { 
+    public List<ConformanceRestComponent> getRest() { 
       return this.rest;
     }
 
-    public List<Messaging> getMessaging() { 
+    public List<ConformanceMessagingComponent> getMessaging() { 
       return this.messaging;
     }
 
-    public List<Document> getDocument() { 
+    public List<ConformanceDocumentComponent> getDocument() { 
       return this.document;
     }
 

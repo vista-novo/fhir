@@ -29,17 +29,16 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * A request to perform an action
  */
 public class Order extends Resource {
 
-    public class When extends Element {
+    public class OrderWhenComponent extends Element {
         /**
          * Code specifies when request should be done. The code may simply be a priority code
          */
@@ -106,7 +105,7 @@ public class Order extends Resource {
     /**
      * When order should be filfulled
      */
-    private When when;
+    private OrderWhenComponent when;
 
     /**
      * What action is being ordered
@@ -197,11 +196,11 @@ public class Order extends Resource {
       this.payment = value;
     }
 
-    public When getWhen() { 
+    public OrderWhenComponent getWhen() { 
       return this.when;
     }
 
-    public void setWhen(When value) { 
+    public void setWhen(OrderWhenComponent value) { 
       this.when = value;
     }
 

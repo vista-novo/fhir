@@ -29,20 +29,109 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
+import java.math.*;
 /**
- * A place at which services may be provided by, or on behalf of, an Organization
+ * Contact details and position information for a physical place that may be visited and where healthcare resources and participants may be found or contained, accomodated, or stored
  */
 public class Location extends Resource {
 
+    public class LocationPositionComponent extends Element {
+        /**
+         * Longitude. The value domain and the interpretation are the same as for the text of the longitude element in KML
+         */
+        private Decimal longitude;
+
+        /**
+         * Lattitude. The value domain and the interpretation are the same as for the text of the lattitude element in KML
+         */
+        private Decimal latitude;
+
+        /**
+         * Altitude. The value domain and the interpretation are the same as for the text of the altitude element in KML
+         */
+        private Decimal altitude;
+
+        public Decimal getLongitude() { 
+          return this.longitude;
+        }
+
+        public void setLongitude(Decimal value) { 
+          this.longitude = value;
+        }
+
+        public BigDecimal getLongitudeSimple() { 
+          return this.longitude == null ? null : this.longitude.getValue();
+        }
+
+        public void setLongitudeSimple(BigDecimal value) { 
+          if (value == null)
+            this.longitude = null;
+          else {
+            if (this.longitude == null)
+              this.longitude = new Decimal();
+            this.longitude.setValue(value);
+          }
+        }
+
+        public Decimal getLatitude() { 
+          return this.latitude;
+        }
+
+        public void setLatitude(Decimal value) { 
+          this.latitude = value;
+        }
+
+        public BigDecimal getLatitudeSimple() { 
+          return this.latitude == null ? null : this.latitude.getValue();
+        }
+
+        public void setLatitudeSimple(BigDecimal value) { 
+          if (value == null)
+            this.latitude = null;
+          else {
+            if (this.latitude == null)
+              this.latitude = new Decimal();
+            this.latitude.setValue(value);
+          }
+        }
+
+        public Decimal getAltitude() { 
+          return this.altitude;
+        }
+
+        public void setAltitude(Decimal value) { 
+          this.altitude = value;
+        }
+
+        public BigDecimal getAltitudeSimple() { 
+          return this.altitude == null ? null : this.altitude.getValue();
+        }
+
+        public void setAltitudeSimple(BigDecimal value) { 
+          if (value == null)
+            this.altitude = null;
+          else {
+            if (this.altitude == null)
+              this.altitude = new Decimal();
+            this.altitude.setValue(value);
+          }
+        }
+
+  }
+
     /**
-     * Name of the location
+     * Name of the location which identifies it to its users
      */
     private String_ name;
+
+    /**
+     * Description of the Location, which helps in finding or referencing the place
+     */
+    private String_ description;
 
     /**
      * Classification of the location
@@ -50,14 +139,19 @@ public class Location extends Resource {
     private List<CodeableConcept> type = new ArrayList<CodeableConcept>();
 
     /**
+     * The contact details of the main communication devices present at the location
+     */
+    private Contact telecom;
+
+    /**
      * Physical location
      */
     private Address address;
 
     /**
-     * The contact details of the main communication devices present at the location
+     * The absolute geographic location of the Location, expressed in a KML compatible manner
      */
-    private Contact telecom;
+    private LocationPositionComponent position;
 
     /**
      * The organization that provides services at the location
@@ -70,9 +164,9 @@ public class Location extends Resource {
     private Boolean active;
 
     /**
-     * Description of the location
+     * Another Location which this Location is physically inside of
      */
-    private String_ description;
+    private ResourceReference partOf;
 
     public String_ getName() { 
       return this.name;
@@ -96,8 +190,38 @@ public class Location extends Resource {
       }
     }
 
+    public String_ getDescription() { 
+      return this.description;
+    }
+
+    public void setDescription(String_ value) { 
+      this.description = value;
+    }
+
+    public String getDescriptionSimple() { 
+      return this.description == null ? null : this.description.getValue();
+    }
+
+    public void setDescriptionSimple(String value) { 
+      if (value == null)
+        this.description = null;
+      else {
+        if (this.description == null)
+          this.description = new String_();
+        this.description.setValue(value);
+      }
+    }
+
     public List<CodeableConcept> getType() { 
       return this.type;
+    }
+
+    public Contact getTelecom() { 
+      return this.telecom;
+    }
+
+    public void setTelecom(Contact value) { 
+      this.telecom = value;
     }
 
     public Address getAddress() { 
@@ -108,12 +232,12 @@ public class Location extends Resource {
       this.address = value;
     }
 
-    public Contact getTelecom() { 
-      return this.telecom;
+    public LocationPositionComponent getPosition() { 
+      return this.position;
     }
 
-    public void setTelecom(Contact value) { 
-      this.telecom = value;
+    public void setPosition(LocationPositionComponent value) { 
+      this.position = value;
     }
 
     public ResourceReference getProvider() { 
@@ -146,26 +270,12 @@ public class Location extends Resource {
       }
     }
 
-    public String_ getDescription() { 
-      return this.description;
+    public ResourceReference getPartOf() { 
+      return this.partOf;
     }
 
-    public void setDescription(String_ value) { 
-      this.description = value;
-    }
-
-    public String getDescriptionSimple() { 
-      return this.description == null ? null : this.description.getValue();
-    }
-
-    public void setDescriptionSimple(String value) { 
-      if (value == null)
-        this.description = null;
-      else {
-        if (this.description == null)
-          this.description = new String_();
-        this.description.setValue(value);
-      }
+    public void setPartOf(ResourceReference value) { 
+      this.partOf = value;
     }
 
   @Override

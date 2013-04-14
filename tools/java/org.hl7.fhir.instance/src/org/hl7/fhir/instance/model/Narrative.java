@@ -29,11 +29,9 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.*;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 
 /**
@@ -72,8 +70,7 @@ public class Narrative extends Element {
     }
 
   public class NarrativeStatusEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -87,8 +84,7 @@ public class Narrative extends Element {
           return NarrativeStatus.empty;
         throw new Exception("Unknown NarrativeStatus code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == NarrativeStatus.generated)
         return "generated";
       if (code == NarrativeStatus.extensions)
@@ -101,7 +97,7 @@ public class Narrative extends Element {
       }
     }
 
-    public class Blob extends Element {
+    public class NarrativeBlobComponent extends Element {
         /**
          * Mime type of the binary content
          */
@@ -171,7 +167,7 @@ public class Narrative extends Element {
     /**
      * An image, stylesheet, or other resource referred to directly in the xhtml
      */
-    private List<Blob> blob = new ArrayList<Blob>();
+    private List<NarrativeBlobComponent> blob = new ArrayList<NarrativeBlobComponent>();
 
     public Enumeration<NarrativeStatus> getStatus() { 
       return this.status;
@@ -203,7 +199,7 @@ public class Narrative extends Element {
       this.div = value;
     }
 
-    public List<Blob> getBlob() { 
+    public List<NarrativeBlobComponent> getBlob() { 
       return this.blob;
     }
 

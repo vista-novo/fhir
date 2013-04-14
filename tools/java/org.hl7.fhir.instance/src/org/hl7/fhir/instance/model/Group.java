@@ -29,10 +29,9 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized.  I.e. A collection of entities that isn't an Organization
@@ -105,7 +104,7 @@ public class Group extends Resource {
       }
     }
 
-    public class Characteristic extends Element {
+    public class GroupCharacteristicComponent extends Element {
         /**
          * Identifies the kind of trait being asserted
          */
@@ -194,7 +193,7 @@ public class Group extends Resource {
     /**
      * Identifies the traits shared by members of the group
      */
-    private List<Characteristic> characteristic = new ArrayList<Characteristic>();
+    private List<GroupCharacteristicComponent> characteristic = new ArrayList<GroupCharacteristicComponent>();
 
     /**
      * Identifies the resource instances that are members of the group.
@@ -305,7 +304,7 @@ public class Group extends Resource {
       }
     }
 
-    public List<Characteristic> getCharacteristic() { 
+    public List<GroupCharacteristicComponent> getCharacteristic() { 
       return this.characteristic;
     }
 

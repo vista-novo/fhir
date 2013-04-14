@@ -58,7 +58,8 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
   private String context;
 
   private StringBuilder reg = new StringBuilder();
-  private StringBuilder regt = new StringBuilder();
+  private StringBuilder regtn = new StringBuilder();
+  private StringBuilder regtp = new StringBuilder();
 //  private StringBuilder regn = new StringBuilder();
   private String genparam;
   private String mainName;
@@ -101,19 +102,19 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
       } else {
         generate(n, JavaGenClass.Type);
         String nn = javaClassName(n.getName());
-        regt.append("    else if (type instanceof "+nn+")\r\n       compose"+nn+"(prefix+\""+n.getName()+"\", ("+nn+") type);\r\n");
+        regtn.append("    else if (type instanceof "+nn+")\r\n       compose"+nn+"(prefix+\""+n.getName()+"\", ("+nn+") type);\r\n");
 //        regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
       }
     }
 
     for (DefinedCode n : definitions.getConstraints().values()) {
       generateConstraint(n);
-      regt.append("    else if (type instanceof "+n.getCode()+")\r\n       compose"+n.getCode()+"(prefix+\""+n.getCode()+"\", ("+n.getCode()+") type);\r\n");
+      regtp.append("    else if (type instanceof "+n.getCode()+")\r\n       compose"+n.getCode()+"(prefix+\""+n.getCode()+"\", ("+n.getCode()+") type);\r\n");
 //      regn.append("    if (xpp.getName().equals(prefix+\""+n.getCode()+"\"))\r\n      return true;\r\n");
     }
     for (ElementDefn n : definitions.getStructures().values()) {
       generate(n, JavaGenClass.Structure);
-      regt.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
+      regtn.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
 //      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }
     
@@ -134,7 +135,7 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
       
 //      if (n.equals("Uri"))
 //        t = "Uri";
-      regt.append("    else if (type instanceof "+t+")\r\n       compose"+n+"(prefix+\""+n+"\", ("+t+") type);\r\n");
+      regtn.append("    else if (type instanceof "+t+")\r\n       compose"+n+"(prefix+\""+n+"\", ("+t+") type);\r\n");
 //      regn.append("    if (xpp.getName().equals(prefix+\""+n+"\"))\r\n      return true;\r\n");
     }
     
@@ -490,7 +491,8 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     write("  protected void composeType(String prefix, Type type) throws Exception {\r\n");
     write("    if (type == null)\r\n");
     write("      ;\r\n");
-    write(regt.toString());
+    write(regtp.toString());
+    write(regtn.toString());
     write("    else\r\n");
     write("      throw new Exception(\"Unhanded type\");\r\n");
     write("  }\r\n\r\n");

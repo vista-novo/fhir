@@ -26,7 +26,7 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWIS
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 POSSIBILITY OF SUCH DAMAGE.
 
-*/
+ */
 import java.io.OutputStream;
 import java.net.URISyntaxException;
 
@@ -49,21 +49,21 @@ import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.Narrative;
 import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.instance.model.Profile;
-import org.hl7.fhir.instance.model.Profile.Binding;
 import org.hl7.fhir.instance.model.Profile.BindingConformance;
 import org.hl7.fhir.instance.model.Profile.BindingType;
-import org.hl7.fhir.instance.model.Profile.Concept;
-import org.hl7.fhir.instance.model.Profile.ConstraintA;
+import org.hl7.fhir.instance.model.Profile.CodeDefinitionComponent;
 import org.hl7.fhir.instance.model.Profile.ConstraintSeverity;
-import org.hl7.fhir.instance.model.Profile.Definition;
-import org.hl7.fhir.instance.model.Profile.Element_;
+import org.hl7.fhir.instance.model.Profile.ElementComponent;
+import org.hl7.fhir.instance.model.Profile.ElementDefinitionComponent;
+import org.hl7.fhir.instance.model.Profile.ElementDefinitionConstraintComponent;
+import org.hl7.fhir.instance.model.Profile.ElementDefinitionMappingComponent;
 import org.hl7.fhir.instance.model.Profile.ExtensionContext;
-import org.hl7.fhir.instance.model.Profile.Mapping;
-import org.hl7.fhir.instance.model.Profile.SearchParam;
+import org.hl7.fhir.instance.model.Profile.ProfileBindingComponent;
+import org.hl7.fhir.instance.model.Profile.ProfileExtensionDefnComponent;
+import org.hl7.fhir.instance.model.Profile.ProfileStructureSearchParamComponent;
 import org.hl7.fhir.instance.model.Profile.SearchParamType;
 import org.hl7.fhir.instance.model.Profile.SearchRepeatBehavior;
-import org.hl7.fhir.instance.model.Profile.Status;
-import org.hl7.fhir.instance.model.Profile.Type;
+import org.hl7.fhir.instance.model.Profile.TypeRefComponent;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -73,8 +73,8 @@ import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 public class ProfileGenerator {
 
   private Definitions definitions;
-  
-  
+
+
   public ProfileGenerator(Definitions definitions) {
     super();
     this.definitions = definitions;
@@ -83,11 +83,11 @@ public class ProfileGenerator {
   public Profile generate(ProfileDefn profile, OutputStream stream, String html, boolean addBase) throws Exception {
     Profile p = new Profile();
     p.setName(Factory.newString_(profile.metadata("name")));
-    p.getAuthor().add(p.new Author());
+    p.getAuthor().add(p.new AuthorComponent());
     p.getAuthor().get(0).setName(Factory.newString_(profile.metadata("author.name")));
     if (profile.hasMetadata("author.reference"))
       p.getAuthor().get(0).getTelecom().add(Factory.newContact(ContactSystem.url, profile.metadata("author.reference")));
-//  <code> opt Zero+ Coding assist with indexing and finding</code>
+    //  <code> opt Zero+ Coding assist with indexing and finding</code>
     if (profile.hasMetadata("intention"))
       throw new Exception("profile intention is not supported any more ("+p.getName()+")");
     if (profile.hasMetadata("description"))
@@ -96,31 +96,31 @@ public class ProfileGenerator {
       throw new Exception("profile evidence is not supported any more ("+p.getName()+")");
     if (profile.hasMetadata("comments"))
       throw new Exception("profile comments is not supported any more ("+p.getName()+")");
-    Status s = p.new Status();
+    Profile.ProfileStatusComponent s = p.new ProfileStatusComponent();
     p.setStatus(s);
     if (profile.hasMetadata("date"))
       s.setDate(Factory.newDateTime(profile.metadata("date").substring(0, 10)));
 
     if (profile.hasMetadata("status")) 
       s.setCodeSimple(Profile.ResourceProfileStatus.fromCode(profile.metadata("status")));
-    
+
     for (ResourceDefn resource : profile.getResources()) {
-      Profile.Constraint c = p.new Constraint();
-      p.getConstraint().add(c);
+      Profile.ProfileStructureComponent c = p.new ProfileStructureComponent();
+      p.getStructure().add(c);
       c.setType(Factory.newCode(resource.getRoot().getName()));
       // we don't profile URI when we generate in this mode - we are generating an actual statement, not a re-reference
       if (!"".equals(resource.getRoot().getProfileName()))
         c.setName(Factory.newString_(resource.getRoot().getProfileName()));
       // no purpose element here
       defineElement(p, c, resource.getRoot(), resource.getName(), addBase);
-      
+
       for (SearchParameter i : resource.getSearchParams().values()) {
         c.getSearchParam().add(makeSearchParam(p, i));
       }
     }
     for (ElementDefn elem : profile.getElements()) {
-      Profile.Constraint c = p.new Constraint();
-      p.getConstraint().add(c);
+      Profile.ProfileStructureComponent c = p.new ProfileStructureComponent();
+      p.getStructure().add(c);
       c.setType(Factory.newCode(elem.getName()));
       // we don't profile URI when we generate in this mode - we are generating an actual statement, not a re-reference
       if (!"".equals(elem.getProfileName()))
@@ -128,8 +128,8 @@ public class ProfileGenerator {
       // no purpose element here
       defineElement(p, c, elem, elem.getName(), addBase);
     }
-    
-    
+
+
     for (ExtensionDefn ex : profile.getExtensions())
       p.getExtensionDefn().add(generateExtensionDefn(ex, p));
     for (BindingSpecification b : profile.getBindings()) 
@@ -143,12 +143,12 @@ public class ProfileGenerator {
     p.getText().setDiv(div);
     XmlComposer comp = new XmlComposer();
     comp.compose(stream, p, true, false);
-    
+
     return p;
   }
 
-  private SearchParam makeSearchParam(Profile p, SearchParameter i) {
-    SearchParam result = p.new SearchParam();
+  private ProfileStructureSearchParamComponent makeSearchParam(Profile p, SearchParameter i) {
+    ProfileStructureSearchParamComponent result = p.new ProfileStructureSearchParamComponent();
     result.setName(Factory.newString_(i.getCode()));
     result.setTypeSimple(getSearchParamType(i.getType()));
     result.setRepeatsSimple(getSearchParamRepeats(i.getRepeatMode()));
@@ -156,7 +156,7 @@ public class ProfileGenerator {
     return result;
   }
 
-  
+
   private SearchRepeatBehavior getSearchParamRepeats(RepeatMode repeatMode) {
     switch (repeatMode) {
     case single: return SearchRepeatBehavior.single;
@@ -178,22 +178,22 @@ public class ProfileGenerator {
     return null;
   }
 
-  private Binding generateBinding(BindingSpecification src, Profile p) throws Exception {
-    Binding dst = p.new Binding();
+  private ProfileBindingComponent generateBinding(BindingSpecification src, Profile p) throws Exception {
+    ProfileBindingComponent dst = p.new ProfileBindingComponent();
     dst.setName(Factory.newString_(src.getName()));
     dst.setDefinition(Factory.newString_(src.getDefinition()));
     dst.setTypeSimple(convert(src.getBinding()));
     dst.setConformanceSimple(convert(src.getBindingStrength()));
     dst.setReference(Factory.newUri(src.getReference()));
     for (DefinedCode dc : src.getCodes()) {
-      Concept cd = p.new Concept();
+      CodeDefinitionComponent cd = p.new CodeDefinitionComponent();
       cd.setCode(Factory.newString_(dc.getCode()));
       cd.setDisplay(Factory.newString_(dc.getDisplay()));
       cd.setDefinition(Factory.newString_(dc.getDefinition()));
       cd.setSystem(dc.hasSystem() ? Factory.newUri(dc.getSystem()) : null);
       dst.getConcept().add(cd);
-   }
-    
+    }
+
     return dst;
   }
 
@@ -220,16 +220,16 @@ public class ProfileGenerator {
     throw new Exception("unknown value Binding."+binding.toString());
   }
 
-  private org.hl7.fhir.instance.model.Profile.ExtensionDefn generateExtensionDefn(ExtensionDefn src, Profile p) throws Exception {
-    org.hl7.fhir.instance.model.Profile.ExtensionDefn dst = p.new ExtensionDefn();
+  private ProfileExtensionDefnComponent generateExtensionDefn(ExtensionDefn src, Profile p) throws Exception {
+    ProfileExtensionDefnComponent dst = p.new ProfileExtensionDefnComponent();
     dst.setId(Factory.newId(src.getCode()));
     dst.getContext().add(Factory.newString_(src.getContext()));
     dst.setContextTypeSimple(convertContextType(src.getType()));
-    
+
     ElementDefn dSrc = src.getDefinition();
-    Definition dDst = p.new Definition();
+    ElementDefinitionComponent dDst = p.new ElementDefinitionComponent();
     dst.setDefinition(dDst);
-    
+
     dDst.setShort(Factory.newString_(dSrc.getShortDefn()));
     dDst.setFormal(Factory.newString_(dSrc.getDefinition()));
     dDst.setComments(Factory.newString_(dSrc.getComments()));
@@ -242,12 +242,12 @@ public class ProfileGenerator {
     dDst.setMustUnderstand(Factory.newBoolean(dSrc.isMustUnderstand()));
     // dDst.
     for (TypeRef t : dSrc.getTypes()) {
-      Type type = p.new Type();
+      TypeRefComponent type = p.new TypeRefComponent();
       type.setCode(Factory.newCode(t.summary()));
       dDst.getType().add(type);
     }
     if (dSrc.hasMapping(ElementDefn.RIM_MAPPING)) {
-      Mapping m = p.new Mapping();
+      ElementDefinitionMappingComponent m = p.new ElementDefinitionMappingComponent();
       m.setMap(Factory.newString_("RIM"));
       m.setTarget(Factory.newString_(dSrc.getMapping(ElementDefn.RIM_MAPPING)));
       dDst.getMapping().add(m);
@@ -266,17 +266,17 @@ public class ProfileGenerator {
       return ExtensionContext.extension;
     if (type == ContextType.Mapping)
       return ExtensionContext.mapping;
-    
+
     throw new Exception("unknown value ContextType."+type.toString());
   }
 
-  private void defineElement(Profile p, Profile.Constraint c, ElementDefn e, String path, boolean addBase) throws Exception {
-    Profile.Element_ ce = p.new Element_();
+  private void defineElement(Profile p, Profile.ProfileStructureComponent c, ElementDefn e, String path, boolean addBase) throws Exception {
+    Profile.ElementComponent ce = p.new ElementComponent();
     c.getElement().add(ce);
     ce.setPath(Factory.newString_(path));
     if (!"".equals(e.getProfileName()))
       ce.setName(Factory.newString_(e.getProfileName()));
-    ce.setDefinition(p.new Definition());
+    ce.setDefinition(p.new ElementDefinitionComponent());
     if (!"".equals(e.getComments()))
       ce.getDefinition().setComments(Factory.newString_(e.getComments()));
     if (!"".equals(e.getShortDefn()))
@@ -286,13 +286,13 @@ public class ProfileGenerator {
       if ("".equals(e.getShortDefn()))
         ce.getDefinition().setShort(Factory.newString_(e.getDefinition()));
     }
-    
-    
+
+
     // no purpose here
     ce.getDefinition().setMin(Factory.newInteger(e.getMinCardinality()));
     ce.getDefinition().setMax(Factory.newString_(e.getMaxCardinality() == null ? "*" : e.getMaxCardinality().toString()));
     for (TypeRef t : e.getTypes()) {
-      Type type = p.new Type();
+      TypeRefComponent type = p.new TypeRefComponent();
       type.setCode(Factory.newCode(t.summaryFormal()));
       ce.getDefinition().getType().add(type);
     }
@@ -302,9 +302,9 @@ public class ProfileGenerator {
     // we don't know mustSupport here
     ce.getDefinition().setMustUnderstand(Factory.newBoolean(e.isMustUnderstand()));
     // todo: mappings
-    
+
     for (String in : e.getInvariants().keySet()) {
-      ConstraintA con = p.new ConstraintA();
+      ElementDefinitionConstraintComponent con = p.new ElementDefinitionConstraintComponent();
       Invariant inv = e.getInvariants().get(in);
       con.setIdSimple(inv.getId());
       con.setNameSimple(inv.getName());
@@ -314,18 +314,18 @@ public class ProfileGenerator {
       ce.getDefinition().getConstraint().add(con);
     }
     // we don't have anything to say about constraints on resources
-    
+
     if (!"".equals(e.getBindingName()))
       ce.getDefinition().setBinding(Factory.newString_(e.getBindingName()));
-    
+
     if( e.hasAggregation() )
     {
       ce.setBundled(Factory.newBoolean(true));
-      Type t = p.new Type();
+      TypeRefComponent t = p.new TypeRefComponent();
       ce.getDefinition().getType().add(t);
       t.setProfile(Factory.newUri(e.getAggregation()));
     }
-    
+
     if (addBase) {
       c.getElement().add(createBaseDefinition(p, path, definitions.getBaseResource().getRoot().getElementByName("extension")));
       c.getElement().add(createBaseDefinition(p, path, definitions.getBaseResource().getRoot().getElementByName("text")));
@@ -336,10 +336,10 @@ public class ProfileGenerator {
     }
   }
 
-  private Element_ createBaseDefinition(Profile p, String path, ElementDefn src) throws URISyntaxException {
-    Profile.Element_ ce = p.new Element_();
+  private ElementComponent createBaseDefinition(Profile p, String path, ElementDefn src) throws URISyntaxException {
+    ElementComponent ce = p.new ElementComponent();
     ce.setPath(Factory.newString_(path+"."+src.getName()));
-    ce.setDefinition(p.new Definition());
+    ce.setDefinition(p.new ElementDefinitionComponent());
     ce.getDefinition().setShort(Factory.newString_(src.getShortDefn()));
     ce.getDefinition().setFormal(Factory.newString_(src.getDefinition()));
     ce.getDefinition().setComments(Factory.newString_(src.getComments()));
@@ -348,7 +348,7 @@ public class ProfileGenerator {
       ce.getDefinition().getSynonym().add(Factory.newString_(a));
     ce.getDefinition().setMin(Factory.newInteger(src.getMinCardinality()));
     ce.getDefinition().setMax(Factory.newString_(src.getMaxCardinality() == null ? "*" : src.getMaxCardinality().toString()));
-    ce.getDefinition().getType().add(p.new Type());
+    ce.getDefinition().getType().add(p.new TypeRefComponent());
     ce.getDefinition().getType().get(0).setCode(Factory.newCode(src.typeCode()));
     // this one should never be used
     if (!Utilities.noString(src.getProfile()))
@@ -359,5 +359,5 @@ public class ProfileGenerator {
     return ce;
   }
 
-  
+
 }

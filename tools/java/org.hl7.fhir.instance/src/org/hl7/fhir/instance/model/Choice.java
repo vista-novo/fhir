@@ -29,17 +29,16 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * A code taken from a short list of codes that are not defined in a formal code system
  */
 public class Choice extends Type {
 
-    public class Option extends Element {
+    public class ChoiceOptionComponent extends Element {
         /**
          * A possible code or value that the user could have chosen
          */
@@ -104,7 +103,7 @@ public class Choice extends Type {
     /**
      * A list of possible values for the code
      */
-    private List<Option> option = new ArrayList<Option>();
+    private List<ChoiceOptionComponent> option = new ArrayList<ChoiceOptionComponent>();
 
     /**
      * Whether the order of the values has an assigned meaning
@@ -133,7 +132,7 @@ public class Choice extends Type {
       }
     }
 
-    public List<Option> getOption() { 
+    public List<ChoiceOptionComponent> getOption() { 
       return this.option;
     }
 

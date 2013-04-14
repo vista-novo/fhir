@@ -29,11 +29,9 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * A set of answers to predefined lists of questions. The answers may be grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions.
@@ -79,8 +77,7 @@ public class Questionnaire extends Resource {
     }
 
   public class ObservationStatusEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -98,8 +95,7 @@ public class Questionnaire extends Resource {
           return ObservationStatus.withdrawn;
         throw new Exception("Unknown ObservationStatus code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == ObservationStatus.registered)
         return "registered";
       if (code == ObservationStatus.interim)
@@ -116,9 +112,9 @@ public class Questionnaire extends Resource {
       }
     }
 
-    public class Answer extends Element {
+    public class AnswerComponent extends Element {
         /**
-         * Code of the answer which can be used to relate an answer to a question in the questionnaire
+         * Code of the answer, used to relate an answer to a question in the questionnaire and/or the actual question text
          */
         private CodeableConcept name;
 
@@ -131,6 +127,11 @@ public class Questionnaire extends Resource {
          * Data captured from the care process which supports the given answer.
          */
         private ResourceReference evidence;
+
+        /**
+         * The remark contains information about the answer given. This is additional information about the anwer the author wishes to convey, but should not be used to contain information that is part of the answer itself.
+         */
+        private String_ remarks;
 
         public CodeableConcept getName() { 
           return this.name;
@@ -156,9 +157,31 @@ public class Questionnaire extends Resource {
           this.evidence = value;
         }
 
+        public String_ getRemarks() { 
+          return this.remarks;
+        }
+
+        public void setRemarks(String_ value) { 
+          this.remarks = value;
+        }
+
+        public String getRemarksSimple() { 
+          return this.remarks == null ? null : this.remarks.getValue();
+        }
+
+        public void setRemarksSimple(String value) { 
+          if (value == null)
+            this.remarks = null;
+          else {
+            if (this.remarks == null)
+              this.remarks = new String_();
+            this.remarks.setValue(value);
+          }
+        }
+
   }
 
-    public class Section extends Element {
+    public class SectionComponent extends Element {
         /**
          * Structured name for a section of a predefined list of questions this questionnaire is responding to.
          */
@@ -167,12 +190,12 @@ public class Questionnaire extends Resource {
         /**
          * Answers to questions on a section of a questionnaire
          */
-        private List<Answer> answer = new ArrayList<Answer>();
+        private List<AnswerComponent> answer = new ArrayList<AnswerComponent>();
 
         /**
          * A sub-section within a section in a questionnaire
          */
-        private List<Section> section = new ArrayList<Section>();
+        private List<SectionComponent> section = new ArrayList<SectionComponent>();
 
         public CodeableConcept getName() { 
           return this.name;
@@ -182,11 +205,11 @@ public class Questionnaire extends Resource {
           this.name = value;
         }
 
-        public List<Answer> getAnswer() { 
+        public List<AnswerComponent> getAnswer() { 
           return this.answer;
         }
 
-        public List<Section> getSection() { 
+        public List<SectionComponent> getSection() { 
           return this.section;
         }
 
@@ -228,19 +251,19 @@ public class Questionnaire extends Resource {
     private Identifier identifier;
 
     /**
-     * Encounter during which this questionnaireanswers were collected. When there were multiple encounters, this is the one considered most relevant to the context of the answers.
+     * Visit during which this questionnaireanswers were collected. When there were multiple visits, this is the one considered most relevant to the context of the answers.
      */
-    private ResourceReference encounter;
+    private ResourceReference visit;
 
     /**
      * Answers to questions on a questionnaire
      */
-    private List<Answer> answer = new ArrayList<Answer>();
+    private List<AnswerComponent> answer = new ArrayList<AnswerComponent>();
 
     /**
      * A group of anwers to a possibly similarly grouped set of question in the questionnaire
      */
-    private List<Section> section = new ArrayList<Section>();
+    private List<SectionComponent> section = new ArrayList<SectionComponent>();
 
     public Enumeration<ObservationStatus> getStatus() { 
       return this.status;
@@ -326,19 +349,19 @@ public class Questionnaire extends Resource {
       this.identifier = value;
     }
 
-    public ResourceReference getEncounter() { 
-      return this.encounter;
+    public ResourceReference getVisit() { 
+      return this.visit;
     }
 
-    public void setEncounter(ResourceReference value) { 
-      this.encounter = value;
+    public void setVisit(ResourceReference value) { 
+      this.visit = value;
     }
 
-    public List<Answer> getAnswer() { 
+    public List<AnswerComponent> getAnswer() { 
       return this.answer;
     }
 
-    public List<Section> getSection() { 
+    public List<SectionComponent> getSection() { 
       return this.section;
     }
 

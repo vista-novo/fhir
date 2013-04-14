@@ -29,17 +29,17 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+import java.net.*;
 /**
  * This resource identifies a manufactured entity that is used in the provision of healthcare. The device may be a machine, an insert, a computer, an application, etc.
  */
 public class Device extends Resource {
 
-    public class Identity extends Element {
+    public class DeviceIdentityComponent extends Element {
         /**
          * The number assigned to this device by an authorised issuer of Device GITNs
          */
@@ -173,7 +173,7 @@ public class Device extends Resource {
     /**
      * Universal Device Id fields
      */
-    private Identity identity;
+    private DeviceIdentityComponent identity;
 
     /**
      * The organization that is responsible for the provision and ongoing maintenance of the device
@@ -279,11 +279,11 @@ public class Device extends Resource {
       }
     }
 
-    public Identity getIdentity() { 
+    public DeviceIdentityComponent getIdentity() { 
       return this.identity;
     }
 
-    public void setIdentity(Identity value) { 
+    public void setIdentity(DeviceIdentityComponent value) { 
       this.identity = value;
     }
 

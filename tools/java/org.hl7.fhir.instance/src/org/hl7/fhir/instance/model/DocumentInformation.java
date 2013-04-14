@@ -29,11 +29,9 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Wed, Apr 3, 2013 07:59+1100 for FHIR v0.07
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * Describes a document: the context and searchable metadata for a document
@@ -71,8 +69,7 @@ public class DocumentInformation extends Type {
     }
 
   public class DocumentAttestationModeEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -86,8 +83,7 @@ public class DocumentInformation extends Type {
           return DocumentAttestationMode.official;
         throw new Exception("Unknown DocumentAttestationMode code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == DocumentAttestationMode.personal)
         return "personal";
       if (code == DocumentAttestationMode.professional)

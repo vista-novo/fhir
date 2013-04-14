@@ -29,13 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
- * Use to record detailed information about problems or diagnoses recognised by a clinician. There are many uses including: recording a Diagnosis during an Encounter; populating a Problem List or a Summary Statement, such as a Discharge Summary
+ * Use to record detailed information about problems or diagnoses recognised by a clinician. There are many uses including: recording a Diagnosis during an Visit; populating a Problem List or a Summary Statement, such as a Discharge Summary
  */
 public class Problem extends Resource {
 
@@ -62,8 +61,7 @@ public class Problem extends Resource {
     }
 
   public class ProblemRelationshipTypeEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -73,8 +71,7 @@ public class Problem extends Resource {
           return ProblemRelationshipType.follows;
         throw new Exception("Unknown ProblemRelationshipType code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == ProblemRelationshipType.dueMinusto)
         return "due-to";
       if (code == ProblemRelationshipType.follows)
@@ -83,7 +80,7 @@ public class Problem extends Resource {
       }
     }
 
-    public class Stage extends Element {
+    public class ProblemStageComponent extends Element {
         /**
          * A simple summary of the stage such as "Stage 3". The determination of the stage is disease-specific
          */
@@ -108,7 +105,7 @@ public class Problem extends Resource {
 
   }
 
-    public class Evidence extends Element {
+    public class ProblemEvidenceComponent extends Element {
         /**
          * A manifestion or symptom that led to the recording of this problem/diagnosis
          */
@@ -133,7 +130,7 @@ public class Problem extends Resource {
 
   }
 
-    public class Location extends Element {
+    public class ProblemLocationComponent extends Element {
         /**
          * Code that identifies the structural location
          */
@@ -162,7 +159,7 @@ public class Problem extends Resource {
 
   }
 
-    public class RelatedItem extends Element {
+    public class ProblemRelatedItemComponent extends Element {
         /**
          * The type of relationship that this problem/diagnosis has to the related item
          */
@@ -211,9 +208,9 @@ public class Problem extends Resource {
     private ResourceReference subject;
 
     /**
-     * Encounter during which the problem was first asserted
+     * Visit during which the problem was first asserted
      */
-    private ResourceReference encounter;
+    private ResourceReference visit;
 
     /**
      * Person who asserts this problem
@@ -263,22 +260,22 @@ public class Problem extends Resource {
     /**
      * Clinical stage or grade of a problem/diagnosis. May include formal severity assessments
      */
-    private Stage stage;
+    private ProblemStageComponent stage;
 
     /**
      * Supporting Evidence / manfiestions that are the basis on which this problem/diagnosis is suspected or confirmed
      */
-    private List<Evidence> evidence = new ArrayList<Evidence>();
+    private List<ProblemEvidenceComponent> evidence = new ArrayList<ProblemEvidenceComponent>();
 
     /**
      * The anatomical location where this problem/diagnosis manifests itself
      */
-    private List<Location> location = new ArrayList<Location>();
+    private List<ProblemLocationComponent> location = new ArrayList<ProblemLocationComponent>();
 
     /**
      * Further problems, diagnoses, procedures or events that are related in some way to this problem/diagnosis, or the substance that caused/triggered this problem
      */
-    private List<RelatedItem> relatedItem = new ArrayList<RelatedItem>();
+    private List<ProblemRelatedItemComponent> relatedItem = new ArrayList<ProblemRelatedItemComponent>();
 
     public ResourceReference getSubject() { 
       return this.subject;
@@ -288,12 +285,12 @@ public class Problem extends Resource {
       this.subject = value;
     }
 
-    public ResourceReference getEncounter() { 
-      return this.encounter;
+    public ResourceReference getVisit() { 
+      return this.visit;
     }
 
-    public void setEncounter(ResourceReference value) { 
-      this.encounter = value;
+    public void setVisit(ResourceReference value) { 
+      this.visit = value;
     }
 
     public ResourceReference getAsserter() { 
@@ -396,23 +393,23 @@ public class Problem extends Resource {
       this.abatement = value;
     }
 
-    public Stage getStage() { 
+    public ProblemStageComponent getStage() { 
       return this.stage;
     }
 
-    public void setStage(Stage value) { 
+    public void setStage(ProblemStageComponent value) { 
       this.stage = value;
     }
 
-    public List<Evidence> getEvidence() { 
+    public List<ProblemEvidenceComponent> getEvidence() { 
       return this.evidence;
     }
 
-    public List<Location> getLocation() { 
+    public List<ProblemLocationComponent> getLocation() { 
       return this.location;
     }
 
-    public List<RelatedItem> getRelatedItem() { 
+    public List<ProblemRelatedItemComponent> getRelatedItem() { 
       return this.relatedItem;
     }
 

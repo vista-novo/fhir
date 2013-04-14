@@ -12,10 +12,10 @@ There are 4 device related resources
 <p>
 The <a href="devicecapabilities.htm">Device Capabilities</a> and device log resources are used when communicating directly with a device. 
 When a channel is opened with the device, it first sends the Capabilities resource, and then a 
-series of emission resources. The FHIR JSON format is used in this case. (TODO: What's the communication protocol?)
-The application that receives the emission resources may choose to merge the emission with the capabilities 
+series of log resources. The FHIR JSON format is used in this case. (TODO: What's the communication protocol?)
+The application that receives the log resources may choose to merge the log with the capabilities 
 statement to create a device observation, which is suitable for wider use within a EHR/Clinical record context.
-The application that receives the emission resources may choose to merge the emission with the capabilities 
+The application that receives the log resources may choose to merge the log with the capabilities 
 statement to create a device observation, which is suitable for wider use within a EHR/Clinical record context. 
 The Device Capabilites and Device Log resources may be used in a RESTful context, but in many contexts this 
 will not be very useful - the data should be converted to a device observation for normal RESTful use in a 

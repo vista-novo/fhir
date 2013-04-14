@@ -29,10 +29,9 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * A collection of Error, warning or information messages that result from a system action
@@ -66,8 +65,7 @@ public class IssueReport extends Resource {
     }
 
   public class IssueSeverityEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -79,8 +77,7 @@ public class IssueReport extends Resource {
           return IssueSeverity.information;
         throw new Exception("Unknown IssueSeverity code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == IssueSeverity.error)
         return "error";
       if (code == IssueSeverity.warning)
@@ -91,7 +88,7 @@ public class IssueReport extends Resource {
       }
     }
 
-    public class Issue extends Element {
+    public class IssueReportIssueComponent extends Element {
         /**
          * Indicates whether the issue indicates a variation from successful processing
          */
@@ -173,9 +170,9 @@ public class IssueReport extends Resource {
     /**
      * An error, warning or information message that results from a system action
      */
-    private List<Issue> issue = new ArrayList<Issue>();
+    private List<IssueReportIssueComponent> issue = new ArrayList<IssueReportIssueComponent>();
 
-    public List<Issue> getIssue() { 
+    public List<IssueReportIssueComponent> getIssue() { 
       return this.issue;
     }
 

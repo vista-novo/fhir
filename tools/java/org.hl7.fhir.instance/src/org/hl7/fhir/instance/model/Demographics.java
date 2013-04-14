@@ -29,17 +29,16 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
- * A description of an individual who is involved in healthcare processes. The individual may be a patient, a provider of care services, or related to a patient in some way or other.
+ * A description of an individual who is involved in healthcare processes. The individual may be a patient, a practitioner, or related to a patient in some way or other.
  */
 public class Demographics extends Type {
 
-    public class Language extends Element {
+    public class DemographicsLanguageComponent extends Element {
         /**
          * The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case. E.g. "en" for English, or "en-US" for American English versus "en-EN" for England English
          */
@@ -156,7 +155,7 @@ public class Demographics extends Type {
     /**
      * A language spoken by the person, with proficiency
      */
-    private List<Language> language = new ArrayList<Language>();
+    private List<DemographicsLanguageComponent> language = new ArrayList<DemographicsLanguageComponent>();
 
     public List<Identifier> getIdentifier() { 
       return this.identifier;
@@ -238,7 +237,7 @@ public class Demographics extends Type {
       this.maritalStatus = value;
     }
 
-    public List<Language> getLanguage() { 
+    public List<DemographicsLanguageComponent> getLanguage() { 
       return this.language;
     }
 

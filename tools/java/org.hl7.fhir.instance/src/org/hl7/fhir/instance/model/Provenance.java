@@ -29,18 +29,17 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
+
+import java.net.*;
 /**
  * Provenance information associated with another resource that can be used to help determine its reliability or trace where the information in it came from. The focus of the provenance resource is record keeping, audit and traceability, not clinical meaning
  */
 public class Provenance extends Resource {
 
-    public class Activity extends Element {
+    public class ProvenanceActivityComponent extends Element {
         /**
          * The period during which the activity occurred
          */
@@ -59,7 +58,7 @@ public class Provenance extends Resource {
         /**
          * Where the activity occurred, if relevant
          */
-        private Location location;
+        private ProvenanceActivityLocationComponent location;
 
         /**
          * Policy or plan the activity was defined by
@@ -104,11 +103,11 @@ public class Provenance extends Resource {
           this.reason = value;
         }
 
-        public Location getLocation() { 
+        public ProvenanceActivityLocationComponent getLocation() { 
           return this.location;
         }
 
-        public void setLocation(Location value) { 
+        public void setLocation(ProvenanceActivityLocationComponent value) { 
           this.location = value;
         }
 
@@ -136,7 +135,7 @@ public class Provenance extends Resource {
 
   }
 
-    public class Location extends Element {
+    public class ProvenanceActivityLocationComponent extends Element {
         /**
          * The type of location - a classification of the kind of location at which the activity took place
          */
@@ -219,7 +218,7 @@ public class Provenance extends Resource {
 
   }
 
-    public class Party extends Element {
+    public class ProvenancePartyComponent extends Element {
         /**
          * The role that the participant played
          */
@@ -310,12 +309,12 @@ public class Provenance extends Resource {
     /**
      * The activity that was being undertaken that led to the creation of the resource being referenced
      */
-    private Activity activity;
+    private ProvenanceActivityComponent activity;
 
     /**
      * An entity that is involved in the provenance of the target resource
      */
-    private List<Party> party = new ArrayList<Party>();
+    private List<ProvenancePartyComponent> party = new ArrayList<ProvenancePartyComponent>();
 
     /**
      * A digital signature on the target resource. The signature should reference a participant by xml:id
@@ -330,15 +329,15 @@ public class Provenance extends Resource {
       this.target = value;
     }
 
-    public Activity getActivity() { 
+    public ProvenanceActivityComponent getActivity() { 
       return this.activity;
     }
 
-    public void setActivity(Activity value) { 
+    public void setActivity(ProvenanceActivityComponent value) { 
       this.activity = value;
     }
 
-    public List<Party> getParty() { 
+    public List<ProvenancePartyComponent> getParty() { 
       return this.party;
     }
 

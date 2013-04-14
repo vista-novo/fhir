@@ -29,11 +29,11 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+import java.net.*;
 /**
  * Value Set - a set of defined codes from one or more code systems that may be bound to a context
  */
@@ -78,8 +78,7 @@ public class ValueSet extends Resource {
     }
 
   public class ValuesetStatusEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -97,8 +96,7 @@ public class ValueSet extends Resource {
           return ValuesetStatus.superseded;
         throw new Exception("Unknown ValuesetStatus code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == ValuesetStatus.draft)
         return "draft";
       if (code == ValuesetStatus.testing)
@@ -146,8 +144,7 @@ public class ValueSet extends Resource {
     }
 
   public class CodeSelectionModeEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -161,8 +158,7 @@ public class ValueSet extends Resource {
           return CodeSelectionMode.all;
         throw new Exception("Unknown CodeSelectionMode code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == CodeSelectionMode.code)
         return "code";
       if (code == CodeSelectionMode.children)
@@ -206,8 +202,7 @@ public class ValueSet extends Resource {
     }
 
   public class FilterOperatorEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -221,8 +216,7 @@ public class ValueSet extends Resource {
           return FilterOperator.regex;
         throw new Exception("Unknown FilterOperator code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == FilterOperator.equal)
         return "=";
       if (code == FilterOperator.isA)
@@ -235,7 +229,7 @@ public class ValueSet extends Resource {
       }
     }
 
-    public class Author extends Element {
+    public class AuthorComponent extends Element {
         /**
          * The name of the individual or organization that contributed to the development of the content of the value set
          */
@@ -301,7 +295,7 @@ public class ValueSet extends Resource {
 
   }
 
-    public class Include extends Element {
+    public class ConceptSetComponent extends Element {
         /**
          * The code system from which the selected codes come from
          */
@@ -325,7 +319,7 @@ public class ValueSet extends Resource {
         /**
          * Select concepts by specify a matching criteria based on the properties defined by the system. If multiple filters are specified, they must all be true
          */
-        private List<Filter> filter = new ArrayList<Filter>();
+        private List<ConceptSetFilterComponent> filter = new ArrayList<ConceptSetFilterComponent>();
 
         public Uri getSystem() { 
           return this.system;
@@ -397,13 +391,13 @@ public class ValueSet extends Resource {
           return this.code;
         }
 
-        public List<Filter> getFilter() { 
+        public List<ConceptSetFilterComponent> getFilter() { 
           return this.filter;
         }
 
   }
 
-    public class Filter extends Element {
+    public class ConceptSetFilterComponent extends Element {
         /**
          * A code that identifies a property defined in the code system
          */
@@ -495,7 +489,7 @@ public class ValueSet extends Resource {
     /**
      * Details of the author who accepts responsibility for publishing the value set
      */
-    private List<Author> author = new ArrayList<Author>();
+    private List<AuthorComponent> author = new ArrayList<AuthorComponent>();
 
     /**
      * A free text natural language description of the value set - contents, reason for definition, conditions of use, etc.
@@ -535,12 +529,12 @@ public class ValueSet extends Resource {
     /**
      * Include one or more codes from a code system
      */
-    private List<Include> include = new ArrayList<Include>();
+    private List<ConceptSetComponent> include = new ArrayList<ConceptSetComponent>();
 
     /**
      * Exclude one or more codes from the value set
      */
-    private List<Include> exclude = new ArrayList<Include>();
+    private List<ConceptSetComponent> exclude = new ArrayList<ConceptSetComponent>();
 
     public String_ getName() { 
       return this.name;
@@ -564,7 +558,7 @@ public class ValueSet extends Resource {
       }
     }
 
-    public List<Author> getAuthor() { 
+    public List<AuthorComponent> getAuthor() { 
       return this.author;
     }
 
@@ -686,11 +680,11 @@ public class ValueSet extends Resource {
       return this.import_;
     }
 
-    public List<Include> getInclude() { 
+    public List<ConceptSetComponent> getInclude() { 
       return this.include;
     }
 
-    public List<Include> getExclude() { 
+    public List<ConceptSetComponent> getExclude() { 
       return this.exclude;
     }
 

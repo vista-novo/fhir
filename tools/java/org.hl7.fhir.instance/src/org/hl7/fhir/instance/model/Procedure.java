@@ -29,12 +29,349 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
+
+import java.util.*;
 
 /**
- * null
+ * Doing something to patient
  */
 public class Procedure extends Resource {
+
+    public enum ProcedureRelationshipType {
+        causedMinusby, // 
+        caused, // 
+        Null; // added to help the parsers
+        public static ProcedureRelationshipType fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("caused-by".equals(codeString))
+          return causedMinusby;
+        if ("caused".equals(codeString))
+          return caused;
+        throw new Exception("Unknown ProcedureRelationshipType code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case causedMinusby: return "caused-by";
+            case caused: return "caused";
+            default: return "?";
+          }
+        }
+    }
+
+  public class ProcedureRelationshipTypeEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("caused-by".equals(codeString))
+          return ProcedureRelationshipType.causedMinusby;
+        if ("caused".equals(codeString))
+          return ProcedureRelationshipType.caused;
+        throw new Exception("Unknown ProcedureRelationshipType code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == ProcedureRelationshipType.causedMinusby)
+        return "caused-by";
+      if (code == ProcedureRelationshipType.caused)
+        return "caused";
+      return "?";
+      }
+    }
+
+    public class ProcedureDescriptionComponent extends Element {
+        /**
+         * The specific procedure that is perfromed
+         */
+        private CodeableConcept type;
+
+        /**
+         * Any other notes about the procedure - eg the operative notes
+         */
+        private String_ notes;
+
+        /**
+         * Detailed and structured anatomical location information. Multiple locations are allowed - eg multiple punch biopsies of a lesion
+         */
+        private List<CodeableConcept> bodySite = new ArrayList<CodeableConcept>();
+
+        public CodeableConcept getType() { 
+          return this.type;
+        }
+
+        public void setType(CodeableConcept value) { 
+          this.type = value;
+        }
+
+        public String_ getNotes() { 
+          return this.notes;
+        }
+
+        public void setNotes(String_ value) { 
+          this.notes = value;
+        }
+
+        public String getNotesSimple() { 
+          return this.notes == null ? null : this.notes.getValue();
+        }
+
+        public void setNotesSimple(String value) { 
+          if (value == null)
+            this.notes = null;
+          else {
+            if (this.notes == null)
+              this.notes = new String_();
+            this.notes.setValue(value);
+          }
+        }
+
+        public List<CodeableConcept> getBodySite() { 
+          return this.bodySite;
+        }
+
+  }
+
+    public class ProcedurePerformerComponent extends Element {
+        /**
+         * The practitioner who was involved in the procedure
+         */
+        private ResourceReference person;
+
+        /**
+         * Eg surgeon, anaethetist, endoscopist
+         */
+        private CodeableConcept role;
+
+        public ResourceReference getPerson() { 
+          return this.person;
+        }
+
+        public void setPerson(ResourceReference value) { 
+          this.person = value;
+        }
+
+        public CodeableConcept getRole() { 
+          return this.role;
+        }
+
+        public void setRole(CodeableConcept value) { 
+          this.role = value;
+        }
+
+  }
+
+    public class ProcedureRelatedItemComponent extends Element {
+        /**
+         * The nature of the relationship
+         */
+        private Enumeration<ProcedureRelationshipType> type;
+
+        /**
+         * The related item - eg a procedure
+         */
+        private ResourceReference target;
+
+        public Enumeration<ProcedureRelationshipType> getType() { 
+          return this.type;
+        }
+
+        public void setType(Enumeration<ProcedureRelationshipType> value) { 
+          this.type = value;
+        }
+
+        public ProcedureRelationshipType getTypeSimple() { 
+          return this.type == null ? null : this.type.getValue();
+        }
+
+        public void setTypeSimple(ProcedureRelationshipType value) { 
+          if (value == null)
+            this.type = null;
+          else {
+            if (this.type == null)
+              this.type = new Enumeration<ProcedureRelationshipType>();
+            this.type.setValue(value);
+          }
+        }
+
+        public ResourceReference getTarget() { 
+          return this.target;
+        }
+
+        public void setTarget(ResourceReference value) { 
+          this.target = value;
+        }
+
+  }
+
+    /**
+     * The person on whom the procedure was performed
+     */
+    private ResourceReference subject;
+
+    /**
+     * Describes the procedure that was performed
+     */
+    private ProcedureDescriptionComponent description;
+
+    /**
+     * The reason why the procedure was performed. This may be due to a problem, may be coded entity of some type, or may simply be present as text
+     */
+    private String_ indication;
+
+    /**
+     * This is limited to 'real' people rather than equipment
+     */
+    private List<ProcedurePerformerComponent> performer = new ArrayList<ProcedurePerformerComponent>();
+
+    /**
+     * The dates over which the period was perfromed. Allows a period to support complex procedures that span more that one date, and also allows for the length of the procedure to be captured.
+     */
+    private Period date;
+
+    /**
+     * The visit during which the procedure was performed
+     */
+    private ResourceReference visit;
+
+    /**
+     * What was the outcome of the procedure - did it resolve reasons why the procedure was performed?
+     */
+    private String_ outcome;
+
+    /**
+     * This could be a histology result. There could potentially be multiple reports - eg if this was a procedure that made multiple biopsies
+     */
+    private List<ResourceReference> report = new ArrayList<ResourceReference>();
+
+    /**
+     * Any complications that occurred during the procedure, or in the immediate post-operative period. These are generally tracked separately from the notes, whicg typically will describe the procedure itself rather than any 'post procedure' issues
+     */
+    private List<String_> complication = new ArrayList<String_>();
+
+    /**
+     * If the procedure required specific follow up - eg removal of sutures. The followup may be represented as a simple note, or potentially could be more complex in which case the CarePlan resource can be used
+     */
+    private String_ followUp;
+
+    /**
+     * Procedures may be related to other items such as procedures or medciations. For example treating wound dehiscence following a previous procedure
+     */
+    private List<ProcedureRelatedItemComponent> relatedItem = new ArrayList<ProcedureRelatedItemComponent>();
+
+    public ResourceReference getSubject() { 
+      return this.subject;
+    }
+
+    public void setSubject(ResourceReference value) { 
+      this.subject = value;
+    }
+
+    public ProcedureDescriptionComponent getDescription() { 
+      return this.description;
+    }
+
+    public void setDescription(ProcedureDescriptionComponent value) { 
+      this.description = value;
+    }
+
+    public String_ getIndication() { 
+      return this.indication;
+    }
+
+    public void setIndication(String_ value) { 
+      this.indication = value;
+    }
+
+    public String getIndicationSimple() { 
+      return this.indication == null ? null : this.indication.getValue();
+    }
+
+    public void setIndicationSimple(String value) { 
+      if (value == null)
+        this.indication = null;
+      else {
+        if (this.indication == null)
+          this.indication = new String_();
+        this.indication.setValue(value);
+      }
+    }
+
+    public List<ProcedurePerformerComponent> getPerformer() { 
+      return this.performer;
+    }
+
+    public Period getDate() { 
+      return this.date;
+    }
+
+    public void setDate(Period value) { 
+      this.date = value;
+    }
+
+    public ResourceReference getVisit() { 
+      return this.visit;
+    }
+
+    public void setVisit(ResourceReference value) { 
+      this.visit = value;
+    }
+
+    public String_ getOutcome() { 
+      return this.outcome;
+    }
+
+    public void setOutcome(String_ value) { 
+      this.outcome = value;
+    }
+
+    public String getOutcomeSimple() { 
+      return this.outcome == null ? null : this.outcome.getValue();
+    }
+
+    public void setOutcomeSimple(String value) { 
+      if (value == null)
+        this.outcome = null;
+      else {
+        if (this.outcome == null)
+          this.outcome = new String_();
+        this.outcome.setValue(value);
+      }
+    }
+
+    public List<ResourceReference> getReport() { 
+      return this.report;
+    }
+
+    public List<String_> getComplication() { 
+      return this.complication;
+    }
+
+    public String_ getFollowUp() { 
+      return this.followUp;
+    }
+
+    public void setFollowUp(String_ value) { 
+      this.followUp = value;
+    }
+
+    public String getFollowUpSimple() { 
+      return this.followUp == null ? null : this.followUp.getValue();
+    }
+
+    public void setFollowUpSimple(String value) { 
+      if (value == null)
+        this.followUp = null;
+      else {
+        if (this.followUp == null)
+          this.followUp = new String_();
+        this.followUp.setValue(value);
+      }
+    }
+
+    public List<ProcedureRelatedItemComponent> getRelatedItem() { 
+      return this.relatedItem;
+    }
 
   @Override
   public ResourceType getResourceType() {

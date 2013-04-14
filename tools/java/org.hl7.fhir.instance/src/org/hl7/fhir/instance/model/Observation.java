@@ -29,11 +29,9 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * Simple assertions and measurements made about a patient, device or other subject
@@ -79,8 +77,7 @@ public class Observation extends Resource {
     }
 
   public class ObservationStatusEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -98,8 +95,7 @@ public class Observation extends Resource {
           return ObservationStatus.withdrawn;
         throw new Exception("Unknown ObservationStatus code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == ObservationStatus.registered)
         return "registered";
       if (code == ObservationStatus.interim)
@@ -159,8 +155,7 @@ public class Observation extends Resource {
     }
 
   public class ObservationReliabilityEnumFactory implements EnumFactory {
-    @Override
-	public Enum<?> fromCode(String codeString) throws Exception {
+    public Enum<?> fromCode(String codeString) throws Exception {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -180,8 +175,7 @@ public class Observation extends Resource {
           return ObservationReliability.unknown;
         throw new Exception("Unknown ObservationReliability code '"+codeString+"'");
         }
-    @Override
-	public String toCode(Enum<?> code) throws Exception {
+    public String toCode(Enum<?> code) throws Exception {
       if (code == ObservationReliability.ok)
         return "ok";
       if (code == ObservationReliability.ongoing)
@@ -200,7 +194,7 @@ public class Observation extends Resource {
       }
     }
 
-    public class ReferenceRange extends Element {
+    public class ObservationReferenceRangeComponent extends Element {
         /**
          * Code for the meaning of the reference range
          */
@@ -229,7 +223,7 @@ public class Observation extends Resource {
 
   }
 
-    public class Component extends Element {
+    public class ObservationComponentComponent extends Element {
         /**
          * Identifies what type of sub-observation was performed
          */
@@ -281,7 +275,7 @@ public class Observation extends Resource {
     /**
      * The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the "physiologically relevant time".
      */
-    private Type obtained;
+    private Type applies;
 
     /**
      * Date/Time this was made available
@@ -326,12 +320,12 @@ public class Observation extends Resource {
     /**
      * Guidance on how to interpret the value by comparison to a normal or recommended range
      */
-    private List<ReferenceRange> referenceRange = new ArrayList<ReferenceRange>();
+    private List<ObservationReferenceRangeComponent> referenceRange = new ArrayList<ObservationReferenceRangeComponent>();
 
     /**
      * Component observation
      */
-    private List<Component> component = new ArrayList<Component>();
+    private List<ObservationComponentComponent> component = new ArrayList<ObservationComponentComponent>();
 
     public CodeableConcept getName() { 
       return this.name;
@@ -379,12 +373,12 @@ public class Observation extends Resource {
       }
     }
 
-    public Type getObtained() { 
-      return this.obtained;
+    public Type getApplies() { 
+      return this.applies;
     }
 
-    public void setObtained(Type value) { 
-      this.obtained = value;
+    public void setApplies(Type value) { 
+      this.applies = value;
     }
 
     public Instant getIssued() { 
@@ -493,11 +487,11 @@ public class Observation extends Resource {
       this.performer = value;
     }
 
-    public List<ReferenceRange> getReferenceRange() { 
+    public List<ObservationReferenceRangeComponent> getReferenceRange() { 
       return this.referenceRange;
     }
 
-    public List<Component> getComponent() { 
+    public List<ObservationComponentComponent> getComponent() { 
       return this.component;
     }
 

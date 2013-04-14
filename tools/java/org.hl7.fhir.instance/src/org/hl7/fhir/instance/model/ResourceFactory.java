@@ -29,11 +29,57 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Mar 4, 2013 20:03+1100 for FHIR v0.07
+// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
 
 public class ResourceFactory {
 
     public static Resource createResource(String name) throws Exception {
+        if ("Prescription".equals(name))
+            return new Prescription();
+        if ("Organization".equals(name))
+            return new Organization();
+        if ("Group".equals(name))
+            return new Group();
+        if ("ValueSet".equals(name))
+            return new ValueSet();
+        if ("Test".equals(name))
+            return new Test();
+        if ("Coverage".equals(name))
+            return new Coverage();
+        if ("Appointment".equals(name))
+            return new Appointment();
+        if ("DeviceLog".equals(name))
+            return new DeviceLog();
+        if ("DeviceCapabilities".equals(name))
+            return new DeviceCapabilities();
+        if ("IssueReport".equals(name))
+            return new IssueReport();
+        if ("AnatomicalLocation".equals(name))
+            return new AnatomicalLocation();
+        if ("Questionnaire".equals(name))
+            return new Questionnaire();
+        if ("Conformance".equals(name))
+            return new Conformance();
+        if ("Product".equals(name))
+            return new Product();
+        if ("Profile".equals(name))
+            return new Profile();
+        if ("Visit".equals(name))
+            return new Visit();
+        if ("DocumentReference".equals(name))
+            return new DocumentReference();
+        if ("InterestOfCare".equals(name))
+            return new InterestOfCare();
+        if ("Immunization".equals(name))
+            return new Immunization();
+        if ("Problem".equals(name))
+            return new Problem();
+        if ("OrderResponse".equals(name))
+            return new OrderResponse();
+        if ("Practitioner".equals(name))
+            return new Practitioner();
+        if ("ImagingStudy".equals(name))
+            return new ImagingStudy();
         if ("Provenance".equals(name))
             return new Provenance();
         if ("CarePlan".equals(name))
@@ -44,82 +90,54 @@ public class ResourceFactory {
             return new Food();
         if ("Order".equals(name))
             return new Order();
-        if ("Prescription".equals(name))
-            return new Prescription();
-        if ("Organization".equals(name))
-            return new Organization();
-        if ("Request".equals(name))
-            return new Request();
         if ("Procedure".equals(name))
             return new Procedure();
+        if ("Request".equals(name))
+            return new Request();
         if ("Substance".equals(name))
             return new Substance();
         if ("DiagnosticReport".equals(name))
             return new DiagnosticReport();
-        if ("Group".equals(name))
-            return new Group();
         if ("Medication".equals(name))
             return new Medication();
-        if ("ValueSet".equals(name))
-            return new ValueSet();
-        if ("Test".equals(name))
-            return new Test();
-        if ("Coverage".equals(name))
-            return new Coverage();
         if ("MedicationAdministration".equals(name))
             return new MedicationAdministration();
-        if ("Encounter".equals(name))
-            return new Encounter();
         if ("SecurityEvent".equals(name))
             return new SecurityEvent();
-        if ("IssueReport".equals(name))
-            return new IssueReport();
-        if ("AnatomicalLocation".equals(name))
-            return new AnatomicalLocation();
         if ("List".equals(name))
             return new List_();
-        if ("Questionnaire".equals(name))
-            return new Questionnaire();
         if ("Picture".equals(name))
             return new Picture();
-        if ("XdsEntry".equals(name))
-            return new XdsEntry();
-        if ("Conformance".equals(name))
-            return new Conformance();
         if ("Document".equals(name))
             return new Document();
         if ("Message".equals(name))
             return new Message();
+        if ("FamilyHistory".equals(name))
+            return new FamilyHistory();
         if ("Location".equals(name))
             return new Location();
-        if ("Profile".equals(name))
-            return new Profile();
-        if ("Admission".equals(name))
-            return new Admission();
+        if ("AllergyIntolerance".equals(name))
+            return new AllergyIntolerance();
         if ("Observation".equals(name))
             return new Observation();
-        if ("InterestOfCare".equals(name))
-            return new InterestOfCare();
-        if ("Immunization".equals(name))
-            return new Immunization();
-        if ("Problem".equals(name))
-            return new Problem();
+        if ("Admission".equals(name))
+            return new Admission();
+        if ("ImmunizationProfile".equals(name))
+            return new ImmunizationProfile();
+        if ("RelatedPerson".equals(name))
+            return new RelatedPerson();
+        if ("Category".equals(name))
+            return new Category();
         if ("Specimen".equals(name))
             return new Specimen();
-        if ("OrderResponse".equals(name))
-            return new OrderResponse();
+        if ("DeviceObservation".equals(name))
+            return new DeviceObservation();
         if ("Patient".equals(name))
             return new Patient();
-        if ("XdsEntry2".equals(name))
-            return new XdsEntry2();
-        if ("ImagingStudy".equals(name))
-            return new ImagingStudy();
-        if ("Provider".equals(name))
-            return new Provider();
+        if ("AdverseReaction".equals(name))
+            return new AdverseReaction();
         if ("Person".equals(name))
             return new Person();
-        if ("XdsFolder".equals(name))
-            return new XdsFolder();
         else
             throw new Exception("Unknown Resource Name '"+name+"'");
     }
@@ -165,8 +183,6 @@ public class ResourceFactory {
             return new ResourceReference();
         if ("CodeableConcept".equals(name))
             return new CodeableConcept();
-        if ("DocumentInformation".equals(name))
-            return new DocumentInformation();
         if ("Identifier".equals(name))
             return new Identifier();
         if ("Narrative".equals(name))

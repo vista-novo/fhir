@@ -37,9 +37,9 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.parsers.TypeParser;
 import org.hl7.fhir.instance.model.Profile;
-import org.hl7.fhir.instance.model.Profile.Constraint;
-import org.hl7.fhir.instance.model.Profile.Element_;
-import org.hl7.fhir.instance.model.Profile.Type;
+import org.hl7.fhir.instance.model.Profile.ElementComponent;
+import org.hl7.fhir.instance.model.Profile.ProfileStructureComponent;
+import org.hl7.fhir.instance.model.Profile.TypeRefComponent;
 
 /**
  * Given a candidate profile, and the actual base profile for a resource, check that the candidate is valid.
@@ -55,8 +55,8 @@ public class ProfileValidator {
 
   public class TypeState {
     private String prefix;
-    private Profile.Constraint type;
-    public TypeState(String prefix, Constraint type) {
+    private ProfileStructureComponent type;
+    public TypeState(String prefix, ProfileStructureComponent type) {
       super();
       this.prefix = prefix;
       this.type = type;
@@ -64,13 +64,13 @@ public class ProfileValidator {
     public String getPrefix() {
       return prefix;
     }
-    public Profile.Constraint getType() {
+    public ProfileStructureComponent getType() {
       return type;
     }
 
   }
 
-  private Map<Profile.Element_, ArrayList<ElementDefn>> map = new HashMap<Profile.Element_, ArrayList<ElementDefn>>();
+  private Map<Profile.ElementComponent, ArrayList<ElementDefn>> map = new HashMap<Profile.ElementComponent, ArrayList<ElementDefn>>();
   
   private ResourceDefn candidate;
   private Profile profile;
@@ -122,7 +122,7 @@ public class ProfileValidator {
 
   private void fillOutElement(ElementDefn profileElement, String path) {
     int i = 0;
-    for (Element_ e : collectChildren(path)) {
+    for (ElementComponent e : collectChildren(path)) {
       ElementDefn m = null;
       String tn = terminalName(e);
       if (i < profileElement.getElements().size()) {
@@ -153,20 +153,20 @@ public class ProfileValidator {
     }
   }
 
-  private String terminalName(Element_ e) {
+  private String terminalName(ElementComponent e) {
     String res = e.getPath().getValue().substring(e.getPath().getValue().lastIndexOf(".")+1);
     return res;
   }
 
-  private List<Element_> collectChildren(String path) {
-    List<Element_> results = new ArrayList<Element_>();
-    for (Element_ r : profile.getConstraint().get(0).getElement())
+  private List<ElementComponent> collectChildren(String path) {
+    List<ElementComponent> results = new ArrayList<ElementComponent>();
+    for (ElementComponent r : profile.getStructure().get(0).getElement())
       if (r.getPath().getValue().startsWith(path+".") && !r.getPath().getValue().substring(path.length()+1).contains(".")) 
         results.add(r);
     return results;
   }
   
-  private void filloutElementDefn(ElementDefn n, Element_ e) {
+  private void filloutElementDefn(ElementDefn n, ElementComponent e) {
     n.setName(terminalName(e));
     n.setInherited(true);
     n.setComments(e.getDefinition().getComments() == null ? null : e.getDefinition().getComments().getValue());
@@ -176,7 +176,7 @@ public class ProfileValidator {
     n.setMaxCardinality("*".equals(e.getDefinition().getMax().getValue()) ? null : Integer.parseInt(e.getDefinition().getMax().getValue()));
     n.setMinCardinality(e.getDefinition().getMin().getValue());
     n.setMustUnderstand(e.getDefinition().getMustSupport() == null ? false : e.getDefinition().getMustSupport().getValue());
-    for (Type t : e.getDefinition().getType()) {
+    for (TypeRefComponent t : e.getDefinition().getType()) {
       TypeParser tp = new TypeParser();
       try {
         n.getTypes().addAll(tp.parse(t.getCode().getValue()));
@@ -188,7 +188,7 @@ public class ProfileValidator {
 //  todo
 //    n.setRimMapping(e.get);
 //    n.setV2Mapping(e.get);
-    for (Element_ c : collectChildren(e.getPath().getValue())) {
+    for (ElementComponent c : collectChildren(e.getPath().getValue())) {
       ElementDefn nc = new ElementDefn();
       filloutElementDefn(nc, c);
       n.getElements().add(nc);
@@ -203,7 +203,7 @@ public class ProfileValidator {
   }
 
   private void matchElement(ResourceDefn resource, ElementDefn parent, ElementDefn element, String path) throws Exception {
-    Element_ e = getConstraintByPath(path);
+    ElementComponent e = getConstraintByPath(path);
     boolean xPoint = false;
     if (e == null && parent != null && hasTypeProfile(parent.typeCode())) {
       typePoints.push(new TypeState(path.substring(0, path.lastIndexOf(".")), getTypeProfile(parent.typeCode())));
@@ -233,8 +233,8 @@ public class ProfileValidator {
     }
   }
 
-  private Constraint getTypeProfile(String type) {
-    for (Constraint p : types.getConstraint()) {
+  private ProfileStructureComponent getTypeProfile(String type) {
+    for (ProfileStructureComponent p : types.getStructure()) {
       if (p.getType().getValue().equals(type))
         return p;
     }
@@ -242,14 +242,14 @@ public class ProfileValidator {
   }
 
   private boolean hasTypeProfile(String type) {
-    for (Constraint p : types.getConstraint()) {
+    for (ProfileStructureComponent p : types.getStructure()) {
       if (p.getType().getValue().equals(type))
         return true;
     }
     return false;
   }
 
-  private void completeFromDerivation(ElementDefn target, Element_ source) {
+  private void completeFromDerivation(ElementDefn target, ElementComponent source) {
     if (!target.hasComments())
       target.setComments(source.getDefinition().getComments() == null ? null : source.getDefinition().getComments().getValue());
     if (!target.hasBindingName())
@@ -260,15 +260,15 @@ public class ProfileValidator {
       target.setDefinition(source.getDefinition().getFormal().getValue());    
   }
 
-  private Element_ getConstraintByPath(String path) {
+  private ElementComponent getConstraintByPath(String path) {
     if (typePoints.empty()) {
-      for (Element_ e : profile.getConstraint().get(0).getElement()) {
+      for (ElementComponent e : profile.getStructure().get(0).getElement()) {
         String p = e.getPath().getValue();
         if (p.equals(path) || (p.endsWith("[x]") && path.length() > p.length() && p.substring(0, p.length()-3).equals(path.substring(0, p.length()-3)) && isType(path.substring(p.length()-3))))
           return e;
       }
     } else {
-      for (Element_ e : typePoints.firstElement().getType().getElement()) {
+      for (ElementComponent e : typePoints.firstElement().getType().getElement()) {
         if (e.getPath().getValue().contains(".")) { // skip the first one
           String p = typePoints.firstElement().getPrefix()+"."+e.getPath().getValue().substring(e.getPath().getValue().indexOf(".")+1);
           if (p.equals(path) || (p.endsWith("[x]") && path.length() > p.length() && p.substring(0, p.length()-3).equals(path.substring(0, p.length()-3)) && isType(path.substring(p.length()-3))))
