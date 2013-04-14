@@ -8,14 +8,14 @@
   <Author>Grahame</Author>
   <LastAuthor>David Hay</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2013-04-13T22:15:50Z</LastSaved>
+  <LastSaved>2013-04-13T23:01:54Z</LastSaved>
   <Version>14.0</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>10320</WindowHeight>
+  <WindowHeight>9820</WindowHeight>
   <WindowWidth>27860</WindowWidth>
   <WindowTopX>900</WindowTopX>
   <WindowTopY>520</WindowTopY>
@@ -125,7 +125,7 @@
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
     <Cell ss:Index="20"><Data ss:Type="String">save</Data></Cell>
    </Row>
-   <Row ss:Height="28">
+   <Row ss:AutoFitHeight="0" ss:Height="28">
     <Cell><Data ss:Type="String">Procedure</Data></Cell>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
@@ -134,7 +134,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">An action that is performed on a patient</Data></Cell>
-    <Cell><Data ss:Type="String">Doing something to patient</Data></Cell>
+    <Cell><Data ss:Type="String">An action that is performed on a patient. This can be a physical 'thing' like an operation, or less invasive like counselling or hypnotherapy</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
     <Cell ss:Index="13" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -188,7 +188,7 @@
     <Cell><Data ss:Type="String">The reason why the procedure was performed. This may be due to a problem, may be coded entity of some type, or may simply be present as text</Data></Cell>
     <Cell ss:Index="20"><Data ss:Type="String">Resource(Problem) | CodeableConcept | string </Data></Cell>
    </Row>
-   <Row ss:Height="42">
+   <Row ss:AutoFitHeight="0" ss:Height="42">
     <Cell><Data ss:Type="String">Procedure.performer</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">The people who performed the procedure</Data></Cell>
@@ -225,7 +225,7 @@
     <Cell ss:Index="8"><Data ss:Type="String">The visit during which the procedure was performed</Data></Cell>
     <Cell ss:Index="20"><Data ss:Type="String">Resource(Visit)</Data></Cell>
    </Row>
-   <Row ss:Height="56">
+   <Row ss:AutoFitHeight="0" ss:Height="56">
     <Cell><Data ss:Type="String">Procedure.outcome</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
@@ -243,13 +243,13 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Procedure.complication</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Complications</Data></Cell>
     <Cell><Data ss:Type="String">Any complications that occurred during the procedure, or in the immediate post-operative period. These are generally tracked separately from the notes, whicg typically will describe the procedure itself rather than any 'post procedure' issues</Data></Cell>
     <Cell ss:Index="20"><Data ss:Type="String">string</Data></Cell>
    </Row>
-   <Row ss:Height="126">
+   <Row ss:AutoFitHeight="0" ss:Height="126">
     <Cell><Data ss:Type="String">Procedure.followUp</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string </Data></Cell>
@@ -263,7 +263,7 @@
     <Cell ss:Index="8"><Data ss:Type="String">A procedure that is related to this one</Data></Cell>
     <Cell><Data ss:Type="String">Procedures may be related to other items such as procedures or medciations. For example treating wound dehiscence following a previous procedure</Data></Cell>
    </Row>
-   <Row ss:Height="28">
+   <Row ss:AutoFitHeight="0" ss:Height="28">
     <Cell><Data ss:Type="String">Procedure.relatedItem.type</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
@@ -298,7 +298,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>8</TopRowBottomPane>
+   <TopRowBottomPane>6</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -315,7 +315,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>10</ActiveRow>
+     <ActiveRow>14</ActiveRow>
      <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
@@ -728,7 +728,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Examples">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="1" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="14">
    <Column ss:Index="2" ss:Width="133"/>
    <Column ss:Width="46"/>
@@ -741,63 +741,7 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">In Book</Data></Cell>
    </Row>
-  </Table>
-  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <Unsynced/>
-   <Print>
-    <ValidPrinterInfo/>
-    <PaperSizeIndex>9</PaperSizeIndex>
-    <HorizontalResolution>-4</HorizontalResolution>
-    <VerticalResolution>-4</VerticalResolution>
-   </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>1</ActiveCol>
-     <RangeSelection>R2:R3</RangeSelection>
-    </Pane>
-   </Panes>
-   <ProtectObjects>False</ProtectObjects>
-   <ProtectScenarios>False</ProtectScenarios>
-  </WorksheetOptions>
- </Worksheet>
- <Worksheet ss:Name="ProcedureRelationshipType">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="14">
-   <Column ss:Width="94"/>
-   <Column ss:Width="293"/>
    <Row ss:AutoFitHeight="0" ss:Height="15">
-    <Cell><Data ss:Type="String">Code</Data></Cell>
-    <Cell><Data ss:Type="String">Description</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="String">caused-by</Data></Cell>
-    <Cell><Data ss:Type="String">This procedure had to be perfromed because of the related one</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="String">caused</Data></Cell>
-    <Cell><Data ss:Type="String">This procedure caused the related one to be performed</Data></Cell>
-   </Row>
-  </Table>
-  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <PageLayoutZoom>0</PageLayoutZoom>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>1</ActiveCol>
-    </Pane>
-   </Panes>
-   <ProtectObjects>False</ProtectObjects>
-   <ProtectScenarios>False</ProtectScenarios>
-  </WorksheetOptions>
- </Worksheet>
- <Worksheet ss:Name="Sheet8">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="14">
-   <Row ss:Index="4" ss:AutoFitHeight="0" ss:Height="15">
     <Cell><Data ss:Type="String">General</Data></Cell>
     <Cell><Data ss:Type="String">General Procedure Example</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
@@ -813,12 +757,51 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <RangeSelection>R4:R5</RangeSelection>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>5</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="ProcedureRelationshipType">
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="14">
+   <Column ss:Width="94"/>
+   <Column ss:Width="293"/>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">Code</Data></Cell>
+    <Cell><Data ss:Type="String">Description</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">caused-by</Data></Cell>
+    <Cell><Data ss:Type="String">This procedure had to be perfromed because of the related one</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">caused</Data></Cell>
+    <Cell><Data ss:Type="String">This procedure caused the related one to be performed</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
