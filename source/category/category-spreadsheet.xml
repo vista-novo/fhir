@@ -155,8 +155,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <RangeSelection>R3C1:R4C1</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -252,33 +252,38 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Search">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="292.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Repeats</Data></Cell>
+    <Cell><Data ss:Type="String">Path</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s67"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">a code that describes the category</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Category.code</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s67"><Data ss:Type="String">title</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">the title of the category</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Category.title</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">subject</Data></Cell>
     <Cell><Data ss:Type="String">the subject of the category</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Category.subject</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -293,7 +298,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>4</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

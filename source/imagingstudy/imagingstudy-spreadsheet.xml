@@ -514,7 +514,7 @@
     <Cell ss:StyleID="Default"><Data ss:Type="String">1..*</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">down</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">right</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">A single image taken from a patient</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">A single image taken from a patient</Data></Cell>
@@ -645,8 +645,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>19</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>26</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

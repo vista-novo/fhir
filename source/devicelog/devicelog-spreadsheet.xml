@@ -20,7 +20,6 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>5</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -74,22 +73,24 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="197.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="1"/>
-   <Column ss:Index="4" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="35.25"/>
+   <Column ss:Index="4" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="32.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="35.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="93"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:Index="10" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
+   <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
+    <Cell><Data ss:Type="String">UML</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
@@ -107,8 +108,9 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String"> A set of data produced by a device</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String"> A set of data produced by a device</Data></Cell>
     <Cell><Data ss:Type="String"> A set of data produced by a device</Data></Cell>
     <Cell><Data ss:Type="String">A low level ultra-simple resource is needed to devices that send current observations on a routine bases as an event log</Data></Cell>
     <Cell><Data ss:Type="String">This resource can only be understood in the context of the DeviceCapabilities that defines what the meanings of the key values are</Data></Cell>
@@ -116,57 +118,58 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DeviceLog.instant</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">instant</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">When the data values are reported</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">instant</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">When the data values are reported</Data></Cell>
     <Cell><Data ss:Type="String">The point in time that the values are reported</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Not all devices have clocks, and so the time may not be included</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Not all devices have clocks, and so the time may not be included</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DeviceLog.capabilities</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Resource(DeviceCapabilities)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Explicit reference to the capabilities</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(DeviceCapabilities)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Explicit reference to the capabilities</Data></Cell>
     <Cell><Data ss:Type="String">An explicit reference  to the capabilities</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Simple devices may not be in a position to provide an explicit capabilities reference (though even the simplest devices could refer to a capabilities resource on a manufacturer website)</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Simple devices may not be in a position to provide an explicit capabilities reference (though even the simplest devices could refer to a capabilities resource on a manufacturer website)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DeviceLog.subject</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Resource(Patient|Group|Device)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Subject of the measurement</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Patient|Group|Device)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Subject of the measurement</Data></Cell>
     <Cell><Data ss:Type="String">The subject of the measurement</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Devices may hold no information about the subject at all, or possibly just  an id read from a bar code, with no additional knowledge</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Devices may hold no information about the subject at all, or possibly just  an id read from a bar code, with no additional knowledge</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DeviceLog.item</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">An item of data</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">right</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">An item of data</Data></Cell>
     <Cell><Data ss:Type="String">An item of data that the device produces</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DeviceLog.item.key</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Reference to device capabilities declaration</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Reference to device capabilities declaration</Data></Cell>
     <Cell><Data ss:Type="String">Reference to a device capabilities declaration</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DeviceLog.item.value</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">The value of the data item, if available</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The value of the data item, if available</Data></Cell>
     <Cell><Data ss:Type="String">The value of the data item, if available</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Usually, either a value or some flags should be provided</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Usually, either a value or some flags should be provided</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DeviceLog.item.flag</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">DeviceValueFlag</Data></Cell>
     <Cell><Data ss:Type="String">Information about the quality of the data etc</Data></Cell>
     <Cell><Data ss:Type="String">Information about the quality of the data etc</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Usually, either a value or some flags should be provided</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Usually, either a value or some flags should be provided</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -176,10 +179,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>3</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
@@ -400,7 +404,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="device-value-flag">
-  <Table ss:ExpandedColumnCount="11" ss:ExpandedRowCount="29" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="14" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="66"/>
    <Row ss:AutoFitHeight="0">
@@ -459,7 +463,6 @@
     <Cell><Data ss:Type="String">alarm-off</Data></Cell>
     <Cell><Data ss:Type="String">the value would be associated with an active alarm, but alarms are turned off</Data></Cell>
    </Row>
-   <Row ss:Index="24" ss:AutoFitHeight="0" ss:Span="5"/>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -468,7 +471,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

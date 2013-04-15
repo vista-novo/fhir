@@ -70,6 +70,7 @@ public class SpreadsheetParser {
 	private String title;
 	private String folder;
 	private Logger log;
+	private String sheetname;
 	private boolean forPublication;
 
 	public SpreadsheetParser(InputStream in, String name,	Definitions definitions, String root, Logger log, boolean forPublication) throws Exception {
@@ -94,20 +95,24 @@ public class SpreadsheetParser {
 		return parseCommonTypeColumns().getRoot();
 	}
 
+	private Sheet loadSheet(String name) {
+	  sheetname = name;
+	  return xls.getSheets().get(name);
+	}
 	private ResourceDefn parseCommonTypeColumns() throws Exception {
 		ResourceDefn resource = new ResourceDefn();
 		
-		Sheet sheet = xls.getSheets().get("Bindings");
+		Sheet sheet = loadSheet("Bindings");
 		Map<String, BindingSpecification> typeLocalBindings = null;
 		if (sheet != null)
 			typeLocalBindings = readBindings(sheet);
 			
-		sheet = xls.getSheets().get("Invariants");
+		sheet = loadSheet("Invariants");
 		Map<String,Invariant> invariants = null;
 		if (sheet != null)
 			invariants = readInvariants(sheet);
 		
-		sheet = xls.getSheets().get("Data Elements");
+		sheet = loadSheet("Data Elements");
 		for (int row = 0; row < sheet.rows.size(); row++) {
 			processLine(resource, sheet, row, invariants);
 		}
@@ -212,10 +217,10 @@ public class SpreadsheetParser {
 	  isProfile = false;
 	  ResourceDefn root = parseCommonTypeColumns();
 
-	  readEvents(xls.getSheets().get("Events"));
-	  readExamples(root, xls.getSheets().get("Examples"));
-	  readSearchParams(root, xls.getSheets().get("Search"));
-	  readProfiles(root, xls.getSheets().get("Profiles"));
+	  readEvents(loadSheet("Events"));
+	  readExamples(root, loadSheet("Examples"));
+	  readSearchParams(root, loadSheet("Search"));
+	  readProfiles(root, loadSheet("Profiles"));
 
 		return root;
 	}
@@ -409,7 +414,7 @@ public class SpreadsheetParser {
 		isProfile = true;
 		ProfileDefn p = new ProfileDefn();
 
-		Sheet sheet = xls.getSheets().get("Metadata");
+		Sheet sheet = loadSheet("Metadata");
 		for (int row = 0; row < sheet.rows.size(); row++) {
 			String n = sheet.getColumn(row, "Name");
 			String v = sheet.getColumn(row, "Value");
@@ -424,7 +429,7 @@ public class SpreadsheetParser {
 			}
 		}
 
-    sheet = xls.getSheets().get("Invariants");
+    sheet = loadSheet("Invariants");
     Map<String,Invariant> invariants = null;
     if (sheet != null)
       invariants = readInvariants(sheet);
@@ -443,7 +448,7 @@ public class SpreadsheetParser {
       i++;
     }
 
-    sheet = xls.getSheets().get("Extensions");
+    sheet = loadSheet("Extensions");
     if (sheet != null) {
       for (int row = 0; row < sheet.rows.size(); row++) {
         p.getExtensions().add(processExtension(null,
@@ -452,7 +457,7 @@ public class SpreadsheetParser {
       }
     }
 
-    sheet = xls.getSheets().get("Bindings");
+    sheet = loadSheet("Bindings");
     if (sheet != null)
       p.getBindings().addAll(readBindings(sheet).values());
       
@@ -463,7 +468,7 @@ public class SpreadsheetParser {
   private void parseProfileSheet(Definitions definitions, ProfileDefn p, Map<String, Invariant> invariants, String n, List<String> namedSheets) throws Exception {
     Sheet sheet;
     ResourceDefn resource = new ResourceDefn();
-    sheet = xls.getSheets().get(n);
+    sheet = loadSheet(n);
     if (sheet == null)
       throw new Exception("The Profile referred to a tab by the name of '"+n+"', but no tab by the name could be found");
     for (int row = 0; row < sheet.rows.size(); row++) {
@@ -472,7 +477,7 @@ public class SpreadsheetParser {
         if (!namedSheets.contains(e.getProfile().substring(1)))
           namedSheets.add(e.getProfile().substring(1));      
     }
-    sheet = xls.getSheets().get(n + "-Extensions");
+    sheet = loadSheet(n + "-Extensions");
     if (sheet != null) {
       for (int row = 0; row < sheet.rows.size(); row++) {
         p.getExtensions().add(processExtension(
@@ -571,7 +576,9 @@ public class SpreadsheetParser {
 		String path = sheet.getColumn(row, "Element");
 		if (path.startsWith("!"))
 		  return null;
-		
+		if (Utilities.noString(path)) 
+      throw new Exception("Error reading definitions - no path found @ " + getLocation(row));
+		  
 		if (path.contains("#"))
 			throw new Exception("Old path style @ " + getLocation(row));
 
@@ -887,7 +894,7 @@ public class SpreadsheetParser {
 	}
 
 	private String getLocation(int row) {
-		return name + ", row " + Integer.toString(row + 2);
+		return name + ", sheet \""+sheetname+"\", row " + Integer.toString(row + 2);
 	}
 
 	public List<EventDefn> getEvents() {
