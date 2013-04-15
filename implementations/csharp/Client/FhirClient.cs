@@ -72,7 +72,7 @@ namespace Hl7.Fhir.Client
             var rl = new ResourceLocation(FhirEndpoint);
 
             if( !useOptionsVerb )
-                rl.Operation = Util.RESTOPER_METADATA;
+                rl.Operation = ResourceLocation.RESTOPER_METADATA;
 
             var req = createRequest(rl, false);
             req.Method = useOptionsVerb ? "OPTIONS" : "GET";
@@ -264,7 +264,7 @@ namespace Hl7.Fhir.Client
         {
             var collection = ResourceLocation.GetCollectionNameForResource(typeof(TResource));
             var rl = ResourceLocation.Build(FhirEndpoint, collection, id);
-            rl.Operation = Util.RESTOPER_HISTORY;
+            rl.Operation = ResourceLocation.RESTOPER_HISTORY;
 
             string query = "";
             if (lastUpdate.HasValue)
@@ -293,7 +293,7 @@ namespace Hl7.Fhir.Client
         {
             var collection = ResourceLocation.GetCollectionNameForResource(typeof(TResource));
             var rl = ResourceLocation.Build(FhirEndpoint, collection);
-            rl.Operation = Util.RESTOPER_HISTORY;
+            rl.Operation = ResourceLocation.RESTOPER_HISTORY;
 
             string query = "";
             if (lastUpdate.HasValue)
@@ -320,7 +320,7 @@ namespace Hl7.Fhir.Client
         public Bundle History(DateTimeOffset? lastUpdate = null)
         {
             var rl = new ResourceLocation(FhirEndpoint);
-            rl.Operation = Util.RESTOPER_HISTORY;
+            rl.Operation = ResourceLocation.RESTOPER_HISTORY;
 
             string query = "";
             if (lastUpdate.HasValue)
@@ -421,7 +421,7 @@ namespace Hl7.Fhir.Client
         {
             var collection = ResourceLocation.GetCollectionNameForResource(typeof(TResource));
             var rl = ResourceLocation.Build(FhirEndpoint, collection);
-            rl.Operation = Util.RESTOPER_SEARCH;
+            rl.Operation = ResourceLocation.RESTOPER_SEARCH;
 
             if (parameters.Length % 2 != 0)
                 throw new ArgumentException("Parameters should contain pairs of keys and values");

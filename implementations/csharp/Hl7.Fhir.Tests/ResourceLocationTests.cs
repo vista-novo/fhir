@@ -238,6 +238,43 @@ namespace Hl7.Fhir.Tests
             Assert.AreEqual("4", rl.VersionId);
             Assert.AreEqual("patient", rl.Collection);
             Assert.AreEqual("history", rl.Operation);
-        } 
+        }
+
+        [TestMethod]
+        public void TestParamManipulation()
+        {
+            var rl = new ResourceLocation("patient/search?name=Kramer&name=Moreau&oauth=XXX");
+
+            rl.SetParam("newParamA", "1");
+            rl.SetParam("newParamB", "2");
+            Assert.IsTrue(rl.ToString().EndsWith("oauth=XXX&newParamA=1&newParamB=2"));
+
+            rl.SetParam("newParamA", "3");
+            rl.ClearParam("newParamB");
+            Assert.IsTrue(rl.ToString().EndsWith("oauth=XXX&newParamA=3"));
+
+            rl.AddParam("newParamA", "4");
+            Assert.IsTrue(rl.ToString().EndsWith("oauth=XXX&newParamA=3&newParamA=4"));
+
+            rl.AddParam("newParamB", "5");
+            Assert.IsTrue(rl.ToString().EndsWith("oauth=XXX&newParamA=3&newParamA=4&newParamB=5"));
+
+            Assert.AreEqual("patient/search?name=Kramer&name=Moreau&oauth=XXX&newParamA=3&newParamA=4&newParamB=5",
+                    rl.OperationPath.ToString());
+
+            rl = new ResourceLocation("patient/search");
+            rl.SetParam("firstParam", "1");
+            rl.SetParam("sndParam", "2");
+            rl.ClearParam("sndParam");
+            Assert.AreEqual("patient/search?firstParam=1", rl.OperationPath.ToString());
+            
+            rl.ClearParam("firstParam");
+            Assert.AreEqual("patient/search", rl.OperationPath.ToString());
+            
+            rl.SetParam("firstParam", "1");
+            rl.SetParam("sndParam", "2");
+            rl.ClearParams();
+            Assert.AreEqual("patient/search", rl.OperationPath.ToString());
+        }
     }
 }

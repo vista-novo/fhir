@@ -36,12 +36,19 @@ using System.Text.RegularExpressions;
 using Hl7.Fhir.Model;
 using System.Reflection;
 using Hl7.Fhir.Client;
+using System.Collections.Specialized;
 
 
 namespace Hl7.Fhir.Support
 {
     public class ResourceLocation
     {
+        public const string RESTOPER_METADATA = "metadata";
+        public const string RESTOPER_HISTORY = "history";
+        public const string RESTOPER_SEARCH = "search";
+        public const string RESTOPER_BINARY = "binary";
+        public const string RESTOPER_VALIDATE = "validate";
+       
         public const string BINARY_COLLECTION_NAME = "binary";
 
         public static string GetCollectionNameForResource(Resource r)
@@ -273,7 +280,7 @@ namespace Hl7.Fhir.Support
                 throw new ArgumentException("versionId must not be empty", "versionId");
 
             var result = ResourceLocation.Build(baseUri, collectionName, id);
-            result.Operation = Util.RESTOPER_HISTORY;
+            result.Operation = ResourceLocation.RESTOPER_HISTORY;
             result.VersionId = versionId;
             var x = result.ToString();
             return result;
@@ -527,7 +534,7 @@ namespace Hl7.Fhir.Support
                 }
 
                 // Check for <service>/<history|metadata>
-                else if (lastPart == Util.RESTOPER_METADATA || lastPart == Util.RESTOPER_HISTORY)
+                else if (lastPart == ResourceLocation.RESTOPER_METADATA || lastPart == ResourceLocation.RESTOPER_HISTORY)
                 {
                     _operation = lastPart;
                     serviceParts = parts.Length - 1;                    
@@ -617,18 +624,18 @@ namespace Hl7.Fhir.Support
 
 
 
-        private static readonly Uri DUMMY_BASE = new Uri("http://hl7.org");
+   //     private static readonly Uri LOCALHOST = new Uri("http://localhost");
 
         [Obsolete]
         public static Uri BuildResourceIdPath(string collection, string id)
         {
-            return ResourceLocation.Build(DUMMY_BASE, collection, id).OperationPath;
+            return ResourceLocation.Build(LOCALHOST, collection, id).OperationPath;
         }
 
         [Obsolete]
         public static Uri BuildResourceIdPath(string collection, string id, string version)
         {
-            return ResourceLocation.Build(DUMMY_BASE, collection, id, version).OperationPath;
+            return ResourceLocation.Build(LOCALHOST, collection, id, version).OperationPath;
         }
 
         [Obsolete]
@@ -637,7 +644,7 @@ namespace Hl7.Fhir.Support
             if (versionedUrl.IsAbsoluteUri)
                 return new ResourceLocation(versionedUrl).Collection;
             else
-                return new ResourceLocation(DUMMY_BASE, versionedUrl).Collection;
+                return new ResourceLocation(LOCALHOST, versionedUrl).Collection;
         }
 
         [Obsolete]
@@ -646,7 +653,7 @@ namespace Hl7.Fhir.Support
             if (versionedUrl.IsAbsoluteUri)
                 return new ResourceLocation(versionedUrl).Id;
             else
-                return new ResourceLocation(DUMMY_BASE, versionedUrl).Id;
+                return new ResourceLocation(LOCALHOST, versionedUrl).Id;
         }
 
 
@@ -656,7 +663,90 @@ namespace Hl7.Fhir.Support
             if (versionedUrl.IsAbsoluteUri)
                 return new ResourceLocation(versionedUrl).VersionId;
             else
-                return new ResourceLocation(DUMMY_BASE, versionedUrl).VersionId;
+                return new ResourceLocation(LOCALHOST, versionedUrl).VersionId;
+        }
+
+        public void SetParam(string key, string value)
+        {
+            var pars = SplitParams(Query);
+            pars.Set(key, value);
+            Query = JoinParams(pars);
+        }
+
+        public void ClearParam(string key)
+        {
+            var pars = SplitParams(Query);
+            pars.Remove(key);
+            Query = JoinParams(pars);
+        }
+
+
+        public void AddParam(string key, string name)
+        {
+            var pars = SplitParams(Query);
+            pars.Add(key, name);
+            Query = JoinParams(pars);
+        }
+
+        public static NameValueCollection SplitParams(string query)
+        {
+            var result = new NameValueCollection();
+
+            if (!String.IsNullOrEmpty(query))
+            {
+                var q = query.TrimStart('?');
+
+                var querySegments = q.Split(new string[] { "&" }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var segment in querySegments)
+                {
+                    string[] pair = segment.Split('=');
+                    if (pair.Length == 2)
+                    {
+                        result.Add(pair[0], pair[1]);
+                    }
+                    else
+                    {
+                        // only one key with no value specified in query string
+                        result.Add(pair[0], string.Empty);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public static string JoinParams(NameValueCollection pars)
+        {
+            StringBuilder result = new StringBuilder();
+
+            foreach (var paramName in pars.AllKeys)
+            {
+                var paramContent = pars[paramName];
+                var values = paramContent.Split(',');
+
+                foreach (var value in values)
+                    result.AppendFormat("{0}={1}&", paramName, value);
+            }
+            
+            return result.ToString().TrimEnd('&');
+        }
+
+
+        public void SetParams(NameValueCollection parameters)
+        {
+            foreach (var key in parameters.AllKeys)
+                SetParam(key, parameters[key]);
+        }
+
+        public void AddParams(NameValueCollection parameters)
+        {
+            foreach (var key in parameters.AllKeys)
+                AddParam(key, parameters[key]);
+        }
+
+        public void ClearParams()
+        {
+            Query = String.Empty;
         }
     }
 }
