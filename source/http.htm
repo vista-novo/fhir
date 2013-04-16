@@ -457,7 +457,7 @@ For date parameters the following rules apply:
  </li>
  <li>Date parameter searches are always matches based on the behaviour of intervals, as follows:
    <ul>
-     <li>For [date]=[value], the requirement is that the search interval fully contains the time of the target. i.e. 2013-01-14 = 2013-01-14T10:00 but not 2013-01-15T00:00</li>
+     <li>For [date]=[value], the requirement is that the search interval fully contains the time of the target. i.e. 2013-01-14 includes 2013-01-14T10:00 but not 2013-01-15T00:00</li>
 	 <li>For [date]-before=[value], the requirement is that the interval of the time before [value] intersects (i.e. overlaps) with the interval of time in the relevant resource element. 
 	    For instance, the resource time 2013-01-14 is included in the set of values that come before 2013-01-14T10:00, because it includes the part of 14-Jan 2013 before 10am </li>
 	 <li>For [date]-after=[value], the requirement is that the interval of the time after [value] intersects (i.e. overlaps) with the interval of time in the relevant resource element. 

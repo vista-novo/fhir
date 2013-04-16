@@ -390,10 +390,11 @@
     <translation lang="it">Profilo</translation>
   </item>
 
+  <!-- (i.e. 'xml' representation -->
   <item id="NAME_REPRESENTATION">
-    <translation lang="du">representatie'; // (i.e. 'xml' representation</translation>
-    <translation lang="en">representation'; // (i.e. 'xml' representation</translation>
-    <translation lang="it">rappresentazione'; // (i.e. 'xml' representation</translation>
+    <translation lang="du">representatie</translation>
+    <translation lang="en">representation</translation>
+    <translation lang="it">rappresentazione</translation>
   </item>
 
   <item id="NAME_RESOURCE">
@@ -420,10 +421,11 @@
     <translation lang="it"># memorizzati</translation>
   </item>
 
+  <!-- as in, history for the whole system -->
   <item id="NAME_SYSTEM">
-    <translation lang="du">het hele systeem'; // as in, history for the whole syst</translation>
-    <translation lang="en">the whole system'; // as in, history for the whole syst</translation>
-    <translation lang="it">l''intero sistema'; // as in, history for the whole syst</translation>
+    <translation lang="du">het hele systeem</translation>
+    <translation lang="en">the whole system</translation>
+    <translation lang="it">l'intero sistema</translation>
   </item>
 
   <item id="NAME_TYPE">
