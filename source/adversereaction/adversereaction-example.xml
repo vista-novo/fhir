@@ -9,10 +9,6 @@
     <type value="Patient"/>
     <url value="../patient/@example"/>
   </subject>
-  <substance>
-    <type value="Substance"/>
-    <url value="../substance/@example"/>
-  </substance>
   <didNotOccurFlag value="false"/>
   <recorder>
     <type value="Practitioner"/>
