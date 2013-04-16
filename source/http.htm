@@ -672,7 +672,9 @@ as if they were an individual <a href="#create">create</a>, <a href="#update">up
 and return a 200 OK, along with a response bundle, or reject all resources and return an 
 HTTP 400 or 500 type response. It is not an error if the submitted bundle has no resources in it.
 The outcome of the processing the batch SHALL not depend on the order of the resources in 
-the batch.
+the batch. Note that this means that a resource can only appear in the batch once, and that
+bundles may have the same resource more than once or other order dependencies (e.g. update lists), and so some
+kinds of bundles may not be able to be used as batches.
 </p>
 <p>
 When a bundle is submitted in a batch operation, all the resources have an identity specified
