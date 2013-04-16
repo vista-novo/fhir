@@ -10,7 +10,7 @@
   <LastAuthor>Hugh Glover</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
   <LastSaved>2013-04-15T20:50:00Z</LastSaved>
-  <Version>15.00</Version>
+  <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
@@ -20,6 +20,7 @@
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -318,7 +319,7 @@
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration-&gt;subject-&gt;Patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s73"><Data ss:Type="String">MedicationDispense.dispenser</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">1..1</Data><NamedCell
@@ -443,7 +444,7 @@
     <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="String">CombinedMedicationDispense.SupplyEvent.quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="120">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">MedicationDispense.DispenseEvent.medicationDispensed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -512,7 +513,7 @@
     <Cell ss:Index="13" ss:StyleID="s64"><Data ss:Type="String">CombinedMedicationDispense.SupplyEvent.receiver</Data></Cell>
     <Cell ss:Index="16"><Data ss:Type="String">This is in the core because Controlled Drugs must be signed for and the recievers identiy must be recorded.</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="240">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">MedicationDispense.DispenseEvent.dosageDetails</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="8" ss:StyleID="s82"><Data ss:Type="String">Medicine administration instructions to the patient/carer</Data></Cell>
@@ -520,7 +521,7 @@
     <Cell ss:Index="12" ss:StyleID="s82"/>
     <Cell ss:Index="16"><Data ss:Type="String">The RMIM has priority code on the act relationship.  How do we handle this?</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="150">
+   <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="String">MedicationDispense.DispenseEvent.dosageDetails.timing</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Schedule</Data></Cell>
@@ -549,7 +550,7 @@
     <Cell ss:Index="12" ss:StyleID="s82"/>
     <Cell><Data ss:Type="String">CombinedMedicationRequest.component1.AdministrationRequest.routeCode</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="90">
+   <Row ss:AutoFitHeight="0" ss:Height="165">
     <Cell ss:StyleID="s86"><Data ss:Type="String">MedicationDispense.DispenseEvent.dosageDetails.methodOfAdministration</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s72"/>
@@ -639,13 +640,11 @@
     <HorizontalResolution>300</HorizontalResolution>
     <VerticalResolution>300</VerticalResolution>
    </Print>
-   <Selected/>
    <TopRowVisible>6</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>13</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>12</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -659,7 +658,7 @@
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="12" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s87" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:StyleID="s87" ss:AutoFitWidth="0" ss:Width="115.5"/>
-   <Column ss:StyleID="s87" ss:Width="165.75"/>
+   <Column ss:StyleID="s87" ss:AutoFitWidth="0" ss:Width="180"/>
    <Column ss:StyleID="s87" ss:AutoFitWidth="0" ss:Width="310.5"/>
    <Column ss:StyleID="s87" ss:AutoFitWidth="0" ss:Width="198.75"/>
    <Column ss:StyleID="s87" ss:AutoFitWidth="0" ss:Width="188.25"/>
@@ -677,7 +676,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">MedicationDispense.DispenseEvent</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">whenHandedOver cannot be before whenPrepared</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">not(exists(f:whenHandedOver/@value)) or not(exists(f:whenPrepared/@value)) or ( f:whenHandedOver/@value &gt;= f:whenPrepared/@value)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="Default"/>
@@ -725,11 +724,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
