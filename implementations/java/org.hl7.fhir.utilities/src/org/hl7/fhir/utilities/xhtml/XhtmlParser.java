@@ -117,7 +117,7 @@ public class XhtmlParser {
     readChar();
     String n = readName().toLowerCase();
     if (!n.equals(entryName))
-      throw new Exception("Unable to Parse HTML - does not start with 'html'"+descLoc());
+      throw new Exception("Unable to Parse HTML - does not start with '"+entryName+"'"+descLoc());
     XhtmlNode root = result.addTag(n);
 
     readToTagEnd();
@@ -322,6 +322,11 @@ public class XhtmlParser {
     else
     {
       char c = (char)rdr.read();
+      if (c == (char)-1)
+      {
+    	  cache = "";
+    	  return '\0';
+      }
       cache =  Character.toString(c);
       return c;
     }
