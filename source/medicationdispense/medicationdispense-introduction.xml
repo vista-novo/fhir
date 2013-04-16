@@ -1,0 +1,31 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+    <!-- insert xhtml content here  -->
+    <p>This is one of several resources produced by the Pharmacy work group.
+    </p>
+    <p>The four resources below cover the major activities of the Pharmacy domain; there will then be a Medication resource to allow the identification and management of Medicines.</p>
+    
+    <table border="1" cellpadding="1" cellspacing="2" frame="box">
+        <tr>
+            <th>Resource</th>
+            <th>Comments</th>
+        </tr>
+        <tr>
+            <td>MedicationAdministration</td>
+            <td>The event of a patient consuming a medicine (see V3 Pharmacy Domain PORX_ST040110UV)</td>
+        </tr>
+        <tr>
+            <td>MedicationDispense</td>
+            <td>Provision of a supply of a medication with the intention that it is subsequently consumed by a patient.  The supply and the associated administration instructions may not exactly follow the original order (prescription) either because some details were left for completion at this point in the process, or because the dispenser exercised their clinical judgment to make some appropriate modification.</td>
+        </tr>
+        <tr>
+            <td>MedicationPrescription</td>
+            <td>This is the original order for both supply of the medication and the instructions for administration of the medicine to a patient.</td>
+        </tr>
+        <tr>
+            <td>MedicationStatement</td>
+            <td>This is a record of medication being given to a patient where the record is the result of a report from the patient, or another clinician.  A medication statement is not a part of the prescribe->dispense->administer sequence but is a report that such a sequence (or at least a part of it) did take place resulting in a belief that the patient has received a particular medication.</td>
+        </tr>
+    </table>
+
+</div>
