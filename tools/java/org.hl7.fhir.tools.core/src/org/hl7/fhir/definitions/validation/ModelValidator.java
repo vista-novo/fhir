@@ -83,6 +83,8 @@ public class ModelValidator {
     checkElement(parent.getName(), parent.getRoot(), parent);
     rule(parent.getName(), parent.getRoot().getElementByName("text") == null, "Element named \"text\" not allowed");
     rule(parent.getName(), parent.getRoot().getElementByName("extension") == null, "Element named \"extension\" not allowed");
+    if (parent.getRoot().getElementByName("subject") != null && parent.getRoot().getElementByName("subject").typeCode().startsWith("Resource"))
+      rule(parent.getName(), parent.getSearchParams().containsKey("subject"), "A resource that contains a subject reference must have a search parameter 'subject'");
 		return errors;
 	}
 

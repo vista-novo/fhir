@@ -20,7 +20,7 @@
   <WindowWidth>19440</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>7</ActiveSheet>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -408,8 +408,9 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>16</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>0</ActiveCol>
+     <RangeSelection>R3C1:R24C1</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -562,68 +563,83 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Search">
-  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="41" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="29" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="419.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Repeats</Data></Cell>
+    <Cell><Data ss:Type="String">Path</Data></Cell>
    </Row>
-   <Row ss:Index="6" ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">identifier</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.identifier</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">state</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.state</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">setting</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.setting</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.subject</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">responsible</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.responsible</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">fulfills</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.fulfills</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">period</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">date</Data></Cell>
+    <Cell><Data ss:Type="String">single</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.period</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">length</Data></Cell>
+    <Cell><Data ss:Type="String">Length of visit in days</Data></Cell>
+    <Cell><Data ss:Type="String">integer</Data></Cell>
+    <Cell><Data ss:Type="String">single</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.length</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">contact</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.contact</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="9" ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="9" ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="9" ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="9" ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="9" ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="9" ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="9" ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="9" ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="9" ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="9" ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="9" ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="9" ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">indication</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.indication</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -688,6 +704,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -707,6 +724,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -880,13 +899,13 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Example">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="81"/>
    <Column ss:Width="154.5"/>
    <Column ss:Width="42"/>
    <Column ss:Width="138.75"/>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s72"><Data ss:Type="String">Name</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">Description</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">Identity</Data></Cell>
@@ -894,7 +913,7 @@
     <Cell ss:StyleID="s72"><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">In Book</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell><Data ss:Type="String">Visit example</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -908,7 +927,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Selected/>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
