@@ -9,37 +9,40 @@
     </div>
   </text> 
 <!--  -->
-<administrationEventStatus value="completed"/>
-<effectiveTime>
+  <status value="completed"/>
+  <patient>
+    <type value="Patient"/>
+    <url value="../patient/@example"/>
+  </patient>
+  <practitioner>
+    <type value="Practitioner"/>
+    <url value="../practitioner/@example"/>
+  </practitioner>
+  <authorizingPrescription>
+    <type value="Prescription"/>
+    <url value="../prescription/@example"/>
+  </authorizingPrescription>
+  <whenGiven>
   <start value="2012-06-01T14:30:00"/>
   <end value="2012-06-01T14:30:00"/>
-</effectiveTime>
-  <route>
+</whenGiven>
+  <medicationAdministered>
+    <type value="Medication"/>
+    <url value="../medication/@example"/> 
+  </medicationAdministered>
+  <dosageDetails>
+  <routeOfAdministration>
     <coding>
       <system value="http://snomed.info"/>
       <code value="363743006"/>
       <display value="oral administration of treatment"/>
     </coding>  
-  </route>
-  <administeredDose>
+  </routeOfAdministration>
+  <doseQuantity>
     <value value="10"/>
     <units value="ml"/>
     <system value="http://unitsofmeasure.org"/>
     <code value="ml"/>
-  </administeredDose>
-  <prescription>
-    <type value="Prescription"/>
-    <url value="../prescription/@example"/>
-  </prescription>
-  <patient>
-    <type value="Patient"/>
-    <url value="../patient/@example"/>
-  </patient>
-  <medication>
-    <coding>
-      <system value="http://snomed.info"/>
-      <code value="123456789"/>
-      <display value="Penicillin VK oral suspension 125mg/5ml"/>
-    </coding>  
-  </medication>
+  </doseQuantity>
+  </dosageDetails>
 </MedicationAdministration>
