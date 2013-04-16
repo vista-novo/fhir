@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Medication xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\medication.xsd">
+
+  <!-- insert contents here -->
+  
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">123456789: Penicillin VK oral suspension 125mg/5ml</div>
+  </text>
+  
+  <code>
+    <coding>
+      <system value="http://snomed.info"/>
+      <code value="123456789"/>
+      <display value="Penicillin VK oral suspension 125mg/5ml"/>
+    </coding>  
+  </code>
+  <level value="product"/>
+  <Components>
+    <quantity>
+      <numerator>
+        <value value="125"/>
+        <units value="mg"/>
+        <system value="http://unitsofmeasure.org"/>
+        <code value="mg"/>
+      </numerator>
+      <denominator>
+        <value value="5"/>
+        <units value="ml"/>
+        <system value="http://unitsofmeasure.org"/>
+        <code value="ml"/>
+      </denominator>
+    </quantity>
+  </Components>
+    <isBrand value="false"/>
+  <form>
+    <coding>
+      <system value="http://snomed.info"/>
+      <code value="123456789"/>
+      <display value="Oral suspension"/>
+    </coding>      
+  </form>
+</Medication>

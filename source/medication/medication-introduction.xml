@@ -1,0 +1,15 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- content goes here -->
+    <!-- insert xhtml content here  -->
+    <p>Representing Medication in the majority of healthcare settings is a matter of idfentifying an item from a list and then conveying the code for the item selected either into 
+        the patient record or to other applications.  Additional information is frequently provided for human verification but generally there is no justification for extensive
+        modelling of the Medicines domain - most systems cannot use it.  There are some occasions where it is necessary to identify slightly more detail.  For instance dispensing a 
+        package containing a particular medicine requires identification both of the medicine and the package in one go.  There are also some occasions where the composition of a 
+        medicine must be represented.  Most systems make some attempt at  this even though it is quite rarely used.  In these cases the ingredients of the medicine have to be specified
+        together with the amount contained.
+    </p>
+    <p>The Medication resource meets these challenges by only representing a single layer of information at a time and allowing the parent and child layers of information to be refered
+        to a additional instances of the resource.  Thus a Package can have a child that is one or more medicines.  A medicine can have a parent package and one or more child ingredients.  
+        An ingredient can have a Medicine as a parent and one or more sub-ingredents as children.  The hierarchy of composition can be defined as required.</p>
+</div>
