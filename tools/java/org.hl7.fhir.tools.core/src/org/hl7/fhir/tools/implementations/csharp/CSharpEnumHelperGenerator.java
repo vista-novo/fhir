@@ -10,7 +10,7 @@ import org.hl7.fhir.tools.implementations.GenBlock;
 import org.hl7.fhir.tools.implementations.GeneratorUtils;
 
 /*
-Copyright (c) 2011-2012, HL7, Inc
+Copyright (c) 2011-2013, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 

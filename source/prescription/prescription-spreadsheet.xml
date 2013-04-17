@@ -20,7 +20,6 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -70,15 +69,15 @@
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s68">
-   <Alignment ss:Vertical="Top"/>
-  </Style>
-  <Style ss:ID="s69">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s72">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s69">
+   <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -277,7 +276,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">MedicationKind</Data><NamedCell
+    <Cell><Data ss:Type="String">MedicationKindX</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Text and/or code(s) for medicine</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -566,6 +565,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -586,8 +586,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>12</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>13</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -653,35 +653,35 @@
     <Cell><Data ss:Type="String">The identity of a patient to list prescriptions for</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Prescription.patient</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Prescription.patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">prescriber</Data></Cell>
     <Cell><Data ss:Type="String">The identity of a prescriber to list prescriptions from</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Prescription.prescriber</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Prescription.prescriber</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">startdate</Data></Cell>
     <Cell><Data ss:Type="String">Return only prescriptions made starting from this date (inclusive) (prescribed)</Data></Cell>
     <Cell><Data ss:Type="String">date</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Prescription.administrationRequest.start</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Prescription.administrationRequest.start</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">enddate</Data></Cell>
     <Cell><Data ss:Type="String">Return only prescriptions made before this date (inclusive) (prescribed)</Data></Cell>
     <Cell><Data ss:Type="String">date</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Prescription.administrationRequest.end</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Prescription.administrationRequest.end</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">status</Data></Cell>
     <Cell><Data ss:Type="String">status of the prescription</Data></Cell>
     <Cell><Data ss:Type="String">token</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Prescription.status</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Prescription.status</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">medicine</Data></Cell>
@@ -709,7 +709,6 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -723,13 +722,13 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="135.75"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="282.75"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="60"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="90"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="168"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="324"/>
+   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="135.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="282.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="60"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="90"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="168"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="324"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -739,46 +738,46 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">PrescriptionStatus</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">The status of a prescription</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">#prescription-status</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">PrescriptionStatus</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">The status of a prescription</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">#prescription-status</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">MedicationKind</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">The kind of medication, vaccine or therapeutic material</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s69"><Data ss:Type="String">G-Standaard (Netherlands), AMT (Australia)</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">MedicationKindX</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">The kind of medication, vaccine or therapeutic material</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">G-Standaard (Netherlands), AMT (Australia)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">AdministrationInstruction</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Instructions for administering medication</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s69"><Data ss:Type="String">NHG Table 25b</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">AdministrationInstruction</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Instructions for administering medication</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">NHG Table 25b</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">AdministrationPrecondition</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Precondition for administering medication</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s69"><Data ss:Type="String">NHG Table 25b</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">AdministrationPrecondition</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Precondition for administering medication</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">NHG Table 25b</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">AdministrationRoute</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Route by which a medication is administered</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s69"><Data ss:Type="String">G-Standaard sub-table 0007</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">AdministrationRoute</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Route by which a medication is administered</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">G-Standaard sub-table 0007</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">PrescriptionReason</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Medical reason for prescribing a medicine</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s69"><Data ss:Type="String">ICD-10 or ICPC-1</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">PrescriptionReason</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Medical reason for prescribing a medicine</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">ICD-10 or ICPC-1</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -791,8 +790,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -803,7 +801,7 @@
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="432.75"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s68">
+   <Row ss:AutoFitHeight="0" ss:StyleID="s69">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"/>

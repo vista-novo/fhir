@@ -3,7 +3,7 @@ package org.hl7.fhir.instance.model;
 import java.util.ArrayList;
 import java.util.List;
 /*
-Copyright (c) 2011-2012, HL7, Inc
+Copyright (c) 2011-2013, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
