@@ -20,6 +20,7 @@
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -278,15 +279,15 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">This is the individual who is responsible for giving the medication to the patient.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationAdministration.encounter</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationAdministration.visit</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Identifier</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Resource(Visit)</Data></Cell>
     <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">Encounter</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">An identifier or a link to a resource that identifies the particular occurrence of contact between patient and health care provider.</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Current Encounter / Admission</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">An link to a resource that identifies the particular occurrence of contact between patient and health care provider.</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">SubstanceAdministration-&gt;component-&gt;EncounterEvent</Data></Cell>
@@ -296,8 +297,8 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationAdministration.authorizingPrescription</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationAdministration.prescription</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
@@ -346,7 +347,7 @@
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration.effectiveTime</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">MedicationAdministration.medicationAdministered</Data></Cell>
+    <Cell><Data ss:Type="String">MedicationAdministration.medication</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -376,11 +377,11 @@
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration-&gt;device-&gt;Access  OR SubstanceAdministration-&gt;device-&gt;AssignedDevice</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">MedicationAdministration.dosageDetails</Data></Cell>
+    <Cell><Data ss:Type="String">MedicationAdministration.dosage</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">right</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="s77"><Data ss:Type="String">Medicine administration instructions to the patient/carer</Data></Cell>
@@ -394,7 +395,7 @@
     <Cell><Data ss:Type="String">The RMIM has priority code on the act relationship.  How do we handle this?</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">MedicationAdministration.dosageDetails.timing</Data></Cell>
+    <Cell><Data ss:Type="String">MedicationAdministration.dosage.timing</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -412,7 +413,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">MedicationAdministration.dosageDetails.siteOfAdministration</Data></Cell>
+    <Cell><Data ss:Type="String">MedicationAdministration.dosage.site</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -430,7 +431,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">MedicationAdministration.dosageDetails.routeOfAdministration</Data></Cell>
+    <Cell><Data ss:Type="String">MedicationAdministration.dosage.route</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -448,7 +449,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationAdministration.dosageDetails.methodOfAdministration</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationAdministration.dosage.method</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
@@ -460,7 +461,7 @@
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration.methodCode</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">MedicationAdministration.dosageDetails.doseQuantity</Data></Cell>
+    <Cell><Data ss:Type="String">MedicationAdministration.dosage.quantity</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -478,7 +479,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">MedicationAdministration.dosageDetails.doseRateQuantity</Data></Cell>
+    <Cell><Data ss:Type="String">MedicationAdministration.dosage.rate</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -496,7 +497,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">MedicationAdministration.dosageDetails.maxDosePerPeriod</Data></Cell>
+    <Cell><Data ss:Type="String">MedicationAdministration.dosage.maxDosePerPeriod</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -527,11 +528,10 @@
     <HorizontalResolution>300</HorizontalResolution>
     <VerticalResolution>300</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>3</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -544,11 +544,11 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>7</ActiveRow>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -689,7 +689,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Search">
-  <Table ss:ExpandedColumnCount="10" ss:ExpandedRowCount="41" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="10" ss:ExpandedRowCount="40" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Width="116.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
@@ -710,20 +710,19 @@
     <Cell ss:StyleID="s86"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">encounter</Data></Cell>
-    <Cell><Data ss:Type="String">Return administrations with this enconter identity</Data></Cell>
-    <Cell><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">visit</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationAdministration.encounter</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationAdministration.visit</Data></Cell>
     <Cell ss:StyleID="s86"/>
     <Cell ss:Index="10" ss:StyleID="s65"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">authorizingPrescription</Data></Cell>
+    <Cell><Data ss:Type="String">prescription</Data></Cell>
     <Cell><Data ss:Type="String">The identity of a prescription to list administrations from</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">MedicationAdministration.authorizingPrescription</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">MedicationAdministration.prescription</Data></Cell>
     <Cell ss:StyleID="s86"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -746,16 +745,7 @@
     <Cell><Data ss:Type="String">Code for medicine or text in medicine name</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationAdministration.medicationAdministered</Data></Cell>
-    <Cell ss:StyleID="s86"/>
-    <Cell ss:Index="10" ss:StyleID="s65"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">medicineName</Data></Cell>
-    <Cell><Data ss:Type="String">Text in medicine name</Data></Cell>
-    <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationAdministration.medicationAdministered</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationAdministration.medication</Data></Cell>
     <Cell ss:StyleID="s86"/>
     <Cell ss:Index="10" ss:StyleID="s65"/>
    </Row>
@@ -777,7 +767,13 @@
     <Cell ss:StyleID="s86"/>
     <Cell ss:Index="10" ss:StyleID="s65"/>
    </Row>
-   <Row ss:Index="12" ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">notGiven</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">token</Data></Cell>
+    <Cell><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">MedicationAdministration.wasNotGiven</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:Index="10" ss:StyleID="s65"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -881,11 +877,11 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>13</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>4</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -25,7 +25,7 @@
     <type value="MedicationPrescription"/>
     <url value="../medicationprescription/@example" />
   </authorizingPrescription>
-  <DispenseEvent>
+  <dispense>
     <status >
       <coding>
         <system value="./MedDispStatus"/>
@@ -39,10 +39,10 @@
       <system value="http://unitsofmeasure.org"/>
       <code value="ml"/>
     </quantity>
-    <medicationDispensed>
+    <medication>
       <type value="Medication"/>
       <url value="../medication/@example"/>
-    </medicationDispensed>
+    </medication>
     <whenPrepared>
       <start value="2012-05-30T16:20:00"/>
       <end value="2012-05-30T16:20:00"/>
@@ -51,15 +51,15 @@
       <start value="2012-05-31T10:20:00"/>
       <end value="2012-05-31T10:20:00"/>
     </whenHandedOver>
-  </DispenseEvent>
-  <Substitution>
-    <substitutionType>
+  </dispense>
+  <substitution>
+    <type>
       <coding>
         <system value="./MedDispSubType"/>
         <code value="NoSub"/>
         <display value="No substitution made or expected"/>
       </coding>
-    </substitutionType>
-  </Substitution>  
+    </type>
+  </substitution>  
   
 </MedicationDispense>

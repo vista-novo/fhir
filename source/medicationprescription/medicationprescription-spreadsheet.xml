@@ -10,7 +10,7 @@
   <LastAuthor>Hugh Glover</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
   <LastSaved>2013-04-15T20:50:00Z</LastSaved>
-  <Version>15.00</Version>
+  <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
@@ -115,23 +115,24 @@
    <NumberFormat ss:Format="@"/>
   </Style>
   <Style ss:ID="s76">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s78">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s79">
-   <Alignment ss:Vertical="Top"/>
-  </Style>
-  <Style ss:ID="s80">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
-    ss:WrapText="1"/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#993366"/>
-  </Style>
-  <Style ss:ID="s81">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s77">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s78">
+   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s80">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s81">
+   <Alignment ss:Vertical="Top"/>
   </Style>
   <Style ss:ID="s82">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
@@ -152,27 +153,29 @@
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Names>
-   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="='Data Elements'!R1C1:R29C16"
+   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="='Data Elements'!R1C1:R29C17"
     ss:Hidden="1"/>
   </Names>
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="29" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="32" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="328.5"/>
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="39.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="56.25"/>
    <Column ss:StyleID="s63" ss:Hidden="1" ss:AutoFitWidth="0" ss:Width="56.25"/>
    <Column ss:StyleID="s63" ss:Hidden="1" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s63" ss:Hidden="1" ss:AutoFitWidth="0" ss:Width="61.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="219.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75"/>
-   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="161.25" ss:Span="1"/>
-   <Column ss:Index="10" ss:StyleID="s63" ss:Hidden="1" ss:AutoFitWidth="0"
-    ss:Width="77.25"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="161.25"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="261.75"/>
+   <Column ss:StyleID="s63" ss:Hidden="1" ss:AutoFitWidth="0" ss:Width="77.25"/>
    <Column ss:StyleID="s63" ss:Hidden="1" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="195.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="510"/>
-   <Column ss:Index="16" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="288"/>
+   <Column ss:Index="17" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="288"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s66">
     <Cell><Data ss:Type="String">Element</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">UML</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Card.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Inv.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data><NamedCell
@@ -200,46 +203,50 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationPrescription</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource</Data><NamedCell
+    <Cell ss:StyleID="s68"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Prescription of medication to for patient</Data><NamedCell
+    <Cell ss:Index="9"><Data ss:Type="String">Prescription of medication to for patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Top-level class that links the administration and supply request together.</Data><NamedCell
+    <Cell><Data ss:Type="String">An order for both supply of the medication and the instructions for administration of the medicine to a patient.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="240">
+   <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationPrescription.id</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s68"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">Identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">External identifier</Data><NamedCell
+    <Cell ss:Index="9"><Data ss:Type="String">External identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">External identifier - FHIR will generate its own internal IDs which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an erntire workflow process where records have to be tracked through an entire system.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.id</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationPrescription.status</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">CodeableConcept</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">MedicationPrescriptionStatus</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">Active/Completed/Aborted</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">A code specifying the state of the order.  Generally this will be active or completed state &#10;</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.statusCode</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.id</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationPrescription.status</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s68"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="String">CodeableConcept</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">MedicationPrescriptionStatus</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">active | paused | completed | nullified</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">A code specifying the state of the order.  Generally this will be active or completed state &#10;</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.statusCode</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s71"><Data ss:Type="String">MedicationPrescription.patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s71"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">1..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s70"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -252,12 +259,13 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">A link to a resource representing the person to whom the medication will be given.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="12" ss:StyleID="s63"><Data ss:Type="String">SubstanceAdministration-&gt;subject-&gt;Patient</Data><NamedCell
+    <Cell ss:Index="13" ss:StyleID="s63"><Data ss:Type="String">SubstanceAdministration-&gt;subject-&gt;Patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s71"><Data ss:Type="String">MedicationPrescription.prescriber</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s74"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">1..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s70"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -270,120 +278,131 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">The healthcare professional responsible for authorising the prescription</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="12" ss:StyleID="s63"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="13" ss:StyleID="s63"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="75">
-    <Cell ss:StyleID="s71"><Data ss:Type="String">MedicationPrescription.encounter</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell ss:StyleID="s71"><Data ss:Type="String">MedicationPrescription.visit</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s74"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s70"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s70"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s70"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">Identifier</Data><NamedCell
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Resource(Visit)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s70"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Encounter</Data><NamedCell
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Encounter / Admission</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">An identifier or a link to a resource that identifies the particular occurrence of contact between patient and health care provider.</Data><NamedCell
+    <Cell ss:StyleID="s73"><Data ss:Type="String">A link to a resource that identifies the particular occurrence of contact between patient and health care provider.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="12" ss:StyleID="s63"><Data ss:Type="String">SubstanceAdministration-&gt;component-&gt;EncounterEvent</Data><NamedCell
+    <Cell ss:Index="13" ss:StyleID="s63"><Data ss:Type="String">SubstanceAdministration-&gt;component-&gt;EncounterEvent</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">MedicationPrescription.reviewStatus</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">MedicationPrescriptionReviewStatus</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Prescription review status</Data><NamedCell
+    <Cell><Data ss:Type="String">To be done!</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">A coded value for the status of any review of the prescription (waiting for review/not done/completed)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.subjectOf.Review</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.subjectOf.Review</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">not a profile review but review of specific &#10;Reason for review&#10;Outcome of review&#10;Date of review&#10;Date of next review&#10;&#10;otherwise an extension</Data><NamedCell
+    <Cell ss:Index="17"><Data ss:Type="String">not a profile review but review of specific &#10;Reason for review&#10;Outcome of review&#10;Date of review&#10;Date of next review&#10;&#10;otherwise an extension</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">MedicationPrescription.reasonForPrescribing</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">string</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Reason or indication for writing the prescription</Data><NamedCell
+    <Cell ss:Index="9"><Data ss:Type="String">Reason or indication for writing the prescription</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Can be the reason or the indication for writing the prescription.   </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.RSON.A_SupportingClinicalInformation</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.RSON.A_SupportingClinicalInformation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">MedicationPrescription.AdministrationRequest</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">MedicationPrescription.administration</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">down</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6" ss:StyleID="s74"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8" ss:StyleID="s63"><Data ss:Type="String">Administration order</Data><NamedCell
+    <Cell ss:Index="7" ss:StyleID="s74"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="9" ss:StyleID="s63"><Data ss:Type="String">Administration order</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Describes the medication and the intended dose to be given to the patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="240">
-    <Cell><Data ss:Type="String">MedicationPrescription.AdministrationRequest.id</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="135">
+    <Cell><Data ss:Type="String">MedicationPrescription.administration.id</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">Identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">External identifier</Data><NamedCell
+    <Cell ss:Index="9"><Data ss:Type="String">External identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">External identifier - FHIR will generate its own internal IDs which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an erntire workflow process where records have to be tracked through an entire system.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.component1.AdministrationRequest.id</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.component1.administration.id</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="120">
-    <Cell><Data ss:Type="String">MedicationPrescription.AdministrationRequest.prescribedMedication</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="75">
+    <Cell><Data ss:Type="String">MedicationPrescription.administration.medication</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6" ss:StyleID="s74"><Data ss:Type="String">Resource(Medication)</Data><NamedCell
+    <Cell ss:Index="7" ss:StyleID="s74"><Data ss:Type="String">Resource(Medication)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s74"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="String">Medication to be taken</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.component1.AdministrationRequest.consumable</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.component1.administration.consumable</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="240">
-    <Cell><Data ss:Type="String">MedicationPrescription.AdministrationRequest.dosageDetails</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">MedicationPrescription.administration.dosage</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">right</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Medicine administration instructions to the patient/carer</Data><NamedCell
+    <Cell ss:Index="9"><Data ss:Type="String">Medicine administration instructions to the patient/carer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Indicates how the medication is to be used by the patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="150">
-    <Cell><Data ss:Type="String">MedicationPrescription.AdministrationRequest.dosageDetails.timing</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="90">
+    <Cell><Data ss:Type="String">MedicationPrescription.administration.dosage.timing</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Schedule</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">Schedule</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Medication timing</Data><NamedCell
+    <Cell ss:Index="9"><Data ss:Type="String">Medication timing</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  &quot;Every  8 hours&quot;; &quot;Three times a day&quot;; &quot;1/2 an hour before breakfast for 10 days from 23-Dec 2011:&quot;;  &quot;15 Oct 2013, 17 Oct 2013 and 1 Nov 2013&quot;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.component1.AdministrationRequest.effectiveTime</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.component1.administration.effectiveTime</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">MedicationPrescription.AdministrationRequest.dosageDetails.siteOfAdministration</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">MedicationPrescription.administration.dosage.site</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">ApproachSite</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -391,14 +410,15 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">A coded specification of the anatomic site where the medication first enters the body</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.component1.AdministrationRequest.approachSiteCode</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.component1.administration.approachSiteCode</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">MedicationPrescription.AdministrationRequest.dosageDetails.routeOfAdministration</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">MedicationPrescription.administration.dosage.route</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">RouteOfAdministration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -406,12 +426,13 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">A code specifying the route or physiological path of administration of a therapeutic agent into or onto a subject. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.component1.AdministrationRequest.routeCode</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.component1.administration.routeCode</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="135">
-    <Cell><Data ss:Type="String">MedicationPrescription.AdministrationRequest.dosageDetails.methodOfAdministration</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="105">
+    <Cell><Data ss:Type="String">MedicationPrescription.administration.dosage.method</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s70"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -425,138 +446,151 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">A coded value indicating the method by which the medication is introduced into or onto the body. Most commonly used for injections.  Examples:  Slow Push; Deep IV.&#10;&#10;Terminologies used often pre-coordinate this term with the route and or form of administration.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="12" ss:StyleID="s63"><Data ss:Type="String">SubstanceAdministration.methodCode</Data><NamedCell
+    <Cell ss:Index="13" ss:StyleID="s63"><Data ss:Type="String">SubstanceAdministration.methodCode</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">MedicationPrescription.AdministrationRequest.dosageDetails.doseQuantity</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">MedicationPrescription.administration.dosage.quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Quantity</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">Quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Dose quantity per dose</Data><NamedCell
+    <Cell ss:Index="9"><Data ss:Type="String">Dose quantity per dose</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The amount of the therapeutic or other substance given at one administration event. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.component1.AdministrationRequest.doseQuantity</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.component1.administration.doseQuantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">MedicationPrescription.AdministrationRequest.dosageDetails.doseRateQuantity</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">MedicationPrescription.administration.dosage.rate</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Ratio</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">Ratio</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Dose quantity per unit of time</Data><NamedCell
+    <Cell ss:Index="9"><Data ss:Type="String">Dose quantity per unit of time</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Identifies the speed with which the substance is introduced into the subject. Typically the rate for an infusion. 200ml in 2 hours.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.component1.AdministrationRequest.rateQuantity</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.component1.administration.rateQuantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="75">
-    <Cell><Data ss:Type="String">MedicationPrescription.AdministrationRequest.dosageDetails.maxDosePerPeriod</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">MedicationPrescription.administration.dosage.maxDosePerPeriod</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Ratio</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">Ratio</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Total dose that should be consumed per unit of time</Data><NamedCell
+    <Cell ss:Index="9"><Data ss:Type="String">Total dose that should be consumed per unit of time</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The maximum total quantity of a therapeutic substance that my be administered to a subject over the period of time. E.g. 1000mg in 24 hours.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.component1.AdministrationRequest.maxDoseQuantity</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.component1.administration.maxDoseQuantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="120">
-    <Cell><Data ss:Type="String">MedicationPrescription.DispenseRequest</Data><NamedCell
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MedicationPrescription.dispense</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">right</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6" ss:StyleID="s70"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7" ss:StyleID="s70"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s74"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="String">Dispense request</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Deals with details of the dispense part of the order</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="240">
-    <Cell><Data ss:Type="String">MedicationPrescription.DispenseRequest.id</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="135">
+    <Cell><Data ss:Type="String">MedicationPrescription.dispense.id</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">Identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">External identifier</Data><NamedCell
+    <Cell ss:Index="9"><Data ss:Type="String">External identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">External identifier - FHIR will generate its own internal IDs which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an erntire workflow process where records have to be tracked through an entire system.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.component2.DispenseRequest.id</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.component2.dispense.id</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="345">
-    <Cell><Data ss:Type="String">MedicationPrescription.DispenseRequest.validityPeriod</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="210">
+    <Cell><Data ss:Type="String">MedicationPrescription.dispense.validityPeriod</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Period</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">Period</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Validity period</Data><NamedCell
+    <Cell ss:Index="9"><Data ss:Type="String">Validity period</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Design Comments: This indicates the validity period of a prescription (stale dating the Prescription) &#10;It reflects the prescriber perspective for the validity of the prescription. Dispenses must not be made against the prescription outside of this period. The lower-bound of the Dispensing Window signifies the earliest date that the prescription can be filled for the first time. If an upper-bound is not specified then the Prescription is open-ended or will default to a stale-date based on regulations. &#10;Rationale: Indicates when the Prescription becomes valid, and when it ceases to be a dispensable Prescription. &#10;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.component2.DispenseRequest.effectiveTime</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.component2.dispense.effectiveTime</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="120">
-    <Cell><Data ss:Type="String">MedicationPrescription.DispenseRequest.numberOfRepeatsAllowed</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="90">
+    <Cell><Data ss:Type="String">MedicationPrescription.dispense.numberOfRepeatsAllowed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">integer</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">integer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Number of repeats allowed</Data><NamedCell
+    <Cell ss:Index="9"><Data ss:Type="String">Number of repeats allowed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">An integer indicating the number of repeats of the Dispense. &#10;UsageNotes: For example, the number of times the prescribed quantity is to be supplied including the initial standard fill. &#10;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.component2.DispenseRequest.repeatNumber</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.component2.dispense.repeatNumber</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">MedicationPrescription.DispenseRequest.quantity</Data><NamedCell
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MedicationPrescription.dispense.quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Quantity</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">Quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Quanity</Data><NamedCell
+    <Cell ss:Index="9"><Data ss:Type="String">Quanity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The amount that is to be dispensed. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.component2.DispenseRequest.quantity</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.component2.dispense.quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="315">
-    <Cell><Data ss:Type="String">MedicationPrescription.DispenseRequest.expectedSupplyDuration</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="195">
+    <Cell><Data ss:Type="String">MedicationPrescription.dispense.expectedSupplyDuration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Duration</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">Duration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Expected supply duration</Data><NamedCell
+    <Cell ss:Index="9"><Data ss:Type="String">Expected supply duration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Identifies the period time over which the supplied product is expected to be used, or the length of time the dispense is expected to last. &#10;In some situations, this attribute may be used instead of quantity to identify the amount supplied by how long it is expected to last, rather than the physical quantity issued. E.g. 90 days supply of medication (based on an ordered dosage) When possible, it is always better to specify quantity, as this tends to be more precise. expectedSupplyDuration will always be an estimate that can be influenced by external factors. &#10;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.component2.DispenseRequest.expectedUseTime</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.component2.dispense.expectedUseTime</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="150">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationPrescription.Substitution</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="90">
+    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationPrescription.substitution</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">left</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8" ss:StyleID="s63"><Data ss:Type="String">Deals with substitution of one medicine for another</Data><NamedCell
+    <Cell ss:Index="9" ss:StyleID="s63"><Data ss:Type="String">Deals with substitution of one medicine for another</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Indicates whether or not substitution can or should as part of the dispense.  In some cases substitution must  happen, in other cases substitution must not happen, and in others it does not matter.  This block explains the prescribers intent.  If nothing is specified substitution may be done.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationPrescription.Substitution.substitutionType</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationPrescription.substitution.type</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s77"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">CodeableConcept</Data><NamedCell
+    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">MedicationIntendedSubstitutionType</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -564,14 +598,15 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">A code signifying whether a different drug should be dispensed from what was prescribed.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.subjectOf.SubstitutionPermission.code</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.subjectOf.SubstitutionPermission.code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationPrescription.Substitution.substitutionReason</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationPrescription.substitution.reason</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s77"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">CodeableConcept</Data><NamedCell
+    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">MedicationIntendedSubstitutionReason</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -579,8 +614,17 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Indicates the reason for the substitution why substitution must or must not be performed.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest.subjectOf.SubstitutionPermission.reasonCode</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">CombinedMedicationRequest.subjectOf.SubstitutionPermission.reasonCode</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2" ss:StyleID="s76"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2" ss:StyleID="s76"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2" ss:StyleID="s76"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -617,24 +661,25 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>17</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
-  <AutoFilter x:Range="R1C1:R29C16"
+  <AutoFilter x:Range="R1C1:R29C17"
    xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s76" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="115.5"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="153"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="204.75"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="198.75"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="188.25"/>
+   x:FullRows="1" ss:StyleID="s78" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:StyleID="s78" ss:AutoFitWidth="0" ss:Width="115.5"/>
+   <Column ss:StyleID="s78" ss:AutoFitWidth="0" ss:Width="153"/>
+   <Column ss:StyleID="s78" ss:AutoFitWidth="0" ss:Width="204.75"/>
+   <Column ss:StyleID="s78" ss:AutoFitWidth="0" ss:Width="198.75"/>
+   <Column ss:StyleID="s78" ss:AutoFitWidth="0" ss:Width="188.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s66">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -710,6 +755,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>60</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -734,10 +780,10 @@
     <Cell ss:StyleID="s66"><Data ss:Type="String">Follow Ups</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s78"/>
+    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s80"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -773,67 +819,63 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Search">
-  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="38" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="56" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Width="116.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="528.75"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s66">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Repeats</Data></Cell>
+    <Cell><Data ss:Type="String">Path</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s79"><Data ss:Type="String">patient</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The identity of a patient to list dispenses  for</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">single</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">MedicationDispense.patient</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">patient</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">The identity of a patient to list dispenses  for</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">single</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">MedicationPrescription.patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s79"><Data ss:Type="String">status</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Status of the prescription</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">token</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">MedicationDispense.DispenseEvent.dispenseStatus</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">status</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Status of the prescription</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">token</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">MedicationPrescription.status</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s79"><Data ss:Type="String">medicineCode</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Code for medicine or text in medicine name</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s81"/>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">medicine</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Code for medicine or text in medicine name</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">MedicationPrescription.administration.medication</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s79"><Data ss:Type="String">medicineName</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Text in medicine name</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s81"/>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">reviewStatus</Data></Cell>
+    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">token</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">MedicationPrescription.reviewStatus</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s79"><Data ss:Type="String">identity</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Return dispenses with this external identity</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">MedicationDispense.DispenseEvent.id</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">identity</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Return dispenses with this external identity</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">MedicationPrescription.id</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s79"><Data ss:Type="String">encounter</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Return dispenses with this encounter identity</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">MedicationDispense.encounter</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="9" ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s81"><Data ss:Type="String">encounter</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Return dispenses with this encounter identity</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">union</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">MedicationPrescription.visit</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -912,16 +954,78 @@
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s71"/>
+    <Cell ss:Index="9" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s71"/>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
     <Cell ss:Index="9" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
+    <Cell ss:Index="9" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:Index="40" ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s68"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s68"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="s68"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -931,6 +1035,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>0</VerticalResolution>
+   </Print>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -950,7 +1060,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>12</ActiveRow>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -971,49 +1082,49 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s63"><Data ss:Type="String">MedicationPrescriptionReviewStatus</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Describes the current status of aany reviews planned or performed on the prescription</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s79"/>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">to be completed</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s81"/>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s63"><Data ss:Type="String">MedicationIntendedSubstitutionType</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">A code signifying whether a different drug should be dispensed from what was prescribed.</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s79"/>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">to be completed</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s81"/>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s63"><Data ss:Type="String">MedicationIntendedSubstitutionReason</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Indicates the reason that a different medication should (or should not) be substituted from what was prescribed.</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s79"/>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">to be completed</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s81"/>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s63"><Data ss:Type="String">ApproachSite</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Identifies the site where the medicine enters the body</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s79"/>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">to be completed</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s81"/>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s63"><Data ss:Type="String">MethodOfAdministration</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Identifies the method by which the medicine is administered</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s79"/>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">to be completed</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s81"/>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s63"><Data ss:Type="String">MedicationPrescriptionStatus</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">A code specifying the state of the prescribing event.</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">#MedPrescStatus</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">#medication-prescription-status</Data></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Tie this into the HL7 V3 Event act state model for administration</Data></Cell>
    </Row>
   </Table>
@@ -1043,15 +1154,15 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
- <Worksheet ss:Name="MedPrescStatus">
+ <Worksheet ss:Name="medication-prescription-status">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="240"/>
@@ -1082,8 +1193,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>55</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
