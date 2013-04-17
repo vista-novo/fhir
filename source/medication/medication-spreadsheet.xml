@@ -72,6 +72,17 @@
    <Alignment ss:Vertical="Top"/>
    <Interior/>
   </Style>
+  <Style ss:ID="s69" ss:Parent="s62">
+   <Alignment ss:Vertical="Top"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s70" ss:Parent="s62">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
   <Style ss:ID="s71">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
    <Borders/>
@@ -81,35 +92,24 @@
    <Protection/>
   </Style>
   <Style ss:ID="s72">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s74">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s75">
-   <Alignment ss:Vertical="Top"/>
-  </Style>
-  <Style ss:ID="s76" ss:Parent="s62">
-   <Alignment ss:Vertical="Top"/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
-   <Interior/>
-  </Style>
-  <Style ss:ID="s77" ss:Parent="s62">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
-   <Interior/>
-   <NumberFormat ss:Format="@"/>
-  </Style>
-  <Style ss:ID="s82">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#D9D9D9"
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#C0C0C0"/>
+  </Style>
+  <Style ss:ID="s73">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#C0C0C0"
     ss:Bold="1"/>
   </Style>
-  <Style ss:ID="s83">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
-    ss:WrapText="1"/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#D9D9D9"/>
+  <Style ss:ID="s74">
+   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s76">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s77">
+   <Alignment ss:Vertical="Top"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -156,14 +156,14 @@
     <Cell><Data ss:Type="String">Committee Notes</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:Height="45">
     <Cell><Data ss:Type="String">Medication</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Definition of a Medication</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">This is primarily for identification and definition of Medication, but also covers ingredients and packaging.</Data><NamedCell
+    <Cell><Data ss:Type="String">This is primarily for identification and definition of Medication, but also covers ingredients and packaging</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -186,9 +186,9 @@
     <Cell ss:StyleID="s66"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">MedicationCode</Data><NamedCell
+    <Cell ss:StyleID="s69"><Data ss:Type="String">MedicationCode</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">References to std. medication terminologies</Data><NamedCell
+    <Cell ss:StyleID="s70"><Data ss:Type="String">References to std. medication terminologies</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">References to codes for this medication in standard medication terminologies, drug dictionaries, etc</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -330,7 +330,7 @@
     <Cell><Data ss:Type="String">A set of components that go to make up the described item.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s83">
+   <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s72">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Medication.package.content.item</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">1..1</Data><NamedCell
@@ -346,7 +346,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">The product that is in the package</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60" ss:StyleID="s83">
+   <Row ss:AutoFitHeight="0" ss:Height="60" ss:StyleID="s72">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Medication.package.content.amount</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">0..1</Data><NamedCell
@@ -362,8 +362,8 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">The amount of the product that is in the package</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s83">
-    <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s72">
+    <Cell ss:StyleID="s73"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -385,7 +385,7 @@
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <LeftColumnRightPane>6</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -393,14 +393,15 @@
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -412,12 +413,12 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s72" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="115.5"/>
-   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="153"/>
-   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="204.75"/>
-   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="198.75"/>
-   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="188.25"/>
+   x:FullRows="1" ss:StyleID="s74" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="115.5"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="153"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="204.75"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="198.75"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="188.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -517,10 +518,10 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Follow Ups</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s74"/>
-    <Cell ss:StyleID="s74"/>
-    <Cell ss:StyleID="s74"/>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s76"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -770,15 +771,15 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">MedicationForm</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">The form of a medication</Data></Cell>
-    <Cell ss:StyleID="s75"/>
-    <Cell ss:Index="5" ss:StyleID="s75"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:Index="5" ss:StyleID="s77"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s76"><Data ss:Type="String">MedicationCode</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">MedicationCode</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">A code that defines the type of a medication</Data></Cell>
-    <Cell ss:StyleID="s75"/>
-    <Cell ss:StyleID="s75"/>
-    <Cell ss:StyleID="s75"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">MedicationKind</Data></Cell>
@@ -792,7 +793,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">Kind of container a medication package is packaged in</Data></Cell>
    </Row>
    <Row ss:Index="18" ss:AutoFitHeight="0">
-    <Cell ss:Index="3" ss:StyleID="s77"/>
+    <Cell ss:Index="3" ss:StyleID="s70"/>
     <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -880,15 +881,15 @@
  <Worksheet ss:Name="medication-kind">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">product</Data></Cell>
     <Cell><Data ss:Type="String">The medication is a product</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">package</Data></Cell>
     <Cell><Data ss:Type="String">The medication is a package - a contained group of one of more products</Data></Cell>
    </Row>
@@ -899,6 +900,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
