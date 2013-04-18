@@ -424,6 +424,8 @@ In XML bundles are represented using an Atom format (<a href="http://tools.ietf.
   &lt;title&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.htm#string">string</a></span> <span style="color:navy;">Text statement of purpose</span><span style="color: Gray"> --&gt;</span>&lt;/title&gt;
   &lt;updated&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.htm#instant">instant</a></span> <span style="color:navy;">When the bundle was built</span><span style="color: Gray"> --&gt;</span>&lt;/updated&gt;
   &lt;id&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.htm#uri">uri</a></span> <span style="color:navy;">Unique uri for this bundle</span><span style="color: Gray"> --&gt;</span>&lt;/id&gt;
+  &lt;os:totalResults xmlns:os="http://a9.com/-/spec/opensearch/1.1/"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>0..1</b></span> <span style="color:darkgreen;"><a href="datatypes.htm#primitive">integer</a></span> <span style="color:navy;">Paging: the total
+  number of results</span><span style="color: Gray"> --&gt;</span>&lt;/os:totalResults&gt;
   &lt;link rel="self" href="<span style="color:navy;">[building application url]</span>"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>&lt;/link&gt;
   &lt;link rel="first" href="<span style="color:navy;">[paging: url for first page of result]</span>"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>&lt;/link&gt;
   &lt;link rel="previous" href="<span style="color:navy;">[paging: url for previous page of result]</span>"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>&lt;/link&gt;
@@ -632,6 +634,7 @@ Here is an example feed returning search results for a person query:
       &quot;rel&quot; : &quot;self&quot;,
       &quot;href&quot; : &quot;http://ip-0a7a5abe:16287/fhir/person?format=json&quot;
     }],
+  &quot;totalResults&quot; : &quot;12&quot;,
   &quot;entry&quot; : [{
       &quot;title&quot; : &quot;Resource of type Person, with id = 1 and version = 1&quot;,
       &quot;link&quot; : [{
