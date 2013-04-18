@@ -50,6 +50,7 @@ namespace Hl7.Fhir.Support
         public const string ATOM_LINKREL_NEXT = "next";
         public const string ATOM_LINKREL_FIRST = "first";
         public const string ATOM_LINKREL_LAST = "last";
+        public const string ATOM_LINKREL_SEARCH = "search";
 
         public const string RESTPARAM_FORMAT = "_format";
        

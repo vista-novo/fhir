@@ -112,6 +112,19 @@ namespace Hl7.Fhir.Support
             }
         }
 
+        public Uri SearchLink
+        {
+            get
+            {
+                return getEntry(Util.ATOM_LINKREL_SEARCH);
+            }
+
+            set
+            {
+                setEntry(Util.ATOM_LINKREL_SEARCH, value);
+            }
+        }
+
         private Uri getEntry(string rel)
         {
             UriLinkEntry entry = this.FirstOrDefault(e => rel.Equals(e.Rel, StringComparison.OrdinalIgnoreCase));

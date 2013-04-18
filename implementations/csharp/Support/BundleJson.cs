@@ -77,7 +77,8 @@ namespace Hl7.Fhir.Support
                                     .FirstOrDefault() : null,
                     AuthorUri = feed[XATOM_AUTHOR] as JArray != null ? feed[XATOM_AUTHOR]
                                     .Select(auth => auth.Value<string>(XATOM_AUTH_URI))
-                                    .FirstOrDefault() : null
+                                    .FirstOrDefault() : null,
+                    TotalResults = Int32.Parse(feed.Value<string>(XATOM_TOTALRESULTS))
                 };
 
                 result.Links = new UriLinkList();
@@ -112,56 +113,59 @@ namespace Hl7.Fhir.Support
 
             foreach (var item in items)
             {
-                result.Add(loadItem(item, errors));
+                result.Add(loadEntry(item, errors));
             }
 
             return result;
         }
 
-        private BundleEntry loadItem(JToken item, ErrorList errors)
+        private BundleEntry loadEntry(JToken entry, ErrorList errors)
         {
             BundleEntry result;
 
             errors.DefaultContext = "An atom entry";
 
-            string id = item.Value<string>(XATOM_ID);
+            string id = entry.Value<string>(XATOM_ID);
             if (id != null)
                 errors.DefaultContext = String.Format("Entry '{0}'", id);
 
             try
             {
-                string category = getCategoryFromEntry(item);
+                string category = getCategoryFromEntry(entry);
 
-                if (item.Value<DateTimeOffset?>(JATOM_DELETED) != null)
+                if (entry.Value<DateTimeOffset?>(JATOM_DELETED) != null)
                     result = new DeletedEntry();
                 else if (category == XATOM_CONTENT_BINARY)
                     result = new BinaryEntry();
                 else
                     result = new ResourceEntry();
 
-                result.SelfLink = getLinks(item[XATOM_LINK]).SelfLink;
                 result.Id = new Uri(id, UriKind.Absolute);
 
+                result.Links = new UriLinkList();
+                result.Links.AddRange(getLinks(entry[XATOM_LINK]));
+
+
                 if (result is DeletedEntry)
-                    ((DeletedEntry)result).When = item.Value<DateTimeOffset>(JATOM_DELETED);
+                    ((DeletedEntry)result).When = entry.Value<DateTimeOffset>(JATOM_DELETED);
                 else
                 {
                     ContentEntry ce = (ContentEntry)result;
 
-                    ce.Title = item.Value<string>(XATOM_TITLE);
-                    ce.LastUpdated = item.Value<DateTimeOffset?>(XATOM_UPDATED);
-                    ce.Published = item.Value<DateTimeOffset?>(XATOM_PUBLISHED);
-                    ce.EntryAuthorName = item[XATOM_AUTHOR] as JArray != null ? item[XATOM_AUTHOR]
+                    ce.Title = entry.Value<string>(XATOM_TITLE);
+                    ce.LastUpdated = entry.Value<DateTimeOffset?>(XATOM_UPDATED);
+                    ce.Published = entry.Value<DateTimeOffset?>(XATOM_PUBLISHED);
+                    ce.EntryAuthorName = entry[XATOM_AUTHOR] as JArray != null ? entry[XATOM_AUTHOR]
                             .Select(auth => auth.Value<string>(XATOM_AUTH_NAME))
                             .FirstOrDefault() : null;
-                    ce.EntryAuthorUri = item[XATOM_AUTHOR] as JArray != null ? item[XATOM_AUTHOR]
+                    ce.EntryAuthorUri = entry[XATOM_AUTHOR] as JArray != null ? entry[XATOM_AUTHOR]
                             .Select(auth => auth.Value<string>(XATOM_AUTH_URI))
                             .FirstOrDefault() : null;
-
+ 
                     if (result is ResourceEntry)
-                        ((ResourceEntry)ce).Content = getContents(item[XATOM_CONTENT], errors);
+                        ((ResourceEntry)ce).Content = getContents(entry[XATOM_CONTENT], errors);
                     else
-                        getBinaryContentsFromEntry(item[XATOM_CONTENT], (BinaryEntry)ce, errors);
+                        getBinaryContentsFromEntry(entry[XATOM_CONTENT], (BinaryEntry)ce, errors);
                 };
             }
             catch (Exception exc)
@@ -220,12 +224,12 @@ namespace Hl7.Fhir.Support
                 result.Add(new JProperty(XATOM_TITLE, Title));
 
             if (LastUpdated != null) result.Add(new JProperty(XATOM_UPDATED, LastUpdated));
-            if (Util.UriHasValue(Id)) result.Add(new JProperty(XATOM_ID, Id));
-            if (Links.Count > 0)
-                result.Add(new JProperty(XATOM_LINK, jsonCreateLinkArray(Links)));
-
+            if (Util.UriHasValue(Id)) result.Add(new JProperty(XATOM_ID, Id));  
             if (!String.IsNullOrWhiteSpace(AuthorName))
                 result.Add(jsonCreateAuthor(AuthorName, AuthorUri));
+            if (TotalResults != null) result.Add(new JProperty(XATOM_TOTALRESULTS, TotalResults.ToString()));
+            if (Links.Count > 0)
+                result.Add(new JProperty(XATOM_LINK, jsonCreateLinkArray(Links)));
 
             var entryArray = new JArray();
 
@@ -287,8 +291,8 @@ namespace Hl7.Fhir.Support
             newItem.Add(new JProperty(JATOM_DELETED, entry.When));
             newItem.Add(new JProperty(XATOM_ID, entry.Id.ToString()));
 
-            if (Util.UriHasValue(entry.SelfLink))
-                newItem.Add(new JProperty(XATOM_LINK, new JArray(jsonCreateLink(Util.ATOM_LINKREL_SELF, entry.SelfLink))));
+            if (Util.UriHasValue(entry.Links.SelfLink))
+                newItem.Add(new JProperty(XATOM_LINK, new JArray(jsonCreateLink(Util.ATOM_LINKREL_SELF, entry.Links.SelfLink))));
 
             return newItem;
         }
@@ -299,8 +303,8 @@ namespace Hl7.Fhir.Support
             JObject newItem = new JObject();
 
             if (!String.IsNullOrWhiteSpace(ce.Title)) newItem.Add(new JProperty(XATOM_TITLE, ce.Title));
-            if (Util.UriHasValue(ce.SelfLink))
-                newItem.Add(new JProperty(XATOM_LINK, new JArray(jsonCreateLink(Util.ATOM_LINKREL_SELF, ce.SelfLink))));
+            //if (Util.UriHasValue(ce.SelfLink))
+            //    newItem.Add(new JProperty(XATOM_LINK, new JArray(jsonCreateLink(Util.ATOM_LINKREL_SELF, ce.SelfLink))));
             if (Util.UriHasValue(ce.Id)) newItem.Add(new JProperty(XATOM_ID, ce.Id.ToString()));
                 
             if (ce.LastUpdated != null) newItem.Add(new JProperty(XATOM_UPDATED, ce.LastUpdated));
@@ -308,7 +312,10 @@ namespace Hl7.Fhir.Support
                 
             if (!String.IsNullOrWhiteSpace(ce.EntryAuthorName))
                 newItem.Add(jsonCreateAuthor(ce.EntryAuthorName, ce.EntryAuthorUri));
+            if (ce.Links.Count > 0)
+                newItem.Add(new JProperty(XATOM_LINK, jsonCreateLinkArray(ce.Links)));
 
+            // Note: this is a read-only property, so it is serialized but never parsed
             if (ce.Summary != null)
                 newItem.Add(new JProperty(XATOM_SUMMARY, ce.Summary));
 

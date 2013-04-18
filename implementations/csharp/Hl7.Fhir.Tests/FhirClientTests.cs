@@ -52,15 +52,15 @@ namespace Hl7.Fhir.Tests
             Assert.IsNotNull(result);
 
             Assert.AreEqual(1,
-                    result.Entries.Where(entry => entry.SelfLink.ToString()
+                    result.Entries.Where(entry => entry.Links.SelfLink.ToString()
                         .Contains("diagnosticreport")).Count());
 
             Assert.IsTrue(result.Entries.Any(entry =>
-                    entry.SelfLink.ToString().Contains("patient/@pat2")));
+                    entry.Links.SelfLink.ToString().Contains("patient/@pat2")));
 
             result = client.Search<Patient>( new string[] { "name", "Everywoman",   "name", "Eve" } );
             Assert.IsNotNull(result);
-            Assert.IsTrue(result.Entries[0].SelfLink.ToString().Contains("patient/@1"));
+            Assert.IsTrue(result.Entries[0].Links.SelfLink.ToString().Contains("patient/@1"));
         }
 
         [TestMethod]

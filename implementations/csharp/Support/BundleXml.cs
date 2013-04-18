@@ -66,10 +66,12 @@ namespace Hl7.Fhir.Support
         public const string XATOM_CAT_SCHEME = "scheme";
         public const string XATOM_CONTENT = "content";
         public const string XATOM_SUMMARY = "summary";
+        public const string XATOM_TOTALRESULTS = "totalResults";
 
         private static readonly XNamespace XATOMNS = ATOMPUBNS;
         private static readonly XNamespace XTOMBSTONE = ATOMPUB_TOMBSTONES_NS;
         private static readonly XNamespace XFHIRNS = Util.FHIRNS;
+        private static readonly XNamespace XOPENSEARCHNS = OPENSEARCHNS;
 
         private static string xValue(XObject elem)
         {
@@ -90,6 +92,12 @@ namespace Hl7.Fhir.Support
             return String.IsNullOrEmpty(value) ? null : value;
         }
 
+        private static int? intValueOrNull(XObject elem)
+        {
+            string value = xValue(elem);
+
+            return String.IsNullOrEmpty(value) ? (int?)null : Int32.Parse(value);
+        }
 
         private static Uri uriValueOrNull(XObject elem)
         {
@@ -129,6 +137,7 @@ namespace Hl7.Fhir.Support
                     Title = stringValueOrNull(feed.Element(XATOMNS + XATOM_TITLE)),
                     LastUpdated = dateTimeOrNull(feed.Element(XATOMNS + XATOM_UPDATED)),
                     Id = uriValueOrNull(feed.Element(XATOMNS + XATOM_ID)),
+                    TotalResults = intValueOrNull(feed.Element(XOPENSEARCHNS + XATOM_TOTALRESULTS)),
                     Links = getLinksFromSyndication(feed.Elements(XATOMNS+XATOM_LINK)),
                     AuthorName = feed.Elements(XATOMNS+XATOM_AUTHOR).Count() == 0 ? null :
                             stringValueOrNull(feed.Element(XATOMNS+XATOM_AUTHOR)
@@ -160,9 +169,9 @@ namespace Hl7.Fhir.Support
             return entries.Select(entry =>
                         {
                             if (entry.Name == XATOMNS + XATOM_ENTRY)
-                                return (BundleEntry)loadContentItem(entry, errors);
+                                return (BundleEntry)loadContentEntry(entry, errors);
                             if (entry.Name == XTOMBSTONE + XATOM_DELETED_ENTRY)
-                                return (BundleEntry)loadDeletedItem(entry, errors);
+                                return (BundleEntry)loadDeletedEntry(entry, errors);
 
                             return (BundleEntry)null;
                         });
@@ -174,7 +183,7 @@ namespace Hl7.Fhir.Support
             return Bundle.Load(Util.XmlReaderFromString(xml), errors);
         }
 
-        private static DeletedEntry loadDeletedItem(XElement item, ErrorList errors)
+        private static DeletedEntry loadDeletedEntry(XElement entry, ErrorList errors)
         {
             DeletedEntry de = new DeletedEntry();
 
@@ -182,15 +191,14 @@ namespace Hl7.Fhir.Support
             {
                 errors.DefaultContext = "A deleted entry";
 
-                string id = Bundle.stringValueOrNull(item.Attribute(XATOM_DELETED_REF));
+                string id = Bundle.stringValueOrNull(entry.Attribute(XATOM_DELETED_REF));
                 if (id != null) de.Id = new Uri(id, UriKind.Absolute);
                 if (id != null) errors.DefaultContext = String.Format("Entry '{0}'", id);
 
-                string when = Bundle.stringValueOrNull(item.Attribute(XATOM_DELETED_WHEN));
+                string when = Bundle.stringValueOrNull(entry.Attribute(XATOM_DELETED_WHEN));
                 if (when != null) de.When = Instant.Parse(when).Contents.Value;
 
-                var links = Bundle.getLinksFromSyndication(item.Elements(XATOMNS + XATOM_LINK));
-                de.SelfLink = links.SelfLink;
+                de.Links = getLinksFromSyndication(entry.Elements(XATOMNS + XATOM_LINK));
             }
             catch (Exception exc)
             {
@@ -206,32 +214,32 @@ namespace Hl7.Fhir.Support
         }
 
 
-        private static ContentEntry loadContentItem( XElement item, ErrorList errors )
+        private static ContentEntry loadContentEntry( XElement entry, ErrorList errors )
         {
             ContentEntry result;
 
             try
             {
-                if( getCategoryFromEntry(item) == XATOM_CONTENT_BINARY )
+                if( getCategoryFromEntry(entry) == XATOM_CONTENT_BINARY )
                     result = new BinaryEntry();
                 else
                     result = new ResourceEntry();
 
-                result.Id = uriValueOrNull(item.Element(XATOMNS + XATOM_ID));
+                result.Id = uriValueOrNull(entry.Element(XATOMNS + XATOM_ID));
                 errors.DefaultContext = String.Format("Entry '{0}'", result.Id.ToString());
 
-                result.Title = stringValueOrNull(item.Element(XATOMNS+XATOM_TITLE));
-                result.SelfLink = getLinksFromSyndication(item.Elements(XATOMNS + XATOM_LINK)).SelfLink;
-                result.LastUpdated = dateTimeOrNull(item.Element(XATOMNS + XATOM_UPDATED));
-                result.Published = dateTimeOrNull(item.Element(XATOMNS + XATOM_PUBLISHED)); 
-                result.EntryAuthorName = item.Elements(XATOMNS+XATOM_AUTHOR).Count() == 0 ? null :
-                            stringValueOrNull(item.Element(XATOMNS+XATOM_AUTHOR)
+                result.Title = stringValueOrNull(entry.Element(XATOMNS+XATOM_TITLE));
+                result.LastUpdated = dateTimeOrNull(entry.Element(XATOMNS + XATOM_UPDATED));
+                result.Published = dateTimeOrNull(entry.Element(XATOMNS + XATOM_PUBLISHED)); 
+                result.EntryAuthorName = entry.Elements(XATOMNS+XATOM_AUTHOR).Count() == 0 ? null :
+                            stringValueOrNull(entry.Element(XATOMNS+XATOM_AUTHOR)
                                 .Element(XATOMNS+XATOM_AUTH_NAME));
-                result.EntryAuthorUri = item.Elements(XATOMNS + XATOM_AUTHOR).Count() == 0 ? null :
-                            stringValueOrNull(item.Element(XATOMNS + XATOM_AUTHOR)
+                result.EntryAuthorUri = entry.Elements(XATOMNS + XATOM_AUTHOR).Count() == 0 ? null :
+                            stringValueOrNull(entry.Element(XATOMNS + XATOM_AUTHOR)
                                 .Element(XATOMNS + XATOM_AUTH_URI));
+                result.Links = getLinksFromSyndication(entry.Elements(XATOMNS+XATOM_LINK));
 
-                XElement content = item.Element(XATOMNS+XATOM_CONTENT);
+                XElement content = entry.Element(XATOMNS+XATOM_CONTENT);
                 if (content != null)
                 {
                     if (result is ResourceEntry)
@@ -336,13 +344,11 @@ namespace Hl7.Fhir.Support
             if (!String.IsNullOrWhiteSpace(Title)) root.Add(xmlCreateTitle(Title));
             if (Util.UriHasValue(Id)) root.Add(xmlCreateId(Id));
             if (LastUpdated != null) root.Add(new XElement(XATOMNS+XATOM_UPDATED, LastUpdated));
-            if (Links.Count > 0)
-            {
-                foreach(var l in Links)
-                    root.Add(xmlCreateLink(l.Rel, l.Uri));
-            }
             if (!String.IsNullOrWhiteSpace(AuthorName))
                 root.Add(xmlCreateAuthor(AuthorName, AuthorUri));
+            if (TotalResults != null) root.Add(new XElement(XOPENSEARCHNS + XATOM_TOTALRESULTS, TotalResults));
+            foreach (var l in Links)
+                root.Add(xmlCreateLink(l.Rel, l.Uri));
 
             foreach (var entry in Entries)
             {
@@ -425,10 +431,10 @@ namespace Hl7.Fhir.Support
                     new XAttribute(XATOM_DELETED_REF, de.Id.ToString()),
                     new XAttribute(XATOM_DELETED_WHEN, de.When));
 
-            if( Util.UriHasValue(de.SelfLink) )
+            if( Util.UriHasValue(de.Links.SelfLink) )
                 result.Add(new XElement(XATOMNS+XATOM_LINK,
                         new XAttribute(XATOM_LINK_REL, Util.ATOM_LINKREL_SELF),
-                        new XAttribute(XATOM_LINK_HREF, de.SelfLink.ToString())));
+                        new XAttribute(XATOM_LINK_HREF, de.Links.SelfLink.ToString())));
 
             return result;
         }
@@ -453,8 +459,8 @@ namespace Hl7.Fhir.Support
             XElement result = new XElement(XATOMNS + XATOM_ENTRY);
 
             result.Add(xmlCreateTitle(entry.Title));
-            if (Util.UriHasValue(entry.SelfLink))
-                result.Add(xmlCreateLink(Util.ATOM_LINKREL_SELF,entry.SelfLink));
+            //if (Util.UriHasValue(entry.SelfLink))
+            //    result.Add(xmlCreateLink(Util.ATOM_LINKREL_SELF,entry.SelfLink));
             result.Add(xmlCreateId(entry.Id));
 
             if (entry.LastUpdated != null) result.Add(new XElement(XATOMNS + XATOM_UPDATED, entry.LastUpdated.Value));
@@ -462,7 +468,9 @@ namespace Hl7.Fhir.Support
             
             if (!String.IsNullOrWhiteSpace(entry.EntryAuthorName))
                    result.Add(xmlCreateAuthor(entry.EntryAuthorName, entry.EntryAuthorUri));
-           
+
+            foreach (var l in entry.Links)
+                result.Add(xmlCreateLink(l.Rel, l.Uri));
 
             if (entry is ResourceEntry)
             {

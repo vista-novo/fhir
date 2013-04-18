@@ -37,7 +37,6 @@ using Hl7.Fhir.Model;
 using System.Xml.Linq;
 using Hl7.Fhir.Parsers;
 using System.IO;
-//using Hl7.Fhir.Serializers;
 
 namespace Hl7.Fhir.Support
 {
@@ -51,6 +50,7 @@ namespace Hl7.Fhir.Support
         public string AuthorName { get; set; }
         public string AuthorUri { get; set; }
 
+        public int? TotalResults { get; set; }
 
         public ManagedEntryList Entries { get; private set; }
 
@@ -77,6 +77,15 @@ namespace Hl7.Fhir.Support
             if (LastUpdated == null)
                 errors.Add("Feed must have a updated date", context);
 
+            foreach (var link in Links)
+            {
+                if (!link.Uri.IsAbsoluteUri)
+                    errors.Add("Feed links must be absolute Uri's", context);
+            }
+
+            if (Links.SearchLink != null)
+                errors.Add("Links with rel='search' can only be used on feed entries", context);
+
             foreach(var entry in Entries)
                 errors.AddRange(entry.Validate());
 
@@ -86,14 +95,20 @@ namespace Hl7.Fhir.Support
         public static string ATOM_CATEGORY_RESOURCETYPE_NS = "http://hl7.org/fhir/resource-types";
         public static string ATOMPUB_TOMBSTONES_NS = "http://purl.org/atompub/tombstones/1.0";
         public static string ATOMPUBNS = "http://www.w3.org/2005/Atom";
+        public static string OPENSEARCHNS = "http://a9.com/-/spec/opensearch/1.1";
     }
 
 
     public abstract class BundleEntry
     {
-        public Uri SelfLink { get; set; }
+        public BundleEntry()
+        {
+            Links = new UriLinkList();
+        }
+
         public Uri Id { get; set; }
         public Bundle Parent { set; get; }
+        public UriLinkList Links { get; set; }
 
         public virtual ErrorList Validate()
         {
@@ -106,14 +121,18 @@ namespace Hl7.Fhir.Support
             //if (SelfLink == null || SelfLink.ToString() == String.Empty)
             //    errors.Add("Entry must have a link of type 'self'", context);
 
-            if (Util.UriHasValue(SelfLink) && !SelfLink.IsAbsoluteUri)
-                errors.Add("An entry self-link must be an absolute URI");
-
             if (Id == null || String.IsNullOrWhiteSpace(Id.ToString()))
                 errors.Add("Entry must have an id");
 
             if (!Id.IsAbsoluteUri)
                 errors.Add("Entry id must be an absolute URI");
+
+            foreach (var link in Links)
+                if (!link.Uri.IsAbsoluteUri)
+                    errors.Add("Entry links must be absolute Uri's");
+
+            if (Links.FirstLink != null || Links.LastLink != null || Links.PreviousLink != null || Links.NextLink != null)
+                errors.Add("Paging links can only be used on feeds, not entries");
 
             return errors;
         }
@@ -145,6 +164,7 @@ namespace Hl7.Fhir.Support
         public string EntryAuthorName { get; set; }
         public string EntryAuthorUri { get; set; }
 
+      
         public string AuthorName 
         {
             get
@@ -179,7 +199,6 @@ namespace Hl7.Fhir.Support
 
             if (LastUpdated == null)
                 errors.Add("Entry must have an updated date");
-
             return errors;
         } 
     }
