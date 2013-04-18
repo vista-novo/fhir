@@ -36,6 +36,7 @@ import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 
 public class AtomEntry {
   private String id;
+  private boolean deleted;
   private String title;
   private Map<String, String> links = new LinkedHashMap<String, String>();
   private String category;
@@ -107,6 +108,12 @@ public class AtomEntry {
   public void setSummary(XhtmlNode summary) {
     this.summary = summary;
   }
+	public boolean isDeleted() {
+		return deleted;
+	}
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
   
   
   

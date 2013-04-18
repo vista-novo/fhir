@@ -1,0 +1,2 @@
+need to fix up the way search parameters for resource references are defined
+need to describe relative references better
