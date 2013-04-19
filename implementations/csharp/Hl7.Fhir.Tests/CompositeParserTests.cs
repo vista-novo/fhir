@@ -278,7 +278,7 @@ namespace Hl7.Fhir.Tests
         }
 
         [TestMethod]
-        public void TestHandleCrap()
+        public void TestHandleCrapInFhirParser()
         {
             var errors = new ErrorList();
             FhirParser.ParseResourceFromJson("Crap!", errors);

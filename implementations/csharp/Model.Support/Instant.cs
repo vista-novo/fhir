@@ -33,6 +33,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Support;
 
 namespace Hl7.Fhir.Model
 {
@@ -59,8 +60,6 @@ namespace Hl7.Fhir.Model
             return new Instant(DateTimeOffset.Now);
         }
 
-        public const string PATTERN = @"yyyy-MM-dd'T'HH:mm:ssK";
-
         public static bool TryParse(string value, out Instant result)
         {
             DateTimeOffset dt;
@@ -70,8 +69,7 @@ namespace Hl7.Fhir.Model
                 result = new Instant(null);
                 return true;
             }
-            else if( DateTimeOffset.TryParseExact(value, PATTERN,
-                null, System.Globalization.DateTimeStyles.AssumeUniversal, out dt) )
+            else if( Util.TryParseIsoDateTime(value, out dt) )
             {
                 result = new Instant(dt);
                 return true;
@@ -98,7 +96,7 @@ namespace Hl7.Fhir.Model
         {
             if (Contents.HasValue)
             {
-                return Contents.Value.ToString(PATTERN);
+                return Util.FormatIsoDateTime(Contents.Value);
             }
             else
                 return null;

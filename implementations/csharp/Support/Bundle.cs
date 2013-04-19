@@ -37,10 +37,11 @@ using Hl7.Fhir.Model;
 using System.Xml.Linq;
 using Hl7.Fhir.Parsers;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace Hl7.Fhir.Support
 {
-    public partial class Bundle
+    public class Bundle
     {
         public string Title { get; set; }
         public DateTimeOffset? LastUpdated { get; set; }
@@ -52,7 +53,7 @@ namespace Hl7.Fhir.Support
 
         public int? TotalResults { get; set; }
 
-        public ManagedEntryList Entries { get; private set; }
+        public ManagedEntryList Entries { get; internal set; }
 
         public Bundle()
         {
@@ -92,10 +93,26 @@ namespace Hl7.Fhir.Support
             return errors;
         }
 
-        public static string ATOM_CATEGORY_RESOURCETYPE_NS = "http://hl7.org/fhir/resource-types";
-        public static string ATOMPUB_TOMBSTONES_NS = "http://purl.org/atompub/tombstones/1.0";
-        public static string ATOMPUBNS = "http://www.w3.org/2005/Atom";
-        public static string OPENSEARCHNS = "http://a9.com/-/spec/opensearch/1.1";
+
+        public static Bundle LoadFromJson(JsonReader reader, ErrorList errors)
+        {
+            return BundleJson.Load(reader, errors);
+        }
+
+        public static Bundle LoadFromJson(string json, ErrorList errors)
+        {
+            return BundleJson.Load(json, errors);
+        }
+
+        public static Bundle LoadFromXml(XmlReader reader, ErrorList errors)
+        {
+            return BundleXml.Load(reader, errors);
+        }
+
+        public static Bundle LoadFromXml(string xml, ErrorList errors)
+        {
+            return BundleXml.Load(xml, errors);
+        }
     }
 
 
@@ -138,12 +155,32 @@ namespace Hl7.Fhir.Support
         }
 
         public abstract string Summary { get; }
+
+        public static BundleEntry LoadFromJson(JsonReader reader, ErrorList errors)
+        {
+            return BundleJson.LoadEntry(reader, errors);
+        }
+
+        public static BundleEntry LoadFromJson(string json, ErrorList errors)
+        {
+            return BundleJson.LoadEntry(json, errors);
+        }
+
+        public static BundleEntry LoadFromXml(XmlReader reader, ErrorList errors)
+        {
+            return BundleXml.LoadEntry(reader, errors);
+        }
+
+        public static BundleEntry LoadFromXml(string xml, ErrorList errors)
+        {
+            return BundleXml.LoadEntry(xml, errors);
+        }
     }
 
 
     public class DeletedEntry : BundleEntry
     {
-        public DateTimeOffset When { get; set; }
+        public DateTimeOffset? When { get; set; }
 
         public override string Summary
         {
@@ -152,6 +189,16 @@ namespace Hl7.Fhir.Support
                 return "<div xmlns='http://www.w3.org/1999/xhtml'>This resource has been deleted " +
                     "on " + When.ToString() + "</div>";
             }
+        }
+
+        public override ErrorList Validate()
+        {
+            var errors = base.Validate();
+
+            if (When == null)
+                errors.Add("A DeletedEntry must have a non-null deletion time (When)");
+
+            return errors;
         }
     }
 
@@ -225,7 +272,10 @@ namespace Hl7.Fhir.Support
         {
             get
             {
-                return "<div xmlns='http://www.w3.org/1999/xhtml'>Binary content</div>";
+                var summary = string.Format("<div xmlns='http://www.w3.org/1999/xhtml'>" +
+                        "Binary content (mediatype {0})</div>", MediaType);
+
+                return summary;
             }
         }  
     }
@@ -234,8 +284,6 @@ namespace Hl7.Fhir.Support
     {
         public string ResourceType { get; private set; }
 
-        // Provide the content by either giving a Resource (for FHIR resources)
-        // or supplying binary data to represent a blob in the feed.
         private Resource _content;
         public Resource Content 
         { 
@@ -258,9 +306,6 @@ namespace Hl7.Fhir.Support
 
             if (Content == null)
                 errors.Add("Entry must contain Resource data, Content may not be null");
-
-            if( ResourceType == null )
-                errors.Add("Entry specify the resource's type in ResourceType");
 
             return errors;
         }

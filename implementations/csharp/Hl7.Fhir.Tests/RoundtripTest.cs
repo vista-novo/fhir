@@ -11,15 +11,20 @@ using Newtonsoft.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using Ionic.Zip;
+using Hl7.Fhir.Support;
 
 namespace Hl7.Fhir.Tests
 {
     [TestClass]
     public class RoundtripTest
     {
+        bool _roundTripFailed = false;
+     
         [TestMethod]
         public void FullRoundtripOfAllExamples()
         {
+            _roundTripFailed = false;
+
             string examples = @"..\..\..\..\..\publish\examples.zip";
             string path = Path.Combine(Path.GetTempPath(), "FHIRRoundTripTest");
             if (Directory.Exists(path)) Directory.Delete(path, true);
@@ -60,11 +65,14 @@ namespace Hl7.Fhir.Tests
                     catch (AssertFailedException af)
                     {
                         Debug.WriteLine("  ***** Comparison failed: " + af.Message);
+                        _roundTripFailed = true;
                     }
                 }
                 
                 Debug.WriteLine("  Done!");
             }
+
+            if (_roundTripFailed) Assert.Fail("Errors were reported during roundtrip");
         }
 
         private bool isFeed(string filename)
@@ -82,8 +90,6 @@ namespace Hl7.Fhir.Tests
             }
         }
 
-        //private string baseFilename;
-
         private void testFeed(string file, string baseFilename)
         {
             Support.Bundle bundleResult;
@@ -92,22 +98,25 @@ namespace Hl7.Fhir.Tests
             using (XmlReader xr = createReader(file))
             {
                 Debug.WriteLine("  Reading Xml feed...");
-                bundleResult = Support.Bundle.Load(xr, errors);
+                bundleResult = Bundle.LoadFromXml(xr, errors);
 
                 xr.Close();
             }
 
             if (errors.Count > 0)
+            {
                 Debug.WriteLine("=== Xml Feed Parse errors ===" + Environment.NewLine + errors.ToString());
+                _roundTripFailed = true;
+            }
             else
             {
                 string jsonFile = baseFilename + "-roundtrip.json";
                 //string xmlFile = Path.ChangeExtension(jsonFile, ".xml");
 
-                using (JsonTextWriter jw = new JsonTextWriter(new StreamWriter(jsonFile)) )
+                using (JsonTextWriter jw = new JsonTextWriter(new StreamWriter(jsonFile)))
                 {
                     Debug.WriteLine("  Writing Xml feed...");
-                    bundleResult.Save(jw);
+                    bundleResult.WriteTo(jw);
                     jw.Flush();
                     jw.Close();
                 }
@@ -125,13 +134,16 @@ namespace Hl7.Fhir.Tests
             using (JsonReader jr = new JsonTextReader(new StreamReader(jsonFile)))
             {
                 Debug.WriteLine("  Reading Json feed...");
-                bundleResult = Support.Bundle.Load(jr, errors);
+                bundleResult = Bundle.LoadFromJson(jr, errors);
 
                 jr.Close();
             }
 
             if (errors.Count > 0)
+            {
                 Debug.WriteLine("=== Json Feed Parse errors ===" + Environment.NewLine + errors.ToString());
+                _roundTripFailed = true;
+            }
             else
             {
                 string xmlFile = Path.ChangeExtension(jsonFile, ".xml");
@@ -139,7 +151,7 @@ namespace Hl7.Fhir.Tests
                 using (XmlWriter xw = new XmlTextWriter(new System.IO.StreamWriter(xmlFile)))
                 {
                     Debug.WriteLine("  Writing Xml feed...");
-                    bundleResult.Save(xw);
+                    bundleResult.WriteTo(xw);
                     xw.Flush();
                     xw.Close();
                 }
@@ -159,7 +171,10 @@ namespace Hl7.Fhir.Tests
             }
 
             if (errors.Count > 0)
+            {
                 Debug.WriteLine("=== Xml Parse errors ===" + Environment.NewLine + errors.ToString());
+                _roundTripFailed = true;
+            }
             else
             {
                 string jsonFile = baseFilename + "-roundtrip.json";
@@ -188,11 +203,14 @@ namespace Hl7.Fhir.Tests
             }
 
             if (errors.Count > 0)
+            {
                 Debug.WriteLine("=== Json Parse errors ===" + Environment.NewLine + errors.ToString());
+                _roundTripFailed = true;
+            }
             else
             {
                 string xmlFile = Path.ChangeExtension(jsonFile, ".xml");
-                
+
                 using (XmlWriter xw = new XmlTextWriter(new System.IO.StreamWriter(xmlFile)))
                 {
                     Debug.WriteLine("  Writing xml...");

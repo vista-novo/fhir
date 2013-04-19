@@ -669,7 +669,7 @@ namespace Hl7.Fhir.Support
         public void SetParam(string key, string value)
         {
             var pars = SplitParams(Query);
-            pars.Set(key, value);
+            pars[key] = value;
             Query = JoinParams(pars);
         }
 
@@ -681,16 +681,23 @@ namespace Hl7.Fhir.Support
         }
 
 
-        public void AddParam(string key, string name)
+        public void AddParam(string key, string value)
         {
             var pars = SplitParams(Query);
-            pars.Add(key, name);
+
+            if(value==null) value = String.Empty;
+
+            if (pars.ContainsKey(key))
+                pars[key] = pars[key] + "," + value;
+            else
+                pars[key] = value;
+
             Query = JoinParams(pars);
         }
 
-        public static NameValueCollection SplitParams(string query)
+        public static Dictionary<string,string> SplitParams(string query)
         {
-            var result = new NameValueCollection();
+            var result = new Dictionary<string,string>();
 
             if (!String.IsNullOrEmpty(query))
             {
@@ -700,26 +707,25 @@ namespace Hl7.Fhir.Support
                 foreach (var segment in querySegments)
                 {
                     string[] pair = segment.Split('=');
-                    if (pair.Length == 2)
-                    {
-                        result.Add(pair[0], pair[1]);
-                    }
+
+                    var key = pair[0];
+                    var value = pair.Length == 2 ? pair[1] : string.Empty;
+
+                    if (result.ContainsKey(key))
+                        result[key] = result[key] + "," + value;
                     else
-                    {
-                        // only one key with no value specified in query string
-                        result.Add(pair[0], string.Empty);
-                    }
+                        result.Add(key, value);
                 }
             }
 
             return result;
         }
 
-        public static string JoinParams(NameValueCollection pars)
+        public static string JoinParams(Dictionary<string,string> pars)
         {
             StringBuilder result = new StringBuilder();
 
-            foreach (var paramName in pars.AllKeys)
+            foreach (var paramName in pars.Keys)
             {
                 var paramContent = pars[paramName];
                 var values = paramContent.Split(',');
@@ -732,15 +738,15 @@ namespace Hl7.Fhir.Support
         }
 
 
-        public void SetParams(NameValueCollection parameters)
+        public void SetParams(Dictionary<string,string> parameters)
         {
-            foreach (var key in parameters.AllKeys)
+            foreach (var key in parameters.Keys)
                 SetParam(key, parameters[key]);
         }
 
-        public void AddParams(NameValueCollection parameters)
+        public void AddParams(Dictionary<string,string> parameters)
         {
-            foreach (var key in parameters.AllKeys)
+            foreach (var key in parameters.Keys)
                 AddParam(key, parameters[key]);
         }
 
