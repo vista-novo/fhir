@@ -491,9 +491,13 @@ namespace Hl7.Fhir.Support
 
         private static XElement createDeletedEntry(DeletedEntry de)
         {
-            XElement result = new XElement(XTOMBSTONE + XATOM_DELETED_ENTRY,
-                    new XAttribute(XATOM_DELETED_REF, de.Id.ToString()),
-                    new XAttribute(XATOM_DELETED_WHEN, de.When));
+            XElement result = new XElement(XTOMBSTONE + XATOM_DELETED_ENTRY);
+
+            if(Util.UriHasValue(de.Id))
+               result.Add(new XAttribute(XATOM_DELETED_REF, de.Id.ToString()));
+
+            if(de.When != null)
+               result.Add(new XAttribute(XATOM_DELETED_WHEN, de.When));
 
             if (Util.UriHasValue(de.Links.SelfLink))
                 result.Add(new XElement(XATOMNS + XATOM_LINK,

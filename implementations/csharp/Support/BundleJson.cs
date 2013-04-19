@@ -329,7 +329,8 @@ namespace Hl7.Fhir.Support
             if (!String.IsNullOrWhiteSpace(bundle.Title))
                 result.Add(new JProperty(BundleXml.XATOM_TITLE, bundle.Title));
             if (Util.UriHasValue(bundle.Id)) result.Add(new JProperty(BundleXml.XATOM_ID, bundle.Id));
-            if (bundle.LastUpdated != null) result.Add(new JProperty(BundleXml.XATOM_UPDATED, bundle.LastUpdated));
+            if (bundle.LastUpdated != null) 
+                result.Add(new JProperty(BundleXml.XATOM_UPDATED, bundle.LastUpdated));
 
             if (!String.IsNullOrWhiteSpace(bundle.AuthorName))
                 result.Add(jsonCreateAuthor(bundle.AuthorName, bundle.AuthorUri));
@@ -418,8 +419,11 @@ namespace Hl7.Fhir.Support
         {
             JObject newItem = new JObject();
 
-            newItem.Add(new JProperty(JATOM_DELETED, entry.When));
-            newItem.Add(new JProperty(BundleXml.XATOM_ID, entry.Id.ToString()));
+            if(entry.When !=null)
+                newItem.Add(new JProperty(JATOM_DELETED, entry.When));
+            
+            if(Util.UriHasValue(entry.Id))
+                newItem.Add(new JProperty(BundleXml.XATOM_ID, entry.Id.ToString()));
 
             if (Util.UriHasValue(entry.Links.SelfLink))
                 newItem.Add(new JProperty(BundleXml.XATOM_LINK,

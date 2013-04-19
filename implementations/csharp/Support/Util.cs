@@ -109,7 +109,7 @@ namespace Hl7.Fhir.Support
             return new JsonTextReader(new StringReader(json));
         }
 
-        public const string DT_PARAM_PATTERN_FULL = @"yyyy-MM-dd'T'HH:mm:ssK";
+        public const string DT_PARAM_PATTERN_FULL = @"yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK";
         public const string DT_PARAM_PATTERN_DATE = @"yyyy-MM-dd";
 
 
@@ -144,6 +144,11 @@ namespace Hl7.Fhir.Support
         public static string FormatIsoDateTime(DateTimeOffset value)
         {
             return value.ToString(DT_PARAM_PATTERN_FULL);
+        }
+
+        public static DateTimeOffset RemoveMiliseconds(DateTimeOffset dt)
+        {
+            return new DateTimeOffset(dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second, dt.Offset);
         }
 
     }

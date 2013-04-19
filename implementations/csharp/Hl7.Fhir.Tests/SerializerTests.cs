@@ -19,6 +19,29 @@ namespace Hl7.Fhir.Tests
     public class SerializerTests
     {
         [TestMethod]
+        public void TestMilisecondsOnInstant()
+        {
+            Instant i = new Instant(new DateTimeOffset(2013, 4, 19, 16, 27, 23, 233, TimeSpan.Zero));
+
+            Assert.IsTrue(i.Contents.Value.Millisecond > 0);
+
+            string xml = FhirSerializer.SerializeElementAsXml(i, "someInstant");
+
+            ErrorList dummy = new ErrorList();
+            Instant j = (Instant)FhirParser.ParseElementFromXml(xml, dummy);
+
+            Assert.AreEqual(0, dummy.Count);
+            Assert.AreEqual(233, j.Contents.Value.Millisecond);
+
+            Instant result;
+            bool succ = Instant.TryParse("2013-04-19T16:17:23Z", out result);
+            Assert.IsTrue(succ);
+
+            xml = FhirSerializer.SerializeElementAsXml(result, "someInstant");
+            Assert.IsFalse(xml.Contains("16:27:23.0"));
+        }
+
+        [TestMethod]
         public void SerializeElement()
         {
             Identifier id = new Identifier
