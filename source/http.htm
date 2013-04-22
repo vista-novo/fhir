@@ -749,9 +749,9 @@ sorted with oldest versions last, and including deleted resources.
   <tr><td>_since : <a href="datatypes.htm#integer">instant</a></td><td><i>single</i></td><td>Only include resource versions that were created at or after the given instant in time</td></tr>
 </table>
 <p>
-The history list can be restricted to a limited period by specifying a _last parameter which contains a full date time with timezone. 
+The history list can be restricted to a limited period by specifying a _since parameter which contains a full date time with timezone. 
 Servers must ensure that if a client uses the feed.updated date from the last response they received as 
-the value of the _last parameter, no versions will be missed. Clients should be aware that due to timing imprecision, 
+the value of the _since parameter, no versions will be missed. Clients should be aware that due to timing imprecision, 
 they may receive notifications of a resource update on the boundary instant more than once. Servers are 
 not required to support a precision finer than by second. 
 </p>
