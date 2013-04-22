@@ -117,10 +117,15 @@ namespace Hl7.Fhir.Serializers
         }
 
 
-        void IDisposable.Dispose()
+        public void Dispose()
         {
-            ((IDisposable)jw).Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
+        private void Dispose(bool disposing)
+        {
+            if (disposing && jw != null) ((IDisposable)jw).Dispose();
+        }
     }
 }
