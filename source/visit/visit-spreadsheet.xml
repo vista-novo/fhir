@@ -20,7 +20,6 @@
   <WindowWidth>19440</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -102,7 +101,7 @@
    <Column ss:StyleID="s63" ss:Width="22.5"/>
    <Column ss:StyleID="s63" ss:Width="60"/>
    <Column ss:StyleID="s63" ss:Width="27"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="119.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="225"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="106.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="197.25"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="222.75"/>
@@ -264,7 +263,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Person)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(RelatedPerson|Practitioner)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Emergency contact during the visit</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
     <Cell ss:Index="13" ss:StyleID="Default"/>
@@ -363,10 +362,10 @@
     <Cell ss:Index="6"><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Practitioner responsible for the patient during the discharge</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:Height="30">
     <Cell><Data ss:Type="String">Visit.discharge.contact</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Person)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Practitioner|RelatedPerson)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Contact person to inform about the discharge</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -389,6 +388,7 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -408,9 +408,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>0</ActiveCol>
-     <RangeSelection>R3C1:R24C1</RangeSelection>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -704,7 +703,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -725,7 +723,7 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>11</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
