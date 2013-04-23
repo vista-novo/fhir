@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
+// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
 
 public class ResourceFactory {
 
@@ -42,18 +42,24 @@ public class ResourceFactory {
             return new Group();
         if ("ValueSet".equals(name))
             return new ValueSet();
-        if ("Test".equals(name))
-            return new Test();
         if ("Coverage".equals(name))
             return new Coverage();
+        if ("Test".equals(name))
+            return new Test();
         if ("Appointment".equals(name))
             return new Appointment();
+        if ("MedicationDispense".equals(name))
+            return new MedicationDispense();
+        if ("MedicationPrescription".equals(name))
+            return new MedicationPrescription();
         if ("DeviceLog".equals(name))
             return new DeviceLog();
         if ("DeviceCapabilities".equals(name))
             return new DeviceCapabilities();
         if ("IssueReport".equals(name))
             return new IssueReport();
+        if ("MedicationStatement".equals(name))
+            return new MedicationStatement();
         if ("AnatomicalLocation".equals(name))
             return new AnatomicalLocation();
         if ("Questionnaire".equals(name))
@@ -90,10 +96,10 @@ public class ResourceFactory {
             return new Food();
         if ("Order".equals(name))
             return new Order();
-        if ("Procedure".equals(name))
-            return new Procedure();
         if ("Request".equals(name))
             return new Request();
+        if ("Procedure".equals(name))
+            return new Procedure();
         if ("Substance".equals(name))
             return new Substance();
         if ("DiagnosticReport".equals(name))
@@ -116,12 +122,12 @@ public class ResourceFactory {
             return new FamilyHistory();
         if ("Location".equals(name))
             return new Location();
+        if ("Admission".equals(name))
+            return new Admission();
         if ("AllergyIntolerance".equals(name))
             return new AllergyIntolerance();
         if ("Observation".equals(name))
             return new Observation();
-        if ("Admission".equals(name))
-            return new Admission();
         if ("ImmunizationProfile".equals(name))
             return new ImmunizationProfile();
         if ("RelatedPerson".equals(name))

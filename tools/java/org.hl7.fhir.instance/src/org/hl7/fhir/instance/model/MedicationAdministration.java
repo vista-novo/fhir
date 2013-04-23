@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
+// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
 
 import java.util.*;
 
@@ -98,56 +98,101 @@ public class MedicationAdministration extends Resource {
       }
     }
 
-    /**
-     * Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.
-     */
-    private Enumeration<MedAdmStatus> administrationEventStatus;
+    public class MedicationAdministrationDosageComponent extends Element {
+        /**
+         * The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013"
+         */
+        private Schedule timing;
 
-    /**
-     * Set this to true if the record is saying that the medication was NOT administered.
-     */
-    private Boolean isNegated;
+        /**
+         * A coded specification of the anatomic site where the medication first enters the body
+         */
+        private CodeableConcept site;
 
-    /**
-     * A code indicating why the administration has been negated.
+        /**
+         * A code specifying the route or physiological path of administration of a therapeutic agent into or onto a subject.
+         */
+        private CodeableConcept route;
 
-Use only if isNegated is set to TRUE
-     */
-    private List<CodeableConcept> negatedReason = new ArrayList<CodeableConcept>();
-
-    /**
-     * An interval of time during which the administration takes place.  For many administrations, such as swallowing a tablet the lower and upper values of the interval will be the same.
-     */
-    private Period effectiveTime;
-
-    /**
-     * A coded value indicating the method by which the medication is introduced into or onto the body. Most commonly used for injections.  Examples:  Slow Push; Deep IV.
+        /**
+         * A coded value indicating the method by which the medication is introduced into or onto the body. Most commonly used for injections.  Examples:  Slow Push; Deep IV.
 
 Terminologies used often pre-coordinate this term with the route and or form of administration.
-     */
-    private CodeableConcept method;
+         */
+        private CodeableConcept method;
 
-    /**
-     * A coded value indicating the location on the body where the medication is introduced into or onto the body.   Where the code system indicates laterality by means of a separate coded concept this must be post-coordinated with the code indicating the location.
-     */
-    private CodeableConcept approachSite;
+        /**
+         * The amount of the therapeutic or other substance given at one administration event.
+         */
+        private Quantity quantity;
 
-    /**
-     * A coded value indicating the path in or on the body by which the medication is introduced into or onto the body.  Where the code system indicates laterality by means of a separate coded concept this must be post-coordinated with the code indicating the route.
-     */
-    private CodeableConcept route;
+        /**
+         * Identifies the speed with which the substance is introduced into the subject. Typically the rate for an infusion. 200ml in 2 hours.
+         */
+        private Ratio rate;
 
-    /**
-     * The amount of a medication administered to the patient as a single amount.
-     */
-    private Quantity administeredDose;
+        /**
+         * The maximum total quantity of a therapeutic substance that my be administered to a subject over the period of time. E.g. 1000mg in 24 hours.
+         */
+        private Ratio maxDosePerPeriod;
 
-    /**
-     * The amount of a medication administered to the patient over a period of time.
+        public Schedule getTiming() { 
+          return this.timing;
+        }
 
-Example 250ml/30min
-     */
-    private Quantity doseRate;
+        public void setTiming(Schedule value) { 
+          this.timing = value;
+        }
+
+        public CodeableConcept getSite() { 
+          return this.site;
+        }
+
+        public void setSite(CodeableConcept value) { 
+          this.site = value;
+        }
+
+        public CodeableConcept getRoute() { 
+          return this.route;
+        }
+
+        public void setRoute(CodeableConcept value) { 
+          this.route = value;
+        }
+
+        public CodeableConcept getMethod() { 
+          return this.method;
+        }
+
+        public void setMethod(CodeableConcept value) { 
+          this.method = value;
+        }
+
+        public Quantity getQuantity() { 
+          return this.quantity;
+        }
+
+        public void setQuantity(Quantity value) { 
+          this.quantity = value;
+        }
+
+        public Ratio getRate() { 
+          return this.rate;
+        }
+
+        public void setRate(Ratio value) { 
+          this.rate = value;
+        }
+
+        public Ratio getMaxDosePerPeriod() { 
+          return this.maxDosePerPeriod;
+        }
+
+        public void setMaxDosePerPeriod(Ratio value) { 
+          this.maxDosePerPeriod = value;
+        }
+
+  }
 
     /**
      * External identifier - FHIR will generate its own internal IDs (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.
@@ -155,9 +200,9 @@ Example 250ml/30min
     private List<Identifier> id = new ArrayList<Identifier>();
 
     /**
-     * A link to a resource that provides the original request, instruction and authority to perform the administration.
+     * Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.
      */
-    private ResourceReference prescription;
+    private Enumeration<MedAdmStatus> status;
 
     /**
      * A link to a resource representing the person to whom the medication was given.
@@ -165,126 +210,76 @@ Example 250ml/30min
     private ResourceReference patient;
 
     /**
-     * This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
+     * This is the individual who is responsible for giving the medication to the patient.
      */
-    private List<CodeableConcept> medication = new ArrayList<CodeableConcept>();
+    private ResourceReference practitioner;
 
     /**
-     * An identifier or a link to a resource that identifies the particular occurrence of contact between patient and health care practitioner.
+     * An link to a resource that identifies the particular occurrence of contact between patient and health care provider.
      */
-    private Identifier visit;
+    private ResourceReference visit;
+
+    /**
+     * A link to a resource that provides the original request, instruction and authority to perform the administration.
+     */
+    private ResourceReference prescription;
+
+    /**
+     * Set this to true if the record is saying that the medication was NOT administered.
+     */
+    private Boolean wasNotGiven;
+
+    /**
+     * A code indicating why the administration has been negated.
+
+Use only if isNegated is set to TRUE
+     */
+    private List<CodeableConcept> reasonNotGiven = new ArrayList<CodeableConcept>();
+
+    /**
+     * An interval of time during which the administration takes place.  For many administrations, such as swallowing a tablet the lower and upper values of the interval will be the same.
+     */
+    private Period whenGiven;
+
+    /**
+     * Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
+     */
+    private ResourceReference medication;
 
     /**
      * An identifier or a link to a resource that identifies a device used in administering the medication to the patient.
      */
     private List<ResourceReference> administrationDevice = new ArrayList<ResourceReference>();
 
-    public Enumeration<MedAdmStatus> getAdministrationEventStatus() { 
-      return this.administrationEventStatus;
-    }
-
-    public void setAdministrationEventStatus(Enumeration<MedAdmStatus> value) { 
-      this.administrationEventStatus = value;
-    }
-
-    public MedAdmStatus getAdministrationEventStatusSimple() { 
-      return this.administrationEventStatus == null ? null : this.administrationEventStatus.getValue();
-    }
-
-    public void setAdministrationEventStatusSimple(MedAdmStatus value) { 
-      if (value == null)
-        this.administrationEventStatus = null;
-      else {
-        if (this.administrationEventStatus == null)
-          this.administrationEventStatus = new Enumeration<MedAdmStatus>();
-        this.administrationEventStatus.setValue(value);
-      }
-    }
-
-    public Boolean getIsNegated() { 
-      return this.isNegated;
-    }
-
-    public void setIsNegated(Boolean value) { 
-      this.isNegated = value;
-    }
-
-    public boolean getIsNegatedSimple() { 
-      return this.isNegated == null ? null : this.isNegated.getValue();
-    }
-
-    public void setIsNegatedSimple(boolean value) { 
-      if (value == false)
-        this.isNegated = null;
-      else {
-        if (this.isNegated == null)
-          this.isNegated = new Boolean();
-        this.isNegated.setValue(value);
-      }
-    }
-
-    public List<CodeableConcept> getNegatedReason() { 
-      return this.negatedReason;
-    }
-
-    public Period getEffectiveTime() { 
-      return this.effectiveTime;
-    }
-
-    public void setEffectiveTime(Period value) { 
-      this.effectiveTime = value;
-    }
-
-    public CodeableConcept getMethod() { 
-      return this.method;
-    }
-
-    public void setMethod(CodeableConcept value) { 
-      this.method = value;
-    }
-
-    public CodeableConcept getApproachSite() { 
-      return this.approachSite;
-    }
-
-    public void setApproachSite(CodeableConcept value) { 
-      this.approachSite = value;
-    }
-
-    public CodeableConcept getRoute() { 
-      return this.route;
-    }
-
-    public void setRoute(CodeableConcept value) { 
-      this.route = value;
-    }
-
-    public Quantity getAdministeredDose() { 
-      return this.administeredDose;
-    }
-
-    public void setAdministeredDose(Quantity value) { 
-      this.administeredDose = value;
-    }
-
-    public Quantity getDoseRate() { 
-      return this.doseRate;
-    }
-
-    public void setDoseRate(Quantity value) { 
-      this.doseRate = value;
-    }
+    /**
+     * Indicates how the medication is to be used by the patient
+     */
+    private List<MedicationAdministrationDosageComponent> dosage = new ArrayList<MedicationAdministrationDosageComponent>();
 
     public List<Identifier> getId() { 
       return this.id;
     }
 
-    public ResourceReference getPrescription() { 
-      return this.prescription;
+    public Enumeration<MedAdmStatus> getStatus() { 
+      return this.status;
     }
 
-    public void setPrescription(ResourceReference value) { 
-      this.prescription = value;
+    public void setStatus(Enumeration<MedAdmStatus> value) { 
+      this.status = value;
+    }
+
+    public MedAdmStatus getStatusSimple() { 
+      return this.status == null ? null : this.status.getValue();
+    }
+
+    public void setStatusSimple(MedAdmStatus value) { 
+      if (value == null)
+        this.status = null;
+      else {
+        if (this.status == null)
+          this.status = new Enumeration<MedAdmStatus>();
+        this.status.setValue(value);
+      }
     }
 
     public ResourceReference getPatient() { 
@@ -295,20 +290,78 @@ Example 250ml/30min
       this.patient = value;
     }
 
-    public List<CodeableConcept> getMedication() { 
-      return this.medication;
+    public ResourceReference getPractitioner() { 
+      return this.practitioner;
     }
 
-    public Identifier getVisit() { 
+    public void setPractitioner(ResourceReference value) { 
+      this.practitioner = value;
+    }
+
+    public ResourceReference getVisit() { 
       return this.visit;
     }
 
-    public void setVisit(Identifier value) { 
+    public void setVisit(ResourceReference value) { 
       this.visit = value;
+    }
+
+    public ResourceReference getPrescription() { 
+      return this.prescription;
+    }
+
+    public void setPrescription(ResourceReference value) { 
+      this.prescription = value;
+    }
+
+    public Boolean getWasNotGiven() { 
+      return this.wasNotGiven;
+    }
+
+    public void setWasNotGiven(Boolean value) { 
+      this.wasNotGiven = value;
+    }
+
+    public boolean getWasNotGivenSimple() { 
+      return this.wasNotGiven == null ? null : this.wasNotGiven.getValue();
+    }
+
+    public void setWasNotGivenSimple(boolean value) { 
+      if (value == false)
+        this.wasNotGiven = null;
+      else {
+        if (this.wasNotGiven == null)
+          this.wasNotGiven = new Boolean();
+        this.wasNotGiven.setValue(value);
+      }
+    }
+
+    public List<CodeableConcept> getReasonNotGiven() { 
+      return this.reasonNotGiven;
+    }
+
+    public Period getWhenGiven() { 
+      return this.whenGiven;
+    }
+
+    public void setWhenGiven(Period value) { 
+      this.whenGiven = value;
+    }
+
+    public ResourceReference getMedication() { 
+      return this.medication;
+    }
+
+    public void setMedication(ResourceReference value) { 
+      this.medication = value;
     }
 
     public List<ResourceReference> getAdministrationDevice() { 
       return this.administrationDevice;
+    }
+
+    public List<MedicationAdministrationDosageComponent> getDosage() { 
+      return this.dosage;
     }
 
   @Override

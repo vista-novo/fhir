@@ -30,6 +30,7 @@ POSSIBILITY OF SUCH DAMAGE.
  */
 
 
+import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;

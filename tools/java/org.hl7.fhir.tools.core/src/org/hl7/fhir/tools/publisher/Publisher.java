@@ -191,7 +191,7 @@ public class Publisher {
 			return;
 		}
 		pub.isGenerate = !(args.length > 1 && hasParam(args, "-nogen"));
-		pub.web = (args.length > 1 && hasParam(args, "-web"));
+		pub.web = false && (args.length > 1 && hasParam(args, "-web"));
 		try {
       pub.execute(args[0]);
     } catch (Exception e) {
@@ -359,7 +359,7 @@ public class Publisher {
           List<Element> entries = new ArrayList<Element>();
           XMLUtil.getNamedChildren(e.getXml().getDocumentElement(), "entry", entries);
           for (Element c : entries) {
-            String id = XMLUtil.getNamedChild(c, "id").getAttribute("value");
+            String id = XMLUtil.getNamedChild(c, "id").getTextContent();
             if (id.startsWith("http://hl7.org/fhir/") && id.contains("@"))
               b.append(id.substring(id.indexOf("@")+1)+", ");
             else
@@ -443,6 +443,15 @@ public class Publisher {
         List<Element> nodes = new ArrayList<Element>();
         nodes.add(xml);
         listLinks("/f:"+n, r.getRoot(), nodes, refs);
+        
+        Element e = XMLUtil.getFirstChild(xml);
+        while (e != null) {
+          if (e.getNodeName().equals("contained")) {
+            listLinks(XMLUtil.getFirstChild(e), refs);
+          }
+          e = XMLUtil.getNextSibling(e);
+        }
+        
       }
     }
   }

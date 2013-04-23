@@ -29,15 +29,15 @@ POSSIBILITY OF SUCH DAMAGE.
 package org.hl7.fhir.instance.model;
 
 public abstract class Type extends Element {
-  private String namedConstraint;
+	 private String namedConstraint;
 
-  public String getNamedConstraint() {
-    return namedConstraint;
-  }
+	  public String getNamedConstraint() {
+	    return namedConstraint;
+	  }
 
-  public void setNamedConstraint(String namedConstraint) {
-    this.namedConstraint = namedConstraint;
-  }
-  
-  
+	  public void setNamedConstraint(String namedConstraint) {
+	    this.namedConstraint = namedConstraint;
+	  }
+	  
+	  
 }

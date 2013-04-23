@@ -1415,8 +1415,12 @@ private String resItem(String name) throws Exception {
       else if (com[0].equals("name"))
         src = s1+filename+s3;
       else if (com[0].equals("date")) {
-        Date d = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(profile.getMetadata().get("date").get(0));
-        src = s1+Config.DATE_FORMAT().format(d)+s3;
+        if (!Utilities.noString(profile.getMetadata().get("date").get(0))) {
+          Date d = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(profile.getMetadata().get("date").get(0));
+          src = s1+Config.DATE_FORMAT().format(d)+s3;
+        }
+        else
+          src = s1+"[no date]"+s3;
       } else if (com[0].equals("version"))
         src = s1+ini.getStringProperty("FHIR", "version")+s3;
       else if (com[0].equals("gendate"))

@@ -121,13 +121,18 @@ public class SchematronGenerator  extends TextStreamWriter {
 	
 	private void generateInvariants(String path, ElementDefn ed, Definitions definitions, List<String> parents) throws Exception {
 	  //logger.log("generate: "+path+" ("+parents.toString()+")");
-	  if (ed.getElements().size() > 0) {
-	    path = path + "/f:"+ed.getName();
+	  String name = ed.getName();
+	  if (name.contains("("))
+	    name = name.substring(0, name.indexOf("("));
+    if (ed.getElements().size() > 0) {
+	    path = path + "/f:"+name;
 	    genInvs(path, ed);
 	    genChildren(path, null, ed, definitions, parents);
 	  } else {
 	    for (TypeRef tr : ed.typeCode().equals("*") ? allTypes() : ed.getTypes()) {
-	      String en = ed.getName().replace("[x]", tr.summary());
+	      String en = name.replace("[x]", tr.summary());
+	      if (en.contains("("))
+	        en = en.substring(0, en.indexOf("("));
 	      String sPath = path + "/f:"+en;
 	      genInvs(sPath, ed);
 	      ElementDefn td = getType(tr, definitions);

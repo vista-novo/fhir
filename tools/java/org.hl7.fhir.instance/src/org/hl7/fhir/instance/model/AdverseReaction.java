@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
+// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
 
 import java.util.*;
 
@@ -148,7 +148,7 @@ public class AdverseReaction extends Resource {
 
     public class AdverseReactionSymptomComponent extends Element {
         /**
-         * A code that indicates the specific sign or symptom that was observed
+         * Indicates the specific sign or symptom that was observed
          */
         private CodeableConcept code;
 
@@ -201,7 +201,7 @@ public class AdverseReaction extends Resource {
         private Enumeration<ExposureType> exposureType;
 
         /**
-         * The substance that the subject was exposed to
+         * Substance that subject was exposed to
          */
         private ResourceReference substance;
 
@@ -270,12 +270,7 @@ public class AdverseReaction extends Resource {
     private ResourceReference subject;
 
     /**
-     * The substance that is presumed to have caused the reaction
-     */
-    private ResourceReference substance;
-
-    /**
-     * Used to record evidence that a reaction to a substance did not occur
+     * To say that a reaction to substance did not occur
      */
     private Boolean didNotOccurFlag;
 
@@ -322,14 +317,6 @@ public class AdverseReaction extends Resource {
 
     public void setSubject(ResourceReference value) { 
       this.subject = value;
-    }
-
-    public ResourceReference getSubstance() { 
-      return this.substance;
-    }
-
-    public void setSubstance(ResourceReference value) { 
-      this.substance = value;
     }
 
     public Boolean getDidNotOccurFlag() { 

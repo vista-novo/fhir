@@ -79,6 +79,7 @@ public class ModelValidator {
 		errors.clear();
     rule(parent.getName(), !name.equals("Metadata"), "The name 'Metadata' is not a legal name for a resource");
     rule(parent.getName(), !name.equals("History"), "The name 'History' is not a legal name for a resource");
+    rule(parent.getName(), name.toLowerCase().substring(0, 1) != name.substring(0, 1), "Resource Name must start with an uppercase alpha character");
 
     checkElement(parent.getName(), parent.getRoot(), parent);
     rule(parent.getName(), parent.getRoot().getElementByName("text") == null, "Element named \"text\" not allowed");

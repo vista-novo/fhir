@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
+// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
 
 import java.util.*;
 
@@ -110,6 +110,11 @@ public class Test extends Resource {
      */
     private List<Uri> uriCorr = new ArrayList<Uri>();
 
+    /**
+     * Test idref
+     */
+    private String_ idrefSingle;
+
     public List<String_> getStringErr() { 
       return this.stringErr;
     }
@@ -164,6 +169,28 @@ public class Test extends Resource {
 
     public List<Uri> getUriCorr() { 
       return this.uriCorr;
+    }
+
+    public String_ getIdrefSingle() { 
+      return this.idrefSingle;
+    }
+
+    public void setIdrefSingle(String_ value) { 
+      this.idrefSingle = value;
+    }
+
+    public String getIdrefSingleSimple() { 
+      return this.idrefSingle == null ? null : this.idrefSingle.getValue();
+    }
+
+    public void setIdrefSingleSimple(String value) { 
+      if (value == null)
+        this.idrefSingle = null;
+      else {
+        if (this.idrefSingle == null)
+          this.idrefSingle = new String_();
+        this.idrefSingle.setValue(value);
+      }
     }
 
   @Override

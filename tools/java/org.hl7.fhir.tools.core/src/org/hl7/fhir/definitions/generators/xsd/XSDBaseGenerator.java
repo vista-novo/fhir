@@ -476,33 +476,12 @@ public class XSDBaseGenerator extends OutputStreamWriter {
           for (String p : t.getParams()) {
             write("           <xs:element name=\"" + en + "_"
                 + upFirst(p) + "\" type=\""+ t.getName() + "_" + upFirst(p) + "\"/>\r\n");
-            //            write("         <xs:complexType>\r\n");
-            //            write("           <xs:complexContent>\r\n");
-            //            write("             <xs:extension base=\""
-            //                + t.getName() + "_" + upFirst(p) + "\"/>\r\n");
-            //            write("           </xs:complexContent>\r\n");
-            //            write("         </xs:complexType>\r\n");
-            //            write("       </xs:element>\r\n");
           }
-        } else {
-          // write("       <xs:element name=\""+t.getName()+"\" type=\""+t.getName()+"\"/>\r\n");
+        } else if (!definitions.getShared().contains(t.getName()) && !t.getName().equals("oid") && !t.getName().equals("uuid") && !t.getName().equals("id") ) {
           write("           <xs:element name=\"" + en + "\" type=\"" + t.getName()+ "\"/>\r\n");
-          //          write("         <xs:complexType>\r\n");
-          //          write("           <xs:complexContent>\r\n");
-          //          write("             <xs:extension base=\"" + t.getName()+ "\"/>\r\n");
-          //          write("           </xs:complexContent>\r\n");
-          //          write("         </xs:complexType>\r\n");
-          //          write("       </xs:element>\r\n");
         }
       }
     }
-    write("           <xs:element name=\"" + (prefix == null ? "" : prefix) + "Resource\" type=\"ResourceReference\"/>\r\n");
-    //    write("         <xs:complexType>\r\n");
-    //    write("           <xs:complexContent>\r\n");
-    //    write("             <xs:extension base=\"\"/>\r\n");
-    //    write("           </xs:complexContent>\r\n");
-    //    write("         </xs:complexType>\r\n");
-    //    write("       </xs:element>\r\n");
     write("          </xs:choice>\r\n");
   }
 

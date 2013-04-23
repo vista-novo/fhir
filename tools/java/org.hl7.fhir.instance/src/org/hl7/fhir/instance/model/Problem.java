@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
+// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
 
 import java.util.*;
 
@@ -37,6 +37,64 @@ import java.util.*;
  * Use to record detailed information about problems or diagnoses recognised by a clinician. There are many uses including: recording a Diagnosis during an Visit; populating a Problem List or a Summary Statement, such as a Discharge Summary
  */
 public class Problem extends Resource {
+
+    public enum ProblemStatus {
+        provisional, // 
+        working, // 
+        confirmed, // 
+        refuted, // 
+        Null; // added to help the parsers
+        public static ProblemStatus fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("provisional".equals(codeString))
+          return provisional;
+        if ("working".equals(codeString))
+          return working;
+        if ("confirmed".equals(codeString))
+          return confirmed;
+        if ("refuted".equals(codeString))
+          return refuted;
+        throw new Exception("Unknown ProblemStatus code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case provisional: return "provisional";
+            case working: return "working";
+            case confirmed: return "confirmed";
+            case refuted: return "refuted";
+            default: return "?";
+          }
+        }
+    }
+
+  public class ProblemStatusEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("provisional".equals(codeString))
+          return ProblemStatus.provisional;
+        if ("working".equals(codeString))
+          return ProblemStatus.working;
+        if ("confirmed".equals(codeString))
+          return ProblemStatus.confirmed;
+        if ("refuted".equals(codeString))
+          return ProblemStatus.refuted;
+        throw new Exception("Unknown ProblemStatus code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == ProblemStatus.provisional)
+        return "provisional";
+      if (code == ProblemStatus.working)
+        return "working";
+      if (code == ProblemStatus.confirmed)
+        return "confirmed";
+      if (code == ProblemStatus.refuted)
+        return "refuted";
+      return "?";
+      }
+    }
 
     public enum ProblemRelationshipType {
         dueMinusto, // 
@@ -235,7 +293,7 @@ public class Problem extends Resource {
     /**
      * The clinical status of the problem or diagnosis
      */
-    private Code status;
+    private Enumeration<ProblemStatus> status;
 
     /**
      * The degree of confidence that this problem/diagnosis is correct
@@ -339,24 +397,24 @@ public class Problem extends Resource {
       this.category = value;
     }
 
-    public Code getStatus() { 
+    public Enumeration<ProblemStatus> getStatus() { 
       return this.status;
     }
 
-    public void setStatus(Code value) { 
+    public void setStatus(Enumeration<ProblemStatus> value) { 
       this.status = value;
     }
 
-    public String getStatusSimple() { 
+    public ProblemStatus getStatusSimple() { 
       return this.status == null ? null : this.status.getValue();
     }
 
-    public void setStatusSimple(String value) { 
+    public void setStatusSimple(ProblemStatus value) { 
       if (value == null)
         this.status = null;
       else {
         if (this.status == null)
-          this.status = new Code();
+          this.status = new Enumeration<ProblemStatus>();
         this.status.setValue(value);
       }
     }

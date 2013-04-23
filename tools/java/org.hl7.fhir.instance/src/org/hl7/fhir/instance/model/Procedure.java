@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
+// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
 
 import java.util.*;
 
 /**
- * Doing something to patient
+ * An action that is performed on a patient. This can be a physical 'thing' like an operation, or less invasive like counselling or hypnotherapy
  */
 public class Procedure extends Resource {
 
@@ -247,7 +247,7 @@ public class Procedure extends Resource {
     /**
      * Any complications that occurred during the procedure, or in the immediate post-operative period. These are generally tracked separately from the notes, whicg typically will describe the procedure itself rather than any 'post procedure' issues
      */
-    private List<String_> complication = new ArrayList<String_>();
+    private String_ complication;
 
     /**
      * If the procedure required specific follow up - eg removal of sutures. The followup may be represented as a simple note, or potentially could be more complex in which case the CarePlan resource can be used
@@ -343,8 +343,26 @@ public class Procedure extends Resource {
       return this.report;
     }
 
-    public List<String_> getComplication() { 
+    public String_ getComplication() { 
       return this.complication;
+    }
+
+    public void setComplication(String_ value) { 
+      this.complication = value;
+    }
+
+    public String getComplicationSimple() { 
+      return this.complication == null ? null : this.complication.getValue();
+    }
+
+    public void setComplicationSimple(String value) { 
+      if (value == null)
+        this.complication = null;
+      else {
+        if (this.complication == null)
+          this.complication = new String_();
+        this.complication.setValue(value);
+      }
     }
 
     public String_ getFollowUp() { 

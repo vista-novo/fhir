@@ -44,7 +44,7 @@ public class Factory {
     Id res = new Id();
     res.setValue(value);
     return res;
-  }
+	}
 
   public static String_ newString_(String value) {
     if (value == null)

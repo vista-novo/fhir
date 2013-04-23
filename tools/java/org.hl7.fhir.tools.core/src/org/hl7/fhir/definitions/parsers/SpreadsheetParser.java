@@ -242,7 +242,7 @@ public class SpreadsheetParser {
     if (sheet != null) {
       for (int row = 0; row < sheet.rows.size(); row++) {
         String name = sheet.getColumn(row, "Name");
-        if (name != null && !name.equals("")) {
+        if (name != null && !name.equals("") && !name.startsWith("!")) {
           String desc = sheet.getColumn(row, "Description");
           if (desc == null || desc.equals(""))
             throw new Exception("Example " + name + " has no description parsing " + this.name);
@@ -250,12 +250,15 @@ public class SpreadsheetParser {
           String etitle = sheet.getColumn(row, "Example");
           ProfileInputType type = readProfileInputType(sheet.getColumn(row, "Type"));
           File file = new CSFile(folder + title);
-          File efile = new CSFile(folder + etitle);
           if (!file.exists())
             throw new Exception("Profile " + name + " file '" + file.getAbsolutePath() + "' not found parsing " + this.name);
-          if (!efile.exists())
-            throw new Exception("Profile Example " + name + " file '" + efile.getAbsolutePath() + "' not found parsing " + this.name);
-          defn.getProfiles().add(new RegisteredProfile(name, desc, title, file.getAbsolutePath(), type, etitle, efile.getAbsolutePath()));
+          File efile = null;
+          if (!Utilities.noString(etitle)) {
+            efile = new CSFile(folder + etitle);
+            if (!efile.exists())
+              throw new Exception("Profile Example " + name + " file '" + efile.getAbsolutePath() + "' not found parsing " + this.name);
+          }
+          defn.getProfiles().add(new RegisteredProfile(name, desc, title, file.getAbsolutePath(), type, etitle, efile == null ? null : efile.getAbsolutePath()));
         }
       }
     }

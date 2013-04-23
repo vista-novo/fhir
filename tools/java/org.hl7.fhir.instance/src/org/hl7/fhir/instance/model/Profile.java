@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Apr 14, 2013 21:55+1000 for FHIR v0.08
+// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
 
 import java.util.*;
 
@@ -1734,7 +1734,7 @@ public class Profile extends Resource {
         /**
          * Points to the value set or external definition that identifies the set of codes to be used
          */
-        private Uri reference;
+        private Type reference;
 
         /**
          * Identifies the codes forming the code list for the binding
@@ -1851,26 +1851,12 @@ public class Profile extends Resource {
           }
         }
 
-        public Uri getReference() { 
+        public Type getReference() { 
           return this.reference;
         }
 
-        public void setReference(Uri value) { 
+        public void setReference(Type value) { 
           this.reference = value;
-        }
-
-        public URI getReferenceSimple() { 
-          return this.reference == null ? null : this.reference.getValue();
-        }
-
-        public void setReferenceSimple(URI value) { 
-          if (value == null)
-            this.reference = null;
-          else {
-            if (this.reference == null)
-              this.reference = new Uri();
-            this.reference.setValue(value);
-          }
         }
 
         public List<CodeDefinitionComponent> getConcept() { 

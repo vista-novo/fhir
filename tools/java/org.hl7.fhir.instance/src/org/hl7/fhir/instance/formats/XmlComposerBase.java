@@ -27,9 +27,10 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWIS
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 POSSIBILITY OF SUCH DAMAGE.
 
-*/
+ */
 
 
+import java.io.IOException;
 import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.net.URI;
@@ -45,264 +46,194 @@ import org.hl7.fhir.utilities.xhtml.*;
 import org.hl7.fhir.utilities.xml.*;
 
 public abstract class XmlComposerBase extends XmlBase {
-  
-  protected IXMLWriter xml;
-  protected boolean htmlPretty;
-  
-  public void compose(OutputStream stream, Resource resource, boolean pretty) throws Exception {
-    XMLWriter writer = new XMLWriter(stream, "UTF-8");
-    writer.setPretty(pretty);
-    writer.start();
-    compose(writer, resource, pretty);
-    writer.close();
-  }
-  
-  public void compose(OutputStream stream, Resource resource, boolean pretty, boolean htmlPretty) throws Exception {
-    XMLWriter writer = new XMLWriter(stream, "UTF-8");
-    writer.setPretty(pretty);
-    writer.start();
-    compose(writer, resource, htmlPretty);
-    writer.close();
-  }
-  
-  public void compose(IXMLWriter writer, Resource resource, boolean htmlPretty) throws Exception {
-    this.htmlPretty = htmlPretty;
-    xml = writer;
-    xml.setDefaultNamespace(FHIR_NS);
-    composeResource(resource);
-  }
 
-  protected abstract void composeResource(Resource resource) throws Exception;
-  
-  protected void composeElementAttributes(Element element) throws Exception {
-    if (element.getXmlId() != null) 
-      xml.attribute("id", element.getXmlId());
-  }
+	protected IXMLWriter xml;
+	protected boolean htmlPretty;
 
-  protected void composeTypeAttributes(Type type) throws Exception {
-    composeElementAttributes(type);
-  }
-    
-//  protected void composeString(String name, String value) throws Exception {
-//    if (value != null)
-//      xml.element(FHIR_NS, name, value);
-//  }
-//  
-//  protected void composeURI(String name, java.net.URI value) throws Exception {
-//    if (value != null)
-//      xml.element(FHIR_NS, name, value.toString());
-//  }
-//  
-//  protected void composeUri(String name, java.net.URI value) throws Exception {
-//    if (value != null) {
-//      xml.element(FHIR_NS, name, value.toString());
-//    }
-//  }  
-//  protected void composeBigDecimal(String name, BigDecimal value) throws Exception {
-//    if (value != null)
-//      xml.element(FHIR_NS, name, value.toString());
-//  }
-//  
-//  protected void composeDecimal(String name, BigDecimal value) throws Exception {
-//    if (value != null) {
-//      xml.element(FHIR_NS, name, value.toString());
-//    }
-//  }
-//  
-//
-//  protected void composeInt(String name, java.lang.Integer value) throws Exception {
-//    if (value != null)
-//      xml.element(FHIR_NS, name, value.toString());
-//  }
-//
-//  protected void composeInteger(String name, java.lang.Integer value) throws Exception {
-//    if (value != null) {
-//      xml.element(FHIR_NS, name, java.lang.Integer.toString(value));
-//    }
-//  }
-//  
-//  protected void composeBool(String name, java.lang.Boolean value) throws Exception {
-//    if (value != null)
-//      xml.element(FHIR_NS, name, value.toString());
-//  }
-//  
-  protected void composeXhtml(String name, XhtmlNode html) throws Exception {
-    XhtmlComposer comp = new XhtmlComposer();
-    // name is also found in the html and should the same
-    // ? check that
-    boolean oldPretty = xml.isPretty();
-    xml.setPretty(htmlPretty);
-    xml.namespace(XhtmlComposer.XHTML_NS, null);
-    comp.compose(xml, html);
-    xml.setPretty(oldPretty);
-  }
-  
-//  protected void composeBytes(String name, byte[] content) throws Exception {
-//    if (content != null) {
-//      byte[] encodeBase64 = Base64.encodeBase64(content);
-//      composeString(name, new String(encodeBase64));
-//    }
-//  }  
-//
-//  protected void composeBase64Binary(String name, Base64Binary value) throws Exception {
-//    if (value != null) {
-//      composeTypeAttributes(value);
-//      composeBytes(name, value.getValue());
-//    }
-//  }
-//  
-//  protected void composeBase64Binary(String name, byte[] value) throws Exception {
-//    composeBytes(name, value);
-//  }
-//  
-//  
-//  protected void composeId(String name, Id value) throws Exception {
-//    if (value != null) {
-//      composeTypeAttributes(value);
-//      xml.element(FHIR_NS, name, value.getValue());
-//    }
-//  }
-//  
-//  protected void composeId(String name, String value) throws Exception {
-//    if (value != null) {
-//      xml.element(FHIR_NS, name, value);
-//    }
-//  }
-//  
-//  
-//  protected void composeCode(String name, Code value) throws Exception {
-//    if (value != null) {
-//      composeTypeAttributes(value);
-//      xml.element(FHIR_NS, name, value.getValue());
-//    }
-//  }
-//  
-//  protected void composeCode(String name, String value) throws Exception {
-//    if (value != null) {
-//      xml.element(FHIR_NS, name, value);
-//    }
-//  }
-//  
-//  
-//  protected void composeOid(String name, Oid value) throws Exception {
-//    if (value != null) {
-//      composeTypeAttributes(value);
-//      xml.element(FHIR_NS, name, value.getValue());
-//    }
-//  }
-//  
-//  protected void composeUuid(String name, Uuid value) throws Exception {
-//    if (value != null) {
-//      composeTypeAttributes(value);
-//      xml.element(FHIR_NS, name, value.getValue());
-//    }
-//  }
-//  
-//  protected void composeSid(String name, Sid value) throws Exception {
-//    if (value != null) {
-//      composeTypeAttributes(value);
-//      xml.element(FHIR_NS, name, value.getValue().toString());
-//    }
-//  }
-//
-//  protected void composeUri(String name, Uri value) throws Exception {
-//    if (value != null) {
-//      composeTypeAttributes(value);
-//      xml.element(FHIR_NS, name, value.getValue().toString());
-//    }
-//  }
-//
-//  protected void composeDecimal(String name, Decimal value) throws Exception {
-//    if (value != null) {
-//      composeTypeAttributes(value);
-//      if (value.getOriginal() != null)
-//        xml.element(FHIR_NS, name, value.getOriginal());
-//      else
-//        xml.element(FHIR_NS, name, value.getValue().toString());
-//    }
-//  }
-//  
-//  protected void composeString_(String name, String_ value) throws Exception {
-//    if (value != null) {
-//      composeTypeAttributes(value);
-//      xml.element(FHIR_NS, name, value.getValue());
-//    }
-//  }
-//  
-//  protected void composeBoolean(String name, Boolean value) throws Exception {
-//    if (value != null) {
-//      composeTypeAttributes(value);
-//      if (value.getOriginal() != null)
-//        xml.element(FHIR_NS, name, value.getOriginal());
-//      else
-//        xml.element(FHIR_NS, name, java.lang.Boolean.toString(value.getValue()));
-//    }
-//  }
-//  
-//  protected void composeBoolean(String name, java.lang.Boolean value) throws Exception {
-//    if (value != null) {
-//      xml.element(FHIR_NS, name, value.toString());
-//    }
-//  }
-//    
-//  protected void composeInstant(String name, Instant value) throws Exception {
-//    if (value != null) {
-//      composeTypeAttributes(value);
-//      xml.element(FHIR_NS, name, dateToXml(value.getValue()));
-//    }
-//  }
-//  
-//  protected void composeInteger(String name, Integer value) throws Exception {
-//    if (value != null) {
-//      composeTypeAttributes(value);
-//      if (value.getOriginal() != null)
-//        xml.element(FHIR_NS, name, value.getOriginal());
-//      else
-//        xml.element(FHIR_NS, name, java.lang.Integer.toString(value.getValue()));
-//    }
-//  }
-//  
-//  protected void composeDate(String name, java.util.Calendar value) throws Exception {
-//	  if (value != null) {
-//	      xml.element(FHIR_NS, name, dateToXml(value));
+	public void compose(OutputStream stream, Resource resource, boolean pretty) throws Exception {
+		XMLWriter writer = new XMLWriter(stream, "UTF-8");
+		writer.setPretty(pretty);
+		writer.start();
+		compose(writer, resource, pretty);
+		writer.close();
+	}
+
+	public void compose(OutputStream stream, Resource resource, boolean pretty, boolean htmlPretty) throws Exception {
+		XMLWriter writer = new XMLWriter(stream, "UTF-8");
+		writer.setPretty(pretty);
+		writer.start();
+		compose(writer, resource, htmlPretty);
+		writer.close();
+	}
+
+	public void compose(OutputStream stream, AtomFeed feed, boolean pretty) throws Exception {
+		XMLWriter writer = new XMLWriter(stream, "UTF-8");
+		writer.setPretty(pretty);
+		writer.start();
+		compose(writer, feed, pretty);
+		writer.close();
+	}
+
+	public void compose(OutputStream stream, AtomFeed feed, boolean pretty, boolean htmlPretty) throws Exception {
+		XMLWriter writer = new XMLWriter(stream, "UTF-8");
+		writer.setPretty(pretty);
+		writer.start();
+		compose(writer, feed, htmlPretty);
+		writer.close();
+	}
+
+
+	public void compose(IXMLWriter writer, AtomFeed feed, boolean htmlPretty) throws Exception {
+		this.htmlPretty = htmlPretty;
+		xml = writer;
+		xml.setDefaultNamespace(FHIR_NS);
+		
+	  xml.open("feed");
+	  xml.element("title", feed.getTitle());
+	  xml.element("id", feed.getId());
+//	  if (feed.isSearch) {
+//	    xml.setDefaultNamespace("http://purl.org/atompub/tombstones/1.0");
+//	    xml.element("totalResults", inttostr(feed.SearchTotal));
+//	    xml.Namespace := ATOM_NS;
 //	  }
-//  }
-//	  
-//  protected void composeDate(String name, Date value) throws Exception {
-//    if (value != null) {
-//      composeTypeAttributes(value);
-//      xml.element(FHIR_NS, name, value.getValue());
-//    }
-//  }
-//  
-//  protected void composeDateTime(String name, DateTime value) throws Exception {
-//    if (value != null) {
-//      composeTypeAttributes(value);
-//      xml.element(FHIR_NS, name, value.getValue());
-//    }
-//  }
-//
-//    protected void composeDateTime(String name, String value) throws Exception {
-//    if (value != null) {
-//      xml.element(FHIR_NS, name, value);
-//    }
-//  }
-//
-//  protected void composeString_(String name, String value) throws Exception {
-//    if (value != null) {
-//      xml.element(FHIR_NS, name, value);
-//    }
-//  }
-//  
-  protected void composeBinary(String name, Binary element) throws Exception {
-    if (element != null) {
-      composeElementAttributes(element);
-      xml.attribute("contentType", element.getContentType());
-      xml.open(FHIR_NS, name);
-      xml.text(toString(element.getContent()));
-      xml.close(FHIR_NS, name);
-    }    
-    
+
+	  for (String name : feed.getLinks().keySet()) {
+	    xml.attribute("href", feed.getLinks().get(name));
+	    xml.attribute("rel", name);
+	    xml.element("link", null);
+	  }
+	  
+	  xml.element(FHIR_NS, "updated", dateToXml(feed.getUpdated()));
+	  if (feed.getAuthorUri() != null || feed.getAuthorName() != null) {
+	    xml.open("author");
+	    if (feed.getAuthorName() != null) 
+	      xml.element("name", feed.getAuthorName());
+	    if (feed.getAuthorUri() != null)
+	      xml.element("uri", feed.getAuthorUri());
+	    xml.close("author");
+	  }
+	  for (AtomEntry e : feed.getEntryList())
+	    composeEntry(e);
+	  xml.close("feed");		
+	}
+	
+	private void composeEntry(AtomEntry entry) throws Exception {
+	  if (entry.isDeleted()) {
+	    xml.setDefaultNamespace("http://purl.org/atompub/tombstones/1.0");
+	    xml.attribute("ref", entry.getId());
+	    xml.attribute("when", dateToXml(entry.getUpdated()));
+	    xml.open("deleted-entry");
+	    for (String name : entry.getLinks().keySet()) {
+	      xml.attribute("href", entry.getLinks().get(name));
+	      xml.attribute("rel", name);
+	      xml.element("link", null);
+	    }
+//	    if (entry.getoriginalId <> "") then
+//	    begin
+//	      xml.open("source");
+//	      xml.element("id", entry.originalId);
+//	      xml.close("source");
+//	    end;
+	    if (entry.getAuthorUri() != null || entry.getAuthorName() != null) {
+	      xml.open("by");
+	      if (entry.getAuthorName() != null)
+	        xml.element("name", entry.getAuthorName());
+	      if (entry.getAuthorUri() != null)
+	        xml.element("uri", entry.getAuthorUri());
+	      xml.close("by");
+	    }
+	    xml.close("deleted-entry");
+	    xml.setDefaultNamespace(ATOM_NS);
+	  } else {
+	    xml.setDefaultNamespace(ATOM_NS);
+	    xml.open("entry");
+	    xml.element("title", entry.getTitle());
+	    xml.element("id", entry.getId());
+	    for (String name : entry.getLinks().keySet()) {
+	      xml.attribute("href", entry.getLinks().get(name));
+	      xml.attribute("rel", name);
+	      xml.element("link", null);
+	    }
+	    xml.element("updated", dateToXml(entry.getUpdated()));
+	    if (entry.getPublished() != null)
+	      xml.element("published", dateToXml(entry.getPublished()));
+//	    if. (entry.originalId <> "") then
+//	    begin
+//	      xml.open("source");
+//	      xml.element("id", entry.originalId);
+//	      xml.close("source");
+//	    end;
+	    if (entry.getAuthorUri() != null  || entry.getAuthorName() != null) {
+	      xml.open("author");
+	      if (entry.getAuthorName() != null) 
+	        xml.element("name", entry.getAuthorName());
+	      if (entry.getAuthorUri() != null)
+	        xml.element("uri", entry.getAuthorUri());
+	      xml.close("author");
+	    }
+	    xml.attribute("scheme", "http://hl7.org/fhir/resource-types");
+	    xml.attribute("term", entry.getCategory());
+	    xml.element("category", null);
+	    xml.attribute("type", "text/xml");
+	    xml.open("content");
+	    xml.setDefaultNamespace(FHIR_NS); 
+	    if (entry.getResource() instanceof Binary)
+	      composeBinary("Binary", (Binary) entry.getResource());
+	    else
+	      composeResource(entry.getResource());
+	    xml.setDefaultNamespace(ATOM_NS);
+	    xml.close("content");
+	    if (entry.getSummary() != null) {
+	      xml.attribute("type", "xhtml");
+	      xml.open("summary");
+	      xml.setDefaultNamespace(XhtmlComposer.XHTML_NS);
+	      composeXhtml("summary", entry.getSummary());
+	      xml.setDefaultNamespace(ATOM_NS);
+	      xml.close("summary");
+	    }
+	    xml.close("entry");
+	  }  
   }
-  
+
+	public void compose(IXMLWriter writer, Resource resource, boolean htmlPretty) throws Exception {
+		this.htmlPretty = htmlPretty;
+		xml = writer;
+		xml.setDefaultNamespace(FHIR_NS);
+		composeResource(resource);
+	}
+
+	protected abstract void composeResource(Resource resource) throws Exception;
+
+	protected void composeElementAttributes(Element element) throws Exception {
+		if (element.getXmlId() != null) 
+			xml.attribute("id", element.getXmlId());
+	}
+
+	protected void composeTypeAttributes(Type type) throws Exception {
+		composeElementAttributes(type);
+	}
+
+	protected void composeXhtml(String name, XhtmlNode html) throws Exception {
+		XhtmlComposer comp = new XhtmlComposer();
+		// name is also found in the html and should the same
+		// ? check that
+		boolean oldPretty = xml.isPretty();
+		xml.setPretty(htmlPretty);
+		xml.namespace(XhtmlComposer.XHTML_NS, null);
+		comp.compose(xml, html);
+		xml.setPretty(oldPretty);
+	}
+
+
+	protected void composeBinary(String name, Binary element) throws Exception {
+		if (element != null) {
+			composeElementAttributes(element);
+			xml.attribute("contentType", element.getContentType());
+			xml.open(FHIR_NS, name);
+			xml.text(toString(element.getContent()));
+			xml.close(FHIR_NS, name);
+		}    
+
+	}
+
 }

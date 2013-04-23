@@ -172,6 +172,8 @@ public class SourceParser {
 			loadCompositeType(n, definitions.getTypes());	
 		for (String n : ini.getPropertyNames("structures"))
 			loadCompositeType(n, definitions.getStructures());
+    for (String n : ini.getPropertyNames("shared"))
+      definitions.getShared().add(loadCompositeType(n, definitions.getStructures()));
 		for (String n : ini.getPropertyNames("infrastructure"))
 			loadCompositeType(n, definitions.getInfrastructure());
 		
@@ -352,8 +354,7 @@ public class SourceParser {
 		definitions.getPrimitives().put(prim.getCode(), prim);
 	}
 
-	private void loadCompositeType(String n, Map<String, ElementDefn> map)
-			throws Exception {
+	private String loadCompositeType(String n, Map<String, ElementDefn> map) throws Exception {
 		TypeParser tp = new TypeParser();
 		List<TypeRef> ts = tp.parse(n);
 		definitions.getKnownTypes().addAll(ts);
@@ -367,6 +368,7 @@ public class SourceParser {
 			ElementDefn el = p.parseCompositeType();
 			map.put(t.getName(), el);
 			el.getAcceptableGenericTypes().addAll(ts.get(0).getParams());
+			return el.getName();
 		} else {
 			String p = ini.getStringProperty("types", n);
 			csv = new CSFile(dtDir + p.toLowerCase() + ".xml");
@@ -391,6 +393,7 @@ public class SourceParser {
 			}
 			if (!found)
 				throw new Exception("Unable to find definition for " + n);
+			return n;
 		}
 	}
 
@@ -454,8 +457,10 @@ public class SourceParser {
 				TypeRef t = new TypeParser().parse(n).get(0);
 				Utilities.checkFile("type definition", dtDir, t.getName().toLowerCase() + ".xml", errors);
 			}
-		for (String n : ini.getPropertyNames("structures"))
-			Utilities.checkFile("structure definition", dtDir, n.toLowerCase() + ".xml",errors);
+    for (String n : ini.getPropertyNames("structures"))
+      Utilities.checkFile("structure definition", dtDir, n.toLowerCase() + ".xml",errors);
+    for (String n : ini.getPropertyNames("shared"))
+      Utilities.checkFile("shared structure definition", dtDir, n.toLowerCase() + ".xml",errors);
 		for (String n : ini.getPropertyNames("infrastructure"))
 			Utilities.checkFile("infrastructure definition", dtDir, n.toLowerCase() + ".xml",	errors);
 

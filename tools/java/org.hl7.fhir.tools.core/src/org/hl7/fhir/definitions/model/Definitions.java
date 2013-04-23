@@ -56,12 +56,12 @@ public class Definitions {
 	private Map<String, ElementDefn> types = new HashMap<String, ElementDefn>();
 	private Map<String, ElementDefn> structures = new HashMap<String, ElementDefn>();
 	private Map<String, ElementDefn> infrastructure = new HashMap<String, ElementDefn>();
+	private List<String> shared = new ArrayList<String>(); 
 	private Map<String, ResourceDefn> resources = new HashMap<String, ResourceDefn>();
 	private Map<String, ResourceDefn> futureResources = new HashMap<String, ResourceDefn>();
 	private List<String> deletedResources = new ArrayList<String>();
 	private ResourceDefn baseResource;
-
-	private List<String> aggregationEndpoints = new ArrayList<String>();
+  private List<String> aggregationEndpoints = new ArrayList<String>();
 
 	private Map<String, EventDefn> events = new HashMap<String, EventDefn>();
 	private Map<String, ProfileDefn> profiles = new HashMap<String, ProfileDefn>();
@@ -252,6 +252,10 @@ public class Definitions {
 
   public List<BindingSpecification> getCommonBindings() {
     return commonBindings;
+  }
+
+  public List<String> getShared() {
+    return shared;
   }
 
   
