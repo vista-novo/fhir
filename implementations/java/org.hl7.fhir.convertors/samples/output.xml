@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<feed xmlns="http://hl7.org/fhir">
+  <title>Community Health and Hospitals: Consultation Note</title>
+  <id>10bafdca-5240-4398-9f40-bd69eec4bcf7</id>
+  <updated>2013-04-24T00:40:33.274+10:00</updated>
+  <entry xmlns="http://www.w3.org/2005/Atom">
+    <title>Document</title>
+    <id>11a40ff1-aa38-46d9-bc1e-f377f569f355</id>
+    <updated>2013-04-24T00:40:33.353+10:00</updated>
+    <category scheme="http://hl7.org/fhir/resource-types" term="Document"/>
+    <content type="text/xml">
+      <Document xmlns="http://hl7.org/fhir">
+        <id>
+          <system value="urn:oid:2.16.840.1.113883.19.5.99999.19"/>
+          <id value="sTT988"/>
+        </id>
+        <versionId>
+          <system value="urn:oid:2.16.840.1.113883.19.5.99999.1"/>
+          <id value="TT988"/>
+        </versionId>
+        <created value="2012-09-17T09:07:00+10:00"/>
+        <type>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="11488-4"/>
+            <display value="Consultation Note"/>
+          </coding>
+        </type>
+        <title value="Community Health and Hospitals: Consultation Note"/>
+        <confidentiality>
+          <system value="urn:oid:2.16.840.1.113883.5.25"/>
+          <code value="N"/>
+        </confidentiality>
+      </Document>
+    </content>
+  </entry>
+  <entry xmlns="http://www.w3.org/2005/Atom">
+    <title>Subject</title>
+    <id>be5b93cd-1e66-4a9d-94ba-6474e7b8c807</id>
+    <updated>2013-04-24T00:40:33.359+10:00</updated>
+    <category scheme="http://hl7.org/fhir/resource-types" term="Patient"/>
+    <content type="text/xml">
+      <Patient xmlns="http://hl7.org/fhir">
+        <identifier>
+          <system value="urn:oid:2.16.840.1.113883.19.5.99999.2"/>
+          <id value="998991"/>
+        </identifier>
+        <identifier>
+          <system value="urn:oid:2.16.840.1.113883.4.1"/>
+          <id value="111-00-2330"/>
+        </identifier>
+        <details>
+          <name>
+            <use value="usual"/>
+            <family value="Jones"/>
+            <given value="Isabella"/>
+            <given value="Isa"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="(816)276-6909"/>
+            <use value="home"/>
+          </telecom>
+          <gender>
+            <system value="urn:oid:2.16.840.1.113883.5.1"/>
+            <code value="F"/>
+            <display value="Female"/>
+          </gender>
+          <birthDate value="2005-05-01"/>
+          <address>
+            <use value="home"/>
+            <line value="1357 Amber Drive"/>
+            <city value="Beaverton"/>
+            <state value="OR"/>
+            <zip value="97867"/>
+            <country value="US"/>
+          </address>
+          <maritalStatus>
+            <coding>
+              <system value="urn:oid:2.16.840.1.113883.5.2"/>
+              <code value="M"/>
+              <display value="Married"/>
+            </coding>
+          </maritalStatus>
+        </details>
+        <contact>
+          <relationship>
+            <coding>
+              <system value="urn:oid:2.16.840.1.113883.5.110"/>
+              <code value="GUARD"/>
+              <display value="guardian"/>
+            </coding>
+          </relationship>
+          <details>
+            <name>
+              <family value="Jones"/>
+              <given value="Ralph"/>
+            </name>
+            <telecom>
+              <system value="phone"/>
+              <value value="(816)276-6909"/>
+              <use value="home"/>
+            </telecom>
+            <address>
+              <use value="home"/>
+              <line value="1357 Amber Drive"/>
+              <city value="Beaverton"/>
+              <state value="OR"/>
+              <zip value="97867"/>
+              <country value="US"/>
+            </address>
+          </details>
+        </contact>
+      </Patient>
+    </content>
+  </entry>
+</feed>
