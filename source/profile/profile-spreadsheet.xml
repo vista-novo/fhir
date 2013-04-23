@@ -1238,7 +1238,7 @@
     <Cell><Data ss:Type="Number">13</Data></Cell>
     <Cell ss:Index="3" ss:StyleID="s65"><Data ss:Type="String">Profile.binding.referenceUri</Data></Cell>
     <Cell><Data ss:Type="String">uri must be http:// (no security)</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">starts-with(f:/url/@value, 'http:')</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">starts-with(f:url/@value, 'http:')</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1260,6 +1260,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>13</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
