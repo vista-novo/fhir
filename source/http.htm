@@ -226,7 +226,7 @@ The update interaction is performed by an HTTP PUT operation as shown:
 <p>
 If the operation is successful, the server must return either a 200 OK if the resource was updated, or a 201 Created if the resource was created, along with a copy of the 
 newly updated resource (which might not be the same as that submitted) with the response, along 
-with a Last-Modified header, and a Locatin and Content-Location header that refers to the specific version created by the 
+with a Last-Modified header, and a Location and Content-Location header that refers to the specific version created by the 
 updated operation.
 </p>
 <p>
@@ -335,8 +335,8 @@ Common HTTP Status codes returned on FHIR-related errors (in addition to normal 
 This interaction searches a resource type based on some filter criteria. The interaction is performed by two different HTTP Get operation as shown:
 </p>
 <pre>
-  GET [service-url]/[resourcetype]/search(?parameters) (&amp;format=mimeType)
-  GET [service-url]/[resourcetype]/(?parameters) (&amp;format=mimeType)
+  GET [service-url]/[resourcetype]/search(?parameters) (&amp;_format=mimeType)
+  GET [service-url]/[resourcetype]/(?parameters) (&amp;_format=mimeType)
 </pre>
 <p>
 Because of the way that some user agents treat POST requests, POST submissions are also allowed, though the semantics are exactly the 

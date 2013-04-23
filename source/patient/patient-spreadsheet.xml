@@ -26,7 +26,6 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>6</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -191,8 +190,8 @@
     <Cell><Data ss:Type="String">Patient.contact</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">=Contact</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">A contact party for the patient</Data></Cell>
-    <Cell><Data ss:Type="String">A contact party for the patient</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">A contact party (e.g. guardian, partner, friend) for the patient</Data></Cell>
+    <Cell><Data ss:Type="String">A contact party (e.g. guardian, partner, friend) for the patient</Data></Cell>
     <Cell><Data ss:Type="String">Need to track people you can contact about the patient</Data></Cell>
     <Cell><Data ss:Type="String">Contact covers all kinds of contact parties: family members, business contacts, guardians, caregivers. Not applicable to register pedigree and family ties beyond use of having contact.</Data></Cell>
    </Row>
@@ -342,11 +341,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -791,12 +791,10 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>11</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>34</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
