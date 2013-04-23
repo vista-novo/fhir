@@ -28,10 +28,12 @@
 
 -->
 <xs:schema xmlns="http://hl7.org/fhir" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="0.07">
+  <xs:include schemaLocation="fhir-base.xsd"/>
   <xs:complexType name="Binary">
     <xs:simpleContent>
       <xs:extension base="xs:base64Binary">
         <xs:attribute name="contentType" type="xs:string" use="required"/>
+        <xs:attribute name="id" type="id-primitive"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
