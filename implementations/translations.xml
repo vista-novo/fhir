@@ -524,4 +524,9 @@
     <translation lang="it">FHIR RESTful Server - Upload di %s</translation>
   </item>
 
+  <item id="MSG_AUTH_REQUIRED">
+    <translation lang="en">You must authenticate before you can use this service</translation>
+  </item>
+
+  
 </translations>

@@ -191,21 +191,14 @@ public class SpreadsheetParser {
 	{
 		for (TypeRef ref : root.getTypes()) {
 			if (ref.isElementReference()) {
-				ElementDefn referredElement = parent.getRoot()
-						.getElementByName(ref.getName().substring(1));
+				ElementDefn referredElement = parent.getRoot().getElementByName(ref.getName().substring(1));
 
 				if (referredElement == null)
-					throw new Exception("Element reference " + ref.getName()
-							+ " cannot be found in type " + parent.getName());
+					throw new Exception("Element reference " + ref.getName()+ " cannot be found in type " + parent.getName());
 
 				if (referredElement.getDeclaredTypeName() == null)
-					throw new Exception(
-							"Element reference "
-									+ ref.getName()
-									+ " in "
-									+ parent.getName()
-									+ " refers to an anonymous group of elements. Please specify names "
-									+ " with the '=<name>' construct in the typename column.");
+					throw new Exception("Element reference "+ ref.getName()+ " in "+ parent.getName()
+					   + " refers to an anonymous group of elements. Please specify names with the '=<name>' construct in the typename column.");
 
 				ref.setResolvedTypeName(referredElement.getDeclaredTypeName());
 			}
@@ -799,7 +792,7 @@ public class SpreadsheetParser {
 	      if (en.charAt(en.length() - 1) == '*') 
 	        throw new Exception("no-list wrapper found at " + source);
 
-	      ElementDefn t = res.getElementByName(en);
+	      ElementDefn t = res.getElementByName(en, true);
 
 	      if (t == null) {
           throw new Exception("Reference to undefined Element "+ pathname+ " found at " + source);

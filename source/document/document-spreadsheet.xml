@@ -639,7 +639,7 @@
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">right</Data></Cell>
-    <Cell><Data ss:Type="String" x:Ticked="1">@Document.Section</Data></Cell>
+    <Cell><Data ss:Type="String" x:Ticked="1">@Document.section</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Nested Section</Data></Cell>
     <Cell><Data ss:Type="String">Identifies a subtopic within the section as part of the document's table of contents</Data></Cell>
     <Cell><Data ss:Type="String">Allows more complex document structures</Data></Cell>
@@ -657,7 +657,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>37</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -670,11 +670,12 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>12</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>38</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

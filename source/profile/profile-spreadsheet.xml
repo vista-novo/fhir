@@ -20,6 +20,7 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>12450</WindowTopX>
   <WindowTopY>1815</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -84,11 +85,6 @@
   </Style>
   <Style ss:ID="s73">
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s75">
-   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
-    ss:Italic="1"/>
   </Style>
   <Style ss:ID="s76">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
@@ -1059,11 +1055,11 @@
     <Cell><Data ss:Type="String">Indicates the degree of conformance expectations associated with this binding</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Profile.binding.reference</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.binding.reference[x]</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">uri</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">uri | Resource(ValueSet)</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Source of binding content</Data></Cell>
     <Cell><Data ss:Type="String">Points to the value set or external definition that identifies the set of codes to be used</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">For value sets, this should point to a ValueSet resource.  The reference may be version-specific or not</Data></Cell>
@@ -1124,11 +1120,10 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>9</TopRowBottomPane>
+   <TopRowBottomPane>63</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -1145,8 +1140,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>13</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>72</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1240,7 +1235,10 @@
     <Cell ss:Index="6"><Data ss:Type="String">upper-case(substring(f:type,1,1))=substring(f:type,1,1)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="3" ss:StyleID="s75"/>
+    <Cell><Data ss:Type="Number">13</Data></Cell>
+    <Cell ss:Index="3" ss:StyleID="s65"><Data ss:Type="String">Profile.binding.referenceUri</Data></Cell>
+    <Cell><Data ss:Type="String">uri must be http:// (no security)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">starts-with(f:/url/@value, 'http:')</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1256,6 +1254,14 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
+   <TopRowVisible>9</TopRowVisible>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>13</ActiveRow>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -1772,6 +1778,46 @@
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
      <ActiveCol>2</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Profiles">
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="108"/>
+   <Column ss:AutoFitWidth="0" ss:Width="237"/>
+   <Column ss:AutoFitWidth="0" ss:Width="179.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="99"/>
+   <Column ss:AutoFitWidth="0" ss:Width="258.75"/>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Name</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Filename</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Type</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Example</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">!Study Profile</Data></Cell>
+    <Cell><Data ss:Type="String">General Profile for a picture as an observation</Data></Cell>
+    <Cell><Data ss:Type="String">profile-profile-study.xml</Data></Cell>
+    <Cell><Data ss:Type="String">spreadsheet</Data></Cell>
+    <Cell><Data ss:Type="String">profile-profile-study-example.xml</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>2</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

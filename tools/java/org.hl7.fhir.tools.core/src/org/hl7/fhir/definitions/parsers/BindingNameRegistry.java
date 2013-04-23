@@ -44,7 +44,7 @@ public class BindingNameRegistry {
     if (ini.getIntegerProperty("Binding Names", name) != null)
       return ini.getIntegerProperty("Binding Names", name).toString();
     else if (!forPublication)
-    	return "??";
+    	return "0";
     else {
       Integer last;
       if (ini.getIntegerProperty("Key", "Last") != null)

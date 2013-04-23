@@ -223,6 +223,37 @@ public class ElementDefn {
 		return shortDefn != null && !"".equals(shortDefn);
 	}
 
+	public ElementDefn getElementByName(String name, boolean throughChoice) {
+    String n = name.contains(".") ? name.substring(0, name.indexOf(".")) : name;
+    String t = name.contains(".") ? name.substring(name.indexOf(".") + 1) : null;
+    if (n.equals(this.name) && t != null)
+      return getElementByName(t);
+    
+    for (int i = elements.size() - 1; i >= 0; i--) {
+      ElementDefn e = elements.get(i);
+      if (nameMatches(n, e, throughChoice))
+        return t == null ? e : e.getElementByName(t);
+    }
+    return null;
+  }
+
+  private boolean nameMatches(String n, ElementDefn e, boolean throughChoice) {
+    if (e.getName().equals(n))
+      return true;
+    else if (!throughChoice || !e.getName().endsWith("[x]"))
+      return false;
+    else {
+      String b = e.getName().substring(0, e.getName().indexOf("["));
+      if (!n.startsWith(b))
+        return false;
+      String tn = n.substring(b.length());
+      for (TypeRef t : e.getTypes()) 
+        if (t.getName().equalsIgnoreCase(tn))
+          return true;
+      return false;
+    }
+  }
+
 	public ElementDefn getElementByName(String name) {
 		String n = name.contains(".") ? name.substring(0, name.indexOf("."))
 				: name;
@@ -233,14 +264,14 @@ public class ElementDefn {
 
 		for (int i = elements.size() - 1; i >= 0; i--) {
 			ElementDefn e = elements.get(i);
-			if (e.getName().equalsIgnoreCase(n))
+			if (nameMatches(n, e, false))
 				return t == null ? e : e.getElementByName(t);
-			if (e.getName().length() > name.length()
-					&& e.getName().substring(0, name.length())
-							.equalsIgnoreCase(name)
-					&& e.getElements().size() == 1
-					&& e.getElements().get(0).getName().equalsIgnoreCase(name))
-				return e.getElements().get(0);
+//			if (e.getName().length() > name.length()
+//					&& e.getName().substring(0, name.length())
+//							.equalsIgnoreCase(name)
+//					&& e.getElements().size() == 1
+//					&& e.getElements().get(0).getName().equalsIgnoreCase(name))
+//				return e.getElements().get(0);
 		}
 		return null;
 	}

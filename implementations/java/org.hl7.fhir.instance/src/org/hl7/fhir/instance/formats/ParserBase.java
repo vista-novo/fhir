@@ -57,7 +57,10 @@ public abstract class ParserBase extends XmlBase {
   }
 
   protected URI parseUriPrimitive(String value) throws Exception {
-    return new URI(value);
+  	 if (value == null)
+       return null;
+     else       
+    	 return new URI(value);
   }
 
   protected byte[] parseBase64BinaryPrimitive(String value) {
