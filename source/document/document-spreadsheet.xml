@@ -484,7 +484,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Admission|InterestOfCare)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Visit|InterestOfCare)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Context of the document</Data></Cell>
     <Cell><Data ss:Type="String">Describes the clinical visit or type of care this document is associated with.</Data></Cell>
@@ -657,7 +657,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>37</TopRowBottomPane>
+   <TopRowBottomPane>14</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -674,7 +674,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>38</ActiveRow>
+     <ActiveRow>24</ActiveRow>
      <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
