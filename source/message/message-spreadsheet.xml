@@ -342,7 +342,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Message.receiver</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Resource(Person | Organization)</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Resource(Practitioner | Organization)</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Intended &quot;real-world&quot; recipient for the data</Data></Cell>
     <Cell><Data ss:Type="String">Allows data conveyed by a message to be addressed to a particular person or department when routing to a specific application isn't sufficient.</Data></Cell>
     <Cell><Data ss:Type="String">Allows routing beyond just to the application level</Data></Cell>
@@ -406,7 +406,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>25</TopRowBottomPane>
+   <TopRowBottomPane>18</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -423,7 +423,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>20</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
