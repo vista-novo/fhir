@@ -521,8 +521,9 @@ public class Publisher {
 			}
 		}
 
+    log("Produce Schematrons");
 		for (ResourceDefn r : page.getDefinitions().getResources().values()) {
-			String n = r.getName().toLowerCase();
+			String n = r.getName().toLowerCase();			
 			SchematronGenerator sch = new SchematronGenerator(new FileOutputStream(page.getFolders().dstDir + n + ".sch"), page);
 			sch.generate(r.getRoot(), page.getDefinitions());
 			sch.close();
