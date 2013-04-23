@@ -90,6 +90,27 @@ public class CCDAConverter {
 			pat.getDetails().getName().add(convert.makeNameFromEN(e));
 		pat.getDetails().setGender(convert.makeCodingFromCV(cda.getChild(p, "administrativeGenderCode")));
 		pat.getDetails().setBirthDate(convert.makeDateTimeFromTS(cda.getChild(p, "birthTime")));
+		pat.getDetails().setMaritalStatus(convert.makeCodeableConceptFromCD(cda.getChild(p, "maritalStatusCode")));
+		pat.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/religious-affiliation", convert.makeCodeableConceptFromCD(cda.getChild(p, "religiousAffiliationCode"))));
+		pat.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/race", convert.makeCodeableConceptFromCD(cda.getChild(p, "raceCode"))));
+		pat.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/ethnic-group", convert.makeCodeableConceptFromCD(cda.getChild(p, "ethnicGroupCode"))));
+		pat.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/birthplace", convert.makeAddressFromAD(cda.getChild(p, new String[] {"birthplace", "place", "addr"}))));
+		
+		Patient.ContactComponent guardian = pat.new ContactComponent();
+		guardian.setDetails(new Demographics());
+		pat.getContact().add(guardian);
+		guardian.getRelationship().add(Factory.newCodeableConcept("GUARD", "urn:oid:2.16.840.1.113883.5.110", "guardian"));
+		Element g = cda.getChild(p, "guardian");
+		for (Element e : cda.getChildren(g, "addr"))
+			guardian.getDetails().getAddress().add(convert.makeAddressFromAD(e));
+		for (Element e : cda.getChildren(g, "telecom"))
+			guardian.getDetails().getTelecom().add(convert.makeContactFromTEL(e));
+		g = cda.getChild(g, "guardianPerson");
+		for (Element e : cda.getChildren(g, "name"))
+			guardian.getDetails().getName().add(convert.makeNameFromEN(e));
+		
+		// todo: guardian
+		
 		return wrapResource(pat, "Subject", UUID.randomUUID().toString());
 	}
 

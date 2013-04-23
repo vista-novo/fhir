@@ -73,11 +73,16 @@ Notes:
 The <i>value[x]</i> element has the [x] replaced with the name of one of the defined types, and the contents as defined for that type, or another extension. The value type may be one of the following:
 </p>
 <ul class="dense">
+ <li><a href="datatypes.htm#integer">integer</a></li>
+ <li><a href="datatypes.htm#decimal">decimal</a></li>
  <li><a href="datatypes.htm#dateTime">dateTime</a></li>
+ <li><a href="datatypes.htm#date">date</a></li>
+ <li><a href="datatypes.htm#instant">instant</a></li>
  <li><a href="datatypes.htm#string">string</a></li>
  <li><a href="datatypes.htm#uri">uri</a></li>
  <li><a href="datatypes.htm#boolean">boolean</a></li>
  <li><a href="datatypes.htm#code">code</a> - if the extension definition provides a binding to a suitable set of codes</li>
+ <li><a href="datatypes.htm#base64Binary">base64Binary</a></li>
  <li><a href="datatypes.htm#Coding">Coding</a></li>
  <li><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></li>
  <li><a href="datatypes.htm#Attachment">Attachment</a></li>
@@ -93,6 +98,11 @@ The <i>value[x]</i> element has the [x] replaced with the name of one of the def
  <li><a href="datatypes.htm#Schedule">Schedule</a></li>
  <li><a href="resources.htm#ResourceReference">Resource</a> - a reference to another resource</li>
 </ul>
+
+
+        <xs:element name="valueDemographics" type="Demographics"/>
+        <xs:element name="valueResource" type="ResourceReference"/>
+
 <p>
 Nested extensions are used where the original definition of the extension defines complex content (i.e. multiple parts of the extension, not a simple data type).
 If the value of the extension themselves need extending, this is in the content of the value[x] element.

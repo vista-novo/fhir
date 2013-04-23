@@ -54,7 +54,17 @@ public class CDAUtilities {
 		
 	}
 
+	public Element getChild(Element e, String[] names) throws Exception {
+		for (String n : names) {
+			if (e == null)
+				return null;
+			e = getChild(e, n);
+		}
+		return e;
+	}
+
 	public Element getChild(Element element, String name) throws Exception {
+		
 		Element e = null;
 		Node n = element.getFirstChild();
 		while (n != null) {
