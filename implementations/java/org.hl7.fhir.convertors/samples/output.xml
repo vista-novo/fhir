@@ -2,12 +2,37 @@
 
 <feed xmlns="http://hl7.org/fhir">
   <title>Community Health and Hospitals: Consultation Note</title>
-  <id>10bafdca-5240-4398-9f40-bd69eec4bcf7</id>
-  <updated>2013-04-24T00:40:33.274+10:00</updated>
+  <id>58b17565-7850-45b0-8ec8-f6f735f1d34b</id>
+  <updated>2013-04-25T08:33:46.318+10:00</updated>
+  <entry xmlns="http://www.w3.org/2005/Atom">
+    <title>Encounter</title>
+    <id>5837b2bd-19c7-47e9-9ee2-346c7373bf76</id>
+    <updated>2013-04-25T08:33:46.409+10:00</updated>
+    <category scheme="http://hl7.org/fhir/resource-types" term="Visit"/>
+    <content type="text/xml">
+      <Visit xmlns="http://hl7.org/fhir">
+        <identifier>
+          <system value="urn:oid:2.16.840.1.113883.19"/>
+          <id value="9937012"/>
+        </identifier>
+        <setting>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.12"/>
+            <code value="99213"/>
+            <display value="Evaluation and Management"/>
+          </coding>
+        </setting>
+        <period>
+          <start value="2009-02-27T07:00:00+1100"/>
+          <end value="2009-02-27T07:00:00+1100"/>
+        </period>
+      </Visit>
+    </content>
+  </entry>
   <entry xmlns="http://www.w3.org/2005/Atom">
     <title>Document</title>
-    <id>11a40ff1-aa38-46d9-bc1e-f377f569f355</id>
-    <updated>2013-04-24T00:40:33.353+10:00</updated>
+    <id>6910e300-b51c-4a39-bd46-38f82f9a81a7</id>
+    <updated>2013-04-25T08:33:46.411+10:00</updated>
     <category scheme="http://hl7.org/fhir/resource-types" term="Document"/>
     <content type="text/xml">
       <Document xmlns="http://hl7.org/fhir">
@@ -32,13 +57,85 @@
           <system value="urn:oid:2.16.840.1.113883.5.25"/>
           <code value="N"/>
         </confidentiality>
+        <subject>
+          <type value="Patient"/>
+          <url value="9c0b5d72-f5d3-45fe-bcab-16de98e70087"/>
+        </subject>
+        <author>
+          <type value="Provider"/>
+          <url value="04a090a3-8306-43ec-ac03-36d4fcf7359e"/>
+        </author>
+        <attester>
+          <mode value="legal"/>
+          <time value="2009-02-27T07:00:00+1100"/>
+          <party>
+            <type value="Practitioner"/>
+            <url value="54cadb52-3bf0-4dc4-87c2-c87ccaeb6f0d"/>
+          </party>
+        </attester>
+        <attester>
+          <mode value="professional"/>
+          <time value="2009-02-27T07:00:00+1100"/>
+          <party>
+            <type value="Practitioner"/>
+            <url value="046af03e-e6e0-41b9-b61a-3501a620947e"/>
+          </party>
+        </attester>
+        <custodian>
+          <type value="Organization"/>
+          <url value="bf53fac2-a11c-4ca3-b5ba-19ca5408430d"/>
+        </custodian>
+        <event>
+          <code>
+            <coding>
+              <system value="urn:oid:2.16.840.1.113883.6.12"/>
+              <code value="99213"/>
+              <display value="Evaluation and Management"/>
+            </coding>
+          </code>
+          <period>
+            <start value="2009-02-27T07:00:00+1100"/>
+            <end value="2009-02-27T07:00:00+1100"/>
+          </period>
+          <detail>
+            <type value="Visit"/>
+            <url value="5837b2bd-19c7-47e9-9ee2-346c7373bf76"/>
+          </detail>
+        </event>
       </Document>
     </content>
   </entry>
   <entry xmlns="http://www.w3.org/2005/Atom">
+    <title>Provider</title>
+    <id>9ba35aa2-bed1-4395-aaaf-cd60e5e33d17</id>
+    <updated>2013-04-25T08:33:46.416+10:00</updated>
+    <category scheme="http://hl7.org/fhir/resource-types" term="Organization"/>
+    <content type="text/xml">
+      <Organization xmlns="http://hl7.org/fhir">
+        <identifier>
+          <system value="urn:ietf:rfc:3986"/>
+          <id value="urn:oid:2.16.840.1.113883.19.5.9999.1393"/>
+        </identifier>
+        <name value="Community Health and Hospitals"/>
+        <address>
+          <line value="1001 Village Avenue"/>
+          <city value="Portland"/>
+          <state value="OR"/>
+          <zip value="99123"/>
+          <country value="US"/>
+        </address>
+        <telecom>
+          <system value="phone"/>
+          <value value="555-555-5000"/>
+          <use value="work"/>
+        </telecom>
+      </Organization>
+    </content>
+  </entry>
+  <entry xmlns="http://www.w3.org/2005/Atom">
     <title>Subject</title>
-    <id>be5b93cd-1e66-4a9d-94ba-6474e7b8c807</id>
-    <updated>2013-04-24T00:40:33.359+10:00</updated>
+    <id>9c0b5d72-f5d3-45fe-bcab-16de98e70087</id>
+    <updated>2013-04-25T08:33:46.416+10:00</updated>
     <category scheme="http://hl7.org/fhir/resource-types" term="Patient"/>
     <content type="text/xml">
       <Patient xmlns="http://hl7.org/fhir">
@@ -51,6 +148,55 @@
           <id value="111-00-2330"/>
         </identifier>
         <details>
+          <extension>
+            <url value="http://www.healthintersections.com.au/fhir/extensions/religious-affiliation"/>
+            <valueCodeableConcept>
+              <coding>
+                <system value="urn:oid:2.16.840.1.113883.5.1076"/>
+                <code value="1013"/>
+                <display value="Christian (non-Catholic, non-specific)"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <extension>
+            <url value="http://www.healthintersections.com.au/fhir/extensions/race"/>
+            <valueCodeableConcept>
+              <coding>
+                <system value="urn:oid:2.16.840.1.113883.6.238"/>
+                <code value="1966-1"/>
+                <display value="Aleut"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <extension>
+            <url value="http://www.healthintersections.com.au/fhir/extensions/ethnic-group"/>
+            <valueCodeableConcept>
+              <coding>
+                <system value="urn:oid:2.16.840.1.113883.6.238"/>
+                <code value="2186-5"/>
+                <display value="Not Hispanic or Latino"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <extension>
+            <url value="http://www.healthintersections.com.au/fhir/extensions/birthplace"/>
+            <valueAddress>
+              <city value="Beaverton"/>
+              <state value="OR"/>
+              <zip value="97867"/>
+              <country value="US"/>
+            </valueAddress>
+          </extension>
+          <extension>
+            <url value="http://www.healthintersections.com.au/fhir/extensions/religious-affiliation"/>
+            <valueCodeableConcept>
+              <coding>
+                <system value="urn:oid:2.16.840.1.113883.5.1076"/>
+                <code value="1013"/>
+                <display value="Christian (non-Catholic, non-specific)"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
           <name>
             <use value="usual"/>
             <family value="Jones"/>
@@ -83,6 +229,27 @@
               <display value="Married"/>
             </coding>
           </maritalStatus>
+          <language>
+            <language>
+              <coding>
+                <code value="en"/>
+              </coding>
+            </language>
+            <mode>
+              <coding>
+                <system value="urn:oid:2.16.840.1.113883.5.60"/>
+                <code value="ESP"/>
+                <display value="Expressed spoken"/>
+              </coding>
+            </mode>
+            <proficiencyLevel>
+              <coding>
+                <system value="urn:oid:2.16.840.1.113883.5.60"/>
+                <code value="ESP"/>
+                <display value="Expressed spoken"/>
+              </coding>
+            </proficiencyLevel>
+          </language>
         </details>
         <contact>
           <relationship>
@@ -112,7 +279,135 @@
             </address>
           </details>
         </contact>
+        <provider>
+          <type value="Organization"/>
+          <url value="9ba35aa2-bed1-4395-aaaf-cd60e5e33d17"/>
+        </provider>
       </Patient>
+    </content>
+  </entry>
+  <entry xmlns="http://www.w3.org/2005/Atom">
+    <title>Author</title>
+    <id>04a090a3-8306-43ec-ac03-36d4fcf7359e</id>
+    <updated>2013-04-25T08:33:46.416+10:00</updated>
+    <category scheme="http://hl7.org/fhir/resource-types" term="Practitioner"/>
+    <content type="text/xml">
+      <Practitioner xmlns="http://hl7.org/fhir">
+        <identifier>
+          <system value="urn:oid:2.16.840.1.113883.4.6"/>
+          <id value="99999999"/>
+        </identifier>
+        <details>
+          <name>
+            <family value="Seven"/>
+            <given value="Henry"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1002"/>
+            <use value="work"/>
+          </telecom>
+          <address>
+            <line value="1002 Healthcare Drive "/>
+            <city value="Portland"/>
+            <state value="OR"/>
+            <zip value="99123"/>
+            <country value="US"/>
+          </address>
+        </details>
+      </Practitioner>
+    </content>
+  </entry>
+  <entry xmlns="http://www.w3.org/2005/Atom">
+    <title>Custodian</title>
+    <id>bf53fac2-a11c-4ca3-b5ba-19ca5408430d</id>
+    <updated>2013-04-25T08:33:46.417+10:00</updated>
+    <category scheme="http://hl7.org/fhir/resource-types" term="Organization"/>
+    <content type="text/xml">
+      <Organization xmlns="http://hl7.org/fhir">
+        <identifier>
+          <system value="urn:oid:2.16.840.1.113883.4.6"/>
+          <id value="99999999"/>
+        </identifier>
+        <name value="Community Health and Hospitals"/>
+        <address>
+          <use value="work"/>
+          <line value="1002 Healthcare Drive "/>
+          <city value="Portland"/>
+          <state value="OR"/>
+          <zip value="99123"/>
+          <country value="US"/>
+        </address>
+        <telecom>
+          <system value="phone"/>
+          <value value="555-555-1002"/>
+          <use value="work"/>
+        </telecom>
+      </Organization>
+    </content>
+  </entry>
+  <entry xmlns="http://www.w3.org/2005/Atom">
+    <title>Legal Authenticator</title>
+    <id>54cadb52-3bf0-4dc4-87c2-c87ccaeb6f0d</id>
+    <updated>2013-04-25T08:33:46.418+10:00</updated>
+    <category scheme="http://hl7.org/fhir/resource-types" term="Practitioner"/>
+    <content type="text/xml">
+      <Practitioner xmlns="http://hl7.org/fhir">
+        <identifier>
+          <system value="urn:oid:2.16.840.1.113883.4.6"/>
+          <id value="999999999"/>
+        </identifier>
+        <details>
+          <name>
+            <family value="Seven"/>
+            <given value="Henry"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1002"/>
+            <use value="work"/>
+          </telecom>
+          <address>
+            <line value="1001 Village Avenue"/>
+            <city value="Portland"/>
+            <state value="OR"/>
+            <zip value="99123"/>
+            <country value="US"/>
+          </address>
+        </details>
+      </Practitioner>
+    </content>
+  </entry>
+  <entry xmlns="http://www.w3.org/2005/Atom">
+    <title>Authenticator</title>
+    <id>046af03e-e6e0-41b9-b61a-3501a620947e</id>
+    <updated>2013-04-25T08:33:46.419+10:00</updated>
+    <category scheme="http://hl7.org/fhir/resource-types" term="Practitioner"/>
+    <content type="text/xml">
+      <Practitioner xmlns="http://hl7.org/fhir">
+        <identifier>
+          <system value="urn:oid:2.16.840.1.113883.4.6"/>
+          <id value="999999999"/>
+        </identifier>
+        <details>
+          <name>
+            <family value="Seven"/>
+            <given value="Henry"/>
+          </name>
+          <telecom>
+            <system value="phone"/>
+            <value value="555-555-1002"/>
+            <use value="work"/>
+          </telecom>
+          <address>
+            <line value="1001 Village Avenue"/>
+            <city value="Portland"/>
+            <state value="OR"/>
+            <zip value="99123"/>
+            <country value="US"/>
+          </address>
+        </details>
+      </Practitioner>
     </content>
   </entry>
 </feed>

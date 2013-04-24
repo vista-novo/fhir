@@ -19,7 +19,9 @@ import org.hl7.fhir.instance.model.HumanName;
 import org.hl7.fhir.instance.model.Identifier;
 import org.hl7.fhir.instance.model.Instant;
 import org.hl7.fhir.instance.model.Address.AddressUse;
+import org.hl7.fhir.instance.model.Period;
 import org.hl7.fhir.instance.model.String_;
+import org.hl7.fhir.utilities.Utilities;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
@@ -34,11 +36,16 @@ public class Convert {
 	
 	public Identifier makeIdentifierFromII(Element e) throws Exception {
 		Identifier id = new Identifier();
-		if (e.getAttribute("extension") == null) {
+		String r = e.getAttribute("root");
+		if (Utilities.noString(e.getAttribute("extension"))) {
 			id.setSystemSimple(new URI("urn:ietf:rfc:3986"));
-			id.setIdSimple(e.getAttribute("root"));
+			if (isGuid(r)) 
+				id.setIdSimple("urn:uuid:"+r);
+			else if (UriForOid(r) != null)
+				id.setIdSimple(UriForOid(r));
+			else 
+				id.setIdSimple(UriForOid(r));
 		} else {
-			String r = e.getAttribute("root");
 			if (isGuid(r)) 
 				id.setSystemSimple(new URI("urn:uuid:"+r));
 			else if (UriForOid(r) != null)
@@ -65,7 +72,8 @@ public class Convert {
 			return "http://hl7.org/fhir/sid/atc";
 		if (r.startsWith("2.16.840.1.113883.12."))
 			return "http://hl7.org/fhir/sid/v2-"+r.substring(21);
-		return null;
+		else
+			return "urn:oid:"+r;
 	}
 
 	private boolean isGuid(String r) {
@@ -198,7 +206,7 @@ public class Convert {
 	  		c.setSystem(new Enumeration<ContactSystem>(ContactSystem.phone));
 	  	else if (url[0].equals("mailto"))
 	  		c.setSystem(new Enumeration<ContactSystem>(ContactSystem.email));
-	  	c.setValueSimple(url[1]);
+	  	c.setValueSimple(url[1].trim());
 	  }
 	  return c;
 	  
@@ -240,14 +248,63 @@ public class Convert {
 	  return hn;
   }
 
-	public DateTime makeDateTimeFromTS(Element child) throws Exception {
+	public DateTime makeDateTimeFromTS(Element ts) throws Exception {
+    String v = ts.getAttribute("value");
+    String m = "";
+    String tz = null;
+    if (v.contains("-")) {
+    	tz = v.substring(v.indexOf("-"));
+    	v = v.substring(0, v.indexOf("-"));    	
+    } else  if (v.contains("+")) {
+    	tz = v.substring(v.indexOf("+"));
+    	v = v.substring(0, v.indexOf("+"));    	
+    }
+    boolean t = v.length() > 8;
+    if (v.length() == 4)
+    	m = "yyyy";
+    else if (v.length() == 6)
+    	m = "yyyyMM";
+    else if (v.length() == 8)
+    	m = "yyyyMMdd";
+    else if (v.length() == 10)
+    	m = "yyyyMMddhh";
+    else if (v.length() == 12)
+    	m = "yyyyMMddhhmm";
+    else {
+    	if (v.length() > 14)
+    		v = v.substring(0, 14);    
+    	m = "yyyyMMddhhmmss";
+    }
+    if (tz != null) {
+    	v = v + tz;
+    	m = m + "Z";
+    }
+
+    
 		DateTime d = new DateTime();
 	  Calendar cal = Calendar.getInstance();
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-    cal.setTime(sdf.parse(child.getAttribute("value")));
-    sdf = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sdf = new SimpleDateFormat(m);
+    cal.setTime(sdf.parse(v));
+    sdf = new SimpleDateFormat(t ? tz != null ? "yyyy-MM-dd'T'hh:mm:ssZ" : "yyyy-MM-dd'T'hh:mm:ss" : "yyyy-MM-dd");
 	  d.setValue(sdf.format(cal.getTime()));
 	  return d;
+  }
+
+	public Period makePeriodFromIVL(Element ivl) throws Exception {
+	  if (ivl == null)
+	  	return null;
+	  Period p = new Period();
+	  Element low = cda.getChild(ivl, "low");
+		if (low != null)
+	  	p.setStart(makeDateTimeFromTS(low));
+	  Element high = cda.getChild(ivl, "high");
+		if (high != null)
+	  	p.setEnd(makeDateTimeFromTS(high));
+	  
+		if (p.getStart() != null || p.getEnd() != null)
+	    return p;
+		else
+			return null;
   }
 	
 }

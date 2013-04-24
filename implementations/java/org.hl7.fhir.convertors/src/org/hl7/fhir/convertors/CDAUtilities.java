@@ -92,4 +92,18 @@ public class CDAUtilities {
 		return l;
   }
 
+	public Element getDescendent(Element element, String path) throws Exception {
+		String[] p = path.split("\\/");
+		return getDescendent(element, p);
+  }
+
+	public Element getDescendent(Element e, String[] path) throws Exception {
+		for (String n : path) {
+			if (e == null)
+				return e;
+			e = getChild(e, n);
+		}
+		return e;
+  }
+
 }
