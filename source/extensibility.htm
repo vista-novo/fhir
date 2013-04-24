@@ -130,20 +130,20 @@ Extending a patient with an opt-in status for a clinical trial, with
 <pre class="xml" fragment="Patient">
 &lt;Patient&gt;
   &lt;extension&gt;
-    &lt;url value=&quot;http://acme.org/fhir/profiles/@main#trail-status&quot; /&gt;
+    &lt;url value=&quot;http://acme.org/fhir/profiles/@main#trial-status&quot; /&gt;
     &lt;extension&gt;
-      &lt;url value=&quot;http://acme.org/fhir/profiles/@main#trail-status-code&quot; /&gt;	  
+      &lt;url value=&quot;http://acme.org/fhir/profiles/@main#trial-status-code&quot; /&gt;	  
       &lt;valueCode value=&quot;unsure&quot; /&gt;	  
     &lt;/extension&gt;
     &lt;extension&gt;
-      &lt;url value=&quot;http://acme.org/fhir/profiles/@main#trail-status-date&quot; /&gt;	  
+      &lt;url value=&quot;http://acme.org/fhir/profiles/@main#trial-status-date&quot; /&gt;	  
       &lt;valueDate value=&quot;2009-03-14&quot; /&gt;	  
     &lt;/extension&gt;
     &lt;extension&gt;
-      &lt;url value=&quot;http://acme.org/fhir/profiles/@main#trail-status-who&quot; /&gt;	  
+      &lt;url value=&quot;http://acme.org/fhir/profiles/@main#trial-status-who&quot; /&gt;	  
       &lt;valueResourceReference&gt;	  
-        &lt;type value=&quot;Provider&quot; /&gt;	  
-        &lt;url value=&quot;../provider/@example&quot; /&gt;	  	    
+        &lt;type value=&quot;Practitioner&quot; /&gt;	  
+        &lt;url value=&quot;../Practitioner/@example&quot; /&gt;	  	    
       &lt;/valueResourceReference&gt;	  
     &lt;/extension&gt;
   &lt;/extension&gt;
