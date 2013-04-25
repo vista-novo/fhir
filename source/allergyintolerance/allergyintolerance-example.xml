@@ -4,7 +4,7 @@
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">Sensitivity to Bee Stings</div>
   </text>
-  <criticality value="severe"/>
+  <criticality value="fatal"/>
   <sensitivityType value="allergy"/>
   <recordedDate value="2012-09-17"/>
   <status value="confirmed"/>
