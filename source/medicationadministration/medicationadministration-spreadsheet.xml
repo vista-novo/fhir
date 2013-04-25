@@ -10,17 +10,17 @@
   <LastAuthor>Hugh Glover</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
   <LastSaved>2013-04-15T20:50:00Z</LastSaved>
-  <Version>14.00</Version>
+  <Version>15.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11535</WindowHeight>
+  <WindowHeight>11490</WindowHeight>
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -531,7 +531,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>10</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -544,10 +544,11 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>18</ActiveRow>
      <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
@@ -572,10 +573,10 @@
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s79"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s79"><Data ss:Type="String">Dose</Data></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">MedicationAdministration</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Must have at least one of administeredDose and doseRate</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">MedicationAdministration.dosage</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Must have at least one of dosage.quantity and dosage.rate</Data></Cell>
     <Cell ss:StyleID="s79"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">exists(f:administeredDose) or exists(f:doseRate)</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">exists(f:quantity) or exists(f:rate)</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">Need to be sure this works</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -618,11 +619,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -877,7 +879,6 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
