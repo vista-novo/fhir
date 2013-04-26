@@ -102,9 +102,9 @@ HumanName
 <p>A Simple example</p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
+  &lt;family value="Everyman" /&gt;
   &lt;given value="Adam" /&gt;
   &lt;given value="A." /&gt;
-  &lt;family value="Everyman" /&gt;
 &lt;/name&gt;
 </pre>
 </div>
@@ -113,8 +113,8 @@ HumanName
 <p>Composite names</p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;given value="Mary Jane" /&gt;
   &lt;family value="Contrata" /&gt;
+  &lt;given value="Mary Jane" /&gt;
 &lt;/name&gt;
 </pre>
 <p>
@@ -131,9 +131,9 @@ these cases. Composite names separated by "-" should be treated as a single name
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use value="official" /&gt;
+  &lt;family value="Chalmers" /&gt;
   &lt;given value="Peter" /&gt;
   &lt;given value="James" /&gt;
-  &lt;family value="Chalmers" /&gt;
 &lt;/name&gt;
 &lt;name&gt;
   &lt;use value="usual" /&gt;
@@ -152,8 +152,8 @@ This same pattern is often encountered with immigrants, who retains their real n
 &lt;/name&gt;
 &lt;name&gt;
   &lt;use value="usual" /&gt;
-  &lt;given value="Jim" /&gt;
   &lt;family value="Skipper" /&gt;
+  &lt;given value="Jim" /&gt;
 &lt;/name&gt;
 </pre>
 </div>
@@ -165,7 +165,6 @@ Karen van Hentenryck is of Dutch origin, and the "van" is a voorvoegsel.
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use value=&quot;official&quot; /&gt;  
-  &lt;given value=&quot;Karen&quot; /&gt;
   &lt;family value=&quot;van&quot;&gt;
     &lt;extension&gt;
 	   &lt;url value=&quot;http://hl7.org/fhir/profile/@iso-21090#qualifier&quot; /&gt;
@@ -173,6 +172,7 @@ Karen van Hentenryck is of Dutch origin, and the "van" is a voorvoegsel.
     &lt;/extension&gt;
   &lt;/family&gt;
   &lt;family value=&quot;Hentenryck&quot; /&gt;
+  &lt;given value=&quot;Karen&quot; /&gt;
 &lt;/name&gt;
 </pre>
 <p>See <a href="extensibility-examples.htm">the Extensibility Example for more information</a></p>
@@ -186,10 +186,11 @@ multiple given names, prefixes, suffixes, for academic degrees, nobility titles,
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use value=&quot;official&quot; /&gt;  
+  &lt;family value=&quot;Hochheim-Weilenfels&quot; /&gt;
   &lt;given value=&quot;Regina&quot; /&gt;
   &lt;given value=&quot;Johanna&quot; /&gt;
   &lt;given value=&quot;Maria&quot; /&gt;
-  &lt;given value=&quot;Gräfin&quot;&gt;
+  &lt;prefix value=&quot;Gräfin&quot;&gt;
     &lt;extension&gt;
       &lt;url value=&quot;http://hl7.org/fhir/profile/@iso-21090#qualifier&quot; /&gt;
       &lt;valueCoding&gt;
@@ -197,8 +198,7 @@ multiple given names, prefixes, suffixes, for academic degrees, nobility titles,
          &lt;system value=&quot;urn:oid:2.16.840.1.113883.5.1122&quot; /&gt;
       &lt;/valueCoding&gt;
     &lt;/extension&gt;
-  &lt;/given&gt;
-  &lt;family value=&quot;Hochheim-Weilenfels&quot; /&gt;
+  &lt;/prefix&gt;
   &lt;prefix value=&quot;Dr. phil.&quot;&gt;
     &lt;extension&gt;
       &lt;url value=&quot;http://hl7.org/fhir/profile/@iso-21090#qualifier&quot; /&gt;
@@ -226,16 +226,16 @@ Japanese example in the three forms: ideographic (Kanji), syllabic (Hiragana) an
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;given value="通男" /&gt;
   &lt;family value="木村" /&gt;
+  &lt;given value="通男" /&gt;
+  &lt;/name&gt;
+&lt;name&gt;
+ &lt;family value="きむら" /&gt; 
+ &lt;given value="みちお" /&gt; 
 &lt;/name&gt;
 &lt;name&gt;
-  &lt;given value="みちお" /&gt;
-  &lt;family value="きむら" /&gt;
-&lt;/name&gt;
-&lt;name&gt;
-  &lt;given value="MICHIO" /&gt;
   &lt;family value="KIMURA" /&gt;
+  &lt;given value="MICHIO" /&gt;
 &lt;/name&gt;
 </pre>
 <p>
@@ -249,14 +249,14 @@ Russian example in the two forms: cyrillic, and latin:
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
+  &lt;family value="ЕМЕЛИН" /&gt;
   &lt;given value="ИВАН" /&gt;
   &lt;given value="ВЛАДИМИРОВИЧ" /&gt;
-  &lt;family value="ЕМЕЛИН" /&gt;
 &lt;/name&gt;
 &lt;name&gt;
+  &lt;family value="EMELIN" /&gt;
   &lt;given value="IVAN" /&gt;
   &lt;given value="VLADIMIROV" /&gt;
-  &lt;family value="EMELIN" /&gt;
 &lt;/name&gt;
 </pre>
 <p>
@@ -272,6 +272,7 @@ Scandinavian example: Erikson is the family name. Jan Erik are the given names, 
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use value=&quot;official&quot; /&gt;  
+  &lt;family value=&quot;Erikson&quot; /&gt;
   &lt;given value=&quot;Jan&quot; /&gt;
   &lt;given value=&quot;Erik&quot; /&gt;
   &lt;given value=&quot;Östlund&quot;&gt;
@@ -283,7 +284,6 @@ Scandinavian example: Erikson is the family name. Jan Erik are the given names, 
       &lt;/valueCoding&gt;
     &lt;/extension&gt;
   &lt;/given&gt;
-  &lt;family value=&quot;Erikson&quot; /&gt;
 &lt;/name&gt;
 </pre>
 <p>
@@ -299,8 +299,8 @@ the child.
 &lt;name&gt;
   &lt;use value="temp" /&gt;  
   &lt;!-- use could be OR+OLD, depends how record keeping is done --&gt;
-  &lt;given value="Margrete Jente" /&gt;
   &lt;family value="Hansen" /&gt;
+  &lt;given value="Margrete Jente" /&gt;
 &lt;/name&gt;
 </pre>
 <p>
@@ -310,6 +310,7 @@ mellomnamn.
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use value=&quot;official&quot; /&gt;  
+  &lt;family value=&quot;Erikson&quot; /&gt;
   &lt;given value=&quot;Karin&quot; /&gt;
   &lt;given value=&quot;Hansen&quot;&gt;
     &lt;extension&gt;
@@ -320,7 +321,6 @@ mellomnamn.
       &lt;/valueCoding&gt;
     &lt;/extension&gt;
   &lt;/given&gt;
-  &lt;family value=&quot;Erikson&quot; /&gt;
 &lt;/name&gt;
 </pre>
 <p>
@@ -331,6 +331,7 @@ her mother, her father or other family names as specified by naming laws of the 
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use value=&quot;old&quot; /&gt;  
+  &lt;family value=&quot;Erikson&quot; /&gt;
   &lt;given value=&quot;Karin&quot; /&gt;
   &lt;given value=&quot;Hansen&quot;&gt;
     &lt;extension&gt;
@@ -341,10 +342,10 @@ her mother, her father or other family names as specified by naming laws of the 
       &lt;/valueCoding&gt;
     &lt;/extension&gt;
   &lt;/given&gt;
-  &lt;family value=&quot;Erikson&quot; /&gt;
 &lt;/name&gt;
 &lt;name&gt;
   &lt;use value=&quot;official&quot; /&gt;  
+  &lt;family value=&quot;Berg&quot; /&gt;
   &lt;given value=&quot;Karin&quot; /&gt;
   &lt;given value=&quot;Erikson&quot;&gt;
     &lt;extension&gt;
@@ -355,12 +356,11 @@ her mother, her father or other family names as specified by naming laws of the 
       &lt;/valueCoding&gt;
     &lt;/extension&gt;
   &lt;/given&gt;
-  &lt;family value=&quot;Berg&quot; /&gt;
 &lt;/name&gt;
 &lt;name&gt;
   &lt;use value=&quot;usual&quot; /&gt;  
-  &lt;given value=&quot;Karin&quot; /&gt;
   &lt;family value=&quot;Berg&quot; /&gt;
+  &lt;given value=&quot;Karin&quot; /&gt;
 &lt;/name&gt;
 </pre>
 </div>
