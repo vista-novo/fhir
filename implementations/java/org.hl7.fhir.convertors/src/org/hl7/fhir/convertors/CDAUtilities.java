@@ -43,14 +43,7 @@ public class CDAUtilities {
 	}
 
 	public void checkTemplateId(Element e, String templateId) throws Exception {
-		boolean found = false;
-		Node n = e.getFirstChild();
-		while (n != null && !found) {
-			if (n.getNodeType() == Node.ELEMENT_NODE && n.getNodeName().equals("templateId") && templateId.equals(((Element) n).getAttribute("root")))
-				found = true;
-			n = n.getNextSibling();
-		}
-		rule(found, "Template Id '"+templateId+"' not found");
+		rule(hasTemplateId(e, templateId), "Template Id '"+templateId+"' not found");
 		
 	}
 
@@ -104,6 +97,38 @@ public class CDAUtilities {
 			e = getChild(e, n);
 		}
 		return e;
+  }
+
+	public boolean hasTemplateId(Element e, String tid) {
+		if (e == null)
+			return false;
+		boolean found = false;
+		Node n = e.getFirstChild();
+		while (n != null && !found) {
+			if (n.getNodeType() == Node.ELEMENT_NODE && n.getNodeName().equals("templateId") && tid.equals(((Element) n).getAttribute("root")))
+				found = true;
+			n = n.getNextSibling();
+		}
+		return found;
+  }
+
+	public String getStatus(Element act) throws Exception {
+		if (act == null)
+			return null;
+	  Element sc = getChild(act, "statusCode");
+	  if (sc == null)
+	    return null;
+	  else
+	  	return sc.getAttribute("code");
+  }
+
+	public String getSeverity(Element observation) throws Exception {
+	  for (Element e : getChildren(observation,  "entryRelationship")) {
+	  	Element child = getChild(e, "observation");
+	  	if (hasTemplateId(child, "2.16.840.1.113883.10.20.22.4.8"))
+	  		return getChild(child,  "value").getAttribute("code");
+	  }
+	  return null;
   }
 
 }
