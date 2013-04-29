@@ -296,7 +296,8 @@ public class XSDBaseGenerator extends OutputStreamWriter {
     if (!elem.getName().equals("Extension")) {
       write("      </xs:extension>\r\n");
       write("    </xs:complexContent>\r\n");
-    }
+    } else
+      write("    <xs:attribute name=\"id\" type=\"id-primitive\"/>\r\n");
     write("  </xs:complexType>\r\n");
     while (!structures.isEmpty()) {
       String s = structures.keySet().iterator().next();
