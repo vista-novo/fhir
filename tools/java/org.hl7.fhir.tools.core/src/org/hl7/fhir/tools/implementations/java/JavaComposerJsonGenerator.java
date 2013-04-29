@@ -199,13 +199,6 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     write("      composeElement(value);\r\n");
     write("      if (value.getValue() != null) \r\n");
     write("        prop(\"value\", e.toCode(value.getValue()));\r\n");
-    write("\r\n");
-    write("      if (value.getExtensions().size() > 0) {\r\n");
-    write("        openArray(\"extension\");\r\n");
-    write("        for (Extension ex : value.getExtensions())\r\n");
-    write("          composeExtension(null, ex);\r\n");
-    write("        closeArray();\r\n");
-    write("      }    \r\n");
     write("      close();\r\n");
     write("    }    \r\n");
     write("  }    \r\n");
@@ -233,13 +226,6 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     if (!dc.getCode().equals("integer") && !dc.getCode().equals("boolean"))
       write("      if (value.getValue() != null) \r\n");
     write("        prop(\"value\", toString(value.getValue()));\r\n");
-    write("\r\n");
-    write("      if (value.getExtensions().size() > 0) {\r\n");
-    write("        openArray(\"extension\");\r\n");
-    write("        for (Extension ex : value.getExtensions())\r\n");
-    write("          composeExtension(null, ex);\r\n");
-    write("        closeArray();\r\n");
-    write("      }    \r\n");
     write("      close();\r\n");
     write("    }    \r\n");
     write("  }    \r\n");
