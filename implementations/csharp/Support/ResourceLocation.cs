@@ -168,6 +168,10 @@ namespace Hl7.Fhir.Support
         /// 
         /// If the relative path contains backtracks (..), these will all be resolved, by following the
         /// backtrack. The resulting ResourceLocation will not contain backtracks.
+        /// 
+        /// Note that the final '/' for the baseUri is relevant: depending on its presence the last part
+        /// of the baseUri is either a resource of a path part. To avoid confusing, this function
+        /// assumes the baseUri is always a path, not a resource location
         /// </remarks>
         public ResourceLocation(Uri baseUri, Uri location)
         {
@@ -177,16 +181,21 @@ namespace Hl7.Fhir.Support
             if (location.IsAbsoluteUri)
                 throw new ArgumentException("location must be a relative Uri", "location");
 
-            // if location starts with "/", use the default Uri functionality
-            // to concatenate the two, any path parts in basePath will be ignored, and
-            // location will replace the path part, and start right after the hostname
-            if (location.ToString().StartsWith("/"))
-                construct(new Uri(baseUri, location));
+            if (!baseUri.ToString().EndsWith("/"))
+                baseUri = new Uri(baseUri.ToString() + "/");
 
-            // Otherwise, use the constructor to normalize the combined version. The
-            // constructor will resolve ..-type path navigation and result in an
-            // absolute path.
-            construct(new Uri(Combine(baseUri.ToString(), location.ToString()), UriKind.Absolute));
+            construct(new Uri(baseUri, location));
+
+            //// if location starts with "/", use the default Uri functionality
+            //// to concatenate the two, any path parts in basePath will be ignored, and
+            //// location will replace the path part, and start right after the hostname
+            //if (location.ToString().StartsWith("/"))
+            //    construct(new Uri(baseUri, location));
+
+            //// Otherwise, use the constructor to normalize the combined version. The
+            //// constructor will resolve ..-type path navigation and result in an
+            //// absolute path.
+            //construct(new Uri(Combine(baseUri.ToString(), location.ToString()), UriKind.Absolute));
         }
 
         private static readonly Uri LOCALHOST = new Uri("http://localhost");
@@ -218,7 +227,7 @@ namespace Hl7.Fhir.Support
             if (String.IsNullOrEmpty(collectionName))
                 throw new ArgumentException("collection must not be empty", "collectionName");
 
-            return new ResourceLocation(baseUri, collectionName);
+            return new ResourceLocation(baseUri, collectionName + "/");
         }
 
 
@@ -418,7 +427,7 @@ namespace Hl7.Fhir.Support
 
             path.Append(buildOperationPath());
 
-            return path.ToString().TrimEnd('/');
+            return path.ToString();
         }
 
         private string buildOperationPath()
@@ -431,21 +440,21 @@ namespace Hl7.Fhir.Support
 
                 if (!String.IsNullOrEmpty(Id))
                 {
-                    path.Append("@" + Id + "/");
+                    path.Append("@" + Id);
 
                     if (!String.IsNullOrEmpty(Operation))
                     {
-                        path.Append(Operation + "/");
+                        path.Append("/" + Operation);
 
                         if (!String.IsNullOrEmpty(VersionId))
-                            path.Append("@" + VersionId + "/");
+                            path.Append("/@" + VersionId);
                     }
                 }
                 else
                 {
                     if (!String.IsNullOrEmpty(Operation))
                     {
-                        path.Append(Operation + "/");
+                        path.Append(Operation);
                     }
                 }
             }
@@ -453,11 +462,11 @@ namespace Hl7.Fhir.Support
             {
                 if (!String.IsNullOrEmpty(Operation))
                 {
-                    path.Append(Operation + "/");
+                    path.Append(Operation);
                 }
             }
 
-            return path.ToString().TrimEnd('/');
+            return path.ToString();
         }
 
         
@@ -570,7 +579,7 @@ namespace Hl7.Fhir.Support
             if (path.IsAbsoluteUri)
                 throw new ArgumentException("Can only navigate to relative paths", "path");
 
-            return new ResourceLocation(_location.Uri, path.ToString());
+            return new ResourceLocation(new Uri(_location.Uri, path));
         }
 
         /// <summary>
@@ -600,6 +609,8 @@ namespace Hl7.Fhir.Support
             get
             {
                 var path = Combine(_location.Uri.GetComponents(UriComponents.SchemeAndServer,UriFormat.Unescaped), Service);
+                if (!path.EndsWith("/")) path = path + "/";
+
                 return new Uri(path, UriKind.Absolute);
             }
         }
@@ -622,9 +633,6 @@ namespace Hl7.Fhir.Support
             }
         }
 
-
-
-   //     private static readonly Uri LOCALHOST = new Uri("http://localhost");
 
         [Obsolete]
         public static Uri BuildResourceIdPath(string collection, string id)

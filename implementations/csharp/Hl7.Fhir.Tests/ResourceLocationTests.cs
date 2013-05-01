@@ -46,7 +46,7 @@ namespace Hl7.Fhir.Tests
             Assert.AreEqual("svc", rl.Service);
             Assert.AreEqual("patient", rl.Collection);
             Assert.AreEqual("1", rl.Id);
-            Assert.AreEqual("http://fhir.server.com/svc", rl.ServiceUri.ToString());
+            Assert.AreEqual("http://fhir.server.com/svc/", rl.ServiceUri.ToString());
             Assert.AreEqual("patient/@1", rl.OperationPath.ToString());
 
             rl = new ResourceLocation("http://fhir.server.com/patient/@1/myoperation/@9");
@@ -114,7 +114,7 @@ namespace Hl7.Fhir.Tests
             Assert.AreEqual("svc", rl.Service);
             Assert.IsNull(rl.Operation);
             Assert.AreEqual("patient", rl.Collection);
-            Assert.AreEqual("patient", rl.OperationPath.ToString());
+            Assert.AreEqual("patient/", rl.OperationPath.ToString());
 
             rl = new ResourceLocation("http://hl7.org/patient");
             Assert.IsNull(rl.Service);
@@ -143,7 +143,7 @@ namespace Hl7.Fhir.Tests
 
 
         [TestMethod]
-        public void TryOperations()
+        public void TryNavigation()
         {
             var old = new ResourceLocation("http://www.hl7.org/svc/organization/");
             var rl = old.NavigateTo("../patient/@1/history");
@@ -153,6 +153,20 @@ namespace Hl7.Fhir.Tests
             Assert.AreEqual("patient", rl.Collection);
             Assert.AreEqual("1", rl.Id);
             Assert.AreEqual("history", rl.Operation);
+
+            old = new ResourceLocation("http://hl7.org/fhir/patient/@1");
+            rl = old.NavigateTo("@2");
+            Assert.AreEqual("patient/@2", rl.OperationPath.ToString());
+
+            rl = old.NavigateTo("../observation/@3");
+            Assert.AreEqual("observation/@3", rl.OperationPath.ToString());
+
+            old = new ResourceLocation("patient/@1");
+            rl = old.NavigateTo("@2");
+            Assert.AreEqual("patient/@2", rl.OperationPath.ToString());
+
+            rl = old.NavigateTo("../observation/@3");
+            Assert.AreEqual("observation/@3", rl.OperationPath.ToString());
         }
 
 
@@ -164,7 +178,7 @@ namespace Hl7.Fhir.Tests
             Assert.AreEqual("svc", rl.Service);
             Assert.IsNull(rl.Operation);
             Assert.AreEqual("patient", rl.Collection);
-            Assert.AreEqual("http://hl7.org/svc/patient", rl.ToString());
+            Assert.AreEqual("http://hl7.org/svc/patient/", rl.ToString());
 
 
             rl = ResourceLocation.Build(new Uri("http://hl7.org/svc"), "patient", "1");
@@ -197,7 +211,7 @@ namespace Hl7.Fhir.Tests
             Assert.AreEqual("http://hl7.org/", rl.ToString());
 
             rl.Service = "svc";
-            Assert.AreEqual("http://hl7.org/svc", rl.ToString());
+            Assert.AreEqual("http://hl7.org/svc/", rl.ToString());
 
             rl.Operation = "history";
             Assert.AreEqual("http://hl7.org/svc/history", rl.ToString());
