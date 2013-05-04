@@ -127,6 +127,12 @@ namespace Hl7.Fhir.Support
         public Bundle Parent { set; get; }
         public UriLinkList Links { get; set; }
 
+        public Uri SelfLink
+        {
+            get { return Links.SelfLink; }
+            set { Links.SelfLink = value; }
+        }
+
         public virtual ErrorList Validate()
         {
             ErrorList errors = new ErrorList();
@@ -295,7 +301,11 @@ namespace Hl7.Fhir.Support
             set
             {
                 _content = value;
-                ResourceType = ModelInfo.FhirCsTypeToString[_content.GetType()];
+
+                if (value != null)
+                    ResourceType = ModelInfo.FhirCsTypeToString[_content.GetType()];
+                else
+                    ResourceType = null;
             }
  
         }

@@ -129,9 +129,9 @@ namespace Hl7.Fhir.Tests
             FhirClient client = new FhirClient(testEndpoint);
             Bundle history = client.History<Patient>(lastNewId);
             Assert.IsNotNull(history);
-     //       Assert.AreEqual(3, history.Entries.Count());
-     //       Assert.AreEqual(2, history.Entries.Where(entry => entry is ResourceEntry).Count());
-     //       Assert.AreEqual(1, history.Entries.Where(entry => entry is DeletedEntry).Count());
+            Assert.AreEqual(3, history.Entries.Count());
+            Assert.AreEqual(2, history.Entries.Where(entry => entry is ResourceEntry).Count());
+            Assert.AreEqual(1, history.Entries.Where(entry => entry is DeletedEntry).Count());
 
             // Now, assume no one is quick enough to insert something between now and the next
             // tests....

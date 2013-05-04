@@ -49,28 +49,14 @@ namespace Hl7.Fhir.Support
 
         public Uri SelfLink
         {
-            get
-            {
-                return getEntry(Util.ATOM_LINKREL_SELF);
-            }
-
-            set
-            {
-                setEntry(Util.ATOM_LINKREL_SELF, value);
-            }
+            get { return getEntry(Util.ATOM_LINKREL_SELF); }
+            set { setEntry(Util.ATOM_LINKREL_SELF, value); }
         }
 
         public Uri FirstLink
         {
-            get
-            {
-                return getEntry(Util.ATOM_LINKREL_FIRST);
-            }
-
-            set
-            {
-                setEntry(Util.ATOM_LINKREL_FIRST, value);
-            }
+            get { return getEntry(Util.ATOM_LINKREL_FIRST); }
+            set { setEntry(Util.ATOM_LINKREL_FIRST, value); }
         }
 
         public Uri PreviousLink
@@ -122,6 +108,19 @@ namespace Hl7.Fhir.Support
             set
             {
                 setEntry(Util.ATOM_LINKREL_SEARCH, value);
+            }
+        }
+
+        public Uri PredecessorVersionLink
+        {
+            get
+            {
+                return getEntry(Util.ATOM_LINKREL_PREDVERSION);
+            }
+
+            set
+            {
+                setEntry(Util.ATOM_LINKREL_PREDVERSION, value);
             }
         }
 
