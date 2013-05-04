@@ -145,6 +145,36 @@ namespace Hl7.Fhir.Tests
 
 
         [TestMethod]
+        public void CanSerializeEmptyBundleEntry()
+        {
+            var re = new ResourceEntry();
+            checkSerDeser(re);
+            re.Links.SelfLink = null;
+            checkSerDeser(re);
+
+            var be = new BinaryEntry();
+            checkSerDeser(be);
+            be.Links.SelfLink = null;
+            checkSerDeser(be);
+          
+            var de = new DeletedEntry();
+            checkSerDeser(de);
+            de.Links.SelfLink = null;
+            checkSerDeser(de);
+        }
+
+        private static void checkSerDeser(BundleEntry be)
+        {
+            var errs = new ErrorList();
+
+            BundleEntry.LoadFromJson(be.ToJson(), errs);
+            Assert.IsTrue(errs.Count == 0);
+
+            BundleEntry.LoadFromXml(be.ToXml(), errs);
+            Assert.IsTrue(errs.Count == 0);
+        }
+
+        [TestMethod]
         public void TestParseBundleXml()
         {
             ErrorList errors = new ErrorList();

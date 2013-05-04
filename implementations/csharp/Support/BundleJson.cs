@@ -57,6 +57,8 @@ namespace Hl7.Fhir.Support
 
         private static Uri uriValueOrNull(JToken attr)
         {
+            if (attr == null) return null;
+
             var value = attr.Value<string>();
 
             return String.IsNullOrEmpty(value) ? null : new Uri(value, UriKind.RelativeOrAbsolute);
@@ -193,7 +195,7 @@ namespace Hl7.Fhir.Support
                     result = new ResourceEntry();
 
                 result.Id = uriValueOrNull(entry[BundleXml.XATOM_ID]);
-                if (result != null) errors.DefaultContext = String.Format("Entry '{0}'", result.Id.ToString());
+                if (result.Id != null) errors.DefaultContext = String.Format("Entry '{0}'", result.Id.ToString());
 
                 result.Links = getLinks(entry[BundleXml.XATOM_LINK]);
 
@@ -508,7 +510,8 @@ namespace Hl7.Fhir.Support
             var result = new JArray();
 
             foreach (var l in links)
-                result.Add(jsonCreateLink(l.Rel, l.Uri));
+                if (l.Uri != null)
+                    result.Add(jsonCreateLink(l.Rel, l.Uri));
 
             return result;
         }

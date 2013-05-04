@@ -19,6 +19,26 @@ namespace Hl7.Fhir.Tests
     public class SerializerTests
     {
         [TestMethod]
+        public void AvoidBOMUse()
+        {
+            Bundle b = new Bundle();
+
+            var data = b.ToJsonBytes();
+            Assert.IsFalse(data[0] == Encoding.UTF8.GetPreamble()[0]);
+
+            data = b.ToXmlBytes();
+            Assert.IsFalse(data[0] == Encoding.UTF8.GetPreamble()[0]);
+
+            Patient p = new Patient();
+
+            data = FhirSerializer.SerializeResourceAsJsonBytes(p);
+            Assert.IsFalse(data[0] == Encoding.UTF8.GetPreamble()[0]);
+
+            data = FhirSerializer.SerializeResourceAsXmlBytes(p);
+            Assert.IsFalse(data[0] == Encoding.UTF8.GetPreamble()[0]);
+        }
+
+        [TestMethod]
         public void TestMilisecondsOnInstant()
         {
             Instant i = new Instant(new DateTimeOffset(2013, 4, 19, 16, 27, 23, 233, TimeSpan.Zero));

@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Serializers
         public static byte[] SerializeResourceAsXmlBytes(Resource resource)
         {
             MemoryStream stream = new MemoryStream();
-            XmlWriterSettings settings = new XmlWriterSettings { Encoding = Encoding.UTF8 };
+            XmlWriterSettings settings = new XmlWriterSettings { Encoding = new UTF8Encoding(false) };
             XmlWriter xw = XmlWriter.Create(stream, settings);
             FhirSerializer.SerializeResource(resource, new XmlFhirWriter(xw));
             xw.Flush();
@@ -85,7 +85,7 @@ namespace Hl7.Fhir.Serializers
         {
             MemoryStream stream = new MemoryStream();
 
-            var sw = new StreamWriter(stream, Encoding.UTF8);
+            var sw = new StreamWriter(stream, new UTF8Encoding(false));
             sw.Write(SerializeResourceAsJson(resource));
 
 #if !NETFX_CORE

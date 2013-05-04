@@ -421,7 +421,7 @@ namespace Hl7.Fhir.Support
             if (bundle == null) throw new ArgumentException("Bundle cannot be null");
 
             MemoryStream stream = new MemoryStream();
-            XmlWriterSettings settings = new XmlWriterSettings { Encoding = Encoding.UTF8 };
+            XmlWriterSettings settings = new XmlWriterSettings { Encoding = new UTF8Encoding(false) };
             XmlWriter xw = XmlWriter.Create(stream, settings);
             WriteTo(bundle, xw);
             xw.Flush();
@@ -466,7 +466,7 @@ namespace Hl7.Fhir.Support
             if (entry == null) throw new ArgumentException("Entry cannot be null");
 
             MemoryStream stream = new MemoryStream();
-            XmlWriterSettings settings = new XmlWriterSettings { Encoding = Encoding.UTF8 };
+            XmlWriterSettings settings = new XmlWriterSettings { Encoding = new UTF8Encoding(false) };
             XmlWriter xw = XmlWriter.Create(stream, settings);
             WriteTo(entry, xw);
             xw.Flush();
@@ -524,7 +524,8 @@ namespace Hl7.Fhir.Support
                 result.Add(xmlCreateAuthor(entry.EntryAuthorName, entry.EntryAuthorUri));
 
             foreach (var l in entry.Links)
-                result.Add(xmlCreateLink(l.Rel, l.Uri));
+                if(l.Uri != null)
+                    result.Add(xmlCreateLink(l.Rel, l.Uri));
 
             if (entry is ResourceEntry)
             {
