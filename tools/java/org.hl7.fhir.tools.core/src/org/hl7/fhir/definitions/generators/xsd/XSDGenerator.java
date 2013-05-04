@@ -44,8 +44,9 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
-public class XSDGenerator extends OutputStreamWriter {
+public class XSDGenerator  {
 
+  private OutputStreamWriter writer;
 	private Definitions definitions;
 	private List<ElementDefn> structures = new ArrayList<ElementDefn>();
 	private Map<ElementDefn, String> types = new HashMap<ElementDefn, String>();
@@ -55,21 +56,26 @@ public class XSDGenerator extends OutputStreamWriter {
 	private Map<String, List<DefinedCode>> enums = new HashMap<String, List<DefinedCode>>();
 	private Map<String, String> enumDefs = new HashMap<String, String>();
 
-	public XSDGenerator(OutputStream out, Definitions definitions) throws UnsupportedEncodingException {
-		super(out, "UTF-8");
+	public XSDGenerator(OutputStreamWriter out, Definitions definitions) throws UnsupportedEncodingException {
+    writer = out;
 		this.definitions = definitions;
 	}
 
+  private void write(String s) throws IOException {
+    writer.write(s);
+  }
+  
 	public void setDataTypes(List<TypeRef> types) throws Exception {
 		datatypes.addAll(types);
 	}
 
-	public void generate(ElementDefn root, Map<String, BindingSpecification> tx, String version, String genDate) throws Exception
+	public void generate(ElementDefn root, Map<String, BindingSpecification> tx, String version, String genDate, boolean outer) throws Exception
 	{
 		this.tx = tx;
 		enums.clear();
 		enumDefs.clear();
 
+		if (outer) {
 		write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
 		write("<!-- \r\n");
 		write(Config.FULL_LICENSE_CODE);
@@ -79,7 +85,7 @@ public class XSDGenerator extends OutputStreamWriter {
 		write("<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://hl7.org/fhir\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" "+
 				"targetNamespace=\"http://hl7.org/fhir\" elementFormDefault=\"qualified\" version=\""+version+"\">\r\n");
 		write("  <xs:include schemaLocation=\"fhir-base.xsd\"/>\r\n");
-
+		}
 		write("  <xs:element name=\""+root.getName()+"\" type=\""+root.getName()+"\">\r\n");
 		write("    <xs:annotation>\r\n");
 		write("      <xs:documentation>"+Utilities.escapeXml(root.getDefinition())+"</xs:documentation>\r\n");
@@ -97,9 +103,10 @@ public class XSDGenerator extends OutputStreamWriter {
 		for (String en : enums.keySet()) {
 			generateEnum(en);
 		}
-		write("</xs:schema>\r\n");
-
-		flush();
+		if (outer) {
+		  write("</xs:schema>\r\n");
+		  writer.flush();
+		}
 	}
 
 	private void generateEnum(String en) throws IOException {
@@ -312,4 +319,10 @@ public class XSDGenerator extends OutputStreamWriter {
 		}
 		return null;
 	}
+
+  public OutputStreamWriter getWriter() {
+    return writer;
+  }
+	
+	
 }

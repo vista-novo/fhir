@@ -29,6 +29,15 @@
 -->
 <xs:schema xmlns="http://hl7.org/fhir" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="0.07">
   <xs:include schemaLocation="fhir-base.xsd"/>
+  <xs:simpleType name="ResourceNamesPlusBinary">
+    <xs:union memberTypes="ResourceType">
+      <xs:simpleType>
+        <xs:restriction base="xs:NMTOKEN">
+          <xs:enumeration value="Binary"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
   <xs:complexType name="Binary">
     <xs:simpleContent>
       <xs:extension base="xs:base64Binary">

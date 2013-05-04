@@ -48,8 +48,10 @@ import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
-public class XSDBaseGenerator extends OutputStreamWriter {
+public class XSDBaseGenerator {
 
+  private OutputStreamWriter writer;
+  
   private Definitions definitions;
 
   private Map<String, ElementDefn> structures = new HashMap<String, ElementDefn>();
@@ -63,23 +65,29 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 
   // private Map<String, PrimitiveType> primitives;
 
-  public XSDBaseGenerator(OutputStream out)
-      throws UnsupportedEncodingException {
-    super(out, "UTF-8");
+  public XSDBaseGenerator(OutputStreamWriter out) throws UnsupportedEncodingException {
+    writer = out;
   }
 
-  public void generate(String version, String genDate) throws Exception {
-    write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-    write("<!-- \r\n");
-    write(Config.FULL_LICENSE_CODE);
-    write("\r\n");
-    write("  Generated on " + genDate + " for FHIR v" + version + " \r\n");
-    write("-->\r\n");
-    write("<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://hl7.org/fhir\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" "
-        + "targetNamespace=\"http://hl7.org/fhir\" elementFormDefault=\"qualified\" version=\""+version+"\">\r\n");
-    write("  <xs:import namespace=\"http://www.w3.org/XML/1998/namespace\"/>\r\n");
+  private void write(String s) throws IOException {
+    writer.write(s);
+  }
+  
+  public void generate(String version, String genDate, boolean outer) throws Exception {
+    if (outer) {
+      write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+      write("<!-- \r\n");
+      write(Config.FULL_LICENSE_CODE);
+      write("\r\n");
+      write("  Generated on " + genDate + " for FHIR v" + version + " \r\n");
+      write("-->\r\n");
+      write("<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://hl7.org/fhir\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" "
+          + "targetNamespace=\"http://hl7.org/fhir\" elementFormDefault=\"qualified\" version=\""+version+"\">\r\n");
+    }
+    write("  <xs:import namespace=\"http://www.w3.org/XML/1998/namespace\" schemaLocation=\"xml.xsd\"/>\r\n");
     write("  <xs:import namespace=\"http://www.w3.org/1999/xhtml\" schemaLocation=\"xhtml1-strict.xsd\"/>\r\n");
-    write("  <xs:include schemaLocation=\"fhir-all.xsd\"/>\r\n");
+    if (outer)
+      write("  <xs:include schemaLocation=\"fhir-all.xsd\"/>\r\n");
 
     genXmlIdRef();
     genElementRoot();
@@ -100,8 +108,10 @@ public class XSDBaseGenerator extends OutputStreamWriter {
     for (BindingSpecification b : definitions.getBindings().values())
       if (b.getUseContexts().size() > 1 && b.getBinding() == Binding.CodeList)
         generateEnum(b.getName());
-    write("</xs:schema>\r\n");
-    flush();
+    if (outer) { 
+      write("</xs:schema>\r\n");
+      writer.flush();
+    }
   }
 
   private void genElementRoot() throws Exception  {
@@ -612,4 +622,10 @@ public class XSDBaseGenerator extends OutputStreamWriter {
   public void setDefinitions(Definitions definitions) {
     this.definitions = definitions;
   }
+  
+  public OutputStreamWriter getWriter() {
+    return writer;
+  }
+
+  
 }

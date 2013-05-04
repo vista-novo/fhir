@@ -161,7 +161,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Text representation of the full name</Data></Cell>
-    <Cell><Data ss:Type="String">a full text representation of the name</Data></Cell>
+    <Cell><Data ss:Type="String">A full text representation of the name</Data></Cell>
     <Cell ss:Index="10" ss:StyleID="s69"><Data ss:Type="String">A renderable, unencoded form</Data></Cell>
     <Cell><Data ss:Type="String">Can provide both a text representation and structured parts</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -171,7 +171,7 @@
     <Cell><Data ss:Type="String">HumanName.family</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">family name (called 'Surname')</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Family name (often called 'Surname')</Data></Cell>
     <Cell><Data ss:Type="String">Family name, this is the name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.</Data></Cell>
     <Cell><Data ss:Type="String">surname</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -182,7 +182,7 @@
     <Cell><Data ss:Type="String">HumanName.given</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">given names (not always 'first'). Includes middle names</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Given names (not always 'first'). Includes middle names</Data></Cell>
     <Cell><Data ss:Type="String">Given name. NOTE: Not to be called &quot;first name&quot; since given names do not always come first.</Data></Cell>
     <Cell><Data ss:Type="String">first name; middle name</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -192,7 +192,7 @@
     <Cell><Data ss:Type="String">HumanName.prefix</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">parts that come before the name</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Parts that come before the name</Data></Cell>
     <Cell><Data ss:Type="String">Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that comes at the start of the name</Data></Cell>
     <Cell ss:Index="10" ss:StyleID="s69"/>
     <Cell ss:Index="12" ss:StyleID="Default"/>
@@ -201,7 +201,7 @@
     <Cell><Data ss:Type="String">HumanName.suffix</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">parts that come after the name</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Parts that come after the name</Data></Cell>
     <Cell><Data ss:Type="String">Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that comes at the end of the name</Data></Cell>
     <Cell ss:Index="10" ss:StyleID="s69"/>
     <Cell ss:Index="12" ss:StyleID="Default"/>
@@ -237,8 +237,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

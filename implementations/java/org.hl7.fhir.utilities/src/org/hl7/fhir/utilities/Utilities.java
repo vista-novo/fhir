@@ -318,6 +318,15 @@ public class Utilities {
     return b.toString();
   }
 
+
+  public static boolean isPlural(String word) {
+    word = word.toLowerCase();
+    if ("restricts".equals(word) || "data".equals(word))
+      return false;
+    Inflector inf = new Inflector();
+    return !inf.singularize(word).equals(word);
+  }
+
 //  public static void checkCase(String filename) {
 //    File f = new CSFile(filename);
 //    if (!f.getName().equals(filename))

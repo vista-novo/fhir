@@ -76,7 +76,9 @@ import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.parsers.SourceParser;
 import org.hl7.fhir.definitions.validation.ModelValidator;
+import org.hl7.fhir.definitions.validation.ModelValidator.Level;
 import org.hl7.fhir.definitions.validation.ProfileValidator;
+import org.hl7.fhir.definitions.validation.ValidationMessage;
 import org.hl7.fhir.instance.formats.AtomComposer;
 import org.hl7.fhir.instance.formats.JsonComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
@@ -315,22 +317,42 @@ public class Publisher {
 		log("Validating");
 		ModelValidator val = new ModelValidator(page.getDefinitions());
 
-		List<String> errors = new ArrayList<String>();
-		for (String n : page.getDefinitions().getResources().keySet())
+		List<ValidationMessage> errors = new ArrayList<ValidationMessage>();
+    for (String n : page.getDefinitions().getTypes().keySet())
+      errors.addAll(val.checkStucture(n, page.getDefinitions().getTypes().get(n)));
+    for (String n : page.getDefinitions().getStructures().keySet())
+      errors.addAll(val.checkStucture(n, page.getDefinitions().getStructures().get(n)));
+		for (String n : page.getDefinitions().sortedResourceNames())
 			errors.addAll(val.check(n, page.getDefinitions().getResources().get(n)));
 
-   for (ResourceDefn r : page.getDefinitions().getResources().values()) {
-     checkExampleLinks(errors, r);
+    for (String rname : page.getDefinitions().sortedResourceNames()) {
+      ResourceDefn r = page.getDefinitions().getResources().get(rname); 
+      checkExampleLinks(errors, r);
    }
 		
-		for (String e : errors)
-			System.out.println(e);
-		return errors.size() == 0;
+   for (ValidationMessage e : errors) {
+     if (e.getLevel() == Level.Hint) {
+       System.out.println(e.getLevel().toString()+": "+e.getMessage());
+     }
+    }
+   for (ValidationMessage e : errors) {
+     if (e.getLevel() == Level.Warning) {
+       System.out.println(e.getLevel().toString()+": "+e.getMessage());
+     }
+    }
+   int t = 0;
+   for (ValidationMessage e : errors) {
+     if (e.getLevel() == Level.Error) {
+       System.out.println(e.getLevel().toString()+": "+e.getMessage());
+       t++;
+     }
+		}
+		return t == 0;
 	}
 
 	
 	
-	private void checkExampleLinks(List<String> errors, ResourceDefn r) throws Exception {
+	private void checkExampleLinks(List<ValidationMessage> errors, ResourceDefn r) throws Exception {
 	  for (Example e : r.getExamples()) {
 	    try {
 	      if (e.getXml() != null) {
@@ -338,8 +360,8 @@ public class Publisher {
 	        listLinks(e.getXml().getDocumentElement(), refs);
 	        for (ExampleReference ref : refs) {
 	          if (!ref.getId().startsWith("cid") && !resolveLink(ref)) { 
-	            errors.add("Unable to resolve example reference to "+ref.describe()+" in "+e.getPath());
-	            errors.add("  Possible Ids: "+listTargetIds(ref.getType()));
+	            errors.add(new ValidationMessage("Unable to resolve example reference to "+ref.describe()+" in "+e.getPath()
+	                  +"\r\n   Possible Ids: "+listTargetIds(ref.getType()), Level.Error));
 	          }
 	        }
 	      } 
@@ -523,7 +545,8 @@ public class Publisher {
 		}
 
     log("Produce Schematrons");
-		for (ResourceDefn r : page.getDefinitions().getResources().values()) {
+		for (String rname : page.getDefinitions().sortedResourceNames()) {
+		  ResourceDefn r = page.getDefinitions().getResources().get(rname); 
 			String n = r.getName().toLowerCase();			
 			SchematronGenerator sch = new SchematronGenerator(new FileOutputStream(page.getFolders().dstDir + n + ".sch"), page);
 			sch.generate(r.getRoot(), page.getDefinitions());
@@ -615,14 +638,16 @@ public class Publisher {
     }
     
     log(" ...profiles");
-    for (ResourceDefn n : page.getDefinitions().getResources().values()) {
-      produceResource1(n);      
+    for (String rname : page.getDefinitions().sortedResourceNames()) {
+      ResourceDefn r = page.getDefinitions().getResources().get(rname); 
+      produceResource1(r);      
     }
     produceBaseProfile();
     
-		for (ResourceDefn n : page.getDefinitions().getResources().values()) {
-      log(" ...resource "+n.getName());
-			produceResource2(n);
+    for (String rname : page.getDefinitions().sortedResourceNames()) {
+      ResourceDefn r = page.getDefinitions().getResources().get(rname); 
+      log(" ...resource "+r.getName());
+			produceResource2(r);
 		}
 
 		new AtomComposer().compose(new FileOutputStream(page.getFolders().dstDir + "profiles-resources.xml"), profileFeed, true, false);
@@ -1276,7 +1301,8 @@ public class Publisher {
 		Schema schema = schemaFactory.newSchema(sources);
 		log(".... done");
 
-		for (ResourceDefn r : page.getDefinitions().getResources().values()) {
+    for (String rname : page.getDefinitions().sortedResourceNames()) {
+      ResourceDefn r = page.getDefinitions().getResources().get(rname); 
 			for (Example e : r.getExamples()) {
 				String n = e.getFileTitle();
         log(" ...validate " + n);
@@ -1288,7 +1314,8 @@ public class Publisher {
 
 		log("Reference Platform Validation.");
 
-		for (ResourceDefn r : page.getDefinitions().getResources().values()) {
+    for (String rname : page.getDefinitions().sortedResourceNames()) {
+      ResourceDefn r = page.getDefinitions().getResources().get(rname); 
 			for (Example e : r.getExamples()) {
 				String n = e.getFileTitle();
         log(" ...test " + n);

@@ -150,7 +150,7 @@ public class TypeRef {
 	public boolean isSpecialType() {
 		return isIdRef() || isXhtml() || isUnboundGenericParam() || isXmlLang() 
 				|| isWildcardType() || name.equals("Type") || name.equals("Narrative")
-				|| name.equals("GenericType") || isResourceReference() || 
+				|| name.equals("SharedDefinition") || isResourceReference() || name.equals("Structure") ||
 				isContainedResource() || isExtension();
 	}
 

@@ -165,7 +165,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Text representation of the address</Data></Cell>
-    <Cell><Data ss:Type="String">a full text representation of the address</Data></Cell>
+    <Cell><Data ss:Type="String">A full text representation of the address</Data></Cell>
     <Cell><Data ss:Type="String">137 Nowhere Street, Erewhon 9132</Data></Cell>
     <Cell><Data ss:Type="String">A renderable, unencoded form</Data></Cell>
     <Cell><Data ss:Type="String">Can provide both a text representation and parts</Data></Cell>
@@ -175,7 +175,7 @@
     <Cell><Data ss:Type="String">Address.line</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">line of an address</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Line of an address</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">A line of an address (typically used for street names &amp; numbers, unit details, delivery hints, etc.) .</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">street address</Data></Cell>
    </Row>
@@ -183,7 +183,7 @@
     <Cell><Data ss:Type="String">Address.city</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">name of city, town etc.</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Name of city, town etc.</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">The name of the city, town, village or other community or delivery centre.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Muncipality</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">locality</Data></Cell>
@@ -192,7 +192,7 @@
     <Cell><Data ss:Type="String">Address.state</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">sub-unit of country (abreviations ok)</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Sub-unit of country (abreviations ok)</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Province, Territory</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">region</Data></Cell>
@@ -201,7 +201,7 @@
     <Cell><Data ss:Type="String">Address.zip</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">post code for area</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Post code for area</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">A postal code designating a region defined by the postal service.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">PostCode</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">postal code</Data></Cell>
@@ -210,7 +210,7 @@
     <Cell><Data ss:Type="String">Address.country</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">country (can be ISO 3166 3 letter code)</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Country (can be ISO 3166 3 letter code)</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Country. ISO 3166 3 letter codes can be used in place of a full country name.</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">country name</Data></Cell>
    </Row>
@@ -242,8 +242,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

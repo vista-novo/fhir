@@ -29,8 +29,13 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
+import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ResourceDefn;
@@ -54,24 +59,72 @@ public class SchemaGenerator {
 			  f.delete();
 	  }
 
-	  XSDBaseGenerator xsdb = new XSDBaseGenerator(new FileOutputStream(new CSFile(xsdDir+"fhir-base.xsd")));
+	  XSDBaseGenerator xsdb = new XSDBaseGenerator(new OutputStreamWriter(new FileOutputStream(new CSFile(xsdDir+"fhir-base.xsd"))));
 	  xsdb.setDefinitions(definitions);
-	  xsdb.generate(version, genDate);
-	  xsdb.close();
+	  xsdb.generate(version, genDate, true);
+	  xsdb.getWriter().close();
 
-	  for (ResourceDefn root : definitions.getResources().values()) {
-		  XSDGenerator sgen = new XSDGenerator(new FileOutputStream(new CSFile(xsdDir+root.getName().toLowerCase()+".xsd")), definitions);
+    List<String> names = new ArrayList<String>();
+    names.addAll(definitions.getResources().keySet());
+    Collections.sort(names);
+    for (String name : names) {
+      ResourceDefn root = definitions.getResources().get(name);
+		  XSDGenerator sgen = new XSDGenerator(new OutputStreamWriter(new FileOutputStream(new CSFile(xsdDir+root.getName().toLowerCase()+".xsd"))), definitions);
 		  sgen.setDataTypes(definitions.getKnownTypes());
-		  sgen.generate(root.getRoot(), definitions.getBindings(), version, genDate);
-		  sgen.close();
+		  sgen.generate(root.getRoot(), definitions.getBindings(), version, genDate, true);
+		  sgen.getWriter().close();
 	  }
 
+	  OutputStreamWriter single = new OutputStreamWriter(new FileOutputStream(new CSFile(xsdDir+"fhir-single.xsd")));
+	  
+	  single.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+	  single.write("<!-- \r\n");
+	  single.write(Config.FULL_LICENSE_CODE);
+	  single.write("\r\n");
+	  single.write("  Generated on " + genDate + " for FHIR v" + version + " \r\n");
+	  single.write("-->\r\n");
+	  single.write("<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://hl7.org/fhir\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" "
+	      + "targetNamespace=\"http://hl7.org/fhir\" elementFormDefault=\"qualified\" version=\""+version+"\">\r\n");
+
+    xsdb = new XSDBaseGenerator(single);
+    xsdb.setDefinitions(definitions);
+    xsdb.generate(version, genDate, false);
+
+    single.write("  <xs:simpleType name=\"ResourceNamesPlusBinary\">\r\n");
+    single.write("    <xs:union memberTypes=\"ResourceType\">\r\n");
+    single.write("      <xs:simpleType>\r\n");
+    single.write("      <xs:restriction base=\"xs:NMTOKEN\">\r\n");
+    single.write("        <xs:enumeration value=\"Binary\"/>\r\n");
+    single.write("      </xs:restriction>\r\n");
+    single.write("    </xs:simpleType>\r\n");
+    single.write("  </xs:union>\r\n");
+    single.write("  </xs:simpleType>\r\n");
+    single.write("  <xs:complexType name=\"Binary\">\r\n");
+    single.write("    <xs:simpleContent>\r\n");
+    single.write("      <xs:extension base=\"xs:base64Binary\">\r\n");
+    single.write("        <xs:attribute name=\"contentType\" type=\"xs:string\" use=\"required\"/>\r\n");
+    single.write("        <xs:attribute name=\"id\" type=\"id-primitive\"/>\r\n");
+    single.write("      </xs:extension>\r\n");
+    single.write("    </xs:simpleContent>\r\n");
+    single.write("  </xs:complexType>\r\n");
+    single.write("  <xs:element name=\"Binary\" type=\"Binary\"/>\r\n");
+  
+    for (String name : names) {
+      ResourceDefn root = definitions.getResources().get(name);
+      XSDGenerator sgen = new XSDGenerator(single, definitions);
+      sgen.setDataTypes(definitions.getKnownTypes());
+      sgen.generate(root.getRoot(), definitions.getBindings(), version, genDate, false);
+    }
+
+    single.write("</xs:schema>\r\n");
+    single.flush();
+    single.close();
 	  for (String n : ini.getPropertyNames("schema")) {
 		  String xsd = TextFile.fileToString(srcDir + n);
-		  xsd = processSchemaIncludes(definitions, n, xsd);
+		  xsd = processSchemaIncludes(definitions, n, xsd, false);
 		  TextFile.stringToFile(xsd, xsdDir + n);
 	  }
-	  produceAtomSchema(definitions, xsdDir, dstDir, srcDir);
+    produceAtomSchema(definitions, xsdDir, dstDir, srcDir);
 	  produceCombinedSchema(definitions, xsdDir, dstDir, srcDir);
 
 	  dir = new CSFile(xsdDir);
@@ -83,17 +136,23 @@ public class SchemaGenerator {
 
   private void produceAtomSchema(Definitions definitions, String xsdDir, String dstDir, String srcDir) throws Exception {
     String src = TextFile.fileToString(srcDir + "atom-template.xsd");
-    src = processSchemaIncludes(definitions, "atom-templates.xsd", src);
+    src = processSchemaIncludes(definitions, "atom-templates.xsd", src, false);
     TextFile.stringToFile(src, xsdDir + "fhir-atom.xsd");
+    src = TextFile.fileToString(srcDir + "atom-template.xsd");
+    src = processSchemaIncludes(definitions, "atom-templates.xsd", src, true);
+    TextFile.stringToFile(src, xsdDir + "fhir-atom-single.xsd");
   }
 
   private void produceCombinedSchema(Definitions definitions, String xsdDir, String dstDir, String srcDir) throws Exception {
     String src = TextFile.fileToString(srcDir + "fhir-all.xsd");
-    src = processSchemaIncludes(definitions, "fhir-all.xsd", src);
+    src = processSchemaIncludes(definitions, "fhir-all.xsd", src, false);
     TextFile.stringToFile(src, xsdDir + "fhir-all.xsd");
   }
 
-  private String processSchemaIncludes(Definitions definitions, String filename, String src) throws Exception {
+  private String processSchemaIncludes(Definitions definitions, String filename, String src, boolean singleMode) throws Exception {
+    List<String> names = new ArrayList<String>();
+    names.addAll(definitions.getResources().keySet());
+    Collections.sort(names);
     while (src.contains("<!--%") || src.contains("<%"))
     {
       int i2;
@@ -120,21 +179,26 @@ public class SchemaGenerator {
         src = s1+ genDate+s3;
       else if (com[0].equals("version"))
         src = s1+version+s3;
-      else if (com[0].equals("resources")) {
+      else if (com[0].equals("includes")) {
+        if (singleMode)
+          src = s1+"<xs:import namespace=\"http://hl7.org/fhir\" schemaLocation=\"fhir-single.xsd\"/>"+s3;
+        else
+          src = s1+"<xs:import namespace=\"http://hl7.org/fhir\" schemaLocation=\"fhir-all.xsd\"/>"+s3;
+      } else if (com[0].equals("resources")) {
         StringBuilder includes = new StringBuilder();
-        for (String n : definitions.getResources().keySet()) // was ini.names of resources 
+        for (String n : names) 
           includes.append("  <xs:include schemaLocation=\""+n.toLowerCase()+".xsd\"/>\r\n");
         src = s1+includes.toString()+s3;
       }
       else if (com[0].equals("atom.imports")) {
         StringBuilder includes = new StringBuilder();
-        for (String n : definitions.getResources().keySet()) // was ini.names of resources 
+        for (String n : names) 
           includes.append("  <xs:import namespace=\"http://hl7.org/fhir\" schemaLocation=\""+n+".xsd\"/>\r\n");
         src = s1+includes.toString()+s3;
       }
       else if (com[0].equals("atom.elements")) {
         StringBuilder includes = new StringBuilder();
-        for (String n : definitions.getResources().keySet()) // was ini.names of resources 
+        for (String n : names) 
           includes.append("      <xs:element ref=\"fhir:"+n+"\"/>\r\n");
         src = s1+includes.toString()+s3;
       }

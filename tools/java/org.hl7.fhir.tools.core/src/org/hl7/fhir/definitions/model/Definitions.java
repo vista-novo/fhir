@@ -29,6 +29,7 @@ package org.hl7.fhir.definitions.model;
 
  */
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -256,6 +257,17 @@ public class Definitions {
 
   public List<String> getShared() {
     return shared;
+  }
+
+  private List<String> sortedNames;
+  
+  public List<String> sortedResourceNames() {
+    if (sortedNames == null) {
+      sortedNames = new ArrayList<String>();
+      sortedNames.addAll(getResources().keySet());
+      Collections.sort(sortedNames);
+    }
+    return sortedNames;
   }
 
   

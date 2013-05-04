@@ -31,12 +31,14 @@ package org.hl7.fhir.definitions.validation;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hl7.fhir.definitions.ecore.fhir.SearchParameter;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.utilities.Utilities;
 
 
 /** todo
@@ -52,8 +54,14 @@ import org.hl7.fhir.definitions.model.TypeRef;
  */
 public class ModelValidator {
 
-	private Definitions definitions;
-	private List<String> errors = new ArrayList<String>();
+  public enum Level {
+    Hint,
+    Warning,
+    Error
+  }
+
+  private Definitions definitions;
+	private List<ValidationMessage> errors = new ArrayList<ValidationMessage>();
 
 	public ModelValidator(Definitions definitions) {
 		super();
@@ -75,29 +83,45 @@ public class ModelValidator {
 	// }
 	// }
 
-	public List<String> check(String name, ResourceDefn parent) {
+  public List<ValidationMessage> checkStucture(String name, ElementDefn structure) {
+    errors.clear();
+    rule(structure.getName(), name.toLowerCase().substring(0, 1) != name.substring(0, 1), "Resource Name must start with an uppercase alpha character");
+    checkElement(structure.getName(), structure, null, null);
+    return errors;
+  
+  }
+  
+  public List<ValidationMessage> check(String name, ResourceDefn parent) {
 		errors.clear();
     rule(parent.getName(), !name.equals("Metadata"), "The name 'Metadata' is not a legal name for a resource");
     rule(parent.getName(), !name.equals("History"), "The name 'History' is not a legal name for a resource");
     rule(parent.getName(), name.toLowerCase().substring(0, 1) != name.substring(0, 1), "Resource Name must start with an uppercase alpha character");
 
-    checkElement(parent.getName(), parent.getRoot(), parent);
+    checkElement(parent.getName(), parent.getRoot(), parent, null);
     rule(parent.getName(), parent.getRoot().getElementByName("text") == null, "Element named \"text\" not allowed");
-    rule(parent.getName(), parent.getRoot().getElementByName("extension") == null, "Element named \"extension\" not allowed");
+    rule(parent.getName(), parent.getRoot().getElementByName("contained") == null, "Element named \"contaned\" not allowed");
     if (parent.getRoot().getElementByName("subject") != null && parent.getRoot().getElementByName("subject").typeCode().startsWith("Resource"))
       rule(parent.getName(), parent.getSearchParams().containsKey("subject"), "A resource that contains a subject reference must have a search parameter 'subject'");
+    for (org.hl7.fhir.definitions.model.SearchParameter p : parent.getSearchParams().values())
+      warning(parent.getName(), !p.getCode().contains("-"), "Search Parameter Names cannot contain a '-' (\""+p.getCode()+"\")");
+//    rule(parent.getName(), !parent.getSearchParams().containsKey("id"), "A resource cannot have a search parameter 'id'");
 		return errors;
 	}
 
 	//todo: check that primitives *in datatypes* don't repeat
 	
-	private void checkElement(String path, ElementDefn e, ResourceDefn parent) {
+	private void checkElement(String path, ElementDefn e, ResourceDefn parent, String parentName) {
 		rule(path, e.unbounded() || e.getMaxCardinality() == 1,	"Max Cardinality must be 1 or unbounded");
 		rule(path, e.getMinCardinality() == 0 || e.getMinCardinality() == 1, "Min Cardinality must be 0 or 1");
-		
+		hint(path, !nameOverlaps(e.getName(), parentName), "Name of child ("+e.getName()+") overlaps with name of parent ("+parentName+")");
 		rule(path, e.hasShortDefn(), "Must have a short defn");
-
-		if( e.getShortDefn().length() > 0)
+    warning(path, !Utilities.isPlural(e.getName()) || !e.unbounded(), "Element names should be singular");
+    warning(path, !e.getName().equals("id"), "Element named \"id\" not allowed");
+    rule(path, !e.getName().equals("extension"), "Element named \"extension\" not allowed");
+    rule(path, !e.getName().equals("entries"), "Element named \"entries\" not allowed");
+    rule(path, (parentName == null) || e.getName().charAt(0) == e.getName().toLowerCase().charAt(0), "Element Names must not start with an uppercase character");
+    
+    if( e.getShortDefn().length() > 0)
 		{
 			rule(path, e.getShortDefn().contains("|") || Character.isUpperCase(e.getShortDefn().charAt(0)) || !Character.isLetter(e.getShortDefn().charAt(0)), "Short Description must start with an uppercase character ('"+e.getShortDefn()+"')");
 		    rule(path, !e.getShortDefn().endsWith(".") || e.getShortDefn().endsWith("etc."), "Short Description must not end with a period ('"+e.getShortDefn()+"')");
@@ -114,7 +138,7 @@ public class ModelValidator {
 //		rule(path, !"code".equals(e.typeCode()) || e.hasBinding(),
 //				"Must have a binding if type is 'code'");
 
-		if (e.typeCode().equals("code")) {
+		if (e.typeCode().equals("code") && parent != null) {
 		  rule(path, e.hasBindingOrOk(), "An element of type code must have a binding");
 		}
 		
@@ -129,12 +153,25 @@ public class ModelValidator {
 			        "A binding can only be extensible if an element has a type of Coding|CodeableConcept and the concept domain is bound directly to a code list.");
 		}
 		for (ElementDefn c : e.getElements()) {
-			checkElement(path + "." + c.getName(), c, parent);
+			checkElement(path + "." + c.getName(), c, parent, e.getName());
 		}
 
 	}
 
-	private void checkType(String path, ElementDefn e, ResourceDefn parent) {
+  private boolean nameOverlaps(String name, String parentName) {
+	  if (Utilities.noString(parentName))
+	    return false;
+	  name = name.toLowerCase();
+	  parentName = parentName.toLowerCase();
+	  if (parentName.startsWith(name))
+	    return true;
+	  for (int i = 3; i < name.length(); i++)
+	    if (parentName.endsWith(name.substring(0, i)))
+	      return true;
+	  return false;
+  }
+
+  private void checkType(String path, ElementDefn e, ResourceDefn parent) {
 		if (e.getTypes().size() == 0) {
 			rule(path, path.contains("."), "Must have a type on a base element");
 			rule(path, e.getName().equals("extension") || e.getElements().size() > 0, "Must have a type unless sub-elements exist");
@@ -174,14 +211,27 @@ public class ModelValidator {
 
 	private boolean typeExists(String name, ResourceDefn parent) {
 		return definitions.hasType(name) ||
-				parent.getRoot().hasNestedType(name);
+				(parent != null && parent.getRoot().hasNestedType(name));
 	}
 
 	private boolean rule(String path, boolean b, String msg) {
 		if (!b)
-			errors.add(path + ": " + msg);
+			errors.add(new ValidationMessage(path + ": " + msg, Level.Error));
 		return b;
 
 	}
+  private boolean hint(String path, boolean b, String msg) {
+    if (!b)
+      errors.add(new ValidationMessage(path + ": " + msg, Level.Hint));
+    return b;
+    
+  }
+
+  private boolean warning(String path, boolean b, String msg) {
+    if (!b)
+      errors.add(new ValidationMessage(path + ": " + msg, Level.Warning));
+    return b;
+    
+  }
 
 }
