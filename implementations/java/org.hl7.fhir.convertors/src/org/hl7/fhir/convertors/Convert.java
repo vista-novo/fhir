@@ -285,9 +285,9 @@ public class Convert {
 	  Calendar cal = Calendar.getInstance();
     SimpleDateFormat sdf = new SimpleDateFormat(m);
     cal.setTime(sdf.parse(v));
-    sdf = new SimpleDateFormat(t ? tz != null ? "yyyy-MM-dd'T'hh:mm:ssZ" : "yyyy-MM-dd'T'hh:mm:ss" : "yyyy-MM-dd");
-	  d.setValue(sdf.format(cal.getTime()));
-	  return d;
+    //sdf = new SimpleDateFormat(t ? tz != null ? "yyyy-MM-dd'T'hh:mm:ssZ" : "yyyy-MM-dd'T'hh:mm:ss" : "yyyy-MM-dd");
+	  d.setValue(javax.xml.bind.DatatypeConverter.printDateTime(cal));
+    return d;
   }
 
 	public Period makePeriodFromIVL(Element ivl) throws Exception {
