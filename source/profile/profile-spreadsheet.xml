@@ -1736,7 +1736,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Examples">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s77" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="75.75"/>
    <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="218.25"/>
@@ -1766,13 +1766,6 @@
     <Cell><Data ss:Type="String">tool</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">CDISC</Data></Cell>
-    <Cell><Data ss:Type="String">CDISC example</Data></Cell>
-    <Cell><Data ss:Type="Number">102</Data></Cell>
-    <Cell><Data ss:Type="String">profile-cdisc-example.xml</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
-   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -1786,7 +1779,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>3</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <RangeSelection>R4</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
