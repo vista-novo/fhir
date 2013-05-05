@@ -192,9 +192,16 @@ public void generate(Definitions definitions, String destDir, String implDir, St
     for (String n : definitions.getResources().keySet()) {
       output.write("    "+n+",\r\n");
     }
-!!
     for (String n : definitions.getFutureResources().keySet()) {
       output.write("    "+n+",\r\n");
+//
+//      for (String n : definitions.getResources().keySet()) {
+//        output.write("    "+n+",\r\n");
+//      }
+//  !!
+//      for (String n : definitions.getFutureResources().keySet()) {
+//        output.write("    "+n+",\r\n");
+//    
     }
     output.write("    Binary;\r\n");
     output.write("\r\n");

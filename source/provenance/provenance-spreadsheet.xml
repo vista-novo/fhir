@@ -406,7 +406,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Base64 Cryptographic signature of resource (DigSig)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">A digital signature on the target resource. The signature should reference a participant by xml:id. The signature is only added to capture cryptographic integrity of the provenance, and not to represent workflow and clinical aspects of the signing process</Data><NamedCell
+    <Cell><Data ss:Type="String">A digital signature on the target resource. The signature should reference a participant by xml:id. The signature is only added to support checking cryptographic integrity of the provenance, and not to represent workflow and clinical aspects of the signing process</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Whether the content is xml or json, the representation is as a base64 of the XML signature of the resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -427,7 +427,7 @@
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>16</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>6</LeftColumnRightPane>
+   <LeftColumnRightPane>4</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -444,7 +444,7 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>18</ActiveRow>
-     <ActiveCol>11</ActiveCol>
+     <ActiveCol>10</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

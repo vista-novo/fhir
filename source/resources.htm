@@ -14,7 +14,7 @@
 [%maindiv%]
 [%resourcesheader%]
 
-[%onthispage Resource Definitions#root|Resource Content#content|Bundles#bundles|Conformance#conformance|Resource References#references|Versioning#version%]
+[%onthispage Resource Definitions#root|Resource Content#content|Bundles#bundles|Conformance#conformance|Resource References#references|Contained Resources#contained|Versioning#version%]
 
 <a name="root"> </a>
 <h1>Resource Definitions</h1>
@@ -386,6 +386,7 @@ Some notes about use and interpretation of contained resources:
 
 <ul>
   <li>Contained resources share the same internal id resolution space as the parent resource</li>
+  <li>Contained resources do not contain additional contained resources</li>
   <li>Resources that are contained inline also "inherit" context from their parent resource. For instance, if 
     the parent resource contains a "subject", and the contained resource also has a a subject element defined, 
     but does not specify any subject, a processing application may infer that the subject is the same. Note,

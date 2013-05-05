@@ -64,7 +64,7 @@ Notes:
  <li>FHIR elements are never empty. If an element is present in the resource, it must have either a value attribute, child elements as defined for its type, an id attribute that is the <a href="#idref">link target</a> of <a href="#narrative">narrative</a>, or 1 or more <a href="extensibility.htm">extensions</a></li>
  <li>Attributes can never be empty. Either they are absent, or they are present with at least one character of non-whitespace content</li>
  <li>The xml:lang attribute may appear on the root element, where it specifies the base language of the resource. It may also appear on <a href="datatypes.htm#Attachment">attachments</a> and in the XHTML content, but nowhere else</li>
- <li>The formal MIME-type for FHIR resources is text/xml+fhir</li>
+ <li>The formal MIME-type for FHIR resources represented in XML is application/fhir+xml</li>
  <li>In addition to this descriptive syntax, other definitional forms are available, including W3C schema and Schematron</li>
 </ul>
 <p>
@@ -244,7 +244,7 @@ There are 4 cases where elements inside a resource reference each other:
  <li>Inside a <a href="datatypes.htm#CodeableConcept">CodeableConcept data type to identify the primary encoding</a></li>
  <li>An &lt;img src=""/&gt; reference in the narrative, referring to an image found in the resource</li>
  <li>Between elements in the narrative and structured data elements</li>
- <li>Between a ResourceReference and an <a href="resources.htm#contained">inlined resource</a></li>
+ <li>Between a ResourceReference and an <a href="resources.htm#contained">contained resource</a></li>
 </ul>
 <p>
 These references are done using an id/idref based approach, where a source element indicates that it 
@@ -285,7 +285,7 @@ Though the representation of FHIR resources is described in XML, FHIR also defin
 a JSON representation of the resources. The JSON format for the resources follows 
 the standard XML format very closely to make interconversion easy, and so that 
 XPath queries can easily be mapped to query the JSON structures. The formal mime type
-for this format is application/json+fhir.
+for this format is application/fhir+json.
 </p>
 <p>
 Clients are free to choose whether to implement in XML or JSON. Servers must support XML, and can 
@@ -499,39 +499,6 @@ in an atom feed as defined by <a href="http://www.rfc-editor.org/rfc/rfc6721.txt
 A deleted resource returns a 410 error if it is accessed through the RESTful interface. 
 </p>
 
-<a name="atom-binary"> </a>
-<h4>Binary Resources</h4>
-<p>
-There are situations where it is useful or required to represent binary resources in the bundle. These are resources that are referred to from FHIR Resources (usually via a URI)
-where it is convenient to include these in the feed directly rather than leaving them by reference.
-</p>
-<p>
-When binary resources are represented in the feed, they are enclosed as base64 encoded content along with a content-type, which is the mime-type as it would be specified in HTTP:
-</p>
-<pre class="spec">
-  <span style="color:Gray;">...</span>
-  &lt;entry&gt;
-    ...
-    &lt;category term="Binary" scheme="http://hl7.org/fhir/resource-types"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span><span style="color:Gray;"> --&gt;</span>&lt;/category&gt;
-    &lt;content type="text/xml"><span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span><span style="color:Gray;"> --&gt;</span>
-      &lt;Binary xmlns="http://hl7.org/fhir" contentType="<span style="color:navy;">[mime type]</span>"&gt;<span style="color:navy;">[Base64 Content]</span>&lt;/Binary&gt;
-    &lt;/content>
-    &lt;summary type="xhtml"><span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span>
-	<span style="color:Gray;"> --&gt;</span>
-      &lt;div xmlns="http://www.w3.org/1999/xhtml">Binary resource&lt;/div>
-    &lt;/summary>
-  &lt;/entry&gt;
-  <span style="color:Gray;">...</span>
-</pre>
-<p>
-The summary should be some equivalent to "Binary Resource" in an appropriate language.
-</p>
-<p>
-Binary resources can also be embedded as <a href="resources.htm#contained">inlined resources</a>.  
-If there's a desire to capture metadata about a binary object, an appropriate resource type must be used such as
-<a href="document.htm">Document</a> or <a href="Picture.htm">Picture</a>.
-</p>
-
 <a name="atom-refs"> </a>
 <h4>Resolving references to Resources</h4>
 <p>
@@ -701,24 +668,38 @@ the JSON format needs to use an entry item to retain the logical order of entrie
 The entry is known to be deleted because a date of deletion is given. An id must be provided, and a link may be provided.
 </p>
 
-<a name="json-bundle-binary"> </a>
+<a name="binary"> </a>
 <h4>Binary Resources</h4>
 <p>
-When binary resources are represented in the feed, they are enclosed as base64 encoded content along with a content-type, which is the mime-type as it would be specified in HTTP:
+There are situations where it is useful or required to handle pure binary content 
+as resources. Typically, this is when the binary content is referred to from other FHIR 
+Resources. The resource can contain any content, whether text, image, pdf, zip archive, etc. 
+These resources are <a href="http.htm#binary">served in their native form on the rest interface</a>,
+but can also be represented in XML or JSON, such as when including these resources in a bundle
+(used when it is convenient to include these in the feed directly rather than leaving them by reference).
 </p>
-<pre class="json">
-  ...
-      &quot;content&quot; : {
-        &quot;Binary&quot; : {
-          &quot;contentType&quot; : &quot;[mime type]&quot;,
-          &quot;content&quot; : &quot;[base64 of data]&quot;
-        }
-      },
-      &quot;summary&quot; : &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;Binary Resource&lt;/div&gt;&quot;
-  ...
+<p>
+When binary resources is represented as XML, it is represented as base64 encoded content along 
+with a content-type, which is the mime-type as it would be specified in HTTP:
+</p>
+<pre class="spec">
+ &lt;Binary xmlns="http://hl7.org/fhir" contentType="<span style="color:navy;">[mime type]</span>"&gt;
+   <span style="color:navy;">[Base64 Content]</span>
+ &lt;/Binary&gt;
 </pre>
 <p>
-The summary should be some equivalent to "Binary Resource" in an appropriate language.
+In JSON, the representation would look like this:
+</p>
+<pre class="json">
+  &quot;Binary&quot; : {
+    &quot;contentType&quot; : &quot;[mime type]&quot;,
+    &quot;content&quot; : &quot;[base64 of data]&quot;
+  }
+</pre>
+<p>
+Binary resources can also be embedded as <a href="resources.htm#contained">contained resources</a>.  
+If there's a desire to capture metadata about a binary object, an appropriate resource type must be used such as
+<a href="document.htm">Document</a> or <a href="Picture.htm">Picture</a>.
 </p>
 
 
