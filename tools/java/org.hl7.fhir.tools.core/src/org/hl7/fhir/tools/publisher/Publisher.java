@@ -194,7 +194,7 @@ public class Publisher {
 			return;
 		}
 		pub.isGenerate = !(args.length > 1 && hasParam(args, "-nogen"));
-		pub.web = false && (args.length > 1 && hasParam(args, "-web"));
+		pub.web = (args.length > 1 && hasParam(args, "-web"));
 		try {
       pub.execute(args[0]);
     } catch (Exception e) {
