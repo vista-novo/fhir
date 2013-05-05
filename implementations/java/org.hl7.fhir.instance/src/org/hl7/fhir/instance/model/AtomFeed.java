@@ -41,6 +41,7 @@ public class AtomFeed {
   private java.util.Calendar updated;
   private String authorName;
   private String authorUri;
+  private int totalResults;
 
   private List<AtomEntry> entryList = new ArrayList<AtomEntry>();
 
@@ -92,5 +93,11 @@ public class AtomFeed {
     return links;
   }
   
-  
+  public void setTotalResults(int totalResults) {
+	this.totalResults = totalResults;
+  }
+	
+  public int getTotalResults() {
+	return this.totalResults;
+  }
 }
