@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
 
 import java.util.*;
 
@@ -39,7 +39,7 @@ import java.util.*;
 public class AllergyIntolerance extends Resource {
 
     public enum Criticality {
-        severe, // Likely to result in death if re-exposed
+        fatal, // Likely to result in death if re-exposed
         high, // Likely to result in reactions that will need to be treated if re-exposed
         medium, // Likely to result in reactions that will inconvenience the subject
         low, // Not likely to result in any inconveniences for the subject
@@ -47,8 +47,8 @@ public class AllergyIntolerance extends Resource {
         public static Criticality fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("severe".equals(codeString))
-          return severe;
+        if ("fatal".equals(codeString))
+          return fatal;
         if ("high".equals(codeString))
           return high;
         if ("medium".equals(codeString))
@@ -59,7 +59,7 @@ public class AllergyIntolerance extends Resource {
         }
         public String toCode() {
           switch (this) {
-            case severe: return "severe";
+            case fatal: return "fatal";
             case high: return "high";
             case medium: return "medium";
             case low: return "low";
@@ -73,8 +73,8 @@ public class AllergyIntolerance extends Resource {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("severe".equals(codeString))
-          return Criticality.severe;
+        if ("fatal".equals(codeString))
+          return Criticality.fatal;
         if ("high".equals(codeString))
           return Criticality.high;
         if ("medium".equals(codeString))
@@ -84,8 +84,8 @@ public class AllergyIntolerance extends Resource {
         throw new Exception("Unknown Criticality code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == Criticality.severe)
-        return "severe";
+      if (code == Criticality.fatal)
+        return "fatal";
       if (code == Criticality.high)
         return "high";
       if (code == Criticality.medium)
@@ -205,6 +205,11 @@ public class AllergyIntolerance extends Resource {
     }
 
     /**
+     * An external identifier for the sensitivity
+     */
+    private Identifier identifier;
+
+    /**
      * Criticality of the sensitivity
      */
     private Enumeration<Criticality> criticality;
@@ -248,6 +253,14 @@ public class AllergyIntolerance extends Resource {
      * Observations that confirm or refute the sensitivity
      */
     private List<ResourceReference> sensitivityTest = new ArrayList<ResourceReference>();
+
+    public Identifier getIdentifier() { 
+      return this.identifier;
+    }
+
+    public void setIdentifier(Identifier value) { 
+      this.identifier = value;
+    }
 
     public Enumeration<Criticality> getCriticality() { 
       return this.criticality;

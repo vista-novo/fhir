@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
 
 
 import java.net.*;
@@ -103,7 +103,7 @@ public class Quantity extends Type {
     private Decimal value;
 
     /**
-     * How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues. E.g. if the comparator is “<“ , then the real value is < stated value
+     * How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues. E.g. if the comparator is "<" , then the real value is < stated value
      */
     private Enumeration<QuantityComparator> comparator;
 

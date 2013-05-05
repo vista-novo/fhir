@@ -29,16 +29,29 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
 
 /**
- * null
+ * Mechanism for handling resources not yet defined for FHIR or outside HL7's scope of interest
  */
-public class Food extends Resource {
+public class Other extends Resource {
+
+    /**
+     * Kind of Resource
+     */
+    private CodeableConcept code;
+
+    public CodeableConcept getCode() { 
+      return this.code;
+    }
+
+    public void setCode(CodeableConcept value) { 
+      this.code = value;
+    }
 
   @Override
   public ResourceType getResourceType() {
-    return ResourceType.Food;
+    return ResourceType.Other;
    }
 
 

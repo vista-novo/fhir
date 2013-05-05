@@ -37,7 +37,9 @@ import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
+import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.instance.model.Profile.SearchParamType;
 import org.hl7.fhir.utilities.Utilities;
 
 
@@ -102,8 +104,10 @@ public class ModelValidator {
     rule(parent.getName(), parent.getRoot().getElementByName("contained") == null, "Element named \"contaned\" not allowed");
     if (parent.getRoot().getElementByName("subject") != null && parent.getRoot().getElementByName("subject").typeCode().startsWith("Resource"))
       rule(parent.getName(), parent.getSearchParams().containsKey("subject"), "A resource that contains a subject reference must have a search parameter 'subject'");
-    for (org.hl7.fhir.definitions.model.SearchParameter p : parent.getSearchParams().values())
+    for (org.hl7.fhir.definitions.model.SearchParameter p : parent.getSearchParams().values()) {
       warning(parent.getName(), !p.getCode().contains("-"), "Search Parameter Names cannot contain a '-' (\""+p.getCode()+"\")");
+      warning(parent.getName(), !p.getCode().contains("."), "Search Parameter Names cannot contain a '.' (\""+p.getCode()+"\")");
+    }
 //    rule(parent.getName(), !parent.getSearchParams().containsKey("id"), "A resource cannot have a search parameter 'id'");
 		return errors;
 	}

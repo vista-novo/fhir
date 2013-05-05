@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
 
 import java.util.*;
 
@@ -139,7 +139,7 @@ public class Patient extends Resource {
     private Demographics details;
 
     /**
-     * A contact party for the patient
+     * A contact party (e.g. guardian, partner, friend) for the patient
      */
     private List<ContactComponent> contact = new ArrayList<ContactComponent>();
 

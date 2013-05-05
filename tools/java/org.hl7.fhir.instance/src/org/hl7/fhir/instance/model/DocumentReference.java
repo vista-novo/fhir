@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
 
 import java.util.*;
 
@@ -292,7 +292,12 @@ public class DocumentReference extends Resource {
     /**
      * The mime type of the source document
      */
-    private Code format;
+    private Code mimeType;
+
+    /**
+     * The format of the document. This is used when the mimeType of the document does not provide enough differentiating information (typically, when the mime type of the document is text/xml)
+     */
+    private CodeableConcept format;
 
     /**
      * The size of the source document in bytes
@@ -505,26 +510,34 @@ public class DocumentReference extends Resource {
       }
     }
 
-    public Code getFormat() { 
+    public Code getMimeType() { 
+      return this.mimeType;
+    }
+
+    public void setMimeType(Code value) { 
+      this.mimeType = value;
+    }
+
+    public String getMimeTypeSimple() { 
+      return this.mimeType == null ? null : this.mimeType.getValue();
+    }
+
+    public void setMimeTypeSimple(String value) { 
+      if (value == null)
+        this.mimeType = null;
+      else {
+        if (this.mimeType == null)
+          this.mimeType = new Code();
+        this.mimeType.setValue(value);
+      }
+    }
+
+    public CodeableConcept getFormat() { 
       return this.format;
     }
 
-    public void setFormat(Code value) { 
+    public void setFormat(CodeableConcept value) { 
       this.format = value;
-    }
-
-    public String getFormatSimple() { 
-      return this.format == null ? null : this.format.getValue();
-    }
-
-    public void setFormatSimple(String value) { 
-      if (value == null)
-        this.format = null;
-      else {
-        if (this.format == null)
-          this.format = new Code();
-        this.format.setValue(value);
-      }
     }
 
     public Integer getSize() { 

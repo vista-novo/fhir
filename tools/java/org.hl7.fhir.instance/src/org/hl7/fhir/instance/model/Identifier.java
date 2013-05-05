@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
 
 
 import java.net.*;
@@ -106,7 +106,7 @@ public class Identifier extends Type {
     /**
      * The portion of the identifier typically displayed to the user and which is unique within the context of the system.
      */
-    private String_ id;
+    private String_ key;
 
     /**
      * Time period during which identifier was valid for use
@@ -184,25 +184,25 @@ public class Identifier extends Type {
       }
     }
 
-    public String_ getId() { 
-      return this.id;
+    public String_ getKey() { 
+      return this.key;
     }
 
-    public void setId(String_ value) { 
-      this.id = value;
+    public void setKey(String_ value) { 
+      this.key = value;
     }
 
-    public String getIdSimple() { 
-      return this.id == null ? null : this.id.getValue();
+    public String getKeySimple() { 
+      return this.key == null ? null : this.key.getValue();
     }
 
-    public void setIdSimple(String value) { 
+    public void setKeySimple(String value) { 
       if (value == null)
-        this.id = null;
+        this.key = null;
       else {
-        if (this.id == null)
-          this.id = new String_();
-        this.id.setValue(value);
+        if (this.key == null)
+          this.key = new String_();
+        this.key.setValue(value);
       }
     }
 

@@ -77,6 +77,13 @@ public class AtomParser extends XmlBase {
     return res;
   }
   
+  private int parseInt(XmlPullParser xpp) throws Exception {
+    int res = -1;
+    String textNode = parseString(xpp);
+    res = Integer.parseInt(textNode);
+    return res;
+  }
+  
   private AtomFeed parseAtom(XmlPullParser xpp) throws Exception {
     AtomFeed res = new AtomFeed();
     if (!xpp.getName().equals("feed"))
@@ -109,6 +116,8 @@ public class AtomParser extends XmlBase {
           eventType = nextNoWhitespace(xpp);
         }
         xpp.next();
+      }else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("totalResults")){
+        res.setTotalResults(parseInt(xpp));
       }
       else
         throw new Exception("Bad Xml parsing Atom Feed");
@@ -228,7 +237,7 @@ public class AtomParser extends XmlBase {
         res.setResource(p.parse(xpp));
         xpp.next();
         nextNoWhitespace(xpp);
-        xpp.next();
+        //xpp.next();//Bug
         
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("summary")) {
         xpp.next();
@@ -236,7 +245,7 @@ public class AtomParser extends XmlBase {
         res.setSummary(new XhtmlParser().parseHtmlNode(xpp));
         xpp.next();
         nextNoWhitespace(xpp);
-        xpp.next();
+        //xpp.next();//bug
       } else
         throw new Exception("Bad Xml parsing entry");
       eventType = nextNoWhitespace(xpp);

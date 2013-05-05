@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
 
 import java.util.*;
 
@@ -146,6 +146,64 @@ public class AdverseReaction extends Resource {
       }
     }
 
+    public enum CausalityExpectation {
+        likely, // Likely that this specific exposure caused the reaction
+        unlikely, // Unlikely that this specific exposure caused the reaction - the exposure is being linked to for information purposes
+        confirmed, // It has been confirmed that this exposure was one of the causes of the reaction
+        unknown, // It is unknown whether this exposure had anything to do with the reaction
+        Null; // added to help the parsers
+        public static CausalityExpectation fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("likely".equals(codeString))
+          return likely;
+        if ("unlikely".equals(codeString))
+          return unlikely;
+        if ("confirmed".equals(codeString))
+          return confirmed;
+        if ("unknown".equals(codeString))
+          return unknown;
+        throw new Exception("Unknown CausalityExpectation code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case likely: return "likely";
+            case unlikely: return "unlikely";
+            case confirmed: return "confirmed";
+            case unknown: return "unknown";
+            default: return "?";
+          }
+        }
+    }
+
+  public class CausalityExpectationEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("likely".equals(codeString))
+          return CausalityExpectation.likely;
+        if ("unlikely".equals(codeString))
+          return CausalityExpectation.unlikely;
+        if ("confirmed".equals(codeString))
+          return CausalityExpectation.confirmed;
+        if ("unknown".equals(codeString))
+          return CausalityExpectation.unknown;
+        throw new Exception("Unknown CausalityExpectation code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == CausalityExpectation.likely)
+        return "likely";
+      if (code == CausalityExpectation.unlikely)
+        return "unlikely";
+      if (code == CausalityExpectation.confirmed)
+        return "confirmed";
+      if (code == CausalityExpectation.unknown)
+        return "unknown";
+      return "?";
+      }
+    }
+
     public class AdverseReactionSymptomComponent extends Element {
         /**
          * Indicates the specific sign or symptom that was observed
@@ -201,7 +259,12 @@ public class AdverseReaction extends Resource {
         private Enumeration<ExposureType> exposureType;
 
         /**
-         * Substance that subject was exposed to
+         * A statement of how confident that the recorder was that this exposure caused the reaction
+         */
+        private Enumeration<CausalityExpectation> causalityExpectation;
+
+        /**
+         * Substance(s) that is presumed to have caused the adverse reaction
          */
         private ResourceReference substance;
 
@@ -246,6 +309,28 @@ public class AdverseReaction extends Resource {
             if (this.exposureType == null)
               this.exposureType = new Enumeration<ExposureType>();
             this.exposureType.setValue(value);
+          }
+        }
+
+        public Enumeration<CausalityExpectation> getCausalityExpectation() { 
+          return this.causalityExpectation;
+        }
+
+        public void setCausalityExpectation(Enumeration<CausalityExpectation> value) { 
+          this.causalityExpectation = value;
+        }
+
+        public CausalityExpectation getCausalityExpectationSimple() { 
+          return this.causalityExpectation == null ? null : this.causalityExpectation.getValue();
+        }
+
+        public void setCausalityExpectationSimple(CausalityExpectation value) { 
+          if (value == null)
+            this.causalityExpectation = null;
+          else {
+            if (this.causalityExpectation == null)
+              this.causalityExpectation = new Enumeration<CausalityExpectation>();
+            this.causalityExpectation.setValue(value);
           }
         }
 

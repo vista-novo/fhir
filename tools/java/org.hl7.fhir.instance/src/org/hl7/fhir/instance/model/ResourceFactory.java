@@ -29,15 +29,15 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
 
 public class ResourceFactory {
 
     public static Resource createResource(String name) throws Exception {
-        if ("Prescription".equals(name))
-            return new Prescription();
         if ("Organization".equals(name))
             return new Organization();
+        if ("Prescription".equals(name))
+            return new Prescription();
         if ("Group".equals(name))
             return new Group();
         if ("ValueSet".equals(name))
@@ -60,14 +60,14 @@ public class ResourceFactory {
             return new IssueReport();
         if ("MedicationStatement".equals(name))
             return new MedicationStatement();
-        if ("AnatomicalLocation".equals(name))
-            return new AnatomicalLocation();
         if ("Questionnaire".equals(name))
             return new Questionnaire();
+        if ("Protocol".equals(name))
+            return new Protocol();
         if ("Conformance".equals(name))
             return new Conformance();
-        if ("Product".equals(name))
-            return new Product();
+        if ("Other".equals(name))
+            return new Other();
         if ("Profile".equals(name))
             return new Profile();
         if ("Visit".equals(name))
@@ -86,18 +86,14 @@ public class ResourceFactory {
             return new Practitioner();
         if ("ImagingStudy".equals(name))
             return new ImagingStudy();
-        if ("Provenance".equals(name))
-            return new Provenance();
         if ("CarePlan".equals(name))
             return new CarePlan();
+        if ("Provenance".equals(name))
+            return new Provenance();
         if ("Device".equals(name))
             return new Device();
-        if ("Food".equals(name))
-            return new Food();
         if ("Order".equals(name))
             return new Order();
-        if ("Request".equals(name))
-            return new Request();
         if ("Procedure".equals(name))
             return new Procedure();
         if ("Substance".equals(name))
@@ -106,6 +102,8 @@ public class ResourceFactory {
             return new DiagnosticReport();
         if ("Medication".equals(name))
             return new Medication();
+        if ("Study".equals(name))
+            return new Study();
         if ("MedicationAdministration".equals(name))
             return new MedicationAdministration();
         if ("SecurityEvent".equals(name))
@@ -122,8 +120,6 @@ public class ResourceFactory {
             return new FamilyHistory();
         if ("Location".equals(name))
             return new Location();
-        if ("Admission".equals(name))
-            return new Admission();
         if ("AllergyIntolerance".equals(name))
             return new AllergyIntolerance();
         if ("Observation".equals(name))
@@ -142,8 +138,6 @@ public class ResourceFactory {
             return new Patient();
         if ("AdverseReaction".equals(name))
             return new AdverseReaction();
-        if ("Person".equals(name))
-            return new Person();
         else
             throw new Exception("Unknown Resource Name '"+name+"'");
     }
@@ -169,6 +163,8 @@ public class ResourceFactory {
             return new Distance();
         if ("Contact".equals(name))
             return new Contact();
+        if ("ActivityDefinition".equals(name))
+            return new ActivityDefinition();
         if ("Demographics".equals(name))
             return new Demographics();
         if ("Extension".equals(name))

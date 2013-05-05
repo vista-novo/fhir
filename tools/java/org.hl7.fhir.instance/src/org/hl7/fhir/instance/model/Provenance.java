@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
 
 import java.util.*;
 
@@ -317,7 +317,7 @@ public class Provenance extends Resource {
     private List<ProvenancePartyComponent> party = new ArrayList<ProvenancePartyComponent>();
 
     /**
-     * A digital signature on the target resource. The signature should reference a participant by xml:id
+     * A digital signature on the target resource. The signature should reference a participant by xml:id. The signature is only added to capture cryptographic integrity of the provenance, and not to represent workflow and clinical aspects of the signing process
      */
     private String_ signature;
 

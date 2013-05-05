@@ -112,5 +112,31 @@ public class Factory {
 	res.setValue(newString_(value));
 	return res;
   }
+
+	public static Extension newExtension(String uri, Type value, boolean evenIfNull) throws Exception {
+		if (!evenIfNull && value == null)
+			return null;
+		Extension e = new Extension();
+		e.setUrlSimple(new URI(uri));
+		e.setValue(value);
+	  return e;
+  }
+
+	public static CodeableConcept newCodeableConcept(String code, String system, String display) throws Exception {
+		CodeableConcept cc = new CodeableConcept();
+		Coding c = new Coding();
+		c.setCodeSimple(code);
+		c.setSystemSimple(new URI(system));
+		c.setDisplaySimple(display);
+		cc.getCoding().add(c);
+	  return cc;
+  }
+
+	public static ResourceReference makeResourceReference(String type, String url) throws Exception {
+	  ResourceReference rr = new ResourceReference();
+	  rr.setTypeSimple(type);
+	  rr.setUrlSimple(new URI(url));
+	  return rr;
+  }
   
 }

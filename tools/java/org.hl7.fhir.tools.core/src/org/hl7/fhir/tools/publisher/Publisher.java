@@ -923,6 +923,7 @@ public class Publisher {
     try {
       javaReferencePlatform.convertToJson(page.getFolders().dstDir, page.getFolders().dstDir + n + ".xml", page.getFolders().dstDir + n + ".json");
     } catch (Throwable t) {
+      System.out.println("Error processing "+page.getFolders().dstDir + n + ".xml");
       t.printStackTrace(System.err);
       TextFile.stringToFile(t.getMessage(), page.getFolders().dstDir + n + ".json");
     }

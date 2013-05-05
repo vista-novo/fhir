@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
 
 import java.util.*;
 
@@ -195,9 +195,9 @@ public class Problem extends Resource {
         private CodeableConcept code;
 
         /**
-         * Detailed and structured anatomical location information
+         * Detailed anatomical location information
          */
-        private ResourceReference details;
+        private String_ details;
 
         public CodeableConcept getCode() { 
           return this.code;
@@ -207,12 +207,26 @@ public class Problem extends Resource {
           this.code = value;
         }
 
-        public ResourceReference getDetails() { 
+        public String_ getDetails() { 
           return this.details;
         }
 
-        public void setDetails(ResourceReference value) { 
+        public void setDetails(String_ value) { 
           this.details = value;
+        }
+
+        public String getDetailsSimple() { 
+          return this.details == null ? null : this.details.getValue();
+        }
+
+        public void setDetailsSimple(String value) { 
+          if (value == null)
+            this.details = null;
+          else {
+            if (this.details == null)
+              this.details = new String_();
+            this.details.setValue(value);
+          }
         }
 
   }

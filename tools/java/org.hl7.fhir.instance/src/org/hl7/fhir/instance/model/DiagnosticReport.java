@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Apr 23, 2013 10:10+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
 
 import java.util.*;
 
@@ -223,7 +223,7 @@ public class DiagnosticReport extends Resource {
         private CodeableConcept name;
 
         /**
-         * Details about the individual specimen to which these ‘Result group’ test results refer
+         * Details about the individual specimen to which these 'Result group' test results refer
          */
         private ResourceReference specimen;
 

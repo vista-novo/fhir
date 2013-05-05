@@ -28,7 +28,6 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -114,7 +113,5 @@ public class AtomEntry {
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
-  
-  
-  
+	
 }
