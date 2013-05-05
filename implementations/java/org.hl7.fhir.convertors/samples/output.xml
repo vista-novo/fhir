@@ -2,22 +2,22 @@
 
 <feed xmlns="http://hl7.org/fhir">
   <title>Community Health and Hospitals: Consultation Note</title>
-  <id>68996acd-2e8a-4889-b34c-d1e7a4249608</id>
-  <updated>2013-04-25T12:22:33.525+10:00</updated>
+  <id>015b3b93-562e-4c1a-bca3-e8ff9dde15cc</id>
+  <updated>2013-05-06T01:56:25.570+10:00</updated>
   <entry xmlns="http://www.w3.org/2005/Atom">
     <title>Document</title>
-    <id>839e7a81-1ddd-4b0f-b9f6-a69fd3df9eba</id>
-    <updated>2013-04-25T12:22:33.593+10:00</updated>
+    <id>5a452769-dfea-44db-990a-b2b9e0e0be5a</id>
+    <updated>2013-05-06T01:56:25.641+10:00</updated>
     <category scheme="http://hl7.org/fhir/resource-types" term="Document"/>
     <content type="text/xml">
       <Document xmlns="http://hl7.org/fhir">
         <id>
           <system value="urn:oid:2.16.840.1.113883.19.5.99999.19"/>
-          <id value="sTT988"/>
+          <key value="sTT988"/>
         </id>
         <versionId>
           <system value="urn:oid:2.16.840.1.113883.19.5.99999.1"/>
-          <id value="TT988"/>
+          <key value="TT988"/>
         </versionId>
         <created value="2012-09-17T09:07:00+10:00"/>
         <type>
@@ -34,31 +34,31 @@
         </confidentiality>
         <subject>
           <type value="Patient"/>
-          <url value="c439563f-824b-4250-ba03-9b47f66880cc"/>
+          <url value="6a118f98-b679-4a00-b636-d499c8522477"/>
         </subject>
         <author>
           <type value="Provider"/>
-          <url value="47e3906d-59b0-4189-ad0e-edaa2cf4d3bd"/>
+          <url value="7fe54d7f-3bdc-427d-bb81-4579027182e3"/>
         </author>
         <attester>
           <mode value="legal"/>
-          <time value="2009-02-27T07:00:00+1100"/>
+          <time value="2009-02-27T19:00:00+11:00"/>
           <party>
             <type value="Practitioner"/>
-            <url value="35f2124b-5716-410e-afbc-a9b42fe4a53f"/>
+            <url value="e10d05fa-2e5d-41f5-a605-90fedfbbf4b3"/>
           </party>
         </attester>
         <attester>
           <mode value="professional"/>
-          <time value="2009-02-27T07:00:00+1100"/>
+          <time value="2009-02-27T19:00:00+11:00"/>
           <party>
             <type value="Practitioner"/>
-            <url value="8d710342-c285-44db-930d-c68ad7482292"/>
+            <url value="e88e96c3-e348-4560-a13c-499473fa0c35"/>
           </party>
         </attester>
         <custodian>
           <type value="Organization"/>
-          <url value="f011427c-f32a-4154-a1d4-434dce68f91e"/>
+          <url value="2583630d-b222-4270-9f70-323b56b55fd9"/>
         </custodian>
         <event>
           <code>
@@ -69,12 +69,12 @@
             </coding>
           </code>
           <period>
-            <start value="2009-02-27T07:00:00+1100"/>
-            <end value="2009-02-27T07:00:00+1100"/>
+            <start value="2009-02-27T19:00:00+11:00"/>
+            <end value="2009-02-27T19:00:00+11:00"/>
           </period>
           <detail>
             <type value="Visit"/>
-            <url value="96ead540-7616-4fd6-a75b-f9cc4f529c21"/>
+            <url value="c9289663-db45-4310-9239-ec5a055b08fb"/>
           </detail>
         </event>
         <section>
@@ -86,7 +86,7 @@
           </code>
           <content>
             <type value="List"/>
-            <url value="de8c2318-f9e1-458a-ab6c-579836a41583"/>
+            <url value="c73345c1-1c93-410d-8cc7-f7a96e16a412"/>
           </content>
         </section>
       </Document>
@@ -94,32 +94,32 @@
   </entry>
   <entry xmlns="http://www.w3.org/2005/Atom">
     <title>Encounter</title>
-    <id>96ead540-7616-4fd6-a75b-f9cc4f529c21</id>
-    <updated>2013-04-25T12:22:33.608+10:00</updated>
+    <id>c9289663-db45-4310-9239-ec5a055b08fb</id>
+    <updated>2013-05-06T01:56:25.657+10:00</updated>
     <category scheme="http://hl7.org/fhir/resource-types" term="Visit"/>
     <content type="text/xml">
       <Visit xmlns="http://hl7.org/fhir">
         <identifier>
           <system value="urn:oid:2.16.840.1.113883.19"/>
-          <id value="9937012"/>
+          <key value="9937012"/>
         </identifier>
         <period>
-          <start value="2009-02-27T07:00:00+1100"/>
-          <end value="2009-02-27T07:00:00+1100"/>
+          <start value="2009-02-27T19:00:00+11:00"/>
+          <end value="2009-02-27T19:00:00+11:00"/>
         </period>
       </Visit>
     </content>
   </entry>
   <entry xmlns="http://www.w3.org/2005/Atom">
     <title>Provider</title>
-    <id>ddca2265-3a70-4bfd-8385-bfcd4339d935</id>
-    <updated>2013-04-25T12:22:33.613+10:00</updated>
+    <id>acea1aae-c5ff-448e-b1da-2f501f9b5ba5</id>
+    <updated>2013-05-06T01:56:25.662+10:00</updated>
     <category scheme="http://hl7.org/fhir/resource-types" term="Organization"/>
     <content type="text/xml">
       <Organization xmlns="http://hl7.org/fhir">
         <identifier>
           <system value="urn:ietf:rfc:3986"/>
-          <id value="urn:oid:2.16.840.1.113883.19.5.9999.1393"/>
+          <key value="urn:oid:2.16.840.1.113883.19.5.9999.1393"/>
         </identifier>
         <name value="Community Health and Hospitals"/>
         <address>
@@ -139,18 +139,18 @@
   </entry>
   <entry xmlns="http://www.w3.org/2005/Atom">
     <title>Subject</title>
-    <id>c439563f-824b-4250-ba03-9b47f66880cc</id>
-    <updated>2013-04-25T12:22:33.613+10:00</updated>
+    <id>6a118f98-b679-4a00-b636-d499c8522477</id>
+    <updated>2013-05-06T01:56:25.662+10:00</updated>
     <category scheme="http://hl7.org/fhir/resource-types" term="Patient"/>
     <content type="text/xml">
       <Patient xmlns="http://hl7.org/fhir">
         <identifier>
           <system value="urn:oid:2.16.840.1.113883.19.5.99999.2"/>
-          <id value="998991"/>
+          <key value="998991"/>
         </identifier>
         <identifier>
           <system value="urn:oid:2.16.840.1.113883.4.1"/>
-          <id value="111-00-2330"/>
+          <key value="111-00-2330"/>
         </identifier>
         <details>
           <extension>
@@ -218,7 +218,7 @@
             <code value="F"/>
             <display value="Female"/>
           </gender>
-          <birthDate value="2005-05-01"/>
+          <birthDate value="2005-05-01T00:00:00+10:00"/>
           <address>
             <use value="home"/>
             <line value="1357 Amber Drive"/>
@@ -286,21 +286,21 @@
         </contact>
         <provider>
           <type value="Organization"/>
-          <url value="ddca2265-3a70-4bfd-8385-bfcd4339d935"/>
+          <url value="acea1aae-c5ff-448e-b1da-2f501f9b5ba5"/>
         </provider>
       </Patient>
     </content>
   </entry>
   <entry xmlns="http://www.w3.org/2005/Atom">
     <title>Author</title>
-    <id>47e3906d-59b0-4189-ad0e-edaa2cf4d3bd</id>
-    <updated>2013-04-25T12:22:33.613+10:00</updated>
+    <id>7fe54d7f-3bdc-427d-bb81-4579027182e3</id>
+    <updated>2013-05-06T01:56:25.663+10:00</updated>
     <category scheme="http://hl7.org/fhir/resource-types" term="Practitioner"/>
     <content type="text/xml">
       <Practitioner xmlns="http://hl7.org/fhir">
         <identifier>
           <system value="urn:oid:2.16.840.1.113883.4.6"/>
-          <id value="99999999"/>
+          <key value="99999999"/>
         </identifier>
         <details>
           <name>
@@ -325,14 +325,14 @@
   </entry>
   <entry xmlns="http://www.w3.org/2005/Atom">
     <title>Custodian</title>
-    <id>f011427c-f32a-4154-a1d4-434dce68f91e</id>
-    <updated>2013-04-25T12:22:33.614+10:00</updated>
+    <id>2583630d-b222-4270-9f70-323b56b55fd9</id>
+    <updated>2013-05-06T01:56:25.663+10:00</updated>
     <category scheme="http://hl7.org/fhir/resource-types" term="Organization"/>
     <content type="text/xml">
       <Organization xmlns="http://hl7.org/fhir">
         <identifier>
           <system value="urn:oid:2.16.840.1.113883.4.6"/>
-          <id value="99999999"/>
+          <key value="99999999"/>
         </identifier>
         <name value="Community Health and Hospitals"/>
         <address>
@@ -353,14 +353,14 @@
   </entry>
   <entry xmlns="http://www.w3.org/2005/Atom">
     <title>Legal Authenticator</title>
-    <id>35f2124b-5716-410e-afbc-a9b42fe4a53f</id>
-    <updated>2013-04-25T12:22:33.615+10:00</updated>
+    <id>e10d05fa-2e5d-41f5-a605-90fedfbbf4b3</id>
+    <updated>2013-05-06T01:56:25.664+10:00</updated>
     <category scheme="http://hl7.org/fhir/resource-types" term="Practitioner"/>
     <content type="text/xml">
       <Practitioner xmlns="http://hl7.org/fhir">
         <identifier>
           <system value="urn:oid:2.16.840.1.113883.4.6"/>
-          <id value="999999999"/>
+          <key value="999999999"/>
         </identifier>
         <details>
           <name>
@@ -385,14 +385,14 @@
   </entry>
   <entry xmlns="http://www.w3.org/2005/Atom">
     <title>Authenticator</title>
-    <id>8d710342-c285-44db-930d-c68ad7482292</id>
-    <updated>2013-04-25T12:22:33.616+10:00</updated>
+    <id>e88e96c3-e348-4560-a13c-499473fa0c35</id>
+    <updated>2013-05-06T01:56:25.665+10:00</updated>
     <category scheme="http://hl7.org/fhir/resource-types" term="Practitioner"/>
     <content type="text/xml">
       <Practitioner xmlns="http://hl7.org/fhir">
         <identifier>
           <system value="urn:oid:2.16.840.1.113883.4.6"/>
-          <id value="999999999"/>
+          <key value="999999999"/>
         </identifier>
         <details>
           <name>
@@ -417,8 +417,8 @@
   </entry>
   <entry xmlns="http://www.w3.org/2005/Atom">
     <title>Allergies, Adverse Reactions, Alerts</title>
-    <id>de8c2318-f9e1-458a-ab6c-579836a41583</id>
-    <updated>2013-04-25T12:22:33.622+10:00</updated>
+    <id>c73345c1-1c93-410d-8cc7-f7a96e16a412</id>
+    <updated>2013-05-06T01:56:25.671+10:00</updated>
     <category scheme="http://hl7.org/fhir/resource-types" term="List"/>
     <content type="text/xml">
       <List xmlns="http://hl7.org/fhir">
@@ -427,8 +427,8 @@
             <extension>
               <url value="http://www.healthintersections.com.au/fhir/extensions/allergy-period"/>
               <valuePeriod>
-                <start value="2007-05-01"/>
-                <end value="2009-02-27T07:00:00+1100"/>
+                <start value="2007-05-01T00:00:00+10:00"/>
+                <end value="2009-02-27T19:00:00+11:00"/>
               </valuePeriod>
             </extension>
             <criticality value="medium"/>
@@ -440,8 +440,8 @@
             <extension>
               <url value="http://www.healthintersections.com.au/fhir/extensions/allergy-period"/>
               <valuePeriod>
-                <start value="2006-05-01"/>
-                <end value="2009-02-27T07:00:00+1100"/>
+                <start value="2006-05-01T00:00:00+10:00"/>
+                <end value="2009-02-27T19:00:00+11:00"/>
               </valuePeriod>
             </extension>
             <criticality value="medium"/>
@@ -453,8 +453,8 @@
             <extension>
               <url value="http://www.healthintersections.com.au/fhir/extensions/allergy-period"/>
               <valuePeriod>
-                <start value="2008-05-01"/>
-                <end value="2009-02-27T07:00:00+1100"/>
+                <start value="2008-05-01T00:00:00+10:00"/>
+                <end value="2009-02-27T19:00:00+11:00"/>
               </valuePeriod>
             </extension>
             <criticality value="low"/>

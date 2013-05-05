@@ -54,7 +54,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986932-16258709"/>
+      <key value="12Z986932-16258709"/>
     </reportId>
     <diagnosticTime value="2012-04-05T23:30:00"/>
     <results>
@@ -151,7 +151,7 @@ Comment: *PLEASE NOTE AMENDED REPORT*
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968932-16258708"/>
+      <key value="12Z968932-16258708"/>
     </reportId>
     <diagnosticTime value="2012-04-05T23:30:00"/>
     <results>
@@ -255,7 +255,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561369-16258707"/>
+      <key value="12Z561369-16258707"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -349,7 +349,7 @@ Anti-Factor Xa Comment:
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968942-16258706"/>
+      <key value="12Z968942-16258706"/>
     </reportId>
     <diagnosticTime value="2012-04-05T23:40:00"/>
     <results>
@@ -425,7 +425,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986942-16258705"/>
+      <key value="12Z986942-16258705"/>
     </reportId>
     <diagnosticTime value="2012-04-05T23:40:00"/>
     <results>
@@ -502,7 +502,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968972-16258704"/>
+      <key value="12Z968972-16258704"/>
     </reportId>
     <diagnosticTime value="2012-04-05T23:10:00"/>
     <results>
@@ -582,7 +582,7 @@ CK                828     IU/L   ( &lt;175     )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986972-16258703"/>
+      <key value="12Z986972-16258703"/>
     </reportId>
     <diagnosticTime value="2012-04-05T23:10:00"/>
     <results>
@@ -653,7 +653,7 @@ TSH                       0.01    L  mIU/L   ( 0.1-4.0  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968972-16258702"/>
+      <key value="12Z968972-16258702"/>
     </reportId>
     <diagnosticTime value="2012-04-05T23:10:00"/>
     <results>
@@ -730,7 +730,7 @@ Baso         0.1      0.0      0.0      0.0      0.0   x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968972-16258701"/>
+      <key value="12Z968972-16258701"/>
     </reportId>
     <diagnosticTime value="2012-04-05T23:10:00"/>
     <results>
@@ -810,7 +810,7 @@ C-React Prot      152     mg/L   ( &lt;5       )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968922-16258699"/>
+      <key value="12Z968922-16258699"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -895,7 +895,7 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968922-16258698"/>
+      <key value="12Z968922-16258698"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -979,7 +979,7 @@ Urea             10.0     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968991-16258697"/>
+      <key value="12Z968991-16258697"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -1089,7 +1089,7 @@ Film Comment : Mild neutrophilia with mild toxic changes. Manual
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986991-16258696"/>
+      <key value="12Z986991-16258696"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -1208,7 +1208,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986912-16258695"/>
+      <key value="12Z986912-16258695"/>
     </reportId>
     <diagnosticTime value="2012-04-05T19:50:00"/>
     <results>
@@ -1286,7 +1286,7 @@ Comment: The Potassium result has been checked.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986912-16258694"/>
+      <key value="12Z986912-16258694"/>
     </reportId>
     <diagnosticTime value="2012-04-05T19:50:00"/>
     <results>
@@ -1367,7 +1367,7 @@ Baso         0.1      0.0      0.1      0.1      0.1   x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968912-16258693"/>
+      <key value="12Z968912-16258693"/>
     </reportId>
     <diagnosticTime value="2012-04-05T19:50:00"/>
     <results>
@@ -1470,7 +1470,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516269-16258691"/>
+      <key value="12Z516269-16258691"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -1567,7 +1567,7 @@ Troponin I       &lt;0.02    ug/L   (See Below )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968941-16258690"/>
+      <key value="12Z968941-16258690"/>
     </reportId>
     <diagnosticTime value="2012-04-05T23:21:00"/>
     <results>
@@ -1647,7 +1647,7 @@ Baso                  0.0      0.0      0.0      0.0   x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986941-16258689"/>
+      <key value="12Z986941-16258689"/>
     </reportId>
     <diagnosticTime value="2012-04-05T23:21:00"/>
     <results>
@@ -1727,7 +1727,7 @@ Troponin I       &lt;0.02    ug/L   (See Below )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986951-16258688"/>
+      <key value="12Z986951-16258688"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -1812,7 +1812,7 @@ Baso         0.1                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968951-16258687"/>
+      <key value="12Z968951-16258687"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -1902,7 +1902,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968961-16258686"/>
+      <key value="12Z968961-16258686"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -1988,7 +1988,7 @@ Troponin I        0.03    ug/L   (See Below )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968961-16258685"/>
+      <key value="12Z968961-16258685"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -2076,7 +2076,7 @@ Troponin I        0.03    ug/L   (See Below )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986961-16258685"/>
+      <key value="12Z986961-16258685"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -2187,7 +2187,7 @@ Comment: Please note moderate thrombocytopenia persists. Please
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968961-16258684"/>
+      <key value="12Z968961-16258684"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -2297,7 +2297,7 @@ Protein Total      65     g/L    ( 65-85    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968971-16258683"/>
+      <key value="12Z968971-16258683"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -2411,7 +2411,7 @@ Conclusion: Suggestive of infection.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986971-16258682"/>
+      <key value="12Z986971-16258682"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -2521,7 +2521,7 @@ Hrs Since Dose No Info  No Info                            HH:MM
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968981-16258681"/>
+      <key value="12Z968981-16258681"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -2604,7 +2604,7 @@ Lipase             87     IU/L   ( &lt;60      )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986981-16258680"/>
+      <key value="12Z986981-16258680"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -2710,7 +2710,7 @@ Comment: Instrument differential and parameters reported.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968981-16258679"/>
+      <key value="12Z968981-16258679"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -2806,7 +2806,7 @@ INR               1.2                                            0.8-1.3
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968931-16258678"/>
+      <key value="12Z968931-16258678"/>
     </reportId>
     <diagnosticTime value="2012-04-05T23:00:00"/>
     <results>
@@ -2875,7 +2875,7 @@ Albumin            26     g/L    ( 35-50    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968931-16258677"/>
+      <key value="12Z968931-16258677"/>
     </reportId>
     <diagnosticTime value="2012-04-05T23:00:00"/>
     <results>
@@ -2962,7 +2962,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516169-16258676"/>
+      <key value="12Z516169-16258676"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -3048,7 +3048,7 @@ INR               3.0H                                           0.8-1.3
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986921-16258675"/>
+      <key value="12Z986921-16258675"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -3118,7 +3118,7 @@ Urea              8.0     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986921-16258674"/>
+      <key value="12Z986921-16258674"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -3202,7 +3202,7 @@ Baso         0.1                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968921-16258673"/>
+      <key value="12Z968921-16258673"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -3310,7 +3310,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561069-16258672"/>
+      <key value="12Z561069-16258672"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -3409,7 +3409,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986901-16258671"/>
+      <key value="12Z986901-16258671"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -3492,7 +3492,7 @@ Protein Total      77     g/L    ( 65-85    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986901-16258670"/>
+      <key value="12Z986901-16258670"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -3584,7 +3584,7 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968901-16258669"/>
+      <key value="12Z968901-16258669"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -3678,7 +3678,7 @@ Salicylate       &lt;0.30             &lt;0.30                   mmol/L &lt;2.9
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968911-16258668"/>
+      <key value="12Z968911-16258668"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -3770,7 +3770,7 @@ Protein Total      70     g/L    ( 65-85    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968911-16258667"/>
+      <key value="12Z968911-16258667"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -3879,7 +3879,7 @@ Comment: Mild neutropenia.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986911-16258666"/>
+      <key value="12Z986911-16258666"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -4002,7 +4002,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561968-16258665"/>
+      <key value="12Z561968-16258665"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -4122,7 +4122,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516868-16258664"/>
+      <key value="12Z516868-16258664"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -4242,7 +4242,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561768-16258663"/>
+      <key value="12Z561768-16258663"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -4362,7 +4362,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561668-16258662"/>
+      <key value="12Z561668-16258662"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -4474,7 +4474,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516568-16258661"/>
+      <key value="12Z516568-16258661"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -4582,7 +4582,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516468-16258660"/>
+      <key value="12Z516468-16258660"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -4698,7 +4698,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561368-16258659"/>
+      <key value="12Z561368-16258659"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -4821,7 +4821,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516268-16258658"/>
+      <key value="12Z516268-16258658"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -4912,7 +4912,7 @@ Specimen Type:  Serum
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968990-16258657"/>
+      <key value="12Z968990-16258657"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -4980,7 +4980,7 @@ HBsAB Titre                                            :      44 IU/L
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968990-16258656"/>
+      <key value="12Z968990-16258656"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -5080,7 +5080,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516168-16258655"/>
+      <key value="12Z516168-16258655"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -5174,7 +5174,7 @@ TSH                       0.08    L  mIU/L   ( 0.1-4.0  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968898-16258654"/>
+      <key value="12Z968898-16258654"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -5268,7 +5268,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516068-16258653"/>
+      <key value="12Z516068-16258653"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -5367,7 +5367,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968970-16258652"/>
+      <key value="12Z968970-16258652"/>
     </reportId>
     <diagnosticTime value="2012-04-05T22:20:00"/>
     <results>
@@ -5435,7 +5435,7 @@ Anaerobic bottle             4   days                 Negative
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968980-16258651"/>
+      <key value="12Z968980-16258651"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -5529,7 +5529,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561967-16258650"/>
+      <key value="12Z561967-16258650"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -5663,7 +5663,7 @@ perinatal or neonatal infection.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986960-16258649"/>
+      <key value="12Z986960-16258649"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -5797,7 +5797,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516867-16258648"/>
+      <key value="12Z516867-16258648"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -5901,7 +5901,7 @@ Comment: sample not protected from light ward notified for
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968950-16258646"/>
+      <key value="12Z968950-16258646"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:20:00"/>
     <results>
@@ -5982,7 +5982,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986950-16258645"/>
+      <key value="12Z986950-16258645"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:20:00"/>
     <results>
@@ -6060,7 +6060,7 @@ C-React Prot        2     mg/L   ( &lt;5       )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986950-16258644"/>
+      <key value="12Z986950-16258644"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:20:00"/>
     <results>
@@ -6156,7 +6156,7 @@ Conclusion: No clinical information provided.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968950-16258643"/>
+      <key value="12Z968950-16258643"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:20:00"/>
     <results>
@@ -6269,7 +6269,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561767-16258642"/>
+      <key value="12Z561767-16258642"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -6363,7 +6363,7 @@ Urea             12.2     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986930-16258641"/>
+      <key value="12Z986930-16258641"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -6456,7 +6456,7 @@ Conclusion: Common causes of macrocytosis include liver disease,
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968930-16258640"/>
+      <key value="12Z968930-16258640"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -6552,7 +6552,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986940-16258639"/>
+      <key value="12Z986940-16258639"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -6635,7 +6635,7 @@ C-React Prot        4     mg/L   ( &lt;5       )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986940-16258638"/>
+      <key value="12Z986940-16258638"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -6727,7 +6727,7 @@ Baso         0.1      0.0      0.0      0.0      0.0   x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968940-16258637"/>
+      <key value="12Z968940-16258637"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -6835,7 +6835,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516667-16258636"/>
+      <key value="12Z516667-16258636"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -6938,7 +6938,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968920-16258635"/>
+      <key value="12Z968920-16258635"/>
     </reportId>
     <diagnosticTime value="2012-04-05T22:10:00"/>
     <results>
@@ -7022,7 +7022,7 @@ Protein Total      69     g/L    ( 65-85    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968920-16258634"/>
+      <key value="12Z968920-16258634"/>
     </reportId>
     <diagnosticTime value="2012-04-05T22:10:00"/>
     <results>
@@ -7124,7 +7124,7 @@ Comment: Note neutrophilia.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986920-16258633"/>
+      <key value="12Z986920-16258633"/>
     </reportId>
     <diagnosticTime value="2012-04-05T22:10:00"/>
     <results>
@@ -7209,7 +7209,7 @@ Troponin I        0.02    ug/L   (See Below )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968910-16258632"/>
+      <key value="12Z968910-16258632"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -7267,7 +7267,7 @@ Troponin I       &lt;0.02    ug/L   (See Below )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986900-16258631"/>
+      <key value="12Z986900-16258631"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -7325,7 +7325,7 @@ NTRC
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968899-16258630"/>
+      <key value="12Z968899-16258630"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -7390,7 +7390,7 @@ Urea              5.3     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968899-16258629"/>
+      <key value="12Z968899-16258629"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -7474,7 +7474,7 @@ Baso         0.0      0.0      0.0      0.0      0.0   x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986899-16258628"/>
+      <key value="12Z986899-16258628"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -7558,7 +7558,7 @@ Urea              6.1     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968889-16258627"/>
+      <key value="12Z968889-16258627"/>
     </reportId>
     <diagnosticTime value="2012-04-05T22:11:00"/>
     <results>
@@ -7637,7 +7637,7 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986889-16258626"/>
+      <key value="12Z986889-16258626"/>
     </reportId>
     <diagnosticTime value="2012-04-05T22:11:00"/>
     <results>
@@ -7749,7 +7749,7 @@ culture.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986879-16258625"/>
+      <key value="12Z986879-16258625"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -7878,7 +7878,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516567-16258624"/>
+      <key value="12Z516567-16258624"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -7974,7 +7974,7 @@ Protein/Creat Ratio              30   mg/mmol Creat   ( 15-35    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968769-16258623"/>
+      <key value="12Z968769-16258623"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:11:00"/>
     <results>
@@ -8041,7 +8041,7 @@ GROIN SWAB                    VRE not detected
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986895-16258622"/>
+      <key value="12Z986895-16258622"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -8116,7 +8116,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986859-16258621"/>
+      <key value="12Z986859-16258621"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:50:00"/>
     <results>
@@ -8198,7 +8198,7 @@ CK                 43     IU/L   ( &lt;175     )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968859-16258620"/>
+      <key value="12Z968859-16258620"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:50:00"/>
     <results>
@@ -8308,7 +8308,7 @@ Conclusion: Known beta thalassaemia minor. Suggest repeat FBE for an
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986859-16258619"/>
+      <key value="12Z986859-16258619"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:50:00"/>
     <results>
@@ -8409,7 +8409,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986869-16258618"/>
+      <key value="12Z986869-16258618"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -8506,7 +8506,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561467-16258617"/>
+      <key value="12Z561467-16258617"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -8600,7 +8600,7 @@ Protein/Creat Ratio             232 H mg/mmol Creat   ( 15-35    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968849-16258616"/>
+      <key value="12Z968849-16258616"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:58:00"/>
     <results>
@@ -8687,7 +8687,7 @@ No Growth -Detection limit 10^7 CFU/L
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968849-16258615"/>
+      <key value="12Z968849-16258615"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:58:00"/>
     <results>
@@ -8781,7 +8781,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968839-16258614"/>
+      <key value="12Z968839-16258614"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -8860,7 +8860,7 @@ Urea              7.5     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968839-16258613"/>
+      <key value="12Z968839-16258613"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -8944,7 +8944,7 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968839-16258612"/>
+      <key value="12Z968839-16258612"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -9029,7 +9029,7 @@ Troponin I        0.04    ug/L   (See Below )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968829-16258611"/>
+      <key value="12Z968829-16258611"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:53:00"/>
     <results>
@@ -9119,7 +9119,7 @@ Conclusion: Note persistent anaemia.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986829-16258610"/>
+      <key value="12Z986829-16258610"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:53:00"/>
     <results>
@@ -9212,7 +9212,7 @@ Albumin            28     g/L    ( 35-50    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986819-16258609"/>
+      <key value="12Z986819-16258609"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:40:00"/>
     <results>
@@ -9298,7 +9298,7 @@ Comment: Intra-op
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968819-16258608"/>
+      <key value="12Z968819-16258608"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:40:00"/>
     <results>
@@ -9391,7 +9391,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968809-16258607"/>
+      <key value="12Z968809-16258607"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:30:00"/>
     <results>
@@ -9493,7 +9493,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561367-16258606"/>
+      <key value="12Z561367-16258606"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -9605,7 +9605,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516267-16258605"/>
+      <key value="12Z516267-16258605"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -9702,7 +9702,7 @@ C-React Prot        5     mg/L   ( &lt;5       )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986898-16258604"/>
+      <key value="12Z986898-16258604"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -9795,7 +9795,7 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968898-16258603"/>
+      <key value="12Z968898-16258603"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -9874,7 +9874,7 @@ LIPIDS
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968888-16258602"/>
+      <key value="12Z968888-16258602"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -9949,7 +9949,7 @@ investigation, please contact the Microbiology Registrar.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968878-16258601"/>
+      <key value="12Z968878-16258601"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -10042,7 +10042,7 @@ Standard culture:   ++ Mixed upper respiratory tract flora
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968868-16258600"/>
+      <key value="12Z968868-16258600"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:30:00"/>
     <results>
@@ -10142,7 +10142,7 @@ No Growth -Detection limit 10^7 CFU/L
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968868-16258599"/>
+      <key value="12Z968868-16258599"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:30:00"/>
     <results>
@@ -10227,7 +10227,7 @@ Anaerobic bottle             4   days                 Negative
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968868-16258598"/>
+      <key value="12Z968868-16258598"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:30:00"/>
     <results>
@@ -10289,7 +10289,7 @@ Comment: The requested tests were not completed as no
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968858-16258597"/>
+      <key value="12Z968858-16258597"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -10373,7 +10373,7 @@ Xanthochromia Comment:   Oxyhaemoglobin present but no significant
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986858-16258596"/>
+      <key value="12Z986858-16258596"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -10474,7 +10474,7 @@ culture or special media are required.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968858-16258595"/>
+      <key value="12Z968858-16258595"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -10566,7 +10566,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968838-16258594"/>
+      <key value="12Z968838-16258594"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -10645,7 +10645,7 @@ Troponin I        0.02    ug/L   (See Below )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968838-16258593"/>
+      <key value="12Z968838-16258593"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -10733,7 +10733,7 @@ Comment: * Please note: no specimen received.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986838-16258592"/>
+      <key value="12Z986838-16258592"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -10826,7 +10826,7 @@ COMMENT: This serum sample has been stored for 3 months.  If clinically
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968848-16258591"/>
+      <key value="12Z968848-16258591"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -10928,7 +10928,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561167-16258590"/>
+      <key value="12Z561167-16258590"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -11048,7 +11048,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561067-16258589"/>
+      <key value="12Z561067-16258589"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -11144,7 +11144,7 @@ Urea              7.0     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986808-16258588"/>
+      <key value="12Z986808-16258588"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:10:00"/>
     <results>
@@ -11239,7 +11239,7 @@ Comment: Please note fall in haemoglobin and platelet count since
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968808-16258587"/>
+      <key value="12Z968808-16258587"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:10:00"/>
     <results>
@@ -11334,7 +11334,7 @@ Urea              9.1     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986818-16258586"/>
+      <key value="12Z986818-16258586"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:10:00"/>
     <results>
@@ -11401,7 +11401,7 @@ Urea              9.1     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968818-16258586"/>
+      <key value="12Z968818-16258586"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:10:00"/>
     <results>
@@ -11492,7 +11492,7 @@ Conclusion: Please note fall in haemoglobin since the previous
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968818-16258585"/>
+      <key value="12Z968818-16258585"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:10:00"/>
     <results>
@@ -11591,7 +11591,7 @@ Antithrombin (Functional)         88     %      (80-120)
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986818-16258584"/>
+      <key value="12Z986818-16258584"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:10:00"/>
     <results>
@@ -11669,7 +11669,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968818-16258583"/>
+      <key value="12Z968818-16258583"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:10:00"/>
     <results>
@@ -11749,7 +11749,7 @@ Presumptive  negative for pneumococcal pneumonia.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986828-16258582"/>
+      <key value="12Z986828-16258582"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -11831,7 +11831,7 @@ Urea             16.4     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968897-16258581"/>
+      <key value="12Z968897-16258581"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:05:00"/>
     <results>
@@ -11909,7 +11909,7 @@ yeasts                                    Occasional
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968887-16258579"/>
+      <key value="12Z968887-16258579"/>
     </reportId>
     <diagnosticTime value="2012-04-05T21:10:00"/>
     <results>
@@ -12011,7 +12011,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561866-16258578"/>
+      <key value="12Z561866-16258578"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -12103,7 +12103,7 @@ TSH                       2.52       mIU/L   ( 0.1-4.0  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968704-16258577"/>
+      <key value="12Z968704-16258577"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -12191,7 +12191,7 @@ No Growth -Detection limit 10^7 CFU/L
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968867-16258576"/>
+      <key value="12Z968867-16258576"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:20:00"/>
     <results>
@@ -12298,7 +12298,7 @@ No Growth -Detection limit 10^7 CFU/L
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968877-16258575"/>
+      <key value="12Z968877-16258575"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -12410,7 +12410,7 @@ No Growth -Detection limit 10^7 CFU/L
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968857-16258574"/>
+      <key value="12Z968857-16258574"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:45:00"/>
     <results>
@@ -12500,7 +12500,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968847-16258573"/>
+      <key value="12Z968847-16258573"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:59:00"/>
     <results>
@@ -12580,7 +12580,7 @@ Protein Total      55     g/L    ( 65-85    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968847-16258572"/>
+      <key value="12Z968847-16258572"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:59:00"/>
     <results>
@@ -12687,7 +12687,7 @@ Conclusion: Increase in leucocyte count since the last examination.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968847-16258571"/>
+      <key value="12Z968847-16258571"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:59:00"/>
     <results>
@@ -12804,7 +12804,7 @@ No Growth -Detection limit 10^7 CFU/L
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968837-16258570"/>
+      <key value="12Z968837-16258570"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -12894,7 +12894,7 @@ Cortisol Diurnal Variation:AM (0800 - 0900): 150 - 650 nmol/L
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968827-16258569"/>
+      <key value="12Z968827-16258569"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:10:00"/>
     <results>
@@ -12960,7 +12960,7 @@ Osmolality        290     mosm/kg( 280-300  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968827-16258568"/>
+      <key value="12Z968827-16258568"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:10:00"/>
     <results>
@@ -13028,7 +13028,7 @@ Urine Osmolality                618   mmol/L          ( 50-1200  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986827-16258567"/>
+      <key value="12Z986827-16258567"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:10:00"/>
     <results>
@@ -13119,7 +13119,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561766-16258566"/>
+      <key value="12Z561766-16258566"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -13215,7 +13215,7 @@ Urine Osmolality                612   mmol/L          ( 50-1200  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986817-16258565"/>
+      <key value="12Z986817-16258565"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:15:00"/>
     <results>
@@ -13283,7 +13283,7 @@ Osmolality        295     mosm/kg( 280-300  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968817-16258564"/>
+      <key value="12Z968817-16258564"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:15:00"/>
     <results>
@@ -13358,7 +13358,7 @@ Protein Total      73     g/L    ( 65-85    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968896-16258563"/>
+      <key value="12Z968896-16258563"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -13459,7 +13459,7 @@ Conclusion: Features suggestive of infection / inflammation. Suggest
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986896-16258562"/>
+      <key value="12Z986896-16258562"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -13553,7 +13553,7 @@ Urea              4.1     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968807-16258561"/>
+      <key value="12Z968807-16258561"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:56:00"/>
     <results>
@@ -13632,7 +13632,7 @@ Baso         0.1                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986807-16258560"/>
+      <key value="12Z986807-16258560"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:56:00"/>
     <results>
@@ -13735,7 +13735,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516666-16258559"/>
+      <key value="12Z516666-16258559"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -13855,7 +13855,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561566-16258558"/>
+      <key value="12Z561566-16258558"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -13963,7 +13963,7 @@ call 1-800-555-2123 to contact the State Department of Health.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968886-16258557"/>
+      <key value="12Z968886-16258557"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:52:00"/>
     <results>
@@ -14040,7 +14040,7 @@ Anaerobic bottle             4   days                 Negative
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968832-16258556"/>
+      <key value="12Z968832-16258556"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -14126,7 +14126,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561466-16258555"/>
+      <key value="12Z561466-16258555"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -14207,7 +14207,7 @@ Troponin I        0.02    ug/L   (See Below )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968876-16258554"/>
+      <key value="12Z968876-16258554"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -14265,7 +14265,7 @@ C-React Prot      149     mg/L   ( &lt;5       )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z546943-16258547"/>
+      <key value="12Z546943-16258547"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -14328,7 +14328,7 @@ Anaerobic bottle             4   days                 Negative
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z564943-16258546"/>
+      <key value="12Z564943-16258546"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -14393,7 +14393,7 @@ Vitamin 25 D                 TF      nmol/L( SEE-BELOW
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968856-16258539"/>
+      <key value="12Z968856-16258539"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -14472,7 +14472,7 @@ Old Ref Ranges prior to 27th April 2004
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968856-16258538"/>
+      <key value="12Z968856-16258538"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -14570,7 +14570,7 @@ LIPIDS
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968856-16258537"/>
+      <key value="12Z968856-16258537"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -14668,7 +14668,7 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986856-16258536"/>
+      <key value="12Z986856-16258536"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -14752,7 +14752,7 @@ Urea              4.4     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986846-16258529"/>
+      <key value="12Z986846-16258529"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -14845,7 +14845,7 @@ Comment: Instrument differential and parameters reported.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968846-16258528"/>
+      <key value="12Z968846-16258528"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -14936,7 +14936,7 @@ Anaerobic bottle             4   days                 Negative
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968846-16258527"/>
+      <key value="12Z968846-16258527"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -15035,7 +15035,7 @@ Timentin         S
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968836-16258526"/>
+      <key value="12Z968836-16258526"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -15151,7 +15151,7 @@ Standard culture:   +++  Mixed upper respiratory tract flora
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968826-16258522"/>
+      <key value="12Z968826-16258522"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:38:00"/>
     <results>
@@ -15257,7 +15257,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561366-16258521"/>
+      <key value="12Z561366-16258521"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -15354,7 +15354,7 @@ C-React Prot        2     mg/L   ( &lt;5       )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986816-16258520"/>
+      <key value="12Z986816-16258520"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -15425,7 +15425,7 @@ Anaerobic bottle             4   days                 Negative
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968806-16258519"/>
+      <key value="12Z968806-16258519"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:06:00"/>
     <results>
@@ -15500,7 +15500,7 @@ Protein Total      56     g/L    ( 65-85    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968885-16258518"/>
+      <key value="12Z968885-16258518"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:00:00"/>
     <results>
@@ -15614,7 +15614,7 @@ Film Comment : Red cells show some microcytes, elongated cells and mildly
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968885-16258517"/>
+      <key value="12Z968885-16258517"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:00:00"/>
     <results>
@@ -15733,7 +15733,7 @@ CULTURE
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968779-16258516"/>
+      <key value="12Z968779-16258516"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -15844,7 +15844,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561266-16258515"/>
+      <key value="12Z561266-16258515"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -15940,7 +15940,7 @@ RECTAL SWAB                   VRE not detected
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968875-16258514"/>
+      <key value="12Z968875-16258514"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -16005,7 +16005,7 @@ Troponin I       &lt;0.02    ug/L   (See Below )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968865-16258513"/>
+      <key value="12Z968865-16258513"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -16073,7 +16073,7 @@ Comment: The requested tests were not completed as the
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968855-16258510"/>
+      <key value="12Z968855-16258510"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:12:00"/>
     <results>
@@ -16146,7 +16146,7 @@ Comment: The specimen received was mislabelled. The ward has  been
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986855-16258509"/>
+      <key value="12Z986855-16258509"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:12:00"/>
     <results>
@@ -16228,7 +16228,7 @@ Old Ref Ranges prior to 27th April 2004
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968835-16258507"/>
+      <key value="12Z968835-16258507"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -16315,7 +16315,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968835-16258506"/>
+      <key value="12Z968835-16258506"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -16385,7 +16385,7 @@ Vitamin 25 D                 TF      nmol/L( SEE-BELOW
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986835-16258505"/>
+      <key value="12Z986835-16258505"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -16464,7 +16464,7 @@ Baso         0.0      0.0      0.0      0.0      0.0   x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968835-16258504"/>
+      <key value="12Z968835-16258504"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -16556,7 +16556,7 @@ C-React Prot       12     mg/L   ( &lt;5       )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968835-16258503"/>
+      <key value="12Z968835-16258503"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -16634,7 +16634,7 @@ Anaerobic bottle             4   days                 Negative
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968825-16258502"/>
+      <key value="12Z968825-16258502"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -16716,7 +16716,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968815-16258501"/>
+      <key value="12Z968815-16258501"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:04:00"/>
     <results>
@@ -16805,7 +16805,7 @@ Protein Total      51     g/L    ( 65-85    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968815-16258500"/>
+      <key value="12Z968815-16258500"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:04:00"/>
     <results>
@@ -16906,7 +16906,7 @@ Conclusion: Please note fall in haemoglobin since the previous
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986815-16258499"/>
+      <key value="12Z986815-16258499"/>
     </reportId>
     <diagnosticTime value="2012-04-05T20:04:00"/>
     <results>
@@ -17021,7 +17021,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516166-16258497"/>
+      <key value="12Z516166-16258497"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -17141,7 +17141,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561066-16258496"/>
+      <key value="12Z561066-16258496"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -17233,7 +17233,7 @@ TSH                       1.55       mIU/L   ( 0.1-4.0  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968805-16258495"/>
+      <key value="12Z968805-16258495"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -17313,7 +17313,7 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968805-16258494"/>
+      <key value="12Z968805-16258494"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -17402,7 +17402,7 @@ Troponin I        0.03    ug/L   (See Below )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968805-16258493"/>
+      <key value="12Z968805-16258493"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -17500,7 +17500,7 @@ streptococci and diphtheroid bacilli.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986894-16258492"/>
+      <key value="12Z986894-16258492"/>
     </reportId>
     <diagnosticTime value="2012-04-05T19:40:00"/>
     <results>
@@ -17612,7 +17612,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516965-16258491"/>
+      <key value="12Z516965-16258491"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -17707,7 +17707,7 @@ G1691A Substitution Result:
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968884-16258490"/>
+      <key value="12Z968884-16258490"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -17781,7 +17781,7 @@ MicroAlb/Creat Ratio           5.66 H mg/mmol creat   ( &lt;2.5     )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986874-16258489"/>
+      <key value="12Z986874-16258489"/>
     </reportId>
     <diagnosticTime value="2012-04-05T19:57:00"/>
     <results>
@@ -17875,7 +17875,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561865-16258488"/>
+      <key value="12Z561865-16258488"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -17978,7 +17978,7 @@ Protein Total      64     g/L    ( 65-85    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986854-16258486"/>
+      <key value="12Z986854-16258486"/>
     </reportId>
     <diagnosticTime value="2012-04-05T19:40:00"/>
     <results>
@@ -18064,7 +18064,7 @@ Baso         0.0      0.1      0.0      0.0      0.0   x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968854-16258485"/>
+      <key value="12Z968854-16258485"/>
     </reportId>
     <diagnosticTime value="2012-04-05T19:40:00"/>
     <results>
@@ -18167,7 +18167,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516765-16258484"/>
+      <key value="12Z516765-16258484"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -18270,7 +18270,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968844-16258483"/>
+      <key value="12Z968844-16258483"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -18359,7 +18359,7 @@ Protein Total      65     g/L    ( 65-85    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968844-16258482"/>
+      <key value="12Z968844-16258482"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -18456,7 +18456,7 @@ Film Comment : Film scanned. The blood film shows no diagnostic features.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968844-16258481"/>
+      <key value="12Z968844-16258481"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -18579,7 +18579,7 @@ emergence of resistance  and clinical failure.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968834-16258480"/>
+      <key value="12Z968834-16258480"/>
     </reportId>
     <diagnosticTime value="2012-04-05T17:00:00"/>
     <results>
@@ -18683,7 +18683,7 @@ C-React Prot       24     mg/L   ( &lt;5       )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968824-16258479"/>
+      <key value="12Z968824-16258479"/>
     </reportId>
     <diagnosticTime value="2012-04-05T19:45:00"/>
     <results>
@@ -18776,7 +18776,7 @@ Comment: FBE with BMAT. Report to follow.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968824-16258478"/>
+      <key value="12Z968824-16258478"/>
     </reportId>
     <diagnosticTime value="2012-04-05T19:45:00"/>
     <results>
@@ -18865,7 +18865,7 @@ Comment: The requested tests were not completed as no sample was
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968814-16258476"/>
+      <key value="12Z968814-16258476"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -18934,7 +18934,7 @@ Urea              6.5     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968814-16258475"/>
+      <key value="12Z968814-16258475"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -19018,7 +19018,7 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986814-16258474"/>
+      <key value="12Z986814-16258474"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -19095,7 +19095,7 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986893-16258473"/>
+      <key value="12Z986893-16258473"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -19162,7 +19162,7 @@ Comment: The requested tests were not completed as no
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968893-16258472"/>
+      <key value="12Z968893-16258472"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -19239,7 +19239,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968893-16258471"/>
+      <key value="12Z968893-16258471"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -19325,7 +19325,7 @@ Comment: Haemolysed. Some tests (*) unavailable.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968804-16258470"/>
+      <key value="12Z968804-16258470"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -19427,7 +19427,7 @@ Comment: * Specimen clotted. ED informed.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968804-16258469"/>
+      <key value="12Z968804-16258469"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -19542,7 +19542,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561665-16258468"/>
+      <key value="12Z561665-16258468"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -19649,7 +19649,7 @@ No Growth After 2 Days.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968843-16258467"/>
+      <key value="12Z968843-16258467"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -19735,7 +19735,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968883-16258465"/>
+      <key value="12Z968883-16258465"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -19810,7 +19810,7 @@ Urea              4.3     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968883-16258464"/>
+      <key value="12Z968883-16258464"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -19897,7 +19897,7 @@ Comment: Please note mild neutrophilia
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986883-1625846422"/>
+      <key value="12Z986883-1625846422"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -19995,7 +19995,7 @@ Pathologist: To Follow
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968833-16258462"/>
+      <key value="12Z968833-16258462"/>
     </reportId>
     <diagnosticTime value="2012-04-05T19:20:00"/>
     <results>
@@ -20085,7 +20085,7 @@ Pathologist: To Follow
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968853-16258461"/>
+      <key value="12Z968853-16258461"/>
     </reportId>
     <diagnosticTime value="2012-04-05T19:23:00"/>
     <results>
@@ -20167,7 +20167,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986883-1625846433"/>
+      <key value="12Z986883-1625846433"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -20250,7 +20250,7 @@ C-React Prot      109     mg/L   ( &lt;5       )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968863-16258459"/>
+      <key value="12Z968863-16258459"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -20352,7 +20352,7 @@ Comment: Please note mild neutrophilia and mild monocytosis
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986863-16258458"/>
+      <key value="12Z986863-16258458"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -20446,7 +20446,7 @@ Protein/Creat Ratio             190 H mg/mmol Creat   ( 15-35    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968873-16258457"/>
+      <key value="12Z968873-16258457"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -20530,7 +20530,7 @@ Pathologist: To Follow
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986843-16258456"/>
+      <key value="12Z986843-16258456"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -20628,7 +20628,7 @@ the Blood Bank.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z867193-16258455"/>
+      <key value="12Z867193-16258455"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -20730,7 +20730,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561565-16258454"/>
+      <key value="12Z561565-16258454"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -20814,7 +20814,7 @@ Albumin            22     g/L    ( 35-50    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968823-16258453"/>
+      <key value="12Z968823-16258453"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:00:00"/>
     <results>
@@ -20898,7 +20898,7 @@ and diphtheroid bacilli.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986813-16258452"/>
+      <key value="12Z986813-16258452"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -21002,7 +21002,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986803-16258451"/>
+      <key value="12Z986803-16258451"/>
     </reportId>
     <diagnosticTime value="2012-04-05T19:00:00"/>
     <results>
@@ -21094,7 +21094,7 @@ the Blood Bank.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z876183-16258450"/>
+      <key value="12Z876183-16258450"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -21196,7 +21196,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561465-16258449"/>
+      <key value="12Z561465-16258449"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -21295,7 +21295,7 @@ Comment: The CKMB was not measured on this sample. It has
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986892-16258448"/>
+      <key value="12Z986892-16258448"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -21394,7 +21394,7 @@ Comment: Please note fall in haemoglobin and platelet count since
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968892-16258447"/>
+      <key value="12Z968892-16258447"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -21493,7 +21493,7 @@ Comment
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="5003-3385"/>
+      <key value="5003-3385"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -21600,7 +21600,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561365-16258445"/>
+      <key value="12Z561365-16258445"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -21694,7 +21694,7 @@ INR               1.1      1.1      1.1      1.1      2.6H       0.8-1.3
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986872-16258444"/>
+      <key value="12Z986872-16258444"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -21762,7 +21762,7 @@ Comment: A troponin has been measured for this patient in
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968872-16258443"/>
+      <key value="12Z968872-16258443"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -21847,7 +21847,7 @@ Hrs Since Dose          No Info    02:00                   HH:MM
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986862-16258442"/>
+      <key value="12Z986862-16258442"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -21937,7 +21937,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968852-16258441"/>
+      <key value="12Z968852-16258441"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -22022,7 +22022,7 @@ Protein Total      47     g/L    ( 65-85    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986852-16258440"/>
+      <key value="12Z986852-16258440"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -22120,7 +22120,7 @@ Comment: Please note fall in haemoglobin and platelet count since
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968852-16258439"/>
+      <key value="12Z968852-16258439"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -22201,7 +22201,7 @@ NTRC
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986842-16258438"/>
+      <key value="12Z986842-16258438"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -22270,7 +22270,7 @@ Albumin            34     g/L    ( 35-50    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968842-16258437"/>
+      <key value="12Z968842-16258437"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -22358,7 +22358,7 @@ Baso         0.0      0.0                              x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968842-16258436"/>
+      <key value="12Z968842-16258436"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -22440,7 +22440,7 @@ Anaerobic bottle             4   days                 Negative
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968832-16258435"/>
+      <key value="12Z968832-16258435"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -22514,7 +22514,7 @@ General Comments:
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968812-16258434"/>
+      <key value="12Z968812-16258434"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -22606,7 +22606,7 @@ Standard culture:   +++  Mixed upper respiratory tract flora
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968822-16258433"/>
+      <key value="12Z968822-16258433"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:05:00"/>
     <results>
@@ -22727,7 +22727,7 @@ Comment: Post platelet increment
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968802-16258432"/>
+      <key value="12Z968802-16258432"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -22831,7 +22831,7 @@ Lipase            741     IU/L   ( &lt;60      )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968891-16258431"/>
+      <key value="12Z968891-16258431"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:00:00"/>
     <results>
@@ -22896,7 +22896,7 @@ Albumin            27     g/L    ( 35-50    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968861-16258427"/>
+      <key value="12Z968861-16258427"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -22992,7 +22992,7 @@ Comment: Instrument differential and parameters reported.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986861-16258426"/>
+      <key value="12Z986861-16258426"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -23104,7 +23104,7 @@ Conclusion: ? Post-op.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986851-16258425"/>
+      <key value="12Z986851-16258425"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:00:00"/>
     <results>
@@ -23215,7 +23215,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516265-16258424"/>
+      <key value="12Z516265-16258424"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -23304,7 +23304,7 @@ NTRS
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968841-16258423"/>
+      <key value="12Z968841-16258423"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -23374,7 +23374,7 @@ Post Dose (Peak) level : Not recommended
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986841-16258422"/>
+      <key value="12Z986841-16258422"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -23459,7 +23459,7 @@ C-React Prot       19     mg/L   ( &lt;5       )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986841-16258421"/>
+      <key value="12Z986841-16258421"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -23555,7 +23555,7 @@ Comment: Note: mild neutrophilia. Instrument differential and
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968841-16258420"/>
+      <key value="12Z968841-16258420"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -23663,7 +23663,7 @@ No Growth -Detection limit 10^7 CFU/L
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968831-16258419"/>
+      <key value="12Z968831-16258419"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -23758,7 +23758,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968821-16258418"/>
+      <key value="12Z968821-16258418"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:49:00"/>
     <results>
@@ -23837,7 +23837,7 @@ Comment: The CKMB was not measured on this sample. It has
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968821-16258417"/>
+      <key value="12Z968821-16258417"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:49:00"/>
     <results>
@@ -23929,7 +23929,7 @@ Comment: Please note fall in haemoglobin and platelet count since
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968821-16258416"/>
+      <key value="12Z968821-16258416"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:49:00"/>
     <results>
@@ -24004,7 +24004,7 @@ Blank Report?
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986811-16258415"/>
+      <key value="12Z986811-16258415"/>
     </reportId>
     <diagnosticTime value="2012-04-05T17:50:00"/>
     <results>
@@ -24072,7 +24072,7 @@ sera. This serum sample has been stored for 3 months.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968811-16258414"/>
+      <key value="12Z968811-16258414"/>
     </reportId>
     <diagnosticTime value="2012-04-05T17:50:00"/>
     <results>
@@ -24143,7 +24143,7 @@ HIV-1/2 Ag/Ab Combo by Architect:
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968811-16258413"/>
+      <key value="12Z968811-16258413"/>
     </reportId>
     <diagnosticTime value="2012-04-05T17:50:00"/>
     <results>
@@ -24205,7 +24205,7 @@ Antinuclear abs     TF
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986811-16258412"/>
+      <key value="12Z986811-16258412"/>
     </reportId>
     <diagnosticTime value="2012-04-05T17:50:00"/>
     <results>
@@ -24278,7 +24278,7 @@ Old Ref Ranges prior to 27th April 2004
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986811-16258411"/>
+      <key value="12Z986811-16258411"/>
     </reportId>
     <diagnosticTime value="2012-04-05T17:50:00"/>
     <results>
@@ -24364,7 +24364,7 @@ Baso         0.1                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986811-16258410"/>
+      <key value="12Z986811-16258410"/>
     </reportId>
     <diagnosticTime value="2012-04-05T17:50:00"/>
     <results>
@@ -24437,7 +24437,7 @@ NTRESR
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z568456-16258409"/>
+      <key value="12Z568456-16258409"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -24495,7 +24495,7 @@ NTRESR
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z966082-16258408"/>
+      <key value="12Z966082-16258408"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -24563,7 +24563,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z564933-16258407"/>
+      <key value="12Z564933-16258407"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:30:00"/>
     <results>
@@ -24633,7 +24633,7 @@ Urea              6.8     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z564933-16258406"/>
+      <key value="12Z564933-16258406"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:30:00"/>
     <results>
@@ -24712,7 +24712,7 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z564933-16258405"/>
+      <key value="12Z564933-16258405"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:30:00"/>
     <results>
@@ -24789,7 +24789,7 @@ Anaerobic bottle             4   days                 Negative
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968801-16258404"/>
+      <key value="12Z968801-16258404"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -24853,7 +24853,7 @@ NTRF
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968890-16258403"/>
+      <key value="12Z968890-16258403"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:40:00"/>
     <results>
@@ -24912,7 +24912,7 @@ Anaerobic bottle             4   days                 Negative
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986890-16258402"/>
+      <key value="12Z986890-16258402"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:40:00"/>
     <results>
@@ -24980,7 +24980,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986890-16258401"/>
+      <key value="12Z986890-16258401"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:40:00"/>
     <results>
@@ -25063,7 +25063,7 @@ C-React Prot      184     mg/L   ( &lt;5       )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986890-16258400"/>
+      <key value="12Z986890-16258400"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:40:00"/>
     <results>
@@ -25166,7 +25166,7 @@ Conclusion: Please note fall in haemoglobin since the previous
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968890-16258399"/>
+      <key value="12Z968890-16258399"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:40:00"/>
     <results>
@@ -25256,7 +25256,7 @@ Urea             11.7     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968880-16258398"/>
+      <key value="12Z968880-16258398"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -25352,7 +25352,7 @@ Film Comment : Neutrophils show mild toxic changes. Manual differential.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968880-16258397"/>
+      <key value="12Z968880-16258397"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -25456,7 +25456,7 @@ Troponin I       &lt;0.02    ug/L   (See Below )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968870-16258396"/>
+      <key value="12Z968870-16258396"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -25548,7 +25548,7 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986870-16258395"/>
+      <key value="12Z986870-16258395"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -25630,7 +25630,7 @@ Anaerobic bottle             4   days                 Negative
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986850-16258393"/>
+      <key value="12Z986850-16258393"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:10:00"/>
     <results>
@@ -25703,7 +25703,7 @@ C-React Prot       54     mg/L   ( &lt;5       )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986850-16258392"/>
+      <key value="12Z986850-16258392"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:10:00"/>
     <results>
@@ -25796,7 +25796,7 @@ Conclusion: ? Cause of persistent mild thrombocytopenia.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968850-16258391"/>
+      <key value="12Z968850-16258391"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:10:00"/>
     <results>
@@ -25879,7 +25879,7 @@ INR               4.3H     4.0H     6.2H     6.6H     6.9H       0.8-1.3
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z564923-16258390"/>
+      <key value="12Z564923-16258390"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -25956,7 +25956,7 @@ Protein Total      80     g/L    ( 65-85    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968840-16258389"/>
+      <key value="12Z968840-16258389"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -26047,7 +26047,7 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968840-16258388"/>
+      <key value="12Z968840-16258388"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -26143,7 +26143,7 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968840-16258388"/>
+      <key value="12Z968840-16258388"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -26228,7 +26228,7 @@ Troponin I        1.02    ug/L   (See Below )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968830-16258387"/>
+      <key value="12Z968830-16258387"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:15:00"/>
     <results>
@@ -26294,7 +26294,7 @@ Anaerobic bottle             4   days                 Negative
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986820-16258386"/>
+      <key value="12Z986820-16258386"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:15:00"/>
     <results>
@@ -26357,7 +26357,7 @@ INR               1.0                                            0.8-1.3
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986860-16258384"/>
+      <key value="12Z986860-16258384"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -26423,7 +26423,7 @@ Quant Pregnancy (hCG) &lt;2           IU/L    ( &lt;5       )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986860-16258383"/>
+      <key value="12Z986860-16258383"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -26506,7 +26506,7 @@ Comment: Please note mild neutrophilia
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968860-16258382"/>
+      <key value="12Z968860-16258382"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -26600,7 +26600,7 @@ Protein Total      67     g/L    ( 65-85    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986860-16258381"/>
+      <key value="12Z986860-16258381"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -26681,7 +26681,7 @@ Comments / Steps Taken
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968709-16258380"/>
+      <key value="12Z968709-16258380"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -26771,7 +26771,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z561065-16258379"/>
+      <key value="12Z561065-16258379"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -26882,7 +26882,7 @@ Conclusion: * Film shows fibrin strands suggestive of a partially
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968810-16258378"/>
+      <key value="12Z968810-16258378"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:05:00"/>
     <results>
@@ -26972,7 +26972,7 @@ Urea              4.2     mmol/L ( 2.5-8.3  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968800-16258377"/>
+      <key value="12Z968800-16258377"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -27059,7 +27059,7 @@ Comment: Please note mild monocytosis
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968800-16258376"/>
+      <key value="12Z968800-16258376"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -27146,7 +27146,7 @@ to STAGO D-Dimer reagents (LIATEST). NB the reference range is unchanged
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986800-16258375"/>
+      <key value="12Z986800-16258375"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -27218,7 +27218,7 @@ HbA1c(HPLC)               %      (See Below)
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986799-16258374"/>
+      <key value="12Z986799-16258374"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:10:00"/>
     <results>
@@ -27326,7 +27326,7 @@ Conclusion: Recent tissue damage/trauma.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968799-16258373"/>
+      <key value="12Z968799-16258373"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:10:00"/>
     <results>
@@ -27443,7 +27443,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968799-16258372"/>
+      <key value="12Z968799-16258372"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:10:00"/>
     <results>
@@ -27529,7 +27529,7 @@ Amylase            51     IU/L   ( 22-100   )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968799-16258371"/>
+      <key value="12Z968799-16258371"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:10:00"/>
     <results>
@@ -27623,7 +27623,7 @@ Standard culture:   +  Mixed upper respiratory tract flora
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986789-16258370"/>
+      <key value="12Z986789-16258370"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -27736,7 +27736,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516964-16258369"/>
+      <key value="12Z516964-16258369"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -27827,7 +27827,7 @@ Amylase           390 IU/L
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968779-16258368"/>
+      <key value="12Z968779-16258368"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -27915,7 +27915,7 @@ streptococci, diphtheroid bacilli \T\ gram negative bacilli.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986769-16258366"/>
+      <key value="12Z986769-16258366"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:11:00"/>
     <results>
@@ -28007,7 +28007,7 @@ No Beta haemolytic streptococci isolated.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986759-16258365"/>
+      <key value="12Z986759-16258365"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -28091,7 +28091,7 @@ be processed.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986759-16258364"/>
+      <key value="12Z986759-16258364"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -28177,7 +28177,7 @@ sera. This serum sample has been stored for 3 months.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968749-16258363"/>
+      <key value="12Z968749-16258363"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:00:00"/>
     <results>
@@ -28248,7 +28248,7 @@ Anaerobic bottle             4   days                 Negative
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968749-16258362"/>
+      <key value="12Z968749-16258362"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:00:00"/>
     <results>
@@ -28321,7 +28321,7 @@ C-React Prot       44     mg/L   ( &lt;5       )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968749-16258361"/>
+      <key value="12Z968749-16258361"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:00:00"/>
     <results>
@@ -28413,7 +28413,7 @@ Conclusion: Suggest repeat FBE to confirm platelet count.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986749-16258360"/>
+      <key value="12Z986749-16258360"/>
     </reportId>
     <diagnosticTime value="2012-04-05T18:00:00"/>
     <results>
@@ -28498,7 +28498,7 @@ Troponin I       &lt;0.02    ug/L   (See Below )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968739-16258359"/>
+      <key value="12Z968739-16258359"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -28583,7 +28583,7 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986739-16258358"/>
+      <key value="12Z986739-16258358"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -28691,7 +28691,7 @@ Note: Reference Ranges shown are for arterial blood only.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z516864-16258356"/>
+      <key value="12Z516864-16258356"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -28786,7 +28786,7 @@ G1691A Substitution Result:
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968709-16258355"/>
+      <key value="12Z968709-16258355"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -28858,7 +28858,7 @@ Lactate           1.2     mmol/L ( 0.2-1.8  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986709-16258354"/>
+      <key value="12Z986709-16258354"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -28939,7 +28939,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968709-16258353"/>
+      <key value="12Z968709-16258353"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -29040,7 +29040,7 @@ Conclusion: Common causes of macrocytosis include liver disease,
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986709-16258352"/>
+      <key value="12Z986709-16258352"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -29140,7 +29140,7 @@ Please contact the immunopathology registrar for further advice on 9342 8023.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968709-16258351"/>
+      <key value="12Z968709-16258351"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -29227,7 +29227,7 @@ Lupus Inhibitor Comment:
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968709-16258350"/>
+      <key value="12Z968709-16258350"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -29299,7 +29299,7 @@ Blank Report?
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986729-16258349"/>
+      <key value="12Z986729-16258349"/>
     </reportId>
     <diagnosticTime value="2012-04-05T17:12:00"/>
     <results>
@@ -29362,7 +29362,7 @@ Albumin            23     g/L    ( 35-50    )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968798-16258348"/>
+      <key value="12Z968798-16258348"/>
     </reportId>
     <diagnosticTime value="2012-04-05T17:30:00"/>
     <results>
@@ -29455,7 +29455,7 @@ Conclusion: Suggestive of iron deficiency anaemia. Suggest correlation
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968788-16258347"/>
+      <key value="12Z968788-16258347"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -29561,7 +29561,7 @@ Baso         0.0      0.0      0.0                     x10^9/L   0.0-0.1
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986719-16258345"/>
+      <key value="12Z986719-16258345"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -29648,7 +29648,7 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968719-16258344"/>
+      <key value="12Z968719-16258344"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -29734,7 +29734,7 @@ EtOH              0.02    gm%
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968719-16258343"/>
+      <key value="12Z968719-16258343"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -29829,7 +29829,7 @@ Old Ref Ranges prior to 27th April 2004
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="|RE||"/>
+      <key value="|RE||"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -29909,7 +29909,7 @@ TSH                       1.09       mIU/L   ( 0.1-4.0  )
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z968797-16258336"/>
+      <key value="12Z968797-16258336"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>
@@ -29991,7 +29991,7 @@ LIPIDS
     </performer>
     <reportId>
       <system value="http://acme.com/lab/reports"/>
-      <id value="12Z986797-16258335"/>
+      <key value="12Z986797-16258335"/>
     </reportId>
         <requestDetail>
           <!--<clinicalInfo>

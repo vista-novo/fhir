@@ -22,13 +22,13 @@
     <Patient id="patsub">
       <identifier>
         <system value="http://cancer.questionnaire.org/systems/id/patientnr"/>
-        <id value="A34442332"/>
+        <key value="A34442332"/>
       </identifier>
       <details>
         <identifier>
           <label value="Dutch BSN"/>
           <system value="urn:oid:2.16.840.1.113883.2.4.6.3"/>
-          <id value="188912345"/>
+          <key value="188912345"/>
         </identifier>
         <gender>
           <system value="http://hl7.org/fhir/administrative-gender"/>
@@ -43,7 +43,7 @@
       <identifier>
         <label value="LUMC, Leiden"/>
         <system value="http://cancer.questionnaire.org/systems/id/org"/>
-        <id value="LUMC"/>
+        <key value="LUMC"/>
       </identifier>
     </Practitioner>
   </contained>

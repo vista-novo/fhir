@@ -30,7 +30,7 @@
   <active value="true"/>
   <identifier>
     <system value="http://nema.org/examples/patients"/>
-    <id value="MINT1234"/>
+    <key value="MINT1234"/>
   </identifier>
   <details>
     <name>

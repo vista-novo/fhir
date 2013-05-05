@@ -32,7 +32,7 @@
     <use value="usual"/>
     <label value="MRN"/>
     <system value="oid:0.1.2.3.4.5.6.7"/>
-    <id value="654321"/>
+    <key value="654321"/>
   </identifier>
 	
   <details>

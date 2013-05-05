@@ -764,22 +764,22 @@ errors.
 [%dt Identifier%]
 
 <p>
-The <i>system</i> referred to by means of a URI defines how the identifier is defined (i.e. made unique). 
+The <i>system</i> referred to by means of a URI defines how the identifier is defined (i.e. how the key value is made unique). 
 It might be a specific application or a recognized standard/specification for a set or identifiers
-or a way of making identifiers unique. The <i>id</i> must be unique within the defined <i>system</i>
-and have a consistent meaning wherever it appears. Ids are always case sensitive.
+or a way of making identifiers unique. The <i>key</i> must be unique within the defined <i>system</i>
+and have a consistent meaning wherever it appears. Both <i>system</i> and <i>key</i> values are always case sensitive.
 </p>
 <p>
 FHIR defines <a href="terminologies.htm#codesystems">some useful URIs directly</a>. OIDs (urn:oid:) and UUIDs (urn:uuid:) 
 may be registered in the <a href="http://hl7.org/oid">HL7 OID registry</a> and should be if the 
 content is shared or exchanged across institutional boundaries. If the identifier itself 
 is naturally globally unique (i.e. an OID, a UUID, or a URI with no trailing local part), 
-then the <i>system</i> must be "urn:ietf:rfc:3986", and the URI would be in the <i>id</i>.
+then the <i>system</i> must be "urn:ietf:rfc:3986", and the URI would be in the <i>key</i>.
 </p>
 <p>
-In some cases, the system may not be known - only the id is known (e.g. a simple device that scans a barcode), 
+In some cases, the system may not be known - only the key is known (e.g. a simple device that scans a barcode), 
 or the system is known implicitly (simple exchange in a limited context, often driven by barcode readers). 
-In this case, no useful matching may be performed using the id unless the system can be safely inferred by the 
+In this case, no useful matching may be performed using the key unless the system can be safely inferred by the 
 context. This practice should be avoided where possible in order to future-proof implementations, as 
 information sharing in a wider context is very likely to arise eventually.
 </p>
@@ -794,11 +794,11 @@ The <i>assigner</i> is used to indicate what registry/state/facility/etc assigne
 <p>A primary key from an application table (an OID in the space allocated by HL7
 to some organisation to further sub-allocate):</p>
 <pre class="xml" fragment="Identifier">
-  &lt;id&gt;
+  &lt;identifier&gt;
     &lt;use value="official" /&gt;
     &lt;system value="urn:oid:2.16.840.1.113883.16.4.3.2.5" /&gt;
-    &lt;id value="123" /&gt;
-  &lt;/id&gt;
+    &lt;key value="123" /&gt;
+  &lt;/identifier&gt;
 </pre>
 
 <p>A patient identifier defined by a hospital:</p>
@@ -806,7 +806,7 @@ to some organisation to further sub-allocate):</p>
   &lt;identifier&gt;
     &lt;use value="official" /&gt;
     &lt;system value="http://www.acmehosp.com/patients" /&gt;
-    &lt;id value="44552" /&gt;
+    &lt;key value="44552" /&gt;
     &lt;period&gt;
       &lt;start value="2003-05-03" /&gt;
     &lt;/period&gt;
@@ -816,31 +816,31 @@ to some organisation to further sub-allocate):</p>
 
 <p>An identifier that refers to a patient FHIR resource on a particular system:</p>
 <pre class="xml" fragment="Identifier">
-  &lt;id&gt;
+  &lt;identifier&gt;
    &lt;system value="urn:ietf:rfc:3986" /&gt;
-   &lt;id value="http://pas-server/xxx/patient/@443556" /&gt;
-  &lt;/id&gt;
+   &lt;key value="http://pas-server/xxx/patient/@443556" /&gt;
+  &lt;/identifier&gt;
 </pre>
 <p>This is not a resource reference - it's a logical reference by the patient identifier.</p>
 
 <p>A UUID:</p>
 <pre class="xml" fragment="Identifier">
-  &lt;id&gt;
+  &lt;identifier&gt;
     &lt;use value="temp" /&gt;
     &lt;system value="urn:ietf:rfc:3986" /&gt;
-    &lt;id value="urn:uuid:a76d9bbf-f293-4fb7-ad4c-2851cac77162" /&gt;
-  &lt;/id&gt;
+    &lt;key value="urn:uuid:a76d9bbf-f293-4fb7-ad4c-2851cac77162" /&gt;
+  &lt;/identifier&gt;
 </pre>
 <p>UUIDs are often used for temporary identifiers, though this is not necessary.</p>
 
 <p>A US SSN:</p>
 <pre class="xml" fragment="Identifier">
-  &lt;id&gt;
+  &lt;identifier&gt;
     &lt;use value="usual" /&gt;
     &lt;label value="SSN" /&gt;
     &lt;system value="http://hl7.org/fhir/sid/us-ssn" /&gt;
-    &lt;id value="000111111" /&gt;
-  &lt;/id&gt;
+    &lt;key value="000111111" /&gt;
+  &lt;/identifier&gt;
 </pre>
 <p>Notes:</p> 
 <ul>
@@ -850,15 +850,15 @@ to some organisation to further sub-allocate):</p>
 
 <p>A medical record number assigned on 5-July 2009:</p>
 <pre class="xml" fragment="Identifier">
-  &lt;id&gt;
+  &lt;identifier&gt;
     &lt;use value="usual" /&gt;
     &lt;label value="MRN" /&gt;
     &lt;system value="urn:oid:0.1.2.3.4.5.6.7" /&gt;
-    &lt;id value="2356" /&gt;
+    &lt;key value="2356" /&gt;
     &lt;period&gt;
       &lt;start value="2009-07-05" /&gt;
     &lt;/period&gt;
-  &lt;/id&gt;
+  &lt;/identifier&gt;
 </pre>
 </div>
 

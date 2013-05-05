@@ -4,21 +4,21 @@
     <url value="http://hl7.org/fhir/profile/@picture#accession"/>
     <valueIdentifier>
       <system value="http://acme-imaging.com/accession/2012"/>
-      <id value="1234567"/>
+      <key value="1234567"/>
     </valueIdentifier> 
   </extension>
   <extension>
     <url value="http://hl7.org/fhir/profile/@picture#studyid"/>
     <valueIdentifier>
       <system value="urn:ietf:rfc:3986"/>
-      <id value="urn:oid:1.2.840.113619.2.21.848.34082.0.538976288.3"/>
+      <key value="urn:oid:1.2.840.113619.2.21.848.34082.0.538976288.3"/>
     </valueIdentifier> 
   </extension>
   <extension>
     <url value="http://hl7.org/fhir/profile/@picture#seriesid"/>
     <valueIdentifier>
       <system value="urn:ietf:rfc:3986"/>
-      <id value="urn:oid:1.2.840.113619.2.21.3408.700.0.757923840.3.0"/>
+      <key value="urn:oid:1.2.840.113619.2.21.3408.700.0.757923840.3.0"/>
     </valueIdentifier> 
   </extension>
   <text>
@@ -46,7 +46,7 @@
   <identifier>
     <label value="InstanceUID"/>
     <system value="urn:ietf:rfc:3986"/>
-    <id value="urn:oid:1.2.840.11361907579238403408700.3.0.14.19970327150033"/>
+    <key value="urn:oid:1.2.840.11361907579238403408700.3.0.14.19970327150033"/>
   </identifier>
   
   <subject>

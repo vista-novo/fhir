@@ -25,7 +25,7 @@
         <identifier>
           <label value="SSN"/>
           <system value="https://github.com/projectcypress/cypress/patient"/>
-          <id value="[%patient_id%]"/>
+          <key value="[%patient_id%]"/>
         </identifier>
         <details>
           <name>

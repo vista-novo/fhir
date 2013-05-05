@@ -8,7 +8,7 @@
   </text>
   <identifier>
     <system value="urn:oid:2.16.840.1.113883.3.19.2.3"/>
-    <id value="666666"/>
+    <key value="666666"/>
   </identifier>
   <name value="XYZ Insurance"/>
 </Organization>

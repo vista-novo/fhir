@@ -1184,7 +1184,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="5234342"/>
+          <key value="5234342"/>
         </reportId>
         <diagnosticTime value="2005-01-27T06:40:17"/>
         <results>
@@ -2468,7 +2468,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="5234342"/>
+          <key value="5234342"/>
         </reportId>
         <diagnosticTime value="2004-12-08T07:45:17"/>
         <results>
@@ -3567,7 +3567,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="5234342"/>
+          <key value="5234342"/>
         </reportId>
         <diagnosticTime value="2004-12-15T07:20:17"/>
         <results>
@@ -4661,7 +4661,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="5234342"/>
+          <key value="5234342"/>
         </reportId>
         <diagnosticTime value="2004-12-22T07:45:17"/>
         <results>
@@ -5736,7 +5736,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="5234342"/>
+          <key value="5234342"/>
         </reportId>
         <diagnosticTime value="2004-12-03T09:45:17"/>
         <results>
@@ -6812,7 +6812,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="5234342"/>
+          <key value="5234342"/>
         </reportId>
         <diagnosticTime value="2004-12-03T20:30:17"/>
         <results>
@@ -7888,7 +7888,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="5234342"/>
+          <key value="5234342"/>
         </reportId>
         <diagnosticTime value="2004-12-05T07:15:17"/>
         <results>
@@ -8970,7 +8970,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="5234342"/>
+          <key value="5234342"/>
         </reportId>
         <diagnosticTime value="2005-01-27T06:40:17"/>
         <results>
@@ -10081,7 +10081,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="5234342"/>
+          <key value="5234342"/>
         </reportId>
         <diagnosticTime value="2004-12-08T07:45:17"/>
         <results>
@@ -11180,7 +11180,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="5234342"/>
+          <key value="5234342"/>
         </reportId>
         <diagnosticTime value="2004-12-15T07:20:17"/>
         <results>
@@ -12274,7 +12274,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="5234342"/>
+          <key value="5234342"/>
         </reportId>
         <diagnosticTime value="2004-12-22T07:45:17"/>
         <results>
@@ -13349,7 +13349,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="5234342"/>
+          <key value="5234342"/>
         </reportId>
         <diagnosticTime value="2004-12-03T09:45:17"/>
         <results>
@@ -14425,7 +14425,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="5234342"/>
+          <key value="5234342"/>
         </reportId>
         <diagnosticTime value="2004-12-03T20:30:17"/>
         <results>
@@ -15501,7 +15501,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="5234342"/>
+          <key value="5234342"/>
         </reportId>
         <diagnosticTime value="2004-12-05T07:15:17"/>
         <results>
@@ -16127,7 +16127,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="5234342"/>
+          <key value="5234342"/>
         </reportId>
         <diagnosticTime value="2005-11-07T21:44:17"/>
         <results>
@@ -16276,7 +16276,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="5234342"/>
+          <key value="5234342"/>
         </reportId>
         <diagnosticTime value="2005-03-07T14:02:17"/>
         <results>
@@ -16375,7 +16375,7 @@
         </performer>
         <reportId>
           <system value="http://acme.com/lab/reports"/>
-          <id value="23412355"/>
+          <key value="23412355"/>
         </reportId>
         <diagnosticTime value="2012-05-21T10:45:00"/>
         <results>

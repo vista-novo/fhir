@@ -24,7 +24,7 @@
   </identity>
   <assignedId>
     <system value="http://goodcare.org/devices/id"/>
-    <id value="345675"/>
+    <key value="345675"/>
   </assignedId>
   <contact>
     <system value="phone"/>

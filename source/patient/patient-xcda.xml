@@ -11,7 +11,7 @@
     <use value="usual"/>
     <label value="MRN"/>
     <system value="urn:oid:2.16.840.1.113883.19.5"/>
-    <id value="12345"/>
+    <key value="12345"/>
   </identifier>
   <details>
     <name>

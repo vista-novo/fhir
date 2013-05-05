@@ -10,7 +10,7 @@
 
   <identifier>
     <system value="htp://www.acme.org/practitioners"/>
-    <id value="23"/>
+    <key value="23"/>
   </identifier>
   <details>
     <name>

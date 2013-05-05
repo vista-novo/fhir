@@ -15,7 +15,7 @@
   <contained>
     <Patient id="patient">
       <identifier>
-        <id value="AB60001"/>
+        <key value="AB60001"/>
       </identifier>
     </Patient>
   </contained>

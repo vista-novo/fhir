@@ -312,7 +312,7 @@ public class CCDAConverter {
 		if ("24484000".equals(severity)) // Severe
 			return Criticality.high; 
 		if ("399166001".equals(severity)) // Fatal
-			return Criticality.severe; 
+			return Criticality.fatal; 
 	  return null;
   }
 

@@ -11,7 +11,7 @@
     <use value="usual"/>
     <label value="MRN"/>
     <system value="oid:3.4.5"/>
-    <id value="89765a87b"/>
+    <key value="89765a87b"/>
   </identifier>
   <details>
     <name>
