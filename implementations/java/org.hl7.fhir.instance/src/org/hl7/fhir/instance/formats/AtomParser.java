@@ -237,7 +237,7 @@ public class AtomParser extends XmlBase {
         res.setResource(p.parse(xpp));
         xpp.next();
         nextNoWhitespace(xpp);
-        //xpp.next();//Bug
+        xpp.next();
         
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("summary")) {
         xpp.next();
@@ -245,7 +245,7 @@ public class AtomParser extends XmlBase {
         res.setSummary(new XhtmlParser().parseHtmlNode(xpp));
         xpp.next();
         nextNoWhitespace(xpp);
-        //xpp.next();//bug
+        xpp.next();
       } else
         throw new Exception("Bad Xml parsing entry");
       eventType = nextNoWhitespace(xpp);
