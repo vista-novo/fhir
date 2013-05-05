@@ -20,7 +20,7 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>12450</WindowTopX>
   <WindowTopY>1815</WindowTopY>
-  <ActiveSheet>9</ActiveSheet>
+  <ActiveSheet>10</ActiveSheet>
   <FirstVisibleSheet>6</FirstVisibleSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -1774,7 +1774,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -1787,7 +1786,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Profiles">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="1" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="108"/>
    <Column ss:AutoFitWidth="0" ss:Width="237"/>
@@ -1801,13 +1800,6 @@
     <Cell ss:StyleID="s66"><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Example</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Study Profile</Data></Cell>
-    <Cell><Data ss:Type="String">General Profile for a picture as an observation</Data></Cell>
-    <Cell><Data ss:Type="String">profile-study-profile-spreadsheet.xml</Data></Cell>
-    <Cell><Data ss:Type="String">spreadsheet</Data></Cell>
-    <Cell><Data ss:Type="String">profile-study-profile-example.xml</Data></Cell>
-   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -1816,11 +1808,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
