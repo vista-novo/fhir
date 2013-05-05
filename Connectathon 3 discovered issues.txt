@@ -42,6 +42,7 @@ Search
      - Eliot to protoype something 
 
   - Chained searches over version-specific links, while the search only supports searching on current versions
+
   - update text : A typical case where this is useful is where the client is querying on the patient resource, but for every patient resource returned, the client will also need the person resource that the patient refers to
 
  - issues around search and relative urls and links - are they constrained to the same path?
@@ -59,6 +60,6 @@ Search
 
 
 Tooling
- - nested extensions
+ - nested ext tns
  - extensions in profiles
 

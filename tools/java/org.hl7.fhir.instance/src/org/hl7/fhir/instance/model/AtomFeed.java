@@ -43,6 +43,11 @@ public class AtomFeed {
   private String authorUri;
   private int totalResults;
 
+  // returns an iterator of all resources of a particular type in the atom
+  /*  public Iterater<T> iterate(ResourceType type);
+  public AtomEntry findReference(ResourceReference r);
+  */
+  
   private List<AtomEntry> entryList = new ArrayList<AtomEntry>();
 
   public String getId() {
