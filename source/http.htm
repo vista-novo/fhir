@@ -773,6 +773,9 @@ they may receive notifications of a resource update on the boundary instant more
 not required to support a precision finer than by second. 
 </p>
 <p>
+When invoking this operation on an instance that has no history (i.e. never existed on the server), the server should return 404. If the instance has been deleted, the server should return a 410 (Gone) instead.
+</p>
+<p>
 The updates list can be long, so servers SHALL use the method described in <a href="https://tools.ietf.org/html/rfc5005">RFC 5005 (Feed 
 Paging and Archiving)</a> (also <a href="#pages">see above</a>) for breaking the updates list into pages if appropriate.
 </p>

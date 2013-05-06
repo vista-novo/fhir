@@ -298,8 +298,7 @@ The JSON representation is described relative to the XML representation:
 </p>
 <ul>
  <li>The names for the JSON object members are the same as the names of the elements and attributes in XML, including for elements that may repeat</li>
- <li>In the data types, the value representations for <a href="datatypes.htm#primitive">primitive types</a> such as string, decimal, etc. are 
-    identical between the XML and the JSON form (including instant, which is represented as plain text, not in one of the proposed JSON custom date formats)</li>
+ <li>In the data types, the <a href="datatypes.htm#primitive">primitive type</a> integer is represented using a native JSON int, while boolean is represented using JSON's "true" and "false" values. Other primitive types such as string, decimal, etc. are represented as a JSON string, using the same serialization as the XML form (including instant, which is represented as plain text, not in one of the proposed JSON custom date formats)</li>
  <li>Just as in XML, JSON property attributes never have empty values; omit a value if it is empty</li>
 </ul>
 
@@ -314,23 +313,24 @@ The JSON representation is described relative to the XML representation:
 <p>These differences - particularly the repeating element one, which cannot be avoided - mean that generic XML --&gt; JSON converters are not 
 able to perform correctly. The <a href="implementation.htm#refimpl">reference platforms</a> provide XML &lt;--&gt; JSON conversion functionality that accommodates these FHIR-specific characteristics.</p>
 
-<h2>JSON representation of primitive types</h2>
+<h2>JSON representation of primitive elements</h2>
 <p>
-FHIR elements with primitive values are represented as a JSON object of the same name with a the value attribute of the element in a "value" property: 
+FHIR elements with primitive values are represented as a JSON object of the same name with a the value attribute of the element in a "value" property. Except for integer and boolean, native JSON types are not used and values are rendered as strings, to guarantee equivalence of the serialized representation 
+between XML and JSON. 
 </p>
 <pre class="xml">
  &lt;<b>date</b> value="1972-11-30"/&gt;
+ &lt;<b>deceased</b> value="false" /&gt;
+ &lt;<b>count</b> value="23" /&gt;
 </pre>
 <p>is represented in JSON as</p>
 <pre class="json">
- "date" : {
-   value: "1972-11-30"
- }
+ "date" : { value: "1972-11-30" }
+ "deceased" : { value: false }
+ "count" : { value: 23 }
 </pre>
 <p>
-Native JSON types other than "string" are never used, to guarantee equivalence of the serialized representation 
-between XML and JSON.
-All XML elements <i>can</i> have an 'id' attribute, which is represented in JSON as a property of name "_id":
+ All XML elements <i>can</i> have an 'id' attribute, which is represented in JSON as a property of name "_id":
 </p>
 <pre class="xml">
  &lt;<b>dob</b> id="314159" value="1972-11-30" /&gt;
@@ -606,7 +606,7 @@ Here is an example feed returning search results for a person query:
       &quot;rel&quot; : &quot;self&quot;,
       &quot;href&quot; : &quot;http://ip-0a7a5abe:16287/fhir/person?format=json&quot;
     }],
-  &quot;totalResults&quot; : &quot;12&quot;,
+  &quot;totalResults&quot; : 12,
   &quot;entry&quot; : [{
       &quot;title&quot; : &quot;Resource of type Person, with id = 1 and version = 1&quot;,
       &quot;link&quot; : [{
