@@ -194,17 +194,25 @@ public void generate(Definitions definitions, String destDir, String implDir, St
     }
     for (String n : definitions.getFutureResources().keySet()) {
       output.write("    "+n+",\r\n");
-//
-//      for (String n : definitions.getResources().keySet()) {
-//        output.write("    "+n+",\r\n");
-//      }
-//  !!
-//      for (String n : definitions.getFutureResources().keySet()) {
-//        output.write("    "+n+",\r\n");
-//    
     }
+
     output.write("    Binary;\r\n");
-    output.write("\r\n");
+    output.write("\r\n    public String getPath() {;\r\n");
+    output.write("      switch (this) {\r\n");
+      for (String n : definitions.getResources().keySet()) {
+        output.write("    case "+n+":\r\n");
+        output.write("      return \""+n.toLowerCase()+"\";\r\n");
+      }
+
+      for (String n : definitions.getFutureResources().keySet()) {
+        output.write("    case "+n+":\r\n");
+        output.write("      return \""+n.toLowerCase()+"\";\r\n");
+      }    
+    
+      output.write("    case Binary:\r\n");
+      output.write("      return \"binary\";\r\n");
+    output.write("    }\r\n      return null;\r\n");
+    output.write("  }\r\n\r\n");
     output.write("}\r\n");
     output.close();
 

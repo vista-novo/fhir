@@ -60,7 +60,7 @@ The following logical interactions are supported:
   <tr><td><a href="#validate">validate</a></td><td>Check that the content would be acceptable as an update</td></tr>
   <tr><td colspan="2"><b>Whole System Operations</b></td></tr>
   <tr><td><a href="#conformance">conformance</a></td><td>Get a conformance statement for the system</td></tr>
-  <tr><td><a href="#batch">batch</a></td><td>Update or create a set of resources</td></tr>
+  <tr><td><a href="#transaction">transaction</a></td><td>Update, create or delete a set of resources as a single transaction</td></tr>
   <tr><td><a href="#history">history</a></td><td>Retrieve the update history for all resources</td></tr>
 </table>
 
@@ -240,7 +240,7 @@ the server SHALL return a 412 Preconditions failed response. Clients SHOULD subm
 header and SHALL correctly understand a 409 response as an update conflict.
 </p>
 <p>
-The following resources may require special handling on the server when updated (whether directly or as part of a batch):
+The following resources may require special handling on the server when updated (whether directly or as part of a transaction):
 </p>
 <ul>
  <li><a href="provenance.htm">Provenance</a> (Version specific links)</li>
@@ -285,7 +285,7 @@ about the state of the real-world corresponding resource implied.
 </p>
 <p>
 The following resources may require special handling on the server when deleted 
-(whether directly or as part of a batch):
+(whether directly or as part of a transaction):
 </p>
 <ul>
  <li><a href="patient.htm">Patient</a> (Maintaining Patient links)</li>
@@ -313,7 +313,7 @@ a version-aware Location header which contains the new location and id of the cr
 When the payload data is incorrect and cannot be used to create a new resource, the server returns a 400 Bad Request.
 </p>
 <p>
-The following resources may require special handling on the server when created (whether directly or as part of a batch):
+The following resources may require special handling on the server when created (whether directly or as part of a transaction):
 </p>
 <ul>
  <li><a href="provenance.htm">Provenance</a> (Version specific links)</li>
@@ -655,12 +655,11 @@ which means that it stores and manages a set of conformance statements. These ma
 with the server's own conformance statement, which is what is returned from these methods.
 </p>
 
-<a name="batch"> </a>
-<h2>batch</h2>
+<a name="transaction"> </a>
+<h2>transaction</h2>
 <p>
-The batch interaction submits a set of resources to be updated, created or deleted on the server. 
-This interaction has two principle uses: to support push-based pub/sub, and to allow 
-multiple resources to be updated/created in a single transaction. Multiple different
+The transaction interaction submits a set of resources to be updated, created or deleted on the server. 
+This interaction allows multiple resources to be updated/created in a single transaction. Multiple different
 types of resources may be submitted, including a mix of new and existing resources. 
 The interaction is performed by an HTTP POST operation as shown:
 </p>
@@ -674,45 +673,52 @@ as if they were an individual <a href="#create">create</a>, <a href="#update">up
 (such as verification and version aware updates). Servers SHALL either accept all resources 
 and return a 200 OK, along with a response bundle, or reject all resources and return an 
 HTTP 400 or 500 type response. It is not an error if the submitted bundle has no resources in it.
-The outcome of the processing the batch SHALL not depend on the order of the resources in 
-the batch. Note that this means that a resource can only appear in the batch once, and that
-bundles may have the same resource more than once or other order dependencies (e.g. update lists), and so some
-kinds of bundles may not be able to be used as batches.
+The outcome of the processing the transaction SHALL not depend on the order of the resources in 
+the transaction. Note that this means that a resource can only appear in a transaction once, and since
+bundles may have the same resource more than once or other order dependencies (e.g. update lists), some
+kinds of bundles may not be able to be used in a transaction.
 </p>
 <p>
-When a bundle is submitted in a batch operation, all the resources have an identity specified
-in the batch. If the identity of the resource matches an existing or possible resource location 
+When a bundle is submitted in a transaction operation, all the resources have an identity specified
+in the bundle. If the identity of the resource matches an existing or possible resource location 
 on the server, the server should treat this entry as an <a href="#update">update operation</a> 
 (i.e. PUT to the given resource). If the identity is not one that the server recognises as a resource location it can use, the 
 server should treat the operation as a <a href="#create">create operation</a> (i.e. POST to 
 the given resource type URL), and create a new identity for the submitted resource. For 
 clarity, when the client intends a resource to have a transient identity that the server
-must replace, it should use a cid: url on the resource. Deleted resources are those marked clearly
+must replace, it should use a cid: url on the resource. Note that the client must provide
+an identity in the bundle entry.id, but may also provide a version specific identity the
+atom "self" link, and may refer to this for version specific references. Deleted resources are those marked clearly
 using the method described for <a href="formats.htm#atom-deleted">XML</a> or 
 <a href="formats.htm#json-bundle-delete">JSON</a>.
 </p>
 <p>
-A batch may include references from one resource to another in the batch, which may 
+A transaction may include references from one resource to another in the bundle, which may 
 include circular references where resources refer to each other. If the server assigns 
-a new identity to any resource in the batch, it SHALL also update any references to that 
-resource in the same batch as they are processed. References to resources that are not 
-part of the batch are left untouched. If a resource in the batch carries a version-specific 
+a new identity to any resource in the bundle, it SHALL also update any references to that 
+resource in the same bundle as they are processed. References to resources that are not 
+part of the bundle are left untouched. If a resource in the bundle carries a version-specific 
 id (using its self-link), any version-specific references to it must also be updated.
-Servers SHALL be replace all cid: links in the batch, whether they are found in the resource ids, 
+Servers SHALL be replace all matching links in the bundle, whether they are found in the resource ids, 
 resource references, url elements, or &lt;a href="" &amp; &lt;img src="" in the narrative.
 </p>
 <p>
 Note that this allows clients to assign temporary (version-specific) ids to new resources and refer to
-them from within the batch while the server will update these temporary ids after their creation. This
+them from within the bundle while the server will update these temporary ids after their creation. This
 is especially useful in RESTful scenario's where one would otherwise need multiple operations, possibly
 leading to loss of referential integrity (e.g. when storing a Provenance resource and its 
 corresponding target resource), or, on document repositories, a document index entry and it's
 accompanying document.
 </p>
 <p>
-The application constructing a batch may not be sure whether a particular resource will already exist
-at the time that the batch is executed; this is typically the case with reference resources such 
-as patient and provider. In this case, the batch should contain as candidate resource with
+In order to allow the client to know how newly created resources are now identified for future 
+reference, the server must return a bundle containing the results of processing the resources in the same 
+order that they were submitted. 
+</p>
+<p>
+The application constructing a bundle may not be sure whether a particular resource will already exist
+at the time that the transaction is executed; this is typically the case with reference resources such 
+as patient and provider. In this case, the bundle should contain a candidate resource with
 a cid: identifier, and an additional search specifier using an Atom link:
 </p>
 <pre>
@@ -724,13 +730,21 @@ a match as specified in the parameters (which must conform to the servers capabi
 searching as specified in it's conformance statement). If the search returns no matches, 
 the server process the resource normally. If the search returns one match, the server
 uses this matching resource instead, and ignores the submitted resource. If more than
-one resource is found, the batch must be rejected.
+one resource is found, the transaction must be rejected.
 </p>
 <p>
-In order to allow the client to know how newly created resources are now identified for future 
-reference, the server must return a bundle containing the results of processing the resources in the same 
-order that they were submitted. 
+If the server that is processing the batch requires version aware updates, 
+the client may need to reference what is the server's current version of
+the resource, which is now the client's previous version:
 </p>
+<pre>
+ &lt;link href="[url]/patient/@34/history/@31" rel="predecessor-version"/&gt;
+</pre>
+<p>
+The predecessor-version is treated as if it were the content-location header
+on an update operation.
+</p>
+
 <a name="history"> </a>
 <h2>history</h2>
 <p>
@@ -768,8 +782,8 @@ including services such as Google Reader, allowing humans to easily subscribe to
 of updates to a resource (this is usually appropriate for low volume high knowledge resources like
 profiles). In addition, the history operation can be used to set up a subscription from one system
 to another, so that resources are sychronised between them. Systems receiving such feeds and planning
-on enforcing resource integrity should note that batch boundaries are not reflected in the history
-list.
+on enforcing resource integrity should note that <a href="#transaction">transaction</a> boundaries 
+are not reflected in the history list.
 </p>
  
  <a name="binary"> </a>
@@ -830,7 +844,7 @@ In this regard, FHIR functions as a Record Format Profile as described in that s
 <ul>
  <li>FHIR maps the hData sections to resource types, and hData documents to resource instances. There are no subsections, and client systems are not able to create new sections</li>
  <li>The FHIR resource id maps to the hData document name by prepending "@"</li>
- <li>Because clients cannot submit new sections (POST to service URL), POST to the service URL has been re-used for <a href="#batch">the batch operation</a> (difference under review)</li>
+ <li>Because clients cannot submit new sections (POST to service URL), POST to the service URL has been re-used for <a href="#transaction">the transaction operation</a> (difference under review)</li>
  <li>FHIR does not (yet) define a root document. When defined, it will contain information about what the FHIR server has done (as opposed to a conformance statement, which describes what it is capable of doing)</li>
  <li>Note that this specification does not repeat the rules in the hData RESTful Transport concerning the OPTIONS command on the service URL, but these rules (extra headers etc) still apply</li>
 </ul>
@@ -849,7 +863,7 @@ These tables present a summary of the operations described here.
 <tr><td>conformance</td><td>/ or /metadata</td>               <td>OPTIONS / GET</td><td>N/A</td>          <td>N/A</td>      <td>O</td>      <td>N/A</td></tr>
 <tr><td>update</td>     <td>/[type]/@[id]</td>                <td>PUT</td>          <td>R</td>            <td>Resource</td> <td>O</td>      <td>O or R</td></tr>
 <tr><td>create</td>     <td>/[type]</td>           		      <td>POST</td>         <td>R</td>            <td>Resource</td> <td>O</td>      <td>N/A</td></tr>
-<tr><td>batch</td>      <td>/</td>                            <td>POST</td>         <td>R</td>            <td>Bundle</td>   <td>O</td>      <td>N/A</td></tr>
+<tr><td>transaction</td>      <td>/</td>                            <td>POST</td>         <td>R</td>            <td>Bundle</td>   <td>O</td>      <td>N/A</td></tr>
 <tr><td>delete</td>     <td>/[type]/@[id]</td>                <td>DELETE</td>       <td>N/A</td>          <td>N/A</td>      <td>N/A</td>    <td>N/A</td></tr>
 <tr><td>search</td>     <td>/[type]/search</td>               <td>GET</td>          <td>N/A</td>          <td>N/A</td>      <td>O</td>      <td>N/A</td></tr>
 <tr><td>search-all</td>	<td>/[type]</td>              		  <td>GET</td>          <td>N/A</td>          <td>N/A</td>      <td>O</td>      <td>N/A</td></tr>
@@ -871,7 +885,7 @@ Note: N/A = not present, R = Required, O = optional.
 <tr><td>conformance</td>  <td>R</td>            <td>Conformance</td>        <td>N/A</td>      <td>O</td>                <td>200, 404</td></tr>
 <tr><td>update</td>       <td>R</td>            <td>Resource</td>           <td>N/A</td>      <td>R</td>                <td>201, 400, 404, 405, 409, 412, 422</td></tr>
 <tr><td>create</td>       <td>R</td>            <td>Resource</td>           <td>R</td>        <td>O</td>                <td>200, 201, 400, 404, 405, 422</td></tr>
-<tr><td>batch</td>        <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200, 400, 404, 405, 409, 412, 422</td></tr>
+<tr><td>transaction</td>        <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200, 400, 404, 405, 409, 412, 422</td></tr>
 <tr><td>delete</td>       <td>N/A</td>          <td>N/A</td>                <td>N/A</td>      <td>N/A</td>              <td>204, 405, 404</td></tr>
 <tr><td>search</td>       <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200</td></tr>
 <tr><td>search-all</td>   <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200</td></tr>
