@@ -111,13 +111,13 @@
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Extension.mustUnderstand</Data></Cell>
+    <Cell><Data ss:Type="String">Extension.isModifier</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell><Data ss:Type="String">boolean</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Must you recognize this extension to safely read the resource?</Data></Cell>
-    <Cell><Data ss:Type="String">If this element is set to true, then the containing resource element and its children are only safe to process if the reader understands this extension. </Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">This value should be set to true if the value of the extension qualifies or negates data in other content</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">If extension modifies other elements/extensions</Data></Cell>
+    <Cell><Data ss:Type="String">This value should be set to true if the value of the extension qualifies or negates data in other content</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">If this element is set to true, then the containing resource/element and its children are only safe to process if the reader understands this extension, and knows what the potential impact is. This does not mean that the application is required to do anything with the value, it is just not permitted to act inappropriately for any possible value in the element </Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -149,8 +149,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

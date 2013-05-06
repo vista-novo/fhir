@@ -1,65 +1,34 @@
 - need to describe relative references better + xml:base? all references relative to service base? (note searching issue)
  - proposal - implementation experience makes it too hard. Make all references relative to the service base, not the local resource
 
-- binary resource - change to "contained resource", and add to all resources page, profile
-
-- When doing history for a non-existent resource (!= GONE, really never existed), return 404? Or empty history?
-  - proposal - do as for vread
-
-- renaming id fields
-  - Identifier.key. others go to identifier
-  
-- sorting things in schemas
-  - in progress
-
-- nesting contained resources are to be banned
-  - proposal - yes, ban them
-
-- media type discussion
-  - proposal = application/fhir +json/+xml
-
-- json native boolean/number data type instead of string
-  - proposal to do it (hardcode in the tools)
-
 - when to use profiles
   - draft something to go on the wiki in methodology
-
-- add a note about the limitation of the signature in Provenance
-  - draft text for that
 
 Search
   - need to fix up the way search parameters for resource references are defined
      - proposal: tuple with syntax to pair in the value (search?statedate=[date]$[state])
      - proposal: subject=Patient(/@23)
-
-  - update xpath path to use custom syntax
-     - proposal - dotted notation with *:  Name.name.*.name
   
-  - $include. There is a difference between Observation/subject,Observation/performer,Device/owner and Observation/subject/owner, Observation/performer - 
-     - proposal - document limitations explicitly and don't allow transitive form
-
   - Getting feeds with just summary information (select specific fields to return)
      - Eliot to protoype something 
 
   - Chained searches over version-specific links, while the search only supports searching on current versions
 
-  - update text : A typical case where this is useful is where the client is querying on the patient resource, but for every patient resource returned, the client will also need the person resource that the patient refers to
-
- - issues around search and relative urls and links - are they constrained to the same path?
-  - proposal - resolved (see above)
-
  
-- Batch
-  - Handling versions in batches: having multiple versions of entries with the same id.
-    - proposal: rename it to transaction. No multiple versions of entries. pub/sub push done by... syndication push end point
-
-
-  - Supporting version-specific ResourceReferences by using cid: on the selflink
-  - Supporting version-aware updates by using <link rel='predecessor-version'> in an entry
-    - Proposal - yes have to document these two
 
 
 Tooling
  - nested ext tns
  - extensions in profiles
 
+
+
+rename must-understand to Is-modifier. Add sentence saying that you must explain why it is that you think it is a modifier and/or what it modifies
+
+
+
+Q1/Q2 subjects
+
+
+What people want to talk about
+- Profiling / how to combine reosurces

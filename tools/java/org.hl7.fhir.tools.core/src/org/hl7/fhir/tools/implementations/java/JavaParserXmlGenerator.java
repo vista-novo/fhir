@@ -109,7 +109,8 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
     
     genResource();
     
-    for (ResourceDefn n : definitions.getResources().values()) {
+    for (String s : definitions.sortedResourceNames()) {
+      ResourceDefn n = definitions.getResources().get(s);
       generate(n.getRoot(), JavaGenClass.Resource);
       reg.append("    else if (xpp.getName().equals(\""+n.getName()+"\"))\r\n      return parse"+javaClassName(n.getName())+"(xpp);\r\n");
       regf.append("    else if (type.equals(\""+n.getName()+"\"))\r\n      return parse"+javaClassName(n.getName())+"(xpp);\r\n");

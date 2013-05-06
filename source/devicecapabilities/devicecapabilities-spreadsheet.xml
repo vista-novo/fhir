@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:15:30Z</Created>
-  <LastSaved>2013-04-11T12:04:31Z</LastSaved>
+  <LastSaved>2013-05-06T12:02:58Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -138,7 +138,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">The name of this device</Data></Cell>
-    <Cell><Data ss:Type="String">The point in time that the values are reported</Data></Cell>
+    <Cell><Data ss:Type="String">The name of this device</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Not all devices have clocks, and so the time may not be included</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -146,7 +146,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">DeviceKind</Data></Cell>
-    <Cell><Data ss:Type="String">What kind of device this is</Data></Cell>
+    <Cell><Data ss:Type="String">The type of device</Data></Cell>
     <Cell><Data ss:Type="String">The kind of device - what kind of functionality it provides</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">See Device.type (same codes)</Data></Cell>
    </Row>
@@ -246,6 +246,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.info.ucum</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">UCUM</Data></Cell>
     <Cell><Data ss:Type="String">UCUM units for data value</Data></Cell>
@@ -255,7 +256,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.info.system</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">System for coding</Data></Cell>
     <Cell><Data ss:Type="String">System of the codes, if the type is a Coding</Data></Cell>
@@ -305,7 +306,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>15</ActiveRow>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -313,10 +315,12 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s71" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="59.25"/>
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="366"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="239.25"/>
+   <Column ss:Index="6" ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="384.75"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -330,7 +334,7 @@
     <Cell><Data ss:Type="String">Quantity rule</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.info</Data></Cell>
     <Cell><Data ss:Type="String">If the type is &quot;Quantity&quot;, units must be provided</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">(f:type/@value != 'Quantity') or f:units</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">((f:type/@value = 'Quantity') and (f:units)) or (not (f:type/@value != 'Quantity') and not (f:units))</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -338,6 +342,13 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.info</Data></Cell>
     <Cell><Data ss:Type="String">If the type is &quot;Coding', system must be provided</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">(f:type/@value != 'Coding') or f:system</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">UCUM rule</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.info</Data></Cell>
+    <Cell><Data ss:Type="String">If the type is &quot;Quantity&quot;, ucum must be provided</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">((f:type/@value = 'Quantity') and (f:ucum)) or (not (f:type/@value != 'Quantity') and not (f:ucum))</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -347,11 +358,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -439,7 +451,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">code</Data></Cell>
-    <Cell><Data ss:Type="String">Compartment code</Data></Cell>
+    <Cell><Data ss:Type="String">The compatment code</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.code</Data></Cell>
@@ -447,7 +459,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">channel</Data></Cell>
-    <Cell><Data ss:Type="String">channel code</Data></Cell>
+    <Cell><Data ss:Type="String">The channel code</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.channel.code</Data></Cell>
@@ -455,7 +467,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">metric</Data></Cell>
-    <Cell><Data ss:Type="String">metric code</Data></Cell>
+    <Cell><Data ss:Type="String">The metric code</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.code</Data></Cell>
@@ -470,7 +482,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">facet</Data></Cell>
-    <Cell><Data ss:Type="String">facet code</Data></Cell>
+    <Cell><Data ss:Type="String">The facet code</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.facet.code</Data></Cell>
@@ -489,11 +501,11 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
+     <ActiveRow>10</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

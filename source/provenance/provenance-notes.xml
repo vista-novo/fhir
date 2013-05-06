@@ -17,7 +17,7 @@ requires special care: For new resources that need to have a corresponding Prove
 reference is often not knowable until after the target resource has been updated. This can create an 
 integrity problem for the system - what if the provenance resource cannot be created after the target 
 resource has been updated? To avoid any such integrity problems, the target resource and the provenance resources should be submitted 
-as a pair using a <a href="http.htm#batch">batch transaction</a>. 
+as a pair using a <a href="http.htm#transaction">transaction</a>. 
 </p>
 
 <h3>Digital Signatures</h3>

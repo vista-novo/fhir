@@ -120,7 +120,8 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     
     genResource();
 
-    for (ResourceDefn n : definitions.getResources().values()) {
+    for (String s : definitions.sortedResourceNames()) {
+      ResourceDefn n = definitions.getResources().get(s);
       generate(n.getRoot(), JavaGenClass.Resource);
       String nn = javaClassName(n.getName());
       reg.append("    else if (resource instanceof "+nn+")\r\n      compose"+nn+"(\""+n.getName()+"\", ("+nn+")resource);\r\n");

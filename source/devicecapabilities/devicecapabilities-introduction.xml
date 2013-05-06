@@ -4,13 +4,13 @@
 There are 4 device related resources
 </p>
 <ul>
- <li><a href="device.htm">Device</a>  - an administrative resource that tracks individual devices and their location. Primarily used for attribution of actions to devices</li>
+ <li><a href="device.htm">Device</a>  - An administrative resource that tracks individual devices and their location. Primarily used for attribution of actions to devices</li>
  <li>Device Capabilities (this resource) - Defines what observations a device will make when you connect to it directly</li>
  <li><a href="devicelog.htm">Device Log</a> - A raw report from a device at a point in time. Must be paired with the correct Device Capabilities resource in order to be processed</li>
  <li><a href="deviceobservation.htm">Device Observation</a> - A report of observations from a device</li>
 </ul>
 <p>
-The device capabilities and <a href="devicelog.htm">device log</a> resources are used when communicating directly with a device. 
+The Device Capabilities and <a href="devicelog.htm">Device Log</a> resources are deigned to be used when communicating directly with a device. 
 When a channel is opened with the device, it first sends the Capabilities resource, and then a 
 series of log resources. The FHIR JSON format is used in this case. (TODO: What's the communication protocol?)
 The application that receives the log resources may choose to merge the log with the capabilities 
@@ -21,8 +21,9 @@ patient care context.
 </p>
 
 <p>
-Note that this resource is entirely concerned with devices that report data; interacting with an 
-controlling devices such as infusion pumps etc is not in scope for this resource. This resource is based on ISO 11073.
+Note that this resource is entirely concerned with devices that report data; interacting with and
+controlling devices such as infusion pumps etc is not in scope for this resource (no solution for this yet). 
+This resource is based on ISO 11073.
 </p>
 
 <h3>Structure of the Device Capabilities</h3>
@@ -36,9 +37,9 @@ using the following main structure:
 <ol>
  <li><b>Device</b> - The actual device that external systems communicate with</li>
  <li><b>Compartment</b> - (Virtual Medical Device) a medical-related subsystem of a medical device</li>
- <li><b>Channel</b> - groups together physiological measurement data and derived data</li>
+ <li><b>Channel</b> - Groups together physiological measurement data and derived data</li>
  <li><b>Metrics</b> - A piece of measured or derived data that will be reported by the machine</li>
- <li><b>Facets</b> - additional data that qualifies the metric, or contributes to it's assessment</li>
+ <li><b>Facets</b> - Additional data that qualifies the metric, or contributes to it's assessment</li>
 </ol>
 
 <p>

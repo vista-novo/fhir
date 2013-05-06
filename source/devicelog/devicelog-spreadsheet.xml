@@ -110,8 +110,8 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String"> A set of data produced by a device</Data></Cell>
-    <Cell><Data ss:Type="String"> A set of data produced by a device</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String"> A set of raw data produced by a device</Data></Cell>
+    <Cell><Data ss:Type="String"> A set of raw data produced by a device</Data></Cell>
     <Cell><Data ss:Type="String">A low level ultra-simple resource is needed to devices that send current observations on a routine bases as an event log</Data></Cell>
     <Cell><Data ss:Type="String">This resource can only be understood in the context of the DeviceCapabilities that defines what the meanings of the key values are</Data></Cell>
    </Row>
@@ -183,8 +183,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

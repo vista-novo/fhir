@@ -45,7 +45,7 @@ it directly.
 </p>
 <h2>Linking using Batch</h2>
 <p>
-Linking records is effectively a transaction that involves at least two resources, and all or none must change. To effectuate this transaction in a RESTful context, it must be implemented as a <a href="http.htm#batch">batch</a> operation.
+Linking records is effectively a transaction that involves at least two resources, and all or none must change. To effectuate this transaction in a RESTful context, it must be implemented as a <a href="http.htm#transaction">transaction</a> operation.
 </p>
 
 </div>

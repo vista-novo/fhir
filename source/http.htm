@@ -105,6 +105,14 @@ applications may need to replace Service Root URLs.
 <p>
 Note: All URLs (and ids that form part of the URL) defined by this specification are case sensitive. 
 </p>
+<p>
+Note that a server may use a path of the form http://server/...[id]... where the id is some variable 
+portion that identifies a particular instantiation of the FHIR API. Typically, the variable id 
+identifies a patient, and the underlying information is completely compartmented 
+by the patient id. In this case, the FHIR API presents a patient centric view of the record, 
+where authentication/authorization is explicitly granted to the id contained in the URL.
+</p>
+
 <h2>Resource Metadata and Versioning</h2>
 <p>
 Each resource has an associated set of <a href="resources.htm#metadata">resource metadata elements</a>. These map to the http request and response using the following fields:
@@ -771,9 +779,6 @@ Servers must ensure that if a client uses the feed.updated date from the last re
 the value of the _since parameter, no versions will be missed. Clients should be aware that due to timing imprecision, 
 they may receive notifications of a resource update on the boundary instant more than once. Servers are 
 not required to support a precision finer than by second. 
-</p>
-<p>
-When invoking this operation on an instance that has no history (i.e. never existed on the server), the server should return 404. If the instance has been deleted, the server should return a 410 (Gone) instead.
 </p>
 <p>
 The updates list can be long, so servers SHALL use the method described in <a href="https://tools.ietf.org/html/rfc5005">RFC 5005 (Feed 

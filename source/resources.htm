@@ -176,20 +176,26 @@ have either a value attribute, child elements, or extensions.
 </p>
 
 <a name="mustUnderstand"> </a>
-<h3>Must-Understand</h3>
+<a name="ismodifier"> </a>
+<h3>Is-modifier</h3>
 <p>
-Must-Understand is a property that is assigned when an element is defined, either as part of 
-the base resource contents in this specification, or where profiles declare extensions. 
-An element is labelled "mustUnderstand=true" if the value it contains may change the interpretation of other elements or the resource as a whole. 
-Typical examples of elements that are labelled "must-understand" are elements such as "status", "active", or "certainty". 
-The value of mustUnderstand cannot be changed when element usage is described in a <a href="profile.htm">Resource Profile</a>.
+Is-Modifier is a boolean property that is assigned when an element is defined, either as part of 
+the base resource contents in this specification, or when profiles declare extensions. 
+An element is labelled "Is-Modifier = true" if the value it contains may change the 
+interpretation of other elements or the resource as a whole. Typical examples of 
+elements that are labelled "Is-Modifier" are elements such as "status", "active", or "certainty". 
+The value of Is-Modifier cannot be changed when element usage is described in a 
+<a href="profile.htm">Resource Profile</a>.
+When an element is labelled as Is-Modifier, the documentation  must be clear about why 
+it is a modifier, and/or which elements the element may modify.
 </p>
 <p>
-Generally, elements labelled "mustUnderstand=true" also have a minimum cardinality of 1, to introduce
+Generally, elements labelled "Is-Modifier = true" also have a minimum cardinality of 1, to introduce
 certainty in their handling. If the value of such an element is not explicit in the instance, or known 
-by the context, the resource cannot be understood. Irrespective of the minimum cardinality, 
+by the context, the resource cannot be safely understood. Irrespective of the minimum cardinality, 
 implementations producing resources SHALL ensure that appropriate values for mustUnderstand 
-elements are provided. MustUnderstand elements SHALL be represented in the narrative summary of the resource.
+elements are provided. Is-Modifier elements SHALL be represented in the narrative summary 
+of the resource.
 </p>
 <p>
 Implementations processing resources SHALL understand the impact of the element when they process 
@@ -199,6 +205,14 @@ an application may refuse to accept observations with a reliability != "ok"). Al
 implementations may be able to be sure, due to their implementation environment, that such values 
 will never occur. However applications SHOULD always check the value irrespective of this.
 </p>
+<p>
+Servers and background processes that move resources around are not "processing the data
+of the resource", and these applications are not required to check for unknown extensions. Any
+process that copies data out of a resource for use in another context (display to a human,
+decision support, exchange in another format that doesn't support extensions) is processing
+the data.
+</p>
+
 <a name="mustSupport"> </a>
 <h3>Must-Support</h3>
 <p>

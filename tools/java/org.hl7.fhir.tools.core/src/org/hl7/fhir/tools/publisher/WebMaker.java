@@ -169,7 +169,7 @@ public class WebMaker {
     s.append("<ul>");
     for (String v : ini.getPropertyNames("Archives")) {
       s.append("<li><a href=\"v"+v+"/fhir-book.htm\">Version "+v+"</a>, "+ini.getStringProperty("Archives", v)+". (<a " +
-      		"href=\"http://www.w3.org/2007/10/htmldiff?doc1=http%3A%2F%2Fwww.hl7.org%2Fimplement%2Fstandards%2FFHIR%2Fv"+v+"%2Ffhir-book.htm&amp;doc2=http%3A%2F%2Fwww.hl7.org%2Fimplement%2Fstandards%2FFHIR%2Ffhir-book.htm\">Diff with current</a>) </li>");
+      		"href=\"http://www.w3.org/2007/10/htmldiff?doc1=http://www.hl7.org/implement/standards/FHIR/v"+v+"/fhir-book.htm&amp;doc2=http://www.hl7.org/implement/standards/FHIR/fhir-book.htm\">Diff with current</a>) </li>");
       if (!past.contains(v))
         past.add(v);
       extractZip(folders.rootDir+"archive"+File.separator+"v"+v+".zip", folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+"v"+v+File.separator);

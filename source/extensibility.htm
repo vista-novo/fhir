@@ -64,7 +64,7 @@ Notes:
 </p>
 <ul>
  <li>The <i>url</i> is a mandatory field, and identifies an extension definition in a <a href="profile.htm">resource profile</a> that defines the content and meaning of the extension.</li>
- <li><i>mustUnderstand</i> is used to indicate that this value influences the understanding of other elements. It's use is further discussed below</li>
+ <li><i>isModifier</i> is used to indicate that this value influences the interpretation, meaning or understanding of other elements. It's use is further discussed below</li>
  <li>The actual content of the extension consists of either a single value in the <i>value[x]</i> element, or a nested list of other extensions, each with their own defining url and content</li>
  <li>An extension must have either a value (i.e. a value[x] element) or child extensions. The value element must have content, and/or an id attribute that is the target of a reference from the Narrative</li>
  <li>When an extension is the target of an internal reference, the reference is always to the value of the extension. An extension is only allowed to tbe target of an reference when it has no value[x]</li>
@@ -153,16 +153,22 @@ Extending a patient with an opt-in status for a clinical trial, with
 </div>
 
 <a name="mustUnderstand"> </a>
-<h2>MustUnderstand</h2>
+<a name="ismodifier"> </a>
+<h2>isModifier</h2>
 <p>
-As well as providing additional information, extensions may be used to qualify the meaning of
-other existing elements or even to negate their meanings. This behavior makes these particular
-extensions unsafe to ignore. Such extensions must have a child element "mustUnderstand".
+As well as providing additional information, extensions may be used to modify the meaning of
+other existing elements or even to negate their meanings. As an example, an implementation
+may wish to add a "certainty" extension to the AllergyIntolerance to indicate that some allergies
+are only suspected. If the extension had a value of "highly doubtful", then it would change
+the understanding of the allergy/intolerance, and implementations should not ignore this.
+Modifying the meaning of other elements makes these particular extensions unsafe to ignore, 
+and so this must be explicitly labelled in the instance.
 </p>
 <p>
-If the application does not recognize the url of an extension that is labeled "mustUnderstand", and
-the data from element it extends is processed by the application, the application SHALL either refuse 
-to process the data, or carry a warning concerning the data along with any action or output that results 
+If the application processing the content of a resource does not recognize an  
+extension that is labeled "IsModifier", and the data from element it extends is processed 
+by the application, the application SHALL either refuse to process the data, or carry a 
+warning concerning the data along with any action or output that results 
 from processing the data.
 </p>
 
@@ -174,32 +180,33 @@ Here is an Australian example where for cultural reasons, certain names that hav
 &lt;name&gt;
   &lt;extension&gt;
     &lt;url value=&quot;http://hl7.org/fhir/profile/@iso-21090#name-use&quot; /&gt;
-    &lt;mustUnderstand value=&quot;true&quot; /&gt;
+    &lt;isModifier value=&quot;true&quot; /&gt;
     &lt;valueCode value=&quot;DN&quot; /&gt;
   &lt;/extension&gt;
-  &lt;text value=&quot;Chief Red Cloud&quot;/&gt;
+  &lt;text value=&quot;Arinyoo&quot;/&gt;
 &lt;/name&gt;
 </pre>
 <p>
 Because the intent of the name use code is that this name should not actually be used as 
-if it were the patient's name, the extension is labelled "mustUnderstand" = it is not safe 
+if it were the patient's name, the extension is labelled "isModifier" = it is not safe 
 to use this name unless you understand the extension.
 </p>
 </div>
 
-<p>
-Note that it must always be safe to show the narrative to humans; any extension that is
-labeled as "mustUnderstand" must be represented in the narrative. Applications are required
-to ignore extensions that they do not recognize if their "mustUnderstand" element is
-missing or set to false.
-</p>
 
 <p>
-Note that servers and background processes that move resources around are not "processing the data
+Servers and background processes that move resources around are not "processing the data
 of the resource", and these applications are not required to check for unknown extensions. Any
 process that copies data out of a resource for use in another context (display to a human,
 decision support, exchange in another format that doesn't support extensions) is processing
 the data.
+</p>
+
+<p>
+Note that it must always be safe to show the narrative to humans; any extension that is
+labeled as "IsModifier" must be represented in the narrative. Applications are required
+to ignore extensions that they do not recognize if their "isModifier" element is
+missing or set to false.
 </p>
 
 <a name="define"></a>

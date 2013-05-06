@@ -78,7 +78,7 @@ The following table describes how to convert from value to the correct data type
   </td>
  </tr> 
 </table>
-<p>The following table summarises the interpretation of the possible flags</p>
+<p>The following table summarizes the interpretation of the possible flags</p>
 <table class="grid">
  <tr>
   <th>Flag</th>
@@ -99,7 +99,7 @@ The following table describes how to convert from value to the correct data type
 </table>
 
 <p>
-Generally, as a rule of thumb, metrics and observations, and facets are components of the observation. 
+Generally, as a rule of thumb, metrics and facets are components of the observation. 
 </p>
 
 

@@ -765,7 +765,8 @@ public class Publisher {
 			f.delete();
 		ZipGenerator zip = new ZipGenerator(page.getFolders().tmpResDir
 				+ "fhir-spec.zip");
-		zip.addFiles(page.getFolders().dstDir, "", null);
+		zip.addFiles(page.getFolders().dstDir, "site\\", null);
+    zip.addFileName("index.htm", page.getFolders().srcDir+"redirect.htm");
 		zip.close();
 		Utilities.copyFile(new CSFile(page.getFolders().tmpResDir
 				+ "fhir-spec.zip"), f);

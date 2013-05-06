@@ -144,7 +144,8 @@ public void generate(Definitions definitions, String destDir, String implDir, St
       genConstraint(c);
     }
     parserGap();
-    for (ResourceDefn n : definitions.getResources().values()) {
+    for (String s : definitions.sortedResourceNames()) {
+      ResourceDefn n = definitions.getResources().get(s);
       generate(n.getRoot(), "TFhirResource", true, true, ClassCategory.Resource);
       genResource(n, "TFhir"+n.getName(), "TFhirResource", true, ClassCategory.Resource);
       prsrRegX.append("  else if element.baseName = '"+n.getName()+"' Then\r\n    result := Parse"+n.getName()+"(element)\r\n");
