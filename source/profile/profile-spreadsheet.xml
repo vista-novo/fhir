@@ -16,12 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9810</WindowHeight>
-  <WindowWidth>15570</WindowWidth>
+  <WindowHeight>5730</WindowHeight>
+  <WindowWidth>2910</WindowWidth>
   <WindowTopX>12450</WindowTopX>
   <WindowTopY>1815</WindowTopY>
-  <ActiveSheet>10</ActiveSheet>
-  <FirstVisibleSheet>6</FirstVisibleSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -665,7 +663,7 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">Constraints should be declared on the &quot;context&quot; element - the lowest element in the hierarchy that is common to all nodes referenced by the constraint</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Profile.structure.element.definition.constraint.id</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.structure.element.definition.constraint.key</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5" ss:StyleID="s68"/>
     <Cell><Data ss:Type="String">id</Data></Cell>
@@ -949,7 +947,7 @@
     <Cell ss:StyleID="s68"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Profile.extensionDefn.id</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.extensionDefn.code</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="Number">5</Data></Cell>
@@ -1121,10 +1119,11 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>63</TopRowBottomPane>
+   <TopRowBottomPane>23</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -1141,7 +1140,6 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>72</ActiveRow>
      <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
@@ -1189,9 +1187,9 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">Profile.extensionDefn.id</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">Profile.extensionDefn.code</Data></Cell>
     <Cell><Data ss:Type="String">Codes must be unique in the context of a profile</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">count(ancestor::f:Profile/f:extensionDefn/f:id[@value=current()/@value])=1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">count(ancestor::f:Profile/f:extensionDefn/f:code[@value=current()/@value])=1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="Number">6</Data></Cell>
@@ -1255,12 +1253,11 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <TopRowVisible>9</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>28</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1808,7 +1805,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

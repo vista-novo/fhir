@@ -20,7 +20,7 @@
   <WindowWidth>21840</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>5</ActiveSheet>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -139,19 +139,7 @@
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#FF0000"/>
   </Style>
-  <Style ss:ID="s83" ss:Parent="s62">
-   <Alignment ss:Vertical="Top"/>
-   <Borders/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
-   <Interior/>
-   <NumberFormat/>
-   <Protection/>
-  </Style>
-  <Style ss:ID="s84">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Color="#000000"/>
-  </Style>
-  <Style ss:ID="s135">
+  <Style ss:ID="s83">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders>
@@ -160,6 +148,18 @@
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
    <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s84" ss:Parent="s62">
+   <Alignment ss:Vertical="Top"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s85">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Color="#000000"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -225,7 +225,7 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="135">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationPrescription.id</Data><NamedCell
+    <Cell ss:StyleID="s68"><Data ss:Type="String">MedicationPrescription.identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s68"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -355,7 +355,7 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="135">
-    <Cell><Data ss:Type="String">MedicationPrescription.administration.id</Data><NamedCell
+    <Cell><Data ss:Type="String">MedicationPrescription.administration.identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -516,7 +516,7 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="135">
-    <Cell><Data ss:Type="String">MedicationPrescription.dispense.id</Data><NamedCell
+    <Cell><Data ss:Type="String">MedicationPrescription.dispense.identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -654,7 +654,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>10</TopRowBottomPane>
+   <TopRowBottomPane>17</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -671,7 +671,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>15</ActiveRow>
+     <ActiveRow>22</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -876,7 +877,7 @@
     <Cell ss:StyleID="s80"><Data ss:Type="String">Return dispenses with this external identity</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">qtoken</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">MedicationPrescription.id</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">MedicationPrescription.identifier</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1050,6 +1051,7 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1069,7 +1071,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>6</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
@@ -1177,28 +1179,28 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="308.25"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s135"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s135"><Data ss:Type="String">Definition</Data></Cell>
-    <Cell ss:StyleID="s135"/>
-    <Cell ss:StyleID="s135"/>
-    <Cell ss:StyleID="s135"/>
-    <Cell ss:StyleID="s135"/>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s83"/>
+    <Cell ss:StyleID="s83"/>
+    <Cell ss:StyleID="s83"/>
+    <Cell ss:StyleID="s83"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="25.5">
-    <Cell ss:StyleID="s83"><Data ss:Type="String">active</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">The prescribing of the medication has started and is currently in progress.</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">active</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">The prescribing of the medication has started and is currently in progress.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="38.25">
-    <Cell ss:StyleID="s83"><Data ss:Type="String">paused</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">The prescribing of the medication has started but is currently stopped with a firm intention of restarting.</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">paused</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">The prescribing of the medication has started but is currently stopped with a firm intention of restarting.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s83"><Data ss:Type="String">completed</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">The prescribing of the medication has finished</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">completed</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">The prescribing of the medication has finished</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="38.25">
-    <Cell ss:StyleID="s83"><Data ss:Type="String">nullified</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">The prescribing of the medication was recorded in error and the record should now be disregarded.</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">nullified</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">The prescribing of the medication was recorded in error and the record should now be disregarded.</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1208,7 +1210,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

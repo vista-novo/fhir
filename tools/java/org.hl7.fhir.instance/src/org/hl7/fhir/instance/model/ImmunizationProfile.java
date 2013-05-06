@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 11:10+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -356,7 +356,7 @@ public class ImmunizationProfile extends Resource {
         /**
          * Adverse event report identifier
          */
-        private List<Id> id = new ArrayList<Id>();
+        private List<Id> identifier = new ArrayList<Id>();
 
         /**
          * Adverse event report classification
@@ -378,8 +378,8 @@ public class ImmunizationProfile extends Resource {
          */
         private List<ResourceReference> reaction = new ArrayList<ResourceReference>();
 
-        public List<Id> getId() { 
-          return this.id;
+        public List<Id> getIdentifier() { 
+          return this.identifier;
         }
 
         public Code getReportType() { 

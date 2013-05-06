@@ -31,7 +31,7 @@
       <system value="http://hl7.org/fhir/provenance-participant-type"/>
       <code value="person"/>
     </type>
-    <id value="mailto:grahame@healthintersections.com.au"/>
+    <identifier  value="mailto:grahame@healthintersections.com.au"/>
     <description value="Grahame Grieve"/>
   </party>
   <!-- actually, this example was extracted from ISO 21090 -->
@@ -44,7 +44,7 @@
       <system value="http://hl7.org/fhir/provenance-participant-type"/>
       <code value="document"/>
     </type>
-    <id value="urn:iso:std:21090"/>
+    <identifier value="urn:iso:std:21090"/>
     <description value="ISO 21090"/>
   </party>
 </Provenance>

@@ -222,7 +222,7 @@ public class ProfileGenerator {
 
   private ProfileExtensionDefnComponent generateExtensionDefn(ExtensionDefn src, Profile p) throws Exception {
     ProfileExtensionDefnComponent dst = p.new ProfileExtensionDefnComponent();
-    dst.setId(Factory.newId(src.getCode()));
+    dst.setCode(Factory.newId(src.getCode()));
     dst.getContext().add(Factory.newString_(src.getContext()));
     dst.setContextTypeSimple(convertContextType(src.getType()));
 
@@ -306,7 +306,7 @@ public class ProfileGenerator {
     for (String in : e.getInvariants().keySet()) {
       ElementDefinitionConstraintComponent con = p.new ElementDefinitionConstraintComponent();
       Invariant inv = e.getInvariants().get(in);
-      con.setIdSimple(inv.getId());
+      con.setKeySimple(inv.getId());
       con.setNameSimple(inv.getName());
       con.setSeveritySimple(ConstraintSeverity.error);
       con.setHumanSimple(inv.getEnglish());

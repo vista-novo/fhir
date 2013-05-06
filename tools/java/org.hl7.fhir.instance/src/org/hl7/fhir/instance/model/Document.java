@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 11:10+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -254,12 +254,12 @@ public class Document extends Resource {
     /**
      * Logical Identifier for the document, assigned when created. This identifier stays constant when subsequent versions of the document are created
      */
-    private Identifier id;
+    private Identifier identifier;
 
     /**
      * Version specific identifier for the document, assigned when created. This identifier changes when subsequent versions of the document are created
      */
-    private Identifier versionId;
+    private Identifier versionIdentifier;
 
     /**
      * The document creation time, when the document first came into being. Where the document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created.
@@ -341,20 +341,20 @@ public class Document extends Resource {
      */
     private List<SectionComponent> section = new ArrayList<SectionComponent>();
 
-    public Identifier getId() { 
-      return this.id;
+    public Identifier getIdentifier() { 
+      return this.identifier;
     }
 
-    public void setId(Identifier value) { 
-      this.id = value;
+    public void setIdentifier(Identifier value) { 
+      this.identifier = value;
     }
 
-    public Identifier getVersionId() { 
-      return this.versionId;
+    public Identifier getVersionIdentifier() { 
+      return this.versionIdentifier;
     }
 
-    public void setVersionId(Identifier value) { 
-      this.versionId = value;
+    public void setVersionIdentifier(Identifier value) { 
+      this.versionIdentifier = value;
     }
 
     public Instant getCreated() { 

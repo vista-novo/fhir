@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 11:10+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -638,7 +638,7 @@ public class SecurityEvent extends Resource {
         /**
          * Identifier for a specific audited event
          */
-        private Coding id;
+        private Coding identifier;
 
         /**
          * Indicator for type of action performed during the event that generated the audit
@@ -660,12 +660,12 @@ public class SecurityEvent extends Resource {
          */
         private List<Coding> code = new ArrayList<Coding>();
 
-        public Coding getId() { 
-          return this.id;
+        public Coding getIdentifier() { 
+          return this.identifier;
         }
 
-        public void setId(Coding value) { 
-          this.id = value;
+        public void setIdentifier(Coding value) { 
+          this.identifier = value;
         }
 
         public Enumeration<SecurityEventEventAction> getAction() { 
@@ -895,7 +895,7 @@ public class SecurityEvent extends Resource {
         /**
          * An identifier for the network access point of the user device for the audit event
          */
-        private String_ id;
+        private String_ identifier;
 
         public Enumeration<NetworkType> getType() { 
           return this.type;
@@ -919,25 +919,25 @@ public class SecurityEvent extends Resource {
           }
         }
 
-        public String_ getId() { 
-          return this.id;
+        public String_ getIdentifier() { 
+          return this.identifier;
         }
 
-        public void setId(String_ value) { 
-          this.id = value;
+        public void setIdentifier(String_ value) { 
+          this.identifier = value;
         }
 
-        public String getIdSimple() { 
-          return this.id == null ? null : this.id.getValue();
+        public String getIdentifierSimple() { 
+          return this.identifier == null ? null : this.identifier.getValue();
         }
 
-        public void setIdSimple(String value) { 
+        public void setIdentifierSimple(String value) { 
           if (value == null)
-            this.id = null;
+            this.identifier = null;
           else {
-            if (this.id == null)
-              this.id = new String_();
-            this.id.setValue(value);
+            if (this.identifier == null)
+              this.identifier = new String_();
+            this.identifier.setValue(value);
           }
         }
 
@@ -952,7 +952,7 @@ public class SecurityEvent extends Resource {
         /**
          * Identifier of the source where the event originated
          */
-        private String_ id;
+        private String_ identifier;
 
         /**
          * Code specifying the type of source where event originated
@@ -981,25 +981,25 @@ public class SecurityEvent extends Resource {
           }
         }
 
-        public String_ getId() { 
-          return this.id;
+        public String_ getIdentifier() { 
+          return this.identifier;
         }
 
-        public void setId(String_ value) { 
-          this.id = value;
+        public void setIdentifier(String_ value) { 
+          this.identifier = value;
         }
 
-        public String getIdSimple() { 
-          return this.id == null ? null : this.id.getValue();
+        public String getIdentifierSimple() { 
+          return this.identifier == null ? null : this.identifier.getValue();
         }
 
-        public void setIdSimple(String value) { 
+        public void setIdentifierSimple(String value) { 
           if (value == null)
-            this.id = null;
+            this.identifier = null;
           else {
-            if (this.id == null)
-              this.id = new String_();
-            this.id.setValue(value);
+            if (this.identifier == null)
+              this.identifier = new String_();
+            this.identifier.setValue(value);
           }
         }
 
@@ -1033,7 +1033,7 @@ public class SecurityEvent extends Resource {
         /**
          * Identifies a specific instance of the participant object
          */
-        private String_ id;
+        private String_ identifier;
 
         /**
          * Denotes policy-defined sensitivity for the Participant Object ID such as VIP, HIV status, mental health status or similar topics
@@ -1124,25 +1124,25 @@ public class SecurityEvent extends Resource {
           this.idType = value;
         }
 
-        public String_ getId() { 
-          return this.id;
+        public String_ getIdentifier() { 
+          return this.identifier;
         }
 
-        public void setId(String_ value) { 
-          this.id = value;
+        public void setIdentifier(String_ value) { 
+          this.identifier = value;
         }
 
-        public String getIdSimple() { 
-          return this.id == null ? null : this.id.getValue();
+        public String getIdentifierSimple() { 
+          return this.identifier == null ? null : this.identifier.getValue();
         }
 
-        public void setIdSimple(String value) { 
+        public void setIdentifierSimple(String value) { 
           if (value == null)
-            this.id = null;
+            this.identifier = null;
           else {
-            if (this.id == null)
-              this.id = new String_();
-            this.id.setValue(value);
+            if (this.identifier == null)
+              this.identifier = new String_();
+            this.identifier.setValue(value);
           }
         }
 

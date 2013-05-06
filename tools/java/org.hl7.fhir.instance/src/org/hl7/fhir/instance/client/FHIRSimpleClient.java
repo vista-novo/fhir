@@ -170,18 +170,4 @@ public class FHIRSimpleClient implements FHIRClient {
 		return null;
 	}
 
-
-  @Override
-  public Conformance getConformanceStatement(boolean useOptions) throws EFhirClientException {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-
-  @Override
-  public AtomFeed continueOp(AtomFeed oldSearch, PagingOperation operation) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
 }

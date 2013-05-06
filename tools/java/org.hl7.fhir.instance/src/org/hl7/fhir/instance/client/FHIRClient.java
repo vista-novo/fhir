@@ -45,12 +45,8 @@ import org.hl7.fhir.instance.model.ResourceType;
  */
 public interface FHIRClient {
 
-  public enum PagingOperation {
-    first, prev, next, last
-  }
 	// Get a conformance statement for the system
-  public Conformance getConformanceStatement(boolean useOptions) throws EFhirClientException;
-  public Conformance getConformanceStatement() throws EFhirClientException;
+	public Conformance getConformanceStatement() throws EFhirClientException;
 	
 	// Read the current state of a resource
 	public AtomEntry read(ResourceType type, String id) throws EFhirClientException;
@@ -71,10 +67,7 @@ public interface FHIRClient {
 	public AtomFeed history(Calendar lastUpdate, ResourceType type, String id) throws EFhirClientException;
 	public AtomFeed history(Calendar lastUpdate, ResourceType type) throws EFhirClientException;
 	public AtomFeed history(Calendar lastUpdate) throws EFhirClientException;
-
-	// for both search and history
-	public AtomFeed continueOp(AtomFeed oldSearch, PagingOperation operation);
-  
+	
 	// Search the resource type based on some filter criteria
 	public AtomFeed search(ResourceType type, Map<String, String> params) throws EFhirClientException;
 	

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 11:10+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -109,7 +109,7 @@ public class Message extends Resource {
         /**
          * The id of the message that this a response to
          */
-        private Id id;
+        private Id identifier;
 
         /**
          * Code that identifies the type of response to the message - whether it was successful or not, and whether it should be resent or not
@@ -121,25 +121,25 @@ public class Message extends Resource {
          */
         private ResourceReference details;
 
-        public Id getId() { 
-          return this.id;
+        public Id getIdentifier() { 
+          return this.identifier;
         }
 
-        public void setId(Id value) { 
-          this.id = value;
+        public void setIdentifier(Id value) { 
+          this.identifier = value;
         }
 
-        public String getIdSimple() { 
-          return this.id == null ? null : this.id.getValue();
+        public String getIdentifierSimple() { 
+          return this.identifier == null ? null : this.identifier.getValue();
         }
 
-        public void setIdSimple(String value) { 
+        public void setIdentifierSimple(String value) { 
           if (value == null)
-            this.id = null;
+            this.identifier = null;
           else {
-            if (this.id == null)
-              this.id = new Id();
-            this.id.setValue(value);
+            if (this.identifier == null)
+              this.identifier = new Id();
+            this.identifier.setValue(value);
           }
         }
 
@@ -372,7 +372,7 @@ public class Message extends Resource {
     /**
      * The identifier of this message
      */
-    private Id id;
+    private Id identifier;
 
     /**
      * Instant the message was sent
@@ -434,25 +434,25 @@ public class Message extends Resource {
      */
     private List<ResourceReference> data = new ArrayList<ResourceReference>();
 
-    public Id getId() { 
-      return this.id;
+    public Id getIdentifier() { 
+      return this.identifier;
     }
 
-    public void setId(Id value) { 
-      this.id = value;
+    public void setIdentifier(Id value) { 
+      this.identifier = value;
     }
 
-    public String getIdSimple() { 
-      return this.id == null ? null : this.id.getValue();
+    public String getIdentifierSimple() { 
+      return this.identifier == null ? null : this.identifier.getValue();
     }
 
-    public void setIdSimple(String value) { 
+    public void setIdentifierSimple(String value) { 
       if (value == null)
-        this.id = null;
+        this.identifier = null;
       else {
-        if (this.id == null)
-          this.id = new Id();
-        this.id.setValue(value);
+        if (this.identifier == null)
+          this.identifier = new Id();
+        this.identifier.setValue(value);
       }
     }
 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 11:10+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -1297,7 +1297,7 @@ public class Profile extends Resource {
         /**
          * Allows identification of which elements have their cardinalities impacted by the constraint.  Will not be referenced for constraints that do not affect cardinality
          */
-        private Id id;
+        private Id key;
 
         /**
          * Used to label the constraint in OCL or in short displays incapable of displaying the full human description
@@ -1324,25 +1324,25 @@ public class Profile extends Resource {
          */
         private String_ ocl;
 
-        public Id getId() { 
-          return this.id;
+        public Id getKey() { 
+          return this.key;
         }
 
-        public void setId(Id value) { 
-          this.id = value;
+        public void setKey(Id value) { 
+          this.key = value;
         }
 
-        public String getIdSimple() { 
-          return this.id == null ? null : this.id.getValue();
+        public String getKeySimple() { 
+          return this.key == null ? null : this.key.getValue();
         }
 
-        public void setIdSimple(String value) { 
+        public void setKeySimple(String value) { 
           if (value == null)
-            this.id = null;
+            this.key = null;
           else {
-            if (this.id == null)
-              this.id = new Id();
-            this.id.setValue(value);
+            if (this.key == null)
+              this.key = new Id();
+            this.key.setValue(value);
           }
         }
 
@@ -1630,7 +1630,7 @@ public class Profile extends Resource {
         /**
          * A unique code (within the profile) used to identify the extension
          */
-        private Id id;
+        private Id code;
 
         /**
          * Identifies the type of context to which the extension applies
@@ -1647,25 +1647,25 @@ public class Profile extends Resource {
          */
         private ElementDefinitionComponent definition;
 
-        public Id getId() { 
-          return this.id;
+        public Id getCode() { 
+          return this.code;
         }
 
-        public void setId(Id value) { 
-          this.id = value;
+        public void setCode(Id value) { 
+          this.code = value;
         }
 
-        public String getIdSimple() { 
-          return this.id == null ? null : this.id.getValue();
+        public String getCodeSimple() { 
+          return this.code == null ? null : this.code.getValue();
         }
 
-        public void setIdSimple(String value) { 
+        public void setCodeSimple(String value) { 
           if (value == null)
-            this.id = null;
+            this.code = null;
           else {
-            if (this.id == null)
-              this.id = new Id();
-            this.id.setValue(value);
+            if (this.code == null)
+              this.code = new Id();
+            this.code.setValue(value);
           }
         }
 

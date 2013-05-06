@@ -20,7 +20,6 @@
   <WindowWidth>18765</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -342,7 +341,7 @@
     <Cell ss:Index="8"><Data ss:Type="String">Supporting adverse event report</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s67"><Data ss:Type="String">ImmunizationProfile.recommendation.supportingAdverseEventReport.id</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">ImmunizationProfile.recommendation.supportingAdverseEventReport.identifier</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">1..*</Data></Cell>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
@@ -409,6 +408,7 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -429,8 +429,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>19</ActiveRow>
      <ActiveCol>0</ActiveCol>
-     <RangeSelection>R2C1:R24C1</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -760,7 +760,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>

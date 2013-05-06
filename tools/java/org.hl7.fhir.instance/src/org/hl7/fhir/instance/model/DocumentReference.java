@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 11:10+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -212,7 +212,7 @@ public class DocumentReference extends Resource {
     /**
      * Document identifier as assigned by the source of the document. This identifier is specific to this version of the document. This unique identifier may be used elsewhere to identify this version of the document
      */
-    private Identifier id;
+    private Identifier masterIdentifier;
 
     /**
      * Other identifiers associated with the record
@@ -324,12 +324,12 @@ public class DocumentReference extends Resource {
      */
     private DocumentReferenceContextComponent context;
 
-    public Identifier getId() { 
-      return this.id;
+    public Identifier getMasterIdentifier() { 
+      return this.masterIdentifier;
     }
 
-    public void setId(Identifier value) { 
-      this.id = value;
+    public void setMasterIdentifier(Identifier value) { 
+      this.masterIdentifier = value;
     }
 
     public List<Identifier> getIdentifier() { 

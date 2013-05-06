@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, May 6, 2013 01:45+1000 for FHIR v0.08
+// Generated on Mon, May 6, 2013 11:10+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -144,7 +144,7 @@ public class Provenance extends Resource {
         /**
          * An identifier for the location
          */
-        private Identifier id;
+        private Identifier identifier;
 
         /**
          * Human readable description of location at which the activity occurred
@@ -164,12 +164,12 @@ public class Provenance extends Resource {
           this.type = value;
         }
 
-        public Identifier getId() { 
-          return this.id;
+        public Identifier getIdentifier() { 
+          return this.identifier;
         }
 
-        public void setId(Identifier value) { 
-          this.id = value;
+        public void setIdentifier(Identifier value) { 
+          this.identifier = value;
         }
 
         public String_ getDescription() { 
@@ -232,7 +232,7 @@ public class Provenance extends Resource {
         /**
          * Identity of participant. May be a logical or physical uri and maybe absolute or relative
          */
-        private Uri id;
+        private Uri identifier;
 
         /**
          * Human readable description of the participant
@@ -255,25 +255,25 @@ public class Provenance extends Resource {
           this.type = value;
         }
 
-        public Uri getId() { 
-          return this.id;
+        public Uri getIdentifier() { 
+          return this.identifier;
         }
 
-        public void setId(Uri value) { 
-          this.id = value;
+        public void setIdentifier(Uri value) { 
+          this.identifier = value;
         }
 
-        public URI getIdSimple() { 
-          return this.id == null ? null : this.id.getValue();
+        public URI getIdentifierSimple() { 
+          return this.identifier == null ? null : this.identifier.getValue();
         }
 
-        public void setIdSimple(URI value) { 
+        public void setIdentifierSimple(URI value) { 
           if (value == null)
-            this.id = null;
+            this.identifier = null;
           else {
-            if (this.id == null)
-              this.id = new Uri();
-            this.id.setValue(value);
+            if (this.identifier == null)
+              this.identifier = new Uri();
+            this.identifier.setValue(value);
           }
         }
 
@@ -317,7 +317,7 @@ public class Provenance extends Resource {
     private List<ProvenancePartyComponent> party = new ArrayList<ProvenancePartyComponent>();
 
     /**
-     * A digital signature on the target resource. The signature should reference a participant by xml:id. The signature is only added to capture cryptographic integrity of the provenance, and not to represent workflow and clinical aspects of the signing process
+     * A digital signature on the target resource. The signature should reference a participant by xml:id. The signature is only added to support checking cryptographic integrity of the provenance, and not to represent workflow and clinical aspects of the signing process
      */
     private String_ signature;
 
