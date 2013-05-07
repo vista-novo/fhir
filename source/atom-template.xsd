@@ -28,7 +28,7 @@ Copyright (c) 2011-2012, HL7, Inc
 
  Generated on <%genDate%> for FHIR v<%version%>
 -->
-<xs:schema xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:at="http://purl.org/atompub/tombstones/1.0" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://www.w3.org/2005/Atom" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:os="http://a9.com/-/spec/opensearch/1.1/" xmlns:fhir="http://hl7.org/fhir" xmlns:at="http://purl.org/atompub/tombstones/1.0" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://www.w3.org/2005/Atom" elementFormDefault="qualified" attributeFormDefault="unqualified">
   <xs:annotation>
     <xs:documentation>
 				This is a reduced form of the atom schema, that only supports the features profiled in the FHIR specification
@@ -37,6 +37,7 @@ Copyright (c) 2011-2012, HL7, Inc
   <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
   <!--%includes%-->
   <xs:import namespace="http://purl.org/atompub/tombstones/1.0" schemaLocation="tombstone.xsd"/>
+  <xs:import namespace="http://a9.com/-/spec/opensearch/1.1/" schemaLocation="opensearch.xsd"/>
   <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd"/>
   <xs:element name="feed" type="atom:FeedType"/>
   <xs:complexType name="TextType" mixed="true">
@@ -76,6 +77,7 @@ Copyright (c) 2011-2012, HL7, Inc
         <xs:element name="author" type="atom:PersonType" maxOccurs="unbounded"/>
         <xs:element name="entry" type="atom:EntryType"/>
         <xs:element ref="at:deleted-entry"/>
+        <xs:element ref="os:totalResults"/> 
       </xs:choice>
       <xs:element ref="ds:Signature" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
