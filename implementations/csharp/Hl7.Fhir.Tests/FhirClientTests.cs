@@ -93,7 +93,7 @@ namespace Hl7.Fhir.Tests
                                 WithGiven("Wouter").WithGiven("Gert"))
                                     .WithBirthDate(new FhirDateTime(1972, 11, 30)),
                 Identifier = new List<Identifier> {
-                    new Identifier() { System = new Uri("http://hl7.org/test/1"), Id = "3141" } }
+                    new Identifier() { System = new Uri("http://hl7.org/test/1"), Key = "3141" } }
             };
 
             FhirClient client = new FhirClient(testEndpoint);

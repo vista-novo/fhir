@@ -12,6 +12,7 @@ using System.Xml;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Parsers;
 using Hl7.Fhir.Client;
+using System.Diagnostics;
 
 namespace Hl7.Fhir.Tests
 {
@@ -70,7 +71,7 @@ namespace Hl7.Fhir.Tests
                     Use = Identifier.IdentifierUse.Official,
                     Label = "SSN",
                     System = new Uri("http://hl7.org/fhir/sid/us-ssn"),
-                    Id = "000111111",
+                    Key = "000111111",
                     Period = new Period() { Start = new FhirDateTime(2001, 1, 2), End = new FhirDateTime(2010, 3, 4) },
                     Assigner = new ResourceReference { Type = "Organization", Url = new Uri("../organization/@123", UriKind.Relative), Display = "HL7, Inc" }
                 };
@@ -121,13 +122,51 @@ namespace Hl7.Fhir.Tests
                 FhirSerializer.SerializeElementAsJson(ext));
         }
 
+
+
+        [TestMethod]
+        public void LetsDoJson()
+        {
+            string xmlString =
+               @"<Patient xmlns='http://hl7.org/fhir'>
+                    <details>
+                        <name>
+                          <use value='official' />  
+                          <given value='Regina' />
+                          <prefix value='Dr.'>
+                            <extension>
+                                <url value='http://hl7.org/fhir/profile/@iso-20190' />
+                                <valueCoding>
+                                    <system value='urn:oid:2.16.840.1.113883.5.1122' />       
+                                    <code value='AC' />
+                                </valueCoding>
+                            </extension>
+                          </prefix>
+                        </name>
+                    </details>
+                    <text>
+                        <status value='generated' />
+                        <div xmlns='http://www.w3.org/1999/xhtml'>Whatever</div>
+                    </text>
+                </Patient>";
+
+            ErrorList list = new ErrorList();
+            Patient p = (Patient)FhirParser.ParseResourceFromXml(xmlString, list);
+            p.Details.Name[0].Given[0].Contents = "Rex";
+            string json = FhirSerializer.SerializeResourceAsJson(p);
+
+            Debug.WriteLine(json);
+        }
+
+
+
         [TestMethod]
         public void ResourceWithExtensionAndNarrative()
         {
             Patient p = new Patient()
             {
                 InternalId = "Ab4",
-                Identifier = new List<Identifier> { new Identifier() { Id = "3141" } },
+                Identifier = new List<Identifier> { new Identifier() { Key = "3141" } },
                 Details = new Demographics()
                 {
                     BirthDate = new FhirDateTime(1972, 11, 30),
