@@ -99,6 +99,7 @@ public class SpreadsheetParser {
 	  sheetname = name;
 	  return xls.getSheets().get(name);
 	}
+
 	private ResourceDefn parseCommonTypeColumns() throws Exception {
 		ResourceDefn resource = new ResourceDefn();
 		
@@ -617,8 +618,10 @@ public class SpreadsheetParser {
 	      for (String a : aliases.split(","))
 	        e.getAliases().add(a.trim());
 		  }
+    if (sheet.hasColumn(row, "Must Understand"))
+      throw new Exception("Column 'Must Understand' has been renamed to 'Is Modifier'");
 
-		e.setMustUnderstand(parseBoolean(sheet.getColumn(row, "Must Understand"), row, false));
+		e.setIsModifier(parseBoolean(sheet.getColumn(row, "Is Modifier"), row, false));
 		e.setMustSupport(parseBoolean(sheet.getColumn(row, "Must Support"), row, false));
 		e.setDir(sheet.getColumn(row, "UML"));
 		String s = sheet.getColumn(row, "Condition");
@@ -695,7 +698,7 @@ public class SpreadsheetParser {
     exe.setMaxCardinality("*".equals(card[1]) ? null : Integer.parseInt(card[1]));
     exe.setCondition(sheet.getColumn(row, "Condition"));
     exe.setBindingName(sheet.getColumn(row, "Binding"));
-    exe.setMustUnderstand(parseBoolean(sheet.getColumn(row, "Must Understand"), row, false));
+    exe.setIsModifier(parseBoolean(sheet.getColumn(row, "Must Understand"), row, false));
     exe.setDefinition(sheet.getColumn(row, "Definition"));
     exe.setRequirements(sheet.getColumn(row, "Requirements"));
     exe.setComments(sheet.getColumn(row, "Comments"));
@@ -710,10 +713,10 @@ public class SpreadsheetParser {
     String s = sheet.getColumn(row, "Must Understand").toLowerCase();
     if (s.equals("false") || s.equals("0") || s.equals("f")
         || s.equals("n") || s.equals("no"))
-      exe.setMustUnderstand(false);
+      exe.setIsModifier(false);
     else if (s.equals("true") || s.equals("1") || s.equals("t")
         || s.equals("y") || s.equals("yes"))
-      exe.setMustUnderstand(true);
+      exe.setIsModifier(true);
     else if (!"".equals(s))
       throw new Exception("unable to process Must Understand flag: " + s
           + " in " + getLocation(row));
@@ -729,7 +732,7 @@ public class SpreadsheetParser {
 	    e.setMaxCardinality(exe.getMaxCardinality());
 	    e.setCondition(exe.getCondition());
 	    e.setBindingName(sheet.getColumn(row, "Binding"));
-	    e.setMustUnderstand(exe.isMustUnderstand());
+	    e.setIsModifier(exe.isModifier());
 	    e.setDefinition(exe.getDefinition());
 	    e.setRequirements(exe.getRequirements());
 	    e.setComments(exe.getComments());
@@ -737,14 +740,14 @@ public class SpreadsheetParser {
 	    e.setTodo(exe.getTodo());
 	    e.setExample(exe.getExample());
 	    e.setCommitteeNotes(exe.getCommitteeNotes());
-	    e.setMustUnderstand(exe.isMustUnderstand());
+	    e.setIsModifier(exe.isModifier());
 
 
 
 	    e.getTypes().clear();
 	    e.getElementByName("definition").setValue(uri);
 	    e.getElementByName("ref").ban();
-	    if (e.isMustUnderstand())
+	    if (e.isModifier())
 	      e.getElementByName("mustUnderstand").setValue("true");
 	    else
 	      e.getElementByName("mustUnderstand").ban();

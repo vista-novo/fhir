@@ -219,7 +219,7 @@ public class CompositeTypeConverter {
 		Annotations ann = buildAnnotationsFromFhirElement(element);
 
 		result.setAnnotation(ann);
-		result.setMustUnderstand(element.isMustUnderstand());
+		result.setMustUnderstand(element.isModifier());
 		result.setMustSupport(element.isMustSupport());
 
 		result.setMinCardinality(element.getMinCardinality());

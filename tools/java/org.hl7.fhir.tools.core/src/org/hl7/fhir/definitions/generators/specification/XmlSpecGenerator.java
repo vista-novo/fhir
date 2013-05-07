@@ -133,7 +133,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 	private void generateExtension(ExtensionDefn ex, Definitions definitions, String root)
 			throws Exception {
-	  if (ex.getDefinition().isMustUnderstand())
+	  if (ex.getDefinition().isModifier())
 	    write("&lt;<span style=\"text-decoration: underline\" title=\"" + Utilities.escapeXml(ex.getDefinition().getEnhancedDefinition()) + "\"><b>extension</b></span>&gt;");
 	  else
 	    write("&lt;<span title=\"" + Utilities.escapeXml(ex.getDefinition().getDefinition()) + "\"><b>extension</b></span>&gt;");
@@ -240,11 +240,11 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			en = en.replace("[x]", elem.typeCode());
 
 		if (defPage == null) {
-			if (elem.isMustUnderstand() || elem.isMustSupport())
+			if (elem.isModifier() || elem.isMustSupport())
   		  write("&lt;<span style=\"text-decoration: underline\" title=\"" + Utilities.escapeXml(elem.getEnhancedDefinition())	+ "\">");
 			else
 				write("&lt;<span title=\"" + Utilities.escapeXml(elem.getDefinition()) + "\">");
-		} else if (elem.isMustUnderstand() || elem.isMustSupport()) 
+		} else if (elem.isModifier() || elem.isMustSupport()) 
       write("&lt;<a href=\"" + (defPage + "#" + pathName + "." + en).replace("[", "_").replace("]", "_")+ "\" title=\"" + Utilities .escapeXml(elem.getEnhancedDefinition()) 
             + "\" class=\"dict\"><span style=\"text-decoration: underline\">");
 		else
@@ -254,7 +254,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		if (!elem.getTypes().isEmpty() && elem.getTypes().get(0).isXhtml()) {
 			write("<b title=\""
 					+ Utilities.escapeXml(elem.getDefinition())
-					+ "\">div</b>" +  ((elem.isMustUnderstand() || elem.isMustSupport()) ? "</span>" : "") 
+					+ "\">div</b>" +  ((elem.isModifier() || elem.isMustSupport()) ? "</span>" : "") 
 					+ (defPage == null ? "</span>" : "</a>") 
 					+ " xmlns=\"http://www.w3.org/1999/xhtml\"&lt; <span style=\"color: Gray\">&lt;!--</span> <span style=\"color: navy\">"
 					+ Utilities.escapeXml(elem.getShortDefn())
@@ -264,7 +264,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		else if (elem.hasValue()) {
 			if (defPage == null) {
 				write(en+"</span>&gt;");
-			} else if (elem.isMustUnderstand() || elem.isMustSupport())
+			} else if (elem.isModifier() || elem.isMustSupport())
 				write(en + "</span></a>&gt;");
 			else
 				write(en + "</a>&gt;");
@@ -279,7 +279,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			write("<b>" + en);
 			if (defPage == null) {
 				write("</b></span>");
-			} else if (elem.isMustUnderstand() || elem.isMustSupport())
+			} else if (elem.isModifier() || elem.isMustSupport())
 				write("</b></span></a>");
 			else
 				write("</b></a>");
@@ -480,7 +480,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			if (!first)
 				b.append("; ");
 			first = false;
-			b.append(i.getEnglish());
+			b.append("Inv-"+i.getId()+": "+i.getEnglish());
 		}
 
 		return b.toString();

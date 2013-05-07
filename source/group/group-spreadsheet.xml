@@ -125,7 +125,7 @@
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
-    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
+    <Cell><Data ss:Type="String">Is Modifier</Data></Cell>
     <Cell><Data ss:Type="String">UML</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
@@ -176,7 +176,7 @@
     <Cell><Data ss:Type="String">Group.type</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">GroupType</Data></Cell>
@@ -199,7 +199,7 @@
     <Cell><Data ss:Type="String">Group.actual</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">boolean</Data></Cell>
     <Cell ss:StyleID="s67"/>
@@ -282,7 +282,7 @@
     <Cell><Data ss:Type="String">Group.characteristic.type</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">GroupCharacteristicType</Data></Cell>
@@ -298,7 +298,7 @@
     <Cell><Data ss:Type="String">Group.characteristic.value[x]</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">CodeableConcept|string|boolean|Range</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">GroupCharacteristicValue</Data></Cell>
@@ -322,7 +322,8 @@
     <Cell><Data ss:Type="String">Group includes or excludes</Data></Cell>
     <Cell><Data ss:Type="String">If true, indicates the characteristic is one that is NOT held by members of the group</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s67"><Data ss:Type="String">Sometimes group membership is determined by characteristics not possessed</Data></Cell>
-    <Cell ss:Index="13" ss:StyleID="s67"><Data ss:Type="String">./valueNegationInd</Data></Cell>
+    <Cell><Data ss:Type="String">This is labelled as &quot;Is Modifier&quot; because applications cannot wrongly include excluded members as included or vice versa</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">./valueNegationInd</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
     <Cell ss:Index="17" ss:StyleID="s67"/>
@@ -362,7 +363,7 @@
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>5</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>4</LeftColumnRightPane>
+   <LeftColumnRightPane>2</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -378,7 +379,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>7</ActiveRow>
+     <ActiveRow>12</ActiveRow>
+     <ActiveCol>11</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

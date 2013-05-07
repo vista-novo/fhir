@@ -19,8 +19,8 @@
     <url value="../practitioner/@example"/>
   </practitioner>
   <prescription>
-    <type value="Prescription"/>
-    <url value="../prescription/@example"/>
+    <type value="MedicationPrescription"/>
+    <url value="../medicationprescription/@example"/>
   </prescription>
   <whenGiven>
   <start value="2012-06-01T14:30:00"/>

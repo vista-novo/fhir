@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import org.hl7.fhir.instance.model.AllergyIntolerance.Criticality;
 import org.hl7.fhir.instance.model.AllergyIntolerance.Sensitivitystatus;
+import org.hl7.fhir.instance.model.AllergyIntolerance.Sensitivitytype;
 import org.hl7.fhir.instance.model.AtomEntry;
 import org.hl7.fhir.instance.model.AtomFeed;
 import org.hl7.fhir.instance.model.Boolean;
@@ -28,6 +29,7 @@ import org.hl7.fhir.instance.model.Patient;
 import org.hl7.fhir.instance.model.Practitioner;
 import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.ResourceFactory;
+import org.hl7.fhir.instance.model.Substance;
 import org.hl7.fhir.instance.model.Visit;
 import org.w3c.dom.Element;
 
@@ -38,6 +40,7 @@ public class CCDAConverter {
 	private Convert convert;
 	private AtomFeed feed;
 	private Document document;
+	
 	public AtomFeed convert(InputStream stream) throws Exception {
 
 		cda = new CDAUtilities(stream);
@@ -94,9 +97,9 @@ public class CCDAConverter {
 			feed.setTitle(title.getTextContent());
 			document.setTitleSimple(title.getTextContent());			
 		}
-		document.setVersionId(convert.makeIdentifierFromII(cda.getChild(doc, "id")));
+		document.setVersionIdentifier(convert.makeIdentifierFromII(cda.getChild(doc, "id")));
 		if (cda.getChild(doc, "setId") != null)
-			document.setId(convert.makeIdentifierFromII(cda.getChild(doc, "setId")));
+			document.setIdentifier(convert.makeIdentifierFromII(cda.getChild(doc, "setId")));
 			
 		document.setCreated(convert.makeInstantFromTS(cda.getChild(doc, "effectiveTime")));
 		document.setType(convert.makeCodeableConceptFromCD(cda.getChild(doc, "code")));
@@ -262,8 +265,8 @@ public class CCDAConverter {
 			ListEntryComponent item = list.new ListEntryComponent();
 			list.getEntry().add(item);
 			item.setItem(Factory.makeResourceReference("AllergyIntolerance", "#a"+i.toString()));
-//			for (Element e : cda.getChildren(concern, "id"))
-//				ai.getIdentifier().add(convert.makeIdentifierFromII(e));
+			for (Element e : cda.getChildren(concern, "id"))
+				ai.setIdentifier(convert.makeIdentifierFromII(e));
 			String s = cda.getStatus(concern);
 			if ("active".equals(s))
   			ai.setStatusSimple(Sensitivitystatus.confirmed);
@@ -281,13 +284,22 @@ public class CCDAConverter {
 					convert.makePeriodFromIVL(cda.getChild(concern, "effectiveTime")), false));
 			Element obs = cda.getChild(cda.getChild(concern, "entryRelationship"), "observation");
 			cda.checkTemplateId(obs, "2.16.840.1.113883.10.20.22.4.7");
-			ai.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/allergy-category", 
-					convert.makeCodeableConceptFromCD(cda.getChild(concern, "value")), false));
+			CodeableConcept type = convert.makeCodeableConceptFromCD(cda.getChild(obs, "value"));
+			String ss = type.getCoding().get(0).getCode().getValue();
+			if (ss.equals("416098002") || ss.equals("414285001"))
+				ai.setSensitivityTypeSimple(Sensitivitytype.allergy);
+			else if (ss.equals("59037007") || ss.equals("235719002"))
+				ai.setSensitivityTypeSimple(Sensitivitytype.intolerance);
+			else
+				ai.setSensitivityTypeSimple(Sensitivitytype.unknown);
+			ai.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/allergy-category", type, false));
 			ai.setCriticalitySimple(readCriticality(cda.getSeverity(obs)));
-			// now we overwrite the previous determined status with the problem status
-			// that is, after we already ignored obs.statusCode
+			Substance subst = new Substance();
+			subst.setType(convert.makeCodingFromCV(cda.getDescendent(obs, "participant/participantRole/playingEntity/code"))); 
+			subst.setXmlId("s1");
+		  ai.getContained().add(subst);
+			ai.setSubstance(Factory.makeResourceReference("Substance", "#s1"));
 			
-
 		}
 		
 		
@@ -298,7 +310,6 @@ public class CCDAConverter {
 		s.setContent(Factory.makeResourceReference("List", addResource(list, "Allergies, Adverse Reactions, Alerts", UUID.randomUUID().toString())));
 		return s;
   }
-
 
 	private Criticality readCriticality(String severity) {
 		if ("255604002".equals(severity)) // Mild 

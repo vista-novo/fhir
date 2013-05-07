@@ -359,41 +359,43 @@ public class SourceParser {
 		List<TypeRef> ts = tp.parse(n);
 		definitions.getKnownTypes().addAll(ts);
 
-		TypeRef t = ts.get(0);
-		File csv = new CSFile(dtDir + t.getName().toLowerCase() + ".xml");
-		if (csv.exists()) {
-			SpreadsheetParser p = new SpreadsheetParser(
-					new CSFileInputStream(csv), csv.getName(), definitions,
-					srcDir, logger, forPublication);
-			ElementDefn el = p.parseCompositeType();
-			map.put(t.getName(), el);
-			el.getAcceptableGenericTypes().addAll(ts.get(0).getParams());
-			return el.getName();
-		} else {
-			String p = ini.getStringProperty("types", n);
-			csv = new CSFile(dtDir + p.toLowerCase() + ".xml");
-			if (!csv.exists())
-				throw new Exception("unable to find a definition for " + n + " in " + p);
-			XLSXmlParser xls = new XLSXmlParser(new CSFileInputStream(csv),
-					csv.getAbsolutePath());
-			Sheet sheet = xls.getSheets().get("Restrictions");
-			boolean found = false;
-			for (int i = 0; i < sheet.rows.size(); i++) {
-				if (sheet.getColumn(i, "Name").equals(n)) {
-					found = true;
-					Invariant inv = new Invariant();
-					inv.setId(n);
-					inv.setEnglish(sheet.getColumn(i,"Rules"));
-					inv.setOcl(sheet.getColumn(i, "OCL"));
-					inv.setXpath(sheet.getColumn(i, "XPath"));
-					definitions.getConstraints().put(n,
-							new DefinedCode(n, sheet.getColumn(i, "Rules"), p));
-					definitions.getConstraintInvariants().put(n,inv);
-				}
-			}
-			if (!found)
-				throw new Exception("Unable to find definition for " + n);
-			return n;
+		try {
+		  TypeRef t = ts.get(0);
+		  File csv = new CSFile(dtDir + t.getName().toLowerCase() + ".xml");
+		  if (csv.exists()) {
+		    SpreadsheetParser p = new SpreadsheetParser(new CSFileInputStream(csv), csv.getName(), definitions, srcDir, logger, forPublication);
+		    ElementDefn el = p.parseCompositeType();
+		    map.put(t.getName(), el);
+		    el.getAcceptableGenericTypes().addAll(ts.get(0).getParams());
+		    return el.getName();
+		  } else {
+		    String p = ini.getStringProperty("types", n);
+		    csv = new CSFile(dtDir + p.toLowerCase() + ".xml");
+		    if (!csv.exists())
+		      throw new Exception("unable to find a definition for " + n + " in " + p);
+		    XLSXmlParser xls = new XLSXmlParser(new CSFileInputStream(csv),
+		        csv.getAbsolutePath());
+		    Sheet sheet = xls.getSheets().get("Restrictions");
+		    boolean found = false;
+		    for (int i = 0; i < sheet.rows.size(); i++) {
+		      if (sheet.getColumn(i, "Name").equals(n)) {
+		        found = true;
+		        Invariant inv = new Invariant();
+		        inv.setId(n);
+		        inv.setEnglish(sheet.getColumn(i,"Rules"));
+		        inv.setOcl(sheet.getColumn(i, "OCL"));
+		        inv.setXpath(sheet.getColumn(i, "XPath"));
+		        definitions.getConstraints().put(n,
+		            new DefinedCode(n, sheet.getColumn(i, "Rules"), p));
+		        definitions.getConstraintInvariants().put(n,inv);
+		      }
+		    }
+		    if (!found)
+		      throw new Exception("Unable to find definition for " + n);
+		    return n;
+		  }
+		} catch (Exception e) {
+		  throw new Exception("Unable to load "+n+": "+e.getMessage(), e);
 		}
 	}
 

@@ -111,7 +111,7 @@
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv</Data></Cell>
-    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
+    <Cell><Data ss:Type="String">Is Modifier</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
@@ -138,8 +138,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Message.identifier</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">id</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Id of this message</Data></Cell>
     <Cell><Data ss:Type="String">The identifier of this message</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">This must be unique within the scope of this stream of messages</Data></Cell>
@@ -148,8 +147,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Message.instant</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">instant</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">instant</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Instant the message was sent</Data></Cell>
     <Cell><Data ss:Type="String">Instant the message was sent</Data></Cell>
     <Cell><Data ss:Type="String">Allows limited detection of out-of-order and delayed transmission.  Also supports audit.</Data></Cell>
@@ -181,8 +179,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Message.response.identifier</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">id</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Id of original message</Data></Cell>
     <Cell><Data ss:Type="String">The id of the message that this a response to</Data></Cell>
     <Cell><Data ss:Type="String">Allows receiver to know what message is being responded to</Data></Cell>
@@ -385,8 +382,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="240">
     <Cell><Data ss:Type="String">Message.data</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">Resource(Any)</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Resource(Any)</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">The actual content of the message</Data></Cell>
     <Cell><Data ss:Type="String">The actual data of the message - a reference to the root/focus class of the event. </Data></Cell>
     <Cell><Data ss:Type="String">Every message event is about actual data, a single resource, that is identified in the definition of the event, and perhaps some or all linked resources</Data></Cell>
@@ -406,7 +402,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>22</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -419,11 +415,11 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

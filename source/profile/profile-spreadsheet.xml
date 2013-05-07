@@ -124,7 +124,7 @@
     <Cell><Data ss:Type="String">Inv</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
-    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
+    <Cell><Data ss:Type="String">Is Modifier</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">!UML</Data></Cell>
@@ -216,7 +216,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Profile.status</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Yes</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">up</Data></Cell>
     <Cell><Data ss:Type="String">up</Data></Cell>
     <Cell><Data ss:Type="String">Current status</Data></Cell>
@@ -226,7 +226,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Profile.status.code</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Yes</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">ResourceProfileStatus</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">draft | testing | review | production | withdrawn | superseded</Data></Cell>
@@ -1123,7 +1123,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>23</TopRowBottomPane>
+   <TopRowBottomPane>67</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -1140,7 +1140,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>77</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

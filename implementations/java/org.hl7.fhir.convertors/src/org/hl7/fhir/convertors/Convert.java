@@ -70,6 +70,8 @@ public class Convert {
 			return "http://hl7.org/fhir/sid/icd-9";
 		if (r.equals("2.16.840.1.113883.6.73"))
 			return "http://hl7.org/fhir/sid/atc";
+		if (r.equals("2.16.840.1.113883.6.88"))
+			return "http://www.nlm.nih.gov/research/umls/rxnorm"; // todo: confirm this
 		if (r.startsWith("2.16.840.1.113883.12."))
 			return "http://hl7.org/fhir/sid/v2-"+r.substring(21);
 		else
@@ -97,7 +99,8 @@ public class Convert {
 	  for (Element e : cda.getChildren(cv, "translation"))
 	    cc.getCoding().add(makeCodingFromCV(e));
 	  if (cda.getChild(cv, "originalText") != null) {
-	  	cc.setTextSimple(cda.getChild(cv, "originalText").getTextContent());
+	  	String ot = cda.getChild(cv, "originalText").getTextContent().trim();
+			cc.setTextSimple(Utilities.noString(ot) ? null : ot);
 	  }
 	  return cc;
   }

@@ -50,7 +50,7 @@ public class ElementDefn {
 	private Integer minCardinality;
 	private Integer maxCardinality;
 	private List<Invariant> statedInvariants = new ArrayList<Invariant>(); // a reference to an invariant defined on another element, but which constrains this one
-	private boolean mustUnderstand;
+	private boolean modifier;
 	private boolean mustSupport;
 
 	private Map<String, String> mappings = new HashMap<String, String>();
@@ -89,7 +89,7 @@ public class ElementDefn {
 		minCardinality = pattern.minCardinality;
 		maxCardinality = pattern.maxCardinality;
 		statedInvariants.addAll(pattern.statedInvariants);
-		mustUnderstand = pattern.mustUnderstand;
+		modifier = pattern.modifier;
 		mustSupport = pattern.mustSupport;
 
 		bindingName = pattern.bindingName;
@@ -121,12 +121,12 @@ public class ElementDefn {
 		return condition != null && !"".equals(condition);
 	}
 
-	public boolean isMustUnderstand() {
-		return mustUnderstand;
+	public boolean isModifier() {
+		return modifier;
 	}
 
-	public void setMustUnderstand(boolean mustUnderstand) {
-		this.mustUnderstand = mustUnderstand;
+	public void setIsModifier(boolean mustUnderstand) {
+		this.modifier = mustUnderstand;
 	}
 
 	public String getTodo() {
@@ -151,9 +151,9 @@ public class ElementDefn {
 	}
 
 	public String getEnhancedDefinition() {
-	  if (isMustUnderstand() && isMustSupport())
+	  if (isModifier() && isMustSupport())
       return getDefinition() + " (this element must be supported and understood)";
-    else if (isMustUnderstand())
+    else if (isModifier())
       return getDefinition() + " (this element must be understood)";
     else if (isMustSupport())
       return getDefinition() + " (this element must be supported)";

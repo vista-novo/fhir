@@ -111,7 +111,7 @@
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
-    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
+    <Cell><Data ss:Type="String">Is Modifier</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
@@ -147,7 +147,8 @@
     <Cell><Data ss:Type="String">error | warning | information&#10;</Data></Cell>
     <Cell><Data ss:Type="String">Indicates whether the issue indicates a variation from successful processing</Data></Cell>
     <Cell><Data ss:Type="String">Indicates how relevant the issue is to the overall success of the action.</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">./typeCode[parent::AcknowledgmentDetail] or unique(./inboundRelationship[parent::Observation and typeCode='SUBJ' and isNormalActRelationship()]/source[classCode=&quot;OBS&quot; and moodCode=&quot;EVN&quot; and implies(code, ActCode#SEV and isNormalAct())/value[xsi:type=&quot;CD&quot;]</Data></Cell>
+    <Cell><Data ss:Type="String">This is labelled as &quot;Is Modifier&quot; because applications should not confuse hints and warnings with errors</Data></Cell>
+    <Cell><Data ss:Type="String">./typeCode[parent::AcknowledgmentDetail] or unique(./inboundRelationship[parent::Observation and typeCode='SUBJ' and isNormalActRelationship()]/source[classCode=&quot;OBS&quot; and moodCode=&quot;EVN&quot; and implies(code, ActCode#SEV and isNormalAct())/value[xsi:type=&quot;CD&quot;]</Data></Cell>
     <Cell><Data ss:Type="String">ERR-4</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="150">
@@ -204,7 +205,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>3</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -217,11 +218,12 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>14</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

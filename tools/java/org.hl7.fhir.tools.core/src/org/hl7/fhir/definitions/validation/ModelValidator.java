@@ -125,7 +125,7 @@ public class ModelValidator {
     rule(path, !e.getName().equals("entries"), "Element named \"entries\" not allowed");
     rule(path, (parentName == null) || e.getName().charAt(0) == e.getName().toLowerCase().charAt(0), "Element Names must not start with an uppercase character");
     
-    warning(path, e.getMinCardinality() > 0 || !e.isMustUnderstand(), "Elements that are labled 'isModifier' should not have a minimum cardinality of 0");
+    hint(path, !e.isModifier(), "isModifier, minimum cardinality = "+e.getMinCardinality().toString());
     
     if( e.getShortDefn().length() > 0)
 		{

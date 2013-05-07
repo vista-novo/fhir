@@ -58,9 +58,8 @@
       </coding>
     </code>
     <content>
-      <!-- we really need a different resource here, but it's not yet defined -->
-      <type value="Prescription"/> 
-      <url value="../prescription/@example"/>
+      <type value="MedicationAdministration"/> 
+      <url value="../medicationadministration/@example"/>
     </content>
   </section>
 </Document>

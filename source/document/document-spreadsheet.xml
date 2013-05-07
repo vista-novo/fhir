@@ -20,7 +20,6 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>5040</WindowTopX>
   <WindowTopY>5505</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -95,7 +94,7 @@
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
-    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
+    <Cell><Data ss:Type="String">Is Modifier</Data></Cell>
     <Cell><Data ss:Type="String">UML</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
@@ -504,7 +503,8 @@
     <Cell ss:Index="8"><Data ss:Type="String">If this document replaces another</Data></Cell>
     <Cell><Data ss:Type="String">Identifies the document this document supersedes, if any.</Data></Cell>
     <Cell><Data ss:Type="String">Used to establish relationships between documents to determine which is the most current/authoritative.</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">unique(highest(./outboundRelationship[typeCode=&quot;RPLC and isNormalActRelationship()], priorityNumber)/target[classCode=&quot;DOC&quot; and moodCode=&quot;EVN&quot; and isNormalAct]/id[isNormalDatatype() and displayable=&quot;false&quot; and scope=&quot;OBJ&quot; and reliability=&quot;ISS&quot;])</Data></Cell>
+    <Cell><Data ss:Type="String">This is labelled as &quot;Is Modifier&quot; because applications must be aware of document replacement semantics and behave appropriately</Data></Cell>
+    <Cell><Data ss:Type="String">unique(highest(./outboundRelationship[typeCode=&quot;RPLC and isNormalActRelationship()], priorityNumber)/target[classCode=&quot;DOC&quot; and moodCode=&quot;EVN&quot; and isNormalAct]/id[isNormalDatatype() and displayable=&quot;false&quot; and scope=&quot;OBJ&quot; and reliability=&quot;ISS&quot;])</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="String">!Document.enterer</Data></Cell>
@@ -519,7 +519,6 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Document.provenance</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource(Provenance)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Additional provenance about the document and it's parts</Data></Cell>
     <Cell><Data ss:Type="String">Additional provenance about the document and the resources that are the sections</Data></Cell>
@@ -600,7 +599,8 @@
     <Cell ss:Index="8"><Data ss:Type="String">If section different to document</Data></Cell>
     <Cell><Data ss:Type="String">Identifies the primary subject of the section.  </Data></Cell>
     <Cell><Data ss:Type="String">Subjects can vary within one document, for example mother/baby, patient &amp; relatives, etc.</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">unique(./participation[typeCode=&quot;SBJ&quot; and isNormalParticipation]/role[typeCode=&quot;PAT&quot;])&#10;or&#10;unique(./participation[typeCode=&quot;SBJ&quot; and isNormalParticipation]/role[typeCode=&quot;IDENT&quot;]/player[determinerCode=&quot;INST&quot; and classCode=(&quot;DEV&quot;, &quot;ORG&quot;) and isNormalEntity()])</Data></Cell>
+    <Cell><Data ss:Type="String">This is labelled as &quot;Is Modifier&quot; because applications must be aware if the subject changes for a particular section</Data></Cell>
+    <Cell><Data ss:Type="String">unique(./participation[typeCode=&quot;SBJ&quot; and isNormalParticipation]/role[typeCode=&quot;PAT&quot;])&#10;or&#10;unique(./participation[typeCode=&quot;SBJ&quot; and isNormalParticipation]/role[typeCode=&quot;IDENT&quot;]/player[determinerCode=&quot;INST&quot; and classCode=(&quot;DEV&quot;, &quot;ORG&quot;) and isNormalEntity()])</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="String">!Document.section.informant</Data></Cell>
@@ -616,7 +616,6 @@
     <Cell><Data ss:Type="String">Document.section.content</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource(Any)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">The actual data for the section</Data></Cell>
     <Cell><Data ss:Type="String">Identifies the discrete data that provides the content for the section.</Data></Cell>
@@ -654,6 +653,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -673,8 +673,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>0</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -826,12 +826,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>11</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

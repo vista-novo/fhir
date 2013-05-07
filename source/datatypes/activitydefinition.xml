@@ -122,7 +122,7 @@
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
-    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
+    <Cell><Data ss:Type="String">Is Modifier</Data></Cell>
     <Cell><Data ss:Type="String">UML</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
@@ -151,7 +151,7 @@
     <Cell><Data ss:Type="String">ActivityDefinition.category</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">ActivityDefinitionCategory</Data></Cell>
@@ -305,7 +305,7 @@
     <Cell><Data ss:Type="String">ActivityDefinition.details</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s67"/>
@@ -467,11 +467,10 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>1</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>

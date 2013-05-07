@@ -31,9 +31,13 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -69,17 +73,49 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 		tableRow("Definition", e.getDefinition());
 		tableRow("Control", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
 		tableRow("Type", type + (conceptDomain != "" ? " from "+conceptDomain : ""));
-		tableRow("Must Understand", displayBoolean(e.isMustUnderstand()));
+		tableRow("Must Understand", displayBoolean(e.isModifier()));
 		tableRow("Requirements", e.getRequirements());
     tableRow("Aliases", toSeperatedString(e.getAliases()));
-		tableRow("Comments", e.getComments());
+    tableRow("Comments", e.getComments());
+    tableRowNE("Invariants", invariants(e.getInvariants(), e.getStatedInvariants()));
 //		tableRow("RIM Mapping", e.getRimMapping());
 //    tableRow("v2 Mapping", e.getV2Mapping());
 		tableRow("To Do", e.getTodo());
 		
 	}
 	
-	private String toSeperatedString(List<String> list) {
+	private String invariants(Map<String, Invariant> invariants, List<Invariant> stated) {
+	  StringBuilder s = new StringBuilder();
+	  if (invariants.size() > 0) {
+	    s.append("<b>Defined on this element</b><br/>\r\n");
+	    List<Integer> ids = new ArrayList<Integer>();
+	    for (String id : invariants.keySet())
+	      ids.add(Integer.parseInt(id));
+	    Collections.sort(ids);
+	    boolean b = false;
+	    for (Integer i : ids) {
+	      Invariant inv = invariants.get(i.toString());
+	      if (b)
+	        s.append("<br/>");
+	      s.append("<b>Inv-"+i.toString()+"</b>: "+Utilities.escapeXml(inv.getEnglish())+" (xpath: "+Utilities.escapeXml(inv.getXpath())+")");
+	      b = true;
+	    }
+	  }
+    if (stated.size() > 0) {
+      s.append("<b>Affect this element</b><br/>\r\n");
+      boolean b = false;
+      for (Invariant id : stated) {
+        if (b)
+          s.append("<br/>");
+        s.append("<b>Inv-"+id.getId().toString()+"</b>: "+Utilities.escapeXml(id.getEnglish())+" (xpath: "+Utilities.escapeXml(id.getXpath())+")");
+        b = true;
+      }
+    }
+	  
+    return s.toString();
+  }
+
+  private String toSeperatedString(List<String> list) {
 	  if (list.size() == 0)
 	    return "";
 	  else {
@@ -109,6 +145,11 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	}
 
 	
+  private void tableRowNE(String name, String value) throws IOException {
+    if (value != null && !"".equals(value))
+      write("  <tr><td>"+name+"</td><td>"+value+"</td></tr>\r\n");
+  }
+
 
 	private String describeType(ElementDefn e) {
 		StringBuilder b = new StringBuilder();

@@ -20,7 +20,6 @@
   <WindowWidth>9570</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6195</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -98,7 +97,7 @@
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
-    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
+    <Cell><Data ss:Type="String">Is Modifier</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
@@ -142,7 +141,7 @@
     <Cell><Data ss:Type="String">Resource(Patient|Practitioner|Device|Group)</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">If all resources belong to this subject</Data></Cell>
     <Cell><Data ss:Type="String">Optionally specifies that for this category, all resources belong to this subject</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">This is must-Understand because categories may either be scoped to a particular subject or not. If they are, systems must observe this restriction</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">This is labelled as Is Modifier because categories may either be scoped to a particular subject or not. If they are, systems must observe this restriction</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -152,11 +151,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <RangeSelection>R3C1:R4C1</RangeSelection>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -293,7 +293,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

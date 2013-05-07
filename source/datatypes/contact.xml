@@ -19,7 +19,6 @@
   <WindowWidth>25635</WindowWidth>
   <WindowTopX>2640</WindowTopX>
   <WindowTopY>2655</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -108,7 +107,7 @@
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
-    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
+    <Cell><Data ss:Type="String">Is Modifier</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
@@ -160,7 +159,8 @@
     <Cell><Data ss:Type="String">How to use this address</Data></Cell>
     <Cell><Data ss:Type="String">Identifies the context for the address</Data></Cell>
     <Cell><Data ss:Type="String">Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">unique(./use)</Data></Cell>
+    <Cell><Data ss:Type="String">This is labelled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old contact etc for a current/permanent one. Applications can assume that a contact is not temporary or old unless it explicitly says that it is</Data></Cell>
+    <Cell><Data ss:Type="String">unique(./use)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Contact.period</Data></Cell>
@@ -178,11 +178,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>5</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -222,7 +223,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

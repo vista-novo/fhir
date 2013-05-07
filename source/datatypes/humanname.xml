@@ -117,7 +117,7 @@
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
-    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
+    <Cell><Data ss:Type="String">Is Modifier</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
@@ -163,7 +163,7 @@
     <Cell ss:Index="7"><Data ss:Type="String">Text representation of the full name</Data></Cell>
     <Cell><Data ss:Type="String">A full text representation of the name</Data></Cell>
     <Cell ss:Index="10" ss:StyleID="s69"><Data ss:Type="String">A renderable, unencoded form</Data></Cell>
-    <Cell><Data ss:Type="String">Can provide both a text representation and structured parts</Data></Cell>
+    <Cell><Data ss:Type="String">Can provide both a text representation and structured parts. This is labelled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old name etc for a current/permanent one. Applications can assume that a name is not temporary or old unless it explicitly says that it is&#10;</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">./formatted</Data></Cell>
    </Row>
@@ -237,8 +237,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

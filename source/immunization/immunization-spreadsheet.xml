@@ -20,7 +20,6 @@
   <WindowWidth>18765</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -140,7 +139,7 @@
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
-    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
+    <Cell><Data ss:Type="String">Is Modifier</Data></Cell>
     <Cell><Data ss:Type="String">UML</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
@@ -391,9 +390,8 @@
     <Cell ss:StyleID="s62"/>
     <Cell><Data ss:Type="String">Exemption(s)/ Parent Refusal(s) of Vaccine Product Type Administered</Data></Cell>
     <Cell ss:StyleID="s73"/>
-    <Cell ss:Index="11" ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Need to support reasons why a vaccine was administered as well.</Data></Cell>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="11"><Data ss:Type="String">Need to support reasons why a vaccine was administered as well.</Data></Cell>
+    <Cell ss:Index="13" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">RXA-20</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:Index="18" ss:StyleID="s72"/>
@@ -558,12 +556,13 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <LeftColumnRightPane>6</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -571,15 +570,15 @@
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>0</ActiveCol>
-     <RangeSelection>R3C1:R7C1</RangeSelection>
+     <ActiveRow>16</ActiveRow>
+     <ActiveCol>11</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -908,7 +907,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>

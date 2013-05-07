@@ -152,7 +152,7 @@ public class SchematronGenerator  extends TextStreamWriter {
     if (ed.getInvariants().size() > 0) {
 	    ln_i("<sch:rule context=\""+path+"\">");
 	    for (Invariant inv : ed.getInvariants().values()) {
-	      ln("<sch:assert test=\""+inv.getXpath().replace("\"", "'")+"\">"+inv.getEnglish()+"</sch:assert>");	      
+	      ln("<sch:assert test=\""+inv.getXpath().replace("\"", "'")+"\">Inv-"+inv.getId()+": "+inv.getEnglish()+"</sch:assert>");	      
 	    }
       ln_o("</sch:rule>");
       //"/f:"+root.getName()

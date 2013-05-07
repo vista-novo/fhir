@@ -168,7 +168,7 @@ public class WebMaker {
     s.append("<p>These archives only keep the more significant past versions of FHIR, and only the book form, and are provided for purposes of supporting html diff tools. A full archive history of everything is available <a href=\"http://wiki.hl7.org/index.php?title=FHIR\">through the HL7 gForge archives</a>.</p>");
     s.append("<ul>");
     for (String v : ini.getPropertyNames("Archives")) {
-      s.append("<li><a href=\"v"+v+"/fhir-book.htm\">Version "+v+"</a>, "+ini.getStringProperty("Archives", v)+". (<a " +
+      s.append("<li><a href=\"v"+v+"/index.htm\">Version "+v+"</a>, "+ini.getStringProperty("Archives", v)+". (<a " +
       		"href=\"http://www.w3.org/2007/10/htmldiff?doc1=http://www.hl7.org/implement/standards/FHIR/v"+v+"/fhir-book.htm&amp;doc2=http://www.hl7.org/implement/standards/FHIR/fhir-book.htm\">Diff with current</a>) </li>");
       if (!past.contains(v))
         past.add(v);
