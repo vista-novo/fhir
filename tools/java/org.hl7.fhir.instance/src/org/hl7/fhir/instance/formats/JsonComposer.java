@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Tue, May 7, 2013 21:55+1000 for FHIR v0.09
+// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -2033,9 +2033,9 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeResourceElements(element);
-      if (element.getIdentifier().size() > 0) {
-        openArray("identifier");
-        for (Identifier e : element.getIdentifier()) 
+      if (element.getExternalID().size() > 0) {
+        openArray("externalID");
+        for (Identifier e : element.getExternalID()) 
           composeIdentifier(null, e);
         closeArray();
       };
@@ -2089,7 +2089,7 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeResourceElements(element);
-      composeIdentifier("identifier", element.getIdentifier());
+      composeIdentifier("externalID", element.getExternalID());
       composeCodeableConcept("status", element.getStatus());
       composeResourceReference("patient", element.getPatient());
       composeResourceReference("dispenser", element.getDispenser());
@@ -2115,7 +2115,7 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElement(element);
-      composeIdentifier("identifier", element.getIdentifier());
+      composeIdentifier("externalID", element.getExternalID());
       composeCodeableConcept("status", element.getStatus());
       composeCodeableConcept("type", element.getType());
       composeQuantity("quantity", element.getQuantity());
@@ -2179,9 +2179,9 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeResourceElements(element);
-      if (element.getIdentifier().size() > 0) {
-        openArray("identifier");
-        for (Identifier e : element.getIdentifier()) 
+      if (element.getExternalID().size() > 0) {
+        openArray("externalID");
+        for (Identifier e : element.getExternalID()) 
           composeIdentifier(null, e);
         closeArray();
       };
@@ -2207,9 +2207,9 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElement(element);
-      if (element.getIdentifier().size() > 0) {
-        openArray("identifier");
-        for (Identifier e : element.getIdentifier()) 
+      if (element.getExternalID().size() > 0) {
+        openArray("externalID");
+        for (Identifier e : element.getExternalID()) 
           composeIdentifier(null, e);
         closeArray();
       };
@@ -2243,9 +2243,9 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElement(element);
-      if (element.getIdentifier().size() > 0) {
-        openArray("identifier");
-        for (Identifier e : element.getIdentifier()) 
+      if (element.getExternalID().size() > 0) {
+        openArray("externalID");
+        for (Identifier e : element.getExternalID()) 
           composeIdentifier(null, e);
         closeArray();
       };
@@ -2271,9 +2271,9 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeResourceElements(element);
-      if (element.getIdentifier().size() > 0) {
-        openArray("identifier");
-        for (Identifier e : element.getIdentifier()) 
+      if (element.getExternalID().size() > 0) {
+        openArray("externalID");
+        for (Identifier e : element.getExternalID()) 
           composeIdentifier(null, e);
         closeArray();
       };

@@ -3001,7 +3001,7 @@
             <referenceRange>
               <rangeRange>
                 <low>
-                  <value value="0"/>
+                  <value value="0.1"/>
                   <units value="umol/L"/>
                 </low>
                 <high>

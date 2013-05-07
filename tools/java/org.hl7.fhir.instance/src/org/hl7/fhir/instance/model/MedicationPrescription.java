@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, May 7, 2013 21:55+1000 for FHIR v0.09
+// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -42,7 +42,7 @@ public class MedicationPrescription extends Resource {
         /**
          * External identifier - FHIR will generate its own internal IDs which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an erntire workflow process where records have to be tracked through an entire system.
          */
-        private List<Identifier> identifier = new ArrayList<Identifier>();
+        private List<Identifier> externalID = new ArrayList<Identifier>();
 
         /**
          * Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
@@ -54,8 +54,8 @@ public class MedicationPrescription extends Resource {
          */
         private List<MedicationPrescriptionAdministrationDosageComponent> dosage = new ArrayList<MedicationPrescriptionAdministrationDosageComponent>();
 
-        public List<Identifier> getIdentifier() { 
-          return this.identifier;
+        public List<Identifier> getExternalID() { 
+          return this.externalID;
         }
 
         public ResourceReference getMedication() { 
@@ -172,7 +172,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
         /**
          * External identifier - FHIR will generate its own internal IDs which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an erntire workflow process where records have to be tracked through an entire system.
          */
-        private List<Identifier> identifier = new ArrayList<Identifier>();
+        private List<Identifier> externalID = new ArrayList<Identifier>();
 
         /**
          * Design Comments: This indicates the validity period of a prescription (stale dating the Prescription) 
@@ -198,8 +198,8 @@ In some situations, this attribute may be used instead of quantity to identify t
          */
         private Duration expectedSupplyDuration;
 
-        public List<Identifier> getIdentifier() { 
-          return this.identifier;
+        public List<Identifier> getExternalID() { 
+          return this.externalID;
         }
 
         public Period getValidityPeriod() { 
@@ -282,7 +282,7 @@ In some situations, this attribute may be used instead of quantity to identify t
     /**
      * External identifier - FHIR will generate its own internal IDs which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an erntire workflow process where records have to be tracked through an entire system.
      */
-    private List<Identifier> identifier = new ArrayList<Identifier>();
+    private List<Identifier> externalID = new ArrayList<Identifier>();
 
     /**
      * A code specifying the state of the order.  Generally this will be active or completed state
@@ -329,8 +329,8 @@ In some situations, this attribute may be used instead of quantity to identify t
      */
     private MedicationPrescriptionSubstitutionComponent substitution;
 
-    public List<Identifier> getIdentifier() { 
-      return this.identifier;
+    public List<Identifier> getExternalID() { 
+      return this.externalID;
     }
 
     public CodeableConcept getStatus() { 

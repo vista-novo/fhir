@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Tue, May 7, 2013 21:55+1000 for FHIR v0.09
+// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -1782,8 +1782,8 @@ public class XmlComposer extends XmlComposerBase {
       composeResourceAttributes(element);
       xml.open(FHIR_NS, name);
       composeResourceElements(element);
-      for (Identifier e : element.getIdentifier()) 
-        composeIdentifier("identifier", e);
+      for (Identifier e : element.getExternalID()) 
+        composeIdentifier("externalID", e);
       if (element.getStatus() != null)
         composeEnumeration("status", element.getStatus(), new MedicationAdministration().new MedAdmStatusEnumFactory());
       composeResourceReference("patient", element.getPatient());
@@ -1824,7 +1824,7 @@ public class XmlComposer extends XmlComposerBase {
       composeResourceAttributes(element);
       xml.open(FHIR_NS, name);
       composeResourceElements(element);
-      composeIdentifier("identifier", element.getIdentifier());
+      composeIdentifier("externalID", element.getExternalID());
       composeCodeableConcept("status", element.getStatus());
       composeResourceReference("patient", element.getPatient());
       composeResourceReference("dispenser", element.getDispenser());
@@ -1843,7 +1843,7 @@ public class XmlComposer extends XmlComposerBase {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
       composeElementElements(element);
-      composeIdentifier("identifier", element.getIdentifier());
+      composeIdentifier("externalID", element.getExternalID());
       composeCodeableConcept("status", element.getStatus());
       composeCodeableConcept("type", element.getType());
       composeQuantity("quantity", element.getQuantity());
@@ -1894,8 +1894,8 @@ public class XmlComposer extends XmlComposerBase {
       composeResourceAttributes(element);
       xml.open(FHIR_NS, name);
       composeResourceElements(element);
-      for (Identifier e : element.getIdentifier()) 
-        composeIdentifier("identifier", e);
+      for (Identifier e : element.getExternalID()) 
+        composeIdentifier("externalID", e);
       composeCodeableConcept("status", element.getStatus());
       composeResourceReference("patient", element.getPatient());
       composeResourceReference("prescriber", element.getPrescriber());
@@ -1915,8 +1915,8 @@ public class XmlComposer extends XmlComposerBase {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
       composeElementElements(element);
-      for (Identifier e : element.getIdentifier()) 
-        composeIdentifier("identifier", e);
+      for (Identifier e : element.getExternalID()) 
+        composeIdentifier("externalID", e);
       composeResourceReference("medication", element.getMedication());
       for (MedicationPrescription.MedicationPrescriptionAdministrationDosageComponent e : element.getDosage()) 
         composeMedicationPrescriptionMedicationPrescriptionAdministrationDosageComponent("dosage", e);
@@ -1945,8 +1945,8 @@ public class XmlComposer extends XmlComposerBase {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
       composeElementElements(element);
-      for (Identifier e : element.getIdentifier()) 
-        composeIdentifier("identifier", e);
+      for (Identifier e : element.getExternalID()) 
+        composeIdentifier("externalID", e);
       composePeriod("validityPeriod", element.getValidityPeriod());
       composeInteger("numberOfRepeatsAllowed", element.getNumberOfRepeatsAllowed());
       composeQuantity("quantity", element.getQuantity());
@@ -1971,8 +1971,8 @@ public class XmlComposer extends XmlComposerBase {
       composeResourceAttributes(element);
       xml.open(FHIR_NS, name);
       composeResourceElements(element);
-      for (Identifier e : element.getIdentifier()) 
-        composeIdentifier("identifier", e);
+      for (Identifier e : element.getExternalID()) 
+        composeIdentifier("externalID", e);
       composeResourceReference("patient", element.getPatient());
       composeBoolean("wasNotGiven", element.getWasNotGiven());
       for (CodeableConcept e : element.getReasonNotGiven()) 

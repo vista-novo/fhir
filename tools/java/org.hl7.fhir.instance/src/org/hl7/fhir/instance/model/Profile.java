@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, May 7, 2013 21:55+1000 for FHIR v0.09
+// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -157,11 +157,11 @@ public class Profile extends Resource {
 
     public enum SearchParamType {
         integer, // Search parameter must be a simple whole number
-        string, // Search parameter is a simple string, like a name part (search usually functions on partial matches)
-        text, // Search parameter is on a long string (i.e. a text filter type search)
+        string, // Search parameter is a simple string, like a name part. Search is case-insensitive and accent-insensitive. May match just the start of a string. String parameters may contain spaces and are delineated by double quotes, e.g. "van Zanten".
+        text, // Search parameter is on a long string. Used for text filter type search: it functions on searches within a body of text and may contain spaces to separate words. May match even if the separate words are found out of order. Text parameters are delineated by double quotes.
         date, // Search parameter is on a date (and should support -before and -after variants). The date format is the standard XML format, though other formats may be supported
-        token, // Search parameter is on a fixed value string (i.e. search has an exact match)
-        qtoken, // Search parameter is a pair of fixed value strings, namespace and value, separated by a "#". The namespace is usually a uri, such as one of the defined code systems and is optional when searching
+        qtoken, // Search parameter on a coded element or identifier. May be used to search through the text, displayname, code and code/codesystem (for codes) and label, system and key (for identifier). It's value is either a string or a pair of namespace and value, separated by a "!".
+        reference, // A pair of resource type and resource id, separated by "/". Matches when the resource reference resolves to a resource of the given type and id.
         Null; // added to help the parsers
         public static SearchParamType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
@@ -174,10 +174,10 @@ public class Profile extends Resource {
           return text;
         if ("date".equals(codeString))
           return date;
-        if ("token".equals(codeString))
-          return token;
         if ("qtoken".equals(codeString))
           return qtoken;
+        if ("reference".equals(codeString))
+          return reference;
         throw new Exception("Unknown SearchParamType code '"+codeString+"'");
         }
         public String toCode() {
@@ -186,8 +186,8 @@ public class Profile extends Resource {
             case string: return "string";
             case text: return "text";
             case date: return "date";
-            case token: return "token";
             case qtoken: return "qtoken";
+            case reference: return "reference";
             default: return "?";
           }
         }
@@ -206,10 +206,10 @@ public class Profile extends Resource {
           return SearchParamType.text;
         if ("date".equals(codeString))
           return SearchParamType.date;
-        if ("token".equals(codeString))
-          return SearchParamType.token;
         if ("qtoken".equals(codeString))
           return SearchParamType.qtoken;
+        if ("reference".equals(codeString))
+          return SearchParamType.reference;
         throw new Exception("Unknown SearchParamType code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
@@ -221,10 +221,10 @@ public class Profile extends Resource {
         return "text";
       if (code == SearchParamType.date)
         return "date";
-      if (code == SearchParamType.token)
-        return "token";
       if (code == SearchParamType.qtoken)
         return "qtoken";
+      if (code == SearchParamType.reference)
+        return "reference";
       return "?";
       }
     }

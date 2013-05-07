@@ -20,6 +20,7 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>2880</WindowTopX>
   <WindowTopY>3000</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -147,7 +148,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -179,15 +179,15 @@
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">ResourceReference</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Must have a type if a url is provided</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">exists(f:type) or not(exists(f:url))</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Must have a type if a reference is provided</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">exists(f:type) or not(exists(f:reference))</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Inline</Data></Cell>
     <Cell><Data ss:Type="String">ResourceReference</Data></Cell>
-    <Cell><Data ss:Type="String">Must have a local url if the resource is provided inline</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">not(starts-with(f:url/@value, '#')) or exists(ancestor::a:content/f:*/f:contained/f:*[local-name(.)=current()/f:type/@value and @id=substring-after(current()/f:url/@value, '#')]|/f:*/f:contained/f:*[local-name(.)=current()/f:type/@value and @id=substring-after(current()/f:url/@value, '#')])</Data></Cell>
+    <Cell><Data ss:Type="String">Must have a local reference if the resource is provided inline</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">not(starts-with(f:reference/@value, '#')) or exists(ancestor::a:content/f:*/f:contained/f:*[local-name(.)=current()/f:type/@value and @id=substring-after(current()/f:reference/@value, '#')]|/f:*/f:contained/f:*[local-name(.)=current()/f:type/@value and @id=substring-after(current()/f:reference/@value, '#')])</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -197,11 +197,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -205,7 +205,7 @@ public class XSDGenerator  {
 		write("          ");
 		if (e.getTypes().size() > 1 || (e.getTypes().size() == 1 && e.getTypes().get(0).isWildcardType())) {
 			if (!e.getName().contains("[x]"))
-				throw new Exception("Element has multiple types as a choice doesn't have a [x] in the element name");
+				throw new Exception("Element "+e.getName()+" in "+root.getName()+" has multiple types as a choice doesn't have a [x] in the element name");
 			write("<xs:choice minOccurs=\""+e.getMinCardinality().toString()+"\" maxOccurs=\""+(e.unbounded() ? "unbounded" : "1")+"\" ");
 			write(">\r\n");
 			if (e.hasDefinition()) {

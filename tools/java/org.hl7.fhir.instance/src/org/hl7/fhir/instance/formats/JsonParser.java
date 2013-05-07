@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Tue, May 7, 2013 21:55+1000 for FHIR v0.09
+// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
 
 import org.hl7.fhir.instance.model.Integer;
 import org.hl7.fhir.instance.model.DateTime;
@@ -2191,10 +2191,10 @@ public class JsonParser extends JsonParserBase {
   private MedicationAdministration parseMedicationAdministration(JSONObject json) throws Exception {
     MedicationAdministration res = new MedicationAdministration();
     parseResourceProperties(json, res);
-    if (json.has("identifier")) {
-      JSONArray array = json.getJSONArray("identifier");
+    if (json.has("externalID")) {
+      JSONArray array = json.getJSONArray("externalID");
       for (int i = 0; i < array.length(); i++) {
-        res.getIdentifier().add(parseIdentifier(array.getJSONObject(i)));
+        res.getExternalID().add(parseIdentifier(array.getJSONObject(i)));
       }
     };
     if (json.has("status"))
@@ -2257,8 +2257,8 @@ public class JsonParser extends JsonParserBase {
   private MedicationDispense parseMedicationDispense(JSONObject json) throws Exception {
     MedicationDispense res = new MedicationDispense();
     parseResourceProperties(json, res);
-    if (json.has("identifier"))
-      res.setIdentifier(parseIdentifier(json.getJSONObject("identifier")));
+    if (json.has("externalID"))
+      res.setExternalID(parseIdentifier(json.getJSONObject("externalID")));
     if (json.has("status"))
       res.setStatus(parseCodeableConcept(json.getJSONObject("status")));
     if (json.has("patient"))
@@ -2287,8 +2287,8 @@ public class JsonParser extends JsonParserBase {
   private MedicationDispense.MedicationDispenseDispenseComponent parseMedicationDispenseMedicationDispenseDispenseComponent(JSONObject json, MedicationDispense owner) throws Exception {
     MedicationDispense.MedicationDispenseDispenseComponent res = owner.new MedicationDispenseDispenseComponent();
     parseElementProperties(json, res);
-    if (json.has("identifier"))
-      res.setIdentifier(parseIdentifier(json.getJSONObject("identifier")));
+    if (json.has("externalID"))
+      res.setExternalID(parseIdentifier(json.getJSONObject("externalID")));
     if (json.has("status"))
       res.setStatus(parseCodeableConcept(json.getJSONObject("status")));
     if (json.has("type"))
@@ -2361,10 +2361,10 @@ public class JsonParser extends JsonParserBase {
   private MedicationPrescription parseMedicationPrescription(JSONObject json) throws Exception {
     MedicationPrescription res = new MedicationPrescription();
     parseResourceProperties(json, res);
-    if (json.has("identifier")) {
-      JSONArray array = json.getJSONArray("identifier");
+    if (json.has("externalID")) {
+      JSONArray array = json.getJSONArray("externalID");
       for (int i = 0; i < array.length(); i++) {
-        res.getIdentifier().add(parseIdentifier(array.getJSONObject(i)));
+        res.getExternalID().add(parseIdentifier(array.getJSONObject(i)));
       }
     };
     if (json.has("status"))
@@ -2395,10 +2395,10 @@ public class JsonParser extends JsonParserBase {
   private MedicationPrescription.MedicationPrescriptionAdministrationComponent parseMedicationPrescriptionMedicationPrescriptionAdministrationComponent(JSONObject json, MedicationPrescription owner) throws Exception {
     MedicationPrescription.MedicationPrescriptionAdministrationComponent res = owner.new MedicationPrescriptionAdministrationComponent();
     parseElementProperties(json, res);
-    if (json.has("identifier")) {
-      JSONArray array = json.getJSONArray("identifier");
+    if (json.has("externalID")) {
+      JSONArray array = json.getJSONArray("externalID");
       for (int i = 0; i < array.length(); i++) {
-        res.getIdentifier().add(parseIdentifier(array.getJSONObject(i)));
+        res.getExternalID().add(parseIdentifier(array.getJSONObject(i)));
       }
     };
     if (json.has("medication"))
@@ -2435,10 +2435,10 @@ public class JsonParser extends JsonParserBase {
   private MedicationPrescription.MedicationPrescriptionDispenseComponent parseMedicationPrescriptionMedicationPrescriptionDispenseComponent(JSONObject json, MedicationPrescription owner) throws Exception {
     MedicationPrescription.MedicationPrescriptionDispenseComponent res = owner.new MedicationPrescriptionDispenseComponent();
     parseElementProperties(json, res);
-    if (json.has("identifier")) {
-      JSONArray array = json.getJSONArray("identifier");
+    if (json.has("externalID")) {
+      JSONArray array = json.getJSONArray("externalID");
       for (int i = 0; i < array.length(); i++) {
-        res.getIdentifier().add(parseIdentifier(array.getJSONObject(i)));
+        res.getExternalID().add(parseIdentifier(array.getJSONObject(i)));
       }
     };
     if (json.has("validityPeriod"))
@@ -2465,10 +2465,10 @@ public class JsonParser extends JsonParserBase {
   private MedicationStatement parseMedicationStatement(JSONObject json) throws Exception {
     MedicationStatement res = new MedicationStatement();
     parseResourceProperties(json, res);
-    if (json.has("identifier")) {
-      JSONArray array = json.getJSONArray("identifier");
+    if (json.has("externalID")) {
+      JSONArray array = json.getJSONArray("externalID");
       for (int i = 0; i < array.length(); i++) {
-        res.getIdentifier().add(parseIdentifier(array.getJSONObject(i)));
+        res.getExternalID().add(parseIdentifier(array.getJSONObject(i)));
       }
     };
     if (json.has("patient"))

@@ -172,7 +172,7 @@ public class ProfileGenerator {
     case string: return SearchParamType.string;
     case text: return SearchParamType.text;
     case date: return SearchParamType.date;
-    case token: return SearchParamType.token;
+    case token: return SearchParamType.qtoken;
     case qtoken: return SearchParamType.qtoken;
     }
     return null;
