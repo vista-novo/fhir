@@ -16,7 +16,7 @@ todo:
 
 <%maindiv%>
 <%pageheader%>
-[%onthispage General Issues#root|operations#read|Binary Support#binary|hData Information#hdata|Summary#summary%]
+[%onthispage General Issues#root|operations#read|Binary Support#binary|hData Information#hdata|Paging#paging|Summary#summary%]
 
 <h1>RESTful HTTP Details</h1>
 
@@ -346,6 +346,13 @@ This interaction searches a resource type based on some filter criteria. The int
   GET [service-url]/[resourcetype]/(?parameters) (&amp;_format=mimeType)
 </pre>
 <p>
+The search parameters are a series of name'='value pairs, separated by &amp;. 
+(See <a href="http://www.w3.org/TR/REC-html40/interact/forms.html#form-content-type">w3c html forms</a>). 
+Parameters that have no value should be ignored, e.g.:</p>
+<pre>
+  GET [service-url]/[resourcetype]/search?name=
+</pre>
+<p>
 Because of the way that some user agents treat POST requests, POST submissions are also allowed, though the semantics are exactly the 
 same as a GET operation. Search operations take a series of parameters that are encoded in the URL or as an x-multi-part-form submission
 for a POST. The return content is an <a href="resources.htm#bundle">Bundle</a> containing the results of the search as a list of resources
@@ -353,257 +360,16 @@ in a defined order.
 </p>
 <p>
 In order to allow the client to be confident about what search parameters were used as a criteria by the server, 
-the server SHALL return the parameters that were actually used in a search URL as the self link in the atom feed that is returned.
-Applications processing search results SHALL treat this self link as a mustUnderstand field. For example, if the server did not support
-some of the filters specified in the search, a client might manually apply those filters to the retrieved result set, display a warning
-message to the user or take some other action.
-</p>
-
-<a name="pages"> </a>
-<p> 
-Servers SHOULD conform to the method described in <a href="https://tools.ietf.org/html/rfc5005">RFC 5005 (Feed 
-Paging and Archiving)</a> for sending search continuation links to the client. If the server does not do this, 
-there is no way to continue the search.
-</p>
-<p>
-This example shows the third page of a search for all patients with the name "peter":
-</p>
-
-<pre>
-&lt;feed xmlns="http://www.w3.org/2005/Atom"&gt;
-  &lt;title&gt;Search Page 3&lt;/title&gt;
-  &lt;!-- This Search. url starts with base search, and adds the effective 
-    parameters, and additional parameters for search state. All searches SHALL return this value.    
-	
-	In this case, the search continuation method is that the server maintains a state, with page
-	refernces into the stateful list.
-	--&gt;
+the server SHALL return the parameters that were actually used in a search URL as the self link in the atom feed
+that is returned:</p>
+<pre class="xml">
   &lt;link rel="self" href="http://example.org/patient/search?name=peter&amp;stateid=23423443&amp;page=3"/&gt;
-
-  &lt;!-- 4 links for navigation in the search. All of these are optional, but recommended --&gt;  
-  &lt;link rel="first" href="http://example.org/patient/search?name=peter&amp;stateid=23423443&amp;page=1"/&gt;
-  &lt;link rel="previous" href="http://example.org/patient/search?name=peter&amp;stateid=23423443&amp;page=2"/&gt;
-  &lt;link rel="next" href="http://example.org/patient/search?name=peter&amp;stateid=23423443&amp;page=4"/&gt;
-  &lt;link rel="last" href="http://example.org/patient/search?name=peter&amp;stateid=23423443&amp;page=26"/&gt;
-  &lt;updated&gt;2003-12-13T18:30:02Z&lt;/updated&gt;
-
-  &lt;!-- the rest of the search results... --&gt;  
-&lt;/feed&gt;
 </pre>
+<p>Applications processing search results SHALL treat this self link as a mustUnderstand field. For example, if the server did not support
+some of the filters specified in the search, a client might manually apply those filters to the retrieved result set, display a warning
+message to the user or take some other action.</p>
 
-<p>
-The server need not use a stateful search method as shown in this example - it is at 
-the discretion of the server how to best ensure that the search continuation retains 
-integrity in the context of ongoing changes to the resources. An alternative approach
-is to use version specific references to the records on the boundaries, but this is 
-subject to continuity failures when records are updated.
-</p>
-<p>
-A server can inform the client of the total number of search matches using the <i>totalResults</i> element from the open search specification:
-</p>
-<pre>
-&lt;feed xmlns="http://www.w3.org/2005/Atom"&gt;
-  &lt;title&gt;Search Page 3&lt;/title&gt;
-  &lt;os:totalResults xmlns:os="http://a9.com/-/spec/opensearch/1.1/"&gt;1432&lt;/os:totalResults&gt;
-  
-  &lt;!-- the rest of the search results... --&gt;  
-&lt;/feed&gt;
-</pre>
-
-<h3>Search Parameters</h3>
-<p>
-Each FHIR resource type defines a set of applicable search parameters with their names, types, repeat behaviour, and meanings. 
-Mostly, the defined search parameters correspond to a single element in the resource, but this is not required, and some 
-search parameters refer to the same type of element in multiple places, or refer to derived values.
-The result of the search operation is the intersection of the resources that match the criteria specified by the different search parameters.
-Where the same parameter is specified more than once, the criteria may be interpreted as either an intersection or a union, or the server
-the should return an error. The correct action is defined along with the parameter. Parameter values are not case-sensitive.
-</p>
-<p>
-In addition, the following common search parameters apply to all resource types:
-</p>
-<table class="list">
-  <tr><td>_count : <a href="datatypes.htm#integer">integer</a></td><td><i>single</i></td><td>Number of return records requested per page. The server is not bound to return the number requested, but cannot return more</td></tr>
-  <tr><td>_id : <a href="datatypes.htm#id">token</a></td><td><i>single</i></td><td>The <a href="resources.htm#metadata">logical resource id</a> associated with the resource (must be supported by all servers)</td></tr>
-  <tr><td>_include : <a href="datatypes.htm#id">token</a></td><td><i>union</i></td><td>See below</td></tr>
-</table>
-
-
-<h3>Search Parameter Types</h3>
-<%codelist SearchParamType%>
-
-<p>
-For QToken searches:
-</p>
-<ul>
- <li><b>name=namespace#code</b> specifies matches on both the namespace and the code</li>
- <li><b>name=#code</b> matches a code that has no specified namespace</li>
- <li><b>name=code</b> matches all codes irrespective of the namespace</li>
-</ul>
-<p>
-When the QToken parameter refers to a resource reference, the correct namespace to
-use is "http://hl7.org/fhir/resource-types#[Name]", where Name is the title of the 
-resource (the <a href="terminologies.htm#resourcetypes">variant of the resource name with upper case letters</a>).
-</p>
-<p>
-For date parameters the following rules apply:
-</p>
-<ul>
- <li>The date parameter format is yyyy-mm-ddThh:nn:ss(TZ) (the standard XML format). Any degree of precision can be provided, but it must be populated from the left (e.g. can't specify a month without a year)</li>
- <li>All date parameters have an implicit -before and -after parameter. [date]=[value] searches for where the date is within
-   the given date value. [date]-after=[value] searches for all resources where the specified date is after [value]. 
-   [date]-before=[value] searches for all resources where the specified date is before [value]. </li>
- <li>The element the search refers to may be a date, a dateTime, a Period, or a Schedule. All of these time related 
-   types actually specify an interval of time, as does the search parameter itself.
-  <ul>
-    <li>For Period and Schedule, the interval of time is explicit, though the upper or lower bound may not be specified</li>
-	<li>For a date or a dateTime (and the search parameter), the interval is implicit. For example, the date 2013-01-10 specifies all the time from 00:00 on 10-Jan 2013 to immediately before 00:00 on 11-Jan 2013.</li>
-    <li>An instant (which is the same as a fully specified dateTime with milliseconds) is considered a fixed point in time with an interval smaller than the precision of the system, i.e. an interval with an effective width of 0.</li>
-   </ul>
- </li>
- <li>Date parameter searches are always matches based on the behaviour of intervals, as follows:
-   <ul>
-     <li>For [date]=[value], the requirement is that the search interval fully contains the time of the target. i.e. 2013-01-14 includes 2013-01-14T10:00 but not 2013-01-15T00:00</li>
-	 <li>For [date]-before=[value], the requirement is that the interval of the time before [value] intersects (i.e. overlaps) with the interval of time in the relevant resource element. 
-	    For instance, the resource time 2013-01-14 is included in the set of values that come before 2013-01-14T10:00, because it includes the part of 14-Jan 2013 before 10am </li>
-	 <li>For [date]-after=[value], the requirement is that the interval of the time after [value] intersects (i.e. overlaps) with the interval of time in the relevant resource element. 
-	    For instance, the resource time 2013-01-14 is included in the set of values that come after 2013-01-14T10:00, because it includes the part of 14-Jan 2013 after 10am </li>
-   </ul>
-   If the bounds of the interval are not known (i.e. a range with no start, or a schedule like "every two days" with neither start or end), 
-   then the boundaries are implicitly considered above or below calculatable time, and so these count as intersections. For instance, the
-   period from 21-Jan 2013 onwards is included in matches for date-after=2013-03-14 because it may include times after 14-Mar 2013.
- </li>
- <li>Similarly, when the date parameter is not fully specified, matches against it are based on the behaviour of intervals, where:
-	<ul>
-		<li>Dates with just the year specified are equivalent to an interval that starts at the first instant of January 1st to the last instant of December 31st, eg. 2000 is equivalent to an interval of [2000-01-01T00:00, 2000-12-31T23:59]</li>
-		<li>Dates with the year and month are equivalent to an interval that starts at the first instant of the first day of the month and ends on the last instant of the last day of the month, eg. 2000-04 is equivalent to an interval of [2000-04-01T00:00, 2000-04-30T23:59]</li>
-	</ul>
- </li>
- <li>Where possible, the system should correct for timezones when performing queries. Dates do not have timezones, and timezones 
-   should not be considered. Where both search parameters and resource element date times do not have timezones, the servers local
-   time zone should be assumed.
- </li>
- <li>
-   Note that for a Schedule data type, the specified scheduling details are ignored and only the outer limits matter. For instance, a schedule that specifies every second day between
-   31-Jan 2013 and 24-Mar 2013 includes the 1-Feb 2013, even though that is on an odd day that is not specified by the period. This is 
-   to keep the server load processing queries reasonable.
- </li>
-</ul>
-
-<h3>Search Parameter Repeat Behaviour</h3>
-<%codelist SearchRepeatBehavior%>
-
-<h3>Parameter Chaining</h3>
-<p>
-Parameters may be "chained" by appending them together separated by "." following a logical path through a graph of related resources.
-For instance, given that the resource <a href="diagnosticreport.htm">DiagnosticReport</a> has a search parameter named <i>subject</i>, 
-which is usually a reference to a <a href="patient.htm">Patient</a> resource, and the Patient resource includes a parameter 
-<i>name</i> which searches on patient name, then the search
-</p>
-<pre>
- diagnosticreport/search?subject.name=peter
-</pre>
-<p>
-is a request to return all the lab reports that have a subject whose name includes "peter". 
-</p>
-<p>
-Where a chained parameter searches a resource reference that may have more than on 
-different type of resource as it's target, the parameter chain may refer to search 
-parameters on more than one kind of resource at once. The parameters defined in FHIR
-have consistent types wherever they are used. Implementers defining their own names 
-need to be sure that they do not create unprocessible combinations.
-</p>
-<p>
-When chained parameters are repeated, the interpretation of parameter repeating behavior is that 
-defined for the first step in the chain, and if that parameter defines that the repeating behavior
-is "intersection", the intersection applies at the left most point of the chain.
-</p>
-
-<h3>Searching for Missing Values</h3>
-<p>
-Parameters that have no value should be ignored:
-</p>
-<pre>
-  GET [service-url]/[resourcetype]/search?name=
-</pre>
-<p>
-In order to support searching for missing values, for each defined parameter on a resource, there is an implicit "-missing" parameter.
-For instance, if the resource defines a parameter "gender", then there is an implicitly defined parameter "gender-missing". 
-Seaching for "gender-missing=true" will return all the resources that don't have any value for the gender parameter (which usually 
-equates to not having the relevent element in the resource). Searching for "gender-missing=false"
-will return all the resources that have a value for the "gender" parameter. 
-</p>
-
-<h3>Sorting</h3>
-<p>
-The client can indicate which order to return the results in using the parameter "search-sort". This can be set to one 
-of the search parameters. Where the search parameter returns multiple values, the lowest value will be used when ordering
-the returned records. Note that the actual sort value used is not returned explicitly by the server.
-</p>
-
-<h3>Including other resources in result (_include)</h3>
-<p>
-Clients may request that the server return additional resources related to the search results, in order to reduce the overall network
-query time. A typical case where this is useful is where the client is querying on some type of clinical resource, but for every such resource
-returned, the client will also need the subject resource that the clinical resource refers to. The client requests this by providing one or more
-_include parameters.
-</p>
-<p>  
-Each _include parameter specifies a path to a url (usually a resource reference):
-</p>
-<pre>
- diagnosticreport/search?_include=DiagnosticReport.subject&amp;_include=Patient.provider
-</pre>
-<p> 
-For each returned resource, the server collects the elements described by the path, 
-and any resources they point to that the server also holds are added to the results.
-Note that _include parameters may be recursive. For instance, a client may request to return all the 
-subjects associated with a search on lab reports, and then to include all the provider organization
-resources for the patients returned, as shown above. 
-</p>
-<p>
-Include paths are processed only in the context of a single resource - they can not include 
-paths such as Resource.name1.name2 where name2 is a name in a resource pointed to by name1.
-</p>
-<p>
-For servers, Recursive parameters are demanding and may slow the search response time significantly. 
-Servers are not obliged to honor requests to include additional resources in the search results.
-</p>
-<p>
-If the _include path matches an url that points to a resource that the server itself does 
-not hold, 
-the server may still elect to include the target of the uri reference in the returned atom feed
-as a Binary resource. For example, the include path may point to an attachment which is by reference, like this:
-</p>
-<pre>
- &lt;content&gt;
-   &lt;contentType&gt;image/jpeg&lt;/contentType&gt;
-   &lt;url&gt;http://example.org/images/2343434/234234.jpg&lt;/url&gt;
- &lt;/content&gt;
-</pre>
-<p>
-The server can retrieve the target of this reference on behalf of the client, and add this to the 
-atom feed for the convenience of the client. 
-</p>
-
-<h3>Server Conformance</h3>
-<p>
-Servers have considerable discretion with regards to supporting to search:
-</p>
-<ul>
- <li>Servers can choose which parameters to support (other than _id above)</li>
- <li>Servers can choose when and where to implement parameter chaining, and when and where they support the _include parameter</li>
- <li>Servers are able to declare additional parameters in the profiles referenced from their conformance statements. Servers should define search parameters 
-    with a "-" character in them to ensure that the names they choose do not clash with future parameters defined by this specification</li>
- <li>Servers are not required to enforce case sensitivity on parameter names, though the names are case sensitive (and URLs are generally case-sensitive)</li>
- <li>Servers may choose how many results to return, though the client can use _count as above</li>
- <li>Servers can choose how to sort the return results</li>
-</ul>
-
-<p>
-If more sophisticated searching is required, a FHIR-based service interface can be defined to enable the workflow and
-functionality desired.  
-</p>
+<p>Searches SHOULD use paging as described <a href="#paging">below</a></p>
 
 <a name="validate"> </a>
 <h2>validate</h2>
@@ -793,6 +559,7 @@ to another, so that resources are sychronised between them. Systems receiving su
 on enforcing resource integrity should note that <a href="#transaction">transaction</a> boundaries 
 are not reflected in the history list.
 </p>
+ <p>Searches SHOULD use paging as described <a href="#paging">below</a></p>
  
  <a name="binary"> </a>
 <h2>Binary Support</h2>
@@ -809,6 +576,63 @@ above, except that there is no support for the search operation.
 The _format  parameter has no meaning when used with binary 
 resources: they are always represented using their original content type.
 </p>
+
+<a name="paging"> </a>
+<h2>Paging</h2>
+<p> 
+Servers SHOULD conform to the method described in <a href="https://tools.ietf.org/html/rfc5005">RFC 5005 (Feed 
+Paging and Archiving)</a> for sending continuation links to the client when returning a bundle
+(e.g. with with history and search). If the server does not do this, there is no way to continue paging.
+</p>
+<p>
+This example shows the third page of a search result:
+</p>
+
+<pre class="xml">
+&lt;feed xmlns="http://www.w3.org/2005/Atom"&gt;
+  &lt;title&gt;Search Page 3&lt;/title&gt;
+  &lt;!-- This Search. url starts with base search, and adds the effective 
+    parameters, and additional parameters for search state. All searches SHALL return this value.    
+	
+	In this case, the search continuation method is that the server maintains a state, with page
+	refernces into the stateful list.
+	--&gt;
+  &lt;link rel="self" href="http://example.org/patient/search?name=peter&amp;stateid=23423443&amp;page=3"/&gt;
+
+  &lt;!-- 4 links for navigation in the search. All of these are optional, but recommended --&gt;  
+  &lt;link rel="first" href="http://example.org/patient/search?name=peter&amp;stateid=23423443&amp;page=1"/&gt;
+  &lt;link rel="previous" href="http://example.org/patient/search?name=peter&amp;stateid=23423443&amp;page=2"/&gt;
+  &lt;link rel="next" href="http://example.org/patient/search?name=peter&amp;stateid=23423443&amp;page=4"/&gt;
+  &lt;link rel="last" href="http://example.org/patient/search?name=peter&amp;stateid=23423443&amp;page=26"/&gt;
+  &lt;updated&gt;2003-12-13T18:30:02Z&lt;/updated&gt;
+
+  &lt;!-- the rest of the search results... --&gt;  
+&lt;/feed&gt;
+</pre>
+
+<p>
+The server need not use a stateful paging method as shown in this example - it is at 
+the discretion of the server how to best ensure that the continuation retains 
+integrity in the context of ongoing changes to the resources. An alternative approach
+is to use version specific references to the records on the boundaries, but this is 
+subject to continuity failures when records are updated.
+</p>
+<p>
+A server MAY inform the client of the total number of resources returned by the operation using 
+the <i>totalResults</i> element from the <a href="http://www.opensearch.org/Specifications/OpenSearch/1.1">
+OpenSearch specification</a>:
+</p>
+<pre class="xml">
+&lt;feed xmlns="http://www.w3.org/2005/Atom"&gt;
+  &lt;title&gt;Search Page 3&lt;/title&gt;
+  &lt;os:totalResults xmlns:os="http://a9.com/-/spec/opensearch/1.1/"&gt;1432&lt;/os:totalResults&gt;
+  
+  &lt;!-- the rest of the search results... --&gt;  
+&lt;/feed&gt;
+</pre>
+
+<p>Note that for search, where _include can be used to return additional related resources, the total number 
+of resources in the feed may exceed the number indicated in totalResults.</p>
 
 <h2>Intermediaries</h2>
 <p>
@@ -893,7 +717,7 @@ Note: N/A = not present, R = Required, O = optional.
 <tr><td>conformance</td>  <td>R</td>            <td>Conformance</td>        <td>N/A</td>      <td>O</td>                <td>200, 404</td></tr>
 <tr><td>update</td>       <td>R</td>            <td>Resource</td>           <td>N/A</td>      <td>R</td>                <td>201, 400, 404, 405, 409, 412, 422</td></tr>
 <tr><td>create</td>       <td>R</td>            <td>Resource</td>           <td>R</td>        <td>O</td>                <td>200, 201, 400, 404, 405, 422</td></tr>
-<tr><td>transaction</td>        <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200, 400, 404, 405, 409, 412, 422</td></tr>
+<tr><td>transaction</td>  <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200, 400, 404, 405, 409, 412, 422</td></tr>
 <tr><td>delete</td>       <td>N/A</td>          <td>N/A</td>                <td>N/A</td>      <td>N/A</td>              <td>204, 405, 404</td></tr>
 <tr><td>search</td>       <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200</td></tr>
 <tr><td>search-all</td>   <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200</td></tr>

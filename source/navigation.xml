@@ -43,6 +43,11 @@
       <name>REST (HTTP)</name>
   	  <index>2.1</index>
     </entry>
+	<entry>
+      <link>search</link>
+      <name>Search</name>
+  	  <index>2.5</index>
+    </entry>
     <entry>
       <link>message</link>
       <name>Messaging</name>

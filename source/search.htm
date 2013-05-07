@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>RESTful Search - FHIR v<%version%></title>
+    <link rel="Stylesheet" href="fhir.css" type="text/css"/>
+    <link rel="Stylesheet" href="fhir-print.css" type="text/css" media="print" />
+</head>
+
+<body>
+<%sidebar%>
+
+<%maindiv%>
+<%pageheader%>
+[%onthispage Parameters#params|Param Types#ptypes|Modifiers#modifiers|Chaining#chaining|Sort#sort|Include#include|Conformance#conformance%]
+
+<h1>RESTful Search</h1>
+<p class="status">Status: This section is currently undergoing a rewrite.</p>
+
+<a name="params" />
+<h2>Search Parameters</h2>
+<p>
+Each FHIR resource type defines a set of applicable search parameters with their names, types, and meanings. 
+Mostly, the defined search parameters correspond to a single element in the resource, but this is not required, and some 
+search parameters refer to the same type of element in multiple places, or refer to derived values.</p>
+<p>
+The result of the search operation is the intersection of the resources that match the criteria specified by each 
+individual search parameter. If a search parameter may match a number of possible values, these values are combined into 
+set of parameter value, separated by a ','. e.g. language=FR,NL. These constructs may be combined to have repeating 
+parameters (interpreted as intersection), each having a set of possible values.</p>
+<p>
+Most search parameters accept a single value as a parameter, but a resource may also specify searches that take sequences 
+of single values as an argument. The meaning of each component in such a sequence is documented in the definition of the 
+parameter. An example of such an operation is the key/value tuples used to search on Group.characteristic: you need find a 
+combination of key/value, not an intersection of separate matches on key and value. Another example is spatial coordinates 
+when doing geographical searches. These sequences are formed by joining the single values with a "$".  Note that this 
+sequence still forms a single parameter (albeit a composite one) and thus differs from parameters that may match a set 
+of values of the same type, e.g. multiple matching state-on-date parameters can be specified as state-on-date=new$2013-05-04,
+active$2013-05-05.
+</p>
+<p>
+In addition, the following parameters can be passed to the search operation to influence how the set of matching resources is returned to
+the caller:
+</p>
+<table class="list">
+  <tr><td>_count :</td><td>Number of return records requested per page. The server is not bound to return the number requested, but cannot return more.</td></tr>
+  <tr><td>_include : </td><td>Include resources referenced by the matching resources. See below.</td></tr>
+</table>
+
+<a name="ptypes" />
+<h2>Search Parameter Types</h2>
+<p>The table below lists all the possible parameter types:</p>
+<%codelist SearchParamType%>
+
+<a name="modifiers" />
+<h2>Modifiers</h2>
+<p>Parameters are defined per resource, and their names may additionally specify a modifier as a suffix, 
+separated from the parameter name by a dot. Modifiers are:</p>
+<ul>
+<li>For all: "missing". E.g. gender.missing=true.</li>
+<li>For dates: "before" and "after". E.g. birthdate.before=1972-11-30. See below.</li>
+<li>For string:  "exact" (the match needs to be exact, no partial matches, case sensitive and accent-sensitive) and  "partial" (the search may function on partial matches).</li>
+<li>For qtoken: "text" (the match does a partial searches on the text portion of a CodeableConcept), "code" (a match on code and system of the coding/codeable concept).</li>
+</ul>
+
+<h3>Missing values</h3>
+<p>In order to support searching for missing values, for each defined parameter on a resource, there is an implicit "-missing" parameter.
+For instance, if the resource defines a parameter "gender", then there is an implicitly defined parameter "gender-missing". 
+Seaching for "gender-missing=true" will return all the resources that don't have any value for the gender parameter (which usually 
+equates to not having the relevent element in the resource). Searching for "gender-missing=false"
+will return all the resources that have a value for the "gender" parameter. 
+</p>
+<h3>string</h3>
+<p>TODO</p>
+
+<h3>qtoken</h3>
+<p>If the parameter has no modifier, or the modifier 'text', the search parameter is a string, if the modifier is ‘code’ 
+the parameter is a pair of fixed value strings, namespace and value, separated by a "!".</p>
+<p>Without modifier, the search will use the textual parameter to do a partial match on code, text or displayname. 
+With modifier ‘text’ the search will do a partial match on text or displayname. With the ‘code’ modifier, the search 
+will work as follows:</p>
+<ul>
+ <li><b>name=namespace#code</b> specifies matches on both the namespace and the code</li>
+ <li><b>name=#code</b> matches a code that has no specified namespace</li>
+ <li><b>name=code</b> matches all codes irrespective of the namespace</li>
+</ul>
+<p>
+When the QToken parameter refers to a resource reference, the correct namespace to
+use is "http://hl7.org/fhir/resource-types#[Name]", where Name is the title of the 
+resource (the <a href="terminologies.htm#resourcetypes">variant of the resource name with upper case letters</a>).
+</p>
+<p>For qtoken, you need (at least) to escape the ":" and possibly “#” (the fragment identifier) in the url of the code system.</p>
+
+<h3>date</h3>
+<ul>
+ <li>The date parameter format is yyyy-mm-ddThh:nn:ss(TZ) (the standard XML format). Any degree of precision can be provided, but it must be populated from the left (e.g. can't specify a month without a year)</li>
+<li>Note that to use these values, you need to escape the “:” in the time part.</li>
+ <li>All date parameters have an implicit -before and -after parameter. [date]=[value] searches for where the date is within
+   the given date value. [date]-after=[value] searches for all resources where the specified date is after [value]. 
+   [date]-before=[value] searches for all resources where the specified date is before [value]. </li>
+ <li>The element the search refers to may be a date, a dateTime, a Period, or a Schedule. All of these time related 
+   types actually specify an interval of time, as does the search parameter itself.
+  <ul>
+    <li>For Period and Schedule, the interval of time is explicit, though the upper or lower bound may not be specified</li>
+	<li>For a date or a dateTime (and the search parameter), the interval is implicit. For example, the date 2013-01-10 specifies all the time from 00:00 on 10-Jan 2013 to immediately before 00:00 on 11-Jan 2013.</li>
+    <li>An instant (which is the same as a fully specified dateTime with milliseconds) is considered a fixed point in time with an interval smaller than the precision of the system, i.e. an interval with an effective width of 0.</li>
+   </ul>
+ </li>
+ <li>Date parameter searches are always matches based on the behaviour of intervals, as follows:
+   <ul>
+     <li>For [date]=[value], the requirement is that the ssearch interval fully contains the time of the target. i.e. 2013-01-14 includes 2013-01-14T10:00 but not 2013-01-15T00:00</li>
+	 <li>For [date]-before=[value], the requirement is that the interval of the time before [value] intersects (i.e. overlaps) with the interval of time in the relevant resource element. 
+	    For instance, the resource time 2013-01-14 is included in the set of values that come before 2013-01-14T10:00, because it includes the part of 14-Jan 2013 before 10am </li>
+	 <li>For [date]-after=[value], the requirement is that the interval of the time after [value] intersects (i.e. overlaps) with the interval of time in the relevant resource element. 
+	    For instance, the resource time 2013-01-14 is included in the set of values that come after 2013-01-14T10:00, because it includes the part of 14-Jan 2013 after 10am </li>
+   </ul>
+   If the bounds of the interval are not known (i.e. a range with no start, or a schedule like "every two days" with neither start or end), 
+   then the boundaries are implicitly considered above or below calculatable time, and so these count as intersections. For instance, the
+   period from 21-Jan 2013 onwards is included in matches for date-after=2013-03-14 because it may include times after 14-Mar 2013.
+ </li>
+ <li>Similarly, when the date parameter is not fully specified, matches against it are based on the behaviour of intervals, where:
+	<ul>
+		<li>Dates with just the year specified are equivalent to an interval that starts at the first instant of January 1st to the last instant of December 31st, eg. 2000 is equivalent to an interval of [2000-01-01T00:00, 2000-12-31T23:59]</li>
+		<li>Dates with the year and month are equivalent to an interval that starts at the first instant of the first day of the month and ends on the last instant of the last day of the month, eg. 2000-04 is equivalent to an interval of [2000-04-01T00:00, 2000-04-30T23:59]</li>
+	</ul>
+ </li>
+ <li>Where possible, the system should correct for timezones when performing queries. Dates do not have timezones, and timezones 
+   should not be considered. Where both search parameters and resource element date times do not have timezones, the servers local
+   time zone should be assumed.
+ </li>
+ <li>
+   Note that for a Schedule data type, the specified scheduling details are ignored and only the outer limits matter. For instance, a schedule that specifies every second day between
+   31-Jan 2013 and 24-Mar 2013 includes the 1-Feb 2013, even though that is on an odd day that is not specified by the period. This is 
+   to keep the server load processing queries reasonable.
+ </li>
+</ul>
+
+<a name="chaining" />
+<h2>Parameter Chaining</h2>
+<p>
+Parameters may be "chained" by appending them together separated by "." following a logical path through a graph of related resources.
+For instance, given that the resource <a href="diagnosticreport.htm">DiagnosticReport</a> has a search parameter named <i>subject</i>, 
+which is usually a reference to a <a href="patient.htm">Patient</a> resource, and the Patient resource includes a parameter 
+<i>name</i> which searches on patient name, then the search
+</p>
+<pre>
+ diagnosticreport/search?subject.name=peter
+</pre>
+<p>
+is a request to return all the lab reports that have a subject whose name includes "peter". 
+</p>
+<p>
+Where a chained parameter searches a resource reference that may have more than on 
+different type of resource as it's target, the parameter chain may refer to search 
+parameters on more than one kind of resource at once. The parameters defined in FHIR
+have consistent types wherever they are used. Implementers defining their own names 
+need to be sure that they do not create unprocessible combinations.
+</p>
+<p>
+When chained parameters are repeated, the interpretation of parameter repeating behavior is that 
+defined for the first step in the chain, and if that parameter defines that the repeating behavior
+is "intersection", the intersection applies at the left most point of the chain.
+</p>
+
+<a name="sort" />
+<h2>Sorting</h2>
+<p>
+The client can indicate which order to return the results in using the parameter "search-sort". This can be set to one 
+of the search parameters. Where the search parameter returns multiple values, the lowest value will be used when ordering
+the returned records. Note that the actual sort value used is not returned explicitly by the server.
+</p>
+
+<a name="include" />
+<h2>Including other resources in result (_include)</h2>
+<p>
+Clients may request that the server return additional resources related to the search results, in order to reduce the overall network
+query time. A typical case where this is useful is where the client is querying on some type of clinical resource, but for every such resource
+returned, the client will also need the subject resource that the clinical resource refers to. The client requests this by providing one or more
+_include parameters.
+</p>
+<p>  
+Each _include parameter specifies a path to a url (usually a resource reference):
+</p>
+<pre>
+ diagnosticreport/search?_include=DiagnosticReport.subject&amp;_include=Patient.provider
+</pre>
+<p> 
+For each returned resource, the server collects the elements described by the path, 
+and any resources they point to that the server also holds are added to the results.
+Note that _include parameters may be recursive. For instance, a client may request to return all the 
+subjects associated with a search on lab reports, and then to include all the provider organization
+resources for the patients returned, as shown above. 
+</p>
+<p>
+Include paths are processed only in the context of a single resource - they can not include 
+paths such as Resource.name1.name2 where name2 is a name in a resource pointed to by name1.
+</p>
+<p>
+For servers, Recursive parameters are demanding and may slow the search response time significantly. 
+Servers are not obliged to honor requests to include additional resources in the search results.
+</p>
+<p>
+If the _include path matches an url that points to a resource that the server itself does 
+not hold, 
+the server may still elect to include the target of the uri reference in the returned atom feed
+as a Binary resource. For example, the include path may point to an attachment which is by reference, like this:
+</p>
+<pre>
+ &lt;content&gt;
+   &lt;contentType&gt;image/jpeg&lt;/contentType&gt;
+   &lt;url&gt;http://example.org/images/2343434/234234.jpg&lt;/url&gt;
+ &lt;/content&gt;
+</pre>
+<p>
+The server can retrieve the target of this reference on behalf of the client, and add this to the 
+atom feed for the convenience of the client. 
+</p>
+
+<a name="conformance" />
+<h2>Server Conformance</h2>
+<p>
+Servers have considerable discretion with regards to supporting to search:
+</p>
+<ul>
+ <li>Servers can choose which parameters to support (other than _id above)</li>
+ <li>Servers can choose when and where to implement parameter chaining, and when and where they support the _include parameter</li>
+ <li>Servers are able to declare additional parameters in the profiles referenced from their conformance statements. Servers should define search parameters 
+    with a "-" character in them to ensure that the names they choose do not clash with future parameters defined by this specification</li>
+ <li>Servers are not required to enforce case sensitivity on parameter names, though the names are case sensitive (and URLs are generally case-sensitive)</li>
+ <li>Servers may choose how many results to return, though the client can use _count as above</li>
+ <li>Servers can choose how to sort the return results</li>
+</ul>
+
+<p>
+If more sophisticated searching is required, a FHIR-based service interface can be defined to enable the workflow and
+functionality desired.  
+</p>
+
+
+<%footer%>
+
+
+<%/maindiv%>    
+</body>
+</html>

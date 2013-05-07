@@ -599,36 +599,39 @@ Here is an example feed returning search results for a person query:
 
 <pre class="json">
 {
-  &quot;title&quot; : &quot;Search result&quot;,
-  &quot;updated&quot; : &quot;2012-09-20T12:04:45.6787909+00:00&quot;,
-  &quot;id&quot; : &quot;urn:uuid:50ea3e5e-b6a7-4f55-956c-caef491bbc08&quot;,
-  &quot;link&quot; : [{
+  &quot;feed&quot; : {
+    &quot;title&quot; : &quot;Search result&quot;,
+    &quot;updated&quot; : &quot;2012-09-20T12:04:45.6787909+00:00&quot;,
+    &quot;id&quot; : &quot;urn:uuid:50ea3e5e-b6a7-4f55-956c-caef491bbc08&quot;,
+    &quot;link&quot; : [{
       &quot;rel&quot; : &quot;self&quot;,
-      &quot;href&quot; : &quot;http://ip-0a7a5abe:16287/fhir/person?format=json&quot;
+	  &quot;href&quot; : &quot;http://ip-0a7a5abe:16287/fhir/person?format=json&quot;
     }],
-  &quot;totalResults&quot; : 12,
-  &quot;entry&quot; : [{
+    &quot;totalResults&quot; : 12,
+    &quot;entry&quot; : [{
       &quot;title&quot; : &quot;Resource of type Person, with id = 1 and version = 1&quot;,
       &quot;link&quot; : [{
-          &quot;rel&quot; : &quot;self&quot;,
-          &quot;href&quot; : &quot;http://fhir.furore.com/fhir/person/@1/history/@1&quot;
-        }],
+        &quot;rel&quot; : &quot;self&quot;,
+        &quot;href&quot; : &quot;http://fhir.furore.com/fhir/person/@1/history/@1&quot;
+      }],
       &quot;id&quot; : &quot;http://fhir.furore.com/fhir/person/@1&quot;,
       &quot;updated&quot; : &quot;2012-05-29T23:45:32+00:00&quot;,
       &quot;published&quot; : &quot;2012-09-20T12:04:47.3012429+00:00&quot;,
       &quot;author&quot; : [{
-          &quot;name&quot; : &quot;Grahame Grieve / HL7 publishing committee&quot;
-        }],
+        &quot;name&quot; : &quot;Grahame Grieve / HL7 publishing committee&quot;
+      }],
       &quot;category&quot; : [{
-          &quot;term&quot; : &quot;Person&quot;,
-          &quot;scheme&quot; : &quot;http://hl7.org/fhir/resource-types&quot;
-        }],
+        &quot;term&quot; : &quot;Person&quot;,
+        &quot;scheme&quot; : &quot;http://hl7.org/fhir/resource-types&quot;
+      }],
       &quot;content&quot; : {
         &quot;Person&quot; : { ...person content in JSON... }
       },
       &quot;summary&quot; : &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;(text summary)&lt;/div&gt;&quot;,
-    }, ... other entries ....
-  ]
+    },
+    ... other entries ....
+    ]
+  }
 }
 </pre>
 
