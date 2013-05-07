@@ -49,7 +49,7 @@
         </details>
         <provider>
           <type value="Organization"/>
-          <url value="../organization/@hl7"/>
+          <reference value="organization/@hl7"/>
         </provider>
       </Patient>
     </content>
@@ -102,7 +102,7 @@
         </details>
         <provider>
           <type value="Organization"/>
-          <url value="../organization/@hl7"/>
+          <reference value="organization/@hl7"/>
         </provider>
       </Patient>
     </content>
@@ -155,7 +155,7 @@
         </details>
         <provider>
           <type value="Organization"/>
-          <url value="../organization/@hl7"/>
+          <reference value="organization/@hl7"/>
         </provider>
       </Patient>
     </content>
@@ -208,7 +208,7 @@
         </details>
         <provider>
           <type value="Organization"/>
-          <url value="../organization/@hl7"/>
+          <reference value="organization/@hl7"/>
         </provider>
       </Patient>
     </content>
@@ -261,7 +261,7 @@
         </details>
         <provider>
           <type value="Organization"/>
-          <url value="../organization/@hl7"/>
+          <reference value="organization/@hl7"/>
         </provider>
       </Patient>
     </content>
@@ -314,7 +314,7 @@
         </details>
         <provider>
           <type value="Organization"/>
-          <url value="../organization/@hl7"/>
+          <reference value="organization/@hl7"/>
         </provider>
       </Patient>
     </content>
@@ -367,7 +367,7 @@
         </details>
         <provider>
           <type value="Organization"/>
-          <url value="../organization/@hl7"/>
+          <reference value="organization/@hl7"/>
         </provider>
       </Patient>
     </content>
@@ -420,7 +420,7 @@
         </details>
         <provider>
           <type value="Organization"/>
-          <url value="../organization/@hl7"/>
+          <reference value="organization/@hl7"/>
         </provider>
       </Patient>
     </content>
@@ -473,7 +473,7 @@
         </details>
         <provider>
           <type value="Organization"/>
-          <url value="../organization/@hl7"/>
+          <reference value="organization/@hl7"/>
         </provider>
       </Patient>
     </content>
@@ -526,7 +526,7 @@
         </details>
         <provider>
           <type value="Organization"/>
-          <url value="../organization/@hl7"/>
+          <reference value="organization/@hl7"/>
         </provider>
       </Patient>
     </content>
@@ -579,7 +579,7 @@
         </details>
         <provider>
           <type value="Organization"/>
-          <url value="../organization/@hl7"/>
+          <reference value="organization/@hl7"/>
         </provider>
       </Patient>
     </content>
@@ -632,7 +632,7 @@
         </details>
         <provider>
           <type value="Organization"/>
-          <url value="../organization/@hl7"/>
+          <reference value="organization/@hl7"/>
         </provider>
       </Patient>
     </content>

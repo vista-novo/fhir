@@ -43,7 +43,7 @@
 		
 	    <provider>
 	      <type value="Organization"/>
-	      <url value="../organization/@[%organization%]"/>  
+	      <reference value="organization/@[%organization%]"/>  
 	    </provider>
       </Patient>
     </content>

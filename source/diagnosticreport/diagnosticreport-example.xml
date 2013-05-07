@@ -654,11 +654,11 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
     <issued value="2011-03-04T11:45:33+11:00"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@pat2"/>
+      <reference value="patient/@pat2"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -689,71 +689,71 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
 
     <result>
       <type value="Observation"/>
-      <url value="#r1"/>
+      <reference value="#r1"/>
     </result>  
     <result>
       <type value="Observation"/>
-      <url value="#r2"/>
+      <reference value="#r2"/>
     </result>
     <result>
       <type value="Observation"/>
-      <url value="#r3"/>
+      <reference value="#r3"/>
     </result>
     <result>
       <type value="Observation"/>
-      <url value="#r4"/>
+      <reference value="#r4"/>
     </result>
     <result>
       <type value="Observation"/>
-      <url value="#r5"/>
+      <reference value="#r5"/>
     </result>
     <result>
       <type value="Observation"/>
-      <url value="#r6"/>
+      <reference value="#r6"/>
     </result>
     <result>
       <type value="Observation"/>
-      <url value="#r7"/>
+      <reference value="#r7"/>
     </result>
     <result>
       <type value="Observation"/>
-      <url value="#r8"/>
+      <reference value="#r8"/>
     </result>
     <result>
       <type value="Observation"/>
-      <url value="#r9"/>
+      <reference value="#r9"/>
     </result>
     <result>
       <type value="Observation"/>
-      <url value="#r10"/>
+      <reference value="#r10"/>
     </result>
     <result>
       <type value="Observation"/>
-      <url value="#r11"/>
+      <reference value="#r11"/>
     </result>
     <result>
       <type value="Observation"/>
-      <url value="#r12"/>
+      <reference value="#r12"/>
     </result>
     <result>
       <type value="Observation"/>
-      <url value="#r13"/>
+      <reference value="#r13"/>
     </result>
     <result>
       <type value="Observation"/>
-      <url value="#r14"/>
+      <reference value="#r14"/>
     </result>
     <result>
       <type value="Observation"/>
-      <url value="#r15"/>
+      <reference value="#r15"/>
     </result>
     <result>
       <type value="Observation"/>
-      <url value="#r16"/>
+      <reference value="#r16"/>
     </result>
     <result>
       <type value="Observation"/>
-      <url value="#r17"/>
+      <reference value="#r17"/>
     </result>
   </results>
 

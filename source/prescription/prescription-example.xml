@@ -25,12 +25,12 @@
 
   <patient>
     <type value="Patient"/>
-    <url value="../patient/@pat2"/>
+    <reference value="patient/@pat2"/>
   </patient>
 
   <prescriber>
     <type value="Practitioner"/>
-    <url value="../practitioner/@example"/>
+    <reference value="practitioner/@example"/>
   </prescriber>
 
   <prescribed value="2011-03-04T11:45:33+01:00"/>
@@ -43,7 +43,7 @@
     </quantity>
     <dispenser>
       <type value="Organization"/>
-      <url value="../organization/@1"/>
+      <reference value="organization/@1"/>
     </dispenser>
   </dispense>
 

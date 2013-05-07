@@ -13,6 +13,6 @@
  <title value="Referrals"/>
   <subject>
     <type value="Patient"/>
-    <url value="../patient/@xcda"/>
+    <reference value="patient/@xcda"/>
   </subject>
 </Category>

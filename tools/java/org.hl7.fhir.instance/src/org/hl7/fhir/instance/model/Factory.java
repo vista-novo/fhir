@@ -135,7 +135,7 @@ public class Factory {
 	public static ResourceReference makeResourceReference(String type, String url) throws Exception {
 	  ResourceReference rr = new ResourceReference();
 	  rr.setTypeSimple(type);
-	  rr.setUrlSimple(new URI(url));
+	  rr.setReferenceSimple(url);
 	  return rr;
   }
   

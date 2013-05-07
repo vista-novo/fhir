@@ -7,6 +7,6 @@
   
   <subject>
     <type value="Patient"/>
-    <url value="../patient/@example"/>
+    <reference value="patient/@example"/>
   </subject>
 </Visit>

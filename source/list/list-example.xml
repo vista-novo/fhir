@@ -39,7 +39,7 @@
     and find out -->
   <source>
     <type value="Patient"/>
-    <url value="../patient/@example"/>
+    <reference value="patient/@example"/>
   </source>
   <date value="2012-11-25T22:17:00+11:00"/>
   <mode value="changes"/>
@@ -50,7 +50,7 @@
     <deleted value="true"/>
     <item>
       <type value="Problem"/>
-      <url value="../problem/@example"/>
+      <reference value="problem/@example"/>
     </item>
   </entry>
   <entry>
@@ -59,7 +59,7 @@
     </flag>
     <item>
       <type value="Problem"/>
-      <url value="../problem/@example2"/>
+      <reference value="problem/@example2"/>
     </item>
   </entry>
 </List>

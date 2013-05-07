@@ -64,11 +64,11 @@
   <authored value="2013-02-19T14:15:00"/>
   <subject>
     <type value="Patient"/>
-    <url value="#patsub"/>
+    <reference value="#patsub"/>
   </subject>
   <author>
     <type value="Practitioner"/>
-    <url value="#questauth"/>
+    <reference value="#questauth"/>
   </author>
   <name>
     <text value="Cancer Quality Forum Questionnaire 2012"/>
@@ -188,7 +188,7 @@
         </name>
         <evidence>
           <type value="Observation"/>
-          <url value="#obs.pt-category"/>
+          <reference value="#obs.pt-category"/>
         </evidence>
       </answer>
     </section>

@@ -7,11 +7,11 @@
   <date value="2012-12-28T09:03:04+11:00"/>
   <subject>
     <type value="Patient"/>
-    <url value="../patient/@pat2"/>
+    <reference value="patient/@pat2"/>
   </subject>
   <source>
     <type value="Practitioner"/>
-    <url value="../practitioner/@example"/>
+    <reference value="practitioner/@example"/>
   </source>
   <reason value="Standard admission testing"/>
   
@@ -27,6 +27,6 @@
   
   <detail>
     <type value="MedicationPrescription"/>
-    <url value="../medicationprescription/@example"/>
+    <reference value="medicationprescription/@example"/>
   </detail>
 </Order>

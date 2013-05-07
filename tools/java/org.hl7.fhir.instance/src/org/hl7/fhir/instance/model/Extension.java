@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, May 6, 2013 11:10+1000 for FHIR v0.09
+// Generated on Tue, May 7, 2013 21:55+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -45,9 +45,9 @@ public class Extension extends Element {
     private Uri url;
 
     /**
-     * If this element is set to true, then the containing resource element and its children are only safe to process if the reader understands this extension.
+     * This value should be set to true if the value of the extension qualifies or negates data in other content
      */
-    private Boolean mustUnderstand;
+    private Boolean isModifier;
 
     /**
      * Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)
@@ -81,25 +81,25 @@ public class Extension extends Element {
       }
     }
 
-    public Boolean getMustUnderstand() { 
-      return this.mustUnderstand;
+    public Boolean getIsModifier() { 
+      return this.isModifier;
     }
 
-    public void setMustUnderstand(Boolean value) { 
-      this.mustUnderstand = value;
+    public void setIsModifier(Boolean value) { 
+      this.isModifier = value;
     }
 
-    public boolean getMustUnderstandSimple() { 
-      return this.mustUnderstand == null ? null : this.mustUnderstand.getValue();
+    public boolean getIsModifierSimple() { 
+      return this.isModifier == null ? null : this.isModifier.getValue();
     }
 
-    public void setMustUnderstandSimple(boolean value) { 
+    public void setIsModifierSimple(boolean value) { 
       if (value == false)
-        this.mustUnderstand = null;
+        this.isModifier = null;
       else {
-        if (this.mustUnderstand == null)
-          this.mustUnderstand = new Boolean();
-        this.mustUnderstand.setValue(value);
+        if (this.isModifier == null)
+          this.isModifier = new Boolean();
+        this.isModifier.setValue(value);
       }
     }
 

@@ -21,7 +21,7 @@
   </address>
   <provider>
     <type value="Organization" />
-    <url value="../organization/@2.16.840.1.113883.19.5" />
+    <reference value="organization/@2.16.840.1.113883.19.5" />
   </provider>
   <active value="true" />
 </Location>

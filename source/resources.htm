@@ -263,9 +263,9 @@ rules about this selection process.
 <p>
 The defined elements in a resource includes many references to other resources. 
 The resources combine to build a web of information about healthcare. In a resource, 
-references are represented with a type, a url, and a text description .
-The key property of the reference is the <i>url</i> - resources are identified and address by their URL.
-The actual reference looks like this(see <a href="formats.htm#syntax">"XML Format"</a>
+references are represented with a type, a reference, and a text description .
+The key property of the reference is the <i>reference</i> - resources are identified and address by their URL.
+The actual reference looks like this (see <a href="formats.htm#syntax">"XML Format"</a>
 for details of the way resource contents are described):
 </p>
 
@@ -275,15 +275,16 @@ for details of the way resource contents are described):
 
 <p>Notes:</p>
 <ul>
- <li>The reference must specify the resource type, whether or not the type of the resource reference is fixed for the element in the resource definition</li>
+ <li>The <i>type</i> must specify the resource type, whether or not the type of the resource reference is fixed for the element in the resource definition</li>
+ <li>The <i>reference</i> element contains a url that is either an absolute URL, or a relative URL that is relative to the <a href="http.htm#root">Service Base URL</a>, or an internal fragment reference (see below)</li>
  <li>Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a 
    flexible approach suitable for use when trading across closed eco-system boundaries. (see <a href="implementation.htm#identity">implementation issues for further discussion</a>)</li>
  <li>Absolute URLs do not need to point to a <a href="http.htm">FHIR RESTful server</a>, though this is the preferred approach. If the tail of the url 
-   conforms to the structure "/[type]/@[id]" or "/[type]/@[id]/history/@[id]"  then it should be assumed that the reference is to a <a href="http.htm">FHIR RESTful server</a>. 
+   conforms to the structure "/[type]/@[id]" or "/[type]/@[id]/history/@[id]" then it should be assumed that the reference is to a <a href="http.htm">FHIR RESTful server</a>. 
    Whether or not the reference is to a FHIR RESTful server, the reference must point to a Resource as defined by this specification</li>
  <li>URLs are always considered to be case-sensitive and lowercase is preferred</li>
  <li>The <i>display</i> is generally not the same content as the Resource.text of the referenced resource.  The purpose is to 
-   identify what's being referenced, not to describe it</li>
+   identify what's being referenced, not to more fully describe it</li>
 </ul>
 
 <div class="use">
@@ -298,14 +299,14 @@ for details of the way resource contents are described):
 <pre class="xml" fragment="ResourceReference">
   &lt;context&gt;
     &lt;type value="Patient" /&gt;
-    &lt;url value="../patient/@034AB16" /&gt;
+    &lt;reference value="patient/@034AB16" /&gt;
   &lt;/context&gt;
 </pre>
 <p>An absolute reference to a <a href="profile.htm">resource profile</a> in an element named "profile":</p>
 <pre class="xml" fragment="ResourceReference">
   &lt;profile&gt;
     &lt;type value="Profile" /&gt;
-    &lt;url value="http://fhir.hl7.org/svc/profile/@c8973a22-2b5b-4e76-9c66-00639c99e61b" /&gt;
+    &lt;reference value="http://fhir.hl7.org/svc/profile/@c8973a22-2b5b-4e76-9c66-00639c99e61b" /&gt;
   &lt;/profile&gt;
 </pre>
 <p><i>Note that HL7 has not yet actually created a profile registry, nor decided on a URL for it</i>.</p>
@@ -315,7 +316,7 @@ A short display text that provides a human readable identification of the resour
 <pre class="xml" fragment="ResourceReference">
   &lt;custodian&gt;
     &lt;type value="Organization" /&gt;
-    &lt;url value="../organization/@123" /&gt;
+    &lt;reference value="organization/@123" /&gt;
     &lt;display value="HL7, Inc" /&gt;
   &lt;/custodian&gt;
 </pre>
@@ -358,7 +359,7 @@ An example of a contained resource:
     &lt;!-- other attributes --&gt;
     &lt;custodian&gt;
       &lt;type value="Organization" /&gt;
-      &lt;url value="#org1" /&gt;
+      &lt;reference value="#org1" /&gt;
     &lt;/custodian&gt;
     &lt;!-- other attributes --&gt;
   &lt;information&gt;

@@ -19,7 +19,7 @@
       <Problem id="p1">
         <subject>
           <type value="Patient"/>
-          <url value="../patient/@1"/>
+          <reference value="patient/@1"/>
           <display value="Eve Everywoman"/>
         </subject>
         <code>
@@ -55,7 +55,7 @@
     </contained>
     <patient>
         <type value="Patient"/>
-        <url value="../patient/@1"/>
+        <reference value="patient/@1"/>
         <display value="Eve Everywoman"/>
     </patient>
     <status value="active"/>
@@ -67,7 +67,7 @@
     <concern>
         <!-- Shouldn't really call a pregnancy a 'problem'! -->
         <type value="Problem"></type>
-        <url value="#p1"/>
+        <reference value="#p1"/>
         <display value="pregnancy"/>
     </concern>
 
@@ -83,7 +83,7 @@
         <member>
             <!-- This links to the clincian resource, so we get all the stuff related to that like address, contact etc... -->
             <type value="Practitioner"></type>
-            <url value="#pr1"/>
+            <reference value="#pr1"/>
             <display value="Mavis Midwife"/>
         </member>
     </participant>
@@ -99,7 +99,7 @@
         <member>
             <!-- This links to the clincian resource, so we get all tha stuff related to that like address, contact etc... -->
             <type value="Practitioner"></type>
-            <url value="#pr2"/>
+            <reference value="#pr2"/>
             <display value="Oscar Obstetrician"/>
         </member>
     </participant>
@@ -134,7 +134,7 @@
         </timingSchedule>
         <performer>
             <type value="Practitioner"></type>
-            <url value="#pr1"/>
+            <reference value="#pr1"/>
             <display value="Mavis Midwife"/>
         </performer>
         <details value="The first antenatal visit. This is where a detailed physical examination is performed.
@@ -172,7 +172,7 @@
         <performer>
             <!-- The performer is known, but the actual appointment is not yet made, hence there is no action element... -->
             <type value="Practitioner"></type>
-            <url value="#pr1"/>
+            <reference value="#pr1"/>
             <display value="Mavis Midwife"/>
         </performer>
         <details value="The second antenatal visit. Discuss any issues that arose from the first antenatal visit"></details>
@@ -214,7 +214,7 @@
         <performer>
             <!-- The intention is that Maris will be perfroming the delivery... -->
             <type value="Practitioner"></type>
-            <url value="#pr1"/>
+            <reference value="#pr1"/>
             <display value="Mavis Midwife"/>
         </performer>
         <details value="The delivery."></details>

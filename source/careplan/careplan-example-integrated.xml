@@ -124,7 +124,7 @@
     <Problem id="p1">
       <subject>
         <type value="Patient"/>
-        <url value="../patient/@1"/>
+        <reference value="patient/@1"/>
         <display value="Eve Everywoman"/>
       </subject>
       <code>
@@ -136,7 +136,7 @@
     <Problem id="p2">
       <subject>
         <type value="Patient"/>
-        <url value="../patient/@1"/>
+        <reference value="patient/@1"/>
         <display value="Eve Everywoman"/>
       </subject>
       <code>
@@ -148,7 +148,7 @@
     <Problem id="p3">
       <subject>
         <type value="Patient"/>
-        <url value="../patient/@1"/>
+        <reference value="patient/@1"/>
         <display value="Eve Everywoman"/>
       </subject>
       <code>
@@ -158,24 +158,24 @@
   </contained>
   <patient>
     <type value="Patient"/>
-    <url value="../patient/@1"/>
+    <reference value="patient/@1"/>
     <display value="Eve Everywoman"/>
   </patient>
   <status value="active"/>
   <modified value="2012-09-10"/>
   <concern>
     <type value="Problem"/>
-    <url value="#p1"/> <!-- Local reference -->
+    <reference value="#p1"/> <!-- Local reference -->
     <display value="GERDS"/>
   </concern>
   <concern>
     <type value="Problem"/>
-    <url value="#p2"/> <!-- Local reference -->
+    <reference value="#p2"/> <!-- Local reference -->
     <display value="Obesity"/>
   </concern>
   <concern>
     <type value="Problem"/>
-    <url value="#p3"/> <!-- Local reference -->
+    <reference value="#p3"/> <!-- Local reference -->
     <display value="Psoriasis"/>
   </concern>
   <goal id="g1">

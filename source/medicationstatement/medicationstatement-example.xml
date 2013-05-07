@@ -10,7 +10,7 @@
   <!--  -->
   <patient>
     <type value="Patient"/>
-    <url value="../patient/@example"/>
+    <reference value="patient/@example"/>
   </patient>
   <whenGiven>
     <start value="2012-06-01T14:30:00"/>
@@ -18,7 +18,7 @@
   </whenGiven>
   <medication>
     <type value="Medication"/>
-    <url value="../medication/@example"/> 
+    <reference value="medication/@example"/> 
   </medication>
   <dosage>
     <route>

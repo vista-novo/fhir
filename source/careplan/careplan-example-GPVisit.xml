@@ -19,7 +19,7 @@
         <Problem id="p1">
             <subject>
                 <type value="Patient"/>
-                <url value="../patient/@100"/>
+                <reference value="patient/@100"/>
                 <display value="Peter James Chalmers"/>
             </subject>
             <code>
@@ -30,7 +30,7 @@
     </contained>
     <patient>
         <type value="Patient"></type>
-        <url value="../patient/@100"/>
+        <reference value="patient/@100"/>
         <display value="Peter James Chalmers"/>
     </patient>
     <status value="active"/>
@@ -41,7 +41,7 @@
     </period>
     <concern>
         <type value="Problem"></type>
-        <url value="#p1"/>
+        <reference value="#p1"/>
         <display value="obesity"/>
     </concern>
     <participant id="part1">
@@ -54,7 +54,7 @@
         </role>
         <member>
             <type value="Practitioner"></type>
-            <url value="../practitioner/@13"/>
+            <reference value="practitioner/@13"/>
             <display value="Nurse Nancy"/>
         </member>
     </participant>
@@ -68,7 +68,7 @@
         </role>
         <member>
             <type value="Practitioner"></type>
-            <url value="../practitioner/@14"/>
+            <reference value="practitioner/@14"/>
             <display value="Doctor Dave"/>
         </member>
     </participant>
@@ -96,7 +96,7 @@
         <performer>
             <!-- refer to the participant (the nurse) in this resource-->
           <type value="Practitioner"></type>
-            <url value="../practitioner/@13"/>
+            <reference value="practitioner/@13"/>
           <display value="Nurse Nancy"/>
         </performer>
         <actionTaken>
@@ -104,7 +104,7 @@
             are modelled as separate visits. Ideally, there will be  a 'master/parent' visit that ties them together.
             If there is a single visit, then all participants will be linked to that visit.-->
             <type value="Visit"/>
-            <url value="../visit/@example"/>
+            <reference value="visit/@example"/>
         </actionTaken>
     </activity>
     <activity>
@@ -127,7 +127,7 @@
         <performer>
             <!-- refer to the participant (the nurse) in this resource-->
             <type value="Practitioner"></type>
-            <url value="../practitioner/@14"/>
+            <reference value="practitioner/@14"/>
             <display value="Doctor Dave"/>
         </performer>
     </activity>

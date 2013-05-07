@@ -5,7 +5,6 @@ public enum ResourceType {
     CarePlan,
     Device,
     Order,
-    Prescription,
     Organization,
     Procedure,
     Substance,
@@ -62,8 +61,6 @@ public enum ResourceType {
       return "device";
     case Order:
       return "order";
-    case Prescription:
-      return "prescription";
     case Organization:
       return "organization";
     case Procedure:

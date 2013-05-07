@@ -6,13 +6,13 @@
   </text>
   <subject>
     <type value="Patient"/>
-    <url value="../patient/@100"/>
+    <reference value="patient/@100"/>
     <display value="Peter Patient"/>
   </subject>
   <relation>
     <relatedPerson>
       <type value="Patient"/>
-      <url value="../patient/@101"/>
+      <reference value="patient/@101"/>
       <display value="Mrs Patient"/>
     </relatedPerson>
     <relationship value='mother'/>

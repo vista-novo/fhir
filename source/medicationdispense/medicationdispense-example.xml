@@ -15,15 +15,15 @@
   
   <patient>
     <type value="Patient"/>
-    <url value="../patient/@example"/>
+    <reference value="patient/@example"/>
   </patient>
   <dispenser>
     <type value="Practitioner"/>
-    <url value="../practitioner/@example"/>
+    <reference value="practitioner/@example"/>
   </dispenser>
   <authorizingPrescription>
     <type value="MedicationPrescription"/>
-    <url value="../medicationprescription/@example" />
+    <reference value="medicationprescription/@example" />
   </authorizingPrescription>
   <dispense>
     <status >
@@ -41,7 +41,7 @@
     </quantity>
     <medication>
       <type value="Medication"/>
-      <url value="../medication/@example"/>
+      <reference value="medication/@example"/>
     </medication>
     <whenPrepared>
       <start value="2012-05-30T16:20:00"/>

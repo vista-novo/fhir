@@ -104,7 +104,7 @@
 				<provider>
 				  <!-- a standard example organization -->
 					<type value="Organization"/>
-					<url value="../organization/@1"/>
+					<reference value="organization/@1"/>
 				</provider>
 			</Patient>
 		</content>
@@ -198,7 +198,7 @@
           </subject>
           <author>
             <type value="Practitioner"/>
-            <url value="#a1"/> <!-- internal reference -->
+            <reference value="#a1"/> <!-- internal reference -->
           </author>
         </information>
         <format>

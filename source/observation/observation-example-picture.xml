@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Observation xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\observation.xsd">
   <extension>
-    <url value="http://hl7.org/fhir/profile/@picture#accession"/>
+    <reference value="http://hl7.org/fhir/profile/@picture#accession"/>
     <valueIdentifier>
       <system value="http://acme-imaging.com/accession/2012"/>
       <key value="1234567"/>
     </valueIdentifier> 
   </extension>
   <extension>
-    <url value="http://hl7.org/fhir/profile/@picture#studyid"/>
+    <reference value="http://hl7.org/fhir/profile/@picture#studyid"/>
     <valueIdentifier>
       <system value="urn:ietf:rfc:3986"/>
       <key value="urn:oid:1.2.840.113619.2.21.848.34082.0.538976288.3"/>
     </valueIdentifier> 
   </extension>
   <extension>
-    <url value="http://hl7.org/fhir/profile/@picture#seriesid"/>
+    <reference value="http://hl7.org/fhir/profile/@picture#seriesid"/>
     <valueIdentifier>
       <system value="urn:ietf:rfc:3986"/>
       <key value="urn:oid:1.2.840.113619.2.21.3408.700.0.757923840.3.0"/>
@@ -38,7 +38,7 @@
   <valueAttachment>
     <contentType value="application/dicom"/>
     <!-- The actual image could be anywhere. This is a WADO example -->
-    <url value="http://imaging.acme.com/wado/server?requestType=WADO&amp;contentType=application%2Fdicom&amp;studyUid=1.2.840.113619.2.21.848.34082.0.538976288.3&amp;seriesUid=1.2.840.113619.2.21.3408.700.0.757923840.3.0&amp;objectUid=1.2.840.11361907579238403408700.3.0.14.19970327150033"/>
+    <reference value="http://imaging.acme.com/wado/server?requestType=WADO&amp;contentType=application%2Fdicom&amp;studyUid=1.2.840.113619.2.21.848.34082.0.538976288.3&amp;seriesUid=1.2.840.113619.2.21.3408.700.0.757923840.3.0&amp;objectUid=1.2.840.11361907579238403408700.3.0.14.19970327150033"/>
   </valueAttachment>
   <status value="final"/>
   <reliability value="ok"/>
@@ -51,11 +51,11 @@
   
   <subject>
     <type value="Patient"/>
-    <url value="../patient/@example"/>
+    <reference value="patient/@example"/>
   </subject>
   <performer>
     <type value="Practitioner"/>
-    <url value="../practitioner/@example"/>
+    <reference value="practitioner/@example"/>
   </performer>
 
   <component>

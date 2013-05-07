@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, May 6, 2013 11:10+1000 for FHIR v0.09
+// Generated on Tue, May 7, 2013 21:55+1000 for FHIR v0.09
 
 import java.util.*;
 
 /**
- * A set of data produced by a device
+ * A set of raw data produced by a device
  */
 public class DeviceLog extends Resource {
 
@@ -175,7 +175,7 @@ public class DeviceLog extends Resource {
         private String_ key;
 
         /**
-         * The value of the data item, if available
+         * The value of the data item, if available. Irrespective of the logical format of the data item, the value is always represented as a string
          */
         private String_ value;
 

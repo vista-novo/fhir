@@ -80,29 +80,27 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
 
   private String extractId(String id, String type) throws Exception {
     String[] parts = id.split("/");
-    if (parts.length < 3)
-      return null;
-    if (!parts[0].equals(".."))
+    if (parts.length < 2)
       return null;
     if (type != null && !parts[1].equals(type.toLowerCase()))
       return null;
-    if (!parts[2].startsWith("@"))
+    if (!parts[1].startsWith("@"))
       return null;
-    if (parts[2].length() < 2 || parts[2].length() > 37)
+    if (parts[1].length() < 2 || parts[1].length() > 37)
       return null;
-    if (!parts[2].substring(1).matches("[a-z0-9\\-\\.]{1,36}"))
+    if (!parts[1].substring(1).matches("[a-z0-9\\-\\.]{1,36}"))
       return null;
     if (parts.length > 3) {
-      if (!parts[3].equals("history"))
+      if (!parts[2].equals("history"))
         return null;
-      if (parts.length != 5 || !parts[4].startsWith("@")) 
+      if (parts.length != 5 || !parts[3].startsWith("@")) 
         return null;
-      if (parts[4].length() < 2 || parts[4].length() > 37)
+      if (parts[3].length() < 2 || parts[3].length() > 37)
         return null;
-      if (!parts[4].substring(1).matches("[a-z0-9\\-\\.]{1,36}"))
+      if (!parts[3].substring(1).matches("[a-z0-9\\-\\.]{1,36}"))
         return null;
     }
-    return parts[2].substring(1);
+    return parts[1].substring(1);
   }
 
   @Override
@@ -121,7 +119,7 @@ public XhtmlGeneratorAdornerState getState(XhtmlGenerator ref, XhtmlGeneratorAdo
       if (s.getState() == State.Feed) {
         if (definitions.hasResource(node.getLocalName()))
           return new ExampleAdornerState(State.Element, definitions.getResourceByName(node.getLocalName()).getRoot(), "", "");
-        else if (node.getLocalName().equals("url") && !node.getAttribute("value").startsWith("http://"))
+        else if (node.getLocalName().equals("reference") && !node.getAttribute("value").startsWith("http://"))
           return new ExampleAdornerState(State.Feed, null, "<a name=\""+extractId(node.getAttribute("value"), null)+"\">...</a>", "");
         else
           return new ExampleAdornerState(State.Feed, null, "", "");
@@ -136,7 +134,7 @@ public XhtmlGeneratorAdornerState getState(XhtmlGenerator ref, XhtmlGeneratorAdo
       } else if (s.getState() == State.Reference) {
         if (node.getLocalName().equals("type"))
           return new ExampleAdornerState(State.Reference, s.getDefinition(), "<a href=\""+node.getAttribute("value").toLowerCase()+".htm\">", "...</a>");
-        if (node.getLocalName().equals("url"))
+        if (node.getLocalName().equals("reference"))
         {
           String type = XMLUtil.getNamedChild((Element) node.getParentNode(), "type").getAttribute("value");
           String id = extractId(node.getAttribute("value"), type);

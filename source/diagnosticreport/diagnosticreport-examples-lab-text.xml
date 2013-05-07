@@ -45,11 +45,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-06T00:38:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@112"/>
+      <reference value="patient/@112"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -142,11 +142,11 @@ Comment: *PLEASE NOTE AMENDED REPORT*
     <issued value="2012-04-05T23:59:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@112"/>
+      <reference value="patient/@112"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -246,11 +246,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T23:57:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@113"/>
+      <reference value="patient/@113"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -340,11 +340,11 @@ Anti-Factor Xa Comment:
     <issued value="2012-04-06T00:23:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@114"/>
+      <reference value="patient/@114"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -416,11 +416,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-06T00:19:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@114"/>
+      <reference value="patient/@114"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -493,11 +493,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-06T00:19:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@115"/>
+      <reference value="patient/@115"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -573,11 +573,11 @@ CK                828     IU/L   ( &lt;175     )
     <issued value="2012-04-06T00:39:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@115"/>
+      <reference value="patient/@115"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -644,11 +644,11 @@ TSH                       0.01    L  mIU/L   ( 0.1-4.0  )
     <issued value="2012-04-06T05:49:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@115"/>
+      <reference value="patient/@115"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -721,11 +721,11 @@ Baso         0.1      0.0      0.0      0.0      0.0   x10^9/L   0.0-0.1
     <issued value="2012-04-05T23:59:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@115"/>
+      <reference value="patient/@115"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -801,11 +801,11 @@ C-React Prot      152     mg/L   ( &lt;5       )
     <issued value="2012-04-05T23:30:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@116"/>
+      <reference value="patient/@116"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -886,11 +886,11 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T23:30:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@116"/>
+      <reference value="patient/@116"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -970,11 +970,11 @@ Urea             10.0     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-06T00:31:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@117"/>
+      <reference value="patient/@117"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -1080,11 +1080,11 @@ Film Comment : Mild neutrophilia with mild toxic changes. Manual
     <issued value="2012-04-05T23:53:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@117"/>
+      <reference value="patient/@117"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -1199,11 +1199,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-06T00:22:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@118"/>
+      <reference value="patient/@118"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -1277,11 +1277,11 @@ Comment: The Potassium result has been checked.
     <issued value="2012-04-06T01:03:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@118"/>
+      <reference value="patient/@118"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -1358,11 +1358,11 @@ Baso         0.1      0.0      0.1      0.1      0.1   x10^9/L   0.0-0.1
     <issued value="2012-04-05T23:54:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@118"/>
+      <reference value="patient/@118"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -1461,11 +1461,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T23:35:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@119"/>
+      <reference value="patient/@119"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -1558,11 +1558,11 @@ Troponin I       &lt;0.02    ug/L   (See Below )
     <issued value="2012-04-06T00:11:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@110"/>
+      <reference value="patient/@110"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -1638,11 +1638,11 @@ Baso                  0.0      0.0      0.0      0.0   x10^9/L   0.0-0.1
     <issued value="2012-04-06T08:59:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@110"/>
+      <reference value="patient/@110"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -1718,11 +1718,11 @@ Troponin I       &lt;0.02    ug/L   (See Below )
     <issued value="2012-04-06T00:12:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@111"/>
+      <reference value="patient/@111"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -1803,11 +1803,11 @@ Baso         0.1                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T23:35:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@111"/>
+      <reference value="patient/@111"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -1893,11 +1893,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-06T00:02:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@111"/>
+      <reference value="patient/@111"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -1979,11 +1979,11 @@ Troponin I        0.03    ug/L   (See Below )
     <issued value="2012-04-06T00:44:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@111"/>
+      <reference value="patient/@111"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -2067,11 +2067,11 @@ Troponin I        0.03    ug/L   (See Below )
     <issued value="2012-04-06T00:44:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@111"/>
+      <reference value="patient/@111"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -2178,11 +2178,11 @@ Comment: Please note moderate thrombocytopenia persists. Please
     <issued value="2012-04-05T23:37:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@111"/>
+      <reference value="patient/@111"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -2288,11 +2288,11 @@ Protein Total      65     g/L    ( 65-85    )
     <issued value="2012-04-06T01:03:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@112"/>
+      <reference value="patient/@112"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -2402,11 +2402,11 @@ Conclusion: Suggestive of infection.
     <issued value="2012-04-06T08:55:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@112"/>
+      <reference value="patient/@112"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -2512,11 +2512,11 @@ Hrs Since Dose No Info  No Info                            HH:MM
     <issued value="2012-04-06T03:24:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@113"/>
+      <reference value="patient/@113"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -2595,11 +2595,11 @@ Lipase             87     IU/L   ( &lt;60      )
     <issued value="2012-04-06T00:08:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@113"/>
+      <reference value="patient/@113"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -2701,11 +2701,11 @@ Comment: Instrument differential and parameters reported.
     <issued value="2012-04-05T23:36:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@113"/>
+      <reference value="patient/@113"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -2797,11 +2797,11 @@ INR               1.2                                            0.8-1.3
     <issued value="2012-04-06T00:02:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@113"/>
+      <reference value="patient/@113"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -2866,11 +2866,11 @@ Albumin            26     g/L    ( 35-50    )
     <issued value="2012-04-06T00:06:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@113"/>
+      <reference value="patient/@113"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -2953,11 +2953,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T23:21:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@113"/>
+      <reference value="patient/@113"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -3039,11 +3039,11 @@ INR               3.0H                                           0.8-1.3
     <issued value="2012-04-06T00:02:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@114"/>
+      <reference value="patient/@114"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -3109,11 +3109,11 @@ Urea              8.0     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-06T01:03:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@114"/>
+      <reference value="patient/@114"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -3193,11 +3193,11 @@ Baso         0.1                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T23:37:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@114"/>
+      <reference value="patient/@114"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -3301,11 +3301,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T23:43:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@115"/>
+      <reference value="patient/@115"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -3400,11 +3400,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-06T00:02:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@116"/>
+      <reference value="patient/@116"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -3483,11 +3483,11 @@ Protein Total      77     g/L    ( 65-85    )
     <issued value="2012-04-06T00:07:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@116"/>
+      <reference value="patient/@116"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -3575,11 +3575,11 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T23:37:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@116"/>
+      <reference value="patient/@116"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -3669,11 +3669,11 @@ Salicylate       &lt;0.30             &lt;0.30                   mmol/L &lt;2.9
     <issued value="2012-04-06T00:19:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@117"/>
+      <reference value="patient/@117"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -3761,11 +3761,11 @@ Protein Total      70     g/L    ( 65-85    )
     <issued value="2012-04-06T00:06:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@117"/>
+      <reference value="patient/@117"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -3870,11 +3870,11 @@ Comment: Mild neutropenia.
     <issued value="2012-04-06T08:57:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@117"/>
+      <reference value="patient/@117"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -3993,11 +3993,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T23:17:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@118"/>
+      <reference value="patient/@118"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -4113,11 +4113,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T23:17:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@118"/>
+      <reference value="patient/@118"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -4233,11 +4233,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T23:06:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@119"/>
+      <reference value="patient/@119"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -4353,11 +4353,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T23:03:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@120"/>
+      <reference value="patient/@120"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -4465,11 +4465,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T23:00:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@112"/>
+      <reference value="patient/@112"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -4573,11 +4573,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T23:00:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@121"/>
+      <reference value="patient/@121"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -4689,11 +4689,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T22:40:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@122"/>
+      <reference value="patient/@122"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -4812,11 +4812,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T22:40:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@114"/>
+      <reference value="patient/@114"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -4903,11 +4903,11 @@ Specimen Type:  Serum
     <issued value="2012-04-05T22:20:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@123"/>
+      <reference value="patient/@123"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -4971,11 +4971,11 @@ HBsAB Titre                                            :      44 IU/L
     <issued value="2012-04-05T22:20:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@123"/>
+      <reference value="patient/@123"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -5071,11 +5071,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T22:38:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@124"/>
+      <reference value="patient/@124"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -5165,11 +5165,11 @@ TSH                       0.08    L  mIU/L   ( 0.1-4.0  )
     <issued value="2012-04-06T01:08:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@124"/>
+      <reference value="patient/@124"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -5259,11 +5259,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T22:35:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@120"/>
+      <reference value="patient/@120"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -5358,11 +5358,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T22:56:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@125"/>
+      <reference value="patient/@125"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -5426,11 +5426,11 @@ Anaerobic bottle             4   days                 Negative
     <issued value="2012-04-10T00:00:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@126"/>
+      <reference value="patient/@126"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -5520,11 +5520,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-06T06:21:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@127"/>
+      <reference value="patient/@127"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -5654,11 +5654,11 @@ perinatal or neonatal infection.
     <issued value="2012-04-09T11:38:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@128"/>
+      <reference value="patient/@128"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -5788,11 +5788,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T22:31:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@129"/>
+      <reference value="patient/@129"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -5892,11 +5892,11 @@ Comment: sample not protected from light ward notified for
     <issued value="2012-04-10T07:01:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@130"/>
+      <reference value="patient/@130"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -5973,11 +5973,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T22:56:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@130"/>
+      <reference value="patient/@130"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -6051,11 +6051,11 @@ C-React Prot        2     mg/L   ( &lt;5       )
     <issued value="2012-04-05T23:43:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@130"/>
+      <reference value="patient/@130"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -6147,11 +6147,11 @@ Conclusion: No clinical information provided.
     <issued value="2012-04-05T22:41:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@130"/>
+      <reference value="patient/@130"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -6260,11 +6260,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T22:27:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@131"/>
+      <reference value="patient/@131"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -6354,11 +6354,11 @@ Urea             12.2     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-05T23:16:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@132"/>
+      <reference value="patient/@132"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -6447,11 +6447,11 @@ Conclusion: Common causes of macrocytosis include liver disease,
     <issued value="2012-04-06T08:48:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@132"/>
+      <reference value="patient/@132"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -6543,11 +6543,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T22:57:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@128"/>
+      <reference value="patient/@128"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -6626,11 +6626,11 @@ C-React Prot        4     mg/L   ( &lt;5       )
     <issued value="2012-04-06T01:17:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@128"/>
+      <reference value="patient/@128"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -6718,11 +6718,11 @@ Baso         0.1      0.0      0.0      0.0      0.0   x10^9/L   0.0-0.1
     <issued value="2012-04-05T22:41:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@128"/>
+      <reference value="patient/@128"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -6826,11 +6826,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T22:31:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@133"/>
+      <reference value="patient/@133"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -6929,11 +6929,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T22:56:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@134"/>
+      <reference value="patient/@134"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -7013,11 +7013,11 @@ Protein Total      69     g/L    ( 65-85    )
     <issued value="2012-04-05T22:47:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@134"/>
+      <reference value="patient/@134"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -7115,11 +7115,11 @@ Comment: Note neutrophilia.
     <issued value="2012-04-05T22:34:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@134"/>
+      <reference value="patient/@134"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -7200,11 +7200,11 @@ Troponin I        0.02    ug/L   (See Below )
     <issued value="2012-04-05T22:57:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@135"/>
+      <reference value="patient/@135"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -7258,11 +7258,11 @@ Troponin I       &lt;0.02    ug/L   (See Below )
     <issued value="2012-04-05T22:57:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@136"/>
+      <reference value="patient/@136"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -7316,11 +7316,11 @@ NTRC
     <issued value="2012-04-05T22:00:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@137"/>
+      <reference value="patient/@137"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -7381,11 +7381,11 @@ Urea              5.3     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-05T23:43:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@137"/>
+      <reference value="patient/@137"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -7465,11 +7465,11 @@ Baso         0.0      0.0      0.0      0.0      0.0   x10^9/L   0.0-0.1
     <issued value="2012-04-05T22:32:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@137"/>
+      <reference value="patient/@137"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -7549,11 +7549,11 @@ Urea              6.1     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-05T22:47:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@138"/>
+      <reference value="patient/@138"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -7628,11 +7628,11 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T22:32:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@138"/>
+      <reference value="patient/@138"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -7740,11 +7740,11 @@ culture.
     <issued value="2012-04-09T12:08:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@139"/>
+      <reference value="patient/@139"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -7869,11 +7869,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-06T06:21:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@129"/>
+      <reference value="patient/@129"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -7965,11 +7965,11 @@ Protein/Creat Ratio              30   mg/mmol Creat   ( 15-35    )
     <issued value="2012-04-07T16:54:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@140"/>
+      <reference value="patient/@140"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -8032,11 +8032,11 @@ GROIN SWAB                    VRE not detected
     <issued value="2012-04-08T09:50:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@141"/>
+      <reference value="patient/@141"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -8107,11 +8107,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T22:40:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@142"/>
+      <reference value="patient/@142"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -8189,11 +8189,11 @@ CK                 43     IU/L   ( &lt;175     )
     <issued value="2012-04-05T22:56:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@142"/>
+      <reference value="patient/@142"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -8299,11 +8299,11 @@ Conclusion: Known beta thalassaemia minor. Suggest repeat FBE for an
     <issued value="2012-04-05T22:32:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@142"/>
+      <reference value="patient/@142"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -8400,11 +8400,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T22:40:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@143"/>
+      <reference value="patient/@143"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -8497,11 +8497,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T22:11:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@121"/>
+      <reference value="patient/@121"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -8591,11 +8591,11 @@ Protein/Creat Ratio             232 H mg/mmol Creat   ( 15-35    )
     <issued value="2012-04-05T22:16:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@144"/>
+      <reference value="patient/@144"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -8678,11 +8678,11 @@ No Growth -Detection limit 10^7 CFU/L
     <issued value="2012-04-07T08:57:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@144"/>
+      <reference value="patient/@144"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -8772,11 +8772,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T22:28:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@145"/>
+      <reference value="patient/@145"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -8851,11 +8851,11 @@ Urea              7.5     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-05T22:31:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@145"/>
+      <reference value="patient/@145"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -8935,11 +8935,11 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T22:01:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@145"/>
+      <reference value="patient/@145"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -9020,11 +9020,11 @@ Troponin I        0.04    ug/L   (See Below )
     <issued value="2012-04-05T22:44:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@146"/>
+      <reference value="patient/@146"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -9110,11 +9110,11 @@ Conclusion: Note persistent anaemia.
     <issued value="2012-04-05T22:02:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@146"/>
+      <reference value="patient/@146"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -9203,11 +9203,11 @@ Albumin            28     g/L    ( 35-50    )
     <issued value="2012-04-05T22:31:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@121"/>
+      <reference value="patient/@121"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -9289,11 +9289,11 @@ Comment: Intra-op
     <issued value="2012-04-05T22:01:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@121"/>
+      <reference value="patient/@121"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -9382,11 +9382,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T22:23:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@147"/>
+      <reference value="patient/@147"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -9484,11 +9484,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T21:56:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@148"/>
+      <reference value="patient/@148"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -9596,11 +9596,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T21:51:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@145"/>
+      <reference value="patient/@145"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -9693,11 +9693,11 @@ C-React Prot        5     mg/L   ( &lt;5       )
     <issued value="2012-04-05T22:58:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@124"/>
+      <reference value="patient/@124"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -9786,11 +9786,11 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T22:01:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@124"/>
+      <reference value="patient/@124"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -9865,11 +9865,11 @@ LIPIDS
     <issued value="2012-04-06T03:49:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@149"/>
+      <reference value="patient/@149"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -9940,11 +9940,11 @@ investigation, please contact the Microbiology Registrar.
     <issued value="2012-04-07T14:25:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@150"/>
+      <reference value="patient/@150"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -10033,11 +10033,11 @@ Standard culture:   ++ Mixed upper respiratory tract flora
     <issued value="2012-04-07T12:54:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@118"/>
+      <reference value="patient/@118"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -10133,11 +10133,11 @@ No Growth -Detection limit 10^7 CFU/L
     <issued value="2012-04-07T08:55:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@118"/>
+      <reference value="patient/@118"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -10218,11 +10218,11 @@ Anaerobic bottle             4   days                 Negative
     <issued value="2012-04-09T22:49:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@118"/>
+      <reference value="patient/@118"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -10280,11 +10280,11 @@ Comment: The requested tests were not completed as no
     <issued value="2012-04-05T23:43:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@151"/>
+      <reference value="patient/@151"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -10364,11 +10364,11 @@ Xanthochromia Comment:   Oxyhaemoglobin present but no significant
     <issued value="2012-04-05T23:01:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@151"/>
+      <reference value="patient/@151"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -10465,11 +10465,11 @@ culture or special media are required.
     <issued value="2012-04-08T10:12:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@151"/>
+      <reference value="patient/@151"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -10557,11 +10557,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T22:28:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@152"/>
+      <reference value="patient/@152"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -10636,11 +10636,11 @@ Troponin I        0.02    ug/L   (See Below )
     <issued value="2012-04-05T22:29:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@152"/>
+      <reference value="patient/@152"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -10724,11 +10724,11 @@ Comment: * Please note: no specimen received.
     <issued value="2012-04-05T22:01:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@152"/>
+      <reference value="patient/@152"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -10817,11 +10817,11 @@ COMMENT: This serum sample has been stored for 3 months.  If clinically
     <issued value="2012-04-06T12:52:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@153"/>
+      <reference value="patient/@153"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -10919,11 +10919,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T21:30:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@124"/>
+      <reference value="patient/@124"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -11039,11 +11039,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T21:26:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@122"/>
+      <reference value="patient/@122"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -11135,11 +11135,11 @@ Urea              7.0     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-05T22:23:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@154"/>
+      <reference value="patient/@154"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -11230,11 +11230,11 @@ Comment: Please note fall in haemoglobin and platelet count since
     <issued value="2012-04-05T21:35:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@154"/>
+      <reference value="patient/@154"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -11325,11 +11325,11 @@ Urea              9.1     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-05T22:23:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@155"/>
+      <reference value="patient/@155"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -11392,11 +11392,11 @@ Urea              9.1     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-05T22:23:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@155"/>
+      <reference value="patient/@155"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -11483,11 +11483,11 @@ Conclusion: Please note fall in haemoglobin since the previous
     <issued value="2012-04-05T21:36:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@155"/>
+      <reference value="patient/@155"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -11582,11 +11582,11 @@ Antithrombin (Functional)         88     %      (80-120)
     <issued value="2012-04-05T22:07:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@155"/>
+      <reference value="patient/@155"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -11660,11 +11660,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T21:48:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@155"/>
+      <reference value="patient/@155"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -11740,11 +11740,11 @@ Presumptive  negative for pneumococcal pneumonia.
     <issued value="2012-04-10T12:51:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@153"/>
+      <reference value="patient/@153"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -11822,11 +11822,11 @@ Urea             16.4     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-05T22:22:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@156"/>
+      <reference value="patient/@156"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -11900,11 +11900,11 @@ yeasts                                    Occasional
     <issued value="2012-04-06T14:19:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@157"/>
+      <reference value="patient/@157"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -12002,11 +12002,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T21:12:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@158"/>
+      <reference value="patient/@158"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -12094,11 +12094,11 @@ TSH                       2.52       mIU/L   ( 0.1-4.0  )
     <issued value="2012-04-05T21:58:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@135"/>
+      <reference value="patient/@135"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -12182,11 +12182,11 @@ No Growth -Detection limit 10^7 CFU/L
     <issued value="2012-04-07T08:55:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@159"/>
+      <reference value="patient/@159"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -12289,11 +12289,11 @@ No Growth -Detection limit 10^7 CFU/L
     <issued value="2012-04-07T08:55:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@139"/>
+      <reference value="patient/@139"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -12401,11 +12401,11 @@ No Growth -Detection limit 10^7 CFU/L
     <issued value="2012-04-07T08:55:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@160"/>
+      <reference value="patient/@160"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -12491,11 +12491,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T21:27:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@120"/>
+      <reference value="patient/@120"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -12571,11 +12571,11 @@ Protein Total      55     g/L    ( 65-85    )
     <issued value="2012-04-05T21:47:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@120"/>
+      <reference value="patient/@120"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -12678,11 +12678,11 @@ Conclusion: Increase in leucocyte count since the last examination.
     <issued value="2012-04-05T22:29:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@120"/>
+      <reference value="patient/@120"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -12795,11 +12795,11 @@ No Growth -Detection limit 10^7 CFU/L
     <issued value="2012-04-07T08:55:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@161"/>
+      <reference value="patient/@161"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -12885,11 +12885,11 @@ Cortisol Diurnal Variation:AM (0800 - 0900): 150 - 650 nmol/L
     <issued value="2012-04-05T23:44:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@162"/>
+      <reference value="patient/@162"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -12951,11 +12951,11 @@ Osmolality        290     mosm/kg( 280-300  )
     <issued value="2012-04-05T22:41:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@162"/>
+      <reference value="patient/@162"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -13019,11 +13019,11 @@ Urine Osmolality                618   mmol/L          ( 50-1200  )
     <issued value="2012-04-05T22:41:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@162"/>
+      <reference value="patient/@162"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -13110,11 +13110,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T21:03:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@118"/>
+      <reference value="patient/@118"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -13206,11 +13206,11 @@ Urine Osmolality                612   mmol/L          ( 50-1200  )
     <issued value="2012-04-05T22:41:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@163"/>
+      <reference value="patient/@163"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -13274,11 +13274,11 @@ Osmolality        295     mosm/kg( 280-300  )
     <issued value="2012-04-05T22:41:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@163"/>
+      <reference value="patient/@163"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -13349,11 +13349,11 @@ Protein Total      73     g/L    ( 65-85    )
     <issued value="2012-04-05T21:46:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@113"/>
+      <reference value="patient/@113"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -13450,11 +13450,11 @@ Conclusion: Features suggestive of infection / inflammation. Suggest
     <issued value="2012-04-05T22:04:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@113"/>
+      <reference value="patient/@113"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -13544,11 +13544,11 @@ Urea              4.1     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-05T21:45:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@164"/>
+      <reference value="patient/@164"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -13623,11 +13623,11 @@ Baso         0.1                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T21:13:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@164"/>
+      <reference value="patient/@164"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -13726,11 +13726,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T21:01:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@120"/>
+      <reference value="patient/@120"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -13846,11 +13846,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T20:57:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@148"/>
+      <reference value="patient/@148"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -13954,11 +13954,11 @@ call 1-800-555-2123 to contact the State Department of Health.
     <issued value="2012-04-09T11:39:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@161"/>
+      <reference value="patient/@161"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -14031,11 +14031,11 @@ Anaerobic bottle             4   days                 Negative
     <issued value="2012-04-09T21:19:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@140"/>
+      <reference value="patient/@140"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -14117,11 +14117,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T20:54:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@153"/>
+      <reference value="patient/@153"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -14198,11 +14198,11 @@ Troponin I        0.02    ug/L   (See Below )
     <issued value="2012-04-05T21:56:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@165"/>
+      <reference value="patient/@165"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -14256,11 +14256,11 @@ C-React Prot      149     mg/L   ( &lt;5       )
     <issued value="2012-04-05T21:46:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@167"/>
+      <reference value="patient/@167"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -14319,11 +14319,11 @@ Anaerobic bottle             4   days                 Negative
     <issued value="2012-04-09T22:49:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@167"/>
+      <reference value="patient/@167"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -14384,11 +14384,11 @@ Vitamin 25 D                 TF      nmol/L( SEE-BELOW
     <issued value="2012-04-05T20:39:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@168"/>
+      <reference value="patient/@168"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -14463,11 +14463,11 @@ Old Ref Ranges prior to 27th April 2004
     <issued value="2012-04-06T08:31:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@168"/>
+      <reference value="patient/@168"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -14561,11 +14561,11 @@ LIPIDS
     <issued value="2012-04-05T21:14:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@168"/>
+      <reference value="patient/@168"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -14659,11 +14659,11 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T20:52:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@168"/>
+      <reference value="patient/@168"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -14743,11 +14743,11 @@ Urea              4.4     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-05T21:14:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@169"/>
+      <reference value="patient/@169"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -14836,11 +14836,11 @@ Comment: Instrument differential and parameters reported.
     <issued value="2012-04-05T21:04:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@169"/>
+      <reference value="patient/@169"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -14927,11 +14927,11 @@ Anaerobic bottle             4   days                 Negative
     <issued value="2012-04-09T22:49:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@169"/>
+      <reference value="patient/@169"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -15026,11 +15026,11 @@ Timentin         S
     <issued value="2012-04-09T08:45:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@126"/>
+      <reference value="patient/@126"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -15142,11 +15142,11 @@ Standard culture:   +++  Mixed upper respiratory tract flora
     <issued value="2012-04-08T11:37:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@170"/>
+      <reference value="patient/@170"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -15248,11 +15248,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T20:40:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@129"/>
+      <reference value="patient/@129"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -15345,11 +15345,11 @@ C-React Prot        2     mg/L   ( &lt;5       )
     <issued value="2012-04-05T20:20:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@144"/>
+      <reference value="patient/@144"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -15416,11 +15416,11 @@ Anaerobic bottle             4   days                 Negative
     <issued value="2012-04-09T21:19:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@171"/>
+      <reference value="patient/@171"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -15491,11 +15491,11 @@ Protein Total      56     g/L    ( 65-85    )
     <issued value="2012-04-05T21:13:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@131"/>
+      <reference value="patient/@131"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -15605,11 +15605,11 @@ Film Comment : Red cells show some microcytes, elongated cells and mildly
     <issued value="2012-04-05T22:23:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@131"/>
+      <reference value="patient/@131"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -15724,11 +15724,11 @@ CULTURE
     <issued value="2012-04-09T12:07:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@172"/>
+      <reference value="patient/@172"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -15835,11 +15835,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T20:25:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@119"/>
+      <reference value="patient/@119"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -15931,11 +15931,11 @@ RECTAL SWAB                   VRE not detected
     <issued value="2012-04-08T09:51:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@126"/>
+      <reference value="patient/@126"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -15996,11 +15996,11 @@ Troponin I       &lt;0.02    ug/L   (See Below )
     <issued value="2012-04-05T21:04:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@173"/>
+      <reference value="patient/@173"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -16064,11 +16064,11 @@ Comment: The requested tests were not completed as the
     <issued value="2012-04-05T21:40:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@175"/>
+      <reference value="patient/@175"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -16137,11 +16137,11 @@ Comment: The specimen received was mislabelled. The ward has  been
     <issued value="2012-04-05T20:51:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@175"/>
+      <reference value="patient/@175"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -16219,11 +16219,11 @@ Old Ref Ranges prior to 27th April 2004
     <issued value="2012-04-06T09:13:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@176"/>
+      <reference value="patient/@176"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -16306,11 +16306,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T21:04:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@176"/>
+      <reference value="patient/@176"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -16376,11 +16376,11 @@ Vitamin 25 D                 TF      nmol/L( SEE-BELOW
     <issued value="2012-04-05T19:30:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@176"/>
+      <reference value="patient/@176"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -16455,11 +16455,11 @@ Baso         0.0      0.0      0.0      0.0      0.0   x10^9/L   0.0-0.1
     <issued value="2012-04-05T20:45:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@176"/>
+      <reference value="patient/@176"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -16547,11 +16547,11 @@ C-React Prot       12     mg/L   ( &lt;5       )
     <issued value="2012-04-05T20:59:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@176"/>
+      <reference value="patient/@176"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -16625,11 +16625,11 @@ Anaerobic bottle             4   days                 Negative
     <issued value="2012-04-09T21:19:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@177"/>
+      <reference value="patient/@177"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -16707,11 +16707,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T21:04:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@148"/>
+      <reference value="patient/@148"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -16796,11 +16796,11 @@ Protein Total      51     g/L    ( 65-85    )
     <issued value="2012-04-05T21:00:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@148"/>
+      <reference value="patient/@148"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -16897,11 +16897,11 @@ Conclusion: Please note fall in haemoglobin since the previous
     <issued value="2012-04-05T22:11:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@148"/>
+      <reference value="patient/@148"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -17012,11 +17012,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T20:12:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@119"/>
+      <reference value="patient/@119"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -17132,11 +17132,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T20:10:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@179"/>
+      <reference value="patient/@179"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -17224,11 +17224,11 @@ TSH                       1.55       mIU/L   ( 0.1-4.0  )
     <issued value="2012-04-05T20:51:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@174"/>
+      <reference value="patient/@174"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -17304,11 +17304,11 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T20:13:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@174"/>
+      <reference value="patient/@174"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -17393,11 +17393,11 @@ Troponin I        0.03    ug/L   (See Below )
     <issued value="2012-04-05T20:51:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@174"/>
+      <reference value="patient/@174"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -17491,11 +17491,11 @@ streptococci and diphtheroid bacilli.
     <issued value="2012-04-07T10:14:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@180"/>
+      <reference value="patient/@180"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -17603,11 +17603,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T20:14:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@181"/>
+      <reference value="patient/@181"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -17698,11 +17698,11 @@ G1691A Substitution Result:
     <issued value="2012-04-05T20:00:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@182"/>
+      <reference value="patient/@182"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -17772,11 +17772,11 @@ MicroAlb/Creat Ratio           5.66 H mg/mmol creat   ( &lt;2.5     )
     <issued value="2012-04-06T04:06:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@183"/>
+      <reference value="patient/@183"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -17866,11 +17866,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T20:04:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@148"/>
+      <reference value="patient/@148"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -17969,11 +17969,11 @@ Protein Total      64     g/L    ( 65-85    )
     <issued value="2012-04-05T21:39:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@184"/>
+      <reference value="patient/@184"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -18055,11 +18055,11 @@ Baso         0.0      0.1      0.0      0.0      0.0   x10^9/L   0.0-0.1
     <issued value="2012-04-05T20:14:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@184"/>
+      <reference value="patient/@184"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -18158,11 +18158,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T19:59:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@122"/>
+      <reference value="patient/@122"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -18261,11 +18261,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T20:43:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@185"/>
+      <reference value="patient/@185"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -18350,11 +18350,11 @@ Protein Total      65     g/L    ( 65-85    )
     <issued value="2012-04-05T20:18:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@185"/>
+      <reference value="patient/@185"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -18447,11 +18447,11 @@ Film Comment : Film scanned. The blood film shows no diagnostic features.
     <issued value="2012-04-05T22:06:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@185"/>
+      <reference value="patient/@185"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -18570,11 +18570,11 @@ emergence of resistance  and clinical failure.
     <issued value="2012-04-09T08:45:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@186"/>
+      <reference value="patient/@186"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -18674,11 +18674,11 @@ C-React Prot       24     mg/L   ( &lt;5       )
     <issued value="2012-04-05T20:19:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@187"/>
+      <reference value="patient/@187"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -18767,11 +18767,11 @@ Comment: FBE with BMAT. Report to follow.
     <issued value="2012-04-05T20:13:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@187"/>
+      <reference value="patient/@187"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -18856,11 +18856,11 @@ Comment: The requested tests were not completed as no sample was
     <issued value="2012-04-06T07:38:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@188"/>
+      <reference value="patient/@188"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -18925,11 +18925,11 @@ Urea              6.5     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-05T20:19:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@188"/>
+      <reference value="patient/@188"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -19009,11 +19009,11 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T20:13:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@188"/>
+      <reference value="patient/@188"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -19086,11 +19086,11 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T19:40:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@151"/>
+      <reference value="patient/@151"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -19153,11 +19153,11 @@ Comment: The requested tests were not completed as no
     <issued value="2012-04-05T20:15:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@151"/>
+      <reference value="patient/@151"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -19230,11 +19230,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T20:32:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@151"/>
+      <reference value="patient/@151"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -19316,11 +19316,11 @@ Comment: Haemolysed. Some tests (*) unavailable.
     <issued value="2012-04-05T20:35:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@178"/>
+      <reference value="patient/@178"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -19418,11 +19418,11 @@ Comment: * Specimen clotted. ED informed.
     <issued value="2012-04-05T20:17:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@178"/>
+      <reference value="patient/@178"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -19533,11 +19533,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-06T06:21:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@181"/>
+      <reference value="patient/@181"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -19640,11 +19640,11 @@ No Growth After 2 Days.
     <issued value="2012-04-09T11:01:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@189"/>
+      <reference value="patient/@189"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -19726,11 +19726,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T20:10:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@190"/>
+      <reference value="patient/@190"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -19801,11 +19801,11 @@ Urea              4.3     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-05T20:06:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@190"/>
+      <reference value="patient/@190"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -19888,11 +19888,11 @@ Comment: Please note mild neutrophilia
     <issued value="2012-04-05T19:43:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@190"/>
+      <reference value="patient/@190"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -19986,11 +19986,11 @@ Pathologist: To Follow
     <issued value="2012-04-05T19:20:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@191"/>
+      <reference value="patient/@191"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -20076,11 +20076,11 @@ Pathologist: To Follow
     <issued value="2012-04-05T19:23:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@192"/>
+      <reference value="patient/@192"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -20158,11 +20158,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T19:24:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@139"/>
+      <reference value="patient/@139"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -20241,11 +20241,11 @@ C-React Prot      109     mg/L   ( &lt;5       )
     <issued value="2012-04-05T19:24:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@139"/>
+      <reference value="patient/@139"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -20343,11 +20343,11 @@ Comment: Please note mild neutrophilia and mild monocytosis
     <issued value="2012-04-05T19:43:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@139"/>
+      <reference value="patient/@139"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -20437,11 +20437,11 @@ Protein/Creat Ratio             190 H mg/mmol Creat   ( 15-35    )
     <issued value="2012-04-05T19:49:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@124"/>
+      <reference value="patient/@124"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -20521,11 +20521,11 @@ Pathologist: To Follow
     <issued value="2012-04-05T19:21:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@189"/>
+      <reference value="patient/@189"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -20619,11 +20619,11 @@ the Blood Bank.
     <issued value="2012-04-06T06:19:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@193"/>
+      <reference value="patient/@193"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -20721,11 +20721,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T19:23:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@190"/>
+      <reference value="patient/@190"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -20805,11 +20805,11 @@ Albumin            22     g/L    ( 35-50    )
     <issued value="2012-04-05T19:46:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@194"/>
+      <reference value="patient/@194"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -20889,11 +20889,11 @@ and diphtheroid bacilli.
     <issued value="2012-04-07T10:13:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@195"/>
+      <reference value="patient/@195"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -20993,11 +20993,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T19:57:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@147"/>
+      <reference value="patient/@147"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -21085,11 +21085,11 @@ the Blood Bank.
     <issued value="2012-04-05T19:18:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@196"/>
+      <reference value="patient/@196"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -21187,11 +21187,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T19:13:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@144"/>
+      <reference value="patient/@144"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -21286,11 +21286,11 @@ Comment: The CKMB was not measured on this sample. It has
     <issued value="2012-04-05T20:14:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@197"/>
+      <reference value="patient/@197"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -21385,11 +21385,11 @@ Comment: Please note fall in haemoglobin and platelet count since
     <issued value="2012-04-05T19:41:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@197"/>
+      <reference value="patient/@197"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -21484,11 +21484,11 @@ Comment
     <issued value="2012-04-05T17:15:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@198"/>
+      <reference value="patient/@198"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -21591,11 +21591,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-06T06:21:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@115"/>
+      <reference value="patient/@115"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -21685,11 +21685,11 @@ INR               1.1      1.1      1.1      1.1      2.6H       0.8-1.3
     <issued value="2012-04-05T19:48:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@153"/>
+      <reference value="patient/@153"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -21753,11 +21753,11 @@ Comment: A troponin has been measured for this patient in
     <issued value="2012-04-05T19:25:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@153"/>
+      <reference value="patient/@153"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -21838,11 +21838,11 @@ Hrs Since Dose          No Info    02:00                   HH:MM
     <issued value="2012-04-05T20:39:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@199"/>
+      <reference value="patient/@199"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -21928,11 +21928,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T19:48:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@100"/>
+      <reference value="patient/@100"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -22013,11 +22013,11 @@ Protein Total      47     g/L    ( 65-85    )
     <issued value="2012-04-05T19:45:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@100"/>
+      <reference value="patient/@100"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -22111,11 +22111,11 @@ Comment: Please note fall in haemoglobin and platelet count since
     <issued value="2012-04-05T19:42:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@100"/>
+      <reference value="patient/@100"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -22192,11 +22192,11 @@ NTRC
     <issued value="2012-04-05T18:30:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@195"/>
+      <reference value="patient/@195"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -22261,11 +22261,11 @@ Albumin            34     g/L    ( 35-50    )
     <issued value="2012-04-05T19:45:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@195"/>
+      <reference value="patient/@195"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -22349,11 +22349,11 @@ Baso         0.0      0.0                              x10^9/L   0.0-0.1
     <issued value="2012-04-05T19:41:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@195"/>
+      <reference value="patient/@195"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -22431,11 +22431,11 @@ Anaerobic bottle             4   days                 Negative
     <issued value="2012-04-09T21:19:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@140"/>
+      <reference value="patient/@140"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -22505,11 +22505,11 @@ General Comments:
     <issued value="2012-04-10T10:58:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@101"/>
+      <reference value="patient/@101"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -22597,11 +22597,11 @@ Standard culture:   +++  Mixed upper respiratory tract flora
     <issued value="2012-04-08T11:35:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@169"/>
+      <reference value="patient/@169"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -22718,11 +22718,11 @@ Comment: Post platelet increment
     <issued value="2012-04-05T17:45:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@102"/>
+      <reference value="patient/@102"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -22822,11 +22822,11 @@ Lipase            741     IU/L   ( &lt;60      )
     <issued value="2012-04-05T19:57:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@103"/>
+      <reference value="patient/@103"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -22887,11 +22887,11 @@ Albumin            27     g/L    ( 35-50    )
     <issued value="2012-04-05T17:45:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@106"/>
+      <reference value="patient/@106"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -22983,11 +22983,11 @@ Comment: Instrument differential and parameters reported.
     <issued value="2012-04-05T17:45:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@106"/>
+      <reference value="patient/@106"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -23095,11 +23095,11 @@ Conclusion: ? Post-op.
     <issued value="2012-04-05T21:44:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@107"/>
+      <reference value="patient/@107"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -23206,11 +23206,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T18:59:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@199"/>
+      <reference value="patient/@199"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -23295,11 +23295,11 @@ NTRS
     <issued value="2012-04-06T00:40:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@108"/>
+      <reference value="patient/@108"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -23365,11 +23365,11 @@ Post Dose (Peak) level : Not recommended
     <issued value="2012-04-05T19:42:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@108"/>
+      <reference value="patient/@108"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -23450,11 +23450,11 @@ C-React Prot       19     mg/L   ( &lt;5       )
     <issued value="2012-04-05T19:42:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@108"/>
+      <reference value="patient/@108"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -23546,11 +23546,11 @@ Comment: Note: mild neutrophilia. Instrument differential and
     <issued value="2012-04-05T19:01:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@108"/>
+      <reference value="patient/@108"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -23654,11 +23654,11 @@ No Growth -Detection limit 10^7 CFU/L
     <issued value="2012-04-07T08:54:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@188"/>
+      <reference value="patient/@188"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -23749,11 +23749,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T19:34:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@109"/>
+      <reference value="patient/@109"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -23828,11 +23828,11 @@ Comment: The CKMB was not measured on this sample. It has
     <issued value="2012-04-05T21:57:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@109"/>
+      <reference value="patient/@109"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -23920,11 +23920,11 @@ Comment: Please note fall in haemoglobin and platelet count since
     <issued value="2012-04-05T19:01:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@109"/>
+      <reference value="patient/@109"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -23995,11 +23995,11 @@ Blank Report?
     <issued value="2012-04-06T00:03:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@110"/>
+      <reference value="patient/@110"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -24063,11 +24063,11 @@ sera. This serum sample has been stored for 3 months.
     <issued value="2012-04-05T17:50:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@110"/>
+      <reference value="patient/@110"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -24134,11 +24134,11 @@ HIV-1/2 Ag/Ab Combo by Architect:
     <issued value="2012-04-05T17:50:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@110"/>
+      <reference value="patient/@110"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -24196,11 +24196,11 @@ Antinuclear abs     TF
     <issued value="2012-04-05T17:50:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@110"/>
+      <reference value="patient/@110"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -24269,11 +24269,11 @@ Old Ref Ranges prior to 27th April 2004
     <issued value="2012-04-05T19:48:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@110"/>
+      <reference value="patient/@110"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -24355,11 +24355,11 @@ Baso         0.1                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T19:38:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@110"/>
+      <reference value="patient/@110"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -24428,11 +24428,11 @@ NTRESR
     <issued value="2012-04-05T11:45:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@111"/>
+      <reference value="patient/@111"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -24486,11 +24486,11 @@ NTRESR
     <issued value="2012-04-05T08:30:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@112"/>
+      <reference value="patient/@112"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -24554,11 +24554,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T19:25:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@113"/>
+      <reference value="patient/@113"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -24624,11 +24624,11 @@ Urea              6.8     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-05T19:21:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@113"/>
+      <reference value="patient/@113"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -24703,11 +24703,11 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T18:56:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@113"/>
+      <reference value="patient/@113"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -24780,11 +24780,11 @@ Anaerobic bottle             4   days                 Negative
     <issued value="2012-04-09T21:19:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@161"/>
+      <reference value="patient/@161"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -24844,11 +24844,11 @@ NTRF
     <issued value="2012-04-06T00:40:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@114"/>
+      <reference value="patient/@114"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -24903,11 +24903,11 @@ Anaerobic bottle             4   days                 Negative
     <issued value="2012-04-09T21:19:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@114"/>
+      <reference value="patient/@114"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -24971,11 +24971,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T19:25:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@114"/>
+      <reference value="patient/@114"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -25054,11 +25054,11 @@ C-React Prot      184     mg/L   ( &lt;5       )
     <issued value="2012-04-05T19:20:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@114"/>
+      <reference value="patient/@114"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -25157,11 +25157,11 @@ Conclusion: Please note fall in haemoglobin since the previous
     <issued value="2012-04-05T18:57:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@114"/>
+      <reference value="patient/@114"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -25247,11 +25247,11 @@ Urea             11.7     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-05T19:20:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@115"/>
+      <reference value="patient/@115"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -25343,11 +25343,11 @@ Film Comment : Neutrophils show mild toxic changes. Manual differential.
     <issued value="2012-04-05T18:56:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@115"/>
+      <reference value="patient/@115"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -25447,11 +25447,11 @@ Troponin I       &lt;0.02    ug/L   (See Below )
     <issued value="2012-04-05T19:29:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@136"/>
+      <reference value="patient/@136"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -25539,11 +25539,11 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T18:56:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@136"/>
+      <reference value="patient/@136"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -25621,11 +25621,11 @@ Anaerobic bottle             4   days                 Negative
     <issued value="2012-04-09T21:19:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@116"/>
+      <reference value="patient/@116"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -25694,11 +25694,11 @@ C-React Prot       54     mg/L   ( &lt;5       )
     <issued value="2012-04-05T19:17:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@116"/>
+      <reference value="patient/@116"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -25787,11 +25787,11 @@ Conclusion: ? Cause of persistent mild thrombocytopenia.
     <issued value="2012-04-05T18:46:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@116"/>
+      <reference value="patient/@116"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -25870,11 +25870,11 @@ INR               4.3H     4.0H     6.2H     6.6H     6.9H       0.8-1.3
     <issued value="2012-04-05T19:34:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@117"/>
+      <reference value="patient/@117"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -25947,11 +25947,11 @@ Protein Total      80     g/L    ( 65-85    )
     <issued value="2012-04-05T20:12:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@151"/>
+      <reference value="patient/@151"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -26038,11 +26038,11 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T18:46:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@151"/>
+      <reference value="patient/@151"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -26134,11 +26134,11 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T18:46:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@151"/>
+      <reference value="patient/@151"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -26219,11 +26219,11 @@ Troponin I        1.02    ug/L   (See Below )
     <issued value="2012-04-05T19:24:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@157"/>
+      <reference value="patient/@157"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -26285,11 +26285,11 @@ Anaerobic bottle             4   days                 Negative
     <issued value="2012-04-09T21:17:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@157"/>
+      <reference value="patient/@157"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -26348,11 +26348,11 @@ INR               1.0                                            0.8-1.3
     <issued value="2012-04-05T19:00:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@118"/>
+      <reference value="patient/@118"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -26414,11 +26414,11 @@ Quant Pregnancy (hCG) &lt;2           IU/L    ( &lt;5       )
     <issued value="2012-04-05T19:25:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@118"/>
+      <reference value="patient/@118"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -26497,11 +26497,11 @@ Comment: Please note mild neutrophilia
     <issued value="2012-04-05T18:39:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@118"/>
+      <reference value="patient/@118"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -26591,11 +26591,11 @@ Protein Total      67     g/L    ( 65-85    )
     <issued value="2012-04-05T20:09:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@118"/>
+      <reference value="patient/@118"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -26672,11 +26672,11 @@ Comments / Steps Taken
     <issued value="2012-04-05T19:24:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@182"/>
+      <reference value="patient/@182"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -26762,11 +26762,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T18:26:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@118"/>
+      <reference value="patient/@118"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -26873,11 +26873,11 @@ Conclusion: * Film shows fibrin strands suggestive of a partially
     <issued value="2012-04-05T18:46:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@119"/>
+      <reference value="patient/@119"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -26963,11 +26963,11 @@ Urea              4.2     mmol/L ( 2.5-8.3  )
     <issued value="2012-04-05T18:41:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@120"/>
+      <reference value="patient/@120"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -27050,11 +27050,11 @@ Comment: Please note mild monocytosis
     <issued value="2012-04-05T18:31:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@120"/>
+      <reference value="patient/@120"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -27137,11 +27137,11 @@ to STAGO D-Dimer reagents (LIATEST). NB the reference range is unchanged
     <issued value="2012-04-05T19:00:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@120"/>
+      <reference value="patient/@120"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -27209,11 +27209,11 @@ HbA1c(HPLC)               %      (See Below)
     <issued value="2012-04-05T18:54:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@124"/>
+      <reference value="patient/@124"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -27317,11 +27317,11 @@ Conclusion: Recent tissue damage/trauma.
     <issued value="2012-04-05T21:04:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@124"/>
+      <reference value="patient/@124"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -27434,11 +27434,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T19:00:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@124"/>
+      <reference value="patient/@124"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -27520,11 +27520,11 @@ Amylase            51     IU/L   ( 22-100   )
     <issued value="2012-04-05T19:30:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@124"/>
+      <reference value="patient/@124"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -27614,11 +27614,11 @@ Standard culture:   +  Mixed upper respiratory tract flora
     <issued value="2012-04-08T11:40:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@141"/>
+      <reference value="patient/@141"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -27727,11 +27727,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T18:23:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@127"/>
+      <reference value="patient/@127"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -27818,11 +27818,11 @@ Amylase           390 IU/L
     <issued value="2012-04-05T21:59:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@172"/>
+      <reference value="patient/@172"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -27906,11 +27906,11 @@ streptococci, diphtheroid bacilli \T\ gram negative bacilli.
     <issued value="2012-04-07T10:22:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@140"/>
+      <reference value="patient/@140"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -27998,11 +27998,11 @@ No Beta haemolytic streptococci isolated.
     <issued value="2012-04-09T12:08:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@121"/>
+      <reference value="patient/@121"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -28082,11 +28082,11 @@ be processed.
     <issued value="2012-04-07T16:52:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@121"/>
+      <reference value="patient/@121"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -28168,11 +28168,11 @@ sera. This serum sample has been stored for 3 months.
     <issued value="2012-04-05T18:00:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@121"/>
+      <reference value="patient/@121"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -28239,11 +28239,11 @@ Anaerobic bottle             4   days                 Negative
     <issued value="2012-04-09T20:35:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@121"/>
+      <reference value="patient/@121"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -28312,11 +28312,11 @@ C-React Prot       44     mg/L   ( &lt;5       )
     <issued value="2012-04-05T18:43:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@121"/>
+      <reference value="patient/@121"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -28404,11 +28404,11 @@ Conclusion: Suggest repeat FBE to confirm platelet count.
     <issued value="2012-04-05T21:15:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@121"/>
+      <reference value="patient/@121"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -28489,11 +28489,11 @@ Troponin I       &lt;0.02    ug/L   (See Below )
     <issued value="2012-04-05T18:53:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@123"/>
+      <reference value="patient/@123"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -28574,11 +28574,11 @@ Baso         0.0                                       x10^9/L   0.0-0.1
     <issued value="2012-04-05T18:32:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@123"/>
+      <reference value="patient/@123"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -28682,11 +28682,11 @@ Note: Reference Ranges shown are for arterial blood only.
     <issued value="2012-04-05T18:15:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@122"/>
+      <reference value="patient/@122"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -28777,11 +28777,11 @@ G1691A Substitution Result:
     <issued value="2012-04-05T18:02:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@182"/>
+      <reference value="patient/@182"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -28849,11 +28849,11 @@ Lactate           1.2     mmol/L ( 0.2-1.8  )
     <issued value="2012-04-05T18:44:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@182"/>
+      <reference value="patient/@182"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -28930,11 +28930,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T19:26:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@182"/>
+      <reference value="patient/@182"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -29031,11 +29031,11 @@ Conclusion: Common causes of macrocytosis include liver disease,
     <issued value="2012-04-05T20:59:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@182"/>
+      <reference value="patient/@182"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -29131,11 +29131,11 @@ Please contact the immunopathology registrar for further advice on 9342 8023.
     <issued value="2012-04-05T18:02:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@182"/>
+      <reference value="patient/@182"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -29218,11 +29218,11 @@ Lupus Inhibitor Comment:
     <issued value="2012-04-05T18:02:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@182"/>
+      <reference value="patient/@182"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -29290,11 +29290,11 @@ Blank Report?
     <issued value="2012-04-05T17:12:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@124"/>
+      <reference value="patient/@124"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -29353,11 +29353,11 @@ Albumin            23     g/L    ( 35-50    )
     <issued value="2012-04-05T18:43:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@125"/>
+      <reference value="patient/@125"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -29446,11 +29446,11 @@ Conclusion: Suggestive of iron deficiency anaemia. Suggest correlation
     <issued value="2012-04-05T18:31:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@126"/>
+      <reference value="patient/@126"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -29552,11 +29552,11 @@ Baso         0.0      0.0      0.0                     x10^9/L   0.0-0.1
     <issued value="2012-04-05T18:31:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@127"/>
+      <reference value="patient/@127"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -29639,11 +29639,11 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
     <issued value="2012-04-05T18:36:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@127"/>
+      <reference value="patient/@127"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -29725,11 +29725,11 @@ EtOH              0.02    gm%
     <issued value="2012-04-05T18:45:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@127"/>
+      <reference value="patient/@127"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -29820,11 +29820,11 @@ Old Ref Ranges prior to 27th April 2004
     <issued value="2012-04-05T21:40:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@132"/>
+      <reference value="patient/@132"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -29900,11 +29900,11 @@ TSH                       1.09       mIU/L   ( 0.1-4.0  )
     <issued value="2012-04-05T20:53:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@132"/>
+      <reference value="patient/@132"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>
@@ -29982,11 +29982,11 @@ LIPIDS
     <issued value="2012-04-05T18:17:00Z"/>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@132"/>
+      <reference value="patient/@132"/>
     </subject>
     <performer>
       <type value="Organization"/>
-      <url value="../organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+      <reference value="organization/@1832473e-2fe0-452d-abe9-3cdb9879522f"/>
       <display value="Acme Laboratory, Inc"/>
     </performer>
     <reportId>

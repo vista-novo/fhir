@@ -10,7 +10,7 @@
 
   <link>
     <type value="Patient"/>
-    <url value="../patient/@pat1"/>
+    <reference value="patient/@pat1"/>
   </link>
 
   <active value="true"/>
@@ -37,7 +37,7 @@
 
   <provider>
     <type value="Organization"/>
-    <url value="../organization/@1"/>  
+    <reference value="organization/@1"/>  
     <display value="ACME Healthcare, Inc"/>
   </provider>
 </Patient>

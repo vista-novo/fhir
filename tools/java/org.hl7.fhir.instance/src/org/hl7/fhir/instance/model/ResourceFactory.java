@@ -29,17 +29,31 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, May 6, 2013 11:10+1000 for FHIR v0.09
+// Generated on Tue, May 7, 2013 21:55+1000 for FHIR v0.09
 
 public class ResourceFactory {
 
     public static Resource createResource(String name) throws Exception {
-        if ("Prescription".equals(name))
-            return new Prescription();
+        if ("CarePlan".equals(name))
+            return new CarePlan();
+        if ("Provenance".equals(name))
+            return new Provenance();
+        if ("Device".equals(name))
+            return new Device();
+        if ("Order".equals(name))
+            return new Order();
         if ("Organization".equals(name))
             return new Organization();
+        if ("Procedure".equals(name))
+            return new Procedure();
+        if ("Substance".equals(name))
+            return new Substance();
         if ("Group".equals(name))
             return new Group();
+        if ("DiagnosticReport".equals(name))
+            return new DiagnosticReport();
+        if ("Medication".equals(name))
+            return new Medication();
         if ("ValueSet".equals(name))
             return new ValueSet();
         if ("Coverage".equals(name))
@@ -50,62 +64,28 @@ public class ResourceFactory {
             return new Appointment();
         if ("MedicationDispense".equals(name))
             return new MedicationDispense();
-        if ("MedicationPrescription".equals(name))
-            return new MedicationPrescription();
         if ("DeviceLog".equals(name))
             return new DeviceLog();
+        if ("MedicationPrescription".equals(name))
+            return new MedicationPrescription();
+        if ("MedicationAdministration".equals(name))
+            return new MedicationAdministration();
         if ("DeviceCapabilities".equals(name))
             return new DeviceCapabilities();
+        if ("SecurityEvent".equals(name))
+            return new SecurityEvent();
         if ("IssueReport".equals(name))
             return new IssueReport();
         if ("MedicationStatement".equals(name))
             return new MedicationStatement();
-        if ("Questionnaire".equals(name))
-            return new Questionnaire();
-        if ("Conformance".equals(name))
-            return new Conformance();
-        if ("Profile".equals(name))
-            return new Profile();
-        if ("Visit".equals(name))
-            return new Visit();
-        if ("DocumentReference".equals(name))
-            return new DocumentReference();
-        if ("Immunization".equals(name))
-            return new Immunization();
-        if ("InterestOfCare".equals(name))
-            return new InterestOfCare();
-        if ("Problem".equals(name))
-            return new Problem();
-        if ("OrderResponse".equals(name))
-            return new OrderResponse();
-        if ("Practitioner".equals(name))
-            return new Practitioner();
-        if ("ImagingStudy".equals(name))
-            return new ImagingStudy();
-        if ("Provenance".equals(name))
-            return new Provenance();
-        if ("CarePlan".equals(name))
-            return new CarePlan();
-        if ("Device".equals(name))
-            return new Device();
-        if ("Order".equals(name))
-            return new Order();
-        if ("Procedure".equals(name))
-            return new Procedure();
-        if ("Substance".equals(name))
-            return new Substance();
-        if ("DiagnosticReport".equals(name))
-            return new DiagnosticReport();
-        if ("Medication".equals(name))
-            return new Medication();
-        if ("MedicationAdministration".equals(name))
-            return new MedicationAdministration();
-        if ("SecurityEvent".equals(name))
-            return new SecurityEvent();
         if ("List".equals(name))
             return new List_();
+        if ("Questionnaire".equals(name))
+            return new Questionnaire();
         if ("Picture".equals(name))
             return new Picture();
+        if ("Conformance".equals(name))
+            return new Conformance();
         if ("Document".equals(name))
             return new Document();
         if ("Message".equals(name))
@@ -114,24 +94,42 @@ public class ResourceFactory {
             return new FamilyHistory();
         if ("Location".equals(name))
             return new Location();
-        if ("Observation".equals(name))
-            return new Observation();
+        if ("Profile".equals(name))
+            return new Profile();
         if ("AllergyIntolerance".equals(name))
             return new AllergyIntolerance();
+        if ("Observation".equals(name))
+            return new Observation();
+        if ("DocumentReference".equals(name))
+            return new DocumentReference();
+        if ("Visit".equals(name))
+            return new Visit();
+        if ("InterestOfCare".equals(name))
+            return new InterestOfCare();
         if ("ImmunizationProfile".equals(name))
             return new ImmunizationProfile();
+        if ("Immunization".equals(name))
+            return new Immunization();
         if ("RelatedPerson".equals(name))
             return new RelatedPerson();
         if ("Category".equals(name))
             return new Category();
+        if ("Problem".equals(name))
+            return new Problem();
         if ("Specimen".equals(name))
             return new Specimen();
         if ("DeviceObservation".equals(name))
             return new DeviceObservation();
+        if ("OrderResponse".equals(name))
+            return new OrderResponse();
         if ("Patient".equals(name))
             return new Patient();
+        if ("ImagingStudy".equals(name))
+            return new ImagingStudy();
         if ("AdverseReaction".equals(name))
             return new AdverseReaction();
+        if ("Practitioner".equals(name))
+            return new Practitioner();
         else
             throw new Exception("Unknown Resource Name '"+name+"'");
     }
@@ -157,8 +155,6 @@ public class ResourceFactory {
             return new Distance();
         if ("Contact".equals(name))
             return new Contact();
-        if ("ActivityDefinition".equals(name))
-            return new ActivityDefinition();
         if ("Demographics".equals(name))
             return new Demographics();
         if ("Extension".equals(name))

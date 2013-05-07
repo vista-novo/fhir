@@ -65,7 +65,7 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
   </masterIdentifier>
   <subject>
     <type value="Patient"/>
-    <url value="../patient/@xcda"/>
+    <reference value="patient/@xcda"/>
   </subject>
 	<type>
 	  <coding>
@@ -76,15 +76,15 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
 	</type>
   <category>
     <type value="Category"/>
-    <url value="../category/@1.2.36.90146595217.4.2.1"/>
+    <reference value="category/@1.2.36.90146595217.4.2.1"/>
   </category>
   <author>
     <type value="Practitioner"/>
-    <url value="#a1"/>
+    <reference value="#a1"/>
   </author>
   <author>
     <type value="Practitioner"/>
-    <url value="#a2"/>
+    <reference value="#a2"/>
   </author>
   <created value="2005-12-24T09:35:00+11:00"/>
   <indexed value="2005-12-24T09:43:41+11:00"/>
@@ -141,7 +141,7 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
 
   <currentSubject>
     <type value="Patient"/>
-    <url value="../patient/@xcda"/>
+    <reference value="patient/@xcda"/>
   </currentSubject>
 -->
 

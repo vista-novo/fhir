@@ -28,7 +28,7 @@
   <relatedOrganization>
     <organization>
       <type value="Organization"/>
-      <url value="../organization/@1"/>
+      <reference value="organization/@1"/>
       <display value="ACME Healthcare, Inc"/>
     </organization>
     <relation>

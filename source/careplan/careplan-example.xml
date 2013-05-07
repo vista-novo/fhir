@@ -14,7 +14,7 @@
       <Problem id="p1">
         <subject>
           <type value="Patient"></type>
-          <url value="../patient/@example"/>
+          <reference value="patient/@example"/>
           <display value="Peter James Chalmers"/>
         </subject>
         <code>
@@ -37,7 +37,7 @@
     </contained>
     <patient>
         <type value="Patient"></type>
-        <url value="../patient/@example"/>
+        <reference value="patient/@example"/>
         <display value="Peter James Chalmers"/>
     </patient>
     <status value="active"/>
@@ -46,7 +46,7 @@
     </period>
     <concern>
         <type value="Problem"></type>
-        <url value="#p1"/>
+        <reference value="#p1"/>
         <display value="obesity"/>
     </concern>
     <participant>
@@ -55,7 +55,7 @@
         </role>
         <member>
           <type value="Patient"></type>
-          <url value="../patient/@example"/>
+          <reference value="patient/@example"/>
           <display value="Peter James Chalmers"/>
         </member>
     </participant>
@@ -65,7 +65,7 @@
         </role>
         <member>
             <type value="Practitioner"></type>
-            <url value="#pr1"/>
+            <reference value="#pr1"/>
             <display value="Dorothy Dietition"/>
         </member>
     </participant>
@@ -87,7 +87,7 @@
         </timingSchedule>
         <performer>
           <type value="Patient"></type>
-          <url value="../patient/@example"/>
+          <reference value="patient/@example"/>
           <display value="Peter James Chalmers"/>
         </performer>
     </activity>

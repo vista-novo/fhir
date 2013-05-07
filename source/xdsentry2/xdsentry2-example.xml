@@ -34,7 +34,7 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
     </confidentiality>
     <subject>
       <type value="Patient"/>
-      <url value="../patient/@xcda"/>
+      <reference value="patient/@xcda"/>
     </subject>
   <!--
   <author>
@@ -100,7 +100,7 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
     </attester>-->
     <author>
       <type value="Practitioner"/>
-      <url value="../practitioner/@example"/>
+      <reference value="practitioner/@example"/>
     </author>
     <event>
       <code>
@@ -138,11 +138,11 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
   <availability value="Approved"/>
   <folder>
     <type value="XdsFolder"/>
-    <url value="../xdsfolder/@1.2.36.90146595217.4.2.1"/>
+    <reference value="xdsfolder/@1.2.36.90146595217.4.2.1"/>
   </folder>
   <subject>
     <type value="Patient"/>
-    <url value="../patient/@xcda"/>
+    <reference value="patient/@xcda"/>
   </subject>
   <content xml:lang="en-us">
     <contentType value="text/plain"/>

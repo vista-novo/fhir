@@ -20,7 +20,7 @@
 
   <subject>
     <type value="Patient"/>
-    <url value="../patient/@example"/>
+    <reference value="patient/@example"/>
   </subject>
 
   <identifier>
@@ -47,7 +47,7 @@
 
   <requester>
     <type value="Practitioner"/>
-    <url value="../practitioner/@example"/>
+    <reference value="practitioner/@example"/>
   </requester>
 
   <modality value="US"/>

@@ -29,10 +29,8 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, May 6, 2013 11:10+1000 for FHIR v0.09
+// Generated on Tue, May 7, 2013 21:55+1000 for FHIR v0.09
 
-
-import java.net.*;
 /**
  * A reference from one resource to another
  */
@@ -44,9 +42,9 @@ public class ResourceReference extends Type {
     private Code type;
 
     /**
-     * A literal URL that resolves to the location of the resource. The URL may be relative or absolute. Relative Ids contain the logical id of the resource. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific
+     * A reference to a location at which the other resource is found. The reference may a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with '#') refer to contained resources
      */
-    private Uri url;
+    private String_ reference;
 
     /**
      * Plain text narrative that identifies the resource in addition to the resource reference
@@ -75,25 +73,25 @@ public class ResourceReference extends Type {
       }
     }
 
-    public Uri getUrl() { 
-      return this.url;
+    public String_ getReference() { 
+      return this.reference;
     }
 
-    public void setUrl(Uri value) { 
-      this.url = value;
+    public void setReference(String_ value) { 
+      this.reference = value;
     }
 
-    public URI getUrlSimple() { 
-      return this.url == null ? null : this.url.getValue();
+    public String getReferenceSimple() { 
+      return this.reference == null ? null : this.reference.getValue();
     }
 
-    public void setUrlSimple(URI value) { 
+    public void setReferenceSimple(String value) { 
       if (value == null)
-        this.url = null;
+        this.reference = null;
       else {
-        if (this.url == null)
-          this.url = new Uri();
-        this.url.setValue(value);
+        if (this.reference == null)
+          this.reference = new String_();
+        this.reference.setValue(value);
       }
     }
 

@@ -6,7 +6,7 @@
   </text>
   <target>
     <type value="Patient"/>
-    <url value="../patient/@example/history/@1"/>
+    <reference value="patient/@example/history/@1"/>
   </target>
   <!-- nominal activity: editing the standard -->
   <activity>

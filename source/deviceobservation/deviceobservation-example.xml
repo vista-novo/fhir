@@ -250,38 +250,38 @@ contained ones (even though this is easier for the sender)
   <issued value="2008-12-11T14:45:00"/>
   <subject>
     <type value="Patient"/>
-    <url value="../patient/@ihe-pcd"/> 
+    <reference value="patient/@ihe-pcd"/> 
   </subject>
   <device>
     <type value="Device"/>
-    <url value="../device/@ihe-pcd"/> 
+    <reference value="device/@ihe-pcd"/> 
   </device>  
   <measurement>
     <type value="Observation"/>
-    <url value="#o1"/>
+    <reference value="#o1"/>
   </measurement>
   <measurement>
     <type value="Observation"/>
-    <url value="#o2"/>
+    <reference value="#o2"/>
   </measurement>
   <measurement>
     <type value="Observation"/>
-    <url value="#o3"/>
+    <reference value="#o3"/>
   </measurement>
   <measurement>
     <type value="Observation"/>
-    <url value="#o4"/>
+    <reference value="#o4"/>
   </measurement>
   <measurement>
     <type value="Observation"/>
-    <url value="#o5"/>
+    <reference value="#o5"/>
   </measurement>
   <measurement>
     <type value="Observation"/>
-    <url value="#o6"/>
+    <reference value="#o6"/>
   </measurement>
   <measurement>
     <type value="Observation"/>
-    <url value="#o7"/>
+    <reference value="#o7"/>
   </measurement>
 </DeviceObservation>

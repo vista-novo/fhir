@@ -422,29 +422,27 @@ public class Publisher {
 
   private String extractId(String id, String type) throws Exception {
     String[] parts = id.split("/");
-    if (parts.length < 3)
+    if (parts.length < 2)
       throw new Exception("The example reference '"+id+"' is not valid (not enough path parts");
-    if (!parts[0].equals(".."))
-      throw new Exception("The example reference '"+id+"' is not valid (not a relative link starting with ..)");
-    if (!parts[1].equals(type.toLowerCase()))
+    if (!parts[0].equals(type.toLowerCase()))
       throw new Exception("The example reference '"+id+"' is not valid (the type portion doesn't match the specified type '"+type+"')");
-    if (!parts[2].startsWith("@"))
+    if (!parts[1].startsWith("@"))
       throw new Exception("The example reference '"+id+"' is not valid (the id doesn't start with @)");
-    if (parts[2].length() < 2 || parts[2].length() > 37)
+    if (parts[1].length() < 2 || parts[1].length() > 37)
       throw new Exception("The example reference '"+id+"' is not valid (id length 1 - 36)");
-    if (!parts[2].substring(1).matches("[a-z0-9\\-\\.]{1,36}"))
+    if (!parts[1].substring(1).matches("[a-z0-9\\-\\.]{1,36}"))
       throw new Exception("The example reference '"+id+"' is not valid (id doesn't match regular expression for id)");
-    if (parts.length > 3) {
-      if (!parts[3].equals("history"))
+    if (parts.length > 2) {
+      if (!parts[2].equals("history"))
         throw new Exception("The example reference '"+id+"' is not valid");
-      if (parts.length != 5 || !parts[4].startsWith("@")) 
+      if (parts.length != 4 || !parts[3].startsWith("@")) 
         throw new Exception("The example reference '"+id+"' is not valid");
-      if (parts[4].length() < 2 || parts[4].length() > 37)
+      if (parts[3].length() < 2 || parts[3].length() > 37)
         throw new Exception("The example reference '"+id+"' is not valid (version id length 1 - 36)");
-      if (!parts[4].substring(1).matches("[a-z0-9\\-\\.]{1,36}"))
+      if (!parts[3].substring(1).matches("[a-z0-9\\-\\.]{1,36}"))
         throw new Exception("The example reference '"+id+"' is not valid (version id doesn't match regular expression for id)");
     }
-    return parts[2].substring(1);
+    return parts[1].substring(1);
   }
 
   private void listLinks(Element xml, List<ExampleReference> refs) throws Exception {
@@ -482,8 +480,8 @@ public class Publisher {
   private void listLinks(String path, org.hl7.fhir.definitions.model.ElementDefn d, List<Element> set, List<ExampleReference> refs) throws Exception {
     if (d.typeCode().contains("Resource") && !d.typeCode().equals("Resource")) {
       for (Element m : set) {
-        if (XMLUtil.getNamedChild(m, "type") != null && XMLUtil.getNamedChild(m, "url") != null) {
-          refs.add(new ExampleReference(XMLUtil.getNamedChild(m, "type").getAttribute("value"), XMLUtil.getNamedChild(m, "url").getAttribute("value")));
+        if (XMLUtil.getNamedChild(m, "type") != null && XMLUtil.getNamedChild(m, "reference") != null) {
+          refs.add(new ExampleReference(XMLUtil.getNamedChild(m, "type").getAttribute("value"), XMLUtil.getNamedChild(m, "reference").getAttribute("value")));
         }
       }
     }    
