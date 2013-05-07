@@ -20,6 +20,7 @@
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
+  <ActiveSheet>6</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -527,7 +528,6 @@
     <HorizontalResolution>300</HorizontalResolution>
     <VerticalResolution>300</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -754,7 +754,7 @@
     <Cell><Data ss:Type="String">Return administrations with this external identity</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">MedicationAdministration.identifier</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">MedicationAdministration.externalID</Data></Cell>
     <Cell ss:StyleID="s86"/>
     <Cell ss:Index="10" ss:StyleID="s65"/>
    </Row>
@@ -880,7 +880,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
+     <ActiveRow>18</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
@@ -1077,6 +1077,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

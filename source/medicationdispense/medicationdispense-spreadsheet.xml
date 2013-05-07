@@ -20,6 +20,7 @@
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -652,7 +653,6 @@
     <HorizontalResolution>300</HorizontalResolution>
     <VerticalResolution>300</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -836,7 +836,7 @@
     <Cell><Data ss:Type="String">Return dispenses with this external identity</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">MedicationDispense.identifier</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">MedicationDispense.externalID</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1006,10 +1006,11 @@
     <HorizontalResolution>300</HorizontalResolution>
     <VerticalResolution>300</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
+     <ActiveRow>12</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>

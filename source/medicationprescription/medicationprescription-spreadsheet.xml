@@ -20,6 +20,7 @@
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -650,11 +651,10 @@
     <HorizontalResolution>300</HorizontalResolution>
     <VerticalResolution>300</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>23</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -667,7 +667,6 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
@@ -877,7 +876,7 @@
     <Cell ss:StyleID="s80"><Data ss:Type="String">Return dispenses with this external identity</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">qtoken</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">MedicationPrescription.identifier</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">MedicationPrescription.externalID</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1051,6 +1050,7 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1070,7 +1070,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>6</ActiveRow>
+     <ActiveRow>5</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
