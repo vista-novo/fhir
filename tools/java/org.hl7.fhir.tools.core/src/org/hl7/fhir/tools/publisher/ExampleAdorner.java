@@ -166,7 +166,11 @@ public XhtmlGeneratorAdornerState getState(XhtmlGenerator ref, XhtmlGeneratorAdo
 
   @Override
   public XhtmlGeneratorAdornerState getAttributeMarkup(XhtmlGenerator xhtmlGenerator, XhtmlGeneratorAdornerState state, Element node, String nodeName, String textContent) throws Exception {
-    return new ExampleAdornerState(State.Unknown, null, "", "");
+    ExampleAdornerState s = (ExampleAdornerState) state;
+    if (s != null && s.getState() == ExampleAdorner.State.Reference && node.getNodeName().equals("Type") && nodeName.equals("value")) 
+      return new ExampleAdornerState(State.Unknown, null, "", "");
+    else
+      return new ExampleAdornerState(State.Unknown, null, "", "");
   }
 
 }

@@ -123,7 +123,8 @@ public class BookMaker {
 						  found = findTarget(pages.get(parts[0]), parts[1]);
 						  if (!found)
 							try {
-								new XhtmlComposer().compose(new FileOutputStream("c:\\temp\\source.htm"), pages.get(parts[0]));
+								if (new File("c:\\temp\\source.htm").exists())
+								  new XhtmlComposer().compose(new FileOutputStream("c:\\temp\\source.htm"), pages.get(parts[0]));
 							} catch (Exception e) {
 								e.printStackTrace();
 							}

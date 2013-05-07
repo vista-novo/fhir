@@ -124,7 +124,7 @@ public class ModelValidator {
     rule(path, !e.getName().equals("entries"), "Element named \"entries\" not allowed");
     rule(path, (parentName == null) || e.getName().charAt(0) == e.getName().toLowerCase().charAt(0), "Element Names must not start with an uppercase character");
     
-    hint(path, !e.isModifier(), "isModifier, minimum cardinality = "+e.getMinCardinality().toString());
+// this isn't a real hint, just a way to gather information   hint(path, !e.isModifier(), "isModifier, minimum cardinality = "+e.getMinCardinality().toString());
     
     if( e.getShortDefn().length() > 0)
 		{
