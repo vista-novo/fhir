@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Hugh Glover</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2013-04-15T20:50:00Z</LastSaved>
+  <LastSaved>2013-05-07T00:48:23Z</LastSaved>
   <Version>15.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,6 @@
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>6</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -249,7 +248,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">MedicationAdministrationStatus</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">Administration event status</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Administration event status</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.</Data></Cell>
     <Cell ss:StyleID="s72"/>
     <Cell ss:StyleID="s72"/>
@@ -528,6 +527,7 @@
     <HorizontalResolution>300</HorizontalResolution>
     <VerticalResolution>300</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -547,8 +547,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -711,7 +711,8 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">visit</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell><Data ss:Type="String">Return administrations that share this visit</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationAdministration.visit</Data></Cell>
     <Cell ss:StyleID="s86"/>
@@ -734,7 +735,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">status</Data></Cell>
-    <Cell><Data ss:Type="String">Status of the administration</Data></Cell>
+    <Cell><Data ss:Type="String">MedicationAdministration event status (for example one of active/paused/completed/nullified)</Data></Cell>
     <Cell><Data ss:Type="String">token</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">MedicationAdministration.status</Data></Cell>
@@ -750,7 +751,7 @@
     <Cell ss:Index="10" ss:StyleID="s65"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">identity</Data></Cell>
+    <Cell><Data ss:Type="String">externalID</Data></Cell>
     <Cell><Data ss:Type="String">Return administrations with this external identity</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
@@ -769,7 +770,8 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">notGiven</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">token</Data></Cell>
+    <Cell><Data ss:Type="String">Administrations that were not made</Data></Cell>
+    <Cell><Data ss:Type="String">token</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">MedicationAdministration.wasNotGiven</Data></Cell>
    </Row>
@@ -880,8 +882,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>18</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1077,7 +1079,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
