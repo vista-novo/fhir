@@ -20,7 +20,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>4140</WindowTopX>
   <WindowTopY>1455</WindowTopY>
-  <ActiveSheet>5</ActiveSheet>
+  <ActiveSheet>6</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -845,12 +845,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <RangeSelection>R2C1:R6C2</RangeSelection>
+     <ActiveRow>14</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -858,7 +857,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Examples">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:Width="120"/>
    <Column ss:Width="83.25"/>
@@ -878,27 +877,6 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">group-example.xml</Data></Cell>
     <Cell ss:Index="6" ss:StyleID="s71"><Data ss:Type="String">y</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s71"><Data ss:Type="String">CDISC1</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">CDISC example1</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">ad-4833pnfp-341</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">group-cdisc-example1.xml</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s71"><Data ss:Type="String">y</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s71"><Data ss:Type="String">CDISC2</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">CDISC example2</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String" x:Ticked="1">048</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">group-cdisc-example2.xml</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s71"><Data ss:Type="String">y</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s71"><Data ss:Type="String">CDISC3</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">CDISC example3</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">efc10262</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">group-cdisc-example3.xml</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s71"><Data ss:Type="String">y</Data></Cell>
-   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -907,11 +885,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <RangeSelection>R3C1:R5C6</RangeSelection>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
