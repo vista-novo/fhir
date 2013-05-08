@@ -29,21 +29,18 @@ claim to be conformant to "RESTful FHIR".
 </p>
 <p>
 Note that in this RESTful framework, transactions are performed directly on the server resource using an 
-HTTP request/response. These HTTP calls may be authenticated against a single user account (including 
-using <a href="http://www.oauth.org">OAuth</a>), but this arrangement doesn't cater for common transaction metadata such as multiple users, 
-responsible party, reasons, consents, etc. that are commonly encountered in healthcare. Instead, 
-use of this RESTful implementation assumes that appropriate security and logs are managed by the client (perhaps 
-through using <a href="http://wiki.ihe.net/index.php?title=Audit_Trail_and_Node_Authentication">ATNA</a>), and 
-that the server trusts the client to maintain these. One implication is that this RESTful framework is 
-only suitable for use where such trust relationships exist (e.g. in a single institution) and is not 
-suitable where such trust does not exist (e.g. state &amp; national EHR systems and health record 
-systems that support disparate systems). Similarly, this simple RESTful interface has no support for 
-explicit archiving and similar functions. Use-cases where these kind of features are required should 
-consider a <a href="message.htm">messaging</a> or <a href="implementation.htm#SOA">SOA-based approach</a> or 
-some other kind of profiled REST interface.
+HTTP request/response. The API does not directly address authentication, authorization, and audit
+collection - for further information, see the <a href="security.htm">Security Page</a>.
 </p>
 <p>
-The following logical interactions are supported:
+The API describes the FHIR resources as a set of operations on resources where individual
+resource instances are managed in collections by their type. Servers can choose which of 
+these operations are made available and which resource types they support. Servers SHALL
+provide a <a href="conformance.htm">conformance statement</a> that specifies what interactions and 
+resources are supported.
+</p>
+<p>
+The following logical interactions are defined:
 </p>
 <a name="interactions"></a>
 <table class="list"> 
@@ -63,13 +60,6 @@ The following logical interactions are supported:
   <tr><td><a href="#transaction">transaction</a></td><td>Update, create or delete a set of resources as a single transaction</td></tr>
   <tr><td><a href="#history">history</a></td><td>Retrieve the update history for all resources</td></tr>
 </table>
-
-<p>
-Note that while these same logical interactions are defined on all resources, applications are 
-not required to implement all of them, except for the conformance statement: applications SHALL 
-provide a <a href="conformance.htm">conformance statement</a> that says what interactions are 
-supported for any resource types that they support.
-</p>
 
 <a name="root"> </a>
 <a name="general"> </a>
@@ -214,8 +204,8 @@ content model. If the version referred to is actually one where the resource was
 server should return a 410 status code.
 </p>
 <p>
-Servers SHOULD support a version specific retrieval of the current version of the 
-resource even if they are unable to support access to previous versions. If a request
+Servers are encouraged to support a version specific retrieval of the current version of the 
+resource even if they are do not provide access to previous versions. If a request
 is made for a previous version of a resource, and the server does not support accessing
 previous versions, it should return a 405 Method Not Allowed error.
 </p>
@@ -247,14 +237,6 @@ correct version specific URL in the Content-Location in the PUT request. If the 
 the server SHALL return a 412 Preconditions failed response. Clients SHOULD submit a proper Content-Location 
 header and SHALL correctly understand a 409 response as an update conflict.
 </p>
-<p>
-The following resources may require special handling on the server when updated (whether directly or as part of a transaction):
-</p>
-<ul>
- <li><a href="provenance.htm">Provenance</a> (Version specific links)</li>
- <li><a href="patient.htm">Patient</a> (Maintaining Patient Links)</li>
- <li><a href="securityevent.htm">SecurityEvent</a> (generally, updates are inappropriate)</li>
-</ul>
 <p>
 Common HTTP Status codes returned on FHIR-related errors (in addition to normal HTTP errors related to security, header and content type negotiation issues):
 </p>
@@ -291,14 +273,7 @@ defines what the semantics of the deletion operations are. If no documentation i
 deletion operation should be understood as deleting the record of the resource, with nothing
 about the state of the real-world corresponding resource implied.
 </p>
-<p>
-The following resources may require special handling on the server when deleted 
-(whether directly or as part of a transaction):
-</p>
-<ul>
- <li><a href="patient.htm">Patient</a> (Maintaining Patient links)</li>
- <li><a href="securityevent.htm">SecurityEvent</a> (generally, deletes are inappropriate)</li>
-</ul>
+
 <a name="create"> </a>
 <h2>create</h2>
 <p>
@@ -320,13 +295,7 @@ a version-aware Location header which contains the new location and id of the cr
 <p>
 When the payload data is incorrect and cannot be used to create a new resource, the server returns a 400 Bad Request.
 </p>
-<p>
-The following resources may require special handling on the server when created (whether directly or as part of a transaction):
-</p>
-<ul>
- <li><a href="provenance.htm">Provenance</a> (Version specific links)</li>
- <li><a href="patient.htm">Patient</a> (Maintaining Patient links)</li>
-</ul>
+
 <p>
 Common HTTP Status codes returned on FHIR-related errors (in addition to normal HTTP errors related to security, header and content type negotiation issues):
 </p>

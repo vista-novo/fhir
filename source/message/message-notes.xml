@@ -49,5 +49,11 @@ The following rules apply to the mailbox:
 This simple mailbox profile can be used by any HTTP end point that accepts FHIR messages or documents, not just 
 FHIR RESTful servers.
 </p>
+<p>
+In order to ensure consistency of processing, the <a href="#reliable">logical rules regarding processing of envelope id and 
+message id described above</a> SHALL be followed when messages are processed using the MailBox. No such rules apply regarding
+documents - if the client receives no response, it should continue to submit the document until it does. Servers SHALL 
+accept multiple document submissions and process them correctly.
+</p>
 
 </div>

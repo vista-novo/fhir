@@ -58,6 +58,7 @@ responsible for honoring the contract that applies (including applicable profile
 in both directions.
 </p>
 
+<a name="reliable"> </a>
 <h3>Absence of Reliable Messaging</h3>
 <p>
 Some of the message delivery mechanisms mentioned above are reliable delivery

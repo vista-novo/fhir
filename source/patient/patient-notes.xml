@@ -13,15 +13,11 @@ external, possibly national bodies.</li>
 <li>multipleBirth can be either expressed as a boolean (just indicating whether the patient is part of a multiple birth) or as an integer, indicating the actual birth order.</li>
 <li>Patient records may only be in one of two statuses: active (active=true) and retired (active=false). A normal record is active -it is in use. The status retired is used when a record is created as a duplicate or in error. Once the error is discovered, it can either be retired or deleted. A record does not need to be linked to be retired.
 </li>
-<li>Patient.link is used as an assertion that two or more Patient resources are both about the same actual person. 
-If any patient record is linked to another, then the other must be linked back to the source record. 
-<font color="Maroon">Ensuring that the links are in agreement across the patient resources in a RESTful contexts 
-is the responsibility of the server: it must modify the referenced resources whenever a change the links on any
-patient is updated. In a messaging context, patient links SHALL only be updated though the link/unlink events</font>
-</li>
+<li>The <i>link</i> element is used to assert that two or more Patient resources are both about the same actual person. See below for further discussion</li>
 </ul>
 
-<h2>Managing Patient Registration</h2>
+<a name="links"> </a>
+<h2>Managing Patient Registration (Linking Patients)</h2>
 <p>
 Managing Patient registration is a well known difficult problem. Around 2% of registrations are in error, 
 mostly duplicate records. Sometimes the duplicate record is caught fairly quickly and retired before much 
@@ -37,15 +33,21 @@ multiple numbers because of mergers of patient record systems over time.
 </p>
 <p>
 This specification does not specify merge functionality: if multiple patient records are found to be 
-duplicates, this can be assserted using Patient.link. Fhir servers MAY additionally provide functionality to merge one or more Patient resources and copy or reassign related information to a single (new) Patient resource, but are not required to do so.
+duplicates, they can be linked together - an assertion that two (or more) Patient resources are both 
+about the same actual person. When patient resources are linked, one may be chosen as the "master" - 
+the correct record. In this case, the active status of all the other resources is set to false, 
+and all the content is moved to the active record by updating it directly. 
 </p>
 <p>
-When patient resources are linked, one may be chosen as the "master" - the correct record. In this case, the active status of all the other resources is set to false, and all the content is moved to the active record by updating
-it directly. 
+The <i>link</i> element is used to assert that patient resources refer to the same person.  
+If any patient resources is linked to another, then that other resource must also link back to 
+the source resource in order to maintain record consistency. <font color="Maroon"><b>Systems should not update patient links across two or more patient resources
+using separate transactions (i.e. update operations), where later operations may fail and leave the 
+patient resources in disagreement with each other</b></font>. Instead, systems should either:
 </p>
-<h2>Linking using Batch</h2>
-<p>
-Linking records is effectively a transaction that involves at least two resources, and all or none must change. To effectuate this transaction in a RESTful context, it must be implemented as a <a href="http.htm#transaction">transaction</a> operation.
-</p>
+<ul>
+ <li>Use a <a href="http.htm#transaction">transaction</a> and update all the resources in a single transaction</li>
+ <li>Use a <a href="message.htm#events">patient link/unlink</a> message</li>
+</ul>
 
 </div>

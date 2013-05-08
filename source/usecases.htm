@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Common Scenarios - FHIR v<%version%></title>
+    <link rel="Stylesheet" href="fhir.css" type="text/css"/>
+    <link rel="Stylesheet" href="fhir-print.css" type="text/css" media="print" />
+</head>
+<body>
+<%sidebar%>
+
+<%maindiv%>
+<%pageheader%>
+
+<%onthispage Welcome#root|Links/Search#links|Disclaimer#disclaimer|License#license|Credits#credits|Outstanding Work#todo|Version History#history%>
+
+<a name="root"> </a>
+<h1>Common Scenarios in FHIR</h1>
+
+<p>
+FHIR is a framework standard that defines a common way to solve healthcare problems, 
+and provides a common set of resources that can be used in many different ways. 
+This page describes how common usage scenarios are implemented using the capabilities that 
+FHIR defines. 
+</p>
+
+<a name="phr"></a>
+<h2>Personal Health Record (PHR)</h2>
+<p>
+In the PHR scenario, an Electronic Medical Record system (EMR, though many other names and acronyms 
+are also used) provides a RESTful API that allows patients to access their own medical
+record using some common web portal or mobile application. In this scenario, the 
+PHR provider:
+</p> 
+<ul>
+ <li>Provides the patient with a login that identifies them (or links the patient record to an external identity provided by openID, facebook, google etc)</li>
+ <li>Authenticates the client using the appropriate OAuth server, and restricts the client to viewing records associated with the specific patient</li>
+ <li>The EMR exposes a FHIR server with the following capabilities: 
+   <ol>
+    <li>read on the <a href="patient.htm">patient</a> resource in order to provide demographics to the client (?? the patient record id is "self")</li>
+    <li>search and read on the <a href="documentreference.htm">Document Reference</a> resource to provide access to general patient documents in the form of PDFs</li>
+    <li>search and read on a set of clinical resources potentially including Observation, DiagnosticReport, various Medication resources, AdverseReaction/AllergyIntolerance, 
+    CarePlan, and Problem</li> 
+   </ol>
+  </li>
+</ul>
+<p>
+The PHR may also choose to provide additional functionality, such as shared access to patient 
+records by relatives/carers, or to allow the patient to upload their own documents, medication statements, observations
+(e.g. from patient monitoring devices), or to allow the patient to make appointments. These 
+additional functionalities will involve additional API capabilities to be implemented and 
+exposed. The EMR server may also choose to expose the read, search and updates operation on 
+the Security Event resource for the patient specific record.
+</p>
+ 
+
+<%footer%>
+<%/maindiv%> 
+    
+    
+</body>
+</html>
