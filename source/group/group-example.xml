@@ -20,11 +20,13 @@
       <text value="gender"/>
     </type>
     <valueString value="mixed"/>
+    <exclude value="false"/>
   </characteristic>
   <characteristic>
     <type>
       <text value="owner"/>
     </type>
     <valueString value="John Smith"/>
+    <exclude value="false"/>
   </characteristic>
 </Group>
