@@ -16,11 +16,12 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11145</WindowHeight>
-  <WindowWidth>24465</WindowWidth>
+  <WindowHeight>8310</WindowHeight>
+  <WindowWidth>13365</WindowWidth>
   <WindowTopX>1995</WindowTopX>
   <WindowTopY>420</WindowTopY>
   <TabRatio>705</TabRatio>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -111,7 +112,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="13" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="14" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultColumnWidth="65.25"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="215.25"/>
@@ -144,7 +145,7 @@
     <Cell><Data ss:Type="String">To Do</Data></Cell>
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:Height="30">
     <Cell><Data ss:Type="String">FamilyHistory</Data></Cell>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
@@ -153,7 +154,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Family History</Data></Cell>
-    <Cell><Data ss:Type="String">Significant health events and conditions for people related to the subject</Data></Cell>
+    <Cell><Data ss:Type="String">Significant health events and conditions for people related to the subject relevant in the context of care for the subject</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
     <Cell ss:Index="13" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -173,43 +174,50 @@
     <Cell ss:Index="8"><Data ss:Type="String">The relation</Data></Cell>
     <Cell><Data ss:Type="String">The related person. Each FamilyHistory resource contains the entire family history for a single person.</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="27.9375">
+    <Cell><Data ss:Type="String">FamilyHistory.note</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Additional details</Data></Cell>
+    <Cell><Data ss:Type="String">Conveys information about family history not specific to individual relations.</Data></Cell>
+   </Row>
    <Row ss:AutoFitHeight="0" ss:Height="42">
-    <Cell><Data ss:Type="String">FamilyHistory.relation.relatedPerson</Data></Cell>
+    <Cell><Data ss:Type="String">FamilyHistory.relation.name</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Patient)</Data></Cell>
+    <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">The family member who had the condition</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Depending on the capabilities of the system creating the resource, the related person may be an identifiable (on a FHIR system) person, a specific person who is not formally identified or an unidentified person (eg aunt, brother etc). Hence this property is optional. If a real person, then it could either be a reference to the resource that identifies that person, or a contained reference. Examples of both are given</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">This will either be a name or a description.  E.g. &quot;Aunt Susan&quot;, &quot;my cousin with the red hair&quot;</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Allows greater ease in ensuring the same person is being talked about</Data></Cell>
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="69.9375">
     <Cell><Data ss:Type="String">FamilyHistory.relation.relationship</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">code</Data></Cell>
+    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">FamilialRelationship</Data></Cell>
     <Cell><Data ss:Type="String">Relationship to the subject</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">The type of relationship this person has to the patient (father, mother, brother etc.) At the moment this is a code linking to a fixed set of values. I'm not sure if there is an international standard for this. A fixed (possibly extensible) set of codes feels better than a codeable concept for somehting like this...</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="84">
+   <Row ss:Height="105">
     <Cell><Data ss:Type="String">FamilyHistory.relation.deceased[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">date | Age</Data></Cell>
+    <Cell><Data ss:Type="String">boolean | Age | Range | string</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Is the person deceased</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">If this resource is indicating that the related person is deceased, then the the date of death - or age at death - can be indicated here. If present, a receiving system must understand what the resource is indicating. If the reason for death is known, then it can be indicated in the 'fatal' flag of the condition - in this case the deceased property should still be set.</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">If this resource is indicating that the related person is deceased, then an indicator of whether the person is deceased (yes) or not (no) or the age or age range or description of age at death - can be indicated here. If the reason for death is known, then it can be indicated in the outomce code of the condition - in this case the deceased property should still be set.</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
@@ -254,15 +262,15 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="42">
-    <Cell><Data ss:Type="String">FamilyHistory.relation.condition.fatal</Data></Cell>
+    <Cell><Data ss:Type="String">FamilyHistory.relation.condition.outcome</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">boolean</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Did the person die of this condition</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Indicates that the person died of this condition. The date of death is indicated by the deceased property. If present, a receiving system must understand it.</Data></Cell>
+    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">ConditionOutcome</Data></Cell>
+    <Cell><Data ss:Type="String">deceased | permanent disability | etc.</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Indicates what happened as a result of this condition.  If the condition resulted in death, deceased date is captured on the relation.</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -271,9 +279,9 @@
    <Row ss:AutoFitHeight="0" ss:Height="42">
     <Cell><Data ss:Type="String">FamilyHistory.relation.condition.onset[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">date | Age</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Age | Range | string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">How old the person was when the condition manifested</Data></Cell>
-    <Cell><Data ss:Type="String">Either the age of onset or the date of onset can be recorded.</Data></Cell>
+    <Cell><Data ss:Type="String">Either the age of onset, range of approximate age or descriptive string can be recorded.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="String">FamilyHistory.relation.condition.note</Data></Cell>
@@ -296,7 +304,6 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -316,7 +323,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -637,13 +645,13 @@
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="93"/>
+   <Column ss:Width="102"/>
    <Column ss:Width="390.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="81.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="107.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="275.25"/>
-   <Row ss:AutoFitHeight="0">
+   <Row>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
@@ -651,21 +659,21 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s75">
+   <Row ss:Height="30" ss:StyleID="s75">
     <Cell><Data ss:Type="String">FamilialRelationship</Data></Cell>
-    <Cell><Data ss:Type="String">The nature of the relationship between the patient and the person with the condition</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">The nature of the relationship between the patient and the person with the condition</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#familial-relationship</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s75"/>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">ConditionOutcome</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">The result of the condition for the patient.  E.g. death, permanent disability, temporary disability, etc.</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s75"/>
     <Cell ss:StyleID="s75"/>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row>
     <Cell ss:StyleID="s63"/>
     <Cell ss:StyleID="s63"/>
     <Cell ss:StyleID="s75"/>
@@ -679,7 +687,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -699,7 +707,6 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>6</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

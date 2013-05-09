@@ -13,7 +13,12 @@
 
   <relation>
 
-    <relationship value='father'/>
+    <relationship>
+      <coding>
+        <system value="http://hl7.org/fhir/familial-relationship"/>
+        <code value="father"/>
+      </coding>
+    </relationship>
     <condition>
       <type>
       <coding>
