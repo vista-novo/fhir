@@ -10,7 +10,7 @@ to be conformant to "FHIR documents".
 </p>
 
 <p>
-Note that FHIR defines both a this document format and also a <a href="documentreference.htm">document reference resource</a>. FHIR documents are for documents 
+Note that FHIR defines both this document format and also a <a href="documentreference.htm">document reference resource</a>. FHIR documents are for documents 
 that are authored and assembled in FHIR, while the document reference resource is for general references to other documents. 
 </p>
 
