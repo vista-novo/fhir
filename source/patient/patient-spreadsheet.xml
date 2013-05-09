@@ -23,7 +23,7 @@
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
   <WindowHeight>6345</WindowHeight>
-  <WindowWidth>22755</WindowWidth>
+  <WindowWidth>19440</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -96,13 +96,9 @@
   <Style ss:ID="s76">
    <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
   </Style>
-  <Style ss:ID="s79" ss:Parent="s62">
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
-   <Interior/>
-  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="19" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="18" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="214.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="56.25"/>
@@ -163,8 +159,8 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">boolean</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Whether this patient record is active (in use)</Data></Cell>
-    <Cell><Data ss:Type="String">Whether the patient record is in use, or has been removed from active use</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Whether this patient record is in active use</Data></Cell>
+    <Cell><Data ss:Type="String">Whether this patient record is in active use</Data></Cell>
     <Cell><Data ss:Type="String">Need to be able to mark a patient record as not to be used because it was created in error</Data></Cell>
     <Cell><Data ss:Type="String">If a record is inactive, and linked to an active record, then future patient/person/record updates should occur on the other patient</Data></Cell>
    </Row>
@@ -310,16 +306,6 @@
     <Cell><Data ss:Type="String">Date of death of patient. May include time.</Data></Cell>
     <Cell ss:Index="16"><Data ss:Type="String">Requirements</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Patient.diet</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">PatientDiet</Data></Cell>
-    <Cell><Data ss:Type="String">Dietary restrictions for the patient</Data></Cell>
-    <Cell><Data ss:Type="String">Dietary restrictions for the patient</Data></Cell>
-    <Cell><Data ss:Type="String">Track patients reported dietary restrictions to help with catering requirements</Data></Cell>
-    <Cell><Data ss:Type="String">not for specifying medical diets, but for casual dietary restrictions such as vegetarian, diary-free, nut-free, etc</Data></Cell>
-   </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">!Patient.confidentiality</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
@@ -339,11 +325,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <LeftColumnVisible>1</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>10</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -595,7 +582,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="8" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s74" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="114.75"/>
    <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="363"/>
@@ -667,14 +654,6 @@
     <Cell><Data ss:Type="String">suggested</Data></Cell>
     <Cell><Data ss:Type="String">#contact-relationship</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">PatientDiet</Data></Cell>
-    <Cell><Data ss:Type="String">Medical, cultural or ethical food preferences to help with catering requirements</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">extensible</Data></Cell>
-    <Cell><Data ss:Type="String">suggested</Data></Cell>
-    <Cell><Data ss:Type="String">#dietary-restrictions</Data></Cell>
-   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -686,8 +665,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>18</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>8</ActiveRow>
+     <RangeSelection>R9</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -799,7 +778,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="contact-relationship">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="11" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="13" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="14.4375">
    <Column ss:AutoFitWidth="0" ss:Width="78.75"/>
    <Column ss:Width="220.5"/>
@@ -847,6 +826,14 @@
     <Cell><Data ss:Type="String">owner</Data></Cell>
     <Cell><Data ss:Type="String">For animals, the owner of the animal</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">parent</Data></Cell>
+    <Cell><Data ss:Type="String">Parent of the patient</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">other</Data></Cell>
+    <Cell><Data ss:Type="String">Other kind of relationship, or unkown</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -858,70 +845,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>10</ActiveRow>
-     <ActiveCol>1</ActiveCol>
-    </Pane>
-   </Panes>
-   <ProtectObjects>False</ProtectObjects>
-   <ProtectScenarios>False</ProtectScenarios>
-  </WorksheetOptions>
- </Worksheet>
- <Worksheet ss:Name="dietary-restrictions">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="8" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="14.4375">
-   <Column ss:AutoFitWidth="0" ss:Width="78.75"/>
-   <Column ss:Width="220.5"/>
-   <Row ss:AutoFitHeight="0" ss:Height="28.6875">
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">vegetarian</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">food without meat, poultry or seafood</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">diary-free</Data></Cell>
-    <Cell><Data ss:Type="String">exludes dairy  products</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">nut-free</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">excluded ingredients containing nuts</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">gluten-free</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">excludes ingredients containing gluten</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">vegan</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">food without meat, poulry, seafood,  eggs, dairy products and other animal-derived substances</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">halal</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">foods that conform to Islamic law&#160;</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">kosher</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">foods that conform to Jewish dietary law&#160;</Data></Cell>
-   </Row>
-  </Table>
-  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <PageSetup>
-    <Header x:Margin="0.3"/>
-    <Footer x:Margin="0.3"/>
-    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
-   </PageSetup>
-   <Unsynced/>
-   <Print>
-    <ValidPrinterInfo/>
-    <PaperSizeIndex>9</PaperSizeIndex>
-    <HorizontalResolution>600</HorizontalResolution>
-    <VerticalResolution>0</VerticalResolution>
-   </Print>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>12</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>13</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

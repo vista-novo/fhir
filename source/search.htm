@@ -40,6 +40,16 @@ of values of the same type, e.g. multiple matching state-on-date parameters can 
 active$2013-05-05.
 </p>
 <p>
+In order to allow the client to be confident about what search parameters were used as a criteria by the server, 
+the server SHALL return the parameters that were actually used in a search URL as the self link in the atom feed
+that is returned:</p>
+<pre class="xml">
+  &lt;link rel="self" href="http://example.org/patient/search?name=peter"/&gt;
+</pre>
+<p>Applications processing search results SHALL treat this self link as a mustUnderstand field. For example, if the server did not support
+some of the filters specified in the search, a client might manually apply those filters to the retrieved result set, display a warning
+message to the user or take some other action.</p>
+<p>
 In addition, the following parameters can be passed to the search operation to influence how the set of matching resources is returned to
 the caller:
 </p>
@@ -135,6 +145,7 @@ resource (the <a href="terminologies.htm#resourcetypes">variant of the resource 
    to keep the server load processing queries reasonable.
  </li>
 </ul>
+
 
 <a name="chaining" />
 <h2>Parameter Chaining</h2>

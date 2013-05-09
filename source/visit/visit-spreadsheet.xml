@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Grahame</LastAuthor>
+  <LastAuthor>Ewout Kramer</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2013-05-07T16:22:00Z</LastSaved>
+  <LastSaved>2013-05-08T05:01:37Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,6 +20,7 @@
   <WindowWidth>15600</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
+  <TabRatio>654</TabRatio>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -74,15 +75,23 @@
    <Protection/>
   </Style>
   <Style ss:ID="s69">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
   </Style>
   <Style ss:ID="s70">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s71">
-   <Alignment ss:Vertical="Top"/>
+   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s72">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s73">
+   <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s74">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders>
@@ -92,15 +101,19 @@
     ss:Bold="1"/>
    <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
   </Style>
+  <Style ss:ID="s77" ss:Parent="s62">
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="32" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="34" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="222"/>
    <Column ss:StyleID="s63" ss:Width="29.25"/>
    <Column ss:StyleID="s63" ss:Width="22.5"/>
    <Column ss:StyleID="s63" ss:Width="60"/>
-   <Column ss:StyleID="s63" ss:Width="27"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="54.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="225"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="106.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="197.25"/>
@@ -109,12 +122,11 @@
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="153.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135"/>
-   <Column ss:Index="15" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="110.25"/>
-   <Row ss:Height="30" ss:StyleID="s65">
+   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
-    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
+    <Cell><Data ss:Type="String">Is modifier</Data></Cell>
     <Cell><Data ss:Type="String">UML</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
@@ -128,7 +140,7 @@
     <Cell><Data ss:Type="String">To Do</Data></Cell>
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
-   <Row ss:Height="60">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Visit</Data></Cell>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
@@ -144,7 +156,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Visit.identifier</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -159,14 +171,14 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Visit.state</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.status</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">code</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">VisitState</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">EncounterState</Data></Cell>
     <Cell><Data ss:Type="String">E.g. active, aborted, finished</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:Index="11" ss:StyleID="Default"/>
@@ -174,14 +186,14 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Visit.type</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">0..1</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.class</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">code</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">VisitType</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">EncounterClass</Data></Cell>
     <Cell><Data ss:Type="String">Inpatient | Outpatient etc</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:Index="11" ss:StyleID="Default"/>
@@ -189,22 +201,22 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:Height="30">
-    <Cell><Data ss:Type="String">Visit.setting</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.type</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">VisitSetting</Data></Cell>
-    <Cell><Data ss:Type="String">Kind of environment the visit takes place in</Data></Cell>
-    <Cell><Data ss:Type="String">Kind of environment the visit takes place in, e.g. inpatient, ambulatory, home, or virtual</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">EncounterType</Data></Cell>
+    <Cell><Data ss:Type="String">Specific type of encounter</Data></Cell>
+    <Cell><Data ss:Type="String">Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation)</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
     <Cell ss:Index="13" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:Height="60">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Visit.subject</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -220,22 +232,49 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:Height="30">
-    <Cell><Data ss:Type="String">Visit.responsible</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Visit.participant</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">The main practitioner responsible for providing the service</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">List of participants involved in the encounter</Data></Cell>
     <Cell><Data ss:Type="String">The main practitioner responsible for providing the service</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
     <Cell ss:Index="13" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Visit.participant.type</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">ParticipantType</Data></Cell>
+    <Cell><Data ss:Type="String">Kind of involvement of the participant</Data></Cell>
+    <Cell ss:Index="11" ss:StyleID="Default"/>
+    <Cell ss:Index="13" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Visit.participant.practitioner</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">The practitioner that is involved</Data></Cell>
+    <Cell ss:Index="11" ss:StyleID="Default"/>
+    <Cell ss:Index="13" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Visit.fulfills</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -249,20 +288,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Visit.period</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Period</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Period during which the visit lasted</Data></Cell>
-    <Cell ss:Index="11" ss:StyleID="Default"/>
-    <Cell ss:Index="13" ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-   </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Visit.length</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -276,25 +302,42 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Visit.contact</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Visit.reason[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(RelatedPerson|Practitioner)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Emergency contact during the visit</Data></Cell>
-    <Cell ss:Index="11" ss:StyleID="Default"/>
-    <Cell ss:Index="13" ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">string|CodeableConcept</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">EncounterReason</Data></Cell>
+    <Cell><Data ss:Type="String">Reason the visit takes place</Data></Cell>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Visit.admission</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.indication</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Any)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Reason the visit takes place</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.priority</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell><Data ss:Type="String">Priority</Data></Cell>
+    <Cell><Data ss:Type="String">Indicates the urgency of the encounter</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.hospitalization</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">down</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Details about an admission to a clinic</Data></Cell>
     <Cell><Data ss:Type="String">Details about an admission to a clinic</Data></Cell>
@@ -303,23 +346,21 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:Height="30">
-    <Cell><Data ss:Type="String">Visit.admission.admitter</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.hospitalization.preAdmissionIdentifier</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">The practitioner responsible for admission</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Pre-admission identifier</Data></Cell>
    </Row>
-   <Row ss:Height="30">
-    <Cell><Data ss:Type="String">Visit.admission.origin</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.hospitalization.preAdmissionTest</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell><Data ss:Type="String">PreAdminTest</Data></Cell>
+    <Cell><Data ss:Type="String">Tests to be done before admission</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Visit.hospitalization.origin</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -333,131 +374,154 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Visit.admission.test</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Visit.hospitalization.admitSource</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">VisitAdmissionTest</Data></Cell>
-    <Cell><Data ss:Type="String">Tests to be done before admission</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">AdmitSource</Data></Cell>
+    <Cell><Data ss:Type="String">Where the patient was admitted from (physician referral, transfer)</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Visit.reason[x]</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.hospitalization.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">string|CodeableConcept</Data></Cell>
+    <Cell><Data ss:Type="String">Period</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Reason the visit takes place</Data></Cell>
+    <Cell><Data ss:Type="String">Priod of hospitalization</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Visit.indication</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Any)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Details about the reason for the visit</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.hospitalization.accomodation</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">right</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Where the </Data></Cell>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:Height="60">
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.hospitalization.accomodation.bed</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Resource(Location)</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Bed</Data></Cell>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Visit.hospitalization.accomodation.period</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Period</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Period during which the patient was assigned the bed</Data></Cell>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Visit.hospitalization.diet</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">PatientDiet</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Dietary restrictions for the patient</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Dietary restrictions for the patient</Data></Cell>
+    <Cell ss:Index="11" ss:StyleID="s70"><Data ss:Type="String">Track patients reported dietary restrictions to help with catering requirements</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">not for specifying medical diets, but for casual dietary restrictions such as vegetarian, diary-free, nut-free, etc</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.hospitalization.specialCourtesy</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell><Data ss:Type="String">Courtesies</Data></Cell>
+    <Cell><Data ss:Type="String">Special courtesies (vip, hospital board member)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.hospitalization.specialArrangement</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell><Data ss:Type="String">Arrangements</Data></Cell>
+    <Cell><Data ss:Type="String">Special arrangements (wheelchair, translator, stretcher)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.hospitalization.destination</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Location)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Location the patient is discharged to</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.hospitalization.dischargeDisposition</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell><Data ss:Type="String">DischargeDisp</Data></Cell>
+    <Cell><Data ss:Type="String">Disposition a patient was released into</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.hospitalization.reAdmission</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">boolean</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Is readmission?</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Visit.location</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">List of locations the patient has been at</Data></Cell>
     <Cell><Data ss:Type="String">List of locations the patient has been at.</Data></Cell>
-    <Cell ss:Index="15"><Data ss:Type="String">Unknown: not known whether to add care team / responsible individual</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Visit.location.location</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Location)</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">right</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Location)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">The location the visit takes place</Data></Cell>
    </Row>
-   <Row ss:Height="30">
-    <Cell><Data ss:Type="String">Visit.location.bed[x]</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">string|Coding</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Name of the bed the patient stays in</Data></Cell>
-    <Cell><Data ss:Type="String">A name of specific label for the bed the patient was in on the location</Data></Cell>
-   </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Visit.location.period</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">dateTime</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Time period during which the patient was present at the location</Data></Cell>
    </Row>
-   <Row ss:Height="30">
-    <Cell><Data ss:Type="String">!Visit.location.responsible</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Visit.serviceProvider</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Practitioner responsible for the patient during his stay at this location</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Visit.discharge</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Details about a discharge from a clinic</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Visit.dischargeDisposition</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Mode of Seperation</Data></Cell>
-   </Row>
-   <Row ss:Height="30">
-    <Cell><Data ss:Type="String">Visit.discharge.discharger</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Practitioner responsible for the patient during the discharge</Data></Cell>
-   </Row>
-   <Row ss:Height="30">
-    <Cell><Data ss:Type="String">Visit.discharge.contact</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Practitioner|RelatedPerson)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Contact person to inform about the discharge</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Visit.discharge.destination</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Location)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Location the patient is discharged to</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Visit.diet</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">VisitDiet</Data></Cell>
-    <Cell><Data ss:Type="String">Appliable Diet</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Visit.specialArrangements</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">VisitDiet</Data></Cell>
-    <Cell><Data ss:Type="String">Special Arrangements </Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Visit.courtesyCode</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">VisitDiet</Data></Cell>
-    <Cell><Data ss:Type="String">Courtesy Codes</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Visit.transportation</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">VisitDiet</Data></Cell>
-    <Cell><Data ss:Type="String">Transport Mode</Data></Cell>
-    <Cell><Data ss:Type="String">Both coming and going and internal</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Organization)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The department or team that is providing care</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -466,6 +530,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
@@ -493,8 +558,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>32</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -503,12 +567,12 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="115.5"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="153"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="204.75"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="198.75"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="188.25"/>
+   x:FullRows="1" ss:StyleID="s71" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="115.5"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="153"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="204.75"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="198.75"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="188.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -584,6 +648,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -608,10 +673,10 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Follow Ups</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -647,7 +712,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Search">
-  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="29" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="25" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
@@ -666,29 +731,16 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.identifier</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">state</Data></Cell>
+    <Cell><Data ss:Type="String">status</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.state</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">setting</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.setting</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.status</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">subject</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.subject</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">responsible</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.responsible</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">fulfills</Data></Cell>
@@ -698,25 +750,11 @@
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">period</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">date</Data></Cell>
-    <Cell><Data ss:Type="String">single</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.period</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">length</Data></Cell>
     <Cell><Data ss:Type="String">Length of visit in days</Data></Cell>
     <Cell><Data ss:Type="String">integer</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.length</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">contact</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
-    <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Visit.contact</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -807,8 +845,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>11</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>18</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -816,53 +853,92 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="6" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="13" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="93"/>
+   <Column ss:Width="102.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="221.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="81.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="118.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="81.75" ss:Span="1"/>
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="118.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="106.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="274.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s63"><Data ss:Type="String">VisitSetting</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">Setting the visit takes place in</Data></Cell>
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:Index="5" ss:StyleID="s63"/>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">EncounterState</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Current state of the encounter</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">#encounter-state</Data></Cell>
+    <Cell ss:StyleID="s72"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s70"><Data ss:Type="String">VisitState</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Current state of the visit</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">#visit-state</Data></Cell>
-    <Cell ss:StyleID="s70"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">EncounterType</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">The type of encounter</Data></Cell>
+    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s73"/>
+    <Cell ss:Index="8"><Data ss:Type="String">v3 reference?</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s63"><Data ss:Type="String">VisitType</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">The type of visit</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">#visit-type</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">v3 reference?</Data></Cell>
+    <Cell><Data ss:Type="String">EncounterClass</Data></Cell>
+    <Cell><Data ss:Type="String">Classification of the encounter</Data></Cell>
+    <Cell><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="s73"><Data ss:Type="String">suggested</Data></Cell>
+    <Cell><Data ss:Type="String">#encounter-class</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">VisitAdmissionTest</Data></Cell>
-    <Cell><Data ss:Type="String">A test that must be performed prior to admission</Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
+    <Cell><Data ss:Type="String">ParticipantType</Data></Cell>
+    <Cell><Data ss:Type="String">Kind of participation</Data></Cell>
+    <Cell><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="s73"><Data ss:Type="String">suggested</Data></Cell>
+    <Cell><Data ss:Type="String">#participant-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">VisitDiet</Data></Cell>
-    <Cell><Data ss:Type="String">Diet for the patient</Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
+    <Cell><Data ss:Type="String">Courtesies</Data></Cell>
+    <Cell><Data ss:Type="String">Special courtesies</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">v3 reference?</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Arrangements</Data></Cell>
+    <Cell><Data ss:Type="String">Special arrangements</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">v2 reference?</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s73"><Data ss:Type="String">PatientDiet</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Medical, cultural or ethical food preferences to help with catering requirements</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">extensible</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">suggested</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">#dietary-restrictions</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Priority</Data></Cell>
+    <Cell><Data ss:Type="String">Indicates the urgency of the encounter</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">EncounterReason</Data></Cell>
+    <Cell><Data ss:Type="String">Reason</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">AdmitSource</Data></Cell>
+    <Cell><Data ss:Type="String">Where the patient was admitted from</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DischargeDisp</Data></Cell>
+    <Cell><Data ss:Type="String">Discharge Disposition</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PreAdminTest</Data></Cell>
+    <Cell><Data ss:Type="String">Tests done before admission</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -891,29 +967,37 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>20</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
- <Worksheet ss:Name="visit-type">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="10" x:FullColumns="1"
+ <Worksheet ss:Name="encounter-class">
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="11" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="102.75"/>
    <Column ss:Width="231.75"/>
    <Row ss:AutoFitHeight="0" ss:Height="18">
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">inpatient</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">A patient that stays overnight</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">outpatient</Data></Cell>
     <Cell ss:StyleID="s62"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">ambulatory</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">emergency</Data></Cell>
     <Cell ss:StyleID="s62"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -923,19 +1007,16 @@
     <Cell><Data ss:Type="String">field</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">emergency</Data></Cell>
+    <Cell><Data ss:Type="String">acute</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">non-acute</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">daytime</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">virtual</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">office</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">nursing</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">long-term</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -948,21 +1029,125 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
+     <ActiveRow>14</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
- <Worksheet ss:Name="visit-state">
+ <Worksheet ss:Name="participant-type">
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="8" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="114"/>
+   <Column ss:AutoFitWidth="0" ss:Width="122.25"/>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Definition</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">admitter</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">discharger</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">responsible</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">attending</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">consulting</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">emergency-contact</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">discharge-contact</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>8</ActiveRow>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="dietary-restrictions">
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="8" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Width="58.5"/>
+   <Column ss:Width="457.5"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">vegetarian</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">food without meat, poultry or seafood</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">diary-free</Data></Cell>
+    <Cell><Data ss:Type="String">exludes dairy  products</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">nut-free</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">excluded ingredients containing nuts</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">gluten-free</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">excludes ingredients containing gluten</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">vegan</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">food without meat, poulry, seafood,  eggs, dairy products and other animal-derived substances</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">halal</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">foods that conform to Islamic law&#160;</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">kosher</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">foods that conform to Jewish dietary law&#160;</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>14</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="encounter-state">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="102.75"/>
    <Column ss:Width="231.75"/>
    <Row ss:AutoFitHeight="0" ss:Height="18">
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">planned</Data></Cell>
@@ -992,7 +1177,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1007,12 +1193,12 @@
    <Column ss:Width="42"/>
    <Column ss:Width="138.75"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Name</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Description</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Identity</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Filename</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">In Book</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Name</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Identity</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Filename</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Type</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">In Book</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">example</Data></Cell>
@@ -1032,8 +1218,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>9</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

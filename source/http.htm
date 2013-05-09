@@ -327,18 +327,9 @@ same as a GET operation. Search operations take a series of parameters that are 
 for a POST. The return content is an <a href="resources.htm#bundle">Bundle</a> containing the results of the search as a list of resources
 in a defined order. 
 </p>
-<p>
-In order to allow the client to be confident about what search parameters were used as a criteria by the server, 
-the server SHALL return the parameters that were actually used in a search URL as the self link in the atom feed
-that is returned:</p>
-<pre class="xml">
-  &lt;link rel="self" href="http://example.org/patient/search?name=peter&amp;stateid=23423443&amp;page=3"/&gt;
-</pre>
-<p>Applications processing search results SHALL treat this self link as a mustUnderstand field. For example, if the server did not support
-some of the filters specified in the search, a client might manually apply those filters to the retrieved result set, display a warning
-message to the user or take some other action.</p>
-
 <p>Searches SHOULD use paging as described <a href="#paging">below</a></p>
+
+More information about the possible search parameters is on the <a href="search.htm">search</a> page.
 
 <a name="validate"> </a>
 <h2>validate</h2>
@@ -517,7 +508,7 @@ not required to support a precision finer than by second.
 </p>
 <p>
 The updates list can be long, so servers SHALL use the method described in <a href="https://tools.ietf.org/html/rfc5005">RFC 5005 (Feed 
-Paging and Archiving)</a> (also <a href="#pages">see above</a>) for breaking the updates list into pages if appropriate.
+Paging and Archiving)</a> (also <a href="#paging">see above</a>) for breaking the updates list into pages if appropriate.
 </p>
 <p>
 The history operation is suitable for use with internet pub/sub systems based on rss/atom, 

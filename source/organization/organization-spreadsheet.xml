@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Ewout Kramer</LastAuthor>
   <Created>2012-03-19T11:15:30Z</Created>
-  <LastSaved>2013-02-07T17:38:18Z</LastSaved>
+  <LastSaved>2013-05-08T18:55:49Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -193,13 +193,12 @@
     <Cell><Data ss:Type="String">.telecom</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="129.5625">
-    <Cell><Data ss:Type="String">Organization.status</Data></Cell>
+    <Cell><Data ss:Type="String">Organization.active</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
-    <Cell><Data ss:Type="String">RecordStatus</Data></Cell>
-    <Cell><Data ss:Type="String">The status of this organization's record</Data></Cell>
-    <Cell><Data ss:Type="String">Indication of whether this organization's record is still active.</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">boolean</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Whether the organization's record is still in active use</Data></Cell>
+    <Cell><Data ss:Type="String">Whether the organization's record is still in active use</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Default is &quot;active&quot;.</Data></Cell>
     <Cell><Data ss:Type="String">.status</Data></Cell>
     <Cell ss:Index="14" ss:StyleID="s66"><Data ss:Type="String">This isn't data we record about an organization but is data about this organization's record. I would argue about including this metadata here. It also implies effects on functionality, like not showing up in queries anymore, which cannot be guaranteed. All in all, this belongs to record infrastructure, not data</Data></Cell>
@@ -312,11 +311,13 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <TopRowVisible>5</TopRowVisible>
+   <LeftColumnVisible>1</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
