@@ -14,21 +14,55 @@ Search
 
   - Chained searches over version-specific links, while the search only supports searching on current versions
 
- 
 
 
+
+Wed Q1
+- need to document the meaning of IsModifier on each element, including what it means if element is missing (if allowed)
+- rename IssueReport to OperationOutcome
+- rename message.instance to message.timestamp
+- make reliable messaging optional and put it in the conformance profile
+- write use cases for reliable messaging 
+- update doe 63 (currency vs consequence)
+- be consistent with receiver/listener
+- drop background header in profile narrative
+- add id to conformance
+- add note about instance to Device
+- reserve space for note about product relating to device vs kind and medication subscribing
+
+DiagnosticOrder
+- different codes may have different status (need to recurse - at what point)?
+- specimens (wha was collected)
+- provider might specify location
+- 
+
+
+Need to add discussion of subject - consistency issue in resource references (NO ASSUMPTIONS CAN BE MADE)
+
+
+element name
+unless element name is meaningless without scope (consider just parent name)
+unless duplicate search parameter
+[parent]-[child] is default
+
+
+Add support for v3 relationships with value sets (including null flavors)
+
+Add a note to minimum cardinality explaining the issues
+
+	
+add search token on valueset.description
+valueset.version - recommend a timestamp
+add profile.identifier like valueset
+add scale factor
+
+change documentation around connecting to device - or proxy
+
+
+element name
+unless elen
 Tooling
  - nested ext tns
  - extensions in profiles
 
 
-
-rename must-understand to Is-modifier. Add sentence saying that you must explain why it is that you think it is a modifier and/or what it modifies
-
-
-
-Q1/Q2 subjects
-
-
-What people want to talk about
-- Profiling / how to combine reosurces

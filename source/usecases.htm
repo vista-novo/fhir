@@ -33,10 +33,12 @@ are also used) provides a RESTful API that allows patients to access their own m
 record using a common web portal or mobile application. In this scenario, the 
 PHR provider:
 </p> 
+
 <ul>
  <li>Provides the patient with a login that identifies them (or links the patient record to an external identity provided by OpenID, Facebook, Google, etc.)</li>
  <li>Authenticates the client using the appropriate OAuth server and restricts the client to viewing records associated with the specific patient</li>
 </ul>
+
 <p>
 The EMR exposes a FHIR server with the following capabilities: 
 </p>
@@ -46,6 +48,11 @@ The EMR exposes a FHIR server with the following capabilities:
  <li><i>search</i> and <i>read</i> on a set of clinical resources potentially including Observation, DiagnosticReport, various Medication resources, AdverseReaction/AllergyIntolerance, 
 CarePlan, and Problem</li> 
 </ol>
+
+<p>
+Here is the conformance Profile for this scenario:
+</p>
+
 <p>
 The PHR may also choose to provide additional functionality, such as shared access to patient 
 records by relatives/carers, to allow the patient to upload their own documents, medication statements, observations

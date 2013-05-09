@@ -145,11 +145,11 @@
     <Cell><Data ss:Type="String">Message.id</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Message.instant</Data></Cell>
+    <Cell><Data ss:Type="String">Message.timestamp</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">instant</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Instant the message was sent</Data></Cell>
-    <Cell><Data ss:Type="String">Instant the message was sent</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Time that the message was sent</Data></Cell>
+    <Cell><Data ss:Type="String">The time that the message was sent</Data></Cell>
     <Cell><Data ss:Type="String">Allows limited detection of out-of-order and delayed transmission.  Also supports audit.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">./creationTime[isNormalDatatype()]</Data></Cell>
     <Cell><Data ss:Type="String">MSH.7</Data></Cell>
@@ -402,7 +402,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>22</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -415,11 +415,11 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

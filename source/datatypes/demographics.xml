@@ -20,6 +20,7 @@
   <WindowWidth>7995</WindowWidth>
   <WindowTopX>-15</WindowTopX>
   <WindowTopY>0</WindowTopY>
+  <ActiveSheet>6</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -106,6 +107,11 @@
   </Style>
   <Style ss:ID="s77">
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s78">
+   <Alignment ss:Vertical="Top"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -445,7 +451,6 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <Zoom>90</Zoom>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -742,12 +747,14 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="marital-status">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="10" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="11" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="14.4375">
-   <Column ss:AutoFitWidth="0" ss:Width="92.25"/>
-   <Column ss:Width="353.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="156"/>
+   <Column ss:AutoFitWidth="0" ss:Width="36.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="440.25"/>
    <Column ss:Width="209.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="15" ss:StyleID="s76">
+    <Cell ss:StyleID="s78"><Data ss:Type="String">System</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"/>
@@ -756,40 +763,54 @@
     <Cell ss:StyleID="s65"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+    <Cell><Data ss:Type="String">http://hl7.org/v3/maritalstatus</Data></Cell>
     <Cell><Data ss:Type="String">A</Data></Cell>
     <Cell><Data ss:Type="String">Annulled - Marriage contract has been declared null and to not have existed</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+    <Cell><Data ss:Type="String">http://hl7.org/v3/maritalstatus</Data></Cell>
     <Cell><Data ss:Type="String">D</Data></Cell>
     <Cell><Data ss:Type="String">Divorced - Marriage contract has been declared dissolved and inactive</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+    <Cell><Data ss:Type="String">http://hl7.org/v3/maritalstatus</Data></Cell>
     <Cell><Data ss:Type="String">I</Data></Cell>
     <Cell><Data ss:Type="String">Interlocutory - Subject to an Interlocutory Decree.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+    <Cell><Data ss:Type="String">http://hl7.org/v3/maritalstatus</Data></Cell>
     <Cell><Data ss:Type="String">L</Data></Cell>
     <Cell><Data ss:Type="String">Legally Separated</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+    <Cell><Data ss:Type="String">http://hl7.org/v3/maritalstatus</Data></Cell>
     <Cell><Data ss:Type="String">M</Data></Cell>
     <Cell><Data ss:Type="String">Married - A current marriage contract is active</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+    <Cell><Data ss:Type="String">http://hl7.org/v3/maritalstatus</Data></Cell>
     <Cell><Data ss:Type="String">P</Data></Cell>
     <Cell><Data ss:Type="String">Polygamous - More than one current spouse</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+    <Cell><Data ss:Type="String">http://hl7.org/v3/maritalstatus</Data></Cell>
     <Cell><Data ss:Type="String">S</Data></Cell>
     <Cell><Data ss:Type="String">Never married - No marriage contract has ever been entered</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+    <Cell><Data ss:Type="String">http://hl7.org/v3/maritalstatus</Data></Cell>
     <Cell><Data ss:Type="String">T</Data></Cell>
     <Cell><Data ss:Type="String">Domestic Partner - Person declares that a domestic partner relationship exists</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14.0625">
+    <Cell><Data ss:Type="String">http://hl7.org/v3/maritalstatus</Data></Cell>
     <Cell><Data ss:Type="String">W</Data></Cell>
     <Cell><Data ss:Type="String">Widowed - The spouse has died</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/v3/nullflavor</Data></Cell>
+    <Cell><Data ss:Type="String">UNK</Data></Cell>
+    <Cell><Data ss:Type="String">The value is unknown</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -805,11 +826,12 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

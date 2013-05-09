@@ -163,7 +163,7 @@ Note that none of these are able to check complete conformance to this specifica
 </p>
 <p>
 The data elements defined resources and data types have 4 properties that are 
-directly related to conformance: Cardinality, Must-Understand, Must-Support, and Cardinality.
+directly related to conformance: Cardinality, Is-Modifier, Must-Support, and Cardinality.
 These interact to place conformance requirements on implementations. 
 </p>
 
@@ -172,8 +172,21 @@ These interact to place conformance requirements on implementations.
 <p>
 The cardinality of an element is to upper and limit of the number of elements
 present in the actual resource. When present, elements cannot be empty - they must
-have either a value attribute, child elements, or extensions. 
+have either a value attribute, child elements, or extensions. This specification
+only defines the following cardinalities: 0..1, 0..*, 1..1, and 1..*. Profiles 
+that describe specific use cases may use other cardinalities within the limits 
+defined by the resources. 
 </p>
+<p>
+In this specification, very few elements have a minimum cardinality of 1. 
+Resources are used in many contexts, often quite removed from their primary
+use case, where information is sometimes very incomplete. For this reason,
+the only elements that have a minimum cardinality of 1 are those where they
+are necessary to basic understanding of the element that contains them. 
+The minimum cardinalities should not be taken as a guide to which elements
+are expected to be present in any particular use of the resource.
+</p>
+
 
 <a name="mustUnderstand"> </a>
 <a name="ismodifier"> </a>
