@@ -7,7 +7,7 @@
   <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
-      <p>Penicillin VK 10ml suspension to be administered by oral route</p>
+      <p>Penicillin VK 5ml suspension to be administered by oral route</p>
       <p>ONE 5ml spoonful to be taken THREE times a day</p>
       <p>100ml bottle</p>
       <p>to patient ref: a23</p>
@@ -54,7 +54,7 @@
         </coding>
       </route>
       <quantity>
-        <value value="10"/>
+        <value value="5"/>
         <units value="ml"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="ml"/>
