@@ -41,7 +41,7 @@
  
  <sequence value="1"/>
  
- <planHolder>
+ <subscriber>
 	<name>
 	<use value="official"/>
 	 <family value="Seebetter"/>
@@ -60,5 +60,5 @@
 
 	<birthdate value="1955-01-01"/>
 
-  </planHolder>
+ </subscriber>
 </Coverage>
