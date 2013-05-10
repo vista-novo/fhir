@@ -84,6 +84,7 @@ import org.hl7.fhir.instance.formats.JsonComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.AtomEntry;
 import org.hl7.fhir.instance.model.AtomFeed;
+import org.hl7.fhir.instance.model.DateTime;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.tools.implementations.ECoreOclGenerator;
 import org.hl7.fhir.tools.implementations.csharp.CSharpGenerator;
@@ -116,6 +117,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
+import org.tigris.subversion.javahl.*;
+
 
 /**
  * This is the entry point for the publication method for FHIR The general order
@@ -178,12 +181,16 @@ public class Publisher {
 	private BookMaker book;
   private JavaGenerator javaReferencePlatform;
 
+  private long revNumber;
 	private boolean isGenerate;
 	private boolean web;
 	private AtomFeed profileFeed;
   private List<Fragment> fragments = new ArrayList<Publisher.Fragment>();
   private Map<String, String> xmls = new HashMap<String, String>();
-
+  private Map<String, Long> dates = new HashMap<String, Long>();
+  private Map<String, Boolean> buildFlags = new HashMap<String, Boolean>();
+  private IniFile cache;
+  
 	public static void main(String[] args) {
 		//
 		Publisher pub = new Publisher();
@@ -210,6 +217,15 @@ public class Publisher {
     }
 	}
 
+	private void checkSubversion(String folder) throws Exception {
+	  SVNClient svnClient = new SVNClient();
+	  Status [] status = svnClient.status(folder, true, false, true);
+
+	  for(Status stat : status)
+	    revNumber = (revNumber < stat.getRevisionNumber()) ? stat.getRevisionNumber() : revNumber;
+	   page.setSvnRevision(Long.toString(revNumber));
+	}
+	
 	private static boolean hasParam(String[] args, String param) {
 		for (String a : args)
 			if (a.equals(param))
@@ -220,13 +236,33 @@ public class Publisher {
 	public void execute(String folder) throws Exception {
 
 		log("Publish FHIR in folder " + folder+" @ "+Config.DATE_FORMAT().format(page.getGenDate().getTime()));
+		checkSubversion(folder);
+    
 		registerReferencePlatforms();
 
 		if (initialize(folder)) {
-			Utilities.createDirectory(page.getFolders().dstDir);
+	    log("Version "+page.getVersion()+"-"+page.getSvnRevision());
+
+	    cache = new IniFile(page.getFolders().rootDir+"temp"+File.separator+"build.cache");
+		  boolean doAny = false;
+	    for (String n : dates.keySet()) {
+	      Long d = cache.getLongProperty("dates", n);
+	      boolean b = d == null || (dates.get(n) > d);
+	      cache.setLongProperty("dates", n, dates.get(n).longValue(), null);
+	      buildFlags.put(n.toLowerCase(), b);
+	      doAny = doAny || b;
+	    }
+	    if (!doAny)
+        buildFlags.put("all", true); // nothing - build all
+	    cache.save();
+	    
+	    if (!buildFlags.get("all"))
+	      log("Partial Build");
+	    Utilities.createDirectory(page.getFolders().dstDir);
 			
 			if (isGenerate) {
-        Utilities.clearDirectory(page.getFolders().dstDir);
+			  if (buildFlags.get("all"))
+			    Utilities.clearDirectory(page.getFolders().dstDir);
 				Utilities.createDirectory(page.getFolders().dstDir + "html");
 				Utilities.createDirectory(page.getFolders().dstDir + "examples");
         Utilities.clearDirectory(page.getFolders().rootDir+"temp"+File.separator+"hl7"+File.separator+"web");
@@ -267,6 +303,19 @@ public class Publisher {
 		page.getReferenceImplementations().add(new ECoreOclGenerator());
 	}
 
+  public boolean checkFile(String purpose, String dir, String file, List<String> errors, String category) {
+    CSFile f = new CSFile(dir+file);
+    if (!f.exists()) {
+      errors.add("Unable to find "+purpose+" file "+file+" in "+dir);
+      return false;
+    } else {
+      long d = f.lastModified();
+      if (!dates.containsKey(category) || d > dates.get(category))
+        dates.put(category, d);
+      return true;
+    }
+  }
+
 	private boolean initialize(String folder) throws Exception {
 		page.setDefinitions(new Definitions());
 		page.setFolders(new FolderManager(folder));
@@ -276,33 +325,32 @@ public class Publisher {
 		List<String> errors = new ArrayList<String>();
 
 		Utilities.checkFolder(page.getFolders().rootDir, errors);
-		if (Utilities.checkFile("required", page.getFolders().rootDir,"publish.ini", errors)) {
-			Utilities.checkFile("required", page.getFolders().srcDir,"navigation.xml", errors);
+		if (checkFile("required", page.getFolders().rootDir,"publish.ini", errors, "all")) {
+			checkFile("required", page.getFolders().srcDir,"navigation.xml", errors, "all");
 			page.setIni(new IniFile(page.getFolders().rootDir + "publish.ini"));
 			page.setVersion(page.getIni().getStringProperty("FHIR", "version"));
 
 			prsr = new SourceParser(page, folder,page.getDefinitions(), web);
-			prsr.checkConditions(errors);
+			prsr.checkConditions(errors, dates);
 
 			Utilities.checkFolder(page.getFolders().xsdDir, errors);
 			for (PlatformGenerator gen : page.getReferenceImplementations())
 				Utilities.checkFolder(page.getFolders().implDir(gen.getName()),errors);
-			Utilities.checkFolder(page.getFolders().umlDir, errors);
-			Utilities.checkFile("required", page.getFolders().srcDir, "fhir-all.xsd", errors);
-			Utilities.checkFile("required", page.getFolders().srcDir, "header.htm", errors);
-			Utilities.checkFile("required", page.getFolders().srcDir, "footer.htm", errors);
-			Utilities.checkFile("required", page.getFolders().srcDir, "template.htm", errors);
-			Utilities.checkFile("required", page.getFolders().srcDir, "template-book.htm", errors);
+			checkFile("required", page.getFolders().srcDir, "fhir-all.xsd", errors, "all");
+			checkFile("required", page.getFolders().srcDir, "header.htm", errors, "all");
+			checkFile("required", page.getFolders().srcDir, "footer.htm", errors, "all");
+			checkFile("required", page.getFolders().srcDir, "template.htm", errors, "all");
+			checkFile("required", page.getFolders().srcDir, "template-book.htm", errors, "all");
 			//Utilities.checkFolder(page.getFolders().dstDir, errors);
 
 			for (String n : page.getIni().getPropertyNames("support"))
-				Utilities.checkFile("support", page.getFolders().srcDir, n, errors);
+				checkFile("support", page.getFolders().srcDir, n, errors, "all");
 			for (String n : page.getIni().getPropertyNames("images"))
-				Utilities.checkFile("image", page.getFolders().imgDir, n, errors);
+				checkFile("image", page.getFolders().imgDir, n, errors, "all");
 			for (String n : page.getIni().getPropertyNames("schema"))
-				Utilities.checkFile("schema", page.getFolders().srcDir, n, errors);
+				checkFile("schema", page.getFolders().srcDir, n, errors, "all");
 			for (String n : page.getIni().getPropertyNames("pages"))
-				Utilities.checkFile("page", page.getFolders().srcDir, n, errors);
+				checkFile("page", page.getFolders().srcDir, n, errors, "page-"+n);
 		}
 		
 		if (errors.size() > 0)
@@ -528,7 +576,7 @@ public class Publisher {
 			String implDir = page.getFolders().implDir(gen.getName());
 
 			if (!gen.isECoreGenerator())
-				gen.generate(page.getDefinitions(), destDir, implDir, page.getVersion(), page.getGenDate().getTime(), page);
+				gen.generate(page.getDefinitions(), destDir, implDir, page.getVersion(), page.getGenDate().getTime(), page, page.getSvnRevision());
 			else
 				gen.generate(eCoreDefs, destDir, implDir, page);
 		}
@@ -559,13 +607,14 @@ public class Publisher {
 		log("Produce Content");
 		produceSpec();
 
-		if (web) {
-			log("Produce HL7 copy");
-			new WebMaker(page.getFolders(), page.getVersion(), page.getIni()).produceHL7Copy();
-		}
-		log("Produce Archive copy");
-		produceArchive();
-		
+		if (buildFlags.get("all")) {
+		  if (web) {
+		    log("Produce HL7 copy");
+		    new WebMaker(page.getFolders(), page.getVersion(), page.getIni()).produceHL7Copy();
+		  }
+		  log("Produce Archive copy");
+		  produceArchive();
+		}		
 	}
 
 	private void produceArchive() throws Exception {
@@ -616,71 +665,90 @@ public class Publisher {
 	}
 
 	private void produceSpec() throws Exception {
-		for (String n : page.getIni().getPropertyNames("support"))
-			Utilities.copyFile(new CSFile(page.getFolders().srcDir + n),
-					new CSFile(page.getFolders().dstDir + n));
-		for (String n : page.getIni().getPropertyNames("images"))
-			Utilities.copyFile(new CSFile(page.getFolders().imgDir + n),
-					new CSFile(page.getFolders().dstDir + n));
+	  if (buildFlags.get("all")) {
 
-    generateCodeSystems();
+	    for (String n : page.getIni().getPropertyNames("support"))
+	      Utilities.copyFile(new CSFile(page.getFolders().srcDir + n),
+	          new CSFile(page.getFolders().dstDir + n));
+	    for (String n : page.getIni().getPropertyNames("images"))
+	      Utilities.copyFile(new CSFile(page.getFolders().imgDir + n),
+	          new CSFile(page.getFolders().dstDir + n));
 
-    profileFeed = new AtomFeed();
-		profileFeed.setId("http://hl7.org/fhir/profile/resources");
-		profileFeed.setTitle("Resources as Profiles");
-		profileFeed.getLinks().put("self", "http://hl7.org/implement/standards/fhir/profiles-resources.xml");
-		profileFeed.setUpdated(Calendar.getInstance());
-    for (String n : page.getDefinitions().getDiagrams().keySet()) {
-      log(" ...diagram "+n);
-      page.getImageMaps().put(n, new DiagramGenerator(page).generateFromSource(n, page.getFolders().srcDir + page.getDefinitions().getDiagrams().get(n)));
-    }
-    
-    log(" ...profiles");
-    for (String rname : page.getDefinitions().sortedResourceNames()) {
-      ResourceDefn r = page.getDefinitions().getResources().get(rname); 
-      produceResource1(r);      
-    }
-    produceBaseProfile();
-    
-    for (String rname : page.getDefinitions().sortedResourceNames()) {
-      ResourceDefn r = page.getDefinitions().getResources().get(rname); 
-      log(" ...resource "+r.getName());
-			produceResource2(r);
-		}
+	    generateCodeSystems();
 
-		new AtomComposer().compose(new FileOutputStream(page.getFolders().dstDir + "profiles-resources.xml"), profileFeed, true, false);
-    new JsonComposer().compose(new FileOutputStream(page.getFolders().dstDir + "profiles-resources.json"), profileFeed);
-		// all the profiles are already individually in the examples, so no need to add this one to them as well
-		// Utilities.copyFile(new CSFile(page.getFolders().dstDir + "profiles-resources.xml"), new CSFile(page.getFolders().dstDir + "examples" + File.separator + "profiles-resources.xml"));
-		cloneToXhtml("profiles-resources", "Base Resources defined as profiles (implementation assistance, for derivation and product development)");
-		for (String n : page.getIni().getPropertyNames("pages")) {
-		  log(" ...page "+n);
-			producePage(n, page.getIni().getStringProperty("pages", n));
-		}
+	    profileFeed = new AtomFeed();
+	    profileFeed.setId("http://hl7.org/fhir/profile/resources");
+	    profileFeed.setTitle("Resources as Profiles");
+	    profileFeed.getLinks().put("self", "http://hl7.org/implement/standards/fhir/profiles-resources.xml");
+	    profileFeed.setUpdated(Calendar.getInstance());
+	    for (String n : page.getDefinitions().getDiagrams().keySet()) {
+	      log(" ...diagram "+n);
+	      page.getImageMaps().put(n, new DiagramGenerator(page).generateFromSource(n, page.getFolders().srcDir + page.getDefinitions().getDiagrams().get(n)));
+	    }
 
-    log(" ...check Fragments");
-    checkFragments();
-		
-		for (String n : page.getDefinitions().getProfiles().keySet()) {
-      log(" ...profile "+n);
-			produceProfile(n, page.getDefinitions().getProfiles().get(n), null);
-		}
+	    log(" ...profiles");
+	  }
+	  for (String rname : page.getDefinitions().sortedResourceNames()) {
+	    if (wantBuild(rname)) {
+	      ResourceDefn r = page.getDefinitions().getResources().get(rname); 
+	      produceResource1(r);      
+	    }
+	  }
+	  if (buildFlags.get("all")) {
+	    produceBaseProfile();
+	  }
+	  for (String rname : page.getDefinitions().sortedResourceNames()) {
+	    if (wantBuild(rname)) {
+	      ResourceDefn r = page.getDefinitions().getResources().get(rname); 
+	      log(" ...resource "+r.getName());
+	      produceResource2(r);
+	    }
+	  }
 
-    log(" ...zips");
-    ZipGenerator zip = new ZipGenerator(page.getFolders().dstDir + "examples.zip");
-    zip.addFiles(page.getFolders().dstDir + "examples" + File.separator, "", null);
-    zip.close();
+	  if (buildFlags.get("all")) {
+	    new AtomComposer().compose(new FileOutputStream(page.getFolders().dstDir + "profiles-resources.xml"), profileFeed, true, false);
+	    new JsonComposer().compose(new FileOutputStream(page.getFolders().dstDir + "profiles-resources.json"), profileFeed);
+	    // all the profiles are already individually in the examples, so no need to add this one to them as well
+	    // Utilities.copyFile(new CSFile(page.getFolders().dstDir + "profiles-resources.xml"), new CSFile(page.getFolders().dstDir + "examples" + File.separator + "profiles-resources.xml"));
+	    cloneToXhtml("profiles-resources", "Base Resources defined as profiles (implementation assistance, for derivation and product development)");
+	  }
+	  for (String n : page.getIni().getPropertyNames("pages")) {
+	    if (buildFlags.get("all") || buildFlags.get("page-"+n.toLowerCase())) {
+	      log(" ...page "+n);
+	      producePage(n, page.getIni().getStringProperty("pages", n));
+	    }
+	  }
+	  if (buildFlags.get("all")) {
+	    log(" ...check Fragments");
+	    checkFragments();
+	    for (String n : page.getDefinitions().getProfiles().keySet()) {
+	      log(" ...profile "+n);
+	      produceProfile(n, page.getDefinitions().getProfiles().get(n), null);
+	    }
 
-    zip = new ZipGenerator(page.getFolders().dstDir + "examples-json.zip");
-    zip.addFiles(page.getFolders().dstDir, "", ".json");
-    zip.close();
+	    log(" ...zips");
+	    ZipGenerator zip = new ZipGenerator(page.getFolders().dstDir + "examples.zip");
+	    zip.addFiles(page.getFolders().dstDir + "examples" + File.separator, "", null);
+	    zip.close();
 
-    log(" ...zip");
-    produceZip();
-    
-    log("Produce Book Form");
-    book.produce();
+	    zip = new ZipGenerator(page.getFolders().dstDir + "examples-json.zip");
+	    zip.addFiles(page.getFolders().dstDir, "", ".json");
+	    zip.close();
+
+	    log(" ...zip");
+	    produceZip();
+
+	    log("Produce Book Form");
+	    book.produce();
+	  }
+	  else 
+	    log("Partial Build - terminating now");
 	}
+
+  private boolean wantBuild(String rname) {
+    rname = rname.toLowerCase();
+    return buildFlags.get("all") || (!buildFlags.containsKey(rname) || buildFlags.get(rname));
+  }
 
   private void produceBaseProfile() throws Exception {
     // TODO Auto-generated method stub
@@ -970,7 +1038,8 @@ public class Publisher {
 		ProfileGenerator pgen = new ProfileGenerator(page.getDefinitions());
 		Profile rp = pgen.generate(p, new FileOutputStream(page.getFolders().dstDir + n + ".profile.xml"), xmlSpec, addBase);
 		Utilities.copyFile(new CSFile(page.getFolders().dstDir + n+ ".profile.xml"), new CSFile(page.getFolders().dstDir+ "examples" + File.separator + n + ".profile.xml"));
-		addToResourceFeed(rp, root.getName().toLowerCase());
+		if (buildFlags.get("all"))
+		  addToResourceFeed(rp, root.getName().toLowerCase());
 		saveAsPureHtml(rp, new FileOutputStream(page.getFolders().dstDir+ "html" + File.separator + n + ".htm"));
 	}
 
@@ -1286,7 +1355,8 @@ public class Publisher {
 	static final String JAXP_SCHEMA_SOURCE = "http://java.sun.com/xml/jaxp/properties/schemaSource";
 
 	private void validateXml() throws Exception {
-	  produceCoverageWarnings();
+    if (buildFlags.get("all"))
+  	  produceCoverageWarnings();
 		log("Validating XML");
 		log(".. Loading schemas");
 		StreamSource[] sources = new StreamSource[2];
@@ -1302,29 +1372,36 @@ public class Publisher {
 		Schema schema = schemaFactory.newSchema(sources);
 		log(".... done");
 
-    for (String rname : page.getDefinitions().sortedResourceNames()) {
-      ResourceDefn r = page.getDefinitions().getResources().get(rname); 
-			for (Example e : r.getExamples()) {
-				String n = e.getFileTitle();
-        log(" ...validate " + n);
-				validateXmlFile(schema, n);
-			}
+		for (String rname : page.getDefinitions().sortedResourceNames()) {
+		  ResourceDefn r = page.getDefinitions().getResources().get(rname); 
+		  if (wantBuild(rname)) {
+		    for (Example e : r.getExamples()) {
+		      String n = e.getFileTitle();
+		      log(" ...validate " + n);
+		      validateXmlFile(schema, n);
+		    }
+		  }
 		}
-    log(" ...validate " + "profiles-resources");
-		validateXmlFile(schema, "profiles-resources");
-
+		if (buildFlags.get("all")) {
+		  log(" ...validate " + "profiles-resources");
+		  validateXmlFile(schema, "profiles-resources");
+		}
 		log("Reference Platform Validation.");
 
-    for (String rname : page.getDefinitions().sortedResourceNames()) {
-      ResourceDefn r = page.getDefinitions().getResources().get(rname); 
-			for (Example e : r.getExamples()) {
-				String n = e.getFileTitle();
-        log(" ...test " + n);
-				validateRoundTrip(schema, n);
-			}
-		}
-    log(" ...test " + "profiles-resources");
-		validateRoundTrip(schema, "profiles-resources");
+		for (String rname : page.getDefinitions().sortedResourceNames()) {
+		  ResourceDefn r = page.getDefinitions().getResources().get(rname); 
+		  if (wantBuild(rname)) {
+		    for (Example e : r.getExamples()) {
+		      String n = e.getFileTitle();
+		      log(" ...test " + n);
+		      validateRoundTrip(schema, n);
+		    }
+		  }
+    }
+    if (buildFlags.get("all")) {
+      log(" ...test " + "profiles-resources");
+      validateRoundTrip(schema, "profiles-resources");
+    }
 	}
 
 	private void produceCoverageWarnings() throws Exception {

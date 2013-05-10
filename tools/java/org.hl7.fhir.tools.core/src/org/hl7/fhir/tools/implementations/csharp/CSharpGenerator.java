@@ -48,7 +48,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 
 	@Override
 	public void generate(Definitions definitions, String destDir,
-			String implDir, String version, Date genDate, Logger logger)
+			String implDir, String version, Date genDate, Logger logger, String svnRevision)
 			throws Exception {
 
 		throw new UnsupportedOperationException("The C# generator uses eCore, not ElementDefn-style definition.");

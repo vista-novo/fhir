@@ -70,7 +70,7 @@ public String getDescription() {
   }
 
   @Override
-public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger) throws Exception {
+public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger, String svnRevision) throws Exception {
 	  ECoreOclFormatGenerator eofg = new ECoreOclFormatGenerator(new FileOutputStream(implDir+"eCore.txt"));
 	  eofg.generate(definitions, version, genDate);
 	  eofg.close();

@@ -23,12 +23,13 @@ as a pair using a <a href="http.htm#transaction">transaction</a>.
 <h3>Digital Signatures</h3>
 
 <p>
-The provenance resource includes a signature element which contains a digital signature. (todo: 
-update the XML so that this is included directly, not escaped). If present, the signature is always 
-a signature of the target resource XML representation. (todo: what about json?)
+The provenance resource includes a signature element which contains an 
+<a href="http://www.w3.org/TR/xmldsig-core/">XML digital signature</a>. 
+If present, the signature is always a signature of the target resource XML representation. 
+The digital signature is always included as a plain string with appropriate escaping for both XML and JSON.
 </p>
 <p>
-Servers that modify the resource on submission will break the digital signature. 
+Note that servers that modify the resource on submission will break the digital signature. 
 </p>
 <p>
 Todo: how can you sign tags as well as the resource?

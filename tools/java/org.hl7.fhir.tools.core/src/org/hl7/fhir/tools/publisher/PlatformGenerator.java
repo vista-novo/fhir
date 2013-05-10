@@ -70,8 +70,9 @@ public interface PlatformGenerator {
    * @param version - the version of FHIR that is being published
    * @param genDate - the official date of publication (the start of the build process)
    * @param logger - so that the generator can log issues/errors/progress to the same place as the overall build process
+   * @param svnRevision TODO
    */
-  public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger)  throws Exception;
+  public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger, String svnRevision)  throws Exception;
 
   /**
    * Actually generate the reference implementation. The reference generator must generate a zip file [name].zip in the dst dir where

@@ -82,6 +82,7 @@ public class PageProcessor implements Logger  {
   private Calendar genDate = Calendar.getInstance();
   private Date start = new Date();
   private String prevSidebar;
+  private String svnRevision;
   private List<String> orderedResources = new ArrayList<String>();
   private Map<String, SectionTracker> sectionTrackerCache = new HashMap<String, SectionTracker>(); 
   private Map<String, TocEntry> toc = new HashMap<String, TocEntry>();
@@ -197,7 +198,7 @@ public class PageProcessor implements Logger  {
       }
     }
     // s.append(SIDEBAR_SPACER);
-    s.append("<p><a href=\"http://hl7.org\"><img width=\"42\" height=\"50\" border=\"0\" src=\"hl7logo.png\"/></a></p>\r\n");
+    s.append("<p><a href=\"http://gforge.hl7.org/gf/project/fhir/\" title=\"SVN Link\">Build "+svnRevision+"</a></p><p> <a href=\"http://hl7.org\"><img width=\"42\" height=\"50\" border=\"0\" src=\"hl7logo.png\"/></a></p>\r\n");
 
     s.append("</div>\r\n");
     prevSidebar = s.toString();
@@ -1562,6 +1563,14 @@ public void log(String content) {
 
   public Map<String, String> getImageMaps() {
     return imageMaps;
+  }
+
+  public String getSvnRevision() {
+    return svnRevision;
+  }
+
+  public void setSvnRevision(String svnRevision) {
+    this.svnRevision = svnRevision;
   }
 
   

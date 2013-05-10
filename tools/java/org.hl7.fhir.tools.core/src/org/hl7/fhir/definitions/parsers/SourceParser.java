@@ -447,39 +447,58 @@ public class SourceParser {
 			definitions.getEvents().put(defn.getCode(), defn);
 	}
 
-	public void checkConditions(List<String> errors) throws Exception {
+  public boolean checkFile(String purpose, String dir, String file, List<String> errors, String category) {
+    CSFile f = new CSFile(dir+file);
+    if (!f.exists()) {
+      errors.add("Unable to find "+purpose+" file "+file+" in "+dir);
+      return false;
+    } else {
+      long d = f.lastModified();
+      if (!dates.containsKey(category) || d > dates.get(category))
+        dates.put(category, d);
+      return true;
+    }
+  }
+  private Map<String, Long> dates;
+
+	public void checkConditions(List<String> errors, Map<String, Long> dates) throws Exception {
 		Utilities.checkFolder(srcDir, errors);
 		Utilities.checkFolder(termDir, errors);
 		Utilities.checkFolder(imgDir, errors);
-		Utilities.checkFile("required", termDir, "bindings.xml", errors);
-		Utilities.checkFile("required", dtDir, "primitives.xml", errors);
+		this.dates = dates;
+		checkFile("required", termDir, "bindings.xml", errors, "all");
+		checkFile("required", dtDir, "primitives.xml", errors, "all");
 
 		for (String n : ini.getPropertyNames("types"))
 			if (ini.getStringProperty("types", n).equals("")) {
 				TypeRef t = new TypeParser().parse(n).get(0);
-				Utilities.checkFile("type definition", dtDir, t.getName().toLowerCase() + ".xml", errors);
+				checkFile("type definition", dtDir, t.getName().toLowerCase() + ".xml", errors, "all");
 			}
     for (String n : ini.getPropertyNames("structures"))
-      Utilities.checkFile("structure definition", dtDir, n.toLowerCase() + ".xml",errors);
+      checkFile("structure definition", dtDir, n.toLowerCase() + ".xml",errors,"all");
     for (String n : ini.getPropertyNames("shared"))
-      Utilities.checkFile("shared structure definition", dtDir, n.toLowerCase() + ".xml",errors);
+      checkFile("shared structure definition", dtDir, n.toLowerCase() + ".xml",errors,"all");
 		for (String n : ini.getPropertyNames("infrastructure"))
-			Utilities.checkFile("infrastructure definition", dtDir, n.toLowerCase() + ".xml",	errors);
+			checkFile("infrastructure definition", dtDir, n.toLowerCase() + ".xml",	errors,"all");
 
 		for (String n : ini.getPropertyNames("resources")) {
 			if (new CSFile(srcDir + n + File.separatorChar + n	+ "-spreadsheet.xml").exists()) {
-				Utilities.checkFile("definition", srcDir + n+ File.separatorChar, n + "-spreadsheet.xml", errors);
+				checkFile("definition", srcDir + n+ File.separatorChar, n + "-spreadsheet.xml", errors, n);
 			} else
-				Utilities.checkFile("definition", srcDir + n + File.separatorChar, n + "-def.xml", errors);
-			Utilities.checkFile("example xml", srcDir + n + File.separatorChar,	n + "-example.xml", errors);
+				checkFile("definition", srcDir + n + File.separatorChar, n + "-def.xml", errors, n);
+			checkFile("example xml", srcDir + n + File.separatorChar,	n + "-example.xml", errors, n);
+			// now iterate all the files in the directory checking data
+			for (String fn : new File(srcDir + n + File.separatorChar).list())
+ 	      checkFile("source", srcDir + n + File.separatorChar, fn, errors, n);
 		}
 		for (String n : ini.getPropertyNames("special-resources")) {
 			if (new CSFile(srcDir + n + File.separatorChar + n+ "-spreadsheet.xml").exists())
-				Utilities.checkFile("definition", srcDir + n+ File.separatorChar, n + "-spreadsheet.xml", errors);
+				checkFile("definition", srcDir + n+ File.separatorChar, n + "-spreadsheet.xml", errors, n);
 			else
-				Utilities.checkFile("definition", srcDir + n+ File.separatorChar, n + "-def.xml", errors);
+				checkFile("definition", srcDir + n+ File.separatorChar, n + "-def.xml", errors, n);
+      // now iterate all the files in the directory checking data
+      for (String fn : new File(srcDir + n + File.separatorChar).list())
+        checkFile("source", srcDir + n + File.separatorChar, fn, errors, n);
 		}
-
 	}
-
 }

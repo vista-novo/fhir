@@ -103,7 +103,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   private Map<String, String> simpleTypes = new HashMap<String, String>();
   
   @Override
-public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger)  throws Exception {
+public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger, String svnRevision)  throws Exception {
     start(implDir, version, genDate);
     initParser(version, genDate);
     
@@ -161,6 +161,7 @@ public void generate(Definitions definitions, String destDir, String implDir, St
 //    }
 
     defCodeRes.enumConsts.add("  FHIR_GENERATED_VERSION = '"+version+"';\r\n");
+    defCodeRes.enumConsts.add("  FHIR_GENERATED_REVISION = '"+svnRevision+"';\r\n");
     defCodeRes.enumConsts.add("  FHIR_GENERATED_DATE = '"+new SimpleDateFormat("yyyyMMddHHmmss").format(genDate)+"';\r\n");
     defCodeRes.classDefs.add(" TFhirResourceFactory = class (TFHIRBaseFactory)\r\n  public\r\n"+factoryIntf.toString()+"  end;\r\n");
     defCodeRes.classImpls.add(factoryImpl.toString());
