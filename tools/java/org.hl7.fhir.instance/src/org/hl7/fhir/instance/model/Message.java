@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
+// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -375,9 +375,9 @@ public class Message extends Resource {
     private Id identifier;
 
     /**
-     * Instant the message was sent
+     * The time that the message was sent
      */
-    private Instant instant;
+    private Instant timestamp;
 
     /**
      * Code that identifies the event this message represents and connects it with the event definition in the FHIR specification
@@ -456,25 +456,25 @@ public class Message extends Resource {
       }
     }
 
-    public Instant getInstant() { 
-      return this.instant;
+    public Instant getTimestamp() { 
+      return this.timestamp;
     }
 
-    public void setInstant(Instant value) { 
-      this.instant = value;
+    public void setTimestamp(Instant value) { 
+      this.timestamp = value;
     }
 
-    public Calendar getInstantSimple() { 
-      return this.instant == null ? null : this.instant.getValue();
+    public Calendar getTimestampSimple() { 
+      return this.timestamp == null ? null : this.timestamp.getValue();
     }
 
-    public void setInstantSimple(Calendar value) { 
+    public void setTimestampSimple(Calendar value) { 
       if (value == null)
-        this.instant = null;
+        this.timestamp = null;
       else {
-        if (this.instant == null)
-          this.instant = new Instant();
-        this.instant.setValue(value);
+        if (this.timestamp == null)
+          this.timestamp = new Instant();
+        this.timestamp.setValue(value);
       }
     }
 

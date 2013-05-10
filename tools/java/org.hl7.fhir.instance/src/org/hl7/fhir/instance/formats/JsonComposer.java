@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
+// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -815,12 +815,20 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeResourceElements(element);
+      composeString("identifier", element.getIdentifier());
+      composeString("version", element.getVersion());
       composeDateTime("date", element.getDate());
-      composeConformanceConformancePublisherComponent("publisher", element.getPublisher());
+      composeString("publisher", element.getPublisher());
+      if (element.getTelecom().size() > 0) {
+        openArray("telecom");
+        for (Contact e : element.getTelecom()) 
+          composeContact(null, e);
+        closeArray();
+      };
       composeConformanceConformanceSoftwareComponent("software", element.getSoftware());
       composeConformanceConformanceImplementationComponent("implementation", element.getImplementation());
       composeConformanceConformanceProposalComponent("proposal", element.getProposal());
-      composeId("version", element.getVersion());
+      composeId("fhirVersion", element.getFhirVersion());
       composeBoolean("acceptUnknown", element.getAcceptUnknown());
       if (element.getFormat().size() > 0) {
         openArray("format");
@@ -844,22 +852,6 @@ public class JsonComposer extends JsonComposerBase {
         openArray("document");
         for (Conformance.ConformanceDocumentComponent e : element.getDocument()) 
           composeConformanceConformanceDocumentComponent(null, e);
-        closeArray();
-      };
-      close();
-    }
-  }
-
-  private void composeConformanceConformancePublisherComponent(String name, Conformance.ConformancePublisherComponent element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeElement(element);
-      composeString("name", element.getName());
-      composeAddress("address", element.getAddress());
-      if (element.getContact().size() > 0) {
-        openArray("contact");
-        for (Contact e : element.getContact()) 
-          composeContact(null, e);
         closeArray();
       };
       close();
@@ -1020,6 +1012,7 @@ public class JsonComposer extends JsonComposerBase {
       open(name);
       composeElement(element);
       composeUri("endpoint", element.getEndpoint());
+      composeInteger("reliableCache", element.getReliableCache());
       composeString("documentation", element.getDocumentation());
       if (element.getEvent().size() > 0) {
         openArray("event");
@@ -1072,16 +1065,17 @@ public class JsonComposer extends JsonComposerBase {
       composePeriod("period", element.getPeriod());
       composeCoding("type", element.getType());
       composeIdentifier("identifier", element.getIdentifier());
+      composeIdentifier("group", element.getGroup());
       composeIdentifier("plan", element.getPlan());
       composeIdentifier("subplan", element.getSubplan());
       composeInteger("dependent", element.getDependent());
       composeInteger("sequence", element.getSequence());
-      composeCoverageCoveragePlanHolderComponent("planHolder", element.getPlanHolder());
+      composeCoverageCoverageSubscriberComponent("subscriber", element.getSubscriber());
       close();
     }
   }
 
-  private void composeCoverageCoveragePlanHolderComponent(String name, Coverage.CoveragePlanHolderComponent element) throws Exception {
+  private void composeCoverageCoverageSubscriberComponent(String name, Coverage.CoverageSubscriberComponent element) throws Exception {
     if (element != null) {
       open(name);
       composeElement(element);
@@ -1141,64 +1135,64 @@ public class JsonComposer extends JsonComposerBase {
       composeCodeableConcept("type", element.getType());
       composeString("manufacturer", element.getManufacturer());
       composeResourceReference("identity", element.getIdentity());
-      if (element.getCompartment().size() > 0) {
-        openArray("compartment");
-        for (DeviceCapabilities.DeviceCapabilitiesCompartmentComponent e : element.getCompartment()) 
-          composeDeviceCapabilitiesDeviceCapabilitiesCompartmentComponent(null, e);
+      if (element.getVirtualDevice().size() > 0) {
+        openArray("virtualDevice");
+        for (DeviceCapabilities.DeviceCapabilitiesVirtualDeviceComponent e : element.getVirtualDevice()) 
+          composeDeviceCapabilitiesDeviceCapabilitiesVirtualDeviceComponent(null, e);
         closeArray();
       };
       close();
     }
   }
 
-  private void composeDeviceCapabilitiesDeviceCapabilitiesCompartmentComponent(String name, DeviceCapabilities.DeviceCapabilitiesCompartmentComponent element) throws Exception {
+  private void composeDeviceCapabilitiesDeviceCapabilitiesVirtualDeviceComponent(String name, DeviceCapabilities.DeviceCapabilitiesVirtualDeviceComponent element) throws Exception {
     if (element != null) {
       open(name);
       composeElement(element);
       composeCodeableConcept("code", element.getCode());
       if (element.getChannel().size() > 0) {
         openArray("channel");
-        for (DeviceCapabilities.DeviceCapabilitiesCompartmentChannelComponent e : element.getChannel()) 
-          composeDeviceCapabilitiesDeviceCapabilitiesCompartmentChannelComponent(null, e);
+        for (DeviceCapabilities.DeviceCapabilitiesVirtualDeviceChannelComponent e : element.getChannel()) 
+          composeDeviceCapabilitiesDeviceCapabilitiesVirtualDeviceChannelComponent(null, e);
         closeArray();
       };
       close();
     }
   }
 
-  private void composeDeviceCapabilitiesDeviceCapabilitiesCompartmentChannelComponent(String name, DeviceCapabilities.DeviceCapabilitiesCompartmentChannelComponent element) throws Exception {
+  private void composeDeviceCapabilitiesDeviceCapabilitiesVirtualDeviceChannelComponent(String name, DeviceCapabilities.DeviceCapabilitiesVirtualDeviceChannelComponent element) throws Exception {
     if (element != null) {
       open(name);
       composeElement(element);
       composeCodeableConcept("code", element.getCode());
       if (element.getMetric().size() > 0) {
         openArray("metric");
-        for (DeviceCapabilities.DeviceCapabilitiesCompartmentChannelMetricComponent e : element.getMetric()) 
-          composeDeviceCapabilitiesDeviceCapabilitiesCompartmentChannelMetricComponent(null, e);
+        for (DeviceCapabilities.DeviceCapabilitiesVirtualDeviceChannelMetricComponent e : element.getMetric()) 
+          composeDeviceCapabilitiesDeviceCapabilitiesVirtualDeviceChannelMetricComponent(null, e);
         closeArray();
       };
       close();
     }
   }
 
-  private void composeDeviceCapabilitiesDeviceCapabilitiesCompartmentChannelMetricComponent(String name, DeviceCapabilities.DeviceCapabilitiesCompartmentChannelMetricComponent element) throws Exception {
+  private void composeDeviceCapabilitiesDeviceCapabilitiesVirtualDeviceChannelMetricComponent(String name, DeviceCapabilities.DeviceCapabilitiesVirtualDeviceChannelMetricComponent element) throws Exception {
     if (element != null) {
       open(name);
       composeElement(element);
       composeCodeableConcept("code", element.getCode());
       composeString("key", element.getKey());
-      composeDeviceCapabilitiesDeviceCapabilitiesCompartmentChannelMetricInfoComponent("info", element.getInfo());
+      composeDeviceCapabilitiesDeviceCapabilitiesVirtualDeviceChannelMetricInfoComponent("info", element.getInfo());
       if (element.getFacet().size() > 0) {
         openArray("facet");
-        for (DeviceCapabilities.DeviceCapabilitiesCompartmentChannelMetricFacetComponent e : element.getFacet()) 
-          composeDeviceCapabilitiesDeviceCapabilitiesCompartmentChannelMetricFacetComponent(null, e);
+        for (DeviceCapabilities.DeviceCapabilitiesVirtualDeviceChannelMetricFacetComponent e : element.getFacet()) 
+          composeDeviceCapabilitiesDeviceCapabilitiesVirtualDeviceChannelMetricFacetComponent(null, e);
         closeArray();
       };
       close();
     }
   }
 
-  private void composeDeviceCapabilitiesDeviceCapabilitiesCompartmentChannelMetricInfoComponent(String name, DeviceCapabilities.DeviceCapabilitiesCompartmentChannelMetricInfoComponent element) throws Exception {
+  private void composeDeviceCapabilitiesDeviceCapabilitiesVirtualDeviceChannelMetricInfoComponent(String name, DeviceCapabilities.DeviceCapabilitiesVirtualDeviceChannelMetricInfoComponent element) throws Exception {
     if (element != null) {
       open(name);
       composeElement(element);
@@ -1211,13 +1205,14 @@ public class JsonComposer extends JsonComposerBase {
     }
   }
 
-  private void composeDeviceCapabilitiesDeviceCapabilitiesCompartmentChannelMetricFacetComponent(String name, DeviceCapabilities.DeviceCapabilitiesCompartmentChannelMetricFacetComponent element) throws Exception {
+  private void composeDeviceCapabilitiesDeviceCapabilitiesVirtualDeviceChannelMetricFacetComponent(String name, DeviceCapabilities.DeviceCapabilitiesVirtualDeviceChannelMetricFacetComponent element) throws Exception {
     if (element != null) {
       open(name);
       composeElement(element);
       composeCodeableConcept("code", element.getCode());
+      composeDecimal("scale", element.getScale());
       composeString("key", element.getKey());
-      composeDeviceCapabilitiesDeviceCapabilitiesCompartmentChannelMetricInfoComponent("info", element.getInfo());
+      composeDeviceCapabilitiesDeviceCapabilitiesVirtualDeviceChannelMetricInfoComponent("info", element.getInfo());
       close();
     }
   }
@@ -1558,6 +1553,7 @@ public class JsonComposer extends JsonComposerBase {
           composeFamilyHistoryFamilyHistoryRelationComponent(null, e);
         closeArray();
       };
+      composeString("note", element.getNote());
       close();
     }
   }
@@ -1566,9 +1562,8 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElement(element);
-      composeResourceReference("relatedPerson", element.getRelatedPerson());
-      if (element.getRelationship() != null)
-        composeEnumeration("relationship", element.getRelationship(), new FamilyHistory().new FamilialRelationshipEnumFactory());
+      composeString("name", element.getName());
+      composeCodeableConcept("relationship", element.getRelationship());
       composeType("deceased", element.getDeceased());
       composeString("note", element.getNote());
       if (element.getCondition().size() > 0) {
@@ -1586,7 +1581,7 @@ public class JsonComposer extends JsonComposerBase {
       open(name);
       composeElement(element);
       composeCodeableConcept("type", element.getType());
-      composeBoolean("fatal", element.getFatal());
+      composeCodeableConcept("outcome", element.getOutcome());
       composeType("onset", element.getOnset());
       composeString("note", element.getNote());
       close();
@@ -1638,14 +1633,19 @@ public class JsonComposer extends JsonComposerBase {
       composeDateTime("dateTime", element.getDateTime());
       composeResourceReference("subject", element.getSubject());
       composeOid("uid", element.getUid());
+      composeIdentifier("accessionNo", element.getAccessionNo());
       if (element.getIdentifier().size() > 0) {
         openArray("identifier");
         for (Identifier e : element.getIdentifier()) 
           composeIdentifier(null, e);
         closeArray();
       };
-      composeResourceReference("requester", element.getRequester());
-      composeIdentifier("accessionNo", element.getAccessionNo());
+      composeResourceReference("referrer", element.getReferrer());
+      if (element.getAvailability() != null)
+        composeEnumeration("availability", element.getAvailability(), new ImagingStudy().new InstanceAvailabilityEnumFactory());
+      composeUri("url", element.getUrl());
+      composeInteger("numberOfSeries", element.getNumberOfSeries());
+      composeInteger("numberOfInstances", element.getNumberOfInstances());
       composeString("clinicalInformation", element.getClinicalInformation());
       if (element.getProcedure().size() > 0) {
         openArray("procedure");
@@ -1672,29 +1672,41 @@ public class JsonComposer extends JsonComposerBase {
       composeInteger("number", element.getNumber());
       if (element.getModality() != null)
         composeEnumeration("modality", element.getModality(), new ImagingStudy().new ImageModalityEnumFactory());
-      composeDateTime("datetime", element.getDatetime());
       composeOid("uid", element.getUid());
       composeString("description", element.getDescription());
+      composeInteger("numberOfInstances", element.getNumberOfInstances());
+      if (element.getAvailability() != null)
+        composeEnumeration("availability", element.getAvailability(), new ImagingStudy().new InstanceAvailabilityEnumFactory());
+      composeUri("url", element.getUrl());
+      composeOid("locationUID", element.getLocationUID());
       composeCoding("bodySite", element.getBodySite());
-      if (element.getImage().size() > 0) {
-        openArray("image");
-        for (ImagingStudy.ImagingStudySeriesImageComponent e : element.getImage()) 
-          composeImagingStudyImagingStudySeriesImageComponent(null, e);
+      composeDateTime("dateTime", element.getDateTime());
+      if (element.getInstance().size() > 0) {
+        openArray("instance");
+        for (ImagingStudy.ImagingStudySeriesInstanceComponent e : element.getInstance()) 
+          composeImagingStudyImagingStudySeriesInstanceComponent(null, e);
         closeArray();
       };
       close();
     }
   }
 
-  private void composeImagingStudyImagingStudySeriesImageComponent(String name, ImagingStudy.ImagingStudySeriesImageComponent element) throws Exception {
+  private void composeImagingStudyImagingStudySeriesInstanceComponent(String name, ImagingStudy.ImagingStudySeriesInstanceComponent element) throws Exception {
     if (element != null) {
       open(name);
       composeElement(element);
       composeInteger("number", element.getNumber());
-      composeDateTime("dateTime", element.getDateTime());
       composeOid("uid", element.getUid());
-      composeOid("dicomClass", element.getDicomClass());
+      composeOid("sopclass", element.getSopclass());
+      composeString("title", element.getTitle());
+      composeInteger("rows", element.getRows());
+      composeInteger("columns", element.getColumns());
+      composeInteger("bitsAllocated", element.getBitsAllocated());
+      composeInteger("numberOfFrames", element.getNumberOfFrames());
+      if (element.getAvailability() != null)
+        composeEnumeration("availability", element.getAvailability(), new ImagingStudy().new InstanceAvailabilityEnumFactory());
       composeUri("url", element.getUrl());
+      composeDateTime("dateTime", element.getDateTime());
       close();
     }
   }
@@ -1855,38 +1867,6 @@ public class JsonComposer extends JsonComposerBase {
         openArray("reaction");
         for (ResourceReference e : element.getReaction()) 
           composeResourceReference(null, e);
-        closeArray();
-      };
-      close();
-    }
-  }
-
-  private void composeIssueReport(String name, IssueReport element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeResourceElements(element);
-      if (element.getIssue().size() > 0) {
-        openArray("issue");
-        for (IssueReport.IssueReportIssueComponent e : element.getIssue()) 
-          composeIssueReportIssueReportIssueComponent(null, e);
-        closeArray();
-      };
-      close();
-    }
-  }
-
-  private void composeIssueReportIssueReportIssueComponent(String name, IssueReport.IssueReportIssueComponent element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeElement(element);
-      if (element.getSeverity() != null)
-        composeEnumeration("severity", element.getSeverity(), new IssueReport().new IssueSeverityEnumFactory());
-      composeCodeableConcept("type", element.getType());
-      composeString("details", element.getDetails());
-      if (element.getLocation().size() > 0) {
-        openArray("location");
-        for (String_ e : element.getLocation()) 
-          composeString(null, e);
         closeArray();
       };
       close();
@@ -2185,6 +2165,7 @@ public class JsonComposer extends JsonComposerBase {
           composeIdentifier(null, e);
         closeArray();
       };
+      composeDateTime("date", element.getDate());
       composeCodeableConcept("status", element.getStatus());
       composeResourceReference("patient", element.getPatient());
       composeResourceReference("prescriber", element.getPrescriber());
@@ -2323,7 +2304,7 @@ public class JsonComposer extends JsonComposerBase {
       open(name);
       composeResourceElements(element);
       composeId("identifier", element.getIdentifier());
-      composeInstant("instant", element.getInstant());
+      composeInstant("timestamp", element.getTimestamp());
       composeCode("event", element.getEvent());
       composeMessageMessageResponseComponent("response", element.getResponse());
       composeMessageMessageSourceComponent("source", element.getSource());
@@ -2435,6 +2416,38 @@ public class JsonComposer extends JsonComposerBase {
     }
   }
 
+  private void composeOperationOutcome(String name, OperationOutcome element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeResourceElements(element);
+      if (element.getIssue().size() > 0) {
+        openArray("issue");
+        for (OperationOutcome.OperationOutcomeIssueComponent e : element.getIssue()) 
+          composeOperationOutcomeOperationOutcomeIssueComponent(null, e);
+        closeArray();
+      };
+      close();
+    }
+  }
+
+  private void composeOperationOutcomeOperationOutcomeIssueComponent(String name, OperationOutcome.OperationOutcomeIssueComponent element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElement(element);
+      if (element.getSeverity() != null)
+        composeEnumeration("severity", element.getSeverity(), new OperationOutcome().new IssueSeverityEnumFactory());
+      composeCodeableConcept("type", element.getType());
+      composeString("details", element.getDetails());
+      if (element.getLocation().size() > 0) {
+        openArray("location");
+        for (String_ e : element.getLocation()) 
+          composeString(null, e);
+        closeArray();
+      };
+      close();
+    }
+  }
+
   private void composeOrder(String name, Order element) throws Exception {
     if (element != null) {
       open(name);
@@ -2518,8 +2531,7 @@ public class JsonComposer extends JsonComposerBase {
           composeContact(null, e);
         closeArray();
       };
-      if (element.getStatus() != null)
-        composeEnumeration("status", element.getStatus(), new Organization().new RecordStatusEnumFactory());
+      composeBoolean("active", element.getActive());
       if (element.getAccreditation().size() > 0) {
         openArray("accreditation");
         for (Organization.OrganizationAccreditationComponent e : element.getAccreditation()) 
@@ -2602,7 +2614,6 @@ public class JsonComposer extends JsonComposerBase {
       composeResourceReference("provider", element.getProvider());
       composeType("multipleBirth", element.getMultipleBirth());
       composeDateTime("deceasedDate", element.getDeceasedDate());
-      composeCodeableConcept("diet", element.getDiet());
       close();
     }
   }
@@ -2872,12 +2883,14 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeResourceElements(element);
-      composeString("name", element.getName());
+      composeString("identifier", element.getIdentifier());
       composeString("version", element.getVersion());
-      if (element.getAuthor().size() > 0) {
-        openArray("author");
-        for (Profile.AuthorComponent e : element.getAuthor()) 
-          composeProfileAuthorComponent(null, e);
+      composeString("name", element.getName());
+      composeString("publisher", element.getPublisher());
+      if (element.getTelecom().size() > 0) {
+        openArray("telecom");
+        for (Contact e : element.getTelecom()) 
+          composeContact(null, e);
         closeArray();
       };
       composeString("description", element.getDescription());
@@ -2911,22 +2924,6 @@ public class JsonComposer extends JsonComposerBase {
         openArray("binding");
         for (Profile.ProfileBindingComponent e : element.getBinding()) 
           composeProfileProfileBindingComponent(null, e);
-        closeArray();
-      };
-      close();
-    }
-  }
-
-  private void composeProfileAuthorComponent(String name, Profile.AuthorComponent element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeElement(element);
-      composeString("name", element.getName());
-      composeString("role", element.getRole());
-      if (element.getTelecom().size() > 0) {
-        openArray("telecom");
-        for (Contact e : element.getTelecom()) 
-          composeContact(null, e);
         closeArray();
       };
       close();
@@ -3483,19 +3480,65 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeResourceElements(element);
+      composeString("identifier", element.getIdentifier());
+      composeString("version", element.getVersion());
       composeString("name", element.getName());
-      if (element.getAuthor().size() > 0) {
-        openArray("author");
-        for (ValueSet.AuthorComponent e : element.getAuthor()) 
-          composeValueSetAuthorComponent(null, e);
+      composeString("publisher", element.getPublisher());
+      if (element.getTelecom().size() > 0) {
+        openArray("telecom");
+        for (Contact e : element.getTelecom()) 
+          composeContact(null, e);
         closeArray();
       };
       composeString("description", element.getDescription());
       if (element.getStatus() != null)
         composeEnumeration("status", element.getStatus(), new ValueSet().new ValuesetStatusEnumFactory());
       composeDateTime("date", element.getDate());
-      composeString("identifier", element.getIdentifier());
-      composeString("version", element.getVersion());
+      if (element.getKind() != null)
+        composeEnumeration("kind", element.getKind(), new ValueSet().new ValuesetKindEnumFactory());
+      composeValueSetValueSetDefineComponent("define", element.getDefine());
+      composeValueSetValueSetComposeComponent("compose", element.getCompose());
+      close();
+    }
+  }
+
+  private void composeValueSetValueSetDefineComponent(String name, ValueSet.ValueSetDefineComponent element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElement(element);
+      composeUri("system", element.getSystem());
+      if (element.getConcept().size() > 0) {
+        openArray("concept");
+        for (ValueSet.ValueSetDefineConceptComponent e : element.getConcept()) 
+          composeValueSetValueSetDefineConceptComponent(null, e);
+        closeArray();
+      };
+      close();
+    }
+  }
+
+  private void composeValueSetValueSetDefineConceptComponent(String name, ValueSet.ValueSetDefineConceptComponent element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElement(element);
+      composeUri("system", element.getSystem());
+      composeCode("code", element.getCode());
+      composeString("display", element.getDisplay());
+      composeString("definition", element.getDefinition());
+      if (element.getConcept().size() > 0) {
+        openArray("concept");
+        for (ValueSet.ValueSetDefineConceptComponent e : element.getConcept()) 
+          composeValueSetValueSetDefineConceptComponent(null, e);
+        closeArray();
+      };
+      close();
+    }
+  }
+
+  private void composeValueSetValueSetComposeComponent(String name, ValueSet.ValueSetComposeComponent element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElement(element);
       if (element.getRestricts().size() > 0) {
         openArray("restricts");
         for (Uri e : element.getRestricts()) 
@@ -3518,22 +3561,6 @@ public class JsonComposer extends JsonComposerBase {
         openArray("exclude");
         for (ValueSet.ConceptSetComponent e : element.getExclude()) 
           composeValueSetConceptSetComponent(null, e);
-        closeArray();
-      };
-      close();
-    }
-  }
-
-  private void composeValueSetAuthorComponent(String name, ValueSet.AuthorComponent element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeElement(element);
-      composeString("name", element.getName());
-      composeString("role", element.getRole());
-      if (element.getTelecom().size() > 0) {
-        openArray("telecom");
-        for (Contact e : element.getTelecom()) 
-          composeContact(null, e);
         closeArray();
       };
       close();
@@ -3586,33 +3613,91 @@ public class JsonComposer extends JsonComposerBase {
           composeIdentifier(null, e);
         closeArray();
       };
-      composeCodeableConcept("state", element.getState());
-      composeCodeableConcept("setting", element.getSetting());
+      if (element.getStatus() != null)
+        composeEnumeration("status", element.getStatus(), new Visit().new EncounterStateEnumFactory());
+      if (element.getClass() != null)
+        composeEnumeration("class", element.getClass_(), new Visit().new EncounterClassEnumFactory());
+      composeCodeableConcept("type", element.getType());
       composeResourceReference("subject", element.getSubject());
-      composeResourceReference("responsible", element.getResponsible());
+      if (element.getParticipant().size() > 0) {
+        openArray("participant");
+        for (Visit.VisitParticipantComponent e : element.getParticipant()) 
+          composeVisitVisitParticipantComponent(null, e);
+        closeArray();
+      };
       composeResourceReference("fulfills", element.getFulfills());
-      composePeriod("period", element.getPeriod());
       composeDuration("length", element.getLength());
-      composeResourceReference("contact", element.getContact());
-      composeVisitVisitAdmissionComponent("admission", element.getAdmission());
+      composeType("reason", element.getReason());
       composeResourceReference("indication", element.getIndication());
+      composeCodeableConcept("priority", element.getPriority());
+      composeVisitVisitHospitalizationComponent("hospitalization", element.getHospitalization());
       if (element.getLocation().size() > 0) {
         openArray("location");
         for (Visit.VisitLocationComponent e : element.getLocation()) 
           composeVisitVisitLocationComponent(null, e);
         closeArray();
       };
-      composeVisitVisitDischargeComponent("discharge", element.getDischarge());
+      composeResourceReference("serviceProvider", element.getServiceProvider());
       close();
     }
   }
 
-  private void composeVisitVisitAdmissionComponent(String name, Visit.VisitAdmissionComponent element) throws Exception {
+  private void composeVisitVisitParticipantComponent(String name, Visit.VisitParticipantComponent element) throws Exception {
     if (element != null) {
       open(name);
       composeElement(element);
-      composeResourceReference("admitter", element.getAdmitter());
+      if (element.getType().size() > 0) {
+        openArray("type");
+        for (CodeableConcept e : element.getType()) 
+          composeCodeableConcept(null, e);
+        closeArray();
+      };
+      composeResourceReference("practitioner", element.getPractitioner());
+      close();
+    }
+  }
+
+  private void composeVisitVisitHospitalizationComponent(String name, Visit.VisitHospitalizationComponent element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElement(element);
+      composeIdentifier("preAdmissionIdentifier", element.getPreAdmissionIdentifier());
+      composeCodeableConcept("preAdmissionTest", element.getPreAdmissionTest());
       composeResourceReference("origin", element.getOrigin());
+      composeCodeableConcept("admitSource", element.getAdmitSource());
+      composePeriod("period", element.getPeriod());
+      if (element.getAccomodation().size() > 0) {
+        openArray("accomodation");
+        for (Visit.VisitHospitalizationAccomodationComponent e : element.getAccomodation()) 
+          composeVisitVisitHospitalizationAccomodationComponent(null, e);
+        closeArray();
+      };
+      composeCodeableConcept("diet", element.getDiet());
+      if (element.getSpecialCourtesy().size() > 0) {
+        openArray("specialCourtesy");
+        for (CodeableConcept e : element.getSpecialCourtesy()) 
+          composeCodeableConcept(null, e);
+        closeArray();
+      };
+      if (element.getSpecialArrangement().size() > 0) {
+        openArray("specialArrangement");
+        for (CodeableConcept e : element.getSpecialArrangement()) 
+          composeCodeableConcept(null, e);
+        closeArray();
+      };
+      composeResourceReference("destination", element.getDestination());
+      composeCodeableConcept("dischargeDisposition", element.getDischargeDisposition());
+      composeBoolean("reAdmission", element.getReAdmission());
+      close();
+    }
+  }
+
+  private void composeVisitVisitHospitalizationAccomodationComponent(String name, Visit.VisitHospitalizationAccomodationComponent element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElement(element);
+      composeResourceReference("bed", element.getBed());
+      composePeriod("period", element.getPeriod());
       close();
     }
   }
@@ -3622,20 +3707,7 @@ public class JsonComposer extends JsonComposerBase {
       open(name);
       composeElement(element);
       composeResourceReference("location", element.getLocation());
-      composeType("bed", element.getBed());
       composeDateTime("period", element.getPeriod());
-      composeResourceReference("responsible", element.getResponsible());
-      close();
-    }
-  }
-
-  private void composeVisitVisitDischargeComponent(String name, Visit.VisitDischargeComponent element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeElement(element);
-      composeResourceReference("discharger", element.getDischarger());
-      composeResourceReference("contact", element.getContact());
-      composeResourceReference("destination", element.getDestination());
       close();
     }
   }
@@ -3678,8 +3750,6 @@ public class JsonComposer extends JsonComposerBase {
       composeImmunization("Immunization", (Immunization)resource);
     else if (resource instanceof ImmunizationProfile)
       composeImmunizationProfile("ImmunizationProfile", (ImmunizationProfile)resource);
-    else if (resource instanceof IssueReport)
-      composeIssueReport("IssueReport", (IssueReport)resource);
     else if (resource instanceof List_)
       composeList_("List", (List_)resource);
     else if (resource instanceof Location)
@@ -3698,6 +3768,8 @@ public class JsonComposer extends JsonComposerBase {
       composeMessage("Message", (Message)resource);
     else if (resource instanceof Observation)
       composeObservation("Observation", (Observation)resource);
+    else if (resource instanceof OperationOutcome)
+      composeOperationOutcome("OperationOutcome", (OperationOutcome)resource);
     else if (resource instanceof Order)
       composeOrder("Order", (Order)resource);
     else if (resource instanceof OrderResponse)
@@ -3775,8 +3847,6 @@ public class JsonComposer extends JsonComposerBase {
       composeImmunization(name, (Immunization)resource);
     else if (resource instanceof ImmunizationProfile)
       composeImmunizationProfile(name, (ImmunizationProfile)resource);
-    else if (resource instanceof IssueReport)
-      composeIssueReport(name, (IssueReport)resource);
     else if (resource instanceof List_)
       composeList_(name, (List_)resource);
     else if (resource instanceof Location)
@@ -3795,6 +3865,8 @@ public class JsonComposer extends JsonComposerBase {
       composeMessage(name, (Message)resource);
     else if (resource instanceof Observation)
       composeObservation(name, (Observation)resource);
+    else if (resource instanceof OperationOutcome)
+      composeOperationOutcome(name, (OperationOutcome)resource);
     else if (resource instanceof Order)
       composeOrder(name, (Order)resource);
     else if (resource instanceof OrderResponse)

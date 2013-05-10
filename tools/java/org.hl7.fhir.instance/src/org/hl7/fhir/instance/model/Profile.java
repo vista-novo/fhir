@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
+// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -444,72 +444,6 @@ public class Profile extends Resource {
       return "?";
       }
     }
-
-    public class AuthorComponent extends Element {
-        /**
-         * The name of the individual or organization that contributed to the development of the content of the profile
-         */
-        private String_ name;
-
-        /**
-         * In what fashion this named author contributed to the profile
-         */
-        private String_ role;
-
-        /**
-         * Contacts of the author to assist a user in finding and communicating with the author
-         */
-        private List<Contact> telecom = new ArrayList<Contact>();
-
-        public String_ getName() { 
-          return this.name;
-        }
-
-        public void setName(String_ value) { 
-          this.name = value;
-        }
-
-        public String getNameSimple() { 
-          return this.name == null ? null : this.name.getValue();
-        }
-
-        public void setNameSimple(String value) { 
-          if (value == null)
-            this.name = null;
-          else {
-            if (this.name == null)
-              this.name = new String_();
-            this.name.setValue(value);
-          }
-        }
-
-        public String_ getRole() { 
-          return this.role;
-        }
-
-        public void setRole(String_ value) { 
-          this.role = value;
-        }
-
-        public String getRoleSimple() { 
-          return this.role == null ? null : this.role.getValue();
-        }
-
-        public void setRoleSimple(String value) { 
-          if (value == null)
-            this.role = null;
-          else {
-            if (this.role == null)
-              this.role = new String_();
-            this.role.setValue(value);
-          }
-        }
-
-        public List<Contact> getTelecom() { 
-          return this.telecom;
-        }
-
-  }
 
     public class ProfileStatusComponent extends Element {
         /**
@@ -1977,19 +1911,29 @@ public class Profile extends Resource {
   }
 
     /**
+     * The identifier that is used to identify this profile when it is referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI)
+     */
+    private String_ identifier;
+
+    /**
+     * The identifier that is used to identify this version of the profile when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp
+     */
+    private String_ version;
+
+    /**
      * A free text natural language name identifying the Profile
      */
     private String_ name;
 
     /**
-     * The official version of this profile - for external version specific references. This has an arbitrary value managed by the profile author manually
+     * Details of the individual or organization who accepts responsibility for publishing the profile
      */
-    private String_ version;
+    private String_ publisher;
 
     /**
-     * Details of the author who accepts responsibility for publishing the profile
+     * Contact details to assist a user in finding and communicating with the publisher
      */
-    private List<AuthorComponent> author = new ArrayList<AuthorComponent>();
+    private List<Contact> telecom = new ArrayList<Contact>();
 
     /**
      * A free text natural language description of the profile and its use
@@ -2031,25 +1975,25 @@ public class Profile extends Resource {
      */
     private List<ProfileBindingComponent> binding = new ArrayList<ProfileBindingComponent>();
 
-    public String_ getName() { 
-      return this.name;
+    public String_ getIdentifier() { 
+      return this.identifier;
     }
 
-    public void setName(String_ value) { 
-      this.name = value;
+    public void setIdentifier(String_ value) { 
+      this.identifier = value;
     }
 
-    public String getNameSimple() { 
-      return this.name == null ? null : this.name.getValue();
+    public String getIdentifierSimple() { 
+      return this.identifier == null ? null : this.identifier.getValue();
     }
 
-    public void setNameSimple(String value) { 
+    public void setIdentifierSimple(String value) { 
       if (value == null)
-        this.name = null;
+        this.identifier = null;
       else {
-        if (this.name == null)
-          this.name = new String_();
-        this.name.setValue(value);
+        if (this.identifier == null)
+          this.identifier = new String_();
+        this.identifier.setValue(value);
       }
     }
 
@@ -2075,8 +2019,52 @@ public class Profile extends Resource {
       }
     }
 
-    public List<AuthorComponent> getAuthor() { 
-      return this.author;
+    public String_ getName() { 
+      return this.name;
+    }
+
+    public void setName(String_ value) { 
+      this.name = value;
+    }
+
+    public String getNameSimple() { 
+      return this.name == null ? null : this.name.getValue();
+    }
+
+    public void setNameSimple(String value) { 
+      if (value == null)
+        this.name = null;
+      else {
+        if (this.name == null)
+          this.name = new String_();
+        this.name.setValue(value);
+      }
+    }
+
+    public String_ getPublisher() { 
+      return this.publisher;
+    }
+
+    public void setPublisher(String_ value) { 
+      this.publisher = value;
+    }
+
+    public String getPublisherSimple() { 
+      return this.publisher == null ? null : this.publisher.getValue();
+    }
+
+    public void setPublisherSimple(String value) { 
+      if (value == null)
+        this.publisher = null;
+      else {
+        if (this.publisher == null)
+          this.publisher = new String_();
+        this.publisher.setValue(value);
+      }
+    }
+
+    public List<Contact> getTelecom() { 
+      return this.telecom;
     }
 
     public String_ getDescription() { 

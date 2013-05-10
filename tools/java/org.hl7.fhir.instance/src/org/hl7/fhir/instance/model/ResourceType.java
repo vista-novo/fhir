@@ -20,10 +20,10 @@ public enum ResourceType {
     MedicationAdministration,
     DeviceCapabilities,
     SecurityEvent,
-    IssueReport,
     MedicationStatement,
     List,
     Questionnaire,
+    OperationOutcome,
     Picture,
     Conformance,
     Document,
@@ -91,14 +91,14 @@ public enum ResourceType {
       return "devicecapabilities";
     case SecurityEvent:
       return "securityevent";
-    case IssueReport:
-      return "issuereport";
     case MedicationStatement:
       return "medicationstatement";
     case List:
       return "list";
     case Questionnaire:
       return "questionnaire";
+    case OperationOutcome:
+      return "operationoutcome";
     case Picture:
       return "picture";
     case Conformance:

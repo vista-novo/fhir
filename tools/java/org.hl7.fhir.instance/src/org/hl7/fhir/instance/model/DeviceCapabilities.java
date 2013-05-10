@@ -29,11 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
+// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
 
 import java.util.*;
 
 import java.net.*;
+import java.math.*;
 /**
  * Describes the set of data produced by a device
  */
@@ -97,7 +98,7 @@ public class DeviceCapabilities extends Resource {
       }
     }
 
-    public class DeviceCapabilitiesCompartmentComponent extends Element {
+    public class DeviceCapabilitiesVirtualDeviceComponent extends Element {
         /**
          * Describes the compartment
          */
@@ -106,7 +107,7 @@ public class DeviceCapabilities extends Resource {
         /**
          * Groups together physiological measurement data and derived data
          */
-        private List<DeviceCapabilitiesCompartmentChannelComponent> channel = new ArrayList<DeviceCapabilitiesCompartmentChannelComponent>();
+        private List<DeviceCapabilitiesVirtualDeviceChannelComponent> channel = new ArrayList<DeviceCapabilitiesVirtualDeviceChannelComponent>();
 
         public CodeableConcept getCode() { 
           return this.code;
@@ -116,13 +117,13 @@ public class DeviceCapabilities extends Resource {
           this.code = value;
         }
 
-        public List<DeviceCapabilitiesCompartmentChannelComponent> getChannel() { 
+        public List<DeviceCapabilitiesVirtualDeviceChannelComponent> getChannel() { 
           return this.channel;
         }
 
   }
 
-    public class DeviceCapabilitiesCompartmentChannelComponent extends Element {
+    public class DeviceCapabilitiesVirtualDeviceChannelComponent extends Element {
         /**
          * Describes the channel
          */
@@ -131,7 +132,7 @@ public class DeviceCapabilities extends Resource {
         /**
          * A piece of measured or derived data that will be reported by the machine
          */
-        private List<DeviceCapabilitiesCompartmentChannelMetricComponent> metric = new ArrayList<DeviceCapabilitiesCompartmentChannelMetricComponent>();
+        private List<DeviceCapabilitiesVirtualDeviceChannelMetricComponent> metric = new ArrayList<DeviceCapabilitiesVirtualDeviceChannelMetricComponent>();
 
         public CodeableConcept getCode() { 
           return this.code;
@@ -141,13 +142,13 @@ public class DeviceCapabilities extends Resource {
           this.code = value;
         }
 
-        public List<DeviceCapabilitiesCompartmentChannelMetricComponent> getMetric() { 
+        public List<DeviceCapabilitiesVirtualDeviceChannelMetricComponent> getMetric() { 
           return this.metric;
         }
 
   }
 
-    public class DeviceCapabilitiesCompartmentChannelMetricComponent extends Element {
+    public class DeviceCapabilitiesVirtualDeviceChannelMetricComponent extends Element {
         /**
          * Describes the metrics
          */
@@ -161,12 +162,12 @@ public class DeviceCapabilities extends Resource {
         /**
          * How to interpret this metric value
          */
-        private DeviceCapabilitiesCompartmentChannelMetricInfoComponent info;
+        private DeviceCapabilitiesVirtualDeviceChannelMetricInfoComponent info;
 
         /**
          * Additional data that qualifies the metric, or contributes to it's assessment
          */
-        private List<DeviceCapabilitiesCompartmentChannelMetricFacetComponent> facet = new ArrayList<DeviceCapabilitiesCompartmentChannelMetricFacetComponent>();
+        private List<DeviceCapabilitiesVirtualDeviceChannelMetricFacetComponent> facet = new ArrayList<DeviceCapabilitiesVirtualDeviceChannelMetricFacetComponent>();
 
         public CodeableConcept getCode() { 
           return this.code;
@@ -198,21 +199,21 @@ public class DeviceCapabilities extends Resource {
           }
         }
 
-        public DeviceCapabilitiesCompartmentChannelMetricInfoComponent getInfo() { 
+        public DeviceCapabilitiesVirtualDeviceChannelMetricInfoComponent getInfo() { 
           return this.info;
         }
 
-        public void setInfo(DeviceCapabilitiesCompartmentChannelMetricInfoComponent value) { 
+        public void setInfo(DeviceCapabilitiesVirtualDeviceChannelMetricInfoComponent value) { 
           this.info = value;
         }
 
-        public List<DeviceCapabilitiesCompartmentChannelMetricFacetComponent> getFacet() { 
+        public List<DeviceCapabilitiesVirtualDeviceChannelMetricFacetComponent> getFacet() { 
           return this.facet;
         }
 
   }
 
-    public class DeviceCapabilitiesCompartmentChannelMetricInfoComponent extends Element {
+    public class DeviceCapabilitiesVirtualDeviceChannelMetricInfoComponent extends Element {
         /**
          * Type of data for this metric
          */
@@ -323,11 +324,16 @@ public class DeviceCapabilities extends Resource {
 
   }
 
-    public class DeviceCapabilitiesCompartmentChannelMetricFacetComponent extends Element {
+    public class DeviceCapabilitiesVirtualDeviceChannelMetricFacetComponent extends Element {
         /**
          * Describes the facet
          */
         private CodeableConcept code;
+
+        /**
+         * The factor to apply to the raw values to get the correct value
+         */
+        private Decimal scale;
 
         /**
          * Used to link to data in device log
@@ -337,7 +343,7 @@ public class DeviceCapabilities extends Resource {
         /**
          * How to interpret this facet value
          */
-        private DeviceCapabilitiesCompartmentChannelMetricInfoComponent info;
+        private DeviceCapabilitiesVirtualDeviceChannelMetricInfoComponent info;
 
         public CodeableConcept getCode() { 
           return this.code;
@@ -345,6 +351,28 @@ public class DeviceCapabilities extends Resource {
 
         public void setCode(CodeableConcept value) { 
           this.code = value;
+        }
+
+        public Decimal getScale() { 
+          return this.scale;
+        }
+
+        public void setScale(Decimal value) { 
+          this.scale = value;
+        }
+
+        public BigDecimal getScaleSimple() { 
+          return this.scale == null ? null : this.scale.getValue();
+        }
+
+        public void setScaleSimple(BigDecimal value) { 
+          if (value == null)
+            this.scale = null;
+          else {
+            if (this.scale == null)
+              this.scale = new Decimal();
+            this.scale.setValue(value);
+          }
         }
 
         public String_ getKey() { 
@@ -369,11 +397,11 @@ public class DeviceCapabilities extends Resource {
           }
         }
 
-        public DeviceCapabilitiesCompartmentChannelMetricInfoComponent getInfo() { 
+        public DeviceCapabilitiesVirtualDeviceChannelMetricInfoComponent getInfo() { 
           return this.info;
         }
 
-        public void setInfo(DeviceCapabilitiesCompartmentChannelMetricInfoComponent value) { 
+        public void setInfo(DeviceCapabilitiesVirtualDeviceChannelMetricInfoComponent value) { 
           this.info = value;
         }
 
@@ -402,7 +430,7 @@ public class DeviceCapabilities extends Resource {
     /**
      * A medical-related subsystem of a medical device
      */
-    private List<DeviceCapabilitiesCompartmentComponent> compartment = new ArrayList<DeviceCapabilitiesCompartmentComponent>();
+    private List<DeviceCapabilitiesVirtualDeviceComponent> virtualDevice = new ArrayList<DeviceCapabilitiesVirtualDeviceComponent>();
 
     public String_ getName() { 
       return this.name;
@@ -464,8 +492,8 @@ public class DeviceCapabilities extends Resource {
       this.identity = value;
     }
 
-    public List<DeviceCapabilitiesCompartmentComponent> getCompartment() { 
-      return this.compartment;
+    public List<DeviceCapabilitiesVirtualDeviceComponent> getVirtualDevice() { 
+      return this.virtualDevice;
     }
 
   @Override

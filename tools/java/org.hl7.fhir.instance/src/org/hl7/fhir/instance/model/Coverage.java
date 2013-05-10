@@ -29,14 +29,14 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
+// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
 
 /**
  * Financial instrument by which payment information for health care
  */
 public class Coverage extends Resource {
 
-    public class CoveragePlanHolderComponent extends Element {
+    public class CoverageSubscriberComponent extends Element {
         /**
          * The name of the PolicyHolder
          */
@@ -108,9 +108,14 @@ public class Coverage extends Resource {
     private Coding type;
 
     /**
-     * The main, may be the only, identifier for the coverage - often referred to as a Subscriber Id, Certificate number or Personal Health Number or Case ID.
+     * The main (and possibly only) identifier for the coverage - often referred to as a Subscriber Id, Certificate number or Personal Health Number or Case ID.
      */
     private Identifier identifier;
+
+    /**
+     * Todo
+     */
+    private Identifier group;
 
     /**
      * Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID.
@@ -135,7 +140,7 @@ public class Coverage extends Resource {
     /**
      * Planholder information
      */
-    private CoveragePlanHolderComponent planHolder;
+    private CoverageSubscriberComponent subscriber;
 
     public ResourceReference getIssuer() { 
       return this.issuer;
@@ -167,6 +172,14 @@ public class Coverage extends Resource {
 
     public void setIdentifier(Identifier value) { 
       this.identifier = value;
+    }
+
+    public Identifier getGroup() { 
+      return this.group;
+    }
+
+    public void setGroup(Identifier value) { 
+      this.group = value;
     }
 
     public Identifier getPlan() { 
@@ -229,12 +242,12 @@ public class Coverage extends Resource {
       }
     }
 
-    public CoveragePlanHolderComponent getPlanHolder() { 
-      return this.planHolder;
+    public CoverageSubscriberComponent getSubscriber() { 
+      return this.subscriber;
     }
 
-    public void setPlanHolder(CoveragePlanHolderComponent value) { 
-      this.planHolder = value;
+    public void setSubscriber(CoverageSubscriberComponent value) { 
+      this.subscriber = value;
     }
 
   @Override

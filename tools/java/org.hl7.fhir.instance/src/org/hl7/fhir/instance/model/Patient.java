@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
+// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -124,7 +124,7 @@ public class Patient extends Resource {
     private List<ResourceReference> link = new ArrayList<ResourceReference>();
 
     /**
-     * Whether the patient record is in use, or has been removed from active use
+     * Whether this patient record is in active use
      */
     private Boolean active;
 
@@ -162,11 +162,6 @@ public class Patient extends Resource {
      * Date of death of patient. May include time.
      */
     private DateTime deceasedDate;
-
-    /**
-     * Dietary restrictions for the patient
-     */
-    private CodeableConcept diet;
 
     public List<ResourceReference> getLink() { 
       return this.link;
@@ -254,14 +249,6 @@ public class Patient extends Resource {
           this.deceasedDate = new DateTime();
         this.deceasedDate.setValue(value);
       }
-    }
-
-    public CodeableConcept getDiet() { 
-      return this.diet;
-    }
-
-    public void setDiet(CodeableConcept value) { 
-      this.diet = value;
     }
 
   @Override

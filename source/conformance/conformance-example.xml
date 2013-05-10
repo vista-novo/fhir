@@ -21,13 +21,11 @@
   <identifier value="68D043B5-9ECF-4559-A57A-396E0D452311"/>
   <version value="20130510"/>
   <date value="2012-01-04"/>
-  <publisher>
-    <name value="ACME Corporation"/>
-    <contact>
-      <system value="email"/>
-      <value value="wile@acme.org"/>
-    </contact>
-  </publisher>
+  <publisher value="ACME Corporation"/>
+  <telecom>
+    <system value="email"/>
+    <value value="wile@acme.org"/>
+  </telecom>
   <software>
     <name value="EHR"/>
     <version value="0.00.020.2134"/>

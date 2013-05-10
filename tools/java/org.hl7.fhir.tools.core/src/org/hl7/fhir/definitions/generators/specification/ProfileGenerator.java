@@ -83,10 +83,9 @@ public class ProfileGenerator {
   public Profile generate(ProfileDefn profile, OutputStream stream, String html, boolean addBase) throws Exception {
     Profile p = new Profile();
     p.setName(Factory.newString_(profile.metadata("name")));
-    p.getAuthor().add(p.new AuthorComponent());
-    p.getAuthor().get(0).setName(Factory.newString_(profile.metadata("author.name")));
+    p.setPublisher(Factory.newString_(profile.metadata("author.name")));
     if (profile.hasMetadata("author.reference"))
-      p.getAuthor().get(0).getTelecom().add(Factory.newContact(ContactSystem.url, profile.metadata("author.reference")));
+      p.getTelecom().add(Factory.newContact(ContactSystem.url, profile.metadata("author.reference")));
     //  <code> opt Zero+ Coding assist with indexing and finding</code>
     if (profile.hasMetadata("intention"))
       throw new Exception("profile intention is not supported any more ("+p.getName()+")");

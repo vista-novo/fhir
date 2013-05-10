@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
+// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -285,6 +285,11 @@ In some situations, this attribute may be used instead of quantity to identify t
     private List<Identifier> externalID = new ArrayList<Identifier>();
 
     /**
+     * The date (and perhaps time) when the prescription was written
+     */
+    private DateTime date;
+
+    /**
      * A code specifying the state of the order.  Generally this will be active or completed state
      */
     private CodeableConcept status;
@@ -331,6 +336,28 @@ In some situations, this attribute may be used instead of quantity to identify t
 
     public List<Identifier> getExternalID() { 
       return this.externalID;
+    }
+
+    public DateTime getDate() { 
+      return this.date;
+    }
+
+    public void setDate(DateTime value) { 
+      this.date = value;
+    }
+
+    public String getDateSimple() { 
+      return this.date == null ? null : this.date.getValue();
+    }
+
+    public void setDateSimple(String value) { 
+      if (value == null)
+        this.date = null;
+      else {
+        if (this.date == null)
+          this.date = new DateTime();
+        this.date.setValue(value);
+      }
     }
 
     public CodeableConcept getStatus() { 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
+// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -386,58 +386,6 @@ public class Conformance extends Resource {
       return "?";
       }
     }
-
-    public class ConformancePublisherComponent extends Element {
-        /**
-         * Name of Organization
-         */
-        private String_ name;
-
-        /**
-         * Address of Organization
-         */
-        private Address address;
-
-        /**
-         * Contacts for Organization relevant to this conformance statement.  May be website, email, phone numbers, etc.
-         */
-        private List<Contact> contact = new ArrayList<Contact>();
-
-        public String_ getName() { 
-          return this.name;
-        }
-
-        public void setName(String_ value) { 
-          this.name = value;
-        }
-
-        public String getNameSimple() { 
-          return this.name == null ? null : this.name.getValue();
-        }
-
-        public void setNameSimple(String value) { 
-          if (value == null)
-            this.name = null;
-          else {
-            if (this.name == null)
-              this.name = new String_();
-            this.name.setValue(value);
-          }
-        }
-
-        public Address getAddress() { 
-          return this.address;
-        }
-
-        public void setAddress(Address value) { 
-          this.address = value;
-        }
-
-        public List<Contact> getContact() { 
-          return this.contact;
-        }
-
-  }
 
     public class ConformanceSoftwareComponent extends Element {
         /**
@@ -1192,6 +1140,11 @@ public class Conformance extends Resource {
         private Uri endpoint;
 
         /**
+         * The length if the receiver's reliable messaging cache length (if a receiver) or how long the cache length on the receiver should be (if a sender)
+         */
+        private Integer reliableCache;
+
+        /**
          * Provides documentation about the system's messaging capabilities for this endpoint not otherwise documented by the conformance statement.  For example, process for becoming an authorized messaging exchange partner.
          */
         private String_ documentation;
@@ -1220,6 +1173,28 @@ public class Conformance extends Resource {
             if (this.endpoint == null)
               this.endpoint = new Uri();
             this.endpoint.setValue(value);
+          }
+        }
+
+        public Integer getReliableCache() { 
+          return this.reliableCache;
+        }
+
+        public void setReliableCache(Integer value) { 
+          this.reliableCache = value;
+        }
+
+        public int getReliableCacheSimple() { 
+          return this.reliableCache == null ? null : this.reliableCache.getValue();
+        }
+
+        public void setReliableCacheSimple(int value) { 
+          if (value == -1)
+            this.reliableCache = null;
+          else {
+            if (this.reliableCache == null)
+              this.reliableCache = new Integer();
+            this.reliableCache.setValue(value);
           }
         }
 
@@ -1510,14 +1485,29 @@ public class Conformance extends Resource {
   }
 
     /**
+     * The identifier that is used to identify this conformance statement when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI)
+     */
+    private String_ identifier;
+
+    /**
+     * The identifier that is used to identify this version of the conformance statement when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp
+     */
+    private String_ version;
+
+    /**
      * Date that the conformance statement is published
      */
     private DateTime date;
 
     /**
-     * The organization that publishes this conformance statement
+     * Name of Organization
      */
-    private ConformancePublisherComponent publisher;
+    private String_ publisher;
+
+    /**
+     * Contacts for Organization relevant to this conformance statement.  May be website, email, phone numbers, etc.
+     */
+    private List<Contact> telecom = new ArrayList<Contact>();
 
     /**
      * Describes the software that is covered by this conformance statement.  Used when the profile describes the capabilities of a particular software version, independent of an installation.
@@ -1537,7 +1527,7 @@ public class Conformance extends Resource {
     /**
      * The version of the FHIR specification on which this conformance statement is based
      */
-    private Id version;
+    private Id fhirVersion;
 
     /**
      * Whether the application accepts unknown non-"must understand" elements as part of a resource. This does not include extensions, but genuine new additions to a resource
@@ -1564,6 +1554,50 @@ public class Conformance extends Resource {
      */
     private List<ConformanceDocumentComponent> document = new ArrayList<ConformanceDocumentComponent>();
 
+    public String_ getIdentifier() { 
+      return this.identifier;
+    }
+
+    public void setIdentifier(String_ value) { 
+      this.identifier = value;
+    }
+
+    public String getIdentifierSimple() { 
+      return this.identifier == null ? null : this.identifier.getValue();
+    }
+
+    public void setIdentifierSimple(String value) { 
+      if (value == null)
+        this.identifier = null;
+      else {
+        if (this.identifier == null)
+          this.identifier = new String_();
+        this.identifier.setValue(value);
+      }
+    }
+
+    public String_ getVersion() { 
+      return this.version;
+    }
+
+    public void setVersion(String_ value) { 
+      this.version = value;
+    }
+
+    public String getVersionSimple() { 
+      return this.version == null ? null : this.version.getValue();
+    }
+
+    public void setVersionSimple(String value) { 
+      if (value == null)
+        this.version = null;
+      else {
+        if (this.version == null)
+          this.version = new String_();
+        this.version.setValue(value);
+      }
+    }
+
     public DateTime getDate() { 
       return this.date;
     }
@@ -1586,12 +1620,30 @@ public class Conformance extends Resource {
       }
     }
 
-    public ConformancePublisherComponent getPublisher() { 
+    public String_ getPublisher() { 
       return this.publisher;
     }
 
-    public void setPublisher(ConformancePublisherComponent value) { 
+    public void setPublisher(String_ value) { 
       this.publisher = value;
+    }
+
+    public String getPublisherSimple() { 
+      return this.publisher == null ? null : this.publisher.getValue();
+    }
+
+    public void setPublisherSimple(String value) { 
+      if (value == null)
+        this.publisher = null;
+      else {
+        if (this.publisher == null)
+          this.publisher = new String_();
+        this.publisher.setValue(value);
+      }
+    }
+
+    public List<Contact> getTelecom() { 
+      return this.telecom;
     }
 
     public ConformanceSoftwareComponent getSoftware() { 
@@ -1618,25 +1670,25 @@ public class Conformance extends Resource {
       this.proposal = value;
     }
 
-    public Id getVersion() { 
-      return this.version;
+    public Id getFhirVersion() { 
+      return this.fhirVersion;
     }
 
-    public void setVersion(Id value) { 
-      this.version = value;
+    public void setFhirVersion(Id value) { 
+      this.fhirVersion = value;
     }
 
-    public String getVersionSimple() { 
-      return this.version == null ? null : this.version.getValue();
+    public String getFhirVersionSimple() { 
+      return this.fhirVersion == null ? null : this.fhirVersion.getValue();
     }
 
-    public void setVersionSimple(String value) { 
+    public void setFhirVersionSimple(String value) { 
       if (value == null)
-        this.version = null;
+        this.fhirVersion = null;
       else {
-        if (this.version == null)
-          this.version = new Id();
-        this.version.setValue(value);
+        if (this.fhirVersion == null)
+          this.fhirVersion = new Id();
+        this.fhirVersion.setValue(value);
       }
     }
 

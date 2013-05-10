@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
+// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -39,11 +39,11 @@ import java.util.*;
 public class Group extends Resource {
 
     public enum GroupType {
-        person, // Group contains Person resources
-        animal, // Group contains Animal resources
+        person, // Group contains "person" Patient resources
+        animal, // Group contains "animal" Patient resources
         device, // Group contains Device resources
         medication, // Group contains Medication resources
-        food, // Group contains Food resources
+        substance, // Group contains Substance resources
         Null; // added to help the parsers
         public static GroupType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
@@ -56,8 +56,8 @@ public class Group extends Resource {
           return device;
         if ("medication".equals(codeString))
           return medication;
-        if ("food".equals(codeString))
-          return food;
+        if ("substance".equals(codeString))
+          return substance;
         throw new Exception("Unknown GroupType code '"+codeString+"'");
         }
         public String toCode() {
@@ -66,7 +66,7 @@ public class Group extends Resource {
             case animal: return "animal";
             case device: return "device";
             case medication: return "medication";
-            case food: return "food";
+            case substance: return "substance";
             default: return "?";
           }
         }
@@ -85,8 +85,8 @@ public class Group extends Resource {
           return GroupType.device;
         if ("medication".equals(codeString))
           return GroupType.medication;
-        if ("food".equals(codeString))
-          return GroupType.food;
+        if ("substance".equals(codeString))
+          return GroupType.substance;
         throw new Exception("Unknown GroupType code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
@@ -98,8 +98,8 @@ public class Group extends Resource {
         return "device";
       if (code == GroupType.medication)
         return "medication";
-      if (code == GroupType.food)
-        return "food";
+      if (code == GroupType.substance)
+        return "substance";
       return "?";
       }
     }

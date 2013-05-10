@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
+// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -109,6 +109,56 @@ public class ValueSet extends Resource {
         return "withdrawn";
       if (code == ValuesetStatus.superseded)
         return "superseded";
+      return "?";
+      }
+    }
+
+    public enum ValuesetKind {
+        codeMinussystem, // this value set defines a code system
+        composition, // this value set is a composition of codes defined in other code systems
+        expansion, // this value set is an expansion from a composition value set
+        Null; // added to help the parsers
+        public static ValuesetKind fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("code-system".equals(codeString))
+          return codeMinussystem;
+        if ("composition".equals(codeString))
+          return composition;
+        if ("expansion".equals(codeString))
+          return expansion;
+        throw new Exception("Unknown ValuesetKind code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case codeMinussystem: return "code-system";
+            case composition: return "composition";
+            case expansion: return "expansion";
+            default: return "?";
+          }
+        }
+    }
+
+  public class ValuesetKindEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("code-system".equals(codeString))
+          return ValuesetKind.codeMinussystem;
+        if ("composition".equals(codeString))
+          return ValuesetKind.composition;
+        if ("expansion".equals(codeString))
+          return ValuesetKind.expansion;
+        throw new Exception("Unknown ValuesetKind code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == ValuesetKind.codeMinussystem)
+        return "code-system";
+      if (code == ValuesetKind.composition)
+        return "composition";
+      if (code == ValuesetKind.expansion)
+        return "expansion";
       return "?";
       }
     }
@@ -229,68 +279,200 @@ public class ValueSet extends Resource {
       }
     }
 
-    public class AuthorComponent extends Element {
+    public class ValueSetDefineComponent extends Element {
         /**
-         * The name of the individual or organization that contributed to the development of the content of the value set
+         * URI to identify the code system
          */
-        private String_ name;
-
-        /**
-         * In what fashion this named author contributed to the value set
-         */
-        private String_ role;
+        private Uri system;
 
         /**
-         * Contacts of the author to assist a user in finding and communicating with the author
+         * Concepts in the code system
          */
-        private List<Contact> telecom = new ArrayList<Contact>();
+        private List<ValueSetDefineConceptComponent> concept = new ArrayList<ValueSetDefineConceptComponent>();
 
-        public String_ getName() { 
-          return this.name;
+        public Uri getSystem() { 
+          return this.system;
         }
 
-        public void setName(String_ value) { 
-          this.name = value;
+        public void setSystem(Uri value) { 
+          this.system = value;
         }
 
-        public String getNameSimple() { 
-          return this.name == null ? null : this.name.getValue();
+        public URI getSystemSimple() { 
+          return this.system == null ? null : this.system.getValue();
         }
 
-        public void setNameSimple(String value) { 
+        public void setSystemSimple(URI value) { 
           if (value == null)
-            this.name = null;
+            this.system = null;
           else {
-            if (this.name == null)
-              this.name = new String_();
-            this.name.setValue(value);
+            if (this.system == null)
+              this.system = new Uri();
+            this.system.setValue(value);
           }
         }
 
-        public String_ getRole() { 
-          return this.role;
+        public List<ValueSetDefineConceptComponent> getConcept() { 
+          return this.concept;
         }
 
-        public void setRole(String_ value) { 
-          this.role = value;
+  }
+
+    public class ValueSetDefineConceptComponent extends Element {
+        /**
+         * System if concept not in system above
+         */
+        private Uri system;
+
+        /**
+         * Code that is exchanged between systems
+         */
+        private Code code;
+
+        /**
+         * Display for the user
+         */
+        private String_ display;
+
+        /**
+         * Formal Definition
+         */
+        private String_ definition;
+
+        /**
+         * Child Concepts (is-a / contains)
+         */
+        private List<ValueSetDefineConceptComponent> concept = new ArrayList<ValueSetDefineConceptComponent>();
+
+        public Uri getSystem() { 
+          return this.system;
         }
 
-        public String getRoleSimple() { 
-          return this.role == null ? null : this.role.getValue();
+        public void setSystem(Uri value) { 
+          this.system = value;
         }
 
-        public void setRoleSimple(String value) { 
+        public URI getSystemSimple() { 
+          return this.system == null ? null : this.system.getValue();
+        }
+
+        public void setSystemSimple(URI value) { 
           if (value == null)
-            this.role = null;
+            this.system = null;
           else {
-            if (this.role == null)
-              this.role = new String_();
-            this.role.setValue(value);
+            if (this.system == null)
+              this.system = new Uri();
+            this.system.setValue(value);
           }
         }
 
-        public List<Contact> getTelecom() { 
-          return this.telecom;
+        public Code getCode() { 
+          return this.code;
+        }
+
+        public void setCode(Code value) { 
+          this.code = value;
+        }
+
+        public String getCodeSimple() { 
+          return this.code == null ? null : this.code.getValue();
+        }
+
+        public void setCodeSimple(String value) { 
+          if (value == null)
+            this.code = null;
+          else {
+            if (this.code == null)
+              this.code = new Code();
+            this.code.setValue(value);
+          }
+        }
+
+        public String_ getDisplay() { 
+          return this.display;
+        }
+
+        public void setDisplay(String_ value) { 
+          this.display = value;
+        }
+
+        public String getDisplaySimple() { 
+          return this.display == null ? null : this.display.getValue();
+        }
+
+        public void setDisplaySimple(String value) { 
+          if (value == null)
+            this.display = null;
+          else {
+            if (this.display == null)
+              this.display = new String_();
+            this.display.setValue(value);
+          }
+        }
+
+        public String_ getDefinition() { 
+          return this.definition;
+        }
+
+        public void setDefinition(String_ value) { 
+          this.definition = value;
+        }
+
+        public String getDefinitionSimple() { 
+          return this.definition == null ? null : this.definition.getValue();
+        }
+
+        public void setDefinitionSimple(String value) { 
+          if (value == null)
+            this.definition = null;
+          else {
+            if (this.definition == null)
+              this.definition = new String_();
+            this.definition.setValue(value);
+          }
+        }
+
+        public List<ValueSetDefineConceptComponent> getConcept() { 
+          return this.concept;
+        }
+
+  }
+
+    public class ValueSetComposeComponent extends Element {
+        /**
+         * An assertion that this value set is a restriction on another value set - that it only includes codes that are part of the other value set. The value set itself must ensure that this is true - the contents of the value set are not automatically bounded by the contents of any value set identified here. This allows profile tooling to reason about the relationships between value sets without having to determine the value set contents
+         */
+        private List<Uri> restricts = new ArrayList<Uri>();
+
+        /**
+         * Includes the contents of the referenced value set as part of the contents of this value set
+         */
+        private List<Uri> import_ = new ArrayList<Uri>();
+
+        /**
+         * Include one or more codes from a code system
+         */
+        private List<ConceptSetComponent> include = new ArrayList<ConceptSetComponent>();
+
+        /**
+         * Exclude one or more codes from the value set
+         */
+        private List<ConceptSetComponent> exclude = new ArrayList<ConceptSetComponent>();
+
+        public List<Uri> getRestricts() { 
+          return this.restricts;
+        }
+
+        public List<Uri> getImport() { 
+          return this.import_;
+        }
+
+        public List<ConceptSetComponent> getInclude() { 
+          return this.include;
+        }
+
+        public List<ConceptSetComponent> getExclude() { 
+          return this.exclude;
         }
 
   }
@@ -482,14 +664,29 @@ public class ValueSet extends Resource {
   }
 
     /**
+     * The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI)
+     */
+    private String_ identifier;
+
+    /**
+     * The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp
+     */
+    private String_ version;
+
+    /**
      * A free text natural language name describing the value set
      */
     private String_ name;
 
     /**
-     * Details of the author who accepts responsibility for publishing the value set
+     * The name of the individual or organization that published the value set
      */
-    private List<AuthorComponent> author = new ArrayList<AuthorComponent>();
+    private String_ publisher;
+
+    /**
+     * Contacts of the publisher to assist a user in finding and communicating with the publisher
+     */
+    private List<Contact> telecom = new ArrayList<Contact>();
 
     /**
      * A free text natural language description of the value set - contents, reason for definition, conditions of use, etc.
@@ -507,34 +704,63 @@ public class ValueSet extends Resource {
     private DateTime date;
 
     /**
-     * The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance
+     * What kind of value set this is - a combination code system / value set, a value set composition of codes from other code systems, or an expansion into a ready to use form
      */
-    private String_ identifier;
+    private Enumeration<ValuesetKind> kind;
 
     /**
-     * The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design or instance
+     * When kind = code system / expansion
      */
-    private String_ version;
+    private ValueSetDefineComponent define;
 
     /**
-     * An assertion that this value set is a restriction on another value set - that it only includes codes that are part of the other value set. The value set itself must ensure that this is true - the contents of the value set are not automatically bounded by the contents of any value set identified here. This allows profile tooling to reason about the relationships between value sets without having to determine the value set contents
+     * When kind = composition (codes from elsewhere)
      */
-    private List<Uri> restricts = new ArrayList<Uri>();
+    private ValueSetComposeComponent compose;
 
-    /**
-     * Includes the contents of the referenced value set as part of the contents of this value set
-     */
-    private List<Uri> import_ = new ArrayList<Uri>();
+    public String_ getIdentifier() { 
+      return this.identifier;
+    }
 
-    /**
-     * Include one or more codes from a code system
-     */
-    private List<ConceptSetComponent> include = new ArrayList<ConceptSetComponent>();
+    public void setIdentifier(String_ value) { 
+      this.identifier = value;
+    }
 
-    /**
-     * Exclude one or more codes from the value set
-     */
-    private List<ConceptSetComponent> exclude = new ArrayList<ConceptSetComponent>();
+    public String getIdentifierSimple() { 
+      return this.identifier == null ? null : this.identifier.getValue();
+    }
+
+    public void setIdentifierSimple(String value) { 
+      if (value == null)
+        this.identifier = null;
+      else {
+        if (this.identifier == null)
+          this.identifier = new String_();
+        this.identifier.setValue(value);
+      }
+    }
+
+    public String_ getVersion() { 
+      return this.version;
+    }
+
+    public void setVersion(String_ value) { 
+      this.version = value;
+    }
+
+    public String getVersionSimple() { 
+      return this.version == null ? null : this.version.getValue();
+    }
+
+    public void setVersionSimple(String value) { 
+      if (value == null)
+        this.version = null;
+      else {
+        if (this.version == null)
+          this.version = new String_();
+        this.version.setValue(value);
+      }
+    }
 
     public String_ getName() { 
       return this.name;
@@ -558,8 +784,30 @@ public class ValueSet extends Resource {
       }
     }
 
-    public List<AuthorComponent> getAuthor() { 
-      return this.author;
+    public String_ getPublisher() { 
+      return this.publisher;
+    }
+
+    public void setPublisher(String_ value) { 
+      this.publisher = value;
+    }
+
+    public String getPublisherSimple() { 
+      return this.publisher == null ? null : this.publisher.getValue();
+    }
+
+    public void setPublisherSimple(String value) { 
+      if (value == null)
+        this.publisher = null;
+      else {
+        if (this.publisher == null)
+          this.publisher = new String_();
+        this.publisher.setValue(value);
+      }
+    }
+
+    public List<Contact> getTelecom() { 
+      return this.telecom;
     }
 
     public String_ getDescription() { 
@@ -628,64 +876,42 @@ public class ValueSet extends Resource {
       }
     }
 
-    public String_ getIdentifier() { 
-      return this.identifier;
+    public Enumeration<ValuesetKind> getKind() { 
+      return this.kind;
     }
 
-    public void setIdentifier(String_ value) { 
-      this.identifier = value;
+    public void setKind(Enumeration<ValuesetKind> value) { 
+      this.kind = value;
     }
 
-    public String getIdentifierSimple() { 
-      return this.identifier == null ? null : this.identifier.getValue();
+    public ValuesetKind getKindSimple() { 
+      return this.kind == null ? null : this.kind.getValue();
     }
 
-    public void setIdentifierSimple(String value) { 
+    public void setKindSimple(ValuesetKind value) { 
       if (value == null)
-        this.identifier = null;
+        this.kind = null;
       else {
-        if (this.identifier == null)
-          this.identifier = new String_();
-        this.identifier.setValue(value);
+        if (this.kind == null)
+          this.kind = new Enumeration<ValuesetKind>();
+        this.kind.setValue(value);
       }
     }
 
-    public String_ getVersion() { 
-      return this.version;
+    public ValueSetDefineComponent getDefine() { 
+      return this.define;
     }
 
-    public void setVersion(String_ value) { 
-      this.version = value;
+    public void setDefine(ValueSetDefineComponent value) { 
+      this.define = value;
     }
 
-    public String getVersionSimple() { 
-      return this.version == null ? null : this.version.getValue();
+    public ValueSetComposeComponent getCompose() { 
+      return this.compose;
     }
 
-    public void setVersionSimple(String value) { 
-      if (value == null)
-        this.version = null;
-      else {
-        if (this.version == null)
-          this.version = new String_();
-        this.version.setValue(value);
-      }
-    }
-
-    public List<Uri> getRestricts() { 
-      return this.restricts;
-    }
-
-    public List<Uri> getImport() { 
-      return this.import_;
-    }
-
-    public List<ConceptSetComponent> getInclude() { 
-      return this.include;
-    }
-
-    public List<ConceptSetComponent> getExclude() { 
-      return this.exclude;
+    public void setCompose(ValueSetComposeComponent value) { 
+      this.compose = value;
     }
 
   @Override

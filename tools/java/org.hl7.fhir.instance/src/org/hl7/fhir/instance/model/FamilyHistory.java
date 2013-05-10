@@ -29,150 +29,28 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
+// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
 
 import java.util.*;
 
 /**
- * Significant health events and conditions for people related to the subject
+ * Significant health events and conditions for people related to the subject relevant in the context of care for the subject
  */
 public class FamilyHistory extends Resource {
 
-    public enum FamilialRelationship {
-        mother, // Mother
-        father, // Father
-        sister, // Sister
-        brother, // Brother
-        matUncle, // Maternal Uncle
-        matAunt, // Maternal Aunt
-        matGFather, // Maternal GrandFather
-        matGMother, // Maternal GrandMother
-        patUncle, // Paternal Uncle
-        patAunt, // Paternal Aunt
-        patGFather, // Paternal GrandFather
-        patGMother, // Paternal GrandMother
-        Null; // added to help the parsers
-        public static FamilialRelationship fromCode(String codeString) throws Exception {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("mother".equals(codeString))
-          return mother;
-        if ("father".equals(codeString))
-          return father;
-        if ("sister".equals(codeString))
-          return sister;
-        if ("brother".equals(codeString))
-          return brother;
-        if ("matUncle".equals(codeString))
-          return matUncle;
-        if ("matAunt".equals(codeString))
-          return matAunt;
-        if ("matGFather".equals(codeString))
-          return matGFather;
-        if ("matGMother".equals(codeString))
-          return matGMother;
-        if ("patUncle".equals(codeString))
-          return patUncle;
-        if ("patAunt".equals(codeString))
-          return patAunt;
-        if ("patGFather".equals(codeString))
-          return patGFather;
-        if ("patGMother".equals(codeString))
-          return patGMother;
-        throw new Exception("Unknown FamilialRelationship code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case mother: return "mother";
-            case father: return "father";
-            case sister: return "sister";
-            case brother: return "brother";
-            case matUncle: return "matUncle";
-            case matAunt: return "matAunt";
-            case matGFather: return "matGFather";
-            case matGMother: return "matGMother";
-            case patUncle: return "patUncle";
-            case patAunt: return "patAunt";
-            case patGFather: return "patGFather";
-            case patGMother: return "patGMother";
-            default: return "?";
-          }
-        }
-    }
-
-  public class FamilialRelationshipEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
-      if (codeString == null || "".equals(codeString))
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("mother".equals(codeString))
-          return FamilialRelationship.mother;
-        if ("father".equals(codeString))
-          return FamilialRelationship.father;
-        if ("sister".equals(codeString))
-          return FamilialRelationship.sister;
-        if ("brother".equals(codeString))
-          return FamilialRelationship.brother;
-        if ("matUncle".equals(codeString))
-          return FamilialRelationship.matUncle;
-        if ("matAunt".equals(codeString))
-          return FamilialRelationship.matAunt;
-        if ("matGFather".equals(codeString))
-          return FamilialRelationship.matGFather;
-        if ("matGMother".equals(codeString))
-          return FamilialRelationship.matGMother;
-        if ("patUncle".equals(codeString))
-          return FamilialRelationship.patUncle;
-        if ("patAunt".equals(codeString))
-          return FamilialRelationship.patAunt;
-        if ("patGFather".equals(codeString))
-          return FamilialRelationship.patGFather;
-        if ("patGMother".equals(codeString))
-          return FamilialRelationship.patGMother;
-        throw new Exception("Unknown FamilialRelationship code '"+codeString+"'");
-        }
-    public String toCode(Enum<?> code) throws Exception {
-      if (code == FamilialRelationship.mother)
-        return "mother";
-      if (code == FamilialRelationship.father)
-        return "father";
-      if (code == FamilialRelationship.sister)
-        return "sister";
-      if (code == FamilialRelationship.brother)
-        return "brother";
-      if (code == FamilialRelationship.matUncle)
-        return "matUncle";
-      if (code == FamilialRelationship.matAunt)
-        return "matAunt";
-      if (code == FamilialRelationship.matGFather)
-        return "matGFather";
-      if (code == FamilialRelationship.matGMother)
-        return "matGMother";
-      if (code == FamilialRelationship.patUncle)
-        return "patUncle";
-      if (code == FamilialRelationship.patAunt)
-        return "patAunt";
-      if (code == FamilialRelationship.patGFather)
-        return "patGFather";
-      if (code == FamilialRelationship.patGMother)
-        return "patGMother";
-      return "?";
-      }
-    }
-
     public class FamilyHistoryRelationComponent extends Element {
         /**
-         * Depending on the capabilities of the system creating the resource, the related person may be an identifiable (on a FHIR system) person, a specific person who is not formally identified or an unidentified person (eg aunt, brother etc). Hence this property is optional. If a real person, then it could either be a reference to the resource that identifies that person, or a contained reference. Examples of both are given
+         * This will either be a name or a description.  E.g. "Aunt Susan", "my cousin with the red hair"
          */
-        private ResourceReference relatedPerson;
+        private String_ name;
 
         /**
          * The type of relationship this person has to the patient (father, mother, brother etc.) At the moment this is a code linking to a fixed set of values. I'm not sure if there is an international standard for this. A fixed (possibly extensible) set of codes feels better than a codeable concept for somehting like this...
          */
-        private Enumeration<FamilialRelationship> relationship;
+        private CodeableConcept relationship;
 
         /**
-         * If this resource is indicating that the related person is deceased, then the the date of death - or age at death - can be indicated here. If present, a receiving system must understand what the resource is indicating. If the reason for death is known, then it can be indicated in the 'fatal' flag of the condition - in this case the deceased property should still be set.
+         * If this resource is indicating that the related person is deceased, then an indicator of whether the person is deceased (yes) or not (no) or the age or age range or description of age at death - can be indicated here. If the reason for death is known, then it can be indicated in the outomce code of the condition - in this case the deceased property should still be set.
          */
         private Type deceased;
 
@@ -186,34 +64,34 @@ public class FamilyHistory extends Resource {
          */
         private List<FamilyHistoryRelationConditionComponent> condition = new ArrayList<FamilyHistoryRelationConditionComponent>();
 
-        public ResourceReference getRelatedPerson() { 
-          return this.relatedPerson;
+        public String_ getName() { 
+          return this.name;
         }
 
-        public void setRelatedPerson(ResourceReference value) { 
-          this.relatedPerson = value;
+        public void setName(String_ value) { 
+          this.name = value;
         }
 
-        public Enumeration<FamilialRelationship> getRelationship() { 
+        public String getNameSimple() { 
+          return this.name == null ? null : this.name.getValue();
+        }
+
+        public void setNameSimple(String value) { 
+          if (value == null)
+            this.name = null;
+          else {
+            if (this.name == null)
+              this.name = new String_();
+            this.name.setValue(value);
+          }
+        }
+
+        public CodeableConcept getRelationship() { 
           return this.relationship;
         }
 
-        public void setRelationship(Enumeration<FamilialRelationship> value) { 
+        public void setRelationship(CodeableConcept value) { 
           this.relationship = value;
-        }
-
-        public FamilialRelationship getRelationshipSimple() { 
-          return this.relationship == null ? null : this.relationship.getValue();
-        }
-
-        public void setRelationshipSimple(FamilialRelationship value) { 
-          if (value == null)
-            this.relationship = null;
-          else {
-            if (this.relationship == null)
-              this.relationship = new Enumeration<FamilialRelationship>();
-            this.relationship.setValue(value);
-          }
         }
 
         public Type getDeceased() { 
@@ -259,12 +137,12 @@ public class FamilyHistory extends Resource {
         private CodeableConcept type;
 
         /**
-         * Indicates that the person died of this condition. The date of death is indicated by the deceased property. If present, a receiving system must understand it.
+         * Indicates what happened as a result of this condition.  If the condition resulted in death, deceased date is captured on the relation.
          */
-        private Boolean fatal;
+        private CodeableConcept outcome;
 
         /**
-         * Either the age of onset or the date of onset can be recorded.
+         * Either the age of onset, range of approximate age or descriptive string can be recorded.
          */
         private Type onset;
 
@@ -281,26 +159,12 @@ public class FamilyHistory extends Resource {
           this.type = value;
         }
 
-        public Boolean getFatal() { 
-          return this.fatal;
+        public CodeableConcept getOutcome() { 
+          return this.outcome;
         }
 
-        public void setFatal(Boolean value) { 
-          this.fatal = value;
-        }
-
-        public boolean getFatalSimple() { 
-          return this.fatal == null ? null : this.fatal.getValue();
-        }
-
-        public void setFatalSimple(boolean value) { 
-          if (value == false)
-            this.fatal = null;
-          else {
-            if (this.fatal == null)
-              this.fatal = new Boolean();
-            this.fatal.setValue(value);
-          }
+        public void setOutcome(CodeableConcept value) { 
+          this.outcome = value;
         }
 
         public Type getOnset() { 
@@ -345,6 +209,11 @@ public class FamilyHistory extends Resource {
      */
     private List<FamilyHistoryRelationComponent> relation = new ArrayList<FamilyHistoryRelationComponent>();
 
+    /**
+     * Conveys information about family history not specific to individual relations.
+     */
+    private String_ note;
+
     public ResourceReference getSubject() { 
       return this.subject;
     }
@@ -355,6 +224,28 @@ public class FamilyHistory extends Resource {
 
     public List<FamilyHistoryRelationComponent> getRelation() { 
       return this.relation;
+    }
+
+    public String_ getNote() { 
+      return this.note;
+    }
+
+    public void setNote(String_ value) { 
+      this.note = value;
+    }
+
+    public String getNoteSimple() { 
+      return this.note == null ? null : this.note.getValue();
+    }
+
+    public void setNoteSimple(String value) { 
+      if (value == null)
+        this.note = null;
+      else {
+        if (this.note == null)
+          this.note = new String_();
+        this.note.setValue(value);
+      }
     }
 
   @Override

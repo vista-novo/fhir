@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, May 7, 2013 23:53+1000 for FHIR v0.09
+// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -37,48 +37,6 @@ import java.util.*;
  * A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc
  */
 public class Organization extends Resource {
-
-    public enum RecordStatus {
-        active, // The state representing the fact that the Entity record is currently active.
-        inactive, // The state representing the fact that the Entity record is currently inactive.
-        Null; // added to help the parsers
-        public static RecordStatus fromCode(String codeString) throws Exception {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("active".equals(codeString))
-          return active;
-        if ("inactive".equals(codeString))
-          return inactive;
-        throw new Exception("Unknown RecordStatus code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case active: return "active";
-            case inactive: return "inactive";
-            default: return "?";
-          }
-        }
-    }
-
-  public class RecordStatusEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
-      if (codeString == null || "".equals(codeString))
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("active".equals(codeString))
-          return RecordStatus.active;
-        if ("inactive".equals(codeString))
-          return RecordStatus.inactive;
-        throw new Exception("Unknown RecordStatus code '"+codeString+"'");
-        }
-    public String toCode(Enum<?> code) throws Exception {
-      if (code == RecordStatus.active)
-        return "active";
-      if (code == RecordStatus.inactive)
-        return "inactive";
-      return "?";
-      }
-    }
 
     public class OrganizationAccreditationComponent extends Element {
         /**
@@ -219,9 +177,9 @@ public class Organization extends Resource {
     private List<Contact> telecom = new ArrayList<Contact>();
 
     /**
-     * Indication of whether this organization's record is still active.
+     * Whether the organization's record is still in active use
      */
-    private Enumeration<RecordStatus> status;
+    private Boolean active;
 
     /**
      * The qualifications/certifications an organization has, including format educational achievements, accreditations and current certifications. All these qualifications may be used to determine what roles the organization may play in a healthcare environment
@@ -262,25 +220,25 @@ public class Organization extends Resource {
       return this.telecom;
     }
 
-    public Enumeration<RecordStatus> getStatus() { 
-      return this.status;
+    public Boolean getActive() { 
+      return this.active;
     }
 
-    public void setStatus(Enumeration<RecordStatus> value) { 
-      this.status = value;
+    public void setActive(Boolean value) { 
+      this.active = value;
     }
 
-    public RecordStatus getStatusSimple() { 
-      return this.status == null ? null : this.status.getValue();
+    public boolean getActiveSimple() { 
+      return this.active == null ? null : this.active.getValue();
     }
 
-    public void setStatusSimple(RecordStatus value) { 
-      if (value == null)
-        this.status = null;
+    public void setActiveSimple(boolean value) { 
+      if (value == false)
+        this.active = null;
       else {
-        if (this.status == null)
-          this.status = new Enumeration<RecordStatus>();
-        this.status.setValue(value);
+        if (this.active == null)
+          this.active = new Boolean();
+        this.active.setValue(value);
       }
     }
 
