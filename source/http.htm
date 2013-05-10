@@ -132,7 +132,7 @@ Authentication redirects should not be interpreted to change the location
 of the resource itself (a common web programming error). 
 </p>
 <p>
-FHIR defines an <a href="issuereport.htm">Issue Report resource</a> that can be used to convey specific detailed
+FHIR defines an <a href="operationoutcome.htm">Issue Report resource</a> that can be used to convey specific detailed
 processible error information. For a few combinations of operations and specific
 return codes, an Issue Report is required to be returned as the content of the response. 
 The Issue Report may be returned with any HTTP 4xx or 5xx response, but is not required - many of 
@@ -245,7 +245,7 @@ Common HTTP Status codes returned on FHIR-related errors (in addition to normal 
  <li><b>404 Not Found</b> - resource type not supported, or not a FHIR end point</li>
  <li><b>405 Method Not allowed</b> - the resource did not exist prior to the update, and the serer does not allow client defined ids</li>
  <li><b>409/412</b> - version conflict management - see above</li> 
- <li><b>422 Unprocessable Entity</b> - the proposed resource violated applicable FHIR profiles or server business rules. This should be accompanied by an <a href="issuereport.htm">Issue</a> resource providing additional detail</li>
+ <li><b>422 Unprocessable Entity</b> - the proposed resource violated applicable FHIR profiles or server business rules. This should be accompanied by an <a href="operationoutcome.htm">Issue</a> resource providing additional detail</li>
 </ul>
 <a name="delete"> </a>
 <h2>delete</h2>
@@ -302,7 +302,7 @@ Common HTTP Status codes returned on FHIR-related errors (in addition to normal 
 <ul>
  <li><b>400 Bad Request</b> - resource could not be parsed or failed basic basic FHIR validation rules</li>
  <li><b>404 Not Found</b> - resource type not supported, or not a FHIR end point</li>
- <li><b>422 Unprocessable Entity</b> - the proposed resource violated applicable FHIR profiles or server business rules. This should be accompanied by an <a href="issuereport.htm">Issue</a> resource providing additional detail</li>
+ <li><b>422 Unprocessable Entity</b> - the proposed resource violated applicable FHIR profiles or server business rules. This should be accompanied by an <a href="operationoutcome.htm">Issue</a> resource providing additional detail</li>
 </ul>
 
 <a name="search"> </a>
@@ -355,7 +355,7 @@ one of the following values:
  <li><b>422 Unprocessable Entity</b> - the resource was valid, but it violates applicable FHIR profiles or server business rules</li>
 </ul>
 <p>
-Unless the result is 200 OK, the response must include an <a href="issuereport.htm">Issue Report</a> that lists the issues found on validation.
+Unless the result is 200 OK, the response must include an <a href="operationoutcome.htm">Issue Report</a> that lists the issues found on validation.
 </p>
 <p>
 The validation operation has complex semantics and rules; see the full discussion of the operation in the <a href="#hdata">OMG hData REST specification</a> for further details. 
@@ -681,7 +681,7 @@ Note: N/A = not present, R = Required, O = optional.
 <tr><td>delete</td>       <td>N/A</td>          <td>N/A</td>                <td>N/A</td>      <td>N/A</td>              <td>204, 405, 404</td></tr>
 <tr><td>search</td>       <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200</td></tr>
 <tr><td>search-all</td>   <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200</td></tr>
-<tr><td>validate</td>     <td>N/A or R</td>     <td>N/A or IssueReport</td> <td>N/A</td>      <td>N/A</td>              <td>400</td></tr>
+<tr><td>validate</td>     <td>N/A or R</td>     <td>N/A or OperationOutcome</td> <td>N/A</td>      <td>N/A</td>              <td>400</td></tr>
 <tr><td>history</td>   	  <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200</td></tr>
 <tr><td>history-type</td> <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200</td></tr>
 <tr><td>history-all</td>  <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200</td></tr>

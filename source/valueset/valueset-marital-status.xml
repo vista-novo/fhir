@@ -3,9 +3,20 @@
 <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
-     <p>Value set for Marital Status. This value set includes all the v3 codes for MaritalStatus. The value set binding is dynamic (not fixed to a particular version)</p>
+     <p>Value set for Marital Status. This value set includes all the v3 codes for MaritalStatus and the nullFlavor "UNK". The value set binding is dynamic (not fixed to a particular version)</p>
     </div>
   </text>
+  <!-- we use the FHIR specification url where this is published -->
+  <identifier value="http://hl7.org/fhir/marital-status"/>
+  <!--
+     The version is fixed to the day that this value set was described. 
+     Note that the members of this value set change over time whenever 
+     the V3 marital status codes change. When you use this value set in 
+     practice, and you care about versions, you have to quote both 
+     versions (this value set and the v3 code system)
+  -->
+  <version value="2013-05-09"/>
+
   <name value="v3 Marital Status Codes + &quot;Unknown&quot;"/>
   <author>
     <name value="FHIR project team"/>
@@ -18,17 +29,7 @@
   <status value="review"/>
   <date value="2013-05-09"/>
 
-  <!-- we use the FHIR specification url where this is published -->
-  <identifier value="http://hl7.org/fhir/marital-status"/>
 
-  <!--
-     The version is fixed to the day that this value set was described. 
-     Note that the members of this value set change over time whenever 
-     the V3 marital status codes change. When you use this value set in 
-     practice, and you care about versions, you have to quote both 
-     versions (this value set and the v3 code system)
-  -->
-  <version value="2013-05-09"/>
 
   <include>
     <!-- include all codes in the v3 code system "maritalstatus" -->    

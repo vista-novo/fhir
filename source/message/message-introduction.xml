@@ -58,6 +58,24 @@ responsible for honoring the contract that applies (including applicable profile
 in both directions.
 </p>
 
+<h3>Message Identifiers</h3>
+<p>
+An incoming message contains two identifiers: the envelope id 
+(<a href="formats.htm#atom">feed</a>.id) and the <a href="message.htm">message</a>.id. 
+Each time a new message is created, it must be assigned an identifier that is 
+unique within that message stream. Note that since message streams are often 
+merged with other streams, it is recommended that the id should be globally 
+unique. This can be achieved by using a UUID or an OID or appropriately 
+chosen URI with a serially incrementing number. Each time a message is sent, 
+the bundle identifier should be changed to a new identifier. 
+</p>
+<p>
+When a receiver receives and processes the message, it responds with a 
+new message with a new id, wrapped in a bundle which also has a new id. 
+The response message also quotes the request message id so that the source
+system can relate the response to it's request.
+</p>
+
 <a name="reliable"> </a>
 <h3>Absence of Reliable Messaging</h3>
 <p>
@@ -65,15 +83,35 @@ Some of the message delivery mechanisms mentioned above are reliable delivery
 systems - the message is always delivered, or an appropriate error is returned
 to the source. However most implementations use methods which do not provide
 reliable messaging, and either the request or the response can get lost in transit.
-FHIR messaging describes a simple approach to handle this that applications 
-must conform to, whether messaging appears to be reliable or not.
+FHIR messaging describes a simple approach to handle this that receivers
+should conform to in order to maintain predictable functionality even when 
+messaging is not reliable.
 </p>
 <p>
-An incoming message contains two identifiers: the envelope id 
-(<a href="formats.htm#atom">feed</a>.id) and the <a href="message.htm">message</a>.id. 
-A message receiver must always check the incoming envelope and message ids against 
-a store of previously received messages. The correct action to take depends on
-what is received:
+When considering the issue of reliable messaging, the source application 
+should consider whether the message is a message of consequence, or 
+a message of currency. A message of consequence is one where the message
+requests a change that should not be processed more than once, and where
+the sender needs the response that results from processing the message.
+A message of currency is where the correct response is the very latest 
+information available. Typically, this is status information. Some 
+messages fit into neither category - the response does not particularly
+matter. Usually these are notification messages.
+</p>
+<p>
+In order to enable these processing rules, and to benefit from them, the 
+original sender of the message SHALL do the following when it receives
+no response to a message within a configured timeout period:
+</p>
+<table class="grid">
+ <tr><td>Consequence</td><td>Resend the same message (including with the same id) with the same envelope id</td></tr>
+ <tr><td>Currency</td><td>Resend the same message (including with the same id) with a different envelope id</td></tr>
+ <tr><td>Neither</td><td>Resend the same message (including with the same id) with a different envelope id</td></tr>
+</table>
+<p>
+When a receiver declares that it implements reliable answers, it SHALL check the 
+incoming envelope and message ids against a cache of previously received messages. 
+The correct action to take depends on what is received:
 </p>
 <table class="list">
  <tr><td>Both the envelope and message id have not been received</td><td>This is the normal case, and the message should be processed</td></tr>
@@ -86,26 +124,7 @@ The duration period for caching does generally not need to very long. At a minim
 could be 1 minute longer than the timeout of the sending system, though it may need to 
 be longer depending on the re-sending policies of the sending system. 
 </p>
-<p>
-In order to enable these processing rules, and to benefit from them, the original sender of the 
-message should follow these rules:
-</p>
-<ul>
- <li>When a new message is sent, it should have a new envelope id that has never been used before (UUIDs are recommended)</li> 
- <li>If no response is received within a configured timeout period, the message should be sent again with the same envelope id. This process can be repeated many times</li>
- <li>Once a message has been answered, the message id SHOULD never be reused</li>
- <li>An envelope ID SHALL never be reused except in the specific case above</li>
-</ul>
-<p>
-When considering how to make best use of these patterns, implementers should consider the difference
-between transactions of consequence - these should not be repeated once they have happened on the 
-server, and transactions of currency, where the transaction should always be repeated on the latest
-data (typically, these are queries).
-</p>
-<p>
-Applications SHOULD declare the cache duration they provide (receiver) or depend on (sender) in
-their conformance statement (doing so is best practice and supports reliable messaging).
-</p>
+
 
 <pre>
 TODO: describe some use cases
@@ -116,12 +135,12 @@ TODO: describe some use cases
 Applications may only claim to be conformant to "FHIR messaging" if they
 publish a conformance statement so the claim may be verified. A conformance
 statement lists all the message events 
-they support (either as sender or listener) and for each event, a 
+they support (either as sender or receiver) and for each event, a 
 profile that states which resources are bundled (sender), or 
-are required to be bundled (listener), and any rules about the 
+are required to be bundled (receiver), and any rules about the 
 information content of the individual resources. The conformance 
 statement is a <a href="conformance.htm">resource with the name 
-"Conformance"</a>. TODO: make request and response profile mandatory.
+"Conformance"</a>. 
 </p>
 
 <a name="endpoints"></a>

@@ -22,7 +22,7 @@
     <text value="Vital Signs Monitor"/>
   </type>
   <manufacturer value="Acme Devices, Inc"/>
-  <compartment>
+  <virtualDevice>
     <channel>
     
       <metric>
@@ -171,5 +171,5 @@
 
    
     </channel>
-  </compartment>
+  </virtualDevice>
 </DeviceCapabilities>

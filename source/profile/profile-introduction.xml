@@ -1,6 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<h2>Background</h2>
+
 <p>
 This specification describes a set of base resources that are used in many different
 contexts in healthcare. In order to make this manageable, applications and specifications need to be

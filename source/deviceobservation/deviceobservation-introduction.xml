@@ -6,14 +6,14 @@ There are 4 device related resources
 </p>
 <ul>
  <li><a href="device.htm">Device</a>  - an administrative resource that tracks individual devices and their location. Primarily used for attribution of actions to devices</li>
- <li><a href="devicecapabilities.htm">Device Capabilities</a>  - Defines what observations a device will make when you connect to it directly</li>
+ <li><a href="devicecapabilities.htm">Device Capabilities</a>  - Defines what observations a device will provide when another device connects to it</li>
  <li><a href="devicelog.htm">Device Log</a> - A raw report from a device at a point in time. Must be paired with the correct Device Capabilities resource in order to be processed</li>
  <li>Device Observation (this resource) - A report of observations from a device</li>
 </ul>
 <p>
-The device capabilities and log resources are used when communicating directly with a device. 
-When a channel is opened with the device, it first sends the Capabilities resource, and then a 
-series of log resources. The FHIR JSON format is used in this case. 
+The device capabilities and log resources are used when communicating with a device, either directly or indirectly. 
+When a channel is opened with the device, or it's proxy, it first sends the Capabilities resource, and then a 
+series of log resources. The FHIR JSON format is used in this case.
 
 The application that receives the log resources may choose to merge the log with the capabilities 
 statement to create a device observation, which is suitable for wider use within a EHR/Clinical record context.

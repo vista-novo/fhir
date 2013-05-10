@@ -40,10 +40,10 @@ PHR provider:
 </ul>
 
 <p>
-The EMR exposes a FHIR server with the following capabilities: 
+The EMR exposes a FHIR server that supports the <i>search</i> and <i>read</i> operations on the following resources: 
 </p>
 <ol>
- <li><i>read</i> on the <a href="patient.htm">patient</a> resource in order to provide demographics to the client (?? the patient record id is "self")</li>
+ <li>the <a href="patient.htm">patient</a> resource in order to provide demographics to the client. When a client searches patients with no search criteria, they get a list of all patients they have access too</li>
  <li><i>search</i> and <i>read</i> on the <a href="documentreference.htm">Document Reference</a> resource to provide access to general patient documents in the form of PDFs</li>
  <li><i>search</i> and <i>read</i> on a set of clinical resources potentially including Observation, DiagnosticReport, various Medication resources, AdverseReaction/AllergyIntolerance, 
 CarePlan, and Problem</li> 
@@ -61,6 +61,10 @@ additional functionaly will involve additional API capabilities to be implemente
 exposed. The EMR server may also choose to expose the <i>read</i>, <i>search</i> and <i>updates</i> operation on 
 the Security Event resource for the patient-specific records to allow patient review of record access.
 </p>
+
+Uses cases to add:
+* XDS
+* Decision Support
  
 
 <%footer%>

@@ -18,6 +18,15 @@
     </ul>
     </div>
   </text>
+  <!-- this example, we elected to use a UUID. We could have used 
+     an OID, or a URI - depends on how it will be used. -->
+  <identifier value="256a5231-a2bb-49bd-9fea-f349d428b70d"/>
+
+  <!-- for version, we are going to simply use the day of publication. This is also 
+    arbitrary - whatever is here is what people use to refer to the version. 
+    Could also be a UUID too -->
+  <version value="20120613"/>
+
 <!-- set of loinc codes for cholesterol for LONC 2.36 -->  
   <name value="Loinc Codes for Cholesterol"/>
   <author>
@@ -30,15 +39,6 @@
   <description value="This is an example value set that includes &#xA;      all the LOINC codes for serum cholesterol from v2.36"/>
   <status value="testing"/>
   <date value="2012-06-13"/>
-
-  <!-- this example, we elected to use a UUID. We could have used 
-     an OID, or a URI - depends on how it will be used. -->
-  <identifier value="256a5231-a2bb-49bd-9fea-f349d428b70d"/>
-
-  <!-- for version, we are going to simply use the day of publication. This is also 
-    arbitrary - whatever is here is what people use to refer to the version. 
-    Could also be a UUID too -->
-  <version value="20120613"/>
 
   <!-- we claim that this value set is a constraint on this other value set 
     this actual URL is a reference to a fictitious value set definition on a 

@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Lloyd McKenzie</LastAuthor>
+  <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:19:17Z</Created>
-  <LastSaved>2013-04-29T15:23:56Z</LastSaved>
+  <LastSaved>2013-05-09T22:39:04Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,6 @@
   <WindowWidth>15585</WindowWidth>
   <WindowTopX>1200</WindowTopX>
   <WindowTopY>1005</WindowTopY>
-  <ActiveSheet>8</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -122,7 +121,7 @@
     ss:Span="1"/>
    <Column ss:Index="12" ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="2"/>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s66">
+   <Row ss:Height="45" ss:StyleID="s66">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
@@ -140,7 +139,7 @@
     <Cell><Data ss:Type="String">To Do</Data></Cell>
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:Height="45">
     <Cell><Data ss:Type="String">ValueSet</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource</Data></Cell>
@@ -148,7 +147,24 @@
     <Cell><Data ss:Type="String">Value Set - a set of defined codes from one or more code systems that may be bound to a context</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+   <Row ss:Height="75">
+    <Cell><Data ss:Type="String">ValueSet.identifier</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Logical id to reference this value set</Data></Cell>
+    <Cell><Data ss:Type="String">The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI)</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
+   </Row>
+   <Row ss:Height="90">
+    <Cell><Data ss:Type="String">ValueSet.version</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Logical id for this version of the value set</Data></Cell>
+    <Cell><Data ss:Type="String">The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">There may be multiple resource versions of the value set that have this same identifier</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+   </Row>
+   <Row ss:Height="30">
     <Cell><Data ss:Type="String">ValueSet.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
@@ -158,7 +174,7 @@
     <Cell><Data ss:Type="String">Not expected to be unique</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+   <Row ss:Height="75">
     <Cell><Data ss:Type="String">ValueSet.author</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">right</Data></Cell>
@@ -174,7 +190,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+   <Row ss:Height="45">
     <Cell><Data ss:Type="String">ValueSet.author.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4" ss:StyleID="Default"/>
@@ -191,7 +207,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+   <Row ss:Height="30">
     <Cell><Data ss:Type="String">ValueSet.author.role</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4" ss:StyleID="Default"/>
@@ -208,7 +224,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+   <Row ss:Height="45">
     <Cell><Data ss:Type="String">ValueSet.author.telecom</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4" ss:StyleID="Default"/>
@@ -225,7 +241,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:Height="45">
     <Cell><Data ss:Type="String">ValueSet.description</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
@@ -234,7 +250,7 @@
     <Cell><Data ss:Type="String">Human understandibility</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+   <Row ss:Height="30">
     <Cell><Data ss:Type="String">ValueSet.status</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Yes</Data></Cell>
@@ -245,7 +261,7 @@
     <Cell><Data ss:Type="String">Identify when/if the value set should be used.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="75">
+   <Row ss:Height="75">
     <Cell><Data ss:Type="String">ValueSet.date</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">dateTime</Data></Cell>
@@ -255,24 +271,7 @@
     <Cell><Data ss:Type="String">Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the value set</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="150">
-    <Cell><Data ss:Type="String">ValueSet.identifier</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Logical id to reference this value set</Data></Cell>
-    <Cell><Data ss:Type="String">The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance </Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">There may be multiple versions of the value set that have this same identifier</Data></Cell>
-    <Cell><Data ss:Type="String">N/A</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">ValueSet.version</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Logical id for this version of the value set</Data></Cell>
-    <Cell><Data ss:Type="String">The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design or instance. This value should be a timestamp</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="165">
+   <Row ss:Height="165">
     <Cell><Data ss:Type="String">ValueSet.restricts</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">uri</Data></Cell>
@@ -281,7 +280,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">In most cases, the claim of restriction could be validated in a particular context of use, but it is not necessary to do so</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:Height="45">
     <Cell><Data ss:Type="String">ValueSet.import</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -290,7 +289,7 @@
     <Cell><Data ss:Type="String">Includes the contents of the referenced value set as part of the contents of this value set</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+   <Row ss:Height="30">
     <Cell><Data ss:Type="String">ValueSet.include</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -299,7 +298,7 @@
     <Cell><Data ss:Type="String">Include one or more codes from a code system</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:Height="45">
     <Cell><Data ss:Type="String">ValueSet.include.system</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">uri</Data></Cell>
@@ -310,7 +309,7 @@
     <Cell ss:Index="14" ss:StyleID="s70" ss:HRef="mailto:ODM/Study/MetaDataVersion/CodeList/ExternalCodeList/@Href"><Data
       ss:Type="String">ODM/Study/MetaDataVersion/CodeList/ExternalCodeList/@Href</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="120">
+   <Row ss:Height="120">
     <Cell><Data ss:Type="String">ValueSet.include.version</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
@@ -321,7 +320,7 @@
     <Cell ss:Index="14" ss:StyleID="s70" ss:HRef="mailto:ODM/Study/MetaDataVersion/CodeList/ExternalCodeList/@Version"><Data
       ss:Type="String">ODM/Study/MetaDataVersion/CodeList/ExternalCodeList/@Version</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="105">
+   <Row ss:Height="105">
     <Cell><Data ss:Type="String">ValueSet.include.mode</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
@@ -331,7 +330,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">It is an error to include codes that are marked &quot;abstract&quot; in a value set that is used directly in a specification, but not an error to include an abstract code in a value set not destined for this use</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:Height="45">
     <Cell><Data ss:Type="String">ValueSet.include.code</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
@@ -342,7 +341,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">expressions are allowed if defined by the underlying code system</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="165">
+   <Row ss:Height="165">
     <Cell><Data ss:Type="String">ValueSet.include.filter</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
@@ -352,7 +351,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">Selecting codes by specifying filters based on properties is only possible where the underlying code system defines appropriate properties. Note that in some cases, the underlying code system defines the logical concepts but not the literal codes for the concepts. In such cases, the literal definitions may be provided by a third party</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+   <Row ss:Height="30">
     <Cell><Data ss:Type="String">ValueSet.include.filter.property</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
@@ -364,7 +363,7 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">A code that identifies a property defined in the code system</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+   <Row ss:Height="30">
     <Cell><Data ss:Type="String">ValueSet.include.filter.op</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
@@ -373,7 +372,7 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">The kind of operation to perform as part of the filter criteria</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
+   <Row ss:Height="60">
     <Cell><Data ss:Type="String">ValueSet.include.filter.value</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
@@ -383,7 +382,7 @@
     <Cell ss:Index="11" ss:StyleID="s71"><Data ss:Type="String">Use regex matching with care - full regex matching on every SNOMED-CT term is prohibitive, for example</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:Height="60">
     <Cell><Data ss:Type="String">ValueSet.exclude</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -400,17 +399,17 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>4</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -423,12 +422,11 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>12</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -891,7 +889,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

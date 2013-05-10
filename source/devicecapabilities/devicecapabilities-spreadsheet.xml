@@ -20,7 +20,6 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -92,7 +91,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="22" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="23" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="294"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="1"/>
@@ -166,14 +165,14 @@
     <Cell ss:Index="11"><Data ss:Type="String">Some devices may be configured with identifying information</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:StyleID="s68">
-    <Cell ss:StyleID="s67"><Data ss:Type="String">DeviceCapabilities.compartment</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">DeviceCapabilities.virtualDevice</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">left</Data></Cell>
     <Cell ss:Index="8" ss:StyleID="s69"><Data ss:Type="String">A medical-related subsystem of a medical device</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">A medical-related subsystem of a medical device</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.code</Data></Cell>
+    <Cell><Data ss:Type="String">DeviceCapabilities.virtualDevice.code</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">DeviceCompartmentKind</Data></Cell>
@@ -181,7 +180,7 @@
     <Cell><Data ss:Type="String">Describes the compartment</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s68">
-    <Cell ss:StyleID="s67"><Data ss:Type="String">DeviceCapabilities.compartment.channel</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">down</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Groups related data items</Data></Cell>
@@ -189,7 +188,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">Usually, either a value or some flags should be provided</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.code</Data></Cell>
+    <Cell><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.code</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">DeviceChannelKind</Data></Cell>
@@ -197,7 +196,7 @@
     <Cell><Data ss:Type="String">Describes the channel</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s68">
-    <Cell ss:StyleID="s67"><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">right</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Piece of data reported by device</Data></Cell>
@@ -205,7 +204,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">Usually, either a value or some flags should be provided</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.code</Data></Cell>
+    <Cell><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.code</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">DeviceMetricsCode</Data></Cell>
@@ -213,7 +212,7 @@
     <Cell><Data ss:Type="String">Describes the metrics</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.key</Data></Cell>
+    <Cell><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.key</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Used to link to data in device log</Data></Cell>
@@ -221,13 +220,13 @@
     <Cell ss:Index="11"><Data ss:Type="String">Usually, either a value or some flags should be provided</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.info</Data></Cell>
+    <Cell><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">How to interpret this metric value</Data></Cell>
     <Cell><Data ss:Type="String">How to interpret this metric value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.info.type</Data></Cell>
+    <Cell><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info.type</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
@@ -236,7 +235,7 @@
     <Cell><Data ss:Type="String">Type of data for this metric</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.info.units</Data></Cell>
+    <Cell><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info.units</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
@@ -244,7 +243,7 @@
     <Cell><Data ss:Type="String">Units for this data item (if a quantity or a range)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.info.ucum</Data></Cell>
+    <Cell><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info.ucum</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
@@ -254,7 +253,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">Although UCUM units are not required, they are strongly encouraged</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.info.system</Data></Cell>
+    <Cell><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info.system</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">uri</Data></Cell>
@@ -262,31 +261,39 @@
     <Cell><Data ss:Type="String">System of the codes, if the type is a Coding</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s68">
-    <Cell ss:StyleID="s67"><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.facet</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.facet</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">right</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Additional clarifying or qualifiying data</Data></Cell>
     <Cell><Data ss:Type="String">Additional data that qualifies the metric, or contributes to it's assessment</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.facet.code</Data></Cell>
+    <Cell><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.facet.code</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">DeviceFacetCode</Data></Cell>
     <Cell><Data ss:Type="String">Describes the facet</Data></Cell>
     <Cell><Data ss:Type="String">Describes the facet</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.facet.scale</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">decimal</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Factor to apply to raw values (default = 1)</Data></Cell>
+    <Cell><Data ss:Type="String">The factor to apply to the raw values to get the correct value</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">The default value is 1</Data></Cell>
+   </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.facet.key</Data></Cell>
+    <Cell><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.facet.key</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Used to link to data in device log</Data></Cell>
     <Cell><Data ss:Type="String">Used to link to data in device log</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.facet.info</Data></Cell>
+    <Cell><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.facet.info</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">@DeviceCapabilities.compartment.channel.metric.info</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">@DeviceCapabilities.virtualDevice.channel.metric.info</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">How to interpret this facet value</Data></Cell>
     <Cell><Data ss:Type="String">How to interpret this facet value</Data></Cell>
    </Row>
@@ -303,11 +310,11 @@
     <PaperSizeIndex>9</PaperSizeIndex>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>1</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -332,21 +339,21 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Quantity rule</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.info</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info</Data></Cell>
     <Cell><Data ss:Type="String">If the type is &quot;Quantity&quot;, units must be provided</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">((f:type/@value = 'Quantity') and (f:units)) or (not (f:type/@value != 'Quantity') and not (f:units))</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Coding Rule</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.info</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info</Data></Cell>
     <Cell><Data ss:Type="String">If the type is &quot;Coding', system must be provided</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">(f:type/@value != 'Coding') or f:system</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">UCUM rule</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.info</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info</Data></Cell>
     <Cell><Data ss:Type="String">If the type is &quot;Quantity&quot;, ucum must be provided</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">((f:type/@value = 'Quantity') and (f:ucum)) or (not (f:type/@value != 'Quantity') and not (f:ucum))</Data></Cell>
    </Row>
@@ -358,14 +365,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>5</ActiveCol>
-    </Pane>
-   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -454,7 +453,7 @@
     <Cell><Data ss:Type="String">The compatment code</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.code</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.virtualDevice.code</Data></Cell>
     <Cell ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -462,7 +461,7 @@
     <Cell><Data ss:Type="String">The channel code</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.channel.code</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.code</Data></Cell>
     <Cell ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -470,14 +469,14 @@
     <Cell><Data ss:Type="String">The metric code</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.code</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.code</Data></Cell>
     <Cell ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">datatype</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">token</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.info.type</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info.type</Data></Cell>
     <Cell ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -485,7 +484,7 @@
     <Cell><Data ss:Type="String">The facet code</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.compartment.channel.metric.facet.code</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.facet.code</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -504,8 +503,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>10</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>1</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

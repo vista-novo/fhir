@@ -10,16 +10,20 @@
     <reference value="patient/@dicom"/>
   </subject>
   <uid value="urn:oid:2.16.124.113543.6003.1154777499.30246.19789.3503430045"/>
+  <numberOfSeries value="1"/>
+  <numberOfInstances value="1"/>
+  
   <series>
     <number value="3"/>
     <modality value="CT"/>
     <uid value="urn:oid:2.16.124.113543.6003.2588828330.45298.17418.2723805630"/>
     <description value="CT Surview 180"/>
-    <image>
+    <numberOfInstances value="1"/>
+    <instance>
       <number value="1"/>
       <uid value="urn:oid:2.16.124.113543.6003.189642796.63084.16748.2599092903"/>
-      <dicomClass value="urn:oid:1.2.840.10008.5.1.4.1.1.2"/>
+      <sopclass value="urn:oid:1.2.840.10008.5.1.4.1.1.2"/>
       <url value="http://localhost/fhir/binary/@1.2.840.11361907579238403408700.3.0.14.19970327150033"/>
-    </image>
+    </instance>
   </series>   
 </ImagingStudy>
