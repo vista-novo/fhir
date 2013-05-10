@@ -39,7 +39,7 @@
       <version value="xxxx"/> -->
       
       <!-- just include all the codes -->
-      <mode value="all"/>
+      <mode value="system"/>
     </include>
   
     <include>
