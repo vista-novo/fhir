@@ -424,7 +424,6 @@ In XML bundles are represented using an Atom format (<a href="http://tools.ietf.
   &lt;title&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.htm#string">string</a></span> <span style="color:navy;">Text statement of purpose</span><span style="color: Gray"> --&gt;</span>&lt;/title&gt;
   &lt;updated&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.htm#instant">instant</a></span> <span style="color:navy;">When the bundle was built</span><span style="color: Gray"> --&gt;</span>&lt;/updated&gt;
   &lt;id&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.htm#uri">uri</a></span> <span style="color:navy;">Unique uri for this bundle</span><span style="color: Gray"> --&gt;</span>&lt;/id&gt;
-  &lt;category term="<span style="color:navy;">[Tag Uri]</span>" label="<span style="color:navy;">[Tag Label]</span>" scheme="http://hl7.org/fhir/tag"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>0..*</b></span><span style="color: Gray"> --&gt;</span>  
   &lt;os:totalResults xmlns:os="http://a9.com/-/spec/opensearch/1.1/"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>0..1</b></span> <span style="color:darkgreen;"><a href="datatypes.htm#primitive">integer</a></span> <span style="color:navy;">
               Paging: the total number of results</span><span style="color: Gray"> --&gt;</span>&lt;/os:totalResults&gt;
   &lt;link rel="self" href="<span style="color:navy;">[building application url (Service base on REST)]</span>"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>
@@ -481,7 +480,6 @@ In XML bundles are represented using an Atom format (<a href="http://tools.ietf.
  <li>The mime type for an bundle when represented in XML is application/atom+xml</li>
  <li>The feed.link element with relationship "self" is assigned no particular meaning the FHIR specification, except in the case of a search operation, but may be used to provide a reference to the source of the feed</li>
  <li>The feed.link elements with relationship "first", "last", "previous" and "next" are used to implement paging in the RESTful interface and allow a client to browse through a multi-page result. See <a href="search.htm">search</a></li>
- <li>The feed.category element is used in association with searching on tags</li>
 </ul>
 
 <a name="atom-deleted"> </a>

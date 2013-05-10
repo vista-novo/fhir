@@ -526,16 +526,14 @@ are not reflected in the history list.
 <h2>Tag Operations</h2>
  
 <p>
-Tags are..
-
-When resources are exchanged directly use HTTP on the read, vread, create and update operations, the 
+<a href="resources.htm#tags">Tags</a> are attached to resources to define operational behaviour. When resources are exchanged directly use HTTP on the read, vread, create and update operations, the 
 http header "Category" is used, following the method described for <a href="http://tools.ietf.org/html/draft-johnston-http-category-header-02">Web Categories</a>.
 </p>
 <pre>
   Category: [Tag URI]; scheme="http://hl7.org/fhir/tag"; label="[Tag Uri]"
 </pre>
 <p>
-The label portion is optional.
+The label portion is optional. Note that label may come before scheme. 
 </p>
 <table class="grid">
  <tr><td>read/vread</td><td>The server returns all tags associated with the resource in the headers</td></tr>
@@ -550,18 +548,38 @@ and servers populate these completely or process these as part of a batch submis
 The following operations provide specific support for Tags:
 </p>
 <table class="grid">
- <tr><td><pre>GET [service-url]/tags</pre></td><td>get a list of all tags (return as a feed with no entries, and a series of categories on the feed element)</td></tr>
- <tr><td><pre>GET [service-url]/[type]/tags</pre></td><td>get a list of all tags used for the nominated resource type</td></tr>
- <tr><td><pre>GET [service-url]/[type]/@[id]/tags</pre></td><td>get a list of all tags affixed to the nominated resource type. This duplicates the HTTP header entries</td></tr>
- <tr><td><pre>POST service-url]/[type]/@[id]/tags</pre></td><td>Affix tags to the nominated resource. The body content is an atom feed with one or more categories on the feed, and no entries</td></tr>
- <tr><td><pre>POST service-url]/[type]/@[id]/history/@[vid]/tags</pre></td><td>Affix tags to the nominated version of the resource. The body content is an atom feed with one or more categories on the feed, and no entries</td></tr>
- <tr><td><pre>DELETE service-url]/[type]/@[id]/tags</pre></td><td>Affix tags to the nominated resource. The body content is an atom feed with one or more categories on the feed, and no entries</td></tr>
- <tr><td><pre>DELETE service-url]/[type]/@[id]/history/@[vid]/tags</pre></td><td>Affix tags to the nominated version of the resource. The body content is an atom feed with one or more categories on the feed, and no entries</td></tr>
+ <tr><td><pre>GET [service-url]/tags</pre></td><td valign="center">get a list of all tags</td></tr>
+ <tr><td><pre>GET [service-url]/[type]/tags</pre></td><td valign="center">get a list of all tags used for the nominated resource type</td></tr>
+ <tr><td><pre>GET [service-url]/[type]/@[id]/tags</pre></td><td valign="center">get a list of all tags affixed to the nominated resource type. This duplicates the HTTP header entries</td></tr>
+ <tr><td><pre>POST service-url]/[type]/@[id]/tags</pre></td><td valign="center">Affix tags in the list to the nominated resource</td></tr>
+ <tr><td><pre>POST service-url]/[type]/@[id]/history/@[vid]/tags</pre></td><td valign="center">Affix tags in the list to the nominated version of the resource</td></tr>
+ <tr><td><pre>DELETE service-url]/[type]/@[id]/tags</pre></td><td valign="center">Remove tags in the list to the nominated resource</td></tr>
+ <tr><td><pre>DELETE service-url]/[type]/@[id]/history/@[vid]/tags</pre></td><td valign="center">Remove tags in the list to the nominated version of the resource</td></tr>
 </table>  
 <p>
-The tags of an old version can still be changed. Note that changing the tags on a resource does not create a new version of the resource.
+The tags of an old version can still be changed. Note that changing the tags on a resource does not create a new version of the resource. A tag list 
+is represented like this in XML and JSON:
 </p>
- 
+<pre class="spec">
+&lt;taglist xmlns="http://hl7.org/fhir">
+    <span style="color:Gray;">&lt;!-- </span><span style="color:navy;">Tags in the list (<span style="color: brown;"><b>0..*</b></span>): </span> <span style="color: Gray"> --&gt; </span>
+    &lt;category term="<span style="color:navy;">[Tag Uri]</span>" label="<span style="color:navy;">[Tag Label]</span>" scheme="http://hl7.org/fhir/tag"&gt; 
+&lt;/taglist&gt;
+</pre>
+
+<pre class="json">
+{
+  &quot;taglist&quot; : {
+
+    &quot;category&quot; : [{
+        &quot;term&quot; : &quot;[Tag Uri]&quot;,
+        &quot;label&quot; : &quot;[Tag Label]&quot;,
+        &quot;scheme&quot; : &quot;http://hl7.org/fhir/tag&quot;
+      }]
+  }
+}
+</pre>
+
 <a name="binary"> </a>
 <h2>Binary Support</h2>
 <p>

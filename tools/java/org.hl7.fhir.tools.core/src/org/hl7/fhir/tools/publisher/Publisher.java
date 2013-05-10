@@ -1327,19 +1327,21 @@ public class Publisher {
 		validateRoundTrip(schema, "profiles-resources");
 	}
 
-	private void produceCoverageWarnings() {
+	private void produceCoverageWarnings() throws Exception {
     for (ElementDefn e : page.getDefinitions().getStructures().values()) 
       produceCoverageWarning("", e);
     for (ElementDefn e : page.getDefinitions().getTypes().values()) 
       produceCoverageWarning("", e);
-    for (ResourceDefn e : page.getDefinitions().getResources().values()) 
+    for (String s : page.getDefinitions().sortedResourceNames()) {
+      ResourceDefn e = page.getDefinitions().getResourceByName(s);
       produceCoverageWarning("", e.getRoot());    
+    }
   }
 
   private void produceCoverageWarning(String path, ElementDefn e) {
     
-   // if (!e.isCoveredByExample() && !Utilities.noString(path))
-    //  log("The path "+path+e.getName()+" is not covered by any example");
+    if (!e.isCoveredByExample() && !Utilities.noString(path))
+      log("The path "+path+e.getName()+" is not covered by any example");
     for (ElementDefn c : e.getElements()) {
       produceCoverageWarning(path+e.getName()+"/", c);
     }    

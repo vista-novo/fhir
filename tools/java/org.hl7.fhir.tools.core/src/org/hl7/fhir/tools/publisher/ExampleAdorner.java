@@ -25,7 +25,7 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWIS
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 POSSIBILITY OF SUCH DAMAGE.
 
-*/
+ */
 package org.hl7.fhir.tools.publisher;
 
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ import org.w3c.dom.Element;
 
 public class ExampleAdorner implements XhtmlGeneratorAdorner {
 
-  
+
   public enum State {
     Unknown,
     Feed, 
@@ -70,10 +70,9 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
     public ElementDefn getDefinition() {
       return definition;
     }
-    
-    
-    
+
   }
+
   private Definitions definitions;
 
   public ExampleAdorner(Definitions definitions) {
@@ -106,7 +105,7 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
   }
 
   @Override
-public XhtmlGeneratorAdornerState getState(XhtmlGenerator ref, XhtmlGeneratorAdornerState state, Element node) throws Exception {
+  public XhtmlGeneratorAdornerState getState(XhtmlGenerator ref, XhtmlGeneratorAdornerState state, Element node) throws Exception {
     if (state == null) {
       if (node == null)
         return new ExampleAdornerState(State.Unknown, null, "", "");
@@ -154,9 +153,9 @@ public XhtmlGeneratorAdornerState getState(XhtmlGenerator ref, XhtmlGeneratorAdo
                 String t = XMLUtil.getNamedChild(c, "id").getAttribute("value");
                 if (url.equals(t))
                   return new ExampleAdornerState(State.Reference, s.getDefinition(), "<a href=\""+e.getFileTitle()+".xml.htm#"+id+"\">", "</a>");
-                }
               }
             }
+          }
           return new ExampleAdornerState(State.Reference, s.getDefinition(), "<font color=\"red\">", "</font>");
         }
         else
