@@ -1286,6 +1286,7 @@ public class Publisher {
 	static final String JAXP_SCHEMA_SOURCE = "http://java.sun.com/xml/jaxp/properties/schemaSource";
 
 	private void validateXml() throws Exception {
+	  produceCoverageWarnings();
 		log("Validating XML");
 		log(".. Loading schemas");
 		StreamSource[] sources = new StreamSource[2];
@@ -1326,7 +1327,25 @@ public class Publisher {
 		validateRoundTrip(schema, "profiles-resources");
 	}
 
-	private void validateXmlFile(Schema schema, String n) throws Exception {
+	private void produceCoverageWarnings() {
+    for (ElementDefn e : page.getDefinitions().getStructures().values()) 
+      produceCoverageWarning("", e);
+    for (ElementDefn e : page.getDefinitions().getTypes().values()) 
+      produceCoverageWarning("", e);
+    for (ResourceDefn e : page.getDefinitions().getResources().values()) 
+      produceCoverageWarning("", e.getRoot());    
+  }
+
+  private void produceCoverageWarning(String path, ElementDefn e) {
+    
+   // if (!e.isCoveredByExample() && !Utilities.noString(path))
+    //  log("The path "+path+e.getName()+" is not covered by any example");
+    for (ElementDefn c : e.getElements()) {
+      produceCoverageWarning(path+e.getName()+"/", c);
+    }    
+  }
+
+  private void validateXmlFile(Schema schema, String n) throws Exception {
 		char sc = File.separatorChar;
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		factory.setNamespaceAware(true);

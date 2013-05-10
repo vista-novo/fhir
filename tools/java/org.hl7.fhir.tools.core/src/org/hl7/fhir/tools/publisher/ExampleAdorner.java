@@ -59,6 +59,8 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
       super(prefix, suffix);
       this.state = state;
       this.definition = definition;
+      if (definition != null)
+        definition.setCoveredByExample(true);
     }
 
     public State getState() {

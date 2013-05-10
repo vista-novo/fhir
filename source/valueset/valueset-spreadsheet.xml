@@ -145,8 +145,8 @@
     <Cell><Data ss:Type="String">ValueSet</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Value Set - a set of defined codes that may be bound to a context</Data></Cell>
-    <Cell><Data ss:Type="String">Value Set - a set of defined codes from one or more code systems that may be bound to a context</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Value Set - a set of defined codes that may be used in some context</Data></Cell>
+    <Cell><Data ss:Type="String">Value Set - a set of defined codes that may be used in some context</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">

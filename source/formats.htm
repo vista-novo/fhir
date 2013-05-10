@@ -424,13 +424,14 @@ In XML bundles are represented using an Atom format (<a href="http://tools.ietf.
   &lt;title&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.htm#string">string</a></span> <span style="color:navy;">Text statement of purpose</span><span style="color: Gray"> --&gt;</span>&lt;/title&gt;
   &lt;updated&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.htm#instant">instant</a></span> <span style="color:navy;">When the bundle was built</span><span style="color: Gray"> --&gt;</span>&lt;/updated&gt;
   &lt;id&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.htm#uri">uri</a></span> <span style="color:navy;">Unique uri for this bundle</span><span style="color: Gray"> --&gt;</span>&lt;/id&gt;
-  &lt;os:totalResults xmlns:os="http://a9.com/-/spec/opensearch/1.1/"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>0..1</b></span> <span style="color:darkgreen;"><a href="datatypes.htm#primitive">integer</a></span> <span style="color:navy;">Paging: the total
-  number of results</span><span style="color: Gray"> --&gt;</span>&lt;/os:totalResults&gt;
-  &lt;link rel="self" href="<span style="color:navy;">[building application url]</span>"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>&lt;/link&gt;
-  &lt;link rel="first" href="<span style="color:navy;">[paging: url for first page of result]</span>"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>&lt;/link&gt;
-  &lt;link rel="previous" href="<span style="color:navy;">[paging: url for previous page of result]</span>"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>&lt;/link&gt;
-  &lt;link rel="next" href="<span style="color:navy;">[paging: url for next page of result]</span>"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>&lt;/link&gt;
-  &lt;link rel="last" href="<span style="color:navy;">[paging: url for last page of result]</span>"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>&lt;/link&gt;
+  &lt;category term="<span style="color:navy;">[Tag Uri]</span>" label="<span style="color:navy;">[Tag Label]</span>" scheme="http://hl7.org/fhir/tag"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>0..*</b></span><span style="color: Gray"> --&gt;</span>  
+  &lt;os:totalResults xmlns:os="http://a9.com/-/spec/opensearch/1.1/"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>0..1</b></span> <span style="color:darkgreen;"><a href="datatypes.htm#primitive">integer</a></span> <span style="color:navy;">
+              Paging: the total number of results</span><span style="color: Gray"> --&gt;</span>&lt;/os:totalResults&gt;
+  &lt;link rel="self" href="<span style="color:navy;">[building application url (Service base on REST)]</span>"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>
+  &lt;link rel="first" href="<span style="color:navy;">[paging: url for first page of result]</span>"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>
+  &lt;link rel="previous" href="<span style="color:navy;">[paging: url for previous page of result]</span>"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>
+  &lt;link rel="next" href="<span style="color:navy;">[paging: url for next page of result]</span>"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>
+  &lt;link rel="last" href="<span style="color:navy;">[paging: url for last page of result]</span>"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>
   &lt;author&gt;<span style="color:Gray;">&lt;!-- 0..1 Who created resource? --&gt;</span>
       &lt;name&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.htm#string">string</a></span> <span style="color:navy;">Name of Human or Device that authored the resource</span><span style="color: Gray"> --&gt;</span>&lt;/name&gt;
       &lt;uri&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span> <span style="color:darkgreen;"><a href="datatypes.htm#uri">uri</a></span> <span style="color:navy;">Link to the resource for the author</span><span style="color: Gray"> --&gt;</span>&lt;/uri&gt;
@@ -444,8 +445,9 @@ In XML bundles are represented using an Atom format (<a href="http://tools.ietf.
     &lt;author&gt;<span style="color:Gray;">&lt;!-- 0..1 Who created resource? --&gt;</span>
       &lt;name&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.htm#string">string</a></span> <span style="color:navy;">Name of Human or Device that authored the resource</span><span style="color: Gray"> --&gt;</span>&lt;/name&gt;
       &lt;uri&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span> <span style="color:darkgreen;"><a href="datatypes.htm#uri">uri</a></span> <span style="color:navy;">Link to the resource for the author</span><span style="color: Gray"> --&gt;</span>&lt;/uri&gt;
-    &lt;/author>
-    &lt;category term="<span style="color:navy;">[Resource Type]</span>" scheme="http://hl7.org/fhir/resource-types"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span><span style="color: Gray"> --&gt;</span>&lt;/category&gt;  
+    &lt;/author>  <!--    &lt;category term="<span style="color:navy;">[Resource Type]</span>" scheme="http://hl7.org/fhir/resource-types"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span><span style="color: Gray"> --&gt;</span>&lt;/category&gt;   -->
+    <span style="color:Gray;">&lt;!-- </span><span style="color:navy;">Tags affixed to the resource (<span style="color: brown;"><b>0..*</b></span>): </span> <span style="color: Gray"> --&gt; </span>
+    &lt;category term="<span style="color:navy;">[Tag Uri]</span>" label="<span style="color:navy;">[Tag Label]</span>" scheme="http://hl7.org/fhir/tag"&gt; 
     &lt;content type="text/xml"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span><span style="color: Gray"> --&gt;</span>
       &lt;<span style="color:navy;">[ResourceName]</span> xmlns="http://hl7.org/fhir">
         <span style="color: Gray">&lt;!-- </span><span style="color: navy">Content for the resource</span><span style="color: Gray"> --&gt;</span>
@@ -464,20 +466,22 @@ In XML bundles are represented using an Atom format (<a href="http://tools.ietf.
 <h4>Notes</h4>
 <ul>
  <li>Logically, a bundle is a set of resources that are prepared to send somewhere for consumption - a "feed". There is no implication that the feed is a standing arrangement (though this is not precluded)</li>
- <li>The order of elements does not matter in an atom feed (but not entries: the order of the entries is important). The order of elements in the atom namespace as documented here does not need to be followed</li>
+ <li>The order of elements does not matter in an atom feed (but not entries: the order of the entries is important). The order of elements in the atom namespace as documented above does not need to be followed</li>
  <li>The title for the feed and the entry are arbitrary human readable content and not to be used for any automated processing. Applications may populate these in any useful way</li> 
  <li>Every bundle must have a unique id and that id must be a valid absolute <a href="datatypes.htm#uri">uri</a>. UUIDs are recommended (urn:uuid:...)</li>
  <li>The entry element carries the <a href="resources.htm#metadata">three pieces of resource metadata</a>: Id (.id), Version Id (.link), Last Updated (.updated)</li>
+ <li>Each entry also carries all the Tags affixed to the resource in the category element. The category element can be used in other ways too</li>
  <li>The entry.id must be an absolute url, the tail element of which is the logical id of the resource. The id is a version independent reference</li>
  <li>The entry.link to self is a version specific reference to the resource.</li>
  <li>When used in a <a href="http.htm">RESTful implementation</a>, the entry.link and entry.id are the URLs of the resource on the system; the version specific link can be used as the basis synchronizing pub/sub systems using the atom bundle with the <a href="http.htm#history">updates operation</a>. In other contexts, the values should be literal references to a server if one is available</li>
- <li>Note that an author is required for each entry, but if an author is provided in the base feed, an author is not needed on each entry</li>
- <li>The author of a resource is not explicit in the FHIR resource model; instead it is delegated to the infrastructure. The name is the name of a human author or a device. The uri is a link to the resource for the author.</li> 
- <li>An xml:base element may be specified on the content element, though one is not generally needed for FHIR resources.</li>
- <li>The entire bundle can be signed with a single Enveloped Digital Signature as described in the Atom specification (section 5.1). See below for further comment</li>
+ <li>Note that the atom specification requires an author for each entry, but if an author is provided in the base feed element, an author is not needed on each entry</li>
+ <li>The author of a resource is not explicit in the FHIR resource model; instead it is delegated to the infrastructure. The name is the name of a human author or a device. The uri is a link to the author (possibly a Practitioner resource)</li> 
+ <li>xml:base elements SHOULD NOT be used and implementations do not need to support it</li>
+ <li>The entire bundle can be signed with a single Enveloped Digital Signature as described in the Atom specification (section 5.1)</li>
  <li>The mime type for an bundle when represented in XML is application/atom+xml</li>
  <li>The feed.link element with relationship "self" is assigned no particular meaning the FHIR specification, except in the case of a search operation, but may be used to provide a reference to the source of the feed</li>
- <li>The feed.link elements with relationship "first", "last", "previous" and "next" are used with paging and allow a client to browse through a multi-page result. See also <a href="http.htm#search">search</a></li>
+ <li>The feed.link elements with relationship "first", "last", "previous" and "next" are used to implement paging in the RESTful interface and allow a client to browse through a multi-page result. See <a href="search.htm">search</a></li>
+ <li>The feed.category element is used in association with searching on tags</li>
 </ul>
 
 <a name="atom-deleted"> </a>
@@ -518,8 +522,8 @@ which is the id of the target, like this:
 <p>
 A reader trying to find the resource this <i>institution</i> element identifies 
 should always look through the entries in the atom feed prior to looking 
-anywhere else for the institution. If the entry.id for the resource that contains
-the link above is http://example.org/patient/@1, then the absolute 
+anywhere else for the institution. If the feed.id for the resource that contains
+the link above is http://example.org/, then the absolute 
 URL is http://example.org/organization/@23. If that organization is in the feed, 
 it would look like this:
 </p>
@@ -530,11 +534,10 @@ it would look like this:
     .. 
     &lt;id>http://example.org/organization/@23&lt;id>
     .. 
-    &lt;category term="Organization" scheme="http://hl7.org/fhir/resource-types"/>
 
     &lt;content type="text/xml">
       &lt;Organization xmlns="http://hl7.org/fhir">
-         &lt;!-- other Content for the resource --&gt;
+         &lt;!-- Content for the resource --&gt;
       &lt;/Organization>
     &lt;/content>
   ... feed ...
@@ -580,17 +583,6 @@ the scope of resolution of an id attribute to the resource in which the <i>id</i
 <a name="json-bundles"></a>
 <h3>JSON Bundle Representation</h3>
 
-<!--
-Note that 
-there are several initiatives to define a JSON format for Atom, all of which are suffering from having to simulate properties, 
-namespaces and other xml-specific features
-
-n Atom format (<a href="http://tools.ietf.org/html/rfc4287" target="_blank">http://tools.ietf.org/html/rfc4287</a>), following this template:
-
-. Instead, FHIR defines a 
-
--->
-
 <p>
 In JSON bundles are represented using a JSON format that is tailored to the specific needs for bundles. 
 Each element in the Xml feed definition has a JSON corresponding JSON object member with the same name. 
@@ -607,6 +599,11 @@ Here is an example feed returning search results for a person query:
       &quot;rel&quot; : &quot;self&quot;,
 	  &quot;href&quot; : &quot;http://ip-0a7a5abe:16287/fhir/person?format=json&quot;
     }],
+    &quot;category&quot; : [{
+      &quot;term&quot; : &quot;[Tag Uri]&quot;,
+      &quot;label&quot; : &quot;[Tag Label]&quot;,
+      &quot;scheme&quot; : &quot;http://hl7.org/fhir/tag&quot;
+    }],
     &quot;totalResults&quot; : 12,
     &quot;entry&quot; : [{
       &quot;title&quot; : &quot;Resource of type Person, with id = 1 and version = 1&quot;,
@@ -621,8 +618,9 @@ Here is an example feed returning search results for a person query:
         &quot;name&quot; : &quot;Grahame Grieve / HL7 publishing committee&quot;
       }],
       &quot;category&quot; : [{
-        &quot;term&quot; : &quot;Person&quot;,
-        &quot;scheme&quot; : &quot;http://hl7.org/fhir/resource-types&quot;
+        &quot;term&quot; : &quot;[Tag Uri]&quot;,
+        &quot;label&quot; : &quot;[Tag Label]&quot;,
+        &quot;scheme&quot; : &quot;http://hl7.org/fhir/tag&quot;
       }],
       &quot;content&quot; : {
         &quot;Person&quot; : { ...person content in JSON... }
@@ -636,14 +634,7 @@ Here is an example feed returning search results for a person query:
 </pre>
 
 <p>
-Notes:
-</p>
-<ul>
- <li>property names for elements that can repeat are not pluralized for consistency of overall approach</li>
- <li>Category repeats because it is allowed to repeat in atom, even though FHIR does not make use of this facility</li>
-</ul>
-<p>
-The mime type for a json bundle is also application/json+fhir.
+Note that property names for elements that can repeat are not pluralized for consistency of overall approach. The mime type for a json bundle is also application/fhir+json.
 </p>
 
 <a name="json-bundle-delete"> </a>
@@ -702,7 +693,7 @@ In JSON, the representation would look like this:
 <p>
 Binary resources can also be embedded as <a href="resources.htm#contained">contained resources</a>.  
 If there's a desire to capture metadata about a binary object, an appropriate resource type must be used such as
-<a href="document.htm">Document</a> or <a href="Picture.htm">Picture</a>.
+<a href="documentreference.htm">DocumentReference</a> or <a href="picture.htm">Picture</a>.
 </p>
 
 

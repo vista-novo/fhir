@@ -30,6 +30,9 @@ a signature of the target resource XML representation. (todo: what about json?)
 <p>
 Servers that modify the resource on submission will break the digital signature. 
 </p>
+<p>
+Todo: how can you sign tags as well as the resource?
+</p>
 
 <h3>Party References</h3>
 

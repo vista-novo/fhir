@@ -99,7 +99,7 @@
    <Column ss:StyleID="s63" ss:Width="23.25"/>
    <Column ss:StyleID="s63" ss:Width="60"/>
    <Column ss:StyleID="s63" ss:Width="27"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="170.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="225"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="138.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="170.25"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135.75"/>
@@ -275,7 +275,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Procedure.relatedItem.target</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Procedure | Prescription)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Procedure | MedicationPrescription)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">The related item - eg a procedure</Data></Cell>
     <Cell ss:Index="20"><Data ss:Type="String">Resource(Procedure | Prescription)</Data></Cell>
    </Row>
@@ -297,7 +297,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>9</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -310,10 +310,12 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

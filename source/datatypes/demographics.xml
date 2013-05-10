@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T09:39:52Z</Created>
-  <LastSaved>2013-01-16T03:02:26Z</LastSaved>
+  <LastSaved>2013-05-09T01:32:34Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,6 @@
   <WindowWidth>7995</WindowWidth>
   <WindowTopX>-15</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>6</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -451,6 +450,7 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <Zoom>90</Zoom>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -749,7 +749,7 @@
  <Worksheet ss:Name="marital-status">
   <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="11" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="14.4375">
-   <Column ss:AutoFitWidth="0" ss:Width="156"/>
+   <Column ss:AutoFitWidth="0" ss:Width="172.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="36.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="440.25"/>
    <Column ss:Width="209.25"/>
@@ -808,7 +808,7 @@
     <Cell><Data ss:Type="String">Widowed - The spouse has died</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">http://hl7.org/v3/nullflavor</Data></Cell>
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/null-flavor</Data></Cell>
     <Cell><Data ss:Type="String">UNK</Data></Cell>
     <Cell><Data ss:Type="String">The value is unknown</Data></Cell>
    </Row>
@@ -826,11 +826,10 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
+     <ActiveRow>10</ActiveRow>
      <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>

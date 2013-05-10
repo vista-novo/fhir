@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>1245</WindowHeight>
+  <WindowHeight>1185</WindowHeight>
   <WindowWidth>22455</WindowWidth>
   <WindowTopX>3465</WindowTopX>
-  <WindowTopY>2205</WindowTopY>
+  <WindowTopY>2265</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -275,7 +275,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ImagingStudy.referrer</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Provider)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Referring physician (0008,0090)</Data></Cell>
     <Cell><Data ss:Type="String">0008,0090</Data></Cell>
@@ -376,7 +376,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ImagingStudy.interpreter</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Provider)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Practitioner)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Who interpreted images (0008,1060)</Data></Cell>
     <Cell><Data ss:Type="String">0008,1060</Data></Cell>
@@ -837,12 +837,12 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <Zoom>130</Zoom>
+   <Zoom>110</Zoom>
    <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>10</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -855,12 +855,11 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>38</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

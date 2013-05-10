@@ -97,6 +97,8 @@ public class ModelValidator {
 		errors.clear();
     rule(parent.getName(), !name.equals("Metadata"), "The name 'Metadata' is not a legal name for a resource");
     rule(parent.getName(), !name.equals("History"), "The name 'History' is not a legal name for a resource");
+    rule(parent.getName(), !name.equals("Tag"), "The name 'Tag  ' is not a legal name for a resource");
+    rule(parent.getName(), !name.equals("Tags"), "The name 'Tags' is not a legal name for a resource");
     rule(parent.getName(), name.toLowerCase().substring(0, 1) != name.substring(0, 1), "Resource Name must start with an uppercase alpha character");
 
     checkElement(parent.getName(), parent.getRoot(), parent, null);
@@ -123,7 +125,7 @@ public class ModelValidator {
     rule(path, !e.getName().equals("extension"), "Element named \"extension\" not allowed");
     rule(path, !e.getName().equals("entries"), "Element named \"entries\" not allowed");
     rule(path, (parentName == null) || e.getName().charAt(0) == e.getName().toLowerCase().charAt(0), "Element Names must not start with an uppercase character");
-    
+    warning(path, e.getName().equals(path) || e.getElements().size() == 0 || !Utilities.noString(e.getDir()), "Element is missing a UML layout direction");
 // this isn't a real hint, just a way to gather information   hint(path, !e.isModifier(), "isModifier, minimum cardinality = "+e.getMinCardinality().toString());
     
     if( e.getShortDefn().length() > 0)
@@ -166,6 +168,8 @@ public class ModelValidator {
   private boolean nameOverlaps(String name, String parentName) {
 	  if (Utilities.noString(parentName))
 	    return false;
+	  if (name.equals(parentName))
+      return false;
 	  name = name.toLowerCase();
 	  parentName = parentName.toLowerCase();
 	  if (parentName.startsWith(name))

@@ -76,6 +76,8 @@ public class ElementDefn {
 								// base definition (true) or was it specifically
 								// constrained in the profile (false)
 
+	private boolean isCoveredByExample; // true if an example has hit this
+	
 	public ElementDefn() {
 		super();
 	}
@@ -642,6 +644,16 @@ public class ElementDefn {
 	public String getMapping(String name) {
 		return mappings.get(name);
 	}
-    
+
+  public boolean isCoveredByExample() {
+    return isCoveredByExample;
+  }
+
+  public void setCoveredByExample(boolean isCoveredByExample) {
+    this.isCoveredByExample = isCoveredByExample;
+  }
+   
+	
+	
 }
 

@@ -16,7 +16,7 @@ todo:
 
 <%maindiv%>
 <%pageheader%>
-[%onthispage General Issues#root|operations#read|Binary Support#binary|hData Information#hdata|Paging#paging|Summary#summary%]
+[%onthispage General Issues#root|operations#read|Tag Operations#tags|Binary Support#binary|hData Information#hdata|Paging#paging|Summary#summary%]
 
 <h1>RESTful HTTP Details</h1>
 
@@ -42,7 +42,8 @@ resources are supported.
 <p>
 The following logical interactions are defined:
 </p>
-<a name="interactions"></a>
+<a name="interactions"> </a>
+<a name="operations"> </a>
 <table class="list"> 
   <tr><td><b>Instance Level Operations</b></td><td></td></tr>
   <tr><td><a href="#read">read</a></td><td>Read the current state of the resource</td></tr>
@@ -404,7 +405,7 @@ The interaction is performed by an HTTP POST operation as shown:
 The content of the post submission is a resource bundle. The resources in the bundle are each processed separately
 as if they were an individual <a href="#create">create</a>, <a href="#update">update</a> or 
 <a href="#delete">delete</a> as described below, along with the normal processing for each 
-(such as verification and version aware updates). Servers SHALL either accept all resources 
+(such as tracking tags, verification and version aware updates). Servers SHALL either accept all resources 
 and return a 200 OK, along with a response bundle, or reject all resources and return an 
 HTTP 400 or 500 type response. It is not an error if the submitted bundle has no resources in it.
 The outcome of the processing the transaction SHALL not depend on the order of the resources in 
@@ -521,7 +522,47 @@ are not reflected in the history list.
 </p>
  <p>Searches SHOULD use paging as described <a href="#paging">below</a></p>
  
- <a name="binary"> </a>
+ <a name="tags"> </a>
+<h2>Tag Operations</h2>
+ 
+<p>
+Tags are..
+
+When resources are exchanged directly use HTTP on the read, vread, create and update operations, the 
+http header "Category" is used, following the method described for <a href="http://tools.ietf.org/html/draft-johnston-http-category-header-02">Web Categories</a>.
+</p>
+<pre>
+  Category: [Tag URI]; scheme="http://hl7.org/fhir/tag"; label="[Tag Uri]"
+</pre>
+<p>
+The label portion is optional.
+</p>
+<table class="grid">
+ <tr><td>read/vread</td><td>The server returns all tags associated with the resource in the headers</td></tr>
+ <tr><td>create</td><td>The server stores all the tags provided in the headers</td></tr>
+ <tr><td>update</td><td>The server store sall the tags provided in the headers, and keeps any tags already associated with the resource</td></tr>
+</table>
+<p>
+In the other operations, the resources are wrapped in bundles, where tags are represented in the <i>entry.category</i> element
+and servers populate these completely or process these as part of a batch submission.
+</p>
+<p>
+The following operations provide specific support for Tags:
+</p>
+<table class="grid">
+ <tr><td><pre>GET [service-url]/tags</pre></td><td>get a list of all tags (return as a feed with no entries, and a series of categories on the feed element)</td></tr>
+ <tr><td><pre>GET [service-url]/[type]/tags</pre></td><td>get a list of all tags used for the nominated resource type</td></tr>
+ <tr><td><pre>GET [service-url]/[type]/@[id]/tags</pre></td><td>get a list of all tags affixed to the nominated resource type. This duplicates the HTTP header entries</td></tr>
+ <tr><td><pre>POST service-url]/[type]/@[id]/tags</pre></td><td>Affix tags to the nominated resource. The body content is an atom feed with one or more categories on the feed, and no entries</td></tr>
+ <tr><td><pre>POST service-url]/[type]/@[id]/history/@[vid]/tags</pre></td><td>Affix tags to the nominated version of the resource. The body content is an atom feed with one or more categories on the feed, and no entries</td></tr>
+ <tr><td><pre>DELETE service-url]/[type]/@[id]/tags</pre></td><td>Affix tags to the nominated resource. The body content is an atom feed with one or more categories on the feed, and no entries</td></tr>
+ <tr><td><pre>DELETE service-url]/[type]/@[id]/history/@[vid]/tags</pre></td><td>Affix tags to the nominated version of the resource. The body content is an atom feed with one or more categories on the feed, and no entries</td></tr>
+</table>  
+<p>
+The tags of an old version can still be changed. Note that changing the tags on a resource does not create a new version of the resource.
+</p>
+ 
+<a name="binary"> </a>
 <h2>Binary Support</h2>
 <p>
 FHIR servers can choose to offer support for purely binary resources
