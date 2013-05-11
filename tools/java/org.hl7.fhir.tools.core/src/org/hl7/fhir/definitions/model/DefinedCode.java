@@ -29,6 +29,7 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 public class DefinedCode {
 
+  private String id;
 	private String code;
 	private String definition;
 	private String comment;
@@ -90,4 +91,14 @@ public class DefinedCode {
   public boolean hasSystem() {
     return system != null && !system.equals("");
   }
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+  
+  
 }

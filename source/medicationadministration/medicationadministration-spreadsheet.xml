@@ -10,7 +10,7 @@
   <LastAuthor>Hugh Glover</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
   <LastSaved>2013-05-07T00:48:23Z</LastSaved>
-  <Version>15.00</Version>
+  <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
@@ -20,6 +20,7 @@
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -527,7 +528,6 @@
     <HorizontalResolution>300</HorizontalResolution>
     <VerticalResolution>300</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -891,19 +891,20 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="21" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="21" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Width="209.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="221.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="81.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="90"/>
-   <Column ss:AutoFitWidth="0" ss:Width="106.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="90" ss:Span="1"/>
+   <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="106.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="274.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s89" ss:HRef="#Sheet7!A1"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -912,6 +913,7 @@
     <Cell ss:StyleID="s85"><Data ss:Type="String">A set of codes indicating the current status of a MedicationAdministration</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">#MedAdmStatus</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Tie this into the HL7 V3 Event act state model for administration</Data></Cell>
    </Row>
@@ -920,6 +922,7 @@
     <Cell ss:StyleID="s85"><Data ss:Type="String">A set of codes indicating the reason why the MedicationAdministration is negated.</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">dynamic</Data></Cell>
     <Cell ss:StyleID="s82"/>
     <Cell ss:StyleID="s83"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
@@ -928,28 +931,32 @@
     <Cell ss:StyleID="s76"><Data ss:Type="String">A set of codes indicating the method by which the medication is introduced into or onto the body. </Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s83"><Data ss:Type="String">to be completed</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">dynamic</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="s83"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">MedicationAdministrationSite</Data></Cell>
     <Cell ss:StyleID="s76"><Data ss:Type="String">A set of codes indicating the location on the body where the medication is introduced into or onto the body..</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s83"><Data ss:Type="String">to be completed</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">dynamic</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="s83"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">RouteOfAdministration</Data></Cell>
     <Cell ss:StyleID="s76"><Data ss:Type="String">A set of codes indicating the path in or on the body by which the medication is introduced into or onto the body. </Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s83"><Data ss:Type="String">to be completed</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">dynamic</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="s83"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s70"><Data ss:Type="String">AMedicinesTerminology</Data></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">A set of codes that identify the allowable medicines in the context in which the administration is performed.  This will usually be a  sub-set of a national Medicines terminology.</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s83"><Data ss:Type="String">to be completed</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">dynamic</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="s83"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
    <Row ss:Index="9" ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"/>
@@ -1004,10 +1011,11 @@
     <HorizontalResolution>300</HorizontalResolution>
     <VerticalResolution>300</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
+     <ActiveRow>5</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
@@ -1016,27 +1024,32 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="MedAdmStatus">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s82" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s82" ss:Width="55.5"/>
+   <Column ss:Index="2" ss:StyleID="s82" ss:Width="55.5"/>
    <Column ss:StyleID="s82" ss:AutoFitWidth="0" ss:Width="192.75"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="38.25">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">active</Data></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">The administration of the medication has started and is currently in progress.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="38.25">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">paused</Data></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">The administration of the medication has started but is currently stopped with a firm intention of restarting.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="25.5">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">The administration of the medication has finished</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="38.25">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">nullified</Data></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">The administration of the medication was recorded in error and the record should now be disregarded.</Data></Cell>
    </Row>
@@ -1051,8 +1064,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

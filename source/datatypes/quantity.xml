@@ -20,6 +20,7 @@
   <WindowWidth>23955</WindowWidth>
   <WindowTopX>4320</WindowTopX>
   <WindowTopY>4650</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -175,7 +176,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -293,20 +293,21 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s68" ss:DefaultColumnWidth="120"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s68" ss:Width="75"/>
    <Column ss:StyleID="s68" ss:Width="108.75"/>
    <Column ss:StyleID="s68" ss:Width="44.25"/>
-   <Column ss:StyleID="s68" ss:Width="83.25"/>
-   <Column ss:StyleID="s68" ss:Width="81.75"/>
+   <Column ss:StyleID="s68" ss:Width="83.25" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s68" ss:Width="81.75"/>
    <Column ss:StyleID="s68" ss:Width="58.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -315,6 +316,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">how the Quantity should be understood and represented</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">fixed</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">#quantity-comparator</Data></Cell>
    </Row>
   </Table>
@@ -325,6 +327,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -337,10 +340,11 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="quantity-comparator">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="569.25"/>
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="569.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"/>
@@ -349,18 +353,22 @@
     <Cell ss:StyleID="s65"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">&lt;</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The actual value is less than the given value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">&lt;=</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The actual value is less than or equal to the given value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">&gt;=</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The actual value is greater than or equal to the given value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">&gt;</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The actual value is greater than the given value</Data></Cell>
    </Row>
@@ -375,8 +383,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>35</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

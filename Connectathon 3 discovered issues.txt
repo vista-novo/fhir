@@ -1,18 +1,16 @@
-- need to describe relative references better + xml:base? all references relative to service base? (note searching issue)
- - proposal - implementation experience makes it too hard. Make all references relative to the service base, not the local resource
+TODO:
+- write use cases for reliable messaging 
+- when to use profiles   (draft something to go on the wiki in methodology)
+- Getting feeds with just summary information (select specific fields to return) (Eliot to protoype something)
+- Chained searches over version-specific links, while the search only supports searching on current versions
+- Inter-version Compatibility
+- pathed search
+    /problem?patient.id=[id]
+    /patient/@[id]/problem
+- change provenance to have multiple targets?
 
-- when to use profiles
-  - draft something to go on the wiki in methodology
 
-Search
-  - need to fix up the way search parameters for resource references are defined
-     - proposal: tuple with syntax to pair in the value (search?statedate=[date]$[state])
-     - proposal: subject=Patient(/@23)
-  
-  - Getting feeds with just summary information (select specific fields to return)
-     - Eliot to protoype something 
 
-  - Chained searches over version-specific links, while the search only supports searching on current versions
 
 
 
@@ -20,64 +18,28 @@ Search
 Wed Q1
 
 
-- write use cases for reliable messaging 
+imAge maps in chrome
 
-- add id to conformance
-- add note about instance to Device
-- reserve space for note about product relating to device vs kind and medication subscribing
-
-DiagnosticOrder
-- different codes may have different status (need to recurse - at what point)?
-- specimens (wha was collected)
-- provider might specify location
-- rename Short Name to Short Label in the spreadsheets
+terminology work:
+(a) incorporate v2 
+(b) incorporate v3 
+(c) nested codes
+(d) 
 
 
 
-Need to add discussion of subject - consistency issue in resource references (NO ASSUMPTIONS CAN BE MADE)
-
-
-element name
-unless element name is meaningless without scope (consider just parent name)
-unless duplicate search parameter
-[parent]-[child] is default
 
 
 Add support for v3 relationships with value sets (including null flavors)
+re-org svn
+images - change generation?
+example coverage tracking
 
-	
-add profile.identifier like valueset
-add scale factor
+why is procedure.related item so limited?
 
-change documentation around connecting to device - or proxy
+add dynamic/static note
+add closed/growing note to code lists
 
-
-Virtual Medical Device: a medical-related subsystem of a medical device. The virtual device that may be part of the containing device, or a separate device that may be communicating with it
-
-
-Tags:
-* a tag is associated with a version (can track history of tags)
-* in the atom feeds, tags go on a resource in atom entry
-* when a server sends a resource directly, it adds the tags using the category header
-* when a client posts or puts a resource, it can use the category header
-* when a client requests a tag list for some user, it gets an atom with no entries and just categories
- * [fhir]/tags - get a list of all tags
- * [fhir]/[type]/tags - get a list of all tags for this type
- * [fhir]/[type]/@[id]/tags - get a list of tags for current version
- * [fhir]/[type]/@[id]/history/@[id]/tags - get a list of tags for past version
-* tags can be changed on old versions
-* a new version of a reosurce keeps all the tags of a previous resource, and gains any new tags associated with the post
-* tags must be deleted explicitly
-* to add a tag: Post a category (or more) in an atom to [fhir]/[type]/@[id]/tags or [fhir]/[type]/@[id]/history/@[id]/tags
-* to delete a tag: delete a category (or more) in an atom to [fhir]/[type]/@[id]/tags or [fhir]/[type]/@[id]/history/@[id]/tags
-
-
-change provenance to have multiple targets?
-what are the relationship of EHR record life cycle event to FHIR?
-
-
-/problem?patient.id=[id]
-/patient/@[id]/problem
 
 
 DicomObject
@@ -89,6 +51,7 @@ DicomObject
   datetime
   title
   
+
 fix parameters referring to images
  - sopclass
  - series
@@ -100,7 +63,6 @@ fix parameters referring to images
  + 
  
 
-Inter-version Compatibility
 
 
 

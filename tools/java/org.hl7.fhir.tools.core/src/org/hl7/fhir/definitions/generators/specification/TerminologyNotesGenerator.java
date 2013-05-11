@@ -130,31 +130,10 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
             "<a href=\"terminologies.htm#conformance\">"+(cd.getBindingStrength() == null ? "--" : cd.getBindingStrength().toString().toLowerCase())+"</a></td>");
       write(" </tr>\r\n");
     }
-    write("</table>\r\n<p> </p>\r\n");
-
-		// 2. old form
-//    write("<ul>\r\n");
-//		for (BindingSpecification cd : cds) {
-//			String path;
-//			List<CDUsage> list = txusages.get(cd);
-//
-//			if (list.size() == 2)
-//				path = list.get(1).path+" has the definition ";
-//			else {
-//				path = list.get(1).path;
-//				for (int i = 2; i < list.size() - 1; i++) {
-//					path = path+", "+list.get(i).path;
-//				}
-//				path = path+" and "+list.get(list.size()-1).path+" share the definition ";
-//			}
-//	
-//			genBinding(cd, path, list.get(1).element.typeCode().equals("code"));
-//		}
-//		write("</ul>\r\n");
-		
+    write("</table>\r\n<p> </p>\r\n");		
 	}
 
-  private String describeBinding(BindingSpecification cd) throws Exception {
+  public static String describeBinding(BindingSpecification cd) throws Exception {
     if (cd.getBinding() == BindingSpecification.Binding.Unbound) 
       return cd.getDefinition()+" (not bound to any particular codes)";
     if (cd.getBinding() == BindingSpecification.Binding.Special) {

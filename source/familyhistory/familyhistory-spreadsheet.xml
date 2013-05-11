@@ -145,7 +145,7 @@
     <Cell><Data ss:Type="String">To Do</Data></Cell>
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">FamilyHistory</Data></Cell>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
@@ -208,7 +208,7 @@
     <Cell ss:Index="11" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:Height="105">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">FamilyHistory.relation.deceased[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -643,39 +643,43 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
    <Column ss:Width="102"/>
    <Column ss:Width="390.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="81.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="90"/>
-   <Column ss:AutoFitWidth="0" ss:Width="107.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="90" ss:Span="1"/>
+   <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="107.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="275.25"/>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
-   <Row ss:Height="30" ss:StyleID="s75">
+   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s75">
     <Cell><Data ss:Type="String">FamilialRelationship</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">The nature of the relationship between the patient and the person with the condition</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#familial-relationship</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s63"><Data ss:Type="String">ConditionOutcome</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">The result of the condition for the patient.  E.g. death, permanent disability, temporary disability, etc.</Data></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s75"/>
     <Cell ss:StyleID="s75"/>
+    <Cell ss:StyleID="s75"/>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"/>
     <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s75"/>
     <Cell ss:StyleID="s75"/>
     <Cell ss:StyleID="s75"/>
     <Cell ss:StyleID="s75"/>
@@ -687,6 +691,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
@@ -707,6 +712,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -764,11 +771,12 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="familial-relationship">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="13" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="13" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="14.0625">
-   <Column ss:Width="74.25"/>
+   <Column ss:Index="2" ss:Width="74.25"/>
    <Column ss:Width="113.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="15" ss:StyleID="s75">
+    <Cell><Data ss:Type="String">System</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"/>
@@ -777,50 +785,62 @@
     <Cell ss:StyleID="s65"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/familyrelationship</Data></Cell>
     <Cell><Data ss:Type="String">mother</Data></Cell>
     <Cell><Data ss:Type="String">Mother</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/familyrelationship</Data></Cell>
     <Cell><Data ss:Type="String">father</Data></Cell>
     <Cell><Data ss:Type="String">Father</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/familyrelationship</Data></Cell>
     <Cell><Data ss:Type="String">sister</Data></Cell>
     <Cell><Data ss:Type="String">Sister</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/familyrelationship</Data></Cell>
     <Cell><Data ss:Type="String">brother</Data></Cell>
     <Cell><Data ss:Type="String">Brother</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/familyrelationship</Data></Cell>
     <Cell><Data ss:Type="String">matUncle</Data></Cell>
     <Cell><Data ss:Type="String">Maternal Uncle</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/familyrelationship</Data></Cell>
     <Cell><Data ss:Type="String">matAunt</Data></Cell>
     <Cell><Data ss:Type="String">Maternal Aunt</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/familyrelationship</Data></Cell>
     <Cell><Data ss:Type="String">matGFather</Data></Cell>
     <Cell><Data ss:Type="String">Maternal GrandFather</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/familyrelationship</Data></Cell>
     <Cell><Data ss:Type="String">matGMother</Data></Cell>
     <Cell><Data ss:Type="String">Maternal GrandMother</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/familyrelationship</Data></Cell>
     <Cell><Data ss:Type="String">patUncle</Data></Cell>
     <Cell><Data ss:Type="String">Paternal Uncle</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/familyrelationship</Data></Cell>
     <Cell><Data ss:Type="String">patAunt</Data></Cell>
     <Cell><Data ss:Type="String">Paternal Aunt</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/familyrelationship</Data></Cell>
     <Cell><Data ss:Type="String">patGFather</Data></Cell>
     <Cell><Data ss:Type="String">Paternal GrandFather</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/familyrelationship</Data></Cell>
     <Cell><Data ss:Type="String">patGMother</Data></Cell>
     <Cell><Data ss:Type="String">Paternal GrandMother</Data></Cell>
    </Row>

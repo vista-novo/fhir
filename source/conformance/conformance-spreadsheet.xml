@@ -21,7 +21,8 @@
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
   <TabRatio>651</TabRatio>
-  <ActiveSheet>2</ActiveSheet>
+  <ActiveSheet>3</ActiveSheet>
+  <FirstVisibleSheet>2</FirstVisibleSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -965,7 +966,6 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -979,20 +979,21 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="7" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s72" ss:DefaultColumnWidth="64.5"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="133.5"/>
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="256.5"/>
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="49.5"/>
-   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="85.5"/>
-   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="178.5"/>
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="85.5" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="178.5"/>
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="324"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -1001,6 +1002,7 @@
     <Cell><Data ss:Type="String">The mode of a restful conformance statement</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#restful-conformance-mode</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1008,6 +1010,7 @@
     <Cell><Data ss:Type="String">Types of security services used with FHIR</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">preferred</Data></Cell>
+    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#restful-security-service</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1015,6 +1018,7 @@
     <Cell><Data ss:Type="String">Operations supported by REST</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#restful-operation</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18">
@@ -1022,6 +1026,7 @@
     <Cell><Data ss:Type="String">The mode of a message conformance statement</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#message-conformance-event-mode</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1029,6 +1034,7 @@
     <Cell><Data ss:Type="String">How messages are delivered</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#message-transport</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -1036,6 +1042,7 @@
     <Cell><Data ss:Type="String">Whether the application produces or consumes documents</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#document-mode</Data></Cell>
    </Row>
   </Table>
@@ -1052,10 +1059,12 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1064,18 +1073,21 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="restful-conformance-mode">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="64.5" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="436.5"/>
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="436.5"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">client</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The application acts as a server for this resource</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">server</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The application acts as a client for this resource</Data></Cell>
    </Row>
@@ -1091,8 +1103,8 @@
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>1</TopRowBottomPane>
-   <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <SplitVertical>2</SplitVertical>
+   <LeftColumnRightPane>2</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -1100,12 +1112,14 @@
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1114,46 +1128,56 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="restful-operation">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="10" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="64.5" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="436.5"/>
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="436.5"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">read</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Read the current state of the resource</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">vread</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Read the state of a specific version of the resource</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">update</Data></Cell>
     <Cell><Data ss:Type="String">Update an existing resource by its id (or create it if it is new)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">delete</Data></Cell>
     <Cell><Data ss:Type="String">Delete a resource</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">history-instance</Data></Cell>
     <Cell><Data ss:Type="String">Retrieve the update history for a resource instance</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="String">validate</Data></Cell>
     <Cell><Data ss:Type="String">Check that the content would be acceptable as an update</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">7</Data></Cell>
     <Cell><Data ss:Type="String">history-type</Data></Cell>
     <Cell><Data ss:Type="String">Get a list of updates to resources of this type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="String">create</Data></Cell>
     <Cell><Data ss:Type="String">Create a new resource with a server assigned id</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">9</Data></Cell>
     <Cell><Data ss:Type="String">search</Data></Cell>
     <Cell><Data ss:Type="String">Supports search operations using the parameters described in the profile</Data></Cell>
    </Row>
@@ -1169,8 +1193,8 @@
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>1</TopRowBottomPane>
-   <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <SplitVertical>2</SplitVertical>
+   <LeftColumnRightPane>2</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -1178,6 +1202,7 @@
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
@@ -1185,6 +1210,7 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>8</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1193,18 +1219,21 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="message-conformance-event-mode">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="64.5" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="439.5"/>
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="439.5"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">sender</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The application sends requests and receives responses</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">receiver</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The application receives requests and sends responses</Data></Cell>
    </Row>
@@ -1219,7 +1248,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1:R1048576</RangeSelection>
+     <ActiveRow>2</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1228,22 +1257,26 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="message-transport">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="64.5" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="439.5"/>
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="439.5"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">http</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The application sends or receives messages using HTTP POST (may be over http or https)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">ftp</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The application sends or receives messages using File Transfer Protocol</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">mllp</Data></Cell>
     <Cell><Data ss:Type="String">The application sends or receivers messages using HL7's Minimal Lower Level Protocol</Data></Cell>
    </Row>
@@ -1259,7 +1292,6 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1268,18 +1300,21 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="document-mode">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="64.5" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="439.5"/>
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="439.5"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">producer</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The application produces documents of the specified type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">consumer</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The application consumes documents of the specified type</Data></Cell>
    </Row>
@@ -1294,7 +1329,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1:R2</RangeSelection>
+     <ActiveRow>10</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1320,30 +1356,36 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="restful-security-service">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="6" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="14.4375">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="153.75"/>
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="153.75"/>
    <Row ss:AutoFitHeight="0" ss:Height="15" ss:StyleID="s65">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">OAuth</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">OAuth (see oauth.net)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">OAuth2</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">OAuth version 2 (see oauth.net)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">NTLM</Data></Cell>
     <Cell><Data ss:Type="String">Microsoft NTLM Authentication</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">Basic</Data></Cell>
     <Cell><Data ss:Type="String">Basic authentication defined in HTTP specification</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">Kerberos</Data></Cell>
     <Cell><Data ss:Type="String">see…</Data></Cell>
    </Row>
@@ -1358,8 +1400,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -20,6 +20,7 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>5040</WindowTopX>
   <WindowTopY>5505</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -653,7 +654,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -838,19 +838,20 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s71" ss:DefaultRowHeight="18.75">
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="153.75"/>
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="252.75"/>
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="54"/>
-   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="91.5"/>
-   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="169.5"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="91.5" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="169.5"/>
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="288"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -859,13 +860,15 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">Classification of a clinical document section</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s68"><Data ss:Type="String">LOINC Section Types</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">dynamic</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="s68"><Data ss:Type="String">LOINC Section Types</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s68"><Data ss:Type="String">DocumentAttestationMode</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">The way in which a person authenticated a document</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">#document-attestation-mode</Data></Cell>
     <Cell ss:StyleID="Default"/>
    </Row>
@@ -874,6 +877,7 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">Type of a clinical document</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">dynamic</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">LOINC Document Types</Data></Cell>
    </Row>
@@ -881,6 +885,7 @@
     <Cell ss:StyleID="Default"><Data ss:Type="String">DocumentConfidentiality</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Codes specifying the level of confidentiality of the XDS Document</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -893,11 +898,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <RangeSelection>R3C1:R5C6</RangeSelection>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -905,26 +911,31 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="document-attestation-mode">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="344.25"/>
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="344.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">personal</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The person authenticated the document in their personal capacity</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">professional</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The person authenticated the document in their professional capacity</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">legal</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The person authenticated the document and accepted legal responsibility for its content</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">official</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The organization authenticated the document as consistent with their policies and procedures</Data></Cell>
    </Row>
@@ -939,8 +950,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>18</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

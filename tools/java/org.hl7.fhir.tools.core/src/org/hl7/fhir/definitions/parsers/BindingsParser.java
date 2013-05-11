@@ -33,6 +33,7 @@ import java.util.List;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
+import org.hl7.fhir.definitions.model.BindingSpecification.Management;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
@@ -91,6 +92,24 @@ public class BindingsParser {
     throw new Exception("Unknown Binding Extensibility: "+s);
   }
 
+  public static Management readManagement(String s) throws Exception {
+    s = s.toLowerCase();
+    if (s == null || "".equals(s)) 
+      return null;
+    
+    if (s.equals("alterable"))
+      return BindingSpecification.Management.Alterable;
+    if (s.equals("fixed"))
+      return BindingSpecification.Management.Fixed;
+    if (s.equals("dynamic"))
+      return BindingSpecification.Management.Dynamic;
+    if (s.equals("static"))
+      return BindingSpecification.Management.Static;
+    if (s.equals("other"))
+      return BindingSpecification.Management.Other;
+    throw new Exception("Unknown Management Code: "+s);
+  }
+
   public static BindingSpecification.Binding readBinding(String s) throws Exception {
 		s = s.toLowerCase();
 		if (s == null || "".equals(s) || "unbound".equals(s))
@@ -127,6 +146,7 @@ public class BindingsParser {
     
     for (int row = 0; row < sheet.rows.size(); row++) {
       DefinedCode c = new DefinedCode();
+      c.setId(sheet.getColumn(row, "Id"));
       c.setCode(sheet.getColumn(row, "Code"));
       c.setDisplay(sheet.getColumn(row, "Display"));
       c.setSystem(sheet.getColumn(row, "System"));

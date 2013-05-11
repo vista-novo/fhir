@@ -20,6 +20,7 @@
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -124,7 +125,7 @@
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
    <Column ss:Index="16" ss:StyleID="s64" ss:Width="89.25"/>
-   <Row ss:Height="30" ss:StyleID="s66">
+   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s66">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
@@ -143,7 +144,7 @@
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
     <Cell><Data ss:Type="String">Prov Mapping</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AdverseReaction</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
@@ -158,7 +159,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AdverseReaction.reactionDate</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -173,7 +174,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">AdverseReaction.subject</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -188,7 +189,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">AdverseReaction.didNotOccurFlag</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -203,7 +204,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AdverseReaction.recorder</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -218,7 +219,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">AdverseReaction.symptom</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -233,7 +234,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">AdverseReaction.symptom.code</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -248,7 +249,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">AdverseReaction.symptom.severity</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -262,7 +263,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">AdverseReaction.exposure</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -276,7 +277,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">AdverseReaction.exposure.exposureDate</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -289,7 +290,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">AdverseReaction.exposure.exposureType</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -304,7 +305,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">AdverseReaction.exposure.causalityExpectation</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -318,7 +319,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">AdverseReaction.exposure.substance</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -333,7 +334,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:Index="3" ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>
@@ -344,7 +345,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:Index="3" ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>
@@ -355,7 +356,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:Index="3" ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>
@@ -373,12 +374,12 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -731,19 +732,20 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="179.25"/>
    <Column ss:Width="249.75"/>
    <Column ss:Width="47.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="90"/>
-   <Column ss:Width="132.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="90" ss:Span="1"/>
+   <Column ss:Index="6" ss:Width="132.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="275.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Description</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Comments</Data></Cell>
@@ -753,6 +755,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">The severity of an adverse reaction.</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">suggested</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">fixed</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">#reactionSeverity</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -760,6 +763,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">The type of symptom.</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">suggested</Data></Cell>
+    <Cell ss:StyleID="s74"/>
     <Cell ss:StyleID="s74"><Data ss:Type="String">http://apps.who.int/classifications/icd10/browse/2010/en</Data></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="String">ICD-10 Reaction codes</Data></Cell>
     <Cell ss:StyleID="s75"/>
@@ -769,20 +773,22 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">The type of exposure that resulted in an adverse reaction</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">suggested</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">#exposureType</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s74"><Data ss:Type="String">The current set of codes is not exhaustive and is provided for future discussion.</Data></Cell>
+    <Cell ss:Index="8" ss:StyleID="s74"><Data ss:Type="String">The current set of codes is not exhaustive and is provided for future discussion.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">CausalityExpectation</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">How likely is it that the given exposure caused a reaction</Data></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">suggested</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">#causalityExpectation</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s64"/>
     <Cell ss:StyleID="s75"/>
-    <Cell ss:Index="6" ss:StyleID="s75"/>
+    <Cell ss:Index="7" ss:StyleID="s75"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s64"/>
@@ -810,6 +816,7 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -829,8 +836,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -839,28 +846,33 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="reactionSeverity">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="81.75"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="81.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="366.75"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Comments</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">severe</Data></Cell>
     <Cell><Data ss:Type="String">Severe complications arose due to the reaction</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">serious</Data></Cell>
     <Cell><Data ss:Type="String">Serious inconvience to the subject</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">moderate</Data></Cell>
     <Cell><Data ss:Type="String">Moderate inconvience to the subject</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">minor</Data></Cell>
     <Cell><Data ss:Type="String">Minor inconvience to the subject</Data></Cell>
    </Row>
@@ -881,7 +893,6 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>3</ActiveRow>
-     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -890,30 +901,35 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="causalityExpectation">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
-   <Column ss:Width="56.25"/>
+   <Column ss:Index="2" ss:Width="56.25"/>
    <Column ss:Width="561"/>
    <Column ss:Width="249.75"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">System</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">likely</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Likely that this specific exposure caused the reaction</Data></Cell>
     <Cell ss:StyleID="s62"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">unlikely</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Unlikely that this specific exposure caused the reaction - the exposure is being linked to for information purposes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">confirmed</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">It has been confirmed that this exposure was one of the causes of the reaction</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">unknown</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">It is unknown whether this exposure had anything to do with the reaction</Data></Cell>
    </Row>
@@ -928,8 +944,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -938,31 +953,35 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="exposureType">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
-   <Column ss:Width="56.25"/>
+   <Column ss:Index="2" ss:Width="56.25"/>
    <Column ss:Width="561"/>
    <Column ss:Width="249.75"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">System</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">drugadmin</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Drug Administration</Data></Cell>
     <Cell ss:StyleID="s62"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">immuniz</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Immunization</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">coincidental</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">In the same area as the substance</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s63"/>
+    <Cell ss:Index="2" ss:StyleID="s63"/>
     <Cell ss:StyleID="s63"/>
    </Row>
   </Table>
@@ -976,8 +995,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>2</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

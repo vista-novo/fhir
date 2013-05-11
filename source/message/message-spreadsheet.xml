@@ -20,6 +20,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6135</WindowTopY>
+  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -398,7 +399,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -458,19 +458,20 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="86.25"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="189.75"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="63"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="83.25"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="151.5"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="83.25" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="151.5"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="198"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -484,6 +485,7 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">One of the message types defined in FHIR messaging</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">special</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s71"/>
     <Cell ss:StyleID="s71"><Data ss:Type="String">#MessageEvent</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -491,6 +493,7 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">The kind of response to a message</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">#response-code</Data></Cell>
    </Row>
   </Table>
@@ -501,11 +504,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -513,31 +517,37 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="response-code">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="6" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s72" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s72" ss:Width="71.25"/>
+   <Column ss:Index="2" ss:StyleID="s72" ss:Width="71.25"/>
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="719.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">ok</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">The message was accepted and processed without error</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">Some internal unexpected error occurred - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">rejection</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">The message was rejected because of some content in it. There is no point in re-sending without change. The response narrative must describe what the issue is.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">rules</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">The message was rejected because of some event-specific business rules, and it may be possible to modify the request and re-submit (as a different request). The response must include an Issue report that describes what problem is</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">undeliverable</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">A middleware agent was unable to deliver the message to its intended destination</Data></Cell>
    </Row>
@@ -552,8 +562,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

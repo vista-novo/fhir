@@ -273,9 +273,9 @@ exactly what kind of "support" is required, as this can mean many things.
 </p>
 
 <p>
-Note that an element that has the property mustUnderstand is not necessarily a "key" element (e.g. one of 
+Note that an element that has the property IsModifier is not necessarily a "key" element (e.g. one of 
 the important elements to make use of the resource), nor is it automatically mustSupport - however both 
-of these things are more likely to be true for mustUnderstand elements than for other elements.
+of these things are more likely to be true for IsModifier elements than for other elements.
 </p>
 <a name="cardinality"> </a>
 <h3>Cardinality</h3> 
@@ -307,8 +307,29 @@ rules about this selection process.
 <h2>References between resources</h2>
 <p>
 The defined elements in a resource includes many references to other resources. 
-The resources combine to build a web of information about healthcare. In a resource, 
-references are represented with a type, a reference, and a text description .
+The resources combine to build a web of information about healthcare. 
+</p>
+<p>
+References are always defined in one particular direction - from one resource (source) to another (target).
+The corresponding reverse relationship from the target to the source exists in a logical sense, but is 
+not represented explicitly in the resource. Navigating these reverse relationships requires some 
+external infrastructure to track the relationship between resources.
+</p>
+<p>
+Because resources are processed independently, relationships are not considered to be transitive. 
+For example, if a <a href="problem.htm">Problem</a> resource references a particular 
+<a href="patient.htm">Patient</a> as it's subject, and it links to a <a href="procedure.htm">Procedure</a>
+resource as it's cause, there is no automatic rule or implication that the procedure 
+has the same patient as it's subject. Instead, the subject of the procedure must be established 
+directly in the procedure itself. Another way to state this is that the context of the subject
+is not "inherited" and it does not "conduct" along the relationship to procedure. 
+The only exception to this in the case of contained resources (see below). Note that in
+practice, the relationships do need to describe a logical and coherent record.
+</p>
+
+<p>
+In a resource, 
+references are represented with a type, a reference, and a text description.
 The key property of the reference is the <i>reference</i> - resources are identified and address by their URL.
 The actual reference looks like this (see <a href="formats.htm#syntax">"XML Format"</a>
 for details of the way resource contents are described):
@@ -457,16 +478,31 @@ Some notes about use and interpretation of contained resources:
 
 <a name="version"> </a>
 <h2>Inter-version Compatibility</h2>
+<blockquote>
 <p>
-There is no explicit version marker in the resource content. 
-Subsequent versions of this specification may introduce new elements and/or content 
-at any point in the resource contents, but the path and meaning of existing data 
-elements will not be changed. 
+The following rules will apply once the specification becomes a full normative 
+specification. These rules ensure that implementations may process the content 
+of the resources safely while exchanging data between applications using different
+versions of FHIR. However during the period of trial use of the specification, HL7
+may make changes outside the limitations described here in response to discovered 
+issues in the specification. Applications may wish to use <a href="#tags">resource tags</a> to help
+manage this during the period of trial use.
+</p>
+</blockquote>
+<p>
+There is no explicit version marker in the resource content. Once normative, subsequent versions of 
+this specification may introduce new elements and/or content at any point in the 
+resource contents, but the path and meaning of existing data elements will not be changed. 
+</p>
+<p>
+Each binding to a value set or code system indicates whether the value list automatically 
+grows as new codes are defined, whether the list may be extended
+in future versions of the specification, or whether the list cannot be changed at all in future versions.
 </p>
 <p>
 The conformance layer (<a href="conformance.htm">Conformance</a> and <a href="profile.htm">Profile</a>)
-have mandatory properties declaring the FHIR specification version, and these may be used to assist 
-with implementation versioning considerations.
+have mandatory properties declaring the FHIR specification version, and these may be used to determine
+which version of FHIR an implenentation is using. 
 </p>
 <p>
 In a typical scenario, mixed versions may need to exist, so applications SHOULD ignore elements 

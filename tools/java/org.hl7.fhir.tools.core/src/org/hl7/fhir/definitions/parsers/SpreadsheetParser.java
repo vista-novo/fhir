@@ -42,6 +42,7 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.EventUsage;
 import org.hl7.fhir.definitions.model.Example;
+import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.Example.ExampleType;
 import org.hl7.fhir.definitions.model.ExtensionDefn;
 import org.hl7.fhir.definitions.model.Invariant;
@@ -367,9 +368,12 @@ public class SpreadsheetParser {
       cd.setBindingStrength(BindingsParser.readBindingStrength(sheet.getColumn(row, "Binding Strength")));
       cd.setExtensibility(BindingsParser.readExtensibility(sheet.getColumn(row, "Extensibility")));
 			cd.setReference(sheet.getColumn(row, "Reference"));
-			cd.setDescription(sheet.getColumn(row, "Description"));
+			cd.setManagement(BindingsParser.readManagement(sheet.getColumn(row, "Management")));
+      cd.setDescription(sheet.getColumn(row, "Description"));
 			cd.setId(new BindingNameRegistry(root, forPublication).idForName(cd.getName()));
 			cd.setSource(name);
+      if ((cd.getBinding() == Binding.CodeList || cd.getBinding() == Binding.ValueSet) && cd.getManagement() == null)
+        throw new Exception("management missing for "+ cd.getName() + ": " + cd.getReference());
 
 			if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
 				Sheet codes = xls.getSheets().get(
@@ -398,11 +402,14 @@ public class SpreadsheetParser {
 			throws Exception {
 		for (int row = 0; row < sheet.rows.size(); row++) {
 			DefinedCode c = new DefinedCode();
+			c.setId(sheet.getColumn(row, "Id"));
 			c.setCode(sheet.getColumn(row, "Code"));
       c.setDisplay(sheet.getColumn(row, "Display"));
       c.setSystem(sheet.getColumn(row, "System"));
 			c.setDefinition(sheet.getColumn(row, "Definition"));
 			c.setComment(sheet.getColumn(row, "Comment"));
+      if (Utilities.noString(c.getId()) && Utilities.noString(c.getSystem()))
+        throw new Exception("code has no id or system ("+sheet.title+") "+getLocation(row));
 			codes.add(c);
 		}
 	}

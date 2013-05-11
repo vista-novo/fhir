@@ -20,8 +20,8 @@
   <WindowWidth>15585</WindowWidth>
   <WindowTopX>1200</WindowTopX>
   <WindowTopY>1005</WindowTopY>
-  <ActiveSheet>8</ActiveSheet>
-  <FirstVisibleSheet>4</FirstVisibleSheet>
+  <ActiveSheet>3</ActiveSheet>
+  <FirstVisibleSheet>3</FirstVisibleSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -648,20 +648,21 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s76" ss:DefaultColumnWidth="65.25"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="113.25"/>
    <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="209.25"/>
    <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="78.75"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="96"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="140.25"/>
+   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="96" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="140.25"/>
    <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="161.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -670,6 +671,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">The way in which the code is selected</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">fixed</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">#code-selection-mode</Data></Cell>
     <Cell ss:StyleID="s64"/>
    </Row>
@@ -678,6 +680,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">The kind of operation to perform as part of a property based filter</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">#filter-operator</Data></Cell>
     <Cell ss:StyleID="s64"/>
    </Row>
@@ -686,6 +689,7 @@
     <Cell><Data ss:Type="String">The lifecycle status of a Value Set</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#valueset-status</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -693,6 +697,7 @@
     <Cell><Data ss:Type="String">The kind of a value set</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#valueset-kind</Data></Cell>
    </Row>
   </Table>
@@ -703,11 +708,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -716,11 +722,12 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="code-selection-mode">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="89.25"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="89.25"/>
    <Column ss:Width="468"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s66"/>
@@ -729,22 +736,27 @@
     <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">Only this code is selected</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">children</Data></Cell>
     <Cell><Data ss:Type="String">Only the immediate children (codes with a is_a relationship) are selected, but not this code itself</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">descendants</Data></Cell>
     <Cell><Data ss:Type="String">All descendants of this code are selected, but not this code itself</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">all</Data></Cell>
     <Cell><Data ss:Type="String">This code and any descendants are selected</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">system</Data></Cell>
     <Cell><Data ss:Type="String">All codes from the specified code system</Data></Cell>
    </Row>
@@ -759,8 +771,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <RangeSelection>R6C1:R6C2</RangeSelection>
+     <ActiveRow>4</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -769,11 +780,12 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="filter-operator">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="90"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:Width="419.25"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s66"/>
@@ -782,18 +794,22 @@
     <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String" x:Ticked="1">=</Data></Cell>
     <Cell><Data ss:Type="String">The property value has the concept specified by the value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">is_a</Data></Cell>
     <Cell><Data ss:Type="String">The property value has a concept that has an is_a relationship with the value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">is_not_a</Data></Cell>
     <Cell><Data ss:Type="String">The property value has a concept that does not have an is_a relationship with the value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">regex</Data></Cell>
     <Cell><Data ss:Type="String">The property value representation matches the regex specified in the value</Data></Cell>
    </Row>
@@ -808,8 +824,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -818,11 +833,12 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="valueset-status">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="7" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="104.25"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="104.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="435.75"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s66"/>
@@ -831,26 +847,32 @@
     <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">draft</Data></Cell>
     <Cell><Data ss:Type="String">This valueset is still under development</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">testing</Data></Cell>
     <Cell><Data ss:Type="String">This valueset was authored for testing purposes (or education/evaluation/evangelisation)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">review</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">This valueset is undergoing review to check that it is ready for production use</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">production</Data></Cell>
     <Cell><Data ss:Type="String">This valueset is ready for use in production systems</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">withdrawn</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">This valueset has been withdrawn and should no longer be used</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="String">superseded</Data></Cell>
     <Cell><Data ss:Type="String">This valueset has been replaced and a different valueset should be used in its place</Data></Cell>
    </Row>
@@ -865,7 +887,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1</RangeSelection>
+     <ActiveRow>5</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -874,11 +896,12 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="valueset-kind">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="14" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="14" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="54"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="54"/>
    <Column ss:AutoFitWidth="0" ss:Width="350.25"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s66"/>
@@ -887,19 +910,22 @@
     <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">code-system</Data></Cell>
     <Cell><Data ss:Type="String">this value set defines a code system</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">composition</Data></Cell>
     <Cell><Data ss:Type="String">this value set is a composition of codes defined in other code systems</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">expansion</Data></Cell>
     <Cell><Data ss:Type="String">this value set is an expansion from a composition value set</Data></Cell>
    </Row>
    <Row ss:Index="14" ss:AutoFitHeight="0">
-    <Cell ss:Index="2" ss:StyleID="s64"/>
+    <Cell ss:Index="3" ss:StyleID="s64"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -912,8 +938,9 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>27</ActiveRow>
+     <ActiveCol>7</ActiveCol>
+     <RangeSelection>R28C7:R29C8</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -921,7 +948,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Profiles">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="108"/>
    <Column ss:AutoFitWidth="0" ss:Width="237"/>
@@ -941,7 +968,6 @@
     <Cell><Data ss:Type="String">valueset-extensions-spreadsheet.xml</Data></Cell>
     <Cell><Data ss:Type="String">spreadsheet</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0"/>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -950,7 +976,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

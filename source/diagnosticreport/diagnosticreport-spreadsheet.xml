@@ -20,6 +20,7 @@
   <WindowWidth>17490</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -646,7 +647,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -896,19 +896,20 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="7" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s71" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="149.25"/>
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="336.75"/>
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="52.5"/>
-   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="84"/>
-   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="126.75"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="84" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="126.75"/>
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="346.5"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -917,14 +918,16 @@
     <Cell ss:StyleID="s70"><Data ss:Type="String">Codes for laboratory diagnoses</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">SNOMED-CT Diagnoses</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">dynamic</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="String">SNOMED-CT Diagnoses</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">DiagnosticReportNames</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">codes for report names</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">LOINC Codes</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">dynamic</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="String">LOINC Codes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">DiagnosticRequests</Data></Cell>
@@ -936,14 +939,16 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">DiagnosticResultGroupNames</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">LOINC Panel Names</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">dynamic</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="String">LOINC Panel Names</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">DiagnosticServiceSection</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">codes for diagnostic service sections</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">HL7 v2 table 0074</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">dynamic</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="String">HL7 v2 table 0074</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s72"><Data ss:Type="String">BodySite</Data></Cell>
@@ -964,10 +969,11 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>6</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>

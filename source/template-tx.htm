@@ -20,10 +20,14 @@
 <%txdef%>
 </p>
 
+<p>
+OID: <%txoid%>. Formal definitions: <a href="<%txname%>.xml">XML</a> (<a href="<%txname%>.xml.htm">for browser</a>) or <a href="<%txname%>.json">JSON</a>. 
+</p>
+
 <%txusage%>
 
 <p>
-The following codes are defined:
+<%txdesc%>
 </p>
 
 <%txsummary%>
@@ -31,6 +35,21 @@ The following codes are defined:
 <p>
 See <a href="terminologies-codes.htm">the full registry of codes</a> defined as part of FHIR.
 </p>
+
+<hr/>
+
+<p>
+Explanation of the columns that may appear on this page:
+</p>
+<table class="grid">
+ <tr><td>Id</td><td>The internal identifier for the concept (when the value set defines it's own codes)</td></tr>
+ <tr><td>Source</td><td>The source of the definition of the code (when the value set draws in codes defined elsewhere)</td></tr>
+ <tr><td>Code</td><td>The code (used as the code in the resource instance)</td></tr>
+ <tr><td>Display</td><td>The display (used in the <i>display</i> element of a <a href="datatypes.htm#Coding">Coding</a>)</td></tr>
+ <tr><td>Definition</td><td>An explanation of the meaning of the concept</td></tr>
+ <tr><td>Comments</td><td>Additional notes about how to use the code</td></tr>
+</table>
+
 <%footer%>
 
 </div> 

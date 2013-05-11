@@ -20,6 +20,7 @@
   <WindowWidth>23475</WindowWidth>
   <WindowTopX>4800</WindowTopX>
   <WindowTopY>5220</WindowTopY>
+  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -197,7 +198,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -288,19 +288,20 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="77.25"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="190.5"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="78.75"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="86.25"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="173.25"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="86.25" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="173.25"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="283.5"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -309,6 +310,7 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">A real world event that a schedule is related to</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">#event-timing</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -316,6 +318,7 @@
     <Cell><Data ss:Type="String">A unit of time (units from UCUM)</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#units-of-time</Data></Cell>
    </Row>
   </Table>
@@ -326,6 +329,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -338,50 +342,62 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="event-timing">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="11" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="11" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="453"/>
+   <Column ss:AutoFitWidth="0" ss:Width="191.25"/>
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="453"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">System</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/timingevent</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">HS</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] before the hour of sleep (or trying to)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/timingevent</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">WAKE</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] after waking</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/timingevent</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">AC</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] before a meal (from the Latin ante cibus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/timingevent</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">ACM</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] before breakfast (from the Latin ante cibus matutinus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/timingevent</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">ACD</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] before lunch (from the Latin ante cibus diurnus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/timingevent</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">ACV</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] before dinner (from the Latin ante cibus vespertinus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/timingevent</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">PC</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] after a meal (from the Latin post cibus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/timingevent</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">PCM</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] after breakfast (from the Latin post cibus matutinus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/timingevent</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">PCD</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] after lunch (from the Latin post cibus diurnus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/timingevent</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">PCV</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] after dinner (from the Latin post cibus vespertinus) </Data></Cell>
    </Row>
@@ -396,7 +412,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1</RangeSelection>
+     <ActiveRow>4</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -404,38 +420,46 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="units-of-time">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="8" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="8" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="260.25"/>
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="260.25"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">System</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://unitsofmeasure.org</Data></Cell>
     <Cell><Data ss:Type="String">s</Data></Cell>
     <Cell><Data ss:Type="String">second</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://unitsofmeasure.org</Data></Cell>
     <Cell><Data ss:Type="String">min</Data></Cell>
     <Cell><Data ss:Type="String">minute</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://unitsofmeasure.org</Data></Cell>
     <Cell><Data ss:Type="String">h</Data></Cell>
     <Cell><Data ss:Type="String">hour</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://unitsofmeasure.org</Data></Cell>
     <Cell><Data ss:Type="String">d</Data></Cell>
     <Cell><Data ss:Type="String">day</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://unitsofmeasure.org</Data></Cell>
     <Cell><Data ss:Type="String">wk</Data></Cell>
     <Cell><Data ss:Type="String">week</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://unitsofmeasure.org</Data></Cell>
     <Cell><Data ss:Type="String">mo</Data></Cell>
     <Cell><Data ss:Type="String">month</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://unitsofmeasure.org</Data></Cell>
     <Cell><Data ss:Type="String">a</Data></Cell>
     <Cell><Data ss:Type="String">year</Data></Cell>
    </Row>
@@ -450,8 +474,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>9</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>6</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

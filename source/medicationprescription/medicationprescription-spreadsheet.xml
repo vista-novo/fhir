@@ -20,7 +20,7 @@
   <WindowWidth>27255</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -873,7 +873,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -902,13 +901,14 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="7" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="219.75" ss:DefaultRowHeight="15">
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -917,6 +917,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">Describes the current status of aany reviews planned or performed on the prescription</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">dynamic</Data></Cell>
     <Cell ss:StyleID="s81"/>
     <Cell ss:StyleID="s80"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
@@ -925,6 +926,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">A code signifying whether a different drug should be dispensed from what was prescribed.</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">dynamic</Data></Cell>
     <Cell ss:StyleID="s81"/>
     <Cell ss:StyleID="s80"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
@@ -933,6 +935,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">Indicates the reason that a different medication should (or should not) be substituted from what was prescribed.</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">dynamic</Data></Cell>
     <Cell ss:StyleID="s81"/>
     <Cell ss:StyleID="s80"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
@@ -941,6 +944,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">Identifies the site where the medicine enters the body</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">dynamic</Data></Cell>
     <Cell ss:StyleID="s81"/>
     <Cell ss:StyleID="s80"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
@@ -949,6 +953,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">Identifies the method by which the medicine is administered</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">dynamic</Data></Cell>
     <Cell ss:StyleID="s81"/>
     <Cell ss:StyleID="s80"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
@@ -957,6 +962,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">A code specifying the state of the prescribing event.</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">#medication-prescription-status</Data></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Tie this into the HL7 V3 Event act state model for administration</Data></Cell>
    </Row>
@@ -968,6 +974,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -987,8 +994,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -996,11 +1003,12 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="medication-prescription-status">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="90"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="308.25"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s83"/>
@@ -1009,18 +1017,22 @@
     <Cell ss:StyleID="s83"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="25.5">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">active</Data></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">The prescribing of the medication has started and is currently in progress.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="38.25">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">paused</Data></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">The prescribing of the medication has started but is currently stopped with a firm intention of restarting.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">The prescribing of the medication has finished</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="38.25">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">nullified</Data></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">The prescribing of the medication was recorded in error and the record should now be disregarded.</Data></Cell>
    </Row>
@@ -1035,7 +1047,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1C1:R1C6</RangeSelection>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

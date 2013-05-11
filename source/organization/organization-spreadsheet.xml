@@ -20,6 +20,7 @@
   <WindowWidth>17490</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -310,7 +311,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <TopRowVisible>5</TopRowVisible>
    <LeftColumnVisible>1</LeftColumnVisible>
    <Panes>
@@ -529,13 +529,14 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="6" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s72" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="130.5"/>
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="294.75"/>
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="65.25" ss:Span="1"/>
-   <Column ss:Index="5" ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="84.75"/>
-   <Column ss:StyleID="s72" ss:Width="104.25"/>
+   <Column ss:Index="5" ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="84.75"
+    ss:Span="1"/>
+   <Column ss:Index="7" ss:StyleID="s72" ss:Width="104.25"/>
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="287.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
@@ -543,6 +544,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Extensibility</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -552,7 +554,8 @@
     <Cell ss:StyleID="s67"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s67"><Data ss:Type="String">SNOMED-CT Organization codes and specializations of _OrganizationEntityType in the HL7 v3 Entity Code table</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">dynamic</Data></Cell>
+    <Cell ss:Index="8" ss:StyleID="s67"><Data ss:Type="String">SNOMED-CT Organization codes and specializations of _OrganizationEntityType in the HL7 v3 Entity Code table</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s67"><Data ss:Type="String">OrganizationAccreditation</Data></Cell>
@@ -566,6 +569,7 @@
     <Cell ss:StyleID="s67"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">extensible</Data></Cell>
     <Cell><Data ss:Type="String">preferred</Data></Cell>
+    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#org-relationship-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -574,6 +578,7 @@
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">complete</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#record-status</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -590,10 +595,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>5</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -669,11 +676,12 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="record-status">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="14.4375">
-   <Column ss:Index="2" ss:Width="398.25"/>
+   <Column ss:Index="3" ss:Width="398.25"/>
    <Column ss:Width="333"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s73"/>
@@ -682,10 +690,12 @@
     <Cell ss:StyleID="s73"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">active</Data></Cell>
     <Cell><Data ss:Type="String">The state representing the fact that the Entity record is currently active.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">inactive</Data></Cell>
     <Cell><Data ss:Type="String">The state representing the fact that the Entity record is currently inactive.</Data></Cell>
    </Row>
@@ -706,8 +716,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>1</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -715,11 +724,12 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="org-relationship-type">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="14.4375">
-   <Column ss:Index="2" ss:Width="270"/>
+   <Column ss:Index="3" ss:Width="270"/>
    <Column ss:Width="333"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s73"/>
@@ -728,10 +738,12 @@
     <Cell ss:StyleID="s73"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">parent</Data></Cell>
     <Cell><Data ss:Type="String">The organization is a parent for the related organization</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">child</Data></Cell>
     <Cell><Data ss:Type="String">The organization is a child of the related organization</Data></Cell>
    </Row>
@@ -752,8 +764,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>1</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

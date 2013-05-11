@@ -128,9 +128,10 @@ public class XhtmlGenerator {
 		out.write("<span class=\"xmltag\">&lt;"+node.getNodeName()+"</span>");
 		if (node.hasAttributes()) {
 			out.write("<span class=\"xmlattr\">");
+      XhtmlGeneratorAdornerState newstate = adorner == null ? new XhtmlGeneratorAdornerState("", "") : adorner.getState(this, state, node);
 			for (int i = 0; i < node.getAttributes().getLength(); i++) {
 			  if (adorner != null) {
-		      XhtmlGeneratorAdornerState attrState = adorner.getAttributeMarkup(this, state, node, node.getAttributes().item(i).getNodeName(), node.getAttributes().item(i).getTextContent());
+		      XhtmlGeneratorAdornerState attrState = adorner.getAttributeMarkup(this, newstate, node, node.getAttributes().item(i).getNodeName(), node.getAttributes().item(i).getTextContent());
 		      out.write(" "+node.getAttributes().item(i).getNodeName()+"=\"<span class=\"xmlattrvalue\">"+attrState.getPrefix()+escapeHtml(node.getAttributes().item(i).getTextContent())+attrState.getSuffix()+"</span>\"");
 			  } else
 				out.write(" "+node.getAttributes().item(i).getNodeName()+"=\"<span class=\"xmlattrvalue\">"+escapeHtml(node.getAttributes().item(i).getTextContent())+"</span>\"");

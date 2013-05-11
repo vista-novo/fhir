@@ -49,6 +49,7 @@ public class XLSXmlParser {
   public class Row extends ArrayList<String> {  private static final long serialVersionUID = 1L; }
   
   public class Sheet {
+    public String title;
     public Row columns;
     public List<Row> rows = new ArrayList<Row>();
 
@@ -107,6 +108,7 @@ public class XLSXmlParser {
   private Integer rowIndex;
   private void processWorksheet(Element node) throws Exception {
     Sheet sheet = new Sheet();
+    sheet.title = node.getAttributeNS(XLS_NS, "Name");
     sheets.put(node.getAttributeNS(XLS_NS, "Name"), sheet);
     NodeList table = node.getElementsByTagNameNS(XLS_NS, "Table");
     check(table.getLength() == 1, "multiple table elements");

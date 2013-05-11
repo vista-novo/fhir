@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.utilities.Utilities;
+
 /**
  * A concept domain - a use of terminology in FHIR.
  * A concept domain has a name, a definition, and information about what is in it (bindingType and binding/details, and maybe a list of defined codes) 
@@ -62,6 +64,14 @@ public class BindingSpecification {
     Extensible
   }
   
+  public enum Management {
+    Fixed,
+    Alterable,
+    Static,
+    Dynamic,
+    Other
+  }
+  
   private String id;
   private String name;
 	private String definition;
@@ -71,6 +81,7 @@ public class BindingSpecification {
 	private String reference;
 	private String description;
 	private String source; // for useful error messages during build
+	private Management management;
 	private List<String> useContexts = new ArrayList<String>();
 	
   private List<DefinedCode> codes = new ArrayList<DefinedCode>();
@@ -173,6 +184,33 @@ public class BindingSpecification {
 
   public void setExtensibility(BindingExtensibility extensibility) {
     this.extensibility = extensibility;
+  }
+
+  public Management getManagement() {
+    return management;
+  }
+
+  public void setManagement(Management management) {
+    this.management = management;
+  }
+
+  public boolean isValueSet() {
+     return getVSSources().size() > 0;
+  }
+
+  private List<String> vslist;
+  
+  public List<String> getVSSources() {
+    if (vslist == null) {
+      vslist = new ArrayList<String>();
+      for (DefinedCode c : codes) {
+        if (!Utilities.noString(c.getSystem())) {
+          if (!vslist.contains(c.getSystem()))
+            vslist.add(c.getSystem());
+        }
+      }
+    }
+    return vslist;
   }
 
   

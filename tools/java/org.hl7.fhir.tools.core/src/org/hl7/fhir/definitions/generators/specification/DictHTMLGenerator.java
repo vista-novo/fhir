@@ -36,16 +36,22 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerator.CDUsage;
+import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.utilities.Utilities;
 
 public class DictHTMLGenerator  extends OutputStreamWriter {
 
-			
-	public DictHTMLGenerator(OutputStream out) throws UnsupportedEncodingException {
+	private Definitions definitions;
+	
+	public DictHTMLGenerator(OutputStream out, Definitions definitions) throws UnsupportedEncodingException {
 		super(out, "UTF-8");
+		this.definitions = definitions;
 	}
 
 	public void generate(ElementDefn root) throws Exception
@@ -61,17 +67,18 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 		close();
 	}
 
-	private void generateElement(String name, ElementDefn e) throws IOException {
+	private void generateElement(String name, ElementDefn e) throws Exception {
 		writeEntry(name+"."+e.getName(), e.describeCardinality(), describeType(e), e.getBindingName(), e);
 		for (ElementDefn c : e.getElements())	{
 		   generateElement(name+"."+e.getName(), c);
 		}
 	}
 
-	private void writeEntry(String path, String cardinality, String type, String conceptDomain, ElementDefn e) throws IOException {
+	private void writeEntry(String path, String cardinality, String type, String conceptDomain, ElementDefn e) throws Exception {
 		write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+path.replace("[", "_").replace("]", "_")+"\"></a><b>"+path+"</b></td></tr>\r\n");
 		tableRow("Definition", e.getDefinition());
 		tableRow("Control", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
+		tableRowNE("Binding", describeBinding(e));
 		tableRow("Type", type + (conceptDomain != "" ? " from "+conceptDomain : ""));
 		tableRow("Must Understand", displayBoolean(e.isModifier()));
 		tableRow("Requirements", e.getRequirements());
@@ -84,7 +91,24 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 		
 	}
 	
-	private String invariants(Map<String, Invariant> invariants, List<Invariant> stated) {
+	private String describeBinding(ElementDefn e) throws Exception {
+
+	  if (!e.hasBinding())
+	    return null;
+	  
+	  StringBuilder b = new StringBuilder();
+	  BindingSpecification cd =  definitions.getBindingByName(e.getBindingName());
+    b.append(cd.getName()+" : \"");
+    b.append(TerminologyNotesGenerator.describeBinding(cd));
+    if (cd.getBinding() == Binding.Unbound)
+      b.append(" (Not Bound to any codes)");
+    else
+      b.append(" ("+(cd.getExtensibility() == null ? "--" : "<a href=\"terminologies.htm#extensibility\">"+cd.getExtensibility().toString().toLowerCase())+"</a>/"+
+          "<a href=\"terminologies.htm#conformance\">"+(cd.getBindingStrength() == null ? "--" : cd.getBindingStrength().toString().toLowerCase())+"</a>)");
+    return b.toString();
+  }
+
+  private String invariants(Map<String, Invariant> invariants, List<Invariant> stated) {
 	  StringBuilder s = new StringBuilder();
 	  if (invariants.size() > 0) {
 	    s.append("<b>Defined on this element</b><br/>\r\n");

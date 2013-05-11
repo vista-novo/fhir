@@ -92,7 +92,7 @@ public class PageProcessor implements Logger  {
   
   private String dictForDt(String dt) throws Exception {
 	  File tmp = File.createTempFile("tmp", ".tmp");
-	  DictHTMLGenerator gen = new DictHTMLGenerator(new FileOutputStream(tmp));
+	  DictHTMLGenerator gen = new DictHTMLGenerator(new FileOutputStream(tmp), definitions);
 	  TypeParser tp = new TypeParser();
 	  TypeRef t = tp.parse(dt).get(0);
 	  
@@ -312,6 +312,8 @@ public class PageProcessor implements Logger  {
         src = s1 + genBindingsTable() + s3;
       else if (com[0].equals("codeslist"))
         src = s1 + genCodeSystemsTable() + s3;
+      else if (com[0].equals("valuesetslist"))
+        src = s1 + genValueSetsTable() + s3;
       else if (com[0].equals("bindingtable-others"))
         src = s1 + genBindingTable(false) + s3;
       else if (com[0].equals("resimplall"))
@@ -326,6 +328,12 @@ public class PageProcessor implements Logger  {
         src = s1 + generateToc() + s3;
       else if (com[0].equals("txdef"))
         src = s1 + generateCodeDefinition(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("txoid"))
+        src = s1 + generateOID(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("txname"))
+        src = s1 + Utilities.fileTitle(file) + s3;
+      else if (com[0].equals("txdesc"))
+        src = s1 + generateDesc(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txusage"))
         src = s1 + generateBSUsage(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txsummary"))
@@ -468,7 +476,7 @@ private String resItem(String name) throws Exception {
     if (b.length() == 0)
       return "<p>\r\nThese codes are not currently used\r\n</p>\r\n";
     else
-      return "<p>\r\nThese codes are used in the follow places:\r\n</p>\r\n<ul>\r\n"+b.toString()+"</ul>\r\n";
+      return "<p>\r\nThese codes are used in the following places:\r\n</p>\r\n<ul>\r\n"+b.toString()+"</ul>\r\n";
   }
 
   private void scanForUsage(StringBuilder b, BindingSpecification cd, ElementDefn e, String ref) {
@@ -501,16 +509,39 @@ private String resItem(String name) throws Exception {
       hasComment = hasComment || c.hasComment();
       hasDefinition = hasDefinition || c.hasDefinition();
     }
+    String src;
+    if (cd.isValueSet()) {
+      src = "Source";
+    } else
+      src = "Id";
+    if (hasComment)
+      s.append("    <tr><th>"+src+"</th><th>Code</th><th>Definition</th><th>Comments</th></tr>");
+    else if (hasDefinition)
+      s.append("    <tr><th>"+src+"</th><th>Code</th><th colspan=\"2\">Definition</th></tr>");
+    else
+      s.append("    <tr><th>"+src+"</th><th colspan=\"3\">Code</th></tr>");
+    
     for (DefinedCode c : cd.getCodes()) {
+      if (cd.isValueSet()) {
+        if (Utilities.noString(c.getSystem()))
+          src = "??";
+        else
+          src = "<a href=\""+c.getSystem()+"\">"+codeSystemDescription(c.getSystem())+"</a>";
+      } else
+        src = c.getId();
       if (hasComment)
-        s.append("    <tr><td>"+Utilities.escapeXml(c.getCode())+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td><td>"+Utilities.escapeXml(c.getComment())+"</td></tr>");
+        s.append("    <tr><td>"+src+"</td><td>"+Utilities.escapeXml(c.getCode())+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td><td>"+Utilities.escapeXml(c.getComment())+"</td></tr>");
       else if (hasDefinition)
-        s.append("    <tr><td>"+Utilities.escapeXml(c.getCode())+"</td><td colspan=\"2\">"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
+        s.append("    <tr><td>"+src+"</td><td>"+Utilities.escapeXml(c.getCode())+"</td><td colspan=\"2\">"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
       else
-        s.append("    <tr><td colspan=\"3\">"+Utilities.escapeXml(c.getCode())+"</td></tr>");
+        s.append("    <tr><td>"+src+"</td><td colspan=\"3\">"+Utilities.escapeXml(c.getCode())+"</td></tr>");
     }
     s.append("    </table>\r\n");
     return s.toString();
+  }
+
+  private String codeSystemDescription(String system) {
+    return system.substring(system.lastIndexOf("/")+1);
   }
 
   private String genProfileConstraints(ResourceDefn res) throws Exception {
@@ -681,14 +712,18 @@ private String resItem(String name) throws Exception {
       b.append("<li class=\"selected\"><span>Content</span></li>");
     else
       b.append("<li class=\"nselected\"><span><a href=\""+n+".htm\">Content</a></span></li>");
-    if ("codes".equals(mode))
-      b.append("<li class=\"selected\"><span>Defined Codes</span></li>");
-    else
-      b.append("<li class=\"nselected\"><span><a href=\""+n+"-codes.htm\">Defined Codes</a></span></li>");
     if ("bindings".equals(mode))
       b.append("<li class=\"selected\"><span>Bindings</span></li>");
     else
       b.append("<li class=\"nselected\"><span><a href=\""+n+"-bindings.htm\">Bindings</a></span></li>");
+    if ("codes".equals(mode))
+      b.append("<li class=\"selected\"><span>Defined Code Lists</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+"-codes.htm\">Defined Code Lists</a></span></li>");
+    if ("valuesets".equals(mode))
+      b.append("<li class=\"selected\"><span>Defined Value Sets</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+"-valuesets.htm\">Defined Value Sets</a></span></li>");
     b.append("<li class=\"spacerright\" style=\"width: 370px\"><span>&nbsp;</span></li>");
     b.append("<li class=\"wiki\"><span><a href=\"http://wiki.hl7.org/index.php?title=FHIR_"+n.toUpperCase().substring(0, 1)+n.substring(1)+"_Page\">Community Input (wiki)</a></span></li>");
     b.append("</ul></div>\r\n");
@@ -795,13 +830,33 @@ private String resItem(String name) throws Exception {
     s.append("<table class=\"codes\">\r\n");
     List<String> names = new ArrayList<String>();
     for (String n : definitions.getBindings().keySet()) {
-      if (definitions.getBindingByName(n).getBinding() == Binding.CodeList)
+      if (definitions.getBindingByName(n).getBinding() == Binding.CodeList && !definitions.getBindingByName(n).isValueSet())
        names.add(n);
     }
     Collections.sort(names);
     for (String n : names) {
       BindingSpecification cd = definitions.getBindingByName(n);
       s.append(" <tr><td><a href=\""+cd.getReference().substring(1)+".htm\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a></td><td>"+Utilities.escapeXml(cd.getDefinition())+"</td></tr>\r\n");
+    }
+    s.append("</table>\r\n");
+    return s.toString();
+  }
+
+  private String genValueSetsTable() throws Exception {
+    StringBuilder s = new StringBuilder();
+    s.append("<table class=\"codes\">\r\n");
+    List<String> names = new ArrayList<String>();
+    for (String n : definitions.getBindings().keySet()) {
+      if ((definitions.getBindingByName(n).getBinding() == Binding.ValueSet) || (definitions.getBindingByName(n).getBinding() == Binding.CodeList && definitions.getBindingByName(n).isValueSet()))
+       names.add(n);
+    }
+    Collections.sort(names);
+    for (String n : names) {
+      BindingSpecification cd = definitions.getBindingByName(n);
+      if (Utilities.noString(cd.getReference()))
+        s.append(" <tr><td>"+cd.getName()+"</td><td>"+Utilities.escapeXml(cd.getDefinition())+"</td><td>"+Utilities.escapeXml(cd.getDescription())+"</td></tr>\r\n");
+      else
+        s.append(" <tr><td>"+cd.getName()+"</td><td>"+Utilities.escapeXml(cd.getDefinition())+"</td><td><a href=\""+cd.getReference().substring(1)+".htm\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a></td></tr>\r\n");
     }
     s.append("</table>\r\n");
     return s.toString();
@@ -1088,6 +1143,8 @@ private String resItem(String name) throws Exception {
         src = s1 + genBindingTable(false) + s3;
       else if (com[0].equals("codeslist"))
         src = s1 + genCodeSystemsTable() + s3;
+      else if (com[0].equals("valuesetslist"))
+        src = s1 + genValueSetsTable() + s3;
       else if (com[0].equals("resimplall"))
         src = s1 + genResImplList() + s3;
       else if (com[0].equals("dtmappings"))
@@ -1109,6 +1166,36 @@ private String resItem(String name) throws Exception {
     }
     return src;
   } 
+
+  private static final String OID_TX = "1.2.3.4.5.6.";
+  private static final String OID_VS = "1.2.3.4.5.7.";
+  private String generateOID(String fileTitle) {
+    BindingSpecification cd = definitions.getBindingByReference("#"+fileTitle);
+    if (cd.isValueSet())
+      return OID_VS + cd.getId();
+    else
+      return OID_TX + cd.getId();
+  }
+
+  private String generateDesc(String fileTitle) {
+    BindingSpecification cd = definitions.getBindingByReference("#"+fileTitle);
+    if (!cd.isValueSet())
+      return "This value set defines it's own codes:";
+    else {
+      StringBuilder b = new StringBuilder();
+      b.append("This is a value set with codes taken from ");
+      int i = 0;
+      for (String n : cd.getVSSources()) {
+        i++;
+        b.append("<a href=\""+n+"\">"+n+"</a>");
+        if (i == cd.getVSSources().size() - 1)
+          b.append(" and ");
+        else if (cd.getVSSources().size() > 1 && i != cd.getVSSources().size() )
+          b.append(", ");
+      }
+      return b.toString()+":";
+    }
+  }
 
   String processPageIncludesForBook(String file, String src) throws Exception {
 	  while (src.contains("<%") || src.contains("[%"))
@@ -1178,6 +1265,8 @@ private String resItem(String name) throws Exception {
         src = s1 + genBindingTable(true) + s3;
       else if (com[0].equals("codeslist"))
         src = s1 + genCodeSystemsTable() + s3;
+      else if (com[0].equals("valuesetslist"))
+        src = s1 + genValueSetsTable() + s3;
       else if (com[0].equals("bindingtable"))
         src = s1 + genBindingsTable() + s3;
       else if (com[0].equals("bindingtable-others"))
@@ -1192,6 +1281,12 @@ private String resItem(String name) throws Exception {
         src = s1 + "http://hl7.org/fhir/"+Utilities.fileTitle(file) + s3;
       else if (com[0].equals("txdef"))
         src = s1 + generateCodeDefinition(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("txoid"))
+        src = s1 + generateOID(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("txname"))
+        src = s1 + Utilities.fileTitle(file) + s3;
+      else if (com[0].equals("txdesc"))
+        src = s1 + generateDesc(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txusage"))
         src = s1 + generateBSUsage(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txsummary"))

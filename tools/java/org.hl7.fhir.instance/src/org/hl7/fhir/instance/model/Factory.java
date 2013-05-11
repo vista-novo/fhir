@@ -138,5 +138,11 @@ public class Factory {
 	  rr.setReferenceSimple(url);
 	  return rr;
   }
+
+  public static DateTime nowDateTime() {
+    DateTime dt = new DateTime();
+    dt.setValue("2023-05-12T00:10:00"); // todo -fix this
+    return dt;
+  }
   
 }

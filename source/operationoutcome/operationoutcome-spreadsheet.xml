@@ -20,6 +20,7 @@
   <WindowWidth>1980</WindowWidth>
   <WindowTopX>135</WindowTopX>
   <WindowTopY>480</WindowTopY>
+  <ActiveSheet>5</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -201,7 +202,6 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -390,19 +390,21 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s72" ss:DefaultColumnWidth="65.25"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="234.75"/>
-   <Column ss:Index="4" ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="84"/>
-   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="126"/>
+   <Column ss:Index="4" ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="84"
+    ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="126"/>
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="260.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s70"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -411,6 +413,7 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">How the issue affects the success of the action</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#issue-severity</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -418,7 +421,8 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">A coded expression of the type of issue</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s71"/>
-    <Cell ss:Index="6" ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:Index="7" ss:StyleID="s71"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -428,10 +432,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -440,10 +446,11 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="issue-severity">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="288"/>
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="288"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s72">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s70"/>
@@ -452,19 +459,22 @@
     <Cell ss:StyleID="s70"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">The issue is sufficiently important to cause the action to fail</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">warning</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">The issue is not important enough to cause the action to fail, but may cause it to be performed suboptimally or in a way that is not as desired</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">information</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">The issue has no relation to the degree of success of the action</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s63"/>
+    <Cell ss:Index="2" ss:StyleID="s63"/>
     <Cell ss:StyleID="s63"/>
    </Row>
   </Table>
@@ -479,7 +489,6 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>3</ActiveRow>
-     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

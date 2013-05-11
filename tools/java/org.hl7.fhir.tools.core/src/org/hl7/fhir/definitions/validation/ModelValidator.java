@@ -29,11 +29,15 @@ package org.hl7.fhir.definitions.validation;
 
  */
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.SearchParameter;
 import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
+import org.hl7.fhir.definitions.model.BindingSpecification.Management;
+import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
@@ -50,7 +54,7 @@ import org.hl7.fhir.utilities.Utilities;
  * can't have a search parameter called id
  * can't have an element name "entries"
  * banned parameter type names: history, metadata, mailbox, validation 
- * 
+ * check code lists used in Codings have displays
  * @author Grahame
  *
  */
@@ -241,6 +245,37 @@ public class ModelValidator {
       errors.add(new ValidationMessage(path + ": " + msg, Level.Warning));
     return b;
     
+  }
+
+  public List<ValidationMessage> check(String n, BindingSpecification cd) {
+    errors.clear();
+
+    for (DefinedCode c : cd.getCodes()) {
+      String d = c.getCode();
+      if (Utilities.noString(d))
+        d = c.getId();
+      if (Utilities.noString(d))
+        d = c.getDisplay();
+      if (Utilities.noString(d))
+        d = c.getDisplay();
+      
+      warning("Binding "+n, !Utilities.noString(c.getDefinition()), "Code "+d+" must have a definition");
+      warning("Binding "+n, !(Utilities.noString(c.getId()) && Utilities.noString(c.getSystem())) , "Code "+d+" must have a id or a system");
+    }
+
+    if (cd.isValueSet()) {
+      boolean internal = false;
+      for (DefinedCode c : cd.getCodes()) 
+        internal = internal || Utilities.noString(c.getSystem());
+      rule("Binding "+n, !internal, "Cannot mix internal and external code");
+    }
+
+//    rule("Binding "+n, cd.getManagement() != null, "Management code missing");
+//    if (cd.getBinding() == Binding.CodeList) 
+//      rule("Binding "+n, cd.getManagement() == Management.Fixed || cd.getManagement() == Management.Alterable, "Code lists must have a management style of Fixed or Alterable");
+//    else
+//      rule("Binding "+n, cd.getManagement() == Management.Dynamic || cd.getManagement() == Management.Static, "Value sets must have a management style of Dynamic or Static");
+    return errors;
   }
 
 }

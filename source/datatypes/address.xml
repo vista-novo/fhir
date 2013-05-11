@@ -20,6 +20,7 @@
   <WindowWidth>27795</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>90</WindowTopY>
+  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -61,7 +62,11 @@
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
    <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s68" ss:Parent="s62">
+  <Style ss:ID="s67">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s69" ss:Parent="s62">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
@@ -69,10 +74,10 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s69">
+  <Style ss:ID="s70">
    <Alignment ss:Vertical="Top"/>
   </Style>
-  <Style ss:ID="s70">
+  <Style ss:ID="s71">
    <Alignment ss:Vertical="Top"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -81,7 +86,7 @@
     ss:Bold="1"/>
    <Interior ss:Color="#F2F2F2" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s71">
+  <Style ss:ID="s72">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders>
@@ -90,10 +95,6 @@
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
-  </Style>
-  <Style ss:ID="s72">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
-    ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s73">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
@@ -157,7 +158,7 @@
     <Cell><Data ss:Type="String">Identifies the intended purpose of this address</Data></Cell>
     <Cell><Data ss:Type="String">Home, Work</Data></Cell>
     <Cell><Data ss:Type="String">Allows an appropriate address to be chosen from a list of many</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">This is labelled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old address etc for a current/permanent one. Applications can assume that an address is not temporary or old unless it explicitly says that it is</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">This is labelled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old address etc for a current/permanent one. Applications can assume that an address is not temporary or old unless it explicitly says that it is</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">unique(./use)</Data></Cell>
     <Cell ss:Index="17"><Data ss:Type="String">Is it outside the 80% for this to repeat?</Data></Cell>
    </Row>
@@ -177,7 +178,7 @@
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Line of an address</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">A line of an address (typically used for street names &amp; numbers, unit details, delivery hints, etc.) .</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">A line of an address (typically used for street names &amp; numbers, unit details, delivery hints, etc.) .</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">street address</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -185,7 +186,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Name of city, town etc.</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">The name of the city, town, village or other community or delivery centre.</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">The name of the city, town, village or other community or delivery centre.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Muncipality</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">locality</Data></Cell>
    </Row>
@@ -194,7 +195,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Sub-unit of country (abreviations ok)</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Province, Territory</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">region</Data></Cell>
    </Row>
@@ -203,7 +204,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Post code for area</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">A postal code designating a region defined by the postal service.</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">A postal code designating a region defined by the postal service.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">PostCode</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">postal code</Data></Cell>
    </Row>
@@ -212,7 +213,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Country (can be ISO 3166 3 letter code)</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Country. ISO 3166 3 letter codes can be used in place of a full country name.</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Country. ISO 3166 3 letter codes can be used in place of a full country name.</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">country name</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -239,7 +240,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -253,25 +253,25 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="24"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="125.25"/>
-   <Column ss:StyleID="s69" ss:Width="42.75"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="392.25"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="329.25"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="230.25"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s70">
+   x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="24"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="125.25"/>
+   <Column ss:StyleID="s70" ss:Width="42.75"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="392.25"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="329.25"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="230.25"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s71">
     <Cell><Data ss:Type="String">Id</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Name</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Context</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">English</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">OCL</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">XPath</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Name</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Context</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">English</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">OCL</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">XPath</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:Index="2" ss:StyleID="s63"/>
     <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s63"/>
     <Cell ss:StyleID="s63"/>
    </Row>
@@ -301,27 +301,29 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="83.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="117"/>
    <Column ss:AutoFitWidth="0" ss:Width="87.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="109.5"/>
-   <Column ss:AutoFitWidth="0" ss:Width="147.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="109.5" ss:Span="1"/>
+   <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="147.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="224.25"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Binding Name</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Definition</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Reference</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Binding Name</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Management</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Reference</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s73"><Data ss:Type="String">AddressUse</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">The use of an address</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">#address-use</Data></Cell>
    </Row>
   </Table>
@@ -332,11 +334,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>10</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -344,30 +347,35 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="address-use">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="429"/>
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="429"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Definition</Data></Cell>
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Id</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">home</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">A communication address at a home</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">work</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">An office address. First choice for business related contacts during business hours</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">temp</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">A temporary address. The period can provide more detailed information</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">old</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">This address is no longer in use (or was never correct, but retained for records)</Data></Cell>
    </Row>
@@ -382,8 +390,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

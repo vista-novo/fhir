@@ -20,6 +20,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -131,7 +132,7 @@
    <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
    <Column ss:Index="16" ss:StyleID="s65" ss:Width="88.5"/>
-   <Row ss:Height="105" ss:StyleID="s67">
+   <Row ss:AutoFitHeight="0" ss:Height="105" ss:StyleID="s67">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
@@ -172,7 +173,7 @@
     <Cell><Data ss:Type="String">CCDA: Tobacco Use</Data></Cell>
     <Cell><Data ss:Type="String">CCDA: Vital Sign Observation</Data></Cell>
    </Row>
-   <Row ss:Height="150">
+   <Row ss:AutoFitHeight="0" ss:Height="150">
     <Cell><Data ss:Type="String">Observation</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>
@@ -212,7 +213,7 @@
     <Cell ss:StyleID="s64"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">y</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Observation.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -250,7 +251,7 @@
     <Cell ss:StyleID="s73"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">y</Data></Cell>
    </Row>
-   <Row ss:Height="90">
+   <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Observation.value[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -289,7 +290,7 @@
     <Cell ss:StyleID="s64"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">y</Data></Cell>
    </Row>
-   <Row ss:Height="105">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">Observation.interpretation</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -327,7 +328,7 @@
     <Cell ss:StyleID="s64"/>
     <Cell ss:StyleID="s64"/>
    </Row>
-   <Row ss:Height="120">
+   <Row ss:AutoFitHeight="0" ss:Height="120">
     <Cell><Data ss:Type="String">Observation.comments</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -365,7 +366,7 @@
     <Cell ss:StyleID="s64"/>
     <Cell ss:StyleID="s64"/>
    </Row>
-   <Row ss:Height="90">
+   <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Observation.applies[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -382,7 +383,7 @@
     <Cell ss:StyleID="s70"/>
     <Cell ss:Index="17" ss:StyleID="s69"/>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Observation.issued</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -398,7 +399,7 @@
     <Cell ss:StyleID="s70"/>
     <Cell ss:Index="17" ss:StyleID="s69"/>
    </Row>
-   <Row ss:Height="90">
+   <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Observation.status</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -414,7 +415,7 @@
     <Cell ss:StyleID="s70"/>
     <Cell ss:Index="17" ss:StyleID="s69"/>
    </Row>
-   <Row ss:Height="180">
+   <Row ss:AutoFitHeight="0" ss:Height="180">
     <Cell><Data ss:Type="String">Observation.reliability</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -431,7 +432,7 @@
     <Cell ss:StyleID="s70"/>
     <Cell ss:Index="17" ss:StyleID="s69"/>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Observation.bodySite</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -471,7 +472,7 @@
     <Cell ss:StyleID="s64"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">y</Data></Cell>
    </Row>
-   <Row ss:Height="105">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">Observation.method</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -489,7 +490,7 @@
     <Cell><Data ss:Type="String">Is this in the 80%?</Data></Cell>
     <Cell ss:StyleID="s69"/>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Observation.identifier</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -527,7 +528,7 @@
     <Cell ss:StyleID="s73"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">y</Data></Cell>
    </Row>
-   <Row ss:Height="195">
+   <Row ss:AutoFitHeight="0" ss:Height="195">
     <Cell><Data ss:Type="String">Observation.subject</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -566,7 +567,7 @@
     <Cell ss:StyleID="s64"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">y</Data></Cell>
    </Row>
-   <Row ss:Height="165">
+   <Row ss:AutoFitHeight="0" ss:Height="165">
     <Cell><Data ss:Type="String">Observation.performer</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -605,7 +606,7 @@
     <Cell ss:StyleID="s64"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">y</Data></Cell>
    </Row>
-   <Row ss:Height="180">
+   <Row ss:AutoFitHeight="0" ss:Height="180">
     <Cell><Data ss:Type="String">!Observation.normalValue[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="Number">2</Data></Cell>
@@ -642,7 +643,7 @@
     <Cell ss:StyleID="s64"/>
     <Cell ss:StyleID="s64"/>
    </Row>
-   <Row ss:Height="150">
+   <Row ss:AutoFitHeight="0" ss:Height="150">
     <Cell><Data ss:Type="String">Observation.referenceRange</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -680,7 +681,7 @@
     <Cell ss:StyleID="s64"/>
     <Cell ss:StyleID="s64"/>
    </Row>
-   <Row ss:Height="135">
+   <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="String">Observation.referenceRange.meaning</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -719,7 +720,7 @@
     <Cell ss:StyleID="s64"/>
     <Cell ss:StyleID="s64"/>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Observation.referenceRange.range[x]</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -758,7 +759,7 @@
     <Cell ss:StyleID="s64"/>
     <Cell ss:StyleID="s64"/>
    </Row>
-   <Row ss:Height="150">
+   <Row ss:AutoFitHeight="0" ss:Height="150">
     <Cell><Data ss:Type="String">Observation.component</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="Number">1</Data></Cell>
@@ -773,7 +774,7 @@
     <Cell ss:StyleID="s70"/>
     <Cell ss:Index="17" ss:StyleID="s69"/>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Observation.component.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -811,7 +812,7 @@
     <Cell ss:StyleID="s73"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">y</Data></Cell>
    </Row>
-   <Row ss:Height="120">
+   <Row ss:AutoFitHeight="0" ss:Height="120">
     <Cell><Data ss:Type="String">Observation.component.value[x]</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s69"/>
@@ -858,7 +859,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Selected/>
+   <Unsynced/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1215,19 +1216,20 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="179.25"/>
    <Column ss:Width="249.75"/>
    <Column ss:Width="47.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="90"/>
-   <Column ss:Width="132.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="90" ss:Span="1"/>
+   <Column ss:Index="6" ss:Width="132.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="274.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s67"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Description</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">Comments</Data></Cell>
@@ -1238,12 +1240,14 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s78"/>
+    <Cell ss:StyleID="s78"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ObservationType</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes identifying types of simple observations</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">suggested</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">dynamic</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s78"><Data ss:Type="String">LOINC codes filtered to exclude lab, document,imaging and other complex codes</Data></Cell>
    </Row>
@@ -1252,35 +1256,40 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes providing results of simple observations</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">SNOMED-CT observation value codes</Data></Cell>
+    <Cell><Data ss:Type="String">dynamic</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">SNOMED-CT observation value codes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ObservationInterpretation</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes identifying interpretations of observations</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#observation-interpretation</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Need to use v2 codes</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Need to use v2 codes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">SubObservationType</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes identifying types of simple sub-observations</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s78"><Data ss:Type="String">LOINC codes filtered to exclude lab, document,imaging and other complex codes</Data></Cell>
+    <Cell><Data ss:Type="String">dynamic</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="s78"><Data ss:Type="String">LOINC codes filtered to exclude lab, document,imaging and other complex codes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">SubObservationResult</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes providing results of simple sub-observations</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">SNOMED-CT observation value codes</Data></Cell>
+    <Cell><Data ss:Type="String">dynamic</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">SNOMED-CT observation value codes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ObservationReliability</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes that provide reliability information about an observation</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#observation-reliability</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1296,6 +1305,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1315,8 +1325,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>24</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1324,30 +1334,35 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="observation-interpretation">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="123"/>
    <Column ss:Width="55.5"/>
    <Column ss:Width="561"/>
    <Column ss:Width="249.75"/>
    <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">System</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Definition</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">System</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/observationinterpretation</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">N</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Normal</Data></Cell>
     <Cell ss:StyleID="s62"/>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/observationinterpretation</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">A</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Abnormal</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/observationinterpretation</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">L</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Low</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">http://hl7.org/fhir/v3/observationinterpretation</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">H</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">High</Data></Cell>
    </Row>
@@ -1362,8 +1377,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>33</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1371,42 +1385,50 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="observation-reliability">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="8" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="8" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="81.75"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="81.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="366.75"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Comments</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">ok</Data></Cell>
     <Cell><Data ss:Type="String">The result has no reliability concerns</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">ongoing</Data></Cell>
     <Cell><Data ss:Type="String">An early estimate of value; measurement is still occurring</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">early</Data></Cell>
     <Cell><Data ss:Type="String">An early estimate of value; processing is still occurring</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">questionable</Data></Cell>
     <Cell><Data ss:Type="String">The observation value should be treated with care</Data></Cell>
     <Cell><Data ss:Type="String">This code is used when there are features of the measurement process that raise concerns about the validity of a result. In some circumstances, what is available is reported anyway</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">calibrating</Data></Cell>
     <Cell><Data ss:Type="String">The result has been generated while calibration is occurring</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="String">error</Data></Cell>
     <Cell><Data ss:Type="String">The observation could not be completed because of an error</Data></Cell>
     <Cell><Data ss:Type="String">In this case, value must be missing</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">7</Data></Cell>
     <Cell><Data ss:Type="String">unknown</Data></Cell>
     <Cell><Data ss:Type="String">No observation value was available</Data></Cell>
     <Cell><Data ss:Type="String">In this case, value must be missing</Data></Cell>
@@ -1422,8 +1444,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <RangeSelection>R2C1:R8C2</RangeSelection>
+     <ActiveRow>6</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

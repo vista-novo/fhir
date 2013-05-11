@@ -10,7 +10,7 @@
   <LastAuthor>Hugh Glover</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
   <LastSaved>2013-04-15T20:50:00Z</LastSaved>
-  <Version>15.00</Version>
+  <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
@@ -20,7 +20,7 @@
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -1006,7 +1006,6 @@
     <HorizontalResolution>300</HorizontalResolution>
     <VerticalResolution>300</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -1019,19 +1018,20 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s90" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s90" ss:Width="195.75"/>
    <Column ss:StyleID="s89" ss:AutoFitWidth="0" ss:Width="217.5"/>
    <Column ss:StyleID="s90" ss:AutoFitWidth="0" ss:Width="81.75"/>
-   <Column ss:StyleID="s90" ss:AutoFitWidth="0" ss:Width="90"/>
-   <Column ss:StyleID="s90" ss:AutoFitWidth="0" ss:Width="198.75"/>
+   <Column ss:StyleID="s90" ss:AutoFitWidth="0" ss:Width="90" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s90" ss:AutoFitWidth="0" ss:Width="198.75"/>
    <Column ss:StyleID="s89" ss:AutoFitWidth="0" ss:Width="274.5"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -1040,6 +1040,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">A code signifying whether a different drug was dispensed from what was prescribed.</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#medication-dispense-subtype</Data></Cell>
     <Cell><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
@@ -1048,20 +1049,23 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">Indicates the reason for the substitution of (or lack of substitution) from what was prescribed.</Data></Cell>
     <Cell><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">to be completed</Data></Cell>
+    <Cell><Data ss:Type="String">dynamic</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s79"><Data ss:Type="String">MedicationDispenseType</Data></Cell>
     <Cell ss:StyleID="s79"><Data ss:Type="String">Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc. </Data></Cell>
     <Cell><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">to be completed</Data></Cell>
+    <Cell><Data ss:Type="String">dynamic</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s63"><Data ss:Type="String">MedicationDispenseStatus</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">A code specifying the state of the dispense event.</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#medication-dispense-status</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">Tie this into the HL7 V3 Event act state model for administration</Data></Cell>
    </Row>
@@ -1079,11 +1083,12 @@
     <HorizontalResolution>300</HorizontalResolution>
     <VerticalResolution>300</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1091,26 +1096,32 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="medication-dispense-status">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="681.75"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="99"/>
+   <Column ss:AutoFitWidth="0" ss:Width="681.75"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">active</Data></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">The dispensing of the medication has started and is currently in progress.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">paused</Data></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">The dispensing of the medication has started but is currently stopped with a firm intention of restarting.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">The dispensing of the medication has finished</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">nullified</Data></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">The dispensing of the medication was recorded in error and the record should now be disregarded.</Data></Cell>
    </Row>
@@ -1126,7 +1137,6 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>3</ActiveRow>
-     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1134,27 +1144,32 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="medication-dispense-subtype">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Width="56.25"/>
+   <Column ss:Index="2" ss:Width="56.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="510"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">NoSub</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">No substitution made or expected</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">SubNotExp</Data></Cell>
     <Cell><Data ss:Type="String">Subtitution made but not expected</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">SubFail</Data></Cell>
     <Cell><Data ss:Type="String">Substitution expected but not made</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">SubOK</Data></Cell>
     <Cell><Data ss:Type="String">Substitution made and expected</Data></Cell>
    </Row>
@@ -1169,8 +1184,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

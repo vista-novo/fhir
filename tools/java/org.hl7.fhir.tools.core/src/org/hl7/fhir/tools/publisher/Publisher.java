@@ -36,6 +36,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -45,6 +46,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.rmi.CORBA.Util;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -52,6 +54,7 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
+import org.eclipse.emf.ecore.EOperation.Internal.InvocationDelegate.Factory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
@@ -67,6 +70,7 @@ import org.hl7.fhir.definitions.generators.specification.XmlSpecGenerator;
 import org.hl7.fhir.definitions.generators.xsd.SchemaGenerator;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
+import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Example;
@@ -81,11 +85,19 @@ import org.hl7.fhir.definitions.validation.ProfileValidator;
 import org.hl7.fhir.definitions.validation.ValidationMessage;
 import org.hl7.fhir.instance.formats.AtomComposer;
 import org.hl7.fhir.instance.formats.JsonComposer;
+import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.AtomEntry;
 import org.hl7.fhir.instance.model.AtomFeed;
+import org.hl7.fhir.instance.model.Contact.ContactSystem;
 import org.hl7.fhir.instance.model.DateTime;
 import org.hl7.fhir.instance.model.Profile;
+import org.hl7.fhir.instance.model.ValueSet;
+import org.hl7.fhir.instance.model.ValueSet.CodeSelectionMode;
+import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
+import org.hl7.fhir.instance.model.ValueSet.ValueSetDefineConceptComponent;
+import org.hl7.fhir.instance.model.ValueSet.ValuesetKind;
+import org.hl7.fhir.instance.model.ValueSet.ValuesetStatus;
 import org.hl7.fhir.tools.implementations.ECoreOclGenerator;
 import org.hl7.fhir.tools.implementations.csharp.CSharpGenerator;
 import org.hl7.fhir.tools.implementations.delphi.DelphiGenerator;
@@ -257,7 +269,7 @@ public class Publisher {
 	    cache.save();
 	    
 	    if (!buildFlags.get("all"))
-	      log("Partial Build");
+	      log("Partial Build (if you want a full build, just run the build again)");
 	    Utilities.createDirectory(page.getFolders().dstDir);
 			
 			if (isGenerate) {
@@ -372,6 +384,8 @@ public class Publisher {
       errors.addAll(val.checkStucture(n, page.getDefinitions().getStructures().get(n)));
 		for (String n : page.getDefinitions().sortedResourceNames())
 			errors.addAll(val.check(n, page.getDefinitions().getResources().get(n)));
+    for (String n : page.getDefinitions().getBindings().keySet())
+      errors.addAll(val.check(n, page.getDefinitions().getBindingByName(n)));
 
     for (String rname : page.getDefinitions().sortedResourceNames()) {
       ResourceDefn r = page.getDefinitions().getResources().get(rname); 
@@ -877,7 +891,7 @@ public class Publisher {
 	  tgen.close();
 	  String tx = TextFile.fileToString(tmp.getAbsolutePath());
 
-	  DictHTMLGenerator dgen = new DictHTMLGenerator(new FileOutputStream(tmp));
+	  DictHTMLGenerator dgen = new DictHTMLGenerator(new FileOutputStream(tmp), page.getDefinitions());
 	  dgen.generate(resource.getRoot());
 	  dgen.close();
 	  String dict = TextFile.fileToString(tmp.getAbsolutePath());
@@ -1574,38 +1588,53 @@ public class Publisher {
     TextFile.stringToFile(page.processPageIncludes(filename, TextFile.fileToString(page.getFolders().srcDir+"template-tx.htm")), page.getFolders().dstDir+filename);
     String src = page.processPageIncludesForBook(filename, TextFile.fileToString(page.getFolders().srcDir+"template-tx.htm"));
     cachePage(filename, src);
-    
-  /*  
-    String src = TextFile.fileToString(page.getFolders().srcDir + file);
-    src = page.processPageIncludes(file, src);
-    TextFile.stringToFile(src, page.getFolders().dstDir + file);
-    src = TextFile.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body class=\"book\">");
-    src = page.processPageIncludesForPrinting(file, src);
-    TextFile.stringToFile(src, page.getFolders().dstDir + "print-" + file);
 
-    src = TextFile.fileToString(page.getFolders().srcDir + file).replace(
-        "<body>", "<body style=\"margin: 10px\">");
-    src = page.processPageIncludesForBook(file, src);
-    cachePage(file, src);
-*/
-//    pages.
-//    String fn = getFolders().dstDir+File.separator+cd.getReference().substring(1)+".htm";
-//    if (!new File(fn).exists()) {
-//      generateCodeSystem(fn, cd);
-//    }      
+    ValueSet vs = new ValueSet();
+    vs.setIdentifierSimple("http://hl7.org/fhir/"+Utilities.fileTitle(filename));
+    // no version?? vs.setVersion(...
+    vs.setNameSimple(cd.getName());
+    vs.setPublisherSimple("HL7 (FHIR Project)");
+    vs.getTelecom().add(org.hl7.fhir.instance.model.Factory.newContact(ContactSystem.url, "http://hl7.org/fhir"));
+    vs.getTelecom().add(org.hl7.fhir.instance.model.Factory.newContact(ContactSystem.email, "fhir@lists.hl7.org"));
+    vs.setDescriptionSimple(Utilities.noString(cd.getDescription()) ? cd.getDefinition() : cd.getDefinition()+"\r\n\r\n"+cd.getDescription());
+    vs.setStatusSimple(ValuesetStatus.draft); // until we publish DSTU, then .review
+    vs.setDate(org.hl7.fhir.instance.model.Factory.nowDateTime());
+    if (cd.isValueSet()) {
+      vs.setKindSimple(ValuesetKind.composition);
+      vs.setCompose(vs.new ValueSetComposeComponent());
+      for (String n : cd.getVSSources()) {
+        ConceptSetComponent cc = vs.new ConceptSetComponent();
+        vs.getCompose().getInclude().add(cc);
+        cc.setSystemSimple(new URI(n));
+        cc.setModeSimple(CodeSelectionMode.code);
+        for (DefinedCode c : cd.getCodes()) {
+          if (n.equals(c.getSystem()))
+            cc.getCode().add(org.hl7.fhir.instance.model.Factory.newCode(c.getCode()));
+        }
+      }
+    }
+    else {
+      vs.setKindSimple(ValuesetKind.codeMinussystem);
+      vs.setDefine(vs.new ValueSetDefineComponent());
+      vs.getDefine().setSystemSimple(new URI("http://hl7.org/fhir/"+Utilities.fileTitle(filename)));
+      for (DefinedCode c : cd.getCodes()) {
+        ValueSetDefineConceptComponent d = vs.new ValueSetDefineConceptComponent();
+        vs.getDefine().getConcept().add(d);
+        d.setCodeSimple(c.getCode());
+        if (!Utilities.noString(c.getDisplay()))
+          d.setDisplaySimple(c.getDisplay());
+        if (!Utilities.noString(c.getDefinition()))
+          d.setDefinitionSimple(c.getDefinition());       
+      }
+    }
+
+    JsonComposer json = new JsonComposer();
+    json.compose(new FileOutputStream(page.getFolders().dstDir+Utilities.changeFileExt(filename, ".json")), vs);
+    XmlComposer xml = new XmlComposer();
+    xml.compose(new FileOutputStream(page.getFolders().dstDir+Utilities.changeFileExt(filename, ".xml")), vs, true);
+    cloneToXhtml(Utilities.fileTitle(filename), "Definition for Value Set"+vs.getNameSimple());
     
+      
   }
-//  private void generateCodeSystem(String filename, BindingSpecification cd) throws Exception {
-//    TextFile.stringToFile(page.processPageIncludes(filename, TextFile.fileToString(page.getFolders().srcDir+"template-tx.htm")), filename);
-//  }  
-//  String s = page.getFolders().dstDir+File.separator+cd.getReference().substring(1)+".htm";
-//  if (!new File(s).exists()) {
-//    generateCodeSystem(s, cd);
-//  }
-//  
-//  String s = page.getFolders().dstDir+File.separator+cd.getReference().substring(1)+".htm";
-//  if (!new File(s).exists()) {
-//    generateCodeSystem(s, cd);
-//  }
 
 }

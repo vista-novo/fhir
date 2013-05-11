@@ -74,10 +74,6 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
 		<display value="Outpatient Evaluation And Management"/>
 	  </coding>
 	</type>
-  <category>
-    <type value="Category"/>
-    <reference value="category/@1.2.36.90146595217.4.2.1"/>
-  </category>
   <author>
     <type value="Practitioner"/>
     <reference value="#a1"/>

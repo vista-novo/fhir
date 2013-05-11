@@ -20,7 +20,7 @@
   <WindowWidth>17490</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>105</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -78,15 +78,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s73">
-   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
-   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="9" ss:Color="#000000"/>
-  </Style>
-  <Style ss:ID="s77">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="9" ss:Color="#000000"/>
-  </Style>
-  <Style ss:ID="s78" ss:Parent="s62">
+  <Style ss:ID="s72" ss:Parent="s62">
    <Alignment ss:Vertical="Top"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
@@ -94,8 +86,16 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s79">
+  <Style ss:ID="s73">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="9" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s74">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s75">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="9" ss:Color="#000000"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Bindings">
@@ -210,38 +210,45 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="observation-status">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="7" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="65.25"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="65.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="594"/>
    <Column ss:AutoFitWidth="0" ss:Width="563.25"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Comments</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18.75">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">registered</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">The existence of the observation is registered, but there is no result yet available</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">This is used where an observation record is created before it is made as a place holder. Some times called &quot;To Follow&quot;</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">interim</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">This is an initial or interim observation: data may be incomplete or unverified</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">final</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">The observation is complete and verified by an authorised person</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">amended</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">The observation has been modified subsequent to being Final, and is complete and verified by an authorised person</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="19.5">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">cancelled</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">The observation is unavailable because the measurement was not started or not completed (also sometimes called &quot;aborted&quot;)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">withdrawn</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">The observation has been withdrawn following previous Final release</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Usually this is because some error has been detected in the measurement</Data></Cell>
@@ -254,44 +261,58 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>5</ActiveRow>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="search-param-type">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="7" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="84"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="84"/>
    <Column ss:AutoFitWidth="0" ss:Width="578.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s68">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Comment</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">integer</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Search parameter must be a simple whole number</Data></Cell>
    </Row>
-   <Row ss:Height="33.75" ss:StyleID="s67">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">Search parameter is a simple string, like a name part. Search is case-insensitive and accent-insensitive. May match just the start of a string. String parameters may contain spaces and are delineated by double quotes, e.g. &quot;van Zanten&quot;.</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="33.75" ss:StyleID="s67">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Search parameter is a simple string, like a name part. Search is case-insensitive and accent-insensitive. May match just the start of a string. String parameters may contain spaces and are delineated by double quotes, e.g. &quot;van Zanten&quot;.</Data></Cell>
    </Row>
-   <Row ss:Height="45" ss:StyleID="s67">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">text</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s67">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">text</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Search parameter is on a long string. Used for text filter type search: it functions on searches within a body of text and may contain spaces to separate words. May match even if the separate words are found out of order. Text parameters are delineated by double quotes.</Data></Cell>
    </Row>
-   <Row ss:Height="30" ss:StyleID="s67">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">date</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s67">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Search parameter is on a date (and should support -before and -after variants). The date format is the standard XML format, though other formats may be supported</Data></Cell>
    </Row>
-   <Row ss:Height="45" ss:StyleID="s67">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">qtoken</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s67">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">qtoken</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Search parameter on a coded element or identifier. May be used to search through the text, displayname, code and code/codesystem (for codes) and label, system and key (for identifier). It's value is either a string or a pair of namespace and value, separated by a &quot;!&quot;. </Data></Cell>
     <Cell><Data ss:Type="String"> </Data></Cell>
    </Row>
-   <Row ss:Height="24" ss:StyleID="s79">
+   <Row ss:AutoFitHeight="0" ss:Height="24" ss:StyleID="s74">
+    <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">reference</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">A pair of resource type and resource id, separated by &quot;/&quot;. Matches when the resource reference resolves to a resource of the given type and id.</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">A pair of resource type and resource id, separated by &quot;/&quot;. Matches when the resource reference resolves to a resource of the given type and id.</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -307,12 +328,10 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>9</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>5</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -320,25 +339,29 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="search-repeat-behavior">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="62.25"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="62.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="504.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="213.75"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s68">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Comment</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">single</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The search parameter may only occur once</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">union</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">When the search parameter occurs more than once, match resources with any of the values</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">intersection</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">When the search parameter occurs more than once, match resources with all of the values</Data></Cell>
    </Row>
@@ -353,8 +376,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>21</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>2</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

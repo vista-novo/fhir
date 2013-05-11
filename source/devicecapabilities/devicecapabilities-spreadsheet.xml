@@ -20,6 +20,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -310,7 +311,6 @@
     <PaperSizeIndex>9</PaperSizeIndex>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -511,19 +511,20 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="7" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s73" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="130.5"/>
    <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="294.75"/>
    <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="65.25"/>
-   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="84.75"/>
-   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="89.25"/>
+   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="84.75" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="89.25"/>
    <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="287.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -544,7 +545,8 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">Describes the facet</Data></Cell>
     <Cell><Data ss:Type="String">reference</Data></Cell>
     <Cell><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:StyleID="s75" ss:HRef="http://loinc.org/"><Data ss:Type="String">http://loinc.org</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s75" ss:HRef="http://loinc.org/"><Data
+      ss:Type="String">http://loinc.org</Data></Cell>
     <Cell ss:StyleID="s75" ss:HRef="http://loinc.org/"><Data ss:Type="String">http://loinc.org</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -552,6 +554,7 @@
     <Cell><Data ss:Type="String">The type of data produced by a device</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#device-data-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -559,7 +562,7 @@
     <Cell><Data ss:Type="String">UCUM Codes</Data></Cell>
     <Cell><Data ss:Type="String">reference</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s75" ss:HRef="http://unitsofmeasure.org/"><Data
+    <Cell ss:Index="6" ss:StyleID="s75" ss:HRef="http://unitsofmeasure.org/"><Data
       ss:Type="String">http://unitsofmeasure.org</Data></Cell>
     <Cell ss:StyleID="s75" ss:HRef="http://unitsofmeasure.org/"><Data
       ss:Type="String">http://unitsofmeasure.org</Data></Cell>
@@ -572,11 +575,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -584,31 +588,36 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="device-data-type">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="20" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="20" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="209.25"/>
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="209.25"/>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
     <Cell><Data ss:Type="String">The data item is a quantity. The string value should be merged with the units, and the ucum value if provided, to create a valid quantity</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Range</Data></Cell>
     <Cell><Data ss:Type="String">The data item is a range. The string value should be split about the &quot; - &quot; into low and high, with the units and ucum (if provided) filling out the low and high quantities</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">Coding</Data></Cell>
     <Cell><Data ss:Type="String">The data item is a code (i.e. true/false etc). The value should be built into a valid coding by filling out the system element provided</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">The data item is a simple string</Data></Cell>
    </Row>
    <Row ss:Index="20" ss:AutoFitHeight="0">
-    <Cell ss:Index="5" ss:StyleID="s63"/>
+    <Cell ss:Index="6" ss:StyleID="s63"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -621,8 +630,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>15</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
