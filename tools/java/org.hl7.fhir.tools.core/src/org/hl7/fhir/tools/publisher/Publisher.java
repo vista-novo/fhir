@@ -664,7 +664,7 @@ public class Publisher {
 					// Utilities.stringToFile(srcn, target+File.separator+f);
 				} else
 					zip.addFileName(f, fn.getAbsolutePath());
-			} else if (!fn.getAbsolutePath().endsWith("v2")) {
+			} else if (!fn.getAbsolutePath().endsWith("v2") && !fn.getAbsolutePath().endsWith("v3") ) {
 				// used to put stuff in sub-directories. clean them out if they
 				// still exist
 				Utilities.clearDirectory(fn.getAbsolutePath());
@@ -739,6 +739,7 @@ public class Publisher {
 	    }
 
       produceV2();
+      produceV3();
 
       log(" ...zips");
 	    ZipGenerator zip = new ZipGenerator(page.getFolders().dstDir + "examples.zip");
@@ -760,6 +761,35 @@ public class Publisher {
 	    log("Partial Build - terminating now");
 	}
 
+  private void produceV3() throws Exception {
+    log(" ...v3 Code Systems");
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    factory.setNamespaceAware(true);
+    DocumentBuilder builder = factory.newDocumentBuilder();
+    page.setV3src(builder.parse(new CSFileInputStream(new CSFile(page.getFolders().srcDir + "v3"+File.separator+"source.xml"))));
+    
+    Utilities.createDirectory(page.getFolders().dstDir + "v3");
+    Utilities.clearDirectory(page.getFolders().dstDir + "v3");
+    String src = TextFile.fileToString(page.getFolders().srcDir+ "v3"+File.separator+"template.htm");
+    TextFile.stringToFile(page.processPageIncludes("v3/template.htm", src), page.getFolders().dstDir + "v3"+File.separator+"index.htm");
+    
+    Element e = XMLUtil.getFirstChild(page.getV3src().getDocumentElement());
+    while (e != null) {
+      if (e.getNodeName().equals("codeSystem")) {
+        Element r = XMLUtil.getNamedChild(XMLUtil.getNamedChild(e, "header"), "responsibleGroup");
+        if (r != null && "Health Level 7".equals(r.getAttribute("organizationName"))) {
+          String id = e.getAttribute("name");
+          Utilities.createDirectory(page.getFolders().dstDir + "v3"+File.separator+id);
+          Utilities.clearDirectory(page.getFolders().dstDir + "v3"+File.separator+id);
+          src = TextFile.fileToString(page.getFolders().srcDir+ "v3"+File.separator+"template-cs.htm");
+          TextFile.stringToFile(page.processPageIncludes(id+".htm", src), page.getFolders().dstDir + "v3"+File.separator+id+File.separator+"index.htm");
+        }
+      }
+      e = XMLUtil.getNextSibling(e);
+    }
+    
+  }
+  
   private void produceV2() throws Exception {
     log(" ...v2 Tables");
     

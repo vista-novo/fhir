@@ -272,6 +272,8 @@ public class XMLUtil {
 	}
 
   public static Element getFirstChild(Element e) {
+    if (e == null)
+      return null;
     Node n = e.getFirstChild();
     while (n != null && n.getNodeType() != Node.ELEMENT_NODE)
       n = n.getNextSibling();

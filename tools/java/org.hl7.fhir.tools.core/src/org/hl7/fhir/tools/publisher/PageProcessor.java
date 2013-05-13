@@ -29,6 +29,7 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.StringWriter;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
 import java.text.SimpleDateFormat;
@@ -40,6 +41,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
@@ -72,6 +80,7 @@ import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 public class PageProcessor implements Logger  {
 
@@ -91,6 +100,7 @@ public class PageProcessor implements Logger  {
   private Map<String, TocEntry> toc = new HashMap<String, TocEntry>();
   private Map<String, String> imageMaps = new HashMap<String, String>();
   private Document v2src;
+  private Document v3src;
   
 //  private boolean notime;
   
@@ -312,6 +322,8 @@ public class PageProcessor implements Logger  {
         src = s1+"</div>"+s3;
       else if (com[0].equals("v2Index"))
         src = s1+genV2Index()+s3;
+      else if (com[0].equals("v3Index"))
+        src = s1+genV3Index()+s3;
       else if (com[0].equals("id"))
         src = s1+(name.contains("|") ? name.substring(0,name.indexOf("|")) : name)+s3;
       else if (com[0].equals("ver"))
@@ -320,6 +332,8 @@ public class PageProcessor implements Logger  {
         src = s1+genV2Table(name)+s3;
       else if (com[0].equals("v2TableVer"))
         src = s1+genV2TableVer(name)+s3;
+      else if (com[0].equals("v3CodeSystem"))
+        src = s1+genV3CodeSystem(name)+s3;
       else if (com[0].equals("events"))
         src = s1 + getEventsTable()+ s3;
       else if (com[0].equals("resourcecodes"))
@@ -362,6 +376,125 @@ public class PageProcessor implements Logger  {
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
     }
     return src;
+  }
+
+  private static String nodeToString(Element node) throws Exception {
+//    StringWriter sw = new StringWriter();
+//      Transformer t = TransformerFactory.newInstance().newTransformer();
+//      t.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+//      t.setOutputProperty(OutputKeys.INDENT, "yes");
+//      t.transform(new DOMSource(node), new StreamResult(sw));
+//    return sw.toString();
+    StringBuilder b = new StringBuilder();
+    Node n = node.getFirstChild();
+    while (n != null) {
+      if (n.getNodeType() == Node.ELEMENT_NODE) {
+        b.append(nodeToString((Element) n));
+      } else if (n.getNodeType() == Node.TEXT_NODE) {
+        b.append(n.getTextContent());
+      }
+      n = n.getNextSibling();
+    }
+    if (node.getNodeName().equals("p"))
+      b.append("<br/>\r\n");
+    return b.toString();
+  }
+
+  private class CodeInfo {
+    boolean select;
+    String code;
+    String display;
+    String definition;
+    List<String> parents = new ArrayList<String>();
+    List<CodeInfo> children = new ArrayList<CodeInfo>();
+    public void write(int lvl, StringBuilder s) {
+      if (!select && children.size() == 0) 
+        return;
+      
+      s.append(" <tr><td>"+Integer.toString(lvl)+"</td><td>");
+      for (int i = 1; i < lvl; i++) 
+        s.append("&nbsp;&nbsp;");
+      if (select) {
+        s.append(code+"</td><td>"+display+"</td><td>");
+      } else
+        s.append("*</td><td><font color=\"grey\">"+display+"</font></td><td>");
+      if (definition != null)
+        s.append(definition);
+      s.append("</td></tr>\r\n");
+      for (CodeInfo child : children) {
+        child.write(lvl+1, s);
+      }
+    }
+  }
+    
+  private String genV3CodeSystem(String name) throws Exception {
+    StringBuilder s = new StringBuilder();
+
+    Element e = XMLUtil.getFirstChild(v3src.getDocumentElement());
+    while (e != null) {
+      if (e.getNodeName().equals("codeSystem") && name.equals(e.getAttribute("name"))) {
+        Element r = XMLUtil.getNamedChild(e, "releasedVersion");
+        if (r != null) {
+          s.append("<p>Release Date: "+r.getAttribute("releaseDate")+"</p>\r\n");
+        }
+        r = XMLUtil.getNamedChild(XMLUtil.getNamedChild(XMLUtil.getNamedChild(XMLUtil.getNamedChild(e, "annotations"), "documentation"), "description"), "text");
+        if (r != null) {
+          s.append("<h2>Description</h2>\r\n");
+          s.append("<p>"+nodeToString(r)+"</p>\r\n");
+          s.append("<hr/>\r\n");
+        }
+
+        List<CodeInfo> codes = new ArrayList<CodeInfo>();
+        // first, collate all the codes
+        Element c = XMLUtil.getFirstChild(XMLUtil.getNamedChild(e, "releasedVersion"));
+        while (c != null) {
+          if (c.getNodeName().equals("concept")) {
+            CodeInfo ci = new CodeInfo();
+            ci.select = !"false".equals(c.getAttribute("isSelectable"));
+            r = XMLUtil.getNamedChild(c, "code");
+            ci.code = r == null ? null : r.getAttribute("code");
+            r = XMLUtil.getNamedChild(c, "printName");
+            ci.display = r == null ? null : r.getAttribute("text");
+            r = XMLUtil.getNamedChild(XMLUtil.getNamedChild(XMLUtil.getNamedChild(XMLUtil.getNamedChild(c, "annotations"), "documentation"), "definition"), "text");
+            ci.definition = r == null ? null : nodeToString(r);
+            List<Element> pl = new ArrayList<Element>();
+            XMLUtil.getNamedChildren(c, "conceptRelationship", pl);
+            for (Element p : pl) {
+              if (p.getAttribute("relationshipName").equals("Specializes"))
+                ci.parents.add(XMLUtil.getFirstChild(p).getAttribute("code"));
+            }
+            if (!"retired".equals(XMLUtil.getNamedChild(c, "code").getAttribute("status")))
+              codes.add(ci);
+          }
+          c = XMLUtil.getNextSibling(c);
+        }
+        
+        // now, organise the heirarchy
+        for (CodeInfo ci : codes) {
+          for (String p : ci.parents) {
+            CodeInfo pi = null;
+            for (CodeInfo cip : codes) {
+              if (cip.code != null && cip.code.equals(p))
+                pi = cip;
+            }
+            if (pi != null)
+              pi.children.add(ci);
+          }
+        }
+        
+        s.append("<table class=\"grid\">\r\n");
+        s.append(" <tr><td><b>Level</b></td><td><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr>\r\n");
+        for (CodeInfo ci : codes) {
+          if (ci.parents.size() == 0) {
+            ci.write(1, s);
+          }
+        }
+        s.append("</table>\r\n");
+        
+      }
+      e = XMLUtil.getNextSibling(e);
+    }
+    return s.toString();   
   }
 
   private String genV2TableVer(String name) {
@@ -519,6 +652,27 @@ public class PageProcessor implements Logger  {
           s.append("</ul></td></tr>\r\n");
         } else
           s.append(" <tr><td><a href=\""+id+"/index.htm\">"+id+"</a></td><td>"+name+"</td></tr>\r\n");
+      }
+      e = XMLUtil.getNextSibling(e);
+    }
+    
+    s.append("</table>\r\n");
+    return s.toString();
+  }
+
+  private String genV3Index() {
+    StringBuilder s = new StringBuilder();
+    s.append("<table class=\"grid\">\r\n");
+    s.append(" <tr><td><b>Name</b></td><td><b>OID</b></td></tr>\r\n");
+    Element e = XMLUtil.getFirstChild(v3src.getDocumentElement());
+    while (e != null) {
+      if (e.getNodeName().equals("codeSystem")) {
+        Element r = XMLUtil.getNamedChild(XMLUtil.getNamedChild(e, "header"), "responsibleGroup");
+        if (r != null && "Health Level 7".equals(r.getAttribute("organizationName"))) {
+          String id = e.getAttribute("name");
+          String oid = e.getAttribute("codeSystemId");
+          s.append(" <tr><td><a href=\""+id+"/index.htm\">"+id+"</a></td><td>"+oid+"</td></tr>\r\n");
+        }
       }
       e = XMLUtil.getNextSibling(e);
     }
@@ -1881,6 +2035,14 @@ public void log(String content) {
 
   public void setV2src(Document v2src) {
     this.v2src = v2src;
+  }
+
+  public Document getV3src() {
+    return v3src;
+  }
+
+  public void setV3src(Document v3src) {
+    this.v3src = v3src;
   }
 
   
