@@ -510,7 +510,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -701,7 +701,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -1040,7 +1040,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="--"/>
               </coding>
             </interpretation>
@@ -1733,7 +1733,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -1813,7 +1813,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="++"/>
               </coding>
             </interpretation>
@@ -1930,7 +1930,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -1973,7 +1973,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -2016,7 +2016,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -2059,7 +2059,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="++"/>
               </coding>
             </interpretation>
@@ -2361,7 +2361,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="-"/>
               </coding>
             </interpretation>
@@ -2918,7 +2918,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -3035,7 +3035,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -3078,7 +3078,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -3121,7 +3121,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -3460,7 +3460,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="--"/>
               </coding>
             </interpretation>
@@ -4018,7 +4018,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="++"/>
               </coding>
             </interpretation>
@@ -4135,7 +4135,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -4178,7 +4178,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -4554,7 +4554,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="---"/>
               </coding>
             </interpretation>
@@ -5149,7 +5149,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -5192,7 +5192,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -5235,7 +5235,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -5278,7 +5278,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -5321,7 +5321,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -5364,7 +5364,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="++"/>
               </coding>
             </interpretation>
@@ -5666,7 +5666,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -6182,7 +6182,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -6225,7 +6225,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -6268,7 +6268,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -6311,7 +6311,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -6354,7 +6354,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -6397,7 +6397,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -6440,7 +6440,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="++"/>
               </coding>
             </interpretation>
@@ -6742,7 +6742,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -7258,7 +7258,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="++"/>
               </coding>
             </interpretation>
@@ -7301,7 +7301,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -7344,7 +7344,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -7387,7 +7387,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -7430,7 +7430,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -7473,7 +7473,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="++"/>
               </coding>
             </interpretation>
@@ -7775,7 +7775,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -7818,7 +7818,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -8334,7 +8334,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -8525,7 +8525,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -8863,7 +8863,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="--"/>
               </coding>
             </interpretation>
@@ -9346,7 +9346,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -9426,7 +9426,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="++"/>
               </coding>
             </interpretation>
@@ -9543,7 +9543,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -9586,7 +9586,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -9629,7 +9629,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -9672,7 +9672,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="++"/>
               </coding>
             </interpretation>
@@ -9974,7 +9974,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="-"/>
               </coding>
             </interpretation>
@@ -10531,7 +10531,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -10648,7 +10648,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -10691,7 +10691,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -10734,7 +10734,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -11073,7 +11073,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="--"/>
               </coding>
             </interpretation>
@@ -11631,7 +11631,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="++"/>
               </coding>
             </interpretation>
@@ -11748,7 +11748,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -11791,7 +11791,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -12167,7 +12167,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="---"/>
               </coding>
             </interpretation>
@@ -12762,7 +12762,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -12805,7 +12805,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -12848,7 +12848,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -12891,7 +12891,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -12934,7 +12934,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -12977,7 +12977,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="++"/>
               </coding>
             </interpretation>
@@ -13279,7 +13279,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -13795,7 +13795,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -13838,7 +13838,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -13881,7 +13881,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -13924,7 +13924,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -13967,7 +13967,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -14010,7 +14010,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -14053,7 +14053,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="++"/>
               </coding>
             </interpretation>
@@ -14355,7 +14355,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -14871,7 +14871,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="++"/>
               </coding>
             </interpretation>
@@ -14914,7 +14914,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -14957,7 +14957,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -15000,7 +15000,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -15043,7 +15043,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+++"/>
               </coding>
             </interpretation>
@@ -15086,7 +15086,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="++"/>
               </coding>
             </interpretation>
@@ -15388,7 +15388,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -15431,7 +15431,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="+"/>
               </coding>
             </interpretation>
@@ -15688,7 +15688,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="SS"/>
               </coding>
             </interpretation>
@@ -15715,7 +15715,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="R"/>
               </coding>
             </interpretation>
@@ -15743,7 +15743,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="SS"/>
               </coding>
             </interpretation>
@@ -15771,7 +15771,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="SS"/>
               </coding>
             </interpretation>
@@ -15799,7 +15799,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="SS"/>
               </coding>
             </interpretation>
@@ -15827,7 +15827,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="SS"/>
               </coding>
             </interpretation>
@@ -15855,7 +15855,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="SS"/>
               </coding>
             </interpretation>
@@ -15883,7 +15883,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="SS"/>
               </coding>
             </interpretation>
@@ -15911,7 +15911,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="SS"/>
               </coding>
             </interpretation>
@@ -15939,7 +15939,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="SS"/>
               </coding>
             </interpretation>
@@ -15967,7 +15967,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="SS"/>
               </coding>
             </interpretation>
@@ -15995,7 +15995,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="SS"/>
               </coding>
             </interpretation>
@@ -16022,7 +16022,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="SS"/>
               </coding>
             </interpretation>
@@ -16050,7 +16050,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="SS"/>
               </coding>
             </interpretation>
@@ -16078,7 +16078,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="SS"/>
               </coding>
             </interpretation>
@@ -16106,7 +16106,7 @@
             </valueQuantity>
             <interpretation>
               <coding>
-                <system value="http://hl7.org/vocab/v2/0078"/>
+                <system value="http://hl7.org/fhir/v2/0078"/>
                 <code value="S"/>
               </coding>
             </interpretation>

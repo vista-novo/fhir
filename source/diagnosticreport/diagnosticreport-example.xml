@@ -139,7 +139,7 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
         </valueQuantity>
         <interpretation>
           <coding> 
-             <system value="http://hl7.org/vocab/v2/0078"/>
+             <system value="http://hl7.org/fhir/v2/0078"/>
              <code value="+"/>
           </coding>
         </interpretation>
@@ -180,7 +180,7 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
         </valueQuantity>
         <interpretation>
           <coding> 
-             <system value="http://hl7.org/vocab/v2/0078"/>
+             <system value="http://hl7.org/fhir/v2/0078"/>
              <code value="+"/>
           </coding>
         </interpretation>
@@ -225,7 +225,7 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
         </valueQuantity>
               <interpretation>
           <coding> 
-             <system value="http://hl7.org/vocab/v2/0078"/>
+             <system value="http://hl7.org/fhir/v2/0078"/>
              <code value="+"/>
           </coding>
         </interpretation>
@@ -371,7 +371,7 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
         </valueQuantity>
         <interpretation>
           <coding> 
-             <system value="http://hl7.org/vocab/v2/0078"/>
+             <system value="http://hl7.org/fhir/v2/0078"/>
              <code value="---"/>
           </coding>
         </interpretation>
@@ -439,7 +439,7 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
         </valueQuantity>
         <interpretation>
           <coding> 
-             <system value="http://hl7.org/vocab/v2/0078"/>
+             <system value="http://hl7.org/fhir/v2/0078"/>
              <code value="-"/>
           </coding>
         </interpretation>
@@ -569,7 +569,7 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
         </valueQuantity>
         <interpretation>
           <coding> 
-             <system value="http://hl7.org/vocab/v2/0078"/>
+             <system value="http://hl7.org/fhir/v2/0078"/>
              <code value="++"/>
           </coding>
         </interpretation>
