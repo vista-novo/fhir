@@ -20,7 +20,6 @@
   <WindowWidth>17490</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>105</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -97,21 +96,30 @@
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="9" ss:Color="#000000"/>
   </Style>
+  <Style ss:ID="s76">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="10" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="157.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="229.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="64.5"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="96"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="219"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="96" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="219"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="245.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell><Data ss:Type="String">Management</Data></Cell>
     <Cell><Data ss:Type="String">Reference</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -120,6 +128,7 @@
     <Cell><Data ss:Type="String">Either yes or no, true or false</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#boolean-yes-no</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -127,6 +136,7 @@
     <Cell><Data ss:Type="String">Used to specify why the normally expected content of the data element is missing</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#data-absent-reason</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -134,6 +144,7 @@
     <Cell><Data ss:Type="String">The type of an element - one of the FHIR data types</Data></Cell>
     <Cell><Data ss:Type="String">special</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#DataType</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -141,6 +152,7 @@
     <Cell><Data ss:Type="String">One of the resource types defined as part of FHIR</Data></Cell>
     <Cell><Data ss:Type="String">special</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#ResourceType</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -148,6 +160,7 @@
     <Cell><Data ss:Type="String">One of the resource or data types defined as part of FHIR</Data></Cell>
     <Cell><Data ss:Type="String">special</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#FHIRContentType</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -155,6 +168,7 @@
     <Cell><Data ss:Type="String">Codes providing the status of an observation</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#observation-status</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -164,6 +178,7 @@
     <Cell ss:StyleID="s66"><Data ss:Type="String">Codes for human and animal body sites</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">suggested</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">dynamic</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">SNOMED-CT body sites</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -173,6 +188,7 @@
     <Cell ss:StyleID="s67"><Data ss:Type="String">Data types allowed to be used for search parameters</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">#search-param-type</Data></Cell>
     <Cell ss:StyleID="Default"/>
    </Row>
@@ -181,6 +197,7 @@
     <Cell ss:StyleID="s67"><Data ss:Type="String">How repeating parameters are handled for the parameter type</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">#search-repeat-behavior</Data></Cell>
     <Cell ss:StyleID="Default"/>
    </Row>
@@ -198,11 +215,12 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>8</ActiveRow>
-     <RangeSelection>R9C1:R10C6</RangeSelection>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -261,7 +279,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

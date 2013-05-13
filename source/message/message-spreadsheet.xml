@@ -485,7 +485,7 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">One of the message types defined in FHIR messaging</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">special</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">#MessageEvent</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -508,7 +508,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>3</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>

@@ -76,6 +76,7 @@ public class BindingsParser {
     cd.setBinding(readBinding(sheet.getColumn(row, "Binding")));
     cd.setBindingStrength(readBindingStrength(sheet.getColumn(row, "Binding Strength")));
     cd.setExtensibility(readExtensibility(sheet.getColumn(row, "Extensibility")));
+    cd.setManagement(readManagement(sheet.getColumn(row, "Management")));
     cd.setReference(sheet.getColumn(row, "Reference"));
     cd.setDescription(sheet.getColumn(row, "Description"));
     cd.setId(new BindingNameRegistry(root, forPublication).idForName(cd.getName()));

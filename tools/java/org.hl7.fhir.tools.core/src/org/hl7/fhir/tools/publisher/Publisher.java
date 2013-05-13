@@ -686,6 +686,7 @@ public class Publisher {
 	      Utilities.copyFile(new CSFile(page.getFolders().imgDir + n),
 	          new CSFile(page.getFolders().dstDir + n));
 
+      generateValueSets();
 	    generateCodeSystems();
 
 	    profileFeed = new AtomFeed();
@@ -1655,6 +1656,31 @@ public class Publisher {
 //    page.logNoEoln(content);
 //  }
 
+  private void generateValueSets() throws Exception {
+    for (BindingSpecification bs : page.getDefinitions().getBindings().values())
+      if (bs.getBinding() == Binding.ValueSet && bs.getReferredValueSet() != null)
+        generateValueSet(bs.getReference(), bs);
+  }
+  
+  private void generateValueSet(String name, BindingSpecification cd) throws Exception {
+    if (name.startsWith("valueset-"))
+      cd.getReferredValueSet().setIdentifierSimple("http://hl7.org/fhir/valuesets/"+name.substring(9));
+    else
+      cd.getReferredValueSet().setIdentifierSimple("http://hl7.org/fhir/valuesets/"+name);
+    
+    // todo - create the redirect
+    TextFile.stringToFile(page.processPageIncludes(cd.getName()+".htm", TextFile.fileToString(page.getFolders().srcDir+"template-vs.htm")), page.getFolders().dstDir+name+".htm");
+    String src = page.processPageIncludesForBook(cd.getName()+".htm", TextFile.fileToString(page.getFolders().srcDir+"template-vs.htm"));
+    cachePage(name+".htm", src);
+    
+    JsonComposer json = new JsonComposer();
+    json.compose(new FileOutputStream(page.getFolders().dstDir+name+".json"), cd.getReferredValueSet());
+    XmlComposer xml = new XmlComposer();
+    xml.compose(new FileOutputStream(page.getFolders().dstDir+name+".xml"), cd.getReferredValueSet(), true);
+    cloneToXhtml(name, "Definition for Value Set"+cd.getReferredValueSet().getNameSimple());
+    
+      
+  }
   private void generateCodeSystems() throws Exception {
     for (BindingSpecification bs : page.getDefinitions().getBindings().values())
       if (bs.getBinding() == Binding.CodeList)

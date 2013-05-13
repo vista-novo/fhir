@@ -29,6 +29,7 @@ package org.hl7.fhir.definitions.parsers;
 
  */
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,6 +55,10 @@ import org.hl7.fhir.definitions.model.SearchParameter;
 import org.hl7.fhir.definitions.model.SearchParameter.RepeatMode;
 import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.instance.formats.JsonParser;
+import org.hl7.fhir.instance.formats.ParserBase;
+import org.hl7.fhir.instance.formats.XmlParser;
+import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
@@ -381,6 +386,20 @@ public class SpreadsheetParser {
 				if (codes == null)
 					throw new Exception("code source sheet not found for "+ cd.getName() + ": " + cd.getReference());
 				parseCodes(cd.getCodes(), codes);
+			}
+			
+			if (cd.getBinding() == Binding.ValueSet && !Utilities.noString(cd.getReference())) {
+			  if (new File(folder+File.separator+cd.getReference()+".xml").exists()) {
+			    XmlParser p = new XmlParser();
+			    FileInputStream input = new FileInputStream(folder+File.separator+cd.getReference()+".xml");
+	        cd.setReferredValueSet((ValueSet) p.parse(input));
+			  } else if (new File(folder+File.separator+cd.getReference()+".json").exists()) {
+			    JsonParser p = new JsonParser();
+			    FileInputStream input = new FileInputStream(folder+File.separator+cd.getReference()+".json");
+	        cd.setReferredValueSet((ValueSet) p.parse(input));
+			  } else
+			    throw new Exception("Unable to find source for "+cd.getReference()+" ("+folder+File.separator+cd.getReference()+".xml/json)");
+			  
 			}
 			if (definitions.getBindingByName(cd.getName()) != null) {
 				throw new Exception("Definition of binding '"

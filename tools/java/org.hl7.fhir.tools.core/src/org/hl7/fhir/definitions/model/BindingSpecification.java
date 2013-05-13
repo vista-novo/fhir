@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.utilities.Utilities;
 
 /**
@@ -83,6 +84,7 @@ public class BindingSpecification {
 	private String source; // for useful error messages during build
 	private Management management;
 	private List<String> useContexts = new ArrayList<String>();
+	private ValueSet referredValueSet;
 	
   private List<DefinedCode> codes = new ArrayList<DefinedCode>();
 
@@ -211,6 +213,14 @@ public class BindingSpecification {
       }
     }
     return vslist;
+  }
+
+  public ValueSet getReferredValueSet() {
+    return referredValueSet;
+  }
+
+  public void setReferredValueSet(ValueSet referredValueSet) {
+    this.referredValueSet = referredValueSet;
   }
 
   

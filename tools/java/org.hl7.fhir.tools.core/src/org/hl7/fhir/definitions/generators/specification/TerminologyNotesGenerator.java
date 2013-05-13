@@ -39,6 +39,7 @@ import java.util.Map;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
+import org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ProfileDefn;
@@ -105,7 +106,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 		write("<h3>\r\nTerminology Bindings\r\n</h3>\r\n");
 		// 1. new form
     write("<table class=\"grid\">\r\n");
-    write(" <tr><th>Path</th><th>Details</th><th>Strength</th></tr>\r\n");
+    write(" <tr><th>Path</th><th>Description</th><th>Details</th></tr>\r\n");
     for (BindingSpecification cd : cds) {
       String path;
       List<CDUsage> list = txusages.get(cd);
@@ -124,10 +125,29 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
       write(" </td>");
       write("<td>"+describeBinding(cd)+"</td>");
       if (cd.getBinding() == Binding.Unbound)
-        write("<td>Not Bound to any codes</td>");
-      else
-        write("<td>"+(cd.getExtensibility() == null ? "--" : "<a href=\"terminologies.htm#extensibility\">"+cd.getExtensibility().toString().toLowerCase())+"</a>/"+
-            "<a href=\"terminologies.htm#conformance\">"+(cd.getBindingStrength() == null ? "--" : cd.getBindingStrength().toString().toLowerCase())+"</a></td>");
+        write("<td>(any codes)</td>");
+      else {
+        boolean b = false;
+        write("<td>");
+        if (cd.getBindingStrength() != null) {
+          if (b)
+            write(" / ");
+          write("<a href=\"terminologies.htm#conformance\">"+cd.getBindingStrength().toString().toLowerCase()+"</a>");
+          b = true;
+        }
+        if (cd.getBindingStrength() != BindingStrength.Suggested && cd.getExtensibility() != null) {
+          if (b)
+            write(" / ");
+          write("<a href=\"terminologies.htm#extensibility\">"+cd.getExtensibility().toString().toLowerCase()+"</a>");
+          b = true;
+        }
+        if (cd.getBindingStrength() == BindingStrength.Required && cd.getManagement() != null) {
+          if (b)
+            write(" / ");
+          write("<a href=\"terminologies.htm#management\">"+cd.getManagement().toString().toLowerCase()+"</a>");
+        }
+        write("</td>");
+      }
       write(" </tr>\r\n");
     }
     write("</table>\r\n<p> </p>\r\n");		
@@ -135,7 +155,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 
   public static String describeBinding(BindingSpecification cd) throws Exception {
     if (cd.getBinding() == BindingSpecification.Binding.Unbound) 
-      return cd.getDefinition()+" (not bound to any particular codes)";
+      return cd.getDefinition();
     if (cd.getBinding() == BindingSpecification.Binding.Special) {
       if (cd.getName().equals("MessageEvent"))
         return "the <a href=\"message.htm#Events\">Event List in the messaging framework</a>";
@@ -150,7 +170,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
       if (Utilities.noString(cd.getReference())) 
         return cd.getDescription();
       else
-        return "???";
+        return cd.getDescription()+" <a href=\""+cd.getReference()+".htm\">(Value Set Definition)</a>";
     }
     if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
       if (Utilities.noString(cd.getReference())) 

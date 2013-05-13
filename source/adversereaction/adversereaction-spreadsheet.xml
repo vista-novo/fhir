@@ -763,7 +763,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">The type of symptom.</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">dynamic</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">http://apps.who.int/classifications/icd10/browse/2010/en</Data></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="String">ICD-10 Reaction codes</Data></Cell>
     <Cell ss:StyleID="s75"/>
@@ -836,7 +836,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>3</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>

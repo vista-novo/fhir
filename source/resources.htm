@@ -120,9 +120,11 @@ In addition to the basic contents of Resources, and their metadata, each resourc
 with one or more "Tags". These tags can be used to associate additional operational information 
 with the Resources, including defining security labels used in access control policies, workflow
 management, and other uses. Tags are attached to resources, and and exchanged with the resource.
+Tags are never used to keep information that needs to be understood when interpreting the content
+of a resource; their function is limited to finding and controlling access to the resource.
 </p>
 <p>
-Each tag has two properties.
+Each tag has two properties:
 </p>
 <table class="grid">
  <tr><td>Uri : uri</td><td>A term that defines the meaning of the tag</td></tr>
@@ -132,8 +134,9 @@ Each tag has two properties.
 The Uri may be a reference to a healthcare vocbulary, including ones defined in this specification,
 such as the basic <a href="security.htm#labels">security label set</a>, or vocabularies such as 
 those defined by HL7 (v2 and v3/CDA), Loinc, or Snomed-CT. Alternatively, the URI may be one
-defined by the implementation in the local context. Literal references that refer to a description
-of the tag are preferred over symbolic references but are not required.
+defined by the implementation in the local context. Literal references that refer directly 
+to a description of the tag (typically just an HTML page) are preferred over symbolic references 
+but this is not required.
 </p>
 <p>
 If the end user application provides functionality to the user that allows the user to 

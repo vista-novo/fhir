@@ -36,6 +36,7 @@ import org.hl7.fhir.definitions.ecore.fhir.SearchParameter;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
+import org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength;
 import org.hl7.fhir.definitions.model.BindingSpecification.Management;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
@@ -263,6 +264,8 @@ public class ModelValidator {
       warning("Binding "+n, !(Utilities.noString(c.getId()) && Utilities.noString(c.getSystem())) , "Code "+d+" must have a id or a system");
     }
 
+    warning("Binding "+n, cd.getBindingStrength() != BindingStrength.Suggested || cd.getManagement() != Management.Fixed, "A binding can't be both fixed and suggested");
+    
     if (cd.isValueSet()) {
       boolean internal = false;
       for (DefinedCode c : cd.getCodes()) 
@@ -270,6 +273,9 @@ public class ModelValidator {
       rule("Binding "+n, !internal, "Cannot mix internal and external code");
     }
 
+    if (cd.getBinding() != Binding.Unbound)
+      rule("Binding "+n, cd.getManagement() != null, "Bound Code lists must have a management style");
+    
 //    rule("Binding "+n, cd.getManagement() != null, "Management code missing");
 //    if (cd.getBinding() == Binding.CodeList) 
 //      rule("Binding "+n, cd.getManagement() == Management.Fixed || cd.getManagement() == Management.Alterable, "Code lists must have a management style of Fixed or Alterable");

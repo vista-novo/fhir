@@ -358,20 +358,37 @@ public class PageProcessor implements Logger  {
         src = s1 + genReferenceImplList() + s3;
       else if (com[0].equals("txurl"))
         src = s1 + "http://hl7.org/fhir/"+Utilities.fileTitle(file) + s3;
-      else if (com[0].equals("toc"))
+      else if (com[0].equals("vsurl")) {
+        String reference = definitions.getBindingByName(Utilities.fileTitle(file)).getReference();
+        if (reference.startsWith("valueset-"))
+            reference = reference.substring(9);
+        src = s1 + "http://hl7.org/fhir/valuesets/"+reference + s3;
+      } else if (com[0].equals("toc"))
         src = s1 + generateToc() + s3;
       else if (com[0].equals("txdef"))
         src = s1 + generateCodeDefinition(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("vsdef"))
+        src = s1 + generateValueSetDefinition(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txoid"))
         src = s1 + generateOID(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txname"))
         src = s1 + Utilities.fileTitle(file) + s3;
+      else if (com[0].equals("vsname"))
+        src = s1 + Utilities.fileTitle(file) + s3;
+      else if (com[0].equals("vsref"))
+        src = s1 + definitions.getBindingByName(Utilities.fileTitle(file)).getReference() + s3;
       else if (com[0].equals("txdesc"))
         src = s1 + generateDesc(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("vsdesc"))
+        src = s1 + generateVSDesc(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txusage"))
+        src = s1 + generateBSUsage(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("vsusage"))
         src = s1 + generateBSUsage(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txsummary"))
         src = s1 + generateCodeTable(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("vssummary"))
+        src = s1 + "todo" + s3;
       else 
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
     }
@@ -792,6 +809,8 @@ private String resItem(String name) throws Exception {
 
   private String generateBSUsage(String name) {
     BindingSpecification cd = definitions.getBindingByReference("#"+name);
+    if (cd == null)
+      cd = definitions.getBindingByName(name);
     StringBuilder b = new StringBuilder();
     for (ResourceDefn r : definitions.getResources().values())
       scanForUsage(b, cd, r.getRoot(), r.getName().toLowerCase()+".htm#def");
@@ -823,7 +842,7 @@ private String resItem(String name) throws Exception {
 
   private void scanForUsage(StringBuilder b, BindingSpecification cd, ElementDefn e, String path, String ref) {
     path = path.equals("") ? e.getName() : path+"."+e.getName();
-    if (e.hasBinding() && e.getBindingName().equals(cd.getName())) {
+    if (e.hasBinding() && e.getBindingName() != null && e.getBindingName().equals(cd.getName())) {
       b.append(" <li><a href=\""+ref+"\">"+path+"</a></li>\r\n");
     }
     for (ElementDefn c : e.getElements()) {
@@ -833,6 +852,11 @@ private String resItem(String name) throws Exception {
 
   private String generateCodeDefinition(String name) {
     BindingSpecification cd = definitions.getBindingByReference("#"+name);
+    return Utilities.escapeXml(cd.getDefinition());
+  }
+
+  private String generateValueSetDefinition(String name) {
+    BindingSpecification cd = definitions.getBindingByName(name);
     return Utilities.escapeXml(cd.getDefinition());
   }
 
@@ -852,11 +876,11 @@ private String resItem(String name) throws Exception {
     } else
       src = "Id";
     if (hasComment)
-      s.append("    <tr><th>"+src+"</th><th>Code</th><th>Definition</th><th>Comments</th></tr>");
+      s.append("    <tr><td><b>"+src+"</b></td><td><b>Code</b></td><td><b>Definition</b></td><td><b>Comments</b></td></tr>");
     else if (hasDefinition)
-      s.append("    <tr><th>"+src+"</th><th>Code</th><th colspan=\"2\">Definition</th></tr>");
+      s.append("    <tr><td><b>"+src+"</b></td><td><b>Code</b></td><td colspan=\"2\"><b>Definition</b></td></tr>");
     else
-      s.append("    <tr><th>"+src+"</th><th colspan=\"3\">Code</th></tr>");
+      s.append("    <tr><td><b>"+src+"</b></td><td colspan=\"3\"><b>Code</b></td></tr>");
     
     for (DefinedCode c : cd.getCodes()) {
       if (cd.isValueSet()) {
@@ -1192,8 +1216,10 @@ private String resItem(String name) throws Exception {
       BindingSpecification cd = definitions.getBindingByName(n);
       if (Utilities.noString(cd.getReference()))
         s.append(" <tr><td>"+cd.getName()+"</td><td>"+Utilities.escapeXml(cd.getDefinition())+"</td><td>"+Utilities.escapeXml(cd.getDescription())+"</td></tr>\r\n");
-      else
-        s.append(" <tr><td>"+cd.getName()+"</td><td>"+Utilities.escapeXml(cd.getDefinition())+"</td><td><a href=\""+cd.getReference().substring(1)+".htm\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a></td></tr>\r\n");
+      else {
+        String ref = cd.getReference().startsWith("#") ? cd.getReference().substring(1) : cd.getReference();
+        s.append(" <tr><td>"+cd.getName()+"</td><td>"+Utilities.escapeXml(cd.getDefinition())+"</td><td><a href=\""+ref+".htm\">http://hl7.org/fhir/"+ref+"</a></td></tr>\r\n");
+      }
     }
     s.append("</table>\r\n");
     return s.toString();
@@ -1228,6 +1254,8 @@ private String resItem(String name) throws Exception {
                     
         } else if (cd.getBinding() == Binding.CodeList)
           s.append("</td><td><a href=\""+cd.getReference().substring(1)+".htm\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a></td></tr>\r\n");          
+        else if (cd.getBinding() == Binding.ValueSet && cd.getReferredValueSet() != null)
+          s.append("</td><td><a href=\""+cd.getReference()+".htm\">"+Utilities.escapeXml(cd.getDescription())+"</a></td></tr>\r\n");          
         else if (cd.hasReference())
           s.append("</td><td><a href=\""+cd.getReference()+"\">"+Utilities.escapeXml(cd.getDescription())+"</a></td></tr>\r\n");
         else if (Utilities.noString(cd.getDescription()))
@@ -1293,7 +1321,7 @@ private String resItem(String name) throws Exception {
           else
             s.append("Value Set "+cd.getDescription());
         } else if (cd.getBinding() == Binding.Reference) {
-          s.append("See <a href=\""+cd.getReference()+"\">"+cd.getReference()+"</a>");
+            s.append("See <a href=\""+cd.getReference()+"\">"+cd.getReference()+"</a>");
         } else if (cd.getBinding() == Binding.Special) {
           if (cd.getName().equals("MessageEvent"))
             s.append("See the <a href=\"message.htm#Events\"> Event List </a>in the messaging framework");
@@ -1496,12 +1524,20 @@ private String resItem(String name) throws Exception {
         src = s1 + genReferenceImplList() + s3;
       else if (com[0].equals("txurl"))
         src = s1 + "http://hl7.org/fhir/"+Utilities.fileTitle(file) + s3;
+      else if (com[0].equals("vsurl"))
+        src = s1 + "http://hl7.org/fhir/"+definitions.getBindingByName(Utilities.fileTitle(file)).getReference() + s3;
       else if (com[0].equals("txdef"))
         src = s1 + generateCodeDefinition(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("vsdef"))
+        src = s1 + generateValueSetDefinition(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txusage"))
+        src = s1 + generateBSUsage(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("vsusage"))
         src = s1 + generateBSUsage(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txsummary"))
         src = s1 + generateCodeTable(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("vssummary"))
+        src = s1 + "todo" + s3;
       else if (com[0].equals("toc"))
         src = s1 + generateToc() + s3;
       else 
@@ -1538,6 +1574,11 @@ private String resItem(String name) throws Exception {
       }
       return b.toString()+":";
     }
+  }
+
+  private String generateVSDesc(String fileTitle) {
+    BindingSpecification cd = definitions.getBindingByName(fileTitle);
+    return cd.getReferredValueSet().getDescriptionSimple();
   }
 
   String processPageIncludesForBook(String file, String src) throws Exception {
@@ -1628,18 +1669,32 @@ private String resItem(String name) throws Exception {
         src = s1 + genReferenceImplList() + s3;
       else if (com[0].equals("txurl"))
         src = s1 + "http://hl7.org/fhir/"+Utilities.fileTitle(file) + s3;
+      else if (com[0].equals("vsurl"))
+        src = s1 + "http://hl7.org/fhir/"+definitions.getBindingByName(Utilities.fileTitle(file)).getReference() + s3;
       else if (com[0].equals("txdef"))
         src = s1 + generateCodeDefinition(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("vsdef"))
+        src = s1 + generateValueSetDefinition(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txoid"))
         src = s1 + generateOID(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txname"))
         src = s1 + Utilities.fileTitle(file) + s3;
+      else if (com[0].equals("vsname"))
+        src = s1 + Utilities.fileTitle(file) + s3;
+      else if (com[0].equals("vsref"))
+        src = s1 + definitions.getBindingByName(Utilities.fileTitle(file)).getReference() + s3;
       else if (com[0].equals("txdesc"))
         src = s1 + generateDesc(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("vsdesc"))
+        src = s1 + generateVSDesc(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txusage"))
+        src = s1 + generateBSUsage(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("vsusage"))
         src = s1 + generateBSUsage(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txsummary"))
         src = s1 + generateCodeTable(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("vssummary"))
+        src = s1 + "todo" + s3;
       else if (com[0].equals("toc"))
         src = s1 + generateToc() + s3;
       else 

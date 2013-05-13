@@ -20,7 +20,6 @@
   <WindowWidth>17490</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -647,12 +646,13 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>16</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>11</LeftColumnRightPane>
+   <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -660,14 +660,15 @@
     </Pane>
     <Pane>
      <Number>1</Number>
-     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>19</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -915,19 +916,21 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">DiagnosisCodes</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Codes for laboratory diagnoses</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Diagnoses codes provided as adjuncts to the report</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">suggested</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">dynamic</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="String">SNOMED-CT Diagnoses</Data></Cell>
+    <Cell><Data ss:Type="String">valueset-clinical-findings</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">SNOMED-CT Clinical Findings</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">DiagnosticReportNames</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">codes for report names</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Codes that describe Diagnostic Reports</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">dynamic</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="String">LOINC Codes</Data></Cell>
+    <Cell><Data ss:Type="String">valueset-report-names</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">LOINC Codes for Diagnostic Reports</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">DiagnosticRequests</Data></Cell>
@@ -969,12 +972,11 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
