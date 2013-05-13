@@ -69,6 +69,9 @@ import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.xml.XMLUtil;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class PageProcessor implements Logger  {
 
@@ -81,12 +84,13 @@ public class PageProcessor implements Logger  {
   private IniFile ini;
   private Calendar genDate = Calendar.getInstance();
   private Date start = new Date();
-  private String prevSidebar;
+  private Map<String, String> prevSidebars = new HashMap<String, String>();
   private String svnRevision;
   private List<String> orderedResources = new ArrayList<String>();
   private Map<String, SectionTracker> sectionTrackerCache = new HashMap<String, SectionTracker>(); 
   private Map<String, TocEntry> toc = new HashMap<String, TocEntry>();
   private Map<String, String> imageMaps = new HashMap<String, String>();
+  private Document v2src;
   
 //  private boolean notime;
   
@@ -154,20 +158,20 @@ public class PageProcessor implements Logger  {
 	  return val; 
   }
 
-  private String generateSideBar() throws Exception {
-    if (prevSidebar != null)
-      return prevSidebar;
+  private String generateSideBar(String prefix) throws Exception {
+    if (prevSidebars.containsKey(prefix))
+      return prevSidebars.get(prefix);
     List<String> links = new ArrayList<String>();
     
     StringBuilder s = new StringBuilder();
     s.append("<div class=\"sidebar\">\r\n");
-    s.append("<p><a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><img border=\"0\" src=\"flame16.png\" style=\"vertical-align: text-bottom\"/></a> "+
+    s.append("<p><a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><img border=\"0\" src=\""+prefix+"flame16.png\" style=\"vertical-align: text-bottom\"/></a> "+
       "<a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><b>FHIR</b></a>&reg; v"+getVersion()+" &copy; <a href=\"http://hl7.org\">HL7</a></p>\r\n");
 
     for (Navigation.Category c : navigation.getCategories()) {
       if (!"nosidebar".equals(c.getMode())) {
         if (c.getLink() != null) {
-          s.append("  <h2><a href=\""+c.getLink()+".htm\">"+c.getName()+"</a></h2>\r\n");
+          s.append("  <h2><a href=\""+prefix+c.getLink()+".htm\">"+c.getName()+"</a></h2>\r\n");
           links.add(c.getLink());
         }
         else
@@ -176,7 +180,7 @@ public class PageProcessor implements Logger  {
         for (Navigation.Entry e : c.getEntries()) {
           if (e.getLink() != null) {
             links.add(e.getLink());
-            s.append("    <li><a href=\""+e.getLink()+".htm\">"+Utilities.escapeXml(e.getName())+"</a></li>\r\n");
+            s.append("    <li><a href=\""+prefix+e.getLink()+".htm\">"+Utilities.escapeXml(e.getName())+"</a></li>\r\n");
           } else
             s.append("    <li>"+e.getName()+"</li>\r\n");
         }
@@ -189,7 +193,7 @@ public class PageProcessor implements Logger  {
           //  if (!links.contains(rn.toLowerCase())) {
               ResourceDefn r = definitions.getResourceByName(rn);
               orderedResources.add(r.getName());
-              s.append("    <li><a href=\""+rn.toLowerCase()+".htm\">"+Utilities.escapeXml(r.getName())+"</a></li>\r\n");
+              s.append("    <li><a href=\""+prefix+rn.toLowerCase()+".htm\">"+Utilities.escapeXml(r.getName())+"</a></li>\r\n");
           //  }
           }
 
@@ -198,11 +202,11 @@ public class PageProcessor implements Logger  {
       }
     }
     // s.append(SIDEBAR_SPACER);
-    s.append("<p><a href=\"http://gforge.hl7.org/gf/project/fhir/\" title=\"SVN Link\">Build "+svnRevision+"</a></p><p> <a href=\"http://hl7.org\"><img width=\"42\" height=\"50\" border=\"0\" src=\"hl7logo.png\"/></a></p>\r\n");
+    s.append("<p><a href=\"http://gforge.hl7.org/gf/project/fhir/\" title=\"SVN Link\">Build "+svnRevision+"</a></p><p> <a href=\"http://hl7.org\"><img width=\"42\" height=\"50\" border=\"0\" src=\""+prefix+"hl7logo.png\"/></a></p>\r\n");
 
     s.append("</div>\r\n");
-    prevSidebar = s.toString();
-    return prevSidebar;
+    prevSidebars.put(prefix, s.toString());
+    return prevSidebars.get(prefix);
   }
 
   private String combineNotes(List<String> followUps, String notes) {
@@ -243,7 +247,7 @@ public class PageProcessor implements Logger  {
       String s1 = src.substring(0, i1);
       String s2 = src.substring(i1 + 2, i2).trim();
       String s3 = src.substring(i2+2);
-      String name = file.substring(0,file.indexOf(".")); 
+      String name = file.substring(0,file.lastIndexOf(".")); 
 
       String[] com = s2.split(" ");
       if (com.length == 2 && com[0].equals("dt")) 
@@ -280,14 +284,20 @@ public class PageProcessor implements Logger  {
         src = s1+resCategory(s2.substring(com[0].length()+1))+s3;
       else if (com[0].equals("res-item"))
         src = s1+resItem(com[1])+s3;
+      else if (com[0].equals("sidebar"))
+        src = s1+generateSideBar(com.length > 1 ? com[1] : "")+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("pageheader"))
         src = s1+pageHeader(name.toUpperCase().substring(0, 1)+name.substring(1))+s3;
       else if (com[0].equals("footer"))
         src = s1+TextFile.fileToString(folders.srcDir + "footer.htm")+s3;
-      else if (com[0].equals("sidebar"))
-        src = s1+generateSideBar()+s3;
+      else if (com[0].equals("footer1"))
+        src = s1+TextFile.fileToString(folders.srcDir + "footer1.htm")+s3;
+      else if (com[0].equals("footer2"))
+        src = s1+TextFile.fileToString(folders.srcDir + "footer2.htm")+s3;
+      else if (com[0].equals("footer3"))
+        src = s1+TextFile.fileToString(folders.srcDir + "footer3.htm")+s3;
       else if (com[0].equals("title"))
         src = s1+Utilities.escapeXml(name.toUpperCase().substring(0, 1)+name.substring(1))+s3;
       else if (com[0].equals("name"))
@@ -300,6 +310,16 @@ public class PageProcessor implements Logger  {
         src = s1+"<div class=\"content\">"+s3;
       else if (com[0].equals("/maindiv"))
         src = s1+"</div>"+s3;
+      else if (com[0].equals("v2Index"))
+        src = s1+genV2Index()+s3;
+      else if (com[0].equals("id"))
+        src = s1+(name.contains("|") ? name.substring(0,name.indexOf("|")) : name)+s3;
+      else if (com[0].equals("ver"))
+        src = s1+(name.contains("|") ? name.substring(name.indexOf("|")+1) : "??")+s3;
+      else if (com[0].equals("v2Table"))
+        src = s1+genV2Table(name)+s3;
+      else if (com[0].equals("v2TableVer"))
+        src = s1+genV2TableVer(name)+s3;
       else if (com[0].equals("events"))
         src = s1 + getEventsTable()+ s3;
       else if (com[0].equals("resourcecodes"))
@@ -342,6 +362,169 @@ public class PageProcessor implements Logger  {
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
     }
     return src;
+  }
+
+  private String genV2TableVer(String name) {
+    StringBuilder s = new StringBuilder();
+    String[] n = name.split("\\|");
+
+    Element e = XMLUtil.getFirstChild(v2src.getDocumentElement());
+    while (e != null) {
+      String id = Utilities.padLeft(e.getAttribute("id"), '0', 4);
+      if (id.equals(n[0])) {
+
+        String desc = "";
+        String minlim = null;
+        String maxlim = null;
+        
+        // we use the latest description of the table
+        Element c = XMLUtil.getFirstChild(e);
+        Map<String, String> codes = new HashMap<String, String>();
+        while (c != null) {
+          if (n[1].equals(c.getAttribute("namespace"))) {
+            if (minlim == null)
+              minlim = c.getAttribute("version");
+            maxlim = c.getAttribute("version");
+            desc = c.getAttribute("desc");
+            Element g = XMLUtil.getFirstChild(c);
+            while (g != null) {
+              codes.put(g.getAttribute("code"), g.getAttribute("desc"));            
+              g = XMLUtil.getNextSibling(g);
+            }
+          }
+          c = XMLUtil.getNextSibling(c);
+        }
+        
+        s.append("<p>"+Utilities.escapeXml(desc)+"</p>\r\n");
+        s.append("<table class=\"grid\">\r\n");
+        s.append(" <tr><td><b>Code</b></td><td><b>Description</b></td><td><b>Version</b></td></tr>\r\n");
+        List<String> cs = new ArrayList<String>();
+        cs.addAll(codes.keySet());
+        Collections.sort(cs);
+        for (String cd : cs) {
+          String min = null;
+          String max = null;
+          c = XMLUtil.getFirstChild(e);
+          while (c != null) {
+            if (n[1].equals(c.getAttribute("namespace"))) {
+              Element g = XMLUtil.getFirstChild(c);
+              while (g != null) {
+                if (cd.equals(g.getAttribute("code"))) {
+                  if (min == null)
+                    min = c.getAttribute("version");
+                  max = c.getAttribute("version");
+                }
+                g = XMLUtil.getNextSibling(g);
+              }
+            }
+            c = XMLUtil.getNextSibling(c);
+          }
+          String ver = (minlim.equals(min) ? "from v"+minlim : "added v"+min) + (maxlim.equals(max) ? "" : ", removed after v"+max);
+          
+          s.append(" <tr><td>"+cd+"</td><td>"+codes.get(cd)+"</td><td>"+ver+"</td></tr>\r\n");
+        }
+        s.append("</table>\r\n");
+      }
+      e = XMLUtil.getNextSibling(e);
+    }
+    
+    return s.toString();
+  }
+
+  private String genV2Table(String name) {
+    StringBuilder s = new StringBuilder();
+
+    Element e = XMLUtil.getFirstChild(v2src.getDocumentElement());
+    while (e != null) {
+      String id = Utilities.padLeft(e.getAttribute("id"), '0', 4);
+      if (id.equals(name)) {
+
+        String desc = "";
+        // we use the latest description of the table
+        Element c = XMLUtil.getFirstChild(e);
+        Map<String, String> codes = new HashMap<String, String>();
+        while (c != null) {
+          desc = c.getAttribute("desc");
+          Element g = XMLUtil.getFirstChild(c);
+          while (g != null) {
+            codes.put(g.getAttribute("code"), g.getAttribute("desc"));            
+            g = XMLUtil.getNextSibling(g);
+          }
+          c = XMLUtil.getNextSibling(c);
+        }
+        s.append("<p>"+Utilities.escapeXml(desc)+"</p>\r\n");
+        s.append("<table class=\"grid\">\r\n");
+        s.append(" <tr><td><b>Code</b></td><td><b>Description</b></td><td><b>Version</b></td></tr>\r\n");
+        List<String> cs = new ArrayList<String>();
+        cs.addAll(codes.keySet());
+        Collections.sort(cs);
+        for (String cd : cs) {
+          String min = null;
+          String max = null;
+          c = XMLUtil.getFirstChild(e);
+          while (c != null) {
+            Element g = XMLUtil.getFirstChild(c);
+            while (g != null) {
+              if (cd.equals(g.getAttribute("code"))) {
+                if (min == null)
+                  min = c.getAttribute("version");
+                max = c.getAttribute("version");
+              }
+              g = XMLUtil.getNextSibling(g);
+            }
+            c = XMLUtil.getNextSibling(c);
+          }
+          String ver = ("2.1".equals(min) ? "from v2.1" : "added v"+min) + ("2.7".equals(max) ? "" : ", removed after v"+max);
+          
+          s.append(" <tr><td>"+cd+"</td><td>"+codes.get(cd)+"</td><td>"+ver+"</td></tr>\r\n");
+        }
+        s.append("</table>\r\n");
+      }
+      e = XMLUtil.getNextSibling(e);
+    }
+    
+    return s.toString();
+  }
+
+  private String genV2Index() {
+    StringBuilder s = new StringBuilder();
+    s.append("<table class=\"grid\">\r\n");
+    s.append(" <tr><td><b>ID</b></td><td><b>Name</b></td></tr>\r\n");
+    Element e = XMLUtil.getFirstChild(v2src.getDocumentElement());
+    while (e != null) {
+      String src = e.getAttribute("state");
+      if ("include".equals(src) || "versioned".equals(src)) {
+        String id = Utilities.padLeft(e.getAttribute("id"), '0', 4);
+        String name = "";
+        // we use the latest description of the table
+        Element c = XMLUtil.getFirstChild(e);
+        while (c != null) {
+          name = c.getAttribute("desc");
+          c = XMLUtil.getNextSibling(c);
+        }
+        if ("versioned".equals(src)) {
+          
+          List<String> versions = new ArrayList<String>();   
+          
+          s.append(" <tr><td>"+id+"</td><td>"+name+"<br/>Version Dependent. Use one of:<ul>");
+          c = XMLUtil.getFirstChild(e);
+          while (c != null) {
+            Element g = XMLUtil.getFirstChild(c);
+            if (g != null && !versions.contains(c.getAttribute("namespace")))
+              versions.add(c.getAttribute("namespace"));            
+            c = XMLUtil.getNextSibling(c);
+          }
+          for (String v : versions)
+            s.append(" <li><a href=\""+id+"/"+v+"/index.htm\">"+v+"</a></li>");            
+          s.append("</ul></td></tr>\r\n");
+        } else
+          s.append(" <tr><td><a href=\""+id+"/index.htm\">"+id+"</a></td><td>"+name+"</td></tr>\r\n");
+      }
+      e = XMLUtil.getNextSibling(e);
+    }
+    
+    s.append("</table>\r\n");
+    return s.toString();
   }
 
   private String genDataTypeMappings() {
@@ -1111,12 +1294,18 @@ private String resItem(String name) throws Exception {
           src = s1+resCategory(s2.substring(com[0].length()+1))+s3;
         else if (com[0].equals("res-item"))
           src = s1+resItem(com[1])+s3;
+        else if (com[0].equals("sidebar"))
+          src = s1+generateSideBar(com.length > 1 ? com[1] : "")+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("footer"))
         src = s1+TextFile.fileToString(folders.srcDir + "footer.htm")+s3;
-      else if (com[0].equals("sidebar"))
-        src = s1+s3;
+      else if (com[0].equals("footer1"))
+        src = s1+TextFile.fileToString(folders.srcDir + "footer1.htm")+s3;
+      else if (com[0].equals("footer2"))
+        src = s1+TextFile.fileToString(folders.srcDir + "footer2.htm")+s3;
+      else if (com[0].equals("footer3"))
+        src = s1+TextFile.fileToString(folders.srcDir + "footer3.htm")+s3;
       else if (com[0].equals("title"))
         src = s1+Utilities.escapeXml(name.toUpperCase().substring(0, 1)+name.substring(1))+s3;
       else if (com[0].equals("name"))
@@ -1237,11 +1426,17 @@ private String resItem(String name) throws Exception {
           src = s1+resCategory(s2.substring(com[0].length()+1))+s3;
         else if (com[0].equals("res-item"))
           src = s1+resItem(com[1])+s3;
+        else if (com[0].equals("sidebar"))
+          src = s1+generateSideBar(com.length > 1 ? com[1] : "")+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("footer"))
         src = s1+s3;
-      else if (com[0].equals("sidebar"))
+      else if (com[0].equals("footer1"))
+        src = s1+s3;
+      else if (com[0].equals("footer2"))
+        src = s1+s3;
+      else if (com[0].equals("footer3"))
         src = s1+s3;
       else if (com[0].equals("title"))
         src = s1+Utilities.escapeXml(name.toUpperCase().substring(0, 1)+name.substring(1))+s3;
@@ -1313,6 +1508,8 @@ private String resItem(String name) throws Exception {
       String[] com = s2.split(" ");
       if (com[0].equals("resheader"))
         src = s1+resHeader(name, resource.getName(), com.length > 1 ? com[1] : null)+s3;
+      else if (com[0].equals("sidebar"))
+        src = s1+generateSideBar(com.length > 1 ? com[1] : "")+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing resource "+name);
       else if (com[0].equals("pageheader"))
@@ -1321,8 +1518,12 @@ private String resItem(String name) throws Exception {
           src = s1+mapOnThisPage(mappingsList)+s3;
       else if (com[0].equals("footer"))
         src = s1+TextFile.fileToString(folders.srcDir + "footer.htm")+s3;
-      else if (com[0].equals("sidebar"))
-        src = s1+generateSideBar()+s3;
+      else if (com[0].equals("footer1"))
+        src = s1+TextFile.fileToString(folders.srcDir + "footer1.htm")+s3;
+      else if (com[0].equals("footer2"))
+        src = s1+TextFile.fileToString(folders.srcDir + "footer2.htm")+s3;
+      else if (com[0].equals("footer3"))
+        src = s1+TextFile.fileToString(folders.srcDir + "footer3.htm")+s3;
       else if (com[0].equals("title"))
         src = s1+Utilities.escapeXml(resource.getName())+s3;
       else if (com[0].equals("status"))
@@ -1498,14 +1699,20 @@ private String resItem(String name) throws Exception {
       String s3 = src.substring(i2+2);
 
       String[] com = s2.split(" ");
-      if (com.length != 1)
+      if (com[0].equals("sidebar"))
+        src = s1+generateSideBar(com.length > 1 ? com[1] : "")+s3;
+      else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing resource "+filename);
       else if (com[0].equals("pageheader"))
         src = s1+pageHeader(profile.getMetadata().get("name").get(0))+s3;
       else if (com[0].equals("footer"))
         src = s1+TextFile.fileToString(folders.srcDir + "footer.htm")+s3;
-      else if (com[0].equals("sidebar"))
-        src = s1+generateSideBar()+s3;
+      else if (com[0].equals("footer1"))
+        src = s1+TextFile.fileToString(folders.srcDir + "footer1.htm")+s3;
+      else if (com[0].equals("footer2"))
+        src = s1+TextFile.fileToString(folders.srcDir + "footer2.htm")+s3;
+      else if (com[0].equals("footer3"))
+        src = s1+TextFile.fileToString(folders.srcDir + "footer3.htm")+s3;
       else if (com[0].equals("title"))
         src = s1+Utilities.escapeXml(profile.getMetadata().get("name").get(0))+s3;
       else if (com[0].equals("name"))
@@ -1666,6 +1873,14 @@ public void log(String content) {
 
   public void setSvnRevision(String svnRevision) {
     this.svnRevision = svnRevision;
+  }
+
+  public Document getV2src() {
+    return v2src;
+  }
+
+  public void setV2src(Document v2src) {
+    this.v2src = v2src;
   }
 
   

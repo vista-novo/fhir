@@ -62,6 +62,7 @@ public class XSDBaseGenerator {
   private Map<String, String> enumDefs = new HashMap<String, String>();
 
   private List<String> genEnums = new ArrayList<String>();
+  private Map<String, String> regexQueue = new HashMap<String, String>(); 
 
   // private Map<String, PrimitiveType> primitives;
 
@@ -336,7 +337,7 @@ public class XSDBaseGenerator {
     write("        <xs:sequence>\r\n");
 
     for (ElementDefn e : elem.getElements()) {
-      if (e.typeCode().equals("xml:lang")) {
+      if (e.typeCode().equals("x ml:lang")) {
         // do nothing here
       } else if (e.getName().equals("[type]"))
         generateAny(elem, e, null);
@@ -362,6 +363,7 @@ public class XSDBaseGenerator {
     // write("    </xs:complexContent>\r\n");
     // write("  </xs:complexType>\r\n");
 
+    genRegex();
     while (!structures.isEmpty()) {
       String s = structures.keySet().iterator().next();
       generateType(elem, s, structures.get(s));
@@ -370,6 +372,20 @@ public class XSDBaseGenerator {
 
     for (String en : enums) {
       generateEnum(en);
+    }
+    genRegex();
+
+  }
+
+  private void genRegex() throws IOException {
+    while (regexQueue.size() > 0) {
+      String n = regexQueue.keySet().iterator().next();
+      write("  <xs:simpleType name=\""+n+"\">\r\n");
+      write("     <xs:restriction base=\"xs:string\">\r\n");
+      write("      <xs:pattern value=\""+regexQueue.get(n)+"\"/>\r\n");
+      write("    </xs:restriction>\r\n");
+      write("  </xs:simpleType>\r\n");    
+      regexQueue.remove(n);
     }
 
   }
@@ -397,6 +413,7 @@ public class XSDBaseGenerator {
     write("      </xs:extension>\r\n");
     write("    </xs:complexContent>\r\n");
     write("  </xs:complexType>\r\n");
+    genRegex();
 
     while (!structures.isEmpty()) {
       String s = structures.keySet().iterator().next();
@@ -408,6 +425,7 @@ public class XSDBaseGenerator {
       generateEnum(en);
     }
 
+    genRegex();
   }
 
   private void generateEnum(String en) throws IOException {
@@ -553,7 +571,11 @@ public class XSDBaseGenerator {
           write("<xs:element name=\"" + e.getName() + "\" type=\"" + paramType + "\" ");
         else if (types.get(0).getName().equals("idref")) {
           write("<xs:element name=\"" + e.getName() + "\" type=\"xmlIdRef\" ");        
-        } else
+        } else if (!Utilities.noString(e.getRegex())) {
+          String tn = root.getName()+Utilities.capitalize(e.getName())+"Type";
+          regexQueue.put(tn, e.getRegex());
+          write("<xs:element name=\"" + e.getName() + "\" type=\"" + tn + "\" ");
+        } else           
           write("<xs:element name=\"" + e.getName() + "\" type=\"" + encodeType(e, types.get(0), true) + "\" ");
       } else
         throw new Exception("how do we get here? " + e.getName() + " in " + root.getName() + " " + Integer.toString(types.size()));

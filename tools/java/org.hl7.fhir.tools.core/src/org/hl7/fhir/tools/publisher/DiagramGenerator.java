@@ -117,7 +117,7 @@ public class DiagramGenerator {
       SourceStringReader rdr = new SourceStringReader(src);
       FileOutputStream png = new FileOutputStream(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".png");
       String map = rdr.generateImage(png);  
-      map = processMap(map.substring(map.indexOf(")")+1).replace("name=\"plantuml_map\"", "name=\""+title+"\""));
+      map = processMap(map.substring(map.indexOf(")")+1).replace("name=\"plantuml_map\"", "name=\""+title+"\"").replace("id=\"plantuml_map\"", "id=\""+title+"\""));
       TextFile.stringToFile(map, page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".map");
       TextFile.stringToFile(spec, page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+title+".plantuml-source");
     }
@@ -176,48 +176,7 @@ private String getDefns() {
     return s.toString();
   }
 
-//  private void generateDiagram(org.hl7.fhir.definitions.model.ElementDefn element) throws Exception {
-//    StringBuilder s = new StringBuilder();
-//    StringBuilder s2 = new StringBuilder();
-//    s.append("@startuml\r\n");
-//    s.append("title "+element.getName()+"\r\n");
-//    s.append("skinparam nodesep 10\r\n");
-//    s.append("skinparam ranksep 10\r\n");
-//    s.append("skinparam classBackgroundColor Aliceblue\r\n\r\n");
-//    s.append("skinparam classBorderColor Gray\r\n\r\n");
-//    s.append("skinparam classArrowColor Navy\r\n\r\n");
-//
-//    List<org.hl7.fhir.definitions.model.ElementDefn> queue = new ArrayList<org.hl7.fhir.definitions.model.ElementDefn>();
-//    List<String> elementClasses = new ArrayList<String>();
-//    Map<org.hl7.fhir.definitions.model.ElementDefn, String> names = new HashMap<org.hl7.fhir.definitions.model.ElementDefn, String>(); 
-//    Map<org.hl7.fhir.definitions.model.ElementDefn, String> defns = new HashMap<org.hl7.fhir.definitions.model.ElementDefn, String>(); 
-//    queue.add(element);
-//    names.put(element, element.getName());
-//    defns.put(element, "");
-//    while (queue.size() > 0) {
-//      org.hl7.fhir.definitions.model.ElementDefn r = queue.get(0);
-//      queue.remove(0);
-//      generateDiagramClass(r, queue, names, defns, s, s2, elementClasses, r == element, false);
-//    }   
-//    s.append("\r\n"+s2);
-//    s.append("hide methods\r\n");
-//    for (String en : elementClasses) {
-//      s.append("hide "+en+" circle\r\n");
-//    }
-//    s.append("@enduml\r\n");
-//    TextFile.stringToFile(s.toString(), page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+element.getName().toLowerCase()+".plantuml-source");
-//    SourceStringReader rdr = new SourceStringReader(s.toString());
-//    FileOutputStream png = new FileOutputStream(page.getFolders().dstDir + element.getName().toLowerCase() + ".png");
-//    rdr.generateImage(png);
-//    png = new FileOutputStream(page.getFolders().dstDir + element.getName().toLowerCase() + ".cmapx");
-//    rdr.generateImage(png, new FileFormatOption(FileFormat.HTML));
-////    FileOutputStream svg = new FileOutputStream(page.getFolders().dstDir + n + ".svg");
-////    rdr.generateImage(svg, new FileFormatOption(FileFormat.SVG));
-////    FileOutputStream xmi = new FileOutputStream(page.getFolders().dstDir + n + ".xmi");
-////    rdr.generateImage(xmi, new FileFormatOption(FileFormat.XMI_STANDARD));
-//  }
-//  
-  
+ 
   private void generateDiagramClass(org.hl7.fhir.definitions.model.ElementDefn r, List<org.hl7.fhir.definitions.model.ElementDefn> queue, 
       Map<org.hl7.fhir.definitions.model.ElementDefn, String> names, Map<org.hl7.fhir.definitions.model.ElementDefn, String> defns, 
       StringBuilder s, StringBuilder s2, List<String> elementClasses, ElementDefn root, boolean entry, boolean resource) throws Exception {

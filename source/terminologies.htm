@@ -45,7 +45,7 @@ any imported profiles. Binding Names can identify sets of codes in the following
 <!-- <tr><td>definition</td><td>Defines the kind of codes that would be appropriate in the field, but doesn't provide any further guidance about where to find such codes</td></tr> -->
 </table>
 <p>
-Value set and code list bindings also have two properties that govern their use - <i>extensibility</i> and <i>conformance</i>:
+Value set and code list bindings also have three additional properties that govern their use - <i>extensibility</i>, <i>conformance</i> and <i>change management</i>:
 </p>
 <ul>
   <li><b>Extensibility</b><a name="extensibility"> </a>indicates whether additional codes are expected to be needed beyond those listed.  
@@ -82,6 +82,18 @@ Value set and code list bindings also have two properties that govern their use 
         There is no particular preference for its use.<br/>
         Specifications may render this as "MAY"
       </td></tr>
+    </table>
+  </li>
+  <li><b>Change Management</b><a name="management"> </a>describes how changes to the binding are managed over time. 
+    For a value set there are two possible values:<br/><br/>
+    <table>
+      <tr><td>static</td><td>The set of values is fixed to those defined in the identified value set as of the time the specification was published</td></tr>
+      <tr><td>dynamic</td><td>As the value sets changes by including new codes, or as codes that match the value set filters are added to the underlying code systems, any new codes can be used</td></tr>
+    </table>
+    For a code list, there are possible values:<br/><br/>
+    <table>
+      <tr><td>fixed</td><td>The list of defined codes will not change in the future</td></tr>
+      <tr><td>alterable</td><td>The list of defined codes may change in the future, and implementations should not depend on this value never changing</td></tr>
     </table>
   </li>
 </ul>
@@ -137,12 +149,21 @@ HL7 OID registry.
    <td><br/>OID=2.16.840.1.113883.6.42 </td>
  </tr>
  <tr>
-   <td>http://hl7.org/fhir/sid/v2-[X]</td>
+   <td>http://hl7.org/fhir/v2/[X](/v)</td>
    <td>Version 2 table code</td>
-   <td>[X] is the 4 digit identifier for a table. e.g. http://hl7.org/fhir/sid/v2-0203<br/>OID=2.16.840.1.113883.12.[X] </td>
+   <td>[X] is the 4 digit identifier for a table. e.g. http://hl7.org/fhir/v2/0203<br/>
+     Only <a href="v2/index.htm">some tables</a> may be treated in this fashion.
+     For some tables, the meaning of the code is version dependent, and so additional information 
+     must be included in the namespace, e.g. http://hl7.org/fhir/v2/0123/2.3+, as defined in the <a href="v2/index.htm">v2 table namespace list</a>.
+     <br/>OID=2.16.840.1.113883.12.[X] (note that this is the table OID, which is not the same as the codeSystem OID)<br/><br/>Note: This namespace may be revised in the future</td>
  </tr>
  <tr>
-   <td>http://hl7.org/fhir/sid/atc</td>
+   <td>http://hl7.org/fhir/v3/[X]</td>
+   <td>Version 3 code system</td>
+   <td>[X] is the code system name. e.g. http://hl7.org/fhir/v3/GenderStatus<br/>OID=[as specified by the namespace page]<br/><br/>Note: This namespace may be revised in the future </td>
+ </tr>
+ <tr>
+   <td>http://www.whocc.no/atc</td>
    <td>Anatomical Therapeutic Chemical Classification System (<a href="http://www.whocc.no/atc/structure_and_principles/">WHO</a>)</td>
    <td><br/>OID=2.16.840.1.113883.6.73</td>
  </tr> 

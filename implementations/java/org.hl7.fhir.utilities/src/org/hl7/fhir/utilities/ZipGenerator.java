@@ -53,10 +53,22 @@ public class ZipGenerator {
   
   static final int BUFFER = 2048;
 
+  public void addFolder(String actualDir, String statedDir) throws Exception {
+    File fd = new CSFile(actualDir);
+    String files[] = fd.list();
+    for (String f : files) {
+      if (new CSFile(actualDir+f).isDirectory()) {
+        addFolder(actualDir+f+File.separator, statedDir+f+File.separator);
+      } else
+        addFileName(statedDir+f, actualDir+f);
+    }
+  }
+  
   public void addFiles(String actualDir, String statedDir, String ext) throws Exception {
     byte data[] = new byte[BUFFER];
     statedDir.replace("\\", "/");
     File f = new CSFile(actualDir);
+
     String files[] = f.list();
     for (int i=0; i < files.length; i++) {
       if ((ext == null && new CSFile(actualDir+files[i]).isFile()) || (ext != null && files[i].endsWith(ext))) {

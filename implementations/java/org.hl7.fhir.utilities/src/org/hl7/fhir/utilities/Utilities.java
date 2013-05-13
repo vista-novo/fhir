@@ -117,6 +117,20 @@ public class Utilities {
 		return s.substring(0, 1).toUpperCase() + s.substring(1);
 	}
 	
+  public static void copyDirectory(String sourceFolder, String destFolder) throws Exception {
+    CSFile src = new CSFile(sourceFolder);
+    if (!src.exists())
+      throw new Exception("Folder " +sourceFolder+" not found");
+    createDirectory(destFolder);
+    
+   String[] files = src.list();
+   for (String f : files) {
+     if (new CSFile(sourceFolder+File.separator+f).isDirectory()) {
+       copyDirectory(sourceFolder+File.separator+f, destFolder+File.separator+f);
+     } else
+       copyFile(new CSFile(sourceFolder+File.separator+f), new CSFile(destFolder+File.separator+f));
+   }
+  }
 	
 	public static void copyFile(File sourceFile, File destFile) throws IOException {
 		if(!destFile.exists()) {
@@ -309,6 +323,8 @@ public class Utilities {
           b.append("&");
         else if (e.toString().equals("quot")) 
           b.append("\"");
+        else if (e.toString().equals("mu"))
+          b.append((char)956);          
         else
           throw new Exception("unknown XML entity \""+e.toString()+"\"");
       }  else
@@ -325,6 +341,16 @@ public class Utilities {
       return false;
     Inflector inf = new Inflector();
     return !inf.singularize(word).equals(word);
+  }
+
+
+  public static String padLeft(String src, char c, int len) {
+    StringBuilder s = new StringBuilder();
+    for (int i = 0; i < len - src.length(); i++)
+      s.append(c);
+    s.append(src);
+    return s.toString();
+    
   }
 
 //  public static void checkCase(String filename) {

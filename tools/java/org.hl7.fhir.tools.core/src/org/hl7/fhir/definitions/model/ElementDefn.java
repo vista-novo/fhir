@@ -52,6 +52,7 @@ public class ElementDefn {
 	private List<Invariant> statedInvariants = new ArrayList<Invariant>(); // a reference to an invariant defined on another element, but which constrains this one
 	private boolean modifier;
 	private boolean mustSupport;
+	private String regex; 
 
 	private Map<String, String> mappings = new HashMap<String, String>();
 	// private String id;
@@ -651,6 +652,14 @@ public class ElementDefn {
 
   public void setCoveredByExample(boolean isCoveredByExample) {
     this.isCoveredByExample = isCoveredByExample;
+  }
+
+  public String getRegex() {
+    return regex;
+  }
+
+  public void setRegex(String regex) {
+    this.regex = regex;
   }
    
 	

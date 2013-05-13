@@ -46,7 +46,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.rmi.CORBA.Util;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -54,7 +53,6 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
-import org.eclipse.emf.ecore.EOperation.Internal.InvocationDelegate.Factory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
@@ -666,7 +664,7 @@ public class Publisher {
 					// Utilities.stringToFile(srcn, target+File.separator+f);
 				} else
 					zip.addFileName(f, fn.getAbsolutePath());
-			} else {
+			} else if (!fn.getAbsolutePath().endsWith("v2")) {
 				// used to put stuff in sub-directories. clean them out if they
 				// still exist
 				Utilities.clearDirectory(fn.getAbsolutePath());
@@ -740,7 +738,9 @@ public class Publisher {
 	      produceProfile(n, page.getDefinitions().getProfiles().get(n), null);
 	    }
 
-	    log(" ...zips");
+      produceV2();
+
+      log(" ...zips");
 	    ZipGenerator zip = new ZipGenerator(page.getFolders().dstDir + "examples.zip");
 	    zip.addFiles(page.getFolders().dstDir + "examples" + File.separator, "", null);
 	    zip.close();
@@ -752,12 +752,59 @@ public class Publisher {
 	    log(" ...zip");
 	    produceZip();
 
+	    
 	    log("Produce Book Form");
 	    book.produce();
 	  }
 	  else 
 	    log("Partial Build - terminating now");
 	}
+
+  private void produceV2() throws Exception {
+    log(" ...v2 Tables");
+    
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    factory.setNamespaceAware(true);
+    DocumentBuilder builder = factory.newDocumentBuilder();
+    page.setV2src(builder.parse(new CSFileInputStream(new CSFile(page.getFolders().srcDir + "v2"+File.separator+"source.xml"))));
+
+    Utilities.createDirectory(page.getFolders().dstDir + "v2");
+    Utilities.clearDirectory(page.getFolders().dstDir + "v2");
+    String src = TextFile.fileToString(page.getFolders().srcDir+ "v2"+File.separator+"template.htm");
+    TextFile.stringToFile(page.processPageIncludes("v2/template.htm", src), page.getFolders().dstDir + "v2"+File.separator+"index.htm");
+    
+    Element e = XMLUtil.getFirstChild(page.getV2src().getDocumentElement());
+    while (e != null) {
+      String st = e.getAttribute("state");
+      if ("include".equals(st)) {
+        String id = Utilities.padLeft(e.getAttribute("id"), '0', 4);
+        Utilities.createDirectory(page.getFolders().dstDir + "v2"+File.separator+id);
+        Utilities.clearDirectory(page.getFolders().dstDir + "v2"+File.separator+id);
+        src = TextFile.fileToString(page.getFolders().srcDir+ "v2"+File.separator+"template-tbl.htm");
+        TextFile.stringToFile(page.processPageIncludes(id+".htm", src), page.getFolders().dstDir + "v2"+File.separator+id+File.separator+"index.htm");
+      } else if ("versioned".equals(st)) {
+        String id = Utilities.padLeft(e.getAttribute("id"), '0', 4);
+        Utilities.createDirectory(page.getFolders().dstDir + "v2"+File.separator+id);
+        Utilities.clearDirectory(page.getFolders().dstDir + "v2"+File.separator+id);
+        List<String> versions = new ArrayList<String>();
+        Element c = XMLUtil.getFirstChild(e);
+        while (c != null) {
+          if (XMLUtil.getFirstChild(c) != null && !versions.contains(c.getAttribute("namespace"))) {
+            versions.add(c.getAttribute("namespace"));
+          }
+          c = XMLUtil.getNextSibling(c);
+        }
+        for (String ver : versions) {
+          Utilities.createDirectory(page.getFolders().dstDir + "v2"+File.separator+id+File.separator+ver);
+          Utilities.clearDirectory(page.getFolders().dstDir + "v2"+File.separator+id+File.separator+ver);
+          src = TextFile.fileToString(page.getFolders().srcDir+ "v2"+File.separator+"template-tbl-ver.htm");
+          TextFile.stringToFile(page.processPageIncludes(id+"|"+ver+".htm", src), page.getFolders().dstDir + "v2"+File.separator+id+File.separator+ver+File.separator+"index.htm");
+        }        
+      }
+      e = XMLUtil.getNextSibling(e);
+    }
+        
+  }
 
   private boolean wantBuild(String rname) {
     rname = rname.toLowerCase();

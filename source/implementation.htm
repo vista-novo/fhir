@@ -15,6 +15,8 @@
 <%maindiv%>
 <%pageheader%>
 
+<%onthispage Using SOA#soa|Managing Identity#identity|Reference Implementations#Use%>
+
 <h1>Implementation Details</h1>
 
 <p>
@@ -38,7 +40,7 @@ reading applications are followed, then the implementation can claim conformance
 <ul>
   <li>Resource identity (the "id" metadata property) must be maintained. Resources all have an identity, which is how other resources refer to them, and these references need to be able to be resolved. However
      resources are exchanged, their identity - which is not included inside the resource - needs to be included with the resource</li>
-  <li>Resources references need to be resolvable. There are a variety of solutions to this, from ensuring that the all the relevant resources are bundled together or that all relevant 
+  <li>Resource references need to be resolvable. There are a variety of solutions to this, from ensuring that the all the relevant resources are bundled together or that all relevant 
       resources are passed as parameters in a service call, through to having a resource repository in the background that provides access to all referenced resources. </li>
   <li>The <a href="resources.htm#metadata">Resource metadata</a> items "Version Id" and "Last Modified Date" are provided for use in resolving resource versioning and concurrency issues, both from a technical and human perspective. Most contexts of use will require at least one if not both of these attributes for some uses, and the implementation framework will need to resolve how and when they are exchanged.</li>
   <li>The <a href="conformance.htm">conformance statement</a> allows authoring and reading applications to describe their rules concerning the use and contents of a resource. 
@@ -127,7 +129,7 @@ There are many ways to implement any particular workflow and there are many ways
 This section contains links to content that assist implementers make FHIR work in production:
 </p>
 <ul>
- <li><a href="fhir-all-xsd.zip">All schemas as a .zip</a> (includes base schemas, resource schemas, Schematrons and FHIR-specific atom schemas and Schematrons)</li>
+ <li><a href="fhir-all-xsd.zip">All schemas as a .zip</a> (includes support schemas, resource schemas, modular &amp; combined schemas, and Schematrons</li>
  <li><a href="profiles-resources.xml">Single combined feed with resource profiles</a>. The resource profiles may be useful as a starting point for authoring profiles on the resources or with conformance statements</li>
  <li><a href="examples.zip">All resource examples as a zip file</a> (<a href="examples-json.zip">JSON equivalent examples</a>)</li>
 </ul>

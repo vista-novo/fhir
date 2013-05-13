@@ -20,7 +20,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>4</ActiveSheet>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -82,17 +82,22 @@
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s72">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
   </Style>
   <Style ss:ID="s73">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s74">
    <Alignment ss:Vertical="Top"/>
   </Style>
-  <Style ss:ID="s75" ss:Parent="s62">
+  <Style ss:ID="s76" ss:Parent="s62">
    <Alignment ss:Vertical="Top"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="23" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="24" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="294"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="1"/>
@@ -232,7 +237,7 @@
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">DeviceDataType</Data></Cell>
-    <Cell><Data ss:Type="String">Quantity | Coding | string</Data></Cell>
+    <Cell><Data ss:Type="String">Quantity | Coding | Array | string</Data></Cell>
     <Cell><Data ss:Type="String">Type of data for this metric</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -252,6 +257,14 @@
     <Cell><Data ss:Type="String">UCUM units for data value</Data></Cell>
     <Cell><Data ss:Type="String">UCUM units (if a quantity or a range)</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Although UCUM units are not required, they are strongly encouraged</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info.array</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Array</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Array template (fixed values)</Data></Cell>
+    <Cell><Data ss:Type="String">A template containing the fixed values for an array output (all the values but the data)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info.system</Data></Cell>
@@ -311,10 +324,12 @@
     <PaperSizeIndex>9</PaperSizeIndex>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <TopRowVisible>6</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
+     <ActiveRow>16</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -322,7 +337,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s71" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="59.25"/>
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="366"/>
@@ -339,23 +354,30 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Quantity rule</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info</Data></Cell>
     <Cell><Data ss:Type="String">If the type is &quot;Quantity&quot;, units must be provided</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">((f:type/@value = 'Quantity') and (f:units)) or (not (f:type/@value != 'Quantity') and not (f:units))</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Coding Rule</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info</Data></Cell>
     <Cell><Data ss:Type="String">If the type is &quot;Coding', system must be provided</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">(f:type/@value != 'Coding') or f:system</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">UCUM rule</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info</Data></Cell>
     <Cell><Data ss:Type="String">If the type is &quot;Quantity&quot;, ucum must be provided</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">((f:type/@value = 'Quantity') and (f:ucum)) or (not (f:type/@value != 'Quantity') and not (f:ucum))</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">((f:type/@value = 'Quantity') and (f:ucum)) or ((f:type/@value != 'Quantity') and not (f:ucum))</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="String">Array Rule</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">DeviceCapabilities.virtualDevice.channel.metric.info</Data></Cell>
+    <Cell><Data ss:Type="String">If the type is &quot;Array&quot;, an array template must be provided</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">((f:type/@value = 'Array') and (f:array)) or ((f:type/@value != 'Array') and not (f:array))</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -365,6 +387,20 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>0</VerticalResolution>
+   </Print>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>5</ActiveCol>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -378,18 +414,18 @@
    <Column ss:AutoFitWidth="0" ss:Width="111"/>
    <Column ss:AutoFitWidth="0" ss:Width="69"/>
    <Row ss:AutoFitHeight="0" ss:Height="22.5">
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Event Code</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Description</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Notes</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Request Resources</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Response Resources</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Follow Ups</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Event Code</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Notes</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Request Resources</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Response Resources</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Follow Ups</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s72"/>
-    <Cell ss:StyleID="s72"/>
-    <Cell ss:StyleID="s72"/>
-    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s73"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -512,13 +548,13 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s73" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="130.5"/>
-   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="294.75"/>
-   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="65.25"/>
-   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="84.75" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="89.25"/>
-   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="287.25"/>
+   x:FullRows="1" ss:StyleID="s74" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="130.5"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="294.75"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="65.25"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="84.75" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="89.25"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="287.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -545,9 +581,9 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">Describes the facet</Data></Cell>
     <Cell><Data ss:Type="String">reference</Data></Cell>
     <Cell><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s75" ss:HRef="http://loinc.org/"><Data
+    <Cell ss:Index="6" ss:StyleID="s76" ss:HRef="http://loinc.org/"><Data
       ss:Type="String">http://loinc.org</Data></Cell>
-    <Cell ss:StyleID="s75" ss:HRef="http://loinc.org/"><Data ss:Type="String">http://loinc.org</Data></Cell>
+    <Cell ss:StyleID="s76" ss:HRef="http://loinc.org/"><Data ss:Type="String">http://loinc.org</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DeviceDataType</Data></Cell>
@@ -562,9 +598,9 @@
     <Cell><Data ss:Type="String">UCUM Codes</Data></Cell>
     <Cell><Data ss:Type="String">reference</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s75" ss:HRef="http://unitsofmeasure.org/"><Data
+    <Cell ss:Index="6" ss:StyleID="s76" ss:HRef="http://unitsofmeasure.org/"><Data
       ss:Type="String">http://unitsofmeasure.org</Data></Cell>
-    <Cell ss:StyleID="s75" ss:HRef="http://unitsofmeasure.org/"><Data
+    <Cell ss:StyleID="s76" ss:HRef="http://unitsofmeasure.org/"><Data
       ss:Type="String">http://unitsofmeasure.org</Data></Cell>
    </Row>
   </Table>
@@ -575,7 +611,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -612,6 +647,11 @@
     <Cell><Data ss:Type="String">The data item is a code (i.e. true/false etc). The value should be built into a valid coding by filling out the system element provided</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="String">Array</Data></Cell>
+    <Cell><Data ss:Type="String">The data item is an Array (a sequence of sample measures, which must be merged with the Array template)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">The data item is a simple string</Data></Cell>
@@ -630,7 +670,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
