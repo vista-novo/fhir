@@ -113,6 +113,10 @@ public class BookMaker {
 					  found = true;
 				  else if (href.startsWith("http:") || href.startsWith("https:"))
 					  found = true;
+				  else if (href.startsWith("v2/") || href.startsWith("v3/")) {
+				    found = true;
+				    node.setAttribute("href", "http://hl7.org/fhir"+href);
+				  }
 				  if (!found && href.contains("#")) {
 					  String parts[] = href.split("#");
 					  if (parts[0].equals(""))
@@ -130,8 +134,10 @@ public class BookMaker {
 							}
 					  }
 				  }
-				  if (!found)
+				  if (!found) {
+				    page.getQa().brokenlink("broken link in "+name+": <a href=\""+href+"\">"+node.allText()+"</a>");
 					  page.log("broken link in "+name+": <a href=\""+href+"\">"+node.allText()+"</a>");
+				  }
 			  }
 		  }
 	  } else {
@@ -415,7 +421,7 @@ public class BookMaker {
           } else if (s.endsWith(".htm")) {
             s = "#"+s.substring(0, i);
           } else {
-            if (!s.endsWith(".zip") && !s.endsWith(".xsd") && !s.endsWith(".png") && !s.endsWith(".xml") && !s.endsWith(".eap") && !s.endsWith(".xmi")) {
+            if (!s.endsWith(".zip") && !s.endsWith(".xsd") && !s.endsWith(".json") && !s.endsWith(".png") && !s.endsWith(".xml") && !s.endsWith(".eap") && !s.endsWith(".xmi")) {
               System.out.println("odd ref: "+s+" in "+node.allText());
               //s = s;
             } else {

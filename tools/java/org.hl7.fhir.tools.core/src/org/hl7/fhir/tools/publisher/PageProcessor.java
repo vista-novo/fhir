@@ -101,6 +101,7 @@ public class PageProcessor implements Logger  {
   private Map<String, String> imageMaps = new HashMap<String, String>();
   private Document v2src;
   private Document v3src;
+  private QaTracker qa = new QaTracker();
   
 //  private boolean notime;
   
@@ -212,7 +213,7 @@ public class PageProcessor implements Logger  {
       }
     }
     // s.append(SIDEBAR_SPACER);
-    s.append("<p><a href=\"http://gforge.hl7.org/gf/project/fhir/\" title=\"SVN Link\">Build "+svnRevision+"</a></p><p> <a href=\"http://hl7.org\"><img width=\"42\" height=\"50\" border=\"0\" src=\""+prefix+"hl7logo.png\"/></a></p>\r\n");
+    s.append("<p><a href=\"http://gforge.hl7.org/gf/project/fhir/\" title=\"SVN Link\">Build "+svnRevision+"</a> (<a href=\"qa.htm\">QA Page</a>)</p><p> <a href=\"http://hl7.org\"><img width=\"42\" height=\"50\" border=\"0\" src=\""+prefix+"hl7logo.png\"/></a></p>\r\n");
 
     s.append("</div>\r\n");
     prevSidebars.put(prefix, s.toString());
@@ -389,6 +390,8 @@ public class PageProcessor implements Logger  {
         src = s1 + generateCodeTable(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("vssummary"))
         src = s1 + "todo" + s3;
+      else if (com[0].equals("qa"))
+        src = s1 + qa.report() + s3;
       else 
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
     }
@@ -665,10 +668,10 @@ public class PageProcessor implements Logger  {
             c = XMLUtil.getNextSibling(c);
           }
           for (String v : versions)
-            s.append(" <li><a href=\""+id+"/"+v+"/index.htm\">"+v+"</a></li>");            
+            s.append(" <li><a href=\"v2/"+id+"/"+v+"/index.htm\">"+v+"</a></li>");            
           s.append("</ul></td></tr>\r\n");
         } else
-          s.append(" <tr><td><a href=\""+id+"/index.htm\">"+id+"</a></td><td>"+name+"</td></tr>\r\n");
+          s.append(" <tr><td><a href=\"v2/"+id+"/index.htm\">"+id+"</a></td><td>"+name+"</td></tr>\r\n");
       }
       e = XMLUtil.getNextSibling(e);
     }
@@ -688,7 +691,7 @@ public class PageProcessor implements Logger  {
         if (r != null && "Health Level 7".equals(r.getAttribute("organizationName"))) {
           String id = e.getAttribute("name");
           String oid = e.getAttribute("codeSystemId");
-          s.append(" <tr><td><a href=\""+id+"/index.htm\">"+id+"</a></td><td>"+oid+"</td></tr>\r\n");
+          s.append(" <tr><td><a href=\"v3/"+id+"/index.htm\">"+id+"</a></td><td>"+oid+"</td></tr>\r\n");
         }
       }
       e = XMLUtil.getNextSibling(e);
@@ -886,8 +889,11 @@ private String resItem(String name) throws Exception {
       if (cd.isValueSet()) {
         if (Utilities.noString(c.getSystem()))
           src = "??";
-        else
-          src = "<a href=\""+c.getSystem()+"\">"+codeSystemDescription(c.getSystem())+"</a>";
+        else {
+          String url = c.getSystem();
+          url = fixUrlReference(url);
+          src = "<a href=\""+url+"\">"+codeSystemDescription(c.getSystem())+"</a>";
+        }
       } else
         src = c.getId();
       if (hasComment)
@@ -1072,19 +1078,27 @@ private String resItem(String name) throws Exception {
     if (mode == null || mode.equals("content"))
       b.append("<li class=\"selected\"><span>Content</span></li>");
     else
-      b.append("<li class=\"nselected\"><span><a href=\""+n+".htm\">Content</a></span></li>");
+      b.append("<li class=\"nselected\"><span><a href=\"terminologies.htm\">Content</a></span></li>");
     if ("bindings".equals(mode))
       b.append("<li class=\"selected\"><span>Bindings</span></li>");
     else
-      b.append("<li class=\"nselected\"><span><a href=\""+n+"-bindings.htm\">Bindings</a></span></li>");
+      b.append("<li class=\"nselected\"><span><a href=\"terminologies-bindings.htm\">Bindings</a></span></li>");
     if ("codes".equals(mode))
       b.append("<li class=\"selected\"><span>Defined Code Lists</span></li>");
     else
-      b.append("<li class=\"nselected\"><span><a href=\""+n+"-codes.htm\">Defined Code Lists</a></span></li>");
+      b.append("<li class=\"nselected\"><span><a href=\"terminologies-codes.htm\">Defined Code Lists</a></span></li>");
     if ("valuesets".equals(mode))
       b.append("<li class=\"selected\"><span>Defined Value Sets</span></li>");
     else
-      b.append("<li class=\"nselected\"><span><a href=\""+n+"-valuesets.htm\">Defined Value Sets</a></span></li>");
+      b.append("<li class=\"nselected\"><span><a href=\"terminologies-valuesets.htm\">Defined Value Sets</a></span></li>");
+    if ("v2".equals(mode))
+      b.append("<li class=\"selected\"><span>v2 Namespaces</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\"terminologies-v2.htm\">v2 Namespaces</a></span></li>");
+    if ("v3".equals(mode))
+      b.append("<li class=\"selected\"><span>v3 Namespaces</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\"terminologies-v3.htm\">v3 Namespaces</a></span></li>");
     b.append("<li class=\"spacerright\" style=\"width: 370px\"><span>&nbsp;</span></li>");
     b.append("<li class=\"wiki\"><span><a href=\"http://wiki.hl7.org/index.php?title=FHIR_"+n.toUpperCase().substring(0, 1)+n.substring(1)+"_Page\">Community Input (wiki)</a></span></li>");
     b.append("</ul></div>\r\n");
@@ -1566,6 +1580,8 @@ private String resItem(String name) throws Exception {
       int i = 0;
       for (String n : cd.getVSSources()) {
         i++;
+        n = fixUrlReference(n);
+        
         b.append("<a href=\""+n+"\">"+n+"</a>");
         if (i == cd.getVSSources().size() - 1)
           b.append(" and ");
@@ -1574,6 +1590,12 @@ private String resItem(String name) throws Exception {
       }
       return b.toString()+":";
     }
+  }
+
+  private String fixUrlReference(String n) {
+    if (n.startsWith("urn:ietf:rfc:"))
+      n = "http://tools.ietf.org/html/rfc"+n.split("\\:")[3];
+    return n;
   }
 
   private String generateVSDesc(String fileTitle) {
@@ -1622,7 +1644,7 @@ private String resItem(String name) throws Exception {
         else if (com[0].equals("res-item"))
           src = s1+resItem(com[1])+s3;
         else if (com[0].equals("sidebar"))
-          src = s1+generateSideBar(com.length > 1 ? com[1] : "")+s3;
+          src = s1+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("footer"))
@@ -1693,6 +1715,10 @@ private String resItem(String name) throws Exception {
         src = s1 + generateBSUsage(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txsummary"))
         src = s1 + generateCodeTable(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("v2Index"))
+        src = s1+genV2Index()+s3;
+      else if (com[0].equals("v3Index"))
+        src = s1+genV3Index()+s3;
       else if (com[0].equals("vssummary"))
         src = s1 + "todo" + s3;
       else if (com[0].equals("toc"))
@@ -2098,6 +2124,10 @@ public void log(String content) {
 
   public void setV3src(Document v3src) {
     this.v3src = v3src;
+  }
+
+  public QaTracker getQa() {
+    return qa;
   }
 
   

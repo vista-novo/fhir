@@ -20,7 +20,6 @@
   <WindowWidth>23475</WindowWidth>
   <WindowTopX>4800</WindowTopX>
   <WindowTopY>5220</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -77,24 +76,25 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="10" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="135.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="32.25"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="41.25"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="33.75"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="62.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="33.75" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="62.25"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="63"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:Index="10" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="11" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135"
+   <Column ss:Index="12" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
+    <Cell><Data ss:Type="String">UML</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
@@ -111,8 +111,9 @@
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Structure</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">A schedule that specifies an event that may occur multiple times</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">A schedule that specifies an event that may occur multiple times</Data></Cell>
     <Cell><Data ss:Type="String">A schedule that specifies an event that may occur multiple times. Schedules are not used for recording when things did happen, but when they are expected or requested to occur.</Data></Cell>
     <Cell><Data ss:Type="String">Need to able to track schedules. There are several different ways to do scheduling: one or more specified times, a simple rules like three times a day, or to say, x before/after meals, or something like that</Data></Cell>
     <Cell><Data ss:Type="String">  A schedule can be either a list of events - intervals on which the event occurs, or a single event with repeating criteria or just repeating criteria with no actual event. </Data></Cell>
@@ -121,8 +122,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Schedule.event</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Period</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">When the event occurs</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Period</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">When the event occurs</Data></Cell>
     <Cell><Data ss:Type="String">Identifies specific time periods when the event should occur</Data></Cell>
     <Cell><Data ss:Type="String">Some schedules are just explicit lists of times</Data></Cell>
    </Row>
@@ -130,7 +131,8 @@
     <Cell><Data ss:Type="String">Schedule.repeat</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Only if there is none or one event</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">right</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Only if there is none or one event</Data></Cell>
     <Cell><Data ss:Type="String">Identifies a repeating pattern to the intended time periods. </Data></Cell>
     <Cell><Data ss:Type="String">Many schedules are determined by regular repetitions</Data></Cell>
     <Cell><Data ss:Type="String">If present, the Schedule.event indicates the time of the first occurrence.</Data></Cell>
@@ -139,15 +141,15 @@
     <Cell><Data ss:Type="String">Schedule.repeat.frequency</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">integer</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Event occurs frequency times per duration</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">integer</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Event occurs frequency times per duration</Data></Cell>
     <Cell><Data ss:Type="String">Indicates how often the event should occur.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Schedule.repeat.when</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">EventTiming</Data></Cell>
     <Cell><Data ss:Type="String">Event occurs duration from common life event</Data></Cell>
     <Cell><Data ss:Type="String">Identifies the occurrence of daily life that determine timing</Data></Cell>
@@ -157,15 +159,15 @@
     <Cell><Data ss:Type="String">Schedule.repeat.duration</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">decimal</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Repeating or event-related duration</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">decimal</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Repeating or event-related duration</Data></Cell>
     <Cell><Data ss:Type="String">How long each repetition should last</Data></Cell>
     <Cell><Data ss:Type="String">Some activities are not instantaneous and need to be maintained for a period of time</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Schedule.repeat.units</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">UnitsOfTime</Data></Cell>
     <Cell><Data ss:Type="String">The units of time for the duration</Data></Cell>
     <Cell><Data ss:Type="String">The units of time for the duration</Data></Cell>
@@ -174,8 +176,8 @@
     <Cell><Data ss:Type="String">Schedule.repeat.count</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">integer</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Number of times to repeat</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">integer</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Number of times to repeat</Data></Cell>
     <Cell><Data ss:Type="String">A total count of the desired number of repetitions</Data></Cell>
     <Cell><Data ss:Type="String">Repetitions may be limited by end time or total occurrences</Data></Cell>
     <Cell><Data ss:Type="String">An end need not be specified</Data></Cell>
@@ -184,8 +186,8 @@
     <Cell><Data ss:Type="String">Schedule.repeat.end</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">dateTime</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">When to stop repeats</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">dateTime</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">When to stop repeats</Data></Cell>
     <Cell><Data ss:Type="String">When to stop repeats</Data></Cell>
     <Cell><Data ss:Type="String">Repetitions may be limited by end time or total occurrences</Data></Cell>
     <Cell><Data ss:Type="String">An end need not be specified</Data></Cell>
@@ -198,11 +200,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -329,7 +332,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

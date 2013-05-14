@@ -560,8 +560,10 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			return "datatypes";
 		if (name.equals("Contact"))
 			return "datatypes";
-		if (name.equals("CodeableConcept"))
-			return "datatypes";
+    if (name.equals("CodeableConcept"))
+      return "datatypes";
+    if (name.equals("Array"))
+      return "datatypes";
 		if (name.equals("Quantity"))
 			return "datatypes";
 		if (name.equals("Ratio"))

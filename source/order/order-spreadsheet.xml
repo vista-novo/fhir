@@ -227,7 +227,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">right</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">When order should be filfulled</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
@@ -306,7 +306,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

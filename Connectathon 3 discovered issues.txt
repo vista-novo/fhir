@@ -9,10 +9,7 @@ TODO:
     /patient/@[id]/problem
 - change provenance to have multiple targets?
 
-
-
-
-
+add note about updating text in names and addresses
 
 
 Wed Q1
@@ -26,6 +23,7 @@ terminology work:
 (c) nested codes
 (d) 
 
+fix loinc observation code rules
 
 
 

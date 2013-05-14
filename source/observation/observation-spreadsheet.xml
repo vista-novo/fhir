@@ -646,7 +646,7 @@
     <Cell><Data ss:Type="String">Observation.referenceRange</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:Index="5" ss:StyleID="Default"/>
+    <Cell ss:Index="5" ss:StyleID="Default"><Data ss:Type="String">down</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Provides guide for interpretation</Data></Cell>
@@ -763,7 +763,7 @@
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">down</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="s69"/>
     <Cell><Data ss:Type="String">Component observation</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s70"><Data ss:Type="String">Some observations such as blood pressure have multiple components. Components may also be used for supporting data such as distribution measures</Data></Cell>
@@ -863,7 +863,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>18</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -876,11 +876,11 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

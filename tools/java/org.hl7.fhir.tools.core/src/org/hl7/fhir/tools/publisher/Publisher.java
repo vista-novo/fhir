@@ -287,6 +287,7 @@ public class Publisher {
 					produceSpecification(eCorePath);
 				}
 				validateXml();
+		    produceQA();
 				log("Finished publishing FHIR @ "+Config.DATE_FORMAT().format(Calendar.getInstance().getTime()));
 			} else
 				log("Didn't publish FHIR due to errors @ "+Config.DATE_FORMAT().format(Calendar.getInstance().getTime()));
@@ -393,11 +394,13 @@ public class Publisher {
    for (ValidationMessage e : errors) {
      if (e.getLevel() == Level.Hint) {
        System.out.println(e.getLevel().toString()+": "+e.getMessage());
+       page.getQa().hint(e.getMessage());
      }
     }
    for (ValidationMessage e : errors) {
      if (e.getLevel() == Level.Warning) {
        System.out.println(e.getLevel().toString()+": "+e.getMessage());
+       page.getQa().warning(e.getMessage());
      }
     }
    int t = 0;
@@ -741,7 +744,7 @@ public class Publisher {
 
       produceV2();
       produceV3();
-
+      
       log(" ...zips");
 	    ZipGenerator zip = new ZipGenerator(page.getFolders().dstDir + "examples.zip");
 	    zip.addFiles(page.getFolders().dstDir + "examples" + File.separator, "", null);
@@ -762,6 +765,16 @@ public class Publisher {
 	    log("Partial Build - terminating now");
 	}
 
+  private void produceQA() throws Exception {
+    page.getQa().countDefinitions(page.getDefinitions());
+    
+    String src = TextFile.fileToString(page.getFolders().srcDir+ "qa.htm");
+    TextFile.stringToFile(page.processPageIncludes("qa.htm", src), page.getFolders().dstDir+"qa.htm");
+    
+    if (web)
+      page.getQa().commit(page.getFolders().rootDir);    
+  }
+
   private void produceV3() throws Exception {
     log(" ...v3 Code Systems");
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -772,7 +785,9 @@ public class Publisher {
     Utilities.createDirectory(page.getFolders().dstDir + "v3");
     Utilities.clearDirectory(page.getFolders().dstDir + "v3");
     String src = TextFile.fileToString(page.getFolders().srcDir+ "v3"+File.separator+"template.htm");
-    TextFile.stringToFile(page.processPageIncludes("v3/template.htm", src), page.getFolders().dstDir + "v3"+File.separator+"index.htm");
+    TextFile.stringToFile(page.processPageIncludes("v3/template.htm", src), page.getFolders().dstDir+"terminologies-v3.htm");
+    src = TextFile.fileToString(page.getFolders().srcDir+ "v3"+File.separator+"template.htm");
+    cachePage("terminologies-v3.htm", page.processPageIncludesForBook("v3/template.htm", src));
     
     Element e = XMLUtil.getFirstChild(page.getV3src().getDocumentElement());
     while (e != null) {
@@ -802,7 +817,9 @@ public class Publisher {
     Utilities.createDirectory(page.getFolders().dstDir + "v2");
     Utilities.clearDirectory(page.getFolders().dstDir + "v2");
     String src = TextFile.fileToString(page.getFolders().srcDir+ "v2"+File.separator+"template.htm");
-    TextFile.stringToFile(page.processPageIncludes("v2/template.htm", src), page.getFolders().dstDir + "v2"+File.separator+"index.htm");
+    TextFile.stringToFile(page.processPageIncludes("v2/template.htm", src), page.getFolders().dstDir + "terminologies-v2.htm");
+    src = TextFile.fileToString(page.getFolders().srcDir+ "v2"+File.separator+"template.htm");
+    cachePage("terminologies-v2.htm", page.processPageIncludesForBook("v2/template.htm", src));
     
     Element e = XMLUtil.getFirstChild(page.getV2src().getDocumentElement());
     while (e != null) {
@@ -1509,8 +1526,10 @@ public class Publisher {
 
   private void produceCoverageWarning(String path, ElementDefn e) {
     
-    if (!e.isCoveredByExample() && !Utilities.noString(path))
+    if (!e.isCoveredByExample() && !Utilities.noString(path)) {
       log("The path "+path+e.getName()+" is not covered by any example");
+      page.getQa().notCovered(path+e.getName());
+    }
     for (ElementDefn c : e.getElements()) {
       produceCoverageWarning(path+e.getName()+"/", c);
     }    
@@ -1670,7 +1689,7 @@ public class Publisher {
     
     // todo - create the redirect
     TextFile.stringToFile(page.processPageIncludes(cd.getName()+".htm", TextFile.fileToString(page.getFolders().srcDir+"template-vs.htm")), page.getFolders().dstDir+name+".htm");
-    String src = page.processPageIncludesForBook(cd.getName()+".htm", TextFile.fileToString(page.getFolders().srcDir+"template-vs.htm"));
+    String src = page.processPageIncludesForBook(cd.getName()+".htm", TextFile.fileToString(page.getFolders().srcDir+"template-vs-book.htm"));
     cachePage(name+".htm", src);
     
     JsonComposer json = new JsonComposer();
@@ -1689,7 +1708,7 @@ public class Publisher {
   
   private void generateCodeSystem(String filename, BindingSpecification cd) throws Exception {
     TextFile.stringToFile(page.processPageIncludes(filename, TextFile.fileToString(page.getFolders().srcDir+"template-tx.htm")), page.getFolders().dstDir+filename);
-    String src = page.processPageIncludesForBook(filename, TextFile.fileToString(page.getFolders().srcDir+"template-tx.htm"));
+    String src = page.processPageIncludesForBook(filename, TextFile.fileToString(page.getFolders().srcDir+"template-tx-book.htm"));
     cachePage(filename, src);
 
     ValueSet vs = new ValueSet();

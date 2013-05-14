@@ -50,7 +50,8 @@ public class CodeListParser  extends CSVReader {
 
 	private void processLine(List<DefinedCode> codes, String[] titles, String[] values) throws Exception {
 		DefinedCode c = new DefinedCode();
-		c.setCode(getColumn(titles, values, "Code"));
+    c.setId(getColumn(titles, values, "Id"));
+    c.setCode(getColumn(titles, values, "Code"));
 		c.setDefinition(getColumn(titles, values, "Definition"));
 		c.setComment(getColumn(titles, values, "Comment"));
 		codes.add(c);
