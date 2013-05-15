@@ -96,12 +96,13 @@ public class CSharpModelInformationGenerator extends GenBlock
 	{
 		ln("public static List<string> SupportedResources = ");
 		bs();	
-        	ln("new List<string>");
+    	ln("new List<string>");
 			bs("{");	
 				for( ResourceDefn resource : definitions.getResources() )
                 	ln("\"" + resource.getName() + "\",");
-            es("};");
-        es();
+	//			ln("\"Binary\"");     // Not *really* a model-defined resource...
+      es("};");
+    es();
 	}
 
 

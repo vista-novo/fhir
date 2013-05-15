@@ -35,6 +35,7 @@ public interface TypeRef extends EObject {
 	public final static String RESOURCE_TYPE_NAME = "Resource";
 	public final static String RESOURCEREF_TYPE_NAME = "ResourceReference";
 	public static final String ELEMENT_TYPE_NAME = "Element";
+	public static final String BINARY_TYPE_NAME = "Binary";
 	
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.

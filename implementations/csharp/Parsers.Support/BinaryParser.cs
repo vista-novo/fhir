@@ -1,5 +1,10 @@
-﻿/*
-  Copyright (c) 2011-2012, HL7, Inc
+using System;
+using System.Collections.Generic;
+using Hl7.Fhir.Support;
+using System.Xml.Linq;
+
+/*
+  Copyright (c) 2011-2013, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -28,61 +33,52 @@
 
 */
 
+//
+// Generated on Thu, May 9, 2013 09:20-0400 for FHIR v0.09
+//
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
+using Hl7.Fhir.Model;
+using System.Xml;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Parsers
 {
-    public partial class Date
+    /// <summary>
+    /// Parser for Substance instances
+    /// </summary>
+    internal static partial class BinaryParser
     {
-        public static Date Today()
+        /// <summary>
+        /// Parse Substance
+        /// </summary>
+        public static Binary ParseBinary(IFhirReader reader, ErrorList errors, Binary existingInstance = null )
         {
-            return new Date(DateTime.Now.ToString("yyyy-MM-dd"));
-        }
-
-        public static bool TryParse(string value, out Date result)
-        {
-            Regex sidRegEx = new Regex("^" + PATTERN + "$", RegexOptions.Singleline);
-
-            if (value==null || sidRegEx.IsMatch(value))
+            Binary result = existingInstance != null ? existingInstance : new Binary(null);
+            try
             {
-                result = new Date(value);
-                return true;
+                string currentElementName = reader.CurrentElementName;
+
+                reader.EnterElement();
+
+                string base64Contents = reader.ReadBinaryBase64TextContents();
+
+                if (base64Contents != null)
+                    result.Content = Binary.Parse(reader.ReadBinaryBase64TextContents()).Content;
+                else
+                    result.Content = null;
+
+                result.ContentType = reader.ReadBinaryContentType();
+
+                if (result.ContentType == null)
+                    errors.Add("Content type may not be empty in a Binary resource", reader);
+
+                reader.LeaveElement();
             }
-            else
+            catch (Exception ex)
             {
-                result = null;
-                return false;
+                errors.Add(ex.Message, reader);
             }
+            return result;
         }
-
-        public static Date Parse(string value)
-        {
-            Date result = null;
-
-            if (TryParse(value, out result))
-                return result;
-            else
-                throw new FhirFormatException("Not an correctly formatted date value");
-        }
-
-        public override string ValidateData()
-        {
-            Date dummy;
-
-            if (!TryParse( this.Contents, out dummy ))
-                return "Not a correctly formatted date value";
-            
-            return null; 
-        }
-
-        public override string ToString()
-        {
-            return Contents;
-        }
+        
     }
 }

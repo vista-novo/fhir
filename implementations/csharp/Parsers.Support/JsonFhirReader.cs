@@ -44,6 +44,8 @@ namespace Hl7.Fhir.Parsers
         public const string XHTMLELEM = "div";
         public const string IDATTR = "_id";
         public const string VALUEATTR = "value";
+        public const string BINARY_CONTENT_TYPE = "contentType";
+        public const string BINARY_CONTENT = "content";
 
         private JsonTextReader jr;
 
@@ -94,9 +96,6 @@ namespace Hl7.Fhir.Parsers
                 throw new FhirFormatException("Expected a StartObject JSon token");
 
             jr.Read();
-
-//          bool isEmpty = jr.TokenType == JsonToken.EndObject;
-//          return isEmpty;
         }
 
 
@@ -169,6 +168,24 @@ namespace Hl7.Fhir.Parsers
         {
             return processStringProperty();
         }
+
+
+        public string ReadBinaryBase64TextContents()
+        {
+            if (isAtToken() && CurrentElementName == BINARY_CONTENT)
+                return processStringProperty();
+            else
+                return null;
+        }
+
+        public string ReadBinaryContentType()
+        {
+            if (isAtToken() && CurrentElementName == BINARY_CONTENT_TYPE)
+                return processStringProperty();
+            else
+                return null;
+        }
+
 
 
         public void LeaveElement()

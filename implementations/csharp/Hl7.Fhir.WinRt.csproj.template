@@ -54,8 +54,11 @@
     <Compile Include="Model.Support\Instant.cs" />
 	<Compile Include="Model.Support\ModelInfo.cs" />
 	<Compile Include="Model.Support\Initializers.cs" />
+	<Compile Include="Model.Support\Binary.cs" />
+	<Compile Include="Model.Support\ResourceReference.cs" />
     <Compile Include="Parsers.Support\ParserUtils.cs" />
 	<Compile Include="Parsers.Support\CodeParser.cs" />
+	<Compile Include="Parsers.Support\BinaryParser.cs" />
     <Compile Include="Parsers.Support\IFhirReader.cs" />
     <Compile Include="Parsers.Support\XmlFhirReader.cs" />
     <Compile Include="Parsers.Support\JsonFhirReader.cs" />

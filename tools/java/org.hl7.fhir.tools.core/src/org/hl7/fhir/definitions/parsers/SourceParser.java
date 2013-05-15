@@ -216,6 +216,8 @@ public class SourceParser {
 				sortTypes(CompositeTypeConverter.buildResourcesFromFhirModel(definitions
 						.getResources().values() )));
 
+		eCoreParseResults.getTypes().add(CompositeTypeConverter.buildBinaryResourceDefn());
+		
 		for (String n : ini.getPropertyNames("diagrams"))
 		  definitions.getDiagrams().put(n, ini.getStringProperty("diagrams", n));
 		
@@ -232,8 +234,7 @@ public class SourceParser {
 			futureResource.setForFutureUse(true);
 			definitions.getFutureResources().put(cd.getCode(), futureResource);
 		}
-		
-		
+				
 		eCoreParseResults.getTypes().addAll(
 				CompositeTypeConverter.buildResourcesFromFhirModel(definitions
 						.getFutureResources().values() ));

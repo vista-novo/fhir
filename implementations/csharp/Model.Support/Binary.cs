@@ -28,61 +28,65 @@
 
 */
 
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Hl7.Fhir.Model
 {
-    public partial class Date
+    // A stream of bytes
+    public partial class Binary : Resource
     {
-        public static Date Today()
-        {
-            return new Date(DateTime.Now.ToString("yyyy-MM-dd"));
-        }
+        public string ContentType { get; set; }
+        
+        public byte[] Content { get; set; }
 
-        public static bool TryParse(string value, out Date result)
+        public static bool TryParse(string value, out Binary result)
         {
-            Regex sidRegEx = new Regex("^" + PATTERN + "$", RegexOptions.Singleline);
-
-            if (value==null || sidRegEx.IsMatch(value))
+            try
             {
-                result = new Date(value);
+                byte[] binData = null;
+
+                if (value == null)
+                    result = null;
+                else
+                    binData = Convert.FromBase64String(value);
+
+                result = new Binary(binData);
                 return true;
             }
-            else
+            catch
             {
                 result = null;
                 return false;
             }
         }
 
-        public static Date Parse(string value)
+        public Binary(byte[] data, string contentType=null)
         {
-            Date result = null;
+            this.Content = data;
+            this.ContentType = contentType;
+        }
+
+        public static Binary Parse(string value)
+        {
+            Binary result = null;
 
             if (TryParse(value, out result))
                 return result;
-            else
-                throw new FhirFormatException("Not an correctly formatted date value");
+            else 
+                throw new FhirFormatException("Not a correctly base64 encoded binary value");
         }
 
-        public override string ValidateData()
-        {
-            Date dummy;
-
-            if (!TryParse( this.Contents, out dummy ))
-                return "Not a correctly formatted date value";
-            
-            return null; 
-        }
 
         public override string ToString()
         {
-            return Contents;
+            if (Content == null)
+                return null;
+            else
+                return Convert.ToBase64String(Content);
         }
     }
+  
 }

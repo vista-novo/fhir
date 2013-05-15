@@ -345,7 +345,7 @@ namespace Hl7.Fhir.Client
         /// <param name="resource">The resource contents to validate</param>
         /// <param name="id">The id that would be updated</param>
         /// <returns>null is validation succeeded, otherwise returns an IssueReport detailing the validation errors</returns>
-        public IssueReport Validate<TResource>(TResource resource, string id) where TResource : Resource
+        public OperationOutcome Validate<TResource>(TResource resource, string id) where TResource : Resource
         {
             string contentType = ContentType.BuildContentType(PreferredFormat, false);
             string collection = ResourceLocation.GetCollectionNameForResource(typeof(TResource));
@@ -365,7 +365,7 @@ namespace Hl7.Fhir.Client
             if (LastResponseDetails.Result == HttpStatusCode.OK)
                 return null;
             else
-                return (IssueReport)parseResource();
+                return (OperationOutcome)parseResource();
         }
 
 

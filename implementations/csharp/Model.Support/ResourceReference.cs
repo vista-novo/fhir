@@ -28,61 +28,30 @@
 
 */
 
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Hl7.Fhir.Model
 {
-    public partial class Date
+    // value can be true or false
+    public partial class ResourceReference
     {
-        public static Date Today()
+        public Uri Url
         {
-            return new Date(DateTime.Now.ToString("yyyy-MM-dd"));
-        }
-
-        public static bool TryParse(string value, out Date result)
-        {
-            Regex sidRegEx = new Regex("^" + PATTERN + "$", RegexOptions.Singleline);
-
-            if (value==null || sidRegEx.IsMatch(value))
+            get
             {
-                result = new Date(value);
-                return true;
+                if (this.Reference != null && this.Reference.Contents != null)
+                    return new Uri(this.Reference.Contents, UriKind.RelativeOrAbsolute);
+                else
+                    return null;
             }
-            else
+            set
             {
-                result = null;
-                return false;
+                this.Reference = value.ToString();
             }
-        }
-
-        public static Date Parse(string value)
-        {
-            Date result = null;
-
-            if (TryParse(value, out result))
-                return result;
-            else
-                throw new FhirFormatException("Not an correctly formatted date value");
-        }
-
-        public override string ValidateData()
-        {
-            Date dummy;
-
-            if (!TryParse( this.Contents, out dummy ))
-                return "Not a correctly formatted date value";
-            
-            return null; 
-        }
-
-        public override string ToString()
-        {
-            return Contents;
         }
     }
+  
 }

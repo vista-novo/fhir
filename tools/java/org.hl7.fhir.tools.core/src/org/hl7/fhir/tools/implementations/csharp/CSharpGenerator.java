@@ -36,6 +36,7 @@ import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
+import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.tools.implementations.BaseGenerator;
 import org.hl7.fhir.tools.implementations.GeneratorUtils;
@@ -109,7 +110,8 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		allComplexTypes.addAll(definitions.getResources());
 		
 		for( CompositeTypeDefn composite : allComplexTypes )
-		{							
+		{		  
+		  // Generate model for all other classes
 			String compositeFilename = modelDir + GeneratorUtils.generateCSharpTypeName(composite.getName()) + ".cs";	
 			new CSharpModelGenerator(definitions)
 				.generateComposite(composite).toFile(implDir + compositeFilename);		
@@ -120,7 +122,11 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		{		
 			// Don't generate parsers/serializers for abstract stuff (for now)
 			if( composite.isAbstract() ) continue;
-			
+
+	     // Binary resource parser is hand-written
+      if( composite.getName().equals(TypeRef.BINARY_TYPE_NAME)) continue;
+      
+      // Generate parsers/serializers for all other classes
 			String xmlParserFilename = parsersDir + GeneratorUtils.generateCSharpTypeName(composite.getName()) + "Parser.cs";			
 			new CSharpParserGenerator(definitions)
 					.generateCompositeParser(composite, definitions).toFile(implDir+xmlParserFilename);			
@@ -130,7 +136,6 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			new CSharpSerializerGenerator(definitions)
 				.generateCompositeSerializer(composite).toFile(implDir+serializerFilename);			
 			generatedFilenames.add(serializerFilename);
-
 		}
 		
 		for( ConstrainedTypeDefn constrained : definitions.getLocalConstrainedTypes() )

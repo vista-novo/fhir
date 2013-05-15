@@ -43,6 +43,7 @@ namespace Hl7.Fhir.Parsers
         public const string XHTMLELEM = "div";
         public const string IDATTR = "id";
         public const string VALUEATTR = "value";
+        public const string CONTENT_TYPE = "contentType";
 
         private XmlReader xr;
 
@@ -82,6 +83,7 @@ namespace Hl7.Fhir.Parsers
         {
             public string Primitive { get; set; }
             public string LocalId { get; set; }
+            public string ContentType { get; set; }
         }
 
         private Stack<ElementAttributes> elementStack = new Stack<ElementAttributes>();
@@ -91,9 +93,11 @@ namespace Hl7.Fhir.Parsers
         {
             string value = null;
             string id = null;
+            string contentType = null;
 
-            readAttributes( out id, out value);
-            elementStack.Push(new ElementAttributes { LocalId = id, Primitive = value });
+            readAttributes(out id, out value, out contentType);
+            elementStack.Push(new ElementAttributes { LocalId = id, Primitive = value, 
+                ContentType = contentType });
 
             if (!xr.IsEmptyElement)
             {
@@ -167,6 +171,26 @@ namespace Hl7.Fhir.Parsers
             {
                 result = currentAttributes.Primitive;
                 currentAttributes.Primitive = null;
+            }
+
+            return result;
+        }
+
+        public string ReadBinaryBase64TextContents()
+        {
+            if (xr.NodeType == XmlNodeType.Text)
+                return xr.Value;
+            else
+                throw new InvalidOperationException("Binary content expected, but node type was " + xr.NodeType.ToString());
+        }
+
+        public string ReadBinaryContentType()
+        {
+            string result = null;
+            if (currentAttributes != null)
+            {
+                result = currentAttributes.ContentType;
+                currentAttributes.ContentType = null;
             }
 
             return result;
@@ -254,12 +278,13 @@ namespace Hl7.Fhir.Parsers
         }
 
        
-        private void readAttributes(out string localId, out string value)
+        private void readAttributes(out string localId, out string value, out string contentType)
         {
             string elementName = xr.LocalName;
 
             localId = null;
             value = null;
+            contentType = null;
 
             if (xr.HasAttributes)
             {
@@ -269,6 +294,8 @@ namespace Hl7.Fhir.Parsers
                         localId = String.IsNullOrEmpty(xr.Value) ? null : xr.Value;
                     else if (xr.LocalName == VALUEATTR && xr.NamespaceURI == "")
                         value = String.IsNullOrEmpty(xr.Value) ? null : xr.Value;
+                    else if (xr.LocalName == CONTENT_TYPE && xr.NamespaceURI == "")
+                        contentType = String.IsNullOrEmpty(xr.Value) ? null : xr.Value;
                     else
                     {
                         if (xr.NamespaceURI == Util.XMLNS)

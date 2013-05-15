@@ -60,6 +60,9 @@ namespace Hl7.Fhir.Parsers
         string ReadPrimitiveContents();
         string ReadRefIdContents();
 
+        string ReadBinaryBase64TextContents();
+        string ReadBinaryContentType();
+
         int LineNumber { get; }
         int LinePosition { get; }
     }

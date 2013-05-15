@@ -69,17 +69,16 @@ public class CompositeTypeConverter {
 		{
 			try 
 			{
-				TypeRef resourceBase = FhirFactory.eINSTANCE.createTypeRef();
-				resourceBase.setName(TypeRef.RESOURCE_TYPE_NAME);
+		    TypeRef resourceBase = FhirFactory.eINSTANCE.createTypeRef();
+		    resourceBase.setName(TypeRef.RESOURCE_TYPE_NAME);
 
-				result.add(buildResourceFromFhirModel(resource, resourceBase));
+			  result.add(buildResourceFromFhirModel(resource, resourceBase));
 			} 
 			catch (Exception e) 
 			{
 				throw new Exception(e.getMessage() + " on resource "
 						+ resource.getName());
 			}
-
 		}
 
 		return result;
@@ -109,6 +108,7 @@ public class CompositeTypeConverter {
 					resource.getRoot(), true, null, base);
 			newResource.setAbstract(resource.isAbstract());
 			newResource.setSandbox(resource.isSandbox());
+			newResource.setBaseType(base);
 			newResource.getExample().addAll(
 					ExampleConverter.buildExamplesFromFhirModel(resource
 							.getExamples()));
@@ -371,4 +371,25 @@ public class CompositeTypeConverter {
 		
 		return idElem;
 	}
+	
+	public static ResourceDefn buildBinaryResourceDefn()
+	{
+	  ResourceDefn result= FhirFactory.eINSTANCE.createResourceDefn();
+
+	  result.setName(TypeRef.BINARY_TYPE_NAME);
+	  result.setFullName(result.getName());
+	  result.setAbstract(false);
+	    
+	  Annotations resourceAnn = FhirFactory.eINSTANCE.createAnnotations();
+	  resourceAnn.setShortDefinition("Resource for capturing binary data");
+	  result.setAnnotations(resourceAnn);
+
+    TypeRef resourceBase = FhirFactory.eINSTANCE.createTypeRef();
+    resourceBase.setName(TypeRef.RESOURCE_TYPE_NAME);
+
+	  result.setBaseType(resourceBase);
+
+	  return result;
+	}
+
 }
