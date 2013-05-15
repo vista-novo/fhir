@@ -20,6 +20,7 @@
   <WindowWidth>1980</WindowWidth>
   <WindowTopX>135</WindowTopX>
   <WindowTopY>480</WindowTopY>
+  <ActiveSheet>7</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -89,6 +90,25 @@
   </Style>
   <Style ss:ID="s72">
    <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s75">
+   <Alignment ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+   <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s76">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+   <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -203,7 +223,6 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -390,20 +409,21 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s72" ss:DefaultColumnWidth="65.25"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="234.75"/>
    <Column ss:Index="4" ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="84"
-    ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="126"/>
+    ss:Span="2"/>
+   <Column ss:Index="7" ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="126"/>
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="260.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s70"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Binding</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Extensibility</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Description</Data></Cell>
@@ -413,16 +433,19 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">How the issue affects the success of the action</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">complete</Data></Cell>
     <Cell><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#issue-severity</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s71"><Data ss:Type="String">IssueType</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">A coded expression of the type of issue</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">extensible</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">alterable</Data></Cell>
+    <Cell><Data ss:Type="String">#issue-type</Data></Cell>
     <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:Index="7" ss:StyleID="s71"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -435,7 +458,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>1</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
@@ -487,12 +510,196 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <RangeSelection>R1</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
    <x:PageLayoutZoom>0</x:PageLayoutZoom>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="issue-type">
+  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="25" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="66.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="72.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="507"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s75">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">Parent</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">Comments</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s76"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">invalid</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">Content invalid against Specification or Profile</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">structure</Data></Cell>
+    <Cell><Data ss:Type="String">invalid</Data></Cell>
+    <Cell><Data ss:Type="String">content structural issue</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">invalid</Data></Cell>
+    <Cell><Data ss:Type="String">required element missing</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="String">value</Data></Cell>
+    <Cell><Data ss:Type="String">invalid</Data></Cell>
+    <Cell><Data ss:Type="String">element value invalid</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="String">invariant</Data></Cell>
+    <Cell><Data ss:Type="String">invalid</Data></Cell>
+    <Cell><Data ss:Type="String">schematron rule</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell><Data ss:Type="String">security</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">authorization/permissions issue</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">7</Data></Cell>
+    <Cell><Data ss:Type="String">login</Data></Cell>
+    <Cell><Data ss:Type="String">security</Data></Cell>
+    <Cell><Data ss:Type="String">the client needs to initiate the authentication process ()</Data></Cell>
+    <Cell><Data ss:Type="String">Sometimes associated with HTTP 3xx response codes, but not if the client gets to choose which authentication process to initiate</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+    <Cell><Data ss:Type="String">unknown</Data></Cell>
+    <Cell><Data ss:Type="String">security</Data></Cell>
+    <Cell><Data ss:Type="String">user/system not able to be authenticated</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">9</Data></Cell>
+    <Cell><Data ss:Type="String">expired</Data></Cell>
+    <Cell><Data ss:Type="String">security</Data></Cell>
+    <Cell><Data ss:Type="String">user session expired</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="String">denied</Data></Cell>
+    <Cell><Data ss:Type="String">security</Data></Cell>
+    <Cell><Data ss:Type="String">user rights failure</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">11</Data></Cell>
+    <Cell><Data ss:Type="String">processing</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">processing issues</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">12</Data></Cell>
+    <Cell><Data ss:Type="String">not-supported</Data></Cell>
+    <Cell><Data ss:Type="String">processing</Data></Cell>
+    <Cell><Data ss:Type="String">resource not supported</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">13</Data></Cell>
+    <Cell><Data ss:Type="String">duplicate</Data></Cell>
+    <Cell><Data ss:Type="String">processing</Data></Cell>
+    <Cell><Data ss:Type="String">duplicate resource</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">14</Data></Cell>
+    <Cell><Data ss:Type="String">not-found</Data></Cell>
+    <Cell><Data ss:Type="String">processing</Data></Cell>
+    <Cell><Data ss:Type="String">reference not found</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="String">too-long</Data></Cell>
+    <Cell><Data ss:Type="String">processing</Data></Cell>
+    <Cell><Data ss:Type="String">existing content too long</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">16</Data></Cell>
+    <Cell><Data ss:Type="String">code-unknown</Data></Cell>
+    <Cell><Data ss:Type="String">processing</Data></Cell>
+    <Cell><Data ss:Type="String">code could not be understood</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">17</Data></Cell>
+    <Cell><Data ss:Type="String">extension</Data></Cell>
+    <Cell><Data ss:Type="String">processing</Data></Cell>
+    <Cell><Data ss:Type="String">extension not recognised</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">18</Data></Cell>
+    <Cell><Data ss:Type="String">too-costly</Data></Cell>
+    <Cell><Data ss:Type="String">processing</Data></Cell>
+    <Cell><Data ss:Type="String">operation denied to protect server resources</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">business-rule</Data></Cell>
+    <Cell><Data ss:Type="String">processing</Data></Cell>
+    <Cell><Data ss:Type="String">content failed to pass some business rule</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">transient</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">transient processing issues</Data></Cell>
+    <Cell><Data ss:Type="String">a retry usually would be appropriate</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">21</Data></Cell>
+    <Cell><Data ss:Type="String">lock-error</Data></Cell>
+    <Cell><Data ss:Type="String">transient</Data></Cell>
+    <Cell><Data ss:Type="String">resource/record locking failure</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">22</Data></Cell>
+    <Cell><Data ss:Type="String">no-store</Data></Cell>
+    <Cell><Data ss:Type="String">transient</Data></Cell>
+    <Cell><Data ss:Type="String">persistent store unavailable</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">23</Data></Cell>
+    <Cell><Data ss:Type="String">exception</Data></Cell>
+    <Cell><Data ss:Type="String">transient</Data></Cell>
+    <Cell><Data ss:Type="String">unexpected internal error </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">24</Data></Cell>
+    <Cell><Data ss:Type="String">timeout</Data></Cell>
+    <Cell><Data ss:Type="String">transient</Data></Cell>
+    <Cell><Data ss:Type="String">internal timeout</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>0</VerticalResolution>
+   </Print>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>2</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
 </Workbook>

@@ -1,6 +1,6 @@
 package org.hl7.fhir.definitions.validation;
 
-import org.hl7.fhir.definitions.validation.ModelValidator.Level;
+import org.hl7.fhir.definitions.validation.ResourceValidator.Level;
 
 public class ValidationMessage 
 {

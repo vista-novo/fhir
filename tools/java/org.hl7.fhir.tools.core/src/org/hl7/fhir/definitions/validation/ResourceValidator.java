@@ -59,7 +59,7 @@ import org.hl7.fhir.utilities.Utilities;
  * @author Grahame
  *
  */
-public class ModelValidator {
+public class ResourceValidator {
 
   public enum Level {
     Hint,
@@ -70,7 +70,7 @@ public class ModelValidator {
   private Definitions definitions;
 	private List<ValidationMessage> errors = new ArrayList<ValidationMessage>();
 
-	public ModelValidator(Definitions definitions) {
+	public ResourceValidator(Definitions definitions) {
 		super();
 		this.definitions = definitions;
 	}
@@ -248,7 +248,7 @@ public class ModelValidator {
     
   }
 
-  public List<ValidationMessage> check(String n, BindingSpecification cd) {
+  public List<ValidationMessage> check(String n, BindingSpecification cd) throws Exception {
     errors.clear();
 
     for (DefinedCode c : cd.getCodes()) {
@@ -265,7 +265,8 @@ public class ModelValidator {
     }
 
     warning("Binding "+n, cd.getBindingStrength() != BindingStrength.Suggested || cd.getManagement() != Management.Fixed, "A binding can't be both fixed and suggested");
-    
+    rule("Binding "+n, !cd.isHeirachical() || (cd.getChildCodes().size() < cd.getCodes().size()), "Logic error processing Hirachical code set");
+        
     if (cd.isValueSet()) {
       boolean internal = false;
       for (DefinedCode c : cd.getCodes()) 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -703,13 +703,9 @@ public class SecurityEvent extends Resource {
         }
 
         public void setDateTimeSimple(Calendar value) { 
-          if (value == null)
-            this.dateTime = null;
-          else {
             if (this.dateTime == null)
               this.dateTime = new Instant();
             this.dateTime.setValue(value);
-          }
         }
 
         public Enumeration<SecurityEventEventOutcome> getOutcome() { 
@@ -725,13 +721,9 @@ public class SecurityEvent extends Resource {
         }
 
         public void setOutcomeSimple(SecurityEventEventOutcome value) { 
-          if (value == null)
-            this.outcome = null;
-          else {
             if (this.outcome == null)
               this.outcome = new Enumeration<SecurityEventEventOutcome>();
             this.outcome.setValue(value);
-          }
         }
 
         public List<Coding> getCode() { 
@@ -789,13 +781,9 @@ public class SecurityEvent extends Resource {
         }
 
         public void setUserIdSimple(String value) { 
-          if (value == null)
-            this.userId = null;
-          else {
             if (this.userId == null)
               this.userId = new String_();
             this.userId.setValue(value);
-          }
         }
 
         public String_ getOtherUserId() { 
@@ -855,13 +843,9 @@ public class SecurityEvent extends Resource {
         }
 
         public void setRequestorSimple(boolean value) { 
-          if (value == false)
-            this.requestor = null;
-          else {
             if (this.requestor == null)
               this.requestor = new Boolean();
             this.requestor.setValue(value);
-          }
         }
 
         public List<Coding> getRole() { 
@@ -994,13 +978,9 @@ public class SecurityEvent extends Resource {
         }
 
         public void setIdentifierSimple(String value) { 
-          if (value == null)
-            this.identifier = null;
-          else {
             if (this.identifier == null)
               this.identifier = new String_();
             this.identifier.setValue(value);
-          }
         }
 
         public List<Coding> getType() { 
@@ -1137,13 +1117,9 @@ public class SecurityEvent extends Resource {
         }
 
         public void setIdentifierSimple(String value) { 
-          if (value == null)
-            this.identifier = null;
-          else {
             if (this.identifier == null)
               this.identifier = new String_();
             this.identifier.setValue(value);
-          }
         }
 
         public String_ getSensitivity() { 

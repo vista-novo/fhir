@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -41,10 +41,11 @@ import java.math.*;
 public class DeviceCapabilities extends Resource {
 
     public enum DeviceDataType {
-        quantity, // 
-        range, // 
-        coding, // 
-        string, // 
+        quantity, // The data item is a quantity. The string value should be merged with the units, and the ucum value if provided, to create a valid quantity
+        range, // The data item is a range. The string value should be split about the " - " into low and high, with the units and ucum (if provided) filling out the low and high quantities
+        coding, // The data item is a code (i.e. true/false etc). The value should be built into a valid coding by filling out the system element provided
+        array, // The data item is an Array (a sequence of sample measures, which must be merged with the Array template)
+        string, // The data item is a simple string
         Null; // added to help the parsers
         public static DeviceDataType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
@@ -55,6 +56,8 @@ public class DeviceCapabilities extends Resource {
           return range;
         if ("Coding".equals(codeString))
           return coding;
+        if ("Array".equals(codeString))
+          return array;
         if ("string".equals(codeString))
           return string;
         throw new Exception("Unknown DeviceDataType code '"+codeString+"'");
@@ -64,6 +67,7 @@ public class DeviceCapabilities extends Resource {
             case quantity: return "Quantity";
             case range: return "Range";
             case coding: return "Coding";
+            case array: return "Array";
             case string: return "string";
             default: return "?";
           }
@@ -81,6 +85,8 @@ public class DeviceCapabilities extends Resource {
           return DeviceDataType.range;
         if ("Coding".equals(codeString))
           return DeviceDataType.coding;
+        if ("Array".equals(codeString))
+          return DeviceDataType.array;
         if ("string".equals(codeString))
           return DeviceDataType.string;
         throw new Exception("Unknown DeviceDataType code '"+codeString+"'");
@@ -92,6 +98,8 @@ public class DeviceCapabilities extends Resource {
         return "Range";
       if (code == DeviceDataType.coding)
         return "Coding";
+      if (code == DeviceDataType.array)
+        return "Array";
       if (code == DeviceDataType.string)
         return "string";
       return "?";
@@ -190,13 +198,9 @@ public class DeviceCapabilities extends Resource {
         }
 
         public void setKeySimple(String value) { 
-          if (value == null)
-            this.key = null;
-          else {
             if (this.key == null)
               this.key = new String_();
             this.key.setValue(value);
-          }
         }
 
         public DeviceCapabilitiesVirtualDeviceChannelMetricInfoComponent getInfo() { 
@@ -230,6 +234,11 @@ public class DeviceCapabilities extends Resource {
         private Code ucum;
 
         /**
+         * A template containing the fixed values for an array output (all the values but the data)
+         */
+        private Array array;
+
+        /**
          * System of the codes, if the type is a Coding
          */
         private Uri system;
@@ -247,13 +256,9 @@ public class DeviceCapabilities extends Resource {
         }
 
         public void setTypeSimple(DeviceDataType value) { 
-          if (value == null)
-            this.type = null;
-          else {
             if (this.type == null)
               this.type = new Enumeration<DeviceDataType>();
             this.type.setValue(value);
-          }
         }
 
         public String_ getUnits() { 
@@ -298,6 +303,14 @@ public class DeviceCapabilities extends Resource {
               this.ucum = new Code();
             this.ucum.setValue(value);
           }
+        }
+
+        public Array getArray() { 
+          return this.array;
+        }
+
+        public void setArray(Array value) { 
+          this.array = value;
         }
 
         public Uri getSystem() { 
@@ -388,13 +401,9 @@ public class DeviceCapabilities extends Resource {
         }
 
         public void setKeySimple(String value) { 
-          if (value == null)
-            this.key = null;
-          else {
             if (this.key == null)
               this.key = new String_();
             this.key.setValue(value);
-          }
         }
 
         public DeviceCapabilitiesVirtualDeviceChannelMetricInfoComponent getInfo() { 

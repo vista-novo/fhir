@@ -29,8 +29,13 @@ POSSIBILITY OF SUCH DAMAGE.
  */
 import java.io.OutputStream;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
@@ -51,7 +56,6 @@ import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.Profile.BindingConformance;
 import org.hl7.fhir.instance.model.Profile.BindingType;
-import org.hl7.fhir.instance.model.Profile.CodeDefinitionComponent;
 import org.hl7.fhir.instance.model.Profile.ConstraintSeverity;
 import org.hl7.fhir.instance.model.Profile.ElementComponent;
 import org.hl7.fhir.instance.model.Profile.ElementDefinitionComponent;
@@ -64,6 +68,7 @@ import org.hl7.fhir.instance.model.Profile.ProfileStructureSearchParamComponent;
 import org.hl7.fhir.instance.model.Profile.SearchParamType;
 import org.hl7.fhir.instance.model.Profile.SearchRepeatBehavior;
 import org.hl7.fhir.instance.model.Profile.TypeRefComponent;
+import org.hl7.fhir.instance.model.Type;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -73,6 +78,7 @@ import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 public class ProfileGenerator {
 
   private Definitions definitions;
+  private Set<String> bindings = new HashSet<String>();
 
 
   public ProfileGenerator(Definitions definitions) {
@@ -128,6 +134,15 @@ public class ProfileGenerator {
       defineElement(p, c, elem, elem.getName(), addBase);
     }
 
+    for (String bn : bindings) {
+      if (!"!".equals(bn)) {
+        BindingSpecification bs = definitions.getBindingByName(bn);
+        if (bs == null)
+          System.out.println("no binding found for "+bn);
+        else
+          p.getBinding().add(generateBinding(bs, p));
+      }
+    }
 
     for (ExtensionDefn ex : profile.getExtensions())
       p.getExtensionDefn().add(generateExtensionDefn(ex, p));
@@ -183,17 +198,28 @@ public class ProfileGenerator {
     dst.setDefinition(Factory.newString_(src.getDefinition()));
     dst.setTypeSimple(convert(src.getBinding()));
     dst.setConformanceSimple(convert(src.getBindingStrength()));
-    dst.setReference(Factory.newUri(src.getReference()));
-    for (DefinedCode dc : src.getCodes()) {
-      CodeDefinitionComponent cd = p.new CodeDefinitionComponent();
-      cd.setCode(Factory.newString_(dc.getCode()));
-      cd.setDisplay(Factory.newString_(dc.getDisplay()));
-      cd.setDefinition(Factory.newString_(dc.getDefinition()));
-      cd.setSystem(dc.hasSystem() ? Factory.newUri(dc.getSystem()) : null);
-      dst.getConcept().add(cd);
-    }
-
+    dst.setReference(buildReference(src));    
+    dst.setIsExtensibleSimple(src.getExtensibility() == BindingExtensibility.Extensible);
     return dst;
+  }
+
+  private Type buildReference(BindingSpecification src) throws Exception {
+    switch (src.getBinding()) {
+    case Unbound: return null;
+    case CodeList:
+      if (src.getReference().startsWith("#"))
+        return Factory.makeResourceReference("ValueSet", "http://hl7.org/fhir/valueset/"+src.getReference().substring(1));
+      else
+        throw new Exception("not done yet");
+    case ValueSet: 
+      if (!Utilities.noString(src.getReference()))
+        return Factory.makeResourceReference("ValueSet", "http://hl7.org/fhir/valueset/"+src.getReference());
+      else
+        return null;
+    case Reference: return Factory.newUri(src.getReference());
+    case Special: return null;
+    default: return null;
+    }
   }
 
   private BindingConformance convert(org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength bindingStrength) throws Exception {
@@ -203,6 +229,8 @@ public class ProfileGenerator {
       return BindingConformance.required;
     if (bindingStrength == org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength.Suggested)
       return BindingConformance.example;
+    if (bindingStrength == org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength.Unstated)
+      return null;
     throw new Exception("unknown value BindingStrength."+bindingStrength.toString());
   }
 
@@ -215,6 +243,8 @@ public class ProfileGenerator {
       return BindingType.special;
     if (binding == org.hl7.fhir.definitions.model.BindingSpecification.Binding.ValueSet)
       return BindingType.valueset;
+    if (binding == org.hl7.fhir.definitions.model.BindingSpecification.Binding.Unbound)
+      return BindingType.unbound;
 
     throw new Exception("unknown value Binding."+binding.toString());
   }
@@ -314,8 +344,10 @@ public class ProfileGenerator {
     }
     // we don't have anything to say about constraints on resources
 
-    if (!"".equals(e.getBindingName()))
+    if (!"".equals(e.getBindingName())) {
       ce.getDefinition().setBinding(Factory.newString_(e.getBindingName()));
+      bindings.add(e.getBindingName());
+    }
 
     if( e.hasAggregation() )
     {

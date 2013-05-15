@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -86,13 +86,9 @@ public class Provenance extends Resource {
         }
 
         public void setRecordedSimple(Calendar value) { 
-          if (value == null)
-            this.recorded = null;
-          else {
             if (this.recorded == null)
               this.recorded = new Instant();
             this.recorded.setValue(value);
-          }
         }
 
         public CodeableConcept getReason() { 
@@ -268,13 +264,9 @@ public class Provenance extends Resource {
         }
 
         public void setIdentifierSimple(URI value) { 
-          if (value == null)
-            this.identifier = null;
-          else {
             if (this.identifier == null)
               this.identifier = new Uri();
             this.identifier.setValue(value);
-          }
         }
 
         public String_ getDescription() { 

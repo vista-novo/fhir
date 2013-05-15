@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -197,13 +197,9 @@ public class DeviceLog extends Resource {
         }
 
         public void setKeySimple(String value) { 
-          if (value == null)
-            this.key = null;
-          else {
             if (this.key == null)
               this.key = new String_();
             this.key.setValue(value);
-          }
         }
 
         public String_ getValue() { 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -57,13 +57,9 @@ public class Immunization extends Resource {
         }
 
         public void setReasonSimple(String value) { 
-          if (value == null)
-            this.reason = null;
-          else {
             if (this.reason == null)
               this.reason = new Code();
             this.reason.setValue(value);
-          }
         }
 
   }
@@ -192,13 +188,9 @@ public class Immunization extends Resource {
         }
 
         public void setDoseSequenceSimple(int value) { 
-          if (value == -1)
-            this.doseSequence = null;
-          else {
             if (this.doseSequence == null)
               this.doseSequence = new Integer();
             this.doseSequence.setValue(value);
-          }
         }
 
         public String_ getDescription() { 
@@ -310,13 +302,9 @@ public class Immunization extends Resource {
         }
 
         public void setDoseStatusSimple(String value) { 
-          if (value == null)
-            this.doseStatus = null;
-          else {
             if (this.doseStatus == null)
               this.doseStatus = new Code();
             this.doseStatus.setValue(value);
-          }
         }
 
         public Code getDoseStatusReason() { 
@@ -498,13 +486,9 @@ public class Immunization extends Resource {
     }
 
     public void setReportedSimple(boolean value) { 
-      if (value == false)
-        this.reported = null;
-      else {
         if (this.reported == null)
           this.reported = new Boolean();
         this.reported.setValue(value);
-      }
     }
 
     public Code getVaccineType() { 

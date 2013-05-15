@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -134,13 +134,9 @@ public class Message extends Resource {
         }
 
         public void setIdentifierSimple(String value) { 
-          if (value == null)
-            this.identifier = null;
-          else {
             if (this.identifier == null)
               this.identifier = new Id();
             this.identifier.setValue(value);
-          }
         }
 
         public Enumeration<ResponseCode> getCode() { 
@@ -156,13 +152,9 @@ public class Message extends Resource {
         }
 
         public void setCodeSimple(ResponseCode value) { 
-          if (value == null)
-            this.code = null;
-          else {
             if (this.code == null)
               this.code = new Enumeration<ResponseCode>();
             this.code.setValue(value);
-          }
         }
 
         public ResourceReference getDetails() { 
@@ -236,13 +228,9 @@ public class Message extends Resource {
         }
 
         public void setSoftwareSimple(String value) { 
-          if (value == null)
-            this.software = null;
-          else {
             if (this.software == null)
               this.software = new String_();
             this.software.setValue(value);
-          }
         }
 
         public String_ getVersion() { 
@@ -288,13 +276,9 @@ public class Message extends Resource {
         }
 
         public void setEndpointSimple(URI value) { 
-          if (value == null)
-            this.endpoint = null;
-          else {
             if (this.endpoint == null)
               this.endpoint = new Uri();
             this.endpoint.setValue(value);
-          }
         }
 
   }
@@ -358,13 +342,9 @@ public class Message extends Resource {
         }
 
         public void setEndpointSimple(URI value) { 
-          if (value == null)
-            this.endpoint = null;
-          else {
             if (this.endpoint == null)
               this.endpoint = new Uri();
             this.endpoint.setValue(value);
-          }
         }
 
   }
@@ -447,13 +427,9 @@ public class Message extends Resource {
     }
 
     public void setIdentifierSimple(String value) { 
-      if (value == null)
-        this.identifier = null;
-      else {
         if (this.identifier == null)
           this.identifier = new Id();
         this.identifier.setValue(value);
-      }
     }
 
     public Instant getTimestamp() { 
@@ -469,13 +445,9 @@ public class Message extends Resource {
     }
 
     public void setTimestampSimple(Calendar value) { 
-      if (value == null)
-        this.timestamp = null;
-      else {
         if (this.timestamp == null)
           this.timestamp = new Instant();
         this.timestamp.setValue(value);
-      }
     }
 
     public Code getEvent() { 
@@ -491,13 +463,9 @@ public class Message extends Resource {
     }
 
     public void setEventSimple(String value) { 
-      if (value == null)
-        this.event = null;
-      else {
         if (this.event == null)
           this.event = new Code();
         this.event.setValue(value);
-      }
     }
 
     public MessageResponseComponent getResponse() { 

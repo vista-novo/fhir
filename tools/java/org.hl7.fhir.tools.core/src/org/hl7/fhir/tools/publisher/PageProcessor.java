@@ -863,48 +863,72 @@ private String resItem(String name) throws Exception {
     return Utilities.escapeXml(cd.getDefinition());
   }
 
-  private String generateCodeTable(String name) {
+  private String generateCodeTable(String name) throws Exception {
     BindingSpecification cd = definitions.getBindingByReference("#"+name);
     StringBuilder s = new StringBuilder();
     s.append("    <table class=\"codes\">\r\n");
     boolean hasComment = false;
     boolean hasDefinition = false;
+    boolean hasParent = false;
     for (DefinedCode c : cd.getCodes()) {
       hasComment = hasComment || c.hasComment();
       hasDefinition = hasDefinition || c.hasDefinition();
+      hasParent = hasParent || c.hasParent();
     }
     String src;
+    String lvl;
     if (cd.isValueSet()) {
       src = "Source";
     } else
       src = "Id";
-    if (hasComment)
-      s.append("    <tr><td><b>"+src+"</b></td><td><b>Code</b></td><td><b>Definition</b></td><td><b>Comments</b></td></tr>");
-    else if (hasDefinition)
-      s.append("    <tr><td><b>"+src+"</b></td><td><b>Code</b></td><td colspan=\"2\"><b>Definition</b></td></tr>");
+    if (hasParent)
+      lvl = "<td><b>Level</b></td>";
     else
-      s.append("    <tr><td><b>"+src+"</b></td><td colspan=\"3\"><b>Code</b></td></tr>");
+      lvl = "";
+    if (hasComment)
+      s.append("    <tr><td><b>"+src+"</b></td>"+lvl+"<td><b>Code</b></td><td><b>Definition</b></td><td><b>Comments</b></td></tr>");
+    else if (hasDefinition)
+      s.append("    <tr><td><b>"+src+"</b></td>"+lvl+"<td><b>Code</b></td><td colspan=\"2\"><b>Definition</b></td></tr>");
+    else
+      s.append("    <tr><td><b>"+src+"</b></td>"+lvl+"<td colspan=\"3\"><b>Code</b></td></tr>");
     
-    for (DefinedCode c : cd.getCodes()) {
-      if (cd.isValueSet()) {
-        if (Utilities.noString(c.getSystem()))
-          src = "??";
-        else {
-          String url = c.getSystem();
-          url = fixUrlReference(url);
-          src = "<a href=\""+url+"\">"+codeSystemDescription(c.getSystem())+"</a>";
-        }
-      } else
-        src = c.getId();
-      if (hasComment)
-        s.append("    <tr><td>"+src+"</td><td>"+Utilities.escapeXml(c.getCode())+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td><td>"+Utilities.escapeXml(c.getComment())+"</td></tr>");
-      else if (hasDefinition)
-        s.append("    <tr><td>"+src+"</td><td>"+Utilities.escapeXml(c.getCode())+"</td><td colspan=\"2\">"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
-      else
-        s.append("    <tr><td>"+src+"</td><td colspan=\"3\">"+Utilities.escapeXml(c.getCode())+"</td></tr>");
+    for (DefinedCode c : cd.getChildCodes()) {
+      generateCode(cd, s, hasComment, hasDefinition, hasParent, 1, c);
     }
     s.append("    </table>\r\n");
     return s.toString();
+  }
+
+  private void generateCode(BindingSpecification cd, StringBuilder s, boolean hasComment, boolean hasDefinition, boolean hasParent, int level, DefinedCode c) {
+    String src;
+    String lvl;
+    if (cd.isValueSet()) {
+      if (Utilities.noString(c.getSystem()))
+        src = "??";
+      else {
+        String url = c.getSystem();
+        url = fixUrlReference(url);
+        src = "<a href=\""+url+"\">"+codeSystemDescription(c.getSystem())+"</a>";
+      }
+    } else
+      src = c.getId();
+    if (hasParent)
+      lvl = "<td>"+Integer.toString(level)+"</td>";
+    else
+      lvl = "";
+    String indent = "";
+    for (int i = 1; i < level; i++)
+      indent = indent + "&nbsp;&nbsp;";
+    if (hasComment)
+      s.append("    <tr><td>"+src+"</td>"+lvl+"<td>"+indent+Utilities.escapeXml(c.getCode())+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td><td>"+Utilities.escapeXml(c.getComment())+"</td></tr>");
+    else if (hasDefinition)
+      s.append("    <tr><td>"+src+"</td>"+lvl+"<td>"+indent+Utilities.escapeXml(c.getCode())+"</td><td colspan=\"2\">"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
+    else
+      s.append("    <tr><td>"+src+"</td>"+lvl+"<td colspan=\"3\">"+indent+Utilities.escapeXml(c.getCode())+"</td></tr>");
+    
+    for (DefinedCode ch : c.getChildCodes()) {
+      generateCode(cd, s, hasComment, hasDefinition, hasParent, level+1, ch);
+    }
   }
 
   private String codeSystemDescription(String system) {

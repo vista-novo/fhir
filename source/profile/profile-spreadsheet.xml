@@ -20,7 +20,6 @@
   <WindowWidth>2910</WindowWidth>
   <WindowTopX>12450</WindowTopX>
   <WindowTopY>1815</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -102,7 +101,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="77" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="72" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="297.75"/>
    <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="36.75"/>
@@ -1053,7 +1052,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">Profile.binding.isExtensible</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">boolean</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Can additional codes be used?</Data></Cell>
     <Cell><Data ss:Type="String">If true, then conformant systems may use additional codes or (where the data type permits) text alone to convey concepts not covered by the set of codes identified in the binding.  If false, then conformant systems are constrained to the provided codes alone</Data></Cell>
@@ -1061,7 +1060,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Profile.binding.conformance</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">BindingConformance</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">required | preferred | example</Data></Cell>
@@ -1077,48 +1076,6 @@
     <Cell><Data ss:Type="String">Points to the value set or external definition that identifies the set of codes to be used</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">For value sets, this should point to a ValueSet resource.  The reference may be version-specific or not</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Profile.binding.concept</Data></Cell>
-    <Cell><Data ss:Type="Number">4</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">=CodeDefinition</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">up</Data></Cell>
-    <Cell><Data ss:Type="String">down</Data></Cell>
-    <Cell><Data ss:Type="String">Enumerated codes that are the binding</Data></Cell>
-    <Cell><Data ss:Type="String">Identifies the codes forming the code list for the binding</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Profile.binding.concept.code</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Code to use for this concept</Data></Cell>
-    <Cell><Data ss:Type="String">Identifies the code referenced or being defined as part of the binding</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="75">
-    <Cell><Data ss:Type="String">Profile.binding.concept.system</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Source for the code, if taken from another system</Data></Cell>
-    <Cell><Data ss:Type="String">Identifies the system in which the referenced code is defined</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">If no system is specified, then the id for the profile is combined with the binding name to determine an implicit system uri</Data></Cell>
-    <Cell ss:Index="18"><Data ss:Type="String">Should we force the use of value sets if we're dealing with a defined code system?</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Profile.binding.concept.display</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Print name - defaults to code</Data></Cell>
-    <Cell><Data ss:Type="String">Identifies the text to be displayed to the user for this code.  If none provided, then the code itself is displayed</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Profile.binding.concept.definition</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Meaning of the concept</Data></Cell>
-    <Cell><Data ss:Type="String">A free-text description of the meaning of this code</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">Definition should not overlap with that of any other concepts in the code list</Data></Cell>
-   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -1133,10 +1090,11 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>64</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -1149,10 +1107,11 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>6</ActiveRow>
+     <ActiveRow>68</ActiveRow>
      <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
@@ -1161,7 +1120,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="14" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="13" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s73" ss:DefaultRowHeight="15">
    <Column ss:Index="3" ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="118.5"/>
    <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="309.75"/>
@@ -1189,14 +1148,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Profile.binding</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">reference must be present and may only be present if binding type is &quot;reference&quot; or &quot;valueset&quot;</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">(f:type=('reference', 'valueset')) = exists(f:reference)</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">Profile.binding</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">concepts must be present and may only be present if binding type is &quot;codelist&quot;</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">(f:type/@value='codelist') = exists(f:concept)</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">reference must be present and may only be present if binding type is &quot;reference&quot;, &quot;codelist&quot;, or &quot;valueset&quot;</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">(f:type=('reference', 'valueset', 'codelist')) = exists(f:reference)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -1269,8 +1222,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1462,7 +1415,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1491,7 +1443,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="binding-type">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s76" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="86.25"/>
    <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="463.5"/>
@@ -1524,6 +1476,11 @@
     <Cell><Data ss:Type="String">special</Data></Cell>
     <Cell><Data ss:Type="String">The binding points to a list of concepts defined as part of FHIR itself (see below for possible values)</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="String">unbound</Data></Cell>
+    <Cell><Data ss:Type="String">The binding does not indicae any particular set of codes</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -1535,7 +1492,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

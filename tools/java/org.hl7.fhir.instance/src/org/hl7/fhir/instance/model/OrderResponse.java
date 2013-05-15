@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -235,13 +235,9 @@ public class OrderResponse extends Resource {
     }
 
     public void setCodeSimple(OrderOutcomeCode value) { 
-      if (value == null)
-        this.code = null;
-      else {
         if (this.code == null)
           this.code = new Enumeration<OrderOutcomeCode>();
         this.code.setValue(value);
-      }
     }
 
     public String_ getDescription() { 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -416,13 +416,9 @@ public class Conformance extends Resource {
         }
 
         public void setNameSimple(String value) { 
-          if (value == null)
-            this.name = null;
-          else {
             if (this.name == null)
               this.name = new String_();
             this.name.setValue(value);
-          }
         }
 
         public String_ getVersion() { 
@@ -500,13 +496,9 @@ public class Conformance extends Resource {
         }
 
         public void setDescriptionSimple(String value) { 
-          if (value == null)
-            this.description = null;
-          else {
             if (this.description == null)
               this.description = new String_();
             this.description.setValue(value);
-          }
         }
 
         public Uri getUrl() { 
@@ -560,13 +552,9 @@ public class Conformance extends Resource {
         }
 
         public void setDescriptionSimple(String value) { 
-          if (value == null)
-            this.description = null;
-          else {
             if (this.description == null)
               this.description = new String_();
             this.description.setValue(value);
-          }
         }
 
   }
@@ -615,13 +603,9 @@ public class Conformance extends Resource {
         }
 
         public void setModeSimple(RestfulConformanceMode value) { 
-          if (value == null)
-            this.mode = null;
-          else {
             if (this.mode == null)
               this.mode = new Enumeration<RestfulConformanceMode>();
             this.mode.setValue(value);
-          }
         }
 
         public String_ getDocumentation() { 
@@ -853,13 +837,9 @@ public class Conformance extends Resource {
         }
 
         public void setTypeSimple(String value) { 
-          if (value == null)
-            this.type = null;
-          else {
             if (this.type == null)
               this.type = new Code();
             this.type.setValue(value);
-          }
         }
 
         public Uri getProfile() { 
@@ -944,13 +924,9 @@ public class Conformance extends Resource {
         }
 
         public void setCodeSimple(RestfulOperation value) { 
-          if (value == null)
-            this.code = null;
-          else {
             if (this.code == null)
               this.code = new Enumeration<RestfulOperation>();
             this.code.setValue(value);
-          }
         }
 
         public String_ getDocumentation() { 
@@ -1026,13 +1002,9 @@ public class Conformance extends Resource {
         }
 
         public void setNameSimple(String value) { 
-          if (value == null)
-            this.name = null;
-          else {
             if (this.name == null)
               this.name = new String_();
             this.name.setValue(value);
-          }
         }
 
         public Uri getSource() { 
@@ -1070,13 +1042,9 @@ public class Conformance extends Resource {
         }
 
         public void setTypeSimple(SearchParamType value) { 
-          if (value == null)
-            this.type = null;
-          else {
             if (this.type == null)
               this.type = new Enumeration<SearchParamType>();
             this.type.setValue(value);
-          }
         }
 
         public Enumeration<SearchRepeatBehavior> getRepeats() { 
@@ -1092,13 +1060,9 @@ public class Conformance extends Resource {
         }
 
         public void setRepeatsSimple(SearchRepeatBehavior value) { 
-          if (value == null)
-            this.repeats = null;
-          else {
             if (this.repeats == null)
               this.repeats = new Enumeration<SearchRepeatBehavior>();
             this.repeats.setValue(value);
-          }
         }
 
         public String_ getDocumentation() { 
@@ -1114,13 +1078,9 @@ public class Conformance extends Resource {
         }
 
         public void setDocumentationSimple(String value) { 
-          if (value == null)
-            this.documentation = null;
-          else {
             if (this.documentation == null)
               this.documentation = new String_();
             this.documentation.setValue(value);
-          }
         }
 
         public List<Code> getTarget() { 
@@ -1275,13 +1235,9 @@ public class Conformance extends Resource {
         }
 
         public void setCodeSimple(String value) { 
-          if (value == null)
-            this.code = null;
-          else {
             if (this.code == null)
               this.code = new Code();
             this.code.setValue(value);
-          }
         }
 
         public Enumeration<MessageConformanceEventMode> getMode() { 
@@ -1297,13 +1253,9 @@ public class Conformance extends Resource {
         }
 
         public void setModeSimple(MessageConformanceEventMode value) { 
-          if (value == null)
-            this.mode = null;
-          else {
             if (this.mode == null)
               this.mode = new Enumeration<MessageConformanceEventMode>();
             this.mode.setValue(value);
-          }
         }
 
         public List<Coding> getProtocol() { 
@@ -1323,13 +1275,9 @@ public class Conformance extends Resource {
         }
 
         public void setFocusSimple(String value) { 
-          if (value == null)
-            this.focus = null;
-          else {
             if (this.focus == null)
               this.focus = new Code();
             this.focus.setValue(value);
-          }
         }
 
         public Uri getRequest() { 
@@ -1345,13 +1293,9 @@ public class Conformance extends Resource {
         }
 
         public void setRequestSimple(URI value) { 
-          if (value == null)
-            this.request = null;
-          else {
             if (this.request == null)
               this.request = new Uri();
             this.request.setValue(value);
-          }
         }
 
         public Uri getResponse() { 
@@ -1367,13 +1311,9 @@ public class Conformance extends Resource {
         }
 
         public void setResponseSimple(URI value) { 
-          if (value == null)
-            this.response = null;
-          else {
             if (this.response == null)
               this.response = new Uri();
             this.response.setValue(value);
-          }
         }
 
         public String_ getDocumentation() { 
@@ -1429,13 +1369,9 @@ public class Conformance extends Resource {
         }
 
         public void setModeSimple(DocumentMode value) { 
-          if (value == null)
-            this.mode = null;
-          else {
             if (this.mode == null)
               this.mode = new Enumeration<DocumentMode>();
             this.mode.setValue(value);
-          }
         }
 
         public String_ getDocumentation() { 
@@ -1473,13 +1409,9 @@ public class Conformance extends Resource {
         }
 
         public void setProfileSimple(URI value) { 
-          if (value == null)
-            this.profile = null;
-          else {
             if (this.profile == null)
               this.profile = new Uri();
             this.profile.setValue(value);
-          }
         }
 
   }
@@ -1611,13 +1543,9 @@ public class Conformance extends Resource {
     }
 
     public void setDateSimple(String value) { 
-      if (value == null)
-        this.date = null;
-      else {
         if (this.date == null)
           this.date = new DateTime();
         this.date.setValue(value);
-      }
     }
 
     public String_ getPublisher() { 
@@ -1633,13 +1561,9 @@ public class Conformance extends Resource {
     }
 
     public void setPublisherSimple(String value) { 
-      if (value == null)
-        this.publisher = null;
-      else {
         if (this.publisher == null)
           this.publisher = new String_();
         this.publisher.setValue(value);
-      }
     }
 
     public List<Contact> getTelecom() { 
@@ -1683,13 +1607,9 @@ public class Conformance extends Resource {
     }
 
     public void setFhirVersionSimple(String value) { 
-      if (value == null)
-        this.fhirVersion = null;
-      else {
         if (this.fhirVersion == null)
           this.fhirVersion = new Id();
         this.fhirVersion.setValue(value);
-      }
     }
 
     public Boolean getAcceptUnknown() { 
@@ -1705,13 +1625,9 @@ public class Conformance extends Resource {
     }
 
     public void setAcceptUnknownSimple(boolean value) { 
-      if (value == false)
-        this.acceptUnknown = null;
-      else {
         if (this.acceptUnknown == null)
           this.acceptUnknown = new Boolean();
         this.acceptUnknown.setValue(value);
-      }
     }
 
     public List<Code> getFormat() { 

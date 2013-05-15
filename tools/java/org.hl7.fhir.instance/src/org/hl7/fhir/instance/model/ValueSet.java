@@ -29,13 +29,13 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
 import java.net.*;
 /**
- * Value Set - a set of defined codes from one or more code systems that may be bound to a context
+ * Value Set - a set of defined codes that may be used in some context
  */
 public class ValueSet extends Resource {
 
@@ -168,6 +168,7 @@ public class ValueSet extends Resource {
         children, // Only the immediate children (codes with a is_a relationship) are selected, but not this code itself
         descendants, // All descendants of this code are selected, but not this code itself
         all, // This code and any descendants are selected
+        system, // All codes from the specified code system
         Null; // added to help the parsers
         public static CodeSelectionMode fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
@@ -180,6 +181,8 @@ public class ValueSet extends Resource {
           return descendants;
         if ("all".equals(codeString))
           return all;
+        if ("system".equals(codeString))
+          return system;
         throw new Exception("Unknown CodeSelectionMode code '"+codeString+"'");
         }
         public String toCode() {
@@ -188,6 +191,7 @@ public class ValueSet extends Resource {
             case children: return "children";
             case descendants: return "descendants";
             case all: return "all";
+            case system: return "system";
             default: return "?";
           }
         }
@@ -206,6 +210,8 @@ public class ValueSet extends Resource {
           return CodeSelectionMode.descendants;
         if ("all".equals(codeString))
           return CodeSelectionMode.all;
+        if ("system".equals(codeString))
+          return CodeSelectionMode.system;
         throw new Exception("Unknown CodeSelectionMode code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
@@ -217,6 +223,8 @@ public class ValueSet extends Resource {
         return "descendants";
       if (code == CodeSelectionMode.all)
         return "all";
+      if (code == CodeSelectionMode.system)
+        return "system";
       return "?";
       }
     }
@@ -516,13 +524,9 @@ public class ValueSet extends Resource {
         }
 
         public void setSystemSimple(URI value) { 
-          if (value == null)
-            this.system = null;
-          else {
             if (this.system == null)
               this.system = new Uri();
             this.system.setValue(value);
-          }
         }
 
         public String_ getVersion() { 
@@ -560,13 +564,9 @@ public class ValueSet extends Resource {
         }
 
         public void setModeSimple(CodeSelectionMode value) { 
-          if (value == null)
-            this.mode = null;
-          else {
             if (this.mode == null)
               this.mode = new Enumeration<CodeSelectionMode>();
             this.mode.setValue(value);
-          }
         }
 
         public List<Code> getCode() { 
@@ -608,13 +608,9 @@ public class ValueSet extends Resource {
         }
 
         public void setPropertySimple(String value) { 
-          if (value == null)
-            this.property = null;
-          else {
             if (this.property == null)
               this.property = new Code();
             this.property.setValue(value);
-          }
         }
 
         public Enumeration<FilterOperator> getOp() { 
@@ -630,13 +626,9 @@ public class ValueSet extends Resource {
         }
 
         public void setOpSimple(FilterOperator value) { 
-          if (value == null)
-            this.op = null;
-          else {
             if (this.op == null)
               this.op = new Enumeration<FilterOperator>();
             this.op.setValue(value);
-          }
         }
 
         public Code getValue() { 
@@ -652,13 +644,9 @@ public class ValueSet extends Resource {
         }
 
         public void setValueSimple(String value) { 
-          if (value == null)
-            this.value = null;
-          else {
             if (this.value == null)
               this.value = new Code();
             this.value.setValue(value);
-          }
         }
 
   }
@@ -775,13 +763,9 @@ public class ValueSet extends Resource {
     }
 
     public void setNameSimple(String value) { 
-      if (value == null)
-        this.name = null;
-      else {
         if (this.name == null)
           this.name = new String_();
         this.name.setValue(value);
-      }
     }
 
     public String_ getPublisher() { 
@@ -823,13 +807,9 @@ public class ValueSet extends Resource {
     }
 
     public void setDescriptionSimple(String value) { 
-      if (value == null)
-        this.description = null;
-      else {
         if (this.description == null)
           this.description = new String_();
         this.description.setValue(value);
-      }
     }
 
     public Enumeration<ValuesetStatus> getStatus() { 
@@ -845,13 +825,9 @@ public class ValueSet extends Resource {
     }
 
     public void setStatusSimple(ValuesetStatus value) { 
-      if (value == null)
-        this.status = null;
-      else {
         if (this.status == null)
           this.status = new Enumeration<ValuesetStatus>();
         this.status.setValue(value);
-      }
     }
 
     public DateTime getDate() { 
@@ -889,13 +865,9 @@ public class ValueSet extends Resource {
     }
 
     public void setKindSimple(ValuesetKind value) { 
-      if (value == null)
-        this.kind = null;
-      else {
         if (this.kind == null)
           this.kind = new Enumeration<ValuesetKind>();
         this.kind.setValue(value);
-      }
     }
 
     public ValueSetDefineComponent getDefine() { 

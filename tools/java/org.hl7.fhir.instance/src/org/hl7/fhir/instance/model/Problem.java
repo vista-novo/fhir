@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -255,13 +255,9 @@ public class Problem extends Resource {
         }
 
         public void setTypeSimple(ProblemRelationshipType value) { 
-          if (value == null)
-            this.type = null;
-          else {
             if (this.type == null)
               this.type = new Enumeration<ProblemRelationshipType>();
             this.type.setValue(value);
-          }
         }
 
         public ResourceReference getTarget() { 

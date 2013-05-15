@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -68,13 +68,9 @@ public class Location extends Resource {
         }
 
         public void setLongitudeSimple(BigDecimal value) { 
-          if (value == null)
-            this.longitude = null;
-          else {
             if (this.longitude == null)
               this.longitude = new Decimal();
             this.longitude.setValue(value);
-          }
         }
 
         public Decimal getLatitude() { 
@@ -90,13 +86,9 @@ public class Location extends Resource {
         }
 
         public void setLatitudeSimple(BigDecimal value) { 
-          if (value == null)
-            this.latitude = null;
-          else {
             if (this.latitude == null)
               this.latitude = new Decimal();
             this.latitude.setValue(value);
-          }
         }
 
         public Decimal getAltitude() { 
@@ -181,13 +173,9 @@ public class Location extends Resource {
     }
 
     public void setNameSimple(String value) { 
-      if (value == null)
-        this.name = null;
-      else {
         if (this.name == null)
           this.name = new String_();
         this.name.setValue(value);
-      }
     }
 
     public String_ getDescription() { 

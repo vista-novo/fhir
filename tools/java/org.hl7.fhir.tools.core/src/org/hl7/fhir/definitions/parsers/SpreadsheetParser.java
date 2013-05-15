@@ -426,7 +426,8 @@ public class SpreadsheetParser {
       c.setDisplay(sheet.getColumn(row, "Display"));
       c.setSystem(sheet.getColumn(row, "System"));
 			c.setDefinition(sheet.getColumn(row, "Definition"));
-			c.setComment(sheet.getColumn(row, "Comment"));
+      c.setComment(sheet.getColumn(row, "Comment"));
+      c.setParent(sheet.getColumn(row, "Parent"));
       if (Utilities.noString(c.getId()) && Utilities.noString(c.getSystem()))
         throw new Exception("code has no id or system ("+sheet.title+") "+getLocation(row));
 			codes.add(c);

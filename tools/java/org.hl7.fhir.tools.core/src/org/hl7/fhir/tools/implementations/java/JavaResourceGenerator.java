@@ -627,18 +627,22 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	      write(indent+"}\r\n");
 	      write("\r\n");
 	      write(indent+"public void set"+getTitle(getElementName(e.getName(), false))+"Simple("+getSimpleType(tn)+" value) { \r\n");
-	      if (tn.equals("Integer"))
-	        write(indent+"  if (value == -1)\r\n");
-	      else if (tn.equals("Boolean"))
-          write(indent+"  if (value == false)\r\n");
-        else
-	        write(indent+"  if (value == null)\r\n");
-        write(indent+"    this."+getElementName(e.getName(), true)+" = null;\r\n");
-        write(indent+"  else {\r\n");
-        write(indent+"    if (this."+getElementName(e.getName(), true)+" == null)\r\n");
-        write(indent+"      this."+getElementName(e.getName(), true)+" = new "+tn+"();\r\n");
+	      if (e.getMinCardinality() == 0) {
+	        if (tn.equals("Integer"))
+	          write(indent+"  if (value == -1)\r\n");
+	        else if (tn.equals("Boolean"))
+	          write(indent+"  if (value == false)\r\n");
+	        else
+	          write(indent+"  if (value == null)\r\n");
+	        write(indent+"    this."+getElementName(e.getName(), true)+" = null;\r\n");
+	        write(indent+"  else {\r\n");
+	      }
+	      write(indent+"    if (this."+getElementName(e.getName(), true)+" == null)\r\n");
+	      write(indent+"      this."+getElementName(e.getName(), true)+" = new "+tn+"();\r\n");
 	      write(indent+"    this."+getElementName(e.getName(), true)+".setValue(value);\r\n");
-        write(indent+"  }\r\n");
+        if (e.getMinCardinality() == 0) {
+          write(indent+"  }\r\n");
+        }
         write(indent+"}\r\n");
 	      write("\r\n");
 			  

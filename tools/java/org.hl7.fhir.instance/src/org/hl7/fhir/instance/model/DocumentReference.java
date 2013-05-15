@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -138,13 +138,9 @@ public class DocumentReference extends Resource {
         }
 
         public void setNameSimple(String value) { 
-          if (value == null)
-            this.name = null;
-          else {
             if (this.name == null)
               this.name = new String_();
             this.name.setValue(value);
-          }
         }
 
         public String_ getValue() { 
@@ -228,11 +224,6 @@ public class DocumentReference extends Resource {
      * Specifies the particular kind of document (e.g. Patient Summary, Discharge Summary, Prescription, etc)
      */
     private CodeableConcept type;
-
-    /**
-     * Categories that this document is registered in
-     */
-    private List<ResourceReference> category = new ArrayList<ResourceReference>();
 
     /**
      * Identifies who is responsible for adding the information to the document
@@ -352,10 +343,6 @@ public class DocumentReference extends Resource {
       this.type = value;
     }
 
-    public List<ResourceReference> getCategory() { 
-      return this.category;
-    }
-
     public List<ResourceReference> getAuthor() { 
       return this.author;
     }
@@ -411,13 +398,9 @@ public class DocumentReference extends Resource {
     }
 
     public void setIndexedSimple(Calendar value) { 
-      if (value == null)
-        this.indexed = null;
-      else {
         if (this.indexed == null)
           this.indexed = new Instant();
         this.indexed.setValue(value);
-      }
     }
 
     public Enumeration<DocumentReferenceStatus> getStatus() { 
@@ -433,13 +416,9 @@ public class DocumentReference extends Resource {
     }
 
     public void setStatusSimple(DocumentReferenceStatus value) { 
-      if (value == null)
-        this.status = null;
-      else {
         if (this.status == null)
           this.status = new Enumeration<DocumentReferenceStatus>();
         this.status.setValue(value);
-      }
     }
 
     public CodeableConcept getDocStatus() { 
@@ -523,13 +502,9 @@ public class DocumentReference extends Resource {
     }
 
     public void setMimeTypeSimple(String value) { 
-      if (value == null)
-        this.mimeType = null;
-      else {
         if (this.mimeType == null)
           this.mimeType = new Code();
         this.mimeType.setValue(value);
-      }
     }
 
     public CodeableConcept getFormat() { 

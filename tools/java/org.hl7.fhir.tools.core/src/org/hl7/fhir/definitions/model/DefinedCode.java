@@ -1,4 +1,10 @@
 package org.hl7.fhir.definitions.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hl7.fhir.utilities.Utilities;
+
 /*
 Copyright (c) 2011-2013, HL7, Inc
 All rights reserved.
@@ -35,6 +41,8 @@ public class DefinedCode {
 	private String comment;
 	private String display;
 	private String system;
+	private String parent;
+	private List<DefinedCode> childCodes;
 	
 	public DefinedCode(String code, String definition, String comment) {
 		super();
@@ -99,6 +107,26 @@ public class DefinedCode {
   public void setId(String id) {
     this.id = id;
   }
+
+  public String getParent() {
+    return parent;
+  }
+
+  public void setParent(String parent) {
+    this.parent = parent;
+  }
+
+  public boolean hasParent() {
+    return !Utilities.noString(parent);
+  }
+
+  public List<DefinedCode> getChildCodes() {
+    if (childCodes == null)
+      childCodes = new ArrayList<DefinedCode>();
+    return childCodes;
+  }
+
+
   
   
 }

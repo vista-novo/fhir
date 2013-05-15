@@ -21,7 +21,6 @@
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
   <TabRatio>654</TabRatio>
-  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -238,7 +237,7 @@
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">right</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">List of participants involved in the encounter</Data></Cell>
     <Cell><Data ss:Type="String">The main practitioner responsible for providing the service</Data></Cell>
@@ -502,6 +501,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Visit.location</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">left</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">List of locations the patient has been at</Data></Cell>
     <Cell><Data ss:Type="String">List of locations the patient has been at.</Data></Cell>
    </Row>
@@ -538,10 +538,11 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>7</TopRowBottomPane>
+   <TopRowBottomPane>8</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -558,6 +559,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>29</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
@@ -954,7 +956,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>

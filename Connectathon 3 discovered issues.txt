@@ -18,14 +18,13 @@ Wed Q1
 imAge maps in chrome
 
 terminology work:
-(a) incorporate v2 
-(b) incorporate v3 
 (c) nested codes
 (d) 
 
 fix loinc observation code rules
 
 
+reap the HTTP codes for errors - for operationoutcome
 
 
 Add support for v3 relationships with value sets (including null flavors)

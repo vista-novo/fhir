@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -341,13 +341,9 @@ public class DiagnosticReport extends Resource {
     }
 
     public void setStatusSimple(ObservationStatus value) { 
-      if (value == null)
-        this.status = null;
-      else {
         if (this.status == null)
           this.status = new Enumeration<ObservationStatus>();
         this.status.setValue(value);
-      }
     }
 
     public Instant getIssued() { 
@@ -363,13 +359,9 @@ public class DiagnosticReport extends Resource {
     }
 
     public void setIssuedSimple(Calendar value) { 
-      if (value == null)
-        this.issued = null;
-      else {
         if (this.issued == null)
           this.issued = new Instant();
         this.issued.setValue(value);
-      }
     }
 
     public ResourceReference getSubject() { 
@@ -421,13 +413,9 @@ public class DiagnosticReport extends Resource {
     }
 
     public void setDiagnosticTimeSimple(String value) { 
-      if (value == null)
-        this.diagnosticTime = null;
-      else {
         if (this.diagnosticTime == null)
           this.diagnosticTime = new DateTime();
         this.diagnosticTime.setValue(value);
-      }
     }
 
     public ResultGroupComponent getResults() { 

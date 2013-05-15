@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -38,41 +38,17 @@ import java.util.*;
  */
 public class MedicationPrescription extends Resource {
 
-    public class MedicationPrescriptionAdministrationComponent extends Element {
+    public class MedicationPrescriptionDosageInstructionsComponent extends Element {
         /**
-         * External identifier - FHIR will generate its own internal IDs which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an erntire workflow process where records have to be tracked through an entire system.
+         * Free text dosage instructions for cases where the instructions are too complex to code.
          */
-        private List<Identifier> externalID = new ArrayList<Identifier>();
-
-        /**
-         * Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
-         */
-        private ResourceReference medication;
+        private String_ dosageInstructionsText;
 
         /**
-         * Indicates how the medication is to be used by the patient
+         * Additional instructions such as "Swallow with plenty of water" which may or may not be coded.
          */
-        private List<MedicationPrescriptionAdministrationDosageComponent> dosage = new ArrayList<MedicationPrescriptionAdministrationDosageComponent>();
+        private Type additionalInstructions;
 
-        public List<Identifier> getExternalID() { 
-          return this.externalID;
-        }
-
-        public ResourceReference getMedication() { 
-          return this.medication;
-        }
-
-        public void setMedication(ResourceReference value) { 
-          this.medication = value;
-        }
-
-        public List<MedicationPrescriptionAdministrationDosageComponent> getDosage() { 
-          return this.dosage;
-        }
-
-  }
-
-    public class MedicationPrescriptionAdministrationDosageComponent extends Element {
         /**
          * The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013"
          */
@@ -98,7 +74,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
         /**
          * The amount of the therapeutic or other substance given at one administration event.
          */
-        private Quantity quantity;
+        private Quantity doseQuantity;
 
         /**
          * Identifies the speed with which the substance is introduced into the subject. Typically the rate for an infusion. 200ml in 2 hours.
@@ -109,6 +85,36 @@ Terminologies used often pre-coordinate this term with the route and or form of 
          * The maximum total quantity of a therapeutic substance that my be administered to a subject over the period of time. E.g. 1000mg in 24 hours.
          */
         private Ratio maxDosePerPeriod;
+
+        public String_ getDosageInstructionsText() { 
+          return this.dosageInstructionsText;
+        }
+
+        public void setDosageInstructionsText(String_ value) { 
+          this.dosageInstructionsText = value;
+        }
+
+        public String getDosageInstructionsTextSimple() { 
+          return this.dosageInstructionsText == null ? null : this.dosageInstructionsText.getValue();
+        }
+
+        public void setDosageInstructionsTextSimple(String value) { 
+          if (value == null)
+            this.dosageInstructionsText = null;
+          else {
+            if (this.dosageInstructionsText == null)
+              this.dosageInstructionsText = new String_();
+            this.dosageInstructionsText.setValue(value);
+          }
+        }
+
+        public Type getAdditionalInstructions() { 
+          return this.additionalInstructions;
+        }
+
+        public void setAdditionalInstructions(Type value) { 
+          this.additionalInstructions = value;
+        }
 
         public Schedule getTiming() { 
           return this.timing;
@@ -142,12 +148,12 @@ Terminologies used often pre-coordinate this term with the route and or form of 
           this.method = value;
         }
 
-        public Quantity getQuantity() { 
-          return this.quantity;
+        public Quantity getDoseQuantity() { 
+          return this.doseQuantity;
         }
 
-        public void setQuantity(Quantity value) { 
-          this.quantity = value;
+        public void setDoseQuantity(Quantity value) { 
+          this.doseQuantity = value;
         }
 
         public Ratio getRate() { 
@@ -169,11 +175,6 @@ Terminologies used often pre-coordinate this term with the route and or form of 
   }
 
     public class MedicationPrescriptionDispenseComponent extends Element {
-        /**
-         * External identifier - FHIR will generate its own internal IDs which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an erntire workflow process where records have to be tracked through an entire system.
-         */
-        private List<Identifier> externalID = new ArrayList<Identifier>();
-
         /**
          * Design Comments: This indicates the validity period of a prescription (stale dating the Prescription) 
 It reflects the prescriber perspective for the validity of the prescription. Dispenses must not be made against the prescription outside of this period. The lower-bound of the Dispensing Window signifies the earliest date that the prescription can be filled for the first time. If an upper-bound is not specified then the Prescription is open-ended or will default to a stale-date based on regulations. 
@@ -197,10 +198,6 @@ UsageNotes: For example, the number of times the prescribed quantity is to be su
 In some situations, this attribute may be used instead of quantity to identify the amount supplied by how long it is expected to last, rather than the physical quantity issued. E.g. 90 days supply of medication (based on an ordered dosage) When possible, it is always better to specify quantity, as this tends to be more precise. expectedSupplyDuration will always be an estimate that can be influenced by external factors.
          */
         private Duration expectedSupplyDuration;
-
-        public List<Identifier> getExternalID() { 
-          return this.externalID;
-        }
 
         public Period getValidityPeriod() { 
           return this.validityPeriod;
@@ -287,7 +284,7 @@ In some situations, this attribute may be used instead of quantity to identify t
     /**
      * The date (and perhaps time) when the prescription was written
      */
-    private DateTime date;
+    private DateTime dateWritten;
 
     /**
      * A code specifying the state of the order.  Generally this will be active or completed state
@@ -307,22 +304,22 @@ In some situations, this attribute may be used instead of quantity to identify t
     /**
      * A link to a resource that identifies the particular occurrence of contact between patient and health care provider.
      */
-    private ResourceReference visit;
-
-    /**
-     * A coded value for the status of any review of the prescription (waiting for review/not done/completed)
-     */
-    private CodeableConcept reviewStatus;
+    private ResourceReference encounter;
 
     /**
      * Can be the reason or the indication for writing the prescription.
      */
-    private String_ reasonForPrescribing;
+    private Type reasonForPrescribing;
 
     /**
-     * Describes the medication and the intended dose to be given to the patient
+     * Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
      */
-    private List<MedicationPrescriptionAdministrationComponent> administration = new ArrayList<MedicationPrescriptionAdministrationComponent>();
+    private ResourceReference medication;
+
+    /**
+     * Indicates how the medication is to be used by the patient
+     */
+    private List<MedicationPrescriptionDosageInstructionsComponent> dosageInstructions = new ArrayList<MedicationPrescriptionDosageInstructionsComponent>();
 
     /**
      * Deals with details of the dispense part of the order
@@ -338,25 +335,25 @@ In some situations, this attribute may be used instead of quantity to identify t
       return this.externalID;
     }
 
-    public DateTime getDate() { 
-      return this.date;
+    public DateTime getDateWritten() { 
+      return this.dateWritten;
     }
 
-    public void setDate(DateTime value) { 
-      this.date = value;
+    public void setDateWritten(DateTime value) { 
+      this.dateWritten = value;
     }
 
-    public String getDateSimple() { 
-      return this.date == null ? null : this.date.getValue();
+    public String getDateWrittenSimple() { 
+      return this.dateWritten == null ? null : this.dateWritten.getValue();
     }
 
-    public void setDateSimple(String value) { 
+    public void setDateWrittenSimple(String value) { 
       if (value == null)
-        this.date = null;
+        this.dateWritten = null;
       else {
-        if (this.date == null)
-          this.date = new DateTime();
-        this.date.setValue(value);
+        if (this.dateWritten == null)
+          this.dateWritten = new DateTime();
+        this.dateWritten.setValue(value);
       }
     }
 
@@ -384,46 +381,32 @@ In some situations, this attribute may be used instead of quantity to identify t
       this.prescriber = value;
     }
 
-    public ResourceReference getVisit() { 
-      return this.visit;
+    public ResourceReference getEncounter() { 
+      return this.encounter;
     }
 
-    public void setVisit(ResourceReference value) { 
-      this.visit = value;
+    public void setEncounter(ResourceReference value) { 
+      this.encounter = value;
     }
 
-    public CodeableConcept getReviewStatus() { 
-      return this.reviewStatus;
-    }
-
-    public void setReviewStatus(CodeableConcept value) { 
-      this.reviewStatus = value;
-    }
-
-    public String_ getReasonForPrescribing() { 
+    public Type getReasonForPrescribing() { 
       return this.reasonForPrescribing;
     }
 
-    public void setReasonForPrescribing(String_ value) { 
+    public void setReasonForPrescribing(Type value) { 
       this.reasonForPrescribing = value;
     }
 
-    public String getReasonForPrescribingSimple() { 
-      return this.reasonForPrescribing == null ? null : this.reasonForPrescribing.getValue();
+    public ResourceReference getMedication() { 
+      return this.medication;
     }
 
-    public void setReasonForPrescribingSimple(String value) { 
-      if (value == null)
-        this.reasonForPrescribing = null;
-      else {
-        if (this.reasonForPrescribing == null)
-          this.reasonForPrescribing = new String_();
-        this.reasonForPrescribing.setValue(value);
-      }
+    public void setMedication(ResourceReference value) { 
+      this.medication = value;
     }
 
-    public List<MedicationPrescriptionAdministrationComponent> getAdministration() { 
-      return this.administration;
+    public List<MedicationPrescriptionDosageInstructionsComponent> getDosageInstructions() { 
+      return this.dosageInstructions;
     }
 
     public MedicationPrescriptionDispenseComponent getDispense() { 

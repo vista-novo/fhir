@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -702,13 +702,9 @@ public class ImagingStudy extends Resource {
         }
 
         public void setModalitySimple(ImageModality value) { 
-          if (value == null)
-            this.modality = null;
-          else {
             if (this.modality == null)
               this.modality = new Enumeration<ImageModality>();
             this.modality.setValue(value);
-          }
         }
 
         public Oid getUid() { 
@@ -724,13 +720,9 @@ public class ImagingStudy extends Resource {
         }
 
         public void setUidSimple(String value) { 
-          if (value == null)
-            this.uid = null;
-          else {
             if (this.uid == null)
               this.uid = new Oid();
             this.uid.setValue(value);
-          }
         }
 
         public String_ getDescription() { 
@@ -768,13 +760,9 @@ public class ImagingStudy extends Resource {
         }
 
         public void setNumberOfInstancesSimple(int value) { 
-          if (value == -1)
-            this.numberOfInstances = null;
-          else {
             if (this.numberOfInstances == null)
               this.numberOfInstances = new Integer();
             this.numberOfInstances.setValue(value);
-          }
         }
 
         public Enumeration<InstanceAvailability> getAvailability() { 
@@ -970,13 +958,9 @@ public class ImagingStudy extends Resource {
         }
 
         public void setUidSimple(String value) { 
-          if (value == null)
-            this.uid = null;
-          else {
             if (this.uid == null)
               this.uid = new Oid();
             this.uid.setValue(value);
-          }
         }
 
         public Oid getSopclass() { 
@@ -992,13 +976,9 @@ public class ImagingStudy extends Resource {
         }
 
         public void setSopclassSimple(String value) { 
-          if (value == null)
-            this.sopclass = null;
-          else {
             if (this.sopclass == null)
               this.sopclass = new Oid();
             this.sopclass.setValue(value);
-          }
         }
 
         public String_ getTitle() { 
@@ -1297,13 +1277,9 @@ public class ImagingStudy extends Resource {
     }
 
     public void setUidSimple(String value) { 
-      if (value == null)
-        this.uid = null;
-      else {
         if (this.uid == null)
           this.uid = new Oid();
         this.uid.setValue(value);
-      }
     }
 
     public Identifier getAccessionNo() { 
@@ -1383,13 +1359,9 @@ public class ImagingStudy extends Resource {
     }
 
     public void setNumberOfSeriesSimple(int value) { 
-      if (value == -1)
-        this.numberOfSeries = null;
-      else {
         if (this.numberOfSeries == null)
           this.numberOfSeries = new Integer();
         this.numberOfSeries.setValue(value);
-      }
     }
 
     public Integer getNumberOfInstances() { 
@@ -1405,13 +1377,9 @@ public class ImagingStudy extends Resource {
     }
 
     public void setNumberOfInstancesSimple(int value) { 
-      if (value == -1)
-        this.numberOfInstances = null;
-      else {
         if (this.numberOfInstances == null)
           this.numberOfInstances = new Integer();
         this.numberOfInstances.setValue(value);
-      }
     }
 
     public String_ getClinicalInformation() { 

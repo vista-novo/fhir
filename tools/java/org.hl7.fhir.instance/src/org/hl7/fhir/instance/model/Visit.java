@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -457,13 +457,9 @@ public class Visit extends Resource {
         }
 
         public void setPeriodSimple(String value) { 
-          if (value == null)
-            this.period = null;
-          else {
             if (this.period == null)
               this.period = new DateTime();
             this.period.setValue(value);
-          }
         }
 
   }
@@ -577,13 +573,9 @@ public class Visit extends Resource {
     }
 
     public void setClass_Simple(EncounterClass value) { 
-      if (value == null)
-        this.class_ = null;
-      else {
         if (this.class_ == null)
           this.class_ = new Enumeration<EncounterClass>();
         this.class_.setValue(value);
-      }
     }
 
     public CodeableConcept getType() { 

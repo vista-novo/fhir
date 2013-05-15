@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -417,13 +417,9 @@ public class AdverseReaction extends Resource {
     }
 
     public void setDidNotOccurFlagSimple(boolean value) { 
-      if (value == false)
-        this.didNotOccurFlag = null;
-      else {
         if (this.didNotOccurFlag == null)
           this.didNotOccurFlag = new Boolean();
         this.didNotOccurFlag.setValue(value);
-      }
     }
 
     public ResourceReference getRecorder() { 

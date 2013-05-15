@@ -4,6 +4,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import org.hl7.fhir.instance.model.Contact.ContactSystem;
+import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
+import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 
 /*
 Copyright (c) 2011-2013, HL7, Inc
@@ -138,11 +141,18 @@ public class Factory {
 	  rr.setReferenceSimple(url);
 	  return rr;
   }
-
+  
   public static DateTime nowDateTime() {
     DateTime dt = new DateTime();
     dt.setValue("2023-05-12T00:10:00"); // todo -fix this
     return dt;
+  }
+
+ public static Narrative newNarrative(NarrativeStatus status, String html) throws Exception {
+    Narrative n = new Narrative();
+    n.setStatusSimple(status);
+    n.setDiv(new XhtmlParser().parseFragment("<div>"+Utilities.escapeXml(html)+"</div>"));
+    return n;
   }
   
 }

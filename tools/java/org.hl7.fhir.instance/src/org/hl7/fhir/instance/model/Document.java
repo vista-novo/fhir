@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -125,13 +125,9 @@ public class Document extends Resource {
         }
 
         public void setModeSimple(DocumentAttestationMode value) { 
-          if (value == null)
-            this.mode = null;
-          else {
             if (this.mode == null)
               this.mode = new Enumeration<DocumentAttestationMode>();
             this.mode.setValue(value);
-          }
         }
 
         public DateTime getTime() { 
@@ -370,13 +366,9 @@ public class Document extends Resource {
     }
 
     public void setCreatedSimple(Calendar value) { 
-      if (value == null)
-        this.created = null;
-      else {
         if (this.created == null)
           this.created = new Instant();
         this.created.setValue(value);
-      }
     }
 
     public Coding getClass_() { 

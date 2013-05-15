@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -149,13 +149,9 @@ public class Group extends Resource {
         }
 
         public void setExcludeSimple(boolean value) { 
-          if (value == false)
-            this.exclude = null;
-          else {
             if (this.exclude == null)
               this.exclude = new Boolean();
             this.exclude.setValue(value);
-          }
         }
 
   }
@@ -221,13 +217,9 @@ public class Group extends Resource {
     }
 
     public void setTypeSimple(GroupType value) { 
-      if (value == null)
-        this.type = null;
-      else {
         if (this.type == null)
           this.type = new Enumeration<GroupType>();
         this.type.setValue(value);
-      }
     }
 
     public Boolean getActual() { 
@@ -243,13 +235,9 @@ public class Group extends Resource {
     }
 
     public void setActualSimple(boolean value) { 
-      if (value == false)
-        this.actual = null;
-      else {
         if (this.actual == null)
           this.actual = new Boolean();
         this.actual.setValue(value);
-      }
     }
 
     public CodeableConcept getCode() { 

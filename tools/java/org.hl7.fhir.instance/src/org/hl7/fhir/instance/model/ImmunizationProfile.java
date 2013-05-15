@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -119,13 +119,9 @@ public class ImmunizationProfile extends Resource {
         }
 
         public void setVaccineTypeSimple(String value) { 
-          if (value == null)
-            this.vaccineType = null;
-          else {
             if (this.vaccineType == null)
               this.vaccineType = new Code();
             this.vaccineType.setValue(value);
-          }
         }
 
         public Integer getDoseNumber() { 
@@ -163,13 +159,9 @@ public class ImmunizationProfile extends Resource {
         }
 
         public void setForecastStatusSimple(String value) { 
-          if (value == null)
-            this.forecastStatus = null;
-          else {
             if (this.forecastStatus == null)
               this.forecastStatus = new Code();
             this.forecastStatus.setValue(value);
-          }
         }
 
         public List<ImmunizationProfileRecommendationDateCriterionComponent> getDateCriterion() { 
@@ -222,13 +214,9 @@ public class ImmunizationProfile extends Resource {
         }
 
         public void setCodeSimple(String value) { 
-          if (value == null)
-            this.code = null;
-          else {
             if (this.code == null)
               this.code = new Code();
             this.code.setValue(value);
-          }
         }
 
         public DateTime getValue() { 
@@ -244,13 +232,9 @@ public class ImmunizationProfile extends Resource {
         }
 
         public void setValueSimple(String value) { 
-          if (value == null)
-            this.value = null;
-          else {
             if (this.value == null)
               this.value = new DateTime();
             this.value.setValue(value);
-          }
         }
 
   }

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -117,13 +117,9 @@ public class Device extends Resource {
         }
 
         public void setSerialNumberSimple(String value) { 
-          if (value == null)
-            this.serialNumber = null;
-          else {
             if (this.serialNumber == null)
               this.serialNumber = new String_();
             this.serialNumber.setValue(value);
-          }
         }
 
         public Date getExpiry() { 

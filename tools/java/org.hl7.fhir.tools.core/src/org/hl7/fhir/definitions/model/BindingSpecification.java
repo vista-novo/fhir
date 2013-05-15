@@ -87,6 +87,7 @@ public class BindingSpecification {
 	private ValueSet referredValueSet;
 	
   private List<DefinedCode> codes = new ArrayList<DefinedCode>();
+  private List<DefinedCode> childCodes;
 
   public String getId() {
     return id;
@@ -224,6 +225,36 @@ public class BindingSpecification {
   }
 
   
-  
+  public List<DefinedCode> getChildCodes() throws Exception {
+    if (childCodes == null) {
+      childCodes = new ArrayList<DefinedCode>();
+      for (DefinedCode c : codes) {
+        if (c.hasParent()) { 
+          DefinedCode p = getCode(c.getParent());
+          if (p == null)
+            throw new Exception("unable to find parent Code '"+c.getParent()+"' for code '"+c.getCode()+"'");
+          p.getChildCodes().add(c);
+        } else
+          childCodes.add(c);
+      }
+    }
+    return childCodes;
+  }
+
+  public DefinedCode getCode(String code) {
+    for (DefinedCode c : codes) {
+      if (code.equals(c.getCode()))
+          return c;
+    }
+    return null;
+  }
+
+  public boolean isHeirachical() {
+    boolean hasParent = false;
+    for (DefinedCode c : getCodes()) {
+      hasParent = hasParent || c.hasParent();
+    }
+    return hasParent;
+  }
   
 }

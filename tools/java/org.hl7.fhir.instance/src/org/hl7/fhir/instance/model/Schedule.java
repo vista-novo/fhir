@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 import java.util.*;
 
@@ -315,13 +315,9 @@ public class Schedule extends Type {
         }
 
         public void setDurationSimple(BigDecimal value) { 
-          if (value == null)
-            this.duration = null;
-          else {
             if (this.duration == null)
               this.duration = new Decimal();
             this.duration.setValue(value);
-          }
         }
 
         public Enumeration<UnitsOfTime> getUnits() { 
@@ -337,13 +333,9 @@ public class Schedule extends Type {
         }
 
         public void setUnitsSimple(UnitsOfTime value) { 
-          if (value == null)
-            this.units = null;
-          else {
             if (this.units == null)
               this.units = new Enumeration<UnitsOfTime>();
             this.units.setValue(value);
-          }
         }
 
         public Integer getCount() { 

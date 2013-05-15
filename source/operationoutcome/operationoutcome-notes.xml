@@ -1,37 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <!--
-candidate codes:
-* "invalid" content invalid
-  * "structure" content structural issue
-  * "required" required element missing
-  * "value" element value invalid
-  * "invariant" - schematron rule
-* "security" authorization issue
-  * "login" - the client needs to initiate the authentication process (usually associated with HTTP 3xx response codes)
-  * "unknown" user/system not able to be authenticated
-  * "expired" user session expired
-  * "denied" user rights failure
-* "processing" processing issues
-  * "not-supported" resource not supported
-  * "duplicate" duplicate resource
-  * "not-found" reference not found
-  * "too-long" existing content too long
-  * "code-unknown" code could not be understood
-  * "extension" extension not recognised
-  * "too-costly" operation denied to protect server resources
-  * "business-rule" - content failed to pass some business rule
-* "transient" transient processing issues (i.e. a retry would be appropriate)
-  * "lock-error" resource/record locking failure
-  * "no-store" persistent store unavailable
-  * "exception" unexpected internal error  
-  * "timeout" internal timeout  
-  
-reap the HTTP codes for errors
-
--->
-
-<!--
 Grahame's OAuth extensions:
 <extension>
   <url value="http://www.healthintersections.com.au/fhir/extensions#oauth-reference"/>

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, May 10, 2013 12:02+1000 for FHIR v0.09
+// Generated on Wed, May 15, 2013 09:11+1000 for FHIR v0.09
 
 
 import java.net.*;
@@ -86,13 +86,9 @@ public class Attachment extends Type {
     }
 
     public void setContentTypeSimple(String value) { 
-      if (value == null)
-        this.contentType = null;
-      else {
         if (this.contentType == null)
           this.contentType = new Code();
         this.contentType.setValue(value);
-      }
     }
 
     public Code getLanguage() { 

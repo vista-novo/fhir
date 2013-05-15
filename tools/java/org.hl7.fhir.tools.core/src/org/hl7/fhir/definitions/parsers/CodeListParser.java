@@ -53,7 +53,8 @@ public class CodeListParser  extends CSVReader {
     c.setId(getColumn(titles, values, "Id"));
     c.setCode(getColumn(titles, values, "Code"));
 		c.setDefinition(getColumn(titles, values, "Definition"));
-		c.setComment(getColumn(titles, values, "Comment"));
+    c.setComment(getColumn(titles, values, "Comment"));
+    c.setParent(getColumn(titles, values, "Parent"));
 		codes.add(c);
 	}
 	

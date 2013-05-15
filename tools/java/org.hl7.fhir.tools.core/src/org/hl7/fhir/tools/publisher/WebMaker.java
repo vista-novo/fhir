@@ -55,7 +55,7 @@ public class WebMaker {
   private String version;
   private List<String> past = new ArrayList<String>();
   private IniFile ini;
-  
+  private ZipGenerator zip;  
   public WebMaker(FolderManager folders, String version, IniFile iniFile) {
     super();
     this.folders = folders;
@@ -118,17 +118,16 @@ public class WebMaker {
          "\r\n</body>\r\n</html>\r\n";
       TextFile.stringToFile(p, dn+File.separator+"index.htm");
     }
-    ZipGenerator zip = new ZipGenerator(fw.getAbsolutePath());
+    zip = new ZipGenerator(fw.getAbsolutePath());
     zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator, "", null);
     for (String v : past)
       zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+"v"+v+File.separator, "v"+v+File.separator, null);
     for (String n : ini.getPropertyNames("redirects")) 
       zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+n+File.separator, n+File.separator, null);
     zip.addFolder(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+"v2"+File.separator, "v2"+File.separator); 
-    zip.close();  
-    zip = new ZipGenerator(fd.getAbsolutePath());
-    zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload"+File.separator, "", null);
-    zip.close();    
+    ZipGenerator zipd = new ZipGenerator(fd.getAbsolutePath());
+    zipd.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload"+File.separator, "", null);
+    zipd.close();    
   }
 
   private void insertTargetImages(XhtmlNode node, XhtmlNode parent, String pagename) {
@@ -236,6 +235,12 @@ public class WebMaker {
         "  _gaq.push(['_trackPageview']);\r\n"+
         "  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();\r\n"+
         "</script>\r\n";
+  }
+
+  public void addPage(String filename) throws Exception {
+    zip.addFileName(filename, folders.dstDir+filename);
+    zip.close();  
+    
   }
 
 

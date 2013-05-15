@@ -12,7 +12,6 @@ public enum ResourceType {
     Group,
     ValueSet,
     Medication,
-    Test,
     Coverage,
     MedicationDispense,
     DeviceLog,
@@ -38,7 +37,6 @@ public enum ResourceType {
     Immunization,
     ImmunizationProfile,
     Problem,
-    Category,
     Specimen,
     OrderResponse,
     DeviceObservation,
@@ -75,8 +73,6 @@ public enum ResourceType {
       return "valueset";
     case Medication:
       return "medication";
-    case Test:
-      return "test";
     case Coverage:
       return "coverage";
     case MedicationDispense:
@@ -127,8 +123,6 @@ public enum ResourceType {
       return "immunizationprofile";
     case Problem:
       return "problem";
-    case Category:
-      return "category";
     case Specimen:
       return "specimen";
     case OrderResponse:

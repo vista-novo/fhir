@@ -53,6 +53,8 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
+import net.sourceforge.plantuml.graph.Zoda1;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
@@ -77,8 +79,8 @@ import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.parsers.SourceParser;
-import org.hl7.fhir.definitions.validation.ModelValidator;
-import org.hl7.fhir.definitions.validation.ModelValidator.Level;
+import org.hl7.fhir.definitions.validation.ResourceValidator;
+import org.hl7.fhir.definitions.validation.ResourceValidator.Level;
 import org.hl7.fhir.definitions.validation.ProfileValidator;
 import org.hl7.fhir.definitions.validation.ValidationMessage;
 import org.hl7.fhir.instance.formats.AtomComposer;
@@ -89,8 +91,10 @@ import org.hl7.fhir.instance.model.AtomEntry;
 import org.hl7.fhir.instance.model.AtomFeed;
 import org.hl7.fhir.instance.model.Contact.ContactSystem;
 import org.hl7.fhir.instance.model.DateTime;
+import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.ValueSet;
+import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.instance.model.ValueSet.CodeSelectionMode;
 import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.instance.model.ValueSet.ValueSetDefineConceptComponent;
@@ -200,6 +204,7 @@ public class Publisher {
   private Map<String, Long> dates = new HashMap<String, Long>();
   private Map<String, Boolean> buildFlags = new HashMap<String, Boolean>();
   private IniFile cache;
+  private WebMaker wm;
   
 	public static void main(String[] args) {
 		//
@@ -287,7 +292,8 @@ public class Publisher {
 					produceSpecification(eCorePath);
 				}
 				validateXml();
-		    produceQA();
+		    if (buildFlags.get("all")) 
+  		    produceQA();
 				log("Finished publishing FHIR @ "+Config.DATE_FORMAT().format(Calendar.getInstance().getTime()));
 			} else
 				log("Didn't publish FHIR due to errors @ "+Config.DATE_FORMAT().format(Calendar.getInstance().getTime()));
@@ -374,7 +380,7 @@ public class Publisher {
 
 	private boolean validate() throws Exception {
 		log("Validating");
-		ModelValidator val = new ModelValidator(page.getDefinitions());
+		ResourceValidator val = new ResourceValidator(page.getDefinitions());
 
 		List<ValidationMessage> errors = new ArrayList<ValidationMessage>();
     for (String n : page.getDefinitions().getTypes().keySet())
@@ -625,7 +631,8 @@ public class Publisher {
 		if (buildFlags.get("all")) {
 		  if (web) {
 		    log("Produce HL7 copy");
-		    new WebMaker(page.getFolders(), page.getVersion(), page.getIni()).produceHL7Copy();
+		    wm = new WebMaker(page.getFolders(), page.getVersion(), page.getIni());
+		    wm.produceHL7Copy();
 		  }
 		  log("Produce Archive copy");
 		  produceArchive();
@@ -689,8 +696,6 @@ public class Publisher {
 	      Utilities.copyFile(new CSFile(page.getFolders().imgDir + n),
 	          new CSFile(page.getFolders().dstDir + n));
 
-      generateValueSets();
-	    generateCodeSystems();
 
 	    profileFeed = new AtomFeed();
 	    profileFeed.setId("http://hl7.org/fhir/profile/resources");
@@ -702,6 +707,8 @@ public class Publisher {
 	      page.getImageMaps().put(n, new DiagramGenerator(page).generateFromSource(n, page.getFolders().srcDir + page.getDefinitions().getDiagrams().get(n)));
 	    }
 
+      generateValueSets();
+      generateCodeSystems();
 	    log(" ...profiles");
 	  }
 	  for (String rname : page.getDefinitions().sortedResourceNames()) {
@@ -771,8 +778,10 @@ public class Publisher {
     String src = TextFile.fileToString(page.getFolders().srcDir+ "qa.htm");
     TextFile.stringToFile(page.processPageIncludes("qa.htm", src), page.getFolders().dstDir+"qa.htm");
     
-    if (web)
-      page.getQa().commit(page.getFolders().rootDir);    
+    if (web) {
+      page.getQa().commit(page.getFolders().rootDir);
+      wm.addPage("qa.htm");
+    }
   }
 
   private void produceV3() throws Exception {
@@ -860,7 +869,6 @@ public class Publisher {
   }
 
   private void produceBaseProfile() throws Exception {
-    // TODO Auto-generated method stub
     ProfileDefn p = new ProfileDefn();
     p.putMetadata("id", "fhir.types");
     p.putMetadata("name", "Base Type Profiles");
@@ -1175,20 +1183,34 @@ public class Publisher {
 		xml.compose(stream, html);
 	}
 
-	private void addToResourceFeed(Profile profile, String id) {
-		AtomEntry e = new AtomEntry();
-		e.setId("http://hl7.org/fhir/profile/@" + id);
-		e.getLinks().put("self", "http://hl7.org/implement/standards/fhir/" + id+ ".profile.xml");
-		e.setTitle("Resource \"" + id+ "\" as a profile (to help derivation)");
-		e.setUpdated(page.getGenDate());
-		e.setPublished(page.getGenDate());
-		e.setAuthorName("HL7, Inc");
-		e.setAuthorUri("http://hl7.org");
-		e.setCategory("Profile");
-		e.setResource(profile);
-		e.setSummary(profile.getText().getDiv());
-		profileFeed.getEntryList().add(e);
-	}
+  private void addToResourceFeed(Profile profile, String id) {
+    AtomEntry e = new AtomEntry();
+    e.setId("http://hl7.org/fhir/profile/" + id);
+    e.getLinks().put("self", "http://hl7.org/implement/standards/fhir/" + id+ ".profile.xml");
+    e.setTitle("Resource \"" + id+ "\" as a profile (to help derivation)");
+    e.setUpdated(page.getGenDate());
+    e.setPublished(page.getGenDate());
+    e.setAuthorName("HL7, Inc");
+    e.setAuthorUri("http://hl7.org");
+    e.setCategory("Profile");
+    e.setResource(profile);
+    e.setSummary(profile.getText().getDiv());
+    profileFeed.getEntryList().add(e);
+  }
+
+  private void addToResourceFeed(ValueSet vs, String id) {
+    AtomEntry e = new AtomEntry();
+    e.setId("http://hl7.org/fhir/valueset/" + id);
+    e.getLinks().put("self", "http://hl7.org/implement/standards/fhir/valueset/" + id);
+    e.setTitle("Valueset \"" + id+ "\" to support automated processing");
+    e.setUpdated(page.getGenDate());
+    e.setPublished(page.getGenDate());
+    e.setAuthorName("HL7, Inc");
+    e.setAuthorUri("http://hl7.org");
+    e.setResource(vs);
+    e.setSummary(vs.getText().getDiv());
+    profileFeed.getEntryList().add(e);
+  }
 
 	private void produceProfile(String filename, ProfileDefn profile, String example)
 			throws Exception {
@@ -1676,16 +1698,20 @@ public class Publisher {
 //  }
 
   private void generateValueSets() throws Exception {
+    log(" ...value sets");
     for (BindingSpecification bs : page.getDefinitions().getBindings().values())
       if (bs.getBinding() == Binding.ValueSet && bs.getReferredValueSet() != null)
         generateValueSet(bs.getReference(), bs);
   }
   
   private void generateValueSet(String name, BindingSpecification cd) throws Exception {
+    String n;
     if (name.startsWith("valueset-"))
-      cd.getReferredValueSet().setIdentifierSimple("http://hl7.org/fhir/valuesets/"+name.substring(9));
+      n = name.substring(9);
     else
-      cd.getReferredValueSet().setIdentifierSimple("http://hl7.org/fhir/valuesets/"+name);
+      n = name;
+    cd.getReferredValueSet().setIdentifierSimple("http://hl7.org/fhir/valuesets/"+n);
+    addToResourceFeed(cd.getReferredValueSet(), n);
     
     // todo - create the redirect
     TextFile.stringToFile(page.processPageIncludes(cd.getName()+".htm", TextFile.fileToString(page.getFolders().srcDir+"template-vs.htm")), page.getFolders().dstDir+name+".htm");
@@ -1701,6 +1727,7 @@ public class Publisher {
       
   }
   private void generateCodeSystems() throws Exception {
+    log(" ...code lists");
     for (BindingSpecification bs : page.getDefinitions().getBindings().values())
       if (bs.getBinding() == Binding.CodeList)
         generateCodeSystem(bs.getReference().substring(1)+".htm", bs);
@@ -1721,6 +1748,7 @@ public class Publisher {
     vs.setDescriptionSimple(Utilities.noString(cd.getDescription()) ? cd.getDefinition() : cd.getDefinition()+"\r\n\r\n"+cd.getDescription());
     vs.setStatusSimple(ValuesetStatus.draft); // until we publish DSTU, then .review
     vs.setDate(org.hl7.fhir.instance.model.Factory.nowDateTime());
+    vs.setText(Factory.newNarrative(NarrativeStatus.generated, cd.getDescription()));
     if (cd.isValueSet()) {
       vs.setKindSimple(ValuesetKind.composition);
       vs.setCompose(vs.new ValueSetComposeComponent());
@@ -1749,14 +1777,14 @@ public class Publisher {
           d.setDefinitionSimple(c.getDefinition());       
       }
     }
+    addToResourceFeed(vs, Utilities.fileTitle(filename));
 
     JsonComposer json = new JsonComposer();
     json.compose(new FileOutputStream(page.getFolders().dstDir+Utilities.changeFileExt(filename, ".json")), vs);
     XmlComposer xml = new XmlComposer();
     xml.compose(new FileOutputStream(page.getFolders().dstDir+Utilities.changeFileExt(filename, ".xml")), vs, true);
     cloneToXhtml(Utilities.fileTitle(filename), "Definition for Value Set"+vs.getNameSimple());
-    
-      
+
   }
 
 }
