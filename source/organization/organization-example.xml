@@ -25,17 +25,9 @@
     <use value="work"/>
   </telecom>
 
-  <relatedOrganization>
-    <organization>
+  <partOf>
       <type value="Organization"/>
       <reference value="organization/@1"/>
-      <display value="ACME Healthcare, Inc"/>
-    </organization>
-    <relation>
-      <coding>
-        <system value="oid:2.16.840.1.113883.5.110"/>
-        <code value="TERR"/>
-      </coding>
-    </relation>
-  </relatedOrganization>
+      <display value="ACME Healthcare, Inc"/>   
+  </partOf>
 </Organization>
