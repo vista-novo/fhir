@@ -20,6 +20,8 @@
   <WindowWidth>2910</WindowWidth>
   <WindowTopX>12450</WindowTopX>
   <WindowTopY>1815</WindowTopY>
+  <ActiveSheet>10</ActiveSheet>
+  <FirstVisibleSheet>1</FirstVisibleSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -1052,7 +1054,8 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">Profile.binding.isExtensible</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="Number">14</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">boolean</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Can additional codes be used?</Data></Cell>
     <Cell><Data ss:Type="String">If true, then conformant systems may use additional codes or (where the data type permits) text alone to convey concepts not covered by the set of codes identified in the binding.  If false, then conformant systems are constrained to the provided codes alone</Data></Cell>
@@ -1060,7 +1063,8 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Profile.binding.conformance</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="Number">14</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">BindingConformance</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">required | preferred | example</Data></Cell>
@@ -1090,7 +1094,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1111,8 +1114,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>68</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>71</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1120,7 +1122,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="13" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="14" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s73" ss:DefaultRowHeight="15">
    <Column ss:Index="3" ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="118.5"/>
    <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="309.75"/>
@@ -1205,6 +1207,12 @@
     <Cell><Data ss:Type="String">uri must be http:// (no security)</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">starts-with(f:url/@value, 'http:')</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">14</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">Profile.binding</Data></Cell>
+    <Cell><Data ss:Type="String">Example value sets are always extensible</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">not(f:conformance/@value='example' and f:isExtensible.value='false')</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -1222,8 +1230,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>14</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1737,11 +1745,11 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Examples">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s77" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="75.75"/>
    <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="218.25"/>
-   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="45.75"/>
+   <Column ss:StyleID="s77" ss:Width="83.25"/>
    <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="201"/>
    <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="55.5"/>
    <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="65.25"/>
@@ -1760,12 +1768,21 @@
     <Cell><Data ss:Type="String">profile-example.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Resources</Data></Cell>
     <Cell><Data ss:Type="String">Base Resources defined as profiles (implementation assistance, for derivation and product development)</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">profiles-resources.xml</Data></Cell>
     <Cell><Data ss:Type="String">tool</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell ss:Index="5" ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="5" ss:StyleID="Default"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1779,7 +1796,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>3</ActiveRow>
-     <RangeSelection>R4</RangeSelection>
+     <RangeSelection>R4C1:R6C6</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1809,11 +1826,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <RangeSelection>R2C1:R2C5</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
