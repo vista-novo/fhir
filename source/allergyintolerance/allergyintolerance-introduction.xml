@@ -3,7 +3,7 @@
 <!--
 also from Russ, consider whether to put somewhere:
 
-I think that is a key concept, that having an allergy list as a distinct and separate element of clinical documentation is typical, even invariant.  And it is a long established clinical workflow, I would argue even to patients.  Asking an individual "if they have any problems" is not going to invoke an account of their past reactions to medications or foods.  We ask if they "have any allergies".  I do understand that it is a condition, a diagnosis.  But it is separable not only in clinical workflow, but that it is a potential harm from exposure to an external substance that may be ordered by a provider in the course of their care but is not inherent to exposure to that substance for the general population. 
+I think that is a key concept, that having an allergy list as a distinct and separate element of clinical documentation is typical, even invariant.  And . 
 
 -->
 <p>
@@ -28,7 +28,19 @@ physical agents, such as heat, cold, sunlight, or vibration, by exercise activit
 or by infectious agents. Those conditions caused by physical agents or infectious 
 would be captured on the problem list. The allergy/intolerance list is a list of 
 conditions that represent a propensity unique to this individual for 
-a reaction upon future exposure to a specified substance.
+a reaction upon future exposure to a specified substance. 
+</p>
+<p>
+Note that this specification draws a distinction between the 
+patients problem/condition list and an allergy/intolerance list, even 
+though allergies and intolerances are also conditions. This is because it 
+is a long established clinical workflow, even to patients. Asking an individual 
+"if they have any problems" is not going to invoke an account of their past 
+reactions to medications or foods. Instead, they are asked if they "have any allergies".    
+An allergy/intolerance is also different in that a potential harm from exposure 
+to an external substance that may be ordered by a provider in the course of 
+their care but is not inherent to exposure to that substance for the general 
+population.
 </p>
 <p>
 Most of the details of the sensitivity can be found in the set of 

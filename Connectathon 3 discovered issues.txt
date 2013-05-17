@@ -8,38 +8,13 @@ TODO:
     /problem?patient.id=[id]
     /patient/@[id]/problem
 - change provenance to have multiple targets?
-
-add note about updating text in names and addresses
-
-
-Wed Q1
-
-
-imAge maps in chrome
-
-terminology work:
-(c) nested codes
-(d) 
-
-fix loinc observation code rules
-
-
-reap the HTTP codes for errors - for operationoutcome
-
-
-Add support for v3 relationships with value sets (including null flavors)
-re-org svn
-images - change generation?
-example coverage tracking
-
-why is procedure.related item so limited?
-
-add dynamic/static note
-add closed/growing note to code lists
-
-
-
-DicomObject
+- add note about updating text in names and addresses
+- fix loinc observation code rules
+- reap the HTTP codes for errors - for operationoutcome
+- re-org svn
+- images - change generation
+- why is procedure.related item so limited?
+- DicomObject
   number
   uid
   sopclass
@@ -47,9 +22,7 @@ DicomObject
   url
   datetime
   title
-  
-
-fix parameters referring to images
+- dicom - fix parameters referring to images
  - sopclass
  - series
  - size
@@ -58,17 +31,9 @@ fix parameters referring to images
  + procedure
  + study.description
  + 
- 
 
-
-
-
-move codes 
-
-element name
-unless elen
 Tooling
- - nested ext tns
+ - nested extns
  - extensions in profiles
 
 
