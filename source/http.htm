@@ -317,20 +317,15 @@ This interaction searches a resource type based on some filter criteria. The int
 </pre>
 <p>
 Because of the way that some user agents treat POST requests, POST submissions are 
-also allowed, though the semantics are exactly the same as a GET operation.
+also allowed with exactly the same semantics as a GET operation.
 Search operations take a series of parameters that are a series of name'='value pairs 
 encoded in the URL (or as an x-multi-part-form submission for a POST).
 (See <a href="http://www.w3.org/TR/REC-html40/interact/forms.html#form-content-type">W3C HTML forms</a>). 
-Parameters that have no value should be ignored, e.g.:</p>
-<pre>
-  GET [service-url]/[resourcetype]/search?name=
-</pre>
+The search is processed as specified for the <a href="query.htm">Query handling mechanism</a>. 
+</p>
 <p>
 The return content is an <a href="resources.htm#bundle">Bundle</a> containing the results of the search as a list of resources
 in a defined order. Searches SHOULD use paging as described <a href="#paging">below</a>.
-</p>
-<p>
-More information about how searches are processed by servers is on the <a href="search.htm">search</a> page.
 </p>
 
 <a name="validate"> </a>
@@ -391,6 +386,7 @@ which means that it stores and manages a set of conformance statements. These ma
 with the server's own conformance statement, which is what is returned from these methods.
 </p>
 
+<a name="transaction"> </a>
 <a name="transaction"> </a>
 <h2>transaction</h2>
 <p>
@@ -469,7 +465,7 @@ uses this matching resource instead, and ignores the submitted resource. If more
 one resource is found, the transaction must be rejected.
 </p>
 <p>
-If the server that is processing the batch requires version aware updates, 
+If the server that is processing the transaction requires version aware updates, 
 the client may need to reference what is the server's current version of
 the resource, which is now the client's previous version:
 </p>
@@ -543,7 +539,7 @@ The label portion is optional. Note that label may come before scheme.
 </table>
 <p>
 In the other operations, the resources are wrapped in bundles, where tags are represented in the <i>entry.category</i> element
-and servers populate these completely or process these as part of a batch submission.
+and servers populate these completely or process these as part of a transaction submission.
 </p>
 <p>
 The following operations provide specific support for Tags:

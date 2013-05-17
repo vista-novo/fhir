@@ -42,7 +42,6 @@ import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameter;
-import org.hl7.fhir.definitions.model.SearchParameter.RepeatMode;
 import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.formats.XmlComposer;
@@ -162,20 +161,11 @@ public class ProfileGenerator {
     ProfileStructureSearchParamComponent result = p.new ProfileStructureSearchParamComponent();
     result.setName(Factory.newString_(i.getCode()));
     result.setTypeSimple(getSearchParamType(i.getType()));
-    result.setRepeatsSimple(getSearchParamRepeats(i.getRepeatMode()));
     result.setDocumentation(Factory.newString_(i.getDescription()));    
     return result;
   }
 
 
-  private SearchRepeatBehavior getSearchParamRepeats(RepeatMode repeatMode) {
-    switch (repeatMode) {
-    case single: return SearchRepeatBehavior.single;
-    case union: return SearchRepeatBehavior.union;
-    case intersection: return SearchRepeatBehavior.intersection;
-    }
-    return null;
-  }
 
   private SearchParamType getSearchParamType(SearchType type) {
     switch (type) {

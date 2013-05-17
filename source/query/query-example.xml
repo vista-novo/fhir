@@ -5,9 +5,10 @@
     <div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>
   </text>
 
+  <!-- this is an extermely simple query - a request to execute the query 'example' on the responder -->
   <id value="urn:uuid:42b253f5-fa17-40d0-8da5-44aeb4230376"/>
-  <parameters>
+  <parameter>
     <name value="query"/>
     <value value="example"/>
-  </parameters>
+  </parameter>
 </Query>

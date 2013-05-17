@@ -596,7 +596,6 @@ public void generate(Definitions definitions, String destDir, String implDir, St
     StringBuilder con2 = new StringBuilder();
     StringBuilder con3 = new StringBuilder();
     StringBuilder con4 = new StringBuilder();
-    StringBuilder con5 = new StringBuilder();
     StringBuilder con6 = new StringBuilder();
     StringBuilder con7 = new StringBuilder();
 
@@ -612,7 +611,6 @@ public void generate(Definitions definitions, String destDir, String implDir, St
 
       con3.append("  CODES_"+tn+" : Array["+tn+"] of String = (");
       con4.append("  TYPES_"+tn+" : Array["+tn+"] of TFhirSearchParamType = (");
-      con5.append("  REPEATS_"+tn+" : Array["+tn+"] of TFhirSearchRepeatBehavior = (");
       con.append("  DESC_"+tn+" : Array["+tn+"] of String = (");
       con2.append("//  CHECK_"+tn+" : Array["+tn+"] of "+tn+" = (");
       con6.append("  PATHS_"+tn+" : Array["+tn+"] of String = (");
@@ -637,7 +635,6 @@ public void generate(Definitions definitions, String destDir, String implDir, St
           con2.append(" "+prefix+getTitle(nf)+");");
           con4.append(" SearchParamType"+getTitle(p.getType().toString())+");");
           con3.append("'"+defCodeType.escape(n)+"');");
-          con5.append(" SearchRepeatBehavior"+getTitle(p.getRepeatMode().toString())+");");
           con6.append("'"+defCodeType.escape(n+": "+p.getPath())+"');");
           con7.append(""+t+");");
         }
@@ -647,7 +644,6 @@ public void generate(Definitions definitions, String destDir, String implDir, St
           con2.append(" "+prefix+getTitle(nf)+", ");
           con4.append(" SearchParamType"+getTitle(p.getType().toString())+", ");
           con3.append("'"+defCodeType.escape(n)+"', ");
-          con5.append(" SearchRepeatBehavior"+getTitle(p.getRepeatMode().toString())+", ");
           con6.append("'"+defCodeType.escape(n+": "+p.getPath())+"',\r\n     ");
           con7.append(""+t+", ");
         }
@@ -655,7 +651,6 @@ public void generate(Definitions definitions, String destDir, String implDir, St
 
       defCodeRes.enumDefs.add(def.toString());
       defCodeRes.enumConsts.add(con3.toString());
-      defCodeRes.enumConsts.add(con5.toString());
       defCodeRes.enumConsts.add(con4.toString());
       defCodeRes.enumConsts.add(con.toString());
       defCodeRes.enumConsts.add(con2.toString());

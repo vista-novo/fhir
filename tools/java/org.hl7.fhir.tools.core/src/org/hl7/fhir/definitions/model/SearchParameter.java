@@ -38,16 +38,9 @@ public class SearchParameter {
     token,    // search parameter is on a fixed value string
     qtoken;   // search parameter is onto a pair of fixed value strings, space and value. Space is optional
   }
-  public enum RepeatMode {
-    single,     // the search parameter may only be used once
-    union,       // when the search parameter is used more than once, match resources with any of the values
-    intersection // when the search parameter is used more than once, match resources with all of the values
-  }
-  
   private String code;
   private String description;
   private SearchType type;
-  private RepeatMode repeatMode;
   private String path;
   
   public String getCode() {
@@ -62,19 +55,15 @@ public class SearchParameter {
   public SearchType getType() {
     return type;
   }
-  public SearchParameter(String code, String description, SearchType type, RepeatMode mode, String path) {
+  public SearchParameter(String code, String description, SearchType type, String path) {
     super();
     this.code = code;
     this.description = description;
     this.type = type;
-    this.repeatMode = mode;
     this.path = path;
   }
   public String getPath() {
     return path;
-  }
-  public RepeatMode getRepeatMode() {
-    return repeatMode;
   }
   
   

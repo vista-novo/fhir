@@ -48,7 +48,6 @@ import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerat
 import org.hl7.fhir.definitions.generators.specification.XmlSpecGenerator;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
-import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength;
 import org.hl7.fhir.definitions.model.BindingSpecification.ElementType;
 import org.hl7.fhir.definitions.model.DefinedCode;
@@ -635,7 +634,7 @@ public class PageProcessor implements Logger  {
   private String genV2Index() {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"grid\">\r\n");
-    s.append(" <tr><td><b>ID</b></td><td><b>Name</b></td></tr>\r\n");
+    s.append(" <tr><td><b>URI</b></td><td><b>ID</b></td><td><b>Name</b></td></tr>\r\n");
     Element e = XMLUtil.getFirstChild(v2src.getDocumentElement());
     while (e != null) {
       String src = e.getAttribute("state");
@@ -652,7 +651,7 @@ public class PageProcessor implements Logger  {
           
           List<String> versions = new ArrayList<String>();   
           
-          s.append(" <tr><td>"+id+"</td><td>"+name+"<br/>Version Dependent. Use one of:<ul>");
+          s.append(" <tr><td>http://hl7.org/fhir/v2/"+id+"</td><td>"+id+"</td><td>"+name+"<br/>Version Dependent. Use one of:<ul>");
           c = XMLUtil.getFirstChild(e);
           while (c != null) {
             Element g = XMLUtil.getFirstChild(c);
@@ -1864,11 +1863,11 @@ private String resItem(String name) throws Exception {
       for (String name : names)  {
     	SearchParameter p = resource.getSearchParams().get(name);
         if (p.getType() == SearchType.date) {
-          b.append("<tr><td>"+p.getCode()+" : "+p.getType()+"</td><td>date equal to "+Utilities.escapeXml(p.getDescription())+"</td><td>single</td></tr>\r\n");
-          b.append("<tr><td>"+p.getCode()+"-before : "+p.getType()+"</td><td>date before or equal to "+Utilities.escapeXml(p.getDescription())+"</td><td>single</td></tr>\r\n");
-          b.append("<tr><td>"+p.getCode()+"-after : "+p.getType()+"</td><td>date after or equal to "+Utilities.escapeXml(p.getDescription())+"</td><td>single</td></tr>\r\n");          
+          b.append("<tr><td>"+p.getCode()+" : "+p.getType()+"</td><td>date equal to "+Utilities.escapeXml(p.getDescription())+"</td></tr>\r\n");
+          b.append("<tr><td>"+p.getCode()+"-before : "+p.getType()+"</td><td>date before or equal to "+Utilities.escapeXml(p.getDescription())+"</td></tr>\r\n");
+          b.append("<tr><td>"+p.getCode()+"-after : "+p.getType()+"</td><td>date after or equal to "+Utilities.escapeXml(p.getDescription())+"</td></tr>\r\n");          
         } else
-          b.append("<tr><td>"+p.getCode()+" : "+p.getType()+"</td><td>"+Utilities.escapeXml(p.getDescription())+"</td><td>"+p.getRepeatMode().toString()+"</td></tr>\r\n");
+          b.append("<tr><td>"+p.getCode()+" : "+p.getType()+"</td><td>"+Utilities.escapeXml(p.getDescription())+"</td></tr>\r\n");
       }
       b.append("</table>\r\n");
       b.append("<p>(See <a href=\"http.htm#search\">Searching</a>).</p>\r\n");

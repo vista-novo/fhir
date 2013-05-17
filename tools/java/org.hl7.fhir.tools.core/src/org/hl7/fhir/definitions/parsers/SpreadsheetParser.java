@@ -52,7 +52,6 @@ import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.RegisteredProfile.ProfileInputType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameter;
-import org.hl7.fhir.definitions.model.SearchParameter.RepeatMode;
 import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.formats.JsonParser;
@@ -299,7 +298,7 @@ public class SpreadsheetParser {
 
 	private void readSearchParams(ResourceDefn root2, Sheet sheet)
 			throws Exception {
-		root2.getSearchParams().put("_id", new SearchParameter("_id","The logical resource id associated with the resource (must be supported by all servers)",SearchType.token, RepeatMode.single, null));
+		root2.getSearchParams().put("_id", new SearchParameter("_id","The logical resource id associated with the resource (must be supported by all servers)",SearchType.token, null));
 
 		if (sheet != null)
 			for (int row = 0; row < sheet.rows.size(); row++) {
@@ -324,9 +323,8 @@ public class SpreadsheetParser {
 				    throw new Exception("Search Param has no description "+ getLocation(row));
 				}
 				SearchType t = readSearchType(sheet.getColumn(row, "Type"), row);
-				RepeatMode m = readRepeatMode(sheet.getColumn(row, "Repeats"), row);
 
-				root2.getSearchParams().put(n, new SearchParameter(n, d, t, m, p));
+				root2.getSearchParams().put(n, new SearchParameter(n, d, t, p));
 			}
 	}
 
@@ -346,16 +344,7 @@ public class SpreadsheetParser {
 		throw new Exception("Unknown Search Type '" + s + "': " + getLocation(row));
 	}
 
-  private RepeatMode readRepeatMode(String s, int row) throws Exception {
-    if ("single".equals(s))
-      return RepeatMode.single;
-    if ("union".equals(s))
-      return RepeatMode.union;
-    if ("intersection".equals(s))
-      return RepeatMode.intersection;
-    throw new Exception("Unknown Repeat Mode '" + s + "': " + getLocation(row));
-  }
-
+ 
 	// Adds bindings to global definition.bindings. Returns list of
 	// newly found bindings in the sheet.
 	private Map<String, BindingSpecification> readBindings(Sheet sheet) throws Exception {

@@ -20,7 +20,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>4</ActiveSheet>
+  <ActiveSheet>6</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -69,7 +69,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="19" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="20" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
    <Column ss:StyleID="s62" ss:Width="29.25"/>
@@ -83,7 +83,7 @@
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="77.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s64">
+   <Row ss:Height="30" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
@@ -101,7 +101,7 @@
     <Cell><Data ss:Type="String">To Do</Data></Cell>
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:Height="30">
     <Cell><Data ss:Type="String">Query</Data></Cell>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
@@ -115,7 +115,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row>
     <Cell><Data ss:Type="String">Query.id</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -129,13 +129,13 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Query.parameters</Data></Cell>
+   <Row>
+    <Cell><Data ss:Type="String">Query.parameter</Data></Cell>
     <Cell><Data ss:Type="String">1..*</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">down</Data></Cell>
-    <Cell><Data ss:Type="String" x:Ticked="1">=QueryParameters</Data></Cell>
+    <Cell><Data ss:Type="String" x:Ticked="1">=QueryParameter</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Set of query parameters</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
@@ -143,8 +143,8 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Query.parameters.name</Data></Cell>
+   <Row>
+    <Cell><Data ss:Type="String">Query.parameter.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -157,8 +157,8 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Query.parameters.value</Data></Cell>
+   <Row>
+    <Cell><Data ss:Type="String">Query.parameter.value</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -172,81 +172,87 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row>
     <Cell><Data ss:Type="String">Query.response</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">right</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">If this is a response to a query</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row>
     <Cell><Data ss:Type="String">Query.response.id</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Links response to source query</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row>
     <Cell><Data ss:Type="String">Query.response.outcome</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">QueryOutcome</Data></Cell>
     <Cell><Data ss:Type="String">Outcome of processing the query</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Query.response.parameters</Data></Cell>
+   <Row>
+    <Cell><Data ss:Type="String">Query.response.total</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">integer</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Total number of matching records</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Query.response.parameter</Data></Cell>
     <Cell><Data ss:Type="String">1..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">@Query.parameters</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">@Query.parameter</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Parameters server used</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Query.response.reference</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Where to get the actual results of the query</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Is query only used in messaging? </Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row>
     <Cell><Data ss:Type="String">Query.response.first</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Parameters to use for first page</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">To get first page</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Query.response.first.parameters</Data></Cell>
+   <Row ss:Height="30">
+    <Cell><Data ss:Type="String">Query.response.first.parameter</Data></Cell>
     <Cell><Data ss:Type="String">1..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">@Query.parameters</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Parameters to use for first page</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">@Query.parameter</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Parameter list</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row>
     <Cell><Data ss:Type="String">Query.response.previous</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Parameters to use for previous page</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">To get previous page</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Query.response.previous.parameters</Data></Cell>
+   <Row ss:Height="30">
+    <Cell><Data ss:Type="String">Query.response.previous.parameter</Data></Cell>
     <Cell><Data ss:Type="String">1..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">@Query.parameters</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Parameters to use for previous page</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">@Query.parameter</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Parameter list</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row>
     <Cell><Data ss:Type="String">Query.response.next</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Parameters to use for next page</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">To get next page</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Query.response.next.parameters</Data></Cell>
+   <Row ss:Height="30">
+    <Cell><Data ss:Type="String">Query.response.next.parameter</Data></Cell>
     <Cell><Data ss:Type="String">1..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">@Query.parameters</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Parameters to use for next page</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">@Query.parameter</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Parameter list</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row>
     <Cell><Data ss:Type="String">Query.response.last</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Parameters to use for last page</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">To get last page</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Query.response.last.parameters</Data></Cell>
+   <Row ss:Height="30">
+    <Cell><Data ss:Type="String">Query.response.last.parameter</Data></Cell>
     <Cell><Data ss:Type="String">1..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">@Query.parameters</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Parameters to use for last page</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">@Query.parameter</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Parameter list</Data></Cell>
+   </Row>
+   <Row ss:Height="30">
+    <Cell><Data ss:Type="String">Query.response.reference</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Any)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Resources that are the results of the search</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">Is query only used in messaging? </Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -255,7 +261,6 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Unsynced/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -275,8 +280,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>15</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -373,7 +378,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Events">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="198.75"/>
@@ -390,10 +395,17 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Follow Ups</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s69"><Data ss:Type="String">query</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Request to perform a query according to the attached query resource</Data></Cell>
     <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">query</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">query</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">query-response</Data></Cell>
+    <Cell><Data ss:Type="String">Response with the result of processing the query</Data></Cell>
+    <Cell><Data ss:Type="String">Used when queries are performed asynchronously</Data></Cell>
+    <Cell><Data ss:Type="String">query</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -422,6 +434,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -438,6 +452,17 @@
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Repeats</Data></Cell>
+    <Cell><Data ss:Type="String">Path</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Query.id</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">response</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">qtoken</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Query.response.id</Data></Cell>
    </Row>
    <Row ss:Index="6" ss:AutoFitHeight="0">
     <Cell ss:Index="9" ss:StyleID="s63"/>
@@ -574,6 +599,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -621,7 +648,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -689,6 +715,61 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>3</ActiveRow>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Examples">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="54"/>
+   <Column ss:AutoFitWidth="0" ss:Width="120"/>
+   <Column ss:AutoFitWidth="0" ss:Width="94.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="132"/>
+   <Column ss:AutoFitWidth="0" ss:Width="120.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="57.75"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Name</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Identity</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Filename</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Type</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">In Book</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Simple</Data></Cell>
+    <Cell><Data ss:Type="String">Simple example</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">query-example.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Request</Data></Cell>
+    <Cell><Data ss:Type="String">Request Example</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">query-example-request.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Response</Data></Cell>
+    <Cell><Data ss:Type="String">Response Example</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">query-example-response.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

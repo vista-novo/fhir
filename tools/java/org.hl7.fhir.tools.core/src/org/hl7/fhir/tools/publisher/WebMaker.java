@@ -125,6 +125,7 @@ public class WebMaker {
     for (String n : ini.getPropertyNames("redirects")) 
       zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+n+File.separator, n+File.separator, null);
     zip.addFolder(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+"v2"+File.separator, "v2"+File.separator); 
+    zip.addFolder(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+"v3"+File.separator, "v3"+File.separator); 
     ZipGenerator zipd = new ZipGenerator(fd.getAbsolutePath());
     zipd.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload"+File.separator, "", null);
     zipd.close();    

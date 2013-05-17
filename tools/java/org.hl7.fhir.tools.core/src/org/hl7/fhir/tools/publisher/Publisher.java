@@ -489,7 +489,7 @@ public class Publisher {
 	        List<ExampleReference> refs = new ArrayList<ExampleReference>(); 
 	        listLinks(e.getXml().getDocumentElement(), refs);
 	        for (ExampleReference ref : refs) {
-	          if (!ref.getId().startsWith("cid") && !resolveLink(ref)) { 
+	          if (!ref.getId().startsWith("cid:") && !ref.getId().startsWith("urn:") && !ref.getId().startsWith("http:") && !resolveLink(ref)) { 
 	            errors.add(new ValidationMessage("Unable to resolve example reference to "+ref.describe()+" in "+e.getPath()
 	                  +"\r\n   Possible Ids: "+listTargetIds(ref.getType()), Level.Error));
 	          }

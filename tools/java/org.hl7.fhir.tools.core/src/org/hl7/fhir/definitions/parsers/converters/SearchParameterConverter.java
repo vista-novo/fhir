@@ -63,7 +63,6 @@ public class SearchParameterConverter
 		result.setName( searchParameter.getCode() );
 		result.setDescription( Utilities.cleanupTextString(searchParameter.getDescription()) );
 		result.setType( SearchType.get( searchParameter.getType().ordinal() ) );
-		result.setRepeats( SearchRepeatMode.get( searchParameter.getRepeatMode().ordinal() ));
 		return result;
 	}
 }

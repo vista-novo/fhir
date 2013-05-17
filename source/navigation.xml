@@ -44,19 +44,19 @@
   	  <index>2.1</index>
     </entry>
   	<entry>
-      <link>search</link>
-      <name>Search</name>
-  	  <index>2.5</index>
+      <link>query</link>
+      <name>Search/Query</name>
+  	  <index>2.2</index>
     </entry>
     <entry>
       <link>message</link>
       <name>Messaging</name>
-  	  <index>2.2</index>
+  	  <index>2.3</index>
     </entry>
     <entry>
       <link>document</link>
       <name>Documents</name>
-  	  <index>2.3</index>
+  	  <index>2.4</index>
     </entry>
     <entry>
       <link>usecases</link>
