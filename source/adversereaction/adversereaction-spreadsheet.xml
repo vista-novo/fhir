@@ -732,20 +732,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="179.25"/>
    <Column ss:Width="249.75"/>
    <Column ss:Width="47.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="90" ss:Span="1"/>
-   <Column ss:Index="6" ss:Width="132.75"/>
+   <Column ss:Width="132.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="275.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Description</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Comments</Data></Cell>
@@ -754,16 +751,12 @@
     <Cell><Data ss:Type="String">ReactionSeverity</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">The severity of an adverse reaction.</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">fixed</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">#reactionSeverity</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">SymptomType</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">The type of symptom.</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">reference</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">dynamic</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">http://apps.who.int/classifications/icd10/browse/2010/en</Data></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="String">ICD-10 Reaction codes</Data></Cell>
     <Cell ss:StyleID="s75"/>
@@ -772,23 +765,19 @@
     <Cell><Data ss:Type="String">ExposureType</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">The type of exposure that resulted in an adverse reaction</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">#exposureType</Data></Cell>
-    <Cell ss:Index="8" ss:StyleID="s74"><Data ss:Type="String">The current set of codes is not exhaustive and is provided for future discussion.</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s74"><Data ss:Type="String">The current set of codes is not exhaustive and is provided for future discussion.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">CausalityExpectation</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">How likely is it that the given exposure caused a reaction</Data></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">#causalityExpectation</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s64"/>
     <Cell ss:StyleID="s75"/>
-    <Cell ss:Index="7" ss:StyleID="s75"/>
+    <Cell ss:Index="5" ss:StyleID="s75"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s64"/>
@@ -836,8 +825,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

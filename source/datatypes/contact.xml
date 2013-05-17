@@ -15,10 +15,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9765</WindowHeight>
+  <WindowHeight>9705</WindowHeight>
   <WindowWidth>25635</WindowWidth>
   <WindowTopX>2640</WindowTopX>
-  <WindowTopY>2655</WindowTopY>
+  <WindowTopY>2715</WindowTopY>
   <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -235,20 +235,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="97.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="164.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="54.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="91.5" ss:Span="1"/>
-   <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="135.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="135.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="242.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -256,16 +253,12 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">ContactSystem</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">What kind of contact this is</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">#contact-system</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">ContactUse</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">How to use this address</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">#contact-use</Data></Cell>
    </Row>
   </Table>
@@ -280,8 +273,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -20,6 +20,7 @@
   <WindowWidth>2910</WindowWidth>
   <WindowTopX>12450</WindowTopX>
   <WindowTopY>1815</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -1093,7 +1094,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1350,20 +1350,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="8" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="8" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s76" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s76" ss:Width="112.5"/>
    <Column ss:StyleID="s76" ss:Width="303"/>
    <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="63.75"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="60" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s76" ss:Width="123.75"/>
+   <Column ss:StyleID="s76" ss:Width="123.75"/>
    <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="92.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -1371,40 +1368,30 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">BindingType</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">How this binding is mapped to a set of codes</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">fixed</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">#binding-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">BindingConformance</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Must applications comply with this binding?</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#binding-conformance</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ExtensionContext</Data></Cell>
     <Cell><Data ss:Type="String">How an extension context is interpreted</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#extension-context</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s68"><Data ss:Type="String">ConstraintSeverity</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Must applications comply with this constraint?</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#constraint-severity</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s77"><Data ss:Type="String">ResourceProfileStatus</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">The lifecycle status of a Resource Profile</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">#resource-profile-status</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1423,6 +1410,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1442,8 +1430,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

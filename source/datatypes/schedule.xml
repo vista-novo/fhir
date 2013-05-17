@@ -20,6 +20,7 @@
   <WindowWidth>23475</WindowWidth>
   <WindowTopX>4800</WindowTopX>
   <WindowTopY>5220</WindowTopY>
+  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -200,7 +201,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -291,20 +291,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="77.25"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="190.5"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="78.75"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="86.25" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="173.25"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="173.25"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="283.5"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -312,16 +309,12 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">EventTiming</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">A real world event that a schedule is related to</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">#event-timing</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">UnitsOfTime</Data></Cell>
     <Cell><Data ss:Type="String">A unit of time (units from UCUM)</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#units-of-time</Data></Cell>
    </Row>
   </Table>
@@ -332,11 +325,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

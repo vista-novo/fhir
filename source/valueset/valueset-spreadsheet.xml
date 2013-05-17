@@ -20,6 +20,7 @@
   <WindowWidth>15585</WindowWidth>
   <WindowTopX>1200</WindowTopX>
   <WindowTopY>1005</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -442,7 +443,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -648,21 +648,18 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s76" ss:DefaultColumnWidth="65.25"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="113.25"/>
    <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="209.25"/>
    <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="78.75"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="96" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="140.25"/>
+   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="140.25"/>
    <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="161.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -670,8 +667,6 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">CodeSelectionMode</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">The way in which the code is selected</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">fixed</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">#code-selection-mode</Data></Cell>
     <Cell ss:StyleID="s64"/>
    </Row>
@@ -679,8 +674,6 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">FilterOperator</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">The kind of operation to perform as part of a property based filter</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">#filter-operator</Data></Cell>
     <Cell ss:StyleID="s64"/>
    </Row>
@@ -688,16 +681,12 @@
     <Cell><Data ss:Type="String">ValueSetStatus</Data></Cell>
     <Cell><Data ss:Type="String">The lifecycle status of a Value Set</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#valueset-status</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">ValueSetKind</Data></Cell>
     <Cell><Data ss:Type="String">The kind of a value set</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#valueset-kind</Data></Cell>
    </Row>
   </Table>
@@ -708,11 +697,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>11</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

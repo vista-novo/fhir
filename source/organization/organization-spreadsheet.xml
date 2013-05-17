@@ -20,6 +20,7 @@
   <WindowWidth>17490</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -362,7 +363,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <TopRowVisible>13</TopRowVisible>
    <Panes>
     <Pane>
@@ -587,22 +587,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s77" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="130.5"/>
    <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="294.75"/>
-   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="65.25" ss:Span="1"/>
-   <Column ss:Index="5" ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="84.75"
-    ss:Span="1"/>
-   <Column ss:Index="7" ss:StyleID="s77" ss:Width="104.25"/>
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="65.25"/>
+   <Column ss:StyleID="s77" ss:Width="104.25"/>
    <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="287.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Extensibility</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -610,22 +605,18 @@
     <Cell ss:StyleID="s74"><Data ss:Type="String">OrganizationType</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">The type of an organization</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">extensible</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">dynamic</Data></Cell>
-    <Cell ss:Index="8" ss:StyleID="s74"><Data ss:Type="String">Specializations of _OrganizationEntityType in the HL7 v3 Entity Code table</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="s74"><Data ss:Type="String">Specializations of _OrganizationEntityType in the HL7 v3 Entity Code table</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14.4375">
     <Cell ss:StyleID="s74"><Data ss:Type="String">OrganizationAccreditation</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">Types of accreditations an organization may be granted</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">unbound</Data></Cell>
-    <Cell ss:StyleID="s74"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ContactPartyType</Data></Cell>
     <Cell><Data ss:Type="String">The purpose for which you would contact a contact party</Data></Cell>
     <Cell><Data ss:Type="String">unbound</Data></Cell>
-    <Cell ss:Index="8" ss:StyleID="s78"><Data ss:Type="String">Examples: general, medical claims, pr, human resources.</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="s78"><Data ss:Type="String">Examples: general, medical claims, pr, human resources.</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -641,10 +632,12 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

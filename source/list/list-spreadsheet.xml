@@ -710,21 +710,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="93"/>
    <Column ss:AutoFitWidth="0" ss:Width="221.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="81.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="90" ss:Span="2"/>
-   <Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="106.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="106.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="274.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Extensibility</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -737,9 +733,6 @@
     <Cell ss:StyleID="s66"><Data ss:Type="String">ListMode</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The processing mode that applies to this list</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">complete</Data></Cell>
-    <Cell><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#list-mode</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -747,17 +740,11 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">Codes that provide further information about the reason and meaning of the item in the list</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s73"/>
-    <Cell ss:StyleID="s73"/>
-    <Cell ss:StyleID="s73"/>
-    <Cell ss:StyleID="s73"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">ListEmptyReason</Data></Cell>
     <Cell><Data ss:Type="String">If a list is empty, why it is empty</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">unbound</Data></Cell>
-    <Cell ss:StyleID="s73"/>
-    <Cell ss:StyleID="s73"/>
-    <Cell ss:StyleID="s73"/>
     <Cell ss:StyleID="s73"/>
    </Row>
   </Table>
@@ -788,8 +775,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -60,14 +60,6 @@
   <Style ss:ID="s67">
    <Alignment ss:Vertical="Top"/>
   </Style>
-  <Style ss:ID="s68">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-   <Borders/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
-   <Interior/>
-   <NumberFormat/>
-   <Protection/>
-  </Style>
   <Style ss:ID="s69">
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
    <Borders>
@@ -117,20 +109,17 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="12" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="12" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="157.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="229.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="64.5"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="96" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="219"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="219"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="245.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
-    <Cell><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell><Data ss:Type="String">Management</Data></Cell>
     <Cell><Data ss:Type="String">Reference</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -138,56 +127,42 @@
     <Cell><Data ss:Type="String">BooleanYesNo</Data></Cell>
     <Cell><Data ss:Type="String">Either yes or no, true or false</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#boolean-yes-no</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DataAbsentReason</Data></Cell>
     <Cell><Data ss:Type="String">Used to specify why the normally expected content of the data element is missing</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#data-absent-reason</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DataType</Data></Cell>
     <Cell><Data ss:Type="String">The type of an element - one of the FHIR data types</Data></Cell>
     <Cell><Data ss:Type="String">special</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#data-types</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">ResourceType</Data></Cell>
     <Cell><Data ss:Type="String">One of the resource types defined as part of FHIR</Data></Cell>
     <Cell><Data ss:Type="String">special</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#resource-types</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">FHIRDefinedType</Data></Cell>
     <Cell><Data ss:Type="String">Either a resource or a data type</Data></Cell>
     <Cell><Data ss:Type="String">special</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#defined-types</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">MessageEvent</Data></Cell>
     <Cell><Data ss:Type="String">One of the message events defined as part of FHIR</Data></Cell>
     <Cell><Data ss:Type="String">special</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#message-events</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ObservationStatus</Data></Cell>
     <Cell><Data ss:Type="String">Codes providing the status of an observation</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#observation-status</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -196,8 +171,6 @@
     <Cell ss:StyleID="Default"><Data ss:Type="String">ObservationBodySite</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Codes for human and animal body sites</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">dynamic</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">SNOMED-CT body sites</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -206,8 +179,6 @@
     <Cell ss:StyleID="s66"><Data ss:Type="String">SearchParamType</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Data types allowed to be used for search parameters</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">#search-param-type</Data></Cell>
     <Cell ss:StyleID="Default"/>
    </Row>
@@ -215,8 +186,6 @@
     <Cell ss:StyleID="s66"><Data ss:Type="String">SearchRepeatBehavior</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">How repeating parameters are handled for the parameter type</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">#search-repeat-behavior</Data></Cell>
     <Cell ss:StyleID="Default"/>
    </Row>
@@ -224,8 +193,6 @@
     <Cell><Data ss:Type="String">SpecialValues</Data></Cell>
     <Cell><Data ss:Type="String">A set of generally useful codes defined so they can be included in value sets</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#special-values</Data></Cell>
    </Row>
   </Table>
@@ -246,7 +213,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

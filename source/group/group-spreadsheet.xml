@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6345</WindowHeight>
+  <WindowHeight>6285</WindowHeight>
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>4140</WindowTopX>
-  <WindowTopY>1455</WindowTopY>
+  <WindowTopY>1515</WindowTopY>
   <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -719,20 +719,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="6" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="123"/>
    <Column ss:AutoFitWidth="0" ss:Width="272.25"/>
    <Column ss:Width="47.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="90" ss:Span="1"/>
-   <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="106.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="106.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="274.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -741,15 +738,11 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">Kind of particular resource</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s73"/>
-    <Cell ss:StyleID="s73"/>
-    <Cell ss:StyleID="s73"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s67"><Data ss:Type="String">GroupCharacteristicType</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">List of characteristics used to describe group members.  E.g. gender, age, owner, location, etc.</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">unbound</Data></Cell>
-    <Cell ss:StyleID="s73"/>
-    <Cell ss:StyleID="s73"/>
     <Cell ss:StyleID="s73"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -757,15 +750,11 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">Value of descriptive member characteristic</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s73"/>
-    <Cell ss:StyleID="s73"/>
-    <Cell ss:StyleID="s73"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">GroupType</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Types of resources that are part of group</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#group-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -799,8 +788,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

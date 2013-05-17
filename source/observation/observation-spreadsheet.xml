@@ -16,10 +16,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6345</WindowHeight>
+  <WindowHeight>6285</WindowHeight>
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6075</WindowTopY>
+  <WindowTopY>6135</WindowTopY>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -859,7 +860,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1215,20 +1215,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="179.25"/>
    <Column ss:Width="249.75"/>
    <Column ss:Width="47.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="90" ss:Span="1"/>
-   <Column ss:Index="6" ss:Width="132.75"/>
+   <Column ss:Width="132.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="274.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s67"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Description</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">Comments</Data></Cell>
@@ -1238,15 +1235,11 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Methods for simple observations</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s78"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ObservationType</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes identifying types of simple observations</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">dynamic</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s78"><Data ss:Type="String">LOINC codes filtered to exclude lab, document,imaging and other complex codes</Data></Cell>
    </Row>
@@ -1254,41 +1247,31 @@
     <Cell><Data ss:Type="String">ObservationResult</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes providing results of simple observations</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">suggested</Data></Cell>
-    <Cell><Data ss:Type="String">dynamic</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">SNOMED-CT observation value codes</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">SNOMED-CT observation value codes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ObservationInterpretation</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes identifying interpretations of observations</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#observation-interpretation</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Need to use v2 codes</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Need to use v2 codes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">SubObservationType</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes identifying types of simple sub-observations</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">suggested</Data></Cell>
-    <Cell><Data ss:Type="String">dynamic</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s78"><Data ss:Type="String">LOINC codes filtered to exclude lab, document,imaging and other complex codes</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="s78"><Data ss:Type="String">LOINC codes filtered to exclude lab, document,imaging and other complex codes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">SubObservationResult</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes providing results of simple sub-observations</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">suggested</Data></Cell>
-    <Cell><Data ss:Type="String">dynamic</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">SNOMED-CT observation value codes</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">SNOMED-CT observation value codes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ObservationReliability</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes that provide reliability information about an observation</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#observation-reliability</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1304,6 +1287,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1324,7 +1308,7 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>6</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

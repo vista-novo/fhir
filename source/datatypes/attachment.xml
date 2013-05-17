@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11130</WindowHeight>
+  <WindowHeight>11070</WindowHeight>
   <WindowWidth>26835</WindowWidth>
   <WindowTopX>1440</WindowTopX>
-  <WindowTopY>1290</WindowTopY>
+  <WindowTopY>1350</WindowTopY>
   <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -289,20 +289,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="94.5"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="130.5"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="180"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="104.25" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s70" ss:Width="200.25"/>
+   <Column ss:StyleID="s70" ss:Width="200.25"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="386.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -310,8 +307,6 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">MimeType</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">The mime type of an attachment</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">reference</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">other</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">http://www.rfc-editor.org/bcp/bcp13.txt</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)</Data></Cell>
    </Row>
@@ -319,8 +314,6 @@
     <Cell ss:StyleID="s72"><Data ss:Type="String">Language</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">A human language</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">reference</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">other</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">http://tools.ietf.org/html/bcp47</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">IETF language tag</Data></Cell>
    </Row>
@@ -336,8 +329,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

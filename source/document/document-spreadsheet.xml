@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6915</WindowHeight>
+  <WindowHeight>6855</WindowHeight>
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>5040</WindowTopX>
-  <WindowTopY>5505</WindowTopY>
+  <WindowTopY>5565</WindowTopY>
   <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -838,20 +838,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s71" ss:DefaultRowHeight="18.75">
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="153.75"/>
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="252.75"/>
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="54"/>
-   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="91.5" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="169.5"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="169.5"/>
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="288"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -859,16 +856,12 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">DocumentSectionCode</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Classification of a clinical document section</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">dynamic</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s68"><Data ss:Type="String">LOINC Section Types</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="s68"><Data ss:Type="String">LOINC Section Types</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s68"><Data ss:Type="String">DocumentAttestationMode</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">The way in which a person authenticated a document</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">#document-attestation-mode</Data></Cell>
     <Cell ss:StyleID="Default"/>
    </Row>
@@ -876,8 +869,6 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">DocumentType</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Type of a clinical document</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">dynamic</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">LOINC Document Types</Data></Cell>
    </Row>
@@ -885,8 +876,6 @@
     <Cell ss:StyleID="Default"><Data ss:Type="String">DocumentConfidentiality</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Codes specifying the level of confidentiality of the XDS Document</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">unbound</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
@@ -902,8 +891,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

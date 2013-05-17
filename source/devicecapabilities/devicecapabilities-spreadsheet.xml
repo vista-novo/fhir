@@ -16,10 +16,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6345</WindowHeight>
+  <WindowHeight>6285</WindowHeight>
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6075</WindowTopY>
+  <WindowTopY>6135</WindowTopY>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -325,7 +326,6 @@
     <PaperSizeIndex>9</PaperSizeIndex>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <TopRowVisible>6</TopRowVisible>
    <Panes>
     <Pane>
@@ -548,20 +548,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="7" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s74" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="130.5"/>
    <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="294.75"/>
    <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="65.25"/>
-   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="84.75" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="89.25"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="89.25"/>
    <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="287.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -581,8 +578,6 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">DeviceFacetCode</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Describes the facet</Data></Cell>
     <Cell><Data ss:Type="String">reference</Data></Cell>
-    <Cell><Data ss:Type="String">suggested</Data></Cell>
-    <Cell><Data ss:Type="String">dynamic</Data></Cell>
     <Cell ss:StyleID="s76" ss:HRef="http://loinc.org/"><Data ss:Type="String">http://loinc.org</Data></Cell>
     <Cell ss:StyleID="s76" ss:HRef="http://loinc.org/"><Data ss:Type="String">http://loinc.org</Data></Cell>
    </Row>
@@ -590,16 +585,12 @@
     <Cell><Data ss:Type="String">DeviceDataType</Data></Cell>
     <Cell><Data ss:Type="String">The type of data produced by a device</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#device-data-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">UCUM</Data></Cell>
     <Cell><Data ss:Type="String">UCUM Codes</Data></Cell>
     <Cell><Data ss:Type="String">reference</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">dynamic</Data></Cell>
     <Cell ss:StyleID="s76" ss:HRef="http://unitsofmeasure.org/"><Data
       ss:Type="String">http://unitsofmeasure.org</Data></Cell>
     <Cell ss:StyleID="s76" ss:HRef="http://unitsofmeasure.org/"><Data
@@ -613,11 +604,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

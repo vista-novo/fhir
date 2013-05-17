@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>13215</WindowHeight>
+  <WindowHeight>13155</WindowHeight>
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
-  <WindowTopY>0</WindowTopY>
+  <WindowTopY>60</WindowTopY>
   <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -752,20 +752,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="28" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="27" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="93"/>
    <Column ss:AutoFitWidth="0" ss:Width="221.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="81.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="90" ss:Span="1"/>
-   <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="106.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="106.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="274.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -773,13 +770,11 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">MedicationForm</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">The form of a medication</Data></Cell>
     <Cell ss:StyleID="s77"/>
-    <Cell ss:Index="6" ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">MedicationCode</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">A code that defines the type of a medication</Data></Cell>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
     <Cell ss:StyleID="s77"/>
     <Cell ss:StyleID="s77"/>
    </Row>
@@ -787,8 +782,6 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">MedicationKind</Data></Cell>
     <Cell><Data ss:Type="String">Whether the medication is a product or a package</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#medication-kind</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -797,65 +790,41 @@
    </Row>
    <Row ss:Index="18" ss:AutoFitHeight="0">
     <Cell ss:Index="3" ss:StyleID="s70"/>
-    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2" ss:StyleID="s63"/>
     <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s63"/>
     <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2" ss:StyleID="s63"/>
     <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s63"/>
     <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2" ss:StyleID="s63"/>
     <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s63"/>
     <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s63"/>
     <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="2" ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="2" ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="2" ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
     <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s66"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="4" ss:StyleID="s63"/>
     <Cell ss:StyleID="s63"/>
    </Row>
   </Table>
@@ -886,7 +855,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8565</WindowHeight>
+  <WindowHeight>8505</WindowHeight>
   <WindowWidth>24675</WindowWidth>
   <WindowTopX>3600</WindowTopX>
-  <WindowTopY>3855</WindowTopY>
+  <WindowTopY>3915</WindowTopY>
   <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -284,19 +284,16 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="2" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="86.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="220.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="57"/>
-   <Column ss:AutoFitWidth="0" ss:Width="66.75" ss:Span="1"/>
-   <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="139.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="139.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -304,8 +301,6 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">IdentifierUse</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Identifies the use for this identifier, if known&#10;</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">#identifier-use</Data></Cell>
    </Row>
   </Table>
@@ -320,8 +315,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

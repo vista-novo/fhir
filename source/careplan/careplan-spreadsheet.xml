@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>4800</WindowHeight>
+  <WindowHeight>4740</WindowHeight>
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>4560</WindowTopX>
-  <WindowTopY>4095</WindowTopY>
+  <WindowTopY>4155</WindowTopY>
   <ActiveSheet>5</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -1056,21 +1056,18 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="15" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="15" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s74" ss:DefaultColumnWidth="65.25"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s74" ss:Width="125.25"/>
    <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="221.25"/>
    <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="81.75"/>
-   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="90" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s74" ss:Width="138"/>
+   <Column ss:StyleID="s74" ss:Width="138"/>
    <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="275.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -1078,8 +1075,6 @@
     <Cell ss:StyleID="s67"><Data ss:Type="String">CarePlanStatus</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Indicates whether the plan is currently being acted upon, represents future intentions or is now just historical record.</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#care-plan-status</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -1091,16 +1086,12 @@
     <Cell ss:StyleID="s67"><Data ss:Type="String">CarePlanGoalStatus</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Indicates whether the goal has been met and is still being targeted</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#care-plan-goal-status</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s67"><Data ss:Type="String">CarePlanActivityCategory</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">High-level categorization of the type of activity in a care plan.</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#care-plan-activity-category</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1112,8 +1103,6 @@
     <Cell ss:StyleID="s67"><Data ss:Type="String">CarePlanActivityStatus</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Indicates where the activity is at in its overall life cycle</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#care-plan-activity-status</Data></Cell>
    </Row>
    <Row ss:Index="9" ss:AutoFitHeight="0">
@@ -1159,8 +1148,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

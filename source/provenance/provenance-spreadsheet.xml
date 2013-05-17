@@ -708,20 +708,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s69" ss:Width="135.75"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="294.75"/>
    <Column ss:StyleID="s69" ss:Width="47.25"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="84.75" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s69" ss:Width="147"/>
+   <Column ss:StyleID="s69" ss:Width="147"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="287.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -734,16 +731,12 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">ProvenanceParticipantType</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The type of a provenance participant</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">preferred</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#provenance-participant-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">ProvenanceParticipantRole</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The role that a provenance participant played</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">preferred</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#provenance-participant-role</Data></Cell>
    </Row>
   </Table>
@@ -775,7 +768,7 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>4</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

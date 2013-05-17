@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6285</WindowHeight>
+  <WindowHeight>6225</WindowHeight>
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6135</WindowTopY>
+  <WindowTopY>6195</WindowTopY>
   <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -463,20 +463,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="86.25"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="189.75"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="63"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="83.25" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="151.5"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="151.5"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="198"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -489,8 +486,6 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">ResponseCode</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">The kind of response to a message</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">#response-code</Data></Cell>
    </Row>
   </Table>
@@ -505,8 +500,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>9</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

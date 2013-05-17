@@ -627,20 +627,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="7" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="130.5"/>
    <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="294.75"/>
    <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="65.25"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="84.75" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="89.25"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="89.25"/>
    <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="287.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -648,24 +645,18 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">ProblemDiaganosisCode</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Identification of the problem or diagnosis. </Data></Cell>
     <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:Index="7" ss:StyleID="s68"/>
+    <Cell ss:Index="5" ss:StyleID="s68"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s68"><Data ss:Type="String">ProblemCategory</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">A category assigned to the problem/diagnosis. E.g. finding | problem | diagnosis | concern | condition</Data></Cell>
     <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:Index="7" ss:StyleID="s68"/>
+    <Cell ss:Index="5" ss:StyleID="s68"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s68"><Data ss:Type="String">ProblemStatus</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The clinical status of the problem or diagnosis</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#problem-status</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -681,8 +672,6 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">ProblemRelationshipType</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The type of relationship between a problem/diagnosis and it's related item</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#problem-relationship-type</Data></Cell>
    </Row>
   </Table>
@@ -697,8 +686,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

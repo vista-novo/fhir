@@ -680,20 +680,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="179.25"/>
    <Column ss:Width="249.75"/>
    <Column ss:Width="47.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="90" ss:Span="1"/>
-   <Column ss:Index="6" ss:Width="132.75"/>
+   <Column ss:Width="132.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="275.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Description</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Comments</Data></Cell>
@@ -702,16 +699,12 @@
     <Cell><Data ss:Type="String">Criticality</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">The criticality of an adverse sensitivity</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">#criticality</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">SensitivityType</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">The type of an adverse sensitivity</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">#sensitivitytype</Data></Cell>
     <Cell ss:StyleID="s75"/>
    </Row>
@@ -719,8 +712,6 @@
     <Cell><Data ss:Type="String">SensitivityStatus</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">The status of the adverse sensitivity</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">#sensitivitystatus</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -730,7 +721,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s64"/>
     <Cell ss:StyleID="s75"/>
-    <Cell ss:Index="7" ss:StyleID="s75"/>
+    <Cell ss:Index="5" ss:StyleID="s75"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s64"/>
@@ -778,8 +769,9 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>0</ActiveRow>
      <ActiveCol>3</ActiveCol>
+     <RangeSelection>C4:C5</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

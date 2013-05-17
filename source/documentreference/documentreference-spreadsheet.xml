@@ -20,6 +20,7 @@
   <WindowWidth>9570</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6315</WindowTopY>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -561,13 +562,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
-   <TopRowVisible>18</TopRowVisible>
+   <TopRowVisible>6</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>25</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>24</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -806,20 +806,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s72" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="130.5"/>
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="294.75"/>
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="65.25"/>
-   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="84.75" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="89.25"/>
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="89.25"/>
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="287.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -827,8 +824,6 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">DocumentReferenceStatus</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">The status of the document reference</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">fixed</Data></Cell>
     <Cell><Data ss:Type="String">#document-reference-status</Data></Cell>
     <Cell ss:StyleID="s71"/>
    </Row>
@@ -850,10 +845,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>4</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>

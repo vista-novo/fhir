@@ -449,20 +449,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s71" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="114.75"/>
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="201.75"/>
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="53.25"/>
-   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="86.25" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="130.5"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="130.5"/>
    <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="214.5"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -470,9 +467,7 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">ActCoverageTypeCode</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">The type of insurance: public health, worker compensation; private accident, auto, private health, etc.)</Data></Cell>
     <Cell><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">Preferred</Data></Cell>
-    <Cell><Data ss:Type="String">dynamic</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">HL7 v3 ActCoverageTypeCode value set</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">HL7 v3 ActCoverageTypeCode value set</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s62"/>
@@ -495,8 +490,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

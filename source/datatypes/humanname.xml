@@ -287,20 +287,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="2" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:AutoFitWidth="0" ss:Width="211.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="62.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="123" ss:Span="1"/>
-   <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="141.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="141.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="242.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -308,8 +305,6 @@
     <Cell ss:StyleID="s70"><Data ss:Type="String">NameUse</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">The use of a human name</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">#name-use</Data></Cell>
    </Row>
   </Table>
@@ -324,8 +319,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

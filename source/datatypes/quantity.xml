@@ -293,21 +293,18 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="2" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s68" ss:DefaultColumnWidth="120"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s68" ss:Width="75"/>
    <Column ss:StyleID="s68" ss:Width="108.75"/>
    <Column ss:StyleID="s68" ss:Width="44.25"/>
-   <Column ss:StyleID="s68" ss:Width="83.25" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s68" ss:Width="81.75"/>
+   <Column ss:StyleID="s68" ss:Width="81.75"/>
    <Column ss:StyleID="s68" ss:Width="58.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -315,8 +312,6 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">QuantityCompararator</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">how the Quantity should be understood and represented</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">fixed</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">#quantity-comparator</Data></Cell>
    </Row>
   </Table>
@@ -331,8 +326,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

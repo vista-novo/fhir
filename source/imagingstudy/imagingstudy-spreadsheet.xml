@@ -1286,20 +1286,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="93"/>
    <Column ss:AutoFitWidth="0" ss:Width="221.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="81.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="90" ss:Span="1"/>
-   <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="107.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="107.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="275.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s73"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">Management</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Description</Data></Cell>
    </Row>
@@ -1307,23 +1304,17 @@
     <Cell ss:StyleID="s77"><Data ss:Type="String">ImageModality</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">Type of the image capturing machinery</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">alterable</Data></Cell>
     <Cell><Data ss:Type="String">#image-modality</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s77"><Data ss:Type="String">InstanceAvailability</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">Availability of the resource</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">alterable</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">#instance-availability</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s77"/>
     <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s78"/>
    </Row>
@@ -1355,7 +1346,9 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>0</ActiveRow>
      <ActiveCol>4</ActiveCol>
+     <RangeSelection>C4:C5</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
