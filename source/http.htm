@@ -316,21 +316,22 @@ This interaction searches a resource type based on some filter criteria. The int
   GET [service-url]/[resourcetype]/(?parameters) (&amp;_format=mimeType)
 </pre>
 <p>
-The search parameters are a series of name'='value pairs, separated by &amp;. 
-(See <a href="http://www.w3.org/TR/REC-html40/interact/forms.html#form-content-type">w3c html forms</a>). 
+Because of the way that some user agents treat POST requests, POST submissions are 
+also allowed, though the semantics are exactly the same as a GET operation.
+Search operations take a series of parameters that are a series of name'='value pairs 
+encoded in the URL (or as an x-multi-part-form submission for a POST).
+(See <a href="http://www.w3.org/TR/REC-html40/interact/forms.html#form-content-type">W3C HTML forms</a>). 
 Parameters that have no value should be ignored, e.g.:</p>
 <pre>
   GET [service-url]/[resourcetype]/search?name=
 </pre>
 <p>
-Because of the way that some user agents treat POST requests, POST submissions are also allowed, though the semantics are exactly the 
-same as a GET operation. Search operations take a series of parameters that are encoded in the URL or as an x-multi-part-form submission
-for a POST. The return content is an <a href="resources.htm#bundle">Bundle</a> containing the results of the search as a list of resources
-in a defined order. 
+The return content is an <a href="resources.htm#bundle">Bundle</a> containing the results of the search as a list of resources
+in a defined order. Searches SHOULD use paging as described <a href="#paging">below</a>.
 </p>
-<p>Searches SHOULD use paging as described <a href="#paging">below</a></p>
-
-More information about the possible search parameters is on the <a href="search.htm">search</a> page.
+<p>
+More information about how searches are processed by servers is on the <a href="search.htm">search</a> page.
+</p>
 
 <a name="validate"> </a>
 <h2>validate</h2>

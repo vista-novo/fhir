@@ -106,7 +106,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 		write("<h3>\r\nTerminology Bindings\r\n</h3>\r\n");
 		// 1. new form
     write("<table class=\"grid\">\r\n");
-    write(" <tr><th>Path</th><th>Description</th><th>Details</th></tr>\r\n");
+    write(" <tr><th>Path</th><th>Definition</th><th>Reference</th></tr>\r\n");
     for (BindingSpecification cd : cds) {
       String path;
       List<CDUsage> list = txusages.get(cd);
@@ -114,7 +114,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
         if (!list.get(i).element.typeCode().equals(list.get(1).element.typeCode()))
           throw new Exception("Mixed types on one concept domain in one type - not yet supported by the build process");
       }
-      write(" <tr><td title=\""+cd.getName()+"\">");
+      write(" <tr><td valign=\"top\" title=\""+cd.getName()+"\">");
       boolean first = true;
       for (int i = 1; i < list.size(); i++) {
         if (!first)
@@ -123,29 +123,36 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
         write(list.get(i).path);          
       }
       write(" </td>");
-      write("<td>"+describeBinding(cd)+"</td>");
+      write("<td valign=\"top\">"+Utilities.escapeXml(cd.getDefinition())+"</td>");
       if (cd.getBinding() == Binding.Unbound)
-        write("<td>(any codes)</td>");
+        write("<td valign=\"top\">No details provided yet</td>");
       else {
-        boolean b = false;
-        write("<td>");
-        if (cd.getBindingStrength() != null) {
-          if (b)
-            write(" / ");
-          write("<a href=\"terminologies.htm#conformance\">"+cd.getBindingStrength().toString().toLowerCase()+"</a>");
-          b = true;
+        write("<td valign=\"top\">");
+        if (cd.getBinding() == BindingSpecification.Binding.Special) {
+          if (cd.getName().equals("MessageEvent"))
+            write("<a href=\"message-events.htm\">http://hl7.org/fhir/message-events</a>");
+          else if (cd.getName().equals("ResourceType"))
+            write("<a href=\"resource-types.htm\">http://hl7.org/fhir/resource-types</a>");
+          else if (cd.getName().equals("DataType"))
+            write("<a href=\"data-types.htm\">http://hl7.org/fhir/data-types</a>");
+          else if (cd.getName().equals("FHIRDefinedType"))
+            write("<a href=\"defined-types.htm\">http://hl7.org/fhir/defined-types</a>");
+          else 
+            throw new Exception("Unknown special type "+cd.getName());
+        } 
+        if (cd.getBinding() == BindingSpecification.Binding.ValueSet) {
+          if (!Utilities.noString(cd.getReference())) 
+            write("<a href=\""+cd.getReference()+".htm\">http://hl7.org/fhir/"+cd.getReference()+"</a>");            
+          else
+            write("??");
         }
-        if (cd.getBindingStrength() != BindingStrength.Suggested && cd.getExtensibility() != null) {
-          if (b)
-            write(" / ");
-          write("<a href=\"terminologies.htm#extensibility\">"+cd.getExtensibility().toString().toLowerCase()+"</a>");
-          b = true;
+        if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
+          write("<a href=\""+cd.getReference().substring(1)+".htm\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a>");            
         }
-        if (cd.getBindingStrength() == BindingStrength.Required && cd.getManagement() != null) {
-          if (b)
-            write(" / ");
-          write("<a href=\"terminologies.htm#management\">"+cd.getManagement().toString().toLowerCase()+"</a>");
+        if (cd.getBinding() == BindingSpecification.Binding.Reference) {
+          write("<a href=\""+cd.getReference()+"\">"+cd.getDescription()+"</a>");
         }
+
         write("</td>");
       }
       write(" </tr>\r\n");
@@ -158,13 +165,15 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
       return cd.getDefinition();
     if (cd.getBinding() == BindingSpecification.Binding.Special) {
       if (cd.getName().equals("MessageEvent"))
-        return "the <a href=\"message.htm#Events\">Event List in the messaging framework</a>";
+        return "the <a href=\"message-events.htm\">Event List in the messaging framework</a>";
       else if (cd.getName().equals("ResourceType"))
-        return "<a href=\"terminologies.htm#ResourceType\">Any defined Resource Type name</a>";
-      else if (cd.getName().equals("FHIRContentType"))
-        return "<a href=\"terminologies.htm#fhircontenttypes\">Any defined Resource or Data Type name</a>";
+        return "<a href=\"resource-types.htm\">Any defined Resource Type name</a>";
+      else if (cd.getName().equals("DataType"))
+        return "<a href=\"data-types.htm\">Any defined Data Type name</a>";
+      else if (cd.getName().equals("FHIRDefinedType"))
+        return "<a href=\"defined-types.htm\">Any defined Resource or Data Type name</a>";
       else 
-        return "<a href=\"datatypes.htm\"> any defined data Type name</a> or a <a href=\"resources.htm#Resource\">Resource</a> name";
+        throw new Exception("Unknown special type "+cd.getName());
     } 
     if (cd.getBinding() == BindingSpecification.Binding.ValueSet) {
       if (Utilities.noString(cd.getReference())) 
@@ -196,7 +205,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
         //					if (!sids.contains(sid))
         //						sids.put(sid, new DefinedCode())
         sid = " system "+sid+"";
-        if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Suggested))
+        if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Example))
           write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\" Example values are in the "+sid+".\r\n");
         else if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Preferred))
           write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\" Defined values are in the "+sid+". Other codes can be used when those codes are not suitable\r\n");
@@ -204,7 +213,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
           write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\" Possible values are in the "+sid+".\r\n");
       } else {
 
-        if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Suggested))
+        if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Example))
           write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Example values:\r\n");
         else if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Preferred))
           write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Defined values (extend this with other codes):\r\n");

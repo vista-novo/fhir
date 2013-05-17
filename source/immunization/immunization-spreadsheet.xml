@@ -291,7 +291,7 @@
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">VaccineType</Data></Cell>
     <Cell><Data ss:Type="String">Vaccine Product Administered</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">Vaccine administered</Data></Cell>
@@ -340,7 +340,7 @@
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">ImmunizationSite</Data></Cell>
     <Cell><Data ss:Type="String">Vaccine  Site of Administration</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">Body site where vaccine was administered</Data></Cell>
@@ -356,7 +356,7 @@
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">ImmunizationRoute</Data></Cell>
     <Cell><Data ss:Type="String">Vaccine Route of Administration</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Route of administration</Data></Cell>
@@ -402,7 +402,7 @@
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">ImmunizationRefusalReason</Data></Cell>
     <Cell><Data ss:Type="String">Explanation of refusal / exemption</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Refusal or exemption reason</Data></Cell>
@@ -521,7 +521,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Immunization.vaccinationProtocol.doseTarget</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s62"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s62"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">VaccinationProtocolDoseTarget</Data></Cell>
     <Cell><Data ss:Type="String">Targeted Disease</Data></Cell>
     <Cell><Data ss:Type="String">The targeted disease</Data></Cell>
@@ -529,7 +529,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s78"><Data ss:Type="String">Immunization.vaccinationProtocol.doseStatus</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s62"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s62"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">VaccinationProtocolDoseStatus</Data></Cell>
     <Cell><Data ss:Type="String">Dose Status</Data></Cell>
     <Cell><Data ss:Type="String">Should this count??  </Data></Cell>
@@ -538,7 +538,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s78"><Data ss:Type="String">Immunization.vaccinationProtocol.doseStatusReason</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s62"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s62"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">VaccinationProtocolDoseStatusReason</Data></Cell>
     <Cell><Data ss:Type="String">Dose Status Reason</Data></Cell>
    </Row>
@@ -562,7 +562,7 @@
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>6</LeftColumnRightPane>
+   <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -570,15 +570,14 @@
     </Pane>
     <Pane>
      <Number>1</Number>
-     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>16</ActiveRow>
-     <ActiveCol>11</ActiveCol>
+     <ActiveRow>10</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -37,13 +37,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.EventUsage;
 import org.hl7.fhir.definitions.model.Example;
-import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.Example.ExampleType;
 import org.hl7.fhir.definitions.model.ExtensionDefn;
 import org.hl7.fhir.definitions.model.Invariant;
@@ -56,7 +56,6 @@ import org.hl7.fhir.definitions.model.SearchParameter.RepeatMode;
 import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.formats.JsonParser;
-import org.hl7.fhir.instance.formats.ParserBase;
 import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.utilities.CSFile;
@@ -71,17 +70,15 @@ public class SpreadsheetParser {
 	private XLSXmlParser xls;
 	private List<EventDefn> events = new ArrayList<EventDefn>();
 	private boolean isProfile;
-	private String root;
 	private Definitions definitions;
 	private String title;
 	private String folder;
 	private Logger log;
 	private String sheetname;
-	private boolean forPublication;
+	private BindingNameRegistry registry;
 
-	public SpreadsheetParser(InputStream in, String name,	Definitions definitions, String root, Logger log, boolean forPublication) throws Exception {
+	public SpreadsheetParser(InputStream in, String name,	Definitions definitions, String root, Logger log, BindingNameRegistry registry) throws Exception {
 		this.name = name;
-		this.forPublication = forPublication;
 		xls = new XLSXmlParser(in, name);
 		this.definitions = definitions;
 		if (name.indexOf('-') > 0)
@@ -91,8 +88,8 @@ public class SpreadsheetParser {
 		else
 		  title = name;
 		this.folder = root + title + File.separator;
-		this.root = root;
 		this.log = log;
+		this.registry = registry;
 	}
 
 
@@ -370,15 +367,14 @@ public class SpreadsheetParser {
 			cd.setName(sheet.getColumn(row, "Binding Name"));
 			cd.setDefinition(sheet.getColumn(row, "Definition"));
 			cd.setBinding(BindingsParser.readBinding(sheet.getColumn(row, "Binding")));
-      cd.setBindingStrength(BindingsParser.readBindingStrength(sheet.getColumn(row, "Binding Strength")));
-      cd.setExtensibility(BindingsParser.readExtensibility(sheet.getColumn(row, "Extensibility")));
+//    these are derived from the way they are used
+//      cd.setBindingStrength(BindingsParser.readBindingStrength(sheet.getColumn(row, "Binding Strength")));
+//      cd.setExtensibility(BindingsParser.readExtensibility(sheet.getColumn(row, "Extensibility")));
 			cd.setReference(sheet.getColumn(row, "Reference"));
-			cd.setManagement(BindingsParser.readManagement(sheet.getColumn(row, "Management")));
       cd.setDescription(sheet.getColumn(row, "Description"));
-			cd.setId(new BindingNameRegistry(root, forPublication).idForName(cd.getName()));
+      cd.setExample(parseBoolean(sheet.getColumn(row, "Example"), row, false));
+			cd.setId(registry.idForName(cd.getName()));
 			cd.setSource(name);
-      if ((cd.getBinding() == Binding.CodeList || cd.getBinding() == Binding.ValueSet) && cd.getManagement() == null)
-        throw new Exception("management missing for "+ cd.getName() + ": " + cd.getReference());
 
 			if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
 				Sheet codes = xls.getSheets().get(
@@ -927,5 +923,6 @@ public class SpreadsheetParser {
 	public List<EventDefn> getEvents() {
 		return events;
 	}
+
 
 }

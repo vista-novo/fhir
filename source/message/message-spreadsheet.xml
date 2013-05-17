@@ -20,6 +20,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6135</WindowTopY>
+  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -403,7 +404,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -463,7 +463,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="86.25"/>
    <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="189.75"/>
@@ -485,14 +485,6 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">The reason for an event occurring</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s71"><Data ss:Type="String">MessageEvent</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">One of the message types defined in FHIR messaging</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">special</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">alterable</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">#MessageEvent</Data></Cell>
-   </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s71"><Data ss:Type="String">ResponseCode</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">The kind of response to a message</Data></Cell>
@@ -509,10 +501,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>37</ActiveRow>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

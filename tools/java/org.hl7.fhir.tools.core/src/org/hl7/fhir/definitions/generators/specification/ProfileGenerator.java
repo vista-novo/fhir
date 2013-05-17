@@ -29,14 +29,11 @@ POSSIBILITY OF SUCH DAMAGE.
  */
 import java.io.OutputStream;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
-import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ExtensionDefn;
@@ -223,11 +220,13 @@ public class ProfileGenerator {
   }
 
   private BindingConformance convert(org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength bindingStrength) throws Exception {
+    if (bindingStrength == null)
+      return null;
     if (bindingStrength == org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength.Preferred)
       return BindingConformance.preferred;
     if (bindingStrength == org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength.Required)
       return BindingConformance.required;
-    if (bindingStrength == org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength.Suggested)
+    if (bindingStrength == org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength.Example)
       return BindingConformance.example;
     if (bindingStrength == org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength.Unstated)
       return null;

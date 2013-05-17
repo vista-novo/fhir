@@ -82,8 +82,10 @@ public class BindingConverter
 		result.getAnnotations().setDefinition( Utilities.cleanupTextString(spec.getDefinition()));
 		
 		result.setBinding( BindingType.get(spec.getBinding().ordinal()) );
-		result.setStrength( BindingStrength.get(spec.getBindingStrength().ordinal()) );
-		result.setExtensibility(( BindingExtensibility.get(spec.getExtensibility().ordinal())));
+		// todo: Ewout - these are now generated later in the build process. What to do about this?
+		// does it matter? (Grahame)
+//		result.setStrength( BindingStrength.get(spec.getBindingStrength().ordinal()) );
+		// result.setExtensibility(( BindingExtensibility.get(spec.getExtensibility().ordinal())));
 		
 		String artifact = spec.getReference();
 		if( artifact != null && artifact.startsWith("#"))

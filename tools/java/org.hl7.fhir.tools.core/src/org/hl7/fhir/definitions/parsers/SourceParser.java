@@ -88,11 +88,12 @@ public class SourceParser {
 	public String dtDir;
 	private String rootDir;
 	private boolean forPublication;
+	private BindingNameRegistry registry;
 
 	public SourceParser(Logger logger, String root, Definitions definitions, boolean forPublication) {
 		this.logger = logger;
 		this.forPublication = forPublication;
-
+		this.registry = new BindingNameRegistry(root, forPublication);
 		this.definitions = definitions;
 
 		char sl = File.separatorChar;
@@ -130,7 +131,8 @@ public class SourceParser {
 	}
 	
 
-	private List<TypeDefn> sortTypes(List unsorted)
+	@SuppressWarnings("unchecked")
+  private List<TypeDefn> sortTypes(List unsorted)
 	{
 		List<TypeDefn> sorted = new ArrayList<TypeDefn>();
 		sorted.addAll(unsorted);
@@ -256,7 +258,7 @@ public class SourceParser {
 		
 		for (ResourceDefn r : definitions.getResources().values()) {
 		  for (RegisteredProfile p : r.getProfiles()) {
-		    SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(p.getFilepath()), p.getName(), definitions, srcDir, logger, forPublication);
+		    SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(p.getFilepath()), p.getName(), definitions, srcDir, logger, registry);
 		    p.setProfile(sparser.parseProfile(definitions));
 		  }
 		}
@@ -279,7 +281,7 @@ public class SourceParser {
 	private void loadProfile(String n, Map<String, ProfileDefn> profiles)
 			throws Exception {
 		File spreadsheet = new CSFile(rootDir+ ini.getStringProperty("profiles", n));
-		SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, forPublication);
+		SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, registry);
 		try {
 		  ProfileDefn profile = sparser.parseProfile(definitions);
 		  definitions.getProfiles().put(n, profile);
@@ -291,7 +293,7 @@ public class SourceParser {
 	private void loadGlobalConceptDomains() throws Exception {
 		logger.log("Load Concept Domains");
 
-		BindingsParser parser = new BindingsParser(new CSFileInputStream(new CSFile(termDir + "bindings.xml")), termDir + "bindings.xml", srcDir, forPublication);
+		BindingsParser parser = new BindingsParser(new CSFileInputStream(new CSFile(termDir + "bindings.xml")), termDir + "bindings.xml", srcDir, registry);
 		List<BindingSpecification> cds = parser.parse();
 
 		for (BindingSpecification cd : cds) {
@@ -364,7 +366,7 @@ public class SourceParser {
 		  TypeRef t = ts.get(0);
 		  File csv = new CSFile(dtDir + t.getName().toLowerCase() + ".xml");
 		  if (csv.exists()) {
-		    SpreadsheetParser p = new SpreadsheetParser(new CSFileInputStream(csv), csv.getName(), definitions, srcDir, logger, forPublication);
+		    SpreadsheetParser p = new SpreadsheetParser(new CSFileInputStream(csv), csv.getName(), definitions, srcDir, logger, registry);
 		    ElementDefn el = p.parseCompositeType();
 		    map.put(t.getName(), el);
 		    el.getAcceptableGenericTypes().addAll(ts.get(0).getParams());
@@ -407,7 +409,7 @@ public class SourceParser {
 			spreadsheet = new CSFile((sandbox ? sndBoxDir : srcDir) + n + File.separatorChar + n + "-def.xml");
 
 		SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(
-				spreadsheet), spreadsheet.getName(), definitions, src, logger, forPublication);
+				spreadsheet), spreadsheet.getName(), definitions, src, logger, registry);
 		ResourceDefn root;
 		try {
 		  root = sparser.parseResource();
@@ -502,4 +504,9 @@ public class SourceParser {
         checkFile("source", srcDir + n + File.separatorChar, fn, errors, n);
 		}
 	}
+
+
+  public BindingNameRegistry getRegistry() {
+    return registry;
+  }
 }

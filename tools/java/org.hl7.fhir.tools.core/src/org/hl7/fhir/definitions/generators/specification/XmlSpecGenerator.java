@@ -33,6 +33,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 
+import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ExtensionDefn;
@@ -40,6 +41,7 @@ import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.utilities.Utilities;
 
 public class XmlSpecGenerator extends OutputStreamWriter {
@@ -350,6 +352,13 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 							+ "</span></a> ");
 				} else {
 					// if (!elem.isXmlIDRef())
+				  BindingSpecification bs = definitions.getBindingByName(elem.getBindingName());
+				  if (bs != null && bs.getBinding() != Binding.Unbound && !Utilities.noString(bs.getReference())) { 
+				    if (bs.getBinding() == Binding.CodeList)
+		          write("<span style=\"color: navy\"><a href=\""+bs.getReference().substring(1)+".htm\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a></span>");
+            else 
+              write("<span style=\"color: navy\"><a href=\""+bs.getReference()+".htm\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a></span>");				  
+				  } else
 					write("<span style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</span>");
 				}
 			} else {

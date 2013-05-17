@@ -29,22 +29,18 @@ package org.hl7.fhir.definitions.validation;
 
  */
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-import org.hl7.fhir.definitions.ecore.fhir.SearchParameter;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength;
-import org.hl7.fhir.definitions.model.BindingSpecification.Management;
+import org.hl7.fhir.definitions.model.BindingSpecification.ElementType;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
-import org.hl7.fhir.instance.model.Profile.SearchParamType;
 import org.hl7.fhir.utilities.Utilities;
 
 
@@ -155,14 +151,24 @@ public class ResourceValidator {
 		}
 		
 		if (e.hasBinding()) {
-		  rule(path, e.typeCode().contains("code") || e.typeCode().contains("Coding") 
+		  rule(path, e.typeCode().equals("code") || e.typeCode().contains("Coding") 
 				  || e.typeCode().contains("CodeableConcept"), "Can only specify bindings for coded data types");
 			BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
 			rule(path, cd != null, "Unable to resolve binding name " + e.getBindingName());
 			
-			if (cd != null) 
-			  rule(path, (cd.getExtensibility() != BindingExtensibility.Extensible || (e.hasType("Coding") || e.hasType("CodeableConcept"))),
-			        "A binding can only be extensible if an element has a type of Coding|CodeableConcept and the concept domain is bound directly to a code list.");
+			if (cd != null) {
+			  boolean isComplex = !e.typeCode().equals("code");
+			  if (cd.getElementType() == ElementType.Unknown) {
+			    if (isComplex)
+			      cd.setElementType(ElementType.Complex);
+			    else
+            cd.setElementType(ElementType.Simple);
+			  } else if (cd.getBinding() != Binding.Reference)
+          if (isComplex)
+            rule(path, cd.getElementType() == ElementType.Complex, "Cannot use a binding from both code and Coding/CodeableConcept elements");
+          else
+            rule(path, cd.getElementType() == ElementType.Simple, "Cannot use a binding from both code and Coding/CodeableConcept elements");
+			}
 		}
 		for (ElementDefn c : e.getElements()) {
 			checkElement(path + "." + c.getName(), c, parent, e.getName());
@@ -251,6 +257,7 @@ public class ResourceValidator {
   public List<ValidationMessage> check(String n, BindingSpecification cd) throws Exception {
     errors.clear();
 
+    // basic integrity checks
     for (DefinedCode c : cd.getCodes()) {
       String d = c.getCode();
       if (Utilities.noString(d))
@@ -263,25 +270,39 @@ public class ResourceValidator {
       warning("Binding "+n, !Utilities.noString(c.getDefinition()), "Code "+d+" must have a definition");
       warning("Binding "+n, !(Utilities.noString(c.getId()) && Utilities.noString(c.getSystem())) , "Code "+d+" must have a id or a system");
     }
-
-    warning("Binding "+n, cd.getBindingStrength() != BindingStrength.Suggested || cd.getManagement() != Management.Fixed, "A binding can't be both fixed and suggested");
-    rule("Binding "+n, !cd.isHeirachical() || (cd.getChildCodes().size() < cd.getCodes().size()), "Logic error processing Hirachical code set");
-        
     if (cd.isValueSet()) {
       boolean internal = false;
       for (DefinedCode c : cd.getCodes()) 
         internal = internal || Utilities.noString(c.getSystem());
       rule("Binding "+n, !internal, "Cannot mix internal and external code");
     }
+    // trigger processing into a Heirachical set if necessary
+    rule("Binding "+n, !cd.isHeirachical() || (cd.getChildCodes().size() < cd.getCodes().size()), "Logic error processing Hirachical code set");
 
-    if (cd.getBinding() != Binding.Unbound)
-      rule("Binding "+n, cd.getManagement() != null, "Bound Code lists must have a management style");
+    // now, rules for the source
+    hint("Binding "+n, cd.getElementType() != ElementType.Unknown, "Binding is not used");
+    warning("Binding "+n, cd.getBinding() != Binding.Unbound, "Need to provide a binding");
+    rule("Binding "+n, cd.getElementType() != ElementType.Simple || cd.getBinding() != Binding.Unbound, "Need to provide a binding for code elements");
+    rule("Binding "+n, cd.getElementType() == ElementType.Complex || !cd.isExample(), "Can only be an example binding if bound to Coding/CodeableConcept");
     
-//    rule("Binding "+n, cd.getManagement() != null, "Management code missing");
-//    if (cd.getBinding() == Binding.CodeList) 
-//      rule("Binding "+n, cd.getManagement() == Management.Fixed || cd.getManagement() == Management.Alterable, "Code lists must have a management style of Fixed or Alterable");
-//    else
-//      rule("Binding "+n, cd.getManagement() == Management.Dynamic || cd.getManagement() == Management.Static, "Value sets must have a management style of Dynamic or Static");
+
+    // set these for when the profiles are generated
+    if (cd.getElementType() == ElementType.Simple) {
+      cd.setBindingStrength(BindingStrength.Required);
+      cd.setExtensibility(BindingExtensibility.Complete);
+    }
+    else if (cd.getElementType() == ElementType.Complex) {
+      cd.setExtensibility(BindingExtensibility.Extensible);
+      if (cd.isExample()) {
+        cd.setBindingStrength(BindingStrength.Example);
+      } else {
+        cd.setBindingStrength(BindingStrength.Preferred);
+      }
+    }
+    else {
+      cd.setBindingStrength(BindingStrength.Unstated);
+      cd.setExtensibility(BindingExtensibility.Extensible);      
+    }
     return errors;
   }
 

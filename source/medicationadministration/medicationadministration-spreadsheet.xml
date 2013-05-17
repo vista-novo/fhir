@@ -914,7 +914,7 @@
     <Cell ss:StyleID="s83"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">alterable</Data></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">#MedAdmStatus</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">#medication-admin-status</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Tie this into the HL7 V3 Event act state model for administration</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1015,15 +1015,15 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
- <Worksheet ss:Name="MedAdmStatus">
+ <Worksheet ss:Name="medication-admin-status">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s82" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:StyleID="s82" ss:Width="55.5"/>

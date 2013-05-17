@@ -20,6 +20,7 @@
   <WindowWidth>18765</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
+  <ActiveSheet>5</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -85,6 +86,14 @@
   </Style>
   <Style ss:ID="s75">
    <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s76">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+   <Interior ss:Color="#F2F2F2" ss:Pattern="Solid"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -188,7 +197,7 @@
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">VaccineType</Data></Cell>
     <Cell><Data ss:Type="String">Antigen to be administered</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Vaccine administered</Data></Cell>
@@ -252,7 +261,7 @@
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">ImmunizationProfileDateCriterion</Data></Cell>
     <Cell><Data ss:Type="String">Date classification of recommendation</Data></Cell>
     <Cell ss:StyleID="s71"/>
@@ -353,7 +362,7 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
-    <Cell ss:Index="6" ss:StyleID="s62"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s62"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">AdverseEventReportType</Data></Cell>
     <Cell><Data ss:Type="String">Adverse event report classification</Data></Cell>
    </Row>
@@ -408,13 +417,12 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>6</LeftColumnRightPane>
+   <LeftColumnRightPane>4</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -429,8 +437,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>19</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -807,7 +815,8 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ImmunizationForecastStatus</Data></Cell>
     <Cell><Data ss:Type="String">The patient's status with respect to a vaccintion protocol</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">#immunization-forecast-status</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">ImmunizationProfileDateCriterion</Data></Cell>
@@ -846,13 +855,50 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>0</ActiveCol>
-     <RangeSelection>R2</RangeSelection>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
    <x:PageLayoutZoom>0</x:PageLayoutZoom>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="immunization-forecast-status">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="2" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Row ss:AutoFitHeight="0" ss:StyleID="s76">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
+    <Cell><Data ss:Type="String">Code</Data></Cell>
+    <Cell><Data ss:Type="String">Definition</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">DUE</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>0</VerticalResolution>
+   </Print>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
 </Workbook>

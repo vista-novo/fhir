@@ -29,7 +29,6 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.StringWriter;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
 import java.text.SimpleDateFormat;
@@ -42,13 +41,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.MappingsGenerator;
@@ -58,6 +50,7 @@ import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength;
+import org.hl7.fhir.definitions.model.BindingSpecification.ElementType;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
@@ -1229,12 +1222,16 @@ private String resItem(String name) throws Exception {
     s.append("<table class=\"codes\">\r\n");
     List<String> names = new ArrayList<String>();
     for (String n : definitions.getBindings().keySet()) {
-      if (definitions.getBindingByName(n).getBinding() == Binding.CodeList && !definitions.getBindingByName(n).isValueSet())
-       names.add(n);
+      if ((definitions.getBindingByName(n).getBinding() == Binding.CodeList && !definitions.getBindingByName(n).isValueSet()) || 
+          (definitions.getBindingByName(n).getBinding() == Binding.Special))
+        names.add(definitions.getBindingByName(n).getReference().substring(1));
     }
+
+//  not this one      Logical Interactions (RESTful framework)  http://hl7.org/fhir/rest-operations 2.16.840.1.113883.6.308
+      
     Collections.sort(names);
     for (String n : names) {
-      BindingSpecification cd = definitions.getBindingByName(n);
+      BindingSpecification cd = definitions.getBindingByReference("#"+n);
       s.append(" <tr><td><a href=\""+cd.getReference().substring(1)+".htm\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a></td><td>"+Utilities.escapeXml(cd.getDefinition())+"</td></tr>\r\n");
     }
     s.append("</table>\r\n");
@@ -1267,7 +1264,7 @@ private String resItem(String name) throws Exception {
   private String genBindingsTable() {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"codes\">\r\n");
-    s.append(" <tr><th>Name</th><th>Definition</th><th>Strength</th><th>Reference</th></tr>\r\n");
+    s.append(" <tr><th>Name</th><th>Definition</th><th>Type</th><th>Reference</th></tr>\r\n");
     List<String> names = new ArrayList<String>();
     for (String n : definitions.getBindings().keySet()) {
       names.add(n);
@@ -1276,30 +1273,43 @@ private String resItem(String name) throws Exception {
     for (String n : names) {
       if (!n.startsWith("*")) {
         BindingSpecification cd = definitions.getBindingByName(n);
-        s.append(" <tr><td>"+Utilities.escapeXml(cd.getName())+"</td><td>"+Utilities.escapeXml(cd.getDefinition())+"</td><td>"+Utilities.escapeXml(cd.getBindingStrength().toString()));
-        if (cd.getExtensibility() != BindingExtensibility.Complete)
-          s.append(" (Extensible)");
-        if (cd.getBinding() == Binding.Special) {
-          
-          if (cd.getName().equals("MessageEvent"))
-            s.append("</td><td><a href=\"message.htm#Events\">Message Event List</a></td></tr>\r\n");
-          else if (cd.getName().equals("ResourceType"))
-            s.append("</td><td><a href=\"terminologies.htm#ResourceType\">Resource Type names</a></td></tr>\r\n");
-          else if (cd.getName().equals("FHIRContentType"))
-            s.append("</td><td><a href=\"terminologies.htm#fhircontenttypes\">Resource or Data Type name</a></td></tr>\r\n");
-          else 
-            s.append("</td><td>???</td></tr>\r\n");
-                    
-        } else if (cd.getBinding() == Binding.CodeList)
-          s.append("</td><td><a href=\""+cd.getReference().substring(1)+".htm\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a></td></tr>\r\n");          
-        else if (cd.getBinding() == Binding.ValueSet && cd.getReferredValueSet() != null)
-          s.append("</td><td><a href=\""+cd.getReference()+".htm\">"+Utilities.escapeXml(cd.getDescription())+"</a></td></tr>\r\n");          
-        else if (cd.hasReference())
-          s.append("</td><td><a href=\""+cd.getReference()+"\">"+Utilities.escapeXml(cd.getDescription())+"</a></td></tr>\r\n");
-        else if (Utilities.noString(cd.getDescription()))
-          s.append("</td><td style=\"color: grey\">"+Utilities.escapeXml(cd.getBinding().toString())+"</td></tr>\r\n");
-        else
-          s.append("</td><td>"+Utilities.escapeXml(cd.getBinding().toString())+": "+Utilities.escapeXml(cd.getDescription())+"</td></tr>\r\n");
+        if (cd.getElementType() != ElementType.Unknown) {
+          s.append(" <tr><td>"+Utilities.escapeXml(cd.getName())+"</td><td>"+Utilities.escapeXml(cd.getDefinition())+"</td><td>");
+          if (cd.getBinding() == Binding.Reference) 
+            s.append("Reference");
+          else if (cd.getElementType() == ElementType.Simple) 
+            s.append("Code List");
+          else if (cd.getBinding() == Binding.Unbound)
+            s.append("??");
+          else if (cd.isExample())
+            s.append("Value Set (Example)");
+          else
+            s.append("Value Set");
+
+          if (cd.getBinding() == Binding.Special) {
+
+            if (cd.getName().equals("MessageEvent"))
+              s.append("</td><td><a href=\"message-events.htm\">http://hl7.org/fhir/message-events.htm</a></td></tr>\r\n");
+            else if (cd.getName().equals("ResourceType"))
+              s.append("</td><td><a href=\"resource-types.htm\">http://hl7.org/fhir/resource-types.htm</a></td></tr>\r\n");
+            else if (cd.getName().equals("DataType"))
+              s.append("</td><td><a href=\"data-types.htm\">http://hl7.org/fhir/data-types.htm</a></td></tr>\r\n");
+            else if (cd.getName().equals("FHIRDefinedType"))
+              s.append("</td><td><a href=\"defined-types.htm\">http://hl7.org/fhir/defined-types.htm</a></td></tr>\r\n");
+            else 
+              s.append("</td><td>???</td></tr>\r\n");
+
+          } else if (cd.getBinding() == Binding.CodeList)
+            s.append("</td><td><a href=\""+cd.getReference().substring(1)+".htm\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a></td></tr>\r\n");          
+          else if (cd.getBinding() == Binding.ValueSet && cd.getReferredValueSet() != null)
+            s.append("</td><td><a href=\""+cd.getReference()+".htm\">"+Utilities.escapeXml(cd.getDescription())+"</a></td></tr>\r\n");          
+          else if (cd.hasReference())
+            s.append("</td><td><a href=\""+cd.getReference()+"\">"+Utilities.escapeXml(cd.getDescription())+"</a></td></tr>\r\n");
+          else if (Utilities.noString(cd.getDescription()))
+            s.append("</td><td style=\"color: grey\">??</td></tr>\r\n");
+          else
+            s.append("</td><td>? "+Utilities.escapeXml(cd.getBinding().toString())+": "+Utilities.escapeXml(cd.getDescription())+"</td></tr>\r\n");
+        }
       }
     }
     s.append("</table>\r\n");
@@ -1327,7 +1337,7 @@ private String resItem(String name) throws Exception {
         } else if (cd.getBinding() == Binding.CodeList) {
           if (cd.getBindingStrength() == BindingStrength.Preferred)
             s.append("Preferred codes: ");
-          else if (cd.getBindingStrength() == BindingStrength.Suggested)
+          else if (cd.getBindingStrength() == BindingStrength.Example)
             s.append("Suggested codes: ");
           else // if (cd.getBindingStrength() == BindingStrength.Required)
             s.append("Required codes: ");
@@ -1350,7 +1360,7 @@ private String resItem(String name) throws Exception {
         } else if (cd.getBinding() == Binding.ValueSet) {
           if (cd.getBindingStrength() == BindingStrength.Preferred)
             s.append("Preferred codes: ");
-          else if (cd.getBindingStrength() == BindingStrength.Suggested)
+          else if (cd.getBindingStrength() == BindingStrength.Example)
             s.append("Suggested codes: ");
           else // if (cd.getBindingStrength() == BindingStrength.Required)
             s.append("Required codes: ");
@@ -1584,8 +1594,9 @@ private String resItem(String name) throws Exception {
     return src;
   } 
 
-  private static final String OID_TX = "1.2.3.4.5.6.";
-  private static final String OID_VS = "1.2.3.4.5.7.";
+  private static final String OID_TX = "2.16.840.1.113883.4.642.1.";
+  private static final String OID_VS = "2.16.840.1.113883.4.642.2.";
+  
   private String generateOID(String fileTitle) {
     BindingSpecification cd = definitions.getBindingByReference("#"+fileTitle);
     if (cd.isValueSet())

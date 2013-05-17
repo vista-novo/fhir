@@ -29,7 +29,6 @@ package org.hl7.fhir.definitions.generators.xsd;
 
  */
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;

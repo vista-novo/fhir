@@ -8,7 +8,6 @@
     <link rel="Stylesheet" href="fhir-print.css" type="text/css" media="print" />
 </head>
 
-
 <body>
 <%sidebar%>
 
@@ -16,100 +15,87 @@
 <%txheader%>
 
 
-[%onthispage Bindings#bindings|Named Systems#codesystems|Internal Systems#localsystems%]
+[%onthispage Bindings#bindings|Named Systems#codesystems%]
 
 <h1>Terminologies: Using Codes</h1>
 
+<a name="bindings"> </a>
 <p>
 Many elements in the FHIR resources are assigned a type of <a href="datatypes.htm#code">code</a>, 
 <a href="datatypes.htm#Coding">Coding</a> or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>.
-These elements contain codes that have defined meanings and come from sets of codes of varying sophistication
-and size. In many simple cases, the set of codes is a short list defined specifically for the element. In other cases,
-the list of codes is taken from a large and complex terminology or ontology such as SNOMED-CT or OBO. 
+These elements contain codes that are associated with defined meanings defined by frameworks
+of varying sophistication and size. In some simple cases, the set of codes is a enumeration, 
+a short list defined specifically for the element. In other cases, the list of codes is taken 
+from a large and complex terminology or ontology such as SNOMED-CT or OBO. 
 </p>
-<a name="bindings"> </a>
-<h2>Bindings</h2>
 <p>
 All these elements of type <a href="datatypes.htm#code">code</a>, <a href="datatypes.htm#Coding">Coding</a> 
 or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a> are given a "binding name" that defines the 
-set of possible codes that can be used in the element in question. In <a href="profile.htm">Resource Profiles</a>, 
-the elements can be assigned a new binding name that defines a new set of possible codes. The set of codes 
-defined by a profile must be a subset of the set of codes defined in the base resource and those defined by 
-any imported profiles. Binding Names can identify sets of codes in the following ways:
+set of possible codes that can be used in the element in question. 
 </p>
-<table class="grid">
- <tr><td>value set</td><td>The binding name has an associated URL which is a reference to a <a href="valueset.htm">Value Set Resource</a> that provides a formal definition of the set of possible codes</td></tr>
- <tr><td>code list</td><td>The binding name is associated with a simple list of codes and definitions from some identified code system (by <a href="datatypes.htm#codesystem">SID, URI, OID or UUID</a>). In resource definitions, the system reference may be omitted and a list of custom codes with definitions supplied (this is for status and workflow fields that applications need to know).  In formal terms, this is merely a locally-defined value set.</td></tr>
- <tr><td>reference</td><td>The binding name has an associated URL which refers to some external standard or specification that defines the possible codes</td></tr>
- <tr><td>special</td><td>The binding points to a list of concepts defined as part of FHIR itself (<a href="#localsystems">see below for possible values</a>)</td></tr>
-<!-- <tr><td>definition</td><td>Defines the kind of codes that would be appropriate in the field, but doesn't provide any further guidance about where to find such codes</td></tr> -->
-</table>
+<a name="code"> </a>
+<h2>code</h2>
 <p>
-Value set and code list bindings also have three additional properties that govern their use - <i>extensibility</i>, <i>conformance</i> and <i>change management</i>:
+For simple elements with type <a href="datatypes.htm#code">code</a>, the element 
+is either bound to a code list - a list of defined codes, or the binding references 
+some external standard that defines the set of valid codes that can be used (typical 
+examples of references are <a href="http://www.rfc-editor.org/bcp/bcp13.txt">Mime Types</a>, 
+<a href="http://tools.ietf.org/html/bcp47">Language Codes</a>, <a href="http://unitsofmeasure.org">UCUM</a>, etc).
 </p>
-<ul>
-  <li><b>Extensibility</b><a name="extensibility"> </a>indicates whether additional codes are expected to be needed beyond those listed.  
-   It has two values:<br/><br/>
-    <table>
-      <tr><td>complete</td>
-          <td>No additional codes are to be used beyond the list provided</td>
-      </tr>
-      <tr><td>extensible</td>
-          <td>Some concepts won't be covered by the provided value set, so supplemental codes 
-          or plain text may be needed</td>
-      </tr>
-    </table>
-  </li>
-  <li><b>Conformance</b><a name="conformance"> </a>indicates the expectations for implementers of the specification.  
-    There are three possible values:<br/><br/>
-    <table>
-      <tr><td>required</td><td>
-        Only codes in the specified set are allowed. Profiles can only specify a subset of the 
-        defined codes.<br/>
-        If the strength is 'extensible', other codes may be used for concepts not covered by the 
-        value set but cannot be used for concepts covered by the bound code list, even 
-        if a profile constrains out some of those codes).<br/>
-        Specifications may render this as "SHALL"
-      </td></tr>
-      <tr><td>preferred</td><td>
-        For greater interoperability, implementers are strongly encouraged to use the bound set of
-        codes, however alternate codes may be used in profiles if necessary without being considered
-        non-conformant.<br/>
-        Specifications may render this as "SHOULD"
-      </td></tr>
-      <tr><td>example</td><td>
-        The codes in the set are an example to illustrate the meaning of the field.
-        There is no particular preference for its use.<br/>
-        Specifications may render this as "MAY"
-      </td></tr>
-    </table>
-  </li>
-  <li><b>Change Management</b><a name="management"> </a>describes how changes to the binding are managed over time. 
-    For a value set there are two possible values:<br/><br/>
-    <table>
-      <tr><td>static</td><td>The set of values is fixed to those defined in the identified value set as of the time the specification was published</td></tr>
-      <tr><td>dynamic</td><td>As the value sets changes by including new codes, or as codes that match the value set filters are added to the underlying code systems, any new codes can be used</td></tr>
-    </table>
-    For a code list, there are possible values:<br/><br/>
-    <table>
-      <tr><td>fixed</td><td>The list of defined codes will not change in the future</td></tr>
-      <tr><td>alterable</td><td>The list of defined codes may change in the future, and implementations should not depend on this value never changing</td></tr>
-    </table>
-  </li>
-</ul>
 <p>
-See the <a href="terminologies-bindings.htm">Bindings List</a> for a full list of the binding names defined for all FHIR resources.
+The value of a element of type <i>code</i> SHALL be one of the codes defined by the code list or reference.
 </p>
+<p>
+No other codes can be used in an instance. If the binding is a code list, the list of codes may
+be extended in subsequent releases of the specification. Profiles may state rules on which codes
+may be used in particular contexts, but cannot define new or additional codes for these elements.
+</p>
+<a name="coding"> </a>
+<h2>CodeableConcept / Coding</h2>
+<p>
+For elements with type <a href="datatypes.htm#CodeableConcept">CodeableConcept</a> or 
+<a href="datatypes.htm#Coding">Coding</a>, the binding refers to a <a href="valueset.htm">
+Value Set</a> that defines a list of concepts along with the code/system pairs that refer
+to them. The binding to the value set may be labelled as just an example.
+</p>
+<p>
+If the binding is not an example binding, then the code/system pair in the instance
+SHOULD refer to one of the concepts that is a member of the value set.
+</p>
+<p>
+Bindings to value sets provided as part of the specification are always specific
+to the version of the value set published with the specification. The value set 
+may be sealed by defining a simple list of enumerated codes, or it may include 
+codes by their properties, in which case the list of valid concepts may grow
+or change over time.
+</p>
+<p>
+Profiles can redefine the binding and are able to be much more precise about
+exactly which codes can be used for these elements (see <a href="profile.htm#binding">Binding 
+Control</a> for more detail).
+</p>
+
 <a name="codesystems"></a>
 <h2>Named Systems List</h2>
+
 <p>
-This specification defines the following names (URIs) as fixed names that may 
-be used in the <i>system</i> element of the <a href="datatypes.htm#Identifier">Identifier</a>
+This table lists some known system identifiers suitable for use in the <i>system</i>
+element of CodeableConcept, Coding, and Identifier elements. Other lists 
+published in this specification:
+</p>
+<ul>
+ <li><a href="terminologies-bindings.htm">Bindings List</a>: a full list of the binding names defined for all FHIR resources</li>
+ <li><a href="terminologies-codes.htm">Code Lists</a>: Code lists defined as part of this specification</li>
+ <li><a href="terminologies-valuesets.htm">Value Sets</a>: Value sets defined as part of this specification</li>
+ <li><a href="terminologies-v2.htm">v2 Tables list</a>: A list of v2 tables that can be used in resources</li>
+ <li><a href="terminologies-v3.htm">v3 code systems list</a>: A list of v3 code systems that can be used in resources</li>
+</ul>
+<p>
+The following names (URIs) may be used in the <i>system</i> element of the <a href="datatypes.htm#Identifier">Identifier</a>
 <a href="datatypes.htm#Coding">Coding</a> or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a> data types.
 If a URI is defined here, it must be used in preference to other identifying mechanisms such as OIDs found in the
 HL7 OID registry.
 </p>
-
 <table class="grid">
  <tr>
    <th width="150">URI</th>
@@ -179,18 +165,6 @@ HL7 OID registry.
    OIDs and UUIDs are represented in their URN form (<a href="http://www.ietf.org/rfc/rfc3001.txt">urn:oid:</a> and <a href="http://www.ietf.org/rfc/rfc4122.txt">urn:uuid:</a> 
    - plain <a href="http://tools.ietf.org/id/draft-larmouth-oid-iri-04.txt">oid:</a> and uuid: are not used). Note that UUIDs are always lowercase in a IRI<br/>No OID</td>
  </tr>
-<!--
- <tr>
-   <td>urn:iso:std:iso-iec:9834:-1</td>
-   <td>OIDs</td>
-   <td>The identifier is an OID itself (ISO 9834-1 defines OIDs)</td>
- </tr>
- <tr>
-   <td>urn:iso:std:iso-iec:9834:-8</td>
-   <td>UUIDs</td>
-   <td>ISO 9834-8 defines OIDs. Also called GUIDs<br/>No OID</td>
- </tr>
- -->
  <tr>
    <td>http://hl7.org/fhir/sid/us-ssn</td>
    <td>SSN (<a href="http://www.w3.org">W3C</a>)</td>
@@ -203,83 +177,10 @@ HL7 OID registry.
  todo: add http://tools.ietf.org/html/rfc5141. add urn:std:iso:XXXXX
  </p>
 <p>
-<b>Important Note:</b> The set of sids listed above is incomplete and subject to change.
+<b>Important Note:</b> This list of names is incomplete and subject to change.
 Some values may be dropped and others will likely be added in the coming months as HL7
-institutes a formal process for determining what code systems and identifier types should
-be handled in this manner rather than as OIDs or other identifiers.
+institutes a formal processes around URIs in vocabulary.
 </p>
-
-<a name="localsystems"/>
-<h2>Internal Code Systems</h2>
-<p>
-In addition to this, a number of code systems are defined informally through 
-the specification. This table enumerates them and assigns sid and OID values 
-for them, though these are not generally used directly in this specification:
-</p>
-<table class="list">
- <tr>
-  <td><a href="#specialvalues">Special Values</a></td>
-  <td>http://hl7.org/fhir/special-values</td>
-  <td>2.16.840.1.113883.6.305</td>
- </tr>
- <tr>
-  <td><a href="#resourcetypes">Resource Types</a></td>
-  <td>http://hl7.org/fhir/resource-types</td>
-  <td>2.16.840.1.113883.6.306</td>
- </tr>
- <tr>
-  <td><a href="http.htm#interactions">Logical Interactions</a> (RESTful framework)</td>
-  <td>http://hl7.org/fhir/rest-operations</td>
-  <td>2.16.840.1.113883.6.308</td>
- </tr>
- <tr>
-  <td><a href="message.htm#Events">Message Events</a> (Messaging framework)</td>
-  <td>http://hl7.org/fhir/message-events</td>
-  <td>2.16.840.1.113883.6.307</td>
- </tr>
-</table>
-<p>
-Note that all the codes in these code systems are case sensitive and must be used in lowercase.
-All the codes in these code systems have their own uri of the format http://hl7.org/fhir/sid/[system]/[code]. E.g. The resource type "Person" has the full uri http://hl7.org/fhir/sid/resource-types/person. 
-</p>
-<a name="specialvalues"/>
-<h2>Special Values</h2>
-<p>
-Internally defined codes useful throughout the specification where <a href="datatypes.htm#Coding">Coding</a> or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a> is used.
-These are defined by the code system "http://hl7.org/fhir/special-values" which has OID 2.16.840.1.113883.6.305. 
-</p>
-<table class="codes">
-  <tr><th>code</th><th>Display / Print Name</th><th>Comment</th></tr>
-  <tr><td>true</td><td>Boolean true</td><td></td></tr>
-  <tr><td>false</td><td>Boolean false</td><td></td></tr>
-  <tr><td>trace</td><td>The content is greater than zero, but too small to be quantified</td><td>used in formulations</td></tr>
-  <tr><td>sufficient</td><td>The specific quantity is not known, but is known to be non-zero and is not specified because it makes up the bulk of the material.</td><td>(e.g. 'Add 10mg of ingredient X, 50mg of ingredient Y, and sufficient quantity of water to 100mL.' This code would be used to express the quantity of water. )</td></tr>
-  <tr><td>withdrawn</td><td>The value is no longer available</td><td></td></tr>
-  <tr><td>nil known</td><td>The are no known applicable values in this context</td><td>e.g. No known allergies / No known Medical History / No known medications</td></tr>
-</table>
-
-<a name="resourcetypes"/>
-<a name="ResourceType"/>
-<h2>Resource Types</h2>
-<p>
-In several places, the resource types themselves are used as either codes or identifiers.  Where necessary, these are identified by the uri "http://hl7.org/fhir/resource-types". This is a formal list of the resource type codes: 
-</p>
-<table class="codes">
-<%resourcecodes%>
-</table>
-
-
-<a name="fhircontenttypes"/>
-<a name="FHIRContentType"/>
-<h2>FHIR Content Types</h2>
-<p>
-A <a href="#resourcetypes">resource type</a> or a data type.  Where necessary, these are identified by the uri "http://hl7.org/fhir/resource-types" and "http://hl7.org/fhir/data-types". This is a formal list of the data type codes:
-</p>
-<table class="codes">
-<%datatypecodes%>
-</table>
-
-
 
 
 <%footer%>

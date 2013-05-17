@@ -31,31 +31,41 @@ import org.hl7.fhir.utilities.IniFile;
 
 public class BindingNameRegistry {
 
-  private String srcDir;
   private boolean forPublication;
+  private IniFile ini;
 
   public BindingNameRegistry(String srcDir, boolean forPublication) {
-    this.srcDir = srcDir;
     this.forPublication = forPublication;
+    ini = new IniFile(srcDir+"bindings.ini");
   }
 
   public String idForName(String name) {
-    IniFile ini = new IniFile(srcDir+"bindings.ini");
-    if (ini.getIntegerProperty("Binding Names", name) != null)
-      return ini.getIntegerProperty("Binding Names", name).toString();
+    return idForNameInternal("Binding Names", "Last", name);
+  }
+
+  public void commit() {
+    if (forPublication)
+      ini.save();
+  }
+
+  public String idForQName(String q, String name) {
+    return idForNameInternal(q, q, name);
+  }
+  
+  public String idForNameInternal(String q, String k, String name) {
+    if (ini.getIntegerProperty(q, name) != null)
+      return ini.getIntegerProperty(q, name).toString();
     else if (!forPublication)
-    	return "0";
+      return "0";
     else {
       Integer last;
-      if (ini.getIntegerProperty("Key", "Last") != null)
-        last = ini.getIntegerProperty("Key", "Last")+1;
+      if (ini.getIntegerProperty("Key", k) != null)
+        last = ini.getIntegerProperty("Key", k)+1;
       else 
         last = 1;
-      ini.setIntegerProperty("Key", "Last", last, null);
-      ini.setIntegerProperty("Binding Names", name, last, null);
-      ini.save();
+      ini.setIntegerProperty("Key", k, last, null);
+      ini.setIntegerProperty(q, name, last, null);
       return last.toString();
     }
   }
-
 }

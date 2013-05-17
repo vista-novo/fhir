@@ -1,5 +1,81 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
+<!--
+this test was in the terminologies page, but was moved out when the specification level content was simplified.
+Needs to be introduced to the profile documentation somehow
+
+<p>
+Value set and code list bindings also have three additional properties that govern their use - <i>extensibility</i>, <i>conformance</i> and <i>change management</i>:
+</p>
+<ul>
+  <li><b>Extensibility</b><a name="extensibility"> </a>indicates whether additional codes are expected to be needed beyond those listed.  
+   It has two values:<br/><br/>
+    <table>
+      <tr><td>complete</td>
+          <td>No additional codes are to be used beyond the list provided</td>
+      </tr>
+      <tr><td>extensible</td>
+          <td>Some concepts won't be covered by the provided value set, so supplemental codes 
+          or plain text may be needed</td>
+      </tr>
+    </table>
+  </li>
+  <li><b>Conformance</b><a name="conformance"> </a>indicates the expectations for implementers of the specification.  
+    There are three possible values:<br/><br/>
+    <table>
+      <tr><td>required</td><td>
+        Only codes in the specified set are allowed. Profiles can only specify a subset of the 
+        defined codes.<br/>
+        If the strength is 'extensible', other codes may be used for concepts not covered by the 
+        value set but cannot be used for concepts covered by the bound code list, even 
+        if a profile constrains out some of those codes).<br/>
+        Specifications may render this as "SHALL"
+      </td></tr>
+      <tr><td>preferred</td><td>
+        For greater interoperability, implementers are strongly encouraged to use the bound set of
+        codes, however alternate codes may be used in profiles if necessary without being considered
+        non-conformant.<br/>
+        Specifications may render this as "SHOULD"
+      </td></tr>
+      <tr><td>example</td><td>
+        The codes in the set are an example to illustrate the meaning of the field.
+        There is no particular preference for its use.<br/>
+        Specifications may render this as "MAY"
+      </td></tr>
+    </table>
+  </li>
+  <li><b>Change Management</b><a name="management"> </a>describes how changes to the binding are managed over time. 
+    For a value set there are two possible values:<br/><br/>
+    <table>
+      <tr><td>static</td><td>The set of values is fixed to those defined in the identified value set as of the time the specification was published</td></tr>
+      <tr><td>dynamic</td><td>As the value sets changes by including new codes, or as codes that match the value set filters are added to the underlying code systems, any new codes can be used</td></tr>
+    </table>
+    For a code list, there are possible values:<br/><br/>
+    <table>
+      <tr><td>fixed</td><td>The list of defined codes will not change in the future</td></tr>
+      <tr><td>alterable</td><td>The list of defined codes may change in the future, and implementations should not depend on this value never changing</td></tr>
+    </table>
+  </li>
+</ul>
+
+this paragraph is not quite true:
+
+In <a href="profile.htm">Resource Profiles</a>, 
+the elements can be assigned a new binding name that defines a new set of possible codes. The set of codes 
+defined by a profile must be a subset of the set of codes defined in the base resource and those defined by 
+any imported profiles. 
+
+this paragraph is from ccd:
+
+Value-set bindings adhere to HL7 Vocabulary Working Group best practices, and 
+include both a conformance verb (SHALL, SHOULD, MAY, etc.) and an indication of 
+DYNAMIC vs. STATIC binding.  Value-set constraints can be STATIC, meaning that they are 
+bound to a specified version of a value set, or DYNAMIC, meaning that they are bound to 
+the most current version of the value set. A simplified constraint, used when the 
+binding is to a single code, includes the meaning of the code, as follows.
+
+-->
+
 <h2>Metadata Notes:</h2>
 <ul>
 <li>The name of the profile is not required to be globally unique, but the name should have some scoping information (i.e. Acme Inc. (USA), Allergy List)</li>

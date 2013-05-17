@@ -36,13 +36,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerator.CDUsage;
 import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.TypeRef;
-import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.utilities.Utilities;
 
 public class DictHTMLGenerator  extends OutputStreamWriter {
@@ -98,13 +97,13 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	  
 	  StringBuilder b = new StringBuilder();
 	  BindingSpecification cd =  definitions.getBindingByName(e.getBindingName());
-    b.append(cd.getName()+" : \"");
+    b.append(cd.getName()+" : ");
     b.append(TerminologyNotesGenerator.describeBinding(cd));
-    if (cd.getBinding() == Binding.Unbound)
-      b.append(" (Not Bound to any codes)");
-    else
-      b.append(" ("+(cd.getExtensibility() == null ? "--" : "<a href=\"terminologies.htm#extensibility\">"+cd.getExtensibility().toString().toLowerCase())+"</a>/"+
-          "<a href=\"terminologies.htm#conformance\">"+(cd.getBindingStrength() == null ? "--" : cd.getBindingStrength().toString().toLowerCase())+"</a>)");
+//    if (cd.getBinding() == Binding.Unbound)
+//      b.append(" (Not Bound to any codes)");
+//    else
+//      b.append(" ("+(cd.getExtensibility() == null ? "--" : "<a href=\"terminologies.htm#extensibility\">"+cd.getExtensibility().toString().toLowerCase())+"</a>/"+
+//          "<a href=\"terminologies.htm#conformance\">"+(cd.getBindingStrength() == null ? "--" : cd.getBindingStrength().toString().toLowerCase())+"</a>)");
     return b.toString();
   }
 

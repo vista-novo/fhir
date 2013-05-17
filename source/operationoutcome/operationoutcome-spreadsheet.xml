@@ -20,7 +20,6 @@
   <WindowWidth>1980</WindowWidth>
   <WindowTopX>135</WindowTopX>
   <WindowTopY>480</WindowTopY>
-  <ActiveSheet>7</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -176,7 +175,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="150">
     <Cell ss:StyleID="s68"><Data ss:Type="String">OperationOutcome.issue.type</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Coding</Data></Cell>
     <Cell><Data ss:Type="String">IssueType</Data></Cell>
     <Cell><Data ss:Type="String">Error or warning code</Data></Cell>
     <Cell><Data ss:Type="String">A code indicating the type of error, warning or information message.</Data></Cell>
@@ -223,6 +222,7 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -242,7 +242,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -690,7 +691,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

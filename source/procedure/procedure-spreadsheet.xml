@@ -678,7 +678,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">the nature of the relationship</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">alterable</Data></Cell>
-    <Cell><Data ss:Type="String">#ProcedureRelationshipType</Data></Cell>
+    <Cell><Data ss:Type="String">#procedure-relationship-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"/>
@@ -724,7 +724,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>11</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
@@ -782,7 +782,7 @@
    <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
- <Worksheet ss:Name="ProcedureRelationshipType">
+ <Worksheet ss:Name="procedure-relationship-type">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="14.0625">
    <Column ss:Index="2" ss:Width="93.75"/>
@@ -795,7 +795,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">caused-by</Data></Cell>
-    <Cell><Data ss:Type="String">This procedure had to be perfromed because of the related one</Data></Cell>
+    <Cell><Data ss:Type="String">This procedure had to be performed because of the related one</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -808,7 +808,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

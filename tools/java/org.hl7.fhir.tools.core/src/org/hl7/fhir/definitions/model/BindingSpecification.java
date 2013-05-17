@@ -57,36 +57,39 @@ public class BindingSpecification {
     Unstated,
     Required,
     Preferred,
-    Suggested
+    Example
   }
 
   public enum BindingExtensibility {
     Complete,
     Extensible
   }
-  
-  public enum Management {
-    Fixed,
-    Alterable,
-    Static,
-    Dynamic,
-    Other
+
+  public enum ElementType {
+    Unknown,
+    Simple,
+    Complex
   }
-  
-  private String id;
+
+  // properties
+  private String id; // to generate the OID
   private String name;
 	private String definition;
 	private Binding binding;
+  private String reference;
+  private String description;
+  private boolean example;
+  private List<DefinedCode> codes = new ArrayList<DefinedCode>();
+	
+	// these are implied by the use of the binding at the specification level
   private BindingStrength bindingStrength;
   private BindingExtensibility extensibility;
-	private String reference;
-	private String description;
+
+  // analysis during run time
+  private ElementType elementType = ElementType.Unknown;
 	private String source; // for useful error messages during build
-	private Management management;
 	private List<String> useContexts = new ArrayList<String>();
 	private ValueSet referredValueSet;
-	
-  private List<DefinedCode> codes = new ArrayList<DefinedCode>();
   private List<DefinedCode> childCodes;
 
   public String getId() {
@@ -189,14 +192,6 @@ public class BindingSpecification {
     this.extensibility = extensibility;
   }
 
-  public Management getManagement() {
-    return management;
-  }
-
-  public void setManagement(Management management) {
-    this.management = management;
-  }
-
   public boolean isValueSet() {
      return getVSSources().size() > 0;
   }
@@ -256,5 +251,22 @@ public class BindingSpecification {
     }
     return hasParent;
   }
+
+   public boolean isExample() {
+    return example;
+  }
+
+  public void setExample(boolean example) {
+    this.example = example;
+  }
+
+  public ElementType getElementType() {
+    return elementType;
+  }
+
+  public void setElementType(ElementType elementType) {
+    this.elementType = elementType;
+  }
+
   
 }

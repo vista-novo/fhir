@@ -33,7 +33,6 @@ import java.util.List;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
-import org.hl7.fhir.definitions.model.BindingSpecification.Management;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
@@ -44,13 +43,13 @@ public class BindingsParser {
   private String filename;
   private String root;
   private XLSXmlParser xls;
-  private boolean forPublication;
+  private BindingNameRegistry registry;
 
-  public BindingsParser(InputStream file, String filename, String root, boolean forPublication) {
+  public BindingsParser(InputStream file, String filename, String root, BindingNameRegistry registry) {
     this.file = file;
 		this.filename = filename;
 		this.root = root;
-		this.forPublication = forPublication;
+		this.registry = registry;
 	}
 
 	public List<BindingSpecification> parse() throws Exception {
@@ -74,12 +73,11 @@ public class BindingsParser {
     cd.setName(sheet.getColumn(row, "Binding Name"));
 		cd.setDefinition(sheet.getColumn(row, "Definition"));
     cd.setBinding(readBinding(sheet.getColumn(row, "Binding")));
-    cd.setBindingStrength(readBindingStrength(sheet.getColumn(row, "Binding Strength")));
-    cd.setExtensibility(readExtensibility(sheet.getColumn(row, "Extensibility")));
-    cd.setManagement(readManagement(sheet.getColumn(row, "Management")));
+//    cd.setBindingStrength(readBindingStrength(sheet.getColumn(row, "Binding Strength")));
+//    cd.setExtensibility(readExtensibility(sheet.getColumn(row, "Extensibility")));
     cd.setReference(sheet.getColumn(row, "Reference"));
     cd.setDescription(sheet.getColumn(row, "Description"));
-    cd.setId(new BindingNameRegistry(root, forPublication).idForName(cd.getName()));
+    cd.setId(registry.idForName(cd.getName()));
     cd.setSource(filename);
 		results.add(cd);
 	}
@@ -91,24 +89,6 @@ public class BindingsParser {
     if (s.equals("extensible"))
       return BindingSpecification.BindingExtensibility.Extensible;
     throw new Exception("Unknown Binding Extensibility: "+s);
-  }
-
-  public static Management readManagement(String s) throws Exception {
-    s = s.toLowerCase();
-    if (s == null || "".equals(s)) 
-      return null;
-    
-    if (s.equals("alterable"))
-      return BindingSpecification.Management.Alterable;
-    if (s.equals("fixed"))
-      return BindingSpecification.Management.Fixed;
-    if (s.equals("dynamic"))
-      return BindingSpecification.Management.Dynamic;
-    if (s.equals("static"))
-      return BindingSpecification.Management.Static;
-    if (s.equals("other"))
-      return BindingSpecification.Management.Other;
-    throw new Exception("Unknown Management Code: "+s);
   }
 
   public static BindingSpecification.Binding readBinding(String s) throws Exception {
@@ -134,8 +114,8 @@ public class BindingsParser {
       return BindingSpecification.BindingStrength.Required;
     if (s.equals("preferred"))
       return BindingSpecification.BindingStrength.Preferred;
-    if (s.equals("suggested"))
-      return BindingSpecification.BindingStrength.Suggested;
+    if (s.equals("example"))
+      return BindingSpecification.BindingStrength.Example;
     throw new Exception("Unknown Binding Strength: "+s);
   }
 

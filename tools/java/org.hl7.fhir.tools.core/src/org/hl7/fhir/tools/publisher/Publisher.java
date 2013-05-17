@@ -40,6 +40,7 @@ import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -52,8 +53,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-
-import net.sourceforge.plantuml.graph.Zoda1;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMIResource;
@@ -73,15 +72,17 @@ import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.Example.ExampleType;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.parsers.SourceParser;
+import org.hl7.fhir.definitions.validation.ProfileValidator;
 import org.hl7.fhir.definitions.validation.ResourceValidator;
 import org.hl7.fhir.definitions.validation.ResourceValidator.Level;
-import org.hl7.fhir.definitions.validation.ProfileValidator;
 import org.hl7.fhir.definitions.validation.ValidationMessage;
 import org.hl7.fhir.instance.formats.AtomComposer;
 import org.hl7.fhir.instance.formats.JsonComposer;
@@ -90,11 +91,10 @@ import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.AtomEntry;
 import org.hl7.fhir.instance.model.AtomFeed;
 import org.hl7.fhir.instance.model.Contact.ContactSystem;
-import org.hl7.fhir.instance.model.DateTime;
 import org.hl7.fhir.instance.model.Factory;
+import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.ValueSet;
-import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.instance.model.ValueSet.CodeSelectionMode;
 import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.instance.model.ValueSet.ValueSetDefineConceptComponent;
@@ -120,6 +120,8 @@ import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.hl7.fhir.utilities.xml.XhtmlGenerator;
 import org.hl7.fhir.utilities.xml.XmlGenerator;
 import org.json.JSONObject;
+import org.tigris.subversion.javahl.SVNClient;
+import org.tigris.subversion.javahl.Status;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -131,7 +133,6 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
-import org.tigris.subversion.javahl.*;
 
 
 /**
@@ -284,6 +285,7 @@ public class Publisher {
         Utilities.clearDirectory(page.getFolders().rootDir+"temp"+File.separator+"hl7"+File.separator+"dload");
 			}
 			prsr.parse(page.getGenDate(), page.getVersion());
+			defineSpecialValues();
 
 			if (validate()) {
 				if (isGenerate) {
@@ -300,7 +302,66 @@ public class Publisher {
 		}
 	}
 
-	private void generateECore(
+	private IniFile ini; 
+	
+	private void defineSpecialValues() throws Exception {
+	  for (BindingSpecification bs : page.getDefinitions().getBindings().values()) {
+	    if (bs.getBinding() == Binding.Special) {
+	      if (bs.getName().equals("DataType") || bs.getName().equals("FHIRDefinedType")) {
+	        List<String> codes = new ArrayList<String>();
+	        for (TypeRef t : page.getDefinitions().getKnownTypes())
+	          codes.add(t.getName());
+	        Collections.sort(codes);
+	        for (String s : codes) {
+	          if (!page.getDefinitions().dataTypeIsSharedInfo(s)) {
+	            DefinedCode c = new DefinedCode();
+	            c.setCode(s);     
+	            c.setId(getCodeId("datatype", s));
+	            if (page.getDefinitions().getPrimitives().containsKey(s))
+	              c.setDefinition(page.getDefinitions().getPrimitives().get(s).getDefinition());
+	            else if (page.getDefinitions().getConstraints().containsKey(s))
+	              c.setDefinition(page.getDefinitions().getConstraints().get(s).getDefinition());
+	            else if (page.getDefinitions().getElementDefn(s) != null)
+	              c.setDefinition(page.getDefinitions().getElementDefn(s).getDefinition());
+	            bs.getCodes().add(c);
+	          }
+	        }
+	      } 
+	      if (bs.getName().equals("ResourceType") || bs.getName().equals("FHIRDefinedType")) {
+	        List<String> codes = new ArrayList<String>();
+	        codes.addAll(page.getDefinitions().getKnownResources().keySet());
+	        Collections.sort(codes);
+	        for (String s : codes) {
+	          DefinedCode c = page.getDefinitions().getKnownResources().get(s);
+            c.setId(getCodeId("resorucetype", s));
+	          bs.getCodes().add(c);	
+	        }
+	      }
+	      if (bs.getName().equals("MessageEvent")) {
+	        List<String> codes = new ArrayList<String>();
+	        codes.addAll(page.getDefinitions().getEvents().keySet());
+	        Collections.sort(codes);
+	        for (String s : codes) {
+	          DefinedCode c = new DefinedCode();
+	          EventDefn e = page.getDefinitions().getEvents().get(s);
+	          c.setCode(s);
+            c.setId(getCodeId("messageevent", s));
+	          c.setDefinition(e.getDefinition());
+	          bs.getCodes().add(c);
+	        }
+	      } 
+	      if (!(bs.getName().equals("DataType") || bs.getName().equals("FHIRDefinedType") || bs.getName().equals("ResourceType") || bs.getName().equals("MessageEvent"))) 
+	        log("unprocessed special type "+bs.getName());
+	    }
+	  }
+    prsr.getRegistry().commit();
+  }
+
+  private String getCodeId(String q, String name) {
+    return prsr.getRegistry().idForQName(q, name);
+  }
+
+  private void generateECore(
 			org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreDefinitions,
 			String filename) throws IOException {
 		Resource resource = new XMLResourceImpl();
@@ -1348,6 +1409,7 @@ public class Publisher {
 		      throw new Exception("No indexing home for logical place "+logicalName);
 		    page.getSectionTrackerCache().put(logicalName, new SectionTracker(prefix));
 		  }
+	    TextFile.stringToFile(src, page.getFolders().dstDir + file);    
 		  src = insertSectionNumbers(src, page.getSectionTrackerCache().get(logicalName), file);
 		}
 		TextFile.stringToFile(src, page.getFolders().dstDir + file);		
@@ -1729,7 +1791,7 @@ public class Publisher {
   private void generateCodeSystems() throws Exception {
     log(" ...code lists");
     for (BindingSpecification bs : page.getDefinitions().getBindings().values())
-      if (bs.getBinding() == Binding.CodeList)
+      if (bs.getBinding() == Binding.CodeList || bs.getBinding() == Binding.Special)
         generateCodeSystem(bs.getReference().substring(1)+".htm", bs);
   }
   
