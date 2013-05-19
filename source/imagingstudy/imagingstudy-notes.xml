@@ -12,6 +12,7 @@ The following storyboard illustrates the primary use case for
 this resource:
 </p>
 <blockquote>
+<p>
 An oncologist, Karen, is seeing patients in her clinic, and would like
 background on the patients she is seeing today. Her first patient of the
 day, Alex. has arrived. She launches her Electronic Medical Record (EMR)
@@ -32,6 +33,7 @@ it's series and images. This information will help Karen to select which
 study would like to review. Using the WADO-RS references provided, the 
 artifacts Karen would like to review can be downloaded and viewed using 
 capable DICOM viewing software.
+</p>
 </blockquote>
 
 </div>

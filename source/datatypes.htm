@@ -903,9 +903,14 @@ world varies widely.
 [%dt HumanName%]
 <p>
 The <i>text</i> element specifies the entire name as it should be represented. This
-may be provided instead of or as well as specific parts. Note that the order of the 
-parts within a given part type has significance and must be observed. The order 
-between family name and given names depends on culture and context of use. 
+may be provided instead of or as well as specific parts. Applications updating a name
+must ensure either that the text and the parts are in agreement, or that only one
+of the two is present.
+</p>
+<p>
+Note that the order of the  parts within a given part type has 
+significance and must be observed. The appropriate order between 
+family name and given names depends on culture and context of use. 
 </p>
 <!--<div class="use">
 <p><b>Constraints</b></p>
@@ -947,7 +952,9 @@ visited to find a patient or person.
 [%dt Address%]
 <p>
 The <i>text</i> element specifies the entire address as it should be represented. This
-may be provided instead of or as well as the specific parts. 
+may be provided instead of or as well as the specific parts. Applications updating an address
+must ensure either that the text and the parts are in agreement, or that only one
+of the two is present.
 </p>
 
 

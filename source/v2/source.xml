@@ -5720,7 +5720,7 @@
       <item id="1" code="…" desc="no suggested values"/>
     </version>
   </table>
-  <table id="74" state="exclude">
+  <table id="74" state="include">
     <version version="2.1" desc="DIAGNOSTIC SERVICE SECTION ID">
       <item id="0" code="BG" desc="Blood gases"/>
       <item id="0" code="CH" desc="Chemistry"/>

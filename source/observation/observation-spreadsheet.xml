@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2013-05-07T16:24:00Z</LastSaved>
+  <LastSaved>2013-05-18T17:16:33Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -98,13 +98,17 @@
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
    <Interior/>
   </Style>
-  <Style ss:ID="s75">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  <Style ss:ID="s74">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top"/>
+   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="9" ss:Color="#000000"/>
   </Style>
   <Style ss:ID="s76">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s77">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s78">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders/>
@@ -112,7 +116,7 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s78">
+  <Style ss:ID="s79">
    <Alignment ss:Vertical="Top"/>
   </Style>
  </Styles>
@@ -439,7 +443,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">ObservationBodySite</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">BodySite</Data></Cell>
     <Cell><Data ss:Type="String">Observed body part</Data></Cell>
     <Cell><Data ss:Type="String">Indicates where on the subject's body the observation was made.</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s70"><Data ss:Type="String">Knowing where observation is made is important for tracking if multiple sites are possible.</Data></Cell>
@@ -781,7 +785,7 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">SubObservationType</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">ObservationType</Data></Cell>
     <Cell><Data ss:Type="String">Kind of component observation</Data></Cell>
     <Cell><Data ss:Type="String">Identifies what type of sub-observation was performed</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s70"><Data ss:Type="String">Knowing what kind of observation is being made is essential to understanding the observation.</Data></Cell>
@@ -818,8 +822,8 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
-    <Cell><Data ss:Type="String">Quantity|CodeableConcept|Attachment|Ratio|Choice|Period|string</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">SubObservationResult</Data></Cell>
+    <Cell><Data ss:Type="String">Quantity|CodeableConcept|Attachment|Ratio|Choice|Period|Array|string</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">ObservationResult</Data></Cell>
     <Cell><Data ss:Type="String">Actual component result</Data></Cell>
     <Cell><Data ss:Type="String">The information determined as a result of making the sub-observation</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s70"><Data ss:Type="String">A result with no value isn't much use.  (Though an exceptional value such as 'unknown' may still be useful.)</Data></Cell>
@@ -863,7 +867,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>18</TopRowBottomPane>
+   <TopRowBottomPane>19</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -880,7 +884,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>20</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -889,13 +894,13 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s75" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s75" ss:Width="14.25"/>
-   <Column ss:StyleID="s75" ss:Width="126"/>
-   <Column ss:StyleID="s75" ss:Width="96"/>
-   <Column ss:StyleID="s75" ss:Width="234.75"/>
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="139.5"/>
-   <Column ss:StyleID="s75" ss:Width="320.25"/>
+   x:FullRows="1" ss:StyleID="s76" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s76" ss:Width="14.25"/>
+   <Column ss:StyleID="s76" ss:Width="126"/>
+   <Column ss:StyleID="s76" ss:Width="96"/>
+   <Column ss:StyleID="s76" ss:Width="234.75"/>
+   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="139.5"/>
+   <Column ss:StyleID="s76" ss:Width="320.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s67">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -989,11 +994,11 @@
     <Cell ss:StyleID="s67"><Data ss:Type="String">Follow Ups</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="135">
-    <Cell ss:StyleID="s76"><Data ss:Type="String">observation-provide</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">Provide a simple observation or update a previously provided simple observation</Data></Cell>
-    <Cell ss:Index="4" ss:StyleID="s76"><Data ss:Type="String">Observation</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">.subjectPatient&#10;.subjectPatient.person&#10;.subjectGroup&#10;.subjectDevice&#10;.subjectAnimal&#10;.performerAgent&#10;.performerAgent.person&#10;.performerPatient&#10;.performerPerson</Data></Cell>
-    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">observation-provide</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Provide a simple observation or update a previously provided simple observation</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="s77"><Data ss:Type="String">Observation</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">.subjectPatient&#10;.subjectPatient.person&#10;.subjectGroup&#10;.subjectDevice&#10;.subjectAnimal&#10;.performerAgent&#10;.performerAgent.person&#10;.performerPatient&#10;.performerPerson</Data></Cell>
+    <Cell ss:StyleID="s77"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1215,69 +1220,67 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="179.25"/>
    <Column ss:Width="249.75"/>
-   <Column ss:Width="47.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="65.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="47.25"/>
    <Column ss:Width="132.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="274.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s67"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Example</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Description</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">Comments</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Comments</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ObservationMethod</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Methods for simple observations</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">unbound</Data></Cell>
-    <Cell ss:StyleID="s78"/>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">valueset-observation-methods</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ObservationType</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes identifying types of simple observations</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">LOINC codes filtered to exclude lab, document,imaging and other complex codes</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s79"/>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">valueset-observation-codes</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">LOINC codes filtered to exclude panel codes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ObservationResult</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes providing results of simple observations</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">SNOMED-CT observation value codes</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">y</Data></Cell>
+    <Cell><Data ss:Type="String">valueset-observation-values</Data></Cell>
+    <Cell><Data ss:Type="String">Special Values, Data Absent Reason, and Snomed-CT clinical findings</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ObservationInterpretation</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes identifying interpretations of observations</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s79"/>
     <Cell><Data ss:Type="String">#observation-interpretation</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Need to use v2 codes</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">SubObservationType</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Codes identifying types of simple sub-observations</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:Index="5" ss:StyleID="s78"><Data ss:Type="String">LOINC codes filtered to exclude lab, document,imaging and other complex codes</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">SubObservationResult</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Codes providing results of simple sub-observations</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">SNOMED-CT observation value codes</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Need to use v2 codes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ObservationReliability</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Codes that provide reliability information about an observation</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s79"/>
     <Cell><Data ss:Type="String">#observation-reliability</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">ObservationRangeMeaning</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">Code for the meaning of a reference range</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Code for the meaning of a reference range</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">valueset-referencerange-meaning</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1307,8 +1310,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

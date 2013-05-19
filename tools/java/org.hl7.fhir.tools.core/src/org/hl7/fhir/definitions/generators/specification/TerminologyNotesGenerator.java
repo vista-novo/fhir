@@ -111,7 +111,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
       List<CDUsage> list = txusages.get(cd);
       for (int i = 2; i < list.size(); i++) {
         if (!list.get(i).element.typeCode().equals(list.get(1).element.typeCode()))
-          throw new Exception("Mixed types on one concept domain in one type - not yet supported by the build process");
+          throw new Exception("Mixed types on one concept domain in one type - not yet supported by the build process for binding "+cd.getName());
       }
       write(" <tr><td valign=\"top\" title=\""+cd.getName()+"\">");
       boolean first = true;

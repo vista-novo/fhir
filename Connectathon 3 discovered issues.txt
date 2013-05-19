@@ -3,17 +3,13 @@ TODO:
 - when to use profiles   (draft something to go on the wiki in methodology)
 - Getting feeds with just summary information (select specific fields to return) (Eliot to protoype something)
 - Chained searches over version-specific links, while the search only supports searching on current versions
-- Inter-version Compatibility
 - pathed search
     /problem?patient.id=[id]
     /patient/@[id]/problem
-- change provenance to have multiple targets?
-- add note about updating text in names and addresses
-- fix loinc observation code rules
-- reap the HTTP codes for errors - for operationoutcome
 - re-org svn
+- link to version stuff on the wiki
+
 - images - change generation
-- why is procedure.related item so limited?
 - DicomObject
   number
   uid
