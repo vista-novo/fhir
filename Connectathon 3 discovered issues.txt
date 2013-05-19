@@ -8,7 +8,8 @@ TODO:
     /patient/@[id]/problem
 - re-org svn
 - link to version stuff on the wiki
-
+- redo security event
+- revisit PHR scenario
 - images - change generation
 - DicomObject
   number
