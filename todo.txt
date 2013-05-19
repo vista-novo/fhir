@@ -32,5 +32,30 @@ Tooling
  - extensions in profiles
 
 
+* Fix problem with schematron paths capturing resources and datatypes used in extensions (by looking for valuexxx)?
+* Assessment Scale
+* todo list for tooling
+* non-techie summary - pager
+* techie summary - 1 pager
+* add profile to resource? / profileId in resource & the meaning of a profile
+* FHIR Product Line Scope and Principles
+* sort out the hdata page
+* Decide what our policy is on including formatting in Excel columns (e.g. italics in formal constraints).
+* Profile related changes in tooling:
+ 1. For profiles, add an additional tab listing resources.  For each resource, include the information from Profile.resource including Profile.resource.closed
+ 2. Map Intro to Profile.description and Notes to Resource.description.  Both should always refer to file locations to allow content to be HTML.  Determine if this can be determined by naming convention or if we need to reference the filenames in the spreadsheet
+ 3. For profiles, stop exposing the "Must understand" column for resources and expose "Must support" instead
+ 4. Ensure the tabs that list codes for bindings include columns for system and display
+ 5. Update the spreadsheets to reflect all the various changes we've made to Profile.
+ 6. Add a tab that provides a mapping between the labels on the various tabs and the Profile element names those cells correspond to
+* remove profile bindings from bindings summar (i.e. EntityNamePartQualifier)
+* improve path display for schematrons
+* order pattern & resource life cycle state & transactions
+* de-anonymise div element?
+* issue with json lists and datatype choices
+* Document.Section narrative / list issue
+* the Zed resource (or the resource with no name)
+
+
 length limits on system artifacts
 
