@@ -29,7 +29,8 @@ TODO:
  + study.description
  + 
 * Fix problem with schematron paths capturing resources and datatypes used in extensions (by looking for valuexxx)?
-
+- Change log
+- 
 Tooling
  - nested extns
  - extensions in profiles
@@ -45,3 +46,7 @@ Tooling
  6. Add a tab that provides a mapping between the labels on the various tabs and the Profile element names those cells correspond to
 * length limits on system artifacts
 
+
+- fix namespaces in tx references that are value sets
+- add example flag to tx bindings
+- figure out example value set for device type
