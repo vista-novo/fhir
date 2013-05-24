@@ -1,4 +1,6 @@
 TODO:
+- revisit basic tempate / layout
+
 - write use cases for reliable messaging 
 - when to use profiles   (draft something to go on the wiki in methodology)
 - Getting feeds with just summary information (select specific fields to return) (Eliot to protoype something)
@@ -47,6 +49,4 @@ Tooling
 * length limits on system artifacts
 
 
-- fix namespaces in tx references that are value sets
-- add example flag to tx bindings
 - figure out example value set for device type
