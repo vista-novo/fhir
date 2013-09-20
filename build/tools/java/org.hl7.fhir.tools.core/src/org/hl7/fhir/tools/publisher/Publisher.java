@@ -127,6 +127,7 @@ import org.hl7.fhir.tools.implementations.ECoreOclGenerator;
 import org.hl7.fhir.tools.implementations.csharp.CSharpGenerator;
 import org.hl7.fhir.tools.implementations.delphi.DelphiGenerator;
 import org.hl7.fhir.tools.implementations.java.JavaGenerator;
+import org.hl7.fhir.tools.implementations.javascript.JavaScriptGenerator;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.IniFile;
@@ -575,6 +576,7 @@ public class Publisher {
     page.getReferenceImplementations().add(javaReferencePlatform);
 		page.getReferenceImplementations().add(new CSharpGenerator());
     page.getReferenceImplementations().add(new DelphiGenerator());
+    page.getReferenceImplementations().add(new JavaScriptGenerator());
 //		page.getReferenceImplementations().add(new ECoreOclGenerator());
 	}
 

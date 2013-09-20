@@ -59,7 +59,7 @@ public class ResourceTest {
     if (isJson())
       p = new JsonParser();
     else
-      p = new XmlParser(false);
+      p = new XmlParser();
     ResourceOrFeed rf = p.parseGeneral(new FileInputStream(source));
 
     FileOutputStream out = new FileOutputStream(source.getAbsoluteFile()+".out.json");

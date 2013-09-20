@@ -1,0 +1,14 @@
+*.class
+build/implementations/java/org.hl7.fhir.instance
+build/schema
+build/fhir-error-dump.txt
+build/implementations/csharp/Hl7.Fhir.WinRt.csproj
+build/implementations/csharp/Hl7.Fhir.csproj
+build/implementations/csharp/Model/
+build/implementations/csharp/Parsers/
+build/implementations/csharp/Serializers/
+build/implementations/delphi/
+build/implementations/javascript/
+build/publish/
+build/temp/
+build/tools/java/org.hl7.fhir.tools.core/bin/
