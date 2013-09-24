@@ -44,9 +44,8 @@ public class JavaScriptGenerator extends BaseGenerator implements PlatformGenera
     }
     Map<String, ResourceDefn> namesAndDefinitions = definitions.getResources();
     for (String name : namesAndDefinitions.keySet()) {
-      ResourceDefn resourceDefinition = namesAndDefinitions.get(name);
-      File modelFile = new File(modelDir.getPath() + separator + name + ".js");
-      MongooseModel model = new MongooseModel(name, resourceDefinition, modelFile);
+      File modelFile = new File(modelDir.getPath() + separator + name.toLowerCase() + ".js");
+      MongooseModel model = new MongooseModel(name, definitions, modelFile);
       model.generate();
     }
   }
