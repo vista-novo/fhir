@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hl7.fhir.definitions.model.Definitions;
@@ -32,8 +33,9 @@ public class MongooseModel {
       fileBlock.bs();
       
       ResourceDefn resource = definitions.getResourceByName(name);
-      for (ElementDefn elementDefinition: resource.getRoot().getElements()) {
-        generateElement(fileBlock, elementDefinition);
+      for (Iterator<ElementDefn> iterator = resource.getRoot().getElements().iterator(); iterator.hasNext();) {
+        ElementDefn elementDefinition = iterator.next();
+        generateElement(fileBlock, elementDefinition, iterator.hasNext());
       }
       fileBlock.es();
       fileBlock.ln("};");
@@ -45,7 +47,7 @@ public class MongooseModel {
       modelFile.close();
     }
     
-    private void generateElement(GenBlock block, ElementDefn elementDefinition) {
+    private void generateElement(GenBlock block, ElementDefn elementDefinition, boolean includeTrailingComma) {
       block.ln(elementDefinition.getName() + ": {");
       block.bs();
       List<TypeRef> types = elementDefinition.getTypes();
@@ -68,7 +70,7 @@ public class MongooseModel {
         }
       }
       block.es();
-      block.ln("}");
+      block.ln("}" + (includeTrailingComma ? "," : ""));
     }
     
     private void generateResourceSchema(GenBlock block) {
