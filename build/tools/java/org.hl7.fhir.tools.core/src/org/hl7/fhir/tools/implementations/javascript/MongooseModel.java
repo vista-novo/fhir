@@ -68,6 +68,11 @@ public class MongooseModel {
         } else if(elementType.equals("Coding")) {
           generateCodingScheama(block);
         }
+      } else if(types.size() == 0) {
+        for (Iterator<ElementDefn> iterator = elementDefinition.getElements().iterator(); iterator.hasNext();) {
+          ElementDefn nestedElement = iterator.next();
+          generateElement(block, nestedElement, iterator.hasNext());
+        }
       }
       block.es();
       block.ln("}" + (includeTrailingComma ? "," : ""));
