@@ -48,7 +48,7 @@ public class MongooseModel {
     }
     
     private void generateElement(GenBlock block, ElementDefn elementDefinition, boolean includeTrailingComma) {
-      block.ln(elementDefinition.getName() + ": {");
+      block.ln(elementDefinition.getName().replace("[x]", "") + ": {");
       block.bs();
       List<TypeRef> types = elementDefinition.getTypes();
       if(types.size() > 0) {
