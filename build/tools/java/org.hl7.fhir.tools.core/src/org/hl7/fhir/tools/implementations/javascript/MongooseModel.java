@@ -38,7 +38,7 @@ public class MongooseModel {
         generateElement(fileBlock, elementDefinition, iterator.hasNext());
       }
       fileBlock.es();
-      fileBlock.ln("};");
+      fileBlock.ln("});");
       fileBlock.ln();
       fileBlock.ln("mongoose.model('" + name +"', " + name+ "Schema);");
       Writer modelFile = new BufferedWriter(new FileWriter(javaScriptFile));
@@ -90,7 +90,7 @@ public class MongooseModel {
       generateValueSchema(block, "code", true);
       generateValueSchema(block, "display", false);
       block.es();
-      block.ln("}],");
+      block.ln("}]");
     }
     
     private void generateValueSchema(GenBlock block, String valueName, boolean includeTrailingComma) {
