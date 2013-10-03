@@ -48,7 +48,12 @@ public class MongooseModel {
     }
     
     private void generateElement(GenBlock block, ElementDefn elementDefinition, boolean includeTrailingComma) {
-      block.ln(elementDefinition.getName().replace("[x]", "") + ": {");
+      if (elementDefinition.getMaxCardinality() == null) {
+        block.ln(elementDefinition.getName().replace("[x]", "") + ": [{");
+      } else
+      {
+        block.ln(elementDefinition.getName().replace("[x]", "") + ": {");
+      }
       block.bs();
       List<TypeRef> types = elementDefinition.getTypes();
       if(types.size() > 0) {
@@ -75,7 +80,11 @@ public class MongooseModel {
         }
       }
       block.es();
-      block.ln("}" + (includeTrailingComma ? "," : ""));
+      if (elementDefinition.getMaxCardinality() == null) {
+        block.ln("}]" + (includeTrailingComma ? "," : ""));
+      } else {
+        block.ln("}" + (includeTrailingComma ? "," : ""));
+      }
     }
     
     private void generateResourceSchema(GenBlock block) {
